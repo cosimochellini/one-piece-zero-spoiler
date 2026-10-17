@@ -891,6 +891,7 @@ export const wholeCake: Saga = {
       affiliation: [
         {
           episode: 757,
+          factions: ['beasts-pirates'],
           value: {
             it: 'Pirati delle Cento Bestie, All-Star',
             en: 'Beasts Pirates, All-Star',
@@ -1038,12 +1039,17 @@ export const wholeCake: Saga = {
       affiliation: [
         {
           episode: 768,
+          factions: ['independent'],
           value: {
             it: 'Ninja di Wano, nascosto a Zou',
             en: 'Ninja of Wano, in hiding on Zou',
           },
         },
-        { episode: 930, value: RED_SCABBARDS },
+        {
+          episode: 930,
+          factions: ['nine-red-scabbards'],
+          value: RED_SCABBARDS,
+        },
       ],
       origin: [
         { episode: 768, value: { it: 'Paese di Wano', en: 'Wano Country' } },
@@ -1139,6 +1145,7 @@ export const wholeCake: Saga = {
       affiliation: [
         {
           episode: 786,
+          factions: ['big-mom-pirates'],
           value: { it: 'Famiglia Charlotte', en: 'Charlotte Family' },
         },
       ],
@@ -1160,12 +1167,17 @@ export const wholeCake: Saga = {
       affiliation: [
         {
           episode: 786,
+          factions: ['big-mom-pirates', 'emperors'],
           value: {
             it: 'Pirati di Big Mom, capitano; Imperatore',
             en: 'Big Mom Pirates, captain; Emperor',
           },
         },
-        { episode: 1085, value: { it: 'Caduta a Wano', en: 'Fell at Wano' } },
+        {
+          episode: 1085,
+          factions: ['independent'],
+          value: { it: 'Caduta a Wano', en: 'Fell at Wano' },
+        },
       ],
       origin: [{ episode: 786, value: TOTTO_LAND }],
       epithet: [{ episode: 786, value: { it: 'Big Mom', en: 'Big Mom' } }],
@@ -1185,6 +1197,7 @@ export const wholeCake: Saga = {
       affiliation: [
         {
           episode: 795,
+          factions: ['big-mom-pirates'],
           value: {
             it: 'Pirati di Big Mom, ministro delle caramelle',
             en: 'Big Mom Pirates, minister of candy',
@@ -1207,7 +1220,9 @@ export const wholeCake: Saga = {
         // the cover story of chapter 1063; the story never thaws him.
         { episode: 1093, chapter: 1063, value: 'unknown' },
       ],
-      affiliation: [{ episode: 796, value: SWEET_COMMANDER }],
+      affiliation: [
+        { episode: 796, factions: ['big-mom-pirates'], value: SWEET_COMMANDER },
+      ],
       origin: [{ episode: 796, value: TOTTO_LAND }],
       epithet: [
         // Caption and bounty at 798 (chapter 836, page 15). Episode 797 has
@@ -1245,6 +1260,7 @@ export const wholeCake: Saga = {
       affiliation: [
         {
           episode: 792,
+          factions: ['big-mom-pirates'],
           value: { it: 'Pirati di Big Mom', en: 'Big Mom Pirates' },
         },
       ],
@@ -1305,6 +1321,7 @@ export const wholeCake: Saga = {
       affiliation: [
         {
           episode: 830,
+          factions: ['independent'],
           value: {
             it: 'World Economy News Paper, presidente',
             en: 'World Economy News Paper, president',
@@ -1416,7 +1433,9 @@ export const wholeCake: Saga = {
         en: 'He is the second son of the Charlotte family and one of the Big Mom Pirates’ Sweet Commanders. He comes to the chateau for his mother’s tea party, very tall, with a feathered scarf that covers his mouth and falls to his shoulders.',
       },
       status: [{ episode: 825, value: 'alive' }],
-      affiliation: [{ episode: 825, value: SWEET_COMMANDER }],
+      affiliation: [
+        { episode: 825, factions: ['big-mom-pirates'], value: SWEET_COMMANDER },
+      ],
       origin: [{ episode: 825, value: TOTTO_LAND }],
       devilFruit: [
         { episode: 833, chapter: 863, value: ['mochi-mochi-fruit'] },
@@ -1469,7 +1488,9 @@ export const wholeCake: Saga = {
         en: 'She is one of the three Sweet Commanders, the minister of juice and the 14th daughter of the Charlotte family. A subordinate begs her for mercy, and she wrings him until nothing is left. She has nothing to do until the tea party, so she offers to guard the Poneglyphs herself. Brook describes her as a beautiful woman with long legs.',
       },
       status: [{ episode: 812, value: 'alive' }],
-      affiliation: [{ episode: 812, value: SWEET_COMMANDER }],
+      affiliation: [
+        { episode: 812, factions: ['big-mom-pirates'], value: SWEET_COMMANDER },
+      ],
       origin: [{ episode: 812, value: TOTTO_LAND }],
       devilFruit: [{ episode: 812, value: ['wring-wring-fruit'] }],
       bounty: [{ episode: 812, value: 932_000_000 }],
@@ -1484,6 +1505,7 @@ export const wholeCake: Saga = {
       affiliation: [
         {
           episode: 827,
+          factions: ['big-mom-pirates'],
           value: {
             it: 'Pirati di Big Mom, ministro della doratura',
             en: 'Big Mom Pirates, minister of browning',
@@ -1503,6 +1525,7 @@ export const wholeCake: Saga = {
       affiliation: [
         {
           episode: 826,
+          factions: ['big-mom-pirates'],
           value: {
             it: 'Pirati di Big Mom, ministro dei fagioli',
             en: 'Big Mom Pirates, minister of beans',
@@ -1522,6 +1545,7 @@ export const wholeCake: Saga = {
       affiliation: [
         {
           episode: 811,
+          factions: ['big-mom-pirates'],
           value: {
             it: 'Pirati di Big Mom, ministro del formaggio',
             en: 'Big Mom Pirates, minister of cheese',
@@ -1541,6 +1565,7 @@ export const wholeCake: Saga = {
       affiliation: [
         {
           episode: 830,
+          factions: ['big-mom-pirates'],
           value: {
             it: 'Pirati di Big Mom, capocuoco',
             en: 'Big Mom Pirates, head chef',
@@ -1570,6 +1595,7 @@ export const wholeCake: Saga = {
       affiliation: [
         {
           episode: 836,
+          factions: ['independent'],
           value: {
             it: 'Casa delle Pecore, Mamma Carmel',
             en: 'Sheep’s House, Mother Carmel',
@@ -1657,6 +1683,7 @@ export const wholeCake: Saga = {
       affiliation: [
         {
           episode: 880,
+          factions: ['revolutionary-army'],
           value: {
             it: 'Armata Rivoluzionaria, comandante dell’armata dell’Est',
             en: 'Revolutionary Army, East Army commander',
@@ -1678,6 +1705,7 @@ export const wholeCake: Saga = {
       affiliation: [
         {
           episode: 880,
+          factions: ['revolutionary-army'],
           value: {
             it: 'Armata Rivoluzionaria, comandante dell’armata dell’Ovest',
             en: 'Revolutionary Army, West Army commander',
@@ -1699,6 +1727,7 @@ export const wholeCake: Saga = {
       affiliation: [
         {
           episode: 880,
+          factions: ['revolutionary-army'],
           value: {
             it: 'Armata Rivoluzionaria, comandante dell’armata del Nord',
             en: 'Revolutionary Army, North Army commander',
@@ -1783,6 +1812,7 @@ export const wholeCake: Saga = {
       affiliation: [
         {
           episode: 882,
+          factions: ['marines'],
           value: { it: 'Marina, ammiraglio', en: 'Marines, admiral' },
         },
       ],

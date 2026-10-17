@@ -860,8 +860,8 @@ export const alabasta: Saga = {
       },
       status: [{ episode: 66, value: 'alive' }],
       affiliation: [
-        { episode: 66, value: BW },
-        { episode: 91, value: BW_OFFICER },
+        { episode: 66, factions: ['baroque-works'], value: BW },
+        { episode: 91, factions: ['baroque-works'], value: BW_OFFICER },
       ],
       devilFruit: [{ episode: 66, value: ['bomb-bomb-fruit'] }],
     },
@@ -873,8 +873,8 @@ export const alabasta: Saga = {
       },
       status: [{ episode: 66, value: 'alive' }],
       affiliation: [
-        { episode: 66, value: BW },
-        { episode: 91, value: BW_OFFICER },
+        { episode: 66, factions: ['baroque-works'], value: BW },
+        { episode: 91, factions: ['baroque-works'], value: BW_OFFICER },
       ],
       devilFruit: [{ episode: 66, value: ['kilo-kilo-fruit'] }],
     },
@@ -931,11 +931,25 @@ export const alabasta: Saga = {
         { episode: 451, chapter: 548, value: 'alive' },
       ],
       affiliation: [
-        { episode: 70, value: BW },
-        { episode: 91, value: BW_OFFICER },
-        { episode: 424, chapter: 527, value: IMPEL_DOWN },
-        { episode: 451, chapter: 548, value: FORMER_BW_OFFICER },
-        { episode: 517, value: { it: 'Ciurma di Bagy', en: 'Buggy’s crew' } },
+        { episode: 70, factions: ['baroque-works'], value: BW },
+        { episode: 91, factions: ['baroque-works'], value: BW_OFFICER },
+        {
+          episode: 424,
+          chapter: 527,
+          factions: ['independent'],
+          value: IMPEL_DOWN,
+        },
+        {
+          episode: 451,
+          chapter: 548,
+          factions: ['independent'],
+          value: FORMER_BW_OFFICER,
+        },
+        {
+          episode: 517,
+          factions: ['buggy-pirates'],
+          value: { it: 'Ciurma di Bagy', en: 'Buggy’s crew' },
+        },
       ],
       devilFruit: [{ episode: 73, chapter: 120, value: ['wax-wax-fruit'] }],
     },
@@ -1018,16 +1032,23 @@ export const alabasta: Saga = {
       affiliation: [
         {
           episode: 79,
+          factions: ['independent'],
           value: { it: 'Capitano del Bliking', en: 'Captain of the Bliking' },
         },
         {
           episode: 80,
           chapter: 133,
+          factions: ['independent'],
           value: { it: 'Re di Drum, in esilio', en: 'King of Drum, in exile' },
         },
-        { episode: 91, value: { it: 'Deposto', en: 'Deposed' } },
+        {
+          episode: 91,
+          factions: ['independent'],
+          value: { it: 'Deposto', en: 'Deposed' },
+        },
         {
           episode: 878,
+          factions: ['independent'],
           value: {
             it: 'Re del Regno di Black Drum',
             en: 'King of the Black Drum Kingdom',
@@ -1057,10 +1078,15 @@ export const alabasta: Saga = {
       ],
       // No queen-of-level-5.5 entry: only the chapter 666 cover says it.
       affiliation: [
-        { episode: 78, value: BW },
-        { episode: 91, value: BW_OFFICER },
+        { episode: 78, factions: ['baroque-works'], value: BW },
+        { episode: 91, factions: ['baroque-works'], value: BW_OFFICER },
         // Still a prisoner at 451: he stays behind at the Gates of Justice.
-        { episode: 431, chapter: 530, value: IMPEL_DOWN },
+        {
+          episode: 431,
+          chapter: 530,
+          factions: ['independent'],
+          value: IMPEL_DOWN,
+        },
       ],
       devilFruit: [{ episode: 92, chapter: 156, value: ['clone-clone-fruit'] }],
     },
@@ -1080,6 +1106,7 @@ export const alabasta: Saga = {
       affiliation: [
         {
           episode: 80,
+          factions: ['independent'],
           value: {
             it: 'Capitano della guardia dell’isola di Drum',
             en: 'Captain of Drum Island’s guard',
@@ -1088,6 +1115,7 @@ export const alabasta: Saga = {
         {
           episode: 324,
           chapter: 440,
+          factions: ['independent'],
           value: { it: 'Isola di Drum, re', en: 'Drum Island, king' },
         },
       ],
@@ -1143,12 +1171,13 @@ export const alabasta: Saga = {
       affiliation: [
         {
           episode: 83,
+          factions: ['independent'],
           value: {
             it: 'Assistente della dottoressa Kureha',
             en: 'Doctor Kureha’s assistant',
           },
         },
-        { episode: 91, value: STRAW_HATS },
+        { episode: 91, factions: ['straw-hat-pirates'], value: STRAW_HATS },
       ],
       origin: [
         {
@@ -1271,6 +1300,7 @@ export const alabasta: Saga = {
       affiliation: [
         {
           episode: 92,
+          factions: ['warlords', 'baroque-works'],
           value: {
             it: 'Flotta dei Sette; Baroque Works, capo',
             en: 'Seven Warlords; Baroque Works, head',
@@ -1278,6 +1308,7 @@ export const alabasta: Saga = {
         },
         {
           episode: 130,
+          factions: ['independent'],
           value: {
             it: 'Ex membro della Flotta dei Sette, in arresto',
             en: 'Former Warlord, under arrest',
@@ -1287,6 +1318,7 @@ export const alabasta: Saga = {
         {
           episode: 451,
           chapter: 548,
+          factions: ['independent'],
           value: {
             it: 'Ex membro della Flotta dei Sette',
             en: 'Former Warlord',
@@ -1296,6 +1328,7 @@ export const alabasta: Saga = {
         {
           episode: 1083,
           chapter: 1056,
+          factions: ['cross-guild'],
           value: { it: 'Cross Guild', en: 'Cross Guild' },
         },
       ],
@@ -1390,6 +1423,7 @@ export const alabasta: Saga = {
       affiliation: [
         {
           episode: 100,
+          factions: ['alabasta'],
           value: {
             it: 'Regno di Alabasta, guardia reale',
             en: 'Kingdom of Alabasta, royal guard',
@@ -1420,6 +1454,7 @@ export const alabasta: Saga = {
       affiliation: [
         {
           episode: 100,
+          factions: ['alabasta'],
           value: {
             it: 'Regno di Alabasta, guardia reale',
             en: 'Kingdom of Alabasta, royal guard',
@@ -1460,6 +1495,7 @@ export const alabasta: Saga = {
       affiliation: [
         {
           episode: 95,
+          factions: ['whitebeard-pirates'],
           value: {
             it: 'Pirati di Barbabianca, comandante della seconda divisione',
             en: 'Whitebeard Pirates, second division commander',
@@ -1523,16 +1559,27 @@ export const alabasta: Saga = {
         { episode: 451, chapter: 548, value: 'alive' },
       ],
       affiliation: [
-        { episode: 103, value: BW_OFFICER },
+        { episode: 103, factions: ['baroque-works'], value: BW_OFFICER },
         // Episode 434 adapts chapter 533, where he is first seen in Impel
         // Down, hauling lumber on Level 4.
-        { episode: 434, chapter: 533, value: IMPEL_DOWN },
-        { episode: 451, chapter: 548, value: FORMER_BW_OFFICER },
+        {
+          episode: 434,
+          chapter: 533,
+          factions: ['independent'],
+          value: IMPEL_DOWN,
+        },
+        {
+          episode: 451,
+          chapter: 548,
+          factions: ['independent'],
+          value: FORMER_BW_OFFICER,
+        },
         // Sinks the Navy ships at Karai Bari beside Crocodile at 1086
         // (chapter 1058); he is not on the 1083 poster.
         {
           episode: 1086,
           chapter: 1058,
+          factions: ['cross-guild'],
           value: { it: 'Cross Guild', en: 'Cross Guild' },
         },
       ],
@@ -1550,7 +1597,9 @@ export const alabasta: Saga = {
         // arrest the beaten officer agents along with Crocodile.
         { episode: 127, chapter: 211, value: 'imprisoned' },
       ],
-      affiliation: [{ episode: 103, value: BW_OFFICER }],
+      affiliation: [
+        { episode: 103, factions: ['baroque-works'], value: BW_OFFICER },
+      ],
       devilFruit: [
         { episode: 117, chapter: 190, value: ['spike-spike-fruit'] },
       ],
@@ -1585,7 +1634,9 @@ export const alabasta: Saga = {
         // Valentine.
         { episode: 1149, chapter: 1115, value: 'alive' },
       ],
-      affiliation: [{ episode: 103, value: BW_OFFICER }],
+      affiliation: [
+        { episode: 103, factions: ['baroque-works'], value: BW_OFFICER },
+      ],
       devilFruit: [{ episode: 113, chapter: 184, value: ['mole-mole-fruit'] }],
     },
     'toto': {
@@ -1632,6 +1683,7 @@ export const alabasta: Saga = {
       affiliation: [
         {
           episode: 113,
+          factions: ['baroque-works'],
           value: {
             it: 'Baroque Works, arma di Mr. Four',
             en: 'Baroque Works, Mr. 4’s weapon',
@@ -1684,15 +1736,21 @@ export const alabasta: Saga = {
       },
       status: [{ episode: 128, value: 'alive' }],
       affiliation: [
-        { episode: 128, value: { it: 'Marina', en: 'Marines' } },
+        {
+          episode: 128,
+          factions: ['marines'],
+          value: { it: 'Marina', en: 'Marines' },
+        },
         {
           episode: 129,
+          factions: ['marines'],
           value: { it: 'Marina, capitano', en: 'Marines, captain' },
         },
         // Captioned at 777 (chapter 823), her first scene after the two years.
         {
           episode: 777,
           chapter: 823,
+          factions: ['marines'],
           value: { it: 'Marina, contrammiraglio', en: 'Marines, rear admiral' },
         },
       ],
@@ -1726,7 +1784,9 @@ export const alabasta: Saga = {
         en: 'She was Miss All Sunday, vice-president of Baroque Works, and all along she followed her boss for a reason of her own: a stone slab written in a language only she can read. She sprouts arms wherever she likes, from the floor or from an enemy’s back. After Luffy saves her life against her will, she boards the Going Merry and declares herself part of the crew.',
       },
       status: [{ episode: 130, value: 'alive' }],
-      affiliation: [{ episode: 130, value: STRAW_HATS }],
+      affiliation: [
+        { episode: 130, factions: ['straw-hat-pirates'], value: STRAW_HATS },
+      ],
       origin: [
         { episode: 130, value: { it: 'West Blue', en: 'West Blue' } },
         {

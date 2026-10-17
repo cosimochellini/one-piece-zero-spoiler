@@ -316,12 +316,13 @@ export const thrillerBark: Saga = {
       affiliation: [
         {
           episode: 339,
+          factions: ['independent'],
           value: {
             it: 'Pirati di Rumbar, un tempo',
             en: 'Rumbar Pirates, once',
           },
         },
-        { episode: 381, value: STRAW_HATS },
+        { episode: 381, factions: ['straw-hat-pirates'], value: STRAW_HATS },
       ],
       origin: [{ episode: 339, value: { it: 'West Blue', en: 'West Blue' } }],
       epithet: [{ episode: 517, value: { it: 'Soul King', en: 'Soul King' } }],
@@ -342,6 +343,7 @@ export const thrillerBark: Saga = {
       affiliation: [
         {
           episode: 343,
+          factions: ['thriller-bark-pirates'],
           value: { it: 'Pirati di Thriller Bark', en: 'Thriller Bark Pirates' },
         },
       ],
@@ -415,6 +417,7 @@ export const thrillerBark: Saga = {
         {
           episode: 349,
           chapter: 455,
+          factions: ['thriller-bark-pirates', 'warlords'],
           value: {
             it: 'Pirati di Thriller Bark, capitano; Flotta dei Sette',
             en: 'Thriller Bark Pirates, captain; Seven Warlords of the Sea',
@@ -425,6 +428,7 @@ export const thrillerBark: Saga = {
         {
           episode: 957,
           chapter: 956,
+          factions: ['independent'],
           value: {
             it: 'Ex membro della Flotta dei Sette',
             en: 'Former Warlord',
@@ -451,6 +455,7 @@ export const thrillerBark: Saga = {
       affiliation: [
         {
           episode: 343,
+          factions: ['thriller-bark-pirates'],
           value: {
             it: 'Pirati di Thriller Bark, generale dei soldati zombie',
             en: 'Thriller Bark Pirates, general of the zombie soldiers',

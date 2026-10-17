@@ -750,6 +750,7 @@ export const wano: Saga = {
       affiliation: [
         {
           episode: 894,
+          factions: ['independent'],
           value: {
             it: 'Kuri, Paese di Wano, bambina del villaggio di Amigasa',
             en: 'Kuri, Wano, a child of Amigasa Village',
@@ -757,6 +758,7 @@ export const wano: Saga = {
         },
         {
           episode: 1085,
+          factions: ['kozuki-alliance'],
           value: {
             it: 'Servitori dei Kozuki, allieva',
             en: 'Kozuki retainers, apprentice',
@@ -859,7 +861,9 @@ export const wano: Saga = {
         en: 'He is one of the Tobiroppo, the six strongest headliners of the Beasts Pirates, and he is sent out with X Drake, another of the six. When Drake asks why the job needs the two of them, Page One says it is to set an example: everyone in Wano should see what happens to anyone who crosses the crew.',
       },
       status: [{ episode: 923, value: 'alive' }],
-      affiliation: [{ episode: 923, value: TOBIROPPO }],
+      affiliation: [
+        { episode: 923, factions: ['beasts-pirates'], value: TOBIROPPO },
+      ],
       devilFruit: [
         {
           episode: 924,
@@ -890,9 +894,14 @@ export const wano: Saga = {
       affiliation: [
         {
           episode: 921,
+          factions: ['kurozumi-family'],
           value: { it: 'Shogun del Paese di Wano', en: 'Shogun of Wano' },
         },
-        { episode: 1085, value: { it: 'Deposto', en: 'Deposed' } },
+        {
+          episode: 1085,
+          factions: ['independent'],
+          value: { it: 'Deposto', en: 'Deposed' },
+        },
       ],
       origin: [{ episode: 921, value: WANO }],
       devilFruit: [
@@ -916,6 +925,7 @@ export const wano: Saga = {
       affiliation: [
         {
           episode: 912,
+          factions: ['kozuki-alliance'],
           value: {
             it: 'Alleanza Kozuki, kunoichi',
             en: 'Kozuki alliance, kunoichi',
@@ -924,6 +934,7 @@ export const wano: Saga = {
         {
           episode: 972,
           chapter: 970,
+          factions: ['kozuki-alliance'],
           value: {
             it: 'Alleanza Kozuki, kunoichi; un tempo dell’Oniwabanshu',
             en: 'Kozuki alliance, kunoichi; once of the Oniwabanshu',
@@ -984,6 +995,7 @@ export const wano: Saga = {
       affiliation: [
         {
           episode: 930,
+          factions: ['beasts-pirates'],
           value: {
             it: 'Pirati delle Cento Bestie, All-Star, padrone del campo di prigionia di Udon',
             en: 'Beasts Pirates, All-Star, master of the Udon prison camp',
@@ -1023,12 +1035,14 @@ export const wano: Saga = {
       affiliation: [
         {
           episode: 923,
+          factions: ['beasts-pirates'],
           value: { it: 'Pirati delle Cento Bestie', en: 'Beasts Pirates' },
         },
         {
           // He tells Who's-Who and Sasaki they want "our positions as the Lead Performers".
           episode: 985,
           chapter: 979,
+          factions: ['beasts-pirates'],
           value: {
             it: 'Pirati delle Cento Bestie, All-Star',
             en: 'Beasts Pirates, All-Star',
@@ -1297,6 +1311,7 @@ export const wano: Saga = {
       affiliation: [
         {
           episode: 963,
+          factions: ['kozuki-family'],
           value: {
             it: 'Famiglia Kozuki, moglie di Oden',
             en: 'Kozuki family, Oden’s wife',
@@ -1328,6 +1343,7 @@ export const wano: Saga = {
       affiliation: [
         {
           episode: 970,
+          factions: ['kurozumi-family'],
           value: {
             it: 'Famiglia Kurozumi, anziana',
             en: 'Kurozumi family, elder',
@@ -1350,6 +1366,7 @@ export const wano: Saga = {
       affiliation: [
         {
           episode: 970,
+          factions: ['kurozumi-family'],
           value: { it: 'Famiglia Kurozumi', en: 'Kurozumi family' },
         },
       ],
@@ -1388,7 +1405,9 @@ export const wano: Saga = {
         en: 'She is one of the Emperor’s six leading officers, and Page One, who calls her his elder sister, is another. While the six wait to be called, she quarrels with her brother and tells Sasaki to stop messing around when he needles him. When she asks whether Kaido is stupid, the others turn on her.',
       },
       status: [{ episode: 982, value: 'alive' }],
-      affiliation: [{ episode: 982, value: TOBIROPPO }],
+      affiliation: [
+        { episode: 982, factions: ['beasts-pirates'], value: TOBIROPPO },
+      ],
       devilFruit: [
         {
           episode: 990,
@@ -1405,9 +1424,10 @@ export const wano: Saga = {
       },
       status: [{ episode: 982, value: 'alive' }],
       affiliation: [
-        { episode: 982, value: TOBIROPPO },
+        { episode: 982, factions: ['beasts-pirates'], value: TOBIROPPO },
         {
           episode: 1039,
+          factions: ['beasts-pirates'],
           value: {
             it: 'Pirati delle Cento Bestie, Tobiroppo; un tempo Cipher Pol 9',
             en: 'Beasts Pirates, Tobiroppo; once Cipher Pol 9',
@@ -1429,7 +1449,9 @@ export const wano: Saga = {
         en: 'She is one of the Emperor’s six leading officers, in a black kimono with a flowered sash, horns on her head and swords pinned in her hair. While the six wait to be called, she says she likes Ulti because she never backs down.',
       },
       status: [{ episode: 982, value: 'alive' }],
-      affiliation: [{ episode: 982, value: TOBIROPPO }],
+      affiliation: [
+        { episode: 982, factions: ['beasts-pirates'], value: TOBIROPPO },
+      ],
       devilFruit: [
         {
           episode: 1013,
@@ -1445,7 +1467,9 @@ export const wano: Saga = {
         en: 'He is one of the Emperor’s six leading officers, with a horned military cap, two long fangs and a cloak slung over his shoulders. While the six wait to be called, he needles Page One, and Ulti tells him to stop messing around.',
       },
       status: [{ episode: 982, value: 'alive' }],
-      affiliation: [{ episode: 982, value: TOBIROPPO }],
+      affiliation: [
+        { episode: 982, factions: ['beasts-pirates'], value: TOBIROPPO },
+      ],
       devilFruit: [
         {
           episode: 1013,
@@ -1465,6 +1489,7 @@ export const wano: Saga = {
         {
           episode: 993,
           chapter: 985,
+          factions: ['independent'],
           value: {
             it: 'Nessuna: prigioniero di Kaido a Onigashima',
             en: 'None: Kaido’s prisoner on Onigashima',
@@ -1473,6 +1498,7 @@ export const wano: Saga = {
         {
           episode: 995,
           chapter: 986,
+          factions: ['independent'],
           value: {
             it: 'Nessuna: ha rinnegato suo padre, Kaido',
             en: 'None: has disowned his father, Kaido',
@@ -1481,6 +1507,7 @@ export const wano: Saga = {
         {
           episode: 1007,
           chapter: 994,
+          factions: ['kozuki-alliance'],
           value: { it: 'Alleanza Kozuki', en: 'Kozuki alliance' },
         },
       ],

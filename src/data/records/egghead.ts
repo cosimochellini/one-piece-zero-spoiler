@@ -1,3 +1,5 @@
+import type { Affiliation } from '~/data/types'
+
 import { eggheadChronicles } from './egghead.chronicle'
 import type { Saga } from './saga'
 
@@ -12,9 +14,13 @@ const MARY_GEOISE = { it: 'Mary Geoise', en: 'Mary Geoise' }
 
 const DESTROYED = { it: 'Distrutto', en: 'Destroyed' }
 
-const SERAPHIM = {
-  it: 'Serafino, arma del Governo Mondiale',
-  en: 'Seraphim, World Government weapon',
+/** The four Seraphim's one affiliation, prose and tag, without its episode. */
+const SERAPHIM: Omit<Affiliation, 'episode'> = {
+  factions: ['world-government'],
+  value: {
+    it: 'Serafino, arma del Governo Mondiale',
+    en: 'Seraphim, World Government weapon',
+  },
 }
 
 const SERAPHIM_ROLE = { it: 'Serafino', en: 'Seraphim' }
@@ -538,6 +544,7 @@ export const egghead: Saga = {
       affiliation: [
         {
           episode: 1096,
+          factions: ['world-government'],
           value: {
             it: 'Governo Mondiale, scienziato capo',
             en: 'World Government, chief scientist',
@@ -633,7 +640,7 @@ export const egghead: Saga = {
         // moved to their ship once they are recharged.
         { episode: 1155, chapter: 1125, value: 'alive' },
       ],
-      affiliation: [{ episode: 1099, value: SERAPHIM }],
+      affiliation: [{ episode: 1099, ...SERAPHIM }],
       origin: [{ episode: 1107, value: EGGHEAD }],
       devilFruit: [{ episode: 1101, value: ['love-love-fruit'] }],
     },
@@ -652,7 +659,7 @@ export const egghead: Saga = {
         // moved to their ship once they are recharged.
         { episode: 1155, chapter: 1125, value: 'alive' },
       ],
-      affiliation: [{ episode: 1099, value: SERAPHIM }],
+      affiliation: [{ episode: 1099, ...SERAPHIM }],
       origin: [{ episode: 1107, value: EGGHEAD }],
       devilFruit: [{ episode: 1108, value: ['dice-dice-fruit'] }],
     },
@@ -671,7 +678,7 @@ export const egghead: Saga = {
         // moved to their ship once they are recharged.
         { episode: 1155, chapter: 1125, value: 'alive' },
       ],
-      affiliation: [{ episode: 1098, value: SERAPHIM }],
+      affiliation: [{ episode: 1098, ...SERAPHIM }],
       origin: [{ episode: 1107, value: EGGHEAD }],
       devilFruit: [{ episode: 1099, value: ['paw-paw-fruit'] }],
     },
@@ -690,7 +697,7 @@ export const egghead: Saga = {
         // moved to their ship once they are recharged.
         { episode: 1155, chapter: 1125, value: 'alive' },
       ],
-      affiliation: [{ episode: 1095, value: SERAPHIM }],
+      affiliation: [{ episode: 1095, ...SERAPHIM }],
       origin: [{ episode: 1107, value: EGGHEAD }],
       devilFruit: [{ episode: 1101, value: ['swim-swim-fruit'] }],
     },
@@ -1076,6 +1083,7 @@ export const egghead: Saga = {
       affiliation: [
         {
           episode: 1113,
+          factions: ['marines'],
           value: {
             it: 'Marina, contrammiraglio dello SWORD',
             en: 'Marines, SWORD rear admiral',
@@ -1163,6 +1171,7 @@ export const egghead: Saga = {
       affiliation: [
         {
           episode: 1128,
+          factions: ['marines'],
           value: { it: 'Marina, viceammiraglio', en: 'Marines, vice admiral' },
         },
       ],

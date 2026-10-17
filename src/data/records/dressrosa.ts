@@ -1039,6 +1039,7 @@ export const dressrosa: Saga = {
       affiliation: [
         {
           episode: 588,
+          factions: ['punk-hazard'],
           value: {
             it: 'Punk Hazard, padrone del laboratorio',
             en: 'Punk Hazard, master of the laboratory',
@@ -1048,14 +1049,20 @@ export const dressrosa: Saga = {
           // Law names Joker, the man Caesar answers to, as Doflamingo.
           episode: 599,
           chapter: 673,
+          factions: ['punk-hazard'],
           value: {
             it: 'Punk Hazard, padrone del laboratorio; al servizio di Do Flamingo',
             en: 'Punk Hazard, master of the laboratory; Doflamingo’s employee',
           },
         },
-        { episode: 625, value: { it: 'Ostaggio di Law', en: 'Law’s hostage' } },
+        {
+          episode: 625,
+          factions: ['independent'],
+          value: { it: 'Ostaggio di Law', en: 'Law’s hostage' },
+        },
         {
           episode: 795,
+          factions: ['independent'],
           value: { it: 'Prigioniero di Big Mom', en: 'Big Mom’s prisoner' },
         },
       ],
@@ -1077,6 +1084,7 @@ export const dressrosa: Saga = {
       affiliation: [
         {
           episode: 587,
+          factions: ['punk-hazard'],
           value: {
             it: 'Punk Hazard, assistente del laboratorio',
             en: 'Punk Hazard, laboratory assistant',
@@ -1087,6 +1095,7 @@ export const dressrosa: Saga = {
           // Law names the man behind them as Doflamingo.
           episode: 599,
           chapter: 673,
+          factions: ['independent'],
           value: {
             it: 'Agente di Do Flamingo al fianco di Caesar',
             en: 'Doflamingo’s agent at Caesar’s side',
@@ -1142,6 +1151,7 @@ export const dressrosa: Saga = {
       affiliation: [
         {
           episode: 620,
+          factions: ['independent'],
           value: {
             it: 'Figlio di Kin’emon, a sentir lui',
             en: 'Kin’emon’s son, so he says',
@@ -1149,6 +1159,7 @@ export const dressrosa: Saga = {
         },
         {
           episode: 726,
+          factions: ['kozuki-family'],
           value: {
             it: 'Kozuki Momonosuke, erede di Wano',
             en: 'Kozuki Momonosuke, heir of Wano',
@@ -1168,6 +1179,7 @@ export const dressrosa: Saga = {
       affiliation: [
         {
           episode: 618,
+          factions: ['donquixote-pirates'],
           value: {
             it: 'Pirati di Donquijote, assassina e domestica',
             en: 'Donquixote Pirates, assassin and servant',
@@ -1175,6 +1187,7 @@ export const dressrosa: Saga = {
         },
         {
           episode: 746,
+          factions: ['independent'],
           value: {
             it: 'Flotta Happo, fidanzata di Sai',
             en: 'Happo Navy, Sai’s fiancée',
@@ -1201,6 +1214,7 @@ export const dressrosa: Saga = {
       affiliation: [
         {
           episode: 618,
+          factions: ['donquixote-pirates'],
           value: {
             it: 'Pirati di Donquijote, combattente',
             en: 'Donquixote Pirates, combatant',
@@ -1257,6 +1271,7 @@ export const dressrosa: Saga = {
       affiliation: [
         {
           episode: 634,
+          factions: ['marines'],
           value: { it: 'Marina, ammiraglio', en: 'Marines, admiral' },
         },
       ],
@@ -1273,10 +1288,12 @@ export const dressrosa: Saga = {
       affiliation: [
         {
           episode: 636,
+          factions: ['independent'],
           value: { it: 'Barto Club, capitano', en: 'Barto Club, captain' },
         },
         {
           episode: 746,
+          factions: ['straw-hat-grand-fleet'],
           value: {
             it: 'Grande Flotta di Cappello di Paglia; Barto Club',
             en: 'Straw Hat Grand Fleet; Barto Club',
@@ -1339,10 +1356,15 @@ export const dressrosa: Saga = {
         { episode: 735, chapter: 792, value: 'imprisoned' },
       ],
       affiliation: [
-        { episode: 632, value: DONQUIXOTE_PIRATES },
+        {
+          episode: 632,
+          factions: ['donquixote-pirates'],
+          value: DONQUIXOTE_PIRATES,
+        },
         {
           episode: 652,
           chapter: 722,
+          factions: ['donquixote-pirates'],
           value: {
             it: 'Pirati di Donquijote, ufficiale supremo',
             en: 'Donquixote Pirates, elite officer',
@@ -1718,6 +1740,7 @@ export const dressrosa: Saga = {
       affiliation: [
         {
           episode: 640,
+          factions: ['donquixote-pirates'],
           value: {
             it: 'Pirati di Donquijote, Violet',
             en: 'Donquixote Pirates, Violet',
@@ -1725,6 +1748,7 @@ export const dressrosa: Saga = {
         },
         {
           episode: 690,
+          factions: ['independent'],
           value: {
             it: 'Famiglia reale Riku, principessa',
             en: 'Riku royal family, princess',
@@ -1748,8 +1772,17 @@ export const dressrosa: Saga = {
         { episode: 735, chapter: 792, value: 'imprisoned' },
       ],
       affiliation: [
-        { episode: 663, value: DONQUIXOTE_PIRATES },
-        { episode: 664, chapter: 732, value: TREBOL_ARMY },
+        {
+          episode: 663,
+          factions: ['donquixote-pirates'],
+          value: DONQUIXOTE_PIRATES,
+        },
+        {
+          episode: 664,
+          chapter: 732,
+          factions: ['donquixote-pirates'],
+          value: TREBOL_ARMY,
+        },
       ],
       devilFruit: [
         { episode: 663, chapter: 731, value: ['hobby-hobby-fruit'] },
@@ -1770,6 +1803,7 @@ export const dressrosa: Saga = {
       affiliation: [
         {
           episode: 633,
+          factions: ['donquixote-pirates'],
           value: {
             it: 'Pirati di Donquijote; eroe del colosseo',
             en: 'Donquixote Pirates; colosseum hero',
@@ -1778,6 +1812,7 @@ export const dressrosa: Saga = {
         {
           episode: 652,
           chapter: 722,
+          factions: ['donquixote-pirates'],
           value: {
             it: 'Pirati di Donquijote, ufficiale supremo; eroe del colosseo',
             en: 'Donquixote Pirates, elite officer; colosseum hero',
@@ -1810,6 +1845,7 @@ export const dressrosa: Saga = {
         {
           episode: 652,
           chapter: 722,
+          factions: ['donquixote-pirates'],
           value: {
             it: 'Pirati di Donquijote, ufficiale supremo',
             en: 'Donquixote Pirates, elite officer',
@@ -1836,8 +1872,17 @@ export const dressrosa: Saga = {
         { episode: 735, chapter: 792, value: 'imprisoned' },
       ],
       affiliation: [
-        { episode: 635, value: DONQUIXOTE_PIRATES },
-        { episode: 664, chapter: 732, value: DIAMANTE_ARMY },
+        {
+          episode: 635,
+          factions: ['donquixote-pirates'],
+          value: DONQUIXOTE_PIRATES,
+        },
+        {
+          episode: 664,
+          chapter: 732,
+          factions: ['donquixote-pirates'],
+          value: DIAMANTE_ARMY,
+        },
       ],
       devilFruit: [{ episode: 667, chapter: 735, value: ['swim-swim-fruit'] }],
     },
@@ -1888,8 +1933,17 @@ export const dressrosa: Saga = {
         { episode: 735, chapter: 792, value: 'imprisoned' },
       ],
       affiliation: [
-        { episode: 635, value: DONQUIXOTE_PIRATES },
-        { episode: 664, chapter: 732, value: DIAMANTE_ARMY },
+        {
+          episode: 635,
+          factions: ['donquixote-pirates'],
+          value: DONQUIXOTE_PIRATES,
+        },
+        {
+          episode: 664,
+          chapter: 732,
+          factions: ['donquixote-pirates'],
+          value: DIAMANTE_ARMY,
+        },
       ],
       devilFruit: [{ episode: 682, chapter: 747, value: ['ton-ton-fruit'] }],
     },
@@ -1906,8 +1960,17 @@ export const dressrosa: Saga = {
         { episode: 735, chapter: 792, value: 'imprisoned' },
       ],
       affiliation: [
-        { episode: 644, value: DONQUIXOTE_PIRATES },
-        { episode: 664, chapter: 732, value: TREBOL_ARMY },
+        {
+          episode: 644,
+          factions: ['donquixote-pirates'],
+          value: DONQUIXOTE_PIRATES,
+        },
+        {
+          episode: 664,
+          chapter: 732,
+          factions: ['donquixote-pirates'],
+          value: TREBOL_ARMY,
+        },
       ],
       devilFruit: [{ episode: 648, chapter: 718, value: ['art-art-fruit'] }],
     },
@@ -1951,10 +2014,15 @@ export const dressrosa: Saga = {
         { episode: 735, chapter: 792, value: 'imprisoned' },
       ],
       affiliation: [
-        { episode: 653, value: DONQUIXOTE_PIRATES },
+        {
+          episode: 653,
+          factions: ['donquixote-pirates'],
+          value: DONQUIXOTE_PIRATES,
+        },
         {
           episode: 664,
           chapter: 732,
+          factions: ['donquixote-pirates'],
           value: {
             it: 'Pirati di Donquijote, ufficiale dell’Armata Pica',
             en: 'Donquixote Pirates, Pica Army officer',
@@ -1976,6 +2044,7 @@ export const dressrosa: Saga = {
       affiliation: [
         {
           episode: 641,
+          factions: ['tontatta'],
           value: {
             it: 'Regno di Tontatta, guerriero',
             en: 'Tontatta Kingdom, warrior',
@@ -1983,12 +2052,17 @@ export const dressrosa: Saga = {
         },
         {
           episode: 744,
+          factions: ['tontatta'],
           value: {
             it: 'Regno di Tontatta, capo del Corpo Tonta',
             en: 'Tontatta Kingdom, Tonta Corps leader',
           },
         },
-        { episode: 746, value: GRAND_FLEET },
+        {
+          episode: 746,
+          factions: ['straw-hat-grand-fleet'],
+          value: GRAND_FLEET,
+        },
       ],
       origin: [
         {
@@ -2040,6 +2114,7 @@ export const dressrosa: Saga = {
       affiliation: [
         {
           episode: 675,
+          factions: ['tontatta'],
           value: {
             it: 'Regno di Tontatta, principessa',
             en: 'Tontatta Kingdom, princess',
@@ -2075,6 +2150,7 @@ export const dressrosa: Saga = {
       affiliation: [
         {
           episode: 691,
+          factions: ['independent'],
           value: {
             it: 'Samurai di Wano, compagno di Kin’emon',
             en: 'Samurai of Wano, Kin’emon’s companion',
@@ -2082,10 +2158,12 @@ export const dressrosa: Saga = {
         },
         {
           episode: 955,
+          factions: ['nine-red-scabbards'],
           value: { it: 'Nove Foderi Rossi', en: 'Nine Red Scabbards' },
         },
         {
           episode: 985,
+          factions: ['independent'],
           value: {
             it: 'Spia di Orochi, smascherato',
             en: 'Orochi’s spy, exposed',
@@ -2117,6 +2195,7 @@ export const dressrosa: Saga = {
       affiliation: [
         {
           episode: 704,
+          factions: ['donquixote-pirates', 'marines'],
           value: {
             it: 'Pirati di Donquijote, ufficiale supremo Corazon, in segreto comandante della Marina',
             en: 'Donquixote Pirates, elite officer Corazon, secretly a Marine commander',
@@ -2147,6 +2226,7 @@ export const dressrosa: Saga = {
       affiliation: [
         {
           episode: 739,
+          factions: ['beasts-pirates', 'emperors'],
           value: {
             it: 'Pirati delle Cento Bestie, governatore generale; Imperatore',
             en: 'Beasts Pirates, governor-general; Emperor',
@@ -2337,7 +2417,11 @@ export const dressrosa: Saga = {
         { episode: 677, chapter: 743, value: 'alive' },
       ],
       affiliation: [
-        { episode: 633, value: { it: 'Fratelli Funk', en: 'Funk Brothers' } },
+        {
+          episode: 633,
+          factions: ['independent'],
+          value: { it: 'Fratelli Funk', en: 'Funk Brothers' },
+        },
       ],
       origin: [
         {

@@ -909,16 +909,18 @@ export const eastBlue: Saga = {
         {
           episode: 1,
           chapter: 1,
+          factions: ['independent'],
           value: {
             it: 'Capitano di una ciurma che non esiste ancora',
             en: 'Captain of a crew that does not exist yet',
           },
         },
-        { episode: 3, value: STRAW_HATS },
+        { episode: 3, factions: ['straw-hat-pirates'], value: STRAW_HATS },
         // Named one of the new Four Emperors at 1080 (chapter 1053).
         {
           episode: 1080,
           chapter: 1053,
+          factions: ['straw-hat-pirates', 'emperors'],
           value: {
             it: 'Pirati di Cappello di Paglia; Imperatore',
             en: 'Straw Hat Pirates; Emperor',
@@ -929,6 +931,7 @@ export const eastBlue: Saga = {
         {
           episode: 1086,
           chapter: 1058,
+          factions: ['straw-hat-pirates', 'emperors', 'straw-hat-grand-fleet'],
           value: {
             it: 'Pirati di Cappello di Paglia; Imperatore; Grande Flotta di Cappello di Paglia, capitano supremo',
             en: 'Straw Hat Pirates; Emperor; Straw Hat Grand Fleet, senior captain',
@@ -1032,6 +1035,7 @@ export const eastBlue: Saga = {
       affiliation: [
         {
           episode: 1,
+          factions: ['independent'],
           value: {
             it: 'Pirati di Alvida, capitano',
             en: 'Alvida Pirates, captain',
@@ -1039,6 +1043,7 @@ export const eastBlue: Saga = {
         },
         {
           episode: 47,
+          factions: ['buggy-pirates'],
           value: {
             it: 'Alleata con i Pirati di Bagy',
             en: 'Allied with the Buggy Pirates',
@@ -1367,6 +1372,7 @@ export const eastBlue: Saga = {
       affiliation: [
         {
           episode: 5,
+          factions: ['buggy-pirates'],
           value: {
             it: 'Pirati di Bagy, capitano',
             en: 'Buggy Pirates, captain',
@@ -1376,12 +1382,14 @@ export const eastBlue: Saga = {
         {
           episode: 629,
           chapter: 700,
+          factions: ['warlords'],
           value: { it: 'Flotta dei Sette', en: 'Seven Warlords of the Sea' },
         },
         // The Warlord system is abolished at 957 (chapter 956).
         {
           episode: 957,
           chapter: 956,
+          factions: ['independent'],
           value: {
             it: 'Ex membro della Flotta dei Sette',
             en: 'Former Warlord',
@@ -1392,11 +1400,13 @@ export const eastBlue: Saga = {
         {
           episode: 1080,
           chapter: 1053,
+          factions: ['emperors'],
           value: { it: 'Imperatore', en: 'Emperor' },
         },
         {
           episode: 1083,
           chapter: 1056,
+          factions: ['cross-guild', 'emperors'],
           value: { it: 'Cross Guild; Imperatore', en: 'Cross Guild; Emperor' },
         },
       ],
@@ -2294,16 +2304,19 @@ export const eastBlue: Saga = {
       affiliation: [
         {
           episode: 49,
+          factions: ['marines'],
           value: { it: 'Marina, capitano', en: 'Marines, captain' },
         },
         {
           episode: 130,
+          factions: ['marines'],
           value: { it: 'Marina, commodoro', en: 'Marines, commodore' },
         },
         // Captioned at G-5 at 572 (chapter 652).
         {
           episode: 572,
           chapter: 652,
+          factions: ['marines'],
           value: { it: 'Marina, viceammiraglio', en: 'Marines, vice admiral' },
         },
       ],

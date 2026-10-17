@@ -696,6 +696,7 @@ export const waterSeven: Saga = {
       affiliation: [
         {
           episode: 208,
+          factions: ['independent'],
           value: {
             it: 'Pirati di Foxy, capitano',
             en: 'Foxy Pirates, captain',
@@ -836,18 +837,21 @@ export const waterSeven: Saga = {
       affiliation: [
         {
           episode: 227,
+          factions: ['marines'],
           value: { it: 'Marina, ammiraglio', en: 'Marines, admiral' },
         },
         // Jinbe tells it at 570 (chapter 650).
         {
           episode: 570,
           chapter: 650,
+          factions: ['independent'],
           value: { it: 'Ha lasciato la Marina', en: 'Left the Marines' },
         },
         // The Five Elders tell it at 736 (chapter 793).
         {
           episode: 736,
           chapter: 793,
+          factions: ['blackbeard-pirates'],
           value: { it: 'Pirati di Barbanera', en: 'Blackbeard Pirates' },
         },
         // The anime drops chapter 1081's "tenth ship": the first to say it is
@@ -855,6 +859,7 @@ export const waterSeven: Saga = {
         {
           episode: 1156,
           chapter: 1126,
+          factions: ['blackbeard-pirates'],
           value: {
             it: 'Pirati di Barbanera, capitano della decima nave',
             en: 'Blackbeard Pirates, tenth ship captain',
@@ -978,9 +983,9 @@ export const waterSeven: Saga = {
       },
       status: [{ episode: 231, value: 'alive' }],
       affiliation: [
-        { episode: 231, value: GALLEY_LA_DOCK_ONE },
-        { episode: 244, value: CIPHER_POL_9 },
-        { episode: 886, chapter: 907, value: CIPHER_POL_0 },
+        { episode: 231, factions: ['galley-la'], value: GALLEY_LA_DOCK_ONE },
+        { episode: 244, factions: ['cp9'], value: CIPHER_POL_9 },
+        { episode: 886, chapter: 907, factions: ['cp0'], value: CIPHER_POL_0 },
       ],
       devilFruit: [{ episode: 286, value: ['ox-ox-fruit-model-giraffe'] }],
     },
@@ -993,16 +998,17 @@ export const waterSeven: Saga = {
       },
       status: [{ episode: 230, value: 'alive' }],
       affiliation: [
-        { episode: 230, value: GALLEY_LA_DOCK_ONE },
-        { episode: 244, value: CIPHER_POL_9 },
+        { episode: 230, factions: ['galley-la'], value: GALLEY_LA_DOCK_ONE },
+        { episode: 244, factions: ['cp9'], value: CIPHER_POL_9 },
         {
           episode: 266,
+          factions: ['cp9'],
           value: {
             it: 'Cipher Pol 9, l’agente più forte',
             en: 'Cipher Pol 9, strongest agent',
           },
         },
-        { episode: 746, chapter: 801, value: CIPHER_POL_0 },
+        { episode: 746, chapter: 801, factions: ['cp0'], value: CIPHER_POL_0 },
       ],
       devilFruit: [{ episode: 246, value: ['cat-cat-fruit-model-leopard'] }],
     },
@@ -1016,12 +1022,13 @@ export const waterSeven: Saga = {
       affiliation: [
         {
           episode: 230,
+          factions: ['galley-la'],
           value: {
             it: 'Galley-La Company, segretaria di Iceburg',
             en: 'Galley-La Company, Iceburg’s secretary',
           },
         },
-        { episode: 244, value: CIPHER_POL_9 },
+        { episode: 244, factions: ['cp9'], value: CIPHER_POL_9 },
       ],
       devilFruit: [{ episode: 293, value: ['bubble-bubble-fruit'] }],
     },
@@ -1035,12 +1042,13 @@ export const waterSeven: Saga = {
       affiliation: [
         {
           episode: 240,
+          factions: ['independent'],
           value: {
             it: 'Bar di Blueno, barista',
             en: 'Blueno’s Bar, barkeeper',
           },
         },
-        { episode: 244, value: CIPHER_POL_9 },
+        { episode: 244, factions: ['cp9'], value: CIPHER_POL_9 },
       ],
       devilFruit: [{ episode: 243, value: ['door-door-fruit'] }],
     },
@@ -1388,7 +1396,7 @@ export const waterSeven: Saga = {
         en: 'Back at Enies Lobby with Kumadori and Fukurou, he has to answer for a mission in which far more people died than the three they were sent to kill. He tells Kumadori that a man does not apologise so easily, and offers to explain it all to the chief himself. When Fukurou admits he talked about the plan all over town, Jabra asks him what the zip on his mouth is for, and when Kumadori’s attempt at hara-kiri stops against his own Tekkai, Jabra tells him to just die. He wears a black tunic open over a black tie, a red sash at the waist, and his hair in a long braid.',
       },
       status: [{ episode: 264, value: 'alive' }],
-      affiliation: [{ episode: 264, value: CIPHER_POL_9 }],
+      affiliation: [{ episode: 264, factions: ['cp9'], value: CIPHER_POL_9 }],
       devilFruit: [{ episode: 286, value: ['dog-dog-fruit-model-wolf'] }],
     },
     'kumadori': {
@@ -1625,6 +1633,7 @@ export const waterSeven: Saga = {
       affiliation: [
         {
           episode: 285,
+          factions: ['cp9'],
           value: {
             it: 'Cipher Pol 9, arma di Spandam',
             en: 'Cipher Pol 9, Spandam’s weapon',

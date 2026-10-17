@@ -58,9 +58,12 @@ const WORST_CHUNKS = 5
  * on 2026-10-17, when main stood at ~545.0 KB and the saga marquee over the
  * fruits album (#664) added ~3.7 KB: the rail of tiles, the lead's glow and
  * the line that points back to the last fruit. The new ceiling is the
- * measured build plus ~1 KB, under the 555 KB the owner allowed.
+ * measured build plus ~1 KB, under the 555 KB the owner allowed. Raised to
+ * 552.25 KB on 2026-10-17, when main stood at ~548.7 KB and the faction
+ * labels for the fruit eaters (#666) added ~2.5 KB to both dictionaries,
+ * which ship to the browser. Again the measured build plus ~1 KB, under 555 KB.
  */
-export const MAX_CLIENT_BYTES = 549_750
+export const MAX_CLIENT_BYTES = 552_250
 
 /** Where the prose lives: every saga, the ship's log and the filler guide. */
 const PROSE_DIR = 'src/data/records'
