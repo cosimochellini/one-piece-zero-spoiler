@@ -1173,6 +1173,7 @@ export const eastBlueArt = {
     shadow(84, 188, 44),
   ],
   // The ship: hull, deck, one mast, one sail, and the RAM's head at the prow.
+  // She breaks apart and burns from 312, in `eastBlueRedrawn`.
   'going-merry': [
     { d: 'M22 122 L32 154 Q80 172 128 154 L138 122' },
     { d: 'M22 122 H138' },
@@ -2414,6 +2415,41 @@ export const LUCY_HELMET: Stroke[] = [
 
 /** The records of this stretch drawn again, from the episode the story changes them. */
 export const eastBlueRedrawn: Redrawings = {
+  // The bow half alone, snapped off amidships and tipped up as it sinks: the
+  // figurehead is the accent now that the sail has burned, the mast is a
+  // charred stub, fire runs along the deck and smoke rises. She breaks apart
+  // after carrying the crew out of Enies Lobby and Luffy sets her alight, in
+  // 312 (ch. 430).
+  'going-merry': [
+    {
+      episode: 312,
+      chapter: 430,
+      value: [
+        ...moved(
+          [
+            {
+              d: 'M22 122 L32 154 Q54 162 72 163 L67 152 L76 142 L69 132 L75 122',
+            },
+            { d: 'M22 122 H75' },
+            { d: 'M36 140 Q52 146 66 147', role: 'ambient' },
+            { d: 'M62 122 V70 l3 -6 l2 5' },
+            { d: 'M48 80 H74', role: 'soft' },
+            ...eastBlueArt['going-merry']
+              .slice(7, 9)
+              .map((stroke): Stroke => ({ ...stroke, role: 'accent' })),
+          ],
+          'translate(24 4) rotate(-12 72 163)',
+        ),
+        {
+          d: 'M54 112 q-8 -14 0 -26 q2 10 8 10 q-4 -16 8 -30 q2 16 10 18 q4 -8 0 -16 q14 14 6 40',
+        },
+        { d: 'M92 104 q-6 -10 2 -18 q0 8 6 8 q2 -8 6 -12 q6 12 -2 22' },
+        { d: 'M72 50 q-10 -10 0 -20 q8 -8 0 -18', role: 'ambient' },
+        { d: 'M96 60 q-8 -10 2 -18 q8 -8 0 -16', role: 'ambient' },
+        ...SEA,
+      ],
+    },
+  ],
   // The mop gone, the bucket still there: a patterned bandanna knotted into a
   // ring, its tails hanging from the knot, and the round glasses pushed up on
   // its front, the way Garp's trainee wears them, lifted and enlarged over

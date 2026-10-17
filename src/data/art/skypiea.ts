@@ -771,6 +771,7 @@ export const skypieaArt = {
   ],
 
   // A beach made of cloud, two palm trees on it and a house on the rise behind.
+  // A hole in the sea cloud where it stood from 190, in `skypieaRedrawn`.
   'angel-island': [
     {
       d: 'M-4 138 q10 -12 22 -4 q10 -12 24 -2 q12 -12 26 -2 q12 -12 26 -2 q12 -12 26 -2 q10 -10 22 -2 q8 -6 14 0',
@@ -1686,5 +1687,43 @@ export const skypieaRedrawn: Redrawings = {
       ],
     },
     { episode: 988, chapter: 981, value: MARCO_PHOENIX },
+  ],
+  // A hole in the White Sea where the island was, its near lip a row of
+  // cloud puffs, the void hatched, the beach left only at its two ends and
+  // Enel's lightning still falling. His Raigo wipes out the island and the
+  // sea cloud it sat on at 190 (ch. 294), and it is never rebuilt.
+  'angel-island': [
+    {
+      episode: 190,
+      chapter: 294,
+      value: [
+        { d: 'M-4 138 q10 -12 22 -4 M142 124 q8 -6 14 0 q6 -4 12 0' },
+        {
+          d: 'M18 134 Q25.8 121.3 33.5 119.8 Q41.3 116.1 49 113.8 Q56.8 111.5 64.5 110.1 Q72.3 108.6 80 108 Q87.8 107.4 95.5 107.6 Q103.3 107.7 111 108.8 Q118.8 109.9 126.5 112.3 Q134.3 112.6 142 124',
+        },
+        {
+          d: 'M18 134 Q24.9 129 31.8 144 Q38.7 135.5 45.6 147 Q52.4 137.7 59.3 148.3 Q66.2 138.4 73.1 148.4 Q80 137.9 86.9 147.3 Q93.8 136.2 100.7 145 Q107.6 133.2 114.4 141.5 Q121.3 128.8 128.2 136.2 Q135.1 120.1 142 124',
+          role: 'accent',
+        },
+        {
+          d: 'M51 117.2 L42 136.4 M64 114.2 L55 138.1 M77 112.3 L68 138.5 M90 111.5 L81 137.9 M103 112 L94 136.3 M116 113.7 L107 133.5 M129 117.1 L120 129.6',
+          role: 'ambient',
+        },
+        {
+          d: 'M-4 88 q20 -6 40 0 t40 0 t40 0 t40 0',
+          role: 'ambient',
+          dashed: true,
+        },
+        {
+          d: 'M2 116 q4 -8 12 -6 q4 -8 12 -2 M128 100 q6 -8 14 -4 q6 -6 12 2',
+          role: 'soft',
+        },
+        {
+          d: 'M60 12 L54 34 L62 38 L55 66 M102 18 L106 38 L98 42 L104 70',
+          role: 'ambient',
+        },
+        ...SEA,
+      ],
+    },
   ],
 }

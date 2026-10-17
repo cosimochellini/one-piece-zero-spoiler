@@ -1528,6 +1528,7 @@ export const wholeCakeArt = {
   ],
 
   // A castle standing on the top layer of a cake, cream running down the edge below its gate.
+  // Blown open by the Tamatebako at 842 and never rebuilt, in `wholeCakeRedrawn`.
   'whole-cake-island': [
     { d: 'M20 150 V132 H140 V150', role: 'ambient' },
     {
@@ -2496,5 +2497,49 @@ export const wholeCakeRedrawn: Redrawings = {
     { episode: 878, chapter: 903, value: ZEUS_IN_THE_STAFF },
     { episode: 993, chapter: 985, value: wholeCakeArt.zeus },
     { episode: 1037, chapter: 1015, value: ZEUS_IN_THE_STAFF },
+  ],
+
+  // The same castle blown open from the middle: the body's upper left torn
+  // into a jagged edge with cracks running down from it, the left tower
+  // snapped off, the central spire knocked askew, two plumes of smoke rising
+  // out of the break and blown to the left, and chunks thrown into the air.
+  // The Tamatebako goes off in the chateau at 842 (ch. 871), and it is never
+  // rebuilt.
+  'whole-cake-island': [
+    {
+      episode: 842,
+      chapter: 871,
+      value: [
+        ...wholeCakeArt['whole-cake-island'].slice(0, 2),
+        {
+          d: 'M52 132 V102 L58 98 L55 90 L63 88 L66 80 L73 82 L77 75 L84 78 H108 V132',
+        },
+        { d: 'M84 78 v-6 h8 v6 M100 78 v-6 h8 v6', role: 'soft' },
+        ...wholeCakeArt['whole-cake-island'].slice(4, 5),
+        {
+          d: 'M30 132 V112 l3 -6 l4 4 l4 -8 l3 5 l4 -3 V132 M112 132 V70 H130 V132',
+          role: 'accent',
+        },
+        { d: 'M108 70 L121 40 L134 70', role: 'accent' },
+        {
+          d: 'M72 80 V46 H88 V80 M68 46 L80 20 L92 46',
+          role: 'accent',
+          transform: 'rotate(12 80 80)',
+        },
+        { d: `${circle(121, 88, 3)} ${circle(80, 56, 3)}`, role: 'soft' },
+        {
+          d: 'M50 96 A8.8 8.8 0 0 1 40 86 A8.9 8.9 0 0 1 28 78 A10 10 0 0 1 14 70 A10.5 10.5 0 0 1 2 58 M60 88 A9 9 0 0 0 56 74 A9.7 9.7 0 0 0 46 62 A10.7 10.7 0 0 0 32 52 A10 10 0 0 0 18 44',
+        },
+        {
+          d: 'M64 84 A10.2 10.2 0 0 1 60 68 A10.2 10.2 0 0 1 56 52 A10.6 10.6 0 0 1 50 36 A10.6 10.6 0 0 1 44 20 M72 78 A8.8 8.8 0 0 0 70 64 A8.8 8.8 0 0 0 68 50 A9 9 0 0 0 64 36 A10 10 0 0 0 62 20',
+        },
+        { d: 'M63 88 l3 8 l-3 7 l4 9 M73 82 l1 6 l5 4', role: 'soft' },
+        {
+          d: 'M12 32 l5 -3 l3 5 l-5 3 z M10 100 l4 -4 l4 4 l-4 3 z M98 12 l5 -1 l1 5 l-5 1 z M20 18 l3 -3 l3 3 l-3 2 z',
+          role: 'soft',
+        },
+        ...wholeCakeArt['whole-cake-island'].slice(9),
+      ],
+    },
   ],
 }

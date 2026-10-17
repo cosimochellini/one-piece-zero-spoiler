@@ -482,6 +482,7 @@ export const thrillerBarkArt = {
   ],
 
   // A gate in the outer wall shaped like a mouth, its teeth closing on the sea.
+  // The mast mansion lies toppled behind it from 374, in `thrillerBarkRedrawn`.
   'thriller-bark': [
     { d: 'M-4 62 H164 M-4 150 H164' },
     { d: 'M40 150 V100 C40 64 120 64 120 100 V150' },
@@ -697,6 +698,9 @@ const COAT_FALLEN =
 
 /** Brook's violin, moved up and right to make room for the guitar. */
 const VIOLIN_UP = 'translate(10 -6)'
+
+/** The mast mansion, laid on its side behind the wall. */
+const TOPPLED = 'rotate(15 81 40)'
 
 /** Brook's guitar, drawn lying flat and tilted to where the bow lay. */
 const GUITAR = 'translate(-6 6) rotate(-50 80 110)'
@@ -1066,6 +1070,39 @@ export const thrillerBarkRedrawn: Redrawings = {
           role: 'accent',
         },
         shadow(84, 188, 66),
+      ],
+    },
+  ],
+
+  // The same gate and wall without the fog, and behind them the mast mansion
+  // on its side: the round tower, its end cap towards us, two floor bands and
+  // a few windows, the underside hatched, the base broken off jagged, dust
+  // rising off both ends. Oars splits the island and the mansion tips over
+  // at 374 (ch. 481); the gates still shut as the crew sails off (ch. 486).
+  'thriller-bark': [
+    {
+      episode: 374,
+      chapter: 481,
+      value: [
+        ...thrillerBarkArt['thriller-bark'].slice(0, 6),
+        ...moved(
+          [
+            { d: ellipse(50, 40, 4.5, 12) },
+            { d: 'M50 28 H110 L114 33 L109 37 L116 42 L108 46 L106 52 H50' },
+            {
+              d: 'M68 28 a4.5 12 0 0 0 0 24 M90 28 a4.5 12 0 0 0 0 24',
+              role: 'soft',
+            },
+            { d: 'M77 34 v6 M83 34 v6 M99 34 v6', role: 'soft' },
+            { d: 'M74 52 l5 -5 M86 52 l5 -5 M98 52 l5 -5', role: 'ambient' },
+          ],
+          TOPPLED,
+        ),
+        {
+          d: 'M116 36 q-2 -10 8 -12 q10 -4 8 -14 q-2 -6 8 -8 M46 28 q-2 -8 6 -11 q8 -4 6 -12',
+          role: 'ambient',
+        },
+        ...SEA.slice(1),
       ],
     },
   ],

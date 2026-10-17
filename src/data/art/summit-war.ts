@@ -25,6 +25,16 @@ const MARINEFORD_PEAK = 'M2 132 C8 108 12 84 20 64 C26 80 30 104 34 132'
 /** The small tower and plain flag on top of that peak. */
 const MARINEFORD_TOWER = 'M16 68 V58 h8 v10 M20 58 V44 l10 3 l-10 3'
 
+/** Amazon Lily's right-hand peak, the one still standing after the siege. */
+const AMAZON_LILY_PEAK =
+  'M96 70 C100 50 106 30 118 26 C128 28 134 48 138 72 C144 104 152 132 164 150'
+
+/** The curved snake statues carved on the mountain, left and right. */
+const AMAZON_LILY_LEFT_SNAKE =
+  'M12 140 C10 124 18 108 30 100 C26 110 24 118 26 126'
+const AMAZON_LILY_RIGHT_SNAKE =
+  'M148 116 C152 102 148 88 136 82 C140 90 142 98 140 104'
+
 /** A Marine warship side on, two masts with a square sail each. */
 const WARSHIP =
   'M0 0 h28 l-5 8 h-18 z M9 0 v-22 M19 0 v-18 M4 -18 h10 v8 h-10 z M14 -14 h10 v7 h-10 z'
@@ -1797,10 +1807,11 @@ export const summitWarArt = {
 
   // The island's great mountain from the sea, split by the deep valley where
   // the village stands, a river running out of it, and the curved snake
-  // statues carved either side. Luffy lands on it in episode 408.
+  // statues carved either side. Luffy lands on it in episode 408. Broken by
+  // the Marines' siege from 1087, in `summitWarRedrawn`.
   'amazon-lily': [
     {
-      d: 'M-4 150 C8 132 16 110 22 92 C28 74 34 62 44 60 C54 62 60 68 64 76 M96 70 C100 50 106 30 118 26 C128 28 134 48 138 72 C144 104 152 132 164 150',
+      d: `M-4 150 C8 132 16 110 22 92 C28 74 34 62 44 60 C54 62 60 68 64 76 ${AMAZON_LILY_PEAK}`,
     },
     { d: 'M64 76 C68 100 60 128 52 150 M96 70 C92 98 100 128 108 150' },
     { d: 'M64 76 C72 66 88 62 96 70', role: 'soft' },
@@ -1809,7 +1820,7 @@ export const summitWarArt = {
       role: 'ambient',
     },
     {
-      d: 'M12 140 C10 124 18 108 30 100 C26 110 24 118 26 126 M148 116 C152 102 148 88 136 82 C140 90 142 98 140 104',
+      d: `${AMAZON_LILY_LEFT_SNAKE} ${AMAZON_LILY_RIGHT_SNAKE}`,
       role: 'accent',
     },
     {
@@ -2008,7 +2019,8 @@ export const summitWarArt = {
   ],
 
   // The Headquarters building, a castle of stacked curved roofs on a broad
-  // stone base, above the bay wall.
+  // stone base, above the bay wall. Split by Whitebeard's quake from 484, in
+  // `summitWarRedrawn`.
   'marineford': [
     { d: 'M20 150 V124 H140 V150' },
     { d: 'M36 124 V100 H124 V124' },
@@ -2443,6 +2455,79 @@ const DRAKE_WEAPONS: Stroke[] = moved(
 
 /** The records of this stretch drawn again, from the episode the story changes them. */
 export const summitWarRedrawn: Redrawings = {
+  // The Headquarters split by Whitebeard's quake: the roofs and upper storeys
+  // still standing, a jagged crack running down the front and on across the
+  // square, the base's right corner crumbled to rubble, shards of the square
+  // thrown up either side and dust rising. The building starts to fall at 484
+  // (ch. 575).
+  'marineford': [
+    {
+      episode: 484,
+      chapter: 575,
+      value: [
+        {
+          d: 'M20 150 V124 H110 L115 131 L121 127 L126 137 L132 133 L136 141 L140 140 V150',
+        },
+        { d: 'M36 124 V100 H124 V108 L119 112 L122 117 L116 121 L118 124' },
+        ...summitWarArt.marineford.slice(2, 7),
+        {
+          d: 'M46 106 h8 v10 h-8z M66 106 h8 v10 h-8z M106 106 h8 v10 h-8z M60 78 h8 v8 h-8z M76 78 h8 v8 h-8z M92 78 h8 v8 h-8z',
+          role: 'soft',
+        },
+        ...summitWarArt.marineford.slice(8, 9),
+        {
+          d: 'M91 100 L95 107 L91 112 L98 119 L95 125 L102 131 L98 138 L104 144 L100 150 L103 156 L100 161 L104 167 L108 160 L106 155 L110 150',
+        },
+        { d: 'M-4 150 H100 M110 150 H164', role: 'ambient' },
+        {
+          d: 'M0 150 L7 128 L14 132 L10 150 M10 150 L14 141 L18 143 L17 150 M160 150 L155 128 L147 131 L150 150 M150 150 L146 141 L142 143 L143 150',
+        },
+        {
+          d: 'M112 150 l2 -4 l5 1 l1 3 M122 150 l3 -6 l5 2 l1 4',
+          role: 'soft',
+        },
+        { d: 'M126 120 q3 -6 9 -3 q3 -6 9 -1 q4 -4 8 0', role: 'ambient' },
+        ...SEA.slice(1),
+      ],
+    },
+  ],
+  // Amazon Lily from the sea after the siege: the left half of the great
+  // mountain gone, a thin spire curving up to a hooked top in its place with
+  // a snake statue still on its inner face; the right peak standing with its
+  // own statue, low jungle cliffs at the foot, a single roof left by the river
+  // among the rubble, and broken masts in the water. The damage is seen at 1087
+  // (ch. 1059).
+  'amazon-lily': [
+    {
+      episode: 1087,
+      chapter: 1059,
+      value: [
+        {
+          d: `M-4 150 C0 136 6 124 14 120 C20 116 26 120 30 112 C34 104 42 102 50 106 C51 82 55 58 64 42 C70 32 80 26 88 30 C90 34 86 38 82 35 C74 36 69 48 67 60 C66 66 64 72 64 76 ${AMAZON_LILY_PEAK}`,
+        },
+        ...summitWarArt['amazon-lily'].slice(1, 2),
+        ...summitWarArt['amazon-lily'].slice(3, 4),
+        { d: AMAZON_LILY_RIGHT_SNAKE, role: 'accent' },
+        {
+          d: AMAZON_LILY_LEFT_SNAKE,
+          role: 'accent',
+          transform: 'translate(58 -20) scale(0.75)',
+        },
+        {
+          d: 'M88 140 l6 -6 l6 6 M88 140 v6 M100 140 v6 M56 148 l4 -4 l4 3 l5 -5 l4 4 l4 -2 l3 2 M30 112 C32 126 30 138 26 150 M80 148 C76 152 84 154 80 158',
+          role: 'soft',
+        },
+        {
+          d: 'M126 50 l-6 -4 M130 62 l-6 -4 M56 92 l5 -3 M57 104 l5 -3',
+          role: 'ambient',
+        },
+        {
+          d: 'M28 168 L35 136 L33 131 L38 133 M33 146 l-7 -3 M124 170 L118 142 L121 139 M120 151 l6 -2 M140 166 L144 150 L146 152',
+        },
+        ...SEA,
+      ],
+    },
+  ],
   // The great wave alone over the open sea, the cell wall and its chain
   // gone: the cuff lies broken open on the water in front of it. Jinbe
   // breaks out of Impel Down with Luffy at 451 (ch. 548).
