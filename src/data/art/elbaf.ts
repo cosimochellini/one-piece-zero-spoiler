@@ -756,7 +756,7 @@ export const elbafRedrawn: Redrawings = {
         {
           d: GUNKO_ARROWHEAD,
           transform:
-            'translate(144 182) rotate(110) scale(0.32) translate(-122 -34)',
+            'translate(146 179) rotate(83) scale(0.32) translate(-122 -34)',
         },
       ],
     },
