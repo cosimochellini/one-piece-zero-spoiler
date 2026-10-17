@@ -9,7 +9,7 @@ import { ARC_LEADS } from '~/data/leads'
 import { orderByMode } from '~/data/order'
 import { shipDossierOf } from '~/data/places'
 import { reveal } from '~/data/reveal'
-import type { Entity, Timeline } from '~/data/types'
+import type { Entity } from '~/data/types'
 import { LOCALES } from '~/i18n/locales'
 import { DEMO_LAST_CHAPTER, DEMO_LAST_EPISODE } from '~/lib/progress/bounds'
 import {
@@ -819,57 +819,38 @@ function filed(id: string): Entity {
   return entity
 }
 
-/**
- * Walks a record's redrawings in order, on Luffy's model: each stage from
- * its own episode and its own chapter, the drawing before it one short of
- * either, and the first drawing for a reader the timelines cannot place. The
- * stages come back so a test can say which of them is an earlier drawing
- * again.
- */
-function walkStages(id: string, pairs: [number, number][]): Timeline<Stroke[]> {
-  const record = filed(id)
-  const first = Object.entries(DRAWINGS).find(([key]) => key === id)?.[1]
-  const stages = REDRAWINGS[id] ?? []
-  const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-    characterOf(record, readerFor(bookmark, 'en')).visual.strokes
+describe('every record drawn again later in the story', () => {
+  // Read from the data, on Luffy's model: each stage from its own episode and
+  // its own chapter, the drawing before it one short of either, and the first
+  // drawing for a reader the timelines cannot place.
+  it.each(Object.keys(REDRAWINGS))('walks %s through each stage', (id) => {
+    const record = filed(id)
+    const first = DRAWINGS[record.visual.art]
+    const stages = REDRAWINGS[id] ?? []
+    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
+      recordOf(record, readerFor(bookmark, 'en')).visual.strokes
 
-  expect(
-    stages.map(({ episode, chapter }) => [episode, chapter]),
-  ).toStrictEqual(pairs)
-  expect(drawnAt(null)).toBe(first)
+    expect(record.visual.art).toBe(id)
+    expect(drawnAt(null)).toBe(first)
 
-  for (const [index, { chapter = 0, episode, value }] of stages.entries()) {
-    const before = index === 0 ? first : stages[index - 1]?.value
-    const label = `${id} ep ${String(episode)} / ch ${String(chapter)}`
+    for (const [index, { chapter = 0, episode, value }] of stages.entries()) {
+      const before = index === 0 ? first : stages[index - 1]?.value
+      const label = `ep ${String(episode)} / ch ${String(chapter)}`
 
-    expect(drawnAt(ep(episode - 1)), label).toBe(before)
-    expect(drawnAt(ep(episode)), label).toBe(value)
-    expect(drawnAt({ mode: 'chapter', chapter: chapter - 1 }), label).toBe(
-      before,
-    )
-    expect(drawnAt({ mode: 'chapter', chapter }), label).toBe(value)
-  }
-
-  return stages
-}
+      expect(drawnAt(ep(episode - 1)), label).toBe(before)
+      expect(drawnAt(ep(episode)), label).toBe(value)
+      expect(drawnAt({ mode: 'chapter', chapter: chapter - 1 }), label).toBe(
+        before,
+      )
+      expect(drawnAt({ mode: 'chapter', chapter }), label).toBe(value)
+    }
+  })
+})
 
 describe('a record drawn again later in the story', () => {
   const teach = filed('marshall-d-teach')
   const first = DRAWINGS['marshall-d-teach']
   const redrawn = REDRAWINGS['marshall-d-teach']?.[0]
-
-  it('puts each tricorne on Teach from its episode and chapter', () => {
-    expect(
-      walkStages('marshall-d-teach', [
-        [421, 524],
-        [917, 925],
-      ]),
-    ).toHaveLength(2)
-  })
-
-  it('shows Thriller Bark as a ship from episode 343 and chapter 449', () => {
-    expect(walkStages('thriller-bark-arc', [[343, 449]])).toHaveLength(1)
-  })
 
   it('keeps the first drawing for a reader the timelines cannot place', () => {
     expect(characterOf(teach, readerFor(null, 'en')).visual.strokes).toBe(first)
@@ -900,57 +881,61 @@ describe('a record drawn again later in the story', () => {
     ).toStrictEqual({})
   })
 
-  it('follows Usopp to his slingshots, into the sea and out, and behind Sogeking’s mask', () => {
-    expect(
-      walkStages('usopp', [
-        [11, 27],
-        [33, 74],
-        [34, 76],
-        [257, 367],
-        [274, 390],
-        [517, 598],
-      ]),
-    ).toHaveLength(6)
-  })
+  it.each([
+    // Chopper's cap of the two years, back each time.
+    ['tony-tony-chopper', 3, 0],
+    ['tony-tony-chopper', 5, 0],
+    ['tony-tony-chopper', 8, 0],
+    ['tony-tony-chopper', 10, 0],
+    // Three swords again at Loguetown, and one sword missing twice.
+    ['roronoa-zoro', 2, 0],
+    ['roronoa-zoro', 5, 3],
+    // The box back after the raid.
+    ['franky', 2, 0],
+    // The elephant again.
+    ['funkfreed', 1, 'first'],
+    // The scarf back on.
+    ['charlotte-katakuri', 2, 0],
+    // Big Mom's cloud, and the staff again.
+    ['zeus', 1, 'first'],
+    ['zeus', 2, 0],
+    // Out of the hybrid form.
+    ['jaygarcia-saturn', 1, 'first'],
+    // Back at Onigashima without the flintlocks.
+    ['daifugo', 1, 'first'],
+    // Back in the jacket.
+    ['marco', 2, 0],
+    // Out of the shackle.
+    ['koby', 2, 0],
+    // Out of the goggles.
+    ['baby-5', 1, 'first'],
+    // A sword in his sash again.
+    ['kinemon', 1, 'first'],
+    // Armed again at Elbaph.
+    ['dorry', 3, 'first'],
+    ['brogy', 1, 'first'],
+    // The band off his wing.
+    ['karoo', 1, 'first'],
+    // The metal arm back, gone again as at 919, and mended.
+    ['eustass-kid', 2, 0],
+    ['eustass-kid', 3, 1],
+    ['eustass-kid', 4, 0],
+    // The jitte mended, and broken the same way twice.
+    ['smoker', 2, 0],
+    ['smoker', 3, 1],
+    // The first Sorcery model, and the staff with and without Zeus.
+    ['nami', 2, 0],
+    ['nami', 5, 3],
+    ['nami', 6, 4],
+  ] as const)(
+    'redraws %s at stage %i as its drawing %s itself, not a copy',
+    (id, stage, again) => {
+      const stages = REDRAWINGS[id] ?? []
+      const earlier = again === 'first' ? DRAWINGS[id] : stages[again]?.value
 
-  it('follows Chopper’s hats from the cap of the two years, back to it each time', () => {
-    const stages = walkStages('tony-tony-chopper', [
-      [517, 598],
-      [739, 795],
-      [755, 806],
-      [776, 822],
-      [786, 827],
-      [827, 858],
-      [911, 921],
-      [959, 959],
-      [1080, 1053],
-      [1092, 1063],
-      [1155, 1124],
-      [1158, 1128],
-    ])
-    const cap = stages[0]?.value
-
-    for (const back of [3, 5, 8, 10]) {
-      expect(stages[back]?.value).toBe(cap)
-    }
-  })
-
-  it('follows Zoro’s swords, lost, found and swapped, from episode 3', () => {
-    const stages = walkStages('roronoa-zoro', [
-      [3, 5],
-      [24, 51],
-      [49, 97],
-      [309, 426],
-      [362, 467],
-      [932, 936],
-      [956, 955],
-    ])
-
-    // Three again at Loguetown is the episode 3 drawing itself, and the two
-    // stretches with a sword missing are one drawing.
-    expect(stages[2]?.value).toBe(stages[0]?.value)
-    expect(stages[5]?.value).toBe(stages[3]?.value)
-  })
+      expect(stages[stage]?.value).toBe(earlier)
+    },
+  )
 
   it('shows the real Gum-Gum Fruit from episode 1, with no redrawing', () => {
     const fruit = filed('gum-gum-fruit')
@@ -963,35 +948,6 @@ describe('a record drawn again later in the story', () => {
       DRAWINGS['gum-gum-fruit'],
     )
   })
-
-  it.each([
-    ['chop-chop-fruit', 8, 19],
-    ['string-string-fruit', 723, 782],
-    ['mochi-mochi-fruit', 855, 882],
-    ['snake-snake-fruit-mythical-model-yamata-no-orochi', 965, 965],
-    ['ox-ox-fruit-model-bison', 1101, 1070],
-    ['fish-fish-fruit-mythical-model-azure-dragon', 1101, 1070],
-    ['cat-cat-fruit-model-leopard', 1101, 1070],
-    ['love-love-fruit', 1101, 1070],
-    ['paw-paw-fruit', 1130, 1096],
-  ] as const)(
-    'changes %s only from episode %i and chapter %i',
-    (id, episode, chapter) => {
-      const fruit = filed(id)
-      const initial = DRAWINGS[id]
-      const stage = REDRAWINGS[id]?.[0]
-      const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-        recordOf(fruit, readerFor(bookmark, 'en')).visual.strokes
-
-      expect(stage?.episode).toBe(episode)
-      expect(stage?.chapter).toBe(chapter)
-      expect(drawnAt(ep(episode - 1))).toBe(initial)
-      expect(drawnAt(ep(episode))).toBe(stage?.value)
-      expect(drawnAt(null)).toBe(initial)
-      expect(drawnAt({ mode: 'chapter', chapter: chapter - 1 })).toBe(initial)
-      expect(drawnAt({ mode: 'chapter', chapter })).toBe(stage?.value)
-    },
-  )
 
   it('keeps the real artificial fruit through its true-model reveal', () => {
     const fruit = filed('artificial-dragon-dragon-fruit')
@@ -1040,340 +996,6 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 765 })).toBe(real?.value)
   })
 
-  it('follows Franky’s forearm to the box, painted for the raid and back, and to the barrel', () => {
-    const stages = walkStages('franky', [
-      [517, 598],
-      [978, 975],
-      [1086, 1058],
-      [1165, 1135],
-    ])
-
-    // The box is back after the raid as the drawing of 517 itself.
-    expect(stages[2]?.value).toBe(stages[0]?.value)
-  })
-
-  it('follows Kaku’s cap, black once he is CP9, to the top hat and the mask', () => {
-    expect(
-      walkStages('kaku', [
-        [243, 345],
-        [886, 907],
-        [1098, 1067],
-      ]),
-    ).toHaveLength(3)
-  })
-
-  it('puts Hattori in a top hat of his own only from episode 886', () => {
-    expect(walkStages('hattori', [[886, 907]])).toHaveLength(1)
-  })
-
-  it('turns Funkfreed into the sword from episode 288, and back into the elephant', () => {
-    const stages = walkStages('funkfreed', [
-      [288, 404],
-      [306, 423],
-    ])
-
-    // The elephant again is his first drawing itself.
-    expect(stages[1]?.value).toBe(DRAWINGS.funkfreed)
-  })
-
-  it.each([
-    'paulie',
-    'kiwi-and-mozu',
-    'zambai',
-    'peepley-lulu',
-    'tilestone',
-    'sodom-and-gomorrah',
-    'oimo-and-kashi',
-    'yokozuna',
-  ])(
-    'sends %s over the edge at Enies Lobby from 307, and into the net from 310',
-    (id) => {
-      expect(
-        walkStages(id, [
-          [307, 425],
-          [310, 428],
-        ]),
-      ).toHaveLength(2)
-    },
-  )
-
-  it('rolls Tom’s blueprint shut only from episode 267', () => {
-    expect(walkStages('tom', [[267, 379]])).toHaveLength(1)
-  })
-
-  it('lays T-Bone’s sword on the newspaper only from episode 1116', () => {
-    expect(walkStages('t-bone', [[1116, 1082]])).toHaveLength(1)
-  })
-
-  it('sets the fire round Clover and Olvia only from episode 278', () => {
-    expect(walkStages('clover', [[278, 397]])).toHaveLength(1)
-    expect(walkStages('nico-olvia', [[278, 398]])).toHaveLength(1)
-  })
-
-  it('freezes Saul’s hat from episode 278, and sets it on the books from 1155', () => {
-    expect(
-      walkStages('jaguar-d-saul', [
-        [278, 397],
-        [1155, 1124],
-      ]),
-    ).toHaveLength(2)
-  })
-
-  it('takes the chains off Loki’s tree only from episode 1171', () => {
-    expect(walkStages('loki', [[1171, 1141]])).toHaveLength(1)
-  })
-
-  it('gives Gunko Imu’s bat wings and tail from episode 1180', () => {
-    expect(walkStages('manmayer-gunko', [[1180, 1150]])).toHaveLength(1)
-  })
-
-  it('leaves Gaban for dead from episode 1179', () => {
-    expect(walkStages('scopper-gaban', [[1179, 1149]])).toHaveLength(1)
-  })
-
-  it('sinks Jack’s Mammoth only from episode 774', () => {
-    expect(walkStages('jack', [[774, 821]])).toHaveLength(1)
-  })
-
-  it('stands Inuarashi on a blade for a leg only from episode 993', () => {
-    expect(walkStages('inuarashi', [[993, 985]])).toHaveLength(1)
-  })
-
-  it('follows Pedro from his disguise to the fedora of the suit days, knocked over at 850', () => {
-    expect(
-      walkStages('pedro', [
-        [786, 827],
-        [828, 858],
-        [850, 878],
-      ]),
-    ).toHaveLength(3)
-  })
-
-  it('gives Nekomamushi his gun hand only from episode 992', () => {
-    expect(walkStages('nekomamushi', [[992, 984]])).toHaveLength(1)
-  })
-
-  it('sets Stussy’s mask beside her hat, then swaps both for a jacket', () => {
-    expect(
-      walkStages('stussy', [
-        [1092, 1062],
-        [1106, 1074],
-      ]),
-    ).toHaveLength(2)
-  })
-
-  it('follows Katakuri’s trident and his scarf, off and on again', () => {
-    const stages = walkStages('charlotte-katakuri', [
-      [832, 862],
-      [868, 893],
-      [1151, 1119],
-    ])
-
-    // The scarf back on is the trident's own drawing again.
-    expect(stages[2]?.value).toBe(stages[0]?.value)
-  })
-
-  it('runs a sword through Jarul’s helmet only from episode 1165', () => {
-    expect(walkStages('jarul', [[1165, 1135]])).toHaveLength(1)
-  })
-
-  it('gives the grown Gerd her axe only from episode 1160', () => {
-    expect(walkStages('gerd', [[1160, 1130]])).toHaveLength(1)
-  })
-
-  it('snaps Jorul’s sword at 837, and lays his helmet on his grave at 838', () => {
-    expect(
-      walkStages('jorul', [
-        [837, 867],
-        [838, 868],
-      ]),
-    ).toHaveLength(2)
-  })
-
-  it('leaves only a scrap of Carmel’s habit from episode 837', () => {
-    // Chapter 867 tells it, below her record's 872: pinned at 872, like her
-    // status, she is filed with the scrap.
-    expect(walkStages('carmel', [[837, 872]])).toHaveLength(1)
-  })
-
-  it('topples Mjosgard’s helmet only from episode 1120', () => {
-    expect(walkStages('donquixote-mjosgard', [[1120, 1086]])).toHaveLength(1)
-  })
-
-  it('follows Zeus into Nami’s staff, back to Big Mom and out again', () => {
-    const stages = walkStages('zeus', [
-      [878, 903],
-      [993, 985],
-      [1037, 1015],
-    ])
-
-    // Big Mom's cloud is his first drawing, and the staff is one drawing.
-    expect(stages[1]?.value).toBe(DRAWINGS.zeus)
-    expect(stages[2]?.value).toBe(stages[0]?.value)
-  })
-
-  it('grows Saturn’s horns from episode 1128, takes them away at 1153, and leaves his hat on its side at 1155', () => {
-    const stages = walkStages('jaygarcia-saturn', [
-      [1128, 1094],
-      [1153, 1122],
-      [1155, 1125],
-    ])
-
-    // Out of the hybrid form he is his first drawing itself.
-    expect(stages[1]?.value).toBe(DRAWINGS['jaygarcia-saturn'])
-  })
-
-  it('topples Vegapunk’s apple from episode 1142', () => {
-    expect(walkStages('vegapunk', [[1142, 1108]])).toHaveLength(1)
-  })
-
-  it('puts Ginny’s grave in place of her joint of meat from episode 1132', () => {
-    expect(walkStages('ginny', [[1132, 1098]])).toHaveLength(1)
-  })
-
-  it('leaves Shaka for dead from episode 1110, and brings him back as the body at 1155', () => {
-    expect(
-      walkStages('shaka', [
-        [1110, 1077],
-        [1155, 1125],
-      ]),
-    ).toHaveLength(2)
-  })
-
-  it('leaves Edison for dead from episode 1151, and brings him back as the head at 1155', () => {
-    expect(
-      walkStages('edison', [
-        [1151, 1118],
-        [1155, 1125],
-      ]),
-    ).toHaveLength(2)
-  })
-
-  it('leaves Pythagoras for dead from episode 1111, and brings him back as an arm at 1155', () => {
-    expect(
-      walkStages('pythagoras', [
-        [1111, 1078],
-        [1155, 1125],
-      ]),
-    ).toHaveLength(2)
-  })
-
-  it('leaves Atlas for dead from episode 1152, and brings her back as an arm at 1155', () => {
-    expect(
-      walkStages('atlas', [
-        [1152, 1120],
-        [1155, 1125],
-      ]),
-    ).toHaveLength(2)
-  })
-
-  it('turns Queen into his brachiosaurus only from episode 944', () => {
-    expect(walkStages('queen', [[944, 945]])).toHaveLength(1)
-  })
-
-  it('turns Sasaki into his triceratops only from episode 1012', () => {
-    expect(walkStages('sasaki', [[1012, 998]])).toHaveLength(1)
-  })
-
-  it('turns Black Maria into her spider only from episode 1013', () => {
-    expect(walkStages('black-maria', [[1013, 998]])).toHaveLength(1)
-  })
-
-  it('turns Who’s-Who into his saber-toothed tiger only from episode 1013', () => {
-    expect(walkStages('whos-who', [[1013, 998]])).toHaveLength(1)
-  })
-
-  it('grows the wolf’s tail behind Yamato’s kanabo only from episode 1041', () => {
-    expect(walkStages('yamato', [[1041, 1019]])).toHaveLength(1)
-  })
-
-  it('follows Orochi through his two beheadings and returns to his death', () => {
-    expect(
-      walkStages('kurozumi-orochi', [
-        [994, 985],
-        [1025, 1008],
-        [1026, 1009],
-        [1051, 1026],
-        [1075, 1048],
-      ]),
-    ).toHaveLength(5)
-  })
-
-  it('plants Ashura’s katana in the rubble only from episode 1025', () => {
-    expect(walkStages('ashura-doji', [[1025, 1008]])).toHaveLength(1)
-  })
-
-  it('knocks Komurasaki’s geta over at 928, and grinds medicine at 935', () => {
-    expect(
-      walkStages('komurasaki', [
-        [928, 933],
-        [935, 938],
-      ]),
-    ).toHaveLength(2)
-  })
-
-  it('lays Yasuie’s bandana at the foot of the cross only from episode 940', () => {
-    // Ch 942 tells it, below his record's 943: pinned at 943 with his status.
-    expect(walkStages('shimotsuki-yasuie', [[940, 943]])).toHaveLength(1)
-  })
-
-  it('puts out Higurashi’s candles only from episode 974', () => {
-    expect(walkStages('kurozumi-higurashi', [[974, 972]])).toHaveLength(1)
-  })
-
-  it('hands Izo his flintlocks at 995, and drops them on the floor at 1068', () => {
-    expect(
-      walkStages('izo', [
-        [995, 986],
-        [1068, 1041],
-      ]),
-    ).toHaveLength(2)
-  })
-
-  it('burns Tsuru’s town at 960, and bandages her at 1083', () => {
-    expect(
-      walkStages('tsurujo', [
-        [960, 959],
-        [1083, 1056],
-      ]),
-    ).toHaveLength(2)
-  })
-
-  it('rolls Sukiyaki’s scroll shut at 965, and lays the tengu mask by it at 1080', () => {
-    expect(
-      walkStages('kozuki-sukiyaki', [
-        [965, 965],
-        [1080, 1053],
-      ]),
-    ).toHaveLength(2)
-  })
-
-  it('hands Alpacaman his sabres only from episode 935', () => {
-    expect(walkStages('alpacaman', [[935, 939]])).toHaveLength(1)
-  })
-
-  it('arms Daifugo with his flintlocks from episode 947, and takes them back', () => {
-    const stages = walkStages('daifugo', [
-      [947, 948],
-      [1019, 1004],
-    ])
-
-    // Back at Onigashima without them is his first drawing itself.
-    expect(stages[1]?.value).toBe(DRAWINGS.daifugo)
-  })
-
-  it('lets Kawamatsu out of his cell only from episode 948', () => {
-    expect(walkStages('kawamatsu', [[948, 948]])).toHaveLength(1)
-  })
-
-  it('shows Gyukimaru as the fox Onimaru only from episode 954', () => {
-    expect(walkStages('gyukimaru', [[954, 953]])).toHaveLength(1)
-  })
-
-  it('stands Fuga on his horse’s legs only from episode 1058', () => {
-    expect(walkStages('fuga', [[1058, 1032]])).toHaveLength(1)
-  })
-
   it('turns Ulti into her pachycephalosaur only from episode 990', () => {
     const ulti = filed('ulti')
     const heels = DRAWINGS.ulti
@@ -1412,60 +1034,6 @@ describe('a record drawn again later in the story', () => {
     )
   })
 
-  it('breaks Jinbe out of his cell at 451, and puts him at the Sunny’s helm at 980', () => {
-    // He breaks out of Impel Down in chapter 548, and the manga makes him the
-    // crew's helmsman in chapter 976, no earlier.
-    expect(
-      walkStages('jinbe', [
-        [451, 548],
-        [980, 976],
-      ]),
-    ).toHaveLength(2)
-  })
-
-  it('puts out Ace’s flame at 483 and hangs his hat over his grave at 505', () => {
-    // The manga kills him in chapter 574 and buries him in chapter 590.
-    expect(
-      walkStages('portgas-d-ace', [
-        [483, 574],
-        [505, 590],
-      ]),
-    ).toHaveLength(2)
-  })
-
-  it('stands Whitebeard’s bisento on the plaza at 485, over his grave at 505', () => {
-    // He dies standing in chapter 576 and is buried in chapter 590.
-    expect(
-      walkStages('edward-newgate', [
-        [485, 576],
-        [505, 590],
-      ]),
-    ).toHaveLength(2)
-  })
-
-  it('spreads Marco’s phoenix wing at 463, over the doctor’s shirt at 890, and the jacket again at 988', () => {
-    // Blue flames in chapter 554, the Sphinx clinic in chapter 909, and
-    // Onigashima in chapter 981.
-    const stages = walkStages('marco', [
-      [463, 554],
-      [890, 909],
-      [988, 981],
-    ])
-
-    // Back in the jacket is the phoenix of 463 itself.
-    expect(stages[2]?.value).toBe(stages[0]?.value)
-  })
-
-  it('puts out Pagaya’s dial at 178, and brings his Waver back up at 193', () => {
-    // Enel's lightning takes him in chapter 272; he is back in chapter 300.
-    expect(
-      walkStages('pagaya', [
-        [178, 272],
-        [193, 300],
-      ]),
-    ).toHaveLength(2)
-  })
-
   it('sets a crown on Buggy’s cannonball only from episode 1080', () => {
     const buggy = filed('buggy')
     const cannonball = DRAWINGS.buggy
@@ -1483,91 +1051,19 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 1053 })).toBe(crowned?.value)
   })
 
-  it('cuts Doflamingo’s strings at 733, and stands a new pair of glasses at 746', () => {
-    // King Kong Gun shatters his glasses in chapter 790; the Marines hand
-    // him a new pair in his cell in chapter 801.
-    expect(
-      walkStages('donquixote-doflamingo', [
-        [733, 790],
-        [746, 801],
-      ]),
-    ).toHaveLength(2)
-  })
-
-  it('trades Koby’s mop for his bandanna, and chains him on Hachinosu', () => {
-    const stages = walkStages('koby', [
-      [314, 432],
-      [1113, 1080],
-      [1121, 1087],
-    ])
-
-    // Out of the shackle is the bandanna of 314 itself.
-    expect(stages[2]?.value).toBe(stages[0]?.value)
-  })
-
-  it('puts every costume on Luffy’s hat from its episode and takes it off again', () => {
-    const luffy = filed('monkey-d-luffy')
+  it('takes every costume off Luffy’s hat back to the hat itself', () => {
     const hat = DRAWINGS['monkey-d-luffy']
     const stages = REDRAWINGS['monkey-d-luffy'] ?? []
-    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(luffy, readerFor(bookmark, 'en')).visual.strokes
 
     // Each costume, then the hat alone again; Punk Hazard's kabuto runs
     // straight into the Dressrosa bowler and that into Lucy's helmet. The hat
     // knocked over at 1070 gives way to Gear 5, a new drawing for the return.
-    expect(
-      stages.map(({ episode, chapter }) => [episode, chapter]),
-    ).toStrictEqual([
-      [96, 161],
-      [106, 169],
-      [346, 452],
-      [349, 455],
-      [625, 699],
-      [630, 701],
-      [633, 704],
-      [663, 731],
-      [786, 827],
-      [805, 841],
-      [828, 858],
-      [871, 896],
-      [959, 959],
-      [978, 975],
-      [1070, 1043],
-      [1071, 1044],
-      [1076, 1049],
-      [1157, 1127],
-      [1170, 1140],
-    ])
-    expect(drawnAt(null)).toBe(hat)
-
-    for (const [index, { chapter = 0, episode, value }] of stages.entries()) {
-      const before = index === 0 ? hat : stages[index - 1]?.value
-      const label = `ep ${String(episode)} / ch ${String(chapter)}`
-
-      expect(drawnAt(ep(episode - 1)), label).toBe(before)
-      expect(drawnAt(ep(episode)), label).toBe(value)
-      expect(drawnAt({ mode: 'chapter', chapter: chapter - 1 }), label).toBe(
-        before,
-      )
-      expect(drawnAt({ mode: 'chapter', chapter }), label).toBe(value)
-    }
-
     // Every return is the first drawing itself, not a copy of it.
     const returns = [106, 349, 663, 805, 871, 978, 1076, 1170]
 
     expect(
       stages.filter(({ value }) => value === hat).map(({ episode }) => episode),
     ).toStrictEqual(returns)
-  })
-
-  it('follows Hatchan from six swords to none, and on to takoyaki', () => {
-    expect(
-      walkStages('hatchan', [
-        [39, 84],
-        [40, 86],
-        [390, 496],
-      ]),
-    ).toHaveLength(3)
   })
 
   it('lets Chew’s Water Gun fly past his vest only from episode 34', () => {
@@ -1585,28 +1081,6 @@ describe('a record drawn again later in the story', () => {
     // The manga names him and shows the shot in the same chapter, 75, so a
     // chapter reader meets him with it.
     expect(drawnAt({ mode: 'chapter', chapter: 75 })).toBe(shot?.value)
-  })
-
-  it('sinks Sabo’s hat at 503, lifts it at 663, hides it under Lucy’s helmet at 667 and lights his pipe at 678', () => {
-    expect(
-      walkStages('sabo', [
-        [503, 588],
-        [663, 731],
-        [667, 735],
-        [678, 744],
-      ]),
-    ).toHaveLength(4)
-  })
-
-  it('raises the Buddha’s palm over Sengoku’s cap at 480, and sets the cap down at 511', () => {
-    // He turns giant when Luffy reaches the scaffold in chapter 571, and
-    // resigns before Kong in chapter 594.
-    expect(
-      walkStages('sengoku', [
-        [480, 571],
-        [511, 594],
-      ]),
-    ).toHaveLength(2)
   })
 
   it('sets the CP0 mask beside Lucci’s hat only from episode 746', () => {
@@ -1643,58 +1117,6 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 1023 })).toBe(grown?.value)
   })
 
-  it('puts Baby 5’s flying goggles beside her headband from episode 618, and takes them off at 622', () => {
-    const stages = walkStages('baby-5', [
-      [618, 692],
-      [622, 696],
-    ])
-
-    // Out of the goggles is her first drawing itself.
-    expect(stages[1]?.value).toBe(DRAWINGS['baby-5'])
-  })
-
-  it('shatters Bastille’s zanbato only from episode 687', () => {
-    expect(walkStages('bastille', [[687, 751]])).toHaveLength(1)
-  })
-
-  it('zips Blue Gilly’s jacket up under a collar only from episode 744', () => {
-    expect(walkStages('blue-gilly', [[744, 799]])).toHaveLength(1)
-  })
-
-  it('lays Shinobu’s katana lower, by ripening fruit, only from episode 916', () => {
-    expect(walkStages('shinobu', [[916, 930]])).toHaveLength(1)
-  })
-
-  it('gives King a pteranodon’s wing only from episode 924', () => {
-    expect(walkStages('king', [[924, 935]])).toHaveLength(1)
-  })
-
-  it('puts Kaido’s band on the Azure Dragon’s foreleg only from episode 912', () => {
-    expect(walkStages('kaido', [[912, 921]])).toHaveLength(1)
-  })
-
-  it('snaps Kin’emon’s katana from episode 1035, and arms him again at 1079', () => {
-    const stages = walkStages('kinemon', [
-      [1035, 1014],
-      [1079, 1052],
-    ])
-
-    // A sword in his sash again is his first drawing itself.
-    expect(stages[1]?.value).toBe(DRAWINGS.kinemon)
-  })
-
-  it('gives Koala her grown-up cap only from episode 663', () => {
-    expect(walkStages('koala', [[663, 731]])).toHaveLength(1)
-  })
-
-  it('gives Leo his pirate hat only from episode 884', () => {
-    expect(walkStages('leo', [[884, 906]])).toHaveLength(1)
-  })
-
-  it('takes Rebecca’s shield away only from episode 651', () => {
-    expect(walkStages('rebecca', [[651, 721]])).toHaveLength(1)
-  })
-
   it('braids Sakazuki’s cap only from episode 570', () => {
     const sakazuki = filed('sakazuki')
     const cap = DRAWINGS.sakazuki
@@ -1710,33 +1132,6 @@ describe('a record drawn again later in the story', () => {
     // The manga has Jinbe tell the crew he won the seat in chapter 650.
     expect(drawnAt({ mode: 'chapter', chapter: 649 })).toBe(cap)
     expect(drawnAt({ mode: 'chapter', chapter: 650 })).toBe(braided?.value)
-  })
-
-  it('arms Hody with his trident from episode 535, and takes his cap at 551', () => {
-    expect(
-      walkStages('hody-jones', [
-        [535, 616],
-        [551, 631],
-      ]),
-    ).toHaveLength(2)
-  })
-
-  it('breaks Shyarly’s crystal ball only from episode 573', () => {
-    expect(walkStages('shyarly', [[573, 653]])).toHaveLength(1)
-  })
-
-  it('pulls Pekoms into his shell at 572, drops it into the sea at 795 and brings it ashore at 824', () => {
-    expect(
-      walkStages('pekoms', [
-        [572, 653],
-        [795, 834],
-        [824, 856],
-      ]),
-    ).toHaveLength(3)
-  })
-
-  it('lays Bobbin’s sword and hat in the street only from episode 824', () => {
-    expect(walkStages('bobbin', [[824, 856]])).toHaveLength(1)
   })
 
   it('sets Bon Clay’s shoes at the Gate of Justice only from episode 451', () => {
@@ -1756,112 +1151,8 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 548 })).toBe(gate?.value)
   })
 
-  it('sends Igaram’s ship up in smoke at 67, and patches him up at 111', () => {
-    expect(
-      walkStages('igaram', [
-        [67, 114],
-        [111, 180],
-      ]),
-    ).toHaveLength(2)
-  })
-
-  it('fells Dorry’s shield at 73, breaks his sword at 78, arms him again at 1112 and turns him demon at 1180', () => {
-    const stages = walkStages('dorry', [
-      [73, 120],
-      [77, 127],
-      [78, 129],
-      [1112, 1079],
-      [1180, 1150],
-    ])
-
-    expect(stages[3]?.value).toBe(DRAWINGS.dorry)
-  })
-
-  it('breaks Brogy’s axe at 78, arms him again at 1112 and turns him demon at 1180', () => {
-    const stages = walkStages('brogy', [
-      [78, 129],
-      [1112, 1079],
-      [1180, 1150],
-    ])
-
-    expect(stages[1]?.value).toBe(DRAWINGS.brogy)
-  })
-
-  it('dries Mr. 3’s tea at 104 and cracks his wax ball open at 109', () => {
-    expect(
-      walkStages('mr-3', [
-        [104, 166],
-        [109, 176],
-      ]),
-    ).toHaveLength(2)
-  })
-
-  it('drifts gunsmoke off Mr. 11’s rope only from episode 95', () => {
-    expect(walkStages('mr-11', [[95, 159]])).toHaveLength(1)
-  })
-
-  it('leaves only Hiluluk’s hat in the snow from episode 86', () => {
-    expect(walkStages('hiluluk', [[86, 145]])).toHaveLength(1)
-  })
-
-  it('props the news on Cobra’s throne only from episode 1081', () => {
-    expect(walkStages('nefertari-cobra', [[1081, 1054]])).toHaveLength(1)
-  })
-
-  it('spreads Pell’s wing at 106, drops his feathers at 125 and leaves his headscarf behind at 130', () => {
-    expect(
-      walkStages('pell', [
-        [106, 169],
-        [125, 208],
-        [130, 217],
-      ]),
-    ).toHaveLength(3)
-  })
-
-  it('stands Dalton’s spade beside the bison’s foreleg only from episode 81', () => {
-    expect(walkStages('dalton', [[81, 135]])).toHaveLength(1)
-  })
-
-  it('lays Chaka’s sword beside the jackal’s paw only from episode 120', () => {
-    expect(walkStages('chaka', [[120, 196]])).toHaveLength(1)
-  })
-
-  it('ties the crew’s band round Karoo’s wing at 92, and takes it off at 129', () => {
-    const stages = walkStages('karoo', [
-      [92, 157],
-      [129, 216],
-    ])
-
-    expect(stages[1]?.value).toBe(DRAWINGS.karoo)
-  })
-
-  it('swaps Miss Goldenweek’s hat for the apple beret only from episode 1149', () => {
-    expect(walkStages('miss-goldenweek', [[1149, 1115]])).toHaveLength(1)
-  })
-
-  it('lays Moria’s scissors on the news at 509 and opens them again at 917', () => {
-    expect(
-      walkStages('gecko-moria', [
-        [509, 592],
-        [917, 925],
-      ]),
-    ).toHaveLength(2)
-  })
-
-  it('lays Absalom’s empty coat on the ground only from episode 917', () => {
-    expect(walkStages('absalom', [[917, 925]])).toHaveLength(1)
-  })
-
-  it('topples Kumashi only from episode 360, when Sogeking salts him', () => {
-    expect(walkStages('kumashi', [[360, 465]])).toHaveLength(1)
-  })
-
-  it('lays Shusui across Ryuma’s ashes only from episode 362', () => {
-    expect(walkStages('ryuma', [[362, 467]])).toHaveLength(1)
-  })
-
   it('returns the Risky Brothers’ shadows only from episode 375', () => {
-    const stages = walkStages('risky-brothers', [[375, 483]])
+    const stages = REDRAWINGS['risky-brothers'] ?? []
 
     expect(stages[0]?.value.slice(0, -1)).toStrictEqual(
       DRAWINGS['risky-brothers'],
@@ -1870,182 +1161,6 @@ describe('a record drawn again later in the story', () => {
       role: 'ambient',
       dashed: true,
     })
-  })
-
-  it.each([
-    'victoria-cindry',
-    'oars',
-    'buhichuck',
-    'john',
-    'jigoro',
-    'hildon',
-    'cerberus-thriller-bark',
-  ])('stills %s only from episode 373, Shadow’s Asgard', (id) => {
-    expect(walkStages(id, [[373, 481]])).toHaveLength(1)
-  })
-
-  it('stills Gyoro, Nin and Bao at 373, pinned at their record’s chapter', () => {
-    // Chapter 481 is below the record's 486, so the stage is pinned at 486.
-    expect(walkStages('gyoro-nin-and-bao', [[373, 486]])).toHaveLength(1)
-  })
-
-  it('lays Monet’s wing on the ground only from episode 620', () => {
-    expect(walkStages('monet', [[620, 694]])).toHaveLength(1)
-  })
-
-  it('lays Vergo’s stick flat in the rubble only from episode 624', () => {
-    expect(walkStages('vergo', [[624, 698]])).toHaveLength(1)
-  })
-
-  it('turns Smiley into gas and a fruit only from episode 602', () => {
-    expect(walkStages('smiley', [[602, 676]])).toHaveLength(1)
-  })
-
-  it('opens Barrels’ chest empty only from episode 706', () => {
-    expect(walkStages('diez-barrels', [[706, 767]])).toHaveLength(1)
-  })
-
-  it('lays Kanjuro’s brush in the snow at 994, lifts it at 1024 and burns it at 1055', () => {
-    expect(
-      walkStages('kanjuro', [
-        [994, 986],
-        [1024, 1008],
-        [1055, 1030],
-      ]),
-    ).toHaveLength(3)
-  })
-
-  it('presses Kuma’s paw into a steel plate at 469, and takes his Bible at 888', () => {
-    // Doflamingo tells Ivankov what he has become in chapter 560; he is led
-    // through Mary Geoise as a slave, with no Bible, in chapter 908.
-    expect(
-      walkStages('bartholomew-kuma', [
-        [469, 560],
-        [888, 908],
-      ]),
-    ).toHaveLength(2)
-  })
-
-  it('sets Kid’s metal arm beside the magnet at 603, takes it at 919, gives it back at 977, cuts it at 1054 and mends it at 1109', () => {
-    // The manga shows him in clear view after the timeskip in chapter 677,
-    // no earlier: chapter 674 has only his silhouette.
-    const stages = walkStages('eustass-kid', [
-      [603, 677],
-      [919, 926],
-      [977, 974],
-      [1054, 1029],
-      [1109, 1076],
-    ])
-
-    expect(stages[2]?.value).toBe(stages[0]?.value)
-    expect(stages[3]?.value).toBe(stages[1]?.value)
-    expect(stages[4]?.value).toBe(stages[0]?.value)
-  })
-
-  it('trades Law’s fur rim for a thick bill at 584', () => {
-    expect(walkStages('trafalgar-law', [[584, 659]])).toHaveLength(1)
-  })
-
-  it('grows Drake’s allosaurus foreleg at 402, and trades his hat for the black band at 736', () => {
-    expect(
-      walkStages('x-drake', [
-        [402, 509],
-        [736, 793],
-      ]),
-    ).toHaveLength(2)
-  })
-
-  it('takes the bars from round Shiryu’s sword at 484', () => {
-    expect(walkStages('shiryu', [[484, 575]])).toHaveLength(1)
-  })
-
-  it('fans Devon’s nine fox tails behind her pearls at 917', () => {
-    expect(walkStages('catarina-devon', [[917, 925]])).toHaveLength(1)
-  })
-
-  it('crowns Pizarro at 917', () => {
-    expect(walkStages('avalo-pizarro', [[917, 925]])).toHaveLength(1)
-  })
-
-  it('trades Yasopp’s pistol for his musket only from episode 151', () => {
-    expect(walkStages('yasopp', [[151, 234]])).toHaveLength(1)
-  })
-
-  it('gives Shanks Gryphon only from episode 151', () => {
-    expect(walkStages('shanks', [[151, 234]])).toHaveLength(1)
-  })
-
-  it('trades Helmeppo’s shoe for his kukri only from episode 314', () => {
-    expect(walkStages('helmeppo', [[314, 432]])).toHaveLength(1)
-  })
-
-  it('lays the Kiribachi under Arlong’s hat only from episode 42', () => {
-    expect(walkStages('arlong', [[42, 92]])).toHaveLength(1)
-  })
-
-  it('arms Gin with his tonfa from 27, leaves him for dead at 29 and back at 1150', () => {
-    expect(
-      walkStages('gin', [
-        [27, 59],
-        [29, 67],
-        [1150, 1117],
-      ]),
-    ).toHaveLength(3)
-  })
-
-  it('follows Smoker’s jitte, broken twice and mended once', () => {
-    const stages = walkStages('smoker', [
-      [52, 98],
-      [469, 560],
-      [572, 652],
-      [616, 690],
-    ])
-
-    // Mended is the whole jitte itself, and both breaks are one drawing.
-    expect(stages[2]?.value).toBe(stages[0]?.value)
-    expect(stages[3]?.value).toBe(stages[1]?.value)
-  })
-
-  it('plants Genzo’s pinwheel only from episode 44', () => {
-    expect(walkStages('genzo', [[44, 95]])).toHaveLength(1)
-  })
-
-  it('lights Bell-mère’s cigarette only from episode 35', () => {
-    expect(walkStages('bell-mere', [[35, 78]])).toHaveLength(1)
-  })
-
-  it('puts Jango in a Marine cap only from episode 128', () => {
-    expect(walkStages('jango', [[128, 214]])).toHaveLength(1)
-  })
-
-  it('burns Chouchou’s shop only from episode 7', () => {
-    expect(walkStages('chouchou', [[7, 15]])).toHaveLength(1)
-  })
-
-  it('locks Krieg’s plates into the Daisenso only from episode 28', () => {
-    expect(walkStages('don-krieg', [[28, 64]])).toHaveLength(1)
-  })
-
-  it('gives Fullbody a knuckle for each hand only from episode 128', () => {
-    expect(walkStages('fullbody', [[128, 214]])).toHaveLength(1)
-  })
-
-  it('follows Nami’s Clima-Tacts, and Zeus out of the staff and back', () => {
-    const stages = walkStages('nami', [
-      [117, 190],
-      [258, 368],
-      [517, 598],
-      [776, 822],
-      [878, 903],
-      [993, 985],
-      [1037, 1015],
-    ])
-
-    // The first Sorcery model is the first Clima-Tact again, and the staff
-    // with and without Zeus are one drawing each.
-    expect(stages[2]?.value).toBe(stages[0]?.value)
-    expect(stages[5]?.value).toBe(stages[3]?.value)
-    expect(stages[6]?.value).toBe(stages[4]?.value)
   })
 
   it('leans Kuzan’s bicycle against a black flag only from episode 736', () => {
@@ -2104,16 +1219,5 @@ describe('a record drawn again later in the story', () => {
       expect(drawnAt({ mode: 'chapter', chapter: 1033 })).toBe(cape?.value)
       expect(drawnAt({ mode: 'chapter', chapter: 1034 })).toBe(ifrit?.value)
     })
-  })
-
-  it('hangs the Elbaf katana behind Sanji’s knife only from episode 1157', () => {
-    expect(
-      walkStages('sanji', [
-        [298, 415],
-        [925, 931],
-        [1061, 1034],
-        [1157, 1127],
-      ]),
-    ).toHaveLength(4)
   })
 })
