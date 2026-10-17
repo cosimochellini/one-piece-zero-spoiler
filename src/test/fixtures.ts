@@ -119,7 +119,15 @@ export function fruitBand(over: Partial<FruitBandView> = {}): FruitBandView {
 }
 
 export function fruitDetail(over: Partial<FruitDetail> = {}): FruitDetail {
-  return { slot: openSlot(fruit()), ...over }
+  return {
+    history: [],
+    next: null,
+    previous: null,
+    saga: null,
+    sagaRail: [],
+    slot: openSlot(fruit()),
+    ...over,
+  }
 }
 
 export function waypoint(over: Partial<WaypointView> = {}): WaypointView {

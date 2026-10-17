@@ -369,6 +369,18 @@ export const enDictionary = {
     'The fruits of the same type named closest to this one.',
   'fruit.siblingsLoading': 'Loading fruits…',
   'fruit.siblingsNone': 'No other fruit of this type yet.',
+  'fruit.historyTitle': 'History',
+  'fruit.historyLede': 'What happens to this fruit, up to your bookmark.',
+  'fruit.history.named': 'First named in the {saga}',
+  'fruit.history.eaten': '{name} eats it',
+  'fruit.history.deceased': '{name} dies',
+  'fruit.history.presumed-dead': '{name} is presumed dead',
+  'fruit.turn': 'Previous and next fruit',
+  'fruit.previous': 'Previous fruit',
+  'fruit.next': 'Next fruit',
+  'fruit.sagaTitle': 'Other fruits of this saga',
+  'fruit.sagaLede':
+    'The open fruits first named in the same saga, closest to this one.',
   'fruit.notFoundTitle': 'Fruit not found',
   'fruit.notFoundBody':
     'There is no fruit at this address. The devil fruits page lists all of them.',

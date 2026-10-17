@@ -18,12 +18,8 @@ import type {
 } from '~/lib/view/records'
 import { leaksIn, saysNothing } from '~/test/fog'
 
-import {
-  fruitEaters,
-  fruitPage,
-  fruitSheet,
-  fruitSiblings,
-} from './fruits.server'
+import { fruitPage } from './fruitPage.server'
+import { fruitEaters, fruitSheet, fruitSiblings } from './fruits.server'
 import { handleOf } from './handle.server'
 import { characterPage, drawingsFor } from './pages.server'
 import { BOOKMARKS } from './payloads.server'
@@ -396,7 +392,11 @@ describe('a fruit’s own page', () => {
 
           expect(covered).toMatchObject({ detail: { slot: { open: false } } })
           expect(JSON.stringify(covered)).not.toContain(id)
-          expect(JSON.stringify(covered)).not.toContain('"strokes"')
+          // Its own drawing is nowhere, though an open neighbour's is.
+          expect(JSON.stringify(covered?.detail.slot)).not.toContain(
+            '"strokes"',
+          )
+          expect(JSON.stringify(covered)).not.toContain(JSON.stringify(strokes))
 
           saysNothing(covered, before)
 

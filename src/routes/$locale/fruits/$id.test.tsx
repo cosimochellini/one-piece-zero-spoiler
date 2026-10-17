@@ -1,5 +1,5 @@
-import { screen } from '@testing-library/react'
-import { describe, expect, it } from 'vitest'
+import { fireEvent, screen } from '@testing-library/react'
+import { describe, expect, it, vi } from 'vitest'
 
 import type { DocumentHead } from '~/lib/view/records'
 import {
@@ -13,7 +13,9 @@ import {
 import { ep, renderWithProviders } from '~/test/providers'
 
 import { Route } from './$id'
-import { EatersBand, KinBand, PlateBand } from './-$id.bands'
+import { EatersBand, KinBand, SagaBand } from './-$id.bands'
+import { HistoryBand } from './-$id.history'
+import { StageBand, TurnBand } from './-$id.stage'
 
 const PATHNAME = '/en/fruits/gum-gum'
 
@@ -115,10 +117,10 @@ describe('fruit route head', () => {
   })
 })
 
-describe('the plate band', () => {
+describe('the stage', () => {
   it('names the fruit, its kind and its episode once the reader is there', () => {
     renderWithProviders(
-      <PlateBand
+      <StageBand
         detail={fruitDetail()}
         peek={peekTo(fruit())}
       />,
@@ -134,8 +136,8 @@ describe('the plate band', () => {
 
   it('keeps the kind and the episode outside the fog, and the rest in', () => {
     const { container } = renderWithProviders(
-      <PlateBand
-        detail={{ slot: coveredSlot({ revealedAtEpisode: 462 }) }}
+      <StageBand
+        detail={fruitDetail({ slot: coveredSlot({ revealedAtEpisode: 462 }) })}
         peek={peekPending()}
       />,
       { bookmark: ep(100) },
@@ -198,5 +200,213 @@ describe('the fruit page’s shape', () => {
     expect(
       screen.queryByRole('region', { name: /route/iu }),
     ).not.toBeInTheDocument()
+  })
+})
+
+describe('the history', () => {
+  it('reads oldest first, and links each eater to their page', () => {
+    renderWithProviders(
+      <HistoryBand
+        detail={fruitDetail({
+          saga: 'Alabasta Saga',
+          history: [
+            { event: 'named', revealedAtEpisode: 95, revealedAtChapter: 161 },
+            {
+              event: 'eaten',
+              who: { id: 'portgas-d-ace', name: 'Portgas D. Ace' },
+              revealedAtEpisode: 95,
+              revealedAtChapter: 161,
+            },
+            {
+              event: 'deceased',
+              who: { id: 'portgas-d-ace', name: 'Portgas D. Ace' },
+              revealedAtEpisode: 483,
+              revealedAtChapter: 574,
+            },
+          ],
+        })}
+      />,
+      { bookmark: ep(650) },
+    )
+
+    const items = screen
+      .getAllByRole('listitem')
+      .map((item) => item.textContent)
+
+    expect(items).toStrictEqual([
+      'Episode 95First named in the Alabasta Saga',
+      'Episode 95Portgas D. Ace eats it',
+      'Episode 483Portgas D. Ace dies',
+    ])
+    expect(
+      screen.getAllByRole('link', { name: 'Portgas D. Ace' })[0],
+    ).toHaveAttribute('href', '/en/characters/portgas-d-ace')
+  })
+
+  it('draws no band at all with nothing reached', () => {
+    const { container } = renderWithProviders(
+      <HistoryBand detail={fruitDetail()} />,
+      { bookmark: ep(650) },
+    )
+
+    expect(container).toBeEmptyDOMElement()
+  })
+})
+
+describe('the fruit before and after', () => {
+  const open = fruit({ id: 'bomb-bomb-fruit', name: 'Bomb-Bomb Fruit' })
+  const turning = fruitDetail({
+    previous: openSlot(open),
+    next: coveredSlot({ revealedAtEpisode: 462 }),
+  })
+
+  it('names an open neighbour, and never a covered one', () => {
+    const { container } = renderWithProviders(
+      <TurnBand
+        detail={turning}
+        peek={peekPending()}
+      />,
+      { bookmark: ep(100) },
+    )
+
+    expect(
+      screen.getByRole('link', { name: /Bomb-Bomb Fruit/u }),
+    ).toHaveAttribute('href', '/en/fruits/bomb-bomb-fruit')
+    expect(screen.getAllByRole('link')).toHaveLength(1)
+    expect(container).toHaveTextContent('Next fruit')
+    expect(container).toHaveTextContent('First named in episode 462')
+    expect(container.querySelectorAll('a[href]')).toHaveLength(1)
+  })
+
+  it('turns to an open neighbour by arrow key or swipe, and not to a covered one', () => {
+    const { router } = renderWithProviders(
+      <StageBand
+        detail={turning}
+        peek={peekPending()}
+      />,
+      { bookmark: ep(100) },
+    )
+    const navigate = vi.spyOn(router, 'navigate').mockResolvedValue()
+
+    fireEvent.keyDown(document.body, { key: 'ArrowRight' })
+
+    expect(navigate).not.toHaveBeenCalled()
+
+    fireEvent.keyDown(document.body, { key: 'ArrowLeft', metaKey: true })
+
+    expect(navigate).not.toHaveBeenCalled()
+
+    fireEvent.keyDown(document.body, { key: 'ArrowLeft' })
+
+    expect(navigate).toHaveBeenCalledTimes(1)
+    expect(JSON.stringify(navigate.mock.calls[0])).toContain('bomb-bomb-fruit')
+
+    // On the name: a pointer event bubbles up to the stage around it.
+    const stage = screen.getByRole('heading')
+
+    fireEvent.pointerDown(stage, {
+      pointerType: 'touch',
+      clientX: 50,
+      clientY: 100,
+    })
+    fireEvent.pointerUp(stage, {
+      pointerType: 'touch',
+      clientX: 200,
+      clientY: 110,
+    })
+
+    expect(navigate).toHaveBeenCalledTimes(2)
+
+    fireEvent.pointerDown(stage, {
+      pointerType: 'touch',
+      clientX: 50,
+      clientY: 100,
+    })
+    fireEvent.pointerUp(stage, {
+      pointerType: 'touch',
+      clientX: 90,
+      clientY: 300,
+    })
+
+    expect(navigate).toHaveBeenCalledTimes(2)
+  })
+})
+
+/**
+ * A focusable element appended to the page, inside a wrapper with this
+ * attribute, or none.
+ */
+function focusIn(target: string, wrapper?: [string, string]): HTMLElement {
+  const host = document.createElement('div')
+  if (wrapper !== undefined) {
+    host.setAttribute(...wrapper)
+  }
+  const element = document.createElement(target)
+  element.tabIndex = 0
+  host.append(element)
+  document.body.append(host)
+
+  return element
+}
+
+describe('the arrow keys', () => {
+  const turning = fruitDetail({
+    next: openSlot(fruit({ id: 'bomb-bomb-fruit', name: 'Bomb-Bomb Fruit' })),
+  })
+
+  it('leave fields, editable text and arrow-key controls alone, and a held key', () => {
+    const { router } = renderWithProviders(
+      <StageBand
+        detail={turning}
+        peek={peekPending()}
+      />,
+      { bookmark: ep(650) },
+    )
+    const navigate = vi.spyOn(router, 'navigate').mockResolvedValue()
+
+    fireEvent.keyDown(focusIn('input'), { key: 'ArrowRight' })
+    fireEvent.keyDown(focusIn('span', ['contenteditable', 'true']), {
+      key: 'ArrowRight',
+    })
+    fireEvent.keyDown(focusIn('button', ['role', 'radiogroup']), {
+      key: 'ArrowRight',
+    })
+    fireEvent.keyDown(document.body, { key: 'ArrowRight', repeat: true })
+
+    expect(navigate).not.toHaveBeenCalled()
+
+    // A live region is not a control: the arrows still turn the page.
+    fireEvent.keyDown(focusIn('button', ['role', 'status']), {
+      key: 'ArrowRight',
+    })
+
+    expect(navigate).toHaveBeenCalledTimes(1)
+  })
+})
+
+describe('the rail of the same saga', () => {
+  it('draws nothing with no rail, and its heading over one', () => {
+    const view = renderWithProviders(
+      <SagaBand
+        peek={peekPending()}
+        rail={[]}
+      />,
+      { bookmark: ep(650) },
+    )
+
+    expect(view.container).toBeEmptyDOMElement()
+
+    view.unmount()
+    renderWithProviders(
+      <SagaBand
+        peek={peekPending()}
+        rail={[openSlot(fruit()), openSlot(fruit({ id: 'other-fruit' }))]}
+      />,
+      { bookmark: ep(650) },
+    )
+
+    expect(
+      screen.getByRole('region', { name: 'Other fruits of this saga' }),
+    ).toBeInTheDocument()
   })
 })

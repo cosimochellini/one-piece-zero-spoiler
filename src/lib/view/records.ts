@@ -409,8 +409,37 @@ export interface FruitSheetView {
   sagas: FruitSagaView[]
 }
 
+/**
+ * One line of a fruit's history: the story names it, someone eats it, or
+ * someone who ate it dies or is presumed dead. Its two thresholds are its
+ * gate, so it satisfies `Gated` and `useThreshold` prints its mark.
+ */
+export interface FruitHistoryEntry {
+  event: 'deceased' | 'eaten' | 'named' | 'presumed-dead'
+  revealedAtChapter: number
+  revealedAtEpisode: number
+  /** The eater, for every event but `named`. Always one the reader has met. */
+  who?: Pick<RecordView, 'id' | 'name'>
+}
+
 /** A devil fruit's own page. */
 export interface FruitDetail {
+  /**
+   * The history the reader has reached, oldest first: nothing past the
+   * bookmark, and no count of it. Empty under fog.
+   */
+  history: FruitHistoryEntry[]
+  /** The fruit after this one in the reader's order; `null` for the last. */
+  next: null | Slot<FruitView>
+  /** The fruit before this one in the reader's order; `null` for the first. */
+  previous: null | Slot<FruitView>
+  /** The saga the story first names it in; `null` under fog. */
+  saga: null | string
+  /**
+   * The open fruits of the same saga nearest this one, this one left out.
+   * Empty under fog, and when fewer than two would be on it.
+   */
+  sagaRail: Slot<FruitView>[]
   slot: Slot<FruitView>
 }
 

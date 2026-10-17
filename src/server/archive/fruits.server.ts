@@ -6,10 +6,8 @@ import { getDictionary } from '~/i18n/translate'
 import { absoluteEpisodeOf, type Bookmark } from '~/lib/progress/episode'
 import type {
   CharacterView,
-  DocumentHead,
   Faction,
   FruitBandView,
-  FruitDetail,
   FruitEatersView,
   FruitFactionRef,
   FruitFactionView,
@@ -22,7 +20,6 @@ import type {
 } from '~/lib/view/records'
 
 import { handleOf } from './handle.server'
-import { headFor, type HeadKeys } from './head.server'
 import { characterOf, deferredOf, fruitOf, specimenOf } from './project.server'
 import { type Reader, readerFor } from './reader.server'
 import { sagaOf, type SagaStart, sagaStarts } from './sagaLabels.server'
@@ -36,13 +33,6 @@ import { sagaOf, type SagaStart, sagaStarts } from './sagaLabels.server'
 
 /** The plates, in the order the sheet sets them out. */
 const PLATES: FruitForm[] = ['paramecia', 'zoan', 'logia']
-
-/** What a fruit's page calls itself, open and under fog. */
-const FRUIT_HEAD: HeadKeys = {
-  foggedDescription: 'fruit.foggedDescription',
-  foggedTitle: 'fruit.foggedTitle',
-  pageTitle: 'fruit.pageTitle',
-}
 
 /**
  * How many tiles of the first plate ship their drawings with them: a phone's
@@ -92,7 +82,7 @@ function bandOf(
  * and the entry that says they ate it — but drawn from the record itself, so
  * an open eater prints their own thresholds and a covered one the entry's.
  */
-function gatedOf(eater: Eater): Entity {
+export function gatedOf(eater: Eater): Entity {
   return { ...eater.entity, ...eater.gate }
 }
 
@@ -287,37 +277,6 @@ export function fruitSheet(bookmark: Bookmark, locale: Locale): FruitSheetView {
   }
 }
 
-/** A fruit's own page: what names it, and what it says. */
-export interface FruitPage {
-  detail: FruitDetail
-  head: DocumentHead
-}
-
-/**
- * A fruit's page, or `undefined` for an id the archive does not file as a
- * fruit. It returns rather than throws, for the same reason a character's
- * page does: `notFound()` is a router signal, and a signal thrown across an
- * RPC boundary is only an error.
- */
-export function fruitPage(
-  id: string,
-  bookmark: Bookmark,
-  locale: Locale,
-): FruitPage | undefined {
-  const entity = getFruit(id)
-  const form = entity === undefined ? undefined : fruitFormOf(entity)
-  if (entity === undefined || form === undefined) {
-    return undefined
-  }
-
-  const r = readerFor(bookmark, locale)
-
-  return {
-    head: headFor(entity, FRUIT_HEAD, r),
-    detail: { slot: r.slot(entity, (open) => fruitOf(open, form, r)) },
-  }
-}
-
 /**
  * Who the dossiers say ate this fruit, each under its own fog: named from the
  * later of their own threshold and the dossier entry that says they ate it
@@ -344,7 +303,7 @@ export function fruitEaters(
 }
 
 // One row of specimens, which is what the rail holds before it wraps.
-const SIBLING_COUNT = 4
+export const SIBLING_COUNT = 4
 
 /** The fruits of the same kind filed nearest this one, this one left out. */
 export function fruitSiblings(

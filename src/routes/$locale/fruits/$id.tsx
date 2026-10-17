@@ -1,9 +1,11 @@
 /* Hallmark · pre-emit critique: P5 H5 E4 S5 R4 V4 */
-/* Hallmark · genre: atmospheric · macrostructure: Specimen · theme: Sea Chart
- *   (locked) · enrichment: Tier B hand-built SVG (the fruit's own drawing in a
- *   hairline frame) · nav: N9 (shared) · footer: Ft4 (shared)
- * · structure: the plate, then who ate it, then the rest of its own kind
- * · idea: "one specimen, taken off the sheet and set down on its own" */
+/* Hallmark · genre: atmospheric · macrostructure: Stage · theme: Sea Chart
+ *   (locked) · enrichment: Tier B hand-built SVG (the fruit's own drawing,
+ *   large, in a glow of its tint, drawn in on arrival) · nav: N9 (shared)
+ *   · footer: Ft4 (shared)
+ * · structure: the stage, the fruit before and after, its history, who ate
+ *   it, then the rest of its own kind and of its own saga
+ * · idea: "one fruit under the lights, and its story told in order" */
 import * as stylex from '@stylexjs/stylex'
 import { createFileRoute, Link } from '@tanstack/react-router'
 import type { ReactElement } from 'react'
@@ -23,11 +25,20 @@ import {
 } from '~/server/api'
 import { settleStyles } from '~/styles/settle'
 
-import { EatersBand, KinBand, PlateBand } from './-$id.bands'
+import { EatersBand, KinBand, SagaBand } from './-$id.bands'
+import { HistoryBand } from './-$id.history'
+import { StageBand, TurnBand } from './-$id.stage'
 
-// The three bands in DOM order. Named rather than counted at the call, so a
-// band inserted in the middle is one edit here and not three down the page.
-const BAND = { plate: 0, eaters: 1, kin: 2 } as const
+// The bands in DOM order. Named rather than counted at the call, so a band
+// inserted in the middle is one edit here and not three down the page.
+const BAND = {
+  stage: 0,
+  turn: 1,
+  history: 2,
+  eaters: 3,
+  kin: 4,
+  saga: 5,
+} as const
 
 export const Route = createFileRoute('/$locale/fruits/$id')({
   // The one decision the page turns on is made on the server, from the
@@ -35,7 +46,7 @@ export const Route = createFileRoute('/$locale/fruits/$id')({
   // reader has not reached, and a title is set before any component runs.
   loader: async (match) => {
     const args = recordArgs(match)
-    // Below the plate, so they stream: neither is what the reader came for,
+    // Below the stage, so they stream: neither is what the reader came for,
     // and each is a drawing per entry.
     return {
       ...orNotFound(await loadFruit(args)),
@@ -49,13 +60,14 @@ export const Route = createFileRoute('/$locale/fruits/$id')({
 })
 
 /**
- * A devil fruit's page (Hallmark macrostructure 10, Specimen).
+ * A devil fruit's page (Hallmark macrostructure: Stage).
  *
- * One specimen off the sheet: the drawing in its frame beside the kind, the
- * threshold, the name at display size and the sentence. Under it, who the
- * dossiers say ate it — each character with its own fog, because knowing the
- * fruit is not knowing who carries it — and a rail of the other fruits of the
- * same kind.
+ * One fruit under the lights: the drawing large in a glow of its tint, the
+ * name at display size with its kind and saga, and the sentence. Then the
+ * fruit before and after it in the reader's order, its history as far as
+ * the reader has reached, who the dossiers say ate it (each character with
+ * its own fog, because knowing the fruit is not knowing who carries it), and
+ * two rails: the same kind, and the same saga.
  *
  * No route strip: a fruit is not a waypoint on the landing chart, so there is
  * no position on it to print.
@@ -74,17 +86,28 @@ function FruitPage(): ReactElement {
         {...stylex.props(
           recordStyles.back,
           settleStyles.band,
-          settleStyles.at(BAND.plate),
+          settleStyles.at(BAND.stage),
         )}
       >
         <BackLink />
       </p>
 
-      <div {...stylex.props(settleStyles.band, settleStyles.at(BAND.plate))}>
-        <PlateBand
+      <div {...stylex.props(settleStyles.band, settleStyles.at(BAND.stage))}>
+        <StageBand
           detail={detail}
           peek={peekFruit}
         />
+      </div>
+
+      <div {...stylex.props(settleStyles.band, settleStyles.at(BAND.turn))}>
+        <TurnBand
+          detail={detail}
+          peek={peekFruit}
+        />
+      </div>
+
+      <div {...stylex.props(settleStyles.band, settleStyles.at(BAND.history))}>
+        <HistoryBand detail={detail} />
       </div>
 
       <div {...stylex.props(settleStyles.band, settleStyles.at(BAND.eaters))}>
@@ -98,6 +121,13 @@ function FruitPage(): ReactElement {
         <KinBand
           peek={peekFruit}
           siblings={siblings}
+        />
+      </div>
+
+      <div {...stylex.props(settleStyles.band, settleStyles.at(BAND.saga))}>
+        <SagaBand
+          peek={peekFruit}
+          rail={detail.sagaRail}
         />
       </div>
     </main>

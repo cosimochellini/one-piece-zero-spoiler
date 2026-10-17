@@ -377,6 +377,18 @@ export const itDictionary: Dictionary = {
     'I frutti dello stesso tipo nominati subito prima e subito dopo questo.',
   'fruit.siblingsLoading': 'Caricamento dei frutti…',
   'fruit.siblingsNone': 'Non ci sono ancora altri frutti di questo tipo.',
+  'fruit.historyTitle': 'Storia',
+  'fruit.historyLede': 'Cosa succede a questo frutto, fino al tuo segnalibro.',
+  'fruit.history.named': 'Nominato per la prima volta nella {saga}',
+  'fruit.history.eaten': '{name} lo mangia',
+  'fruit.history.deceased': '{name} muore',
+  'fruit.history.presumed-dead': '{name}: morte presunta',
+  'fruit.turn': 'Frutto precedente e successivo',
+  'fruit.previous': 'Frutto precedente',
+  'fruit.next': 'Frutto successivo',
+  'fruit.sagaTitle': 'Altri frutti di questa saga',
+  'fruit.sagaLede':
+    'I frutti visibili nominati per la prima volta nella stessa saga, i più vicini a questo.',
   'fruit.notFoundTitle': 'Frutto non trovato',
   'fruit.notFoundBody':
     'A questo indirizzo non c’è nessun frutto. Li trovi tutti nella pagina Frutti del diavolo.',
