@@ -76,9 +76,9 @@ describe('the control bar’s folding', () => {
     document.body.replaceChildren()
   })
 
-  it('tucks the bar up to its row and tells the container how much stays pinned', () => {
+  it('tucks the bar up to its row and tells the document how much stays pinned', () => {
     stubObservers()
-    const { bar, container } = mountBar()
+    const { bar } = mountBar()
     const onPin = vi.fn<(pinned: boolean) => void>()
     const watching = watch(bar, '--bar-tuck', onPin)
 
@@ -86,7 +86,9 @@ describe('the control bar’s folding', () => {
     heard.pin?.([{ boundingClientRect: { top: -300 }, intersectionRatio: 0.2 }])
 
     expect(bar.style.getPropertyValue('--bar-tuck')).toBe('-300px')
-    expect(container.style.getPropertyValue('--sticky-stack')).toBe('60px')
+    expect(
+      document.documentElement.style.getPropertyValue('--sticky-stack'),
+    ).toBe('60px')
     expect(onPin).toHaveBeenLastCalledWith(true)
     expect(watching.read()).toStrictEqual({ pinned: true, tuck: 300 })
 
@@ -95,6 +97,10 @@ describe('the control bar’s folding', () => {
     expect(onPin).toHaveBeenLastCalledWith(false)
 
     watching.stop()
+
+    expect(
+      document.documentElement.style.getPropertyValue('--sticky-stack'),
+    ).toBe('')
   })
 
   it('takes a tap pick back to the top of the results and focus to the toggle', () => {

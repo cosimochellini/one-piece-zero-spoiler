@@ -40,9 +40,10 @@ export interface ControlBarProps {
  * the whole bar down over the listing; a pick, focus leaving the bar, or
  * scrolling back up folds it.
  *
- * The bar has to be its container's first child. It measures itself and
- * writes, on that container, how much of it stays pinned (`STACK_PROPERTY`),
- * so the sticky heads below pin under it rather than behind it.
+ * The bar has to be its container's first child, so a pick can scroll back
+ * to it. It measures itself and writes, on the document, how much of it
+ * stays pinned (`STACK_PROPERTY`), so the sticky heads below pin under it
+ * and focus never scrolls a control behind it.
  */
 export function ControlBar({
   children,

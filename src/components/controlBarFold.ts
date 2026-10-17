@@ -36,15 +36,15 @@ export function watch(
   ) {
     return { read, stop: ignore }
   }
+  // The stack goes on the document, where the scroll padding reads it too,
+  // so a control or tile that focus scrolls to is never left under the bar.
+  const root = document.documentElement.style
   const resize = new ResizeObserver(() => {
     const box = bar.getBoundingClientRect()
     tuck =
       row.offsetParent === null ? 0 : row.getBoundingClientRect().top - box.top
     bar.style.setProperty(tuckProperty, `${String(-tuck)}px`)
-    bar.parentElement?.style.setProperty(
-      STACK_PROPERTY,
-      `${String(box.height - tuck)}px`,
-    )
+    root.setProperty(STACK_PROPERTY, `${String(box.height - tuck)}px`)
   })
   const pin = new IntersectionObserver(
     ([entry]) => {
@@ -55,7 +55,7 @@ export function watch(
       pinned = entry.intersectionRatio < 1 && entry.boundingClientRect.top < 1
       onPin(pinned)
     },
-    { rootMargin: '-1px 0px 0px 0px', threshold: 1 },
+    { rootMargin: '-1px 0px 0px', threshold: 1 },
   )
   resize.observe(bar)
   // The row too: crossing the phone breakpoint shows or hides it.
@@ -67,6 +67,7 @@ export function watch(
     stop: () => {
       resize.disconnect()
       pin.disconnect()
+      root.removeProperty(STACK_PROPERTY)
     },
   }
 }
