@@ -1641,7 +1641,8 @@ export const dressrosaArt = {
   ],
 
   // A rocky island seen from the sea, a tall craggy rock rising over the
-  // rooftops along its shore.
+  // rooftops along its shore. Shut in the Birdcage from 680 and left in
+  // rubble under a new King's Plateau from 734, in `dressrosaRedrawn`.
   'dressrosa': [
     {
       d: 'M30 128 L38 100 L34 88 L46 72 L50 56 L64 48 L76 52 L88 44 L100 50 L110 64 L118 70 L122 90 L130 104 L132 128',
@@ -2323,6 +2324,13 @@ const SNOWFALL: Stroke = {
   role: 'ambient',
 }
 
+// The island's rock and shore over the sea, kept by both of its later stages.
+const DRESSROSA_COAST: Stroke[] = [
+  ...dressrosaArt.dressrosa.slice(0, 1),
+  ...dressrosaArt.dressrosa.slice(2, 3),
+  ...SEA,
+]
+
 /** The records of this stretch drawn again, from the episode the story changes them. */
 export const dressrosaRedrawn: Redrawings = {
   // Her flying goggles, a one-piece frame like a domino mask with rivets
@@ -2859,6 +2867,53 @@ export const dressrosaRedrawn: Redrawings = {
           role: 'soft',
         },
         shadow(80, 182, 60),
+      ],
+    },
+  ],
+
+  // The same island shut in the Birdcage at 680 (ch. 745), a dome of
+  // strings over the whole of it, the strings running down from its top.
+  // At 734 (ch. 791) the cage is gone and the town is diced into tumbled
+  // blocks along the shore, the palace standing on the new stepped King's
+  // Plateau in front of the rock. It is never rebuilt.
+  'dressrosa': [
+    {
+      episode: 680,
+      chapter: 745,
+      value: [
+        ...dressrosaArt.dressrosa,
+        { d: 'M2 150 A78 120 0 0 1 158 150' },
+        {
+          d: 'M22 150 A58 120 0 0 1 138 150 M42 150 A38 120 0 0 1 118 150 M62 150 A18 120 0 0 1 98 150 M80 30 V150',
+          role: 'ambient',
+        },
+      ],
+    },
+    {
+      episode: 734,
+      chapter: 791,
+      value: [
+        ...DRESSROSA_COAST,
+        { d: 'M56 64 L62 80 L58 90 M96 60 L102 72', role: 'soft' },
+        {
+          d: 'M40 128 V118 H48 V108 H56 V98 H64 V88 H96 V98 H104 V108 H112 V118 H120 V128',
+        },
+        {
+          d: 'M66 88 V70 H74 V58 H86 V70 H94 V88 M77 88 V80 a3 3 0 0 1 6 0 V88',
+        },
+        { d: 'M70 76 v6 M90 76 v6 M78 64 v6 M82 64 v6', role: 'soft' },
+        {
+          d: 'M2.9 140.8 L18.6 137.5 L21.1 149.2 L5.4 152.5 Z M2.9 140.8 L5.2 137.2 L20.9 133.9 L23.4 145.6 L21.1 149.2 M18.6 137.5 L20.9 133.9 M13.6 126.3 L21 129.3 L18.4 135.7 L11 132.7 Z M13.6 126.3 L17.5 124.6 L24.9 127.6 L22.3 134.1 L18.4 135.7 M21 129.3 L24.9 127.6 M30.6 143.4 L38.5 144.7 L37.4 150.6 L29.5 149.3 Z M30.6 143.4 L34.1 140.9 L41.9 142.3 L40.9 148.2 L37.4 150.6 M38.5 144.7 L41.9 142.3',
+          role: 'soft',
+        },
+        {
+          d: 'M121.3 145.2 L129 143 L130.7 148.8 L123 151 Z M121.3 145.2 L123.4 141.5 L131.1 139.3 L132.7 145.1 L130.7 148.8 M129 143 L131.1 139.3 M137.2 136.7 L152.9 139.5 L150.8 151.3 L135.1 148.5 Z M137.2 136.7 L140.6 134.3 L156.4 137 L154.3 148.9 L150.8 151.3 M152.9 139.5 L156.4 137 M136.4 128.8 L144.5 124.9 L147.6 131.2 L139.5 135.1 Z M136.4 128.8 L137.8 124.8 L145.9 120.9 L149 127.2 L147.6 131.2 M144.5 124.9 L145.9 120.9',
+          role: 'soft',
+        },
+        {
+          d: 'M52 141.4 L61.7 143.8 L60 150.6 L50.3 148.2 Z M52 141.4 L55.6 139.2 L65.3 141.6 L63.6 148.4 L60 150.6 M61.7 143.8 L65.3 141.6 M91.3 140.6 L103.1 138.5 L104.7 147.4 L92.9 149.5 Z M91.3 140.6 L93.7 137.1 L105.6 135.1 L107.1 143.9 L104.7 147.4 M103.1 138.5 L105.6 135.1 M104.7 132.3 L109.8 135.3 L107.3 139.7 L102.2 136.7 Z M104.7 132.3 L108.8 131.2 L113.9 134.2 L111.4 138.6 L107.3 139.7 M109.8 135.3 L113.9 134.2',
+          role: 'soft',
+        },
       ],
     },
   ],
