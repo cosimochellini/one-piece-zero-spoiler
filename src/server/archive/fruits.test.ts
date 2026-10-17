@@ -105,17 +105,17 @@ describe('the specimen sheet', () => {
     expect(sheet.bands.flatMap((band) => band.open)).toStrictEqual([])
   })
 
-  it('leaves the drawings past the first six tiles of the first plate and the marquee’s first three to be asked for', () => {
+  it('leaves the drawings past the first six tiles of the first plate and the marquee’s lead to be asked for', () => {
     const sheet = fruitSheet(ep(1150), 'en')
     const [first, ...rest] = sheet.bands
-    const marquee = marqueeLeads(sheet.marquee)
+    const lead = leadOf(sheet.marquee)
     const inline = first?.open.slice(0, 6) ?? []
     const later = [
       ...(first?.open.slice(6) ?? []),
       ...rest.flatMap((band) => band.open),
-    ].filter((fruit) => !marquee.has(fruit.id))
+    ].filter((fruit) => fruit.id !== lead)
 
-    expect(marquee.size).toBe(3)
+    expect(lead).toBeDefined()
 
     expect(inline).toHaveLength(6)
     expect(later.length).toBeGreaterThan(50)
@@ -597,13 +597,9 @@ function marqueeAt(
     )
 }
 
-/** The marquee tiles the server sends whole: the lead and the first two. */
-function marqueeLeads(marquee: FruitMarqueeView | null): Set<string> {
-  const here = marquee?.fruits ?? []
-
-  return new Set(
-    [here.at(-1), ...here.slice(0, 2)].map((fruit) => fruit?.id ?? ''),
-  )
+/** The fruit that opens the marquee's rail, the latest. */
+function leadOf(marquee: FruitMarqueeView | null): string | undefined {
+  return marquee?.fruits.at(-1)?.id
 }
 
 /** Every fruit the marquee names: its tiles, and the one it points back to. */

@@ -249,8 +249,9 @@ const styles = stylex.create({
   rail: {
     gap: space.md,
     scrollSnapType: 'x mandatory',
-    alignItems: 'end',
+    alignItems: 'start',
     display: 'flex',
+    listStyleType: 'none',
     paddingBlockEnd: space.xs,
     minWidth: 0,
     overflowX: 'auto',

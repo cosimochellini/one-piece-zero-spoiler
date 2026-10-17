@@ -45,24 +45,18 @@ const FRUIT_HEAD: HeadKeys = {
 const INLINE_FRUITS = 6
 
 /**
- * How many tiles of the marquee ship their drawings with them: the lead,
- * which draws itself in on arrival, and the two beside it on a phone's
- * first screen. The rest of the rail comes by id as it scrolls into view.
- */
-const INLINE_MARQUEE = 3
-
-/**
  * One plate of fruits split at the reader's bookmark. The drawings are most
  * of the album's bytes, and only the first tiles of the first plate are near
- * the screen when it arrives, with the marquee's first tiles (`inline`): the
- * rest come by id.
+ * the screen when it arrives, with the marquee's lead, which draws itself in
+ * on arrival: the rest come by id, the rest of the marquee's rail too, as it
+ * scrolls into view.
  */
 function bandOf(
   {
     form,
-    inline,
+    lead,
     plate,
-  }: { form: FruitForm; inline: Set<string>; plate: number },
+  }: { form: FruitForm; lead: string | undefined; plate: number },
   r: Reader,
 ): FruitBandView {
   const band = r.split(fruitsOfForm(form), (entity) =>
@@ -80,7 +74,7 @@ function bandOf(
       // A marquee tile draws the fruit and no eater, so their crests still
       // wait for the album.
       const eaters = fruit.eaters.map((eater) => deferredOf(eater))
-      return inline.has(fruit.id) ?
+      return fruit.id === lead ?
           { ...fruit, eaters }
         : { ...deferredOf(fruit), eaters }
     }),
@@ -143,22 +137,6 @@ function marqueeOf(bookmark: Bookmark, r: Reader): FruitMarqueeView | null {
   }
 }
 
-/** The tiles the marquee shows first: the lead, then the oldest ones. */
-function marqueeInline(marquee: FruitMarqueeView | null): Set<string> {
-  const fruitsHere = marquee?.fruits ?? []
-  const ids = new Set<string>()
-  for (const fruit of [
-    fruitsHere.at(-1),
-    ...fruitsHere.slice(0, INLINE_MARQUEE - 1),
-  ]) {
-    if (fruit !== undefined) {
-      ids.add(fruit.id)
-    }
-  }
-
-  return ids
-}
-
 /**
  * The specimen sheet: the marquee, three plates, and how many fruits the
  * archive files.
@@ -166,10 +144,10 @@ function marqueeInline(marquee: FruitMarqueeView | null): Set<string> {
 export function fruitSheet(bookmark: Bookmark, locale: Locale): FruitSheetView {
   const r = readerFor(bookmark, locale)
   const marquee = marqueeOf(bookmark, r)
-  const inline = marqueeInline(marquee)
+  const lead = marquee?.fruits.at(-1)?.id
 
   return {
-    bands: PLATES.map((form, plate) => bandOf({ form, inline, plate }, r)),
+    bands: PLATES.map((form, plate) => bandOf({ form, lead, plate }, r)),
     filed: fruits.length,
     marquee,
   }
