@@ -181,8 +181,8 @@ Grade every drawing you make or review. Only A ships.
     technique.
   - **The real fruit** is a redrawing at the episode the show first shows it,
     with a true chapter pair, and it is the pure real fruit with no power
-    (`FLAME_FLAME`, `OP_OP_HEART`). The owner ruled that Gum-Gum is the real
-    fruit from episode 1, with no redrawing.
+    (the flame-flame and op-op entries in `fruitRedrawn`). The owner ruled
+    that Gum-Gum is the real fruit from episode 1, with no redrawing.
   - **10–14 strokes**; `drawings.test.ts` fails a kit fruit under ten. Watch
     for faces: two curls over a row of points reads as eyes and teeth, so
     keep curls off a level line and away from a jagged edge (the first ice
