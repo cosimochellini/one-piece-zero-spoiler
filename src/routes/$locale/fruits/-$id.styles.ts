@@ -50,15 +50,17 @@ export const styles = stylex.create({
     backgroundImage: `radial-gradient(closest-side, color-mix(in oklch, ${hue} 45%, transparent), transparent)`,
   }),
   // A fruit's drawings, one over the other in one cell. The one going out
-  // waits for the one coming in to cover it, then goes. The fade is short,
-  // and with reduced motion shorter still: under 150ms, and still a fade.
+  // waits for the one coming in to cover it, then goes. With reduced motion
+  // the global floor (`global.css`) holds every transition at 150ms, the
+  // one going out included, so it waits those 150ms: the fade the reader
+  // sees is the one coming in, 150ms long.
   looks: { display: 'grid' },
   look: {
     gridColumn: 1,
     gridRow: 1,
     opacity: 0,
     transitionDelay: {
-      'default': dur.micro,
+      'default': '150ms',
       '@media (prefers-reduced-motion: no-preference)': dur.short,
     },
     transitionDuration: '0s',
@@ -71,7 +73,7 @@ export const styles = stylex.create({
     opacity: 1,
     transitionDelay: '0s',
     transitionDuration: {
-      'default': dur.micro,
+      'default': '150ms',
       '@media (prefers-reduced-motion: no-preference)': dur.short,
     },
     zIndex: 1,
