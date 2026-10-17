@@ -1,6 +1,6 @@
 import { circle, ellipse, SEA, shadow } from '~/lib/svg/primitives'
 
-import type { Drawings, Redrawings, Stroke } from './stroke'
+import { type Drawings, moved, type Redrawings, type Stroke } from './stroke'
 
 /**
  * One of Scopper Gaban's axes, the haft upright through the origin and the
@@ -15,6 +15,21 @@ const GABAN_AXE: Stroke[] = [
   { d: 'M30 -86 Q44 -63 30 -40', role: 'accent' },
   { d: 'M25 -78 Q35 -63 25 -48', role: 'soft' },
   { d: 'M12 -64 l6 -6 M12 -58 l10 -10 M16 -56 l8 -8', role: 'ambient' },
+]
+
+/** The head of Gunko's arrows, point up, as her first drawing has it. */
+const GUNKO_ARROWHEAD = 'M106 68 L122 34 L138 68 L122 60 Z'
+
+/**
+ * One of Gunko's arrows at the origin, the point down: a shaft and her
+ * arrowhead at half size.
+ */
+const GUNKO_ARROW: Stroke[] = [
+  { d: 'M0 -44 V12' },
+  {
+    d: GUNKO_ARROWHEAD,
+    transform: 'translate(0 27) rotate(180) scale(0.5) translate(-122 -34)',
+  },
 ]
 
 /**
@@ -474,7 +489,7 @@ export const elbafArt = {
       role: 'soft',
     },
     { d: 'M80 100 C100 99 114 88 117 64 M80 109 C106 108 126 92 127 64' },
-    { d: 'M106 68 L122 34 L138 68 L122 60 Z', role: 'accent' },
+    { d: GUNKO_ARROWHEAD, role: 'accent' },
     shadow(96, 190, 26),
   ],
 
@@ -692,7 +707,7 @@ export const elbafRedrawn: Redrawings = {
   // slack in a loose ring at its foot, every link whole, and the one chain
   // left on him, to the shackle on his left ankle, runs taut out of the
   // picture. He is freed of all but that one in 1171 (ch. 1141).
-  loki: [
+  'loki': [
     {
       episode: 1171,
       chapter: 1141,
@@ -712,6 +727,26 @@ export const elbafRedrawn: Redrawings = {
         },
         ...LOKI_CUFF,
         { d: 'M-4 150 H12 M140 150 H164', role: 'ambient', dashed: true },
+      ],
+    },
+  ],
+  // He drops his axes to yield, one already on the branch, the other still
+  // tumbling from his hand, and Gunko's arrows send him over its edge: the
+  // dashed line is his fall into the Underworld. The page leaves his fate
+  // open, from 1179 (ch. 1149).
+  'scopper-gaban': [
+    {
+      episode: 1179,
+      chapter: 1149,
+      value: [
+        { d: 'M0 178 H100 Q114 178 116 190 V200' },
+        { d: 'M106 188 l6 -6 M106 199 l8 -8', role: 'ambient' },
+        ...moved(GABAN_AXE, 'translate(58 120) rotate(-62) scale(0.7)'),
+        ...moved(GABAN_AXE, 'translate(54 169) rotate(-90) scale(0.62)'),
+        ...moved(GUNKO_ARROW, 'translate(116 52) rotate(-28)'),
+        ...moved(GUNKO_ARROW, 'translate(137 62) rotate(-28)'),
+        ...moved(GUNKO_ARROW, 'translate(126 90) rotate(-28)'),
+        { d: 'M142 128 Q154 160 148 198', role: 'ambient', dashed: true },
       ],
     },
   ],
