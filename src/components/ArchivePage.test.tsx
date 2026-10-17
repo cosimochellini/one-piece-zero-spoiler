@@ -37,4 +37,16 @@ describe('ArchivePage', () => {
 
     expect(main).toHaveAttribute('id', 'content')
   })
+
+  it('leaves the count out when it is not given', () => {
+    renderWithProviders(
+      <ArchivePage title="Devil fruits">
+        <p>the wall</p>
+      </ArchivePage>,
+    )
+
+    const head = screen.getByRole('heading', { level: 1 }).parentElement
+
+    expect(head?.children).toHaveLength(1)
+  })
 })

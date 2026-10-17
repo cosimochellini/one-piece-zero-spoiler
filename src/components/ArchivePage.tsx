@@ -12,7 +12,8 @@ import { color, font, leading, space, text } from '~/styles/tokens.stylex'
  */
 export interface ArchivePageProps {
   children: ReactNode
-  count: string
+  /** Left out when the listing says its own number, as the fog wall does. */
+  count?: string | undefined
   title: string
 }
 
@@ -39,7 +40,9 @@ export function ArchivePage({
         {...stylex.props(styles.head, settleStyles.band, settleStyles.at(0))}
       >
         <h1 {...stylex.props(styles.title)}>{title}</h1>
-        <p {...stylex.props(styles.count)}>{count}</p>
+        {count === undefined ? null : (
+          <p {...stylex.props(styles.count)}>{count}</p>
+        )}
       </header>
 
       <div {...stylex.props(settleStyles.band, settleStyles.at(1))}>

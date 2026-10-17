@@ -119,7 +119,7 @@ export function SpecimenBands({
 }
 
 /** One plate: its label, its heading, its open tiles and its fog band. */
-function Plate({
+export function Plate({
   band,
   fieldId,
   index,
