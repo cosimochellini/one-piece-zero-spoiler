@@ -32,12 +32,13 @@ export interface ControlBarProps {
  * A listing's controls, pinned to the top of the window while the listing
  * scrolls under them.
  *
- * On a wide screen the whole bar pins. On a phone it would take half the
- * screen, so it pins with a negative top that leaves only its last row on
- * screen, the folded row: a search button and the current picks. Nothing in
- * the layout changes when it folds, so nothing under it jumps. Tapping the
- * row, or moving focus into any control, slides the whole bar down over the
- * listing; a pick, focus leaving the bar, or scrolling back up folds it.
+ * On a wide screen the whole bar pins. On a phone, upright or on its side,
+ * it would take half the screen, so it pins with a negative top that leaves
+ * only its last row on screen, the folded row: a search button and the
+ * current picks. Nothing in the layout changes when it folds, so nothing
+ * under it jumps. Tapping the row, or moving focus into any control, slides
+ * the whole bar down over the listing; a pick, focus leaving the bar, or
+ * scrolling back up folds it.
  *
  * The bar has to be its container's first child. It measures itself and
  * writes, on that container, how much of it stays pinned (`STACK_PROPERTY`),
@@ -205,11 +206,15 @@ const styles = stylex.create({
     },
     rowGap: space.sm,
   },
-  // A phone's folded row; never shown where the whole bar pins.
+  // A phone's folded row, a landscape phone's too; never shown where the
+  // whole bar pins, a screen wide and tall enough to spare it.
   row: {
     gap: space.xs,
     alignItems: 'center',
-    display: { 'default': 'flex', '@media (min-width: 40rem)': 'none' },
+    display: {
+      'default': 'flex',
+      '@media (min-width: 40rem) and (min-height: 32rem)': 'none',
+    },
     paddingBlockStart: space.xs,
   },
   rowHidden: { visibility: 'hidden' },

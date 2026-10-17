@@ -83,7 +83,10 @@ export function listen(
   // Focus reaching a control opens the bar; the folded row's two buttons,
   // its own children, do not.
   const onFocusIn = ({ target }: Event): void => {
-    if (target instanceof Element && target.parentElement !== bar.lastChild) {
+    if (
+      target instanceof Element
+      && target.parentElement !== bar.lastElementChild
+    ) {
       setOpen(true)
     }
   }
