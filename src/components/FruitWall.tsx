@@ -3,7 +3,11 @@ import { Fragment, type ReactElement, useId, useRef } from 'react'
 
 import { EpisodeMark } from '~/components/EpisodeMark'
 import { styles as fog, PHASES } from '~/components/FogTile.styles'
-import { Plate, SpecimenBands } from '~/components/SpecimenBands'
+import {
+  Plate,
+  SpecimenBands,
+  type SpecimenBandsProps,
+} from '~/components/SpecimenBands'
 import { useT } from '~/i18n/LocaleContext'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
 import type { FruitBandView, FruitView } from '~/lib/view/records'
@@ -17,12 +21,20 @@ import {
   text,
 } from '~/styles/tokens.stylex'
 
-/** What the fruits page is built from: the plates, the count, the peek. */
+/**
+ * What the fruits page is built from: the plates, the count, the peek, and
+ * the picks the album reads from the address.
+ */
 export interface FruitsAlbumProps {
   bands: FruitBandView[]
   filed: number
+  onParams: SpecimenBandsProps['onParams']
+  params: SpecimenBandsProps['params']
   peek: (handle: string) => Promise<FruitView>
 }
+
+/** The wall never reads the picks. */
+type FruitWallProps = Omit<FruitsAlbumProps, 'onParams' | 'params'>
 
 /**
  * The fruits page under its heading: the album for a reader with a bookmark
@@ -36,6 +48,8 @@ export interface FruitsAlbumProps {
 export function FruitsAlbum({
   bands,
   filed,
+  onParams,
+  params,
   peek,
 }: FruitsAlbumProps): ReactElement {
   const { bookmark } = useBookmark()
@@ -73,6 +87,8 @@ export function FruitsAlbum({
     >
       <SpecimenBands
         bands={bands}
+        onParams={onParams}
+        params={params}
         peek={peek}
       />
     </div>
@@ -87,10 +103,11 @@ export function FruitsAlbum({
  * The fog is `FogTile`'s, two drifting banks, and the same for every fruit
  * because it stands for none of them. Under the wall the covered tiles stay
  * on the page, closed behind a disclosure, so "Show anyway" still works for
- * a reader who does not want a bookmark. There is no search: with no
- * bookmark nothing is open, and search only finds open fruits.
+ * a reader who does not want a bookmark. There is no control bar: with no
+ * bookmark nothing is open, search only finds open fruits and every chip
+ * would read 0. The address's view, kind and query wait for the album.
  */
-function FruitWall({ bands, filed, peek }: FruitsAlbumProps): ReactElement {
+function FruitWall({ bands, filed, peek }: FruitWallProps): ReactElement {
   const t = useT()
   const id = useId()
 

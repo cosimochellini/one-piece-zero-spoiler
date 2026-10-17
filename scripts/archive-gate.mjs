@@ -50,9 +50,13 @@ const WORST_CHUNKS = 5
  * growth, not for a saga. Raised from 520 KB to 530 KB on 2026-10-12, when
  * main stood at ~517 KB and the bookmark dialog redesign added ~4.5 KB of its
  * own code. Raised to 540 KB on 2026-10-17, when main stood at ~529 KB and the
- * living fog tile of the fruits redesign (#661) added ~4.4 KB.
+ * living fog tile of the fruits redesign (#661) added ~4.4 KB. Raised to
+ * 545 KB on 2026-10-17, when main stood at ~536.4 KB and the fruits control
+ * bar (#663) added ~7.8 KB: the generic segmented control and chip group, the
+ * pinned bar that folds on a phone, and the search params in the address.
+ * 545 KB is the ceiling the owner set for this raise.
  */
-export const MAX_CLIENT_BYTES = 540_000
+export const MAX_CLIENT_BYTES = 545_000
 
 /** Where the prose lives: every saga, the ship's log and the filler guide. */
 const PROSE_DIR = 'src/data/records'

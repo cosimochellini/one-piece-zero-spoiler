@@ -1,7 +1,9 @@
 import { screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { describe, expect, it } from 'vitest'
+import { type ReactElement, useState } from 'react'
+import { describe, expect, it, vi } from 'vitest'
 
+import type { FruitParams } from '~/lib/search/fruitParams'
 import {
   coveredRecord,
   drawing,
@@ -12,7 +14,34 @@ import {
 } from '~/test/fixtures'
 import { ep, renderWithProviders } from '~/test/providers'
 
-import { SpecimenBands } from './SpecimenBands'
+import { SpecimenBands, type SpecimenBandsProps } from './SpecimenBands'
+
+type AlbumProps = Omit<SpecimenBandsProps, 'onParams' | 'params'> & {
+  initial?: FruitParams
+  onParams?: SpecimenBandsProps['onParams']
+}
+
+const NO_PARAMS: FruitParams = {}
+
+/** The album with its picks held in state, as the route holds them in the address. */
+function Album({
+  initial = NO_PARAMS,
+  onParams,
+  ...props
+}: AlbumProps): ReactElement {
+  const [params, setParams] = useState(initial)
+
+  return (
+    <SpecimenBands
+      {...props}
+      onParams={(next, replace) => {
+        setParams(next)
+        onParams?.(next, replace)
+      }}
+      params={params}
+    />
+  )
+}
 
 const GUM = specimen({ id: 'gum-gum-fruit', name: 'Gum-Gum Fruit' })
 const CHOP = specimen({ id: 'chop-chop-fruit', name: 'Chop-Chop Fruit' })
@@ -43,7 +72,7 @@ const BANDS = [
 describe('SpecimenBands', () => {
   it('sets out one plate per kind, each labelled and counted', () => {
     renderWithProviders(
-      <SpecimenBands
+      <Album
         bands={BANDS}
         peek={peekTo(GUM)}
       />,
@@ -75,7 +104,7 @@ describe('SpecimenBands', () => {
 
   it('counts every open fruit across the three plates', async () => {
     renderWithProviders(
-      <SpecimenBands
+      <Album
         bands={BANDS}
         peek={peekTo(GUM)}
       />,
@@ -89,7 +118,7 @@ describe('SpecimenBands', () => {
 
   it('filters the open tiles and leaves the fog exactly where it was', async () => {
     renderWithProviders(
-      <SpecimenBands
+      <Album
         bands={BANDS}
         peek={peekPending()}
       />,
@@ -115,7 +144,7 @@ describe('SpecimenBands', () => {
 
   it('finds a fruit by an eater’s name and shows that eater, marked', async () => {
     renderWithProviders(
-      <SpecimenBands
+      <Album
         bands={BANDS}
         peek={peekPending()}
       />,
@@ -140,7 +169,7 @@ describe('SpecimenBands', () => {
 
   it('keeps the first eater, unmarked, for a name only the other locale uses', async () => {
     renderWithProviders(
-      <SpecimenBands
+      <Album
         bands={BANDS}
         peek={peekPending()}
       />,
@@ -159,7 +188,7 @@ describe('SpecimenBands', () => {
 
   it('numbers a covered tile on from the open ones above it', () => {
     renderWithProviders(
-      <SpecimenBands
+      <Album
         bands={BANDS}
         peek={peekTo(GUM)}
       />,
@@ -174,7 +203,7 @@ describe('SpecimenBands', () => {
 
   it('keeps a covered tile’s number while the reader types', async () => {
     renderWithProviders(
-      <SpecimenBands
+      <Album
         bands={BANDS}
         peek={peekPending()}
       />,
@@ -192,7 +221,7 @@ describe('SpecimenBands', () => {
 
   it('says so when a plate has nothing under fog', () => {
     renderWithProviders(
-      <SpecimenBands
+      <Album
         bands={BANDS}
         peek={peekTo(GUM)}
       />,
@@ -211,7 +240,7 @@ describe('SpecimenBands', () => {
       visual: { strokes: [], tint: 'red', deferred: true },
     })
     renderWithProviders(
-      <SpecimenBands
+      <Album
         bands={[fruitBand({ form: 'paramecia', open: [GUM, later], total: 2 })]}
         peek={peekTo(GUM)}
       />,
@@ -234,5 +263,98 @@ describe('SpecimenBands', () => {
     expect(
       screen.queryByRole('link', { name: /^Gum-Gum Fruit/u }),
     ).not.toBeInTheDocument()
+  })
+
+  it('gives each kind a chip with its open fruits, and the status the same total', async () => {
+    const onParams = vi.fn<SpecimenBandsProps['onParams']>()
+    const user = userEvent.setup()
+    renderWithProviders(
+      <Album
+        bands={BANDS}
+        onParams={onParams}
+        peek={peekTo(GUM)}
+      />,
+      { bookmark: ep(650) },
+    )
+
+    const chips = screen.getByRole('group', { name: 'Fruit type' })
+
+    // Open fruits only: the covered Logia never adds to a count.
+    expect(within(chips).getByRole('radio', { name: 'All 3' })).toBeChecked()
+    expect(
+      within(chips).getByRole('radio', { name: 'Paramecia 2' }),
+    ).not.toBeChecked()
+    expect(
+      within(chips).getByRole('radio', { name: 'Zoan 0' }),
+    ).toBeInTheDocument()
+    expect(
+      within(chips).getByRole('radio', { name: 'Logia 1' }),
+    ).toBeInTheDocument()
+
+    await user.click(within(chips).getByRole('radio', { name: 'Paramecia 2' }))
+
+    expect(onParams).toHaveBeenLastCalledWith({ form: 'paramecia' }, false)
+    expect(
+      screen.getByRole('region', { name: 'Paramecia' }),
+    ).toBeInTheDocument()
+    expect(
+      screen.queryByRole('region', { name: 'Logia' }),
+    ).not.toBeInTheDocument()
+
+    const filtered = await screen.findByText('Showing 2 of 2 open fruits')
+
+    expect(filtered).toBeInTheDocument()
+
+    await user.type(screen.getByRole('searchbox'), 'gum')
+
+    expect(onParams).toHaveBeenLastCalledWith(
+      { form: 'paramecia', q: 'gum' },
+      true,
+    )
+
+    const found = await screen.findByText('Showing 1 of 2 open fruits')
+
+    expect(found).toBeInTheDocument()
+
+    await user.click(within(chips).getByRole('radio', { name: 'All 3' }))
+
+    expect(onParams).toHaveBeenLastCalledWith({ q: 'gum' }, false)
+  })
+
+  it('opens straight onto the kind the address names, and keeps its number', () => {
+    renderWithProviders(
+      <Album
+        bands={BANDS}
+        initial={{ form: 'logia' }}
+        peek={peekTo(GUM)}
+      />,
+      { bookmark: ep(650) },
+    )
+
+    expect(screen.getByRole('radio', { name: 'Logia 1' })).toBeChecked()
+    expect(screen.getByRole('region', { name: 'Logia' })).toBeInTheDocument()
+    expect(
+      screen.queryByRole('region', { name: 'Paramecia' }),
+    ).not.toBeInTheDocument()
+    expect(screen.getByText(/Group 03 · 2 fruits/u)).toBeInTheDocument()
+  })
+
+  it('offers the one view as a named group, and sums up the picks for a phone', () => {
+    renderWithProviders(
+      <Album
+        bands={BANDS}
+        initial={{ form: 'zoan', q: 'gum' }}
+        peek={peekTo(GUM)}
+      />,
+      { bookmark: ep(650) },
+    )
+
+    const view = screen.getByRole('group', { name: 'Group by' })
+
+    expect(within(view).getByRole('radio', { name: 'Type' })).toBeChecked()
+    expect(within(view).getAllByRole('radio')).toHaveLength(1)
+    expect(
+      screen.getByRole('button', { name: 'Filters. Type · Zoan · “gum”' }),
+    ).toHaveAttribute('aria-expanded', 'false')
   })
 })

@@ -41,6 +41,15 @@ export const styles = stylex.create({
     display: 'grid',
   },
 
+  // The view switch and the kind chips, side by side while they fit.
+  choices: {
+    gap: space.sm,
+    alignItems: 'center',
+    display: 'flex',
+    flexWrap: 'wrap',
+    minWidth: 0,
+  },
+
   plate: {
     gap: { 'default': space.md, '@media (min-width: 40rem)': space.lg },
     borderBlockStartColor: color.rule,
