@@ -17,13 +17,20 @@ describe('parseFruitParams', () => {
     expect(parseFruitParams({ view: 'type' })).toStrictEqual({})
   })
 
+  it('keeps the faction view', () => {
+    expect(parseFruitParams({ view: 'faction', q: 'ace' })).toStrictEqual({
+      view: 'faction',
+      q: 'ace',
+    })
+  })
+
   it('leaves out the defaults and anything it does not know', () => {
     expect(parseFruitParams({})).toStrictEqual({})
     expect(
       parseFruitParams({ view: 'type', form: 'all', q: '  ' }),
     ).toStrictEqual({})
     expect(
-      parseFruitParams({ view: 'faction', form: 'fish', q: ['a', 'b'] }),
+      parseFruitParams({ view: 'colour', form: 'fish', q: ['a', 'b'] }),
     ).toStrictEqual({})
   })
 

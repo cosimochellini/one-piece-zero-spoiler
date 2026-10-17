@@ -67,9 +67,15 @@ const WORST_CHUNKS = 5
  * view switch's second option, the marquee's link to the whole saga, the
  * page's line for the saga view and their words in both dictionaries. The
  * grouping itself is the server's. Again the measured build plus ~1 KB,
- * under the 558 KB allowed for this raise.
+ * under the 558 KB allowed for this raise. Raised to 557.75 KB on 2026-10-17,
+ * when main stood at ~554.7 KB and the faction view (#667) added ~2.1 KB: the
+ * view switch's third option, the eater a faction's tile shows, the second
+ * copy of a fruit kept from travelling, and the view's words in both
+ * dictionaries. The grouping itself is the server's, and the saga view's
+ * groups became the generic ones both views draw. Again the measured build
+ * plus ~1 KB, under the 562 KB allowed for this raise.
  */
-export const MAX_CLIENT_BYTES = 555_750
+export const MAX_CLIENT_BYTES = 557_750
 
 /** Where the prose lives: every saga, the ship's log and the filler guide. */
 const PROSE_DIR = 'src/data/records'

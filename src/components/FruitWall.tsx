@@ -28,11 +28,12 @@ import {
 } from '~/styles/tokens.stylex'
 
 /**
- * What the fruits page is built from: the plates, the sagas, the count, the
- * marquee, the peek, and the picks the album reads from the address.
+ * What the fruits page is built from: the plates, the sagas, the factions,
+ * the count, the marquee, the peek, and the picks the album reads from the address.
  */
 export interface FruitsAlbumProps {
   bands: FruitBandView[]
+  factions?: SpecimenBandsProps['factions']
   filed: number
   later: SpecimenBandsProps['later']
   marquee: FruitMarqueeView | null
@@ -58,12 +59,11 @@ type FruitWallProps = Pick<FruitsAlbumProps, 'bands' | 'filed' | 'peek'>
 export function FruitsAlbum({
   bands,
   filed,
-  later,
   marquee,
-  onParams,
   params,
   peek,
   sagas,
+  ...groups
 }: FruitsAlbumProps): ReactElement {
   const { bookmark } = useBookmark()
   const fromWallRef = useRef(false)
@@ -109,11 +109,10 @@ export function FruitsAlbum({
       />
       <SpecimenBands
         bands={bands}
-        later={later}
-        onParams={onParams}
         params={params}
         peek={peek}
         sagas={sagas}
+        {...groups}
       />
     </div>
   )

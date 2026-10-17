@@ -299,6 +299,8 @@ export const itDictionary: Dictionary = {
     '{count} frutti del diavolo, divisi per tipo e nell’ordine in cui la storia li nomina. Quelli nella nebbia non compaiono nei risultati della ricerca.',
   'fruits.countSaga':
     '{count} frutti del diavolo, divisi per saga e nell’ordine in cui la storia li nomina. Quelli nella nebbia non compaiono nei risultati della ricerca.',
+  'fruits.countFaction':
+    '{count} frutti del diavolo, divisi per la fazione di chi li ha mangiati, al punto del tuo segnalibro. Un frutto sta sotto ognuna delle loro fazioni. Quelli nella nebbia non compaiono nei risultati della ricerca.',
   'fruits.pageTitle': 'Frutti del diavolo | Zero Spoiler',
   'fruits.pageDescription':
     'I frutti del diavolo di One Piece, ognuno nascosto fino all’episodio in cui viene nominato per la prima volta.',
@@ -310,6 +312,7 @@ export const itDictionary: Dictionary = {
   'fruits.view.legend': 'Raggruppa per',
   'fruits.view.type': 'Tipo',
   'fruits.view.saga': 'Saga',
+  'fruits.view.faction': 'Fazione',
   'fruits.form.legend': 'Tipo di frutto',
   'fruits.form.all': 'Tutti',
   'fruits.shown': 'Risultati: {count} su {total} frutti visibili',
@@ -338,6 +341,8 @@ export const itDictionary: Dictionary = {
   'fruits.laterOne': '1 frutto di una saga successiva, nella nebbia',
   'fruits.laterAllOpen':
     'Qui nessun frutto delle saghe successive è nella nebbia.',
+  'fruits.noFaction': 'Ancora senza fazione',
+  'fruits.noneFogged': 'Qui niente è nella nebbia.',
   'fruits.lastFruit.episode':
     'L’ultimo è stato il {name}, nell’episodio {threshold}.',
   'fruits.lastFruit.season': 'L’ultimo è stato il {name}, in {threshold}.',

@@ -48,15 +48,19 @@ export function FruitArt({
 /**
  * An open fruit's drawing: asked for once it nears the screen, and named for
  * the move to the fruit's page while it is the fruit travelling (or `always`).
+ * A second drawing of the fruit on the page passes `morph={false}`: a name
+ * may be on one element of a page only.
  */
 export function OpenArt({
   always,
+  morph = true,
   record,
 }: {
   always: boolean
+  morph?: boolean
   record: FruitView
 }): ReactElement {
-  const travels = useTravels('fruit', record.id) || always
+  const travels = (useTravels('fruit', record.id) && morph) || always
   const { ref, strokes } = useDrawing(record.id, record.visual)
 
   return (
