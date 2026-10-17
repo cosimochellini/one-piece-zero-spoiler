@@ -72,7 +72,7 @@ export function watch(
 }
 
 /**
- * Opens the bar when focus moves into a control (its first child), folds it
+ * Opens the bar when focus moves into a control, folds it
  * when focus leaves the bar, and settles it after a pick.
  */
 export function listen(
@@ -80,17 +80,14 @@ export function listen(
   read: () => { pinned: boolean; tuck: number },
   setOpen: (open: boolean) => void,
 ): () => void {
-  const onFocusIn = (event: Event): void => {
-    const controls = bar.firstElementChild
-    if (
-      event.target instanceof Node
-      && controls?.contains(event.target) === true
-    ) {
+  // Focus reaching a control opens the bar; the folded row's two buttons,
+  // its own children, do not.
+  const onFocusIn = ({ target }: Event): void => {
+    if (target instanceof Element && target.parentElement !== bar.lastChild) {
       setOpen(true)
     }
   }
-  // A press inside the bar is not focus leaving it, even where the tapped
-  // button takes no focus (iOS Safari), so the toggle's own tap decides.
+  // A press inside the bar is not focus leaving it (an iOS tap takes none).
   let pressed = false
   const onFocusOut = (event: Event): void => {
     const next = event instanceof FocusEvent ? event.relatedTarget : null
@@ -98,11 +95,11 @@ export function listen(
       setOpen(false)
     }
   }
-  // A pick made with the arrow keys keeps the bar open and focus on the
-  // group, so the next arrow steps on; a tap folds it.
+  // A pick made with an arrow key (not a letter typed in the field) keeps
+  // the bar open and focus on the group, so the next arrow steps on.
   let keyed = false
   const onInput = (event: Event): void => {
-    keyed = event.type === 'keydown'
+    keyed = event instanceof KeyboardEvent && event.key.startsWith('Arrow')
     pressed = event.type === 'pointerdown'
   }
   const onRelease = (): void => {
@@ -120,6 +117,7 @@ export function listen(
     if (pinned) {
       settle(bar, tuck, !keyed)
     }
+    keyed = false
   }
   const listeners: [EventTarget, string, (event: Event) => void][] = [
     [bar, 'focusin', onFocusIn],

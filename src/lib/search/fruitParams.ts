@@ -32,16 +32,16 @@ function isForm(value: unknown): value is FruitForm {
  * The parameters a query string names, each one checked: an unknown value
  * falls back to its default, which is to say it is left out.
  *
- * The router parses `?q=123` into a number, so a number is read back as the
- * text it was typed as.
+ * A query the field typed always comes back as text: the router quotes a
+ * string that would parse as something else. A hand-written `?q=123` is
+ * parsed into a number and left out, like any other value that is not text.
  */
 export function parseFruitParams(search: Record<string, unknown>): FruitParams {
   const { form, q } = search
-  const query = typeof q === 'number' ? String(q) : q
 
   return fruitParams(
     isForm(form) ? form : 'all',
-    typeof query === 'string' ? query : '',
+    typeof q === 'string' ? q : '',
   )
 }
 

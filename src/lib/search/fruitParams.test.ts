@@ -19,9 +19,10 @@ describe('parseFruitParams', () => {
     ).toStrictEqual({})
   })
 
-  it('reads a numeric query back as text, and never the bookmark', () => {
+  it('never reads the bookmark, nor a query that is not text', () => {
     expect(parseFruitParams({ q: 123, ep: 650, s: 2, ch: 1044 })).toStrictEqual(
-      { q: '123' },
+      {},
     )
+    expect(parseFruitParams({ q: '123' })).toStrictEqual({ q: '123' })
   })
 })

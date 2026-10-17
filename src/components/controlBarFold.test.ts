@@ -123,11 +123,30 @@ describe('the control bar’s folding', () => {
     const stop = listen(bar, () => ({ pinned: true, tuck: 300 }), setOpen)
 
     radio.focus()
-    radio.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true }))
+    radio.dispatchEvent(
+      new KeyboardEvent('keydown', { bubbles: true, key: 'ArrowRight' }),
+    )
     radio.dispatchEvent(new Event('change', { bubbles: true }))
 
     expect(setOpen).not.toHaveBeenCalledWith(false)
     expect(toggle).not.toHaveFocus()
+
+    stop()
+  })
+
+  it('folds after a pick with no pointer when the last key was not an arrow', () => {
+    const { bar, radio } = mountBar()
+    const setOpen = vi.fn<(open: boolean) => void>()
+    vi.stubGlobal('scrollTo', vi.fn<() => void>())
+    const stop = listen(bar, () => ({ pinned: true, tuck: 300 }), setOpen)
+
+    // A letter typed in the search field, then a screen reader's activation.
+    radio.dispatchEvent(
+      new KeyboardEvent('keydown', { bubbles: true, key: 'g' }),
+    )
+    radio.dispatchEvent(new Event('change', { bubbles: true }))
+
+    expect(setOpen).toHaveBeenLastCalledWith(false)
 
     stop()
   })
