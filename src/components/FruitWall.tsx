@@ -3,6 +3,7 @@ import { Fragment, type ReactElement, useId, useRef } from 'react'
 
 import { EpisodeMark } from '~/components/EpisodeMark'
 import { styles as fog, PHASES } from '~/components/FogTile.styles'
+import { SagaMarquee } from '~/components/SagaMarquee'
 import {
   Plate,
   SpecimenBands,
@@ -10,7 +11,11 @@ import {
 } from '~/components/SpecimenBands'
 import { useT } from '~/i18n/LocaleContext'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
-import type { FruitBandView, FruitView } from '~/lib/view/records'
+import type {
+  FruitBandView,
+  FruitMarqueeView,
+  FruitView,
+} from '~/lib/view/records'
 import {
   color,
   font,
@@ -22,23 +27,25 @@ import {
 } from '~/styles/tokens.stylex'
 
 /**
- * What the fruits page is built from: the plates, the count, the peek, and
- * the picks the album reads from the address.
+ * What the fruits page is built from: the plates, the count, the marquee,
+ * the peek, and the picks the album reads from the address.
  */
 export interface FruitsAlbumProps {
   bands: FruitBandView[]
   filed: number
+  marquee: FruitMarqueeView | null
   onParams: SpecimenBandsProps['onParams']
   params: SpecimenBandsProps['params']
   peek: (handle: string) => Promise<FruitView>
 }
 
-/** The wall never reads the picks. */
-type FruitWallProps = Omit<FruitsAlbumProps, 'onParams' | 'params'>
+/** The wall never reads the picks, and has no marquee. */
+type FruitWallProps = Omit<FruitsAlbumProps, 'marquee' | 'onParams' | 'params'>
 
 /**
- * The fruits page under its heading: the album for a reader with a bookmark
- * (a trial point counts), the wall of fog for one without.
+ * The fruits page under its heading: the saga marquee over the album for a
+ * reader with a bookmark (a trial point counts), the wall of fog for one
+ * without.
  *
  * Saving a bookmark from the wall re-reads the page and the wall goes, with
  * the button the native dialog had handed focus back to. Focus then moves to
@@ -48,6 +55,7 @@ type FruitWallProps = Omit<FruitsAlbumProps, 'onParams' | 'params'>
 export function FruitsAlbum({
   bands,
   filed,
+  marquee,
   onParams,
   params,
   peek,
@@ -85,6 +93,10 @@ export function FruitsAlbum({
       tabIndex={-1}
       {...stylex.props(styles.album)}
     >
+      <SagaMarquee
+        bands={bands}
+        marquee={marquee}
+      />
       <SpecimenBands
         bands={bands}
         onParams={onParams}
@@ -204,7 +216,11 @@ const TARGET = '44px'
 const styles = stylex.create({
   // Only ever focused from code, after a save from the wall: no ring round
   // the whole album.
-  album: { outlineStyle: 'none' },
+  album: {
+    gap: { 'default': space.xl, '@media (min-width: 40rem)': space.xl2 },
+    display: 'grid',
+    outlineStyle: 'none',
+  },
   stack: {
     gap: { 'default': space.xl, '@media (min-width: 40rem)': space.xl2 },
     display: 'grid',

@@ -35,6 +35,7 @@ const ELDER_ROLE = {
 }
 
 export const egghead: Saga = {
+  name: { it: 'Saga di Egghead', en: 'Egghead Saga' },
   entries: [
     {
       id: 'egghead',

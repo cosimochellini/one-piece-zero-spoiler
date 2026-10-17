@@ -12,6 +12,7 @@ const STRAW_HATS = {
 }
 
 export const thrillerBark: Saga = {
+  name: { it: 'Saga di Thriller Bark', en: 'Thriller Bark Saga' },
   entries: [
     {
       id: 'thriller-bark-arc',

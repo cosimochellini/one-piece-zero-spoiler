@@ -27,6 +27,7 @@ function WALRUS_SCHOOL(it: string, en: string): LocalizedText {
 }
 
 export const elbaf: Saga = {
+  name: { it: 'Saga di Elbaf', en: 'Elbaph Saga' },
   entries: [
     // Elbaph, not Elbaf, in English: the anime (Crunchyroll), VIZ and the
     // wiki all spell it with the ph. The Italian edition writes Elbaf, which

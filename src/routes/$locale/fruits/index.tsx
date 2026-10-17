@@ -1,10 +1,14 @@
 /* Hallmark · pre-emit critique: P5 H4 E4 S5 R5 V4 */
-/* Hallmark · genre: atmospheric · macrostructure: Portfolio Grid · theme: Sea
+/* Hallmark · genre: atmospheric · macrostructure: saga marquee over a
+ *   Portfolio Grid · theme: Sea
  *   Chart (locked) · enrichment: Tier B hand-built SVG (a grown drawing for
  *   every fruit, eleven of them drawn by hand) · nav: N9 edge-aligned (shared)
  * · footer: Ft4 colophon (shared)
- * · idea: "an album — a pinned control bar (search, view, kind chips, all
- *   in the address; on a phone it folds to one row once you scroll) over
+ * · idea: "the saga you are watching first, its name in gold and a rail
+ *   of its fruits so far that snaps as it scrolls, the latest one large in a
+ *   glow of its own tint; then an album — a pinned control bar (search,
+ *   view, kind chips, all in the address; on a phone it folds to one row
+ *   once you scroll) over
  *   three plates of tiles, the drawing big, who ate it
  *   under the name, two across on a phone, and the fog keeps its place at
  *   the foot of each plate as tiles of drifting fog that clear on a peek
@@ -13,8 +17,10 @@
  *   the plates closed behind a disclosure under it"
  * · motion: fog drift (transform/opacity, paused off-screen, the wall's
  *   bank too), fog clear
- *   420ms, stroke draw-in once; reduced motion → still fog, 150ms crossfade
- * · differs from the previous build (Specimen) on macrostructure; theme is
+ *   420ms, stroke draw-in once (a lifted tile, and the marquee's lead on
+ *   arrival); reduced motion → still fog, no draw-in, 150ms crossfade
+ * · differs from the previous build (Specimen) on macrostructure: the
+ *   saga marquee is the hero the album lacked; theme is
  *   the project's locked system and does not rotate */
 import { createFileRoute } from '@tanstack/react-router'
 import type { ReactElement } from 'react'
@@ -57,8 +63,10 @@ export const Route = createFileRoute('/$locale/fruits/')({
 /**
  * The devil fruits page (Hallmark macrostructure 18, Portfolio Grid).
  *
- * An album: the brand line and a count, then three plates — Paramecia, Zoan,
- * Logia — each a pinned head over a grid of tiles. A tile is the drawing,
+ * The saga the reader is watching leads (`SagaMarquee`): its name, its open
+ * fruits so far as a rail of large tiles, the latest first. Then an album:
+ * the brand line and a count, then three plates — Paramecia, Zoan, Logia —
+ * each a pinned head over a grid of tiles. A tile is the drawing,
  * large, and the name, as one link; under them the eater the reader has
  * reached, as a link of their own, and the kind. Two across on a phone, up
  * to six on a wide page. The sentence is the fruit page's.
@@ -79,7 +87,7 @@ export const Route = createFileRoute('/$locale/fruits/')({
 function FruitsPage(): ReactElement {
   const t = useT()
   const { bookmark } = useBookmark()
-  const { bands, filed } = Route.useLoaderData()
+  const { bands, filed, marquee } = Route.useLoaderData()
 
   const peek = usePeek(liftFruit)
   const [params, onParams] = useFruitParams()
@@ -94,6 +102,7 @@ function FruitsPage(): ReactElement {
       <FruitsAlbum
         bands={bands}
         filed={filed}
+        marquee={marquee}
         onParams={onParams}
         params={params}
         peek={peek}

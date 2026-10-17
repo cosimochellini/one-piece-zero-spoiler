@@ -322,6 +322,14 @@ export const enDictionary = {
   'fruits.wall.title': '{count} devil fruits are under fog',
   'fruits.wall.ask': 'Which episode are you on?',
   'fruits.wall.browse': 'Browse anyway',
+  'fruits.marquee': '{saga}: {count} fruits so far',
+  'fruits.marqueeOne': '{saga}: 1 fruit so far',
+  'fruits.marqueeNone': 'No new fruit in this saga yet.',
+  'fruits.lastFruit.episode':
+    'The last one was the {name}, episode {threshold}.',
+  'fruits.lastFruit.season': 'The last one was the {name}, {threshold}.',
+  'fruits.lastFruit.chapter':
+    'The last one was the {name}, chapter {threshold}.',
   'fruits.moreEaters': 'and {count} more characters who ate it',
   'fruits.moreEatersOne': 'and 1 more character who ate it',
 
