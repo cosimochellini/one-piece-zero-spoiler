@@ -1,7 +1,10 @@
 import type { FruitForm } from '~/lib/view/records'
 
-/** How the album groups its fruits: by kind, or by the saga they came in. */
-export type AlbumView = 'saga' | 'type'
+/**
+ * How the album groups its fruits: by kind, by the saga they came in, or by
+ * the faction their eaters stand in.
+ */
+export type AlbumView = 'faction' | 'saga' | 'type'
 
 /**
  * The fruits page's own search parameters: the view, the kind and the query.
@@ -9,8 +12,7 @@ export type AlbumView = 'saga' | 'type'
  * A key is left out when it holds its default (the Type view, every kind, no
  * query), so the plain address stays plain and a link to the page needs no
  * `search` of its own. The names stay clear of the bookmark's `ep`, `s` and
- * `ch` (`src/lib/progress/linkBookmark.ts`). The faction view (#667) joins
- * `view` here.
+ * `ch` (`src/lib/progress/linkBookmark.ts`).
  */
 export interface FruitParams {
   form?: FruitForm
@@ -41,7 +43,7 @@ export function parseFruitParams(search: Record<string, unknown>): FruitParams {
   const { form, q, view } = search
 
   return fruitParams({
-    view: view === 'saga' ? view : 'type',
+    view: view === 'saga' || view === 'faction' ? view : 'type',
     form: isForm(form) ? form : 'all',
     query: typeof q === 'string' ? q : '',
   })

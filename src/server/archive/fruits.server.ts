@@ -1,14 +1,18 @@
-import { type Eater, eatersOf } from '~/data/dated'
+import { type Eater, eatersOf, factionsOf } from '~/data/dated'
 import { fruitFormOf, fruits, fruitsOfForm, getFruit } from '~/data/fruits'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
+import { getDictionary } from '~/i18n/translate'
 import { absoluteEpisodeOf, type Bookmark } from '~/lib/progress/episode'
 import type {
   CharacterView,
   DocumentHead,
+  Faction,
   FruitBandView,
   FruitDetail,
   FruitEatersView,
+  FruitFactionRef,
+  FruitFactionView,
   FruitForm,
   FruitMarqueeView,
   FruitSagaView,
@@ -192,8 +196,82 @@ function sagasOf(
 }
 
 /**
+ * The faction view: every open fruit under the faction of each of its open
+ * eaters, as the latest affiliation entry the reader has reached tags them,
+ * and under every faction an entry names. A fruit two eaters put in one group
+ * is one ref there, naming both. An open eater with no entry reached yet goes
+ * to the `null` group, which comes last; the rest by size, then by name in
+ * the reader's language. Covered fruits and covered eaters are not here at
+ * all, so a faction only a covered eater stands in is never named. Refs
+ * only, like the saga view's; empty with no bookmark.
+ */
+function factionGroupsOf(r: Reader): FruitFactionView[] {
+  const groups = new Map<Faction | null, FruitFactionRef[]>()
+  const open = r.order(fruits).filter((fruit) => r.sees(fruit))
+
+  for (const fruit of open) {
+    const eaters = openEaters(fruit.id, r)
+    for (const [at, eater] of eaters.entries()) {
+      for (const faction of groupsOfEater(eater, r)) {
+        fileUnder(groups, faction, { id: fruit.id, at })
+      }
+    }
+  }
+
+  return [...groups]
+    .map(([faction, refs]) => ({ faction, open: refs }))
+    .toSorted(byGroup(r.locale))
+}
+
+/** The groups an open eater stands in: their factions, or `null` for none yet. */
+function groupsOfEater(eater: Entity, r: Reader): (Faction | null)[] {
+  const factions = factionsOf(r, eater) ?? []
+
+  return factions.length === 0 ? [null] : factions
+}
+
+/**
+ * Files a fruit under a faction, naming the eater who put it there. The
+ * fruits come in order, so a fruit already there is the group's last.
+ */
+function fileUnder(
+  groups: Map<Faction | null, FruitFactionRef[]>,
+  faction: Faction | null,
+  { at, id }: { at: number; id: string },
+): void {
+  const group = groups.get(faction) ?? []
+  const last = group.at(-1)
+  if (last?.id === id) {
+    last.eaters.push(at)
+  } else {
+    group.push({ id, eaters: [at] })
+  }
+  groups.set(faction, group)
+}
+
+/** No faction last; the rest most fruits first, then by name in this locale. */
+function byGroup(
+  locale: Locale,
+): (a: FruitFactionView, b: FruitFactionView) => number {
+  const dictionary = getDictionary(locale)
+  const label = ({ faction }: FruitFactionView): string =>
+    faction === null ? '' : dictionary[`faction.${faction}`]
+
+  return (a, b) => {
+    const none = Number(a.faction === null) - Number(b.faction === null)
+    if (none !== 0) {
+      return none
+    }
+    const size = b.open.length - a.open.length
+
+    return size === 0 ? label(a).localeCompare(label(b), locale) : size
+  }
+}
+
+/**
  * The specimen sheet: the marquee, three plates, the sagas the bookmark has
- * reached, and how many fruits the archive files.
+ * reached, the factions its open eaters stand in, and how many fruits the
+ * archive files.
  */
 export function fruitSheet(bookmark: Bookmark, locale: Locale): FruitSheetView {
   const r = readerFor(bookmark, locale)
@@ -202,6 +280,7 @@ export function fruitSheet(bookmark: Bookmark, locale: Locale): FruitSheetView {
 
   return {
     bands: PLATES.map((form, plate) => bandOf({ form, lead, plate }, r)),
+    factions: factionGroupsOf(r),
     filed: fruits.length,
     marquee,
     ...sagasOf(bookmark, r),

@@ -11,7 +11,10 @@
  *   a phone it folds to one row once you scroll) over
  *   three plates of tiles, or in the saga view one pinned group per saga
  *   reached, its fog tiles in their place in time and every later saga one
- *   band of fog, the drawing big, who ate it
+ *   band of fog, or in the faction view one pinned group per faction the
+ *   open eaters stand in at the bookmark, a fruit under each of its eaters'
+ *   factions with that eater on the tile, and every covered fruit one band
+ *   of fog, the drawing big, who ate it
  *   under the name, two across on a phone, and the fog keeps its place at
  *   the foot of each plate as tiles of drifting fog that clear on a peek
  *   while the drawing draws itself in; with no bookmark, one wide bank of
@@ -31,8 +34,9 @@ import { ArchivePage } from '~/components/ArchivePage'
 import { FruitsAlbum } from '~/components/FruitWall'
 import { useT } from '~/i18n/LocaleContext'
 import { isLocale } from '~/i18n/locales'
+import type { TranslationKey } from '~/i18n/types'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
-import { parseFruitParams } from '~/lib/search/fruitParams'
+import { type AlbumView, parseFruitParams } from '~/lib/search/fruitParams'
 import { describeNamedPage } from '~/routes/$locale/-head'
 import { usePeek } from '~/routes/$locale/-peek'
 import { useFruitParams } from '~/routes/$locale/fruits/-params'
@@ -62,6 +66,13 @@ export const Route = createFileRoute('/$locale/fruits/')({
   component: FruitsPage,
 })
 
+/** The line under the heading, which says how the view groups the fruits. */
+const COUNT_KEY: Record<AlbumView, TranslationKey> = {
+  faction: 'fruits.countFaction',
+  saga: 'fruits.countSaga',
+  type: 'fruits.count',
+}
+
 /**
  * The devil fruits page (Hallmark macrostructure 18, Portfolio Grid).
  *
@@ -70,7 +81,10 @@ export const Route = createFileRoute('/$locale/fruits/')({
  * the brand line and a count, then three plates — Paramecia, Zoan, Logia —
  * each a pinned head over a grid of tiles. The saga view (`?view=saga`)
  * groups the same tiles by the saga the story names them in instead, up to
- * the bookmark's, with every later saga one band of fog. A tile is the drawing,
+ * the bookmark's, with every later saga one band of fog. The faction view
+ * (`?view=faction`) groups them by the faction each open eater stands in at
+ * the bookmark, a fruit under every one of them, with every covered fruit one
+ * band of fog. A tile is the drawing,
  * large, and the name, as one link; under them the eater the reader has
  * reached, as a link of their own, and the kind. Two across on a phone, up
  * to six on a wide page. The sentence is the fruit page's.
@@ -91,11 +105,12 @@ export const Route = createFileRoute('/$locale/fruits/')({
 function FruitsPage(): ReactElement {
   const t = useT()
   const { bookmark } = useBookmark()
-  const { bands, filed, later, marquee, sagas } = Route.useLoaderData()
+  const { bands, factions, filed, later, marquee, sagas } =
+    Route.useLoaderData()
 
   const peek = usePeek(liftFruit)
   const [params, onParams] = useFruitParams()
-  const countKey = params.view === 'saga' ? 'fruits.countSaga' : 'fruits.count'
+  const countKey = COUNT_KEY[params.view ?? 'type']
 
   return (
     <ArchivePage
@@ -104,6 +119,7 @@ function FruitsPage(): ReactElement {
     >
       <FruitsAlbum
         bands={bands}
+        factions={factions}
         filed={filed}
         later={later}
         marquee={marquee}

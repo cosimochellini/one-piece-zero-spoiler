@@ -370,9 +370,33 @@ export interface FruitSagaView {
   saga: string
 }
 
+/**
+ * An open fruit in one faction's group: its id, and which of its tile's open
+ * eaters put it there, as places in that tile's `eaters`, earliest first.
+ */
+export interface FruitFactionRef extends FruitRef {
+  eaters: number[]
+}
+
+/**
+ * One faction as the faction view groups it: the faction (`null` for the
+ * open eaters with no affiliation reached yet) and its open fruits, in the
+ * reader's order. Only open eaters and the entries the reader has reached
+ * count, so a group no open eater fills is not sent at all.
+ */
+export interface FruitFactionView {
+  faction: Faction | null
+  open: FruitFactionRef[]
+}
+
 /** The specimen sheet: the three plates, and how many fruits are filed. */
 export interface FruitSheetView {
   bands: FruitBandView[]
+  /**
+   * The faction view's groups, most fruits first, then by name, the open
+   * eaters with no faction last. Empty with no bookmark.
+   */
+  factions: FruitFactionView[]
   filed: number
   /**
    * The handles of the covered fruits in sagas past the bookmark, in the

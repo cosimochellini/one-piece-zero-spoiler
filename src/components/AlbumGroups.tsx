@@ -1,29 +1,25 @@
 import * as stylex from '@stylexjs/stylex'
-import type { ReactElement } from 'react'
+import type { ComponentProps, ReactElement } from 'react'
 
+import type { AlbumGroup, AlbumGrouping } from '~/components/albumGrouping'
 import { CatalogueSection } from '~/components/CatalogueSection'
-import { FogBand, type FogTitles } from '~/components/FogBand'
+import { FogBand } from '~/components/FogBand'
 import { FruitTile, OpenTiles } from '~/components/FruitTile'
-import { matchesIn } from '~/components/recordMatches'
+import {
+  type EaterMatch,
+  groupEaterMatch,
+  type Match,
+  matchesIn,
+} from '~/components/recordMatches'
 import { styles } from '~/components/SpecimenBands.styles'
 import { useT } from '~/i18n/LocaleContext'
-import { sagaAnchor } from '~/lib/search/fruitParams'
 import type {
   CoveredRecord,
   FruitBandView,
   FruitForm,
-  FruitSagaView,
   FruitView,
   SpecimenView,
 } from '~/lib/view/records'
-
-/** What the later sagas' band calls itself at each count. */
-const LATER_FOG: FogTitles = {
-  allOpen: 'fruits.laterAllOpen',
-  hint: 'fruits.foggedHint',
-  many: 'fruits.later',
-  one: 'fruits.laterOne',
-}
 
 /** A covered fruit as its plate holds it: the record, its kind, its number. */
 interface CoveredTile {
@@ -32,17 +28,15 @@ interface CoveredTile {
   index: number
 }
 
-/** What the saga view is built from: the plates, the sagas, the picks. */
-export interface SagaGroupsProps {
+/** What a grouped view is built from: the plates, the groups, the picks. */
+export interface AlbumGroupsProps extends AlbumGrouping {
   bands: FruitBandView[]
   fieldId: string
   /** The picked kind, or every kind. */
   form: FruitForm | undefined
-  later: string[]
   /** The query, already folded. Empty matches everything. */
   needle: string
   peek: (handle: string) => Promise<FruitView>
-  sagas: FruitSagaView[]
 }
 
 /** The plates' fruits by ref, and the picked kind, as every group reads them. */
@@ -70,39 +64,49 @@ function pickedOf<T extends { form: FruitForm }>(
 }
 
 /**
- * The saga view: one group per saga the bookmark has reached, in route
- * order, each a pinned heading over its fruits in the order the story names
- * them. The covered ones keep their place in time as fog tiles, after the
- * open ones, which is where the reader's order puts them. Then one band for
- * every covered fruit of the sagas past the bookmark, counted once and never
- * by saga.
+ * A grouped view of the album: the saga view (one group per saga reached, in
+ * route order, each its fruits in the order the story names them, the covered
+ * ones as fog tiles after the open, then one band for every covered fruit of
+ * the sagas past the bookmark, counted once and never by saga) or the
+ * faction view (one group per faction an open eater stands in, then one band
+ * for every covered fruit).
  *
  * The server grouped them, by id and by handle: the records are the plates'.
  * The kind chip filters both runs; the search filters the open tiles only. A
- * covered tile keeps its plate number, so a fruit is the same number in both
- * views.
+ * covered tile keeps its plate number, so a fruit is the same number in every
+ * view.
  */
-export function SagaGroups({
+export function AlbumGroups({
   bands,
   fieldId,
   form,
+  groups,
   later,
   needle,
   peek,
-  sagas,
-}: SagaGroupsProps): ReactElement {
+  words,
+}: AlbumGroupsProps): ReactElement {
   const lookup = { ...byRef(bands), form }
   const laterTiles = pickedOf(form, lookup.covered, later)
+  // A fruit shown in two groups travels from the first one only.
+  const shown = new Set<string>()
 
   return (
     <>
-      {sagas.map((group, at) => {
+      {groups.map((group) => {
+        const matches = matchesOf(group, lookup, needle).map((found) => {
+          const morph = !shown.has(found.entry.id)
+          shown.add(found.entry.id)
+
+          return { ...found, morph }
+        })
+
         return (
-          <SagaGroup
-            key={group.saga}
-            anchor={sagaAnchor(at)}
+          <Group
+            key={group.anchor}
             group={group}
             lookup={lookup}
+            matches={matches}
             needle={needle}
             peek={peek}
           />
@@ -113,7 +117,7 @@ export function SagaGroups({
         count={laterTiles.length}
         headingId={`${fieldId}-later`}
         level="h2"
-        words={LATER_FOG}
+        words={words}
       >
         <ul {...stylex.props(styles.grid)}>
           <CoveredTiles
@@ -127,26 +131,50 @@ export function SagaGroups({
 }
 
 /**
- * One saga: its name pinned over the open tiles the search finds, then its
- * fog tiles. With nothing left to show it leaves the page, as a character's
- * shelf does. The count is the saga's tiles before any pick.
+ * The open tiles of a group the picks find, each with the eater it shows when
+ * the group chose among them (the faction view). A fruit the query found only
+ * through an eater of another group is left out here.
  */
-function SagaGroup({
-  anchor,
+function matchesOf(
+  group: AlbumGroup,
+  lookup: Lookup,
+  needle: string,
+): (Match<SpecimenView> & { eater?: EaterMatch })[] {
+  const among = new Map(group.open.map((ref) => [ref.id, ref.eaters]))
+  const ids = group.open.map(({ id }) => id)
+
+  return matchesIn(pickedOf(lookup.form, lookup.open, ids), needle).flatMap(
+    (found) => {
+      const eaters = among.get(found.entry.id)
+      if (eaters === undefined) {
+        return found
+      }
+      const eater = groupEaterMatch(found.entry, needle, eaters)
+
+      return eater === null ? [] : { ...found, eater }
+    },
+  )
+}
+
+/**
+ * One group: its title pinned over the open tiles the search finds, then its
+ * fog tiles. With nothing left to show it leaves the page, as a character's
+ * shelf does. The count is the group's tiles before any pick.
+ */
+function Group({
   group,
   lookup,
+  matches,
   needle,
   peek,
 }: {
-  anchor: string
-  group: FruitSagaView
+  group: AlbumGroup
   lookup: Lookup
+  matches: ComponentProps<typeof OpenTiles>['matches']
   needle: string
   peek: (handle: string) => Promise<FruitView>
 }): null | ReactElement {
   const t = useT()
-  const ids = group.open.map(({ id }) => id)
-  const matches = matchesIn(pickedOf(lookup.form, lookup.open, ids), needle)
   const fog = pickedOf(lookup.form, lookup.covered, group.covered)
   if (matches.length === 0 && fog.length === 0) {
     return null
@@ -156,12 +184,12 @@ function SagaGroup({
 
   return (
     <CatalogueSection
-      headingId={anchor}
+      headingId={group.anchor}
       lede={t(total === 1 ? 'fruits.bandCountOne' : 'fruits.bandCount', {
         count: total,
       })}
       sticky
-      title={group.saga}
+      title={group.title}
     >
       <ul {...stylex.props(styles.grid)}>
         <OpenTiles

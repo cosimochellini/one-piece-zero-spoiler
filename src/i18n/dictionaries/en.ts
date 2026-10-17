@@ -295,6 +295,8 @@ export const enDictionary = {
     '{count} devil fruits, grouped by type and listed in the order the story names them. Fruits under fog do not show up in search.',
   'fruits.countSaga':
     '{count} devil fruits, grouped by saga and listed in the order the story names them. Fruits under fog do not show up in search.',
+  'fruits.countFaction':
+    '{count} devil fruits, grouped by the faction of the characters who ate them, as of your bookmark. A fruit appears under each of their factions. Fruits under fog do not show up in search.',
   'fruits.pageTitle': 'Devil fruits | Zero Spoiler',
   'fruits.pageDescription':
     'One Piece devil fruits, each hidden until the episode where it is first named.',
@@ -306,6 +308,7 @@ export const enDictionary = {
   'fruits.view.legend': 'Group by',
   'fruits.view.type': 'Type',
   'fruits.view.saga': 'Saga',
+  'fruits.view.faction': 'Faction',
   'fruits.form.legend': 'Fruit type',
   'fruits.form.all': 'All',
   'fruits.shown': 'Showing {count} of {total} open fruits',
@@ -332,6 +335,8 @@ export const enDictionary = {
   'fruits.later': '{count} fruits from later sagas, under fog',
   'fruits.laterOne': '1 fruit from a later saga, under fog',
   'fruits.laterAllOpen': 'Nothing from a later saga is under fog here.',
+  'fruits.noFaction': 'No faction yet',
+  'fruits.noneFogged': 'Nothing is under fog here.',
   'fruits.lastFruit.episode':
     'The last one was the {name}, episode {threshold}.',
   'fruits.lastFruit.season': 'The last one was the {name}, {threshold}.',

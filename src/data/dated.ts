@@ -1,6 +1,7 @@
 import { byNumber, byValue, byValues } from 'sort-es'
 
 import type { Gated } from '~/lib/progress/spoiler'
+import type { Faction } from '~/lib/view/records'
 
 import { type Field, type Fields, gateOf, timelineOf } from './chapter-table'
 import { characters, getCharacter } from './characters'
@@ -56,6 +57,18 @@ export function latestOf<F extends Field>(
   field: F,
 ): Fields[F] | undefined {
   return reachedOf(at, owner, field).at(-1)?.value
+}
+
+/**
+ * The factions a character stands with for this reader: the tags of the
+ * latest affiliation entry they have reached, the same entry `latestOf`
+ * prints. Its own function because `Fields` reads an affiliation as its prose
+ * alone; `undefined` with no entry reached yet.
+ */
+export function factionsOf(at: Reveal, owner: Entity): Faction[] | undefined {
+  return CHARACTER_DOSSIERS[owner.id]?.affiliation.findLast((entry) =>
+    at.sees(gateOf(entry, owner)),
+  )?.factions
 }
 
 /** One story, with the character whose chronicle it belongs to. */

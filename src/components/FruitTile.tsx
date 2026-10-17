@@ -60,6 +60,12 @@ export interface FruitTileProps {
   highlight?: [number, number] | null
   /** Zero-based within its plate. Only a covered tile prints it, plus one. */
   index: number
+  /**
+   * Whether the tile may travel to the fruit's page. A fruit on the page
+   * twice (the faction view) travels from its first tile only: a name may be
+   * on one element of a page only.
+   */
+  morph?: boolean
   peek: (handle: string) => Promise<FruitView>
   slot: Slot<FruitView>
 }
@@ -82,6 +88,7 @@ export function FruitTile({
   form,
   highlight = null,
   index,
+  morph = true,
   peek,
   slot,
 }: FruitTileProps): ReactElement {
@@ -95,6 +102,7 @@ export function FruitTile({
         eaters={eaters}
         form={form}
         highlight={highlight}
+        morph={morph}
         record={slot.record}
       />
     )
@@ -117,6 +125,7 @@ export function FruitTile({
           return (
             <TileLink
               highlight={null}
+              morph
               record={record}
             />
           )
@@ -128,28 +137,30 @@ export function FruitTile({
 
 /**
  * The open tiles a search found, in order, each showing the eater the search
- * matched. An open tile prints no number, so none is passed.
+ * matched, or the one a group picked for it (`eater`). An open tile prints no
+ * number, so none is passed.
  */
 export function OpenTiles({
   matches,
   needle,
   peek,
 }: {
-  matches: Match<SpecimenView>[]
+  matches: (Match<SpecimenView> & { eater?: EaterMatch; morph?: boolean })[]
   needle: string
   peek: (handle: string) => Promise<FruitView>
 }): ReactElement {
   return (
     <>
-      {matches.map(({ entry, match }) => {
+      {matches.map(({ eater, entry, match, morph = true }) => {
         return (
           <FruitTile
             key={`open-${entry.id}`}
-            eater={eaterMatch(entry, needle)}
+            eater={eater ?? eaterMatch(entry, needle)}
             eaters={entry.eaters}
             form={entry.form}
             highlight={match.highlight}
             index={0}
+            morph={morph}
             peek={peek}
             slot={{ open: true, record: entry }}
           />
@@ -168,12 +179,14 @@ function OpenTile({
   eaters,
   form,
   highlight,
+  morph,
   record,
 }: {
   eater: EaterMatch
   eaters: EaterView[]
   form: FruitForm
   highlight: [number, number] | null
+  morph: boolean
   record: FruitView
 }): ReactElement {
   const { t } = useLocale()
@@ -183,6 +196,7 @@ function OpenTile({
     <li {...stylex.props(styles.tile, styles.openTile)}>
       <TileLink
         highlight={highlight}
+        morph={morph}
         record={record}
       />
       {shown === undefined ? null : (
@@ -204,18 +218,22 @@ function OpenTile({
  */
 function TileLink({
   highlight,
+  morph,
   record,
 }: {
   highlight: [number, number] | null
+  morph: boolean
   record: FruitView
 }): ReactElement {
   const { locale } = useLocale()
-  const travels = useTravels('fruit', record.id)
+  const travels = useTravels('fruit', record.id) && morph
 
   return (
     <Link
       onClick={() => {
-        travelWith('fruit', record.id)
+        if (morph) {
+          travelWith('fruit', record.id)
+        }
       }}
       params={{ locale, id: record.id }}
       to="/$locale/fruits/$id"
@@ -224,6 +242,7 @@ function TileLink({
       <div {...stylex.props(styles.art)}>
         <OpenArt
           always={false}
+          morph={morph}
           record={record}
         />
       </div>

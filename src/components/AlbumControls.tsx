@@ -170,6 +170,7 @@ function AlbumChoices({
         choices={[
           { label: t('fruits.view.type'), value: 'type' },
           { label: t('fruits.view.saga'), value: 'saga' },
+          { label: t('fruits.view.faction'), value: 'faction' },
         ]}
         legend={t('fruits.view.legend')}
         look="segments"

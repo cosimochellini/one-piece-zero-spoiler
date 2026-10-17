@@ -5,10 +5,11 @@ import {
   AlbumControls,
   type AlbumControlsProps,
 } from '~/components/AlbumControls'
+import { groupingOf } from '~/components/albumGrouping'
+import { AlbumGroups } from '~/components/AlbumGroups'
 import { FogBand, type FogTitles } from '~/components/FogBand'
 import { FruitTile, OpenTiles } from '~/components/FruitTile'
 import { matchesIn } from '~/components/recordMatches'
-import { SagaGroups } from '~/components/SagaGroups'
 import { styles } from '~/components/SpecimenBands.styles'
 import { useT } from '~/i18n/LocaleContext'
 import type { Translate, TranslationKey } from '~/i18n/types'
@@ -16,6 +17,7 @@ import { foldName } from '~/lib/search/fold'
 import type { FruitParams } from '~/lib/search/fruitParams'
 import type {
   FruitBandView,
+  FruitFactionView,
   FruitForm,
   FruitSagaView,
   FruitView,
@@ -52,9 +54,11 @@ const LEDE_KEY: Record<FruitForm, TranslationKey> = {
   zoan: 'fruits.lede.zoan',
 }
 
-/** What the sheet is built from: the plates, the sagas, the picks, the peek. */
+/** What the sheet is built from: the plates, the groups, the picks, the peek. */
 export interface SpecimenBandsProps {
   bands: FruitBandView[]
+  /** The factions the open eaters stand in, for the faction view. */
+  factions?: FruitFactionView[] | undefined
   /** The covered fruits of the sagas past the bookmark, by handle. */
   later: string[]
   onParams: AlbumControlsProps['onParams']
@@ -67,8 +71,8 @@ export interface SpecimenBandsProps {
 /**
  * The album: the control bar, then the plates down the page, each a numbered
  * label, a heading, and the fruits of that kind as a grid of tiles. In the
- * saga view the sagas take the plates' place (`SagaGroups`), under the same
- * bar, which stays its container's first child so a pick of either view
+ * saga and faction views their groups take the plates' place (`AlbumGroups`),
+ * under the same bar, which stays its container's first child so a pick of either view
  * scrolls back to where it pins.
  *
  * The search rule is the signal book's, applied to a different list: a
@@ -79,15 +83,16 @@ export interface SpecimenBandsProps {
  */
 export function SpecimenBands({
   bands,
-  later,
   onParams,
   params,
   peek,
-  sagas,
+  ...sent
 }: SpecimenBandsProps): ReactElement {
+  const t = useT()
   const fieldId = useId()
   // The field is never deferred; the plates behind it are.
   const needle = useDeferredValue(foldName((params.q ?? '').trim()))
+  const grouping = groupingOf(t, { ...sent, fieldId, view: params.view })
   const shown =
     params.form === undefined ?
       bands
@@ -108,17 +113,8 @@ export function SpecimenBands({
         params={params}
       />
 
-      {params.view === 'saga' ?
-        <SagaGroups
-          bands={bands}
-          fieldId={fieldId}
-          form={params.form}
-          later={later}
-          needle={needle}
-          peek={peek}
-          sagas={sagas}
-        />
-      : shown.map((band) => {
+      {grouping === undefined ?
+        shown.map((band) => {
           return (
             <Plate
               key={band.form}
@@ -130,6 +126,14 @@ export function SpecimenBands({
             />
           )
         })
+      : <AlbumGroups
+          bands={bands}
+          fieldId={fieldId}
+          form={params.form}
+          needle={needle}
+          peek={peek}
+          {...grouping}
+        />
       }
     </div>
   )
