@@ -79,9 +79,15 @@ const WORST_CHUNKS = 5
  * after with its arrow keys and its swipe, the history, the saga's rail, and
  * their words in both dictionaries (~1.1 KB). The history, the neighbours
  * and the rail are the server's. Again the measured build plus ~1 KB, under
- * the 566 KB allowed for this raise.
+ * the 566 KB allowed for this raise. Raised to 567.6 KB on 2026-10-18, when
+ * main stood at ~565.1 KB and the switch between a fruit's drawings (#669)
+ * added ~1.4 KB: the drawings stacked on the stage with their cross-fade,
+ * the switch (the album's own `ChoiceGroup`, now a chunk both pages share),
+ * and its four words in both dictionaries. Which drawings the reader has
+ * reached is the server's. Again the measured build plus ~1 KB, under the
+ * 570 KB allowed for this raise.
  */
-export const MAX_CLIENT_BYTES = 565_900
+export const MAX_CLIENT_BYTES = 567_600
 
 /** Where the prose lives: every saga, the ship's log and the filler guide. */
 const PROSE_DIR = 'src/data/records'

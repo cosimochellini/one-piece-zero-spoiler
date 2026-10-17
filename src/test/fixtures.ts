@@ -120,6 +120,7 @@ export function fruitBand(over: Partial<FruitBandView> = {}): FruitBandView {
 
 export function fruitDetail(over: Partial<FruitDetail> = {}): FruitDetail {
   return {
+    drawings: [],
     history: [],
     next: null,
     previous: null,

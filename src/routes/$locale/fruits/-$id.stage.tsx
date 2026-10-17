@@ -7,9 +7,8 @@
  */
 import * as stylex from '@stylexjs/stylex'
 import { Link } from '@tanstack/react-router'
-import { type ReactElement, useState } from 'react'
+import type { ReactElement } from 'react'
 
-import { DrawInContext, tintOf } from '~/components/drawing'
 import { FogTile } from '~/components/FogTile'
 import { OpenArt } from '~/components/FruitArt'
 import { FruitFrame } from '~/components/FruitFrame'
@@ -25,6 +24,7 @@ import type {
 } from '~/lib/view/records'
 import { morphPart, travelWith } from '~/styles/morph'
 
+import { StageArt } from './-$id.art'
 import { styles } from './-$id.styles'
 import { type Side, useTurning } from './-$id.turn'
 
@@ -75,6 +75,7 @@ export function StageBand({
             return (
               <StageArt
                 key={record.id}
+                drawings={detail.drawings}
                 record={record}
               />
             )
@@ -138,37 +139,6 @@ function StageText({
           )
         }}
       </SpoilerVeil>
-    </div>
-  )
-}
-
-/**
- * The drawing, in a glow of its tint, drawn in once as it arrives. The pen
- * scales its line with the box while it draws (`ChartArt`), and the stage is
- * three times a tile, so once the strokes are down the drawing goes back to
- * the 2px line every drawing keeps. Every stroke shares one delay and one
- * duration (`ChartArt`), so the first to finish is the last. With reduced
- * motion nothing draws and nothing changes.
- */
-function StageArt({ record }: { record: FruitView }): ReactElement {
-  const [drawing, setDrawing] = useState(true)
-
-  return (
-    <div
-      onAnimationEnd={(event) => {
-        if (event.target instanceof SVGPathElement) {
-          setDrawing(false)
-        }
-      }}
-      {...stylex.props(styles.glow(tintOf(record.visual.tint)))}
-    >
-      <DrawInContext value={drawing}>
-        <OpenArt
-          always
-          glow
-          record={record}
-        />
-      </DrawInContext>
     </div>
   )
 }

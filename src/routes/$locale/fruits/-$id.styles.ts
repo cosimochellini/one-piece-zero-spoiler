@@ -49,6 +49,34 @@ export const styles = stylex.create({
     padding: 'clamp(1rem, 5vw, 2.5rem)',
     backgroundImage: `radial-gradient(closest-side, color-mix(in oklch, ${hue} 45%, transparent), transparent)`,
   }),
+  // A fruit's drawings, one over the other in one cell. The one going out
+  // waits for the one coming in to cover it, then goes. The fade is short,
+  // and with reduced motion shorter still: under 150ms, and still a fade.
+  looks: { display: 'grid' },
+  look: {
+    gridColumn: 1,
+    gridRow: 1,
+    opacity: 0,
+    transitionDelay: {
+      'default': dur.micro,
+      '@media (prefers-reduced-motion: no-preference)': dur.short,
+    },
+    transitionDuration: '0s',
+    transitionProperty: 'opacity',
+    transitionTimingFunction: ease.out,
+    zIndex: 0,
+    minWidth: 0,
+  },
+  lookShown: {
+    opacity: 1,
+    transitionDelay: '0s',
+    transitionDuration: {
+      'default': dur.micro,
+      '@media (prefers-reduced-motion: no-preference)': dur.short,
+    },
+    zIndex: 1,
+  },
+  lookSwitch: { display: 'flex', justifyContent: 'center', minWidth: 0 },
 
   words: { gap: space.md, display: 'grid', minWidth: 0 },
   meta: {

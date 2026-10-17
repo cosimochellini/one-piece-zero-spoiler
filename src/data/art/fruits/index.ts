@@ -21,7 +21,9 @@ import { leafPath, shadowUnder, stemPath } from '~/data/art/fruits/parts'
 import { bezier } from '~/data/art/fruits/shape'
 import { ring } from '~/data/art/fruits/swirls'
 import { point } from '~/data/art/fruits/units'
-import type { Drawings, Redrawings, Stroke } from '~/data/art/stroke'
+import type { Drawings, Stroke } from '~/data/art/stroke'
+import type { Dated } from '~/data/types'
+import type { FruitLook } from '~/lib/view/records'
 
 /**
  * Every fruit's hand-drawn composition. Fruit + power drawings use the body
@@ -6282,16 +6284,26 @@ export const fruitArt = {
 } satisfies Drawings
 
 /**
+ * A fruit drawn again, and what the new drawing shows: the real fruit, or
+ * the power as an awakening changes it. The fruit's page names each drawing
+ * by it; the first drawing is always the fruit and its power.
+ */
+export interface FruitRedrawing extends Dated<Stroke[]> {
+  look: Exclude<FruitLook, 'power'>
+}
+
+/**
  * Real fruits replace fruit + power drawings once the story shows them.
  * A declared awakening changes a power drawing only while its real fruit
  * has not been shown; once drawn, a real fruit stays.
  */
-export const fruitRedrawn: Redrawings = {
+export const fruitRedrawn: Record<string, FruitRedrawing[]> = {
   // Buggy's flashback shows the real fruit in episode 8, chapter 19.
   'chop-chop-fruit': [
     {
       episode: 8,
       chapter: 19,
+      look: 'real',
       /** An oval bunch of round parts, a curl on each and a pointed leaf tuft. */
       value: [
         {
@@ -6326,6 +6338,7 @@ export const fruitRedrawn: Redrawings = {
     {
       episode: 1101,
       chapter: 1070,
+      look: 'real',
       /** A tapered strawberry, plain horn-like protrusions and a curled T stalk. */
       value: [
         {
@@ -6360,6 +6373,7 @@ export const fruitRedrawn: Redrawings = {
     {
       episode: 629,
       chapter: 700,
+      look: 'real',
       /**
        * The fruit that is all flame: a body whose crown is a row of tongues, curls
        * burning across it, and a stalk that runs off with a hook at the end. Not
@@ -6414,6 +6428,7 @@ export const fruitRedrawn: Redrawings = {
     {
       episode: 704,
       chapter: 765,
+      look: 'real',
       /**
        * The real fruit, from episode 704: a heart under a skin of curls, the stalk
        * a crossbar wound up at both ends.
@@ -6456,6 +6471,7 @@ export const fruitRedrawn: Redrawings = {
     {
       episode: 723,
       chapter: 782,
+      look: 'real',
       /** A pear covered in curls, with its stem wound sideways at the crown. */
       value: [
         { d: outline(STRING_REAL_BODY) },
@@ -6479,6 +6495,7 @@ export const fruitRedrawn: Redrawings = {
     {
       episode: 855,
       chapter: 882,
+      look: 'awakening',
       value: fruitArt['mochi-mochi-fruit']
         .slice(0, -1)
         .map((stroke) =>
@@ -6497,6 +6514,7 @@ export const fruitRedrawn: Redrawings = {
     {
       episode: 965,
       chapter: 965,
+      look: 'real',
       /** A scaled pineapple under seven bent leaves with rounded triangular ends. */
       value: [
         {
@@ -6533,6 +6551,7 @@ export const fruitRedrawn: Redrawings = {
     {
       episode: 1101,
       chapter: 1070,
+      look: 'real',
       /** Overlapping pinecone scales, curls and two separate horn-shaped stems. */
       value: [
         {
@@ -6573,6 +6592,7 @@ export const fruitRedrawn: Redrawings = {
     {
       episode: 1101,
       chapter: 1070,
+      look: 'real',
       /**
        * The real fruit: a round fruit with two pointed ears, a curl in each, under
        * a T stalk, spotted with rosettes. The anime shows it in episode 1101 as
@@ -6604,6 +6624,7 @@ export const fruitRedrawn: Redrawings = {
     {
       episode: 1101,
       chapter: 1070,
+      look: 'real',
       /**
        * The real fruit: two heart-shaped fruits on stems joined like cherries,
        * patterned with hearts, the stems meeting in a heart with a curl. The
@@ -6638,6 +6659,7 @@ export const fruitRedrawn: Redrawings = {
     {
       episode: 1130,
       chapter: 1096,
+      look: 'real',
       /**
        * The real fruit: round, covered in curls, with three rounded lumps on top
        * like a three-toed paw and a T stalk out of the middle one, curled at its

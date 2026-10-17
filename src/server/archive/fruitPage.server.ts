@@ -1,3 +1,6 @@
+import { DRAWINGS } from '~/data/art'
+import { fruitRedrawn } from '~/data/art/fruits'
+import { gateOf } from '~/data/chapter-table'
 import { eatersOf, reachedOf } from '~/data/dated'
 import { fruitFormOf, fruits, getFruit } from '~/data/fruits'
 import type { Entity } from '~/data/types'
@@ -6,6 +9,7 @@ import type { Bookmark } from '~/lib/progress/episode'
 import type {
   DocumentHead,
   FruitDetail,
+  FruitDrawing,
   FruitHistoryEntry,
   FruitView,
   Slot,
@@ -69,23 +73,49 @@ export function fruitPage(
 }
 
 /** What a page tells of a fruit beyond its name, empty while it is covered. */
-type FruitStory = Pick<FruitDetail, 'history' | 'saga' | 'sagaRail'>
+type FruitStory = Pick<
+  FruitDetail,
+  'drawings' | 'history' | 'saga' | 'sagaRail'
+>
 
 /**
- * The saga the fruit is first named in, its history and its saga's rail.
- * Under fog all three are empty: a covered fruit's saga is not named, nor
- * anything that would place it.
+ * The saga the fruit is first named in, its drawings, its history and its
+ * saga's rail. Under fog all four are empty: a covered fruit's saga is not
+ * named, nor anything that would place it.
  */
 function storyOf(entity: Entity, r: Reader): FruitStory {
   if (!r.sees(entity)) {
-    return { history: [], saga: null, sagaRail: [] }
+    return { drawings: [], history: [], saga: null, sagaRail: [] }
   }
 
   return {
+    drawings: drawingsOf(entity, r),
     history: historyOf(entity, r),
     saga: sagaOf(unitOf(r), r.threshold(entity))?.name[r.locale] ?? null,
     sagaRail: sagaRailOf(entity, r),
   }
+}
+
+/**
+ * The drawings of an open fruit the reader has reached, oldest first: the
+ * fruit and its power, then each redrawing whose gate, the later of its own
+ * and the fruit's (`gateOf`), the reader has passed. The same entries
+ * `drawingOf` picks the last of, so the last here is the drawing the stage
+ * already holds. Empty while only the first is reached: there is nothing to
+ * switch between, and the page then sends the one drawing it always did.
+ */
+function drawingsOf(entity: Entity, r: Reader): FruitDrawing[] {
+  const reached = (fruitRedrawn[entity.id] ?? []).filter((entry) =>
+    r.sees(gateOf(entry, entity)),
+  )
+  if (reached.length === 0) {
+    return []
+  }
+
+  return [
+    { look: 'power', strokes: DRAWINGS[entity.visual.art] },
+    ...reached.map(({ look, value }) => ({ look, strokes: value })),
+  ]
 }
 
 /** The unit the sagas are counted in: a season reader counts episodes. */

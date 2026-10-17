@@ -422,8 +422,27 @@ export interface FruitHistoryEntry {
   who?: Pick<RecordView, 'id' | 'name'>
 }
 
+/**
+ * What one of a fruit's drawings shows: the fruit and its power, the real
+ * fruit once the story shows it, or the power as an awakening changes it.
+ */
+export type FruitLook = 'awakening' | 'power' | 'real'
+
+/** One of the drawings a fruit has had, named by what it shows. */
+export interface FruitDrawing {
+  look: FruitLook
+  strokes: Stroke[]
+}
+
 /** A devil fruit's own page. */
 export interface FruitDetail {
+  /**
+   * Every drawing of the fruit the reader has reached, oldest first; the
+   * last is the one the stage draws. Empty under fog and while only one is
+   * reached, so a drawing past the bookmark is never sent and the page has
+   * nothing to switch between.
+   */
+  drawings: FruitDrawing[]
   /**
    * The history the reader has reached, oldest first: nothing past the
    * bookmark, and no count of it. Empty under fog.

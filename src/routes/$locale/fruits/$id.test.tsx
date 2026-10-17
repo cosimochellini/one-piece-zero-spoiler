@@ -152,6 +152,56 @@ describe('the stage', () => {
   })
 })
 
+describe('the switch between a fruit’s drawings', () => {
+  const POWER = [{ d: 'M0 0 L1 1', role: 'accent' as const }]
+  const REAL = [{ d: 'M2 2 L3 3', role: 'accent' as const }]
+
+  it('is not there with one drawing, which is drawn once', () => {
+    const { container } = renderWithProviders(
+      <StageBand
+        detail={fruitDetail({
+          slot: openSlot(fruit({ visual: { strokes: REAL, tint: 'red' } })),
+        })}
+        peek={peekPending()}
+      />,
+      { bookmark: ep(650) },
+    )
+
+    expect(screen.queryByRole('radio')).not.toBeInTheDocument()
+    expect(container.querySelectorAll('path')).toHaveLength(1)
+  })
+
+  it('lists the drawings reached, the latest picked, and switches', () => {
+    const { container } = renderWithProviders(
+      <StageBand
+        detail={fruitDetail({
+          drawings: [
+            { look: 'power', strokes: POWER },
+            { look: 'real', strokes: REAL },
+          ],
+          slot: openSlot(fruit({ visual: { strokes: REAL, tint: 'red' } })),
+        })}
+        peek={peekPending()}
+      />,
+      { bookmark: ep(650) },
+    )
+    const power = screen.getByRole('radio', { name: 'Power' })
+    const real = screen.getByRole('radio', { name: 'Real fruit' })
+
+    expect(
+      screen.getByRole('group', { name: 'Drawings of this fruit' }),
+    ).toBeInTheDocument()
+    expect(real).toBeChecked()
+    // Both are on the page, stacked, so the switch only cross-fades.
+    expect(container.querySelectorAll('path')).toHaveLength(2)
+
+    fireEvent.click(power)
+
+    expect(power).toBeChecked()
+    expect(real).not.toBeChecked()
+  })
+})
+
 describe('the eaters band', () => {
   it('says so when the archive files nobody', () => {
     renderWithProviders(
