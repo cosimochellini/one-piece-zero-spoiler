@@ -5,12 +5,15 @@ import { type Locale, LOCALES } from '~/i18n/locales'
 import { FIRST_EPISODE } from '~/lib/progress/episode'
 import { tokenize } from '~/lib/prose/markers'
 
-import { type Field, TIMELINES } from './chapters'
-import { CHARACTER_DOSSIERS, getCharacter } from './characters'
+import type { Field } from './chapter-table'
+import { TIMELINES } from './chapters'
+import { getCharacter } from './characters'
 import { datedOf } from './dated'
 import { entities, getEntity } from './entities'
 import { FILLER, type FillerEntry } from './filler'
-import { PLACE_DOSSIERS, SHIP_DOSSIERS } from './places'
+import { PLACE_DOSSIERS } from './places'
+import { SHIP_DOSSIERS } from './records/ships'
+import { CHARACTER_DOSSIERS } from './sagas'
 import type { Entity, LocalizedText, Story } from './types'
 
 /**

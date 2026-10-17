@@ -1,7 +1,8 @@
 import type { EntityKind } from '~/lib/view/records'
 
-import { entities, sagas } from './entities'
+import { entities } from './entities'
 import { orderByMode } from './order'
+import { CHARACTER_DOSSIERS } from './sagas'
 import type { CharacterDossier, Entity, LocalizedText } from './types'
 
 /**
@@ -12,8 +13,8 @@ import type { CharacterDossier, Entity, LocalizedText } from './types'
  *
  * Kept beside `entities.ts` rather than inside it because none of this is a
  * property of a record. The featured list is an editorial ranking, the
- * dossiers are filed with their sagas and merged here, and search is a page
- * concern that happens to need the data.
+ * dossiers are filed with their sagas and merged in `./sagas`, and search is
+ * a page concern that happens to need the data.
  */
 
 /**
@@ -64,15 +65,6 @@ export const FEATURED_CHARACTER_IDS = [
   'enel',
   'gecko-moria',
 ] as const
-
-/**
- * Every character's dossier, merged from the sagas. Each saga files the
- * dossiers of the characters it introduces, beside their records, so the two
- * are written and reviewed together; the data tests hold that every
- * character has exactly one.
- */
-export const CHARACTER_DOSSIERS: Record<string, CharacterDossier> =
-  Object.fromEntries(sagas.flatMap((saga) => Object.entries(saga.dossiers)))
 
 /** The whole archive in the order the anime reaches it. */
 const route: Entity[] = orderByMode(entities, 'episode')

@@ -2,7 +2,7 @@ import { byNumber } from 'sort-es'
 import { describe, expect, it } from 'vitest'
 
 import { DRAWINGS, REDRAWINGS } from '~/data/art'
-import { chapterAtEpisode } from '~/data/chapters'
+import { chapterAtEpisode } from '~/data/chapter-table'
 import { arcs, characters } from '~/data/characters'
 import { entities, getEntity } from '~/data/entities'
 import { ARC_LEADS } from '~/data/leads'

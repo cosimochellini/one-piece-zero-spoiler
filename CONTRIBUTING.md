@@ -120,13 +120,13 @@ Every record has the same shape, defined as `Entity` in `src/data/types.ts`:
 - Records live in one module per saga, in `src/data/records/<saga>.ts`, plus
   `src/data/records/fruits.ts` for the devil fruits.
 
-| To add            | Edit                                                                                                                                                                             | Guarded by                                                               |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| A character       | The record and its entry in `dossiers` in `src/data/records/<saga>.ts`, and a drawing in `src/data/art/<saga>.ts`                                                                | `src/data/characters.test.ts`, `src/data/leaks.test.ts`                  |
-| A devil fruit     | `FRUIT_FORMS` in `src/data/fruit-forms.ts`, the record in `src/data/records/fruits.ts`, a drawing in `src/data/art/fruits/`, and a `devilFruit` entry in the eater's `dossiers`  | `src/data/fruits.test.ts`                                                |
-| A place           | The record in its saga module, its entry in `PLACE_DOSSIERS` in `src/data/places.ts`, and a drawing                                                                              | `src/data/places.test.ts`                                                |
-| A chronicle story | The story in `src/data/records/<saga>.chronicle.ts`, its source in `scripts/chronicle-sources.mjs`, then `npm run docs:chronicle` to regenerate `docs/chronicle-verification.md` | `src/data/characters.test.ts`, `scripts/chronicle-verification.test.mjs` |
-| A redrawing       | A dated entry in the saga's `…Redrawn` timeline in `src/data/art/<saga>.ts`. `skypieaRedrawn` is the model                                                                       | `src/data/art/index.test.ts`, `src/server/archive/slices.test.ts`        |
+| To add            | Edit                                                                                                                                                                                                                                      | Guarded by                                                               |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| A character       | The record and its entry in `dossiers` in `src/data/records/<saga>.ts`, and a drawing in `src/data/art/<saga>.ts`                                                                                                                         | `src/data/characters.test.ts`, `src/data/leaks.test.ts`                  |
+| A devil fruit     | `FRUIT_FORMS` in `src/data/fruit-forms.ts`, the record in `src/data/records/fruits.ts` (no thresholds: they come from the `devilFruit` entry in the eater's `dossiers`), a drawing in `src/data/art/fruits/`, and that `devilFruit` entry | `src/data/fruits.test.ts`                                                |
+| A place           | The record in its saga module, its entry in `PLACE_DOSSIERS` in `src/data/places.ts`, and a drawing                                                                                                                                       | `src/data/places.test.ts`                                                |
+| A chronicle story | The story in `src/data/records/<saga>.chronicle.ts`, its source in `scripts/chronicle-sources.mjs`, then `npm run docs:chronicle` to regenerate `docs/chronicle-verification.md`                                                          | `src/data/characters.test.ts`, `scripts/chronicle-verification.test.mjs` |
+| A redrawing       | A dated entry in the saga's `…Redrawn` timeline in `src/data/art/<saga>.ts`. `skypieaRedrawn` is the model                                                                                                                                | `src/data/art/index.test.ts`, `src/server/archive/slices.test.ts`        |
 
 A few rules that are easy to miss:
 
@@ -150,7 +150,7 @@ A few rules that are easy to miss:
 - **A saga's first redrawing** needs a new `…Redrawn` export in its art module,
   spread into `REDRAWINGS` in `src/data/art/index.ts` and added to the module
   list in `src/data/art/index.test.ts`.
-- **A new saga module** has to be added to `sagas` in `src/data/entities.ts`, to
+- **A new saga module** has to be added to `sagas` in `src/data/sagas.ts`, to
   `DRAWINGS` in `src/data/art/index.ts`, and to the module list in
   `src/data/art/index.test.ts`.
 

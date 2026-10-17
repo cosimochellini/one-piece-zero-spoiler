@@ -1,9 +1,10 @@
 import { describe, expect, it } from 'vitest'
 
 import { DRAWINGS, REDRAWINGS } from '~/data/art'
+import { eatersOf } from '~/data/dated'
 import { entities } from '~/data/entities'
 import { fruits } from '~/data/fruits'
-import { LOCALES } from '~/i18n/locales'
+import { type Locale, LOCALES } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
 import type { FruitEatersView, FruitView, Slot } from '~/lib/view/records'
 import { saysNothing } from '~/test/fog'
@@ -262,49 +263,33 @@ describe('a fruit’s own page', () => {
   })
 })
 
-describe('the corrected naming scenes', () => {
-  it.each([
-    {
-      id: 'dog-dog-fruit-mythical-model-nine-tailed-fox',
-      eater: 'catarina-devon',
-      episode: 917,
-      chapter: 925,
-    },
-    {
-      id: 'huge-huge-fruit',
-      eater: 'san-juan-wolf',
-      episode: 1113,
-      chapter: 1080,
-    },
-    {
-      id: 'island-island-fruit',
-      eater: 'avalo-pizarro',
-      episode: 1113,
-      chapter: 1080,
-    },
-    {
-      id: 'snake-snake-fruit-model-anaconda',
-      eater: 'boa-sandersonia',
-      episode: 413,
-      chapter: 521,
-    },
-    {
-      id: 'snake-snake-fruit-model-king-cobra',
-      eater: 'boa-marigold',
-      episode: 413,
-      chapter: 521,
-    },
-    { id: 'sick-sick-fruit', eater: 'doc-q', episode: 1093, chapter: 1063 },
-    {
-      id: 'strong-strong-fruit',
-      eater: 'jesus-burgess',
-      episode: 1093,
-      chapter: 1063,
-    },
-    { id: 'warp-warp-fruit', eater: 'van-augur', episode: 1093, chapter: 1063 },
-  ] as const)(
+/** The fruits a character's page links at this bookmark. */
+function fruitLinks(
+  character: string,
+  bookmark: Bookmark,
+  locale: Locale,
+): string[] {
+  const links =
+    characterPage(character, bookmark, locale)?.detail.facts.devilFruit ?? []
+
+  return links.map((link) => link.id)
+}
+
+describe('a fruit and its eaters', () => {
+  // A fruit's thresholds are read off the dossier entries that name it
+  // (`~/data/entities`), so every surface that shows the fruit and the eater
+  // page that links it must open on the same bookmark, in both units. "Some
+  // eater" rather than the first: the earliest eater by episode is not
+  // always the first to open in chapters.
+  it.each(fruits)(
     'opens $id and its eater together in both locales',
-    ({ id, eater, episode, chapter }) => {
+    ({
+      id,
+      revealedAtEpisode: episode,
+      revealedAtChapter: chapter,
+      visual,
+    }) => {
+      const eaters = eatersOf(id).map((eater) => eater.entity.id)
       const marks = [
         { bookmark: ep(episode - 1), open: false },
         { bookmark: ep(episode), open: true },
@@ -312,71 +297,36 @@ describe('the corrected naming scenes', () => {
         { bookmark: { mode: 'chapter', chapter }, open: true },
       ] as const
 
+      expect(eaters.length).toBeGreaterThan(0)
+
       for (const locale of LOCALES) {
         for (const { bookmark, open } of marks) {
           const page = fruitPage(id, bookmark, locale)
           const sheet = fruitSheet(bookmark, locale)
           const specimen = sheet.bands
             .flatMap((band) => band.open)
-            .find((fruit) => fruit.id === id)
+            .find((record) => record.id === id)
           const covered = sheet.bands
             .flatMap((band) => band.covered)
-            .find((fruit) => fruit.handle === handleOf(id))
-          const links =
-            characterPage(eater, bookmark, locale)?.detail.facts.devilFruit
-            ?? []
+            .find((record) => record.handle === handleOf(id))
+          const linked = eaters.some((eater) =>
+            fruitLinks(eater, bookmark, locale).includes(id),
+          )
 
           expect(page?.detail.slot.open).toBe(open)
           expect(specimen !== undefined).toBe(open)
           expect(covered !== undefined).toBe(!open)
-          expect(fruitEaters(id, bookmark, locale).eaters[0]).toMatchObject({
-            open,
-          })
-          expect(links.some((link) => link.id === id)).toBe(open)
+          expect(
+            fruitEaters(id, bookmark, locale).eaters.some((slot) => slot.open),
+          ).toBe(open)
+          expect(linked).toBe(open)
           expect(drawingsFor([id], bookmark, locale)[id]).toStrictEqual(
-            open ? DRAWINGS[id] : undefined,
+            open ? DRAWINGS[visual.art] : undefined,
           )
 
           saysNothing(page, bookmark)
           saysNothing(sheet, bookmark)
         }
-      }
-    },
-  )
-})
-
-describe('Paw-Paw’s synchronized reveal', () => {
-  it.each([
-    { bookmark: null, open: false },
-    { bookmark: ep(375), open: false },
-    { bookmark: ep(376), open: true },
-    { bookmark: { mode: 'chapter', chapter: 483 }, open: false },
-    { bookmark: { mode: 'chapter', chapter: 484 }, open: true },
-  ] as const)(
-    'opens every surface together at $bookmark',
-    ({ bookmark, open }) => {
-      for (const locale of LOCALES) {
-        const page = fruitPage('paw-paw-fruit', bookmark, locale)
-        const sheet = fruitSheet(bookmark, locale)
-        const specimen = sheet.bands
-          .flatMap((band) => band.open)
-          .find((fruit) => fruit.id === 'paw-paw-fruit')
-        const covered = sheet.bands
-          .flatMap((band) => band.covered)
-          .find((fruit) => fruit.handle === handleOf('paw-paw-fruit'))
-        const dossier = characterPage('bartholomew-kuma', bookmark, locale)
-        const eaters = fruitEaters('paw-paw-fruit', bookmark, locale)
-        const links = dossier?.detail.facts.devilFruit ?? []
-
-        expect(page?.detail.slot.open).toBe(open)
-        expect(specimen !== undefined).toBe(open)
-        expect(covered !== undefined).toBe(!open)
-        expect(eaters.eaters[0]).toMatchObject({ open })
-        expect(links.some((link) => link.id === 'paw-paw-fruit')).toBe(open)
-        expect(JSON.stringify(page).includes('"strokes"')).toBe(open)
-
-        saysNothing(page, bookmark)
-        saysNothing(sheet, bookmark)
       }
     },
   )

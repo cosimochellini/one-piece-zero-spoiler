@@ -9,10 +9,10 @@ import {
   PLACE_DOSSIERS,
   placeDossierOf,
   places,
-  SHIP_DOSSIERS,
   shipDossierOf,
   ships,
 } from './places'
+import { SHIP_DOSSIERS } from './records/ships'
 import type { Entity } from './types'
 
 describe('the ship’s log', () => {

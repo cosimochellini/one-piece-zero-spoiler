@@ -1,12 +1,7 @@
 import { latestOf } from '~/data/dated'
 import { getEntity } from '~/data/entities'
-import {
-  placeDossierOf,
-  places,
-  type ShipDossier,
-  shipDossierOf,
-  ships,
-} from '~/data/places'
+import { placeDossierOf, places, shipDossierOf, ships } from '~/data/places'
+import type { ShipDossier } from '~/data/records/ships'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'

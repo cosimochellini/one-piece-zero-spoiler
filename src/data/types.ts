@@ -46,9 +46,11 @@ export interface Visual {
  * the earliest anime episode, and the earliest manga chapter, from which this
  * record is safe to read. Both are inclusive, and both are stored on the
  * record rather than derived, because "when does this become safe" is an
- * editorial judgement, not something a script can work out. A reader who
- * counts in seasons is filed at an absolute episode through
- * `~/lib/progress/seasons`, so no third threshold is kept.
+ * editorial judgement, not something a script can work out. A devil fruit is
+ * the exception: its judgement is made once, on the dossier entry that names
+ * it, and `~/data/entities` reads both thresholds off that (`FruitRecord`
+ * below). A reader who counts in seasons is filed at an absolute episode
+ * through `~/lib/progress/seasons`, so no third threshold is kept.
  *
  * The two thresholds are independent: the anime and the manga do not always
  * introduce a record in the same order, so a list is sorted by whichever
@@ -67,9 +69,9 @@ export interface Entity {
   /**
    * Set on a record whose two thresholds are too far out of step to say how
    * far a chapter reaches into the anime: Shiki is episode 425 but chapter
-   * 962, and as an anchor of `~/data/chapters` he held every chapter from 599
-   * to 961 at episode 424. The table leaves such a record out, and a data
-   * test holds that nothing dated names it before its own chapter.
+   * 962, and as an anchor of `~/data/chapter-table` he held every chapter
+   * from 599 to 961 at episode 424. The table leaves such a record out, and
+   * a data test holds that nothing dated names it before its own chapter.
    */
   unanchored?: true
   visual: Visual
@@ -88,6 +90,16 @@ export interface Entity {
    */
   commonWord?: true
 }
+
+/**
+ * A devil fruit as `~/data/records/fruits` files it: a record without its
+ * thresholds, which `~/data/entities` reads off the dossier entries that name
+ * the fruit.
+ */
+export type FruitRecord = Omit<
+  Entity,
+  'revealedAtChapter' | 'revealedAtEpisode'
+>
 
 /**
  * One fact as it stands from a given episode. A timeline of them is what a

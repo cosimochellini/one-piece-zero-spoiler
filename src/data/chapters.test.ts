@@ -4,12 +4,8 @@ import { describe, expect, it } from 'vitest'
 import { LOCALES } from '~/i18n/locales'
 import { CHAPTER_CEILING, EPISODE_CEILING } from '~/lib/progress/episode'
 
-import {
-  chapterAtEpisode,
-  DATED,
-  episodeAtChapter,
-  TIMELINES,
-} from './chapters'
+import { chapterAtEpisode, episodeAtChapter } from './chapter-table'
+import { DATED, TIMELINES } from './chapters'
 import { datedOf } from './dated'
 import { entities } from './entities'
 import type { Dated, Entity } from './types'
