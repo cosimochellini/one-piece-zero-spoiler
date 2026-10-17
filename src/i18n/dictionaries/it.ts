@@ -109,6 +109,8 @@ export const itDictionary: Dictionary = {
   'veil.locked.chapter': 'Nella nebbia fino al capitolo {threshold}',
   'veil.reveal': 'Mostra comunque',
   'veil.revealShort': 'Mostra',
+  'veil.ask': 'Mostrare comunque?',
+  'veil.confirm': 'Sì, mostra',
   'veil.revealing': 'Caricamento…',
   'veil.peekFailed': 'Caricamento non riuscito. Riprova.',
   'veil.placeholder': 'Spoiler',

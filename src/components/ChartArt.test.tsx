@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest'
 import { drawing, strokes } from '~/test/fixtures'
 
 import { ChartArt } from './ChartArt'
+import { DrawInContext } from './drawing'
 
 /**
  * The renderer's contract only. That every record has a drawing, and that
@@ -37,5 +38,27 @@ describe('ChartArt', () => {
       expect(path).toHaveAttribute('d')
       expect(path.getAttribute('d')).not.toBe('')
     }
+  })
+
+  it('measures every drawn line for the pen once lifted, and leaves a dashed one its dashes', () => {
+    const { container } = render(
+      <DrawInContext value>
+        <ChartArt {...drawing()} />
+      </DrawInContext>,
+    )
+
+    const paths = [...container.querySelectorAll('path')]
+    const dashed = strokes.findIndex((stroke) => stroke.dashed === true)
+
+    expect(paths[dashed]).not.toHaveAttribute('pathLength')
+    expect(
+      paths.filter((path) => path.getAttribute('pathLength') === '1'),
+    ).toHaveLength(strokes.length - 1)
+  })
+
+  it('draws nothing in by default', () => {
+    const { container } = render(<ChartArt {...drawing()} />)
+
+    expect(container.querySelector('[pathLength]')).toBeNull()
   })
 })

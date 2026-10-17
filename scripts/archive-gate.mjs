@@ -49,9 +49,10 @@ const WORST_CHUNKS = 5
  * 599 KB of the 1,049 KB build this replaced. The headroom is for ordinary
  * growth, not for a saga. Raised from 520 KB to 530 KB on 2026-10-12, when
  * main stood at ~517 KB and the bookmark dialog redesign added ~4.5 KB of its
- * own code.
+ * own code. Raised to 540 KB on 2026-10-17, when main stood at ~529 KB and the
+ * living fog tile of the fruits redesign (#661) added ~4.4 KB.
  */
-export const MAX_CLIENT_BYTES = 530_000
+export const MAX_CLIENT_BYTES = 540_000
 
 /** Where the prose lives: every saga, the ship's log and the filler guide. */
 const PROSE_DIR = 'src/data/records'

@@ -106,7 +106,11 @@ describe('SpecimenBands', () => {
     ).not.toBeInTheDocument()
     // The covered tile is not a search result and never moves out of its band.
     expect(screen.getByText('1 under fog')).toBeInTheDocument()
-    expect(screen.getByText('A fruit under fog')).toBeInTheDocument()
+    expect(
+      screen.getByRole('button', {
+        name: 'Fruit 02 · Logia. Under fog until episode 1089. Show anyway',
+      }),
+    ).toBeInTheDocument()
   })
 
   it('finds a fruit by an eater’s name and shows that eater, marked', async () => {

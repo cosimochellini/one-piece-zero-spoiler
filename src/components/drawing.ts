@@ -1,3 +1,5 @@
+import { createContext } from 'react'
+
 import type { Stroke, TintId } from '~/lib/view/records'
 import { color, tint } from '~/styles/tokens.stylex'
 
@@ -50,3 +52,11 @@ const TINT_VAR: Record<TintId, string> = {
 export function tintOf(hue: TintId): string {
   return TINT_VAR[hue]
 }
+
+/**
+ * Set by whatever has just lifted a drawing out of the fog (`FogTile`): every
+ * drawing under it draws itself in once, stroke by stroke, instead of
+ * appearing whole. A context rather than a prop, because the drawing sits
+ * several components below the tile that knows it was just lifted.
+ */
+export const DrawInContext = createContext(false)
