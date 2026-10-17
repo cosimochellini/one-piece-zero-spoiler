@@ -251,3 +251,21 @@ describe('the fruit sheet', () => {
     }
   })
 })
+
+describe('the fruits drawn again', () => {
+  it('redraws the ten real fruits and Katakuri’s awakening, and no other', () => {
+    expect(Object.keys(fruitRedrawn)).toStrictEqual([
+      'chop-chop-fruit',
+      'ox-ox-fruit-model-bison',
+      'flame-flame-fruit',
+      'op-op-fruit',
+      'string-string-fruit',
+      'mochi-mochi-fruit',
+      'snake-snake-fruit-mythical-model-yamata-no-orochi',
+      'fish-fish-fruit-mythical-model-azure-dragon',
+      'cat-cat-fruit-model-leopard',
+      'love-love-fruit',
+      'paw-paw-fruit',
+    ])
+  })
+})
