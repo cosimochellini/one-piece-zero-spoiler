@@ -313,6 +313,9 @@ export const enDictionary = {
   'fruits.foggedHint':
     'Their names are hidden, so search does not find them. Move your bookmark forward to see them.',
   'fruits.allOpen': 'Nothing of this type is under fog.',
+  'fruits.wall.title': '{count} devil fruits are under fog',
+  'fruits.wall.ask': 'Which episode are you on?',
+  'fruits.wall.browse': 'Browse anyway',
   'fruits.moreEaters': 'and {count} more characters who ate it',
   'fruits.moreEatersOne': 'and 1 more character who ate it',
 

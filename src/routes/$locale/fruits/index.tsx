@@ -6,8 +6,11 @@
  * · idea: "an album — three plates of tiles, the drawing big, who ate it
  *   under the name, two across on a phone, and the fog keeps its place at
  *   the foot of each plate as tiles of drifting fog that clear on a peek
- *   while the drawing draws itself in"
- * · motion: fog drift (transform/opacity, paused off-screen), fog clear
+ *   while the drawing draws itself in; with no bookmark, one wide bank of
+ *   that fog with the question and the bookmark control in its centre, and
+ *   the plates closed behind a disclosure under it"
+ * · motion: fog drift (transform/opacity, paused off-screen, the wall's
+ *   bank too), fog clear
  *   420ms, stroke draw-in once; reduced motion → still fog, 150ms crossfade
  * · differs from the previous build (Specimen) on macrostructure; theme is
  *   the project's locked system and does not rotate */
@@ -15,9 +18,10 @@ import { createFileRoute } from '@tanstack/react-router'
 import type { ReactElement } from 'react'
 
 import { ArchivePage } from '~/components/ArchivePage'
-import { SpecimenBands } from '~/components/SpecimenBands'
+import { FruitsAlbum } from '~/components/FruitWall'
 import { useT } from '~/i18n/LocaleContext'
 import { isLocale } from '~/i18n/locales'
+import { useBookmark } from '~/lib/progress/BookmarkContext'
 import { describeNamedPage } from '~/routes/$locale/-head'
 import { usePeek } from '~/routes/$locale/-peek'
 import { liftFruit, loadFruits } from '~/server/api'
@@ -55,20 +59,28 @@ export const Route = createFileRoute('/$locale/fruits/')({
  * band at the foot of every plate, which is the spoiler rule applied to a
  * text field. A covered tile is a `FogTile`: the same drifting fog for every
  * fruit, lifted by hand in two presses.
+ *
+ * With no bookmark the album is a wall of fog with the control that sets
+ * one, and the wall says the count itself, so the line under the heading
+ * goes.
  */
 function FruitsPage(): ReactElement {
   const t = useT()
+  const { bookmark } = useBookmark()
   const { bands, filed } = Route.useLoaderData()
 
   const peek = usePeek(liftFruit)
 
   return (
     <ArchivePage
-      count={t('fruits.count', { count: filed })}
+      count={
+        bookmark === null ? undefined : t('fruits.count', { count: filed })
+      }
       title={t('fruits.title')}
     >
-      <SpecimenBands
+      <FruitsAlbum
         bands={bands}
+        filed={filed}
         peek={peek}
       />
     </ArchivePage>
