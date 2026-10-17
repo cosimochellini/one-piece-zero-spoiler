@@ -36,7 +36,13 @@ export function StageArt({
 }): ReactElement {
   const { t } = useLocale()
   const [drawing, setDrawing] = useState(true)
-  const [look, setLook] = useState(() => drawings.at(-1)?.look ?? 'power')
+  const [picked, setPicked] = useState<FruitLook | null>(null)
+  // A pick holds while the drawing it names is still sent; a moved bookmark
+  // keeps the page mounted, so otherwise it is the latest, as on arrival.
+  const look =
+    drawings.find((one) => one.look === picked)?.look
+    ?? drawings.at(-1)?.look
+    ?? 'power'
 
   return (
     <>
@@ -73,9 +79,9 @@ export function StageArt({
             legend={t('fruit.looks')}
             look="segments"
             name="fruit-look"
-            onChoose={(picked) => {
+            onChoose={(chosen) => {
               setDrawing(false)
-              setLook(picked)
+              setPicked(chosen)
             }}
             value={look}
           />
