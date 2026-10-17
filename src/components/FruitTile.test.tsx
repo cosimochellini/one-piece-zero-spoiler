@@ -17,6 +17,22 @@ import { FruitTile } from './FruitTile'
 const ACE = { id: 'portgas-d-ace', name: 'Portgas D. Ace', visual: drawing() }
 const SABO = { id: 'sabo', name: 'Sabo', visual: drawing('blue') }
 
+/** A covered Zoan tile's HTML, its threshold written as N. */
+function coveredHtml(revealedAtEpisode: number): string {
+  const { container, unmount } = renderWithProviders(
+    <FruitTile
+      form="zoan"
+      index={2}
+      peek={peekPending()}
+      slot={coveredSlot({ kind: 'fruit', revealedAtEpisode })}
+    />,
+    { bookmark: ep(100) },
+  )
+  const out = container.outerHTML.replaceAll(String(revealedAtEpisode), 'N')
+  unmount()
+  return out
+}
+
 describe('FruitTile', () => {
   it('links the drawing and the name to the fruit’s page, and prints the kind', () => {
     const { container } = renderWithProviders(
@@ -164,7 +180,6 @@ describe('FruitTile', () => {
 
     expect(screen.getByText('Fruit 01 · Logia')).toBeInTheDocument()
     expect(screen.getByText('First named in episode 462')).toBeInTheDocument()
-    expect(screen.getByText('A fruit under fog')).toBeInTheDocument()
     expect(
       screen.getByRole('button', {
         name: 'Under fog until episode 462. Show anyway',
@@ -176,10 +191,21 @@ describe('FruitTile', () => {
     expect(container.querySelectorAll('path')).toHaveLength(0)
     expect(container.querySelector('[style]')).toBeNull()
     expect(screen.queryByRole('link')).not.toBeInTheDocument()
+    expect(container).toHaveTextContent(
+      /^Fruit 01 · LogiaFirst named in episode 462$/u,
+    )
   })
 
-  it('becomes a link once the reader lifts the fog by hand', async () => {
-    renderWithProviders(
+  it('draws the same fog for every fruit', () => {
+    // Two different fruits at the same place on a plate: once their two
+    // thresholds are set aside, their HTML is one and the same.
+
+    expect(coveredHtml(462)).toBe(coveredHtml(871))
+  })
+
+  it('becomes a link once the reader lifts the fog by hand, and draws it in', async () => {
+    const user = userEvent.setup()
+    const { container } = renderWithProviders(
       <FruitTile
         form="logia"
         index={4}
@@ -191,11 +217,19 @@ describe('FruitTile', () => {
       { bookmark: ep(100) },
     )
 
-    await userEvent.click(screen.getByRole('button'))
+    // The first press only asks; nothing is sent for yet.
+    await user.click(screen.getByRole('button'))
+
+    expect(screen.getByRole('button')).toHaveTextContent('Show it anyway?')
+    expect(screen.queryByRole('link')).not.toBeInTheDocument()
+
+    await user.click(screen.getByRole('button'))
 
     const link = await screen.findByRole('link', { name: 'Flame-Flame Fruit' })
 
     expect(link).toHaveAttribute('href', '/en/fruits/flame-flame-fruit')
+    // Every drawn line is measured for the pen.
+    expect(container.querySelector('path')).toHaveAttribute('pathLength', '1')
     // The kind is already printed under the tile; the lifted link does not
     // print it twice.
     expect(screen.getAllByText(/Logia/u)).toHaveLength(1)

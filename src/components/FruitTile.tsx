@@ -3,11 +3,10 @@ import { Link } from '@tanstack/react-router'
 import type { ReactElement } from 'react'
 
 import { Marked } from '~/components/CharacterCard'
+import { FogTile } from '~/components/FogTile'
 import { OpenArt } from '~/components/FruitArt'
 import { FruitEater } from '~/components/FruitEater'
-import { FruitFrame } from '~/components/FruitFrame'
 import type { EaterMatch } from '~/components/recordMatches'
-import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { useLocale } from '~/i18n/LocaleContext'
 import type { TranslationKey } from '~/i18n/types'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
@@ -62,9 +61,10 @@ export interface FruitTileProps {
  * link may not hold a link.
  *
  * Under fog the tile has no link, no name and no drawing in the DOM: the slug
- * would spell the name and the drawing would say as much (#136). What stays
- * outside the fog is the promise — a number, the kind and the episode the
- * story names it in — and the curtain over the empty frame lifts it by hand.
+ * would spell the name and the drawing would say as much (#136). It is a
+ * `FogTile`: the same drifting fog for every fruit, and under it only the
+ * promise (a number, the kind and the episode the story names it in). Lifted
+ * by hand, the fog clears and the drawing draws itself in.
  */
 export function FruitTile({
   eater = FIRST_EATER,
@@ -92,19 +92,16 @@ export function FruitTile({
 
   return (
     <li {...stylex.props(styles.tile)}>
-      <SpoilerVeil
-        density="compact"
+      <FogTile
+        covered={slot.covered}
+        lines={[
+          `${t('fruits.specimen', {
+            index: String(index + 1).padStart(NUMBER_WIDTH, '0'),
+          })} · ${t(FORM_KEY[form])}`,
+          threshold('fruit.opensAt', slot.covered),
+        ]}
         peek={peek}
-        placeholder={
-          <span {...stylex.props(styles.face)}>
-            <FruitFrame />
-            <span {...stylex.props(styles.name, styles.fogged)}>
-              {t('fruit.foggedName')}
-            </span>
-          </span>
-        }
-        slot={slot}
-        strength="media"
+        phase={index}
       >
         {(record) => {
           return (
@@ -114,17 +111,7 @@ export function FruitTile({
             />
           )
         }}
-      </SpoilerVeil>
-      <p {...stylex.props(styles.kind)}>
-        {t('fruits.specimen', {
-          index: String(index + 1).padStart(NUMBER_WIDTH, '0'),
-        })}
-        {' · '}
-        {t(FORM_KEY[form])}
-      </p>
-      <p {...stylex.props(styles.episode)}>
-        {threshold('fruit.opensAt', slot.covered)}
-      </p>
+      </FogTile>
     </li>
   )
 }
@@ -255,22 +242,9 @@ const styles = stylex.create({
     transitionTimingFunction: ease.out,
     minWidth: 0,
   },
-  fogged: { color: color.muted },
   kind: {
     color: color.muted,
     display: 'block',
-    fontFamily: font.mono,
-    fontSize: text.xs,
-    fontVariantNumeric: 'tabular-nums',
-    fontWeight: 600,
-    letterSpacing: META_TRACKING,
-    lineHeight: leading.body,
-    overflowWrap: 'anywhere',
-    textTransform: 'uppercase',
-    minWidth: 0,
-  },
-  episode: {
-    color: color.ink2,
     fontFamily: font.mono,
     fontSize: text.xs,
     fontVariantNumeric: 'tabular-nums',

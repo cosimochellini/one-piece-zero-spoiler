@@ -112,6 +112,8 @@ export const enDictionary = {
   'veil.locked.chapter': 'Under fog until chapter {threshold}',
   'veil.reveal': 'Show anyway',
   'veil.revealShort': 'Show',
+  'veil.ask': 'Show it anyway?',
+  'veil.confirm': 'Yes, show',
   'veil.revealing': 'Loading…',
   'veil.peekFailed': 'Could not load it. Try again.',
   'veil.placeholder': 'Spoiler',

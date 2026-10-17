@@ -5,7 +5,10 @@
  * · footer: Ft4 colophon (shared)
  * · idea: "an album — three plates of tiles, the drawing big, who ate it
  *   under the name, two across on a phone, and the fog keeps its place at
- *   the foot of each plate"
+ *   the foot of each plate as tiles of drifting fog that clear on a peek
+ *   while the drawing draws itself in"
+ * · motion: fog drift (transform/opacity, paused off-screen), fog clear
+ *   420ms, stroke draw-in once; reduced motion → still fog, 150ms crossfade
  * · differs from the previous build (Specimen) on macrostructure; theme is
  *   the project's locked system and does not rotate */
 import { createFileRoute } from '@tanstack/react-router'
@@ -50,7 +53,8 @@ export const Route = createFileRoute('/$locale/fruits/')({
  *
  * The search filters the open tiles only, and the covered ones keep their own
  * band at the foot of every plate, which is the spoiler rule applied to a
- * text field.
+ * text field. A covered tile is a `FogTile`: the same drifting fog for every
+ * fruit, lifted by hand in two presses.
  */
 function FruitsPage(): ReactElement {
   const t = useT()
