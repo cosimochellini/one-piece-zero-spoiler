@@ -1,11 +1,23 @@
 // @vitest-environment node
 import { describe, expect, it } from 'vitest'
 
-import { labelsOf, problems } from './issue-hook.mjs'
+import { createsIssue, labelsOf, problems } from './issue-hook.mjs'
 
 const FULL = ['type:bug', 'area:ui', 'status:ready', 'priority:p2', 'size:s']
 
 describe('the gh issue create hook', () => {
+  it('checks only commands that run gh issue create', () => {
+    expect(createsIssue('gh issue create -t x')).toBe(true)
+    expect(createsIssue('cd wt && gh issue create -t x')).toBe(true)
+    expect(createsIssue('rtk gh issue create -t x')).toBe(true)
+    expect(createsIssue('grep -rn "gh issue create" .agents')).toBe(false)
+    expect(createsIssue('git commit -m "docs: gh issue create labels"')).toBe(
+      false,
+    )
+    expect(createsIssue('gh issue create --help')).toBe(false)
+    expect(createsIssue('gh issue list -l type:bug')).toBe(false)
+  })
+
   it('reads repeated, comma-separated and quoted labels', () => {
     expect(
       labelsOf(

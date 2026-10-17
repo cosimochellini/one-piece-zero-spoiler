@@ -14,10 +14,15 @@ const GROUPS = ['type', 'area', 'status', 'priority', 'size']
 /** Every label the repository defines. */
 const KNOWN = new Set(labels.map((label) => label.name))
 
-const CREATE = /\bgh issue create\b/u
+// `gh issue create` run as a command: at the start or after a shell
+// separator, so a grep, a commit message or a PR body that only mentions it
+// goes through.
+const CREATE = /(?:^|[;&|(\n]) *(?:rtk )?gh issue create\b/u
+const HELP = /\s(?:--help|-h)\b/u
 
 // ponytail: regexes over the command, not a shell parser; a label held in a
-// variable is not seen. Parse with a real shell lexer if agents write those.
+// variable, or the command quoted after a separator ("x; gh issue create"),
+// is misread. Parse with a real shell lexer if agents write those.
 const LABEL =
   /(?:^|\s)(?:--label|-l)(?:=|\s+)(?:"(?<double>[^"]*)"|'(?<single>[^']*)'|(?<bare>\S+))/gu
 const BODY_FILE =
@@ -34,6 +39,17 @@ function values(command, flag) {
     .matchAll(flag)
     .map(({ groups }) => groups?.double ?? groups?.single ?? groups?.bare ?? '')
     .toArray()
+}
+
+/**
+ * Whether the command creates an issue; asking for help creates none.
+ * @param {string} command The shell command.
+ * @returns {boolean} Whether the hook has to check it.
+ */
+export function createsIssue(command) {
+  const start = command.search(CREATE)
+
+  return start !== -1 && !HELP.test(command.slice(start))
 }
 
 /**
@@ -99,7 +115,7 @@ if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
   const input = JSON.parse(readFileSync(process.stdin.fd, 'utf8'))
   const command = String(input.tool_input?.command ?? '')
   const found =
-    CREATE.test(command) ? problems(labelsOf(command), bodyOf(command)) : []
+    createsIssue(command) ? problems(labelsOf(command), bodyOf(command)) : []
   if (found.length > 0) {
     process.stderr.write(
       `gh issue create refused:\n- ${found.join('\n- ')}\nEvery issue takes one type:, area:, status:, priority: and size: label (no size: on a type:epic). Load the issues skill for what each one means.\n`,
