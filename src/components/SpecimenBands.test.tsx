@@ -5,6 +5,7 @@ import { describe, expect, it, vi } from 'vitest'
 
 import type { FruitParams } from '~/lib/search/fruitParams'
 import {
+  at,
   coveredRecord,
   drawing,
   fruitBand,
@@ -16,17 +17,25 @@ import { ep, renderWithProviders } from '~/test/providers'
 
 import { SpecimenBands, type SpecimenBandsProps } from './SpecimenBands'
 
-type AlbumProps = Omit<SpecimenBandsProps, 'onParams' | 'params'> & {
-  initial?: FruitParams
-  onParams?: SpecimenBandsProps['onParams']
-}
+type AlbumProps = Omit<
+  SpecimenBandsProps,
+  'later' | 'onParams' | 'params' | 'sagas'
+>
+  & Partial<Pick<SpecimenBandsProps, 'later' | 'sagas'>> & {
+    initial?: FruitParams
+    onParams?: SpecimenBandsProps['onParams']
+  }
 
 const NO_PARAMS: FruitParams = {}
+const NONE: string[] = []
+const NO_SAGAS: SpecimenBandsProps['sagas'] = []
 
 /** The album with its picks held in state, as the route holds them in the address. */
 function Album({
   initial = NO_PARAMS,
+  later = NONE,
   onParams,
+  sagas = NO_SAGAS,
   ...props
 }: AlbumProps): ReactElement {
   const [params, setParams] = useState(initial)
@@ -34,11 +43,13 @@ function Album({
   return (
     <SpecimenBands
       {...props}
+      later={later}
       onParams={(next, replace) => {
         setParams(next)
         onParams?.(next, replace)
       }}
       params={params}
+      sagas={sagas}
     />
   )
 }
@@ -339,11 +350,11 @@ describe('SpecimenBands', () => {
     expect(screen.getByText(/Group 03 · 2 fruits/u)).toBeInTheDocument()
   })
 
-  it('offers the one view as a named group, and sums up the picks for a phone', () => {
+  it('offers the two views as a named group, and sums up the picks for a phone', () => {
     renderWithProviders(
       <Album
         bands={BANDS}
-        initial={{ form: 'zoan', q: 'gum' }}
+        initial={{ view: 'saga', form: 'zoan', q: 'gum' }}
         peek={peekTo(GUM)}
       />,
       { bookmark: ep(650) },
@@ -351,10 +362,154 @@ describe('SpecimenBands', () => {
 
     const view = screen.getByRole('group', { name: 'Group by' })
 
-    expect(within(view).getByRole('radio', { name: 'Type' })).toBeChecked()
-    expect(within(view).getAllByRole('radio')).toHaveLength(1)
+    expect(within(view).getByRole('radio', { name: 'Saga' })).toBeChecked()
     expect(
-      screen.getByRole('button', { name: 'Filters. Type · Zoan · “gum”' }),
+      within(view)
+        .getAllByRole('radio')
+        .map((radio) => radio.getAttribute('value')),
+    ).toStrictEqual(['type', 'saga'])
+    expect(
+      screen.getByRole('button', { name: 'Filters. Saga · Zoan · “gum”' }),
     ).toHaveAttribute('aria-expanded', 'false')
+  })
+
+  it('switches to the saga view and back, the chip and the search kept', async () => {
+    const onParams = vi.fn<SpecimenBandsProps['onParams']>()
+    const user = userEvent.setup()
+    renderWithProviders(
+      <Album
+        bands={BANDS}
+        initial={{ form: 'paramecia', q: 'gum' }}
+        onParams={onParams}
+        peek={peekTo(GUM)}
+        sagas={[
+          { saga: 'East Blue Saga', open: [{ id: GUM.id }], covered: [] },
+        ]}
+      />,
+      { bookmark: ep(650) },
+    )
+
+    await user.click(screen.getByRole('radio', { name: 'Saga' }))
+
+    expect(onParams).toHaveBeenLastCalledWith(
+      { view: 'saga', form: 'paramecia', q: 'gum' },
+      false,
+    )
+    expect(
+      screen.getByRole('region', { name: 'East Blue Saga' }),
+    ).toBeInTheDocument()
+    expect(
+      screen.queryByRole('region', { name: 'Paramecia' }),
+    ).not.toBeInTheDocument()
+
+    await user.click(screen.getByRole('radio', { name: 'Type' }))
+
+    expect(onParams).toHaveBeenLastCalledWith(
+      { form: 'paramecia', q: 'gum' },
+      false,
+    )
+    expect(
+      screen.getByRole('region', { name: 'Paramecia' }),
+    ).toBeInTheDocument()
+  })
+})
+
+describe('the saga view', () => {
+  const NEAR = coveredRecord({ kind: 'fruit', ...at(700) })
+  const FAR = coveredRecord({ kind: 'fruit', ...at(900) })
+  const PLATES = [
+    fruitBand({ form: 'paramecia', open: [GUM, CHOP], covered: [], total: 2 }),
+    fruitBand({ form: 'zoan', open: [], covered: [FAR], total: 1 }),
+    fruitBand({ form: 'logia', open: [FLAME], covered: [NEAR], total: 2 }),
+  ]
+  const SAGAS = [
+    { saga: 'East Blue Saga', open: [{ id: GUM.id }], covered: [] },
+    {
+      saga: 'Dressrosa Saga',
+      open: [{ id: CHOP.id }, { id: FLAME.id }],
+      covered: [NEAR.handle],
+    },
+  ]
+
+  /** The saga view at episode 650, with these picks. */
+  function renderSagas(initial: FruitParams): void {
+    renderWithProviders(
+      <Album
+        bands={PLATES}
+        initial={initial}
+        later={[FAR.handle]}
+        peek={peekTo(GUM)}
+        sagas={SAGAS}
+      />,
+      { bookmark: ep(650) },
+    )
+  }
+
+  it('sets out one group per reached saga, counted, then the later sagas as one band', () => {
+    renderSagas({ view: 'saga' })
+
+    const east = screen.getByRole('region', { name: 'East Blue Saga' })
+    const dressrosa = screen.getByRole('region', { name: 'Dressrosa Saga' })
+
+    expect(
+      within(east).getByRole('heading', { level: 2, name: 'East Blue Saga' }),
+    ).toHaveAttribute('id', 'saga-1')
+    expect(within(east).getByText('1 fruit')).toBeInTheDocument()
+    expect(within(dressrosa).getByText('3 fruits')).toBeInTheDocument()
+    expect(
+      within(dressrosa)
+        .getAllByRole('listitem')
+        .map((item) => item.textContent),
+    ).toStrictEqual([
+      expect.stringMatching(/^Chop-Chop Fruit/u),
+      expect.stringMatching(/^Flame-Flame Fruit/u),
+      // A fog tile keeps its plate's number: the Logia plate's second.
+      expect.stringMatching(/Fruit 02 · Logia/u),
+    ])
+
+    const later = screen.getByRole('region', {
+      name: '1 fruit from a later saga, under fog',
+    })
+
+    expect(within(later).getByRole('heading', { level: 2 })).toBeInTheDocument()
+    expect(within(later).getByText(/Fruit 01 · Zoan/u)).toBeInTheDocument()
+    expect(later).not.toHaveTextContent(/Saga/u)
+  })
+
+  it('filters both runs by the chip, and leaves out a group with nothing left', () => {
+    renderSagas({ view: 'saga', form: 'logia' })
+
+    expect(
+      screen.queryByRole('region', { name: 'East Blue Saga' }),
+    ).not.toBeInTheDocument()
+    expect(
+      within(screen.getByRole('region', { name: 'Dressrosa Saga' }))
+        .getAllByRole('listitem')
+        .map((item) => item.textContent),
+    ).toStrictEqual([
+      expect.stringMatching(/^Flame-Flame Fruit/u),
+      expect.stringMatching(/Fruit 02 · Logia/u),
+    ])
+    expect(
+      screen.getByRole('region', {
+        name: 'Nothing from a later saga is under fog here.',
+      }),
+    ).toBeInTheDocument()
+  })
+
+  it('filters the open tiles by the search and keeps every fog tile', () => {
+    renderSagas({ view: 'saga', q: 'gum' })
+
+    expect(
+      within(screen.getByRole('region', { name: 'East Blue Saga' })).getByRole(
+        'link',
+        { name: /^Gum-Gum Fruit/u },
+      ),
+    ).toBeInTheDocument()
+
+    const dressrosa = screen.getByRole('region', { name: 'Dressrosa Saga' })
+
+    expect(within(dressrosa).getAllByRole('listitem')).toHaveLength(1)
+    expect(within(dressrosa).queryByRole('link')).not.toBeInTheDocument()
   })
 })

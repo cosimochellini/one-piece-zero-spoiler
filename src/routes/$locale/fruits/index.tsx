@@ -6,10 +6,12 @@
  * · footer: Ft4 colophon (shared)
  * · idea: "the saga you are watching first, its name in gold and a rail
  *   of its fruits so far that snaps as it scrolls, the latest one large in a
- *   glow of its own tint; then an album — a pinned control bar (search,
- *   view, kind chips, all in the address; on a phone it folds to one row
- *   once you scroll) over
- *   three plates of tiles, the drawing big, who ate it
+ *   glow of its own tint, and a link on to the whole saga; then an album —
+ *   a pinned control bar (search, view, kind chips, all in the address; on
+ *   a phone it folds to one row once you scroll) over
+ *   three plates of tiles, or in the saga view one pinned group per saga
+ *   reached, its fog tiles in their place in time and every later saga one
+ *   band of fog, the drawing big, who ate it
  *   under the name, two across on a phone, and the fog keeps its place at
  *   the foot of each plate as tiles of drifting fog that clear on a peek
  *   while the drawing draws itself in; with no bookmark, one wide bank of
@@ -66,7 +68,9 @@ export const Route = createFileRoute('/$locale/fruits/')({
  * The saga the reader is watching leads (`SagaMarquee`): its name, its open
  * fruits so far as a rail of large tiles, the latest first. Then an album:
  * the brand line and a count, then three plates — Paramecia, Zoan, Logia —
- * each a pinned head over a grid of tiles. A tile is the drawing,
+ * each a pinned head over a grid of tiles. The saga view (`?view=saga`)
+ * groups the same tiles by the saga the story names them in instead, up to
+ * the bookmark's, with every later saga one band of fog. A tile is the drawing,
  * large, and the name, as one link; under them the eater the reader has
  * reached, as a link of their own, and the kind. Two across on a phone, up
  * to six on a wide page. The sentence is the fruit page's.
@@ -87,7 +91,7 @@ export const Route = createFileRoute('/$locale/fruits/')({
 function FruitsPage(): ReactElement {
   const t = useT()
   const { bookmark } = useBookmark()
-  const { bands, filed, marquee } = Route.useLoaderData()
+  const { bands, filed, later, marquee, sagas } = Route.useLoaderData()
 
   const peek = usePeek(liftFruit)
   const [params, onParams] = useFruitParams()
@@ -102,10 +106,12 @@ function FruitsPage(): ReactElement {
       <FruitsAlbum
         bands={bands}
         filed={filed}
+        later={later}
         marquee={marquee}
         onParams={onParams}
         params={params}
         peek={peek}
+        sagas={sagas}
       />
     </ArchivePage>
   )

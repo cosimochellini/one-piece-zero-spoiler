@@ -28,6 +28,11 @@ export interface FogBandProps {
   children: ReactNode
   count: number
   headingId: string
+  /**
+   * The heading's level: `h3` under a section of its own, `h2` for a band
+   * that stands beside the page's sections rather than inside one.
+   */
+  level?: 'h2' | 'h3'
   words: FogTitles
 }
 
@@ -36,6 +41,7 @@ export function FogBand({
   children,
   count,
   headingId,
+  level: Heading = 'h3',
   words,
 }: FogBandProps): ReactElement {
   const t = useT()
@@ -45,12 +51,12 @@ export function FogBand({
       aria-labelledby={headingId}
       {...stylex.props(styles.fog)}
     >
-      <h3
+      <Heading
         id={headingId}
         {...stylex.props(styles.fogTitle)}
       >
         {title(t, count, words)}
-      </h3>
+      </Heading>
       {count === 0 ? null : (
         <>
           <p {...stylex.props(styles.fogHint)}>{t(words.hint)}</p>

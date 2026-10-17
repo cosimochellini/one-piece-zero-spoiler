@@ -5,8 +5,9 @@ import { eatersOf } from '~/data/dated'
 import { entities } from '~/data/entities'
 import { fruits } from '~/data/fruits'
 import { reveal } from '~/data/reveal'
+import type { Entity } from '~/data/types'
 import { type Locale, LOCALES } from '~/i18n/locales'
-import type { Bookmark } from '~/lib/progress/episode'
+import { absoluteEpisodeOf, type Bookmark } from '~/lib/progress/episode'
 import { foldName, matchFolded } from '~/lib/search/fold'
 import type {
   FruitEatersView,
@@ -27,6 +28,7 @@ import { handleOf } from './handle.server'
 import { characterPage, drawingsFor } from './pages.server'
 import { BOOKMARKS } from './payloads.server'
 import { peekFruit } from './peek.server'
+import { sagaOf, type SagaStart, sagaStarts } from './sagaLabels.server'
 
 /**
  * What the specimen sheet and a fruit's page are allowed to say.
@@ -692,3 +694,161 @@ describe('the marquee', () => {
     expect(art?.visual.strokes.length).toBeGreaterThan(0)
   })
 })
+
+describe('the saga view', () => {
+  it('is empty without a bookmark', () => {
+    const sheet = fruitSheet(null, 'en')
+
+    expect(sheet.sagas).toStrictEqual([])
+    expect(sheet.later).toStrictEqual([])
+  })
+
+  it('sets out the eight sagas reached at episode 650, Dressrosa last', () => {
+    const sheet = fruitSheet(ep(650), 'en')
+
+    expect(sheet.sagas.map(({ saga }) => saga)).toStrictEqual([
+      'East Blue Saga',
+      'Alabasta Saga',
+      'Skypiea Saga',
+      'Water Seven Saga',
+      'Thriller Bark Saga',
+      'Summit War Saga',
+      'Fish-Man Island Saga',
+      'Dressrosa Saga',
+    ])
+    expect(sheet.sagas[0]?.open.map(({ id }) => id)[0]).toBe('gum-gum-fruit')
+    expect(sheet.sagas.at(-1)?.saga).toBe(sheet.marquee?.saga)
+    expect(sheet.sagas.at(-1)?.open).toStrictEqual(sheet.marquee?.fruits)
+    // Dressrosa has fruits still to come at 650: fog tiles in their saga.
+    expect(sheet.sagas.at(-1)?.covered.length).toBeGreaterThan(0)
+  })
+
+  it('groups by chapter for a manga reader', () => {
+    const bookmark: Bookmark = { mode: 'chapter', chapter: 1044 }
+    const sheet = fruitSheet(bookmark, 'en')
+    const starts = sagaStarts('chapter')
+    const byId = new Map(fruits.map((fruit) => [fruit.id, fruit]))
+
+    expect(sheet.sagas.at(-1)?.saga).toBe('Wano Country Saga')
+
+    for (const [at, group] of sheet.sagas.entries()) {
+      for (const { id } of group.open) {
+        const fruit = byId.get(id)
+
+        expect(
+          fruit === undefined ? undefined : (
+            sagaOf('chapter', fruit.revealedAtChapter)?.name.en
+          ),
+          id,
+        ).toBe(starts[at]?.name.en)
+      }
+    }
+  })
+
+  it('places every fruit once, in its own saga and in the reader’s order, and none past the bookmark, at every bookmark of the sweep', () => {
+    for (const bookmark of BOOKMARKS) {
+      if (bookmark === null) {
+        continue
+      }
+      const view = sagaViewAt(bookmark)
+      const grouped = view.groups.map(({ covered, open }) => [
+        ...open,
+        ...covered,
+      ])
+      const all = [...grouped.flat(), ...view.later]
+
+      expect(all).toHaveLength(fruits.length)
+      expect(new Set(all)).toHaveProperty('size', fruits.length)
+      expect(view.groups).toHaveLength(view.reached.length)
+      expect(splitsRight(view)).toBe(true)
+
+      for (const [index, group] of grouped.entries()) {
+        const thresholds = group.map((fruit) => view.at.threshold(fruit))
+
+        expect(group.map((fruit) => view.sagaFor(fruit))).toStrictEqual(
+          group.map(() => view.reached[index]),
+        )
+        expect(thresholds).toStrictEqual(thresholds.toSorted((x, y) => x - y))
+      }
+    }
+  })
+})
+
+const BY_ID = new Map<string, Entity>(fruits.map((fruit) => [fruit.id, fruit]))
+const BY_HANDLE = new Map<string, Entity>(
+  fruits.map((fruit) => [handleOf(fruit.id), fruit]),
+)
+
+/** The fruits these ids or handles stand for. */
+function lookUp(keys: string[], from: Map<string, Entity>): Entity[] {
+  const found: Entity[] = []
+  for (const key of keys) {
+    const fruit = from.get(key)
+    if (fruit !== undefined) {
+      found.push(fruit)
+    }
+  }
+
+  return found
+}
+
+/** The saga view at a bookmark, read back into fruits. */
+interface SagaViewAt {
+  at: ReturnType<typeof reveal>
+  groups: { covered: Entity[]; open: Entity[] }[]
+  later: Entity[]
+  position: number
+  /** The sagas that open by the bookmark, in route order. */
+  reached: SagaStart[]
+  /** The saga a fruit's reveal falls in, in the reader's unit. */
+  sagaFor: (fruit: Entity) => SagaStart | undefined
+}
+
+function sagaViewAt(bookmark: NonNullable<Bookmark>): SagaViewAt {
+  const sheet = fruitSheet(bookmark, 'en')
+  const at = reveal(bookmark)
+  const starts = sagaStarts(at.mode === 'chapter' ? 'chapter' : 'episode')
+  const position =
+    bookmark.mode === 'chapter' ?
+      bookmark.chapter
+    : (absoluteEpisodeOf(bookmark) ?? 0)
+
+  return {
+    at,
+    groups: sheet.sagas.map((group) => ({
+      open: lookUp(
+        group.open.map(({ id }) => id),
+        BY_ID,
+      ),
+      covered: lookUp(group.covered, BY_HANDLE),
+    })),
+    later: lookUp(sheet.later, BY_HANDLE),
+    position,
+    reached: starts.filter((saga) => saga.from <= position),
+    sagaFor: (fruit) =>
+      starts.findLast((saga) => saga.from <= at.threshold(fruit)),
+  }
+}
+
+/**
+ * Whether a group's open fruits are open and its covered ones covered, and
+ * the later band holds only covered fruits of sagas past the bookmark.
+ */
+function splitsRight({
+  at,
+  groups,
+  later,
+  position,
+  sagaFor,
+}: SagaViewAt): boolean {
+  const open = groups.flatMap((group) => group.open)
+  const covered = groups.flatMap((group) => group.covered)
+
+  return (
+    open.every((fruit) => at.sees(fruit))
+    && covered.every((fruit) => !at.sees(fruit))
+    && later.every(
+      (fruit) => !at.sees(fruit) && (sagaFor(fruit)?.from ?? 0) > position,
+    )
+  )
+}

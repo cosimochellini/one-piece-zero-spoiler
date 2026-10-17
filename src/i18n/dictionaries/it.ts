@@ -307,6 +307,7 @@ export const itDictionary: Dictionary = {
   'fruits.searchOpen': 'Cerca',
   'fruits.view.legend': 'Raggruppa per',
   'fruits.view.type': 'Tipo',
+  'fruits.view.saga': 'Saga',
   'fruits.form.legend': 'Tipo di frutto',
   'fruits.form.all': 'Tutti',
   'fruits.shown': 'Risultati: {count} su {total} frutti visibili',
@@ -330,6 +331,11 @@ export const itDictionary: Dictionary = {
   'fruits.marquee': '{saga}: {count} frutti finora',
   'fruits.marqueeOne': '{saga}: 1 frutto finora',
   'fruits.marqueeNone': 'Ancora nessun frutto nuovo in questa saga.',
+  'fruits.marqueeLink': 'Vedi tutta la saga',
+  'fruits.later': '{count} frutti delle saghe successive, nella nebbia',
+  'fruits.laterOne': '1 frutto di una saga successiva, nella nebbia',
+  'fruits.laterAllOpen':
+    'Qui nessun frutto delle saghe successive è nella nebbia.',
   'fruits.lastFruit.episode':
     'L’ultimo è stato il {name}, nell’episodio {threshold}.',
   'fruits.lastFruit.season': 'L’ultimo è stato il {name}, in {threshold}.',

@@ -11,15 +11,17 @@ import type {
   FruitEatersView,
   FruitForm,
   FruitMarqueeView,
+  FruitSagaView,
   FruitSheetView,
   FruitView,
   Slot,
 } from '~/lib/view/records'
 
+import { handleOf } from './handle.server'
 import { headFor, type HeadKeys } from './head.server'
 import { characterOf, deferredOf, fruitOf, specimenOf } from './project.server'
 import { type Reader, readerFor } from './reader.server'
-import { sagaOf } from './sagaLabels.server'
+import { sagaOf, type SagaStart, sagaStarts } from './sagaLabels.server'
 
 /**
  * What the specimen sheet and a fruit's own page are allowed to know.
@@ -137,9 +139,61 @@ function marqueeOf(bookmark: Bookmark, r: Reader): FruitMarqueeView | null {
   }
 }
 
+/** The sagas that open by this point, in route order, each still empty. */
+function reachedOf(
+  starts: SagaStart[],
+  at: number,
+  locale: Locale,
+): FruitSagaView[] {
+  const sagas: FruitSagaView[] = []
+  for (const saga of starts) {
+    if (saga.from <= at) {
+      sagas.push({ saga: saga.name[locale], open: [], covered: [] })
+    }
+  }
+
+  return sagas
+}
+
 /**
- * The specimen sheet: the marquee, three plates, and how many fruits the
- * archive files.
+ * The saga view: every saga the bookmark has reached, in route order, each
+ * with the fruits whose reveal falls in it, open by id and covered by handle,
+ * in the reader's order. A covered fruit in a saga the bookmark has not
+ * reached goes to `later` and nowhere else, so no saga past the bookmark is
+ * named or counted. Refs only: the records are the plates' already. Empty
+ * with no bookmark, which has the wall and no saga view.
+ */
+function sagasOf(
+  bookmark: Bookmark,
+  r: Reader,
+): Pick<FruitSheetView, 'later' | 'sagas'> {
+  const at = positionOf(bookmark)
+  if (at === null) {
+    return { later: [], sagas: [] }
+  }
+
+  const starts = sagaStarts(r.mode === 'chapter' ? 'chapter' : 'episode')
+  const sagas = reachedOf(starts, at, r.locale)
+  const later: string[] = []
+
+  for (const fruit of r.order(fruits)) {
+    const group =
+      sagas[starts.findLastIndex((saga) => saga.from <= r.threshold(fruit))]
+    if (r.sees(fruit)) {
+      group?.open.push({ id: fruit.id })
+    } else if (group === undefined) {
+      later.push(handleOf(fruit.id))
+    } else {
+      group.covered.push(handleOf(fruit.id))
+    }
+  }
+
+  return { later, sagas }
+}
+
+/**
+ * The specimen sheet: the marquee, three plates, the sagas the bookmark has
+ * reached, and how many fruits the archive files.
  */
 export function fruitSheet(bookmark: Bookmark, locale: Locale): FruitSheetView {
   const r = readerFor(bookmark, locale)
@@ -150,6 +204,7 @@ export function fruitSheet(bookmark: Bookmark, locale: Locale): FruitSheetView {
     bands: PLATES.map((form, plate) => bandOf({ form, lead, plate }, r)),
     filed: fruits.length,
     marquee,
+    ...sagasOf(bookmark, r),
   }
 }
 

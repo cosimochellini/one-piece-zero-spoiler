@@ -7,6 +7,7 @@ import { DrawInContext, tintOf } from '~/components/drawing'
 import { useLocale } from '~/i18n/LocaleContext'
 import type { Translate } from '~/i18n/types'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
+import type { FruitParams } from '~/lib/search/fruitParams'
 import { useDrawing } from '~/lib/view/drawings'
 import type {
   FruitBandView,
@@ -26,6 +27,8 @@ import {
 /** What the marquee is built from: the plates it points into, and itself. */
 export interface SagaMarqueeProps {
   bands: FruitBandView[]
+  /** Where "See the whole saga" goes: the saga view, at this saga's group. */
+  link: { hash: string; search: FruitParams }
   marquee: FruitMarqueeView | null
 }
 
@@ -37,13 +40,15 @@ export interface SagaMarqueeProps {
  *
  * The server sends ids only: every fruit here is an open tile of the album
  * already, so its record is read from there. With no fruit in the saga yet,
- * one line points back to the last one.
+ * one line points back to the last one. Either way a link goes on to the
+ * whole saga in the saga view, the picks kept.
  */
 export function SagaMarquee({
   bands,
+  link,
   marquee,
 }: SagaMarqueeProps): null | ReactElement {
-  const { t } = useLocale()
+  const { locale, t } = useLocale()
   const headingId = useId()
   if (marquee === null) {
     return null
@@ -69,6 +74,17 @@ export function SagaMarquee({
           last={marquee.last === null ? undefined : open.get(marquee.last.id)}
         />
       : <Rail fruits={fruits} />}
+
+      <Link
+        hash={link.hash}
+        params={{ locale }}
+        search={link.search}
+        to="/$locale/fruits"
+        {...stylex.props(styles.lastLink, styles.whole)}
+      >
+        {t('fruits.marqueeLink')}
+        <span aria-hidden="true"> →</span>
+      </Link>
     </section>
   )
 }
@@ -243,6 +259,18 @@ const styles = stylex.create({
     outlineStyle: 'solid',
     outlineWidth: rule.fine,
     textUnderlineOffset: '3px',
+  },
+  // `lastLink`'s colour and ring, and a tap target of its own.
+  whole: {
+    alignItems: 'center',
+    display: 'inline-flex',
+    fontFamily: font.mono,
+    fontSize: text.xs,
+    fontWeight: 600,
+    justifySelf: 'start',
+    letterSpacing: '0.12em',
+    textTransform: 'uppercase',
+    minHeight: '44px',
   },
   // One row that scrolls on its own and snaps to a tile, inside the page's
   // width: the page itself never scrolls sideways.

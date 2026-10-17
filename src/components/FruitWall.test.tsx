@@ -57,10 +57,12 @@ describe('FruitsAlbum', () => {
       <FruitsAlbum
         bands={FOGGED}
         filed={3}
+        later={[]}
         marquee={null}
         onParams={vi.fn<SpecimenBandsProps['onParams']>()}
         params={{}}
         peek={peekTo(GUM)}
+        sagas={[]}
       />,
     )
 
@@ -97,10 +99,12 @@ describe('FruitsAlbum', () => {
       <FruitsAlbum
         bands={OPEN}
         filed={1}
+        later={[]}
         marquee={null}
         onParams={vi.fn<SpecimenBandsProps['onParams']>()}
         params={{}}
         peek={peekTo(GUM)}
+        sagas={[]}
       />,
       { bookmark: ep(1), trial: true },
     )
@@ -115,10 +119,12 @@ describe('FruitsAlbum', () => {
       <FruitsAlbum
         bands={OPEN}
         filed={1}
+        later={[]}
         marquee={null}
         onParams={vi.fn<SpecimenBandsProps['onParams']>()}
         params={{}}
         peek={peekTo(GUM)}
+        sagas={[]}
       />,
       { bookmark: ep(650) },
     )
@@ -134,10 +140,12 @@ describe('FruitsAlbum', () => {
         <FruitsAlbum
           bands={FOGGED}
           filed={3}
+          later={[]}
           marquee={null}
           onParams={vi.fn<SpecimenBandsProps['onParams']>()}
           params={{}}
           peek={peekTo(GUM)}
+          sagas={[]}
         />
       </>,
     )

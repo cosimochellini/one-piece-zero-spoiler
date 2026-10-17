@@ -62,8 +62,13 @@ const WORST_CHUNKS = 5
  * 552.25 KB on 2026-10-17, when main stood at ~548.7 KB and the faction
  * labels for the fruit eaters (#666) added ~2.5 KB to both dictionaries,
  * which ship to the browser. Again the measured build plus ~1 KB, under 555 KB.
+ * Raised to 555.4 KB on 2026-10-17, when main stood at ~551.2 KB and the
+ * saga view of the fruits album (#665) added ~3.1 KB: the saga groups, the
+ * view switch's second option, the marquee's link to the whole saga and their
+ * words in both dictionaries. The grouping itself is the server's. Again the
+ * measured build plus ~1 KB, under the 558 KB allowed for this raise.
  */
-export const MAX_CLIENT_BYTES = 552_250
+export const MAX_CLIENT_BYTES = 555_400
 
 /** Where the prose lives: every saga, the ship's log and the filler guide. */
 const PROSE_DIR = 'src/data/records'
