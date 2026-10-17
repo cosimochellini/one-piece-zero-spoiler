@@ -143,6 +143,15 @@ export const styles = stylex.create({
     transitionTimingFunction: ease.out,
     visibility: 'visible',
   },
+  // Out of sight and still read: the live region a screen reader hears.
+  hidden: {
+    overflow: 'hidden',
+    clipPath: 'inset(50%)',
+    position: 'absolute',
+    whiteSpace: 'nowrap',
+    height: '1px',
+    width: '1px',
+  },
   buttonSpent: { opacity: 0, pointerEvents: 'none', visibility: 'hidden' },
   prompt: {
     padding: space.xs,

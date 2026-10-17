@@ -48,7 +48,7 @@ describe('FogTile', () => {
     expect(screen.getByText('First named in episode 462')).toBeInTheDocument()
     expect(
       screen.getByRole('button', {
-        name: 'Under fog until episode 462. Show anyway',
+        name: 'Fruit 03 · Zoan. Under fog until episode 462. Show anyway',
       }),
     ).toBeInTheDocument()
     expect(container.querySelectorAll('[aria-hidden="true"]')).toHaveLength(1)
@@ -82,8 +82,14 @@ describe('FogTile', () => {
 
     await user.keyboard('{Enter}')
 
-    expect(screen.getByRole('button')).toHaveTextContent(
-      'Show it anyway?Yes, show',
+    expect(screen.getByRole('button')).toHaveAccessibleName(
+      'Show it anyway? Yes, show',
+    )
+    // Said aloud from a live region outside the button, whose children a
+    // screen reader treats as presentational.
+    expect(screen.getByRole('status')).toHaveTextContent('Show it anyway?')
+    expect(screen.getByRole('button')).not.toContainElement(
+      screen.getByRole('status'),
     )
     expect(asked).toStrictEqual([])
 
@@ -93,6 +99,12 @@ describe('FogTile', () => {
     // The opaque handle, passed through untouched.
     expect(asked).toStrictEqual(['zz'])
     expect(screen.getByRole('link', { name: 'Spoiler body' })).toHaveFocus()
+    // The spent button fades out saying nothing, and no longer busy.
+    expect(screen.getByRole('status')).toBeEmptyDOMElement()
+    expect(screen.getByRole('button', { hidden: true })).toHaveAttribute(
+      'aria-busy',
+      'false',
+    )
   })
 
   it('takes Space as well as Enter', async () => {
@@ -124,7 +136,7 @@ describe('FogTile', () => {
 
     expect(
       screen.getByRole('button', {
-        name: 'Under fog until episode 462. Show anyway',
+        name: 'Fruit 03 · Zoan. Under fog until episode 462. Show anyway',
       }),
     ).toBeInTheDocument()
     expect(asked).toStrictEqual([])

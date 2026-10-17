@@ -182,7 +182,7 @@ describe('FruitTile', () => {
     expect(screen.getByText('First named in episode 462')).toBeInTheDocument()
     expect(
       screen.getByRole('button', {
-        name: 'Under fog until episode 462. Show anyway',
+        name: 'Fruit 01 · Logia. Under fog until episode 462. Show anyway',
       }),
     ).toBeInTheDocument()
 

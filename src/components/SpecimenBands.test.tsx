@@ -108,7 +108,7 @@ describe('SpecimenBands', () => {
     expect(screen.getByText('1 under fog')).toBeInTheDocument()
     expect(
       screen.getByRole('button', {
-        name: 'Under fog until episode 1089. Show anyway',
+        name: 'Fruit 02 · Logia. Under fog until episode 1089. Show anyway',
       }),
     ).toBeInTheDocument()
   })

@@ -107,11 +107,13 @@ export function FogTile<T>({
       <Ask
         buttonRef={buttonRef}
         covered={covered}
+        name={lines[0] ?? ''}
         onCancel={cancel}
         onPress={press}
         spent={lifted}
         state={state}
       />
+      <Said state={state} />
     </div>
   )
 }
@@ -138,6 +140,7 @@ function useLift<T>(
     setState('asking')
     try {
       setRecord(await peek(covered.handle))
+      setState('resting')
     } catch {
       setState('failed')
     }
@@ -215,6 +218,7 @@ function Fog({
 function Ask({
   buttonRef,
   covered,
+  name,
   onCancel,
   onPress,
   spent,
@@ -222,6 +226,8 @@ function Ask({
 }: {
   buttonRef: RefObject<HTMLButtonElement | null>
   covered: Gated
+  /** What tells this tile from the next to a screen reader: its first line. */
+  name: string
   onCancel: () => void
   onPress: () => void
   spent: boolean
@@ -243,11 +249,12 @@ function Ask({
       // `aria-disabled` rather than `disabled`: a disabled button loses
       // focus, and with it the announcement of what just happened.
       aria-disabled={state === 'asking' || undefined}
-      // Resting, the tile shows no words, so its name is the threshold and
-      // the verb. From the first press on, the words it shows are its name.
+      // Resting, the tile shows no words, so its name is its first line, the
+      // threshold and the verb. From the first press on, the words it shows
+      // are its name.
       aria-label={
         resting ?
-          `${threshold('veil.locked', covered)}. ${t('veil.reveal')}`
+          `${name}. ${threshold('veil.locked', covered)}. ${t('veil.reveal')}`
         : undefined
       }
       onBlur={onCancel}
@@ -257,27 +264,46 @@ function Ask({
       type="button"
       {...stylex.props(styles.button, spent && styles.buttonSpent)}
     >
-      <span
-        role="status"
-        {...stylex.props(styles.prompt)}
-      >
-        {resting ? null : <Words state={state} />}
+      <span {...stylex.props(styles.prompt)}>
+        <Words state={state} />
       </span>
     </button>
   )
 }
 
-/** What a pressed tile says: the question and its answer, or the state. */
-function Words({
-  state,
-}: {
-  state: Exclude<FogState, 'resting'>
-}): ReactElement {
+/**
+ * The words, said aloud as they change. Outside the button, whose children
+ * are presentational, and mounted from the start, since a live region born
+ * with its text is not announced.
+ */
+function Said({ state }: { state: FogState }): ReactElement {
   const t = useT()
+
+  return (
+    <span
+      role="status"
+      {...stylex.props(styles.hidden)}
+    >
+      {state === 'resting' ? null : t(SAYS[state])}
+    </span>
+  )
+}
+
+/**
+ * What a pressed tile says: the question and its answer, or the state.
+ * Resting, nothing.
+ */
+function Words({ state }: { state: FogState }): null | ReactElement {
+  const t = useT()
+
+  if (state === 'resting') {
+    return null
+  }
 
   return (
     <>
       <span {...stylex.props(styles.question)}>{t(SAYS[state])}</span>
+      {/* A space, so the name reads "Show it anyway? Yes, show". */}{' '}
       {state === 'confirming' ?
         <span {...stylex.props(styles.confirm)}>{t('veil.confirm')}</span>
       : null}
