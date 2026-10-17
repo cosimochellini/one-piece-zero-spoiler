@@ -1,5 +1,6 @@
 import { circle, ellipse, SEA, shadow } from '~/lib/svg/primitives'
 
+import { BAT_WING } from './alabasta'
 import { type Drawings, moved, type Redrawings, type Stroke } from './stroke'
 
 /**
@@ -701,6 +702,12 @@ const LOKI_TRUNK = elbafArt.loki.slice(0, 4)
 /** The drum-shaped cuff at the tree's foot, as his first drawing has it. */
 const LOKI_CUFF = elbafArt.loki.slice(7, 12)
 
+/** Gunko's bandage strip and its arrowhead, a little smaller, without its shadow. */
+const GUNKO_COIL = moved(
+  elbafArt['manmayer-gunko'].slice(0, 7),
+  'translate(80 124) scale(0.8) translate(-80 -124)',
+)
+
 /** The records of this stretch drawn again, from the episode the story changes them. */
 export const elbafRedrawn: Redrawings = {
   // The same tree with its trunk bare: Luffy unlocks the chains and they lie
@@ -727,6 +734,30 @@ export const elbafRedrawn: Redrawings = {
         },
         ...LOKI_CUFF,
         { d: 'M-4 150 H12 M140 150 H164', role: 'ambient', dashed: true },
+      ],
+    },
+  ],
+  // The same strip, smaller, between a pair of bat wings, and the devil's
+  // tail curling out under it to a point like her arrows: Imu possesses her
+  // and flies her body over Elbaph from 1180 (ch. 1150). The trident it
+  // carries is left out, and the shadow goes: she is in the air.
+  'manmayer-gunko': [
+    {
+      episode: 1180,
+      chapter: 1150,
+      value: [
+        ...moved(BAT_WING, 'translate(56 116) rotate(-48) scale(0.52)'),
+        ...moved(
+          BAT_WING,
+          'translate(105 124) scale(-1 1) rotate(-48) scale(0.52)',
+        ),
+        ...GUNKO_COIL,
+        { d: 'M104 160 C122 162 122 182 138 180' },
+        {
+          d: GUNKO_ARROWHEAD,
+          transform:
+            'translate(146 179) rotate(83) scale(0.32) translate(-122 -34)',
+        },
       ],
     },
   ],

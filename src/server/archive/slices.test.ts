@@ -1123,6 +1123,10 @@ describe('a record drawn again later in the story', () => {
     expect(walkStages('loki', [[1171, 1141]])).toHaveLength(1)
   })
 
+  it('gives Gunko Imu’s bat wings and tail from episode 1180', () => {
+    expect(walkStages('manmayer-gunko', [[1180, 1150]])).toHaveLength(1)
+  })
+
   it('leaves Gaban for dead from episode 1179', () => {
     expect(walkStages('scopper-gaban', [[1179, 1149]])).toHaveLength(1)
   })
