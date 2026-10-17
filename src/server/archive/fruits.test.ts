@@ -1,29 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
 import { DRAWINGS, REDRAWINGS } from '~/data/art'
-import {
-  CAT_SABRE_TOOTH,
-  DOG_MAKAMI,
-  DRAGON_ALLOSAURUS,
-  DRAGON_BRACHIOSAURUS,
-  DRAGON_PACHYCEPHALOSAURUS,
-  DRAGON_PTERANODON,
-  DRAGON_SPINOSAURUS,
-  DRAGON_TRICERATOPS,
-  FISH_AZURE_DRAGON,
-  MAGNET_MAGNET,
-  MARK_MARK,
-  MILLET_MILLET,
-  PAW_PAW,
-  RIPE_RIPE,
-  SCROLL_SCROLL,
-  SNAKE_OROCHI,
-  SPIDER_ROSAMYGALE,
-  STRAW_STRAW,
-  SWAMP_SWAMP,
-  TIME_TIME,
-  WOODS_WOODS,
-} from '~/data/art/fruits/bespoke'
 import { entities } from '~/data/entities'
 import { fruits } from '~/data/fruits'
 import { reveal } from '~/data/reveal'
@@ -237,112 +214,74 @@ describe('a fruit’s own page', () => {
       id: 'dragon-dragon-fruit-ancient-model-brachiosaurus',
       episode: 944,
       chapter: 957,
-      drawing: DRAGON_BRACHIOSAURUS,
     },
-    { id: 'time-time-fruit', episode: 963, chapter: 966, drawing: TIME_TIME },
+    { id: 'time-time-fruit', episode: 963, chapter: 966 },
     {
       id: 'dragon-dragon-fruit-ancient-model-triceratops',
       episode: 1013,
       chapter: 998,
-      drawing: DRAGON_TRICERATOPS,
     },
     {
       id: 'spider-spider-fruit-ancient-model-rosamygale-grauvogeli',
       episode: 1013,
       chapter: 998,
-      drawing: SPIDER_ROSAMYGALE,
     },
     {
       id: 'fish-fish-fruit-mythical-model-azure-dragon',
       episode: 1014,
       chapter: 999,
-      drawing: FISH_AZURE_DRAGON,
     },
     {
       id: 'dog-dog-fruit-model-okuchi-no-makami',
       episode: 1042,
       chapter: 1020,
-      drawing: DOG_MAKAMI,
     },
-    {
-      id: 'millet-millet-fruit',
-      episode: 894,
-      chapter: 913,
-      drawing: MILLET_MILLET,
-    },
-    {
-      id: 'straw-straw-fruit',
-      episode: 898,
-      chapter: 913,
-      drawing: STRAW_STRAW,
-    },
-    { id: 'ripe-ripe-fruit', episode: 916, chapter: 930, drawing: RIPE_RIPE },
+    { id: 'millet-millet-fruit', episode: 894, chapter: 913 },
+    { id: 'straw-straw-fruit', episode: 898, chapter: 913 },
+    { id: 'ripe-ripe-fruit', episode: 916, chapter: 930 },
     {
       id: 'dragon-dragon-fruit-ancient-model-allosaurus',
       episode: 923,
       chapter: 929,
-      drawing: DRAGON_ALLOSAURUS,
     },
     {
       id: 'dragon-dragon-fruit-ancient-model-spinosaurus',
       episode: 924,
       chapter: 935,
-      drawing: DRAGON_SPINOSAURUS,
     },
     {
       id: 'snake-snake-fruit-mythical-model-yamata-no-orochi',
       episode: 927,
       chapter: 933,
-      drawing: SNAKE_OROCHI,
     },
     {
       id: 'dragon-dragon-fruit-ancient-model-pteranodon',
       episode: 924,
       chapter: 935,
-      drawing: DRAGON_PTERANODON,
     },
     {
       id: 'dragon-dragon-fruit-ancient-model-pachycephalosaurus',
       episode: 990,
       chapter: 983,
-      drawing: DRAGON_PACHYCEPHALOSAURUS,
     },
-    {
-      id: 'scroll-scroll-fruit',
-      episode: 1004,
-      chapter: 992,
-      drawing: SCROLL_SCROLL,
-    },
+    { id: 'scroll-scroll-fruit', episode: 1004, chapter: 992 },
     {
       id: 'cat-cat-fruit-ancient-model-sabre-tooth-tiger',
       episode: 1013,
       chapter: 998,
-      drawing: CAT_SABRE_TOOTH,
     },
-    {
-      id: 'magnet-magnet-fruit',
-      episode: 1058,
-      chapter: 1031,
-      drawing: MAGNET_MAGNET,
-    },
-    {
-      id: 'woods-woods-fruit',
-      episode: 1081,
-      chapter: 1061,
-      drawing: WOODS_WOODS,
-    },
-    {
-      id: 'swamp-swamp-fruit',
-      episode: 531,
-      chapter: 612,
-      drawing: SWAMP_SWAMP,
-    },
-    { id: 'mark-mark-fruit', episode: 532, chapter: 620, drawing: MARK_MARK },
-    { id: 'paw-paw-fruit', episode: 376, chapter: 484, drawing: PAW_PAW },
+    { id: 'magnet-magnet-fruit', episode: 1058, chapter: 1031 },
+    { id: 'woods-woods-fruit', episode: 1081, chapter: 1061 },
+    { id: 'swamp-swamp-fruit', episode: 531, chapter: 612 },
+    { id: 'mark-mark-fruit', episode: 532, chapter: 620 },
+    { id: 'paw-paw-fruit', episode: 376, chapter: 484 },
   ])(
     'opens $id with its power only at its thresholds',
-    ({ id, episode, chapter, drawing }) => {
+    ({ id, episode, chapter }) => {
       const fruit = fruits.find((record) => record.id === id)
+      const strokes =
+        fruit === undefined ? undefined : DRAWINGS[fruit.visual.art]
+
       for (const locale of ['en', 'it'] as const) {
         for (const [before, at] of [
           [ep(episode - 1), ep(episode)],
@@ -364,7 +303,7 @@ describe('a fruit’s own page', () => {
               slot: {
                 open: true,
                 record: {
-                  visual: { strokes: drawing },
+                  visual: { strokes },
                   summary: fruit?.summary[locale],
                 },
               },

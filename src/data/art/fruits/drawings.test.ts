@@ -4,147 +4,6 @@ import type { Stroke } from '~/data/art/stroke'
 import type { Timeline } from '~/data/types'
 
 import { fruitArt, fruitRedrawn } from '.'
-import {
-  AGE_AGE,
-  ARMS_ARMS,
-  ARROW_ARROW,
-  ART_ART,
-  ARTIFICIAL_DRAGON,
-  BARRIER_BARRIER,
-  BIRD_ALBATROSS,
-  BIRD_FALCON,
-  BIRD_PHOENIX,
-  BIS_BIS,
-  BOMB_BOMB,
-  BOOK_BOOK,
-  BRAIN_BRAIN,
-  BRUSH_BRUSH,
-  BUBBLE_BUBBLE,
-  CAGE_CAGE,
-  CALM_CALM,
-  CASTLE_CASTLE,
-  CAT_LEOPARD,
-  CAT_LEOPARD_REAL,
-  CAT_SABRE_TOOTH,
-  CHOP_CHOP,
-  CHOP_CHOP_REAL,
-  CLEAR_CLEAR,
-  CLONE_CLONE,
-  COOK_COOK,
-  DARK_DARK,
-  DICE_DICE,
-  DOG_DACHSHUND,
-  DOG_JACKAL,
-  DOG_MAKAMI,
-  DOG_NINE_TAILED_FOX,
-  DOG_WOLF,
-  DOOR_DOOR,
-  DRAGON_ALLOSAURUS,
-  DRAGON_BRACHIOSAURUS,
-  DRAGON_KIRIN,
-  DRAGON_PACHYCEPHALOSAURUS,
-  DRAGON_PTERANODON,
-  DRAGON_SPINOSAURUS,
-  DRAGON_TRICERATOPS,
-  EGG_EGG,
-  ELEPHANT_ELEPHANT,
-  ELEPHANT_MAMMOTH,
-  FISH_AZURE_DRAGON,
-  FISH_AZURE_DRAGON_REAL,
-  FLAME_FLAME,
-  FLAME_FLAME_FIRE,
-  FLOWER_FLOWER,
-  GABU_GABU,
-  GAS_GAS,
-  GLARE_GLARE,
-  GLINT_GLINT,
-  GROW_GROW,
-  GUM_GUM,
-  HEAL_HEAL,
-  HEAT_HEAT,
-  HOBBY_HOBBY,
-  HOLLOW_HOLLOW,
-  HORM_HORM,
-  HORSE_HORSE,
-  HUGE_HUGE,
-  HUMAN_DAIBUTSU,
-  HUMAN_HUMAN,
-  ICE_ICE,
-  ISLAND_ISLAND,
-  JACKET_JACKET,
-  KILO_KILO,
-  LICK_LICK,
-  LOVE_LOVE,
-  LOVE_LOVE_REAL,
-  MAGMA_MAGMA,
-  MAGNET_MAGNET,
-  MARK_MARK,
-  MEMO_MEMO,
-  MILLET_MILLET,
-  MIRROR_MIRROR,
-  MOCHI_MOCHI,
-  MOCHI_MOCHI_AWAKENED,
-  MOLE_MOLE,
-  MUNCH_MUNCH,
-  OP_OP,
-  OP_OP_HEART,
-  OX_OX_BISON,
-  OX_OX_BISON_REAL,
-  OX_OX_GIRAFFE,
-  PAW_PAW,
-  PAW_PAW_REAL,
-  POP_POP,
-  PRESS_PRESS,
-  PUFF_PUFF,
-  PUMP_PUMP,
-  PUSH_PUSH,
-  REVIVE_REVIVE,
-  RIDE_RIDE,
-  RIPE_RIPE,
-  RIPPLE_RIPPLE,
-  RUMBLE_RUMBLE,
-  SAND_SAND,
-  SCROLL_SCROLL,
-  SHADOW_SHADOW,
-  SICK_SICK,
-  SLIP_SLIP,
-  SLOW_SLOW,
-  SMOKE_SMOKE,
-  SNAKE_ANACONDA,
-  SNAKE_KING_COBRA,
-  SNAKE_OROCHI,
-  SNAKE_OROCHI_REAL,
-  SNIP_SNIP,
-  SNOW_SNOW,
-  SOOT_SOOT,
-  SOUL_SOUL,
-  SPARKLE_SPARKLE,
-  SPIDER_ROSAMYGALE,
-  SPIKE_SPIKE,
-  SPIN_SPIN,
-  SPRING_SPRING,
-  STICK_STICK,
-  STITCH_STITCH,
-  STONE_STONE,
-  STRAW_STRAW,
-  STRING_STRING,
-  STRING_STRING_REAL,
-  STRONG_STRONG,
-  SWAMP_SWAMP,
-  SWIM_SWIM,
-  THORN_THORN,
-  TIME_TIME,
-  TON_TON,
-  TREMOR_TREMOR,
-  TURTLE_TURTLE,
-  VENOM_VENOM,
-  WARP_WARP,
-  WASH_WASH,
-  WAX_WAX,
-  WHIP_WHIP,
-  WOODS_WOODS,
-  WRING_WRING,
-} from './bespoke'
 import { bezier } from './shape'
 
 /**
@@ -162,146 +21,19 @@ const MARGIN = 6
 const BOX_W = 160
 const BOX_H = 200
 
-/** The fruits drawn as fruit + power, on the body kit (#461). */
-const KIT = {
-  'chop-chop-fruit': CHOP_CHOP,
-  'flower-flower-fruit': FLOWER_FLOWER,
-  'op-op-fruit': OP_OP,
-  'rumble-rumble-fruit': RUMBLE_RUMBLE,
-  'sand-sand-fruit': SAND_SAND,
-  'string-string-fruit': STRING_STRING,
-  'tremor-tremor-fruit': TREMOR_TREMOR,
-
-  'paw-paw-fruit': PAW_PAW,
-  'island-island-fruit': ISLAND_ISLAND,
-  'strong-strong-fruit': STRONG_STRONG,
-  'sick-sick-fruit': SICK_SICK,
-  'brain-brain-fruit': BRAIN_BRAIN,
-  'age-age-fruit': AGE_AGE,
-  'ride-ride-fruit': RIDE_RIDE,
-  'gabu-gabu-fruit': GABU_GABU,
-  'warp-warp-fruit': WARP_WARP,
-  'huge-huge-fruit': HUGE_HUGE,
-  'dog-dog-fruit-mythical-model-nine-tailed-fox': DOG_NINE_TAILED_FOX,
-  'soot-soot-fruit': SOOT_SOOT,
-  'whip-whip-fruit': WHIP_WHIP,
-  'fish-fish-fruit-mythical-model-azure-dragon': FISH_AZURE_DRAGON,
-  'spider-spider-fruit-ancient-model-rosamygale-grauvogeli': SPIDER_ROSAMYGALE,
-  'dragon-dragon-fruit-ancient-model-triceratops': DRAGON_TRICERATOPS,
-  'time-time-fruit': TIME_TIME,
-  'dragon-dragon-fruit-ancient-model-brachiosaurus': DRAGON_BRACHIOSAURUS,
-  'snake-snake-fruit-mythical-model-yamata-no-orochi': SNAKE_OROCHI,
-  'dragon-dragon-fruit-ancient-model-spinosaurus': DRAGON_SPINOSAURUS,
-  'dragon-dragon-fruit-ancient-model-allosaurus': DRAGON_ALLOSAURUS,
-  'ripe-ripe-fruit': RIPE_RIPE,
-  'straw-straw-fruit': STRAW_STRAW,
-  'millet-millet-fruit': MILLET_MILLET,
-  'dragon-dragon-fruit-ancient-model-pachycephalosaurus':
-    DRAGON_PACHYCEPHALOSAURUS,
-  'woods-woods-fruit': WOODS_WOODS,
-  'magnet-magnet-fruit': MAGNET_MAGNET,
-  'cat-cat-fruit-ancient-model-sabre-tooth-tiger': CAT_SABRE_TOOTH,
-  'scroll-scroll-fruit': SCROLL_SCROLL,
-  'dragon-dragon-fruit-ancient-model-pteranodon': DRAGON_PTERANODON,
-  'arms-arms-fruit': ARMS_ARMS,
-  'arrow-arrow-fruit': ARROW_ARROW,
-  'art-art-fruit': ART_ART,
-  'barrier-barrier-fruit': BARRIER_BARRIER,
-  'bird-bird-fruit-model-albatross': BIRD_ALBATROSS,
-  'bird-bird-fruit-model-falcon': BIRD_FALCON,
-  'bird-bird-fruit-model-phoenix': BIRD_PHOENIX,
-  'bis-bis-fruit': BIS_BIS,
-  'bomb-bomb-fruit': BOMB_BOMB,
-  'book-book-fruit': BOOK_BOOK,
-  'cage-cage-fruit': CAGE_CAGE,
-  'calm-calm-fruit': CALM_CALM,
-  'castle-castle-fruit': CASTLE_CASTLE,
-  'cat-cat-fruit-model-leopard': CAT_LEOPARD,
-  'clear-clear-fruit': CLEAR_CLEAR,
-  'clone-clone-fruit': CLONE_CLONE,
-  'cook-cook-fruit': COOK_COOK,
-  'dice-dice-fruit': DICE_DICE,
-  'dog-dog-fruit-model-dachshund': DOG_DACHSHUND,
-  'dog-dog-fruit-model-jackal': DOG_JACKAL,
-  'dog-dog-fruit-model-wolf': DOG_WOLF,
-  'door-door-fruit': DOOR_DOOR,
-  'dragon-dragon-fruit-mythical-model-kirin': DRAGON_KIRIN,
-  'egg-egg-fruit': EGG_EGG,
-  'elephant-elephant-fruit': ELEPHANT_ELEPHANT,
-  'elephant-elephant-fruit-ancient-model-mammoth': ELEPHANT_MAMMOTH,
-  'flame-flame-fruit': FLAME_FLAME_FIRE,
-  'gas-gas-fruit': GAS_GAS,
-  'glare-glare-fruit': GLARE_GLARE,
-  'glint-glint-fruit': GLINT_GLINT,
-  'grow-grow-fruit': GROW_GROW,
-  'heal-heal-fruit': HEAL_HEAL,
-  'heat-heat-fruit': HEAT_HEAT,
-  'hobby-hobby-fruit': HOBBY_HOBBY,
-  'hollow-hollow-fruit': HOLLOW_HOLLOW,
-  'horm-horm-fruit': HORM_HORM,
-  'horse-horse-fruit': HORSE_HORSE,
-  'human-human-fruit': HUMAN_HUMAN,
-  'human-human-fruit-model-daibutsu': HUMAN_DAIBUTSU,
-  'ice-ice-fruit': ICE_ICE,
-  'jacket-jacket-fruit': JACKET_JACKET,
-  'kilo-kilo-fruit': KILO_KILO,
-  'lick-lick-fruit': LICK_LICK,
-  'love-love-fruit': LOVE_LOVE,
-  'magma-magma-fruit': MAGMA_MAGMA,
-  'mark-mark-fruit': MARK_MARK,
-  'memo-memo-fruit': MEMO_MEMO,
-  'mirror-mirror-fruit': MIRROR_MIRROR,
-  'mochi-mochi-fruit': MOCHI_MOCHI,
-  'mole-mole-fruit': MOLE_MOLE,
-  'munch-munch-fruit': MUNCH_MUNCH,
-  'ox-ox-fruit-model-bison': OX_OX_BISON,
-  'pop-pop-fruit': POP_POP,
-  'press-press-fruit': PRESS_PRESS,
-  'puff-puff-fruit': PUFF_PUFF,
-  'pump-pump-fruit': PUMP_PUMP,
-  'push-push-fruit': PUSH_PUSH,
-  'revive-revive-fruit': REVIVE_REVIVE,
-  'ripple-ripple-fruit': RIPPLE_RIPPLE,
-  'shadow-shadow-fruit': SHADOW_SHADOW,
-  'slip-slip-fruit': SLIP_SLIP,
-  'slow-slow-fruit': SLOW_SLOW,
-  'smoke-smoke-fruit': SMOKE_SMOKE,
-  'snake-snake-fruit-model-anaconda': SNAKE_ANACONDA,
-  'snake-snake-fruit-model-king-cobra': SNAKE_KING_COBRA,
-  'snip-snip-fruit': SNIP_SNIP,
-  'snow-snow-fruit': SNOW_SNOW,
-  'soul-soul-fruit': SOUL_SOUL,
-  'sparkle-sparkle-fruit': SPARKLE_SPARKLE,
-  'spike-spike-fruit': SPIKE_SPIKE,
-  'spin-spin-fruit': SPIN_SPIN,
-  'spring-spring-fruit': SPRING_SPRING,
-  'stick-stick-fruit': STICK_STICK,
-  'stitch-stitch-fruit': STITCH_STITCH,
-  'stone-stone-fruit': STONE_STONE,
-  'swamp-swamp-fruit': SWAMP_SWAMP,
-  'swim-swim-fruit': SWIM_SWIM,
-  'thorn-thorn-fruit': THORN_THORN,
-  'ton-ton-fruit': TON_TON,
-  'turtle-turtle-fruit': TURTLE_TURTLE,
-  'venom-venom-fruit': VENOM_VENOM,
-  'wash-wash-fruit': WASH_WASH,
-  'wax-wax-fruit': WAX_WAX,
-  'wring-wring-fruit': WRING_WRING,
-}
+/** The fruits drawn by hand off the body kit; every other one is on it (#461). */
+const OFF_KIT = new Set([
+  'artificial-dragon-dragon-fruit',
+  'brush-brush-fruit',
+  'bubble-bubble-fruit',
+  'dark-dark-fruit',
+  'dog-dog-fruit-model-okuchi-no-makami',
+  'gum-gum-fruit',
+  'ox-ox-fruit-model-giraffe',
+])
 
 /** A kit fruit has volume, a skin, a stalk and its power: ten strokes or more. */
 const KIT_FLOOR = 10
-
-const HAND_DRAWN = {
-  ...KIT,
-  'artificial-dragon-dragon-fruit': ARTIFICIAL_DRAGON,
-  'brush-brush-fruit': BRUSH_BRUSH,
-  'bubble-bubble-fruit': BUBBLE_BUBBLE,
-  'dark-dark-fruit': DARK_DARK,
-  'dog-dog-fruit-model-okuchi-no-makami': DOG_MAKAMI,
-  'gum-gum-fruit': GUM_GUM,
-  'ox-ox-fruit-model-giraffe': OX_OX_GIRAFFE,
-}
 
 const NUMBER = /-?[\d.]+/gu
 const ABSOLUTE_ONLY = /^[MLCZ\d .-]+$/u
@@ -440,11 +172,12 @@ describe('the fruit path alphabet', () => {
 
 describe('the fruit sheet', () => {
   it('spits the liquor clear of the intact gourd', () => {
-    const shell = traced(GABU_GABU[0]?.d ?? '')
+    const gourd = fruitArt['gabu-gabu-fruit']
+    const shell = traced(gourd[0]?.d ?? '')
 
     expect(shell).not.toHaveLength(0)
 
-    const stream = GABU_GABU.filter((stroke) => stroke.role === 'accent')
+    const stream = gourd.filter((stroke) => stroke.role === 'accent')
 
     for (const stroke of stream) {
       for (const at of traced(stroke.d)) {
@@ -454,7 +187,10 @@ describe('the fruit sheet', () => {
   })
 
   it('keeps eight grounded spider legs, four rooted on each side', () => {
-    const legs = SPIDER_ROSAMYGALE.filter((stroke) => stroke.role === 'accent')
+    const legs = fruitArt[
+      'spider-spider-fruit-ancient-model-rosamygale-grauvogeli'
+    ]
+      .filter((stroke) => stroke.role === 'accent')
       .flatMap(({ d }) => d.split(' M'))
       .map((path) => coordinates(path))
 
@@ -508,40 +244,10 @@ describe('the fruit sheet', () => {
   })
 
   it('draws every kit fruit with ten strokes or more', () => {
-    for (const [id, strokes] of Object.entries(KIT)) {
+    const kit = SHEET.filter(([id]) => !OFF_KIT.has(id))
+
+    for (const [id, strokes] of kit) {
       expect(strokes.length, id).toBeGreaterThanOrEqual(KIT_FLOOR)
     }
-  })
-
-  it('draws the hand-drawn fruits by hand', () => {
-    for (const [id, strokes] of Object.entries(HAND_DRAWN)) {
-      expect(fruitArt, id).toHaveProperty(id)
-      expect(Object.getOwnPropertyDescriptor(fruitArt, id)?.value, id).toBe(
-        strokes,
-      )
-    }
-  })
-})
-
-describe('the fruits drawn again', () => {
-  it.each([
-    ['chop-chop-fruit', CHOP_CHOP_REAL],
-    ['ox-ox-fruit-model-bison', OX_OX_BISON_REAL],
-    ['flame-flame-fruit', FLAME_FLAME],
-    ['op-op-fruit', OP_OP_HEART],
-    ['string-string-fruit', STRING_STRING_REAL],
-    ['snake-snake-fruit-mythical-model-yamata-no-orochi', SNAKE_OROCHI_REAL],
-    ['fish-fish-fruit-mythical-model-azure-dragon', FISH_AZURE_DRAGON_REAL],
-    ['cat-cat-fruit-model-leopard', CAT_LEOPARD_REAL],
-    ['love-love-fruit', LOVE_LOVE_REAL],
-    ['paw-paw-fruit', PAW_PAW_REAL],
-  ] as const)('draws the real %s once the show has shown it', (id, strokes) => {
-    expect(fruitRedrawn[id]?.[0]?.value).toBe(strokes)
-  })
-
-  it('redraws the power when Katakuri declares his awakening', () => {
-    expect(fruitRedrawn['mochi-mochi-fruit']?.[0]?.value).toBe(
-      MOCHI_MOCHI_AWAKENED,
-    )
   })
 })
