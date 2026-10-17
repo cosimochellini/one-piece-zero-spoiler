@@ -204,10 +204,10 @@ checked on every run:
   sooner either, in both units, so a fruit page never tells a reader what the
   story has not. This one holds by construction: `src/data/records/fruits.ts`
   files no thresholds, and `src/data/entities.ts` reads them off the eaters'
-  `devilFruit` entries, the earliest episode one is dated at and the earliest
-  chapter one opens at. The chapter table is built first, from the records as
-  they are filed (`src/data/sagas.ts`), so the fruits can be read off it. A test
-  opens every fruit's page with its eater's at both thresholds.
+  `devilFruit` entries, the earliest episode and the earliest chapter one opens
+  at. The chapter table is built first, from the records as they are filed
+  (`src/data/sagas.ts`), so the fruits can be read off it. A test opens every
+  fruit's page with its eater's at both thresholds.
 
 The self-referential one: the pull request title validator reads the release
 configuration and checks that both accept exactly the same commit types. If they

@@ -206,6 +206,35 @@ describe('the relation between a character and a fruit', () => {
   })
 })
 
+describe('the corrected naming scenes', () => {
+  // The thresholds are read off the eaters' entries, so these pin the ones
+  // corrected against the wiki: a later edit to one of those entries that
+  // moves the fruit fails here rather than opening it early.
+  it.each([
+    {
+      id: 'dog-dog-fruit-mythical-model-nine-tailed-fox',
+      episode: 917,
+      chapter: 925,
+    },
+    { id: 'huge-huge-fruit', episode: 1113, chapter: 1080 },
+    { id: 'island-island-fruit', episode: 1113, chapter: 1080 },
+    { id: 'snake-snake-fruit-model-anaconda', episode: 413, chapter: 521 },
+    { id: 'snake-snake-fruit-model-king-cobra', episode: 413, chapter: 521 },
+    { id: 'sick-sick-fruit', episode: 1093, chapter: 1063 },
+    { id: 'strong-strong-fruit', episode: 1093, chapter: 1063 },
+    { id: 'warp-warp-fruit', episode: 1093, chapter: 1063 },
+    { id: 'paw-paw-fruit', episode: 376, chapter: 484 },
+  ])(
+    'files $id at episode $episode and chapter $chapter',
+    ({ id, episode, chapter }) => {
+      expect(getFruit(id)).toMatchObject({
+        revealedAtEpisode: episode,
+        revealedAtChapter: chapter,
+      })
+    },
+  )
+})
+
 describe('getFruit', () => {
   it('finds a fruit and refuses a character', () => {
     expect(getFruit('gum-gum-fruit')?.name.en).toBe('Gum-Gum Fruit')

@@ -102,7 +102,6 @@ const NAMINGS = Object.entries(CHARACTER_DOSSIERS).flatMap(([id, dossier]) => {
   return eater === undefined ?
       []
     : (dossier.devilFruit ?? []).map((entry) => ({
-        episode: entry.episode,
         fruitIds: new Set<string>(entry.value),
         gate: gateOf(entry, eater),
       }))
@@ -110,16 +109,19 @@ const NAMINGS = Object.entries(CHARACTER_DOSSIERS).flatMap(([id, dossier]) => {
 
 /**
  * When a fruit opens, read off the dossier entries that name it: the
- * earliest episode any of them is dated at, and the earliest chapter any of
- * them opens at (`gateOf`), which is never before the eater's own. A fruit
- * no entry names has no threshold and never opens; a data test holds that
- * there is none.
+ * earliest episode and the earliest chapter any of them opens at (`gateOf`),
+ * never before the eater's own in either unit. A fruit no entry names has no
+ * threshold and never opens; `fruits.test.ts` holds that every fruit has an
+ * eater and opens within the dial, and `characters.test.ts` that every
+ * dossier belongs to a filed character.
  */
 function revealOf(id: string): Gated {
   const named = NAMINGS.filter((naming) => naming.fruitIds.has(id))
 
   return {
-    revealedAtEpisode: Math.min(...named.map((naming) => naming.episode)),
+    revealedAtEpisode: Math.min(
+      ...named.map((naming) => naming.gate.revealedAtEpisode),
+    ),
     revealedAtChapter: Math.min(
       ...named.map((naming) => naming.gate.revealedAtChapter),
     ),
