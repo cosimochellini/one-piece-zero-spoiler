@@ -125,10 +125,11 @@ function inlineStrokes(payload: unknown): number {
 /**
  * The most bytes of inline strokes a list page may carry at the latest
  * bookmark. Set just above the largest, the places list's three ports and
- * their crews at about 25 KB (#610): a new list page, or more drawings sent
- * inline, fails here rather than slowly growing the page.
+ * their crews at about 25 KB (#610), and 27.6 KB once the ships and the
+ * Sunny's ports are drawn wrecked (#536): a new list page, or more drawings
+ * sent inline, fails here rather than slowly growing the page.
  */
-const INLINE_STROKE_BUDGET = 26_000
+const INLINE_STROKE_BUDGET = 28_000
 
 /** A record the archive must hold, or a failure naming the one it does not. */
 function onFile(id: string): Entity {
