@@ -12,13 +12,11 @@ import {
 } from '~/styles/tokens.stylex'
 
 /**
- * The specimen sheet's own declarations.
+ * The fruit album's own declarations, and the rail's on a fruit's page.
  *
- * A sheet rather than a catalogue: numbered labels in the left margin, the
- * name at display size, hairlines between rows and nothing boxed. Two columns
- * on a wide page — a narrow margin for the number and the plate, a wide one
- * for the words — and one column on a phone, where an asymmetric spread is
- * only a squeeze.
+ * Three plates, each a pinned head over a grid of tiles: two across on a
+ * phone, where the drawing is what you browse by, and up to six on a wide
+ * page. The head is one line on a phone so the tiles start high.
  */
 // The floor every grid column here takes. `1fr` on its own has `min-content`
 // for a floor, and one `white-space: nowrap` child is then enough to push a
@@ -38,24 +36,27 @@ const TABULAR = 'tabular-nums'
 const NAME_TRACKING = '-0.02em'
 
 export const styles = stylex.create({
-  sheet: { gap: space.xl2, display: 'grid' },
+  sheet: {
+    gap: { 'default': space.xl, '@media (min-width: 40rem)': space.xl2 },
+    display: 'grid',
+  },
 
   plate: {
-    gap: space.lg,
+    gap: { 'default': space.md, '@media (min-width: 40rem)': space.lg },
     borderBlockStartColor: color.rule,
     borderBlockStartStyle: 'solid',
     borderBlockStartWidth: rule.hair,
     display: 'grid',
-    paddingBlockStart: space.lg,
+    paddingBlockStart: {
+      'default': space.md,
+      '@media (min-width: 40rem)': space.lg,
+    },
   },
   plateHead: {
     alignItems: 'baseline',
     columnGap: { 'default': space.sm, '@media (min-width: 60rem)': space.lg },
     display: 'grid',
-    gridTemplateColumns: {
-      'default': 'auto minmax(0, 1fr)',
-      '@media (min-width: 60rem)': 'minmax(0, 3fr) minmax(0, 9fr)',
-    },
+    gridTemplateColumns: `auto ${ONE_COLUMN}`,
     rowGap: space.xs,
   },
   plateNumber: {
@@ -85,61 +86,25 @@ export const styles = stylex.create({
     color: color.muted,
     fontSize: text.base,
     lineHeight: leading.body,
-    marginInlineStart: {
-      'default': 0,
-      '@media (min-width: 60rem)': `calc(25% + 0.75 * ${space.lg})`,
-    },
     maxWidth: '58ch',
   },
 
-  rows: {
-    display: 'grid',
-    listStyleType: 'none',
-    paddingInlineStart: 0,
-    rowGap: 0,
-  },
-  row: {
-    paddingBlock: space.lg,
-    borderBlockEndColor: color.rule,
-    borderBlockEndStyle: 'solid',
-    borderBlockEndWidth: rule.hair,
-    columnGap: space.lg,
+  // Two tiles across on a phone, then as many as the width holds, up to six.
+  grid: {
+    columnGap: { 'default': space.md, '@media (min-width: 40rem)': space.lg },
     display: 'grid',
     gridTemplateColumns: {
-      'default': ONE_COLUMN,
-      '@media (min-width: 40rem)': 'minmax(0, 3fr) minmax(0, 9fr)',
+      'default': `repeat(2, ${ONE_COLUMN})`,
+      '@media (min-width: 37.5rem)': `repeat(3, ${ONE_COLUMN})`,
+      '@media (min-width: 50rem)': `repeat(4, ${ONE_COLUMN})`,
+      '@media (min-width: 64rem)': `repeat(5, ${ONE_COLUMN})`,
+      '@media (min-width: 80rem)': `repeat(6, ${ONE_COLUMN})`,
     },
-    rowGap: space.md,
-    minWidth: 0,
+    listStyleType: 'none',
+    paddingInlineStart: 0,
+    rowGap: { 'default': space.lg, '@media (min-width: 40rem)': space.xl },
   },
-  // The number over the drawing, the way a sheet labels its own plates.
-  // Skipped until near the screen, like a character tile (#621). Only the
-  // margin: a row's height follows its sentence, but the margin is a 9rem
-  // drawing at 4:5 under one line at every width, so its size is exact and
-  // the sheet keeps its height. The padding keeps the focus ring whole, as there.
-  margin: {
-    margin: `calc(-1 * ${space.xs})`,
-    padding: space.xs,
-    containIntrinsicSize: 'auto 12.95rem',
-    gap: space.xs,
-    contentVisibility: 'auto',
-    display: 'grid',
-    justifyItems: 'start',
-    minWidth: 0,
-  },
-  specimenNumber: {
-    color: color.muted,
-    fontFamily: font.mono,
-    fontSize: text.xs,
-    fontVariantNumeric: TABULAR,
-    fontWeight: 600,
-    letterSpacing: LABEL_TRACKING,
-    lineHeight: leading.body,
-    textTransform: 'uppercase',
-  },
-  drawing: { width: 'min(100%, 9rem)' },
 
-  words: { gap: space.xs, display: 'grid', minWidth: 0 },
   meta: {
     alignItems: 'baseline',
     color: color.muted,
@@ -151,23 +116,11 @@ export const styles = stylex.create({
     lineHeight: leading.body,
     textTransform: 'uppercase',
   },
-  kind: { fontFamily: font.body, fontWeight: 600 },
   episode: {
     color: color.ink2,
     fontFamily: font.mono,
     fontVariantNumeric: TABULAR,
     fontWeight: 600,
-  },
-  name: {
-    marginBlock: 0,
-    color: color.ink,
-    fontFamily: font.display,
-    fontSize: { 'default': text.lg, '@media (min-width: 40rem)': text.xl },
-    fontWeight: 800,
-    letterSpacing: NAME_TRACKING,
-    lineHeight: leading.heading,
-    overflowWrap: 'anywhere',
-    minWidth: 0,
   },
   link: {
     color: {
@@ -186,12 +139,6 @@ export const styles = stylex.create({
     transitionDuration: dur.micro,
     transitionProperty: 'color, text-decoration-color',
     transitionTimingFunction: ease.out,
-  },
-  summary: {
-    color: color.ink2,
-    fontSize: text.base,
-    lineHeight: leading.body,
-    maxWidth: '52ch',
   },
 
   rail: {
