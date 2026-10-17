@@ -4,10 +4,17 @@ import { DRAWINGS, REDRAWINGS } from '~/data/art'
 import { eatersOf } from '~/data/dated'
 import { entities } from '~/data/entities'
 import { fruits } from '~/data/fruits'
+import { reveal } from '~/data/reveal'
 import { type Locale, LOCALES } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
-import type { FruitEatersView, FruitView, Slot } from '~/lib/view/records'
-import { saysNothing } from '~/test/fog'
+import { foldName, matchFolded } from '~/lib/search/fold'
+import type {
+  FruitEatersView,
+  FruitView,
+  Slot,
+  SpecimenView,
+} from '~/lib/view/records'
+import { leaksIn, saysNothing } from '~/test/fog'
 
 import {
   fruitEaters,
@@ -34,6 +41,20 @@ const ep = (episode: number): Bookmark => ({ mode: 'episode', episode })
 /** The ids a rail shows, in the order it shows them. */
 function openIds(rail: Slot<FruitView>[]): string[] {
   return rail.flatMap((slot) => (slot.open ? slot.record.id : []))
+}
+
+/** What a search reads of a tile that is not there: it matches nothing. */
+const NO_TILE = { name: '', folded: '', aliases: [] }
+
+/** A fruit's tile on the sheet, if it is open at this bookmark. */
+function tileOf(
+  id: string,
+  bookmark: Bookmark,
+  locale: Locale = 'en',
+): SpecimenView | undefined {
+  return fruitSheet(bookmark, locale)
+    .bands.flatMap((band) => band.open)
+    .find((fruit) => fruit.id === id)
 }
 
 /** The eaters a band names. */
@@ -134,6 +155,136 @@ describe('the specimen sheet', () => {
         expect(fruit.form, fruit.id).toBe(band.form)
       }
     }
+  })
+})
+
+describe('the eaters on a tile', () => {
+  it('names every open eater at episode 650, in eatersOf order, and no covered one', () => {
+    const at = reveal(ep(650))
+    const open = fruitSheet(ep(650), 'en').bands.flatMap((band) => band.open)
+
+    expect(open.length).toBeGreaterThan(50)
+
+    for (const fruit of open) {
+      const reached = eatersOf(fruit.id).filter((eater) =>
+        at.sees({ ...eater.entity, ...eater.gate }),
+      )
+
+      // An open fruit always has an eater the reader has met: the fruit
+      // opens with the first entry that names it.
+      expect(fruit.eaters.length, fruit.id).toBeGreaterThan(0)
+      expect(
+        fruit.eaters.map((eater) => eater.id),
+        fruit.id,
+      ).toStrictEqual(reached.map((eater) => eater.entity.id))
+    }
+  })
+
+  it('sends only what the tile prints: an id, a name and a drawing', () => {
+    const [luffy, ...others] = tileOf('gum-gum-fruit', ep(650))?.eaters ?? []
+
+    expect(others).toStrictEqual([])
+    expect(Object.keys(luffy ?? {})).toStrictEqual(['id', 'name', 'visual'])
+    expect(luffy?.id).toBe('monkey-d-luffy')
+    expect(luffy?.name).toBe('Monkey D. Luffy')
+  })
+
+  it.each([
+    { before: ep(677), at: ep(678) },
+    {
+      before: { mode: 'chapter', chapter: 754 },
+      at: { mode: 'chapter', chapter: 755 },
+    },
+  ] as const)(
+    'names Sabo on the Flame-Flame tile only once his dossier says so ($at.mode)',
+    ({ before, at }) => {
+      // The fruit is open from Ace's episode 95, and Sabo is met at 497,
+      // but his dossier names the fruit at 678 (chapter 755).
+      for (const locale of LOCALES) {
+        const early = tileOf('flame-flame-fruit', before, locale)
+        const late = tileOf('flame-flame-fruit', at, locale)
+
+        expect(early?.eaters.map((eater) => eater.id)).toStrictEqual([
+          'portgas-d-ace',
+        ])
+        expect(early?.aliases).not.toContain('sabo')
+        expect(late?.eaters.map((eater) => eater.id)).toStrictEqual([
+          'portgas-d-ace',
+          'sabo',
+        ])
+        expect(late?.aliases).toContain('sabo')
+      }
+    },
+  )
+
+  it('leaves the eaters’ drawings behind with their fruit’s', () => {
+    const [first, ...rest] = fruitSheet(ep(1150), 'en').bands
+    const inline = first?.open.slice(0, 6) ?? []
+    const later = [
+      ...(first?.open.slice(6) ?? []),
+      ...rest.flatMap((band) => band.open),
+    ]
+
+    const inlineEaters = inline.flatMap((fruit) => fruit.eaters)
+    const laterEaters = later.flatMap((fruit) => fruit.eaters)
+
+    expect(laterEaters.length).toBeGreaterThan(50)
+
+    for (const eater of inlineEaters) {
+      expect(eater.visual.strokes.length, eater.id).toBeGreaterThan(0)
+    }
+    for (const eater of laterEaters) {
+      expect(eater.visual, eater.id).toStrictEqual({
+        strokes: [],
+        tint: eater.visual.tint,
+        deferred: true,
+      })
+    }
+  })
+
+  it.each([
+    { locale: 'en', query: 'luffy' },
+    { locale: 'en', query: 'rufy' },
+    { locale: 'it', query: 'rufy' },
+    { locale: 'it', query: 'luffy' },
+  ] as const)(
+    'finds the Gum-Gum Fruit by its eater, "$query" in $locale',
+    ({ locale, query }) => {
+      const gum = tileOf('gum-gum-fruit', ep(1), locale)
+
+      expect(matchFolded(gum ?? NO_TILE, foldName(query)).matches).toBe(true)
+    },
+  )
+
+  it('is read by the spoiler sweep, as a name and as an alias', () => {
+    // Sabo is met at 497 but not yet named as an eater; Kaido is not met at
+    // all at 650. A tile that slipped him in either way must fail the sweep.
+    const sheet = fruitSheet(ep(650), 'en')
+    const gum = tileOf('gum-gum-fruit', ep(650))
+    const slipped = (over: Partial<SpecimenView>): unknown => ({
+      ...sheet,
+      bands: [{ form: 'paramecia', open: [{ ...gum, ...over }] }],
+    })
+
+    saysNothing(sheet, ep(650))
+
+    expect(
+      leaksIn(
+        slipped({
+          eaters: [
+            {
+              id: 'kaido',
+              name: 'Kaido',
+              visual: { strokes: [], tint: 'violet' },
+            },
+          ],
+        }),
+        ep(650),
+      ),
+    ).toStrictEqual(['kaido'])
+    expect(leaksIn(slipped({ aliases: ['kaido'] }), ep(650))).toStrictEqual([
+      'kaido',
+    ])
   })
 })
 

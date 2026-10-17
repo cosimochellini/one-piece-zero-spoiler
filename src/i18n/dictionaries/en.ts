@@ -296,7 +296,7 @@ export const enDictionary = {
     'One Piece devil fruits, each hidden until the episode where it is first named.',
   'fruits.searchLabel': 'Search devil fruits',
   'fruits.searchClear': 'Clear search',
-  'fruits.searchPlaceholder': 'Gum-Gum',
+  'fruits.searchPlaceholder': 'Gum-Gum, Luffy',
   'fruits.shown': 'Showing {count} of {total} open fruits',
   'fruits.noMatch': 'No open fruit matches “{query}”.',
   'fruits.plate': 'Group {index}',
@@ -311,6 +311,8 @@ export const enDictionary = {
   'fruits.foggedHint':
     'Their names are hidden, so search does not find them. Move your bookmark forward to see them.',
   'fruits.allOpen': 'Nothing of this type is under fog.',
+  'fruits.moreEaters': 'and {count} more characters who ate it',
+  'fruits.moreEatersOne': 'and 1 more character who ate it',
 
   'fruit.opensAt.episode': 'First named in episode {threshold}',
   'fruit.opensAt.season': 'First named in {threshold}',

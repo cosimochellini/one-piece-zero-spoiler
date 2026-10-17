@@ -4,12 +4,14 @@ import type { ReactElement } from 'react'
 
 import { Marked } from '~/components/CharacterCard'
 import { OpenArt } from '~/components/FruitArt'
+import { FruitEater } from '~/components/FruitEater'
 import { FruitFrame } from '~/components/FruitFrame'
+import type { EaterMatch } from '~/components/recordMatches'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { useLocale } from '~/i18n/LocaleContext'
 import type { TranslationKey } from '~/i18n/types'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
-import type { FruitForm, FruitView, Slot } from '~/lib/view/records'
+import type { EaterView, FruitForm, FruitView, Slot } from '~/lib/view/records'
 import { morphPart, travelWith, useTravels } from '~/styles/morph'
 import {
   color,
@@ -32,8 +34,18 @@ const FORM_KEY: Record<FruitForm, TranslationKey> = {
   zoan: 'fruitForm.zoan',
 }
 
+/** The eater a tile shows when no search picked one: the first. */
+const FIRST_EATER: EaterMatch = { at: 0, highlight: null }
+
+/** A tile told of no eaters: a covered one lifted by hand. */
+const NO_EATERS: EaterView[] = []
+
 /** One place in the album: what fills it, and where it sits on its plate. */
 export interface FruitTileProps {
+  /** Which eater an open tile shows, and what of their name a search matched. */
+  eater?: EaterMatch
+  /** The eaters the reader has reached, earliest first. Covered ones are not sent. */
+  eaters?: EaterView[]
   /** The plate this tile sits on, so a covered tile still says which it is. */
   form: FruitForm
   highlight?: [number, number] | null
@@ -44,8 +56,10 @@ export interface FruitTileProps {
 }
 
 /**
- * One tile of the album: the drawing large, the name under it, and the kind.
- * Open, the whole tile is one link to the fruit's page.
+ * One tile of the album: the drawing large, the name under it, who ate it,
+ * and the kind. Open, the drawing and the name are one link to the fruit's
+ * page and the eater another to theirs: two targets, side by side, since a
+ * link may not hold a link.
  *
  * Under fog the tile has no link, no name and no drawing in the DOM: the slug
  * would spell the name and the drawing would say as much (#136). What stays
@@ -53,6 +67,8 @@ export interface FruitTileProps {
  * story names it in — and the curtain over the empty frame lifts it by hand.
  */
 export function FruitTile({
+  eater = FIRST_EATER,
+  eaters = NO_EATERS,
   form,
   highlight = null,
   index,
@@ -64,13 +80,13 @@ export function FruitTile({
 
   if (slot.open) {
     return (
-      <li {...stylex.props(styles.tile)}>
-        <TileLink
-          form={form}
-          highlight={highlight}
-          record={slot.record}
-        />
-      </li>
+      <OpenTile
+        eater={eater}
+        eaters={eaters}
+        form={form}
+        highlight={highlight}
+        record={slot.record}
+      />
     )
   }
 
@@ -114,20 +130,56 @@ export function FruitTile({
 }
 
 /**
- * An open tile: the drawing, the name and — when the tile is not a covered
- * one lifted by hand, whose kind already sits under it — the kind, all one
- * link. The drawing and the name travel to the fruit's page.
+ * An open tile: the link to the fruit, the eater the search or the archive
+ * picked, and the kind.
  */
-function TileLink({
+function OpenTile({
+  eater,
+  eaters,
   form,
   highlight,
   record,
 }: {
-  form?: FruitForm
+  eater: EaterMatch
+  eaters: EaterView[]
+  form: FruitForm
   highlight: [number, number] | null
   record: FruitView
 }): ReactElement {
-  const { locale, t } = useLocale()
+  const { t } = useLocale()
+  const shown = eaters[eater.at]
+
+  return (
+    <li {...stylex.props(styles.tile, styles.openTile)}>
+      <TileLink
+        highlight={highlight}
+        record={record}
+      />
+      {shown === undefined ? null : (
+        <FruitEater
+          eater={shown}
+          highlight={eater.highlight}
+          more={eaters.length - 1}
+        />
+      )}
+      <p {...stylex.props(styles.kind, styles.foot)}>{t(FORM_KEY[form])}</p>
+    </li>
+  )
+}
+
+/**
+ * An open tile's link: the drawing and the name, which travel to the fruit's
+ * page. The kind is printed under the tile rather than in the link, so a
+ * covered tile lifted by hand reads the same.
+ */
+function TileLink({
+  highlight,
+  record,
+}: {
+  highlight: [number, number] | null
+  record: FruitView
+}): ReactElement {
+  const { locale } = useLocale()
   const travels = useTravels('fruit', record.id)
 
   return (
@@ -156,9 +208,6 @@ function TileLink({
           text={record.name}
         />
       </span>
-      {form === undefined ? null : (
-        <span {...stylex.props(styles.kind)}>{t(FORM_KEY[form])}</span>
-      )}
     </Link>
   )
 }
@@ -168,6 +217,10 @@ const META_TRACKING = '0.08em'
 
 const styles = stylex.create({
   tile: { gap: space.xs2, alignContent: 'start', display: 'grid', minWidth: 0 },
+  // The kind sits at the foot of the row, so it lines up across a row whose
+  // names and eaters wrap to different heights.
+  openTile: { gridTemplateRows: 'auto auto 1fr' },
+  foot: { alignSelf: 'end', gridRowStart: 3 },
   face: { gap: space.xs, display: 'grid', minWidth: 0 },
   link: {
     borderRadius: radius.card,

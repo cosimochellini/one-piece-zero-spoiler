@@ -273,13 +273,29 @@ export interface FruitView extends RecordView, Searchable {
 }
 
 /**
+ * Someone who ate a fruit, as its tile prints them: a crest and a name that
+ * lead to their page. Only an eater the reader has reached is ever sent; a
+ * covered one is dropped, not slotted, so a tile cannot count them.
+ */
+export type EaterView = Pick<RecordView, 'id' | 'name' | 'visual'>
+
+/**
+ * A fruit as its tile in the album draws it: the fruit, and the eaters the
+ * reader has reached, earliest first. Their names in both locales are among
+ * the fruit's aliases too, so a search for an eater finds the fruit.
+ */
+export interface SpecimenView extends FruitView {
+  eaters: EaterView[]
+}
+
+/**
  * One plate of the specimen sheet: the fruits of one kind, open first and
  * covered after, and how many the archive files of that kind either way.
  */
 export interface FruitBandView {
   covered: CoveredRecord[]
   form: FruitForm
-  open: FruitView[]
+  open: SpecimenView[]
   total: number
 }
 

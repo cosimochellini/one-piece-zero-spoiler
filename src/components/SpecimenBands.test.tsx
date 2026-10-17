@@ -4,21 +4,29 @@ import { describe, expect, it } from 'vitest'
 
 import {
   coveredRecord,
-  fruit,
+  drawing,
   fruitBand,
   peekPending,
   peekTo,
+  specimen,
 } from '~/test/fixtures'
 import { ep, renderWithProviders } from '~/test/providers'
 
 import { SpecimenBands } from './SpecimenBands'
 
-const GUM = fruit({ id: 'gum-gum-fruit', name: 'Gum-Gum Fruit' })
-const CHOP = fruit({ id: 'chop-chop-fruit', name: 'Chop-Chop Fruit' })
-const FLAME = fruit({
+const GUM = specimen({ id: 'gum-gum-fruit', name: 'Gum-Gum Fruit' })
+const CHOP = specimen({ id: 'chop-chop-fruit', name: 'Chop-Chop Fruit' })
+const FLAME = specimen({
   id: 'flame-flame-fruit',
   name: 'Flame-Flame Fruit',
   form: 'logia',
+  folded: 'flame-flame fruit',
+  // The server folds the eaters' names into the aliases, in both locales.
+  aliases: ['frutto foco foco', 'portgas d. ace', 'portuguese d. ace', 'sabo'],
+  eaters: [
+    { id: 'portgas-d-ace', name: 'Portgas D. Ace', visual: drawing() },
+    { id: 'sabo', name: 'Sabo', visual: drawing('blue') },
+  ],
 })
 
 const BANDS = [
@@ -101,6 +109,50 @@ describe('SpecimenBands', () => {
     expect(screen.getByText('A fruit under fog')).toBeInTheDocument()
   })
 
+  it('finds a fruit by an eater’s name and shows that eater, marked', async () => {
+    renderWithProviders(
+      <SpecimenBands
+        bands={BANDS}
+        peek={peekPending()}
+      />,
+      { bookmark: ep(700) },
+    )
+
+    expect(screen.getByRole('link', { name: 'Portgas D. Ace' })).toBeVisible()
+
+    await userEvent.type(screen.getByRole('searchbox'), 'sab')
+
+    const sabo = await screen.findByRole('link', { name: 'Sabo' })
+
+    expect(sabo.querySelector('mark')).toHaveTextContent('Sab')
+    expect(
+      screen.getByRole('link', { name: /^Flame-Flame Fruit/u }),
+    ).toBeInTheDocument()
+    expect(
+      screen.queryByRole('link', { name: 'Portgas D. Ace' }),
+    ).not.toBeInTheDocument()
+    expect(screen.getByText('+1')).toBeInTheDocument()
+  })
+
+  it('keeps the first eater, unmarked, for a name only the other locale uses', async () => {
+    renderWithProviders(
+      <SpecimenBands
+        bands={BANDS}
+        peek={peekPending()}
+      />,
+      { bookmark: ep(700) },
+    )
+
+    await userEvent.type(screen.getByRole('searchbox'), 'portuguese')
+
+    const ace = await screen.findByRole('link', { name: 'Portgas D. Ace' })
+
+    expect(
+      screen.queryByRole('link', { name: /^Gum-Gum Fruit/u }),
+    ).not.toBeInTheDocument()
+    expect(ace.querySelector('mark')).toBeNull()
+  })
+
   it('numbers a covered tile on from the open ones above it', () => {
     renderWithProviders(
       <SpecimenBands
@@ -149,7 +201,7 @@ describe('SpecimenBands', () => {
   })
 
   it('draws an inline tile at once, and keeps a left-behind one empty but searchable', async () => {
-    const later = fruit({
+    const later = specimen({
       id: 'chop-chop-fruit',
       name: 'Chop-Chop Fruit',
       visual: { strokes: [], tint: 'red', deferred: true },

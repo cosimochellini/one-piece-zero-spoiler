@@ -1,5 +1,6 @@
-import { eatersOf } from '~/data/dated'
+import { type Eater, eatersOf } from '~/data/dated'
 import { fruitFormOf, fruits, fruitsOfForm, getFruit } from '~/data/fruits'
+import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
 import type {
@@ -15,7 +16,7 @@ import type {
 } from '~/lib/view/records'
 
 import { headFor, type HeadKeys } from './head.server'
-import { characterOf, deferredOf, fruitOf } from './project.server'
+import { characterOf, deferredOf, fruitOf, specimenOf } from './project.server'
 import { type Reader, readerFor } from './reader.server'
 
 /**
@@ -47,15 +48,42 @@ const INLINE_FRUITS = 6
  * the screen when it arrives: the rest come by id.
  */
 function bandOf(form: FruitForm, plate: number, r: Reader): FruitBandView {
-  const band = r.split(fruitsOfForm(form), (entity) => fruitOf(entity, form, r))
+  const band = r.split(fruitsOfForm(form), (entity) =>
+    specimenOf(fruitOf(entity, form, r), openEaters(entity.id, r), r),
+  )
 
   return {
     ...band,
     form,
     open: band.open.map((fruit, row) =>
-      plate === 0 && row < INLINE_FRUITS ? fruit : deferredOf(fruit),
+      plate === 0 && row < INLINE_FRUITS ?
+        fruit
+      : {
+          ...deferredOf(fruit),
+          eaters: fruit.eaters.map((eater) => deferredOf(eater)),
+        },
     ),
   }
+}
+
+/**
+ * An eater as the reader may meet them: slotted on the later gate — their own
+ * and the entry that says they ate it — but drawn from the record itself, so
+ * an open eater prints their own thresholds and a covered one the entry's.
+ */
+function gatedOf(eater: Eater): Entity {
+  return { ...eater.entity, ...eater.gate }
+}
+
+/**
+ * The eaters of a fruit the reader has reached, in `eatersOf` order. The rest
+ * are dropped rather than covered: a tile that kept a place for them would
+ * count them, and a count is a spoiler too.
+ */
+function openEaters(id: string, r: Reader): Entity[] {
+  return eatersOf(id).flatMap((eater) =>
+    r.sees(gatedOf(eater)) ? [eater.entity] : [],
+  )
 }
 
 /** The specimen sheet: three plates, and how many fruits the archive files. */
@@ -118,13 +146,9 @@ export function fruitEaters(
 
   return {
     mode: 'eaters',
-    eaters: eatersOf(id).map((eater): Slot<CharacterView> => {
-      // Slotted on the later gate, but drawn from the record itself: an open
-      // eater prints their own thresholds, a covered one the entry's.
-      const gated = { ...eater.entity, ...eater.gate }
-
-      return r.slot(gated, () => characterOf(eater.entity, r))
-    }),
+    eaters: eatersOf(id).map((eater): Slot<CharacterView> =>
+      r.slot(gatedOf(eater), () => characterOf(eater.entity, r)),
+    ),
   }
 }
 

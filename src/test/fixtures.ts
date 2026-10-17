@@ -16,6 +16,7 @@ import type {
   ShipEntry,
   ShipView,
   Slot,
+  SpecimenView,
   Stroke,
   TintId,
   WaypointView,
@@ -102,8 +103,19 @@ export function fruit(over: Partial<FruitView> = {}): FruitView {
   }
 }
 
+/** A fruit as its album tile draws it, eaten by nobody the reader has met. */
+export function specimen(over: Partial<SpecimenView> = {}): SpecimenView {
+  return { ...fruit(over), eaters: [], ...over }
+}
+
 export function fruitBand(over: Partial<FruitBandView> = {}): FruitBandView {
-  return { form: 'paramecia', total: 1, open: [fruit()], covered: [], ...over }
+  return {
+    form: 'paramecia',
+    total: 1,
+    open: [specimen()],
+    covered: [],
+    ...over,
+  }
 }
 
 export function fruitDetail(over: Partial<FruitDetail> = {}): FruitDetail {
