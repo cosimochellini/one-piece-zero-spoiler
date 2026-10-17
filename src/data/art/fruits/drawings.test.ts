@@ -269,6 +269,19 @@ describe('the fruits drawn again', () => {
     ])
   })
 
+  // The fruit's page keys each drawing, and values each option of its
+  // switch, by its look: two of one look on a fruit would leave one
+  // unreachable. The first drawing is the power, so no entry is one.
+  it('never draws one fruit twice with the same look', () => {
+    for (const [id, timeline] of Object.entries(fruitRedrawn)) {
+      const looks = ['power', ...timeline.map(({ look }) => look)]
+
+      const distinct = new Set(looks)
+
+      expect(distinct.size, id).toBe(looks.length)
+    }
+  })
+
   // The fruit's page names each drawing by its look, and keys it by it.
   it('names what each redrawing shows: the real fruit, and one awakening', () => {
     const looks: [string, string[]][] = []
