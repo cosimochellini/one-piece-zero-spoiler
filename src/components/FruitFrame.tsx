@@ -2,11 +2,14 @@ import * as stylex from '@stylexjs/stylex'
 import type { ReactElement } from 'react'
 
 import { ChartArt } from '~/components/ChartArt'
+import { tintOf } from '~/components/drawing'
 import type { Drawing } from '~/lib/view/records'
 import { color, radius, rule, space } from '~/styles/tokens.stylex'
 
 /** The drawing a specimen is set in, or nothing when it is under fog. */
 export interface FruitFrameProps {
+  /** Lights the frame from behind its drawing in the drawing's own tint. */
+  glow?: boolean
   visual?: Drawing
 }
 
@@ -22,9 +25,17 @@ export interface FruitFrameProps {
  * strokes and the colour of a fruit the reader has not reached are not in the
  * served HTML at all, so there is nothing here to blur.
  */
-export function FruitFrame({ visual }: FruitFrameProps): ReactElement {
+export function FruitFrame({
+  glow = false,
+  visual,
+}: FruitFrameProps): ReactElement {
   return (
-    <span {...stylex.props(styles.frame)}>
+    <span
+      {...stylex.props(
+        styles.frame,
+        glow && visual !== undefined && styles.glow(tintOf(visual.tint)),
+      )}
+    >
       {visual === undefined ? null : (
         <ChartArt
           strokes={visual.strokes}
@@ -47,4 +58,8 @@ const styles = stylex.create({
     display: 'block',
     maxWidth: '100%',
   },
+  // The tint glowing from behind the drawing, as the marquee's lead does.
+  glow: (hue: string) => ({
+    backgroundImage: `radial-gradient(closest-side, color-mix(in oklch, ${hue} 38%, transparent), transparent)`,
+  }),
 })

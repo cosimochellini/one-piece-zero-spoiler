@@ -4,12 +4,8 @@ import { isLocale, type Locale } from '~/i18n/locales'
 import { readBookmark, readTrial } from '~/lib/progress/readBookmark'
 
 import { fillerPage, peekFiller } from './archive/filler.server'
-import {
-  fruitEaters,
-  fruitPage,
-  fruitSheet,
-  fruitSiblings,
-} from './archive/fruits.server'
+import { fruitPage } from './archive/fruitPage.server'
+import { fruitEaters, fruitSheet, fruitSiblings } from './archive/fruits.server'
 import { landingPage } from './archive/home.server'
 import {
   characterPage,

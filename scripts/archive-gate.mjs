@@ -73,9 +73,15 @@ const WORST_CHUNKS = 5
  * copy of a fruit kept from travelling, and the view's words in both
  * dictionaries. The grouping itself is the server's, and the saga view's
  * groups became the generic ones both views draw. Again the measured build
- * plus ~1 KB, under the 562 KB allowed for this raise.
+ * plus ~1 KB, under the 562 KB allowed for this raise. Raised to 565.9 KB on
+ * 2026-10-17, when main stood at ~556.8 KB and the fruit page's stage (#668)
+ * added ~8.1 KB: the stage with its glow and its pen, the fruit before and
+ * after with its arrow keys and its swipe, the history, the saga's rail, and
+ * their words in both dictionaries (~1.1 KB). The history, the neighbours
+ * and the rail are the server's. Again the measured build plus ~1 KB, under
+ * the 566 KB allowed for this raise.
  */
-export const MAX_CLIENT_BYTES = 557_750
+export const MAX_CLIENT_BYTES = 565_900
 
 /** Where the prose lives: every saga, the ship's log and the filler guide. */
 const PROSE_DIR = 'src/data/records'

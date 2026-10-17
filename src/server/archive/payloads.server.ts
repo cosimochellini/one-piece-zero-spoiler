@@ -13,12 +13,8 @@ import {
 
 import { fillerPage, peekFiller } from './filler.server'
 import { RADIX } from './fillerRows.server'
-import {
-  fruitEaters,
-  fruitPage,
-  fruitSheet,
-  fruitSiblings,
-} from './fruits.server'
+import { fruitPage } from './fruitPage.server'
+import { fruitEaters, fruitSheet, fruitSiblings } from './fruits.server'
 import { handleOf } from './handle.server'
 import { landingPage } from './home.server'
 import {

@@ -5,6 +5,7 @@ import { type ReactElement, type ReactNode, useId } from 'react'
 import { ChartArt } from '~/components/ChartArt'
 import { DrawInContext, tintOf } from '~/components/drawing'
 import { useLocale } from '~/i18n/LocaleContext'
+import { spliced } from '~/i18n/spliced'
 import type { Translate } from '~/i18n/types'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
 import type { FruitParams } from '~/lib/search/fruitParams'
@@ -137,23 +138,6 @@ function Rail({ fruits }: { fruits: FruitView[] }): ReactElement {
         )
       })}
     </ul>
-  )
-}
-
-/**
- * A translated sentence with an element in place of one `{placeholder}`.
- * `translate` leaves a placeholder it is given no value for as it is, which
- * is what lets the sentence be cut there.
- */
-function spliced(sentence: string, name: string, node: ReactNode): ReactNode {
-  const [before, after] = sentence.split(`{${name}}`)
-
-  return (
-    <>
-      {before}
-      {node}
-      {after}
-    </>
   )
 }
 

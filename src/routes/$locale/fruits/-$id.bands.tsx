@@ -1,5 +1,5 @@
 /**
- * The three bands of a fruit's page.
+ * The bands under a fruit's stage.
  *
  * Siblings of the route module rather than shared components, because they
  * are only ever this page; the leading `-` keeps the file out of the
@@ -10,29 +10,17 @@ import { type ReactElement, type ReactNode, Suspense, use } from 'react'
 
 import { CharacterCard } from '~/components/CharacterCard'
 import { CharacterCardList } from '~/components/CharacterGrid'
-import { FruitArt } from '~/components/FruitArt'
 import { FruitRail } from '~/components/FruitRail'
-import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { useLocale } from '~/i18n/LocaleContext'
 import type { TranslationKey } from '~/i18n/types'
-import { useThreshold } from '~/lib/progress/BookmarkContext'
 import type {
   CharacterView,
-  FruitDetail,
   FruitEatersView,
-  FruitForm,
   FruitView,
   Slot,
 } from '~/lib/view/records'
-import { morphPart } from '~/styles/morph'
 
 import { styles } from './-$id.styles'
-
-const FORM_KEY: Record<FruitForm, TranslationKey> = {
-  logia: 'fruitForm.logia',
-  paramecia: 'fruitForm.paramecia',
-  zoan: 'fruitForm.zoan',
-}
 
 /** The three lines a streamed band says: its title, its lede, and its wait. */
 interface BandWords {
@@ -51,86 +39,6 @@ const KIN_WORDS: BandWords = {
   lede: 'fruit.siblingsLede',
   loading: 'fruit.siblingsLoading',
   title: 'fruit.siblingsTitle',
-}
-
-/**
- * The plate: the drawing beside the name, the kind, the threshold and the
- * sentence.
- *
- * The meta line sits outside the veil on purpose — "a devil fruit, episode
- * 462" is the promise the page makes to a reader who has not got there yet,
- * and covering it would leave them with nothing at all. The kind is inside
- * it, because a covered fruit's kind is the plate it was found on and the
- * sheet already says so out loud.
- */
-export function PlateBand({
-  detail,
-  peek,
-}: {
-  detail: FruitDetail
-  peek: (handle: string) => Promise<FruitView>
-}): ReactElement {
-  const { t } = useLocale()
-  const threshold = useThreshold()
-  const filed = detail.slot.open ? detail.slot.record : detail.slot.covered
-
-  return (
-    <section {...stylex.props(styles.plate)}>
-      <div {...stylex.props(styles.drawing)}>
-        <FruitArt
-          always
-          density="block"
-          peek={peek}
-          slot={detail.slot}
-        />
-      </div>
-
-      <div {...stylex.props(styles.words)}>
-        <p {...stylex.props(styles.meta)}>
-          <span {...stylex.props(styles.kind)}>{t('kind.fruit')}</span>
-          <span {...stylex.props(styles.episode)}>
-            {threshold('fruit.opensAt', filed)}
-          </span>
-        </p>
-
-        <SpoilerVeil
-          peek={peek}
-          placeholder={
-            <>
-              <h1 {...stylex.props(styles.name)}>{t('fruit.foggedName')}</h1>
-              <p {...stylex.props(styles.summary)}>
-                {threshold('fruit.foggedDescription', filed)}
-              </p>
-            </>
-          }
-          slot={detail.slot}
-        >
-          {(record) => <PlateWords record={record} />}
-        </SpoilerVeil>
-      </div>
-    </section>
-  )
-}
-
-/** The name, the kind spelled out, and the sentence the archive files. */
-function PlateWords({ record }: { record: FruitView }): ReactElement {
-  const { t } = useLocale()
-
-  return (
-    <>
-      <h1 {...stylex.props(styles.name, morphPart('fruit', record.id, 'name'))}>
-        {record.name}
-      </h1>
-      <p {...stylex.props(styles.meta)}>
-        <span {...stylex.props(styles.kind)}>
-          {t('fruit.form')}
-          {' · '}
-          {t(FORM_KEY[record.form])}
-        </span>
-      </p>
-      <p {...stylex.props(styles.summary)}>{record.summary}</p>
-    </>
-  )
 }
 
 /**
@@ -248,6 +156,37 @@ function Kin({
 }
 
 /**
+ * The open fruits of the same saga nearest this one, or nothing at all when
+ * the server sends none (a covered fruit, or a saga with fewer than two
+ * others open): a heading over a lonely tile says less than no band.
+ */
+export function SagaBand({
+  peek,
+  rail,
+}: {
+  peek: (handle: string) => Promise<FruitView>
+  rail: Slot<FruitView>[]
+}): null | ReactElement {
+  const { t } = useLocale()
+  if (rail.length === 0) {
+    return null
+  }
+
+  return (
+    <Band
+      id="saga"
+      lede={t('fruit.sagaLede')}
+      title={t('fruit.sagaTitle')}
+    >
+      <FruitRail
+        fruits={rail}
+        peek={peek}
+      />
+    </Band>
+  )
+}
+
+/**
  * A band whose content the loader streams: the heading and the lede at once,
  * and what fills it inside its own boundary, so the plate above never waits.
  */
@@ -263,6 +202,31 @@ function StreamedBand({
   const { t } = useLocale()
 
   return (
+    <Band
+      id={id}
+      lede={t(words.lede)}
+      title={t(words.title)}
+    >
+      <Suspense fallback={<Pending words={words.loading} />}>
+        {children}
+      </Suspense>
+    </Band>
+  )
+}
+
+/** A band under the stage: its heading, its lede and a hairline over both. */
+export function Band({
+  children,
+  id,
+  lede,
+  title,
+}: {
+  children: ReactNode
+  id: string
+  lede: string
+  title: string
+}): ReactElement {
+  return (
     <section
       aria-labelledby={id}
       {...stylex.props(styles.band)}
@@ -272,13 +236,11 @@ function StreamedBand({
           id={id}
           {...stylex.props(styles.sectionTitle)}
         >
-          {t(words.title)}
+          {title}
         </h2>
-        <p {...stylex.props(styles.lede)}>{t(words.lede)}</p>
+        <p {...stylex.props(styles.lede)}>{lede}</p>
       </div>
-      <Suspense fallback={<Pending words={words.loading} />}>
-        {children}
-      </Suspense>
+      {children}
     </section>
   )
 }
