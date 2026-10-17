@@ -23,6 +23,10 @@ const NEW_FISH_MAN_OFFICER = {
 }
 
 export const fishManIsland: Saga = {
+  name: {
+    it: 'Saga dell’Isola degli Uomini-Pesce',
+    en: 'Fish-Man Island Saga',
+  },
   entries: [
     {
       id: 'return-to-sabaody',

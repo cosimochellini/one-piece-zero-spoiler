@@ -54,6 +54,7 @@ const DROPPED_AT_657: CharacterDossier['status'] = [
 const DRESSROSA = { it: 'Dressrosa', en: 'Dressrosa' }
 
 export const dressrosa: Saga = {
+  name: { it: 'Saga di Dressrosa', en: 'Dressrosa Saga' },
   entries: [
     {
       id: 'koala',

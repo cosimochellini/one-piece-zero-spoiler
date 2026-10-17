@@ -2,7 +2,7 @@ import { type Eater, eatersOf } from '~/data/dated'
 import { fruitFormOf, fruits, fruitsOfForm, getFruit } from '~/data/fruits'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
-import type { Bookmark } from '~/lib/progress/episode'
+import { absoluteEpisodeOf, type Bookmark } from '~/lib/progress/episode'
 import type {
   CharacterView,
   DocumentHead,
@@ -10,6 +10,7 @@ import type {
   FruitDetail,
   FruitEatersView,
   FruitForm,
+  FruitMarqueeView,
   FruitSheetView,
   FruitView,
   Slot,
@@ -18,6 +19,7 @@ import type {
 import { headFor, type HeadKeys } from './head.server'
 import { characterOf, deferredOf, fruitOf, specimenOf } from './project.server'
 import { type Reader, readerFor } from './reader.server'
+import { sagaOf } from './sagaLabels.server'
 
 /**
  * What the specimen sheet and a fruit's own page are allowed to know.
@@ -43,11 +45,26 @@ const FRUIT_HEAD: HeadKeys = {
 const INLINE_FRUITS = 6
 
 /**
+ * How many tiles of the marquee ship their drawings with them: the lead,
+ * which draws itself in on arrival, and the two beside it on a phone's
+ * first screen. The rest of the rail comes by id as it scrolls into view.
+ */
+const INLINE_MARQUEE = 3
+
+/**
  * One plate of fruits split at the reader's bookmark. The drawings are most
  * of the album's bytes, and only the first tiles of the first plate are near
- * the screen when it arrives: the rest come by id.
+ * the screen when it arrives, with the marquee's first tiles (`inline`): the
+ * rest come by id.
  */
-function bandOf(form: FruitForm, plate: number, r: Reader): FruitBandView {
+function bandOf(
+  {
+    form,
+    inline,
+    plate,
+  }: { form: FruitForm; inline: Set<string>; plate: number },
+  r: Reader,
+): FruitBandView {
   const band = r.split(fruitsOfForm(form), (entity) =>
     specimenOf(fruitOf(entity, form, r), openEaters(entity.id, r), r),
   )
@@ -55,14 +72,18 @@ function bandOf(form: FruitForm, plate: number, r: Reader): FruitBandView {
   return {
     ...band,
     form,
-    open: band.open.map((fruit, row) =>
-      plate === 0 && row < INLINE_FRUITS ?
-        fruit
-      : {
-          ...deferredOf(fruit),
-          eaters: fruit.eaters.map((eater) => deferredOf(eater)),
-        },
-    ),
+    open: band.open.map((fruit, row) => {
+      if (plate === 0 && row < INLINE_FRUITS) {
+        return fruit
+      }
+
+      // A marquee tile draws the fruit and no eater, so their crests still
+      // wait for the album.
+      const eaters = fruit.eaters.map((eater) => deferredOf(eater))
+      return inline.has(fruit.id) ?
+          { ...fruit, eaters }
+        : { ...deferredOf(fruit), eaters }
+    }),
   }
 }
 
@@ -86,13 +107,71 @@ function openEaters(id: string, r: Reader): Entity[] {
   )
 }
 
-/** The specimen sheet: three plates, and how many fruits the archive files. */
-export function fruitSheet(bookmark: Bookmark, locale: Locale): FruitSheetView {
-  const r = readerFor(bookmark, locale)
+/** Where a bookmark stands in its own unit: the chapter, or the episode. */
+function positionOf(bookmark: Bookmark): null | number {
+  if (bookmark === null) {
+    return null
+  }
+
+  return bookmark.mode === 'chapter' ?
+      bookmark.chapter
+    : absoluteEpisodeOf(bookmark)
+}
+
+/**
+ * The marquee: the saga the bookmark falls in, and the open fruits whose
+ * reveal falls inside it. A fruit is open only up to the bookmark, so the
+ * list stops there and its length is the saga so far. `null` with no
+ * bookmark, and with no fruit open at all.
+ */
+function marqueeOf(bookmark: Bookmark, r: Reader): FruitMarqueeView | null {
+  const at = positionOf(bookmark)
+  const unit = r.mode === 'chapter' ? 'chapter' : 'episode'
+  const saga = at === null ? undefined : sagaOf(unit, at)
+  const open = r.order(fruits).filter((fruit) => r.sees(fruit))
+  const last = open.at(-1)
+  if (saga === undefined || last === undefined) {
+    return null
+  }
+
+  const here = open.filter((fruit) => r.threshold(fruit) >= saga.from)
 
   return {
-    bands: PLATES.map((form, plate) => bandOf(form, plate, r)),
+    saga: saga.name[r.locale],
+    fruits: here.map(({ id }) => ({ id })),
+    last: here.length === 0 ? { id: last.id } : null,
+  }
+}
+
+/** The tiles the marquee shows first: the lead, then the oldest ones. */
+function marqueeInline(marquee: FruitMarqueeView | null): Set<string> {
+  const fruitsHere = marquee?.fruits ?? []
+  const ids = new Set<string>()
+  for (const fruit of [
+    fruitsHere.at(-1),
+    ...fruitsHere.slice(0, INLINE_MARQUEE - 1),
+  ]) {
+    if (fruit !== undefined) {
+      ids.add(fruit.id)
+    }
+  }
+
+  return ids
+}
+
+/**
+ * The specimen sheet: the marquee, three plates, and how many fruits the
+ * archive files.
+ */
+export function fruitSheet(bookmark: Bookmark, locale: Locale): FruitSheetView {
+  const r = readerFor(bookmark, locale)
+  const marquee = marqueeOf(bookmark, r)
+  const inline = marqueeInline(marquee)
+
+  return {
+    bands: PLATES.map((form, plate) => bandOf({ form, inline, plate }, r)),
     filed: fruits.length,
+    marquee,
   }
 }
 

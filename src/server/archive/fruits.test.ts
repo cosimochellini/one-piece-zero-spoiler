@@ -10,6 +10,7 @@ import type { Bookmark } from '~/lib/progress/episode'
 import { foldName, matchFolded } from '~/lib/search/fold'
 import type {
   FruitEatersView,
+  FruitMarqueeView,
   FruitView,
   Slot,
   SpecimenView,
@@ -24,6 +25,7 @@ import {
 } from './fruits.server'
 import { handleOf } from './handle.server'
 import { characterPage, drawingsFor } from './pages.server'
+import { BOOKMARKS } from './payloads.server'
 import { peekFruit } from './peek.server'
 
 /**
@@ -103,13 +105,17 @@ describe('the specimen sheet', () => {
     expect(sheet.bands.flatMap((band) => band.open)).toStrictEqual([])
   })
 
-  it('leaves the drawings past the first six tiles of the first plate to be asked for', () => {
-    const [first, ...rest] = fruitSheet(ep(1150), 'en').bands
+  it('leaves the drawings past the first six tiles of the first plate and the marquee’s first three to be asked for', () => {
+    const sheet = fruitSheet(ep(1150), 'en')
+    const [first, ...rest] = sheet.bands
+    const marquee = marqueeLeads(sheet.marquee)
     const inline = first?.open.slice(0, 6) ?? []
     const later = [
       ...(first?.open.slice(6) ?? []),
       ...rest.flatMap((band) => band.open),
-    ]
+    ].filter((fruit) => !marquee.has(fruit.id))
+
+    expect(marquee.size).toBe(3)
 
     expect(inline).toHaveLength(6)
     expect(later.length).toBeGreaterThan(50)
@@ -570,5 +576,123 @@ describe('peekFruit', () => {
   it('refuses a handle that stands for something else, and junk', () => {
     expect(peekFruit(handleOf('monkey-d-luffy'), 'en', null)).toBeUndefined()
     expect(peekFruit('not-a-handle', 'en', null)).toBeUndefined()
+  })
+})
+
+const byName = (a: string, b: string): number => a.localeCompare(b)
+
+/** The marquee's saga, its fruit ids and the one it points back to. */
+function marqueeAt(
+  bookmark: Bookmark,
+  locale: Locale = 'en',
+): null | { ids: string[]; last: null | string; saga: string } {
+  const marquee = fruitSheet(bookmark, locale).marquee
+
+  return marquee === null ? null : (
+      {
+        saga: marquee.saga,
+        ids: marquee.fruits.map(({ id }) => id),
+        last: marquee.last?.id ?? null,
+      }
+    )
+}
+
+/** The marquee tiles the server sends whole: the lead and the first two. */
+function marqueeLeads(marquee: FruitMarqueeView | null): Set<string> {
+  const here = marquee?.fruits ?? []
+
+  return new Set(
+    [here.at(-1), ...here.slice(0, 2)].map((fruit) => fruit?.id ?? ''),
+  )
+}
+
+/** Every fruit the marquee names: its tiles, and the one it points back to. */
+function namedBy(marquee: FruitMarqueeView | null): string[] {
+  if (marquee === null) {
+    return []
+  }
+
+  return [
+    ...marquee.fruits,
+    ...(marquee.last === null ? [] : [marquee.last]),
+  ].map(({ id }) => id)
+}
+
+describe('the marquee', () => {
+  it('is not there without a bookmark', () => {
+    expect(fruitSheet(null, 'en').marquee).toBeNull()
+  })
+
+  it('opens the series on the East Blue and the Gum-Gum Fruit', () => {
+    expect(marqueeAt(ep(1))).toStrictEqual({
+      saga: 'East Blue Saga',
+      ids: ['gum-gum-fruit'],
+      last: null,
+    })
+    expect(marqueeAt(ep(1), 'it')?.saga).toBe('Saga del East Blue')
+  })
+
+  it('holds the Water Seven fruits up to episode 320, the latest last', () => {
+    const marquee = marqueeAt(ep(320))
+
+    expect(marquee?.saga).toBe('Water Seven Saga')
+    expect(marquee?.ids.toSorted(byName)).toStrictEqual(
+      [
+        'slow-slow-fruit',
+        'ice-ice-fruit',
+        'door-door-fruit',
+        'cat-cat-fruit-model-leopard',
+        'elephant-elephant-fruit',
+        'dog-dog-fruit-model-wolf',
+        'ox-ox-fruit-model-giraffe',
+        'bubble-bubble-fruit',
+      ].toSorted(byName),
+    )
+    expect(marquee?.ids.at(-1)).toBe('bubble-bubble-fruit')
+  })
+
+  it('holds the Dressrosa fruits up to episode 650, and none past it', () => {
+    const marquee = marqueeAt(ep(650))
+
+    expect(marquee?.saga).toBe('Dressrosa Saga')
+    expect(marquee?.ids).toHaveLength(11)
+    expect(marquee?.ids[0]).toBe('op-op-fruit')
+    expect(marquee?.ids.at(-1)).toBe('art-art-fruit')
+    expect(marquee?.ids).not.toContain('barrier-barrier-fruit')
+  })
+
+  it('counts in chapters for a manga reader, and points back when the saga has none yet', () => {
+    expect(marqueeAt({ mode: 'chapter', chapter: 500 })).toStrictEqual({
+      saga: 'Summit War Saga',
+      ids: [],
+      last: 'paw-paw-fruit',
+    })
+  })
+
+  it('names only open fruits of the saga so far, at every bookmark of the sweep', () => {
+    for (const bookmark of BOOKMARKS) {
+      const sheet = fruitSheet(bookmark, 'en')
+      const at = reveal(bookmark)
+      const open = new Set(
+        sheet.bands.flatMap((band) => band.open).map(({ id }) => id),
+      )
+
+      for (const id of namedBy(sheet.marquee)) {
+        const fruit = fruits.find((entry) => entry.id === id)
+
+        expect(fruit !== undefined && at.sees(fruit), id).toBe(true)
+        expect(open.has(id), id).toBe(true)
+      }
+    }
+  })
+
+  it('sends the lead’s drawing whole, wherever its plate puts it', () => {
+    const sheet = fruitSheet(ep(650), 'en')
+    const art = sheet.bands
+      .flatMap((band) => band.open)
+      .find(({ id }) => id === 'art-art-fruit')
+
+    expect(art?.visual.deferred).toBeUndefined()
+    expect(art?.visual.strokes.length).toBeGreaterThan(0)
   })
 })

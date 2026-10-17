@@ -34,6 +34,7 @@ const ARLONG_OFFICER = {
 }
 
 export const eastBlue: Saga = {
+  name: { it: 'Saga del East Blue', en: 'East Blue Saga' },
   entries: [
     {
       id: 'east-blue',

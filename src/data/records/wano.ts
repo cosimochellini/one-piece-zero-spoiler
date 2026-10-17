@@ -21,6 +21,7 @@ const TOBIROPPO_ROLE = {
 }
 
 export const wano: Saga = {
+  name: { it: 'Saga del Paese di Wano', en: 'Wano Country Saga' },
   entries: [
     {
       id: 'wano',

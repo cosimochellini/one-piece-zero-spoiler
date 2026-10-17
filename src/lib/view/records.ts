@@ -299,10 +299,29 @@ export interface FruitBandView {
   total: number
 }
 
+/** A fruit the marquee points at: the id of its open tile in the album. */
+export interface FruitRef {
+  id: string
+}
+
+/**
+ * The marquee over the album: the saga the bookmark falls in, and the open
+ * fruits whose reveal falls inside it, newest last. Only open fruits, so the
+ * count is the saga so far and never the saga's total. With none yet, the
+ * latest open fruit before the saga, to point back to.
+ */
+export interface FruitMarqueeView {
+  fruits: FruitRef[]
+  last: FruitRef | null
+  saga: string
+}
+
 /** The specimen sheet: the three plates, and how many fruits are filed. */
 export interface FruitSheetView {
   bands: FruitBandView[]
   filed: number
+  /** `null` with no bookmark, and with no fruit open at all. */
+  marquee: FruitMarqueeView | null
 }
 
 /** A devil fruit's own page. */

@@ -32,6 +32,7 @@ const KUJA_WARRIOR = { it: 'Tribù kuja, guerriera', en: 'Kuja tribe, warrior' }
 const KUJA_WARRIOR_ROLE = { it: 'Guerriera kuja', en: 'Kuja warrior' }
 
 export const summitWar: Saga = {
+  name: { it: 'Saga della guerra di Barbabianca', en: 'Summit War Saga' },
   entries: [
     {
       id: 'trafalgar-law',

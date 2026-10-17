@@ -57,6 +57,7 @@ describe('FruitsAlbum', () => {
       <FruitsAlbum
         bands={FOGGED}
         filed={3}
+        marquee={null}
         onParams={vi.fn<SpecimenBandsProps['onParams']>()}
         params={{}}
         peek={peekTo(GUM)}
@@ -96,6 +97,7 @@ describe('FruitsAlbum', () => {
       <FruitsAlbum
         bands={OPEN}
         filed={1}
+        marquee={null}
         onParams={vi.fn<SpecimenBandsProps['onParams']>()}
         params={{}}
         peek={peekTo(GUM)}
@@ -113,6 +115,7 @@ describe('FruitsAlbum', () => {
       <FruitsAlbum
         bands={OPEN}
         filed={1}
+        marquee={null}
         onParams={vi.fn<SpecimenBandsProps['onParams']>()}
         params={{}}
         peek={peekTo(GUM)}
@@ -131,6 +134,7 @@ describe('FruitsAlbum', () => {
         <FruitsAlbum
           bands={FOGGED}
           filed={3}
+          marquee={null}
           onParams={vi.fn<SpecimenBandsProps['onParams']>()}
           params={{}}
           peek={peekTo(GUM)}

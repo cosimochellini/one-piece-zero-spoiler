@@ -13,6 +13,7 @@ const ENEL_PRIESTS = { it: 'Sacerdoti di Ener', en: 'Enel’s priests' }
 const ENEL_PRIEST = { it: 'Sacerdote di Ener', en: 'One of Enel’s priests' }
 
 export const skypiea: Saga = {
+  name: { it: 'Saga di Skypiea', en: 'Skypiea Saga' },
   entries: [
     {
       id: 'jaya-arc',

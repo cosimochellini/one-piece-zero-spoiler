@@ -30,6 +30,7 @@ const GALLEY_LA_DOCK_ONE = {
 }
 
 export const waterSeven: Saga = {
+  name: { it: 'Saga di Water Seven', en: 'Water Seven Saga' },
   entries: [
     {
       id: 'long-ring-long-land',

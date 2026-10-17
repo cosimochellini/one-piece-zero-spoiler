@@ -54,9 +54,13 @@ const WORST_CHUNKS = 5
  * 545 KB on 2026-10-17, when main stood at ~536.4 KB and the fruits control
  * bar (#663) added ~7.8 KB: the generic segmented control and chip group, the
  * pinned bar that folds on a phone, and the search params in the address.
- * 545 KB is the ceiling the owner set for this raise.
+ * 545 KB is the ceiling the owner set for this raise. Raised to 549.75 KB
+ * on 2026-10-17, when main stood at ~545.0 KB and the saga marquee over the
+ * fruits album (#664) added ~3.7 KB: the rail of tiles, the lead's glow and
+ * the line that points back to the last fruit. The new ceiling is the
+ * measured build plus ~1 KB, under the 555 KB the owner allowed.
  */
-export const MAX_CLIENT_BYTES = 545_000
+export const MAX_CLIENT_BYTES = 549_750
 
 /** Where the prose lives: every saga, the ship's log and the filler guide. */
 const PROSE_DIR = 'src/data/records'

@@ -64,6 +64,7 @@ const ALABASTA = { it: 'Alabasta', en: 'Alabasta' }
 const DRUM_ISLAND = { it: 'Isola di Drum', en: 'Drum Island' }
 
 export const alabasta: Saga = {
+  name: { it: 'Saga di Alabasta', en: 'Alabasta Saga' },
   entries: [
     {
       id: 'reverse-mountain',

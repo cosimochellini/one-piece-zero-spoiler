@@ -45,6 +45,7 @@ const BIG_MOM_DAUGHTER = {
 const MARY_GEOISE = { it: 'Mary Geoise', en: 'Mary Geoise' }
 
 export const wholeCake: Saga = {
+  name: { it: 'Saga di Whole Cake Island', en: 'Whole Cake Island Saga' },
   entries: [
     {
       id: 'zou-arc',

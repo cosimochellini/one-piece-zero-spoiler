@@ -327,6 +327,14 @@ export const itDictionary: Dictionary = {
   'fruits.wall.title': '{count} frutti del diavolo sono nella nebbia',
   'fruits.wall.ask': 'A che episodio sei?',
   'fruits.wall.browse': 'Sfoglia comunque',
+  'fruits.marquee': '{saga}: {count} frutti finora',
+  'fruits.marqueeOne': '{saga}: 1 frutto finora',
+  'fruits.marqueeNone': 'Ancora nessun frutto nuovo in questa saga.',
+  'fruits.lastFruit.episode':
+    'L’ultimo è stato il {name}, nell’episodio {threshold}.',
+  'fruits.lastFruit.season': 'L’ultimo è stato il {name}, in {threshold}.',
+  'fruits.lastFruit.chapter':
+    'L’ultimo è stato il {name}, nel capitolo {threshold}.',
   'fruits.moreEaters': 'e altri {count} personaggi che l’hanno mangiato',
   'fruits.moreEatersOne': 'e un altro personaggio che l’ha mangiato',
 
