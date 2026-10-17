@@ -68,4 +68,17 @@ describe('ControlBar', () => {
 
     expect(toggle).toHaveAttribute('aria-expanded', 'false')
   })
+
+  it('stays open after a pick made with the keyboard, so the arrows step on', async () => {
+    const user = userEvent.setup()
+    renderBar()
+    const toggle = screen.getByRole('button', { name: /^Filters/u })
+    const radio = screen.getByRole('radio', { name: 'Zoan' })
+
+    await user.click(screen.getByRole('searchbox'))
+    fireEvent.keyDown(radio, { key: 'ArrowRight' })
+    fireEvent.click(radio)
+
+    expect(toggle).toHaveAttribute('aria-expanded', 'true')
+  })
 })

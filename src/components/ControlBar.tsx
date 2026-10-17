@@ -145,15 +145,12 @@ function FoldedRow({
   )
 }
 
-/** Whether the bar is pinned, whether it is opened, and a way to open it. */
-interface Fold {
+/** The bar's folding: whether it has pinned, and whether it is opened. */
+function useFold(barRef: RefObject<HTMLDivElement | null>): {
   open: boolean
   pinned: boolean
   setOpen: (open: boolean) => void
-}
-
-/** The bar's folding: whether it has pinned, and whether it is opened. */
-function useFold(barRef: RefObject<HTMLDivElement | null>): Fold {
+} {
   const [pinned, setPinned] = useState(false)
   const [open, setOpen] = useState(false)
 
@@ -179,7 +176,7 @@ function useFold(barRef: RefObject<HTMLDivElement | null>): Fold {
   return { open, pinned, setOpen }
 }
 
-/** Nothing to stop: a browser without the observers never started. */
+/** Nothing to stop: without the observers, nothing started. */
 function ignore(): void {
   // Deliberately empty.
 }
@@ -256,7 +253,7 @@ function listen(
   read: () => Measure,
   setOpen: (open: boolean) => void,
 ): () => void {
-  const onFocusIn = (event: FocusEvent): void => {
+  const onFocusIn = (event: Event): void => {
     const controls = bar.firstElementChild
     if (
       event.target instanceof Node
@@ -265,40 +262,56 @@ function listen(
       setOpen(true)
     }
   }
-  const onFocusOut = (event: FocusEvent): void => {
-    const next = event.relatedTarget
+  const onFocusOut = (event: Event): void => {
+    const next = event instanceof FocusEvent ? event.relatedTarget : null
     if (!(next instanceof Node) || !bar.contains(next)) {
       setOpen(false)
     }
+  }
+  // A pick made with the arrow keys keeps the bar open and focus on the
+  // group, so the next arrow steps on; a tap folds it.
+  let keyed = false
+  const onInput = (event: Event): void => {
+    keyed = event.type === 'keydown'
   }
   const onChange = (event: Event): void => {
     const { target } = event
     if (!(target instanceof HTMLInputElement) || target.type !== 'radio') {
       return
     }
-    setOpen(false)
+    if (!keyed) {
+      setOpen(false)
+    }
     const { pinned, tuck } = read()
     if (pinned) {
-      settle(bar, tuck)
+      settle(bar, tuck, !keyed)
     }
   }
-  bar.addEventListener('focusin', onFocusIn)
-  bar.addEventListener('focusout', onFocusOut)
-  bar.addEventListener('change', onChange)
+  const listeners: [string, (event: Event) => void][] = [
+    ['focusin', onFocusIn],
+    ['focusout', onFocusOut],
+    ['keydown', onInput],
+    ['pointerdown', onInput],
+    ['change', onChange],
+  ]
+  for (const [type, listener] of listeners) {
+    bar.addEventListener(type, listener)
+  }
 
   return () => {
-    bar.removeEventListener('focusin', onFocusIn)
-    bar.removeEventListener('focusout', onFocusOut)
-    bar.removeEventListener('change', onChange)
+    for (const [type, listener] of listeners) {
+      bar.removeEventListener(type, listener)
+    }
   }
 }
 
 /**
  * After a pick on a pinned bar: back to where the bar has just pinned, the
- * top of the new results, if the reader was further down. On a phone the
- * control picked with has just slid off screen, so focus goes to the toggle.
+ * top of the new results, if the reader was further down. When the pick
+ * folds the bar on a phone, the control picked with has just slid off
+ * screen, so focus goes to the toggle.
  */
-function settle(bar: HTMLElement, tuck: number): void {
+function settle(bar: HTMLElement, tuck: number, folds: boolean): void {
   const container = bar.parentElement
   if (container !== null) {
     const top = container.getBoundingClientRect().top + window.scrollY + tuck
@@ -306,7 +319,7 @@ function settle(bar: HTMLElement, tuck: number): void {
       window.scrollTo({ top, behavior: 'instant' })
     }
   }
-  if (tuck > 0) {
+  if (folds && tuck > 0) {
     bar
       .querySelector<HTMLElement>('[aria-expanded]')
       ?.focus({ preventScroll: true })

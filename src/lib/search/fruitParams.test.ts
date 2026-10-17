@@ -12,7 +12,7 @@ describe('parseFruitParams', () => {
   it('leaves out the defaults and anything it does not know', () => {
     expect(parseFruitParams({})).toStrictEqual({})
     expect(
-      parseFruitParams({ view: 'type', form: 'all', q: '' }),
+      parseFruitParams({ view: 'type', form: 'all', q: '  ' }),
     ).toStrictEqual({})
     expect(
       parseFruitParams({ view: 'saga', form: 'fish', q: ['a', 'b'] }),

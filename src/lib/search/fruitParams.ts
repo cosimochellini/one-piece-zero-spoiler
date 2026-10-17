@@ -54,7 +54,9 @@ export function fruitParams(
   if (form !== 'all') {
     params.form = form
   }
-  if (query !== '') {
+  // Blank is no query; anything else is kept as typed, spaces and all, so
+  // the field bound to it never loses a space mid-word.
+  if (query.trim() !== '') {
     params.q = query
   }
 
