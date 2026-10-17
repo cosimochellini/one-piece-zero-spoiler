@@ -58,6 +58,8 @@ export function watch(
     { rootMargin: '-1px 0px 0px 0px', threshold: 1 },
   )
   resize.observe(bar)
+  // The row too: crossing the phone breakpoint shows or hides it.
+  resize.observe(row)
   pin.observe(bar)
 
   return {
@@ -103,6 +105,9 @@ export function listen(
     keyed = event.type === 'keydown'
     pressed = event.type === 'pointerdown'
   }
+  const onRelease = (): void => {
+    pressed = false
+  }
   const onChange = (event: Event): void => {
     const { target } = event
     if (!(target instanceof HTMLInputElement) || target.type !== 'radio') {
@@ -122,8 +127,8 @@ export function listen(
     [bar, 'keydown', onInput],
     [bar, 'pointerdown', onInput],
     [bar, 'change', onChange],
-    [globalThis, 'pointerup', onInput],
-    [globalThis, 'pointercancel', onInput],
+    [globalThis, 'pointerup', onRelease],
+    [globalThis, 'pointercancel', onRelease],
   ]
   for (const [on, type, listener] of listeners) {
     on.addEventListener(type, listener)

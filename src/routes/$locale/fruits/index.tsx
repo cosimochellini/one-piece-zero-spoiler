@@ -16,11 +16,7 @@
  *   420ms, stroke draw-in once; reduced motion → still fog, 150ms crossfade
  * · differs from the previous build (Specimen) on macrostructure; theme is
  *   the project's locked system and does not rotate */
-import {
-  createFileRoute,
-  useLocation,
-  useNavigate,
-} from '@tanstack/react-router'
+import { createFileRoute } from '@tanstack/react-router'
 import type { ReactElement } from 'react'
 
 import { ArchivePage } from '~/components/ArchivePage'
@@ -31,6 +27,7 @@ import { useBookmark } from '~/lib/progress/BookmarkContext'
 import { parseFruitParams } from '~/lib/search/fruitParams'
 import { describeNamedPage } from '~/routes/$locale/-head'
 import { usePeek } from '~/routes/$locale/-peek'
+import { useFruitParams } from '~/routes/$locale/fruits/-params'
 import { liftFruit, loadFruits } from '~/server/api'
 
 export const Route = createFileRoute('/$locale/fruits/')({
@@ -85,12 +82,7 @@ function FruitsPage(): ReactElement {
   const { bands, filed } = Route.useLoaderData()
 
   const peek = usePeek(liftFruit)
-  // Read from the location rather than `Route.useSearch()`: the location
-  // changes in the same event as the navigation, the match a few ticks later,
-  // and a search field bound to the later one drops the letters typed in
-  // between.
-  const params = parseFruitParams(useLocation({ select: (at) => at.search }))
-  const navigate = useNavigate({ from: Route.fullPath })
+  const [params, onParams] = useFruitParams()
 
   return (
     <ArchivePage
@@ -102,9 +94,7 @@ function FruitsPage(): ReactElement {
       <FruitsAlbum
         bands={bands}
         filed={filed}
-        onParams={(next, replace) => {
-          void navigate({ replace, resetScroll: false, search: next })
-        }}
+        onParams={onParams}
         params={params}
         peek={peek}
       />
