@@ -1,21 +1,20 @@
 import * as stylex from '@stylexjs/stylex'
-import { type ReactElement, useDeferredValue, useId, useState } from 'react'
+import { type ReactElement, useDeferredValue, useId } from 'react'
 
+import {
+  AlbumControls,
+  type AlbumControlsProps,
+} from '~/components/AlbumControls'
 import { FogBand, type FogTitles } from '~/components/FogBand'
 import { FruitTile } from '~/components/FruitTile'
 import { eaterMatch, matchesIn } from '~/components/recordMatches'
-import { SearchField } from '~/components/SearchField'
-import { searchStyles } from '~/components/SearchField.styles'
 import { styles } from '~/components/SpecimenBands.styles'
-import { useSettled } from '~/components/useSettled'
 import { useT } from '~/i18n/LocaleContext'
 import type { Translate, TranslationKey } from '~/i18n/types'
 import { foldName } from '~/lib/search/fold'
+import type { FruitParams } from '~/lib/search/fruitParams'
 import type { FruitBandView, FruitForm, FruitView } from '~/lib/view/records'
 import { stickyStyles } from '~/styles/sticky'
-
-// The same delay the signal book announces its own count with.
-const ANNOUNCE_DELAY_MS = 250
 
 /** How wide a plate number is printed. `01`, never `1`. */
 const NUMBER_WIDTH = 2
@@ -47,68 +46,60 @@ const LEDE_KEY: Record<FruitForm, TranslationKey> = {
   zoan: 'fruits.lede.zoan',
 }
 
-/** What the sheet is built from: the three plates, and a way to lift the fog. */
+/** What the sheet is built from: the plates, the picks, and the peek. */
 export interface SpecimenBandsProps {
   bands: FruitBandView[]
+  onParams: AlbumControlsProps['onParams']
+  params: FruitParams
   peek: (handle: string) => Promise<FruitView>
 }
 
 /**
- * The album: three plates down the page, each a numbered label, a heading,
- * and the fruits of that kind as a grid of tiles.
+ * The album: the control bar, then the plates down the page, each a numbered
+ * label, a heading, and the fruits of that kind as a grid of tiles.
  *
  * The search rule is the signal book's, applied to a different list: a
  * covered fruit is not on the page to be searched, so typing filters the open
- * tiles and leaves every fogged one exactly where it was. The count under the
- * field is over all three plates, and it settles before it is announced.
+ * tiles and leaves every fogged one exactly where it was. A kind chip keeps
+ * one plate on the page. The count under the field is over the plates on the
+ * page, so its total is the picked chip's number.
  */
 export function SpecimenBands({
   bands,
+  onParams,
+  params,
   peek,
 }: SpecimenBandsProps): ReactElement {
-  const t = useT()
   const fieldId = useId()
-  const [query, setQuery] = useState('')
-  const trimmed = query.trim()
   // The field is never deferred; the plates behind it are.
-  const needle = useDeferredValue(foldName(trimmed))
-  const open = bands.flatMap((band) => band.open)
-  const count = matchesIn(open, needle).length
-  const empty = trimmed !== '' && count === 0
-  const status =
-    empty ?
-      t('fruits.noMatch', { query: trimmed })
-    : t('fruits.shown', { count, total: open.length })
+  const needle = useDeferredValue(foldName((params.q ?? '').trim()))
+  const shown =
+    params.form === undefined ?
+      bands
+    : bands.filter((band) => band.form === params.form)
 
   return (
     <div {...stylex.props(styles.sheet)}>
-      <SearchField
-        clearLabel={t('fruits.searchClear')}
-        fieldId={fieldId}
-        label={t('fruits.searchLabel')}
-        onQuery={setQuery}
-        placeholder={t('fruits.searchPlaceholder')}
-        query={query}
-        status={
-          <p
-            aria-live="polite"
-            {...stylex.props(
-              searchStyles.status,
-              empty && searchStyles.statusEmpty,
-            )}
-          >
-            {useSettled(status, ANNOUNCE_DELAY_MS)}
-          </p>
+      <AlbumControls
+        bands={bands}
+        count={
+          matchesIn(
+            shown.flatMap((band) => band.open),
+            needle,
+          ).length
         }
+        fieldId={fieldId}
+        onParams={onParams}
+        params={params}
       />
 
-      {bands.map((band, at) => {
+      {shown.map((band) => {
         return (
           <Plate
             key={band.form}
             band={band}
             fieldId={fieldId}
-            index={at}
+            index={bands.indexOf(band)}
             needle={needle}
             peek={peek}
           />
@@ -230,7 +221,13 @@ function PlateHead({
 
   return (
     <>
-      <div {...stylex.props(stickyStyles.bar, styles.plateHead)}>
+      <div
+        {...stylex.props(
+          stickyStyles.bar,
+          stickyStyles.underBar,
+          styles.plateHead,
+        )}
+      >
         <p {...stylex.props(styles.plateNumber)}>
           {t('fruits.plate', {
             index: String(index + 1).padStart(NUMBER_WIDTH, '0'),

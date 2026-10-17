@@ -1,13 +1,14 @@
 import { fireEvent, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import type { ReactElement } from 'react'
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 
 import { useBookmark } from '~/lib/progress/BookmarkContext'
 import { coveredRecord, fruitBand, peekTo, specimen } from '~/test/fixtures'
 import { ep, renderWithProviders, settle } from '~/test/providers'
 
 import { FruitsAlbum } from './FruitWall'
+import type { SpecimenBandsProps } from './SpecimenBands'
 
 const GUM = specimen({ id: 'gum-gum-fruit', name: 'Gum-Gum Fruit' })
 
@@ -56,6 +57,8 @@ describe('FruitsAlbum', () => {
       <FruitsAlbum
         bands={FOGGED}
         filed={3}
+        onParams={vi.fn<SpecimenBandsProps['onParams']>()}
+        params={{}}
         peek={peekTo(GUM)}
       />,
     )
@@ -93,6 +96,8 @@ describe('FruitsAlbum', () => {
       <FruitsAlbum
         bands={OPEN}
         filed={1}
+        onParams={vi.fn<SpecimenBandsProps['onParams']>()}
+        params={{}}
         peek={peekTo(GUM)}
       />,
       { bookmark: ep(1), trial: true },
@@ -108,6 +113,8 @@ describe('FruitsAlbum', () => {
       <FruitsAlbum
         bands={OPEN}
         filed={1}
+        onParams={vi.fn<SpecimenBandsProps['onParams']>()}
+        params={{}}
         peek={peekTo(GUM)}
       />,
       { bookmark: ep(650) },
@@ -124,6 +131,8 @@ describe('FruitsAlbum', () => {
         <FruitsAlbum
           bands={FOGGED}
           filed={3}
+          onParams={vi.fn<SpecimenBandsProps['onParams']>()}
+          params={{}}
           peek={peekTo(GUM)}
         />
       </>,

@@ -1,5 +1,5 @@
 import * as stylex from '@stylexjs/stylex'
-import type { ComponentPropsWithoutRef, ReactElement } from 'react'
+import type { ComponentProps, ReactElement } from 'react'
 
 import {
   color,
@@ -13,12 +13,13 @@ import {
 } from '~/styles/tokens.stylex'
 
 /**
- * Everything the DOM button takes, less the two escape hatches. Exported
+ * Everything the DOM button takes, `ref` included, less the two escape
+ * hatches. Exported
  * because ButtonProps is built on it, and a public signature that names a
  * private type cannot be read by anyone who imports it.
  */
 export type NativeButtonProps = Omit<
-  ComponentPropsWithoutRef<'button'>,
+  ComponentProps<'button'>,
   'className' | 'style'
 >
 
