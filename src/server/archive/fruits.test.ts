@@ -3,10 +3,10 @@ import { describe, expect, it } from 'vitest'
 import { DRAWINGS, REDRAWINGS } from '~/data/art'
 import { entities } from '~/data/entities'
 import { fruits } from '~/data/fruits'
-import { reveal } from '~/data/reveal'
 import { LOCALES } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
 import type { FruitEatersView, FruitView, Slot } from '~/lib/view/records'
+import { saysNothing } from '~/test/fog'
 
 import {
   fruitEaters,
@@ -29,58 +29,6 @@ import { peekFruit } from './peek.server'
  */
 
 const ep = (episode: number): Bookmark => ({ mode: 'episode', episode })
-
-/** The two keys a payload may spell a record out under. */
-const NAMING = new Set(['id', 'name'])
-
-/** The `id` and the `name` an object declares itself, if it declares either. */
-function selfNamed(payload: object, found: Set<string>): void {
-  for (const [key, value] of Object.entries(payload)) {
-    if (typeof value === 'string' && NAMING.has(key)) {
-      found.add(value)
-    }
-  }
-}
-
-/** Every `id` and `name` anywhere in a payload, however deeply nested. */
-function named(payload: unknown, found = new Set<string>()): Set<string> {
-  if (payload === null || typeof payload !== 'object') {
-    return found
-  }
-  if (Array.isArray(payload)) {
-    for (const item of payload) {
-      named(item, found)
-    }
-
-    return found
-  }
-
-  selfNamed(payload, found)
-
-  for (const value of Object.values(payload)) {
-    named(value, found)
-  }
-
-  return found
-}
-
-/** Nothing in a payload may name a record the reader has not reached. */
-function saysNothing(payload: unknown, bookmark: Bookmark): void {
-  const said = named(payload)
-  const at = reveal(bookmark)
-
-  for (const entity of entities) {
-    if (at.sees(entity)) {
-      continue
-    }
-
-    expect(said.has(entity.id), entity.id).toBe(false)
-
-    for (const name of Object.values(entity.name)) {
-      expect(said.has(name), entity.id).toBe(false)
-    }
-  }
-}
 
 /** The ids a rail shows, in the order it shows them. */
 function openIds(rail: Slot<FruitView>[]): string[] {
@@ -113,7 +61,7 @@ describe('the specimen sheet', () => {
     }
   })
 
-  it('splits every plate at the bookmark and names nothing past it', () => {
+  it('splits every plate at the bookmark, in every unit', () => {
     const marks: NonNullable<Bookmark>[] = [
       { mode: 'episode', episode: 462 },
       { mode: 'season', season: 4, episode: 1 },
@@ -123,8 +71,6 @@ describe('the specimen sheet', () => {
     for (const bookmark of marks) {
       for (const band of fruitSheet(bookmark, 'en').bands) {
         expect(band.open.length + band.covered.length).toBe(band.total)
-
-        saysNothing(band, bookmark)
       }
     }
   })
@@ -133,8 +79,6 @@ describe('the specimen sheet', () => {
     const sheet = fruitSheet(null, 'en')
 
     expect(sheet.bands.flatMap((band) => band.open)).toStrictEqual([])
-
-    saysNothing(sheet, null)
   })
 
   it('leaves the drawings past the third row of the first plate to be asked for', () => {
@@ -193,13 +137,11 @@ describe('the specimen sheet', () => {
 })
 
 describe('a fruit’s own page', () => {
-  it('names nothing under fog, in the head or anywhere else', () => {
+  it('keeps the name out of the head under fog', () => {
     const page = fruitPage('dark-dark-fruit', ep(100), 'en')
 
     expect(page?.head.title).toBe('A fruit under fog | Zero Spoiler')
     expect(page?.detail.slot.open).toBe(false)
-
-    saysNothing(page, ep(100))
   })
 
   it('names the fruit once the reader has reached it', () => {
@@ -467,16 +409,6 @@ describe('who ate it', () => {
     expect(eatersIn(before)).not.toContain('Sabo')
     expect(eatersIn(after)).toContain('Sabo')
   })
-
-  it('names nobody the reader has not reached', () => {
-    for (const bookmark of [null, ep(300), ep(800)]) {
-      const band = fruitEaters('flame-flame-fruit', bookmark, 'en')
-
-      expect(band.mode).toBe('eaters')
-
-      saysNothing(band, bookmark)
-    }
-  })
 })
 
 describe('the rail of the same kind', () => {
@@ -507,8 +439,6 @@ describe('the rail of the same kind', () => {
       expect(entry).not.toHaveProperty('id')
       expect(entry).not.toHaveProperty('name')
     }
-
-    saysNothing(rail, ep(5))
   })
 
   it('measures nearness in the unit the reader counts in', () => {

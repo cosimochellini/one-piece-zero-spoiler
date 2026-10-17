@@ -84,6 +84,11 @@ A new module with prose must go into `PROSE_EXTRA` in `scripts/archive-gate.mjs`
 and into `TEXTS` in `src/data/leaks.test.ts`, with the gate its page applies to
 it.
 
+A new server function in `src/server/api.ts` must go into `PAYLOADS` in
+`src/server/archive/payloads.server.ts`, with the ids or handles it is asked
+for. `src/server/archive/payloads.test.ts` fails until it is, and then checks
+that the new page names no record the reader has not reached.
+
 Components, routes and `src/lib` cannot import `~/data`. ESLint rejects the
 import and `npm run gate:archive` rejects the build, because that import would
 put the whole archive in the browser.
@@ -192,6 +197,11 @@ PR. Count each occurrence, including duplicate lines: sort the dated-only dumps
 and use `comm -13 base-dated.txt head-dated.txt` for additions and
 `comm -23 base-dated.txt head-dated.txt` for removals. Use the same locale for
 sorting and `comm` (for example `LC_ALL=C`).
+
+A change to `src/server` that should change no page can be checked the same way:
+`npm run --silent archive:dump > head.jsonl` writes every payload in `PAYLOADS`,
+for every id or handle, at the sweep's bookmarks and in both locales, about 1
+GB. Dump the base too and `cmp` the two files.
 
 For characters with redrawings, capture the production site's stage gates:
 
