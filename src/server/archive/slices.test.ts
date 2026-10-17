@@ -26,6 +26,7 @@ import type {
   ShelfView,
   Stroke,
 } from '~/lib/view/records'
+import { saysNothing } from '~/test/fog'
 
 import { fruitSheet } from './fruits.server'
 import { handleOf } from './handle.server'
@@ -102,37 +103,6 @@ const handleSpace = new Set(
   }),
 )
 
-/** The `id` and the `name` an object declares itself, if it declares either. */
-function selfNamed(payload: object, found: Set<string>): void {
-  for (const [key, value] of Object.entries(payload)) {
-    if (typeof value === 'string' && (key === 'id' || key === 'name')) {
-      found.add(value)
-    }
-  }
-}
-
-/** Every `id` and `name` anywhere in a payload, however deeply nested. */
-function named(payload: unknown, found = new Set<string>()): Set<string> {
-  if (payload === null || typeof payload !== 'object') {
-    return found
-  }
-  if (Array.isArray(payload)) {
-    for (const item of payload) {
-      named(item, found)
-    }
-
-    return found
-  }
-
-  selfNamed(payload, found)
-
-  for (const value of Object.values(payload)) {
-    named(value, found)
-  }
-
-  return found
-}
-
 /**
  * The bytes of every drawing a payload carries inline, as the loader data
  * serialises them; a deferred drawing counts only its empty brackets.
@@ -208,42 +178,11 @@ function shelvedKeys(shelf: ShelfView): string[] {
   ]
 }
 
-/**
- * Nothing in a payload may name a record the reader has not reached.
- *
- * Walked rather than grepped: a substring search over the serialised payload
- * finds "den" inside a path command and fails on a clean one.
- */
-function saysNothing(payload: unknown, bookmark: Bookmark): void {
-  const said = named(payload)
-  const at = reveal(bookmark)
-  // A name a reached record also goes by is that record's, not a leak: the
-  // zombie dog Cerberus is met at 339, Shamrock's sword of the name at 1168.
-  const reachedNames = new Set(
-    entities
-      .filter((entity) => at.sees(entity))
-      .flatMap((entity) => Object.values(entity.name)),
-  )
-
-  for (const entity of entities) {
-    if (at.sees(entity)) {
-      continue
-    }
-
-    expect(said.has(entity.id), entity.id).toBe(false)
-
-    for (const name of Object.values(entity.name)) {
-      if (!reachedNames.has(name)) {
-        expect(said.has(name), entity.id).toBe(false)
-      }
-    }
-  }
-}
-
 describe('the slice of the archive a page is given', () => {
   it('tells a character’s page nothing the reader has not reached', () => {
     // The chronicle is the one payload that carries other characters' names
-    // in prose, so the sweep runs across the reader's whole route.
+    // in prose, so these pages are read mid-arc as well, where the sweep in
+    // `payloads.test.ts` does not stop.
     for (const { episode, id } of CHRONICLE_SWEEP) {
       const label = `${id} @${String(episode)}`
       const page = characterPage(id, ep(episode), 'en')
@@ -273,8 +212,6 @@ describe('the slice of the archive a page is given', () => {
       mode: 'chronicle',
       entries: [],
     })
-
-    saysNothing(page, null)
   })
 
   it('lands a visitor with no bookmark, or on a trial, on the onboarding', () => {
@@ -289,17 +226,6 @@ describe('the slice of the archive a page is given', () => {
     expect(landingPage(ep(1), null, 'en')).toStrictEqual({
       home: homePage(ep(1), 'en'),
     })
-  })
-
-  it('tells the onboarding nothing past East Blue, in either unit', () => {
-    for (const locale of LOCALES) {
-      const page = onboardingPage(null, locale)
-
-      expect(page.cast.length).toBeGreaterThan(0)
-
-      saysNothing(page, ep(DEMO_LAST_EPISODE))
-      saysNothing(page, { mode: 'chapter', chapter: DEMO_LAST_CHAPTER })
-    }
   })
 
   it('wakes East Blue up on the onboarding, and only covers past it', () => {
@@ -373,8 +299,6 @@ describe('the slice of the archive a page is given', () => {
       const reaches = home.stories.map((story) => story[unit])
       // Most recent first, and inside the arc, in the reader's own unit.
       const marked = home.stories.map((story) => at.threshold(story))
-
-      saysNothing(home, bookmark)
 
       expect(at.sees(home.saga)).toBe(true)
       expect(home.cast.length).toBeLessThanOrEqual(6)
@@ -536,7 +460,6 @@ describe('the slice of the archive a page is given', () => {
     for (const shelf of shelves) {
       expect(shelf.total).toBe(shelf.open.length + shelf.covered.length)
     }
-    saysNothing(shelves, ep(200))
   })
 
   it('leaves the drawings past the first shelf and the third port to be asked for', () => {
@@ -605,8 +528,6 @@ describe('the slice of the archive a page is given', () => {
     expect(page.filed).toBe(characters.length)
     expect(page.shelfCount).toBeGreaterThan(0)
     expect(page.featuredOpen.length + page.featuredCovered.length).toBe(36)
-
-    saysNothing(page, ep(200))
   })
 
   it('sends only the epithets the reader has already reached, folded', () => {
@@ -655,8 +576,6 @@ describe('the slice of the archive a page is given', () => {
     expect(at.index).toBeGreaterThanOrEqual(0)
     expect(at.index).toBeLessThan(at.total)
     expect(at.openCount).toBeLessThanOrEqual(at.total)
-
-    saysNothing(at, ep(500))
   })
 
   it('files the nearest featured characters, each behind its own fog', () => {
@@ -664,8 +583,6 @@ describe('the slice of the archive a page is given', () => {
 
     expect(near).toHaveLength(5)
     expect(near.some((slot) => !slot.open)).toBe(true)
-
-    saysNothing(near, ep(130))
 
     expect(nearbyPage('nobody', ep(130), 'en')).toStrictEqual([])
   })
@@ -675,8 +592,6 @@ describe('the slice of the archive a page is given', () => {
 
     expect(log.open.length + log.covered.length).toBe(log.filed)
     expect(log.open.every((port) => port.revealedAtEpisode <= 20)).toBe(true)
-
-    saysNothing(log, ep(20))
   })
 
   it('resolves a port’s arc outright, because an arc opens no later', () => {
@@ -691,7 +606,7 @@ describe('the slice of the archive a page is given', () => {
     expect(baratie?.dossier?.filedHere.length).toBeGreaterThan(0)
   })
 
-  it('tells the log and its ships nothing the reader has not reached', () => {
+  it('sends the ships the reader has reached, in both locales', () => {
     for (const [episode, sent] of [
       [1, []],
       [60, ['going-merry']],
@@ -702,8 +617,6 @@ describe('the slice of the archive a page is given', () => {
         const log = placesPage(ep(episode), locale)
 
         expect(log.ships.map((ship) => ship.id)).toStrictEqual(sent)
-
-        saysNothing(log, ep(episode))
       }
     }
   })

@@ -8,6 +8,7 @@
   },
   "type": "module",
   "scripts": {
+    "archive:dump": "node scripts/archive-dump.mjs",
     "archive:table": "node scripts/archive-table.mjs",
     "art:sheet": "node scripts/art-sheet.mjs",
     "art:shots": "node scripts/art-shots.mjs",

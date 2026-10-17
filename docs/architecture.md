@@ -176,7 +176,13 @@ checked on every run:
 
 - nothing in a payload names a record the reader has not reached, no handle can
   be turned back into a name, and a covered record has no id. A single handle
-  that happened to be `btoa(id)` would undo the whole scheme;
+  that happened to be `btoa(id)` would undo the whole scheme. One sweep
+  (`src/server/archive/payloads.test.ts`) asks every server function for its
+  payload at about fifty bookmarks, both sides of every saga's start in both
+  units, and in both locales, and walks it for the id or the name of any record
+  not reached. A page asked for by id is asked for one id in seven at each
+  bookmark, a different seventh each time. A test fails when `src/server/api.ts`
+  gains a server function the sweep does not know;
 - ids are unique, thresholds are within the allowed range, and every record is
   translated in both locales;
 - each record has its own drawing, never one borrowed from another record;
