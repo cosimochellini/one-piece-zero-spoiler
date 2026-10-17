@@ -1,12 +1,12 @@
 /* Hallmark · pre-emit critique: P5 H4 E4 S5 R5 V4 */
-/* Hallmark · genre: atmospheric · macrostructure: Specimen · theme: Sea Chart
- *   (locked) · enrichment: Tier B hand-built SVG (a grown drawing for every
- *   fruit, eleven of them drawn by hand) · nav: N9 edge-aligned (shared)
+/* Hallmark · genre: atmospheric · macrostructure: Portfolio Grid · theme: Sea
+ *   Chart (locked) · enrichment: Tier B hand-built SVG (a grown drawing for
+ *   every fruit, eleven of them drawn by hand) · nav: N9 edge-aligned (shared)
  * · footer: Ft4 colophon (shared)
- * · idea: "a specimen sheet — three plates, one fruit to a row, and the fog
- *   keeps its own row"
- * · differs from the previous build (Narrative Workflow) on macrostructure;
- *   theme is the project's locked system and does not rotate */
+ * · idea: "an album — three plates of tiles, the drawing big, two across on a
+ *   phone, and the fog keeps its place at the foot of each plate"
+ * · differs from the previous build (Specimen) on macrostructure; theme is
+ *   the project's locked system and does not rotate */
 import { createFileRoute } from '@tanstack/react-router'
 import type { ReactElement } from 'react'
 
@@ -39,18 +39,16 @@ export const Route = createFileRoute('/$locale/fruits/')({
 })
 
 /**
- * The devil fruits page (Hallmark macrostructure 10, Specimen).
+ * The devil fruits page (Hallmark macrostructure 18, Portfolio Grid).
  *
- * A specimen sheet: the brand line and a count, then three plates — Paramecia,
- * Zoan, Logia — each a numbered label beside a heading, and under it one fruit
- * to a row: the number and the drawing in the margin, the kind, the episode,
- * the name and the sentence beside them. No hero and no display headline; the
- * sheet is the page.
+ * An album: the brand line and a count, then three plates — Paramecia, Zoan,
+ * Logia — each a pinned head over a grid of tiles. A tile is the drawing,
+ * large, the name and the kind, and the whole of it is a link; two across on
+ * a phone, up to six on a wide page. The sentence is the fruit page's.
  *
- * It is deliberately not the signal book's uniform grid and not the log's
- * numbered spine. The search filters the open rows only, and the covered ones
- * keep their own band at the foot of every plate, which is the spoiler rule
- * applied to a text field.
+ * The search filters the open tiles only, and the covered ones keep their own
+ * band at the foot of every plate, which is the spoiler rule applied to a
+ * text field.
  */
 function FruitsPage(): ReactElement {
   const t = useT()

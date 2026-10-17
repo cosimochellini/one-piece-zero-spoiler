@@ -79,7 +79,7 @@ describe('SpecimenBands', () => {
     expect(status).toBeInTheDocument()
   })
 
-  it('filters the open rows and leaves the fog exactly where it was', async () => {
+  it('filters the open tiles and leaves the fog exactly where it was', async () => {
     renderWithProviders(
       <SpecimenBands
         bands={BANDS}
@@ -91,17 +91,17 @@ describe('SpecimenBands', () => {
     await userEvent.type(screen.getByRole('searchbox'), 'flame')
 
     expect(
-      screen.getByRole('link', { name: 'Flame-Flame Fruit' }),
+      screen.getByRole('link', { name: /^Flame-Flame Fruit/u }),
     ).toBeInTheDocument()
     expect(
-      screen.queryByRole('link', { name: 'Gum-Gum Fruit' }),
+      screen.queryByRole('link', { name: /^Gum-Gum Fruit/u }),
     ).not.toBeInTheDocument()
-    // The covered row is not a search result and never moves out of its band.
+    // The covered tile is not a search result and never moves out of its band.
     expect(screen.getByText('1 under fog')).toBeInTheDocument()
     expect(screen.getByText('A fruit under fog')).toBeInTheDocument()
   })
 
-  it('numbers a plate once, across the open rows and the covered ones', () => {
+  it('numbers a covered tile on from the open ones above it', () => {
     renderWithProviders(
       <SpecimenBands
         bands={BANDS}
@@ -110,13 +110,13 @@ describe('SpecimenBands', () => {
       { bookmark: ep(650) },
     )
 
-    // The Logia plate holds one open fruit and one covered one. Two rows
-    // called "Fruit 01" would be a sheet that counted itself twice.
-    expect(screen.getAllByText('Fruit 01')).toHaveLength(2)
-    expect(screen.getAllByText('Fruit 02')).toHaveLength(2)
+    // The Logia plate holds one open fruit and one covered one. The covered
+    // tile is the plate's second fruit, not a second "Fruit 01".
+    expect(screen.getByText('Fruit 02 · Logia')).toBeInTheDocument()
+    expect(screen.queryByText(/Fruit 01/u)).not.toBeInTheDocument()
   })
 
-  it('keeps a specimen’s number while the reader types', async () => {
+  it('keeps a covered tile’s number while the reader types', async () => {
     renderWithProviders(
       <SpecimenBands
         bands={BANDS}
@@ -125,14 +125,13 @@ describe('SpecimenBands', () => {
       { bookmark: ep(650) },
     )
 
-    // Chop-Chop is the second fruit on the Paramecia plate. Filtering Gum-Gum
-    // out must not promote it to the first.
-    await userEvent.type(screen.getByRole('searchbox'), 'chop')
+    // Filtering the open Logia fruit out must not promote the covered one.
+    await userEvent.type(screen.getByRole('searchbox'), 'gum')
 
     expect(
-      screen.queryByRole('link', { name: 'Gum-Gum Fruit' }),
+      screen.queryByRole('link', { name: /Flame-Flame Fruit/u }),
     ).not.toBeInTheDocument()
-    expect(screen.getAllByText('Fruit 02')).toHaveLength(2)
+    expect(screen.getByText('Fruit 02 · Logia')).toBeInTheDocument()
   })
 
   it('says so when a plate has nothing under fog', () => {
@@ -149,7 +148,7 @@ describe('SpecimenBands', () => {
     ).toHaveLength(2)
   })
 
-  it('draws an inline row at once, and keeps a left-behind one empty but searchable', async () => {
+  it('draws an inline tile at once, and keeps a left-behind one empty but searchable', async () => {
     const later = fruit({
       id: 'chop-chop-fruit',
       name: 'Chop-Chop Fruit',
@@ -172,12 +171,12 @@ describe('SpecimenBands', () => {
     await userEvent.type(screen.getByRole('searchbox'), 'chop')
 
     const chopLink = await screen.findByRole('link', {
-      name: 'Chop-Chop Fruit',
+      name: /^Chop-Chop Fruit/u,
     })
 
     expect(chopLink).toBeInTheDocument()
     expect(
-      screen.queryByRole('link', { name: 'Gum-Gum Fruit' }),
+      screen.queryByRole('link', { name: /^Gum-Gum Fruit/u }),
     ).not.toBeInTheDocument()
   })
 })

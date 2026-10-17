@@ -2,7 +2,7 @@ import * as stylex from '@stylexjs/stylex'
 import { type ReactElement, useDeferredValue, useId, useState } from 'react'
 
 import { FogBand, type FogTitles } from '~/components/FogBand'
-import { FruitSpecimen } from '~/components/FruitSpecimen'
+import { FruitTile } from '~/components/FruitTile'
 import { matchesIn } from '~/components/recordMatches'
 import { SearchField } from '~/components/SearchField'
 import { searchStyles } from '~/components/SearchField.styles'
@@ -54,12 +54,12 @@ export interface SpecimenBandsProps {
 }
 
 /**
- * The specimen sheet: three plates down the page, each a numbered label, a
- * heading, and the fruits of that kind as numbered rows.
+ * The album: three plates down the page, each a numbered label, a heading,
+ * and the fruits of that kind as a grid of tiles.
  *
  * The search rule is the signal book's, applied to a different list: a
  * covered fruit is not on the page to be searched, so typing filters the open
- * rows and leaves every fogged one exactly where it was. The count under the
+ * tiles and leaves every fogged one exactly where it was. The count under the
  * field is over all three plates, and it settles before it is announced.
  */
 export function SpecimenBands({
@@ -118,7 +118,7 @@ export function SpecimenBands({
   )
 }
 
-/** One plate: its label, its heading, its open rows and its fog band. */
+/** One plate: its label, its heading, its open tiles and its fog band. */
 function Plate({
   band,
   fieldId,
@@ -135,9 +135,9 @@ function Plate({
   const headingId = `${fieldId}-${band.form}`
   const matches = matchesIn(band.open, needle)
   // Where each open fruit sits on its plate, which is not where it sits in
-  // the search results: a specimen keeps its number while the reader types,
-  // and the covered rows carry on from the last open one rather than starting
-  // again, so no two rows on a plate are specimen 01.
+  // the search results: a fruit keeps its place while the reader types, and
+  // the covered tiles carry on from the last open one rather than starting
+  // again, so no two tiles on a plate are fruit 01.
   const numbered = new Map(band.open.map((entry, at) => [entry.id, at]))
 
   return (
@@ -152,10 +152,10 @@ function Plate({
       />
 
       {matches.length === 0 ? null : (
-        <ul {...stylex.props(styles.rows)}>
+        <ul {...stylex.props(styles.grid)}>
           {matches.map(({ entry, match }) => {
             return (
-              <FruitSpecimen
+              <FruitTile
                 key={`open-${entry.id}`}
                 form={band.form}
                 highlight={match.highlight}
@@ -173,7 +173,7 @@ function Plate({
         headingId={`${headingId}-fog`}
         words={FRUIT_FOG}
       >
-        <CoveredRows
+        <CoveredTiles
           band={band}
           peek={peek}
         />
@@ -183,14 +183,14 @@ function Plate({
 }
 
 /**
- * A plate's covered rows: a number, a kind and a threshold, and no more.
+ * A plate's covered tiles: a number, a kind and a threshold, and no more.
  *
- * The numbers carry on from the open rows above rather than starting again.
+ * The numbers carry on from the open tiles above rather than starting again.
  * The server orders a plate by threshold and the open ones are a prefix of
  * it, so the count is the plate's own order and a fruit keeps its number when
  * the reader's bookmark passes it.
  */
-function CoveredRows({
+function CoveredTiles({
   band,
   peek,
 }: {
@@ -198,10 +198,10 @@ function CoveredRows({
   peek: (handle: string) => Promise<FruitView>
 }): ReactElement {
   return (
-    <ul {...stylex.props(styles.rows)}>
+    <ul {...stylex.props(styles.grid)}>
       {band.covered.map((entry, at) => {
         return (
-          <FruitSpecimen
+          <FruitTile
             key={`fog-${entry.handle}`}
             form={band.form}
             index={band.open.length + at}

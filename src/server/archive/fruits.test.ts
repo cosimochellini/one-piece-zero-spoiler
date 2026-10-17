@@ -82,15 +82,15 @@ describe('the specimen sheet', () => {
     expect(sheet.bands.flatMap((band) => band.open)).toStrictEqual([])
   })
 
-  it('leaves the drawings past the third row of the first plate to be asked for', () => {
+  it('leaves the drawings past the first six tiles of the first plate to be asked for', () => {
     const [first, ...rest] = fruitSheet(ep(1150), 'en').bands
-    const inline = first?.open.slice(0, 3) ?? []
+    const inline = first?.open.slice(0, 6) ?? []
     const later = [
-      ...(first?.open.slice(3) ?? []),
+      ...(first?.open.slice(6) ?? []),
       ...rest.flatMap((band) => band.open),
     ]
 
-    expect(inline).toHaveLength(3)
+    expect(inline).toHaveLength(6)
     expect(later.length).toBeGreaterThan(50)
 
     for (const fruit of inline) {

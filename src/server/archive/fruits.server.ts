@@ -35,13 +35,16 @@ const FRUIT_HEAD: HeadKeys = {
   pageTitle: 'fruit.pageTitle',
 }
 
-/** How many rows of the first plate ship their drawings with them. */
-const INLINE_FRUITS = 3
+/**
+ * How many tiles of the first plate ship their drawings with them: a phone's
+ * first screen of the album, two across, and the first row of a wide one.
+ */
+const INLINE_FRUITS = 6
 
 /**
- * One row of fruits split at the reader's bookmark. The drawings are most of
- * the sheet's bytes, and only the first rows of the first plate are near the
- * screen when it arrives: the rest come by id.
+ * One plate of fruits split at the reader's bookmark. The drawings are most
+ * of the album's bytes, and only the first tiles of the first plate are near
+ * the screen when it arrives: the rest come by id.
  */
 function bandOf(form: FruitForm, plate: number, r: Reader): FruitBandView {
   const band = r.split(fruitsOfForm(form), (entity) => fruitOf(entity, form, r))

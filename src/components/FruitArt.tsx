@@ -45,7 +45,11 @@ export function FruitArt({
   )
 }
 
-function OpenArt({
+/**
+ * An open fruit's drawing: asked for once it nears the screen, and named for
+ * the move to the fruit's page while it is the fruit travelling (or `always`).
+ */
+export function OpenArt({
   always,
   record,
 }: {
