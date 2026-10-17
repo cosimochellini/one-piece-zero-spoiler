@@ -190,7 +190,8 @@ Grade every drawing you make or review. Only A ships.
   - Every fruit drawing, kit or not, obeys what `drawings.test.ts` holds:
     absolute commands only (so `shadowUnder()`, never `shadow()`, whose `q`
     is relative), one decimal, no `transform`, inside the box, **exactly
-    one** accent. Fruit compositions go in `bespoke.ts`.
+    one** accent. Fruit compositions go in `fruitArt` in `index.ts`, keyed by
+    the fruit's id, and later stages in `fruitRedrawn`.
 
 ## Spoilers in a drawing
 

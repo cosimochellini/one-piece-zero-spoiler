@@ -8,7 +8,7 @@ import {
   star,
 } from '~/lib/svg/primitives'
 
-import { DARK_DARK } from './fruits/bespoke'
+import { fruitArt } from './fruits'
 import { type Drawings, moved, type Redrawings, type Stroke } from './stroke'
 
 /**
@@ -1361,7 +1361,9 @@ export const waterSevenArt = {
   // before anyone has a name for it: the swirled bunch from its own drawing,
   // smaller, resting in an open palm, the fingers curling round the side.
   'thatch': [
-    ...DARK_DARK.slice(0, -1).map((part) => ({ ...part, transform: PALM })),
+    ...fruitArt['dark-dark-fruit']
+      .slice(0, -1)
+      .map((part) => ({ ...part, transform: PALM })),
     {
       d: 'M14 150 C24 128 44 118 60 118 L112 112 C122 112 124 122 116 124 L96 128 L124 124 C134 124 134 136 124 136 L100 140 C88 152 56 156 18 160',
     },
