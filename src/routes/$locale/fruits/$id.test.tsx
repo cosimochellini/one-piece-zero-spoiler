@@ -1,4 +1,5 @@
 import { fireEvent, screen } from '@testing-library/react'
+import { type ReactElement, useState } from 'react'
 import { describe, expect, it, vi } from 'vitest'
 
 import type { DocumentHead } from '~/lib/view/records'
@@ -149,6 +150,94 @@ describe('the stage', () => {
     // screen reader cannot walk into it and neither can a role query.
     expect(screen.getByText('A fruit under fog')).toBeInTheDocument()
     expect(container.querySelectorAll('path')).toHaveLength(0)
+  })
+})
+
+describe('the switch between a fruit’s drawings', () => {
+  const POWER = [{ d: 'M0 0 L1 1', role: 'accent' as const }]
+  const REAL = [{ d: 'M2 2 L3 3', role: 'accent' as const }]
+
+  it('is not there with one drawing, which is drawn once', () => {
+    const { container } = renderWithProviders(
+      <StageBand
+        detail={fruitDetail({
+          slot: openSlot(fruit({ visual: { strokes: REAL, tint: 'red' } })),
+        })}
+        peek={peekPending()}
+      />,
+      { bookmark: ep(650) },
+    )
+
+    expect(screen.queryByRole('radio')).not.toBeInTheDocument()
+    expect(container.querySelectorAll('path')).toHaveLength(1)
+  })
+
+  it('lists the drawings reached, the latest picked, and switches', () => {
+    const { container } = renderWithProviders(
+      <StageBand
+        detail={fruitDetail({
+          drawings: [
+            { look: 'power', strokes: POWER },
+            { look: 'real', strokes: REAL },
+          ],
+          slot: openSlot(fruit({ visual: { strokes: REAL, tint: 'red' } })),
+        })}
+        peek={peekPending()}
+      />,
+      { bookmark: ep(650) },
+    )
+    const power = screen.getByRole('radio', { name: 'Power' })
+    const real = screen.getByRole('radio', { name: 'Real fruit' })
+
+    expect(
+      screen.getByRole('group', { name: 'Drawings of this fruit' }),
+    ).toBeInTheDocument()
+    expect(real).toBeChecked()
+    // Both are on the page, stacked, so the switch only cross-fades.
+    expect(container.querySelectorAll('path')).toHaveLength(2)
+
+    fireEvent.click(power)
+
+    expect(power).toBeChecked()
+    expect(real).not.toBeChecked()
+  })
+
+  it('starts on the latest when the bookmark brings a second drawing', () => {
+    const slot = openSlot(fruit({ visual: { strokes: REAL, tint: 'red' } }))
+    const before = fruitDetail({ slot })
+    const later = fruitDetail({
+      drawings: [
+        { look: 'power', strokes: POWER },
+        { look: 'real', strokes: REAL },
+      ],
+      slot,
+    })
+    // The page stays mounted when the bookmark moves; only its data changes.
+    function Moved(): ReactElement {
+      const [detail, setDetail] = useState(before)
+
+      return (
+        <>
+          <button
+            onClick={() => {
+              setDetail(later)
+            }}
+            type="button"
+          >
+            move
+          </button>
+          <StageBand
+            detail={detail}
+            peek={peekPending()}
+          />
+        </>
+      )
+    }
+    renderWithProviders(<Moved />, { bookmark: ep(650) })
+
+    fireEvent.click(screen.getByRole('button', { name: 'move' }))
+
+    expect(screen.getByRole('radio', { name: 'Real fruit' })).toBeChecked()
   })
 })
 

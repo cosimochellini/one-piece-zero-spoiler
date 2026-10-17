@@ -1,7 +1,8 @@
 /* Hallmark · pre-emit critique: P5 H5 E4 S5 R4 V4 */
 /* Hallmark · genre: atmospheric · macrostructure: Stage · theme: Sea Chart
  *   (locked) · enrichment: Tier B hand-built SVG (the fruit's own drawing,
- *   large, in a glow of its tint, drawn in on arrival) · nav: N9 (shared)
+ *   large, in a glow of its tint, drawn in on arrival, and a switch under it
+ *   between the drawings the reader has reached) · nav: N9 (shared)
  *   · footer: Ft4 (shared)
  * · structure: the stage, the fruit before and after, its history, who ate
  *   it, then the rest of its own kind and of its own saga
@@ -62,8 +63,9 @@ export const Route = createFileRoute('/$locale/fruits/$id')({
 /**
  * A devil fruit's page (Hallmark macrostructure: Stage).
  *
- * One fruit under the lights: the drawing large in a glow of its tint, the
- * name at display size with its kind and saga, and the sentence. Then the
+ * One fruit under the lights: the drawing large in a glow of its tint, with
+ * a switch under it once the reader has seen the fruit drawn more than once,
+ * the name at display size with its kind and saga, and the sentence. Then the
  * fruit before and after it in the reader's order, its history as far as
  * the reader has reached, who the dossiers say ate it (each character with
  * its own fog, because knowing the fruit is not knowing who carries it), and

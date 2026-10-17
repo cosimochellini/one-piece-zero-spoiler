@@ -268,4 +268,39 @@ describe('the fruits drawn again', () => {
       'paw-paw-fruit',
     ])
   })
+
+  // The fruit's page keys each drawing, and values each option of its
+  // switch, by its look: two of one look on a fruit would leave one
+  // unreachable. The first drawing is the power, so no entry is one.
+  it('never draws one fruit twice with the same look', () => {
+    for (const [id, timeline] of Object.entries(fruitRedrawn)) {
+      const looks = ['power', ...timeline.map(({ look }) => look)]
+
+      const distinct = new Set(looks)
+
+      expect(distinct.size, id).toBe(looks.length)
+    }
+  })
+
+  // The fruit's page names each drawing by its look, and keys it by it.
+  it('names what each redrawing shows: the real fruit, and one awakening', () => {
+    const looks: [string, string[]][] = []
+    for (const [id, timeline] of Object.entries(fruitRedrawn)) {
+      looks.push([id, timeline.map(({ look }) => look)])
+    }
+
+    expect(looks).toStrictEqual([
+      ['chop-chop-fruit', ['real']],
+      ['ox-ox-fruit-model-bison', ['real']],
+      ['flame-flame-fruit', ['real']],
+      ['op-op-fruit', ['real']],
+      ['string-string-fruit', ['real']],
+      ['mochi-mochi-fruit', ['awakening']],
+      ['snake-snake-fruit-mythical-model-yamata-no-orochi', ['real']],
+      ['fish-fish-fruit-mythical-model-azure-dragon', ['real']],
+      ['cat-cat-fruit-model-leopard', ['real']],
+      ['love-love-fruit', ['real']],
+      ['paw-paw-fruit', ['real']],
+    ])
+  })
 })

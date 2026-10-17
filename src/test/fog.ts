@@ -1,11 +1,14 @@
 import { expect } from 'vitest'
 
+import { DRAWINGS } from '~/data/art'
+import { datedOf } from '~/data/dated'
 import { entities } from '~/data/entities'
 import { type Reveal, reveal } from '~/data/reveal'
 import type { Entity } from '~/data/types'
 import { type Locale, LOCALES } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
 import { foldName } from '~/lib/search/fold'
+import type { Stroke } from '~/lib/view/records'
 
 /**
  * The one check the site exists for: nothing in a payload names a record the
@@ -13,6 +16,9 @@ import { foldName } from '~/lib/search/fold'
  *
  * Walked rather than grepped: a substring search over the serialised payload
  * finds "den" inside a path command and fails on a clean one.
+ *
+ * A drawing names a record too, so the drawings are checked as well: a
+ * covered record's, and a redrawing the reader has not reached (#136, #669).
  */
 
 /** The two keys a payload may spell a record out under. */
@@ -133,8 +139,94 @@ function reachedNames(at: Reveal, locale: Locale): Set<string> {
   return names
 }
 
-/** The strings that name a covered record, as written and as folded. */
+/** A drawing as one string: each stroke's path and transform, in order. */
+function drawingKey(strokes: Stroke[]): string {
+  return strokes
+    .map((stroke) => `${stroke.d}|${stroke.transform ?? ''}`)
+    .join('\n')
+}
+
+/** Whether a value is a drawing's strokes: a list of paths, not empty. */
+function isDrawing(value: unknown): value is Stroke[] {
+  return (
+    Array.isArray(value)
+    && value.length > 0
+    && value.every(
+      (stroke: unknown) =>
+        typeof stroke === 'object'
+        && stroke !== null
+        && 'd' in stroke
+        && typeof stroke.d === 'string',
+    )
+  )
+}
+
+/** Every drawing a payload carries, however deeply nested, as its key. */
+function drawnIn(payload: unknown, found = new Set<string>()): Set<string> {
+  if (isDrawing(payload)) {
+    found.add(drawingKey(payload))
+    return found
+  }
+  if (payload !== null && typeof payload === 'object') {
+    for (const value of Object.values(payload)) {
+      drawnIn(value, found)
+    }
+  }
+
+  return found
+}
+
+/** One drawing of a record: its key, and whether the reader may see it. */
+interface Drawn {
+  entity: Entity
+  key: string
+  seen: boolean
+}
+
+/**
+ * A record's drawings, the first and every redrawing, each seen once the
+ * reader passes its gate. A redrawing's gate is already the later of its own
+ * and its record's (`datedOf`), so a covered record's are all unseen.
+ */
+function drawingsOf(entity: Entity, at: Reveal): Drawn[] {
+  const first = { gate: entity, value: DRAWINGS[entity.visual.art] }
+
+  return [first, ...datedOf(entity, 'redrawing')].map(({ gate, value }) => ({
+    entity,
+    key: drawingKey(value),
+    seen: at.sees(gate),
+  }))
+}
+
+/**
+ * The drawings a reader at this bookmark may not see, and the records each
+ * belongs to: every drawing of a covered record, and the redrawings of an
+ * open one the reader has not reached. Whole drawings, not strokes: a wave
+ * or a shadow is in hundreds of them. A drawing the reader may see is never
+ * fog, whoever else it belongs to: a feature that comes and goes returns to
+ * the very first drawing.
+ */
+function drawnFogOf(bookmark: Bookmark): Map<string, Entity[]> {
+  const at = reveal(bookmark)
+  const all = entities.flatMap((entity) => drawingsOf(entity, at))
+  const shown = new Set(all.filter(({ seen }) => seen).map(({ key }) => key))
+  const fog = new Map<string, Entity[]>()
+
+  for (const { entity, key } of all) {
+    if (!shown.has(key)) {
+      fog.set(key, [...(fog.get(key) ?? []), entity])
+    }
+  }
+
+  return fog
+}
+
+/**
+ * What names a covered record: its strings, as written and as folded, and
+ * its drawings.
+ */
 interface Fog {
+  drawn: Map<string, Entity[]>
   folded: Map<string, Entity[]>
   plain: Map<string, Entity[]>
 }
@@ -167,6 +259,7 @@ export function leaksIn(
 ): string[] {
   const key = JSON.stringify(bookmark)
   const fog = fogs.get(key) ?? {
+    drawn: drawnFogOf(bookmark),
     folded: foldedFogOf(bookmark),
     plain: fogOf(bookmark),
   }
@@ -175,6 +268,7 @@ export function leaksIn(
   const leaked = [
     ...leakedIn(named(payload), fog.plain, excused),
     ...leakedIn(new Set(aliasesIn(payload)), fog.folded, excused),
+    ...leakedIn(drawnIn(payload), fog.drawn, excused),
   ]
 
   return [...new Set(leaked.map((entity) => entity.id))]
