@@ -33,9 +33,27 @@ const KEY_SIDE: Partial<Record<string, Side>> = {
 /**
  * Where an arrow key belongs to something else: a field being typed in, a
  * dialog, or a control that moves its own focus with the arrows (a radio
- * group, a tab list, a slider).
+ * group, a tab list, a slider). A live region or a group is not one.
  */
-const ARROWS_TAKEN = 'input, select, textarea, dialog, [role]'
+const ARROWS_TAKEN = [
+  'input',
+  'select',
+  'textarea',
+  'dialog',
+  '[contenteditable]',
+  ...[
+    'grid',
+    'listbox',
+    'menu',
+    'menubar',
+    'radiogroup',
+    'slider',
+    'spinbutton',
+    'tablist',
+    'textbox',
+    'tree',
+  ].map((role) => `[role="${role}"]`),
+].join(', ')
 
 /** What the stage spreads on itself so a swipe across it turns the page. */
 export interface SwipeHandlers {
@@ -94,12 +112,15 @@ function sideOfKey(event: KeyboardEvent): Side | undefined {
   const taken =
     event.target instanceof Element
     && event.target.closest(ARROWS_TAKEN) !== null
-  const modified =
-    event.altKey || event.ctrlKey || event.metaKey || event.shiftKey
+  // A held key repeats; one press turns one page.
+  const busy = taken || event.repeat || event.defaultPrevented
 
-  return taken || modified || event.defaultPrevented ?
-      undefined
-    : KEY_SIDE[event.key]
+  return busy || isModified(event) ? undefined : KEY_SIDE[event.key]
+}
+
+/** Whether a modifier is held: ⌘← and friends belong to the browser. */
+function isModified(event: KeyboardEvent): boolean {
+  return event.altKey || event.ctrlKey || event.metaKey || event.shiftKey
 }
 
 /** A horizontal swipe by touch or pen turns the page; a scroll does not. */

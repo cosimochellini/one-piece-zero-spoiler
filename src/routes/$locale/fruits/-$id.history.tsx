@@ -54,7 +54,7 @@ export function HistoryBand({
         {detail.history.map((entry) => {
           return (
             <HistoryRow
-              key={`${entry.event}-${entry.who?.id ?? ''}`}
+              key={`${entry.event}-${entry.who?.id ?? ''}-${String(entry.revealedAtEpisode)}`}
               entry={entry}
               saga={detail.saga ?? ''}
             />

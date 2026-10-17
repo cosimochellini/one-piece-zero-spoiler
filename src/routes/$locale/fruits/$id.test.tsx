@@ -13,7 +13,7 @@ import {
 import { ep, renderWithProviders } from '~/test/providers'
 
 import { Route } from './$id'
-import { EatersBand, KinBand } from './-$id.bands'
+import { EatersBand, KinBand, SagaBand } from './-$id.bands'
 import { HistoryBand } from './-$id.history'
 import { StageBand, TurnBand } from './-$id.stage'
 
@@ -329,5 +329,84 @@ describe('the fruit before and after', () => {
     })
 
     expect(navigate).toHaveBeenCalledTimes(2)
+  })
+})
+
+/**
+ * A focusable element appended to the page, inside a wrapper with this
+ * attribute, or none.
+ */
+function focusIn(target: string, wrapper?: [string, string]): HTMLElement {
+  const host = document.createElement('div')
+  if (wrapper !== undefined) {
+    host.setAttribute(...wrapper)
+  }
+  const element = document.createElement(target)
+  element.tabIndex = 0
+  host.append(element)
+  document.body.append(host)
+
+  return element
+}
+
+describe('the arrow keys', () => {
+  const turning = fruitDetail({
+    next: openSlot(fruit({ id: 'bomb-bomb-fruit', name: 'Bomb-Bomb Fruit' })),
+  })
+
+  it('leave fields, editable text and arrow-key controls alone, and a held key', () => {
+    const { router } = renderWithProviders(
+      <StageBand
+        detail={turning}
+        peek={peekPending()}
+      />,
+      { bookmark: ep(650) },
+    )
+    const navigate = vi.spyOn(router, 'navigate').mockResolvedValue()
+
+    fireEvent.keyDown(focusIn('input'), { key: 'ArrowRight' })
+    fireEvent.keyDown(focusIn('span', ['contenteditable', 'true']), {
+      key: 'ArrowRight',
+    })
+    fireEvent.keyDown(focusIn('button', ['role', 'radiogroup']), {
+      key: 'ArrowRight',
+    })
+    fireEvent.keyDown(document.body, { key: 'ArrowRight', repeat: true })
+
+    expect(navigate).not.toHaveBeenCalled()
+
+    // A live region is not a control: the arrows still turn the page.
+    fireEvent.keyDown(focusIn('button', ['role', 'status']), {
+      key: 'ArrowRight',
+    })
+
+    expect(navigate).toHaveBeenCalledTimes(1)
+  })
+})
+
+describe('the rail of the same saga', () => {
+  it('draws nothing with no rail, and its heading over one', () => {
+    const view = renderWithProviders(
+      <SagaBand
+        peek={peekPending()}
+        rail={[]}
+      />,
+      { bookmark: ep(650) },
+    )
+
+    expect(view.container).toBeEmptyDOMElement()
+
+    view.unmount()
+    renderWithProviders(
+      <SagaBand
+        peek={peekPending()}
+        rail={[openSlot(fruit()), openSlot(fruit({ id: 'other-fruit' }))]}
+      />,
+      { bookmark: ep(650) },
+    )
+
+    expect(
+      screen.getByRole('region', { name: 'Other fruits of this saga' }),
+    ).toBeInTheDocument()
   })
 })

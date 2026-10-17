@@ -146,8 +146,9 @@ function StageText({
  * The drawing, in a glow of its tint, drawn in once as it arrives. The pen
  * scales its line with the box while it draws (`ChartArt`), and the stage is
  * three times a tile, so once the strokes are down the drawing goes back to
- * the 2px line every drawing keeps. With reduced motion nothing draws and
- * nothing changes.
+ * the 2px line every drawing keeps. Every stroke shares one delay and one
+ * duration (`ChartArt`), so the first to finish is the last. With reduced
+ * motion nothing draws and nothing changes.
  */
 function StageArt({ record }: { record: FruitView }): ReactElement {
   const [drawing, setDrawing] = useState(true)
