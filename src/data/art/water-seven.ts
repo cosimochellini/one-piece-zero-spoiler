@@ -942,6 +942,7 @@ export const waterSevenArt = {
   ],
 
   // A great fountain at the top of a stepped city, its water running down the terraces into the sea.
+  // Wrecked by Aqua Laguna from 254, in `waterSevenRedrawn`.
   'water-seven': [
     { d: 'M80 64 V28', role: 'accent' },
     {
@@ -1184,7 +1185,8 @@ export const waterSevenArt = {
 
   // The Gates of Justice, shut, rising out of the sea above the clouds: the
   // two leaves under one arch, the accent, their thickness on the right and
-  // the far leaf hatched (264). No mark on them.
+  // the far leaf hatched (264). No mark on them. Open for the Buster Call,
+  // the island burning in front, from 304, in `waterSevenRedrawn`.
   'enies-lobby': [
     {
       d: 'M30 154 V44 C30 18 52 6 80 6 C108 6 130 18 130 44 V154',
@@ -2116,6 +2118,92 @@ export const waterSevenRedrawn: Redrawings = {
           placed([70, 110], [66, 136], [0, 0.9]),
         ),
         shadow(80, 186, 66),
+      ],
+    },
+  ],
+  // The same fountain, basin and upper terraces, the lowest ring broken off
+  // in jagged stumps: rubble heaped at the waterline, a beam leaning on the
+  // wall, a scaffold up on the right and a plank adrift. Aqua Laguna wrecks
+  // the back alleys in 254 (ch. 363), and two days later the city says it
+  // cannot fix this on its own (313, ch. 431).
+  'water-seven': [
+    {
+      episode: 254,
+      chapter: 363,
+      value: [
+        ...waterSevenArt['water-seven'].slice(0, 4),
+        { d: 'M32 128 V104 H50 V80 H110 V104 H128 V128' },
+        {
+          d: 'M14 152 V134 L18 130 L21 136 L25 127 L29 132 L32 128 M128 128 L132 135 L135 130 L139 139 L142 134 M146 141 V152',
+        },
+        ...waterSevenArt['water-seven'].slice(5, 6),
+        {
+          d: dots([
+            [58, 92],
+            [80, 92],
+            [102, 92],
+            [40, 114],
+            [120, 114],
+            [80, 116],
+          ]),
+          role: 'soft',
+        },
+        {
+          d: 'M-2 152 L4 146 L8 149 L13 142 L18 147 L24 143 L30 152 M100 152 L105 147 L109 150 L114 144 L119 149 L124 146 L128 152',
+        },
+        {
+          d: 'M70 152 V136 L80 128 L84 131 L86 128 L88 134 L87 140 L90 144 L89 152',
+        },
+        { d: 'M74 140 h5 v5 h-5 z', role: 'soft' },
+        { d: 'M58 152 L34 124 M62 152 L37 122' },
+        { d: 'M134 152 V106 M144 152 V110 M131 114 H148 M131 134 H148' },
+        { d: 'M134 114 L144 134 M144 114 L134 134', role: 'ambient' },
+        { d: 'M98 163.5 L121 160 L121.6 163.6 L98.6 167 Z' },
+        ...SEA,
+      ],
+    },
+  ],
+  // The Gates of Justice standing open behind the island, the two leaves
+  // swung apart under their arch, the accent, the far leaf hatched; in front
+  // the island's roofs on fire and the smoke blowing off them. The Buster
+  // Call razes Enies Lobby from 304 (ch. 421), through the gates opened for
+  // the attack.
+  'enies-lobby': [
+    {
+      episode: 304,
+      chapter: 421,
+      value: [
+        {
+          d: 'M30 134 V44 C30 22 40 8 54 6 V128 M130 126 V44 C130 22 120 8 106 6 V130',
+          role: 'accent',
+        },
+        { d: 'M54 6 L60 10 V128 M106 6 L100 10 V130' },
+        {
+          d: 'M112 22 l-6 8 M124 30 l-18 24 M130 46 l-24 32 M130 70 l-24 32 M130 94 l-24 30',
+          role: 'ambient',
+        },
+        { d: 'M34 60 H50 M34 100 H50', role: 'soft' },
+        {
+          d: 'M-4 126 H26 V134 H36 V118 H50 V128 H62 V120 H98 V130 H112 V116 H126 V126 H134 V120 H164 M-4 150 H164',
+        },
+        {
+          d: 'M26 134 V150 M36 134 V150 M50 128 V150 M62 128 V150 M98 130 V150 M112 130 V150 M126 126 V150 M134 126 V150',
+          role: 'soft',
+        },
+        {
+          d: 'M12 134 h4 v6 h-4 z M41 126 h4 v6 h-4 z M78 128 h4 v6 h-4 z M117 124 h4 v6 h-4 z M146 128 h4 v6 h-4 z',
+          role: 'soft',
+        },
+        {
+          d: 'M2 126 q-5 -10 1 -20 q2 7 5 7 q-3 -14 5 -24 q3 10 6 11 q1 -6 4 -10 q5 14 -2 36 M64 120 q-6 -10 0 -20 q3 8 7 8 q-4 -14 5 -28 q3 12 7 14 q1 -10 7 -18 q7 14 1 24 q6 0 7 -8 q5 12 -4 28 M138 120 q-5 -10 1 -20 q2 7 5 7 q-3 -14 5 -24 q3 10 6 11 q1 -6 4 -10 q5 14 -2 36',
+        },
+        {
+          d: 'M84 68 q-8 -10 2 -18 q10 -8 4 -18 q-4 -6 4 -12',
+          role: 'ambient',
+        },
+        { d: 'M14 82 q-6 -10 4 -16 q8 -6 4 -16', role: 'ambient' },
+        { d: 'M150 76 q-6 -10 4 -16 q8 -6 4 -16', role: 'ambient' },
+        ...SEA,
       ],
     },
   ],
