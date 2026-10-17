@@ -15,6 +15,7 @@ import type {
   RecordView,
   Searchable,
   SearchableCharacter,
+  SpecimenView,
   WaypointView,
 } from '~/lib/view/records'
 
@@ -47,7 +48,7 @@ export function drawingOf(entity: Entity, r: Reader): Drawing {
  * A record with its strokes left behind for the page to ask for later
  * (`Drawing.deferred`), so a long list does not ship every drawing on it.
  */
-export function deferredOf<T extends RecordView>(view: T): T {
+export function deferredOf<T extends Pick<RecordView, 'visual'>>(view: T): T {
   return {
     ...view,
     visual: { strokes: [], tint: view.visual.tint, deferred: true },
@@ -83,15 +84,16 @@ export function waypointOf(entity: Entity, r: Reader): WaypointView {
 
 /** A record's searchable surface, folded: the shown name and what matches it. */
 function foldedOf(shown: string, aliases: string[]): Searchable {
-  return {
-    name: shown,
-    folded: foldName(shown),
-    aliases: aliases.flatMap((alias) => {
-      const folded = foldName(alias)
+  return { name: shown, folded: foldName(shown), aliases: foldAll(aliases) }
+}
 
-      return folded === '' ? [] : folded
-    }),
-  }
+/** Names folded for matching, with the empty ones dropped. */
+function foldAll(names: string[]): string[] {
+  return names.flatMap((alias) => {
+    const folded = foldName(alias)
+
+    return folded === '' ? [] : folded
+  })
 }
 
 /** A record's name in every locale but the one the page is drawn in. */
@@ -144,6 +146,38 @@ export function fruitOf(entity: Entity, form: FruitForm, r: Reader): FruitView {
     form,
     summary: entity.summary[r.locale],
     ...foldedOf(entity.name[r.locale], otherNames(entity, r.locale)),
+  }
+}
+
+/**
+ * A devil fruit as its tile in the album draws it: the fruit (`fruitOf`), and
+ * the eaters the caller has already gated, each as a crest and a name.
+ *
+ * The eaters' names in both locales join the fruit's aliases, so "Luffy"
+ * finds the Gum-Gum Fruit and so does "Rufy". Only the eaters passed in are
+ * folded, so a search can only ever answer with an eater the tile shows.
+ */
+export function specimenOf(
+  fruit: FruitView,
+  eaters: Entity[],
+  r: Reader,
+): SpecimenView {
+  // Each once: most eaters go by the same name in both locales.
+  const named = foldAll(
+    eaters.flatMap((eater) => LOCALES.map((locale) => eater.name[locale])),
+  ).filter(
+    (alias, at, all) =>
+      all.indexOf(alias) === at && !fruit.aliases.includes(alias),
+  )
+
+  return {
+    ...fruit,
+    aliases: [...fruit.aliases, ...named],
+    eaters: eaters.map((eater) => ({
+      id: eater.id,
+      name: eater.name[r.locale],
+      visual: drawingOf(eater, r),
+    })),
   }
 }
 

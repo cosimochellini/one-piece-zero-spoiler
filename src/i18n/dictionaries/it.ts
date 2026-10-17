@@ -300,7 +300,7 @@ export const itDictionary: Dictionary = {
     'I frutti del diavolo di One Piece, ognuno nascosto fino all’episodio in cui viene nominato per la prima volta.',
   'fruits.searchLabel': 'Cerca un frutto',
   'fruits.searchClear': 'Cancella la ricerca',
-  'fruits.searchPlaceholder': 'Gom Gom',
+  'fruits.searchPlaceholder': 'Gom Gom, Rufy',
   'fruits.shown': 'Risultati: {count} su {total} frutti visibili',
   'fruits.noMatch': 'Nessun frutto visibile corrisponde a “{query}”.',
   'fruits.plate': 'Gruppo {index}',
@@ -316,6 +316,8 @@ export const itDictionary: Dictionary = {
   'fruits.foggedHint':
     'I loro nomi sono nascosti, quindi la ricerca non li trova. Sposta avanti il segnalibro per vederli.',
   'fruits.allOpen': 'Nessun frutto di questo tipo è nella nebbia.',
+  'fruits.moreEaters': 'e altri {count} personaggi che l’hanno mangiato',
+  'fruits.moreEatersOne': 'e un altro personaggio che l’ha mangiato',
 
   'fruit.opensAt.episode':
     'Nominato per la prima volta nell’episodio {threshold}',

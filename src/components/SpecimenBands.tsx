@@ -3,7 +3,7 @@ import { type ReactElement, useDeferredValue, useId, useState } from 'react'
 
 import { FogBand, type FogTitles } from '~/components/FogBand'
 import { FruitTile } from '~/components/FruitTile'
-import { matchesIn } from '~/components/recordMatches'
+import { eaterMatch, matchesIn } from '~/components/recordMatches'
 import { SearchField } from '~/components/SearchField'
 import { searchStyles } from '~/components/SearchField.styles'
 import { styles } from '~/components/SpecimenBands.styles'
@@ -157,6 +157,8 @@ function Plate({
             return (
               <FruitTile
                 key={`open-${entry.id}`}
+                eater={eaterMatch(entry, needle)}
+                eaters={entry.eaters}
                 form={band.form}
                 highlight={match.highlight}
                 index={numbered.get(entry.id) ?? 0}
