@@ -632,6 +632,7 @@ export const skypiea: Saga = {
       affiliation: [
         {
           episode: 146,
+          factions: ['independent'],
           value: {
             it: 'Pirati di Bellamy, capitano',
             en: 'Bellamy Pirates, captain',
@@ -639,6 +640,7 @@ export const skypiea: Saga = {
         },
         {
           episode: 632,
+          factions: ['independent'],
           value: {
             it: 'Gladiatore del Colosseo sotto la bandiera di Do Flamingo',
             en: 'Colosseum gladiator under Doflamingo’s flag',
@@ -747,6 +749,7 @@ export const skypiea: Saga = {
       affiliation: [
         {
           episode: 151,
+          factions: ['blackbeard-pirates'],
           value: {
             it: 'Pirati di Barbanera, capitano; un tempo dei Pirati di Barbabianca',
             en: 'Blackbeard Pirates, captain; formerly of the Whitebeard Pirates',
@@ -754,6 +757,7 @@ export const skypiea: Saga = {
         },
         {
           episode: 430,
+          factions: ['warlords'],
           value: { it: 'Flotta dei Sette', en: 'Seven Warlords of the Sea' },
         },
         // Gives up the title at Marineford at 485 (chapter 576), and is
@@ -761,6 +765,7 @@ export const skypiea: Saga = {
         {
           episode: 485,
           chapter: 576,
+          factions: ['independent'],
           value: {
             it: 'Ex membro della Flotta dei Sette',
             en: 'Former Warlord',
@@ -769,6 +774,7 @@ export const skypiea: Saga = {
         {
           episode: 570,
           chapter: 650,
+          factions: ['emperors'],
           value: { it: 'Imperatore', en: 'Emperor' },
         },
       ],
@@ -796,6 +802,7 @@ export const skypiea: Saga = {
       affiliation: [
         {
           episode: 151,
+          factions: ['warlords'],
           value: { it: 'Flotta dei Sette', en: 'Seven Warlords of the Sea' },
         },
         // At 507 (chapter 591) Rayleigh repeats what Kuma told him at
@@ -803,6 +810,7 @@ export const skypiea: Saga = {
         {
           episode: 507,
           chapter: 591,
+          factions: ['warlords', 'revolutionary-army'],
           value: {
             it: 'Flotta dei Sette; Armata Rivoluzionaria',
             en: 'Seven Warlords; Revolutionary Army',
@@ -815,6 +823,7 @@ export const skypiea: Saga = {
         {
           episode: 888,
           chapter: 908,
+          factions: ['warlords'],
           value: {
             it: 'Flotta dei Sette; schiavo dei Nobili Mondiali; un tempo ufficiale dell’Armata Rivoluzionaria e re di Sorbet',
             en: 'Seven Warlords; slave of the World Nobles; once a Revolutionary Army officer and king of Sorbet',
@@ -824,6 +833,7 @@ export const skypiea: Saga = {
         {
           episode: 957,
           chapter: 956,
+          factions: ['independent'],
           value: {
             it: 'Ex membro della Flotta dei Sette; schiavo dei Nobili Mondiali; un tempo ufficiale dell’Armata Rivoluzionaria e re di Sorbet',
             en: 'Former Warlord; slave of the World Nobles; once a Revolutionary Army officer and king of Sorbet',
@@ -833,6 +843,7 @@ export const skypiea: Saga = {
         {
           episode: 1081,
           chapter: 1054,
+          factions: ['independent'],
           value: {
             it: 'Ex membro della Flotta dei Sette; schiavo dei Nobili Mondiali, liberato; un tempo ufficiale dell’Armata Rivoluzionaria e re di Sorbet',
             en: 'Former Warlord; slave of the World Nobles, freed; once a Revolutionary Army officer and king of Sorbet',
@@ -872,6 +883,7 @@ export const skypiea: Saga = {
       affiliation: [
         {
           episode: 151,
+          factions: ['marines'],
           value: {
             it: 'Marina, grand’ammiraglio',
             en: 'Marines, fleet admiral',
@@ -881,6 +893,7 @@ export const skypiea: Saga = {
         {
           episode: 511,
           chapter: 594,
+          factions: ['marines'],
           value: {
             it: 'Marina, ex grand’ammiraglio',
             en: 'Marines, former fleet admiral',
@@ -890,6 +903,7 @@ export const skypiea: Saga = {
         {
           episode: 740,
           chapter: 796,
+          factions: ['marines'],
           value: {
             it: 'Marina, ispettore generale',
             en: 'Marines, inspector general',
@@ -923,6 +937,7 @@ export const skypiea: Saga = {
       affiliation: [
         {
           episode: 151,
+          factions: ['whitebeard-pirates'],
           value: {
             it: 'Pirati di Barbabianca, capitano',
             en: 'Whitebeard Pirates, captain',
@@ -932,6 +947,7 @@ export const skypiea: Saga = {
         {
           episode: 314,
           chapter: 432,
+          factions: ['whitebeard-pirates', 'emperors'],
           value: {
             it: 'Pirati di Barbabianca, capitano; Imperatore',
             en: 'Whitebeard Pirates, captain; Emperor',
@@ -963,10 +979,12 @@ export const skypiea: Saga = {
       affiliation: [
         {
           episode: 151,
+          factions: ['warlords'],
           value: { it: 'Flotta dei Sette', en: 'Seven Warlords of the Sea' },
         },
         {
           episode: 632,
+          factions: ['warlords'],
           value: {
             it: 'Flotta dei Sette; re di Dressrosa',
             en: 'Seven Warlords; king of Dressrosa',
@@ -974,6 +992,7 @@ export const skypiea: Saga = {
         },
         {
           episode: 746,
+          factions: ['independent'],
           value: {
             it: 'Ex membro della Flotta dei Sette, in arresto',
             en: 'Former Warlord, under arrest',
@@ -1027,6 +1046,7 @@ export const skypiea: Saga = {
       affiliation: [
         {
           episode: 316,
+          factions: ['whitebeard-pirates'],
           value: {
             it: 'Pirati di Barbabianca, comandante della prima divisione',
             en: 'Whitebeard Pirates, first division commander',
@@ -1036,6 +1056,7 @@ export const skypiea: Saga = {
         {
           episode: 773,
           chapter: 820,
+          factions: ['whitebeard-pirates'],
           value: {
             it: 'Pirati di Barbabianca, capitano ad interim',
             en: 'Whitebeard Pirates, acting captain',
@@ -1043,6 +1064,7 @@ export const skypiea: Saga = {
         },
         {
           episode: 958,
+          factions: ['independent'],
           value: {
             it: 'Medico dell’isola di Sphinx',
             en: 'Doctor of Sphinx Island',
@@ -1100,6 +1122,7 @@ export const skypiea: Saga = {
       affiliation: [
         {
           episode: 153,
+          factions: ['independent'],
           value: { it: 'Gan Foll, destriero', en: 'Gan Fall, steed' },
         },
       ],
@@ -1287,9 +1310,14 @@ export const skypiea: Saga = {
       },
       status: [{ episode: 167, value: 'alive' }],
       affiliation: [
-        { episode: 167, value: { it: 'Dio di Skypiea', en: 'God of Skypiea' } },
+        {
+          episode: 167,
+          factions: ['independent'],
+          value: { it: 'Dio di Skypiea', en: 'God of Skypiea' },
+        },
         {
           episode: 193,
+          factions: ['independent'],
           value: { it: 'Fuggito sulla luna', en: 'Fled to the moon' },
         },
       ],

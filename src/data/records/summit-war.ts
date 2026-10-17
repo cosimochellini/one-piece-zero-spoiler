@@ -1041,12 +1041,14 @@ export const summitWar: Saga = {
       affiliation: [
         {
           episode: 392,
+          factions: ['independent'],
           value: { it: 'Pirati Heart, capitano', en: 'Heart Pirates, captain' },
         },
         // Introduced as a Warlord at 584 (chapter 659), on Punk Hazard.
         {
           episode: 584,
           chapter: 659,
+          factions: ['warlords'],
           value: {
             it: 'Flotta dei Sette; Pirati Heart, capitano',
             en: 'Seven Warlords; Heart Pirates, captain',
@@ -1054,6 +1056,7 @@ export const summitWar: Saga = {
         },
         {
           episode: 700,
+          factions: ['independent'],
           value: {
             it: 'Ex membro della Flotta dei Sette; Pirati Heart',
             en: 'Former Warlord; Heart Pirates',
@@ -1110,6 +1113,7 @@ export const summitWar: Saga = {
       affiliation: [
         {
           episode: 392,
+          factions: ['independent'],
           value: { it: 'Pirati di Kidd, capitano', en: 'Kid Pirates, captain' },
         },
       ],
@@ -1136,6 +1140,7 @@ export const summitWar: Saga = {
       affiliation: [
         {
           episode: 410,
+          factions: ['warlords', 'kuja-pirates'],
           value: {
             it: 'Flotta dei Sette; Pirate Kuja, capitana',
             en: 'Seven Warlords; Kuja Pirates, captain',
@@ -1145,6 +1150,7 @@ export const summitWar: Saga = {
         {
           episode: 957,
           chapter: 956,
+          factions: ['kuja-pirates'],
           value: {
             it: 'Ex membro della Flotta dei Sette; Pirate Kuja',
             en: 'Former Warlord; Kuja Pirates',
@@ -1454,12 +1460,13 @@ export const summitWar: Saga = {
       affiliation: [
         {
           episode: 392,
+          factions: ['independent'],
           value: {
             it: 'Pirati di Hawkins, capitano',
             en: 'Hawkins Pirates, captain',
           },
         },
-        { episode: 895, value: BEASTS_HEADLINER },
+        { episode: 895, factions: ['beasts-pirates'], value: BEASTS_HEADLINER },
       ],
       origin: [{ episode: 392, value: { it: 'North Blue', en: 'North Blue' } }],
       epithet: [{ episode: 392, value: { it: 'il Mago', en: 'the Magician' } }],
@@ -1493,6 +1500,7 @@ export const summitWar: Saga = {
       affiliation: [
         {
           episode: 392,
+          factions: ['independent'],
           value: {
             it: 'Pirati di Drake, capitano, ex marine',
             en: 'Drake Pirates, captain, former Marine',
@@ -1503,14 +1511,16 @@ export const summitWar: Saga = {
         {
           episode: 401,
           chapter: 508,
+          factions: ['independent'],
           value: {
             it: 'Pirati di Drake, capitano, ex contrammiraglio della Marina',
             en: 'Drake Pirates, captain, former Marine rear admiral',
           },
         },
-        { episode: 895, value: BEASTS_HEADLINER },
+        { episode: 895, factions: ['beasts-pirates'], value: BEASTS_HEADLINER },
         {
           episode: 957,
+          factions: ['marines'],
           value: {
             it: 'Marina, capitano dello SWORD',
             en: 'Marines, SWORD captain',
@@ -1570,6 +1580,7 @@ export const summitWar: Saga = {
       affiliation: [
         {
           episode: 392,
+          factions: ['independent'],
           value: {
             it: 'Pirati Fire Tank, capitano',
             en: 'Fire Tank Pirates, captain',
@@ -1577,6 +1588,7 @@ export const summitWar: Saga = {
         },
         {
           episode: 785,
+          factions: ['big-mom-pirates'],
           value: {
             it: 'Pirati di Big Mom, combattente',
             en: 'Big Mom Pirates, combatant',
@@ -1584,6 +1596,7 @@ export const summitWar: Saga = {
         },
         {
           episode: 838,
+          factions: ['independent'],
           value: {
             it: 'Pirati Fire Tank, in fuga',
             en: 'Fire Tank Pirates, on the run',
@@ -1621,6 +1634,7 @@ export const summitWar: Saga = {
       affiliation: [
         {
           episode: 392,
+          factions: ['independent'],
           value: {
             it: 'Pirati di Bonney, capitana',
             en: 'Bonney Pirates, captain',
@@ -1628,6 +1642,7 @@ export const summitWar: Saga = {
         },
         {
           episode: 1090,
+          factions: ['independent'],
           value: {
             it: 'Pirati di Bonney, su Egghead',
             en: 'Bonney Pirates, on Egghead',
@@ -1665,6 +1680,7 @@ export const summitWar: Saga = {
       affiliation: [
         {
           episode: 401,
+          factions: ['marines'],
           value: { it: 'Marina, ammiraglio', en: 'Marines, admiral' },
         },
       ],
@@ -1713,7 +1729,11 @@ export const summitWar: Saga = {
       },
       status: [{ episode: 412, value: 'alive' }],
       affiliation: [
-        { episode: 412, value: { it: 'Pirate Kuja', en: 'Kuja Pirates' } },
+        {
+          episode: 412,
+          factions: ['kuja-pirates'],
+          value: { it: 'Pirate Kuja', en: 'Kuja Pirates' },
+        },
       ],
       origin: [{ episode: 412, value: AMAZON_LILY }],
       devilFruit: [
@@ -1734,7 +1754,11 @@ export const summitWar: Saga = {
       },
       status: [{ episode: 412, value: 'alive' }],
       affiliation: [
-        { episode: 412, value: { it: 'Pirate Kuja', en: 'Kuja Pirates' } },
+        {
+          episode: 412,
+          factions: ['kuja-pirates'],
+          value: { it: 'Pirate Kuja', en: 'Kuja Pirates' },
+        },
       ],
       origin: [{ episode: 412, value: AMAZON_LILY }],
       devilFruit: [
@@ -1787,6 +1811,7 @@ export const summitWar: Saga = {
       affiliation: [
         {
           episode: 425,
+          factions: ['world-government'],
           value: {
             it: 'Impel Down, direttore',
             en: 'Impel Down, chief warden',
@@ -1831,6 +1856,7 @@ export const summitWar: Saga = {
       affiliation: [
         {
           episode: 438,
+          factions: ['independent'],
           value: {
             it: 'Livello 5.5 di Impel Down, sovrano',
             en: 'Impel Down level 5.5, queen',
@@ -1838,6 +1864,7 @@ export const summitWar: Saga = {
         },
         {
           episode: 441,
+          factions: ['revolutionary-army'],
           value: {
             it: 'Livello 5.5 di Impel Down, sovrano; Armata Rivoluzionaria, comandante',
             en: 'Impel Down level 5.5, queen; Revolutionary Army, commander',
@@ -1873,6 +1900,7 @@ export const summitWar: Saga = {
       affiliation: [
         {
           episode: 438,
+          factions: ['independent'],
           value: {
             it: 'Livello 5.5 di Impel Down',
             en: 'Impel Down level 5.5',
@@ -1880,6 +1908,7 @@ export const summitWar: Saga = {
         },
         {
           episode: 441,
+          factions: ['revolutionary-army'],
           value: {
             it: 'Armata Rivoluzionaria; livello 5.5 di Impel Down',
             en: 'Revolutionary Army; Impel Down level 5.5',
@@ -1905,12 +1934,17 @@ export const summitWar: Saga = {
       affiliation: [
         {
           episode: 445,
+          factions: ['independent'],
           value: {
             it: 'Impel Down, ex capo dei secondini, detenuto',
             en: 'Impel Down, former head jailer, imprisoned',
           },
         },
-        { episode: 452, value: BLACKBEARD_CREW },
+        {
+          episode: 452,
+          factions: ['blackbeard-pirates'],
+          value: BLACKBEARD_CREW,
+        },
       ],
       epithet: [
         {
@@ -1933,6 +1967,7 @@ export const summitWar: Saga = {
       affiliation: [
         {
           episode: 151,
+          factions: ['blackbeard-pirates'],
           value: {
             it: 'Pirati di Barbanera, timoniere e campione',
             en: 'Blackbeard Pirates, helmsman and champion',
@@ -1957,6 +1992,7 @@ export const summitWar: Saga = {
       affiliation: [
         {
           episode: 151,
+          factions: ['blackbeard-pirates'],
           value: {
             it: 'Pirati di Barbanera, tiratore',
             en: 'Blackbeard Pirates, sniper',
@@ -1983,6 +2019,7 @@ export const summitWar: Saga = {
       affiliation: [
         {
           episode: 151,
+          factions: ['blackbeard-pirates'],
           value: {
             it: 'Pirati di Barbanera, medico',
             en: 'Blackbeard Pirates, doctor',
@@ -2033,6 +2070,7 @@ export const summitWar: Saga = {
       affiliation: [
         {
           episode: 484,
+          factions: ['blackbeard-pirates'],
           value: {
             it: 'Pirati di Barbanera; ex prigioniera del sesto livello di Impel Down',
             en: 'Blackbeard Pirates; former prisoner of Impel Down level 6',
@@ -2063,7 +2101,13 @@ export const summitWar: Saga = {
         en: 'His name is among those Ivankov gives when he talks about the sixth level of Impel Down, where people end up for crimes too cruel for the papers. At Marineford he turns up on the scaffold beside Blackbeard, announced as the Heavy Drinker. His existence had been erased, and now he stands in the middle of the war.',
       },
       status: [{ episode: 484, value: 'alive' }],
-      affiliation: [{ episode: 484, value: LEVEL_SIX_ESCAPEE }],
+      affiliation: [
+        {
+          episode: 484,
+          factions: ['blackbeard-pirates'],
+          value: LEVEL_SIX_ESCAPEE,
+        },
+      ],
       epithet: [
         { episode: 484, value: { it: 'il Beone', en: 'Heavy Drinker' } },
       ],
@@ -2079,7 +2123,13 @@ export const summitWar: Saga = {
         en: 'They call him the biggest of all living things, and at Marineford he is seen before anyone knows who he is: something enormous behind Marine headquarters. Ivankov had named him among the pirates of Impel Down’s sixth level, the Colossal Battleship. Now he arrives with the Blackbeard Pirates, and the Marines know him at once.',
       },
       status: [{ episode: 484, value: 'alive' }],
-      affiliation: [{ episode: 484, value: LEVEL_SIX_ESCAPEE }],
+      affiliation: [
+        {
+          episode: 484,
+          factions: ['blackbeard-pirates'],
+          value: LEVEL_SIX_ESCAPEE,
+        },
+      ],
       epithet: [
         {
           episode: 484,
@@ -2097,7 +2147,13 @@ export const summitWar: Saga = {
         en: 'At Marineford he stands on the scaffold with Blackbeard, one of the most heinous criminals, whose existence was erased because of their brutality. The Marines know him and call him by name: the Corrupt King. What he did to earn that name is not said.',
       },
       status: [{ episode: 484, value: 'alive' }],
-      affiliation: [{ episode: 484, value: LEVEL_SIX_ESCAPEE }],
+      affiliation: [
+        {
+          episode: 484,
+          factions: ['blackbeard-pirates'],
+          value: LEVEL_SIX_ESCAPEE,
+        },
+      ],
       epithet: [
         { episode: 484, value: { it: 'il Re Corrotto', en: 'Corrupt King' } },
       ],
@@ -2117,12 +2173,14 @@ export const summitWar: Saga = {
       affiliation: [
         {
           episode: 463,
+          factions: ['marines'],
           value: { it: 'Marina, ammiraglio', en: 'Marines, admiral' },
         },
         // Named fleet admiral at 570 (chapter 650); 517 only mentions a new one.
         {
           episode: 570,
           chapter: 650,
+          factions: ['marines'],
           value: {
             it: 'Marina, grand’ammiraglio',
             en: 'Marines, fleet admiral',
@@ -2145,6 +2203,7 @@ export const summitWar: Saga = {
       affiliation: [
         {
           episode: 463,
+          factions: ['whitebeard-pirates'],
           value: {
             it: 'Pirati di Barbabianca, comandante della terza divisione',
             en: 'Whitebeard Pirates, third division commander',
@@ -2152,6 +2211,7 @@ export const summitWar: Saga = {
         },
         {
           episode: 517,
+          factions: ['whitebeard-pirates'],
           value: {
             it: 'Pirati di Barbabianca, superstite',
             en: 'Whitebeard Pirates, remnant',
@@ -2257,6 +2317,7 @@ export const summitWar: Saga = {
       affiliation: [
         {
           episode: 461,
+          factions: ['marines'],
           value: { it: 'Marina, viceammiraglio', en: 'Marines, vice admiral' },
         },
       ],
@@ -2343,6 +2404,7 @@ export const summitWar: Saga = {
       affiliation: [
         {
           episode: 497,
+          factions: ['independent'],
           value: {
             it: 'Famiglia Dadan, fratello giurato di Rufy e Ace',
             en: 'Dadan Family, sworn brother of Luffy and Ace',
@@ -2350,6 +2412,7 @@ export const summitWar: Saga = {
         },
         {
           episode: 663,
+          factions: ['revolutionary-army'],
           value: {
             it: 'Armata Rivoluzionaria, capo di stato maggiore',
             en: 'Revolutionary Army, chief of staff',

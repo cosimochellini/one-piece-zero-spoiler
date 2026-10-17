@@ -192,10 +192,16 @@ checked on every run:
 - no text names a record the reader has not reached. The links a chronicle
   builds from `[[id]]` markers are checked against the story's episode, and
   every text the archive prints, summaries, roles, logs, affiliations, origins,
-  epithets, stories and ship fates, is scanned for every later record's full
-  name in both locales. A name the show says before its record opens, or one
-  that is an ordinary word, is declared on the record itself rather than excused
-  in a test;
+  epithets, stories, ship fates and the labels of the factions an affiliation is
+  tagged with, is scanned for every later record's full name in both locales. A
+  name the show says before its record opens, or one that is an ordinary word,
+  is declared on the record itself rather than excused in a test;
+- every affiliation entry of a devil fruit eater carries the factions its prose
+  names, as ids from a closed vocabulary (`Faction` in
+  `src/lib/view/records.ts`, labelled in both dictionaries), and every id in the
+  vocabulary is used (`src/data/factions.test.ts`). A tag never says more than
+  its entry: a former member, a prisoner, a vague line or a group of one eater
+  is `independent`;
 - every place belongs to an arc that opens no later than the place itself,
   because the place page shows that arc;
 - every drawing belongs to a record;

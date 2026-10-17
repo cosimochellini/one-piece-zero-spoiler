@@ -495,6 +495,7 @@ export const fishManIsland: Saga = {
       affiliation: [
         {
           episode: 519,
+          factions: ['independent'],
           value: {
             it: 'Pirati di Caribou, capitano',
             en: 'Caribou Pirates, captain',
@@ -502,6 +503,7 @@ export const fishManIsland: Saga = {
         },
         {
           episode: 919,
+          factions: ['independent'],
           value: {
             it: 'Prigioniero nella miniera di Udon',
             en: 'Prisoner in the Udon mine',
@@ -664,6 +666,7 @@ export const fishManIsland: Saga = {
       affiliation: [
         {
           episode: 529,
+          factions: ['independent'],
           value: {
             it: 'Olandese Volante, capitano',
             en: 'Flying Dutchman, captain',
@@ -1197,6 +1200,7 @@ export const fishManIsland: Saga = {
       affiliation: [
         {
           episode: 571,
+          factions: ['big-mom-pirates'],
           value: {
             it: 'Pirati di Big Mom, combattente',
             en: 'Big Mom Pirates, combatant',
@@ -1222,6 +1226,7 @@ export const fishManIsland: Saga = {
       affiliation: [
         {
           episode: 571,
+          factions: ['big-mom-pirates'],
           value: {
             it: 'Pirati di Big Mom, combattente',
             en: 'Big Mom Pirates, combatant',

@@ -83,6 +83,49 @@ export type CharacterStatus =
   | 'unknown'
 
 /**
+ * Who a character stands with, as a group the pages can sort by: the closed
+ * vocabulary behind the prose of an affiliation entry, which says the same
+ * thing in its own words. Like `CharacterStatus`, the labels live in the
+ * dictionaries.
+ *
+ * A group has an id when at least two fruit eaters stand in it; a crew or a
+ * kingdom of one, a former member, a prisoner and a vague line are
+ * `independent`, which never sits next to another id. A tag is never more
+ * specific than the prose of its entry: Teach's "Former Warlord" is
+ * `independent`, even though the reader knows his crew.
+ */
+export type Faction =
+  | 'alabasta'
+  | 'baroque-works'
+  | 'beasts-pirates'
+  | 'big-mom-pirates'
+  | 'blackbeard-pirates'
+  | 'buggy-pirates'
+  | 'cp0'
+  | 'cp9'
+  | 'cross-guild'
+  | 'donquixote-pirates'
+  | 'emperors'
+  | 'galley-la'
+  | 'independent'
+  | 'knights-of-god'
+  | 'kozuki-alliance'
+  | 'kozuki-family'
+  | 'kuja-pirates'
+  | 'kurozumi-family'
+  | 'marines'
+  | 'nine-red-scabbards'
+  | 'punk-hazard'
+  | 'revolutionary-army'
+  | 'straw-hat-grand-fleet'
+  | 'straw-hat-pirates'
+  | 'thriller-bark-pirates'
+  | 'tontatta'
+  | 'warlords'
+  | 'whitebeard-pirates'
+  | 'world-government'
+
+/**
  * Which of the three kinds a devil fruit is. Declared here rather than in
  * `~/data`, like `PlaceForm`, because the specimen sheet prints it.
  */

@@ -490,6 +490,7 @@ export const elbaf: Saga = {
       affiliation: [
         {
           episode: 1165,
+          factions: ['independent'],
           value: {
             it: 'Biblioteca del Gufo, bibliotecario capo',
             en: 'Owl Library, chief librarian',
@@ -505,7 +506,9 @@ export const elbaf: Saga = {
         en: 'She arrives on Elbaph inside a magic circle, wrapped in a cloak with its hood pulled over her face, and puts two giant castle guards out of action. With the bandages of her clothes she hoists even an Underworld wolf by the neck. She says she is a Knight of God, and that she has come looking for Loki.',
       },
       status: [{ episode: 1166, value: 'alive' }],
-      affiliation: [{ episode: 1166, value: KNIGHTS }],
+      affiliation: [
+        { episode: 1166, factions: ['knights-of-god'], value: KNIGHTS },
+      ],
       devilFruit: [{ episode: 1167, value: ['arrow-arrow-fruit'] }],
     },
     'harald': {
@@ -593,7 +596,9 @@ export const elbaf: Saga = {
         en: 'The magic circle drags him to Elbaph while he is still in his underwear, complaining about the food shortage in Mary Geoise. Getting dressed, he asks Shamrock whether he came to visit Harald’s grave. Then he listens to the commander’s plan to kidnap the giants’ children.',
       },
       status: [{ episode: 1170, value: 'alive' }],
-      affiliation: [{ episode: 1170, value: KNIGHTS }],
+      affiliation: [
+        { episode: 1170, factions: ['knights-of-god'], value: KNIGHTS },
+      ],
       // Named a Thorn Human in chapter 1143, which episode 1173 tells.
       devilFruit: [
         { episode: 1173, chapter: 1143, value: ['thorn-thorn-fruit'] },
@@ -606,7 +611,9 @@ export const elbaf: Saga = {
         en: 'The magic circle summons him to Elbaph when he least expects it, and he arrives not as a man but as a beast: a horned kirin, half deer and half horse, already late. He brings Shamrock the order to return to Mary Geoise, where everything has been falling apart since the Levely. Then he stays with the others for the commander’s game.',
       },
       status: [{ episode: 1170, value: 'alive' }],
-      affiliation: [{ episode: 1170, value: KNIGHTS }],
+      affiliation: [
+        { episode: 1170, factions: ['knights-of-god'], value: KNIGHTS },
+      ],
       // His fruit is named and shown in chapter 1143, as in episode 1173.
       devilFruit: [
         {

@@ -1,5 +1,10 @@
 import type { Locale } from '~/i18n/locales'
-import type { CharacterStatus, EntityKind, TintId } from '~/lib/view/records'
+import type {
+  CharacterStatus,
+  EntityKind,
+  Faction,
+  TintId,
+} from '~/lib/view/records'
 
 import type { ArtId } from './art'
 import type { FruitId } from './fruit-forms'
@@ -123,6 +128,17 @@ export interface Dated<T> {
 export type Timeline<T> = Dated<T>[]
 
 /**
+ * One affiliation entry: the prose, and the groups it names as `Faction` ids
+ * the pages can sort by. The tags change exactly when the prose does, because
+ * they sit on the same entry, and say no more than it: a group the prose has
+ * not named is not a tag. Every fruit eater's entries carry them (a data test
+ * holds it); a character who never ate a fruit may leave them out for now.
+ */
+export interface Affiliation extends Dated<LocalizedText> {
+  factions?: Faction[]
+}
+
+/**
  * One story of a character's chronicle: a short title and one paragraph, each
  * in every locale.
  *
@@ -150,7 +166,7 @@ export interface Story {
  * A fact with no entry yet is simply not on the page.
  */
 export interface CharacterDossier {
-  affiliation: Timeline<LocalizedText>
+  affiliation: Affiliation[]
   /**
    * What has happened to the character, one story per turning point, each
    * filed at the first episode by whose end a viewer knows all of it. Unlike

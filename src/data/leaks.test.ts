@@ -1,6 +1,8 @@
 import { byString } from 'sort-es'
 import { describe, expect, it } from 'vitest'
 
+import { enDictionary } from '~/i18n/dictionaries/en'
+import { itDictionary } from '~/i18n/dictionaries/it'
 import { type Locale, LOCALES } from '~/i18n/locales'
 import { FIRST_EPISODE } from '~/lib/progress/episode'
 import { tokenize } from '~/lib/prose/markers'
@@ -19,8 +21,8 @@ import type { Entity, LocalizedText, Story } from './types'
 /**
  * The one scan for a name said too early, over every text the archive
  * prints: the summaries, roles, logs, landmarks and builders frozen at a
- * record's threshold, and the affiliations, origins, epithets, chronicles
- * and ship fates dated after it. A text at episode 1 that wrote "Kaido" or
+ * record's threshold, and the affiliations with their faction labels,
+ * origins, epithets, chronicles and ship fates dated after it. A text at episode 1 that wrote "Kaido" or
  * "Marineford" in passing would be a leak the walker in `slices.test.ts`
  * cannot see, because it only reads ids and names.
  *
@@ -112,6 +114,33 @@ function dated(owner: Entity, field: Field): Text[] {
 }
 
 /**
+ * The faction labels of a character's affiliation entries, each reached at
+ * its entry's gate. A label is a dictionary string rather than prose, but a
+ * page prints it for the entry all the same, so a label can leak a name the
+ * same way.
+ */
+function factionTexts(owner: Entity): Text[] {
+  const filedEntries = CHARACTER_DOSSIERS[owner.id]?.affiliation ?? []
+
+  return datedOf(owner, 'affiliation').flatMap((entry, index) => {
+    const factions = filedEntries[index]?.factions ?? []
+
+    return factions.length === 0 ?
+        []
+      : {
+          chapter: entry.gate.revealedAtChapter,
+          episode: entry.gate.revealedAtEpisode,
+          label: `${owner.id}.faction@${String(entry.episode)}`,
+          owner,
+          text: {
+            en: factions.map((id) => enDictionary[`faction.${id}`]).join('; '),
+            it: factions.map((id) => itDictionary[`faction.${id}`]).join('; '),
+          },
+        }
+  })
+}
+
+/**
  * Every frozen text one dossier prints, found by shape rather than by name: a
  * field that is a text in every locale is frozen at the threshold. A field
  * added to a dossier is scanned the day it is added; a timeline is scanned
@@ -161,6 +190,7 @@ const TEXTS: Text[] = [
     )
   }),
   ...TIMELINES.flatMap(({ field, owner }) => dated(owner, field)),
+  ...Object.keys(CHARACTER_DOSSIERS).flatMap((id) => factionTexts(filed(id))),
   ...FILLER.flatMap((entry) => fillerTexts(entry)),
 ]
 
@@ -313,6 +343,7 @@ describe('the texts', () => {
       'builder',
       'chronicle',
       'epithet',
+      'faction',
       'fate',
       'landmark',
       'log',
