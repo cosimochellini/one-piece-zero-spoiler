@@ -293,6 +293,8 @@ export const enDictionary = {
   'fruits.title': 'Devil fruits',
   'fruits.count':
     '{count} devil fruits, grouped by type and listed in the order the story names them. Fruits under fog do not show up in search.',
+  'fruits.countSaga':
+    '{count} devil fruits, grouped by saga and listed in the order the story names them. Fruits under fog do not show up in search.',
   'fruits.pageTitle': 'Devil fruits | Zero Spoiler',
   'fruits.pageDescription':
     'One Piece devil fruits, each hidden until the episode where it is first named.',

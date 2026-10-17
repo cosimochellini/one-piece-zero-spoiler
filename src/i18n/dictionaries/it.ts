@@ -297,6 +297,8 @@ export const itDictionary: Dictionary = {
   'fruits.title': 'Frutti del diavolo',
   'fruits.count':
     '{count} frutti del diavolo, divisi per tipo e nell’ordine in cui la storia li nomina. Quelli nella nebbia non compaiono nei risultati della ricerca.',
+  'fruits.countSaga':
+    '{count} frutti del diavolo, divisi per saga e nell’ordine in cui la storia li nomina. Quelli nella nebbia non compaiono nei risultati della ricerca.',
   'fruits.pageTitle': 'Frutti del diavolo | Zero Spoiler',
   'fruits.pageDescription':
     'I frutti del diavolo di One Piece, ognuno nascosto fino all’episodio in cui viene nominato per la prima volta.',

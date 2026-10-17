@@ -54,7 +54,7 @@ describe('SagaMarquee', () => {
       'Bubble-Bubble FruitEpisode 293',
       'Door-Door FruitEpisode 243',
       'Cat-Cat Fruit, Model: LeopardEpisode 246',
-      'See the whole saga →',
+      'See the whole saga→',
     ])
     expect(links[0]).toHaveAttribute('href', '/en/fruits/bubble-bubble-fruit')
   })

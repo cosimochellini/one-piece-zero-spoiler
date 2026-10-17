@@ -83,7 +83,7 @@ export function SagaMarquee({
         {...stylex.props(styles.lastLink, styles.whole)}
       >
         {t('fruits.marqueeLink')}
-        <span aria-hidden="true"> →</span>
+        <span aria-hidden="true">→</span>
       </Link>
     </section>
   )
@@ -262,6 +262,7 @@ const styles = stylex.create({
   },
   // `lastLink`'s colour and ring, and a tap target of its own.
   whole: {
+    gap: space.xs2,
     alignItems: 'center',
     display: 'inline-flex',
     fontFamily: font.mono,

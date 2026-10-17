@@ -95,12 +95,11 @@ function FruitsPage(): ReactElement {
 
   const peek = usePeek(liftFruit)
   const [params, onParams] = useFruitParams()
+  const countKey = params.view === 'saga' ? 'fruits.countSaga' : 'fruits.count'
 
   return (
     <ArchivePage
-      count={
-        bookmark === null ? undefined : t('fruits.count', { count: filed })
-      }
+      count={bookmark === null ? undefined : t(countKey, { count: filed })}
       title={t('fruits.title')}
     >
       <FruitsAlbum
