@@ -130,6 +130,11 @@ function summaryOf(t: Translate, pick: FormPick, query: string): string {
   ].join(' · ')
 }
 
+/** The one view's radio is always picked, so it never changes anything. */
+function keepView(): void {
+  // #665 replaces this with the switch to the saga view.
+}
+
 /** The view switch and the kind chips, side by side while they fit. */
 function AlbumChoices({
   choices,
@@ -152,9 +157,7 @@ function AlbumChoices({
         legend={t('fruits.view.legend')}
         look="segments"
         name={`${fieldId}-view`}
-        onChoose={() => {
-          onPick(pick)
-        }}
+        onChoose={keepView}
         value="type"
       />
       <ChoiceGroup

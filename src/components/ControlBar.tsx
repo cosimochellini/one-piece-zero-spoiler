@@ -9,8 +9,8 @@ import {
   useState,
 } from 'react'
 
+import { listen, watch } from '~/components/controlBarFold'
 import { Button } from '~/components/ui/Button'
-import { STACK_PROPERTY } from '~/styles/sticky'
 import { color, font, rule, space, text, z } from '~/styles/tokens.stylex'
 
 /** How far up the bar slides to leave only its folded row on screen. */
@@ -159,7 +159,7 @@ function useFold(barRef: RefObject<HTMLDivElement | null>): {
     if (bar === null) {
       return
     }
-    const watching = watch(bar, (next) => {
+    const watching = watch(bar, TUCK_PROPERTY, (next) => {
       setPinned(next)
       if (!next) {
         setOpen(false)
@@ -174,156 +174,6 @@ function useFold(barRef: RefObject<HTMLDivElement | null>): {
   }, [barRef])
 
   return { open, pinned, setOpen }
-}
-
-/** Nothing to stop: without the observers, nothing started. */
-function ignore(): void {
-  // Deliberately empty.
-}
-
-/** How far the bar tucks when folded, and whether it has pinned. */
-interface Measure {
-  pinned: boolean
-  tuck: number
-}
-
-/**
- * Measures the bar and watches whether it has pinned.
- *
- * The folded row is the bar's last child. It is `display: none` where the
- * bar never folds, and then it has no offset parent and the bar tucks by
- * nothing. Pinned means the bar's top has reached the top of the window: the
- * root's top edge is pulled in a pixel, so a bar pinned at 0 is cut by it as
- * well as one pinned above it, and a bar in its own place never is.
- */
-function watch(
-  bar: HTMLElement,
-  onPin: (pinned: boolean) => void,
-): { read: () => Measure; stop: () => void } {
-  let pinned = false
-  let tuck = 0
-  const read = (): Measure => ({ pinned, tuck })
-  const row = bar.lastElementChild
-  if (
-    typeof ResizeObserver === 'undefined'
-    || typeof IntersectionObserver === 'undefined'
-    || !(row instanceof HTMLElement)
-  ) {
-    return { read, stop: ignore }
-  }
-  const resize = new ResizeObserver(() => {
-    const box = bar.getBoundingClientRect()
-    tuck =
-      row.offsetParent === null ? 0 : row.getBoundingClientRect().top - box.top
-    bar.style.setProperty(TUCK_PROPERTY, `${String(-tuck)}px`)
-    bar.parentElement?.style.setProperty(
-      STACK_PROPERTY,
-      `${String(box.height - tuck)}px`,
-    )
-  })
-  const pin = new IntersectionObserver(
-    ([entry]) => {
-      if (entry === undefined) {
-        return
-      }
-
-      pinned = entry.intersectionRatio < 1 && entry.boundingClientRect.top < 1
-      onPin(pinned)
-    },
-    { rootMargin: '-1px 0px 0px 0px', threshold: 1 },
-  )
-  resize.observe(bar)
-  pin.observe(bar)
-
-  return {
-    read,
-    stop: () => {
-      resize.disconnect()
-      pin.disconnect()
-    },
-  }
-}
-
-/**
- * Opens the bar when focus moves into a control (its first child), folds it
- * when focus leaves the bar, and settles it after a pick.
- */
-function listen(
-  bar: HTMLElement,
-  read: () => Measure,
-  setOpen: (open: boolean) => void,
-): () => void {
-  const onFocusIn = (event: Event): void => {
-    const controls = bar.firstElementChild
-    if (
-      event.target instanceof Node
-      && controls?.contains(event.target) === true
-    ) {
-      setOpen(true)
-    }
-  }
-  const onFocusOut = (event: Event): void => {
-    const next = event instanceof FocusEvent ? event.relatedTarget : null
-    if (!(next instanceof Node) || !bar.contains(next)) {
-      setOpen(false)
-    }
-  }
-  // A pick made with the arrow keys keeps the bar open and focus on the
-  // group, so the next arrow steps on; a tap folds it.
-  let keyed = false
-  const onInput = (event: Event): void => {
-    keyed = event.type === 'keydown'
-  }
-  const onChange = (event: Event): void => {
-    const { target } = event
-    if (!(target instanceof HTMLInputElement) || target.type !== 'radio') {
-      return
-    }
-    if (!keyed) {
-      setOpen(false)
-    }
-    const { pinned, tuck } = read()
-    if (pinned) {
-      settle(bar, tuck, !keyed)
-    }
-  }
-  const listeners: [string, (event: Event) => void][] = [
-    ['focusin', onFocusIn],
-    ['focusout', onFocusOut],
-    ['keydown', onInput],
-    ['pointerdown', onInput],
-    ['change', onChange],
-  ]
-  for (const [type, listener] of listeners) {
-    bar.addEventListener(type, listener)
-  }
-
-  return () => {
-    for (const [type, listener] of listeners) {
-      bar.removeEventListener(type, listener)
-    }
-  }
-}
-
-/**
- * After a pick on a pinned bar: back to where the bar has just pinned, the
- * top of the new results, if the reader was further down. When the pick
- * folds the bar on a phone, the control picked with has just slid off
- * screen, so focus goes to the toggle.
- */
-function settle(bar: HTMLElement, tuck: number, folds: boolean): void {
-  const container = bar.parentElement
-  if (container !== null) {
-    const top = container.getBoundingClientRect().top + window.scrollY + tuck
-    if (window.scrollY > top) {
-      window.scrollTo({ top, behavior: 'instant' })
-    }
-  }
-  if (folds && tuck > 0) {
-    bar
-      .querySelector<HTMLElement>('[aria-expanded]')
-      ?.focus({ preventScroll: true })
-  }
 }
 
 // The page's paper carried a gutter out on each side, so a tile scrolling
