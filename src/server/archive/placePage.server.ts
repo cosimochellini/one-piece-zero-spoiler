@@ -160,10 +160,10 @@ function chartOf(
 /**
  * The drawings of an open place or ship the reader has reached, oldest first
  * in the reader's unit: its first drawing, then each redrawing whose gate,
- * the later of its own and the record's (`gateOf`), the reader has passed. The same
- * entries `drawingOf` picks the last of, so the last here is the drawing the
- * plate already holds. Empty while only the first is reached: one drawing is
- * not a change.
+ * the later of its own and the record's (`gateOf`), the reader has passed.
+ * The same entries `drawingOf` picks the last of, so the last here is the
+ * drawing the plate already holds. Empty while only the first is reached:
+ * one drawing is not a change.
  */
 function drawingsOf(entity: Entity, r: Reader): PlaceDrawing[] {
   const reached = reachedOf(r, entity, 'redrawing')
