@@ -130,8 +130,8 @@ export const styles = stylex.create({
   crewItem: { minWidth: 0 },
 
   // The ships, at the foot of the places page: no numbers, because a ship
-  // is not a stop.
-  ships: { gap: space.lg, display: 'grid' },
+  // is not a stop. The padding above keeps the band clear of the list.
+  ships: { gap: space.lg, display: 'grid', paddingBlockStart: space.xl2 },
   shipList: {
     gap: space.xl2,
     display: 'grid',
