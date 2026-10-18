@@ -3,37 +3,28 @@ import { latestOf } from '~/data/dated'
 import { getEntity } from '~/data/entities'
 import { placeDossierOf, places, shipDossierOf, ships } from '~/data/places'
 import type { ShipDossier } from '~/data/records/ships'
+import { sagas } from '~/data/sagas'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
-import type {
-  CoveredRecord,
-  PortView,
-  RecordView,
-  ShipView,
-  Slot,
-} from '~/lib/view/records'
+import type { PlacesView, SagaPick, StopView } from '~/lib/view/places'
+import type { PortView, RecordView, ShipView, Slot } from '~/lib/view/records'
 
-import { deferredOf, recordOf } from './project.server'
+import { deferredOf, namedOf, recordOf } from './project.server'
 import { type Reader, readerFor } from './reader.server'
 
 /**
- * What the ship's log and a peeked port are allowed to know. A plain function
- * like the rest of `pages.server.ts`, and kept apart from it for length.
+ * What the places page and a peeked port are allowed to know. Plain
+ * functions like the rest of `pages.server.ts`, kept apart for length.
  */
 
-/** The ship's log, and the ships that carry it. */
-export function placesPage(
-  bookmark: Bookmark,
-  locale: Locale,
-): {
-  covered: CoveredRecord[]
-  filed: number
-  open: PortView[]
-  ships: ShipView[]
-} {
+/**
+ * The places page: the stops the reader has reached, each as the chart and
+ * the index draw it, the ones past the bookmark as fog, and the ships.
+ */
+export function placesPage(bookmark: Bookmark, locale: Locale): PlacesView {
   const r = readerFor(bookmark, locale)
-  const { covered, open, total } = r.split(places, portOf)
+  const { covered, open, total } = r.split(places, stopOf)
 
   return {
     ships: reachedShips(r).flatMap((entity) => {
@@ -41,15 +32,58 @@ export function placesPage(
       return dossier === undefined ? [] : [shipOf(entity, dossier, r)]
     }),
     filed: total,
-    // The drawings are most of the ports' bytes, and only the first few ship
-    // with them. The page draws none of them since the stacked log left it
-    // (#673); the index (#675) decides what it needs and reshapes this.
-    open: open.map((port, index) =>
-      index < INLINE_PORTS ? port : deferredPort(port),
+    // The drawings are most of the stops' bytes, and only the first few ship
+    // with them; the rest are asked for as the index nears them.
+    open: open.map((stop, index) =>
+      index < INLINE_STOPS ? stop : deferredOf(stop),
     ),
+    sagas: sagasOf(open, locale),
     covered,
   }
 }
+
+/** The sagas these stops are filed under, in route order, named. */
+function sagasOf(open: StopView[], locale: Locale): SagaPick[] {
+  const picks: SagaPick[] = []
+  for (const saga of SAGA_PICKS) {
+    if (open.some((stop) => stop.saga === saga.number)) {
+      picks.push({ number: saga.number, title: saga.name[locale] })
+    }
+  }
+
+  return picks
+}
+
+/** Every saga by its place in route order, from 1, and the places it files. */
+const SAGA_PICKS = sagas.map((saga, at) => ({
+  number: at + 1,
+  name: saga.name,
+  ids: new Set(saga.entries.map((entry) => entry.id)),
+}))
+
+/**
+ * One stop the reader has reached, as the chart and the index draw it. A
+ * data test holds that every place has a dossier and is filed under a saga.
+ */
+function stopOf(entity: Entity, r: Reader): StopView {
+  const dossier = placeDossierOf(entity)
+  const saga = SAGA_PICKS.find(({ ids }) => ids.has(entity.id))
+  if (dossier === undefined || saga === undefined) {
+    throw new Error(`${entity.id} has no dossier or no saga`)
+  }
+
+  return {
+    ...recordOf(entity, r),
+    ...namedOf(entity, r),
+    chart: chartPointOf(entity.id),
+    sea: dossier.sea,
+    form: dossier.form,
+    saga: saga.number,
+  }
+}
+
+/** How many stops ship their drawings with them. */
+const INLINE_STOPS = 3
 
 /**
  * The ships the reader has reached, in their order. Only those: a covered
@@ -90,25 +124,6 @@ export function portOf(entity: Entity, r: Reader): PortView {
           }),
         }
       ),
-  }
-}
-
-/** How many ports ship their drawings, and their crew's, with them. */
-const INLINE_PORTS = 3
-
-/** A port with its plate's strokes and its crew's left behind. */
-function deferredPort(port: PortView): PortView {
-  return {
-    ...deferredOf(port),
-    dossier:
-      port.dossier === null ?
-        null
-      : {
-          ...port.dossier,
-          filedHere: port.dossier.filedHere.map((slot) =>
-            slot.open ? { open: true, record: deferredOf(slot.record) } : slot,
-          ),
-        },
   }
 }
 

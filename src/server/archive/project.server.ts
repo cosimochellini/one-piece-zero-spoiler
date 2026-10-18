@@ -117,6 +117,14 @@ function reachedEpithets(entity: Entity, r: Reader): string[] {
 }
 
 /**
+ * A record's own searchable surface: its name, and the other locale's as an
+ * alias, so an Italian reader who types the English name still finds it.
+ */
+export function namedOf(entity: Entity, r: Reader): Searchable {
+  return foldedOf(entity.name[r.locale], otherNames(entity, r.locale))
+}
+
+/**
  * A character with its searchable surface folded, and gated.
  *
  * The aliases are the other locale's name — an Italian reader who knows the
@@ -145,7 +153,7 @@ export function fruitOf(entity: Entity, form: FruitForm, r: Reader): FruitView {
     ...recordOf(entity, r),
     form,
     summary: entity.summary[r.locale],
-    ...foldedOf(entity.name[r.locale], otherNames(entity, r.locale)),
+    ...namedOf(entity, r),
   }
 }
 

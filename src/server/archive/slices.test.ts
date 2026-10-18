@@ -41,6 +41,7 @@ import {
   shelvesPage,
 } from './pages.server'
 import { peekCharacter } from './peek.server'
+import { placePage } from './placePage.server'
 import { placesPage } from './places.server'
 import { characterOf, recordOf, searchableOf } from './project.server'
 import { type Reader, readerFor } from './reader.server'
@@ -470,10 +471,6 @@ describe('the slice of the archive a page is given', () => {
       ...shelves.slice(1).flatMap((shelf) => shelf.open),
       ...shelves.flatMap((shelf) => (shelf.arc.open ? [shelf.arc.record] : [])),
       ...ports.slice(3),
-      ...ports
-        .slice(3)
-        .flatMap((port) => port.dossier?.filedHere ?? [])
-        .flatMap((slot) => (slot.open ? [slot.record] : [])),
     ]
 
     expect(later.length).toBeGreaterThan(500)
@@ -596,15 +593,14 @@ describe('the slice of the archive a page is given', () => {
   })
 
   it('resolves a port’s arc outright, because an arc opens no later', () => {
-    const baratie = placesPage(ep(20), 'en').open.find(
-      (port) => port.id === 'baratie',
-    )
+    const slot = placePage('baratie', ep(20), 'en')?.detail.slot
+    const dossier = slot?.open === true ? slot.record.dossier : null
 
     // The arc is named outright rather than veiled: an arc opens no later
     // than any place filed under it, so an open port always has an open arc.
-    expect(baratie?.dossier?.arc).not.toBeNull()
-    expect(baratie?.dossier?.arc).not.toBe('')
-    expect(baratie?.dossier?.filedHere.length).toBeGreaterThan(0)
+    expect(dossier?.arc).not.toBeNull()
+    expect(dossier?.arc).not.toBe('')
+    expect(dossier?.filedHere.length).toBeGreaterThan(0)
   })
 
   it('sends the ships the reader has reached, in both locales', () => {

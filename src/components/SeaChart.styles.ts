@@ -2,6 +2,8 @@ import * as stylex from '@stylexjs/stylex'
 
 import {
   color,
+  dur,
+  ease,
   font,
   leading,
   radius,
@@ -220,9 +222,14 @@ export const styles = stylex.create({
     borderStyle: 'solid',
     borderWidth: rule.fine,
     display: 'block',
+    transitionDuration: { [MOTION]: dur.micro, default: '0s' },
+    transitionProperty: 'opacity',
+    transitionTimingFunction: ease.out,
     height: '0.75rem',
     width: '0.75rem',
   },
+  // A stop the index's picks leave out: still there, still a link, faint.
+  dotDim: { opacity: 0.25 },
   dotOpen: (hue: string) => ({
     borderColor: color.paper,
     backgroundColor: hue,

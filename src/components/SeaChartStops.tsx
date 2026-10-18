@@ -79,8 +79,7 @@ export function SeaChartStops({
   orientation: Orientation
 }): ReactElement {
   const { locale, t } = useLocale()
-  const threshold = useThreshold()
-  const { covered, here, open, tail, total } = model
+  const { here, lit, open, total } = model
   const target = useRoving(total, Math.max(open.length - 1, 0))
   const stage = (index: number): string =>
     t('places.stage', { index: index + 1, total })
@@ -103,6 +102,7 @@ export function SeaChartStops({
               {...target(index, `${stage(index)}. ${port.name}`)}
             >
               <OpenDot
+                dim={lit !== null && !lit.has(port.id)}
                 here={port === here}
                 tint={port.visual.tint}
               />
@@ -110,25 +110,70 @@ export function SeaChartStops({
           </li>
         )
       })}
-      {covered.map((entry, offset) => {
-        const index = open.length + offset
+      <FogStops
+        dim={lit !== null}
+        from={open.length}
+        model={model}
+        orientation={orientation}
+        stage={stage}
+        target={target}
+      />
+    </ol>
+  )
+}
+
+/**
+ * The stops under fog, numbered on from the open ones: each a button that
+ * says its number and episode, its dot on the tail, faint while the index's
+ * picks are set (a stop under fog has nothing to pick it by).
+ */
+function FogStops({
+  dim,
+  from,
+  model,
+  orientation,
+  stage,
+  target,
+}: {
+  dim: boolean
+  from: number
+  model: ChartModel
+  orientation: Orientation
+  stage: (index: number) => string
+  target: (index: number, label: string) => TargetProps
+}): ReactElement {
+  const { t } = useLocale()
+  const threshold = useThreshold()
+
+  return (
+    <>
+      {model.covered.map((entry, offset) => {
+        const index = from + offset
         const said = `${t('places.foggedName')}. ${threshold('chart.opensAt', entry)}`
         return (
           <li
             key={entry.handle}
-            {...stylex.props(stopAt(tail[offset] ?? FOG_END, orientation))}
+            {...stylex.props(
+              stopAt(model.tail[offset] ?? FOG_END, orientation),
+            )}
           >
             <button
               aria-disabled="true"
               type="button"
               {...target(index, `${stage(index)}. ${said}`)}
             >
-              <span {...stylex.props(styles.dot, styles.dotFog)} />
+              <span
+                {...stylex.props(
+                  styles.dot,
+                  styles.dotFog,
+                  dim && styles.dotDim,
+                )}
+              />
             </button>
           </li>
         )
       })}
-    </ol>
+    </>
   )
 }
 
@@ -153,11 +198,16 @@ const PILE: Record<string, stylex.StyleXStyles> = {
   false: styles.stopOpen,
 }
 
-/** An open stop's dot, in its drawing's tint; ringed in gold where you are. */
+/**
+ * An open stop's dot, in its drawing's tint; ringed in gold where you are,
+ * and faint when the index's picks leave it out.
+ */
 function OpenDot({
+  dim,
   here,
   tint,
 }: {
+  dim: boolean
   here: boolean
   tint: TintId
 }): ReactElement {
@@ -167,6 +217,7 @@ function OpenDot({
         styles.dot,
         styles.dotOpen(tintOf(tint)),
         here && styles.dotHere,
+        dim && styles.dotDim,
       )}
     />
   )

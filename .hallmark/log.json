@@ -1,6 +1,17 @@
 [
   {
     "date": "2026-10-18",
+    "macrostructure": "Map / Diagram on /places over a Catalogue index (replaces the short list of links)",
+    "theme": "custom (bespoke): Sea Chart — locked, not rotated",
+    "theme_axes": "dark / geometric-sans / chromatic-amber (88°)",
+    "enrichment": "none new: each place's existing plate, as a thumbnail in a row or a plate in the grid",
+    "nav": "N9 edge-aligned (shared)",
+    "footer": "Ft4 dense colophon (shared)",
+    "sections": "/places: chart (stops the index leaves out drawn faint) · index: pinned control bar (search + count, List/Grid, sea, type and saga pickers; all in the address) · one pinned group per sea (rows: plate, name, number, type, episode; or a grid of plates) · one fog line at the foot · ships band (until #676)",
+    "brief": "Issue #675 (epic #671): the index under the chart. Filters apply to open places only; one fog line for the whole list rather than one per sea, so the index never tells how many stops a sea still holds; picks the reader has not reached are ignored."
+  },
+  {
+    "date": "2026-10-18",
     "macrostructure": "Split Studio (a place's own page, as the character page) + Map / Diagram on /places over a short list of links",
     "theme": "custom (bespoke): Sea Chart — locked, not rotated",
     "theme_axes": "dark / geometric-sans / chromatic-amber (88°)",
