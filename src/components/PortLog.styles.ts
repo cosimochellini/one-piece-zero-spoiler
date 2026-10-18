@@ -204,11 +204,6 @@ export const styles = stylex.create({
     fontWeight: 600,
     lineHeight: leading.body,
   },
-  filedNone: {
-    color: color.muted,
-    fontSize: text.base,
-    lineHeight: leading.body,
-  },
   crew: {
     gap: space.md,
     display: 'grid',

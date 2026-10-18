@@ -98,13 +98,11 @@ function Ship({
 
           <ShipFacts entry={ship.dossier} />
           <p {...stylex.props(styles.entry)}>{ship.dossier.log}</p>
-          {ship.dossier.ports.length === 0 ? null : (
-            <FiledHere
-              filed={ship.dossier.ports.map((place) => reached(place))}
-              peekRecord={peekRecord}
-              title={t('ships.ports')}
-            />
-          )}
+          <FiledHere
+            filed={ship.dossier.ports.map((place) => reached(place))}
+            peekRecord={peekRecord}
+            title={t('ships.ports')}
+          />
         </div>
       </div>
     </li>

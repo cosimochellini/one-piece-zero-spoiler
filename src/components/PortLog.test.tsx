@@ -186,6 +186,32 @@ describe('PortLog', () => {
     expect(within(row).getAllByText('Spoiler')).toHaveLength(1)
   })
 
+  it('draws no filed heading over a port that files nothing', () => {
+    renderWithProviders(
+      <PortLog
+        bookmark={ep(20)}
+        covered={covered}
+        open={open}
+        peek={peekPending()}
+        peekRecord={peekPending()}
+      />,
+      { bookmark: ep(20) },
+    )
+
+    const shellsTown = rowOf(
+      screen.getByRole('heading', { level: 2, name: 'Shells Town' }),
+    )
+
+    // Shells Town's dossier files nothing; Baratie's files two records.
+    expect(
+      within(shellsTown).queryByRole('heading', { level: 3 }),
+    ).not.toBeInTheDocument()
+    expect(within(shellsTown).queryByRole('list')).not.toBeInTheDocument()
+    expect(
+      screen.getAllByRole('heading', { level: 3, name: 'Found here' }),
+    ).toHaveLength(1)
+  })
+
   it('draws the horizon where the reader is', () => {
     renderWithProviders(
       <PortLog
