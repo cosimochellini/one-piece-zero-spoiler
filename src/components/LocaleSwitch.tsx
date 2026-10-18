@@ -1,9 +1,9 @@
 import * as stylex from '@stylexjs/stylex'
-import { Link } from '@tanstack/react-router'
+import { useNavigate } from '@tanstack/react-router'
 import type { ReactElement } from 'react'
 
 import { useLocale } from '~/i18n/LocaleContext'
-import { type Locale, LOCALE_COOKIE, LOCALES } from '~/i18n/locales'
+import { isLocale, type Locale, LOCALE_COOKIE, LOCALES } from '~/i18n/locales'
 import { COOKIE_MAX_AGE_SECONDS, writeCookie } from '~/lib/cookies'
 import {
   color,
@@ -30,120 +30,122 @@ function remember(next: Locale): void {
 /**
  * Switches language by navigating, not by swapping strings in place.
  *
- * Each locale has its own URL, so the switch is a pair of real links: they can
- * be opened in a new tab, shared, and crawled. The click also writes the
- * locale cookie, which is what lets a later visit to `/` land on the same
- * language without asking again.
+ * A native `<select>` laid over its own face, transparent, so the tap and the
+ * keyboard reach the real control while what is painted stays a short code
+ * and a drawn chevron; the list it opens, the platform's own picker, names
+ * both languages in full. It is the same control at every width, so the bar
+ * never has to find room for two language names beside the bookmark.
  *
- * `to="."` is the current route with only the locale param swapped, so a
- * reader on a character's page gets the same page in the other language and
- * not the landing.
+ * The choice writes the locale cookie, which is what lets a later visit to `/`
+ * land on the same language without asking again, and goes to the current
+ * route with only the locale param swapped (`to="."`), so a reader on a
+ * character's page gets the same page in the other language and not the
+ * landing. Crawlers find the other language through the sitemap's hreflang
+ * alternates, not through this control.
  */
 export function LocaleSwitch(): ReactElement {
   const { locale, t } = useLocale()
+  const navigate = useNavigate()
 
   return (
-    <nav
-      aria-label={t('locale.label')}
-      {...stylex.props(styles.nav)}
-    >
-      <ul {...stylex.props(styles.list)}>
+    <label {...stylex.props(styles.pick)}>
+      <span
+        aria-hidden="true"
+        {...stylex.props(styles.code)}
+      >
+        {locale}
+      </span>
+      <svg
+        aria-hidden="true"
+        height="6"
+        viewBox="0 0 10 6"
+        width="10"
+      >
+        <path
+          d="M1 1l4 4 4-4"
+          fill="none"
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+        />
+      </svg>
+      <select
+        aria-label={t('locale.label')}
+        onChange={({ target }) => {
+          if (!isLocale(target.value)) {
+            return
+          }
+          const next = target.value
+          remember(next)
+          void navigate({
+            params: (previous) => ({ ...previous, locale: next }),
+            to: '.',
+          })
+        }}
+        value={locale}
+        {...stylex.props(styles.native)}
+      >
         {LOCALES.map((candidate) => {
-          const current = candidate === locale
-
           return (
-            <li key={candidate}>
-              <Link
-                // The accessible name is always the full language name; only
-                // what is painted changes with the width.
-                aria-label={t(LABEL_KEY[candidate])}
-                hrefLang={candidate}
-                // `Link` sets `aria-current="page"` on the active item by
-                // itself, so the accent rule is never the only signal.
-                onClick={() => {
-                  remember(candidate)
-                }}
-                params={(previous) => ({ ...previous, locale: candidate })}
-                to="."
-                {...stylex.props(styles.link, current && styles.linkCurrent)}
-              >
-                <span
-                  aria-hidden="true"
-                  {...stylex.props(styles.full)}
-                >
-                  {t(LABEL_KEY[candidate])}
-                </span>
-                <span
-                  aria-hidden="true"
-                  {...stylex.props(styles.code)}
-                >
-                  {candidate}
-                </span>
-              </Link>
-            </li>
+            <option
+              key={candidate}
+              lang={candidate}
+              value={candidate}
+            >
+              {t(LABEL_KEY[candidate])}
+            </option>
           )
         })}
-      </ul>
-    </nav>
+      </select>
+    </label>
   )
 }
 
-// `inline-flex` in three declarations: the switch, the list inside it and
-// each link. All three have to sit on the bar's own line, beside the controls
-// rather than under them, and they have to agree on that or the bar wraps.
-const INLINE_FLEX = 'inline-flex'
-
 const styles = stylex.create({
-  nav: { display: INLINE_FLEX },
-  list: {
+  // The bookmark's frame beside it, one step quieter: the same height, rule
+  // and radius, the ambient ink instead of the accent, which the bookmark
+  // keeps for itself. The ring is drawn on the frame, the select under it
+  // being invisible.
+  pick: {
+    borderColor: { 'default': color.rule2, ':hover': color.ink },
+    borderRadius: radius.input,
+    borderStyle: 'solid',
+    borderWidth: rule.fine,
     gap: space.xs2,
-    paddingInline: 0,
-    display: INLINE_FLEX,
-    listStyleType: 'none',
-  },
-  link: {
-    borderRadius: radius.pill,
-    paddingInline: {
-      'default': space.xs2,
-      '@media (min-width: 40rem)': space.xs,
-    },
+    paddingInline: space.xs,
     alignItems: 'center',
-    color: {
-      'default': color.muted,
-      ':hover': color.accent,
-      ':active': color.ink,
-    },
-    display: INLINE_FLEX,
-    fontFamily: font.body,
-    fontSize: text.xs,
-    fontWeight: 600,
+    color: { 'default': color.ink2, ':hover': color.accent },
+    display: 'inline-flex',
     justifyContent: 'center',
-    letterSpacing: '0.08em',
-    outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
+    outlineColor: {
+      'default': 'transparent',
+      ':has(:focus-visible)': color.focus,
+    },
     outlineOffset: space.xs3,
     outlineStyle: 'solid',
     outlineWidth: rule.fine,
-    textDecorationLine: 'none',
-    textTransform: 'uppercase',
+    position: 'relative',
     transitionDuration: dur.micro,
-    transitionProperty: 'color',
+    transitionProperty: 'color, border-color',
     transitionTimingFunction: ease.out,
     minHeight: '44px',
-    minWidth: { 'default': '44px', '@media (min-width: 40rem)': 0 },
-  },
-  // A phone bar has room for the wordmark, one page link and two language
-  // codes, not two language names: 'Italiano English' alone is 158px.
-  full: {
-    display: { 'default': 'none', '@media (min-width: 40rem)': 'inline' },
+    minWidth: '44px',
   },
   code: {
-    display: { 'default': 'inline', '@media (min-width: 40rem)': 'none' },
+    fontFamily: font.mono,
+    fontSize: text.xs,
+    fontWeight: 700,
+    letterSpacing: '0.1em',
+    textTransform: 'uppercase',
   },
-  linkCurrent: {
-    color: color.ink,
-    textDecorationColor: color.accent,
-    textDecorationLine: 'underline',
-    textDecorationThickness: rule.fine,
-    textUnderlineOffset: '4px',
+  native: {
+    inset: 0,
+    appearance: 'none',
+    cursor: 'pointer',
+    // At least 16px, or iOS zooms the page in when the picker opens.
+    fontSize: text.base,
+    opacity: 0,
+    position: 'absolute',
   },
 })

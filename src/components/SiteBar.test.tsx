@@ -6,9 +6,10 @@ import { ep, renderWithProviders } from '~/test/providers'
 
 import { SiteBar } from './SiteBar'
 
-// The switch is two <Link>s with their own test; here it is only a landmark.
+// The switch is a routed select with its own test; here it only has to be
+// there.
 function LocaleSwitch(): ReactElement {
-  return <nav aria-label="Language" />
+  return <select aria-label="Language" />
 }
 
 vi.mock(import('~/components/LocaleSwitch'), () => ({ LocaleSwitch }))
@@ -35,11 +36,15 @@ describe('SiteBar', () => {
       within(banner).getByRole('link', { name: 'Fruits' }),
     ).toHaveAttribute('href', '/en/fruits')
     expect(
-      within(banner).getByRole('navigation', { name: 'Language' }),
+      within(banner).getByRole('combobox', { name: 'Language' }),
     ).toBeInTheDocument()
     expect(
       within(banner).getByRole('button', { name: 'Set episode' }),
     ).toHaveAttribute('aria-haspopup', 'dialog')
+    // The bar paints the empty slot; the words stay the button's name.
+    expect(
+      within(banner).getByRole('button', { name: 'Set episode' }),
+    ).toHaveTextContent('EP ?')
     // No link row filling the middle: the space is the design.
     expect(within(banner).getAllByRole('link')).toHaveLength(4)
     expect(within(banner).getAllByRole('button')).toHaveLength(1)

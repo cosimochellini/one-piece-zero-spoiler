@@ -38,12 +38,13 @@ function faceOf(t: Translate, bookmark: Bookmark, inFold: boolean): MarkFace {
   const mark =
     bookmark === null ? t('mark.unset') : describeBookmark(t, 'mark', bookmark)
 
+  // Unset, the bar paints the empty slot (`EP ?`), which fits beside the
+  // wordmark on the narrowest phone, and keeps the words as the accessible
+  // name.
   if (!inFold) {
-    return {
-      hint:
-        bookmark === null ? undefined : t('mark.change', { threshold: mark }),
-      label: mark,
-    }
+    return bookmark === null ?
+        { hint: mark, label: t('mark.unsetShort') }
+      : { hint: t('mark.change', { threshold: mark }), label: mark }
   }
 
   return {

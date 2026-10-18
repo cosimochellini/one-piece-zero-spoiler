@@ -88,12 +88,14 @@ export const color = stylex.defineVars({
   // colour to this, never to a hardcoded dark.
   accentInk: 'oklch(16% 0.03 250)',
   focus: 'oklch(88% 0.15 92)',
-  // The two overlays, and the only tokens with an alpha channel. Both are
+  // The three overlays, and the only tokens with an alpha channel. All are
   // modifiers laid over `paper`, not colours anything is painted in: the
-  // lantern bloom at the top of the page, and the sea that darkens the page
-  // behind the bookmark dialog.
+  // lantern bloom at the top of the page, the sea that darkens the page
+  // behind the bookmark dialog, and the glass of the pinned site bar,
+  // which lets the bloom through where the page begins.
   glow: 'oklch(70% 0.12 80 / 0.22)',
   scrim: 'oklch(13% 0.025 250 / 0.72)',
+  veil: 'oklch(13% 0.025 250 / 0.88)',
 })
 
 /**
@@ -235,8 +237,9 @@ export const rule = stylex.defineVars({ hair: '1px', fine: '2px' })
  * Hallmark's six named levels, plus `skip`.
  *
  * `sticky` and `stickyNav` are separate so a banner pinned under the bar
- * cannot climb over it. `skip` sits above everything by definition: a skip
- * link that any other layer can cover is a skip link that does not work.
+ * cannot climb over it, and `bar` is the site bar over both. `skip` sits
+ * above everything by definition: a skip link that any other layer can cover
+ * is a skip link that does not work.
  */
 export const z = stylex.defineVars({
   base: '1',
@@ -244,6 +247,19 @@ export const z = stylex.defineVars({
   dropdown: '100',
   sticky: '200',
   stickyNav: '210',
+  // The site bar, pinned at every width: a listing's control bar opens under it.
+  bar: '220',
   tooltip: '600',
   skip: '700',
+})
+
+/**
+ * How much of the window the site bar keeps, pinned at every width: rows of
+ * 2.75rem (two on a phone, where the pages fold under, one elsewhere) and
+ * `space.xs2` above and below them. The bar takes this as its height, and
+ * everything else that pins pins under it, so the two cannot drift apart.
+ * Written out: one set of vars cannot read another.
+ */
+export const pin = stylex.defineVars({
+  bar: { 'default': '6rem', '@media (min-width: 40rem)': '3.25rem' },
 })

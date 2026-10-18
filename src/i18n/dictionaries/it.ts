@@ -70,6 +70,7 @@ export const itDictionary: Dictionary = {
   'home.filler.link': 'Vedi tutti i filler',
 
   'mark.unset': 'Imposta episodio',
+  'mark.unsetShort': 'EP ?',
   'mark.episode': 'EP {threshold}',
   'mark.season': '{threshold}',
   'mark.chapter': 'CH {threshold}',
