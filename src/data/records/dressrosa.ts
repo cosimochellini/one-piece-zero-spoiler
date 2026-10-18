@@ -2798,7 +2798,8 @@ export const dressrosa: Saga = {
         },
       ],
       // Rebecca's flashback shows her mother living in Dressrosa in ch 721, ep
-      // 651.
+      // 651. The entry keeps her record's pair, 651 and 742: it cannot open
+      // before the record in either unit.
       origin: [
         { episode: 651, chapter: 742, place: 'dressrosa', value: DRESSROSA },
       ],
