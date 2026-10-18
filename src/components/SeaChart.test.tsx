@@ -383,6 +383,12 @@ describe('the peek', () => {
     fireEvent.click(baratie, { detail: 1 })
 
     expect(navigate).toHaveBeenCalledTimes(1)
+
+    // A touch that became a scroll leaves its kind; a key's click follows.
+    fireEvent.pointerDown(baratie, { pointerType: 'touch' })
+    fireEvent.click(baratie, { detail: 0 })
+
+    expect(navigate).toHaveBeenCalledTimes(2)
   })
 
   it('keeps a held peek when the pointer rests on another stop', async () => {

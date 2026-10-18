@@ -20,6 +20,9 @@ import {
   z,
 } from '~/styles/tokens.stylex'
 
+// The bookmark dialog's sheet breakpoint, not the chart's (37.5rem): from
+// 37.5 to 40rem the chart is drawn across, and its peek is a sheet all the
+// same, because a 20rem popover beside a stop crowds a chart that narrow.
 const SHEET = '@media (max-width: 39.99rem)'
 const MOTION = '@media (prefers-reduced-motion: no-preference)'
 const SHEET_MOTION =

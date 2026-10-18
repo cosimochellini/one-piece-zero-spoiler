@@ -217,7 +217,9 @@ function triggerOf(
     'aria-controls': shown ? id : undefined,
     'aria-expanded': shown,
     'onClick': (event) => {
-      const kind = pointer.take()
+      // A key's click has no `detail`: it follows the link even when a
+      // touch that became a scroll left its kind behind.
+      const kind = event.detail === 0 ? '' : pointer.take()
       if (link && kind !== 'touch' && kind !== 'pen') {
         return
       }
