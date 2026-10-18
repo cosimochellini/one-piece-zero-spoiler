@@ -1156,8 +1156,15 @@ export const skypiea: Saga = {
         },
       ],
       origin: [
+        { episode: 163, chapter: 245, value: SKY_ISLAND },
+        // Episode 166 adapts chapter 253: Nami lays the map of Jaya beside
+        // the old map of Skypiea, and Kamakiri says the Shandia will get back
+        // the home they lost 400 years ago. Episode 164 (chapter 251) already
+        // finds Upper Yard was part of Jaya; the entry waits for the pair
+        // that tells both halves, which errs late, never early.
         {
-          episode: 163,
+          episode: 166,
+          chapter: 253,
           value: { it: 'Skypiea, un tempo Jaya', en: 'Skypiea, once Jaya' },
         },
       ],

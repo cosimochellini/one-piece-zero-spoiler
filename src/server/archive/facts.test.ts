@@ -260,6 +260,27 @@ describe('the facts a bookmark reaches', () => {
     },
   )
 
+  it.each(['en', 'it'] as const)(
+    'says Wyper’s land was once Jaya only from episode 166 and chapter 253 (%s)',
+    (locale) => {
+      const wyper = onFile('wyper')
+      const once =
+        locale === 'en' ? 'Skypiea, once Jaya' : 'Skypiea, un tempo Jaya'
+      const marks = [
+        { bookmark: { mode: 'episode', episode: 165 }, origin: 'Skypiea' },
+        { bookmark: { mode: 'episode', episode: 166 }, origin: once },
+        { bookmark: { mode: 'chapter', chapter: 252 }, origin: 'Skypiea' },
+        { bookmark: { mode: 'chapter', chapter: 253 }, origin: once },
+      ] as const
+
+      for (const { bookmark, origin } of marks) {
+        expect(factsOf(wyper, readerFor(bookmark, locale))).toMatchObject({
+          origin,
+        })
+      }
+    },
+  )
+
   it('answers in the reader’s locale', () => {
     expect(factsOf(LUFFY, ep(45, 'it'))).toMatchObject({
       epithet: 'Cappello di Paglia',
