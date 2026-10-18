@@ -372,6 +372,40 @@ describe('the peek', () => {
     expect(navigate).toHaveBeenCalledTimes(1)
   })
 
+  it('follows the link on a click no press came before', () => {
+    const { router } = draw({ bookmark: ep(30), open: eastBlue })
+    const navigate = vi.spyOn(router, 'navigate')
+    const baratie = within(stops()).getByRole('link', { name: /Baratie/u })
+
+    // A tap, then a click with no press of its own (an assistive technology).
+    fireEvent.pointerDown(baratie, { pointerType: 'touch' })
+    fireEvent.click(baratie, { detail: 1 })
+    fireEvent.click(baratie, { detail: 1 })
+
+    expect(navigate).toHaveBeenCalledTimes(1)
+  })
+
+  it('keeps a held peek when the pointer rests on another stop', async () => {
+    const user = userEvent.setup()
+    draw({ bookmark: ep(30), open: eastBlue })
+
+    act(() => {
+      within(stops())
+        .getByRole('link', { name: /Baratie/u })
+        .focus()
+    })
+    const shells = within(stops()).getByRole('link', { name: /Shells Town/u })
+    await user.hover(shells)
+    await new Promise((resolve) => {
+      setTimeout(resolve, 400)
+    })
+    await user.unhover(shells)
+
+    expect(
+      screen.getByRole('dialog', { name: 'Stop 3 of 3. Baratie' }),
+    ).toBeInTheDocument()
+  })
+
   it('veils a fogged stop and asks the server only on “Show anyway”', async () => {
     const user = userEvent.setup()
     const whisky = port({ id: 'whisky-peak', name: 'Whisky Peak', ...at(64) })

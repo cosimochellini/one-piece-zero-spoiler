@@ -1,3 +1,8 @@
+/**
+ * The peek a stop or a ship opens on the sea chart: its drawing, its name,
+ * its sea and type and the episode it opens, and a link to its entry. Beside
+ * the stop on a wide screen, a sheet on the bottom edge of a narrow one.
+ */
 import * as stylex from '@stylexjs/stylex'
 import { Link } from '@tanstack/react-router'
 import type { ReactElement, ReactNode } from 'react'
@@ -26,12 +31,6 @@ import type {
   Sea,
   ShipView,
 } from '~/lib/view/records'
-
-/**
- * The peek a stop or a ship opens on the sea chart: its drawing, its name,
- * its sea and type and the episode it opens, and a link to its entry. Beside
- * the stop on a wide screen, a sheet on the bottom edge of a narrow one.
- */
 
 /** Halfway down the chart: a peek below it goes above its point. */
 const HALF = 2

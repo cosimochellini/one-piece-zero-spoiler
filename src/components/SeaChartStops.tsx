@@ -12,11 +12,13 @@ import {
 import { tintOf } from '~/components/drawing'
 import { styles } from '~/components/SeaChart.styles'
 import { type ChartModel, pointOf } from '~/components/seaChartModel'
+import type {
+  PeekTarget,
+  TriggerProps as PeekTrigger,
+} from '~/components/useChartPeek'
 import { useLocale } from '~/i18n/LocaleContext'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
 import type { TintId } from '~/lib/view/records'
-
-import type { PeekTarget, TriggerProps as PeekTrigger } from './useChartPeek'
 
 /** What every stop's link or button carries: its name, focus and keys. */
 interface TargetProps {

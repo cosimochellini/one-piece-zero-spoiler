@@ -124,15 +124,23 @@ function useQuiet(): { hush: (run: () => void) => void; quiet: () => boolean } {
   }
 }
 
-/** The kind of pointer that last pressed a target: `mouse`, `touch`, `pen`. */
+/**
+ * The kind of pointer that pressed a target, read once by the click that
+ * follows: `mouse`, `touch` or `pen`, and `''` for a click no press came
+ * before (a key, an assistive technology).
+ */
 function usePointer(): {
-  last: () => string
   press: (event: PointerEvent<HTMLElement>) => void
+  take: () => string
 } {
   const pointerRef = useRef('')
 
   return {
-    last: () => pointerRef.current,
+    take: () => {
+      const kind = pointerRef.current
+      pointerRef.current = ''
+      return kind
+    },
     press: (event) => {
       pointerRef.current = event.pointerType
     },
@@ -195,8 +203,8 @@ interface Wiring {
 }
 
 /**
- * A stop's or a ship's handlers. A key or a mouse follows an open stop's
- * link (a key's click has no `detail`); a tap peeks instead.
+ * A stop's or a ship's handlers. A tap or a pen peeks on an open stop's
+ * link; a mouse, a key or any other click follows it.
  */
 function triggerOf(
   { id, letGo, open, pointer, quiet, show, timer }: Wiring,
@@ -209,7 +217,8 @@ function triggerOf(
     'aria-controls': shown ? id : undefined,
     'aria-expanded': shown,
     'onClick': (event) => {
-      if (link && (event.detail === 0 || pointer.last() === 'mouse')) {
+      const kind = pointer.take()
+      if (link && kind !== 'touch' && kind !== 'pen') {
         return
       }
       if (link) {
@@ -239,7 +248,8 @@ function triggerOf(
  * One peek per chart. A pointer resting on a stop opens it after a short
  * delay and it closes when the pointer leaves both; a focus, a click on a
  * button or a tap opens it at once and holds it until Esc, its ✕, or a
- * press or the focus elsewhere. Esc and the ✕ give the focus back to the
+ * press or the focus elsewhere; a resting pointer never replaces it. Esc
+ * and the ✕ give the focus back to the
  * stop when it was inside the peek, and only then. A tap on an open stop's
  * link peeks instead of leaving the page: the peek's own link leads on.
  */
@@ -254,8 +264,9 @@ export function useChartPeek(): ChartPeek {
 
   const show = (target: PeekTarget, held: boolean, from: HTMLElement): void => {
     timer.stop()
+    // A held peek stays: on its own stop, and against a hover anywhere.
     setOpen((previous) =>
-      previous !== null && same(previous.target, target) && previous.held ?
+      previous?.held === true && (!held || same(previous.target, target)) ?
         previous
       : { from, held, target },
     )
