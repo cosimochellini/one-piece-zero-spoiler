@@ -1546,7 +1546,8 @@ export const alabastaArt = {
 
   // A flower whose five petals are open hands, on a stem with two leaves:
   // she sprouts arms out of anything she likes, Pell's back among them (106).
-  // The near leaf turns its underside to us and is hatched.
+  // The near leaf turns its underside to us and is hatched. From 524 two
+  // giant hands hold it up, in `alabastaRedrawn`.
   'nico-robin': [
     ...[0, 72, 144, 216, 288].map((angle): Stroke => {
       return {
