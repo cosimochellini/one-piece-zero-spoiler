@@ -136,16 +136,20 @@ const LINE = {
 
 /**
  * The route sailed, drawn in once from the origin to the ship, and the fog
- * tail past it from the last open stop to the last dot.
+ * tail past it from the last open stop to the last dot. `still` draws it
+ * whole at once: a stretch of it on a place's page has no origin to start
+ * from.
  */
 export function SeaRoute({
   from,
   legs,
   orientation,
+  still = false,
   tail,
 }: Omit<DrawingProps, 'id'> & {
   from: Point
   legs: Leg[]
+  still?: boolean
   tail: Point[]
 }): ReactElement {
   const end = tail.at(-1)
@@ -169,8 +173,8 @@ export function SeaRoute({
           <g
             key={d}
             {...stylex.props(
-              styles.legIn,
-              styles.legAt(delays[index] ?? '0ms'),
+              !still && styles.legIn,
+              !still && styles.legAt(delays[index] ?? '0ms'),
             )}
           >
             <path

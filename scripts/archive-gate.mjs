@@ -92,9 +92,15 @@ const WORST_CHUNKS = 5
  * route, the stops with their arrow keys, and six new keys in both
  * dictionaries. Where each open stop sits is the server's; a covered stop
  * has no point to send. The measured build plus ~1 KB, as the epic (#671)
- * allows each of its pull requests.
+ * allows each of its pull requests. Raised to 588.1 KB on 2026-10-18, when
+ * main stood at ~580.6 KB and a page for every place (#673) added ~6.5 KB:
+ * the new route (the plate and entry, the stretch of the chart around the
+ * place, the drawings in a row, the stops either side), the short list of
+ * links that replaced the stacked entries, and sixteen new keys in both
+ * dictionaries. The stacked log it replaces left the bundle. Again the
+ * measured build plus ~1 KB, as the epic allows.
  */
-export const MAX_CLIENT_BYTES = 581_400
+export const MAX_CLIENT_BYTES = 588_100
 
 /** Where the prose lives: every saga, the ship's log and the filler guide. */
 const PROSE_DIR = 'src/data/records'

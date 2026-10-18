@@ -237,6 +237,26 @@ export const itDictionary: Dictionary = {
   'places.arc': 'Saga',
   'places.landmark': 'Punto di riferimento',
   'places.filedHere': 'Collegati a questo luogo',
+  'places.listTitle': 'Luoghi fino al tuo segnalibro',
+
+  'place.pageTitle': '{name} | Zero Spoiler',
+  'place.foggedTitle': 'Un luogo nella nebbia | Zero Spoiler',
+  'place.back': 'Tutti i luoghi',
+  'place.mapTitle': 'Sulla mappa',
+  'place.mapLede':
+    'Dove si colloca questo luogo nella storia, con le tappe subito prima e subito dopo.',
+  'place.drawingsTitle': 'Come cambia il disegno',
+  'place.drawingsLede':
+    'Ogni disegno di questo luogo fino al tuo segnalibro, dal più vecchio.',
+  'place.turn': 'Tappa precedente e successiva',
+  'place.previous': 'Tappa precedente',
+  'place.next': 'Tappa successiva',
+  'place.routeStart': 'Niente, questa è la prima tappa.',
+  'place.routeEnd':
+    'Ancora niente, questa è l’ultima tappa nell’ordine della storia.',
+  'place.notFoundTitle': 'Luogo non trovato',
+  'place.notFoundBody':
+    'A questo indirizzo non c’è nessun luogo. Li trovi tutti nella pagina Luoghi.',
 
   'filler.title': 'Episodi filler',
   'filler.count':

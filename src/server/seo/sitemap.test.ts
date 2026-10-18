@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 
 import { characters } from '~/data/characters'
 import { fruits } from '~/data/fruits'
+import { places } from '~/data/places'
 import { SITE_ORIGIN } from '~/lib/seo/site'
 
 import { sitemapXml } from './sitemap.server'
@@ -31,7 +32,8 @@ describe('the sitemap', () => {
 
   it('lists every page of the site in both languages', () => {
     expect(locations()).toHaveLength(
-      (SECTION_COUNT + characters.length + fruits.length) * LOCALE_COUNT,
+      (SECTION_COUNT + characters.length + fruits.length + places.length)
+        * LOCALE_COUNT,
     )
   })
 
@@ -57,6 +59,11 @@ describe('the sitemap', () => {
 
     expect(locations()).toContain(`${SITE_ORIGIN}/it/characters/${first}`)
     expect(locations()).toContain(`${SITE_ORIGIN}/en/characters/${first}`)
+  })
+
+  it('carries every place page', () => {
+    expect(locations()).toContain(`${SITE_ORIGIN}/en/places/alubarna`)
+    expect(locations()).toContain(`${SITE_ORIGIN}/it/places/alubarna`)
   })
 
   it('gives every entry both languages and the x-default', () => {

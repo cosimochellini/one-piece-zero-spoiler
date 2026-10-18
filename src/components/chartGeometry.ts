@@ -395,3 +395,38 @@ export function nextOf(
     }
   }
 }
+
+/** The least of the chart a stretch shows, across: room for a stop each side. */
+const CROP: Point = { x: 360, y: 240 }
+/** The sea left around the points a stretch frames, both sides together. */
+const CROP_MARGINS = 120
+
+/**
+ * The part of the chart that frames these points, across: their bounds with
+ * a margin of sea, at least `CROP` and in its proportions, and kept inside
+ * the chart. A place's own page draws this stretch of the route.
+ */
+export function cropAround(points: Point[]): Rect {
+  const xs = points.map(({ x }) => x)
+  const ys = points.map(({ y }) => y)
+  const left = Math.min(...xs)
+  const top = Math.min(...ys)
+  const right = Math.max(...xs)
+  const bottom = Math.max(...ys)
+  const ratio = CROP.x / CROP.y
+  const tall = Math.max(bottom - top + CROP_MARGINS, CROP.y)
+  const width = Math.min(
+    Math.max(right - left + CROP_MARGINS, CROP.x, tall * ratio),
+    CHART_WIDTH,
+  )
+  const height = Math.min(width / ratio, CHART_HEIGHT)
+  const inside = (centre: number, size: number, room: number): number =>
+    Math.min(Math.max(centre - size * MIDDLE, 0), room - size)
+
+  return {
+    x: inside((left + right) * MIDDLE, width, CHART_WIDTH),
+    y: inside((top + bottom) * MIDDLE, height, CHART_HEIGHT),
+    width,
+    height,
+  }
+}

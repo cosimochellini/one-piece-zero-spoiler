@@ -9,8 +9,7 @@ import {
 } from '~/components/chartGeometry'
 import type { Translate } from '~/i18n/types'
 import { type Bookmark, modeOf } from '~/lib/progress/episode'
-import { thresholdIn } from '~/lib/progress/spoiler'
-import type { ChartPoint } from '~/lib/view/chart'
+import { type ChartPoint, sailedBy } from '~/lib/view/chart'
 import type { CoveredRecord, PortView, ShipView } from '~/lib/view/records'
 
 /** What the chart is drawn from: the places page's own payload. */
@@ -109,12 +108,7 @@ export function modelOf(props: SeaChartProps, t: Translate): ChartModel {
 function reachedOf({ bookmark, open, ships }: SeaChartProps): Reached[] {
   const mode = modeOf(bookmark)
 
-  return open.map((port) => {
-    const ship = ships.findLastIndex(
-      (candidate) => thresholdIn(candidate, mode) <= thresholdIn(port, mode),
-    )
-    return { port, ship: ship === -1 ? null : ship }
-  })
+  return open.map((port) => ({ port, ship: sailedBy(port, ships, mode) }))
 }
 
 /**

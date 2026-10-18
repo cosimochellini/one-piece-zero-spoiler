@@ -1,4 +1,5 @@
 import * as stylex from '@stylexjs/stylex'
+import { Link } from '@tanstack/react-router'
 import { type KeyboardEvent, type ReactElement, useRef, useState } from 'react'
 
 import {
@@ -11,7 +12,7 @@ import {
 import { tintOf } from '~/components/drawing'
 import { styles } from '~/components/SeaChart.styles'
 import { type ChartModel, pointOf } from '~/components/seaChartModel'
-import { useT } from '~/i18n/LocaleContext'
+import { useLocale } from '~/i18n/LocaleContext'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
 import type { TintId } from '~/lib/view/records'
 
@@ -62,7 +63,7 @@ function useRoving(
 }
 
 /**
- * The stops, in route order: a link to the entry for an open one, a button
+ * The stops, in route order: a link to its page for an open one, a button
  * that says its number and episode for one under fog. One tab stop for the
  * lot, on the reader's own stop; the arrow keys move between them.
  *
@@ -77,7 +78,7 @@ export function SeaChartStops({
   model: ChartModel
   orientation: Orientation
 }): ReactElement {
-  const t = useT()
+  const { locale, t } = useLocale()
   const threshold = useThreshold()
   const { covered, here, open, tail, total } = model
   const target = useRoving(total, Math.max(open.length - 1, 0))
@@ -95,16 +96,17 @@ export function SeaChartStops({
             key={port.id}
             {...stylex.props(stopAt(pointOf(port), orientation, port === here))}
           >
-            <a
+            <Link
               aria-current={port === here ? 'location' : undefined}
-              href={`#${port.id}`}
+              params={{ locale, id: port.id }}
+              to="/$locale/places/$id"
               {...target(index, `${stage(index)}. ${port.name}`)}
             >
               <OpenDot
                 here={port === here}
                 tint={port.visual.tint}
               />
-            </a>
+            </Link>
           </li>
         )
       })}

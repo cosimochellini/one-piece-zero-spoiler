@@ -20,6 +20,7 @@ import { Route as LocaleCharactersIdRouteImport } from './routes/$locale/charact
 import { Route as LocaleFruitsIndexRouteImport } from './routes/$locale/fruits/index'
 import { Route as LocaleFruitsIdRouteImport } from './routes/$locale/fruits/$id'
 import { Route as LocalePlacesIndexRouteImport } from './routes/$locale/places/index'
+import { Route as LocalePlacesIdRouteImport } from './routes/$locale/places/$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -76,6 +77,11 @@ const LocalePlacesIndexRoute = LocalePlacesIndexRouteImport.update({
   path: '/places/',
   getParentRoute: () => LocaleRoute,
 } as any)
+const LocalePlacesIdRoute = LocalePlacesIdRouteImport.update({
+  id: '/places/$id',
+  path: '/places/$id',
+  getParentRoute: () => LocaleRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -86,6 +92,7 @@ export interface FileRoutesByFullPath {
   '/$locale/': typeof LocaleIndexRoute
   '/$locale/characters/$id': typeof LocaleCharactersIdRoute
   '/$locale/fruits/$id': typeof LocaleFruitsIdRoute
+  '/$locale/places/$id': typeof LocalePlacesIdRoute
   '/$locale/characters/': typeof LocaleCharactersIndexRoute
   '/$locale/fruits/': typeof LocaleFruitsIndexRoute
   '/$locale/places/': typeof LocalePlacesIndexRoute
@@ -98,6 +105,7 @@ export interface FileRoutesByTo {
   '/$locale': typeof LocaleIndexRoute
   '/$locale/characters/$id': typeof LocaleCharactersIdRoute
   '/$locale/fruits/$id': typeof LocaleFruitsIdRoute
+  '/$locale/places/$id': typeof LocalePlacesIdRoute
   '/$locale/characters': typeof LocaleCharactersIndexRoute
   '/$locale/fruits': typeof LocaleFruitsIndexRoute
   '/$locale/places': typeof LocalePlacesIndexRoute
@@ -112,6 +120,7 @@ export interface FileRoutesById {
   '/$locale/': typeof LocaleIndexRoute
   '/$locale/characters/$id': typeof LocaleCharactersIdRoute
   '/$locale/fruits/$id': typeof LocaleFruitsIdRoute
+  '/$locale/places/$id': typeof LocalePlacesIdRoute
   '/$locale/characters/': typeof LocaleCharactersIndexRoute
   '/$locale/fruits/': typeof LocaleFruitsIndexRoute
   '/$locale/places/': typeof LocalePlacesIndexRoute
@@ -127,6 +136,7 @@ export interface FileRouteTypes {
     | '/$locale/'
     | '/$locale/characters/$id'
     | '/$locale/fruits/$id'
+    | '/$locale/places/$id'
     | '/$locale/characters/'
     | '/$locale/fruits/'
     | '/$locale/places/'
@@ -139,6 +149,7 @@ export interface FileRouteTypes {
     | '/$locale'
     | '/$locale/characters/$id'
     | '/$locale/fruits/$id'
+    | '/$locale/places/$id'
     | '/$locale/characters'
     | '/$locale/fruits'
     | '/$locale/places'
@@ -152,6 +163,7 @@ export interface FileRouteTypes {
     | '/$locale/'
     | '/$locale/characters/$id'
     | '/$locale/fruits/$id'
+    | '/$locale/places/$id'
     | '/$locale/characters/'
     | '/$locale/fruits/'
     | '/$locale/places/'
@@ -243,6 +255,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocalePlacesIndexRouteImport
       parentRoute: typeof LocaleRoute
     }
+    '/$locale/places/$id': {
+      id: '/$locale/places/$id'
+      path: '/places/$id'
+      fullPath: '/$locale/places/$id'
+      preLoaderRoute: typeof LocalePlacesIdRouteImport
+      parentRoute: typeof LocaleRoute
+    }
   }
 }
 
@@ -251,6 +270,7 @@ interface LocaleRouteChildren {
   LocaleIndexRoute: typeof LocaleIndexRoute
   LocaleCharactersIdRoute: typeof LocaleCharactersIdRoute
   LocaleFruitsIdRoute: typeof LocaleFruitsIdRoute
+  LocalePlacesIdRoute: typeof LocalePlacesIdRoute
   LocaleCharactersIndexRoute: typeof LocaleCharactersIndexRoute
   LocaleFruitsIndexRoute: typeof LocaleFruitsIndexRoute
   LocalePlacesIndexRoute: typeof LocalePlacesIndexRoute
@@ -261,6 +281,7 @@ const LocaleRouteChildren: LocaleRouteChildren = {
   LocaleIndexRoute: LocaleIndexRoute,
   LocaleCharactersIdRoute: LocaleCharactersIdRoute,
   LocaleFruitsIdRoute: LocaleFruitsIdRoute,
+  LocalePlacesIdRoute: LocalePlacesIdRoute,
   LocaleCharactersIndexRoute: LocaleCharactersIndexRoute,
   LocaleFruitsIndexRoute: LocaleFruitsIndexRoute,
   LocalePlacesIndexRoute: LocalePlacesIndexRoute,

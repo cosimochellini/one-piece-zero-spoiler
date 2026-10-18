@@ -13,7 +13,7 @@ import {
 
 /**
  * The catalogue's declarations, beside the component rather than inside it
- * for length, as `PortLog.styles` is.
+ * for length, as `PortEntry.styles` is.
  */
 export const styles = stylex.create({
   groups: { gap: space.xs, display: 'grid' },

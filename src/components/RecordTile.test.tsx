@@ -22,7 +22,7 @@ describe('RecordTile', () => {
     expect(screen.getByText('Episode 20')).toBeVisible()
   })
 
-  it('links an open place to its entry in the log', () => {
+  it('links an open place to its own page', () => {
     renderWithProviders(
       <RecordTile
         peek={peekPending()}
@@ -34,11 +34,11 @@ describe('RecordTile', () => {
 
     expect(screen.getByRole('link', { name: 'Baratie' })).toHaveAttribute(
       'href',
-      '/en/places#baratie',
+      '/en/places/baratie',
     )
   })
 
-  it('points a ship at its entry in the log', () => {
+  it('points a ship at her entry on the places page', () => {
     renderWithProviders(
       <RecordTile
         peek={peekPending()}

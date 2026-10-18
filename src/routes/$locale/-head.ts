@@ -123,7 +123,7 @@ export interface RecordPage {
   locale: Locale
   pathname: string
   /** The index above it, which is the path and the trail's one crumb. */
-  section: 'characters' | 'fruits'
+  section: 'characters' | 'fruits' | 'places'
 }
 
 /**

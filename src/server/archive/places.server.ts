@@ -36,22 +36,30 @@ export function placesPage(
   const { covered, open, total } = r.split(places, portOf)
 
   return {
-    // Only the ships the reader has reached: a covered second ship would
-    // tell a reader at the start that the first one does not last.
-    ships: r.order(ships).flatMap((entity) => {
+    ships: reachedShips(r).flatMap((entity) => {
       const dossier = shipDossierOf(entity)
-      return dossier !== undefined && r.sees(entity) ?
-          [shipOf(entity, dossier, r)]
-        : []
+      return dossier === undefined ? [] : [shipOf(entity, dossier, r)]
     }),
     filed: total,
-    // The drawings are most of the log's bytes, and only the first ports are
-    // near the screen when it arrives: the rest come by id.
+    // The drawings are most of the ports' bytes, and only the first few ship
+    // with them. The page draws none of them since the stacked log left it
+    // (#673); the index (#675) decides what it needs and reshapes this.
     open: open.map((port, index) =>
       index < INLINE_PORTS ? port : deferredPort(port),
     ),
     covered,
   }
+}
+
+/**
+ * The ships the reader has reached, in their order. Only those: a covered
+ * second ship would tell a reader at the start that the first one does not
+ * last.
+ */
+export function reachedShips(r: Reader): Entity[] {
+  return r
+    .order(ships)
+    .filter((entity) => shipDossierOf(entity) !== undefined && r.sees(entity))
 }
 
 /**

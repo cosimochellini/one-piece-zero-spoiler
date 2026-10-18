@@ -81,7 +81,7 @@ describe('ShipLog', () => {
     expect(screen.queryByText('Fate')).not.toBeInTheDocument()
   })
 
-  it('lists the places she has reached, each linked to its entry', () => {
+  it('lists the places she has reached, each linked to its page', () => {
     renderWithProviders(
       <ShipLog
         peekRecord={peekPending()}
@@ -93,7 +93,7 @@ describe('ShipLog', () => {
     expect(screen.getByText('Places she reaches')).toBeInTheDocument()
     expect(
       screen.getByRole('link', { name: 'Florian Triangle' }),
-    ).toHaveAttribute('href', '/en/places#florian-triangle')
+    ).toHaveAttribute('href', '/en/places/florian-triangle')
     expect(screen.queryByText('Spoiler')).not.toBeInTheDocument()
   })
 
