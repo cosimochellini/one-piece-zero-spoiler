@@ -2,7 +2,7 @@ import { characters } from '~/data/characters'
 import { entities } from '~/data/entities'
 import { FILLER } from '~/data/filler'
 import { fruits } from '~/data/fruits'
-import { places } from '~/data/places'
+import { places, ships } from '~/data/places'
 import { sagas } from '~/data/sagas'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
@@ -32,6 +32,7 @@ import {
   peekFruit,
   peekPort,
   peekRecord,
+  peekShip,
 } from './peek.server'
 import { placePage } from './placePage.server'
 import { placesPage } from './places.server'
@@ -56,7 +57,8 @@ export interface Payload {
 
 const characterIds = (): string[] => characters.map(({ id }) => id)
 const fruitIds = (): string[] => fruits.map(({ id }) => id)
-const placeIds = (): string[] => places.map(({ id }) => id)
+// A ship's page is served from a place's address.
+const placeIds = (): string[] => [...places, ...ships].map(({ id }) => id)
 const handles = (): string[] => entities.map(({ id }) => handleOf(id))
 
 export const PAYLOADS: Payload[] = [
@@ -141,6 +143,11 @@ export const PAYLOADS: Payload[] = [
     name: 'liftPort',
     keys: handles,
     run: (b, locale, handle) => peekPort(handle, locale, b) ?? null,
+  },
+  {
+    name: 'liftShip',
+    keys: handles,
+    run: (b, locale, handle) => peekShip(handle, locale, b) ?? null,
   },
 ]
 

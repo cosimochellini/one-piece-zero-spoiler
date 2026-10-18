@@ -1,30 +1,62 @@
 /**
- * The entry diptych of a place's page: the plate, and everything the fog
- * decides beside it. Laid out as a character's dossier is, in the same
- * sheet, because the two pages are one macrostructure.
+ * The entry diptych of a place's or a ship's page: the plate, and
+ * everything the fog decides beside it. Laid out as a character's dossier
+ * is, in the same sheet, because the pages are one macrostructure.
  *
  * A sibling of the route module rather than a shared component because it is
  * only ever this page's first band; the leading `-` keeps the file out of the
  * generated route tree.
  */
 import * as stylex from '@stylexjs/stylex'
-import type { ReactElement } from 'react'
+import type { ComponentType, ReactElement } from 'react'
 
 import { FiledHere } from '~/components/FiledHere'
-import { PortFacts } from '~/components/PortFacts'
+import { PortFacts, ShipFacts } from '~/components/PortFacts'
 import { OpenPortPlate, PortPlate } from '~/components/PortPlate'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { useLocale } from '~/i18n/LocaleContext'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
-import type { PlaceDetail } from '~/lib/view/places'
-import type { PortView, RecordView } from '~/lib/view/records'
+import type { PortView, RecordView, ShipView, Slot } from '~/lib/view/records'
 import { styles } from '~/routes/$locale/characters/-$id.styles'
 
-/** What the band is given: the page, and how to lift the fog on a record. */
-export interface EntryProps {
-  detail: PlaceDetail
-  peek: (handle: string) => Promise<PortView>
-  peekRecord: (handle: string) => Promise<RecordView>
+/** The words a place's entry and a ship's differ by. */
+const WORDS = {
+  place: {
+    kind: 'kind.place',
+    gate: 'places.firstSeen',
+    foggedName: 'places.foggedName',
+    foggedDescription: 'places.foggedDescription',
+  },
+  // "Episode 324" rather than "first seen": the Sunny is unveiled three
+  // episodes before her name, and her entry opens at the name.
+  ship: {
+    kind: 'kind.ship',
+    gate: 'chart.opensAt',
+    foggedName: 'ship.foggedName',
+    foggedDescription: 'ship.foggedDescription',
+  },
+} as const
+
+/** A place's or a ship's record, as the entry draws it. */
+export type Entry = RecordView & { summary: string }
+
+/** How to lift the fog on a record the entry names. */
+export type PeekRecord = (handle: string) => Promise<RecordView>
+
+/** What the entry's body is given once the record is open. */
+export interface BodyProps<T> {
+  peekRecord: PeekRecord
+  record: T
+}
+
+/** What the band is given: the record, how to lift its fog, and its body. */
+export interface EntryProps<T extends Entry> {
+  /** Its facts, its log entry and the records it names, once open. */
+  Body: ComponentType<BodyProps<T>>
+  kind: keyof typeof WORDS
+  peek: (handle: string) => Promise<T>
+  peekRecord: PeekRecord
+  slot: Slot<T>
 }
 
 /**
@@ -33,15 +65,13 @@ export interface EntryProps {
  * the words in its HTML: blurring either one would leave the answer in the
  * page source.
  */
-export function EntryDiptych({
-  detail,
-  peek,
-  peekRecord,
-}: EntryProps): ReactElement {
+export function EntryDiptych<T extends Entry>(
+  props: EntryProps<T>,
+): ReactElement {
   return (
     <section {...stylex.props(styles.diptych)}>
       <SpoilerVeil
-        peek={peek}
+        peek={props.peek}
         // A bare plate under fog: the drawing and its colour stay out of the
         // served HTML along with the name.
         placeholder={
@@ -49,22 +79,18 @@ export function EntryDiptych({
             <PortPlate />
           </div>
         }
-        slot={detail.slot}
+        slot={props.slot}
         strength="media"
       >
-        {(port) => {
+        {(record) => {
           return (
             <div {...stylex.props(styles.plate)}>
-              <OpenPortPlate port={port} />
+              <OpenPortPlate port={record} />
             </div>
           )
         }}
       </SpoilerVeil>
-      <EntryColumn
-        detail={detail}
-        peek={peek}
-        peekRecord={peekRecord}
-      />
+      <EntryColumn {...props} />
     </section>
   )
 }
@@ -74,18 +100,24 @@ export function EntryDiptych({
  * decides. The meta line sits outside the veil on purpose: "place, episode
  * 336" is the promise the page makes to a reader who has not got there yet.
  */
-function EntryColumn({ detail, peek, peekRecord }: EntryProps): ReactElement {
+function EntryColumn<T extends Entry>({
+  Body,
+  kind,
+  peek,
+  peekRecord,
+  slot,
+}: EntryProps<T>): ReactElement {
   const threshold = useThreshold()
   const { t } = useLocale()
-  const { slot } = detail
+  const words = WORDS[kind]
   const gate = slot.open ? slot.record : slot.covered
 
   return (
     <div {...stylex.props(styles.dossier)}>
       <p {...stylex.props(styles.meta)}>
-        <span {...stylex.props(styles.kind)}>{t('kind.place')}</span>
+        <span {...stylex.props(styles.kind)}>{t(words.kind)}</span>
         <span {...stylex.props(styles.episode)}>
-          {threshold('places.firstSeen', gate)}
+          {threshold(words.gate, gate)}
         </span>
       </p>
 
@@ -93,34 +125,70 @@ function EntryColumn({ detail, peek, peekRecord }: EntryProps): ReactElement {
         peek={peek}
         placeholder={
           <div {...stylex.props(styles.words)}>
-            <h1 {...stylex.props(styles.name)}>{t('places.foggedName')}</h1>
+            <h1 {...stylex.props(styles.name)}>{t(words.foggedName)}</h1>
             <p {...stylex.props(styles.summary)}>
-              {threshold('places.foggedDescription', gate)}
+              {threshold(words.foggedDescription, gate)}
             </p>
           </div>
         }
-        slot={detail.slot}
+        slot={slot}
       >
-        {(port) => {
+        {(record) => {
           return (
             <div {...stylex.props(styles.words)}>
-              <h1 {...stylex.props(styles.name)}>{port.name}</h1>
-              <p {...stylex.props(styles.summary)}>{port.summary}</p>
-              {port.dossier === null ? null : (
-                <>
-                  <PortFacts dossier={port.dossier} />
-                  <p {...stylex.props(styles.entry)}>{port.dossier.log}</p>
-                  <FiledHere
-                    filed={port.dossier.filedHere}
-                    peekRecord={peekRecord}
-                    title={t('places.filedHere')}
-                  />
-                </>
-              )}
+              <h1 {...stylex.props(styles.name)}>{record.name}</h1>
+              <p {...stylex.props(styles.summary)}>{record.summary}</p>
+              <Body
+                peekRecord={peekRecord}
+                record={record}
+              />
             </div>
           )
         }}
       </SpoilerVeil>
     </div>
+  )
+}
+
+/** A port's facts, its log entry and the records found there. */
+export function PortBody({
+  peekRecord,
+  record: port,
+}: BodyProps<PortView>): null | ReactElement {
+  const { t } = useLocale()
+
+  return port.dossier === null ?
+      null
+    : <>
+        <PortFacts dossier={port.dossier} />
+        <p {...stylex.props(styles.entry)}>{port.dossier.log}</p>
+        <FiledHere
+          filed={port.dossier.filedHere}
+          peekRecord={peekRecord}
+          title={t('places.filedHere')}
+        />
+      </>
+}
+
+/**
+ * A ship's facts, her log entry and the places she reaches. Only the places
+ * the reader has reached are sent, so each is open and none is counted.
+ */
+export function ShipBody({
+  peekRecord,
+  record: ship,
+}: BodyProps<ShipView>): ReactElement {
+  const { t } = useLocale()
+
+  return (
+    <>
+      <ShipFacts entry={ship.dossier} />
+      <p {...stylex.props(styles.entry)}>{ship.dossier.log}</p>
+      <FiledHere
+        filed={ship.dossier.ports.map((record) => ({ open: true, record }))}
+        peekRecord={peekRecord}
+        title={t('ships.ports')}
+      />
+    </>
   )
 }

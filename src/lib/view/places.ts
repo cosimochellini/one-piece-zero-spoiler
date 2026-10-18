@@ -105,3 +105,14 @@ export interface PlaceDetail {
   slot: Slot<PortView>
   total: number
 }
+
+/**
+ * A ship's own page: her entry and her drawings. No map and no neighbours:
+ * a ship is not a stop, and the ship after her, under fog, would tell a
+ * reader at the start that she does not last.
+ */
+export interface ShipDetail {
+  /** As a place's: every drawing reached, oldest first; empty under fog. */
+  drawings: PlaceDrawing[]
+  slot: Slot<ShipView>
+}

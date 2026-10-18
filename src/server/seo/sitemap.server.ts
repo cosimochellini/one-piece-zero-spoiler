@@ -1,6 +1,6 @@
 import { characters } from '~/data/characters'
 import { fruits } from '~/data/fruits'
-import { places } from '~/data/places'
+import { places, ships } from '~/data/places'
 import { LOCALES } from '~/i18n/locales'
 import { localeAlternates } from '~/lib/seo/paths'
 import { absoluteUrl } from '~/lib/seo/site'
@@ -39,7 +39,7 @@ function suffixes(): string[] {
     ...SECTIONS,
     ...characters.map((entity) => `/characters/${entity.id}`),
     ...fruits.map((entity) => `/fruits/${entity.id}`),
-    ...places.map((entity) => `/places/${entity.id}`),
+    ...[...places, ...ships].map((entity) => `/places/${entity.id}`),
   ]
 }
 

@@ -273,6 +273,17 @@ export const enDictionary = {
   'place.notFoundBody':
     'There is no place at this address. The places page lists all of them.',
 
+  'ship.foggedName': 'A ship under fog',
+  'ship.foggedTitle': 'A ship under fog | Zero Spoiler',
+  'ship.foggedDescription.episode':
+    'A One Piece ship, under fog until episode {threshold}. Set your bookmark to read about it.',
+  'ship.foggedDescription.season':
+    'A One Piece ship, under fog until {threshold}. Set your bookmark to read about it.',
+  'ship.foggedDescription.chapter':
+    'A One Piece ship, under fog until chapter {threshold}. Set your bookmark to read about it.',
+  'ship.drawingsLede':
+    'Every drawing of this ship up to your bookmark, oldest first.',
+
   'filler.title': 'Filler episodes',
   'filler.count':
     '{episodes} episodes that are filler in whole or in part, and {unnumbered} films and specials. Each one opens at the episode where it airs.',

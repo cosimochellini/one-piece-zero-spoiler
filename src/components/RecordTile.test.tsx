@@ -38,7 +38,7 @@ describe('RecordTile', () => {
     )
   })
 
-  it('points a ship at her entry on the places page', () => {
+  it('links a ship to her own page', () => {
     renderWithProviders(
       <RecordTile
         peek={peekPending()}
@@ -50,7 +50,7 @@ describe('RecordTile', () => {
 
     expect(screen.getByRole('link', { name: 'Going Merry' })).toHaveAttribute(
       'href',
-      '/en/places#going-merry',
+      '/en/places/going-merry',
     )
   })
 

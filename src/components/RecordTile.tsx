@@ -102,8 +102,8 @@ function Plate({ record }: { record: RecordView }): ReactElement {
 /**
  * The name, and where it leads. A character, a place, a ship and a devil
  * fruit each have a page to point at; an arc does not, so its name is plain
- * text rather than a link that would go nowhere. A ship's entry is in the
- * band at the foot of the places page, until she has a page of her own.
+ * text rather than a link that would go nowhere. A ship's page is served
+ * from a place's address.
  *
  * No tile is handed a fruit today: the two callers are a port's `filedHere`
  * and the two records beside one on the landing chart, and the chart draws no
@@ -128,24 +128,11 @@ function Name({ entry }: { entry: RecordView }): ReactElement {
     )
   }
 
-  if (entry.kind === 'place') {
+  if (entry.kind === 'place' || entry.kind === 'ship') {
     return (
       <Link
         params={{ locale, id: entry.id }}
         to="/$locale/places/$id"
-        {...stylex.props(styles.name, styles.link)}
-      >
-        {label}
-      </Link>
-    )
-  }
-
-  if (entry.kind === 'ship') {
-    return (
-      <Link
-        hash={entry.id}
-        params={{ locale }}
-        to="/$locale/places"
         {...stylex.props(styles.name, styles.link)}
       >
         {label}

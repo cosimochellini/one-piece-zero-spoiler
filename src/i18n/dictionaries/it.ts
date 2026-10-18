@@ -277,6 +277,17 @@ export const itDictionary: Dictionary = {
   'place.notFoundBody':
     'A questo indirizzo non c’è nessun luogo. Li trovi tutti nella pagina Luoghi.',
 
+  'ship.foggedName': 'Una nave nella nebbia',
+  'ship.foggedTitle': 'Una nave nella nebbia | Zero Spoiler',
+  'ship.foggedDescription.episode':
+    'Una nave di One Piece, nella nebbia fino all’episodio {threshold}. Imposta il segnalibro per leggerne la voce.',
+  'ship.foggedDescription.season':
+    'Una nave di One Piece, nella nebbia fino a {threshold}. Imposta il segnalibro per leggerne la voce.',
+  'ship.foggedDescription.chapter':
+    'Una nave di One Piece, nella nebbia fino al capitolo {threshold}. Imposta il segnalibro per leggerne la voce.',
+  'ship.drawingsLede':
+    'Ogni disegno di questa nave fino al tuo segnalibro, dal più vecchio.',
+
   'filler.title': 'Episodi filler',
   'filler.count':
     '{episodes} episodi filler in tutto o in parte, e {unnumbered} tra film e speciali. Ognuno è visibile dall’episodio in cui va in onda.',

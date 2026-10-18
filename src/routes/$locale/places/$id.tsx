@@ -6,10 +6,13 @@
  *   (shared)
  * · structure: the plate | entry diptych · map words | the stretch of the
  *   chart · the drawings in order · the stops before and after
+ * · a ship (#676): the same diptych (facts, log, places she reaches) and the
+ *   drawings in order; no map and no neighbours, because a ship is not a
+ *   stop
  * · idea: "one stop of the chart, opened flat" */
 import * as stylex from '@stylexjs/stylex'
 import { createFileRoute, Link } from '@tanstack/react-router'
-import type { ReactElement } from 'react'
+import type { ReactElement, ReactNode } from 'react'
 
 import { ArchivePage } from '~/components/ArchivePage'
 import { useLocale } from '~/i18n/LocaleContext'
@@ -17,11 +20,11 @@ import { orNotFound, recordArgs } from '~/routes/$locale/-found'
 import { recordHead } from '~/routes/$locale/-head'
 import { usePeek } from '~/routes/$locale/-peek'
 import { recordStyles } from '~/routes/$locale/-record.styles'
-import { liftPort, liftRecord, loadPlace } from '~/server/api'
+import { liftPort, liftRecord, liftShip, loadPlace } from '~/server/api'
 import { settleStyles } from '~/styles/settle'
 
 import { DrawingsBand, MapBand, TurnBand } from './-$id.bands'
-import { EntryDiptych } from './-$id.entry'
+import { EntryDiptych, PortBody, ShipBody } from './-$id.entry'
 
 // The bands in DOM order. Named rather than counted at the call, so a band
 // inserted in the middle is one edit here and not three down the page.
@@ -40,14 +43,21 @@ export const Route = createFileRoute('/$locale/places/$id')({
 
 /**
  * A place's page (Hallmark macrostructure 15, Split Studio, as a
- * character's).
+ * character's), and a ship's, which is served from the same address.
  *
- * Four bands down the page. The first is the plate beside the entry: kind
- * and episode in mono, the name as the only display line, the sentence, the
- * facts, the log entry and the records found there. The second is the place
- * on the map: its stop number beside the stretch of the sea chart around
- * it. The third is every drawing the place has had up to the bookmark, when
- * there is more than one. The fourth is the stops before and after it.
+ * Four bands down a place's page. The first is the plate beside the entry:
+ * kind and episode in mono, the name as the only display line, the
+ * sentence, the facts, the log entry and the records found there. The
+ * second is the place on the map: its stop number beside the stretch of the
+ * sea chart around it. The third is every drawing the place has had up to
+ * the bookmark, when there is more than one. The fourth is the stops before
+ * and after it.
+ *
+ * A ship's page has the first and the third: her plate beside her entry
+ * (who designed her, where the crew receives her, her fate and the places
+ * she reaches, each as far as the bookmark), then her drawings. No map and
+ * no neighbours: a ship is not a stop, and the ship after her, under fog,
+ * would tell a reader at the start that she does not last.
  *
  * Under fog the plate and the entry are covered together, the title is
  * generic, and nothing places or draws it: the stop number and the episode
@@ -55,9 +65,11 @@ export const Route = createFileRoute('/$locale/places/$id')({
  * spoiler.
  */
 function PlacePage(): ReactElement {
-  const { detail } = Route.useLoaderData()
+  const page = Route.useLoaderData()
   const peekPort = usePeek(liftPort)
+  const peekShip = usePeek(liftShip)
   const peekRecord = usePeek(liftRecord)
+  const place = 'detail' in page ? page.detail : null
 
   return (
     <main
@@ -74,29 +86,59 @@ function PlacePage(): ReactElement {
         <BackLink />
       </p>
 
-      <div {...stylex.props(settleStyles.band, settleStyles.at(BAND.entry))}>
-        <EntryDiptych
-          detail={detail}
-          peek={peekPort}
-          peekRecord={peekRecord}
-        />
-      </div>
+      <Band at={BAND.entry}>
+        {'ship' in page ?
+          <EntryDiptych
+            Body={ShipBody}
+            kind="ship"
+            peek={peekShip}
+            peekRecord={peekRecord}
+            slot={page.ship.slot}
+          />
+        : <EntryDiptych
+            Body={PortBody}
+            kind="place"
+            peek={peekPort}
+            peekRecord={peekRecord}
+            slot={page.detail.slot}
+          />
+        }
+      </Band>
 
-      <div {...stylex.props(settleStyles.band, settleStyles.at(BAND.map))}>
-        <MapBand detail={detail} />
-      </div>
+      {place === null ? null : (
+        <Band at={BAND.map}>
+          <MapBand detail={place} />
+        </Band>
+      )}
 
-      <div {...stylex.props(settleStyles.band, settleStyles.at(BAND.drawings))}>
-        <DrawingsBand detail={detail} />
-      </div>
+      <Band at={BAND.drawings}>
+        <DrawingsBand detail={'ship' in page ? page.ship : page.detail} />
+      </Band>
 
-      <div {...stylex.props(settleStyles.band, settleStyles.at(BAND.turn))}>
-        <TurnBand
-          detail={detail}
-          peek={peekRecord}
-        />
-      </div>
+      {place === null ? null : (
+        <Band at={BAND.turn}>
+          <TurnBand
+            detail={place}
+            peek={peekRecord}
+          />
+        </Band>
+      )}
     </main>
+  )
+}
+
+/** One band, settling into place in its turn. */
+function Band({
+  at,
+  children,
+}: {
+  at: number
+  children: ReactNode
+}): ReactElement {
+  return (
+    <div {...stylex.props(settleStyles.band, settleStyles.at(at))}>
+      {children}
+    </div>
   )
 }
 

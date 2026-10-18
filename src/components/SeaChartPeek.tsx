@@ -252,16 +252,14 @@ export function FogPeek({
 }
 
 /**
- * The peek of a ship: what her entry in the band at the foot of the page
- * shows at this bookmark, so her drawing and her fate follow her own
- * timeline. Her entry is that band until ships have pages of their own
- * (#676).
+ * The peek of a ship: what her own page shows at this bookmark, so her
+ * drawing and her fate follow her own timeline.
  */
 export function ShipPeek({
   ship,
   ...frame
 }: PeekFrameProps & { ship: ShipView }): ReactElement {
-  const { locale, t } = useLocale()
+  const { t } = useLocale()
   const threshold = useThreshold()
   const { fate } = ship.dossier
   const { onDismiss } = frame.peek
@@ -275,16 +273,10 @@ export function ShipPeek({
       <Card
         episode={threshold('chart.opensAt', ship)}
         link={
-          <Link
-            hash={ship.id}
-            onClick={onDismiss}
-            params={{ locale }}
-            search
-            to="/$locale/places"
-            {...stylex.props(styles.link)}
-          >
-            {t('chart.peekOpen')}
-          </Link>
+          <PlaceLink
+            id={ship.id}
+            onDismiss={onDismiss}
+          />
         }
         meta={fate === undefined ? undefined : `${t('ships.fate')}: ${fate}`}
         name={ship.name}
