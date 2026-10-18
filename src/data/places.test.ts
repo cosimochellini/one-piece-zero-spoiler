@@ -104,9 +104,13 @@ describe('the ship’s log', () => {
       const episodes = visits.map((visit) => visit.episode)
       const chapters = visits.map((visit) => visit.chapter)
 
-      const distinct = new Set(episodes)
+      const distinctEpisodes = new Set(episodes)
+      const distinctChapters = new Set(chapters)
 
-      expect(distinct.size, place.id).toBe(visits.length)
+      // Distinct in both units: the page keys and labels each visit by its
+      // episode or its chapter, whichever the reader counts in.
+      expect(distinctEpisodes.size, place.id).toBe(visits.length)
+      expect(distinctChapters.size, place.id).toBe(visits.length)
       expect(episodes, place.id).toStrictEqual(episodes.toSorted(byNumber()))
       expect(chapters, place.id).toStrictEqual(chapters.toSorted(byNumber()))
 

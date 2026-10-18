@@ -50,9 +50,9 @@ export const Route = createFileRoute('/$locale/places/$id')({
  * kind and episode in mono, the name as the only display line, the
  * sentence, the facts, the log entry and the records found there. The
  * second is the place on the map: its stop number and the later visits the
- * reader has reached, beside the stretch of the sea chart around it. The third is every drawing the place has had up to
- * the bookmark, when there is more than one. The fourth is the stops before
- * and after it.
+ * reader has reached, beside the stretch of the sea chart around it. The
+ * third is every drawing the place has had up to the bookmark, when there
+ * is more than one. The fourth is the stops before and after it.
  *
  * A ship's page has the first and the third: her plate beside her entry
  * (who designed her, where the crew receives her, her fate and the places
