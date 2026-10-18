@@ -44,6 +44,10 @@ export function SeaChart(props: SeaChartProps): ReactElement {
 
   return (
     <div {...stylex.props(styles.chart)}>
+      {/* With no bookmark the whole chart is fog: the way out comes first. */}
+      {props.bookmark === null ?
+        <EpisodeMark placement="fold" />
+      : null}
       <div {...stylex.props(styles.across)}>
         <Chart
           model={model}
@@ -59,9 +63,6 @@ export function SeaChart(props: SeaChartProps): ReactElement {
       {model.covered.length === 0 ? null : (
         <p {...stylex.props(styles.count)}>{model.fog}</p>
       )}
-      {props.bookmark === null ?
-        <EpisodeMark placement="fold" />
-      : null}
     </div>
   )
 }
