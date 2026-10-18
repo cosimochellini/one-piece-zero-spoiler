@@ -3,26 +3,27 @@ import userEvent from '@testing-library/user-event'
 import { describe, expect, it } from 'vitest'
 
 import type { Bookmark } from '~/lib/progress/episode'
-import type { CoveredRecord, PortView, ShipView } from '~/lib/view/records'
-import { at, coveredRecord, dossier, port, ship } from '~/test/fixtures'
+import type { StopView } from '~/lib/view/places'
+import type { CoveredRecord, ShipView } from '~/lib/view/records'
+import { at, coveredRecord, ship, stop } from '~/test/fixtures'
 import { ep, renderWithProviders } from '~/test/providers'
 
 import { SeaChart } from './SeaChart'
 
 const eastBlue = [
-  port({
+  stop({
     id: 'shells-town',
     name: 'Shells Town',
     ...at(2),
     chart: { x: 470, y: 140 },
   }),
-  port({
+  stop({
     id: 'syrup-village',
     name: 'Syrup Village',
     ...at(9),
     chart: { x: 290, y: 60 },
   }),
-  port({
+  stop({
     id: 'baratie',
     name: 'Baratie',
     ...at(20),
@@ -31,26 +32,26 @@ const eastBlue = [
 ]
 
 const grandLine = [
-  port({
+  stop({
     id: 'whisky-peak',
     name: 'Whisky Peak',
     ...at(64),
     chart: { x: 50, y: 255 },
-    dossier: dossier({ sea: 'grand-line' }),
+    sea: 'grand-line',
   }),
-  port({
+  stop({
     id: 'enies-lobby',
     name: 'Enies Lobby',
     ...at(264),
     chart: { x: 410, y: 255 },
-    dossier: dossier({ sea: 'grand-line' }),
+    sea: 'grand-line',
   }),
-  port({
+  stop({
     id: 'amazon-lily',
     name: 'Amazon Lily',
     ...at(410),
     chart: { x: 540, y: 205, detour: true },
-    dossier: dossier({ sea: 'calm-belt' }),
+    sea: 'calm-belt',
   }),
 ]
 
@@ -71,7 +72,7 @@ function draw({
 }: {
   bookmark: Bookmark
   covered?: CoveredRecord[]
-  open?: PortView[]
+  open?: StopView[]
   ships?: ShipView[]
 }): ReturnType<typeof renderWithProviders> {
   return renderWithProviders(
@@ -222,12 +223,12 @@ describe('SeaChart', () => {
   })
 
   it('leaves an earlier ship small at the end of her own stretch', () => {
-    const florian = port({
+    const florian = stop({
       id: 'florian-triangle',
       name: 'Florian Triangle',
       ...at(337),
       chart: { x: 446, y: 345 },
-      dossier: dossier({ sea: 'grand-line' }),
+      sea: 'grand-line',
     })
     const { container } = draw({
       bookmark: ep(340),

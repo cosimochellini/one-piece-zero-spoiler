@@ -17,7 +17,7 @@ import { ART_VIEWBOX } from '~/components/drawing'
 import { styles } from '~/components/SeaChart.styles'
 import { pointOf, type ShipMark } from '~/components/seaChartModel'
 import { useT } from '~/i18n/LocaleContext'
-import type { PortView } from '~/lib/view/records'
+import type { StopView } from '~/lib/view/places'
 
 /**
  * The things set on the chart over the drawing, each at a point of it. They
@@ -109,7 +109,7 @@ export function Here({
   stage,
 }: {
   orientation: Orientation
-  port: PortView
+  port: StopView
   stage: string
 }): ReactElement {
   return (

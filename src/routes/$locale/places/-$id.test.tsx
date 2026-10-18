@@ -6,7 +6,6 @@ import type { PlaceChartView, PlaceDetail } from '~/lib/view/places'
 import type { PortView, RecordView } from '~/lib/view/records'
 import {
   at,
-  coveredRecord,
   coveredSlot,
   dossier,
   openSlot,
@@ -19,7 +18,6 @@ import { ep, renderWithProviders, settle } from '~/test/providers'
 
 import { DrawingsBand, MapBand, TurnBand } from './-$id.bands'
 import { EntryDiptych } from './-$id.entry'
-import { PlaceLinks } from './-links'
 
 const sanji = openSlot(record({ id: 'sanji', name: 'Sanji', ...at(20) }))
 const metLater = coveredSlot<RecordView>({ ...at(24) })
@@ -205,34 +203,5 @@ describe('the stops either side', () => {
     expect(
       screen.getByText('Nothing yet. This is the last stop in story order.'),
     ).toBeVisible()
-  })
-})
-
-describe('the list under the chart', () => {
-  it('links every open place to its page and counts the rest', () => {
-    renderWithProviders(
-      <PlaceLinks
-        covered={[coveredRecord({ kind: 'place' })]}
-        open={[baratie]}
-      />,
-      { bookmark: ep(20) },
-    )
-
-    expect(screen.getByRole('link', { name: 'Baratie' })).toHaveAttribute(
-      'href',
-      '/en/places/baratie',
-    )
-    expect(screen.getByText('1 stop under fog')).toBeVisible()
-  })
-
-  it('is not there with nothing open', () => {
-    const { container } = renderWithProviders(
-      <PlaceLinks
-        covered={[coveredRecord({ kind: 'place' })]}
-        open={[]}
-      />,
-    )
-
-    expect(container).toBeEmptyDOMElement()
   })
 })

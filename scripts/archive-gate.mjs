@@ -98,9 +98,15 @@ const WORST_CHUNKS = 5
  * place, the drawings in a row, the stops either side), the short list of
  * links that replaced the stacked entries, and sixteen new keys in both
  * dictionaries. The stacked log it replaces left the bundle. Again the
+ * measured build plus ~1 KB, as the epic allows. Raised to 598 KB on
+ * 2026-10-18, when main stood at ~587.2 KB and the index under the chart
+ * (#675) added ~9.9 KB: the search, the layout switch and the sea, type
+ * and saga pickers in the address, the places by sea as rows or
+ * plates, the chart lighting what they keep, and eighteen new keys in both
+ * dictionaries. The short list of links it replaces left the bundle. The
  * measured build plus ~1 KB, as the epic allows.
  */
-export const MAX_CLIENT_BYTES = 588_100
+export const MAX_CLIENT_BYTES = 598_000
 
 /** Where the prose lives: every saga, the ship's log and the filler guide. */
 const PROSE_DIR = 'src/data/records'

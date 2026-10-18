@@ -10,15 +10,21 @@ import {
 import type { Translate } from '~/i18n/types'
 import { type Bookmark, modeOf } from '~/lib/progress/episode'
 import { type ChartPoint, sailedBy } from '~/lib/view/chart'
-import type { CoveredRecord, PortView, ShipView } from '~/lib/view/records'
+import type { StopView } from '~/lib/view/places'
+import type { CoveredRecord, ShipView } from '~/lib/view/records'
 
 /** What the chart is drawn from: the places page's own payload. */
 export interface SeaChartProps {
   bookmark: Bookmark
   /** The stops the reader has not reached: a number and an episode each. */
   covered: CoveredRecord[]
+  /**
+   * The ids of the open stops the index's picks leave on the page, the rest
+   * drawn faint, the stops under fog too; `null` while nothing is picked.
+   */
+  lit?: null | Set<string>
   /** The stops the reader has reached, in their order. */
-  open: PortView[]
+  open: StopView[]
   /** The ships the reader has reached, in their order. */
   ships: ShipView[]
 }
@@ -36,10 +42,12 @@ export interface ChartModel {
   /** The words under the stops under fog: how many are left. */
   fog: string
   /** The last open stop, where the reader is; `null` with none open. */
-  here: null | PortView
+  here: null | StopView
   legs: Leg[]
+  /** As the props have it: `null` while nothing is picked. */
+  lit: null | Set<string>
   marks: ShipMark[]
-  open: PortView[]
+  open: StopView[]
   regions: Region[]
   /** What a screen reader hears for the drawing. */
   summary: string
@@ -52,13 +60,13 @@ export interface ChartModel {
  * Where an open stop is drawn. Every place has a point; the origin stands in
  * for the `null` a record that is not a place would carry.
  */
-export function pointOf(port: PortView): ChartPoint {
+export function pointOf(port: StopView): ChartPoint {
   return port.chart ?? ORIGIN
 }
 
 /** An open stop, and which of the reached ships sailed to it. */
 interface Reached {
-  port: PortView
+  port: StopView
   ship: null | number
 }
 
@@ -88,9 +96,10 @@ export function modelOf(props: SeaChartProps, t: Translate): ChartModel {
     legs: legsOf(
       reached.map(({ port, ship }) => ({ at: pointOf(port), ship })),
     ),
+    lit: props.lit ?? null,
     marks: marksOf(props.ships, reached),
     open,
-    regions: [...regionsFor(open.flatMap((port) => port.dossier?.sea ?? []))],
+    regions: [...regionsFor(open.flatMap((port) => port.sea))],
     summary: [
       t('chart.title'),
       ...where,
