@@ -1645,7 +1645,9 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      // Gatz announces him as a warrior of Elbaph in ch 714, ep 644.
+      // Gatz calls him a warrior of Elbaph at 639 (chapter 710's pages) and in
+      // chapter 714, which 644 adapts. The pin is that true pair: 639 with
+      // 714 would hold chapters 712 and 713 below an episode they reach.
       origin: [
         {
           episode: 644,

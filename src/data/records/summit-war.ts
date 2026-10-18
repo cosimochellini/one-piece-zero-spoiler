@@ -1687,12 +1687,12 @@ export const summitWar: Saga = {
       },
       status: [{ episode: 396, value: 'alive' }],
       affiliation: [{ episode: 396, value: CELESTIAL_DRAGONS }],
-      // Sabaody never says where the nobles live; Hancock's story ties them to
-      // Mary Geoise in ch 521, ep 415.
+      // Hatchan says the World Nobles live in Mary Geoise in ch 496, ep 390,
+      // before the record opens.
       origin: [
         {
-          episode: 415,
-          chapter: 521,
+          episode: 396,
+          chapter: 502,
           place: 'mary-geoise',
           value: MARY_GEOISE,
         },
@@ -2504,12 +2504,12 @@ export const summitWar: Saga = {
       },
       status: [{ episode: 394, value: 'alive' }],
       affiliation: [{ episode: 394, value: CELESTIAL_DRAGONS }],
-      // Sabaody never says where the nobles live; Hancock's story ties them to
-      // Mary Geoise in ch 521, ep 415.
+      // Hatchan says the World Nobles live in Mary Geoise in ch 496, ep 390,
+      // before the record opens.
       origin: [
         {
-          episode: 415,
-          chapter: 521,
+          episode: 394,
+          chapter: 501,
           place: 'mary-geoise',
           value: MARY_GEOISE,
         },
@@ -2523,12 +2523,12 @@ export const summitWar: Saga = {
       },
       status: [{ episode: 394, value: 'alive' }],
       affiliation: [{ episode: 394, value: CELESTIAL_DRAGONS }],
-      // Sabaody never says where the nobles live; Hancock's story ties them to
-      // Mary Geoise in ch 521, ep 415.
+      // Hatchan says the World Nobles live in Mary Geoise in ch 496, ep 390,
+      // before the record opens.
       origin: [
         {
-          episode: 415,
-          chapter: 521,
+          episode: 394,
+          chapter: 501,
           place: 'mary-geoise',
           value: MARY_GEOISE,
         },
