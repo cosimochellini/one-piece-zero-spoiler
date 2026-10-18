@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 
 import { CHART } from '~/data/chart'
 import { places, ships } from '~/data/places'
+import { reveal } from '~/data/reveal'
 import type { Bookmark } from '~/lib/progress/episode'
 
 import { BOOKMARKS } from './payloads.server'
@@ -248,4 +249,40 @@ describe('a ship’s own page', () => {
     expect(shipAt('thousand-sunny', ch(699))?.ports).not.toContain('dressrosa')
     expect(shipAt('thousand-sunny', ch(700))?.ports.at(-1)).toBe('dressrosa')
   })
+})
+
+/** The episodes of the visits Water Seven's page sends at a bookmark. */
+function waterSevenVisitsAt(bookmark: Bookmark): number[] {
+  return pageOf('water-seven', bookmark).detail.visits.map(
+    (visit) => visit.revealedAtEpisode,
+  )
+}
+
+describe('a place’s later visits', () => {
+  it('opens a visit at its own episode and chapter, and not before', () => {
+    // The crew is back in Water Seven in chapter 431, episode 313.
+    expect(waterSevenVisitsAt(ep(312))).toStrictEqual([])
+    expect(waterSevenVisitsAt(ep(313))).toStrictEqual([313])
+    expect(waterSevenVisitsAt(ch(430))).toStrictEqual([])
+    expect(waterSevenVisitsAt(ch(431))).toStrictEqual([313])
+  })
+
+  it.each(BOOKMARKS.map((bookmark) => [JSON.stringify(bookmark), bookmark]))(
+    'sends none under fog and none past the bookmark, at %s',
+    (_, bookmark: Bookmark) => {
+      const { sees } = reveal(bookmark)
+
+      for (const place of places) {
+        const { detail } = pageOf(place.id, bookmark)
+
+        expect(
+          detail.visits.every((visit) => sees(visit)),
+          place.id,
+        ).toBe(true)
+        expect(detail.slot.open || detail.visits.length === 0, place.id).toBe(
+          true,
+        )
+      }
+    },
+  )
 })

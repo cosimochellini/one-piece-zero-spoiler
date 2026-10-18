@@ -7,7 +7,7 @@ import { type Locale, LOCALES } from '~/i18n/locales'
 import { FIRST_EPISODE } from '~/lib/progress/episode'
 import { tokenize } from '~/lib/prose/markers'
 
-import type { Field } from './chapter-table'
+import { type Field, gateOf } from './chapter-table'
 import { TIMELINES } from './chapters'
 import { getCharacter } from './characters'
 import { datedOf } from './dated'
@@ -22,10 +22,10 @@ import type { Entity, LocalizedText, Story } from './types'
  * The one scan for a name said too early, over every text the archive
  * prints: the summaries, roles, logs, landmarks and builders frozen at a
  * record's threshold, and the affiliations with their faction labels,
- * origins, epithets, chronicles and ship fates dated after it. A text at
- * episode 1 that wrote "Kaido" or "Marineford" in passing would be a leak
- * the walker in `slices.test.ts` cannot see, because it only reads ids and
- * names.
+ * origins, epithets, chronicles, ship fates and place visits dated after
+ * it. A text at episode 1 that wrote "Kaido" or "Marineford" in passing
+ * would be a leak the walker in `slices.test.ts` cannot see, because it
+ * only reads ids and names.
  *
  * What a text may say is decided by the records themselves: `nameSaidAt`
  * opens a name before its record, `commonWord` takes a name out of the scan
@@ -141,6 +141,23 @@ function factionTexts(owner: Entity): Text[] {
   })
 }
 
+/** A place's later visits, each note reached at its visit's own gate. */
+function visitTexts(id: string): Text[] {
+  const owner = filed(id)
+
+  return (PLACE_DOSSIERS[id]?.visits ?? []).map((visit) => {
+    const gate = gateOf(visit, owner)
+
+    return {
+      chapter: gate.revealedAtChapter,
+      episode: gate.revealedAtEpisode,
+      label: `${id}.visit@${String(visit.episode)}`,
+      owner,
+      text: visit.value,
+    }
+  })
+}
+
 /**
  * Every frozen text one dossier prints, found by shape rather than by name: a
  * field that is a text in every locale is frozen at the threshold. A field
@@ -192,6 +209,7 @@ const TEXTS: Text[] = [
   }),
   ...TIMELINES.flatMap(({ field, owner }) => dated(owner, field)),
   ...Object.keys(CHARACTER_DOSSIERS).flatMap((id) => factionTexts(filed(id))),
+  ...Object.keys(PLACE_DOSSIERS).flatMap((id) => visitTexts(id)),
   ...FILLER.flatMap((entry) => fillerTexts(entry)),
 ]
 
@@ -352,6 +370,7 @@ describe('the texts', () => {
       'role',
       'summary',
       'title',
+      'visit',
     ])
   })
 

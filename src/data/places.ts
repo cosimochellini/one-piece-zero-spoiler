@@ -3,7 +3,7 @@ import type { PlaceForm, Sea } from '~/lib/view/records'
 import { entities } from './entities'
 import { orderByMode } from './order'
 import { SHIP_DOSSIERS, type ShipDossier } from './records/ships'
-import type { Entity, LocalizedText } from './types'
+import type { Dated, Entity, LocalizedText } from './types'
 
 /**
  * The ship's log: the place layer of the archive.
@@ -50,6 +50,24 @@ export interface PlaceDossier {
    * than the place stays under fog on the place's own page.
    */
   filedHere: string[]
+  /**
+   * The times the story comes back after the place's own arc: the crew, or
+   * one of them, on screen there again, or a scene there that moves the
+   * story on. Not a flashback, a cover story or a reaction to the news. Each
+   * at the episode and the chapter that show it, as checked against the
+   * wiki, oldest first, the note saying only what that episode shows. A
+   * visit opens at its own pair and the page sends only those the reader
+   * has reached, so a later one says nothing ahead of time.
+   */
+  visits?: Visit[]
+}
+
+/**
+ * One return to a place: a dated entry whose value is its note, with the
+ * chapter always given, because it is checked rather than derived.
+ */
+export interface Visit extends Dated<LocalizedText> {
+  chapter: number
 }
 
 export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
@@ -77,6 +95,17 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
       en: 'The port of departure. Here a boy spent a year asking to be taken aboard by the pirates who had made the tavern their home, and here he was lent the straw hat he still wears, on a promise to give it back once he has become a great pirate.',
     },
     filedHere: ['shanks', 'lord-of-the-coast'],
+    visits: [
+      // Garp at Makino's bar, ch 590 p. 2-7 (wiki:pairs ep 505 p. 2-19).
+      {
+        episode: 505,
+        chapter: 590,
+        value: {
+          it: 'Dopo la guerra, Garp torna al villaggio e lo mette sotto la sua protezione. Nel bar di Makino racconta a Dadan e al sindaco che Rufy è vivo.',
+          en: 'After the war, Garp comes back to the village and puts it under his protection. At Makino’s bar he tells Dadan and the mayor that Luffy is alive.',
+        },
+      },
+    ],
   },
   'orange-town': {
     sea: 'east-blue',
@@ -231,6 +260,17 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
       'van-augur',
       'doc-q',
     ],
+    visits: [
+      // Mock Town, ch 303 p. 4-9, adapted in ep 207 (pages 2-3, Cricket's two pages, are in ep 195 and left out).
+      {
+        episode: 207,
+        chapter: 303,
+        value: {
+          it: 'A Mock Town, Do Flamingo punisce Bellamy per aver perso contro Rufy.',
+          en: 'In Mock Town, Doflamingo punishes Bellamy for losing to Luffy.',
+        },
+      },
+    ],
   },
   'upper-yard': {
     sea: 'grand-line',
@@ -292,6 +332,17 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
       'franky',
       'tom',
       'thousand-sunny',
+    ],
+    visits: [
+      // First chapter of the Post-Enies Lobby arc, p. 2-19 in ep 313.
+      {
+        episode: 313,
+        chapter: 431,
+        value: {
+          it: 'Tornata da Enies Lobby, la ciurma si riposa nella sede della Galley-La mentre la città viene riparata. Garp sbarca per vedere Rufy.',
+          en: 'Back from Enies Lobby, the crew rests at Galley-La’s headquarters while the city is repaired. Garp comes ashore to see Luffy.',
+        },
+      },
     ],
   },
   'puffing-tom': {
@@ -400,6 +451,26 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
       'silvers-rayleigh',
       'borsalino',
     ],
+    visits: [
+      // Grove 44, ch 593 p. 12-15, in ep 512.
+      {
+        episode: 512,
+        chapter: 593,
+        value: {
+          it: 'I motociclisti di Duval cacciano una banda che vuole vendere la Sunny alla Marina, e Orso raggiunge il gruppo di Shakky.',
+          en: 'Duval’s riders drive off a gang that wants to sell the Sunny to the Marines, and Kuma walks up to Shakky’s group.',
+        },
+      },
+      // Two years on, the crew lands one by one, ch 598 p. 4 on, in ep 517.
+      {
+        episode: 517,
+        chapter: 598,
+        value: {
+          it: 'Due anni dopo, la ciurma torna sull’arcipelago alla spicciolata.',
+          en: 'Two years later, the crew comes back to the archipelago one by one.',
+        },
+      },
+    ],
   },
   'amazon-lily': {
     sea: 'calm-belt',
@@ -424,6 +495,26 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
       'boa-marigold',
       'nyon',
       'salome',
+    ],
+    visits: [
+      // Two weeks after the war, ch 582 p. 4-15, in ep 491.
+      {
+        episode: 491,
+        chapter: 582,
+        value: {
+          it: 'Due settimane dopo la guerra, Rufy si risveglia sull’isola, dove i Pirati Heart lo hanno portato insieme a Jinbe.',
+          en: 'Two weeks after the war, Luffy wakes up on the island, where the Heart Pirates have brought him with Jinbe.',
+        },
+      },
+      // Present-day frame on the island, ch 1059 p. 5, in ep 1087 (the raid is told as weeks earlier; Rayleigh arrives in ep 1088, so the note stops before him).
+      {
+        episode: 1087,
+        chapter: 1059,
+        value: {
+          it: 'L’isola è danneggiata: qualche settimana prima la Marina l’ha attaccata.',
+          en: 'The island is damaged: the Marines attacked it a few weeks earlier.',
+        },
+      },
     ],
   },
   'impel-down': {
@@ -474,6 +565,26 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
       'whitey-bay',
       'little-oars-jr',
     ],
+    visits: [
+      // The ruins the day after, ch 581 p. 14-17, in ep 490.
+      {
+        episode: 490,
+        chapter: 581,
+        value: {
+          it: 'Tra le rovine lasciate dalla guerra, Do Flamingo attacca Moria su ordine dall’alto.',
+          en: 'In the ruins left by the war, Doflamingo attacks Moria on orders from above.',
+        },
+      },
+      // The base being rebuilt, ch 594 p. 5-10, in ep 511.
+      {
+        episode: 511,
+        chapter: 594,
+        value: {
+          it: 'Mentre la base viene ricostruita, Smoker chiede il trasferimento e i Marine vengono a sapere che Rufy è tornato a suonare la campana sedici volte.',
+          en: 'As the base is rebuilt, Smoker asks for a transfer, and the Marines learn that Luffy came back to ring the bell sixteen times.',
+        },
+      },
+    ],
   },
   'fish-man-island': {
     sea: 'grand-line',
@@ -499,6 +610,17 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
       'minister-of-the-right',
       'otohime',
       'minister-of-the-left',
+    ],
+    visits: [
+      // Ryugu Palace, ch 956 p. 2-4, in ep 957.
+      {
+        episode: 957,
+        chapter: 956,
+        value: {
+          it: 'Dopo il Reverie, la famiglia reale torna a casa scortata da Garp.',
+          en: 'After the Reverie, the royal family comes home with Garp as its escort.',
+        },
+      },
     ],
   },
   'fish-man-district': {
@@ -664,6 +786,53 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
       en: 'The Holy Land, a city built on top of the Red Line, the wall that runs around the world; one of the two ways into the New World goes over it. The World Nobles live there, the Seven Warlords have been summoned there, and a fish-man once climbed up to it alone to set its slaves free. Now the kings of the world are setting out for the Reverie.',
     },
     filedHere: ['donquixote-mjosgard', 'sterry', 'im', 'gion', 'tokikake'],
+    visits: [
+      // Ch 1060 p. 13-15, in ep 1089.
+      {
+        episode: 1089,
+        chapter: 1060,
+        value: {
+          it: 'I Cinque Astri di Saggezza scoprono che Sabo chiama da Lulusia, e il regno viene distrutto.',
+          en: 'The Five Elders learn that Sabo is calling from Lulusia, and the kingdom is destroyed.',
+        },
+      },
+      // Ch 1089 p. 10-17, in ep 1123.
+      {
+        episode: 1123,
+        chapter: 1089,
+        value: {
+          it: 'I Cinque Astri di Saggezza trattano con York, che li chiama da Egghead.',
+          en: 'The Five Elders bargain with York, who calls them from Egghead.',
+        },
+      },
+      // Ch 1092 p. 2-7, in ep 1126.
+      {
+        episode: 1126,
+        chapter: 1092,
+        value: {
+          it: 'Orso arriva nella Terra Santa e la attacca, finché Sakazuki non lo ferisce e lui sparisce.',
+          en: 'Kuma reaches the Holy Land and attacks it, until Sakazuki wounds him and he vanishes.',
+        },
+      },
+      // Ch 1109 p. 4-5 and 13, in ep 1143.
+      {
+        episode: 1143,
+        chapter: 1109,
+        value: {
+          it: 'Gli altri quattro Astri parlano con Saturn della trasmissione di Vegapunk, poi vengono trascinati su Egghead.',
+          en: 'The other four Elders talk with Saturn about Vegapunk’s broadcast, then are pulled away to Egghead.',
+        },
+      },
+      // Ch 1125 p. 9-10, in ep 1155.
+      {
+        episode: 1155,
+        chapter: 1125,
+        value: {
+          it: 'Garling si presenta agli Astri come nuovo Dio Guerriero della Scienza e della Difesa.',
+          en: 'Garling joins the Elders as the new Warrior God of Science and Defense.',
+        },
+      },
+    ],
   },
   'kuri': {
     sea: 'new-world',
