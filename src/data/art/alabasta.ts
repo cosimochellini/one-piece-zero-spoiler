@@ -2397,9 +2397,10 @@ export const alabastaRedrawn: Redrawings = {
     },
   ],
   // The same flower held up in two huge cupped hands, each one a thousand
-  // hands melded together, sprouted out of the ground; the leaves are inside
-  // the cup and out of sight. Back from the two years, she grabs the Kraken
-  // with them on the way down to Fish-Man Island at 524 (ch. 605).
+  // hands melded together, sprouted out of the rock; the leaves are inside
+  // the cup and out of sight. Back from the two years, she sprouts them from
+  // a seamount to push the Sunny off it on the way down to Fish-Man Island
+  // at 524 (ch. 605).
   'nico-robin': [
     {
       episode: 524,
