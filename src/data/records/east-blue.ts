@@ -2208,7 +2208,6 @@ export const eastBlue: Saga = {
       ],
       // The ch. 75 caption that names him calls him an officer.
       affiliation: [{ episode: 36, chapter: 75, value: ARLONG_OFFICER }],
-      origin: [{ episode: 36, value: FISH_MAN_ISLAND }],
     },
     'chew': {
       role: { it: 'Membro dei Pirati di Arlong', en: 'Arlong Pirates crewman' },
@@ -2231,7 +2230,6 @@ export const eastBlue: Saga = {
         // caption in ch. 75 says so.
         { episode: 34, chapter: 75, value: ARLONG_OFFICER },
       ],
-      origin: [{ episode: 34, value: FISH_MAN_ISLAND }],
     },
     'nojiko': {
       role: { it: 'Sorella di Nami', en: 'Nami’s sister' },

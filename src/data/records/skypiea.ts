@@ -728,12 +728,6 @@ export const skypiea: Saga = {
           },
         },
       ],
-      origin: [
-        {
-          episode: 148,
-          value: { it: 'Jaya, Rotta Maggiore', en: 'Jaya, Grand Line' },
-        },
-      ],
     },
     'marshall-d-teach': {
       chronicle: skypieaChronicles['marshall-d-teach'],

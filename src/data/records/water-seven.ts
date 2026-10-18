@@ -966,7 +966,6 @@ export const waterSeven: Saga = {
           },
         },
       ],
-      origin: [{ episode: 230, value: WATER_SEVEN }],
     },
     'chimney': {
       role: {
@@ -987,7 +986,6 @@ export const waterSeven: Saga = {
           },
         },
       ],
-      origin: [{ episode: 230, value: WATER_SEVEN }],
     },
     'kaku': {
       role: DOCK_ONE,
@@ -1286,13 +1284,16 @@ export const waterSeven: Saga = {
           },
         },
       ],
+      // Water Seven is where he worked, not where he comes from. Episode 535
+      // adapts chapter 616, where Den, captioned as his younger brother,
+      // explains why the two look nothing alike ("on Fish-Man Island no one is
+      // surprised"), and thanks Franky for coming all that way to tell him.
       origin: [
         {
-          episode: 248,
-          value: {
-            it: 'Water Seven, Rotta Maggiore',
-            en: 'Water Seven, Grand Line',
-          },
+          episode: 535,
+          chapter: 616,
+          place: 'fish-man-island',
+          value: { it: 'Isola degli Uomini-Pesce', en: 'Fish-Man Island' },
         },
       ],
     },

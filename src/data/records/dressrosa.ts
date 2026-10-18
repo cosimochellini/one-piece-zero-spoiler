@@ -61,7 +61,8 @@ export const dressrosa: Saga = {
       kind: 'character',
       revealedAtEpisode: 541,
       revealedAtChapter: 626,
-      // Rounded up to 626, the chapter that files Fisher Tiger, whom the text names.
+      // Rounded up to 626, where Fisher Tiger, whom the text names, was filed.
+      // He opens at 620 since #703; this chapter was not re-checked.
       name: { it: 'Koala', en: 'Koala' },
       summary: {
         it: 'Una bambina fuggita da Mary Geoise quando Fisher Tiger ha liberato gli schiavi, che i Pirati del Sole prendono a bordo per riportarla a casa.',
@@ -250,8 +251,8 @@ export const dressrosa: Saga = {
     {
       id: 'riku-doldo-iii',
       kind: 'character',
-      revealedAtEpisode: 662,
-      revealedAtChapter: 730,
+      revealedAtEpisode: 659,
+      revealedAtChapter: 727,
       name: { it: 'Riku Dold III', en: 'Riku Doldo III' },
       summary: {
         it: 'Il vecchio re di Dressrosa, cacciato dal trono dieci anni fa, che ora gira per il colosseo con la barba lunga e un altro nome.',
@@ -409,8 +410,8 @@ export const dressrosa: Saga = {
       revealedAtChapter: 712,
       name: { it: 'Viola', en: 'Viola' },
       summary: {
-        it: 'Una ballerina con il ventaglio che lavora per il re di Dressrosa e vede quello che succede in ogni angolo dell’isola senza muoversi.',
-        en: 'A fan dancer in the service of the king of Dressrosa who sees what happens in every corner of the island without leaving the room.',
+        it: 'Una ballerina con il ventaglio che lavora per il re di Dressrosa e con gli occhi vede attraverso qualunque cosa.',
+        en: 'A fan dancer in the service of the king of Dressrosa whose eyes see through anything.',
       },
       visual: { art: 'viola', tint: 'violet' },
     },
@@ -546,8 +547,8 @@ export const dressrosa: Saga = {
     {
       id: 'leo',
       kind: 'character',
-      revealedAtEpisode: 640,
-      revealedAtChapter: 716,
+      revealedAtEpisode: 641,
+      revealedAtChapter: 711,
       name: { it: 'Leo', en: 'Leo' },
       summary: {
         it: 'Una voce nascosta nel bosco di Green Bit, che chiede ai marine se sono buoni o cattivi e pretende le loro armi. Quando rifiutano, piccoli esseri troppo veloci per essere visti li spogliano di fucili, mantelli e cappelli.',
@@ -574,8 +575,8 @@ export const dressrosa: Saga = {
     {
       id: 'mansherry',
       kind: 'character',
-      revealedAtEpisode: 675,
-      revealedAtChapter: 746,
+      revealedAtEpisode: 693,
+      revealedAtChapter: 755,
       name: { it: 'Mansherry', en: 'Mansherry' },
       summary: {
         it: 'La principessa del Regno di Tontatta, che Leo chiama egoista e irascibile, e che i Tontatta partono per liberare dalla fabbrica insieme ai loro compagni.',
@@ -1320,15 +1321,19 @@ export const dressrosa: Saga = {
         it: 'Regnava su un’isola tranquilla finché una notte il suo stesso esercito ha attaccato la sua gente e lui è stato costretto a lasciare il trono. Da allora in città nessuno pronuncia il suo nome senza sputare. Si iscrive al torneo del colosseo come un gladiatore qualunque, con la barba lunga e il nome di Ricky, e sugli spalti non lo riconosce nessuno.',
         en: 'He ruled a quiet island until the night his own army turned on his own people and he was made to give up the throne. Since then nobody in the city says his name without spitting. He enters the colosseum tournament like any other gladiator, long-bearded and calling himself Ricky, and nobody in the stands knows him.',
       },
+      // He takes his helmet off in the scrap heap under the colosseum in
+      // chapter 726, and episode 659 adapts chapter 727, the night his army
+      // turned on his people. Every entry below opens at that pair.
       status: [
-        { episode: 662, value: 'captured' },
+        { episode: 659, chapter: 727, value: 'captured' },
         // Episode 679 adapts chapter 744, where Kyros takes the chains off him
         // in the palace.
         { episode: 679, chapter: 744, value: 'alive' },
       ],
       affiliation: [
         {
-          episode: 662,
+          episode: 659,
+          chapter: 727,
           value: {
             it: 'Ex re di Dressrosa, deposto',
             en: 'Former king of Dressrosa, deposed',
@@ -1343,9 +1348,11 @@ export const dressrosa: Saga = {
         },
       ],
       origin: [
-        { episode: 662, chapter: 730, place: 'dressrosa', value: DRESSROSA },
+        { episode: 659, chapter: 727, place: 'dressrosa', value: DRESSROSA },
       ],
-      epithet: [{ episode: 662, value: { it: 'Ricky', en: 'Ricky' } }],
+      epithet: [
+        { episode: 659, chapter: 727, value: { it: 'Ricky', en: 'Ricky' } },
+      ],
     },
     'trebol': {
       role: DONQUIXOTE_MEMBER_ROLE,
@@ -1737,18 +1744,12 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      origin: [
-        {
-          episode: 636,
-          value: { it: 'Isola degli Uomini-Pesce', en: 'Fish-Man Island' },
-        },
-      ],
     },
     'viola': {
       role: { it: 'Ballerina e informatrice', en: 'Dancer and informant' },
       log: {
-        it: 'Balla per la famiglia che comanda l’isola e riferisce tutto quello che i suoi occhi trovano, dai porti alle stanze chiuse a chiave. Con lo sguardo entra anche nei pensieri di chi ha davanti e ne legge le intenzioni. Obbedisce senza discutere, ma c’è qualcosa nel modo in cui parla del re che non somiglia alla fedeltà.',
-        en: 'She dances for the family that runs the island and reports whatever her eyes find, from the harbours to the locked rooms. Her gaze goes into the thoughts of the person in front of her and reads what they mean to do. She obeys without argument, though something in the way she speaks of the king does not sound like loyalty.',
+        it: 'Balla per la famiglia che comanda l’isola e riferisce tutto quello che i suoi occhi trovano. Con lo sguardo entra anche nei pensieri di chi ha davanti e ne legge le intenzioni. Obbedisce senza discutere, ma c’è qualcosa nel modo in cui parla del re che non somiglia alla fedeltà.',
+        en: 'She dances for the family that runs the island and reports whatever her eyes find. Her gaze goes into the thoughts of the person in front of her and reads what they mean to do. She obeys without argument, though something in the way she speaks of the king does not sound like loyalty.',
       },
       status: [{ episode: 640, value: 'alive' }],
       affiliation: [
@@ -2058,10 +2059,13 @@ export const dressrosa: Saga = {
         it: 'Si nasconde nel bosco di Green Bit e chiama una squadra di marine a caccia dei Cappello di Paglia: sono buoni o cattivi? Rispondono buoni, e lui ordina di consegnare le armi. Quando rifiutano, fucili, mantelli e cappelli spariscono loro di dosso più in fretta di quanto l’occhio riesca a seguire, e una vocina dice che così imparano.',
         en: 'He hides in the Green Bit forest and calls out to a squad of Marines hunting the Straw Hats: are they good people or bad? They say good, and he tells them to hand over their weapons. When they refuse, guns, capes and hats vanish off them faster than the eye can follow, and a little voice says that will teach them.',
       },
-      status: [{ episode: 640, value: 'alive' }],
+      // At 640 he is only a voice; episode 641 adapts chapter 711, where he
+      // is first seen, captioned as a Tontatta warrior.
+      status: [{ episode: 641, chapter: 711, value: 'alive' }],
       affiliation: [
         {
           episode: 641,
+          chapter: 711,
           factions: ['tontatta'],
           value: {
             it: 'Regno di Tontatta, guerriero',
@@ -2085,12 +2089,14 @@ export const dressrosa: Saga = {
       origin: [
         {
           episode: 641,
-          chapter: 716,
+          chapter: 711,
           place: 'green-bit',
           value: { it: 'Green Bit, Dressrosa', en: 'Green Bit, Dressrosa' },
         },
       ],
-      devilFruit: [{ episode: 641, value: ['stitch-stitch-fruit'] }],
+      devilFruit: [
+        { episode: 641, chapter: 711, value: ['stitch-stitch-fruit'] },
+      ],
     },
     'kyros': {
       role: {
@@ -2127,15 +2133,20 @@ export const dressrosa: Saga = {
         it: 'Leo la chiama antipatica, egoista, cattiva, lunatica e irascibile, ma i Tontatta vogliono salvarla lo stesso, perché è una di loro. Credono che sia tenuta nella fabbrica insieme ai loro compagni. Lì chi comanda dice ai Tontatta che è malata, che solo gli SMILE che coltivano possono guarirla e che non possono vederla: una bugia che li tiene al lavoro.',
         en: 'Leo calls her obnoxious, selfish, mean, moody and short-tempered, and still the Tontatta mean to save her, because she is one of them. They believe she is held at the factory with their friends. There the men in charge tell the Tontatta that she is ill, that only the SMILEs they grow can cure her and that they may not see her: a lie that keeps them at work.',
       },
+      // Leo names her at 647, over a shadowed picture of her. She is first
+      // seen, in a cell, in chapter 755, which episode 693 adapts. Episode 693
+      // also adapts chapter 756 p. 3-5, so an entry at 693 that tells those
+      // pages needs a chapter of its own.
       status: [
-        { episode: 675, value: 'captured' },
+        { episode: 693, chapter: 755, value: 'captured' },
         // Episode 714 adapts chapter 774, where Leo knocks Jora down and
         // catches her as Jora lets go of her.
         { episode: 714, chapter: 774, value: 'alive' },
       ],
       affiliation: [
         {
-          episode: 675,
+          episode: 693,
+          chapter: 755,
           factions: ['tontatta'],
           value: {
             it: 'Regno di Tontatta, principessa',
@@ -2145,8 +2156,8 @@ export const dressrosa: Saga = {
       ],
       origin: [
         {
-          episode: 675,
-          chapter: 746,
+          episode: 693,
+          chapter: 755,
           place: 'green-bit',
           value: { it: 'Green Bit, Dressrosa', en: 'Green Bit, Dressrosa' },
         },
