@@ -17,7 +17,7 @@ import { useLocale } from '~/i18n/LocaleContext'
 import type { Translate } from '~/i18n/types'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
 import { matchFolded } from '~/lib/search/fold'
-import type { IndexView } from '~/lib/search/placeParams'
+import type { IndexView, PlaceParams } from '~/lib/search/placeParams'
 import type { StopView } from '~/lib/view/places'
 import type { CoveredRecord, Sea } from '~/lib/view/records'
 
@@ -70,7 +70,7 @@ export function PlaceIndex({
         {...controls}
       />
 
-      {shown.length === 0 && params.q === undefined ?
+      {shown.length === 0 && isPicked(params) ?
         <div {...stylex.props(styles.empty)}>
           <p>{t('places.noneShown')}</p>
           <Button
@@ -123,6 +123,15 @@ function FogLine({ count }: { count: number }): null | ReactElement {
       {count === 1 ? t('chart.fogOne') : t('chart.fog', { count })}
     </p>
   )
+}
+
+/**
+ * Whether a sea, a type or a saga is picked. With only a query, the line
+ * under the field already says it finds nothing, and the field's × clears
+ * it; with a pick, "Show all" clears the picks and the query together.
+ */
+function isPicked({ form, saga, sea }: PlaceParams): boolean {
+  return [form, saga, sea].some((value) => value !== undefined)
 }
 
 /** How many places a sea holds. One and many are two sentences. */

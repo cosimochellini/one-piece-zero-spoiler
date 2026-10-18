@@ -185,6 +185,24 @@ describe('the places index', () => {
     expect(seas()).toStrictEqual(['East Blue', 'Grand Line'])
   })
 
+  it('offers every place back when a query and a pick leave none', async () => {
+    const user = userEvent.setup()
+    await draw('?q=zou&sea=grand-line')
+
+    await user.click(screen.getByRole('button', { name: 'Show all' }))
+
+    expect(seas()).toStrictEqual(['East Blue', 'Grand Line'])
+    expect(screen.getByRole('searchbox')).toHaveValue('')
+  })
+
+  it('leaves a query alone that finds nothing, with no pick to clear', async () => {
+    await draw('?q=zou')
+
+    expect(
+      screen.queryByRole('button', { name: 'Show all' }),
+    ).not.toBeInTheDocument()
+  })
+
   it('is not there with nothing open', async () => {
     await draw('', { stops: [] })
 

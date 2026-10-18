@@ -47,8 +47,17 @@ export function usePlacePicks(open: StopView[]): PlacePicks {
   return {
     lit: isNarrowed(params) ? new Set(shown.map(({ id }) => id)) : null,
     needle,
+    // A pick changes the search and nothing else: a `#id` the reader came
+    // in on stays in the address, and the page does not scroll to it again.
     onParams: (next, replace) => {
-      void navigate({ replace, resetScroll: false, search: next, to: '.' })
+      void navigate({
+        hash: true,
+        hashScrollIntoView: false,
+        replace,
+        resetScroll: false,
+        search: next,
+        to: '.',
+      })
     },
     params,
     shown,
