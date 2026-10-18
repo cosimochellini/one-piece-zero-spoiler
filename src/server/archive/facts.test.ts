@@ -98,6 +98,33 @@ describe('the facts a bookmark reaches', () => {
     }
   })
 
+  it('calls Rob Lucci a foreman only from episode 232 and chapter 327, where Iceburg says it', () => {
+    const lucci = onFile('rob-lucci')
+
+    for (const locale of ['en', 'it'] as const) {
+      const foreman =
+        locale === 'en' ?
+          'Galley-La Company, foreman of Dock One'
+        : 'Galley-La Company, caposquadra del Dock 1'
+      const chapter = (at: number): Reader =>
+        readerFor({ mode: 'chapter', chapter: at }, locale)
+
+      expect(factsOf(lucci, ep(230, locale))).toMatchObject({
+        affiliation: 'Galley-La Company',
+      })
+      expect(factsOf(lucci, ep(231, locale))).toMatchObject({
+        affiliation: 'Galley-La Company',
+      })
+      expect(factsOf(lucci, ep(232, locale))).toMatchObject({
+        affiliation: foreman,
+      })
+      expect(factsOf(lucci, chapter(326))).not.toHaveProperty('affiliation')
+      expect(factsOf(lucci, chapter(327))).toMatchObject({
+        affiliation: foreman,
+      })
+    }
+  })
+
   it('gives each fact as the reader knows it, and no fact not yet learned', () => {
     const found = factsOf(LUFFY, ep(3))
 
