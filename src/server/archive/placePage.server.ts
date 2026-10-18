@@ -1,7 +1,7 @@
 import { DRAWINGS } from '~/data/art'
 import { chartPointOf } from '~/data/chart'
 import { reachedOf } from '~/data/dated'
-import { getPlace, placeDossierOf, places } from '~/data/places'
+import { getPlace, getShip, placeDossierOf, places } from '~/data/places'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
@@ -11,18 +11,20 @@ import type {
   PlaceDetail,
   PlaceDrawing,
   RouteStopView,
+  ShipDetail,
 } from '~/lib/view/places'
 import type { DocumentHead, RecordView, Slot } from '~/lib/view/records'
 
 import { headFor, type HeadKeys } from './head.server'
-import { portOf, reachedShips } from './places.server'
+import { portOf, reachedShips, shipOf } from './places.server'
 import { recordOf } from './project.server'
 import { type Reader, readerFor } from './reader.server'
 
 /**
  * A place's own page: the entry the places page used to stack, the map
- * around it, its drawings and the stops either side. Apart from the places
- * page's module, which it shares the port and the ships with.
+ * around it, its drawings and the stops either side. A ship's page is served
+ * from the same address, with her entry and her drawings. Apart from the
+ * places page's module, which it shares the port and the ships with.
  */
 
 /** What a place's page calls itself, open and under fog. */
@@ -32,15 +34,28 @@ const PLACE_HEAD: HeadKeys = {
   pageTitle: 'place.pageTitle',
 }
 
+/** What a ship's page calls itself, open and under fog. */
+const SHIP_HEAD: HeadKeys = {
+  foggedDescription: 'ship.foggedDescription',
+  foggedTitle: 'ship.foggedTitle',
+  pageTitle: 'place.pageTitle',
+}
+
 /** A place's own page: what names it, and what it says. */
 export interface PlacePage {
   detail: PlaceDetail
   head: DocumentHead
 }
 
+/** A ship's own page: what names her, and what it says. */
+export interface ShipPage {
+  head: DocumentHead
+  ship: ShipDetail
+}
+
 /**
- * A place's page, or `undefined` for an id the archive does not file as a
- * place. It returns rather than throws, for the same reason a character's
+ * A place's or a ship's page, or `undefined` for an id the archive files as
+ * neither. It returns rather than throws, for the same reason a character's
  * page does: `notFound()` is a router signal, and a signal thrown across an
  * RPC boundary is only an error.
  */
@@ -48,13 +63,18 @@ export function placePage(
   id: string,
   bookmark: Bookmark,
   locale: Locale,
-): PlacePage | undefined {
+): PlacePage | ShipPage | undefined {
+  const r = readerFor(bookmark, locale)
+  const ship = getShip(id)
+  if (ship !== undefined) {
+    return shipPage(ship, r)
+  }
+
   const entity = getPlace(id)
   if (entity === undefined) {
     return undefined
   }
 
-  const r = readerFor(bookmark, locale)
   const order = r.order(places)
   const index = order.findIndex((place) => place.id === id)
   const open = r.sees(entity)
@@ -71,6 +91,25 @@ export function placePage(
       // lies and how it looks are what the fog is for.
       chart: open ? chartOf(entity, order, r) : null,
       drawings: open ? drawingsOf(entity, r) : [],
+    },
+  }
+}
+
+/**
+ * A ship's page: her entry, her fate and the places she reaches as far as
+ * the reader has come (`shipOf`), and her drawings. Under fog, her slot's
+ * handle and thresholds, and no drawing: the covered page a character or a
+ * place has (orchestrator ruling for #676). Nothing on the site links to a
+ * ship the reader has not reached, so only a reader who already has her
+ * name, typed in the address, lands on it; the page adds the kind and the
+ * episode, as a covered character's does.
+ */
+function shipPage(entity: Entity, r: Reader): ShipPage {
+  return {
+    head: headFor(entity, SHIP_HEAD, r),
+    ship: {
+      slot: r.slot(entity, shipOf),
+      drawings: r.sees(entity) ? drawingsOf(entity, r) : [],
     },
   }
 }
@@ -119,12 +158,12 @@ function chartOf(
 }
 
 /**
- * The drawings of an open place the reader has reached, oldest first in the
- * reader's unit: its first drawing, then each redrawing whose gate, the later
- * of its own and the place's (`gateOf`), the reader has passed. The same
- * entries `drawingOf` picks the last of, so the last here is the drawing the
- * plate already holds. Empty while only the first is reached: one drawing is
- * not a change.
+ * The drawings of an open place or ship the reader has reached, oldest first
+ * in the reader's unit: its first drawing, then each redrawing whose gate,
+ * the later of its own and the record's (`gateOf`), the reader has passed.
+ * The same entries `drawingOf` picks the last of, so the last here is the
+ * drawing the plate already holds. Empty while only the first is reached:
+ * one drawing is not a change.
  */
 function drawingsOf(entity: Entity, r: Reader): PlaceDrawing[] {
   const reached = reachedOf(r, entity, 'redrawing')

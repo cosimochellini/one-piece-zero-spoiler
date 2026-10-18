@@ -1,9 +1,10 @@
 import { screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import type { ReactElement } from 'react'
 import { describe, expect, it } from 'vitest'
 
 import type { PlaceChartView, PlaceDetail } from '~/lib/view/places'
-import type { PortView, RecordView } from '~/lib/view/records'
+import type { PortView, RecordView, ShipView, Slot } from '~/lib/view/records'
 import {
   at,
   coveredSlot,
@@ -13,11 +14,13 @@ import {
   peekTo,
   port,
   record,
+  ship,
+  shipEntry,
 } from '~/test/fixtures'
 import { ep, renderWithProviders, settle } from '~/test/providers'
 
 import { DrawingsBand, MapBand, TurnBand } from './-$id.bands'
-import { EntryDiptych } from './-$id.entry'
+import { EntryDiptych, PortBody, ShipBody } from './-$id.entry'
 
 const sanji = openSlot(record({ id: 'sanji', name: 'Sanji', ...at(20) }))
 const metLater = coveredSlot<RecordView>({ ...at(24) })
@@ -57,6 +60,55 @@ function detailOf(over: Partial<PlaceDetail> = {}): PlaceDetail {
   }
 }
 
+/** A place's entry, as the route draws it. */
+function PlaceEntry({
+  detail,
+  peek,
+}: {
+  detail: PlaceDetail
+  peek: (handle: string) => Promise<PortView>
+}): ReactElement {
+  return (
+    <EntryDiptych
+      Body={PortBody}
+      kind="place"
+      peek={peek}
+      peekRecord={peekPending()}
+      slot={detail.slot}
+    />
+  )
+}
+
+/** A ship's entry, as the route draws it. */
+function ShipEntry({
+  peek,
+  slot,
+}: {
+  peek: (handle: string) => Promise<ShipView>
+  slot: Slot<ShipView>
+}): ReactElement {
+  return (
+    <EntryDiptych
+      Body={ShipBody}
+      kind="ship"
+      peek={peek}
+      peekRecord={peekPending()}
+      slot={slot}
+    />
+  )
+}
+
+const merry = ship({
+  id: 'going-merry',
+  name: 'Going Merry',
+  ...at(18),
+  dossier: shipEntry({
+    builder: 'Merry, Kaya’s butler',
+    fate: 'The crew’s ship.',
+    ports: [record({ id: 'loguetown', kind: 'place', name: 'Loguetown' })],
+  }),
+})
+
 const fogged = detailOf({
   chart: null,
   slot: coveredSlot<PortView>({ kind: 'place', ...at(144) }),
@@ -65,10 +117,9 @@ const fogged = detailOf({
 describe('a place’s entry', () => {
   it('shows the plate, the facts, the log and the records found there', () => {
     renderWithProviders(
-      <EntryDiptych
+      <PlaceEntry
         detail={detailOf()}
         peek={peekPending()}
-        peekRecord={peekPending()}
       />,
       { bookmark: ep(20) },
     )
@@ -89,10 +140,9 @@ describe('a place’s entry', () => {
     const user = userEvent.setup()
     const jaya = port({ id: 'jaya', name: 'Jaya', ...at(144) })
     const { container } = renderWithProviders(
-      <EntryDiptych
+      <PlaceEntry
         detail={fogged}
         peek={peekTo(jaya)}
-        peekRecord={peekPending()}
       />,
       { bookmark: ep(20) },
     )
@@ -107,6 +157,54 @@ describe('a place’s entry', () => {
 
     expect(
       screen.getByRole('heading', { level: 1, name: 'Jaya' }),
+    ).toBeVisible()
+  })
+})
+
+describe('a ship’s entry', () => {
+  it('shows who designed her, her fate and the places she reaches', () => {
+    renderWithProviders(
+      <ShipEntry
+        peek={peekPending()}
+        slot={openSlot(merry)}
+      />,
+      { bookmark: ep(100) },
+    )
+
+    expect(
+      screen.getByRole('heading', { level: 1, name: 'Going Merry' }),
+    ).toBeVisible()
+    expect(screen.getByText('Ship')).toBeVisible()
+    expect(screen.getByText('Episode 18')).toBeVisible()
+    expect(screen.getByText('Merry, Kaya’s butler')).toBeVisible()
+    expect(screen.getByText('The crew’s ship.')).toBeVisible()
+    expect(screen.getByText('Places she reaches')).toBeVisible()
+    expect(screen.getByRole('link', { name: 'Loguetown' })).toHaveAttribute(
+      'href',
+      '/en/places/loguetown',
+    )
+  })
+
+  it('carries nothing of a covered ship until the reader asks', async () => {
+    const user = userEvent.setup()
+    const { container } = renderWithProviders(
+      <ShipEntry
+        peek={peekTo(merry)}
+        slot={coveredSlot<ShipView>({ kind: 'ship', ...at(18) })}
+      />,
+      { bookmark: ep(17) },
+    )
+
+    expect(container).not.toHaveTextContent('Merry')
+    expect(container.querySelectorAll(':scope svg svg')).toHaveLength(0)
+    expect(screen.getByText('A ship under fog')).toBeInTheDocument()
+    expect(screen.getByText('Episode 18')).toBeVisible()
+
+    await user.click(screen.getAllByRole('button').at(-1) ?? document.body)
+    await settle()
+
+    expect(
+      screen.getByRole('heading', { level: 1, name: 'Going Merry' }),
     ).toBeVisible()
   })
 })
@@ -161,6 +259,27 @@ describe('how a place’s drawing changes', () => {
         .getAllByRole('listitem')
         .map((item) => item.textContent),
     ).toStrictEqual(['Episode 20', 'Episode 254'])
+  })
+
+  it('says it is a ship’s drawing on her page', () => {
+    renderWithProviders(
+      <DrawingsBand
+        detail={{
+          drawings: [
+            { strokes: [{ d: 'M0 0L1 1' }], ...at(18) },
+            { strokes: [{ d: 'M0 0L2 2' }], ...at(312) },
+          ],
+          slot: openSlot(merry),
+        }}
+      />,
+      { bookmark: ep(400) },
+    )
+
+    expect(
+      screen.getByText(
+        'Every drawing of this ship up to your bookmark, oldest first.',
+      ),
+    ).toBeVisible()
   })
 
   it('draws nothing while there is one drawing', () => {

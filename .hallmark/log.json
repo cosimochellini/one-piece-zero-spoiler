@@ -1,6 +1,17 @@
 [
   {
     "date": "2026-10-18",
+    "macrostructure": "Split Studio (a ship's own page, the place page's diptych) + Map / Diagram on /places over a Catalogue index",
+    "theme": "custom (bespoke): Sea Chart — locked, not rotated",
+    "theme_axes": "dark / geometric-sans / chromatic-amber (88°)",
+    "enrichment": "none new: the ship's plate and her drawings in a row, as on a place's page",
+    "nav": "N9 edge-aligned (shared)",
+    "footer": "Ft4 dense colophon (shared)",
+    "sections": "/places/going-merry, /places/thousand-sunny: back link · plate | entry (kind + episode, name, sentence, designed by / received at / fate, log, places she reaches) · drawings up to the bookmark (only with two or more). /places: chart · index · one fog line (the ships band is gone)",
+    "brief": "Issue #676 (epic #671): a page for each ship, served from the place page's address and built on its diptych and drawings strip. No map and no neighbours: a ship is not a stop, and the next ship under fog would say the first does not last. The chart's ship peek and every ship tile link here."
+  },
+  {
+    "date": "2026-10-18",
     "macrostructure": "Map / Diagram on /places over a Catalogue index (replaces the short list of links)",
     "theme": "custom (bespoke): Sea Chart — locked, not rotated",
     "theme_axes": "dark / geometric-sans / chromatic-amber (88°)",

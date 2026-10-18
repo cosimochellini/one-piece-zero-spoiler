@@ -70,6 +70,7 @@ export const itDictionary: Dictionary = {
   'home.filler.link': 'Vedi tutti i filler',
 
   'mark.unset': 'Imposta episodio',
+  'mark.unsetShort': 'EP ?',
   'mark.episode': 'EP {threshold}',
   'mark.season': '{threshold}',
   'mark.chapter': 'CH {threshold}',
@@ -125,6 +126,8 @@ export const itDictionary: Dictionary = {
   'chart.title': 'Mappa dei luoghi',
   'chart.fog': '{count} tappe nella nebbia',
   'chart.fogOne': '1 tappa nella nebbia',
+  'chart.peekOpen': 'Apri la scheda',
+  'chart.peekClose': 'Chiudi',
 
   'faq.animeQ': 'Anime o manga?',
   'faq.animeA':
@@ -274,6 +277,17 @@ export const itDictionary: Dictionary = {
   'place.notFoundTitle': 'Luogo non trovato',
   'place.notFoundBody':
     'A questo indirizzo non c’è nessun luogo. Li trovi tutti nella pagina Luoghi.',
+
+  'ship.foggedName': 'Una nave nella nebbia',
+  'ship.foggedTitle': 'Una nave nella nebbia | Zero Spoiler',
+  'ship.foggedDescription.episode':
+    'Una nave di One Piece, nella nebbia fino all’episodio {threshold}. Imposta il segnalibro per leggerne la voce.',
+  'ship.foggedDescription.season':
+    'Una nave di One Piece, nella nebbia fino a {threshold}. Imposta il segnalibro per leggerne la voce.',
+  'ship.foggedDescription.chapter':
+    'Una nave di One Piece, nella nebbia fino al capitolo {threshold}. Imposta il segnalibro per leggerne la voce.',
+  'ship.drawingsLede':
+    'Ogni disegno di questa nave fino al tuo segnalibro, dal più vecchio.',
 
   'filler.title': 'Episodi filler',
   'filler.count':

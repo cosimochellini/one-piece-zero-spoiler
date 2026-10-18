@@ -74,6 +74,7 @@ export const enDictionary = {
   'home.filler.link': 'See all filler',
 
   'mark.unset': 'Set episode',
+  'mark.unsetShort': 'EP ?',
   'mark.episode': 'EP {threshold}',
   'mark.season': '{threshold}',
   'mark.chapter': 'CH {threshold}',
@@ -128,6 +129,8 @@ export const enDictionary = {
   'chart.title': 'Map of the places',
   'chart.fog': '{count} stops under fog',
   'chart.fogOne': '1 stop under fog',
+  'chart.peekOpen': 'Open the entry',
+  'chart.peekClose': 'Close',
 
   'faq.animeQ': 'Anime or manga?',
   'faq.animeA':
@@ -270,6 +273,17 @@ export const enDictionary = {
   'place.notFoundTitle': 'Place not found',
   'place.notFoundBody':
     'There is no place at this address. The places page lists all of them.',
+
+  'ship.foggedName': 'A ship under fog',
+  'ship.foggedTitle': 'A ship under fog | Zero Spoiler',
+  'ship.foggedDescription.episode':
+    'A One Piece ship, under fog until episode {threshold}. Set your bookmark to read about it.',
+  'ship.foggedDescription.season':
+    'A One Piece ship, under fog until {threshold}. Set your bookmark to read about it.',
+  'ship.foggedDescription.chapter':
+    'A One Piece ship, under fog until chapter {threshold}. Set your bookmark to read about it.',
+  'ship.drawingsLede':
+    'Every drawing of this ship up to your bookmark, oldest first.',
 
   'filler.title': 'Filler episodes',
   'filler.count':

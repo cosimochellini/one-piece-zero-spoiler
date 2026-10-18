@@ -593,7 +593,9 @@ describe('the slice of the archive a page is given', () => {
   })
 
   it('resolves a port’s arc outright, because an arc opens no later', () => {
-    const slot = placePage('baratie', ep(20), 'en')?.detail.slot
+    const page = placePage('baratie', ep(20), 'en')
+    const slot =
+      page !== undefined && 'detail' in page ? page.detail.slot : null
     const dossier = slot?.open === true ? slot.record.dossier : null
 
     // The arc is named outright rather than veiled: an arc opens no later

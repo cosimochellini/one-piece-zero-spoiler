@@ -1,6 +1,6 @@
 /**
  * The bands under a place's entry: where it is on the map, how its drawing
- * changes, and the stops either side of it.
+ * changes, and the stops either side of it. A ship's page has the drawings.
  *
  * Siblings of the route module; the leading `-` keeps the file out of the
  * generated route tree. Set in the character page's sheet, because the two
@@ -13,8 +13,8 @@ import { PlaceMap } from '~/components/PlaceMap'
 import { PortPlate } from '~/components/PortPlate'
 import { useLocale } from '~/i18n/LocaleContext'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
-import type { PlaceDetail } from '~/lib/view/places'
-import type { RecordView } from '~/lib/view/records'
+import type { PlaceDetail, PlaceDrawing } from '~/lib/view/places'
+import type { RecordView, Slot } from '~/lib/view/records'
 import { Neighbour } from '~/routes/$locale/characters/-$id.neighbour'
 import { styles as page } from '~/routes/$locale/characters/-$id.styles'
 import { color, font, radius, rule, space, text } from '~/styles/tokens.stylex'
@@ -65,14 +65,14 @@ export function MapBand({ detail }: { detail: PlaceDetail }): ReactElement {
 }
 
 /**
- * Every drawing the place has had up to the bookmark, oldest first, each
- * with the episode it is drawn from. Nothing while there is only one: the
- * plate above already shows it.
+ * Every drawing the place or the ship has had up to the bookmark, oldest
+ * first, each with the episode it is drawn from. Nothing while there is only
+ * one: the plate above already shows it.
  */
 export function DrawingsBand({
   detail,
 }: {
-  detail: PlaceDetail
+  detail: { drawings: PlaceDrawing[]; slot: Slot<RecordView> }
 }): null | ReactElement {
   const { t } = useLocale()
   const threshold = useThreshold()
@@ -95,7 +95,13 @@ export function DrawingsBand({
         >
           {t('place.drawingsTitle')}
         </h2>
-        <p {...stylex.props(page.lede)}>{t('place.drawingsLede')}</p>
+        <p {...stylex.props(page.lede)}>
+          {t(
+            slot.record.kind === 'ship' ?
+              'ship.drawingsLede'
+            : 'place.drawingsLede',
+          )}
+        </p>
       </div>
       <ol {...stylex.props(styles.strip)}>
         {drawings.map((drawing) => {

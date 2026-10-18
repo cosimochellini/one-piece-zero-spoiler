@@ -102,9 +102,14 @@ function LocaleLayout(): ReactElement {
           </a>
 
           <div {...stylex.props(styles.shell)}>
-            {/* One row: the trial strip, when there is one, belongs to the bar. */}
+            {/*
+              The bar is a row of the shell itself, not of a box around it, so
+              on a phone it can stay pinned the whole way down the page. The
+              trial strip is the next row and scrolls away; its box is there
+              even when it is empty, so the page always lands on the 1fr row.
+            */}
+            <SiteBar />
             <div>
-              <SiteBar />
               <TrialStrip />
             </div>
             <Outlet />
@@ -127,7 +132,7 @@ const styles = stylex.create({
     gridTemplateColumns: 'minmax(0, 1fr)',
     // The footer is pushed to the bottom on a short page without a
     // `min-height: 100vh` hero, which is its own tell.
-    gridTemplateRows: 'auto 1fr auto',
+    gridTemplateRows: 'auto auto 1fr auto',
     maxWidth: '76rem',
     minHeight: '100dvh',
     width: '100%',

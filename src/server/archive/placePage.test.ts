@@ -1,27 +1,55 @@
 import { describe, expect, it } from 'vitest'
 
 import { CHART } from '~/data/chart'
-import { places } from '~/data/places'
+import { places, ships } from '~/data/places'
 import type { Bookmark } from '~/lib/progress/episode'
 
 import { BOOKMARKS } from './payloads.server'
-import { placePage } from './placePage.server'
+import { type PlacePage, placePage, type ShipPage } from './placePage.server'
 import { placesPage } from './places.server'
 
 const ep = (episode: number): Bookmark => ({ mode: 'episode', episode })
 const ch = (chapter: number): Bookmark => ({ mode: 'chapter', chapter })
 
 /** The page, which every place has. */
-function pageOf(
-  id: string,
-  bookmark: Bookmark,
-): NonNullable<ReturnType<typeof placePage>> {
+function pageOf(id: string, bookmark: Bookmark): PlacePage {
   const page = placePage(id, bookmark, 'en')
-  if (page === undefined) {
-    throw new Error(`no page for ${id}`)
+  if (page === undefined || !('detail' in page)) {
+    throw new Error(`no place page for ${id}`)
   }
 
   return page
+}
+
+/** A ship's page, which both ships have. */
+function shipPageOf(id: string, bookmark: Bookmark): ShipPage {
+  const page = placePage(id, bookmark, 'en')
+  if (page === undefined || !('ship' in page)) {
+    throw new Error(`no ship page for ${id}`)
+  }
+
+  return page
+}
+
+/** A ship's fate and drawings at a bookmark: `null` under fog. */
+function shipAt(
+  id: string,
+  bookmark: Bookmark,
+): null | { drawings: number[]; fate: string | undefined; ports: string[] } {
+  const { ship } = shipPageOf(id, bookmark)
+  if (!ship.slot.open) {
+    return null
+  }
+
+  return {
+    drawings: ship.drawings.map((drawing) =>
+      bookmark?.mode === 'chapter' ?
+        drawing.revealedAtChapter
+      : drawing.revealedAtEpisode,
+    ),
+    fate: ship.slot.record.dossier.fate,
+    ports: ship.slot.record.dossier.ports.map((port) => port.id),
+  }
 }
 
 /** The episodes Onigashima's drawings are drawn from, at a bookmark. */
@@ -133,5 +161,91 @@ describe('a place’s own page', () => {
     expect(detail.chart).toBeNull()
     expect(detail.drawings).toStrictEqual([])
     expect(head.title).toBe('A place under fog | Zero Spoiler')
+  })
+})
+
+describe('a ship’s own page', () => {
+  it.each(BOOKMARKS.map((bookmark) => [JSON.stringify(bookmark), bookmark]))(
+    'says of each ship what the places page says, and no more, at %s',
+    (_, bookmark: Bookmark) => {
+      const reached = new Map(
+        placesPage(bookmark, 'en').ships.map((view) => [view.id, view]),
+      )
+      const covered = 'A ship under fog | Zero Spoiler'
+
+      // What each page sends, and what the places page's ship says of her:
+      // the same record once reached, nothing and no drawing before.
+      const pages = ships.map((entity) => {
+        const { head, ship } = shipPageOf(entity.id, bookmark)
+        return {
+          slot: ship.slot.open ? ship.slot : null,
+          drawings: ship.slot.open ? null : ship.drawings,
+          title: head.title,
+        }
+      })
+      const expected = ships.map((entity) => {
+        const sent = reached.get(entity.id)
+        return sent === undefined ?
+            { slot: null, drawings: [], title: covered }
+          : {
+              slot: { open: true, record: sent },
+              drawings: null,
+              title: `${entity.name.en} | Zero Spoiler`,
+            }
+      })
+
+      expect(pages).toStrictEqual(expected)
+    },
+  )
+
+  it('is a covered page, not a missing one, before the reader reaches her', () => {
+    // Ruled for #676: a ship under fog keeps the covered-page contract of a
+    // character or a place, and is never linked to before she is reached.
+    const { head, ship } = shipPageOf('thousand-sunny', ep(18))
+
+    expect(ship.drawings).toStrictEqual([])
+    expect(ship.slot).toMatchObject({
+      open: false,
+      covered: { kind: 'ship', revealedAtEpisode: 324 },
+    })
+    expect(head.title).toBe('A ship under fog | Zero Spoiler')
+  })
+
+  it('covers the Merry before the crew receives her', () => {
+    const { head, ship } = shipPageOf('going-merry', ep(17))
+
+    expect(ship.slot).toMatchObject({
+      open: false,
+      covered: { kind: 'ship', revealedAtEpisode: 18 },
+    })
+    expect(head.description).toBe(
+      'A One Piece ship, under fog until episode 18. Set your bookmark to read about it.',
+    )
+    expect(shipAt('going-merry', ep(18))).toStrictEqual({
+      drawings: [],
+      fate: 'The crew’s ship.',
+      ports: [],
+    })
+  })
+
+  it('burns the Merry at episode 312 and chapter 430, and not before', () => {
+    for (const before of [ep(311), ch(429)]) {
+      expect(shipAt('going-merry', before)?.drawings).toStrictEqual([])
+      expect(shipAt('going-merry', before)?.fate).toMatch(/keel/u)
+    }
+
+    expect(shipAt('going-merry', ep(312))?.drawings).toStrictEqual([18, 312])
+    expect(shipAt('going-merry', ch(430))?.drawings).toStrictEqual([41, 430])
+    expect(shipAt('going-merry', ep(312))?.fate).toMatch(/burn/u)
+    expect(shipAt('going-merry', ch(430))?.fate).toMatch(/burn/u)
+  })
+
+  it('lists only the places the Sunny has reached', () => {
+    expect(shipAt('thousand-sunny', ep(323))).toBeNull()
+    expect(shipAt('thousand-sunny', ep(324))?.ports).toStrictEqual([])
+    expect(shipAt('thousand-sunny', ep(628))?.ports).not.toContain('dressrosa')
+    expect(shipAt('thousand-sunny', ep(629))?.ports.at(-1)).toBe('dressrosa')
+    expect(shipAt('thousand-sunny', ch(699))?.ports).not.toContain('dressrosa')
+    expect(shipAt('thousand-sunny', ch(700))?.ports.at(-1)).toBe('dressrosa')
   })
 })

@@ -34,6 +34,7 @@ const BY_DESIGN: Partial<Record<string, Excuse>> = {
   liftFruit: lifted,
   liftRecord: lifted,
   liftPort: lifted,
+  liftShip: lifted,
 }
 
 const alphabetically = (a: string, b: string): number => a.localeCompare(b)

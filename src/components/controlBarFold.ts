@@ -10,24 +10,36 @@ function ignore(): void {
   // Deliberately empty.
 }
 
+/** What the bar knows about itself: pinned or not, and by how much it tucks. */
+export interface Fold {
+  /** How far down the window the bar pins: the site bar's height, or 0. */
+  offset: number
+  pinned: boolean
+  tuck: number
+}
+
 /**
  * Measures the bar and watches whether it has pinned.
  *
  * The folded row is the bar's last child. It is `display: none` where the
  * bar never folds, and then it has no offset parent and the bar tucks by
- * nothing. Pinned means the bar's top has reached the top of the window: the
- * root's top edge is pulled in a pixel, so a bar pinned at 0 is cut by it as
- * well as one pinned above it, and a bar in its own place never is.
+ * nothing. Pinned means the bar's top has reached the line it pins at, the
+ * foot of the site bar on a phone and the top of the window elsewhere. The
+ * root's top edge is pulled in to a pixel below that line, so a bar pinned on
+ * it is cut as well as one pinned above it, and a bar in its own place never
+ * is. The line moves when the window crosses the phone breakpoint, and the
+ * observer is drawn again when it does.
  */
 export function watch(
   bar: HTMLElement,
   /** The custom property the bar's folded top reads its tuck from. */
   tuckProperty: string,
   onPin: (pinned: boolean) => void,
-): { read: () => { pinned: boolean; tuck: number }; stop: () => void } {
+): { read: () => Fold; stop: () => void } {
   let pinned = false
   let tuck = 0
-  const read = (): { pinned: boolean; tuck: number } => ({ pinned, tuck })
+  let offset = 0
+  const read = (): Fold => ({ offset, pinned, tuck })
   const row = bar.lastElementChild
   if (
     typeof ResizeObserver === 'undefined'
@@ -39,28 +51,43 @@ export function watch(
   // The stack goes on the document, where the scroll padding reads it too,
   // so a control or tile that focus scrolls to is never left under the bar.
   const root = document.documentElement.style
+  const watchPin = (): IntersectionObserver => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry === undefined) {
+          return
+        }
+
+        pinned =
+          entry.intersectionRatio < 1
+          && entry.boundingClientRect.top < offset + 1
+        onPin(pinned)
+      },
+      { rootMargin: `-${String(offset + 1)}px 0px 0px`, threshold: 1 },
+    )
+    observer.observe(bar)
+    return observer
+  }
+  let pin = watchPin()
   const resize = new ResizeObserver(() => {
     const box = bar.getBoundingClientRect()
     tuck =
       row.offsetParent === null ? 0 : row.getBoundingClientRect().top - box.top
     bar.style.setProperty(tuckProperty, `${String(-tuck)}px`)
     root.setProperty(STACK_PROPERTY, `${String(box.height - tuck)}px`)
+    // The bar's scroll margin is the site bar's pinned height, resolved to
+    // pixels: `96px` on a phone, `52px` on a wider screen.
+    const next = Number(getComputedStyle(bar).scrollMarginTop.replace('px', ''))
+    if (next === offset) {
+      return
+    }
+    offset = next
+    pin.disconnect()
+    pin = watchPin()
   })
-  const pin = new IntersectionObserver(
-    ([entry]) => {
-      if (entry === undefined) {
-        return
-      }
-
-      pinned = entry.intersectionRatio < 1 && entry.boundingClientRect.top < 1
-      onPin(pinned)
-    },
-    { rootMargin: '-1px 0px 0px', threshold: 1 },
-  )
   resize.observe(bar)
   // The row too: crossing the phone breakpoint shows or hides it.
   resize.observe(row)
-  pin.observe(bar)
 
   return {
     read,
@@ -78,7 +105,7 @@ export function watch(
  */
 export function listen(
   bar: HTMLElement,
-  read: () => { pinned: boolean; tuck: number },
+  read: () => Fold,
   setOpen: (open: boolean) => void,
 ): () => void {
   // Focus reaching a control opens the bar; the folded row's two buttons,
@@ -117,9 +144,9 @@ export function listen(
     if (!keyed) {
       setOpen(false)
     }
-    const { pinned, tuck } = read()
-    if (pinned) {
-      settle(bar, tuck, !keyed)
+    const fold = read()
+    if (fold.pinned) {
+      settle(bar, fold, !keyed)
     }
     keyed = false
   }
@@ -149,10 +176,15 @@ export function listen(
  * folds the bar on a phone, the control picked with has just slid off
  * screen, so focus goes to the toggle.
  */
-function settle(bar: HTMLElement, tuck: number, folds: boolean): void {
+function settle(
+  bar: HTMLElement,
+  { offset, tuck }: Fold,
+  folds: boolean,
+): void {
   const container = bar.parentElement
   if (container !== null) {
-    const top = container.getBoundingClientRect().top + window.scrollY + tuck
+    const top =
+      container.getBoundingClientRect().top + window.scrollY + tuck - offset
     if (window.scrollY > top) {
       window.scrollTo({ top, behavior: 'instant' })
     }

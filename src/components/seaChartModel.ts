@@ -11,7 +11,7 @@ import type { Translate } from '~/i18n/types'
 import { type Bookmark, modeOf } from '~/lib/progress/episode'
 import { type ChartPoint, sailedBy } from '~/lib/view/chart'
 import type { StopView } from '~/lib/view/places'
-import type { CoveredRecord, ShipView } from '~/lib/view/records'
+import type { CoveredRecord, PortView, ShipView } from '~/lib/view/records'
 
 /** What the chart is drawn from: the places page's own payload. */
 export interface SeaChartProps {
@@ -25,6 +25,8 @@ export interface SeaChartProps {
   lit?: null | Set<string>
   /** The stops the reader has reached, in their order. */
   open: StopView[]
+  /** Trades a stop under fog's handle for the place, once the reader asks. */
+  peekPort: (handle: string) => Promise<PortView>
   /** The ships the reader has reached, in their order. */
   ships: ShipView[]
 }
