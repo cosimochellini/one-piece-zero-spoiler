@@ -8,13 +8,50 @@
 import type { Gated } from '~/lib/progress/spoiler'
 import type { ChartPoint } from '~/lib/view/chart'
 import type {
+  CoveredRecord,
+  PlaceForm,
   PortView,
   RecordView,
   Sea,
+  Searchable,
+  ShipView,
   Slot,
   Stroke,
   TintId,
 } from '~/lib/view/records'
+
+/**
+ * One stop the reader has reached, as the places page's chart and index draw
+ * it: where it sits, and what the index groups, filters and searches it by.
+ * Its sentence, facts and log are its own page's.
+ */
+export interface StopView extends RecordView, Searchable {
+  /** Where it sits on the sea chart; `null` for a record not a place. */
+  chart: ChartPoint | null
+  form: PlaceForm
+  /** The saga it is filed under, by its place in route order, from 1. */
+  saga: number
+  sea: Sea
+}
+
+/** A saga the index can filter by: its place in route order, and its name. */
+export interface SagaPick {
+  number: number
+  title: string
+}
+
+/** The places page. */
+export interface PlacesView {
+  /** The stops past the bookmark: a number and an episode each. */
+  covered: CoveredRecord[]
+  filed: number
+  /** The stops the reader has reached, in their order. */
+  open: StopView[]
+  /** The sagas the open stops are filed under, in route order. */
+  sagas: SagaPick[]
+  /** The ships the reader has reached, in their order. */
+  ships: ShipView[]
+}
 
 /** One stop the reader has reached, as a place's map draws it. */
 export interface RouteStopView {

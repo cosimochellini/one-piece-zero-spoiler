@@ -2,6 +2,8 @@ import * as stylex from '@stylexjs/stylex'
 
 import {
   color,
+  dur,
+  ease,
   font,
   leading,
   radius,
@@ -172,11 +174,24 @@ export const styles = stylex.create({
     display: 'grid',
     position: 'absolute',
   },
+  // A ship is a button that opens her peek.
+  shipButton: {
+    outline: {
+      'default': 'none',
+      ':focus-visible': `${rule.fine} solid ${color.focus}`,
+    },
+    color: 'inherit',
+    cursor: 'pointer',
+    outlineOffset: rule.fine,
+    pointerEvents: 'auto',
+  },
   shipCurrent: { height: '3.5rem', width: '3.5rem' },
   shipEarlier: {
-    borderColor: color.rule2,
-    height: '2.25rem',
-    width: '2.25rem',
+    'borderColor': color.rule2,
+    'height': '2.25rem',
+    'width': '2.25rem',
+    // Her target is a thumb wide all the same.
+    '::before': { inset: '-0.375rem', content: '""', position: 'absolute' },
   },
   shipAbove: { transform: 'translate(-50%, calc(-100% - 0.75rem))' },
   shipBelow: { transform: 'translate(-50%, 0.75rem)' },
@@ -192,10 +207,10 @@ export const styles = stylex.create({
     width: TARGET,
   },
   // The targets overlap where the stops crowd. A tap there goes to an open
-  // stop before a stop under fog, and to the reader's own stop before any:
-  // a fogged stop does nothing yet (#679). The list is its own stacking
-  // context, so the order stays inside the chart.
-  stops: { isolation: 'isolate' },
+  // stop before a stop under fog, and to the reader's own stop before any,
+  // so a tap near where you are never peeks into the fog. The list is its
+  // own stacking context, above the ships beside the stops.
+  stops: { isolation: 'isolate', zIndex: 1 },
   stopOpen: { zIndex: 1 },
   stopHere: { zIndex: 2 },
   target: {
@@ -208,7 +223,7 @@ export const styles = stylex.create({
     },
     alignItems: 'center',
     backgroundColor: 'transparent',
-    cursor: { 'default': 'pointer', ':is([aria-disabled=true])': 'default' },
+    cursor: 'pointer',
     display: 'grid',
     justifyItems: 'center',
     pointerEvents: 'auto',
@@ -220,9 +235,14 @@ export const styles = stylex.create({
     borderStyle: 'solid',
     borderWidth: rule.fine,
     display: 'block',
+    transitionDuration: { [MOTION]: dur.micro, default: '0s' },
+    transitionProperty: 'opacity',
+    transitionTimingFunction: ease.out,
     height: '0.75rem',
     width: '0.75rem',
   },
+  // A stop the index's picks leave out: still there, still a link, faint.
+  dotDim: { opacity: 0.25 },
   dotOpen: (hue: string) => ({
     borderColor: color.paper,
     backgroundColor: hue,

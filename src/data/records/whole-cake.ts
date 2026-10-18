@@ -1175,8 +1175,11 @@ export const wholeCake: Saga = {
         },
         {
           episode: 1085,
-          factions: ['independent'],
-          value: { it: 'Caduta a Wano', en: 'Fell at Wano' },
+          factions: ['big-mom-pirates'],
+          value: {
+            it: 'Pirati di Big Mom, capitano; caduta a Wano',
+            en: 'Big Mom Pirates, captain; fell at Wano',
+          },
         },
       ],
       origin: [{ episode: 786, value: TOTTO_LAND }],

@@ -13,6 +13,7 @@ import {
   ships,
 } from './places'
 import { SHIP_DOSSIERS } from './records/ships'
+import { sagas } from './sagas'
 import type { Entity } from './types'
 
 describe('the ship’s log', () => {
@@ -55,6 +56,21 @@ describe('the ship’s log', () => {
 
     for (const id of Object.keys(PLACE_DOSSIERS)) {
       expect(getPlace(id), id).toBeDefined()
+    }
+  })
+
+  it('files every place under exactly one saga', () => {
+    // The places page's saga picker reads it, and a place under none would
+    // leave the page with nothing to send.
+    const sagaIds: string[] = []
+    for (const saga of sagas) {
+      sagaIds.push(...saga.entries.map(({ id }) => id))
+    }
+    for (const place of places) {
+      expect(
+        sagaIds.filter((id) => id === place.id),
+        place.id,
+      ).toHaveLength(1)
     }
   })
 

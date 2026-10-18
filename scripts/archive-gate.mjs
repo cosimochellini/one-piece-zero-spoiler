@@ -104,9 +104,14 @@ const WORST_CHUNKS = 5
  * and saga pickers in the address, the places by sea as rows or
  * plates, the chart lighting what they keep, and eighteen new keys in both
  * dictionaries. The short list of links it replaces left the bundle. The
- * measured build plus ~1 KB, as the epic allows.
+ * measured build plus ~1 KB, as the epic allows. Raised to 606.2 KB on
+ * 2026-10-18, when main stood at ~597.2 KB and the peek on the sea chart
+ * (#679) added ~8.0 KB: the popover that is a sheet on a phone, its hover,
+ * focus, tap and Esc handling, the veiled peek of a stop under fog, the
+ * ships as buttons with a peek of their own, and two new keys in both
+ * dictionaries. The measured build plus ~1 KB, as the epic allows.
  */
-export const MAX_CLIENT_BYTES = 598_000
+export const MAX_CLIENT_BYTES = 606_200
 
 /** Where the prose lives: every saga, the ship's log and the filler guide. */
 const PROSE_DIR = 'src/data/records'

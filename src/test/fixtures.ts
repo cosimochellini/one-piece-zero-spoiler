@@ -1,3 +1,5 @@
+import { foldName } from '~/lib/search/fold'
+import type { StopView } from '~/lib/view/places'
 import type {
   CharacterChronicle,
   CharacterFacts,
@@ -162,6 +164,25 @@ export function port(over: Partial<PortView> = {}): PortView {
     summary: 'A restaurant that floats.',
     chart: { x: 200, y: 130 },
     dossier: dossier(),
+    ...over,
+  }
+}
+
+/**
+ * An open stop as the places page sends it. The folded name follows the
+ * name passed in, so a search over the fixture finds what it prints.
+ */
+export function stop(over: Partial<StopView> = {}): StopView {
+  const name = over.name ?? 'Baratie'
+
+  return {
+    ...record({ kind: 'place', id: 'test-port', name }),
+    folded: foldName(name),
+    aliases: [],
+    chart: { x: 200, y: 130 },
+    sea: 'east-blue',
+    form: 'restaurant',
+    saga: 1,
     ...over,
   }
 }

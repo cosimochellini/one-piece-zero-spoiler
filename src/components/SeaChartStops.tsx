@@ -12,6 +12,10 @@ import {
 import { tintOf } from '~/components/drawing'
 import { styles } from '~/components/SeaChart.styles'
 import { type ChartModel, pointOf } from '~/components/seaChartModel'
+import type {
+  PeekTarget,
+  TriggerProps as PeekTrigger,
+} from '~/components/useChartPeek'
 import { useLocale } from '~/i18n/LocaleContext'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
 import type { TintId } from '~/lib/view/records'
@@ -26,6 +30,9 @@ interface TargetProps {
   'style'?: Record<string, number | string>
   'tabIndex': number
 }
+
+/** A stop's target: the roving focus and the peek's handlers together. */
+type Target = Omit<TargetProps, 'onFocus'> & PeekTrigger
 
 /**
  * One tab stop for a row of targets, on `start`; the arrow keys, Home and
@@ -63,25 +70,50 @@ function useRoving(
 }
 
 /**
+ * Each stop's target: one tab stop for the lot (`useRoving`) and the peek's
+ * handlers, both listening for the focus.
+ */
+function useTargets(
+  count: number,
+  start: number,
+  trigger: (target: PeekTarget, link: boolean) => PeekTrigger,
+): (index: number, label: string, link?: boolean) => Target {
+  const roving = useRoving(count, start)
+
+  return (index, label, link = false) => {
+    const own = roving(index, label)
+    const peek = trigger({ index, kind: 'stop' }, link)
+    return {
+      ...own,
+      ...peek,
+      onFocus: (event) => {
+        own.onFocus()
+        peek.onFocus(event)
+      },
+    }
+  }
+}
+
+/**
  * The stops, in route order: a link to its page for an open one, a button
  * that says its number and episode for one under fog. One tab stop for the
  * lot, on the reader's own stop; the arrow keys move between them.
  *
- * A stop under fog does nothing yet (`aria-disabled`): the peek that lifts
- * it is #679's. It is a button already so the keyboard reaches it and a
- * screen reader hears its number and episode.
+ * Every stop opens its peek (`useChartPeek`): a click on an open one still
+ * follows its link, a tap on a phone peeks first.
  */
 export function SeaChartStops({
   model,
   orientation,
+  trigger,
 }: {
   model: ChartModel
   orientation: Orientation
+  trigger: (target: PeekTarget, link: boolean) => PeekTrigger
 }): ReactElement {
   const { locale, t } = useLocale()
-  const threshold = useThreshold()
-  const { covered, here, open, tail, total } = model
-  const target = useRoving(total, Math.max(open.length - 1, 0))
+  const { here, lit, open, total } = model
+  const target = useTargets(total, Math.max(open.length - 1, 0), trigger)
   const stage = (index: number): string =>
     t('places.stage', { index: index + 1, total })
 
@@ -100,9 +132,10 @@ export function SeaChartStops({
               aria-current={port === here ? 'location' : undefined}
               params={{ locale, id: port.id }}
               to="/$locale/places/$id"
-              {...target(index, `${stage(index)}. ${port.name}`)}
+              {...target(index, `${stage(index)}. ${port.name}`, true)}
             >
               <OpenDot
+                dim={lit !== null && !lit.has(port.id)}
                 here={port === here}
                 tint={port.visual.tint}
               />
@@ -110,25 +143,70 @@ export function SeaChartStops({
           </li>
         )
       })}
-      {covered.map((entry, offset) => {
-        const index = open.length + offset
+      <FogStops
+        dim={lit !== null}
+        from={open.length}
+        model={model}
+        orientation={orientation}
+        stage={stage}
+        target={target}
+      />
+    </ol>
+  )
+}
+
+/**
+ * The stops under fog, numbered on from the open ones: each a button that
+ * says its number and episode and opens the veiled peek, its dot on the
+ * tail, faint while the index's picks are set (a stop under fog has nothing
+ * to pick it by).
+ */
+function FogStops({
+  dim,
+  from,
+  model,
+  orientation,
+  stage,
+  target,
+}: {
+  dim: boolean
+  from: number
+  model: ChartModel
+  orientation: Orientation
+  stage: (index: number) => string
+  target: (index: number, label: string) => Target
+}): ReactElement {
+  const { t } = useLocale()
+  const threshold = useThreshold()
+
+  return (
+    <>
+      {model.covered.map((entry, offset) => {
+        const index = from + offset
         const said = `${t('places.foggedName')}. ${threshold('chart.opensAt', entry)}`
         return (
           <li
             key={entry.handle}
-            {...stylex.props(stopAt(tail[offset] ?? FOG_END, orientation))}
+            {...stylex.props(
+              stopAt(model.tail[offset] ?? FOG_END, orientation),
+            )}
           >
             <button
-              aria-disabled="true"
               type="button"
               {...target(index, `${stage(index)}. ${said}`)}
             >
-              <span {...stylex.props(styles.dot, styles.dotFog)} />
+              <span
+                {...stylex.props(
+                  styles.dot,
+                  styles.dotFog,
+                  dim && styles.dotDim,
+                )}
+              />
             </button>
           </li>
         )
       })}
-    </ol>
+    </>
   )
 }
 
@@ -153,11 +231,16 @@ const PILE: Record<string, stylex.StyleXStyles> = {
   false: styles.stopOpen,
 }
 
-/** An open stop's dot, in its drawing's tint; ringed in gold where you are. */
+/**
+ * An open stop's dot, in its drawing's tint; ringed in gold where you are,
+ * and faint when the index's picks leave it out.
+ */
 function OpenDot({
+  dim,
   here,
   tint,
 }: {
+  dim: boolean
   here: boolean
   tint: TintId
 }): ReactElement {
@@ -167,6 +250,7 @@ function OpenDot({
         styles.dot,
         styles.dotOpen(tintOf(tint)),
         here && styles.dotHere,
+        dim && styles.dotDim,
       )}
     />
   )
