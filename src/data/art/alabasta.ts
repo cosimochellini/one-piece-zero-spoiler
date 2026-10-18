@@ -1544,25 +1544,25 @@ export const alabastaArt = {
     shadow(84, 188, 60),
   ],
 
-  // An open book, a flower growing out of its spine.
+  // A flower whose five petals are open hands, on a stem with two leaves:
+  // she sprouts arms out of anything she likes, Pell's back among them (106).
+  // The near leaf turns its underside to us and is hatched.
   'nico-robin': [
-    { d: 'M28 156 Q54 146 80 156 Q106 146 132 156' },
-    { d: 'M28 104 Q54 94 80 104 Q106 94 132 104' },
-    { d: 'M28 104 V156 M132 104 V156 M80 104 V156' },
-    {
-      d: 'M40 118 q18 -6 32 0 M40 130 q18 -6 32 0 M88 118 q18 -6 32 0 M88 130 q18 -6 32 0',
-      role: 'ambient',
-    },
-    { d: 'M80 104 V64' },
-    { d: 'M80 84 q-12 -2 -14 -12' },
     ...[0, 72, 144, 216, 288].map((angle): Stroke => {
       return {
-        d: 'M80 64 q-9 -12 0 -22 q9 10 0 22',
+        d: 'M74 63 C72 55 70 49 70 43 L70 33 q2 -3 4 0 L74 41 L76 29 q2 -3 4 0 L80 41 L82 30 q2 -3 4 0 L86 41 L88 35 q2 -3 4 0 L92 45 C92 51 88 57 86 63',
         role: 'accent',
-        transform: `rotate(${String(angle)} 80 64)`,
+        transform: `rotate(${String(angle)} 80 70)`,
       }
     }),
-    { d: dot(80, 64), role: 'accent' },
+    { d: circle(80, 70, 7) },
+    { d: dot(80, 70), role: 'soft' },
+    { d: 'M80 77 C82 100 78 124 80 150' },
+    { d: 'M80 124 C70 112 56 114 50 122 C60 128 72 128 80 124' },
+    { d: 'M80 108 C90 96 104 98 110 106 C100 112 88 112 80 108' },
+    { d: 'M56 122 l4 3 M62 120 l4 4 M68 120 l4 4', role: 'ambient' },
+    { d: 'M40 150 H120', role: 'ambient' },
+    shadow(80, 162, 34),
   ],
 } satisfies Drawings
 
@@ -2393,6 +2393,32 @@ export const alabastaRedrawn: Redrawings = {
           role: 'accent',
         },
         ...alabastaArt.brogy.slice(8),
+      ],
+    },
+  ],
+  // The same flower held up in two huge cupped hands, each one a thousand
+  // hands melded together, sprouted out of the ground; the leaves are inside
+  // the cup and out of sight. Back from the two years, she grabs the Kraken
+  // with them on the way down to Fish-Man Island at 524 (ch. 605).
+  'nico-robin': [
+    {
+      episode: 524,
+      chapter: 605,
+      value: [
+        ...alabastaArt['nico-robin'].slice(0, 7),
+        { d: 'M80 77 C82 92 78 104 80 118' },
+        { d: 'M24 112 C24 142 48 160 80 160 C112 160 136 142 136 112' },
+        {
+          d: 'M24 112 q3 -7 7 -2 q3 -7 7 -2 q3 -7 7 -2 q3 -7 7 -1 C60 112 70 116 80 120 C90 116 100 112 108 107 q4 -6 7 1 q4 -5 7 2 q4 -5 7 2 q4 -5 7 2',
+        },
+        {
+          d: 'M31 110 C34 128 44 140 56 146 M38 108 C42 124 50 134 60 140 M122 110 C118 126 110 138 98 146 M115 109 C112 122 104 132 94 140',
+          role: 'soft',
+        },
+        { d: 'M80 120 V186', role: 'soft' },
+        { d: 'M58 157 C61 168 62 178 62 186 M102 157 C99 168 98 178 98 186' },
+        { d: 'M120 140 l6 -4 M114 150 l6 -4 M124 128 l6 -4', role: 'ambient' },
+        { d: 'M40 186 H120', role: 'ambient' },
       ],
     },
   ],
