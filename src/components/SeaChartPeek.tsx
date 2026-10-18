@@ -61,13 +61,16 @@ function Frame({
   const { attach, id, onClose, onPointerEnter, onPointerLeave } = peek
 
   return (
-    <div
+    <dialog
       aria-label={label}
       id={id}
       onPointerEnter={onPointerEnter}
       onPointerLeave={onPointerLeave}
+      // Open as it is drawn and never modal: the stop keeps the focus and
+      // the page stays live under it, so Esc is the hook's, not the
+      // browser's.
+      open
       ref={attach}
-      role="dialog"
       {...stylex.props(
         styles.peek,
         styles.placed(
@@ -86,7 +89,7 @@ function Frame({
       >
         <span aria-hidden="true">✕</span>
       </Button>
-    </div>
+    </dialog>
   )
 }
 
@@ -180,6 +183,8 @@ export function StopPeek({
   stage,
   ...frame
 }: PeekFrameProps & { port: StopView; stage: string }): ReactElement {
+  const { onDismiss } = frame.peek
+
   return (
     <Frame
       label={`${stage}. ${port.name}`}
@@ -187,7 +192,7 @@ export function StopPeek({
     >
       <p {...stylex.props(styles.stage)}>{stage}</p>
       <PlaceCard
-        onDismiss={frame.peek.onDismiss}
+        onDismiss={onDismiss}
         port={port}
       />
     </Frame>
@@ -210,6 +215,7 @@ export function FogPeek({
   stage: string
 }): ReactElement {
   const { t } = useLocale()
+  const { onDismiss } = frame.peek
 
   return (
     <Frame
@@ -232,7 +238,7 @@ export function FogPeek({
         {(port) => {
           return (
             <PlaceCard
-              onDismiss={frame.peek.onDismiss}
+              onDismiss={onDismiss}
               port={{
                 ...port,
                 form: port.dossier?.form,
@@ -259,6 +265,7 @@ export function ShipPeek({
   const { locale, t } = useLocale()
   const threshold = useThreshold()
   const { fate } = ship.dossier
+  const { onDismiss } = frame.peek
 
   return (
     <Frame
@@ -271,9 +278,9 @@ export function ShipPeek({
         link={
           <Link
             hash={ship.id}
-            onClick={frame.peek.onDismiss}
+            onClick={onDismiss}
             params={{ locale }}
-            search={true}
+            search
             to="/$locale/places"
             {...stylex.props(styles.link)}
           >

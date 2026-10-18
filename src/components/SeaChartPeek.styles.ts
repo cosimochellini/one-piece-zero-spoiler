@@ -40,7 +40,9 @@ export const styles = stylex.create({
   // Beside its stop, pulled by how far along the chart it is so it never
   // runs off either edge (the words on the chart do the same). Under 40rem
   // it is a sheet on the bottom edge of the screen instead.
+  // A `<dialog>`: the UA's centring margin and right edge are dropped.
   peek: {
+    margin: 0,
     borderColor: color.rule2,
     borderRadius: {
       [SHEET]: `${radius.card} ${radius.card} 0 0`,
@@ -56,6 +58,7 @@ export const styles = stylex.create({
     boxShadow: `0 0 0 ${rule.hair} ${color.paper}`,
     color: color.ink,
     insetBlockEnd: { [SHEET]: 0, default: 'auto' },
+    insetInlineEnd: 'auto',
     paddingBlockEnd: {
       [SHEET]: `calc(${space.lg} + env(safe-area-inset-bottom))`,
       default: space.md,
