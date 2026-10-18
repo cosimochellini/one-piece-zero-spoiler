@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex'
 
-import { color, rule, space, z } from '~/styles/tokens.stylex'
+import { color, pin, rule, space, z } from '~/styles/tokens.stylex'
 
 /**
  * The custom property a pinned control bar (`ControlBar`) writes on the
@@ -18,15 +18,17 @@ export const stickyStyles = stylex.create({
     borderBlockEndColor: color.rule,
     borderBlockEndStyle: 'solid',
     borderBlockEndWidth: rule.hair,
-    insetBlockStart: 0,
+    insetBlockStart: pin.bar,
     position: 'sticky',
     zIndex: z.sticky,
     minHeight: '2.75rem',
   },
-  // A head that pins under a control bar rather than at the top.
-  underBar: { insetBlockStart: `var(${STACK_PROPERTY}, 0px)` },
+  // A head that pins under a control bar rather than under the site bar.
+  underBar: {
+    insetBlockStart: `calc(${pin.bar} + var(${STACK_PROPERTY}, 0px))`,
+  },
   whileOpen: { position: { 'default': 'static', ':is([open] > *)': 'sticky' } },
   document: {
-    scrollPaddingBlockStart: `calc(var(${STACK_PROPERTY}, 0px) + 2.75rem + ${space.xs})`,
+    scrollPaddingBlockStart: `calc(${pin.bar} + var(${STACK_PROPERTY}, 0px) + 2.75rem + ${space.xs})`,
   },
 })

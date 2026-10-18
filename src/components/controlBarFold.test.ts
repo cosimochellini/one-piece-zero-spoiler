@@ -7,7 +7,11 @@ type Notify = (
 ) => void
 
 /** What the stubbed observers were handed, so a test can call them. */
-const heard: { measure?: () => void; pin?: Notify } = {}
+const heard: {
+  margin?: string | undefined
+  measure?: () => void
+  pin?: Notify
+} = {}
 
 function stubObservers(): void {
   vi.stubGlobal(
@@ -16,8 +20,9 @@ function stubObservers(): void {
       disconnect = vi.fn<() => void>()
       observe = vi.fn<() => void>()
 
-      constructor(notify: Notify) {
+      constructor(notify: Notify, options: IntersectionObserverInit) {
         heard.pin = notify
+        heard.margin = options.rootMargin
       }
     },
   )
@@ -90,7 +95,11 @@ describe('the control bar’s folding', () => {
       document.documentElement.style.getPropertyValue('--sticky-stack'),
     ).toBe('60px')
     expect(onPin).toHaveBeenLastCalledWith(true)
-    expect(watching.read()).toStrictEqual({ pinned: true, tuck: 300 })
+    expect(watching.read()).toStrictEqual({
+      offset: 0,
+      pinned: true,
+      tuck: 300,
+    })
 
     heard.pin?.([{ boundingClientRect: { top: 200 }, intersectionRatio: 1 }])
 
@@ -103,19 +112,47 @@ describe('the control bar’s folding', () => {
     ).toBe('')
   })
 
+  it('pins under the site bar when one is pinned above it', () => {
+    stubObservers()
+    const { bar } = mountBar()
+    // What `pin.bar` resolves to on a phone, read back off the scroll margin.
+    bar.style.scrollMarginTop = '93px'
+    const onPin = vi.fn<(pinned: boolean) => void>()
+    const watching = watch(bar, '--bar-tuck', onPin)
+
+    expect(heard.margin).toBe('-1px 0px 0px')
+
+    heard.measure?.()
+
+    expect(heard.margin).toBe('-94px 0px 0px')
+
+    // Pinned at the site bar's foot, tucked: cut by the line, so pinned.
+    heard.pin?.([{ boundingClientRect: { top: -207 }, intersectionRatio: 0.2 }])
+
+    expect(onPin).toHaveBeenLastCalledWith(true)
+    expect(watching.read().offset).toBe(93)
+
+    watching.stop()
+  })
+
   it('takes a tap pick back to the top of the results and focus to the toggle', () => {
     const { bar, radio, toggle } = mountBar()
     const setOpen = vi.fn<(open: boolean) => void>()
     const scrollTo = vi.fn<(options: ScrollToOptions) => void>()
     vi.stubGlobal('scrollTo', scrollTo)
     vi.stubGlobal('scrollY', 2500)
-    const stop = listen(bar, () => ({ pinned: true, tuck: 300 }), setOpen)
+    const stop = listen(
+      bar,
+      () => ({ offset: 93, pinned: true, tuck: 300 }),
+      setOpen,
+    )
 
     radio.dispatchEvent(new Event('pointerdown', { bubbles: true }))
     radio.dispatchEvent(new Event('change', { bubbles: true }))
 
-    // The container's top in the page (-2000 + 2500) plus the tuck.
-    expect(scrollTo).toHaveBeenCalledWith({ top: 800, behavior: 'instant' })
+    // The container's top in the page (-2000 + 2500), plus the tuck, less
+    // the site bar it pins under.
+    expect(scrollTo).toHaveBeenCalledWith({ top: 707, behavior: 'instant' })
     expect(setOpen).toHaveBeenLastCalledWith(false)
     expect(toggle).toHaveFocus()
 
@@ -126,7 +163,11 @@ describe('the control bar’s folding', () => {
     const { bar, radio, toggle } = mountBar()
     const setOpen = vi.fn<(open: boolean) => void>()
     vi.stubGlobal('scrollTo', vi.fn<() => void>())
-    const stop = listen(bar, () => ({ pinned: true, tuck: 300 }), setOpen)
+    const stop = listen(
+      bar,
+      () => ({ offset: 0, pinned: true, tuck: 300 }),
+      setOpen,
+    )
 
     radio.focus()
     radio.dispatchEvent(
@@ -144,7 +185,11 @@ describe('the control bar’s folding', () => {
     const { bar, radio } = mountBar()
     const setOpen = vi.fn<(open: boolean) => void>()
     vi.stubGlobal('scrollTo', vi.fn<() => void>())
-    const stop = listen(bar, () => ({ pinned: true, tuck: 300 }), setOpen)
+    const stop = listen(
+      bar,
+      () => ({ offset: 0, pinned: true, tuck: 300 }),
+      setOpen,
+    )
 
     // A letter typed in the search field, then a screen reader's activation.
     radio.dispatchEvent(
@@ -160,7 +205,11 @@ describe('the control bar’s folding', () => {
   it('ignores focus leaving to nowhere while a press inside the bar is held', () => {
     const { bar, radio, toggle } = mountBar()
     const setOpen = vi.fn<(open: boolean) => void>()
-    const stop = listen(bar, () => ({ pinned: true, tuck: 300 }), setOpen)
+    const stop = listen(
+      bar,
+      () => ({ offset: 0, pinned: true, tuck: 300 }),
+      setOpen,
+    )
 
     radio.focus()
     toggle.dispatchEvent(new Event('pointerdown', { bubbles: true }))

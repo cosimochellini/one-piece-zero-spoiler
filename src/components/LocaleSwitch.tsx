@@ -52,7 +52,10 @@ export function LocaleSwitch(): ReactElement {
           const current = candidate === locale
 
           return (
-            <li key={candidate}>
+            <li
+              key={candidate}
+              {...stylex.props(current && styles.here)}
+            >
               <Link
                 // The accessible name is always the full language name; only
                 // what is painted changes with the width.
@@ -131,8 +134,14 @@ const styles = stylex.create({
     minHeight: '44px',
     minWidth: { 'default': '44px', '@media (min-width: 40rem)': 0 },
   },
-  // A phone bar has room for the wordmark, one page link and two language
-  // codes, not two language names: 'Italiano English' alone is 158px.
+  // On a phone the switch shares a row with the three page links, and has
+  // room for one code: the language the reader is not reading. The page
+  // itself already says which one they are in.
+  here: {
+    display: { 'default': 'none', '@media (min-width: 40rem)': 'list-item' },
+  },
+  // A phone bar has room for language codes, not language names: 'Italiano
+  // English' alone is 158px.
   full: {
     display: { 'default': 'none', '@media (min-width: 40rem)': 'inline' },
   },
