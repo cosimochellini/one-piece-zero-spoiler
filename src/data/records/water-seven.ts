@@ -283,8 +283,8 @@ export const waterSeven: Saga = {
       revealedAtChapter: 327,
       name: { it: 'Califa', en: 'Kalifa' },
       summary: {
-        it: 'La segretaria di Iceburg, con gli occhiali e un raccoglitore blu, che gli riferisce che i pirati del Dock 1 si rifiutano di pagare le riparazioni e definisce il loro rifiuto una molestia sessuale.',
-        en: 'Iceburg’s secretary, with glasses and a blue binder, who tells him that the pirates at Dock One won’t pay for their repairs and calls it sexual harassment.',
+        it: 'Una donna con gli occhiali e un raccoglitore blu, che riferisce a Iceburg che i pirati del Dock 1 si rifiutano di pagare le riparazioni e definisce il loro rifiuto una molestia sessuale.',
+        en: 'A woman with glasses and a blue binder, who tells Iceburg that the pirates at Dock One won’t pay for their repairs and calls it sexual harassment.',
       },
       visual: { art: 'kalifa', tint: 'pink' },
     },
@@ -1030,15 +1030,20 @@ export const waterSeven: Saga = {
       devilFruit: [{ episode: 246, value: ['cat-cat-fruit-model-leopard'] }],
     },
     'kalifa': {
-      role: { it: 'Segretaria di Iceburg', en: 'Iceburg’s secretary' },
+      role: { it: 'Cittadina di Water Seven', en: 'Citizen of Water Seven' },
+      // Frozen at episode 230, which adapts chapters 323 (p. 13-19), 324
+      // (p. 9-18) and 325 (p. 6-9): her job comes in 231.
       log: {
         it: 'Quando al Dock 1 si raduna la folla, è al fianco di Iceburg e gli spiega cosa succede: i pirati a cui il cantiere ha appena riparato la nave dicono che non pagheranno. Lei lo definisce una molestia sessuale, e Iceburg è d’accordo. Porta gli occhiali e i capelli raccolti in uno chignon.',
         en: 'When a crowd gathers at Dock One, she is at Iceburg’s side and tells him what is going on: the pirates whose ship the yard has just repaired say they won’t pay. She calls it sexual harassment, and Iceburg agrees. She wears glasses and her hair up in a bun.',
       },
       status: [{ episode: 230, value: 'alive' }],
       affiliation: [
+        // Told in chapter 326 (p. 11), which episode 231 adapts, below her
+        // record's chapter.
         {
-          episode: 230,
+          episode: 231,
+          chapter: 327,
           factions: ['galley-la'],
           value: {
             it: 'Galley-La Company, segretaria di Iceburg',
