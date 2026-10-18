@@ -191,6 +191,13 @@ export const styles = stylex.create({
     height: TARGET,
     width: TARGET,
   },
+  // The targets overlap where the stops crowd. A tap there goes to an open
+  // stop before a stop under fog, and to the reader's own stop before any:
+  // a fogged stop does nothing yet (#679). The list is its own stacking
+  // context, so the order stays inside the chart.
+  stops: { isolation: 'isolate' },
+  stopOpen: { zIndex: 1 },
+  stopHere: { zIndex: 2 },
   target: {
     padding: 0,
     borderRadius: radius.pill,

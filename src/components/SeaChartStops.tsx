@@ -87,13 +87,13 @@ export function SeaChartStops({
   return (
     <ol
       aria-label={t('chart.title')}
-      {...stylex.props(styles.layer)}
+      {...stylex.props(styles.layer, styles.stops)}
     >
       {open.map((port, index) => {
         return (
           <li
             key={port.id}
-            {...stylex.props(stopAt(pointOf(port), orientation))}
+            {...stylex.props(stopAt(pointOf(port), orientation, port === here))}
           >
             <a
               aria-current={port === here ? 'location' : undefined}
@@ -130,10 +130,25 @@ export function SeaChartStops({
   )
 }
 
-/** A stop's place on the chart, centred on its point. */
-function stopAt(point: Point, orientation: Orientation): stylex.StyleXStyles {
+/**
+ * A stop's place on the chart, centred on its point, and its place in the
+ * pile where targets overlap: the reader's own stop on top, then the other
+ * open stops, then the fogged ones (`here` left out).
+ */
+function stopAt(
+  point: Point,
+  orientation: Orientation,
+  here?: boolean,
+): stylex.StyleXStyles {
   const { left, top } = placeOf(point, orientation)
-  return [styles.stop, styles.at(left, top)]
+  const lift = here === undefined ? null : PILE[String(here)]
+  return [styles.stop, styles.at(left, top), lift]
+}
+
+/** Which open stops sit higher in the pile. */
+const PILE: Record<string, stylex.StyleXStyles> = {
+  true: styles.stopHere,
+  false: styles.stopOpen,
 }
 
 /** An open stop's dot, in its drawing's tint; ringed in gold where you are. */
