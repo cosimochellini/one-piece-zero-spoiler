@@ -1,4 +1,4 @@
-import type { Affiliation } from '~/data/types'
+import type { Affiliation, Origin } from '~/data/types'
 
 import { eggheadChronicles } from './egghead.chronicle'
 import type { Saga } from './saga'
@@ -24,6 +24,14 @@ const SERAPHIM: Omit<Affiliation, 'episode'> = {
 }
 
 const SERAPHIM_ROLE = { it: 'Serafino', en: 'Seraphim' }
+
+/**
+ * The four Seraphim's origin: Pythagoras says they were all made in the
+ * Labophase in chapter 1074, episode 1107.
+ */
+const SERAPHIM_ORIGIN: Origin[] = [
+  { episode: 1107, chapter: 1074, place: 'egghead-island', value: EGGHEAD },
+]
 
 const SHAKA_SATELLITE = {
   it: 'Satellite di Vegapunk, Punk-01 Good',
@@ -655,14 +663,7 @@ export const egghead: Saga = {
         { episode: 1155, chapter: 1125, value: 'alive' },
       ],
       affiliation: [{ episode: 1099, ...SERAPHIM }],
-      origin: [
-        {
-          episode: 1107,
-          chapter: 1074,
-          place: 'egghead-island',
-          value: EGGHEAD,
-        },
-      ],
+      origin: SERAPHIM_ORIGIN,
       devilFruit: [{ episode: 1101, value: ['love-love-fruit'] }],
     },
     's-hawk': {
@@ -681,14 +682,7 @@ export const egghead: Saga = {
         { episode: 1155, chapter: 1125, value: 'alive' },
       ],
       affiliation: [{ episode: 1099, ...SERAPHIM }],
-      origin: [
-        {
-          episode: 1107,
-          chapter: 1074,
-          place: 'egghead-island',
-          value: EGGHEAD,
-        },
-      ],
+      origin: SERAPHIM_ORIGIN,
       devilFruit: [{ episode: 1108, value: ['dice-dice-fruit'] }],
     },
     's-bear': {
@@ -707,14 +701,7 @@ export const egghead: Saga = {
         { episode: 1155, chapter: 1125, value: 'alive' },
       ],
       affiliation: [{ episode: 1098, ...SERAPHIM }],
-      origin: [
-        {
-          episode: 1107,
-          chapter: 1074,
-          place: 'egghead-island',
-          value: EGGHEAD,
-        },
-      ],
+      origin: SERAPHIM_ORIGIN,
       devilFruit: [{ episode: 1099, value: ['paw-paw-fruit'] }],
     },
     's-shark': {
@@ -733,14 +720,7 @@ export const egghead: Saga = {
         { episode: 1155, chapter: 1125, value: 'alive' },
       ],
       affiliation: [{ episode: 1095, ...SERAPHIM }],
-      origin: [
-        {
-          episode: 1107,
-          chapter: 1074,
-          place: 'egghead-island',
-          value: EGGHEAD,
-        },
-      ],
+      origin: SERAPHIM_ORIGIN,
       devilFruit: [{ episode: 1101, value: ['swim-swim-fruit'] }],
     },
     // Edison, Pythagoras and York are filed at 1095, where they are first

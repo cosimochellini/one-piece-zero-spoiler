@@ -1,3 +1,5 @@
+import type { Origin } from '~/data/types'
+
 import type { Saga } from './saga'
 import { summitWarChronicles } from './summit-war.chronicle'
 
@@ -17,6 +19,10 @@ const BEASTS_HEADLINER = {
   en: 'Beasts Pirates, headliner',
 }
 const AMAZON_LILY = { it: 'Amazon Lily', en: 'Amazon Lily' }
+// Hancock's two sisters, at home in the palace from chapter 521, episode 412.
+const SISTERS_ORIGIN: Origin[] = [
+  { episode: 412, chapter: 521, place: 'amazon-lily', value: AMAZON_LILY },
+]
 // Shown at 484 as the Blackbeard Pirates, the erased criminals of level 6.
 const LEVEL_SIX_ESCAPEE = {
   it: 'Pirati di Barbanera; ex prigioniero del sesto livello di Impel Down',
@@ -1758,14 +1764,7 @@ export const summitWar: Saga = {
           value: { it: 'Pirate Kuja', en: 'Kuja Pirates' },
         },
       ],
-      origin: [
-        {
-          episode: 412,
-          chapter: 521,
-          place: 'amazon-lily',
-          value: AMAZON_LILY,
-        },
-      ],
+      origin: SISTERS_ORIGIN,
       devilFruit: [
         // Episode 413 captions the model; 412 names the fruit only in the
         // preview. The true chapter is 519; pin at her record’s chapter, 521.
@@ -1790,14 +1789,7 @@ export const summitWar: Saga = {
           value: { it: 'Pirate Kuja', en: 'Kuja Pirates' },
         },
       ],
-      origin: [
-        {
-          episode: 412,
-          chapter: 521,
-          place: 'amazon-lily',
-          value: AMAZON_LILY,
-        },
-      ],
+      origin: SISTERS_ORIGIN,
       devilFruit: [
         // Episode 413 captions the model; 412 names the fruit only in the
         // preview. The true chapter is 519; pin at her record’s chapter, 521.

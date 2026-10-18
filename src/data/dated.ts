@@ -191,30 +191,34 @@ export interface Native {
 }
 
 /**
+ * The places one character's origin names, each with the gate of the
+ * earliest entry naming it: a timeline is in episode order, so the first
+ * entry found is the earliest.
+ */
+function placesOf(entity: Entity): Map<string, Gated> {
+  const origin = CHARACTER_DOSSIERS[entity.id]?.origin ?? []
+  const named = new Map<string, Gated>()
+
+  for (const entry of origin) {
+    if (entry.place !== undefined && !named.has(entry.place)) {
+      named.set(entry.place, gateOf(entry, entity))
+    }
+  }
+
+  return named
+}
+
+/**
  * Every place's natives, read once out of the origin entries, in the order
  * the characters are filed. Read backwards, as the eaters are: the link is
  * written once, on the character's entry, and the place derives its list.
- * The first entry naming a place is the earliest, because a timeline is in
- * episode order.
  */
 function readNatives(): Map<string, Native[]> {
   const found = new Map<string, Native[]>()
 
   for (const entity of characters) {
-    const origin = CHARACTER_DOSSIERS[entity.id]?.origin
-    if (origin === undefined) {
-      continue
-    }
-    const named = new Set<string>()
-
-    for (const entry of origin) {
-      const { place } = entry
-      if (place === undefined || named.has(place)) {
-        continue
-      }
-      named.add(place)
-      const native = { entity, gate: gateOf(entry, entity) }
-      found.set(place, [...(found.get(place) ?? []), native])
+    for (const [place, gate] of placesOf(entity)) {
+      found.set(place, [...(found.get(place) ?? []), { entity, gate }])
     }
   }
 
