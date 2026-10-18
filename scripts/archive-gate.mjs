@@ -98,9 +98,13 @@ const WORST_CHUNKS = 5
  * place, the drawings in a row, the stops either side), the short list of
  * links that replaced the stacked entries, and sixteen new keys in both
  * dictionaries. The stacked log it replaces left the bundle. Again the
- * measured build plus ~1 KB, as the epic allows.
+ * measured build plus ~1 KB, as the epic allows. Raised to 589.7 KB on
+ * 2026-10-18, when main stood at ~587.7 KB and the pinned phone bar added
+ * ~0.9 KB: the language as a native select beside the bookmark, the short
+ * `EP ?` an unset bookmark paints on a phone, and the control bar finding
+ * the line it pins at under the site bar. The measured build plus ~1 KB.
  */
-export const MAX_CLIENT_BYTES = 588_100
+export const MAX_CLIENT_BYTES = 589_700
 
 /** Where the prose lives: every saga, the ship's log and the filler guide. */
 const PROSE_DIR = 'src/data/records'

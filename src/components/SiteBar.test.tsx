@@ -40,6 +40,10 @@ describe('SiteBar', () => {
     expect(
       within(banner).getByRole('button', { name: 'Set episode' }),
     ).toHaveAttribute('aria-haspopup', 'dialog')
+    // A phone paints the empty slot; the words stay the button's name.
+    expect(
+      within(banner).getByRole('button', { name: 'Set episode' }),
+    ).toHaveTextContent('EP ?')
     // No link row filling the middle: the space is the design.
     expect(within(banner).getAllByRole('link')).toHaveLength(4)
     expect(within(banner).getAllByRole('button')).toHaveLength(1)

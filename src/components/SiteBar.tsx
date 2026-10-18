@@ -91,7 +91,7 @@ const styles = stylex.create({
   // line, and the bar scrolls away with the page.
   //
   // On a phone the bar is a two-row grid pinned to the top of the window: the
-  // wordmark and the bookmark on the first row, the pages and the language on
+  // wordmark, the bookmark and the language on the first row, the pages on
   // the second. The controls box steps aside (`display: contents`) so its
   // children take those cells. Its height is `pin.bar`, the same value every
   // other pinned element offsets itself by.
@@ -108,7 +108,7 @@ const styles = stylex.create({
     columnGap: { [WIDE]: space.md, default: space.sm },
     display: { [WIDE]: 'flex', default: 'grid' },
     flexWrap: 'wrap',
-    gridTemplateColumns: 'minmax(0, 1fr) auto',
+    gridTemplateColumns: 'minmax(0, 1fr) auto auto',
     gridTemplateRows: 'repeat(2, minmax(0, 1fr))',
     insetBlockStart: 0,
     justifyContent: 'space-between',
@@ -135,8 +135,7 @@ const styles = stylex.create({
   // The second row, flush with the wordmark: the first link's own padding is
   // pulled back into the gutter so its word starts where the wordmark does.
   // It spans the row rather than the first column, which the bookmark's
-  // width decides; the language code sits over its far end, which the three
-  // links never reach, not even at 320px.
+  // width decides.
   pages: {
     gap: { [WIDE]: space.sm, default: space.xs },
     gridRow: 2,
@@ -146,7 +145,7 @@ const styles = stylex.create({
     gridColumnStart: 1,
     marginInlineStart: { [WIDE]: 0, default: `calc(-1 * ${space.xs2})` },
   },
-  locale: { gridColumn: 2, gridRow: 2, justifySelf: 'end' },
+  locale: { gridColumn: 3, gridRow: 1 },
 
   wordmark: {
     color: color.ink,
