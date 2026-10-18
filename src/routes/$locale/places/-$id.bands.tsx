@@ -10,10 +10,12 @@ import * as stylex from '@stylexjs/stylex'
 import { type ReactElement, useId } from 'react'
 
 import { PlaceMap } from '~/components/PlaceMap'
+import { styles as ledger } from '~/components/PortEntry.styles'
+import { Fact } from '~/components/PortFacts'
 import { PortPlate } from '~/components/PortPlate'
 import { useLocale } from '~/i18n/LocaleContext'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
-import type { PlaceDetail, PlaceDrawing } from '~/lib/view/places'
+import type { PlaceDetail, PlaceDrawing, VisitView } from '~/lib/view/places'
 import type { RecordView, Slot } from '~/lib/view/records'
 import { Neighbour } from '~/routes/$locale/characters/-$id.neighbour'
 import { styles as page } from '~/routes/$locale/characters/-$id.styles'
@@ -21,9 +23,9 @@ import { color, font, radius, rule, space, text } from '~/styles/tokens.stylex'
 
 /**
  * Where the place is: its stop number and a line on what the map shows,
- * beside the stretch of the sea chart around it. Under fog there is no map,
- * nor the line about it: where a place lies is what the fog is for, so only
- * the number stays.
+ * beside the stretch of the sea chart around it, then the times the story
+ * comes back to it. Under fog there is no map, nor the line about it: where
+ * a place lies is what the fog is for, so only the number stays.
  */
 export function MapBand({ detail }: { detail: PlaceDetail }): ReactElement {
   const { t } = useLocale()
@@ -53,6 +55,7 @@ export function MapBand({ detail }: { detail: PlaceDetail }): ReactElement {
         {map === null ? null : (
           <p {...stylex.props(page.lede)}>{t('place.mapLede')}</p>
         )}
+        <Visits visits={detail.visits} />
       </div>
       {map === null ? null : (
         <PlaceMap
@@ -62,6 +65,34 @@ export function MapBand({ detail }: { detail: PlaceDetail }): ReactElement {
       )}
     </section>
   )
+}
+
+/**
+ * The later visits the reader has reached, each in their unit with its
+ * note, in the facts' ledger. Nothing while there are none: the server sends
+ * only the visits reached, so an empty list is all a reader is owed.
+ */
+function Visits({ visits }: { visits: VisitView[] }): null | ReactElement {
+  const { t } = useLocale()
+  const threshold = useThreshold()
+
+  return visits.length === 0 ?
+      null
+    : <div {...stylex.props(ledger.filed)}>
+        <h3 {...stylex.props(ledger.filedTitle)}>{t('place.visitsTitle')}</h3>
+        <dl {...stylex.props(ledger.facts, styles.visits)}>
+          {visits.map((visit) => {
+            const at = threshold('chart.opensAt', visit)
+            return (
+              <Fact
+                key={at}
+                label={at}
+                value={visit.note}
+              />
+            )
+          })}
+        </dl>
+      </div>
 }
 
 /**
@@ -173,6 +204,9 @@ export function TurnBand({
 }
 
 const styles = stylex.create({
+  // One visit to a row: the map band's column is too narrow for the
+  // ledger's two.
+  visits: { gridTemplateColumns: 'minmax(0, 1fr)' },
   // The drawings side by side, wrapping on a phone: two to a row at 320 px.
   strip: {
     gap: space.md,

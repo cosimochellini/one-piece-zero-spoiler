@@ -265,6 +265,8 @@ export const itDictionary: Dictionary = {
   'place.mapTitle': 'Sulla mappa',
   'place.mapLede':
     'Dove si colloca questo luogo nella storia, con le tappe subito prima e subito dopo.',
+  'place.nativesTitle': 'Vengono da qui',
+  'place.visitsTitle': 'Ritorni',
   'place.drawingsTitle': 'Come cambia il disegno',
   'place.drawingsLede':
     'Ogni disegno di questo luogo fino al tuo segnalibro, dal più vecchio.',

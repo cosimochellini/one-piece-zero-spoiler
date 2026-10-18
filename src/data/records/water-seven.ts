@@ -211,8 +211,8 @@ export const waterSeven: Saga = {
       revealedAtChapter: 327,
       name: { it: 'Iceburg', en: 'Iceburg' },
       summary: {
-        it: 'Il sindaco di Water Seven e presidente della più grande compagnia di costruttori navali della città, che gira con un topolino nella tasca della giacca.',
-        en: 'The mayor of Water Seven and president of the city’s biggest shipbuilding company, who goes about with a small mouse riding in his coat pocket.',
+        it: 'Un uomo di Water Seven con un topolino nella tasca della giacca, da cui Kokoro manda i Cappello di Paglia con una lettera perché possano far riparare la nave.',
+        en: 'A man in Water Seven with a small mouse riding in his coat pocket, to whom Kokoro sends the Straw Hats with a letter so they can get their ship repaired.',
       },
       visual: { art: 'iceburg', tint: 'teal' },
     },
@@ -271,8 +271,8 @@ export const waterSeven: Saga = {
       revealedAtChapter: 326,
       name: { it: 'Rob Lucci', en: 'Rob Lucci' },
       summary: {
-        it: 'Un carpentiere della Galley-La con un piccione bianco sulla spalla, l’uomo che la folla dei cantieri acclama più di chiunque altro.',
-        en: 'A Galley-La shipwright with a white pigeon on his shoulder, the man the crowd at the docks cheers louder than anyone.',
+        it: 'Un carpentiere della Galley-La con un piccione bianco sulla spalla, uno degli uomini che la folla dei cantieri acclama per nome.',
+        en: 'A Galley-La shipwright with a white pigeon on his shoulder, one of the men the crowd at the docks cheers by name.',
       },
       visual: { art: 'rob-lucci', tint: 'ivory' },
     },
@@ -283,8 +283,8 @@ export const waterSeven: Saga = {
       revealedAtChapter: 327,
       name: { it: 'Califa', en: 'Kalifa' },
       summary: {
-        it: 'La segretaria di Iceburg, con gli occhiali e un raccoglitore blu, che gli riferisce che i pirati del Dock 1 si rifiutano di pagare le riparazioni e definisce il loro rifiuto una molestia sessuale.',
-        en: 'Iceburg’s secretary, with glasses and a blue binder, who tells him that the pirates at Dock One won’t pay for their repairs and calls it sexual harassment.',
+        it: 'Una donna con gli occhiali e un raccoglitore blu, che riferisce a Iceburg che i pirati del Dock 1 si rifiutano di pagare le riparazioni e definisce il loro rifiuto una molestia sessuale.',
+        en: 'A woman with glasses and a blue binder, who tells Iceburg that the pirates at Dock One won’t pay for their repairs and calls it sexual harassment.',
       },
       visual: { art: 'kalifa', tint: 'pink' },
     },
@@ -897,22 +897,34 @@ export const waterSeven: Saga = {
       ],
     },
     'iceburg': {
-      role: { it: 'Sindaco di Water Seven', en: 'Mayor of Water Seven' },
+      role: { it: 'Cittadino di Water Seven', en: 'Citizen of Water Seven' },
+      // Frozen at episode 230, which adapts chapters 323 (p. 13-19), 324
+      // (p. 9-18) and 325 (p. 6-9): who he is comes in 231.
       log: {
-        it: 'Guida la Galley-La Company, che costruisce le navi migliori del mare, e la città intera lo tratta come una cosa propria. Riceve i clienti con calma, chiama tutti per nome e tiene un topolino di nome Tyrannosaurus nella tasca della giacca. Quando gli chiedono di valutare una caravella malridotta, risponde senza addolcire nulla.',
-        en: 'He runs the Galley-La Company, which builds the best ships on the sea, and the whole city treats him as its own. He receives customers calmly, calls everyone by name, and keeps a mouse called Tyrannosaurus in his coat pocket. Asked to look over a battered caravel, he gives his verdict without softening a word of it.',
+        it: 'Kokoro dà ai Cappello di Paglia una lettera da portare a lui, perché faccia riparare la loro nave. Califa gli riferisce che i pirati del Dock 1 si rifiutano di pagare le riparazioni. Lei lo definisce una molestia sessuale, e lui è d’accordo. Un topolino gli viaggia nella tasca della giacca.',
+        en: 'Kokoro gives the Straw Hats a letter to take to him, so he will get their ship repaired. Kalifa tells him that the pirates at Dock One refuse to pay for their repairs. She calls it sexual harassment, and he agrees. A small mouse rides in his coat pocket.',
       },
       status: [{ episode: 230, value: 'alive' }],
       affiliation: [
+        // Kaku says it in chapter 325 (p. 16), which episode 231 adapts,
+        // below his record's chapter.
         {
-          episode: 230,
+          episode: 231,
+          chapter: 327,
           value: {
             it: 'Galley-La Company, presidente e sindaco di Water Seven',
             en: 'Galley-La Company, president and mayor of Water Seven',
           },
         },
       ],
-      origin: [{ episode: 230, value: WATER_SEVEN }],
+      origin: [
+        {
+          episode: 230,
+          chapter: 327,
+          place: 'water-seven',
+          value: WATER_SEVEN,
+        },
+      ],
     },
     'paulie': {
       role: DOCK_ONE,
@@ -931,7 +943,14 @@ export const waterSeven: Saga = {
         { episode: 310, chapter: 428, value: 'alive' },
       ],
       affiliation: [{ episode: 232, value: GALLEY_LA_DOCK_ONE }],
-      origin: [{ episode: 232, value: WATER_SEVEN }],
+      origin: [
+        {
+          episode: 232,
+          chapter: 326,
+          place: 'water-seven',
+          value: WATER_SEVEN,
+        },
+      ],
     },
     'kokoro': {
       role: {
@@ -952,7 +971,6 @@ export const waterSeven: Saga = {
           },
         },
       ],
-      origin: [{ episode: 230, value: WATER_SEVEN }],
     },
     'chimney': {
       role: {
@@ -973,7 +991,6 @@ export const waterSeven: Saga = {
           },
         },
       ],
-      origin: [{ episode: 230, value: WATER_SEVEN }],
     },
     'kaku': {
       role: DOCK_ONE,
@@ -991,14 +1008,29 @@ export const waterSeven: Saga = {
     },
     'rob-lucci': {
       chronicle: waterSevenChronicles['rob-lucci'],
-      role: DOCK_ONE,
+      role: { it: 'Carpentiere della Galley-La', en: 'Galley-La shipwright' },
+      // Frozen at episode 230 and chapter 326. Episode 230 adapts chapters
+      // 323 (p. 14-19), 324 (p. 9-18) and 325 (p. 6-9): the crowd cheers him
+      // at Dock One. Iceburg calls him a foreman in chapter 327, which
+      // episode 232 adapts.
       log: {
-        it: 'Ai cantieri della Galley-La, poco dopo che i carpentieri hanno messo al tappeto una ciurma pirata che non voleva pagare le riparazioni, una folla si raduna ad acclamarlo. Un piccione bianco gli sta sulla spalla ovunque vada. Ai curiosi non dice nulla, e non ne ha bisogno: per Water Seven gli uomini della Galley-La sono l’orgoglio della città.',
-        en: 'At the Galley-La docks, not long after the shipwrights knocked flat a pirate crew that would not pay for its repairs, a crowd gathers to praise him. A white pigeon rides on his shoulder wherever he goes. He says nothing to the onlookers and does not need to: for Water Seven, the Galley-La men are the pride of the city.',
+        it: 'Ai cantieri della Galley-La, poco dopo che i carpentieri hanno messo al tappeto una ciurma pirata che non voleva pagare le riparazioni, la folla dei curiosi lo acclama per nome. Un piccione bianco gli sta sulla spalla. Un abitante spiega che i carpentieri della Galley-La sono l’orgoglio di Water Seven.',
+        en: 'At the Galley-La docks, not long after the shipwrights knocked flat a pirate crew that would not pay for its repairs, the crowd of onlookers cheers him by name. A white pigeon perches on his shoulder. A local explains that the Galley-La shipwrights are the pride of Water Seven.',
       },
       status: [{ episode: 230, value: 'alive' }],
       affiliation: [
-        { episode: 230, factions: ['galley-la'], value: GALLEY_LA_DOCK_ONE },
+        {
+          episode: 230,
+          factions: ['galley-la'],
+          value: { it: 'Galley-La Company', en: 'Galley-La Company' },
+        },
+        // Iceburg says it in chapter 327, which episode 232 adapts.
+        {
+          episode: 232,
+          chapter: 327,
+          factions: ['galley-la'],
+          value: GALLEY_LA_DOCK_ONE,
+        },
         { episode: 244, factions: ['cp9'], value: CIPHER_POL_9 },
         {
           episode: 266,
@@ -1013,15 +1045,20 @@ export const waterSeven: Saga = {
       devilFruit: [{ episode: 246, value: ['cat-cat-fruit-model-leopard'] }],
     },
     'kalifa': {
-      role: { it: 'Segretaria di Iceburg', en: 'Iceburg’s secretary' },
+      role: { it: 'Cittadina di Water Seven', en: 'Citizen of Water Seven' },
+      // Frozen at episode 230, which adapts chapters 323 (p. 13-19), 324
+      // (p. 9-18) and 325 (p. 6-9): her job comes in 231.
       log: {
         it: 'Quando al Dock 1 si raduna la folla, è al fianco di Iceburg e gli spiega cosa succede: i pirati a cui il cantiere ha appena riparato la nave dicono che non pagheranno. Lei lo definisce una molestia sessuale, e Iceburg è d’accordo. Porta gli occhiali e i capelli raccolti in uno chignon.',
         en: 'When a crowd gathers at Dock One, she is at Iceburg’s side and tells him what is going on: the pirates whose ship the yard has just repaired say they won’t pay. She calls it sexual harassment, and Iceburg agrees. She wears glasses and her hair up in a bun.',
       },
       status: [{ episode: 230, value: 'alive' }],
       affiliation: [
+        // Told in chapter 326 (p. 11), which episode 231 adapts, below her
+        // record's chapter.
         {
-          episode: 230,
+          episode: 231,
+          chapter: 327,
           factions: ['galley-la'],
           value: {
             it: 'Galley-La Company, segretaria di Iceburg',
@@ -1108,7 +1145,14 @@ export const waterSeven: Saga = {
           value: { it: 'Franky Family', en: 'Franky Family' },
         },
       ],
-      origin: [{ episode: 265, chapter: 377, value: WATER_SEVEN }],
+      origin: [
+        {
+          episode: 265,
+          chapter: 377,
+          place: 'water-seven',
+          value: WATER_SEVEN,
+        },
+      ],
     },
     'zambai': {
       role: {
@@ -1139,7 +1183,14 @@ export const waterSeven: Saga = {
           },
         },
       ],
-      origin: [{ episode: 266, chapter: 378, value: WATER_SEVEN }],
+      origin: [
+        {
+          episode: 266,
+          chapter: 378,
+          place: 'water-seven',
+          value: WATER_SEVEN,
+        },
+      ],
     },
     'peepley-lulu': {
       chronicle: waterSevenChronicles['peepley-lulu'],
@@ -1258,13 +1309,16 @@ export const waterSeven: Saga = {
           },
         },
       ],
+      // Water Seven is where he worked, not where he comes from. Episode 535
+      // adapts chapter 616, where Den, captioned as his younger brother,
+      // explains why the two look nothing alike ("on Fish-Man Island no one is
+      // surprised"), and thanks Franky for coming all that way to tell him.
       origin: [
         {
-          episode: 248,
-          value: {
-            it: 'Water Seven, Rotta Maggiore',
-            en: 'Water Seven, Grand Line',
-          },
+          episode: 535,
+          chapter: 616,
+          place: 'fish-man-island',
+          value: { it: 'Isola degli Uomini-Pesce', en: 'Fish-Man Island' },
         },
       ],
     },
@@ -1473,7 +1527,15 @@ export const waterSeven: Saga = {
           },
         },
       ],
-      origin: [{ episode: 265, value: { it: 'Elbaf', en: 'Elbaph' } }],
+      // Oimo first says they come from Elbaph in ch 384, ep 270.
+      origin: [
+        {
+          episode: 270,
+          chapter: 385,
+          place: 'elbaf-island',
+          value: { it: 'Elbaf', en: 'Elbaph' },
+        },
+      ],
     },
     'baskerville': {
       chronicle: waterSevenChronicles.baskerville,

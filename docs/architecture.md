@@ -91,7 +91,7 @@ reader is inside a run or the next one starts within the six cells.
 | Devil fruits        | 128                                                     |
 | Arcs, places, ships | 34 · 39 · 2                                             |
 | Saga modules        | 12, plus one for the devil fruits                       |
-| Line drawings       | 737, one per record, plus 307 redrawings of 171 records |
+| Line drawings       | 737, one per record, plus 308 redrawings of 172 records |
 | Chronicle stories   | 755, for 185 characters                                 |
 
 <!-- End of the generated counts. -->
@@ -192,10 +192,10 @@ checked on every run:
 - no text names a record the reader has not reached. The links a chronicle
   builds from `[[id]]` markers are checked against the story's episode, and
   every text the archive prints, summaries, roles, logs, affiliations, origins,
-  epithets, stories, ship fates and the labels of the factions an affiliation is
-  tagged with, is scanned for every later record's full name in both locales. A
-  name the show says before its record opens, or one that is an ordinary word,
-  is declared on the record itself rather than excused in a test;
+  epithets, stories, ship fates, place visits and the labels of the factions an
+  affiliation is tagged with, is scanned for every later record's full name in
+  both locales. A name the show says before its record opens, or one that is an
+  ordinary word, is declared on the record itself rather than excused in a test;
 - every affiliation entry of a devil fruit eater carries the factions its prose
   names, as ids from a closed vocabulary (`Faction` in
   `src/lib/view/records.ts`, labelled in both dictionaries), and every id in the
@@ -204,6 +204,14 @@ checked on every run:
   is `independent`;
 - every place belongs to an arc that opens no later than the place itself,
   because the place page shows that arc;
+- every later visit to a place comes after the place in both units, in order, at
+  the episode and the chapter that show it (checked against the wiki, not
+  derived); the place page sends only the visits the reader has reached, and
+  none under fog;
+- every origin entry that names a filed place carries the place's id and the
+  chapter that tells it, and the place page lists a character as coming from it
+  only once the reader has met the character and reached that entry, in both
+  units; nobody else is sent or counted;
 - every drawing belongs to a record;
 - every devil fruit opens no later than any character entry that names it, which
   lets a character page link to its fruit without checking anything, and no

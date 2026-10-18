@@ -68,7 +68,7 @@ export function ShipFacts({ entry }: { entry: ShipEntry }): ReactElement {
 }
 
 /** One row of the ledger: the term in small caps, the value beside it. */
-function Fact({
+export function Fact({
   label,
   value,
 }: {

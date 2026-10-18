@@ -262,6 +262,8 @@ export const enDictionary = {
   'place.mapTitle': 'On the map',
   'place.mapLede':
     'Where this place comes in the story, with the stops just before and after.',
+  'place.nativesTitle': 'From here',
+  'place.visitsTitle': 'Later visits',
   'place.drawingsTitle': 'How the drawing changes',
   'place.drawingsLede':
     'Every drawing of this place up to your bookmark, oldest first.',

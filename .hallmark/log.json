@@ -1,6 +1,28 @@
 [
   {
     "date": "2026-10-18",
+    "macrostructure": "Split Studio (a place's own page, unchanged)",
+    "theme": "custom (bespoke): Sea Chart — locked, not rotated",
+    "theme_axes": "dark / geometric-sans / chromatic-amber (88°)",
+    "enrichment": "none new",
+    "nav": "N9 edge-aligned (shared)",
+    "footer": "Ft4 dense colophon (shared)",
+    "sections": "/places/$id entry: under 'Found here', a 'From here' list of record tiles (the characters who come from the place), open tiles only, only those reached",
+    "brief": "Issue #678 (epic #671): character origins linked to places. Reuses FiledHere and RecordTile; nothing under fog, nobody past the bookmark counted."
+  },
+  {
+    "date": "2026-10-18",
+    "macrostructure": "Split Studio (a place's own page, unchanged)",
+    "theme": "custom (bespoke): Sea Chart — locked, not rotated",
+    "theme_axes": "dark / geometric-sans / chromatic-amber (88°)",
+    "enrichment": "none new",
+    "nav": "N9 edge-aligned (shared)",
+    "footer": "Ft4 dense colophon (shared)",
+    "sections": "/places/$id map band: stop number, map line, and a 'Later visits' ledger (episode or chapter | one-line note), only for the visits reached; beside the cropped chart as before",
+    "brief": "Issue #677 (epic #671): the times the story comes back to a place after its own arc, in the facts' ledger styles. Nothing under fog and nothing past the bookmark."
+  },
+  {
+    "date": "2026-10-18",
     "macrostructure": "Split Studio (a ship's own page, the place page's diptych) + Map / Diagram on /places over a Catalogue index",
     "theme": "custom (bespoke): Sea Chart — locked, not rotated",
     "theme_axes": "dark / geometric-sans / chromatic-amber (88°)",

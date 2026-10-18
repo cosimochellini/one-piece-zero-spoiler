@@ -20,7 +20,7 @@ import {
 import { ep, renderWithProviders, settle } from '~/test/providers'
 
 import { DrawingsBand, MapBand, TurnBand } from './-$id.bands'
-import { EntryDiptych, PortBody, ShipBody } from './-$id.entry'
+import { EntryDiptych, PlaceEntry, ShipBody } from './-$id.entry'
 
 const sanji = openSlot(record({ id: 'sanji', name: 'Sanji', ...at(20) }))
 const metLater = coveredSlot<RecordView>({ ...at(24) })
@@ -50,33 +50,16 @@ function detailOf(over: Partial<PlaceDetail> = {}): PlaceDetail {
     chart: map,
     drawings: [],
     index: 4,
+    natives: [],
     next: coveredSlot<RecordView>({ kind: 'place', ...at(64) }),
     previous: openSlot(
       record({ id: 'syrup-village', kind: 'place', name: 'Syrup Village' }),
     ),
     slot: openSlot(baratie),
     total: 39,
+    visits: [],
     ...over,
   }
-}
-
-/** A place's entry, as the route draws it. */
-function PlaceEntry({
-  detail,
-  peek,
-}: {
-  detail: PlaceDetail
-  peek: (handle: string) => Promise<PortView>
-}): ReactElement {
-  return (
-    <EntryDiptych
-      Body={PortBody}
-      kind="place"
-      peek={peek}
-      peekRecord={peekPending()}
-      slot={detail.slot}
-    />
-  )
 }
 
 /** A ship's entry, as the route draws it. */
@@ -120,6 +103,7 @@ describe('a place’s entry', () => {
       <PlaceEntry
         detail={detailOf()}
         peek={peekPending()}
+        peekRecord={peekPending()}
       />,
       { bookmark: ep(20) },
     )
@@ -134,6 +118,27 @@ describe('a place’s entry', () => {
       '/en/characters/sanji',
     )
     expect(screen.getByText('First seen in episode 20')).toBeVisible()
+    expect(screen.queryByText('From here')).not.toBeInTheDocument()
+  })
+
+  it('lists the characters who come from it, each a link', () => {
+    const zeff = record({ id: 'zeff', name: 'Zeff', ...at(20) })
+    renderWithProviders(
+      <PlaceEntry
+        detail={detailOf({ natives: [zeff] })}
+        peek={peekPending()}
+        peekRecord={peekPending()}
+      />,
+      { bookmark: ep(20) },
+    )
+
+    expect(
+      screen.getByRole('heading', { level: 3, name: 'From here' }),
+    ).toBeVisible()
+    expect(screen.getByRole('link', { name: 'Zeff' })).toHaveAttribute(
+      'href',
+      '/en/characters/zeff',
+    )
   })
 
   it('carries nothing of a covered place until the reader asks', async () => {
@@ -143,6 +148,7 @@ describe('a place’s entry', () => {
       <PlaceEntry
         detail={fogged}
         peek={peekTo(jaya)}
+        peekRecord={peekPending()}
       />,
       { bookmark: ep(20) },
     )
@@ -225,6 +231,36 @@ describe('a place on the map', () => {
     expect(
       container.querySelectorAll(':scope [role=img] > div > span'),
     ).toHaveLength(5)
+  })
+
+  it('lists the later visits the reader has reached, in their unit', () => {
+    renderWithProviders(
+      <MapBand
+        detail={detailOf({
+          visits: [
+            {
+              note: 'The crew comes back.',
+              revealedAtEpisode: 313,
+              revealedAtChapter: 431,
+            },
+            { note: 'Again.', revealedAtEpisode: 600, revealedAtChapter: 700 },
+          ],
+        })}
+      />,
+      { bookmark: { mode: 'chapter', chapter: 800 } },
+    )
+
+    expect(screen.getByRole('heading', { name: 'Later visits' })).toBeVisible()
+    expect(
+      screen.getAllByRole('term').map((term) => term.textContent),
+    ).toStrictEqual(['Chapter 431', 'Chapter 700'])
+    expect(screen.getByText('The crew comes back.')).toBeVisible()
+  })
+
+  it('has no visits heading while none is reached', () => {
+    renderWithProviders(<MapBand detail={detailOf()} />, { bookmark: ep(20) })
+
+    expect(screen.queryByText('Later visits')).not.toBeInTheDocument()
   })
 
   it('has no map at all under fog, only the stop number', () => {

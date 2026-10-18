@@ -368,7 +368,9 @@ export const elbaf: Saga = {
       affiliation: [
         { episode: 1159, value: NEW_GIANTS('navigatore', 'navigator') },
       ],
-      origin: [{ episode: 1159, value: ELBAF }],
+      origin: [
+        { episode: 1159, chapter: 1129, place: 'elbaf-island', value: ELBAF },
+      ],
     },
     'loki': {
       role: { it: 'Principe di Elbaf', en: 'Prince of Elbaph' },
@@ -386,7 +388,9 @@ export const elbaf: Saga = {
           },
         },
       ],
-      origin: [{ episode: 1160, value: ELBAF }],
+      origin: [
+        { episode: 1160, chapter: 1130, place: 'elbaf-island', value: ELBAF },
+      ],
       epithet: [
         {
           episode: 1160,
@@ -406,7 +410,9 @@ export const elbaf: Saga = {
       },
       status: [{ episode: 1161, value: 'alive' }],
       affiliation: [{ episode: 1161, value: NEW_GIANTS('cuoco', 'cook') }],
-      origin: [{ episode: 1161, value: ELBAF }],
+      origin: [
+        { episode: 1161, chapter: 1131, place: 'elbaf-island', value: ELBAF },
+      ],
     },
     'ange': {
       role: {
@@ -444,7 +450,9 @@ export const elbaf: Saga = {
           value: WALRUS_SCHOOL('insegnante di biologia', 'biology teacher'),
         },
       ],
-      origin: [{ episode: 1164, value: ELBAF }],
+      origin: [
+        { episode: 1164, chapter: 1134, place: 'elbaf-island', value: ELBAF },
+      ],
     },
     'stansen': {
       role: {
@@ -465,7 +473,9 @@ export const elbaf: Saga = {
           },
         },
       ],
-      origin: [{ episode: 1165, value: ELBAF }],
+      origin: [
+        { episode: 1165, chapter: 1135, place: 'elbaf-island', value: ELBAF },
+      ],
     },
     'colon': {
       role: { it: 'Alunno della Scuola Walrus', en: 'Walrus School pupil' },
@@ -475,7 +485,9 @@ export const elbaf: Saga = {
       },
       status: [{ episode: 1165, value: 'alive' }],
       affiliation: [{ episode: 1165, value: WALRUS_SCHOOL('alunno', 'pupil') }],
-      origin: [{ episode: 1165, value: ELBAF }],
+      origin: [
+        { episode: 1165, chapter: 1135, place: 'elbaf-island', value: ELBAF },
+      ],
     },
     'biblo': {
       role: {
@@ -521,7 +533,9 @@ export const elbaf: Saga = {
       affiliation: [
         { episode: 1167, value: { it: 'Elbaf, re', en: 'Elbaph, king' } },
       ],
-      origin: [{ episode: 1167, value: ELBAF }],
+      origin: [
+        { episode: 1167, chapter: 1137, place: 'elbaf-island', value: ELBAF },
+      ],
     },
     'figarland-shamrock': {
       role: {
@@ -650,7 +664,9 @@ export const elbaf: Saga = {
       affiliation: [
         { episode: 1172, value: WALRUS_SCHOOL('preside', 'principal') },
       ],
-      origin: [{ episode: 1172, value: ELBAF }],
+      origin: [
+        { episode: 1172, chapter: 1142, place: 'elbaf-island', value: ELBAF },
+      ],
     },
     'wolf-elbaph': {
       role: {
@@ -668,7 +684,9 @@ export const elbaf: Saga = {
           value: WALRUS_SCHOOL('insegnante di ginnastica', 'gym teacher'),
         },
       ],
-      origin: [{ episode: 1172, value: ELBAF }],
+      origin: [
+        { episode: 1172, chapter: 1142, place: 'elbaf-island', value: ELBAF },
+      ],
     },
     'blade': {
       role: {
@@ -686,7 +704,9 @@ export const elbaf: Saga = {
           value: WALRUS_SCHOOL('insegnante di matematica', 'maths teacher'),
         },
       ],
-      origin: [{ episode: 1172, value: ELBAF }],
+      origin: [
+        { episode: 1172, chapter: 1142, place: 'elbaf-island', value: ELBAF },
+      ],
     },
   },
 }

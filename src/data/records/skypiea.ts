@@ -520,8 +520,8 @@ export const skypiea: Saga = {
       revealedAtChapter: 292,
       name: { it: 'Calgara', en: 'Kalgara' },
       summary: {
-        it: 'Il capo dei guerrieri shandia di quattrocento anni fa, che difende la sua città con una lancia più alta di lui e la voce di una grande campana.',
-        en: 'The chief of the Shandia warriors four hundred years ago, who defends his city with a spear taller than himself and the voice of a great bell.',
+        it: 'Il grande guerriero shandia di quattrocento anni fa, che caccia dalla sua isola ogni intruso.',
+        en: 'The great warrior of the Shandia four hundred years ago, who drives every intruder off his island.',
       },
       visual: { art: 'kalgara', tint: 'vermilion' },
     },
@@ -726,12 +726,6 @@ export const skypiea: Saga = {
             it: 'Nessuna: sub di Jaya, discendente di Noland',
             en: 'None: diver of Jaya, descendant of Noland',
           },
-        },
-      ],
-      origin: [
-        {
-          episode: 148,
-          value: { it: 'Jaya, Rotta Maggiore', en: 'Jaya, Grand Line' },
         },
       ],
     },
@@ -1156,13 +1150,27 @@ export const skypiea: Saga = {
         },
       ],
       origin: [
+        { episode: 163, chapter: 245, value: SKY_ISLAND },
+        // Episode 166 adapts chapter 253: Nami lays the map of Jaya beside
+        // the old map of Skypiea, and Kamakiri says the Shandia will get back
+        // the home they lost 400 years ago. Episode 164 (chapter 251) already
+        // finds Upper Yard was part of Jaya; the entry waits for the pair
+        // that tells both halves, which errs late, never early.
         {
-          episode: 163,
+          episode: 166,
+          chapter: 253,
           value: { it: 'Skypiea, un tempo Jaya', en: 'Skypiea, once Jaya' },
         },
       ],
+      // Chapter 256 is titled "Wyper the Berserker" and ends in episode 169,
+      // whose title names him the same way. Episodes 163–168 never say it,
+      // save for 168's preview reading out that title.
       epithet: [
-        { episode: 163, value: { it: 'Il Berserker', en: 'the Berserker' } },
+        {
+          episode: 169,
+          chapter: 256,
+          value: { it: 'Il Berserker', en: 'the Berserker' },
+        },
       ],
     },
     'kamakiri': {
@@ -1255,6 +1263,8 @@ export const skypiea: Saga = {
         { episode: 155, value: SKY_ISLAND },
         {
           episode: 158,
+          chapter: 244,
+          place: 'angel-island',
           value: { it: 'Angel Island, Skypiea', en: 'Angel Island, Skypiea' },
         },
       ],
@@ -1287,6 +1297,8 @@ export const skypiea: Saga = {
         { episode: 155, value: SKY_ISLAND },
         {
           episode: 158,
+          chapter: 244,
+          place: 'angel-island',
           value: { it: 'Angel Island, Skypiea', en: 'Angel Island, Skypiea' },
         },
       ],
@@ -1521,26 +1533,30 @@ export const skypiea: Saga = {
     },
     'kalgara': {
       role: {
-        it: 'Capo dei guerrieri shandia',
-        en: 'Chief of the Shandia warriors',
+        it: 'Grande guerriero shandia',
+        en: 'Great warrior of the Shandia',
       },
+      // Frozen at episode 187, which adapts chapters 286 (p. 9-17) to 288:
+      // the friendship, the golden city and the bell come in 188 and 189.
       log: {
-        it: 'Prese gli stranieri sbarcati sull’isola per dei ladri e li combatté finché una febbre non lo mise a terra. Fu uno di loro a curarlo, e da lì nacque un’amicizia che né l’uno né l’altro avrebbe saputo spiegare a parole. Prima che l’esploratore ripartisse gli promise che avrebbe suonato la grande campana, perché la ritrovasse.',
-        en: 'He took the foreigners who landed on the island for thieves and fought them until a fever put him on his back. One of them cured him, and out of that came a friendship neither man could have explained in words. Before the explorer sailed he promised him he would ring the great bell, so that it could be found again.',
+        it: 'Caccia dalla sua isola ogni intruso: ferma la nave di un equipaggio in fuga e ordina ai superstiti di lasciare tutto e andarsene. Quando un esploratore straniero uccide il serpente gigante che il suo popolo venera come un dio, per salvare una ragazza che stava per essergli sacrificata, Calgara lo affronta, lo trafigge alle spalle con la lancia e dice che per questo dovrà morire tutto l’equipaggio. Dopo un terremoto trova l’esploratore incastrato in una spaccatura del terreno, e resta a guardarlo mentre prova a liberarsi.',
+        en: 'He drives every intruder off his island: he catches one crew’s ship as it flees and tells the survivors to leave everything behind and go. When a foreign explorer kills the giant snake his people worship as a god, to save a girl about to be sacrificed to it, Kalgara fights him, spears him from behind and says the whole crew must die for it. After an earthquake he finds the explorer trapped in a crack in the ground, and stays to watch him try to get out.',
       },
       status: [{ episode: 187, value: 'deceased' }],
       affiliation: [
         {
           episode: 187,
           value: {
-            it: 'Guerrieri shandia, capo, quattrocento anni fa',
-            en: 'Shandia warriors, chief, four hundred years ago',
+            it: 'Shandia, il grande guerriero, quattrocento anni fa',
+            en: 'Shandia, the great warrior, four hundred years ago',
           },
         },
       ],
       origin: [
         {
           episode: 187,
+          chapter: 292,
+          place: 'jaya',
           value: { it: 'Jaya, Rotta Maggiore', en: 'Jaya, Grand Line' },
         },
       ],
@@ -1564,6 +1580,8 @@ export const skypiea: Saga = {
       origin: [
         {
           episode: 187,
+          chapter: 292,
+          place: 'jaya',
           value: { it: 'Jaya, Rotta Maggiore', en: 'Jaya, Grand Line' },
         },
       ],
@@ -1588,6 +1606,8 @@ export const skypiea: Saga = {
       origin: [
         {
           episode: 187,
+          chapter: 287,
+          place: 'jaya',
           value: { it: 'Jaya, Rotta Maggiore', en: 'Jaya, Grand Line' },
         },
       ],
@@ -1612,6 +1632,8 @@ export const skypiea: Saga = {
       origin: [
         {
           episode: 189,
+          chapter: 292,
+          place: 'jaya',
           value: { it: 'Jaya, Rotta Maggiore', en: 'Jaya, Grand Line' },
         },
       ],

@@ -13,7 +13,7 @@ import {
   ships,
 } from './places'
 import { SHIP_DOSSIERS } from './records/ships'
-import { sagas } from './sagas'
+import { CHARACTER_DOSSIERS, sagas } from './sagas'
 import type { Entity } from './types'
 
 describe('the ship’s log', () => {
@@ -90,6 +90,41 @@ describe('the ship’s log', () => {
     }
   })
 
+  it('dates every later visit after the place, in order, in both units', () => {
+    // A visit at or before the place's own threshold would be its first
+    // arrival, not a return; out of order, the page would list it so.
+    const visited = places.filter(
+      (place) => (placeDossierOf(place)?.visits ?? []).length > 0,
+    )
+
+    expect(visited.length).toBeGreaterThan(0)
+
+    for (const place of visited) {
+      const visits = placeDossierOf(place)?.visits ?? []
+      const episodes = visits.map((visit) => visit.episode)
+      const chapters = visits.map((visit) => visit.chapter)
+
+      const distinctEpisodes = new Set(episodes)
+      const distinctChapters = new Set(chapters)
+
+      // Distinct in both units: the page keys and labels each visit by its
+      // episode or its chapter, whichever the reader counts in.
+      expect(distinctEpisodes.size, place.id).toBe(visits.length)
+      expect(distinctChapters.size, place.id).toBe(visits.length)
+      expect(episodes, place.id).toStrictEqual(episodes.toSorted(byNumber()))
+      expect(chapters, place.id).toStrictEqual(chapters.toSorted(byNumber()))
+
+      for (const visit of visits) {
+        expect(visit.episode, place.id).toBeGreaterThan(place.revealedAtEpisode)
+        expect(visit.chapter, place.id).toBeGreaterThan(place.revealedAtChapter)
+
+        for (const locale of LOCALES) {
+          expect(visit.value[locale].trim(), place.id).not.toBe('')
+        }
+      }
+    }
+  })
+
   it('files here only records the archive holds, none of them places', () => {
     for (const place of places) {
       const filedHere = placeDossierOf(place)?.filedHere ?? []
@@ -101,6 +136,42 @@ describe('the ship’s log', () => {
         expect(record?.kind).not.toBe('place')
       }
     }
+  })
+})
+
+/** Every origin entry that names a place, with the character it is on. */
+const LINKED_ORIGINS = Object.entries(CHARACTER_DOSSIERS).flatMap(
+  ([id, dossier]) => {
+    return (dossier.origin ?? []).flatMap((entry) => {
+      return entry.place === undefined ?
+          []
+        : {
+            chapter: entry.chapter,
+            label: `${id} @${String(entry.episode)}`,
+            place: entry.place,
+          }
+    })
+  },
+)
+
+describe('the origins that name a place', () => {
+  it('name a place the archive files', () => {
+    expect(LINKED_ORIGINS.length).toBeGreaterThan(0)
+
+    for (const { label, place } of LINKED_ORIGINS) {
+      expect(getPlace(place), `${label} → ${place}`).toBeDefined()
+    }
+  })
+
+  it('pin the chapter that tells them', () => {
+    // The place's page opens the entry at its own pair. Without a chapter it
+    // would wait on the derived table, which can reach the episode chapters
+    // before the manga says where the character comes from.
+    const unpinned = LINKED_ORIGINS.filter(
+      (origin) => origin.chapter === undefined,
+    ).map(({ label }) => label)
+
+    expect(unpinned).toStrictEqual([])
   })
 })
 

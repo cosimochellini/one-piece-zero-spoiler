@@ -1,4 +1,4 @@
-import type { Affiliation } from '~/data/types'
+import type { Affiliation, Origin } from '~/data/types'
 
 import { eggheadChronicles } from './egghead.chronicle'
 import type { Saga } from './saga'
@@ -24,6 +24,14 @@ const SERAPHIM: Omit<Affiliation, 'episode'> = {
 }
 
 const SERAPHIM_ROLE = { it: 'Serafino', en: 'Seraphim' }
+
+/**
+ * The four Seraphim's origin: Pythagoras says they were all made in the
+ * Labophase in chapter 1074, episode 1107.
+ */
+const SERAPHIM_ORIGIN: Origin[] = [
+  { episode: 1107, chapter: 1074, place: 'egghead-island', value: EGGHEAD },
+]
 
 const SHAKA_SATELLITE = {
   it: 'Satellite di Vegapunk, Punk-01 Good',
@@ -594,7 +602,14 @@ export const egghead: Saga = {
         // from spare parts and Shaka speaks from it.
         { episode: 1155, chapter: 1125, value: SHAKA_SATELLITE },
       ],
-      origin: [{ episode: 1091, value: EGGHEAD }],
+      origin: [
+        {
+          episode: 1091,
+          chapter: 1062,
+          place: 'egghead-island',
+          value: EGGHEAD,
+        },
+      ],
       epithet: [{ episode: 1091, value: { it: 'Good', en: 'Good' } }],
     },
     'lilith': {
@@ -616,7 +631,14 @@ export const egghead: Saga = {
           },
         },
       ],
-      origin: [{ episode: 1091, value: EGGHEAD }],
+      origin: [
+        {
+          episode: 1091,
+          chapter: 1062,
+          place: 'egghead-island',
+          value: EGGHEAD,
+        },
+      ],
       epithet: [{ episode: 1091, value: { it: 'Evil', en: 'Evil' } }],
     },
     // The four Seraphim point at the fruits themselves rather than at a
@@ -641,7 +663,7 @@ export const egghead: Saga = {
         { episode: 1155, chapter: 1125, value: 'alive' },
       ],
       affiliation: [{ episode: 1099, ...SERAPHIM }],
-      origin: [{ episode: 1107, value: EGGHEAD }],
+      origin: SERAPHIM_ORIGIN,
       devilFruit: [{ episode: 1101, value: ['love-love-fruit'] }],
     },
     's-hawk': {
@@ -660,7 +682,7 @@ export const egghead: Saga = {
         { episode: 1155, chapter: 1125, value: 'alive' },
       ],
       affiliation: [{ episode: 1099, ...SERAPHIM }],
-      origin: [{ episode: 1107, value: EGGHEAD }],
+      origin: SERAPHIM_ORIGIN,
       devilFruit: [{ episode: 1108, value: ['dice-dice-fruit'] }],
     },
     's-bear': {
@@ -679,7 +701,7 @@ export const egghead: Saga = {
         { episode: 1155, chapter: 1125, value: 'alive' },
       ],
       affiliation: [{ episode: 1098, ...SERAPHIM }],
-      origin: [{ episode: 1107, value: EGGHEAD }],
+      origin: SERAPHIM_ORIGIN,
       devilFruit: [{ episode: 1099, value: ['paw-paw-fruit'] }],
     },
     's-shark': {
@@ -698,7 +720,7 @@ export const egghead: Saga = {
         { episode: 1155, chapter: 1125, value: 'alive' },
       ],
       affiliation: [{ episode: 1095, ...SERAPHIM }],
-      origin: [{ episode: 1107, value: EGGHEAD }],
+      origin: SERAPHIM_ORIGIN,
       devilFruit: [{ episode: 1101, value: ['swim-swim-fruit'] }],
     },
     // Edison, Pythagoras and York are filed at 1095, where they are first
@@ -736,7 +758,14 @@ export const egghead: Saga = {
           },
         },
       ],
-      origin: [{ episode: 1095, value: EGGHEAD }],
+      origin: [
+        {
+          episode: 1095,
+          chapter: 1065,
+          place: 'egghead-island',
+          value: EGGHEAD,
+        },
+      ],
       epithet: [{ episode: 1095, value: { it: 'Thinker', en: 'Thinker' } }],
     },
     'pythagoras': {
@@ -765,7 +794,14 @@ export const egghead: Saga = {
         // from spare parts and Pythagoras speaks from it.
         { episode: 1155, chapter: 1125, value: PYTHAGORAS_SATELLITE },
       ],
-      origin: [{ episode: 1095, value: EGGHEAD }],
+      origin: [
+        {
+          episode: 1095,
+          chapter: 1065,
+          place: 'egghead-island',
+          value: EGGHEAD,
+        },
+      ],
       epithet: [{ episode: 1095, value: { it: 'Wisdom', en: 'Wisdom' } }],
     },
     'atlas': {
@@ -795,7 +831,14 @@ export const egghead: Saga = {
           },
         },
       ],
-      origin: [{ episode: 1091, value: EGGHEAD }],
+      origin: [
+        {
+          episode: 1091,
+          chapter: 1062,
+          place: 'egghead-island',
+          value: EGGHEAD,
+        },
+      ],
       epithet: [{ episode: 1091, value: { it: 'Violence', en: 'Violence' } }],
     },
     'york': {
@@ -839,7 +882,14 @@ export const egghead: Saga = {
           },
         },
       ],
-      origin: [{ episode: 1095, value: EGGHEAD }],
+      origin: [
+        {
+          episode: 1095,
+          chapter: 1065,
+          place: 'egghead-island',
+          value: EGGHEAD,
+        },
+      ],
       epithet: [{ episode: 1095, value: { it: 'Greed', en: 'Greed' } }],
     },
     'jaygarcia-saturn': {
@@ -866,7 +916,14 @@ export const egghead: Saga = {
           },
         },
       ],
-      origin: [{ episode: 1105, value: MARY_GEOISE }],
+      origin: [
+        {
+          episode: 1105,
+          chapter: 1073,
+          place: 'mary-geoise',
+          value: MARY_GEOISE,
+        },
+      ],
     },
     // Filed at 1129, the caption "EMPORIO IVANKOV AND GINNY, SLAVES". She
     // lives in Sorbet from 1130 but is not from there: Porco Kingdom comes
@@ -926,7 +983,14 @@ export const egghead: Saga = {
           },
         },
       ],
-      origin: [{ episode: 1120, value: MARY_GEOISE }],
+      origin: [
+        {
+          episode: 1120,
+          chapter: 1086,
+          place: 'mary-geoise',
+          value: MARY_GEOISE,
+        },
+      ],
     },
     'topman-warcury': {
       role: ELDER_ROLE,
@@ -944,7 +1008,14 @@ export const egghead: Saga = {
           },
         },
       ],
-      origin: [{ episode: 1120, value: MARY_GEOISE }],
+      origin: [
+        {
+          episode: 1120,
+          chapter: 1086,
+          place: 'mary-geoise',
+          value: MARY_GEOISE,
+        },
+      ],
     },
     'ethanbaron-v-nusjuro': {
       role: ELDER_ROLE,
@@ -962,7 +1033,14 @@ export const egghead: Saga = {
           },
         },
       ],
-      origin: [{ episode: 1120, value: MARY_GEOISE }],
+      origin: [
+        {
+          episode: 1120,
+          chapter: 1086,
+          place: 'mary-geoise',
+          value: MARY_GEOISE,
+        },
+      ],
     },
     'shepherd-ju-peter': {
       role: ELDER_ROLE,
@@ -980,7 +1058,14 @@ export const egghead: Saga = {
           },
         },
       ],
-      origin: [{ episode: 1120, value: MARY_GEOISE }],
+      origin: [
+        {
+          episode: 1120,
+          chapter: 1086,
+          place: 'mary-geoise',
+          value: MARY_GEOISE,
+        },
+      ],
     },
     // SWORD is dated at 1114, the caption "HIBARI, NAVY HQ COMMANDER
     // (SWORD)": her 1090 caption gives the rank only, and the show first
@@ -1158,7 +1243,14 @@ export const egghead: Saga = {
           },
         },
       ],
-      origin: [{ episode: 1120, value: MARY_GEOISE }],
+      origin: [
+        {
+          episode: 1120,
+          chapter: 1086,
+          place: 'mary-geoise',
+          value: MARY_GEOISE,
+        },
+      ],
     },
     'bluegrass': {
       chronicle: eggheadChronicles.bluegrass,

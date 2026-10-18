@@ -941,6 +941,8 @@ export const eastBlue: Saga = {
       origin: [
         {
           episode: 4,
+          chapter: 1,
+          place: 'foosha-village',
           value: {
             it: 'Villaggio Fuschia, East Blue',
             en: 'Foosha Village, East Blue',
@@ -1160,6 +1162,8 @@ export const eastBlue: Saga = {
       origin: [
         {
           episode: 2,
+          chapter: 3,
+          place: 'shells-town',
           value: { it: 'Shells Town, East Blue', en: 'Shells Town, East Blue' },
         },
       ],
@@ -1218,6 +1222,8 @@ export const eastBlue: Saga = {
       origin: [
         {
           episode: 2,
+          chapter: 4,
+          place: 'shells-town',
           value: { it: 'Shells Town, East Blue', en: 'Shells Town, East Blue' },
         },
       ],
@@ -1268,6 +1274,8 @@ export const eastBlue: Saga = {
       origin: [
         {
           episode: 4,
+          chapter: 1,
+          place: 'foosha-village',
           value: {
             it: 'Villaggio Fuschia, East Blue',
             en: 'Foosha Village, East Blue',
@@ -1330,7 +1338,14 @@ export const eastBlue: Saga = {
       ],
       // The village is named at 9, when the crew sets course for it; the
       // flashback at 4 says only that he left a son behind.
-      origin: [{ episode: 9, value: SYRUP_VILLAGE }],
+      origin: [
+        {
+          episode: 9,
+          chapter: 25,
+          place: 'syrup-village',
+          value: SYRUP_VILLAGE,
+        },
+      ],
     },
     'higuma': {
       role: { it: 'Capo dei banditi di montagna', en: 'Mountain bandit boss' },
@@ -1589,6 +1604,8 @@ export const eastBlue: Saga = {
       origin: [
         {
           episode: 9,
+          chapter: 23,
+          place: 'syrup-village',
           value: {
             it: 'Villaggio di Syrup, East Blue',
             en: 'Syrup Village, East Blue',
@@ -1621,7 +1638,14 @@ export const eastBlue: Saga = {
           },
         },
       ],
-      origin: [{ episode: 9, value: SYRUP_VILLAGE }],
+      origin: [
+        {
+          episode: 9,
+          chapter: 24,
+          place: 'syrup-village',
+          value: SYRUP_VILLAGE,
+        },
+      ],
     },
     'kuro': {
       role: {
@@ -1684,7 +1708,14 @@ export const eastBlue: Saga = {
           },
         },
       ],
-      origin: [{ episode: 13, value: SYRUP_VILLAGE }],
+      origin: [
+        {
+          episode: 13,
+          chapter: 31,
+          place: 'syrup-village',
+          value: SYRUP_VILLAGE,
+        },
+      ],
     },
     'ninjin-piiman-and-tamanegi': {
       chronicle: eastBlueChronicles['ninjin-piiman-and-tamanegi'],
@@ -1707,6 +1738,8 @@ export const eastBlue: Saga = {
       origin: [
         {
           episode: 9,
+          chapter: 23,
+          place: 'syrup-village',
           value: {
             it: 'Villaggio di Syrup, East Blue',
             en: 'Syrup Village, East Blue',
@@ -1855,6 +1888,8 @@ export const eastBlue: Saga = {
       origin: [
         {
           episode: 20,
+          chapter: 43,
+          place: 'baratie',
           value: { it: 'Il Baratie, East Blue', en: 'The Baratie, East Blue' },
         },
         {
@@ -2105,7 +2140,16 @@ export const eastBlue: Saga = {
           },
         },
       ],
-      origin: [{ episode: 34, value: FISH_MAN_ISLAND }],
+      // Told in Jinbe's flashback (ch 621, ep 540): nothing in the Arlong Park
+      // arc ties him to the island.
+      origin: [
+        {
+          episode: 540,
+          chapter: 621,
+          place: 'fish-man-island',
+          value: FISH_MAN_ISLAND,
+        },
+      ],
       epithet: [
         { episode: 31, value: { it: 'Dente di Sega', en: 'Saw-Tooth' } },
       ],
@@ -2136,7 +2180,16 @@ export const eastBlue: Saga = {
           },
         },
       ],
-      origin: [{ episode: 34, value: FISH_MAN_ISLAND }],
+      // He calls himself the number-two swordsman on Fish-Man Island in ch 84,
+      // ep 39.
+      origin: [
+        {
+          episode: 39,
+          chapter: 84,
+          place: 'fish-man-island',
+          value: FISH_MAN_ISLAND,
+        },
+      ],
     },
     'kuroobi': {
       role: {
@@ -2155,7 +2208,6 @@ export const eastBlue: Saga = {
       ],
       // The ch. 75 caption that names him calls him an officer.
       affiliation: [{ episode: 36, chapter: 75, value: ARLONG_OFFICER }],
-      origin: [{ episode: 36, value: FISH_MAN_ISLAND }],
     },
     'chew': {
       role: { it: 'Membro dei Pirati di Arlong', en: 'Arlong Pirates crewman' },
@@ -2178,7 +2230,6 @@ export const eastBlue: Saga = {
         // caption in ch. 75 says so.
         { episode: 34, chapter: 75, value: ARLONG_OFFICER },
       ],
-      origin: [{ episode: 34, value: FISH_MAN_ISLAND }],
     },
     'nojiko': {
       role: { it: 'Sorella di Nami', en: 'Nami’s sister' },

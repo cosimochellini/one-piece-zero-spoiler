@@ -2433,13 +2433,11 @@ export const wholeCakeRedrawn: Redrawings = {
   // A torn scrap of her dark habit lying on the grass, its hem edged with
   // white scallops, the rest of it ragged where it tore. At Linlin's sixth
   // birthday Carmel and the children simply vanish, and a scrap like this is
-  // all that is left at 837 (ch. 867). Chapter 867 is below her record's
-  // own, so the entry is pinned at 872 like her status: unpinned, chapter
-  // readers would wait for chapter 882, the first that reaches episode 837.
+  // all that is left at 837 (ch. 867).
   'carmel': [
     {
       episode: 837,
-      chapter: 872,
+      chapter: 867,
       value: [
         {
           d: 'M24 132 L137 118 L130 130 L142 140 L128 146 L136 158 L120 160 L124 172 L106 166 L96 176 L88 164 L74 172 L66 160 L52 168 L46 156 L32 160 L30 148 L20 146 Z',

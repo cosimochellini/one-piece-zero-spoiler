@@ -1,6 +1,7 @@
 import { DRAWINGS } from '~/data/art'
+import { gateOf } from '~/data/chapter-table'
 import { chartPointOf } from '~/data/chart'
-import { reachedOf } from '~/data/dated'
+import { nativesOf, reachedOf } from '~/data/dated'
 import { getPlace, getShip, placeDossierOf, places } from '~/data/places'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
@@ -12,6 +13,7 @@ import type {
   PlaceDrawing,
   RouteStopView,
   ShipDetail,
+  VisitView,
 } from '~/lib/view/places'
 import type { DocumentHead, RecordView, Slot } from '~/lib/view/records'
 
@@ -91,6 +93,8 @@ export function placePage(
       // lies and how it looks are what the fog is for.
       chart: open ? chartOf(entity, order, r) : null,
       drawings: open ? drawingsOf(entity, r) : [],
+      visits: open ? visitsOf(entity, r) : [],
+      natives: open ? nativesFor(entity, r) : [],
     },
   }
 }
@@ -179,4 +183,40 @@ function drawingsOf(entity: Entity, r: Reader): PlaceDrawing[] {
     },
     ...reached.map(({ gate, value }) => ({ strokes: value, ...gate })),
   ].toSorted((a, b) => r.threshold(a) - r.threshold(b))
+}
+
+/**
+ * The later visits to a place the reader has reached, oldest first: each at
+ * the later of its own pair and the place's (`gateOf`), so a visit past the
+ * bookmark, or its note, is never sent.
+ */
+function visitsOf(entity: Entity, r: Reader): VisitView[] {
+  const reached: VisitView[] = []
+  const visits = placeDossierOf(entity)?.visits
+  if (visits === undefined) {
+    return reached
+  }
+
+  for (const visit of visits) {
+    const gate = gateOf(visit, entity)
+    if (r.sees(gate)) {
+      reached.push({ ...gate, note: visit.value[r.locale] })
+    }
+  }
+
+  return reached
+}
+
+/**
+ * The characters who come from a place, as far as the reader has come: each
+ * once its origin entry naming the place is reached, which is never before
+ * the character, in the reader's order. Nobody else is sent or counted: a
+ * covered tile here would say that someone is still to come from it.
+ */
+function nativesFor(entity: Entity, r: Reader): RecordView[] {
+  const reached = nativesOf(entity.id).flatMap((native) => {
+    return r.sees(native.gate) ? [native.entity] : []
+  })
+
+  return r.order(reached).map((native) => recordOf(native, r))
 }

@@ -58,6 +58,73 @@ describe('the facts a bookmark reaches', () => {
     }
   })
 
+  it('says Iceburg is mayor only from episode 231, where Kaku says it', () => {
+    const iceburg = onFile('iceburg')
+
+    for (const locale of ['en', 'it'] as const) {
+      const mayor =
+        locale === 'en' ?
+          'Galley-La Company, president and mayor of Water Seven'
+        : 'Galley-La Company, presidente e sindaco di Water Seven'
+
+      expect(factsOf(iceburg, ep(230, locale))).not.toHaveProperty(
+        'affiliation',
+      )
+      expect(factsOf(iceburg, ep(231, locale))).toMatchObject({
+        affiliation: mayor,
+      })
+      expect(
+        factsOf(iceburg, readerFor({ mode: 'chapter', chapter: 327 }, locale)),
+      ).toMatchObject({ affiliation: mayor })
+    }
+  })
+
+  it('says Kalifa is Iceburg’s secretary only from episode 231, where she is introduced', () => {
+    const kalifa = onFile('kalifa')
+
+    for (const locale of ['en', 'it'] as const) {
+      const secretary =
+        locale === 'en' ?
+          'Galley-La Company, Iceburg’s secretary'
+        : 'Galley-La Company, segretaria di Iceburg'
+
+      expect(factsOf(kalifa, ep(230, locale))).not.toHaveProperty('affiliation')
+      expect(factsOf(kalifa, ep(231, locale))).toMatchObject({
+        affiliation: secretary,
+      })
+      expect(
+        factsOf(kalifa, readerFor({ mode: 'chapter', chapter: 327 }, locale)),
+      ).toMatchObject({ affiliation: secretary })
+    }
+  })
+
+  it('calls Rob Lucci a foreman only from episode 232 and chapter 327, where Iceburg says it', () => {
+    const lucci = onFile('rob-lucci')
+
+    for (const locale of ['en', 'it'] as const) {
+      const foreman =
+        locale === 'en' ?
+          'Galley-La Company, foreman of Dock One'
+        : 'Galley-La Company, caposquadra del Dock 1'
+      const chapter = (at: number): Reader =>
+        readerFor({ mode: 'chapter', chapter: at }, locale)
+
+      expect(factsOf(lucci, ep(230, locale))).toMatchObject({
+        affiliation: 'Galley-La Company',
+      })
+      expect(factsOf(lucci, ep(231, locale))).toMatchObject({
+        affiliation: 'Galley-La Company',
+      })
+      expect(factsOf(lucci, ep(232, locale))).toMatchObject({
+        affiliation: foreman,
+      })
+      expect(factsOf(lucci, chapter(326))).not.toHaveProperty('affiliation')
+      expect(factsOf(lucci, chapter(327))).toMatchObject({
+        affiliation: foreman,
+      })
+    }
+  })
+
   it('gives each fact as the reader knows it, and no fact not yet learned', () => {
     const found = factsOf(LUFFY, ep(3))
 
@@ -255,6 +322,54 @@ describe('the facts a bookmark reaches', () => {
         expect(factsOf(garp, readerFor(bookmark, locale))).toMatchObject({
           status,
           affiliation: affiliation + (status === 'captured' ? captor : ''),
+        })
+      }
+    },
+  )
+
+  it.each(['en', 'it'] as const)(
+    'says Wyper’s land was once Jaya only from episode 166 and chapter 253 (%s)',
+    (locale) => {
+      const wyper = onFile('wyper')
+      const once =
+        locale === 'en' ? 'Skypiea, once Jaya' : 'Skypiea, un tempo Jaya'
+      const marks = [
+        { bookmark: { mode: 'episode', episode: 165 }, origin: 'Skypiea' },
+        { bookmark: { mode: 'episode', episode: 166 }, origin: once },
+        { bookmark: { mode: 'chapter', chapter: 252 }, origin: 'Skypiea' },
+        { bookmark: { mode: 'chapter', chapter: 253 }, origin: once },
+      ] as const
+
+      for (const { bookmark, origin } of marks) {
+        expect(factsOf(wyper, readerFor(bookmark, locale))).toMatchObject({
+          origin,
+        })
+      }
+    },
+  )
+
+  it.each(['en', 'it'] as const)(
+    'calls Wyper the Berserker only from episode 169 and chapter 256 (%s)',
+    (locale) => {
+      const wyper = onFile('wyper')
+      const epithet = locale === 'en' ? 'the Berserker' : 'Il Berserker'
+      const before = [
+        { mode: 'episode', episode: 168 },
+        { mode: 'chapter', chapter: 255 },
+      ] as const
+      const after = [
+        { mode: 'episode', episode: 169 },
+        { mode: 'chapter', chapter: 256 },
+      ] as const
+
+      for (const bookmark of before) {
+        expect(factsOf(wyper, readerFor(bookmark, locale))).not.toHaveProperty(
+          'epithet',
+        )
+      }
+      for (const bookmark of after) {
+        expect(factsOf(wyper, readerFor(bookmark, locale))).toMatchObject({
+          epithet,
         })
       }
     },
