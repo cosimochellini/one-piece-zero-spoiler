@@ -160,6 +160,7 @@ export function port(over: Partial<PortView> = {}): PortView {
   return {
     ...record({ kind: 'place', id: 'test-port', name: 'Baratie' }),
     summary: 'A restaurant that floats.',
+    chart: { x: 200, y: 130 },
     dossier: dossier(),
     ...over,
   }

@@ -1,17 +1,20 @@
-/* Hallmark · pre-emit critique: P5 H4 E4 S5 R5 V5 */
-/* Hallmark · genre: atmospheric · macrostructure: Narrative Workflow · theme:
- *   Sea Chart (locked) · enrichment: Tier B hand-built SVG (PortPlate frames,
- *   five new place drawings) · nav: N9 edge-aligned (shared) · footer: Ft4
- *   colophon (shared)
- * · idea: "a ship's log — the ports in the order the ship put in, the
- *   reader's episode a horizon down the spine"
- * · differs from the previous build (Catalogue) on macrostructure; theme is
- *   the project's locked system and does not rotate */
+/* Hallmark · pre-emit critique: P5 H4 E4 S5 R4 V5 */
+/* Hallmark · genre: atmospheric · macrostructure: Map / Diagram (the sea
+ *   chart) over a Narrative Workflow (the log) · theme: Sea Chart (locked) ·
+ *   enrichment: Tier B hand-built SVG (the chart, the PortPlate frames, the
+ *   ships' own drawings on the route) · nav: N9 edge-aligned (shared) ·
+ *   footer: Ft4 colophon (shared)
+ * · idea: "where the crew is, drawn on a chart that fills in as you go; the
+ *   log of every stop under it"
+ * · differs from the previous build (Narrative Workflow alone) on
+ *   macrostructure: the chart opens the page, the ships no longer do; theme
+ *   is the project's locked system and does not rotate */
 import { createFileRoute } from '@tanstack/react-router'
 import type { ReactElement } from 'react'
 
 import { ArchivePage } from '~/components/ArchivePage'
 import { PortLog } from '~/components/PortLog'
+import { SeaChart } from '~/components/SeaChart'
 import { ShipLog } from '~/components/ShipLog'
 import { useT } from '~/i18n/LocaleContext'
 import { isLocale } from '~/i18n/locales'
@@ -41,14 +44,15 @@ export const Route = createFileRoute('/$locale/places/')({
 })
 
 /**
- * The places page (Hallmark macrostructure 14, Narrative Workflow).
+ * The places page (Hallmark macrostructure Map / Diagram, over the log).
  *
- * A ship's log: the brand line and a count, the two ships the crew sails,
- * then every place as a numbered port of call down one spine, in the order
- * the ship puts in at them. No hero and no display headline; the log is
- * the page. The reader's episode is drawn as a horizon on the spine, and
- * every port below it keeps its number and its episode while its name,
- * drawing and colour stay out of the served HTML.
+ * The brand line and a count, then the sea chart: the route as far as the
+ * reader has come, the ship on it and fog past it. Under it, every place as
+ * a numbered stop down one spine, in the order the ship reaches them, with
+ * the reader's episode as a horizon; every stop below it keeps its number
+ * and its episode while its name, drawing and colour stay out of the served
+ * HTML. The ships the crew sails close the page: they travel on the chart
+ * now, so they no longer open it.
  */
 function PlacesPage(): ReactElement {
   const t = useT()
@@ -64,8 +68,10 @@ function PlacesPage(): ReactElement {
       count={t('places.count', { count: filed })}
       title={t('places.title')}
     >
-      <ShipLog
-        peekRecord={peekRecord}
+      <SeaChart
+        bookmark={bookmark}
+        covered={covered}
+        open={open}
         ships={ships}
       />
       <PortLog
@@ -74,6 +80,10 @@ function PlacesPage(): ReactElement {
         open={open}
         peek={peek}
         peekRecord={peekRecord}
+      />
+      <ShipLog
+        peekRecord={peekRecord}
+        ships={ships}
       />
     </ArchivePage>
   )

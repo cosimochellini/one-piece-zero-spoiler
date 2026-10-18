@@ -1,3 +1,4 @@
+import { chartPointOf } from '~/data/chart'
 import { latestOf } from '~/data/dated'
 import { getEntity } from '~/data/entities'
 import { placeDossierOf, places, shipDossierOf, ships } from '~/data/places'
@@ -66,6 +67,7 @@ export function portOf(entity: Entity, r: Reader): PortView {
   return {
     ...recordOf(entity, r),
     summary: entity.summary[locale],
+    chart: chartPointOf(entity.id),
     dossier:
       dossier === undefined ? null : (
         {
