@@ -56,6 +56,7 @@ function detailOf(over: Partial<PlaceDetail> = {}): PlaceDetail {
     ),
     slot: openSlot(baratie),
     total: 39,
+    visits: [],
     ...over,
   }
 }
@@ -225,6 +226,36 @@ describe('a place on the map', () => {
     expect(
       container.querySelectorAll(':scope [role=img] > div > span'),
     ).toHaveLength(5)
+  })
+
+  it('lists the later visits the reader has reached, in their unit', () => {
+    renderWithProviders(
+      <MapBand
+        detail={detailOf({
+          visits: [
+            {
+              note: 'The crew comes back.',
+              revealedAtEpisode: 313,
+              revealedAtChapter: 431,
+            },
+            { note: 'Again.', revealedAtEpisode: 600, revealedAtChapter: 700 },
+          ],
+        })}
+      />,
+      { bookmark: { mode: 'chapter', chapter: 800 } },
+    )
+
+    expect(screen.getByRole('heading', { name: 'Later visits' })).toBeVisible()
+    expect(
+      screen.getAllByRole('term').map((term) => term.textContent),
+    ).toStrictEqual(['Chapter 431', 'Chapter 700'])
+    expect(screen.getByText('The crew comes back.')).toBeVisible()
+  })
+
+  it('has no visits heading while none is reached', () => {
+    renderWithProviders(<MapBand detail={detailOf()} />, { bookmark: ep(20) })
+
+    expect(screen.queryByText('Later visits')).not.toBeInTheDocument()
   })
 
   it('has no map at all under fog, only the stop number', () => {

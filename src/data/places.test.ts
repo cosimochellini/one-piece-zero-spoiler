@@ -90,6 +90,41 @@ describe('the ship’s log', () => {
     }
   })
 
+  it('dates every later visit after the place, in order, in both units', () => {
+    // A visit at or before the place's own threshold would be its first
+    // arrival, not a return; out of order, the page would list it so.
+    const visited = places.filter(
+      (place) => (placeDossierOf(place)?.visits ?? []).length > 0,
+    )
+
+    expect(visited.length).toBeGreaterThan(0)
+
+    for (const place of visited) {
+      const visits = placeDossierOf(place)?.visits ?? []
+      const episodes = visits.map((visit) => visit.episode)
+      const chapters = visits.map((visit) => visit.chapter)
+
+      const distinctEpisodes = new Set(episodes)
+      const distinctChapters = new Set(chapters)
+
+      // Distinct in both units: the page keys and labels each visit by its
+      // episode or its chapter, whichever the reader counts in.
+      expect(distinctEpisodes.size, place.id).toBe(visits.length)
+      expect(distinctChapters.size, place.id).toBe(visits.length)
+      expect(episodes, place.id).toStrictEqual(episodes.toSorted(byNumber()))
+      expect(chapters, place.id).toStrictEqual(chapters.toSorted(byNumber()))
+
+      for (const visit of visits) {
+        expect(visit.episode, place.id).toBeGreaterThan(place.revealedAtEpisode)
+        expect(visit.chapter, place.id).toBeGreaterThan(place.revealedAtChapter)
+
+        for (const locale of LOCALES) {
+          expect(visit.value[locale].trim(), place.id).not.toBe('')
+        }
+      }
+    }
+  })
+
   it('files here only records the archive holds, none of them places', () => {
     for (const place of places) {
       const filedHere = placeDossierOf(place)?.filedHere ?? []

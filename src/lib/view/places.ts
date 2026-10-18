@@ -86,6 +86,14 @@ export interface PlaceDrawing extends Gated {
   strokes: Stroke[]
 }
 
+/**
+ * One time the story comes back to a place, from its gate on: the episode
+ * and the chapter that show it, and a line on what brings it back.
+ */
+export interface VisitView extends Gated {
+  note: string
+}
+
 /** A place's own page. */
 export interface PlaceDetail {
   /** The map around the place; `null` while the place is under fog. */
@@ -104,6 +112,11 @@ export interface PlaceDetail {
   previous: null | Slot<RecordView>
   slot: Slot<PortView>
   total: number
+  /**
+   * Every later visit the reader has reached, oldest first. Empty under fog,
+   * and a visit past the bookmark is never sent.
+   */
+  visits: VisitView[]
 }
 
 /**
