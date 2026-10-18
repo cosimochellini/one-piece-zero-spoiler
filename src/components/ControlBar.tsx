@@ -32,9 +32,9 @@ export interface ControlBarProps {
  * A listing's controls, pinned to the top of the window while the listing
  * scrolls under them.
  *
- * It pins under the site bar, which on a phone is pinned too. On a wide
- * screen the whole bar pins. On a phone, upright or on its side,
- * it would take half the screen, so it pins with a negative top that leaves
+ * It pins under the site bar, which is pinned too. On a wide screen the
+ * whole bar pins. On a phone, upright or on its side, it would take half the
+ * screen, so it pins with a negative top that leaves
  * only its last row on screen, the folded row: a search button and the
  * current picks. Nothing in the layout changes when it folds, so nothing
  * under it jumps. Tapping the row, or moving focus into any control, slides

@@ -91,7 +91,7 @@ export const color = stylex.defineVars({
   // The three overlays, and the only tokens with an alpha channel. All are
   // modifiers laid over `paper`, not colours anything is painted in: the
   // lantern bloom at the top of the page, the sea that darkens the page
-  // behind the bookmark dialog, and the glass of the bar pinned on a phone,
+  // behind the bookmark dialog, and the glass of the pinned site bar,
   // which lets the bloom through where the page begins.
   glow: 'oklch(70% 0.12 80 / 0.22)',
   scrim: 'oklch(13% 0.025 250 / 0.72)',
@@ -237,8 +237,9 @@ export const rule = stylex.defineVars({ hair: '1px', fine: '2px' })
  * Hallmark's six named levels, plus `skip`.
  *
  * `sticky` and `stickyNav` are separate so a banner pinned under the bar
- * cannot climb over it, and `bar` is the site bar over both. `skip` sits above everything by definition: a skip
- * link that any other layer can cover is a skip link that does not work.
+ * cannot climb over it, and `bar` is the site bar over both. `skip` sits
+ * above everything by definition: a skip link that any other layer can cover
+ * is a skip link that does not work.
  */
 export const z = stylex.defineVars({
   base: '1',
@@ -246,7 +247,7 @@ export const z = stylex.defineVars({
   dropdown: '100',
   sticky: '200',
   stickyNav: '210',
-  // The site bar, pinned on a phone: a listing's control bar opens under it.
+  // The site bar, pinned at every width: a listing's control bar opens under it.
   bar: '220',
   tooltip: '600',
   skip: '700',

@@ -24,9 +24,9 @@ import {
  * Wordmark hard-left, the controls hard-right, and nothing in between. It
  * stays pinned at every width, so the pages and the bookmark are one tap
  * away from anywhere down a long listing; a phone only folds the pages onto
- * a second row. The site has four pages and two languages, so the right edge carries three
- * links, the reader's bookmark and the language switch, and no more. The
- * bookmark is the one control the whole site turns on, so it lives here, on
+ * a second row. The site has four pages and two languages, so the right edge
+ * carries three links, the reader's bookmark and the language select, and no
+ * more. The bookmark is the one control the whole site turns on, so it lives here, on
  * every page, as a single mark that opens the dialog where it is set; the
  * route still draws it as the horizon line, which is where the eye goes to
  * see what it did.
