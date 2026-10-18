@@ -128,6 +128,8 @@ export const enDictionary = {
   'chart.title': 'Map of the places',
   'chart.fog': '{count} stops under fog',
   'chart.fogOne': '1 stop under fog',
+  'chart.peekOpen': 'Open the entry',
+  'chart.peekClose': 'Close',
 
   'faq.animeQ': 'Anime or manga?',
   'faq.animeA':

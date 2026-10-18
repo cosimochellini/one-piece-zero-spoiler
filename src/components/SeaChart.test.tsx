@@ -1,12 +1,12 @@
-import { screen, within } from '@testing-library/react'
+import { act, fireEvent, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 
 import type { Bookmark } from '~/lib/progress/episode'
 import type { StopView } from '~/lib/view/places'
-import type { CoveredRecord, ShipView } from '~/lib/view/records'
-import { at, coveredRecord, ship, stop } from '~/test/fixtures'
-import { ep, renderWithProviders } from '~/test/providers'
+import type { CoveredRecord, PortView, ShipView } from '~/lib/view/records'
+import { at, coveredRecord, peekTo, port, ship, stop } from '~/test/fixtures'
+import { ep, renderWithProviders, settle } from '~/test/providers'
 
 import { SeaChart } from './SeaChart'
 
@@ -68,11 +68,13 @@ function draw({
   bookmark,
   covered = [],
   open = [],
+  peekPort = peekTo(port()),
   ships = [],
 }: {
   bookmark: Bookmark
   covered?: CoveredRecord[]
   open?: StopView[]
+  peekPort?: (handle: string) => Promise<PortView>
   ships?: ShipView[]
 }): ReturnType<typeof renderWithProviders> {
   return renderWithProviders(
@@ -80,6 +82,7 @@ function draw({
       bookmark={bookmark}
       covered={covered}
       open={open}
+      peekPort={peekPort}
       ships={ships}
     />,
     { bookmark },
@@ -147,7 +150,7 @@ describe('SeaChart', () => {
     ).toHaveLength(2)
   })
 
-  it('says a fogged stop’s number and episode, and nothing it would do', () => {
+  it('says a fogged stop’s number and episode, and nothing else', () => {
     draw({ bookmark: ep(30), open: eastBlue, covered: fogged })
 
     const buttons = within(stops()).getAllByRole('button')
@@ -160,7 +163,7 @@ describe('SeaChart', () => {
     ])
 
     for (const button of buttons) {
-      expect(button).toHaveAttribute('aria-disabled', 'true')
+      expect(button).toHaveAttribute('aria-expanded', 'false')
     }
   })
 
@@ -215,7 +218,7 @@ describe('SeaChart', () => {
 
     // The Sunny stands at Enies Lobby; the Merry, whose stretch ends there
     // too, is left out while the Sunny covers her.
-    expect(container.querySelectorAll(':scope span > svg')).toHaveLength(2)
+    expect(container.querySelectorAll(':scope button > svg')).toHaveLength(2)
 
     const here = within(stops()).getByRole('link', { current: 'location' })
 
@@ -237,12 +240,228 @@ describe('SeaChart', () => {
     })
 
     // One ship mark per orientation for each of the two ships.
-    expect(container.querySelectorAll(':scope span > svg')).toHaveLength(4)
+    expect(container.querySelectorAll(':scope button > svg')).toHaveLength(4)
   })
 
   it('draws no ship before the crew has one', () => {
     const { container } = draw({ bookmark: ep(9), open: eastBlue.slice(0, 2) })
 
-    expect(container.querySelectorAll(':scope span > svg')).toHaveLength(0)
+    expect(container.querySelectorAll(':scope button > svg')).toHaveLength(0)
+  })
+})
+
+/** The peek open on the chart, if any. */
+function peek(): HTMLElement | null {
+  return screen.queryByRole('dialog')
+}
+
+describe('the peek', () => {
+  it('opens at once on focus, and Esc closes it and keeps the focus', async () => {
+    const user = userEvent.setup()
+    draw({ bookmark: ep(30), open: eastBlue, covered: fogged })
+
+    const baratie = within(stops()).getByRole('link', { name: /Baratie/u })
+    act(() => {
+      baratie.focus()
+    })
+
+    const dialog = screen.getByRole('dialog', { name: 'Stop 3 of 5. Baratie' })
+
+    expect(dialog).toHaveTextContent('East Blue · Floating restaurant')
+    expect(dialog).toHaveTextContent('Episode 20')
+    expect(
+      within(dialog).getByRole('link', { name: 'Open the entry' }),
+    ).toHaveAttribute('href', '/en/places/baratie')
+    expect(baratie).toHaveAttribute('aria-expanded', 'true')
+    expect(baratie).toHaveAttribute('aria-controls', dialog.id)
+
+    await user.keyboard('{ArrowLeft}')
+
+    expect(
+      screen.getByRole('dialog', { name: 'Stop 2 of 5. Syrup Village' }),
+    ).toBeInTheDocument()
+
+    await user.keyboard('{Escape}')
+
+    expect(peek()).toBeNull()
+    expect(within(stops()).getByRole('link', { name: /Syrup/u })).toHaveFocus()
+  })
+
+  it('walks into the peek with Tab, and Esc gives the focus back to the stop', async () => {
+    const user = userEvent.setup()
+    draw({ bookmark: ep(30), open: eastBlue })
+
+    await user.tab()
+
+    const baratie = within(stops()).getByRole('link', { name: /Baratie/u })
+
+    expect(baratie).toHaveFocus()
+
+    await user.tab()
+
+    expect(screen.getByRole('link', { name: 'Open the entry' })).toHaveFocus()
+
+    await user.keyboard('{Escape}')
+
+    expect(peek()).toBeNull()
+    expect(baratie).toHaveFocus()
+    // Handed back quietly: the stop's focus does not reopen it.
+    expect(baratie).toHaveAttribute('aria-expanded', 'false')
+  })
+
+  it('opens after a short rest of the pointer, and closes when it leaves', async () => {
+    const user = userEvent.setup()
+    draw({ bookmark: ep(30), open: eastBlue })
+
+    const shells = within(stops()).getByRole('link', { name: /Shells Town/u })
+    await user.hover(shells)
+
+    expect(peek()).toBeNull()
+
+    // Found, after the rest: `findBy` throws when it is not.
+    await screen.findByRole('dialog', { name: 'Stop 1 of 3. Shells Town' })
+
+    await user.unhover(shells)
+    await vi.waitFor(() => {
+      expect(peek()).toBeNull()
+    })
+  })
+
+  it('closes on a press elsewhere, and with its ✕', async () => {
+    const user = userEvent.setup()
+    draw({ bookmark: ep(30), open: eastBlue })
+
+    act(() => {
+      within(stops())
+        .getByRole('link', { name: /Baratie/u })
+        .focus()
+    })
+
+    expect(peek()).not.toBeNull()
+
+    fireEvent.pointerDown(document.body)
+
+    expect(peek()).toBeNull()
+
+    const baratie = within(stops()).getByRole('link', { name: /Baratie/u })
+    // The focus never left it, so it comes back to open the peek again.
+    act(() => {
+      baratie.blur()
+      baratie.focus()
+    })
+    await user.click(screen.getByRole('button', { name: 'Close' }))
+
+    expect(peek()).toBeNull()
+    expect(baratie).toHaveFocus()
+  })
+
+  it('peeks on a tap, where a click follows the link', () => {
+    const { router } = draw({ bookmark: ep(30), open: eastBlue })
+    const navigate = vi.spyOn(router, 'navigate')
+    const baratie = within(stops()).getByRole('link', { name: /Baratie/u })
+
+    fireEvent.pointerDown(baratie, { pointerType: 'touch' })
+    fireEvent.click(baratie, { detail: 1 })
+
+    expect(navigate).not.toHaveBeenCalled()
+    expect(screen.getByRole('dialog', { name: /Baratie/u })).toBeInTheDocument()
+
+    fireEvent.pointerDown(baratie, { pointerType: 'mouse' })
+    fireEvent.click(baratie, { detail: 1 })
+
+    expect(navigate).toHaveBeenCalledTimes(1)
+  })
+
+  it('follows the link on a click no press came before', () => {
+    const { router } = draw({ bookmark: ep(30), open: eastBlue })
+    const navigate = vi.spyOn(router, 'navigate')
+    const baratie = within(stops()).getByRole('link', { name: /Baratie/u })
+
+    // A tap, then a click with no press of its own (an assistive technology).
+    fireEvent.pointerDown(baratie, { pointerType: 'touch' })
+    fireEvent.click(baratie, { detail: 1 })
+    fireEvent.click(baratie, { detail: 1 })
+
+    expect(navigate).toHaveBeenCalledTimes(1)
+
+    // A touch that became a scroll leaves its kind; a key's click follows.
+    fireEvent.pointerDown(baratie, { pointerType: 'touch' })
+    fireEvent.click(baratie, { detail: 0 })
+
+    expect(navigate).toHaveBeenCalledTimes(2)
+  })
+
+  it('keeps a held peek when the pointer rests on another stop', async () => {
+    const user = userEvent.setup()
+    draw({ bookmark: ep(30), open: eastBlue })
+
+    act(() => {
+      within(stops())
+        .getByRole('link', { name: /Baratie/u })
+        .focus()
+    })
+    const shells = within(stops()).getByRole('link', { name: /Shells Town/u })
+    await user.hover(shells)
+    await new Promise((resolve) => {
+      setTimeout(resolve, 400)
+    })
+    await user.unhover(shells)
+
+    expect(
+      screen.getByRole('dialog', { name: 'Stop 3 of 3. Baratie' }),
+    ).toBeInTheDocument()
+  })
+
+  it('veils a fogged stop and asks the server only on “Show anyway”', async () => {
+    const user = userEvent.setup()
+    const whisky = port({ id: 'whisky-peak', name: 'Whisky Peak', ...at(64) })
+    const lift = vi.fn<(handle: string) => Promise<PortView>>(peekTo(whisky))
+    draw({ bookmark: ep(30), open: eastBlue, covered: fogged, peekPort: lift })
+
+    const [first] = within(stops()).getAllByRole('button')
+    await user.click(first!)
+
+    const dialog = screen.getByRole('dialog', {
+      name: 'Stop 4 of 5. A place under fog',
+    })
+
+    expect(dialog).toHaveTextContent('Under fog until episode 64')
+    expect(dialog).not.toHaveTextContent('Whisky Peak')
+    expect(within(dialog).queryByRole('link')).not.toBeInTheDocument()
+    expect(lift).not.toHaveBeenCalled()
+
+    await user.click(
+      within(dialog).getByRole('button', { name: /Show anyway/u }),
+    )
+    await settle()
+
+    expect(lift).toHaveBeenCalledWith(fogged[0]!.handle)
+    expect(dialog).toHaveTextContent('Whisky Peak')
+    expect(
+      within(dialog).getByRole('link', { name: 'Open the entry' }),
+    ).toHaveAttribute('href', '/en/places/whisky-peak')
+  })
+
+  it('peeks a ship, as her entry in the band has her', async () => {
+    const user = userEvent.setup()
+    const burnt = ship({
+      id: 'going-merry',
+      name: 'Going Merry',
+      ...at(18),
+      dossier: { ...merry.dossier, fate: 'Given a funeral at sea' },
+    })
+    draw({ bookmark: ep(30), open: eastBlue, ships: [burnt] })
+
+    const [mark] = screen.getAllByRole('button', { name: 'Going Merry' })
+    await user.click(mark!)
+
+    const dialog = screen.getByRole('dialog', { name: 'Going Merry' })
+
+    expect(dialog).toHaveTextContent('Ship')
+    expect(dialog).toHaveTextContent('Episode 18')
+    expect(dialog).toHaveTextContent('Fate: Given a funeral at sea')
+    expect(
+      within(dialog).getByRole('link', { name: 'Open the entry' }),
+    ).toHaveAttribute('href', '/en/places#going-merry')
   })
 })
