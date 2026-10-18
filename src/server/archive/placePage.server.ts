@@ -98,7 +98,11 @@ export function placePage(
 /**
  * A ship's page: her entry, her fate and the places she reaches as far as
  * the reader has come (`shipOf`), and her drawings. Under fog, her slot's
- * handle and thresholds, and no drawing.
+ * handle and thresholds, and no drawing: the covered page a character or a
+ * place has (orchestrator ruling for #676). Nothing on the site links to a
+ * ship the reader has not reached, so only a reader who already has her
+ * name, typed in the address, lands on it; the page adds the kind and the
+ * episode, as a covered character's does.
  */
 function shipPage(entity: Entity, r: Reader): ShipPage {
   return {

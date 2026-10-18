@@ -198,6 +198,19 @@ describe('a ship’s own page', () => {
     },
   )
 
+  it('is a covered page, not a missing one, before the reader reaches her', () => {
+    // Ruled for #676: a ship under fog keeps the covered-page contract of a
+    // character or a place, and is never linked to before she is reached.
+    const { head, ship } = shipPageOf('thousand-sunny', ep(18))
+
+    expect(ship.drawings).toStrictEqual([])
+    expect(ship.slot).toMatchObject({
+      open: false,
+      covered: { kind: 'ship', revealedAtEpisode: 324 },
+    })
+    expect(head.title).toBe('A ship under fog | Zero Spoiler')
+  })
+
   it('covers the Merry before the crew receives her', () => {
     const { head, ship } = shipPageOf('going-merry', ep(17))
 
