@@ -109,27 +109,18 @@ function TrialLink({
     )
   }
 
-  // A ship has no page of her own yet: her entry is on the places page.
-  return entry.kind === 'place' ?
-      <Link
-        onClick={onClick}
-        params={{ locale, id: entry.id }}
-        preload={false}
-        to="/$locale/places/$id"
-        {...stylex.props(sx)}
-      >
-        {children}
-      </Link>
-    : <Link
-        hash={entry.id}
-        onClick={onClick}
-        params={{ locale }}
-        preload={false}
-        to="/$locale/places"
-        {...stylex.props(sx)}
-      >
-        {children}
-      </Link>
+  // A place, or a ship: hers is served from a place's address.
+  return (
+    <Link
+      onClick={onClick}
+      params={{ locale, id: entry.id }}
+      preload={false}
+      to="/$locale/places/$id"
+      {...stylex.props(sx)}
+    >
+      {children}
+    </Link>
+  )
 }
 
 /** The drawing, the name, and each fact the dial has reached, in a stack. */

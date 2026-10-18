@@ -442,7 +442,7 @@ describe('the peek', () => {
     ).toHaveAttribute('href', '/en/places/whisky-peak')
   })
 
-  it('peeks a ship, as her entry in the band has her', async () => {
+  it('peeks a ship, as her own page has her', async () => {
     const user = userEvent.setup()
     const burnt = ship({
       id: 'going-merry',
@@ -462,6 +462,6 @@ describe('the peek', () => {
     expect(dialog).toHaveTextContent('Fate: Given a funeral at sea')
     expect(
       within(dialog).getByRole('link', { name: 'Open the entry' }),
-    ).toHaveAttribute('href', '/en/places#going-merry')
+    ).toHaveAttribute('href', '/en/places/going-merry')
   })
 })

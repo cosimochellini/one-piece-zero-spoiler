@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 
 import { characters } from '~/data/characters'
 import { fruits } from '~/data/fruits'
-import { places } from '~/data/places'
+import { places, ships } from '~/data/places'
 import { SITE_ORIGIN } from '~/lib/seo/site'
 
 import { sitemapXml } from './sitemap.server'
@@ -32,9 +32,24 @@ describe('the sitemap', () => {
 
   it('lists every page of the site in both languages', () => {
     expect(locations()).toHaveLength(
-      (SECTION_COUNT + characters.length + fruits.length + places.length)
+      (SECTION_COUNT
+        + characters.length
+        + fruits.length
+        + places.length
+        + ships.length)
         * LOCALE_COUNT,
     )
+  })
+
+  it('carries both ships’ pages, in both languages', () => {
+    for (const locale of ['en', 'it']) {
+      expect(locations()).toContain(
+        `${SITE_ORIGIN}/${locale}/places/going-merry`,
+      )
+      expect(locations()).toContain(
+        `${SITE_ORIGIN}/${locale}/places/thousand-sunny`,
+      )
+    }
   })
 
   it('names no address twice', () => {

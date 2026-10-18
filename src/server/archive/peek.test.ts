@@ -5,7 +5,13 @@ import type { Bookmark } from '~/lib/progress/episode'
 import type { CoveredRecord, RecordView, Slot } from '~/lib/view/records'
 
 import { handleOf } from './handle.server'
-import { peekCharacter, peekDossier, peekPort, peekRecord } from './peek.server'
+import {
+  peekCharacter,
+  peekDossier,
+  peekPort,
+  peekRecord,
+  peekShip,
+} from './peek.server'
 
 const law = 'trafalgar-law'
 const lawHandle = handleOf(law)
@@ -84,7 +90,28 @@ describe('a record lifted by hand', () => {
       expect(peekRecord(rubbish, 'en', null), rubbish).toBeUndefined()
       expect(peekDossier(rubbish, 'en', null), rubbish).toBeUndefined()
       expect(peekPort(rubbish, 'en', null), rubbish).toBeUndefined()
+      expect(peekShip(rubbish, 'en', null), rubbish).toBeUndefined()
     }
+  })
+
+  it('lifts a ship and nothing else as a ship, cut at the reader’s bookmark', () => {
+    for (const other of ['syrup-village', 'nami']) {
+      expect(peekShip(handleOf(other), 'en', null), other).toBeUndefined()
+    }
+
+    const merry = peekShip(handleOf('going-merry'), 'en', null)
+    const sunny = peekShip(handleOf('thousand-sunny'), 'en', {
+      mode: 'episode',
+      episode: 400,
+    })
+
+    // No bookmark reaches no fate; at 400 the Sunny has reached Sabaody.
+    expect(merry?.dossier.fate).toBeUndefined()
+    expect(sunny?.dossier.ports.map(({ id }) => id)).toStrictEqual([
+      'florian-triangle',
+      'thriller-bark',
+      'sabaody-archipelago',
+    ])
   })
 
   it('resolves every handle the archive can mint', () => {

@@ -2,7 +2,6 @@ import { chartPointOf } from '~/data/chart'
 import { latestOf } from '~/data/dated'
 import { getEntity } from '~/data/entities'
 import { placeDossierOf, places, shipDossierOf, ships } from '~/data/places'
-import type { ShipDossier } from '~/data/records/ships'
 import { sagas } from '~/data/sagas'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
@@ -27,10 +26,7 @@ export function placesPage(bookmark: Bookmark, locale: Locale): PlacesView {
   const { covered, open, total } = r.split(places, stopOf)
 
   return {
-    ships: reachedShips(r).flatMap((entity) => {
-      const dossier = shipDossierOf(entity)
-      return dossier === undefined ? [] : [shipOf(entity, dossier, r)]
-    }),
+    ships: reachedShips(r).map((entity) => shipOf(entity, r)),
     filed: total,
     // The drawings are most of the stops' bytes, and only the first few ship
     // with them; the rest are asked for as the index nears them.
@@ -131,8 +127,13 @@ export function portOf(entity: Entity, r: Reader): PortView {
  * One ship, with her entry resolved: the place she is received at named
  * outright (it opens no later than the ship, which a data test holds), and
  * the latest fate and the places the reader has reached, and nothing later.
+ * A data test holds that every ship has a dossier.
  */
-function shipOf(entity: Entity, dossier: ShipDossier, r: Reader): ShipView {
+export function shipOf(entity: Entity, r: Reader): ShipView {
+  const dossier = shipDossierOf(entity)
+  if (dossier === undefined) {
+    throw new Error(`${entity.id} has no dossier`)
+  }
   const { locale } = r
   const fate = latestOf(r, entity, 'fate')?.[locale]
 

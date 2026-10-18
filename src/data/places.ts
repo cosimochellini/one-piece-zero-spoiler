@@ -873,6 +873,11 @@ export const ships: Entity[] = orderByMode(
   'episode',
 )
 
+/** Looks a ship up by id; any other record is `undefined` here. */
+export function getShip(id: string): Entity | undefined {
+  return ships.find((candidate) => candidate.id === id)
+}
+
 /** The log entry filed for a ship, or `undefined` for any other record. */
 export function shipDossierOf(entity: Entity): ShipDossier | undefined {
   return SHIP_DOSSIERS[entity.id]

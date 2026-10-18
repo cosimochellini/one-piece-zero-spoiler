@@ -1,4 +1,5 @@
 import { fruitFormOf } from '~/data/fruits'
+import { shipDossierOf } from '~/data/places'
 import type { Locale } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
 import type {
@@ -6,10 +7,11 @@ import type {
   FruitView,
   PortView,
   RecordView,
+  ShipView,
 } from '~/lib/view/records'
 
 import { entityForHandle } from './handle.server'
-import { portOf } from './places.server'
+import { portOf, shipOf } from './places.server'
 import { characterOf, fruitOf, recordOf } from './project.server'
 import { readerFor } from './reader.server'
 
@@ -104,4 +106,19 @@ export function peekPort(
   return entity === undefined ? undefined : (
       portOf(entity, readerFor(bookmark, locale))
     )
+}
+
+/**
+ * A ship, as her page draws her: like a port, the records she mentions keep
+ * their own fog. A handle that stands for any other record answers nothing.
+ */
+export function peekShip(
+  handle: string,
+  locale: Locale,
+  bookmark: Bookmark,
+): ShipView | undefined {
+  const entity = entityForHandle(handle)
+  return entity === undefined || shipDossierOf(entity) === undefined ?
+      undefined
+    : shipOf(entity, readerFor(bookmark, locale))
 }

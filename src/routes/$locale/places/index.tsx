@@ -11,20 +11,21 @@
  *   on rhythm: the list became an index with the fruits album's pinned
  *   control bar (search, layout, and sea, type and saga pickers, all in the
  *   address), one pinned group per sea, rows or plates, and one fog line at
- *   the foot; theme is the project's locked system and does not rotate */
+ *   the foot; theme is the project's locked system and does not rotate
+ * · #676: the ships band at the foot is gone; each ship has her own page,
+ *   reached from her peek on the chart */
 import { createFileRoute } from '@tanstack/react-router'
 import type { ReactElement } from 'react'
 
 import { ArchivePage } from '~/components/ArchivePage'
 import { SeaChart } from '~/components/SeaChart'
-import { ShipLog } from '~/components/ShipLog'
 import { useT } from '~/i18n/LocaleContext'
 import { isLocale } from '~/i18n/locales'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
 import { parsePlaceParams } from '~/lib/search/placeParams'
 import { describeNamedPage } from '~/routes/$locale/-head'
 import { usePeek } from '~/routes/$locale/-peek'
-import { liftPort, liftRecord, loadPlaces } from '~/server/api'
+import { liftPort, loadPlaces } from '~/server/api'
 
 import { PlaceIndex } from './-index'
 import { usePlacePicks } from './-params'
@@ -34,9 +35,7 @@ export const Route = createFileRoute('/$locale/places/')({
   // filtered index can be shared and Back steps through the picks. An
   // unknown value falls back to its default.
   validateSearch: parsePlaceParams,
-  // Awaited, not streamed: a ship's tile elsewhere links here with a `#id`,
-  // and an anchor that is not in the first paint is one the browser cannot
-  // scroll to.
+  // Awaited, not streamed: the chart is the page.
   loader: async ({ context }) =>
     loadPlaces({ data: { locale: context.locale } }),
   head: ({ match, params }) => {
@@ -62,15 +61,13 @@ export const Route = createFileRoute('/$locale/places/')({
  * (sea, type, saga) in a bar, the places by sea, each a link to its own
  * page, and one line for the stops still under fog. The picks and the
  * search light the same stops on the chart and leave the rest faint. The
- * ships the crew sails close the page: they travel on the chart now, so
- * they no longer open it.
+ * ships the crew sails travel on the chart, and each has a page of her own.
  */
 function PlacesPage(): ReactElement {
   const t = useT()
   const { bookmark } = useBookmark()
   const { covered, filed, open, sagas, ships } = Route.useLoaderData()
 
-  const peekRecord = usePeek(liftRecord)
   const peekPort = usePeek(liftPort)
   const { lit, ...picks } = usePlacePicks(open)
 
@@ -92,10 +89,6 @@ function PlacesPage(): ReactElement {
         open={open}
         sagas={sagas}
         {...picks}
-      />
-      <ShipLog
-        peekRecord={peekRecord}
-        ships={ships}
       />
     </ArchivePage>
   )
