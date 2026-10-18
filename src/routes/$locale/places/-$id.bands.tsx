@@ -21,8 +21,9 @@ import { color, font, radius, rule, space, text } from '~/styles/tokens.stylex'
 
 /**
  * Where the place is: its stop number and a line on what the map shows,
- * beside the stretch of the sea chart around it. Under fog there is no map:
- * where a place lies is what the fog is for, so only the number stays.
+ * beside the stretch of the sea chart around it. Under fog there is no map,
+ * nor the line about it: where a place lies is what the fog is for, so only
+ * the number stays.
  */
 export function MapBand({ detail }: { detail: PlaceDetail }): ReactElement {
   const { t } = useLocale()
@@ -31,6 +32,10 @@ export function MapBand({ detail }: { detail: PlaceDetail }): ReactElement {
     index: detail.index + 1,
     total: detail.total,
   })
+  const map =
+    detail.chart === null || !detail.slot.open ?
+      null
+    : { chart: detail.chart, name: detail.slot.record.name }
 
   return (
     <section
@@ -45,12 +50,14 @@ export function MapBand({ detail }: { detail: PlaceDetail }): ReactElement {
           {t('place.mapTitle')}
         </h2>
         <p {...stylex.props(page.position)}>{stage}</p>
-        <p {...stylex.props(page.lede)}>{t('place.mapLede')}</p>
+        {map === null ? null : (
+          <p {...stylex.props(page.lede)}>{t('place.mapLede')}</p>
+        )}
       </div>
-      {detail.chart === null || !detail.slot.open ? null : (
+      {map === null ? null : (
         <PlaceMap
-          label={[t('chart.title'), stage, detail.slot.record.name].join('. ')}
-          map={detail.chart}
+          label={[t('chart.title'), stage, map.name].join('. ')}
+          map={map.chart}
         />
       )}
     </section>

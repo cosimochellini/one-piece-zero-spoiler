@@ -136,6 +136,9 @@ describe('a place on the map', () => {
 
     expect(screen.getByText('Stop 5 of 39')).toBeVisible()
     expect(screen.queryByRole('img')).not.toBeInTheDocument()
+    expect(
+      screen.queryByText(/stops just before and after/u),
+    ).not.toBeInTheDocument()
   })
 })
 
