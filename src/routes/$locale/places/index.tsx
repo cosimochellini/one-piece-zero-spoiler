@@ -24,7 +24,7 @@ import { useBookmark } from '~/lib/progress/BookmarkContext'
 import { parsePlaceParams } from '~/lib/search/placeParams'
 import { describeNamedPage } from '~/routes/$locale/-head'
 import { usePeek } from '~/routes/$locale/-peek'
-import { liftRecord, loadPlaces } from '~/server/api'
+import { liftPort, liftRecord, loadPlaces } from '~/server/api'
 
 import { PlaceIndex } from './-index'
 import { usePlacePicks } from './-params'
@@ -71,6 +71,7 @@ function PlacesPage(): ReactElement {
   const { covered, filed, open, sagas, ships } = Route.useLoaderData()
 
   const peekRecord = usePeek(liftRecord)
+  const peekPort = usePeek(liftPort)
   const { lit, ...picks } = usePlacePicks(open)
 
   return (
@@ -83,6 +84,7 @@ function PlacesPage(): ReactElement {
         covered={covered}
         lit={lit}
         open={open}
+        peekPort={peekPort}
         ships={ships}
       />
       <PlaceIndex

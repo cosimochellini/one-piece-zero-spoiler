@@ -16,6 +16,7 @@ import {
 import { ART_VIEWBOX } from '~/components/drawing'
 import { styles } from '~/components/SeaChart.styles'
 import { pointOf, type ShipMark } from '~/components/seaChartModel'
+import type { TriggerProps } from '~/components/useChartPeek'
 import { useT } from '~/i18n/LocaleContext'
 import type { StopView } from '~/lib/view/places'
 
@@ -136,22 +137,28 @@ const SHIP_SIDE: Record<Side, stylex.StyleXStyles> = {
 /**
  * A ship on the route: her own drawing, as it stands at the bookmark, in a
  * gold ring on the side of the stop away from the label. An earlier ship is
- * drawn smaller and in the rule's ink.
+ * drawn smaller and in the rule's ink. A button: she opens her peek.
  */
 export function ShipOnRoute({
   mark,
   orientation,
+  trigger,
 }: {
   mark: ShipMark
   orientation: Orientation
+  trigger: TriggerProps
 }): ReactElement {
   const { left, top } = placeOf(mark.at, orientation)
   const side = across(sideOf(mark.at, orientation))
 
   return (
-    <span
+    <button
+      aria-label={mark.ship.name}
+      type="button"
+      {...trigger}
       {...stylex.props(
         styles.ship,
+        styles.shipButton,
         mark.current ? styles.shipCurrent : styles.shipEarlier,
         SHIP_SIDE[side],
         styles.at(left, top),
@@ -159,11 +166,12 @@ export function ShipOnRoute({
       )}
     >
       <svg
+        aria-hidden="true"
         viewBox={ART_VIEWBOX}
         {...stylex.props(styles.shipArt)}
       >
         <ArtStrokes {...mark.ship.visual} />
       </svg>
-    </span>
+    </button>
   )
 }

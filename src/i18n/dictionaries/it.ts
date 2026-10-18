@@ -125,6 +125,8 @@ export const itDictionary: Dictionary = {
   'chart.title': 'Mappa dei luoghi',
   'chart.fog': '{count} tappe nella nebbia',
   'chart.fogOne': '1 tappa nella nebbia',
+  'chart.peekOpen': 'Apri la scheda',
+  'chart.peekClose': 'Chiudi',
 
   'faq.animeQ': 'Anime o manga?',
   'faq.animeA':
