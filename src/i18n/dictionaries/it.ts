@@ -234,8 +234,6 @@ export const itDictionary: Dictionary = {
   'places.arc': 'Saga',
   'places.landmark': 'Punto di riferimento',
   'places.filedHere': 'Collegati a questo luogo',
-  'places.filedNone':
-    'Nella wiki non c’è ancora niente collegato a questo luogo.',
 
   'filler.title': 'Episodi filler',
   'filler.count':

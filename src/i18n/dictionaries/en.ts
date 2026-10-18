@@ -231,7 +231,6 @@ export const enDictionary = {
   'places.arc': 'Arc',
   'places.landmark': 'Landmark',
   'places.filedHere': 'Found here',
-  'places.filedNone': 'Nothing in the wiki is linked to this place yet.',
 
   'filler.title': 'Filler episodes',
   'filler.count':
