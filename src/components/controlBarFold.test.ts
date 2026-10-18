@@ -116,7 +116,7 @@ describe('the control bar’s folding', () => {
     stubObservers()
     const { bar } = mountBar()
     // What `pin.bar` resolves to on a phone, read back off the scroll margin.
-    bar.style.scrollMarginTop = '93px'
+    bar.style.scrollMarginTop = '96px'
     const onPin = vi.fn<(pinned: boolean) => void>()
     const watching = watch(bar, '--bar-tuck', onPin)
 
@@ -124,13 +124,13 @@ describe('the control bar’s folding', () => {
 
     heard.measure?.()
 
-    expect(heard.margin).toBe('-94px 0px 0px')
+    expect(heard.margin).toBe('-97px 0px 0px')
 
     // Pinned at the site bar's foot, tucked: cut by the line, so pinned.
     heard.pin?.([{ boundingClientRect: { top: -207 }, intersectionRatio: 0.2 }])
 
     expect(onPin).toHaveBeenLastCalledWith(true)
-    expect(watching.read().offset).toBe(93)
+    expect(watching.read().offset).toBe(96)
 
     watching.stop()
   })
@@ -143,7 +143,7 @@ describe('the control bar’s folding', () => {
     vi.stubGlobal('scrollY', 2500)
     const stop = listen(
       bar,
-      () => ({ offset: 93, pinned: true, tuck: 300 }),
+      () => ({ offset: 96, pinned: true, tuck: 300 }),
       setOpen,
     )
 
@@ -152,7 +152,7 @@ describe('the control bar’s folding', () => {
 
     // The container's top in the page (-2000 + 2500), plus the tuck, less
     // the site bar it pins under.
-    expect(scrollTo).toHaveBeenCalledWith({ top: 707, behavior: 'instant' })
+    expect(scrollTo).toHaveBeenCalledWith({ top: 704, behavior: 'instant' })
     expect(setOpen).toHaveBeenLastCalledWith(false)
     expect(toggle).toHaveFocus()
 

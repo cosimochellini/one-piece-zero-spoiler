@@ -76,7 +76,7 @@ export function watch(
     bar.style.setProperty(tuckProperty, `${String(-tuck)}px`)
     root.setProperty(STACK_PROPERTY, `${String(box.height - tuck)}px`)
     // The bar's scroll margin is the site bar's pinned height, resolved to
-    // pixels: `93px`, or `0px` off a phone.
+    // pixels: `96px` on a phone, `52px` on a wider screen.
     const next = Number(getComputedStyle(bar).scrollMarginTop.replace('px', ''))
     if (next === offset) {
       return
