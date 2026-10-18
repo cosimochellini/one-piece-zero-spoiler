@@ -254,15 +254,11 @@ export const z = stylex.defineVars({
 
 /**
  * How much of the window the site bar keeps, pinned at every width: rows of
- * 2.75rem (two on a phone, where the pages fold under, one elsewhere),
- * `space.xs2` above and below them and the `rule.hair` under the bar. The bar
- * takes this as its height, and everything else that pins pins under it, so
- * the two cannot drift apart. Written out: one set of vars cannot read
- * another.
+ * 2.75rem (two on a phone, where the pages fold under, one elsewhere) and
+ * `space.xs2` above and below them. The bar takes this as its height, and
+ * everything else that pins pins under it, so the two cannot drift apart.
+ * Written out: one set of vars cannot read another.
  */
 export const pin = stylex.defineVars({
-  bar: {
-    'default': 'calc(6rem + 1px)',
-    '@media (min-width: 40rem)': 'calc(3.25rem + 1px)',
-  },
+  bar: { 'default': '6rem', '@media (min-width: 40rem)': '3.25rem' },
 })

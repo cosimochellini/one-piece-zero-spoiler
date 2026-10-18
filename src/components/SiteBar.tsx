@@ -95,9 +95,6 @@ const styles = stylex.create({
     // page scrolling under the bar is never read through it.
     backdropFilter: 'blur(14px) saturate(1.4)',
     backgroundColor: color.veil,
-    borderBlockEndColor: color.rule,
-    borderBlockEndStyle: 'solid',
-    borderBlockEndWidth: rule.hair,
     columnGap: { [WIDE]: space.lg, default: space.sm },
     display: 'grid',
     gridTemplateColumns: {
