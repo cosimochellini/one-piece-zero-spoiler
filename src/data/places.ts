@@ -457,8 +457,8 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
         episode: 512,
         chapter: 593,
         value: {
-          it: 'I motociclisti di Duval cacciano una banda che vuole vendere la Sunny alla Marina, e Orso raggiunge il gruppo di Shakky.',
-          en: 'Duval’s riders drive off a gang that wants to sell the Sunny to the Marines, and Kuma walks up to Shakky’s group.',
+          it: 'La banda di Duval caccia dei pirati che vogliono consegnare la Sunny alla Marina per una ricompensa, e Orso raggiunge il gruppo di Shakky.',
+          en: 'Duval’s gang drives off pirates who want to hand the Sunny to the Marines for a reward, and Kuma walks up to Shakky’s group.',
         },
       },
       // Two years on, the crew lands one by one, ch 598 p. 4 on, in ep 517.
@@ -497,7 +497,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
       'salome',
     ],
     visits: [
-      // Two weeks after the war, ch 582 p. 4-15, in ep 491.
+      // Two weeks after the war, ch 582 p. 4-15 (ep 491 adapts p. 3-15).
       {
         episode: 491,
         chapter: 582,
@@ -571,7 +571,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
         episode: 490,
         chapter: 581,
         value: {
-          it: 'Tra le rovine lasciate dalla guerra, Do Flamingo attacca Moria su ordine dall’alto.',
+          it: 'Tra le rovine lasciate dalla guerra, Do Flamingo attacca Moria su ordini dall’alto.',
           en: 'In the ruins left by the war, Doflamingo attacks Moria on orders from above.',
         },
       },
@@ -821,15 +821,6 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
         value: {
           it: 'Gli altri quattro Astri parlano con Saturn della trasmissione di Vegapunk, poi vengono trascinati su Egghead.',
           en: 'The other four Elders talk with Saturn about Vegapunk’s broadcast, then are pulled away to Egghead.',
-        },
-      },
-      // Ch 1125 p. 9-10, in ep 1155.
-      {
-        episode: 1155,
-        chapter: 1125,
-        value: {
-          it: 'Garling si presenta agli Astri come nuovo Dio Guerriero della Scienza e della Difesa.',
-          en: 'Garling joins the Elders as the new Warrior God of Science and Defense.',
         },
       },
     ],
