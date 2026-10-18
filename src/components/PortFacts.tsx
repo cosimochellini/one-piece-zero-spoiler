@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex'
 import type { ReactElement } from 'react'
 
-import { styles } from '~/components/PortLog.styles'
+import { styles } from '~/components/PortEntry.styles'
 import { useLocale } from '~/i18n/LocaleContext'
 import type { PortDossier, ShipEntry } from '~/lib/view/records'
 

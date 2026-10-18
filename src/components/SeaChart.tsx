@@ -35,7 +35,7 @@ import { useT } from '~/i18n/LocaleContext'
  *
  * Drawn twice, across and upright, and the stylesheet shows the one that
  * fits: a phone gets the route running down the page. The open stops lead
- * to their entries below; the stops under fog are buttons that say their
+ * to their own pages; the stops under fog are buttons that say their
  * number and episode and nothing else.
  */
 export function SeaChart(props: SeaChartProps): ReactElement {

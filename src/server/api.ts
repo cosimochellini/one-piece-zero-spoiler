@@ -22,6 +22,7 @@ import {
   peekPort,
   peekRecord,
 } from './archive/peek.server'
+import { placePage } from './archive/placePage.server'
 import { placesPage } from './archive/places.server'
 import { sagaLabels } from './archive/sagaLabels.server'
 
@@ -175,6 +176,12 @@ export const loadFruitSiblings = createServerFn()
 export const loadPlaces = createServerFn()
   .validator(located)
   .handler(({ data }) => placesPage(readBookmark(), data.locale))
+
+export const loadPlace = createServerFn()
+  .validator(addressed)
+  .handler(
+    ({ data }) => placePage(data.id, readBookmark(), data.locale) ?? null,
+  )
 
 export const loadFiller = createServerFn()
   .validator(located)

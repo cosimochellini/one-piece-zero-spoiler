@@ -123,15 +123,15 @@ describe('SeaChart', () => {
     expect(container.querySelectorAll('rect[x]')).toHaveLength(0)
   })
 
-  it('links every open stop to its entry and marks where the reader is', () => {
+  it('links every open stop to its page and marks where the reader is', () => {
     draw({ bookmark: ep(30), open: eastBlue, covered: fogged, ships: [merry] })
 
     const links = within(stops()).getAllByRole('link')
 
     expect(links.map((link) => link.getAttribute('href'))).toStrictEqual([
-      '#shells-town',
-      '#syrup-village',
-      '#baratie',
+      '/en/places/shells-town',
+      '/en/places/syrup-village',
+      '/en/places/baratie',
     ])
     expect(links.map((link) => link.getAttribute('aria-label'))).toStrictEqual([
       'Stop 1 of 5. Shells Town',
@@ -218,7 +218,7 @@ describe('SeaChart', () => {
 
     const here = within(stops()).getByRole('link', { current: 'location' })
 
-    expect(here).toHaveAttribute('href', '#amazon-lily')
+    expect(here).toHaveAttribute('href', '/en/places/amazon-lily')
   })
 
   it('leaves an earlier ship small at the end of her own stretch', () => {

@@ -234,6 +234,25 @@ export const enDictionary = {
   'places.arc': 'Arc',
   'places.landmark': 'Landmark',
   'places.filedHere': 'Found here',
+  'places.listTitle': 'Places up to your bookmark',
+
+  'place.pageTitle': '{name} | Zero Spoiler',
+  'place.foggedTitle': 'A place under fog | Zero Spoiler',
+  'place.back': 'All places',
+  'place.mapTitle': 'On the map',
+  'place.mapLede':
+    'Where this place comes in the story, with the stops just before and after.',
+  'place.drawingsTitle': 'How the drawing changes',
+  'place.drawingsLede':
+    'Every drawing of this place up to your bookmark, oldest first.',
+  'place.turn': 'Previous and next stop',
+  'place.previous': 'Previous stop',
+  'place.next': 'Next stop',
+  'place.routeStart': 'Nothing. This is the first stop.',
+  'place.routeEnd': 'Nothing yet. This is the last stop in story order.',
+  'place.notFoundTitle': 'Place not found',
+  'place.notFoundBody':
+    'There is no place at this address. The places page lists all of them.',
 
   'filler.title': 'Filler episodes',
   'filler.count':

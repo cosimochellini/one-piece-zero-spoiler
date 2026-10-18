@@ -1,9 +1,9 @@
 import * as stylex from '@stylexjs/stylex'
 import { type ReactElement, useId } from 'react'
 
+import { FiledHere } from '~/components/FiledHere'
+import { styles } from '~/components/PortEntry.styles'
 import { ShipFacts } from '~/components/PortFacts'
-import { FiledHere } from '~/components/PortLog'
-import { styles } from '~/components/PortLog.styles'
 import { PortPlate } from '~/components/PortPlate'
 import { useLocale } from '~/i18n/LocaleContext'
 import { useThreshold } from '~/lib/progress/BookmarkContext'

@@ -2,6 +2,7 @@ import { characters } from '~/data/characters'
 import { entities } from '~/data/entities'
 import { FILLER } from '~/data/filler'
 import { fruits } from '~/data/fruits'
+import { places } from '~/data/places'
 import { sagas } from '~/data/sagas'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
@@ -32,6 +33,7 @@ import {
   peekPort,
   peekRecord,
 } from './peek.server'
+import { placePage } from './placePage.server'
 import { placesPage } from './places.server'
 import { sagaLabels } from './sagaLabels.server'
 
@@ -54,6 +56,7 @@ export interface Payload {
 
 const characterIds = (): string[] => characters.map(({ id }) => id)
 const fruitIds = (): string[] => fruits.map(({ id }) => id)
+const placeIds = (): string[] => places.map(({ id }) => id)
 const handles = (): string[] => entities.map(({ id }) => handleOf(id))
 
 export const PAYLOADS: Payload[] = [
@@ -102,6 +105,11 @@ export const PAYLOADS: Payload[] = [
     run: (b, locale, id) => fruitSiblings(id, b, locale),
   },
   { name: 'loadPlaces', run: (b, locale) => placesPage(b, locale) },
+  {
+    name: 'loadPlace',
+    keys: placeIds,
+    run: (b, locale, id) => placePage(id, b, locale) ?? null,
+  },
   { name: 'loadFiller', run: (b, locale) => fillerPage(b, locale) },
   { name: 'loadSagaLabels', run: (_, locale) => sagaLabels(locale) },
   {

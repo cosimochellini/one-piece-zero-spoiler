@@ -95,12 +95,27 @@ function TrialLink({
     enterTrial(dialBookmark(point))
   }
 
-  return entry.kind === 'character' ?
+  if (entry.kind === 'character') {
+    return (
       <Link
         onClick={onClick}
         params={{ locale, id: entry.id }}
         preload={false}
         to="/$locale/characters/$id"
+        {...stylex.props(sx)}
+      >
+        {children}
+      </Link>
+    )
+  }
+
+  // A ship has no page of her own yet: her entry is on the places page.
+  return entry.kind === 'place' ?
+      <Link
+        onClick={onClick}
+        params={{ locale, id: entry.id }}
+        preload={false}
+        to="/$locale/places/$id"
         {...stylex.props(sx)}
       >
         {children}
