@@ -281,6 +281,33 @@ describe('the facts a bookmark reaches', () => {
     },
   )
 
+  it.each(['en', 'it'] as const)(
+    'calls Wyper the Berserker only from episode 169 and chapter 256 (%s)',
+    (locale) => {
+      const wyper = onFile('wyper')
+      const epithet = locale === 'en' ? 'the Berserker' : 'Il Berserker'
+      const before = [
+        { mode: 'episode', episode: 168 },
+        { mode: 'chapter', chapter: 255 },
+      ] as const
+      const after = [
+        { mode: 'episode', episode: 169 },
+        { mode: 'chapter', chapter: 256 },
+      ] as const
+
+      for (const bookmark of before) {
+        expect(factsOf(wyper, readerFor(bookmark, locale))).not.toHaveProperty(
+          'epithet',
+        )
+      }
+      for (const bookmark of after) {
+        expect(factsOf(wyper, readerFor(bookmark, locale))).toMatchObject({
+          epithet,
+        })
+      }
+    },
+  )
+
   it('answers in the reader’s locale', () => {
     expect(factsOf(LUFFY, ep(45, 'it'))).toMatchObject({
       epithet: 'Cappello di Paglia',
