@@ -79,6 +79,25 @@ describe('the facts a bookmark reaches', () => {
     }
   })
 
+  it('says Kalifa is Iceburg’s secretary only from episode 231, where she is introduced', () => {
+    const kalifa = onFile('kalifa')
+
+    for (const locale of ['en', 'it'] as const) {
+      const secretary =
+        locale === 'en' ?
+          'Galley-La Company, Iceburg’s secretary'
+        : 'Galley-La Company, segretaria di Iceburg'
+
+      expect(factsOf(kalifa, ep(230, locale))).not.toHaveProperty('affiliation')
+      expect(factsOf(kalifa, ep(231, locale))).toMatchObject({
+        affiliation: secretary,
+      })
+      expect(
+        factsOf(kalifa, readerFor({ mode: 'chapter', chapter: 327 }, locale)),
+      ).toMatchObject({ affiliation: secretary })
+    }
+  })
+
   it('gives each fact as the reader knows it, and no fact not yet learned', () => {
     const found = factsOf(LUFFY, ep(3))
 
