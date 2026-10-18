@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-10-18",
+    "macrostructure": "Map / Diagram (the places page opens on a schematic sea chart, over the existing Narrative Workflow log)",
+    "theme": "custom (bespoke): Sea Chart — locked, not rotated",
+    "theme_axes": "dark / geometric-sans / chromatic-amber (88°)",
+    "enrichment": "Tier B hand-built SVG chart (seas revealed per entered sea, fog wash elsewhere); the ships' own line drawings ride on the route",
+    "nav": "N9 edge-aligned (shared)",
+    "footer": "Ft4 dense colophon (shared)",
+    "sections": "brand line + count · sea chart (route in the ship's line style, ship + 'you are here' label, fog tail with evenly spaced dots, count, bookmark button with none) · the 39 stacked entries (kept until #673) · ships band (moved from the top; removed by #676)",
+    "brief": "Issue #674 (epic #671): open /places on a schematic sea chart. Owner rulings: no bookmark = anonymous origin ring + all fog; a sea is drawn and named only once one of its stops is open (Reverse Mountain opens the Red Line, Calm Belts and four Blues); Mary Geoise is a branch like the solo detours; across on desktop, upright at <= 600 px."
+  },
+  {
     "date": "2026-10-12",
     "macrostructure": "Component Playground (no-bookmark landing: a dial over East Blue is the hero, the page under it is its live preview)",
     "theme": "custom (bespoke): Sea Chart — locked, not rotated",

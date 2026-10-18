@@ -125,6 +125,9 @@ export const enDictionary = {
   'chart.hereSet.season': 'You are here · {threshold}',
   'chart.hereSet.chapter': 'You are here · chapter {threshold}',
   'chart.hereUnset': 'No bookmark set · everything is under fog',
+  'chart.title': 'Map of the places',
+  'chart.fog': '{count} stops under fog',
+  'chart.fogOne': '1 stop under fog',
 
   'faq.animeQ': 'Anime or manga?',
   'faq.animeA':
@@ -397,6 +400,9 @@ export const enDictionary = {
   'sea.new-world': 'New World',
   'sea.calm-belt': 'Calm Belt',
   'sea.red-line': 'Red Line',
+  'sea.north-blue': 'North Blue',
+  'sea.west-blue': 'West Blue',
+  'sea.south-blue': 'South Blue',
 
   'form.village': 'Village',
   'form.town': 'Town',

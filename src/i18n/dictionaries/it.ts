@@ -122,6 +122,9 @@ export const itDictionary: Dictionary = {
   'chart.hereSet.season': 'Sei qui · {threshold}',
   'chart.hereSet.chapter': 'Sei qui · capitolo {threshold}',
   'chart.hereUnset': 'Nessun segnalibro · è tutto nella nebbia',
+  'chart.title': 'Mappa dei luoghi',
+  'chart.fog': '{count} tappe nella nebbia',
+  'chart.fogOne': '1 tappa nella nebbia',
 
   'faq.animeQ': 'Anime o manga?',
   'faq.animeA':
@@ -408,6 +411,9 @@ export const itDictionary: Dictionary = {
   'sea.new-world': 'Nuovo Mondo',
   'sea.calm-belt': 'Fascia di Bonaccia',
   'sea.red-line': 'Red Line',
+  'sea.north-blue': 'North Blue',
+  'sea.west-blue': 'West Blue',
+  'sea.south-blue': 'South Blue',
 
   'form.village': 'Villaggio',
   'form.town': 'Cittadina',

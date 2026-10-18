@@ -85,9 +85,16 @@ const WORST_CHUNKS = 5
  * the switch (the album's own `ChoiceGroup`, now a chunk both pages share),
  * and its four words in both dictionaries. Which drawings the reader has
  * reached is the server's. Again the measured build plus ~1 KB, under the
- * 570 KB allowed for this raise.
+ * 570 KB allowed for this raise. Raised to 581.4 KB on 2026-10-18, when main
+ * stood at ~566.3 KB and the sea chart that opens the places page (#674)
+ * added ~14.1 KB: the chart drawn across and upright, its geometry (the
+ * world, the legs, the fog tail, where a label goes), the ships on the
+ * route, the stops with their arrow keys, and six new keys in both
+ * dictionaries. Where each open stop sits is the server's; a covered stop
+ * has no point to send. The measured build plus ~1 KB, as the epic (#671)
+ * allows each of its pull requests.
  */
-export const MAX_CLIENT_BYTES = 567_600
+export const MAX_CLIENT_BYTES = 581_400
 
 /** Where the prose lives: every saga, the ship's log and the filler guide. */
 const PROSE_DIR = 'src/data/records'

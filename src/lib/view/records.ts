@@ -17,6 +17,7 @@
  */
 
 import type { Bookmark } from '~/lib/progress/episode'
+import type { ChartPoint } from '~/lib/view/chart'
 import type { FillerAhead } from '~/lib/view/filler'
 
 /** The ink a stroke takes. Structurally `Role` from `~/data/art/stroke`. */
@@ -499,6 +500,8 @@ export type PlaceForm =
  * leaves the ledger out, which is what the page did before.
  */
 export interface PortView extends RecordView {
+  /** Where the port sits on the sea chart; `null` for a record not a place. */
+  chart: ChartPoint | null
   dossier: null | PortDossier
   summary: string
 }
