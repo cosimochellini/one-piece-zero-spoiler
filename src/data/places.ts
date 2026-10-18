@@ -506,15 +506,6 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
           en: 'Two weeks after the war, Luffy wakes up on the island, where the Heart Pirates have brought him with Jinbe.',
         },
       },
-      // Present-day frame on the island, ch 1059 p. 5, in ep 1087 (the raid is told as weeks earlier; Rayleigh arrives in ep 1088, so the note stops before him).
-      {
-        episode: 1087,
-        chapter: 1059,
-        value: {
-          it: 'L’isola è danneggiata: qualche settimana prima la Marina l’ha attaccata.',
-          en: 'The island is damaged: the Marines attacked it a few weeks earlier.',
-        },
-      },
     ],
   },
   'impel-down': {

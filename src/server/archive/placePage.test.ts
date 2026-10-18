@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
 import { CHART } from '~/data/chart'
-import { places, ships } from '~/data/places'
+import { placeDossierOf, places, ships } from '~/data/places'
 import { reveal } from '~/data/reveal'
 import type { Bookmark } from '~/lib/progress/episode'
 
@@ -274,14 +274,24 @@ describe('a place’s later visits', () => {
 
       for (const place of places) {
         const { detail } = pageOf(place.id, bookmark)
+        // Worked out from the filed pairs, not from the server's gate: the
+        // place open, and the visit's own episode or chapter reached.
+        const expected =
+          detail.slot.open ?
+            (placeDossierOf(place)?.visits ?? [])
+              .filter((visit) =>
+                sees({
+                  revealedAtEpisode: visit.episode,
+                  revealedAtChapter: visit.chapter,
+                }),
+              )
+              .map((visit) => visit.episode)
+          : []
 
         expect(
-          detail.visits.every((visit) => sees(visit)),
+          detail.visits.map((visit) => visit.revealedAtEpisode),
           place.id,
-        ).toBe(true)
-        expect(detail.slot.open || detail.visits.length === 0, place.id).toBe(
-          true,
-        )
+        ).toStrictEqual(expected)
       }
     },
   )
