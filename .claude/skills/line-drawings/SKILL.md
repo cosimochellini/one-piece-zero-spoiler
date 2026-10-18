@@ -150,8 +150,7 @@ Grade every drawing you make or review. Only A ships.
     entry in `wano.ts`, Pekoms in `fish-man-island.ts`. The gate is the later
     of the record's chapter and the entry's `chapter:`, or without one the
     first chapter that reaches its episode, which can be many chapters late.
-    The pin adds
-    nothing to the chapter table, and the stage walk in
+    The pin adds nothing to the chapter table, and the stage walk in
     `slices.test.ts` walks it.
   - **A frame check on manga pages decides** the start, the end, and what is
     really on the object. The wiki's prose is a lead: Jack's sails, Leo's
