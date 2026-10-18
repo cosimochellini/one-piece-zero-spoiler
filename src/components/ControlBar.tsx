@@ -11,7 +11,7 @@ import {
 
 import { listen, watch } from '~/components/controlBarFold'
 import { Button } from '~/components/ui/Button'
-import { color, font, rule, space, text, z } from '~/styles/tokens.stylex'
+import { color, font, pin, rule, space, text, z } from '~/styles/tokens.stylex'
 
 /** How far up the bar slides to leave only its folded row on screen. */
 const TUCK_PROPERTY = '--bar-tuck'
@@ -32,8 +32,9 @@ export interface ControlBarProps {
  * A listing's controls, pinned to the top of the window while the listing
  * scrolls under them.
  *
- * On a wide screen the whole bar pins. On a phone, upright or on its side,
- * it would take half the screen, so it pins with a negative top that leaves
+ * It pins under the site bar, which is pinned too. On a wide screen the
+ * whole bar pins. On a phone, upright or on its side, it would take half the
+ * screen, so it pins with a negative top that leaves
  * only its last row on screen, the folded row: a search button and the
  * current picks. Nothing in the layout changes when it folds, so nothing
  * under it jumps. Tapping the row, or moving focus into any control, slides
@@ -189,14 +190,17 @@ const styles = stylex.create({
     boxShadow: GUTTERS,
     display: 'grid',
     position: 'sticky',
+    // Where it pins, under the site bar, as a length the script can read
+    // back in pixels (`controlBarFold`); scrolled to, it also lands there.
+    scrollMarginBlockStart: pin.bar,
     // Over the sticky heads: an opened bar lies over the listing.
     zIndex: z.stickyNav,
   },
   // The hairline under a pinned bar, drawn as a shadow so that it costs no
   // height: a border appearing on pin would move everything under the bar.
   pinnedEdge: { boxShadow: `${GUTTERS}, 0 ${rule.hair} 0 ${color.rule}` },
-  tucked: { insetBlockStart: `var(${TUCK_PROPERTY}, 0px)` },
-  open: { insetBlockStart: 0 },
+  tucked: { insetBlockStart: `calc(${pin.bar} + var(${TUCK_PROPERTY}, 0px))` },
+  open: { insetBlockStart: pin.bar },
   controls: {
     alignItems: 'end',
     columnGap: space.lg,

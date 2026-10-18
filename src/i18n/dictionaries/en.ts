@@ -74,6 +74,7 @@ export const enDictionary = {
   'home.filler.link': 'See all filler',
 
   'mark.unset': 'Set episode',
+  'mark.unsetShort': 'EP ?',
   'mark.episode': 'EP {threshold}',
   'mark.season': '{threshold}',
   'mark.chapter': 'CH {threshold}',
