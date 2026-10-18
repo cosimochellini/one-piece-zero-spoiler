@@ -757,25 +757,31 @@ export const skypiea: Saga = {
         },
         {
           episode: 430,
-          factions: ['warlords'],
-          value: { it: 'Flotta dei Sette', en: 'Seven Warlords of the Sea' },
+          factions: ['blackbeard-pirates', 'warlords'],
+          value: {
+            it: 'Pirati di Barbanera, capitano; Flotta dei Sette',
+            en: 'Blackbeard Pirates, captain; Seven Warlords',
+          },
         },
         // Gives up the title at Marineford at 485 (chapter 576), and is
         // counted among the Four Emperors at 570 (chapter 650).
         {
           episode: 485,
           chapter: 576,
-          factions: ['independent'],
+          factions: ['blackbeard-pirates'],
           value: {
-            it: 'Ex membro della Flotta dei Sette',
-            en: 'Former Warlord',
+            it: 'Pirati di Barbanera, capitano; ex membro della Flotta dei Sette',
+            en: 'Blackbeard Pirates, captain; former Warlord',
           },
         },
         {
           episode: 570,
           chapter: 650,
-          factions: ['emperors'],
-          value: { it: 'Imperatore', en: 'Emperor' },
+          factions: ['blackbeard-pirates', 'emperors'],
+          value: {
+            it: 'Pirati di Barbanera, capitano; Imperatore',
+            en: 'Blackbeard Pirates, captain; Emperor',
+          },
         },
       ],
       epithet: [{ episode: 151, value: { it: 'Barbanera', en: 'Blackbeard' } }],
@@ -982,12 +988,14 @@ export const skypiea: Saga = {
           factions: ['warlords'],
           value: { it: 'Flotta dei Sette', en: 'Seven Warlords of the Sea' },
         },
+        // The crew is first named on screen at 618 (chapter 692), in Baby 5's
+        // and Buffalo's captions.
         {
           episode: 632,
-          factions: ['warlords'],
+          factions: ['donquixote-pirates', 'warlords'],
           value: {
-            it: 'Flotta dei Sette; re di Dressrosa',
-            en: 'Seven Warlords; king of Dressrosa',
+            it: 'Pirati di Donquijote, capitano; Flotta dei Sette; re di Dressrosa',
+            en: 'Donquixote Pirates, captain; Seven Warlords; king of Dressrosa',
           },
         },
         {
