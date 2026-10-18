@@ -211,8 +211,8 @@ export const waterSeven: Saga = {
       revealedAtChapter: 327,
       name: { it: 'Iceburg', en: 'Iceburg' },
       summary: {
-        it: 'Il sindaco di Water Seven e presidente della più grande compagnia di costruttori navali della città, che gira con un topolino nella tasca della giacca.',
-        en: 'The mayor of Water Seven and president of the city’s biggest shipbuilding company, who goes about with a small mouse riding in his coat pocket.',
+        it: 'Un uomo di Water Seven con un topolino nella tasca della giacca, da cui Kokoro manda i Cappello di Paglia con una lettera perché possano far riparare la nave.',
+        en: 'A man in Water Seven with a small mouse riding in his coat pocket, to whom Kokoro sends the Straw Hats with a letter so they can get their ship repaired.',
       },
       visual: { art: 'iceburg', tint: 'teal' },
     },
@@ -897,15 +897,20 @@ export const waterSeven: Saga = {
       ],
     },
     'iceburg': {
-      role: { it: 'Sindaco di Water Seven', en: 'Mayor of Water Seven' },
+      role: { it: 'Cittadino di Water Seven', en: 'Citizen of Water Seven' },
+      // Frozen at episode 230, which adapts chapters 323 (p. 13-19), 324
+      // (p. 9-18) and 325 (p. 6-9): who he is comes in 231.
       log: {
-        it: 'Guida la Galley-La Company, che costruisce le navi migliori del mare, e la città intera lo tratta come una cosa propria. Riceve i clienti con calma, chiama tutti per nome e tiene un topolino di nome Tyrannosaurus nella tasca della giacca. Quando gli chiedono di valutare una caravella malridotta, risponde senza addolcire nulla.',
-        en: 'He runs the Galley-La Company, which builds the best ships on the sea, and the whole city treats him as its own. He receives customers calmly, calls everyone by name, and keeps a mouse called Tyrannosaurus in his coat pocket. Asked to look over a battered caravel, he gives his verdict without softening a word of it.',
+        it: 'Kokoro dà ai Cappello di Paglia una lettera da portare a lui, perché faccia riparare la loro nave. Califa gli riferisce che i pirati del Dock 1 si rifiutano di pagare le riparazioni, e lui li chiama clienti seccanti. Tiene un topolino nella tasca della giacca.',
+        en: 'Kokoro gives the Straw Hats a letter to take to him, so he will get their ship repaired. Kalifa tells him that the pirates at Dock One refuse to pay for their repairs, and he calls them troublesome customers. He keeps a small mouse in his coat pocket.',
       },
       status: [{ episode: 230, value: 'alive' }],
       affiliation: [
+        // Kaku says it in chapter 325 (p. 16), which episode 231 adapts,
+        // below his record's chapter.
         {
-          episode: 230,
+          episode: 231,
+          chapter: 327,
           value: {
             it: 'Galley-La Company, presidente e sindaco di Water Seven',
             en: 'Galley-La Company, president and mayor of Water Seven',

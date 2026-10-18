@@ -58,6 +58,27 @@ describe('the facts a bookmark reaches', () => {
     }
   })
 
+  it('says Iceburg is mayor only from episode 231, where Kaku says it', () => {
+    const iceburg = onFile('iceburg')
+
+    for (const locale of ['en', 'it'] as const) {
+      const mayor =
+        locale === 'en' ?
+          'Galley-La Company, president and mayor of Water Seven'
+        : 'Galley-La Company, presidente e sindaco di Water Seven'
+
+      expect(factsOf(iceburg, ep(230, locale))).not.toHaveProperty(
+        'affiliation',
+      )
+      expect(factsOf(iceburg, ep(231, locale))).toMatchObject({
+        affiliation: mayor,
+      })
+      expect(
+        factsOf(iceburg, readerFor({ mode: 'chapter', chapter: 327 }, locale)),
+      ).toMatchObject({ affiliation: mayor })
+    }
+  })
+
   it('gives each fact as the reader knows it, and no fact not yet learned', () => {
     const found = factsOf(LUFFY, ep(3))
 
