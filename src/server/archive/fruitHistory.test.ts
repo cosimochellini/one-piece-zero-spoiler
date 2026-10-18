@@ -97,19 +97,19 @@ describe('a fruit’s history', () => {
   })
 
   it('never has an eater die before they eat it', () => {
-    // Carmel's death is told at chapter 872, her fruit at 882: the death is
+    // Carmel's death and her fruit are both told at chapter 868: the death is
     // dated at the eating, and neither is there a chapter earlier.
-    expect(historyOf('soul-soul-fruit', ch(881)).join(',')).not.toContain(
+    expect(historyOf('soul-soul-fruit', ch(867)).join(',')).not.toContain(
       'carmel',
     )
-    expect(historyOf('soul-soul-fruit', ch(882))).toStrictEqual(
-      expect.arrayContaining(['eaten carmel 882', 'deceased carmel 882']),
+    expect(historyOf('soul-soul-fruit', ch(868))).toStrictEqual(
+      expect.arrayContaining(['eaten carmel 868', 'deceased carmel 868']),
     )
 
-    const lines = historyOf('soul-soul-fruit', ch(882))
+    const lines = historyOf('soul-soul-fruit', ch(868))
 
-    expect(lines.indexOf('eaten carmel 882')).toBeLessThan(
-      lines.indexOf('deceased carmel 882'),
+    expect(lines.indexOf('eaten carmel 868')).toBeLessThan(
+      lines.indexOf('deceased carmel 868'),
     )
   })
 

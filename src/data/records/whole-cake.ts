@@ -429,7 +429,7 @@ export const wholeCake: Saga = {
       id: 'carmel',
       kind: 'character',
       revealedAtEpisode: 836,
-      revealedAtChapter: 872,
+      revealedAtChapter: 866,
       name: { it: 'Carmel', en: 'Carmel' },
       summary: {
         it: 'Una suora che, in un ricordo lontano, accoglie a Elbaf i bambini che nessuno vuole e perdona alla piccola Linlin ogni danno.',
@@ -441,8 +441,7 @@ export const wholeCake: Saga = {
       id: 'gerd',
       kind: 'character',
       revealedAtEpisode: 836,
-      revealedAtChapter: 872,
-      // Rounded up to 872, the chapter that files Carmel, whom the text names.
+      revealedAtChapter: 866,
       name: { it: 'Gerd', en: 'Gerd' },
       summary: {
         it: 'Una bambina gigante di Elbaf che, in un ricordo lontano, si fa rincorrere dalla piccola Linlin per il villaggio e le racconta del digiuno prima della festa.',
@@ -454,8 +453,7 @@ export const wholeCake: Saga = {
       id: 'jarul',
       kind: 'character',
       revealedAtEpisode: 836,
-      revealedAtChapter: 872,
-      // Rounded up to 872, the chapter that files Carmel, whom the text names.
+      revealedAtChapter: 866,
       name: { it: 'Jarl', en: 'Jarul' },
       summary: {
         it: 'Un gigante anziano con un elmo cornuto e una barba larga come una montagna, che in un ricordo lontano raduna gli orfani di Elbaf attorno a un banchetto di semla.',
@@ -1590,10 +1588,9 @@ export const wholeCake: Saga = {
       status: [
         { episode: 836, value: 'alive' },
         // Only scraps of her clothes are left at 837 (chapter 867), and her
-        // fruit's power has passed to Linlin at 838 (chapter 868). Both are
-        // pinned at the record's own chapter, which is later.
-        { episode: 837, chapter: 872, value: 'missing' },
-        { episode: 838, chapter: 872, value: 'deceased' },
+        // fruit's power has passed to Linlin at 838 (chapter 868).
+        { episode: 837, chapter: 867, value: 'missing' },
+        { episode: 838, chapter: 868, value: 'deceased' },
       ],
       affiliation: [
         {
@@ -1605,14 +1602,13 @@ export const wholeCake: Saga = {
           },
         },
       ],
-      origin: [{ episode: 836, value: { it: 'Elbaf', en: 'Elbaph' } }],
       epithet: [
         { episode: 836, value: { it: 'Mamma Carmel', en: 'Mother Carmel' } },
       ],
       // She makes a homie of the fire at 837 (chapter 867), but what her
-      // power is comes out at 838, when Linlin can do the same trick. No
-      // chapter: 868 is below her own 872.
-      devilFruit: [{ episode: 838, value: ['soul-soul-fruit'] }],
+      // power is comes out at 838 (chapter 868), when Linlin can do the same
+      // trick.
+      devilFruit: [{ episode: 838, chapter: 868, value: ['soul-soul-fruit'] }],
     },
     'gerd': {
       role: { it: 'Bambina gigante di Elbaf', en: 'Giant girl of Elbaph' },
@@ -1633,7 +1629,7 @@ export const wholeCake: Saga = {
       origin: [
         {
           episode: 836,
-          chapter: 872,
+          chapter: 866,
           place: 'elbaf-island',
           value: { it: 'Elbaf', en: 'Elbaph' },
         },
@@ -1652,7 +1648,7 @@ export const wholeCake: Saga = {
       origin: [
         {
           episode: 836,
-          chapter: 872,
+          chapter: 866,
           place: 'elbaf-island',
           value: { it: 'Elbaf', en: 'Elbaph' },
         },

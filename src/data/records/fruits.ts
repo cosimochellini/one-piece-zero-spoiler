@@ -764,8 +764,8 @@ export const devilFruits: FruitRecord[] = [
     kind: 'fruit',
     name: { it: 'Frutto Giro Giro', en: 'Glare-Glare Fruit' },
     summary: {
-      it: 'Dà occhi che guardano attraverso un muro e per tutta una città, e leggono quello che passa per la testa di chi inquadrano.',
-      en: 'Gives eyes that look through a wall and across an entire town, and read what is going on in the head of whoever they are pointed at.',
+      it: 'Dà occhi che vedono attraverso qualunque cosa e leggono quello che passa per la testa di chi inquadrano.',
+      en: 'Gives eyes that see through anything and read what is going on in the head of whoever they are pointed at.',
     },
     visual: { art: 'glare-glare-fruit', tint: 'orange' },
   },

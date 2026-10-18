@@ -16,7 +16,10 @@ const NEW_FISH_MAN_PIRATES = {
   en: 'New Fish-Man Pirates',
 }
 
-/** "Officer" is first said of the crew in the captions of 539. */
+/**
+ * "Officer" is said of the crew in the captions of 539, and as "executive" in
+ * the manga's captions of chapter 611.
+ */
 const NEW_FISH_MAN_OFFICER = {
   it: 'Nuovi Pirati Uomini-Pesce, ufficiale',
   en: 'New Fish-Man Pirates, officer',
@@ -350,7 +353,7 @@ export const fishManIsland: Saga = {
       id: 'den',
       kind: 'character',
       revealedAtEpisode: 535,
-      revealedAtChapter: 620,
+      revealedAtChapter: 616,
       name: { it: 'Den', en: 'Den' },
       summary: {
         it: 'Un tritone carpentiere che studia la Foresta Marina, dove la corrente porta le navi che affondano intorno all’isola, e che dice di essere il fratello minore di Tom.',
@@ -391,8 +394,8 @@ export const fishManIsland: Saga = {
     {
       id: 'fisher-tiger',
       kind: 'character',
-      revealedAtEpisode: 539,
-      revealedAtChapter: 626,
+      revealedAtEpisode: 540,
+      revealedAtChapter: 620,
       name: { it: 'Fisher Tiger', en: 'Fisher Tiger' },
       summary: {
         it: 'Un uomo-pesce che scala la Red Line fino alla città dei Nobili Mondiali, apre le celle degli schiavi e li riporta giù dietro di sé.',
@@ -597,7 +600,19 @@ export const fishManIsland: Saga = {
           },
         },
       ],
-      origin: [{ episode: 527, value: FISH_MAN_ISLAND }],
+      // A guard names him "Hammond, from the Fish-Man District" in chapter 609,
+      // which episode 528 adapts. Pinned at his record's chapter, 610.
+      origin: [
+        {
+          episode: 528,
+          chapter: 610,
+          place: 'fish-man-district',
+          value: {
+            it: 'Quartiere degli Uomini-Pesce',
+            en: 'Fish-Man District',
+          },
+        },
+      ],
     },
     'shyarly': {
       role: {
@@ -680,8 +695,6 @@ export const fishManIsland: Saga = {
           },
         },
       ],
-      // He says he is a fish-man, descendant of the legendary captain, at 534.
-      origin: [{ episode: 534, value: FISH_MAN_ISLAND }],
       devilFruit: [{ episode: 532, value: ['mark-mark-fruit'] }],
     },
     'surume': {
@@ -1135,7 +1148,7 @@ export const fishManIsland: Saga = {
       origin: [
         {
           episode: 535,
-          chapter: 620,
+          chapter: 616,
           place: 'fish-man-island',
           value: FISH_MAN_ISLAND,
         },
@@ -1203,11 +1216,11 @@ export const fishManIsland: Saga = {
       status: [
         // Dead before he is met: the show says so at 528 and 530, and he is
         // seen only in the flashback.
-        { episode: 539, value: 'deceased' },
+        { episode: 540, value: 'deceased' },
       ],
       affiliation: [
         {
-          episode: 539,
+          episode: 540,
           value: {
             it: 'Pirati del Sole, capitano',
             en: 'Sun Pirates, captain',
@@ -1216,14 +1229,14 @@ export const fishManIsland: Saga = {
       ],
       origin: [
         {
-          episode: 539,
-          chapter: 626,
+          episode: 540,
+          chapter: 620,
           place: 'fish-man-island',
           value: FISH_MAN_ISLAND,
         },
       ],
       epithet: [
-        { episode: 539, value: { it: 'l’Avventuriero', en: 'the Adventurer' } },
+        { episode: 540, value: { it: 'l’Avventuriero', en: 'the Adventurer' } },
       ],
       bounty: [{ episode: 541, value: 230_000_000 }],
     },

@@ -250,11 +250,11 @@ export const alabasta: Saga = {
       id: 'dorry',
       kind: 'character',
       revealedAtEpisode: 71,
-      revealedAtChapter: 120,
+      revealedAtChapter: 116,
       name: { it: 'Dori', en: 'Dorry' },
       summary: {
-        it: 'Un gigante alto quanto una torre che vive a Little Garden, con uno scudo rotondo e una spada, e duella da cento anni con un vecchio amico.',
-        en: 'A giant as tall as a tower living on Little Garden, round shield and sword in hand, a hundred years into a duel with an old friend.',
+        it: 'Un gigante alto quanto una torre che vive a Little Garden, con uno scudo rotondo e una spada, e duella da cento anni con un altro gigante.',
+        en: 'A giant as tall as a tower living on Little Garden, round shield and sword in hand, a hundred years into a duel with another giant.',
       },
       visual: { art: 'dorry', tint: 'green' },
     },
@@ -262,11 +262,11 @@ export const alabasta: Saga = {
       id: 'brogy',
       kind: 'character',
       revealedAtEpisode: 71,
-      revealedAtChapter: 120,
+      revealedAtChapter: 116,
       name: { it: 'Brogi', en: 'Brogy' },
       summary: {
-        it: 'Un gigante dalla barba rossa che ride fino a scuotere la terra, con un’ascia enorme e un duello che va avanti da cento anni.',
-        en: 'A red-bearded giant whose laugh shakes the ground, an enormous axe on his shoulder and a duel a hundred years old.',
+        it: 'Un gigante barbuto che ride fino a scuotere la terra, con un’ascia enorme e un duello che va avanti da cento anni.',
+        en: 'A bearded giant whose laugh shakes the ground, an enormous axe on his shoulder and a duel a hundred years old.',
       },
       visual: { art: 'brogy', tint: 'vermilion' },
     },
@@ -382,7 +382,7 @@ export const alabasta: Saga = {
       id: 'hiluluk',
       kind: 'character',
       revealedAtEpisode: 85,
-      revealedAtChapter: 145,
+      revealedAtChapter: 143,
       name: { it: 'Hirurukù', en: 'Hiluluk' },
       summary: {
         it: 'Un ciarlatano con una bandiera pirata tutta sua, convinto che nessuna malattia sia incurabile, che ha raccolto una renna e le ha dato un nome.',
@@ -970,8 +970,8 @@ export const alabasta: Saga = {
     'dorry': {
       role: { it: 'Guerriero gigante di Elbaf', en: 'Giant warrior of Elbaph' },
       log: {
-        it: 'È alto come una torre, porta uno scudo rotondo e una spada, e vive in una grotta di Little Garden dove arrostisce bestie preistoriche intere. Da cento anni duella ogni giorno con un altro gigante per una ragione che nessuno dei due ricorda più, e nessuno dei due ha ceduto un passo. Tra un duello e l’altro brindano insieme.',
-        en: 'He stands as tall as a tower, carries a round shield and a sword, and lives in a cave on Little Garden where he roasts prehistoric beasts whole. For a hundred years he has duelled another giant every day over a reason neither of them remembers, and neither has given a step. Between duels they drink together.',
+        it: 'È alto come una torre, porta uno scudo rotondo e una spada, e vive in una grotta di Little Garden dove arrostisce bestie preistoriche intere. Da cento anni, ogni volta che il vulcano erutta, duella con un altro gigante per una ragione che nessuno dei due ricorda più, e nessuno dei due ha ceduto un passo.',
+        en: 'He stands as tall as a tower, carries a round shield and a sword, and lives in a cave on Little Garden where he roasts prehistoric beasts whole. For a hundred years, every time the volcano erupts, he has duelled another giant over a reason neither of them remembers, and neither has given a step.',
       },
       status: [
         { episode: 71, value: 'alive' },
@@ -991,10 +991,12 @@ export const alabasta: Saga = {
           },
         },
       ],
+      // Episode 71 adapts chapter 116, where he calls himself the mightiest
+      // warrior of Elbaph.
       origin: [
         {
           episode: 71,
-          chapter: 120,
+          chapter: 116,
           place: 'elbaf-island',
           value: { it: 'Elbaf', en: 'Elbaph' },
         },
@@ -1008,8 +1010,8 @@ export const alabasta: Saga = {
     'brogy': {
       role: { it: 'Guerriero gigante di Elbaf', en: 'Giant warrior of Elbaph' },
       log: {
-        it: 'Ha la barba rossa e una risata che si sente dall’altra parte dell’isola, e porta un’ascia che nessun uomo riuscirebbe a sollevare. Ogni volta che il vulcano erutta scende nel campo di battaglia e affronta il suo vecchio amico, come fa da cento anni. Dice che il duello è l’unica cosa che li tiene vivi tutti e due.',
-        en: 'He has a red beard and a laugh you can hear from the far side of the island, and he carries an axe no man could lift. Every time the volcano erupts he walks down to the field and faces his old friend, as he has for a hundred years. He says the duel is the only thing keeping the two of them alive.',
+        it: 'Ha una barba a forma di lama d’ascia e una risata che si sente dall’altra parte dell’isola, e porta un’ascia che nessun uomo riuscirebbe a sollevare. Ogni volta che il vulcano erutta scende nel campo di battaglia e affronta lo stesso avversario, come fa da cento anni.',
+        en: 'He has a beard shaped like an axe blade and a laugh you can hear from the far side of the island, and he carries an axe no man could lift. Every time the volcano erupts he walks down to the field and faces the same opponent, as he has for a hundred years.',
       },
       status: [{ episode: 71, value: 'alive' }],
       affiliation: [
@@ -1021,10 +1023,12 @@ export const alabasta: Saga = {
           },
         },
       ],
+      // Episode 71 adapts chapter 116, where he calls himself the mightiest
+      // warrior of Elbaph.
       origin: [
         {
           episode: 71,
-          chapter: 120,
+          chapter: 116,
           place: 'elbaf-island',
           value: { it: 'Elbaf', en: 'Elbaph' },
         },
@@ -1236,8 +1240,8 @@ export const alabasta: Saga = {
     'hiluluk': {
       role: { it: 'Ciarlatano', en: 'Quack doctor' },
       log: {
-        it: 'Curava chiunque gratis con rimedi che quasi sempre peggioravano le cose, e diceva che una malattia si vince nel momento in cui si smette di temerla. Aveva una bandiera pirata tutta sua, simbolo della sua lotta contro le malattie, e sognava di far fiorire i ciliegi su un’isola di neve. Ha raccolto una renna cacciata dal branco e l’ha chiamata Chopper.',
-        en: 'He treated anyone for free with remedies that nearly always made things worse, and said an illness is beaten the moment you stop fearing it. He had a pirate flag of his own, the sign of his fight against disease, and dreamed of making cherry trees bloom on an island of snow. He took in a reindeer his herd had driven out and called him Chopper.',
+        it: 'Curava chiunque gratis con rimedi che quasi sempre peggioravano le cose. Aveva una bandiera pirata tutta sua, simbolo della sua lotta contro le malattie, e sognava di far fiorire i ciliegi su un’isola di neve. Ha raccolto una renna cacciata dal branco e l’ha chiamata Chopper.',
+        en: 'He treated anyone for free with remedies that nearly always made things worse. He had a pirate flag of his own, the sign of his fight against disease, and dreamed of making cherry trees bloom on an island of snow. He took in a reindeer his herd had driven out and called him Chopper.',
       },
       status: [
         { episode: 85, value: 'alive' },
@@ -1250,8 +1254,10 @@ export const alabasta: Saga = {
           value: { it: 'Ciarlatano di Drum', en: 'Quack doctor of Drum' },
         },
       ],
+      // Kureha says he lived in the Drum Kingdom in chapter 140, which episode
+      // 85 adapts, below his record's chapter.
       origin: [
-        { episode: 85, chapter: 145, place: 'drum-island', value: DRUM_ISLAND },
+        { episode: 85, chapter: 143, place: 'drum-island', value: DRUM_ISLAND },
       ],
     },
     'chess': {
