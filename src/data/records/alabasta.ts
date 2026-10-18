@@ -1254,8 +1254,8 @@ export const alabasta: Saga = {
           value: { it: 'Ciarlatano di Drum', en: 'Quack doctor of Drum' },
         },
       ],
-      // Kureha says he lived in the Drum Kingdom in chapter 140, which episode
-      // 85 adapts, below his record's chapter.
+      // Kureha says he lived in the Drum Kingdom on the last page of chapter
+      // 140, which episode 85 adapts, below his record's chapter.
       origin: [
         { episode: 85, chapter: 143, place: 'drum-island', value: DRUM_ISLAND },
       ],
