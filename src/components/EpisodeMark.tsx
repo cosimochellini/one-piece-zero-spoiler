@@ -24,8 +24,6 @@ export interface EpisodeMarkProps {
 interface MarkFace {
   hint: string | undefined
   label: string
-  /** What a phone bar paints instead of `label`, when that is too wide. */
-  short?: string
 }
 
 /**
@@ -40,12 +38,12 @@ function faceOf(t: Translate, bookmark: Bookmark, inFold: boolean): MarkFace {
   const mark =
     bookmark === null ? t('mark.unset') : describeBookmark(t, 'mark', bookmark)
 
-  // Unset, the bar's invitation is the widest thing on a phone's first row,
-  // so a phone paints the empty slot (`EP ?`) and keeps the words as the
-  // accessible name.
+  // Unset, the bar paints the empty slot (`EP ?`), which fits beside the
+  // wordmark on the narrowest phone, and keeps the words as the accessible
+  // name.
   if (!inFold) {
     return bookmark === null ?
-        { hint: mark, label: mark, short: t('mark.unsetShort') }
+        { hint: mark, label: t('mark.unsetShort') }
       : { hint: t('mark.change', { threshold: mark }), label: mark }
   }
 
@@ -107,13 +105,7 @@ export function EpisodeMark({
           !inFold && bookmark === null && styles.markUnset,
         ]}
       >
-        {face.short === undefined ?
-          face.label
-        : <>
-            <span {...stylex.props(styles.wide)}>{face.label}</span>
-            <span {...stylex.props(styles.narrow)}>{face.short}</span>
-          </>
-        }
+        {face.label}
       </Button>
 
       {open && (
@@ -127,11 +119,7 @@ export function EpisodeMark({
   )
 }
 
-const WIDE = '@media (min-width: 40rem)'
-
 const styles = stylex.create({
-  wide: { display: { [WIDE]: 'inline', default: 'none' } },
-  narrow: { display: { [WIDE]: 'none', default: 'inline' } },
   // The episode numeral's voice, the mono outlier, set in the accent: the
   // same ink as the horizon line it moves. The accent is the text and the
   // border on hover, never a fill.

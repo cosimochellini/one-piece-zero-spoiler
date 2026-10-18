@@ -21,10 +21,10 @@ import {
 /**
  * The bar (Hallmark N9, edge-aligned).
  *
- * Wordmark hard-left, the controls hard-right, and nothing in between. On a
- * phone it folds into two rows and stays pinned, so the pages and the
- * bookmark are one tap away from anywhere down a long listing. The
- * site has four pages and two languages, so the right edge carries three
+ * Wordmark hard-left, the controls hard-right, and nothing in between. It
+ * stays pinned at every width, so the pages and the bookmark are one tap
+ * away from anywhere down a long listing; a phone only folds the pages onto
+ * a second row. The site has four pages and two languages, so the right edge carries three
  * links, the reader's bookmark and the language switch, and no more. The
  * bookmark is the one control the whole site turns on, so it lives here, on
  * every page, as a single mark that opens the dialog where it is set; the
@@ -44,41 +44,37 @@ export function SiteBar(): ReactElement {
         {t('site.name')}
       </Link>
 
-      <div {...stylex.props(styles.controls)}>
-        <nav
-          aria-label={t('nav.label')}
-          {...stylex.props(styles.pages)}
+      <nav
+        aria-label={t('nav.label')}
+        {...stylex.props(styles.pages)}
+      >
+        <Link
+          activeProps={{ 'aria-current': 'page' }}
+          params={{ locale }}
+          to="/$locale/characters"
+          {...stylex.props(styles.link)}
         >
-          <Link
-            activeProps={{ 'aria-current': 'page' }}
-            params={{ locale }}
-            to="/$locale/characters"
-            {...stylex.props(styles.link)}
-          >
-            {t('nav.characters')}
-          </Link>
-          <Link
-            activeProps={{ 'aria-current': 'page' }}
-            params={{ locale }}
-            to="/$locale/places"
-            {...stylex.props(styles.link)}
-          >
-            {t('nav.places')}
-          </Link>
-          <Link
-            activeProps={{ 'aria-current': 'page' }}
-            params={{ locale }}
-            to="/$locale/fruits"
-            {...stylex.props(styles.link)}
-          >
-            {t('nav.fruits')}
-          </Link>
-        </nav>
-        <EpisodeMark />
-        <div {...stylex.props(styles.locale)}>
-          <LocaleSwitch />
-        </div>
-      </div>
+          {t('nav.characters')}
+        </Link>
+        <Link
+          activeProps={{ 'aria-current': 'page' }}
+          params={{ locale }}
+          to="/$locale/places"
+          {...stylex.props(styles.link)}
+        >
+          {t('nav.places')}
+        </Link>
+        <Link
+          activeProps={{ 'aria-current': 'page' }}
+          params={{ locale }}
+          to="/$locale/fruits"
+          {...stylex.props(styles.link)}
+        >
+          {t('nav.fruits')}
+        </Link>
+      </nav>
+      <EpisodeMark />
+      <LocaleSwitch />
     </header>
   )
 }
@@ -87,65 +83,47 @@ export function SiteBar(): ReactElement {
 const WIDE = '@media (min-width: 40rem)'
 
 const styles = stylex.create({
-  // On a wide screen the wordmark and the controls are two flex items on one
-  // line, and the bar scrolls away with the page.
-  //
-  // On a phone the bar is a two-row grid pinned to the top of the window: the
-  // wordmark, the bookmark and the language on the first row, the pages on
-  // the second. The controls box steps aside (`display: contents`) so its
-  // children take those cells. Its height is `pin.bar`, the same value every
-  // other pinned element offsets itself by.
+  // One grid at every width, pinned to the top of the window, its height
+  // `pin.bar`: the value every other pinned element offsets itself by. A wide
+  // screen sets wordmark, pages, bookmark and language on one row; a phone
+  // has room for three of them, so the pages fold onto a second row.
   bar: {
+    paddingBlock: space.xs2,
     paddingInline: space.md,
     alignItems: 'center',
     // Frosted, so the lantern bloom still shows where the page begins and a
     // page scrolling under the bar is never read through it.
-    backdropFilter: { [WIDE]: 'none', default: 'blur(14px) saturate(1.4)' },
-    backgroundColor: { [WIDE]: 'transparent', default: color.veil },
-    borderBlockEndColor: { [WIDE]: 'transparent', default: color.rule },
+    backdropFilter: 'blur(14px) saturate(1.4)',
+    backgroundColor: color.veil,
+    borderBlockEndColor: color.rule,
     borderBlockEndStyle: 'solid',
     borderBlockEndWidth: rule.hair,
-    columnGap: { [WIDE]: space.md, default: space.sm },
-    display: { [WIDE]: 'flex', default: 'grid' },
-    flexWrap: 'wrap',
-    gridTemplateColumns: 'minmax(0, 1fr) auto auto',
-    gridTemplateRows: 'repeat(2, minmax(0, 1fr))',
+    columnGap: { [WIDE]: space.lg, default: space.sm },
+    display: 'grid',
+    gridTemplateColumns: {
+      [WIDE]: 'minmax(0, 1fr) auto auto auto',
+      default: 'minmax(0, 1fr) auto auto',
+    },
     insetBlockStart: 0,
-    justifyContent: 'space-between',
-    paddingBlockEnd: { [WIDE]: space.md, default: 0 },
-    paddingBlockStart: { [WIDE]: space.md, default: space.xs2 },
-    position: { [WIDE]: 'static', default: 'sticky' },
-    rowGap: 0,
+    position: 'sticky',
     zIndex: z.bar,
-    height: { [WIDE]: 'auto', default: pin.bar },
+    height: pin.bar,
     minWidth: 0,
   },
-
-  // On a narrow wide screen, a tablet held upright, the controls may still
-  // wrap under the wordmark and keep the right edge.
-  controls: {
-    alignItems: 'center',
-    columnGap: space.lg,
-    display: { [WIDE]: 'flex', default: 'contents' },
-    flexWrap: 'wrap',
-    justifyContent: 'flex-end',
-    marginInlineStart: 'auto',
-    rowGap: 0,
-  },
-  // The second row, flush with the wordmark: the first link's own padding is
-  // pulled back into the gutter so its word starts where the wordmark does.
-  // It spans the row rather than the first column, which the bookmark's
-  // width decides.
+  // Flush with the wordmark on a phone's second row: the first link's own
+  // padding is pulled back into the gutter so its word starts where the
+  // wordmark does, and the row spans the bar rather than the first column,
+  // which the bookmark's width decides. The bookmark and the language
+  // follow on their own, into the next free cells.
   pages: {
-    gap: { [WIDE]: space.sm, default: space.xs },
-    gridRow: 2,
+    gap: space.xs,
+    gridRow: { [WIDE]: 1, default: 2 },
     alignItems: 'center',
     display: 'flex',
-    gridColumnEnd: -1,
-    gridColumnStart: 1,
+    gridColumnEnd: { [WIDE]: 'auto', default: -1 },
+    gridColumnStart: { [WIDE]: 2, default: 1 },
     marginInlineStart: { [WIDE]: 0, default: `calc(-1 * ${space.xs2})` },
   },
-  locale: { gridColumn: 3, gridRow: 1 },
 
   wordmark: {
     color: color.ink,
