@@ -208,6 +208,10 @@ checked on every run:
   the episode and the chapter that show it (checked against the wiki, not
   derived); the place page sends only the visits the reader has reached, and
   none under fog;
+- every origin entry that names a filed place carries the place's id and the
+  chapter that tells it, and the place page lists a character as coming from it
+  only once the reader has met the character and reached that entry, in both
+  units; nobody else is sent or counted;
 - every drawing belongs to a record;
 - every devil fruit opens no later than any character entry that names it, which
   lets a character page link to its fruit without checking anything, and no

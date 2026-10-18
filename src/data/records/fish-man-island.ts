@@ -618,7 +618,14 @@ export const fishManIsland: Saga = {
           },
         },
       ],
-      origin: [{ episode: 529, value: FISH_MAN_ISLAND }],
+      origin: [
+        {
+          episode: 529,
+          chapter: 612,
+          place: 'fish-man-island',
+          value: FISH_MAN_ISLAND,
+        },
+      ],
     },
     'ankoro': {
       chronicle: fishManIslandChronicles.ankoro,
@@ -768,6 +775,7 @@ export const fishManIsland: Saga = {
         {
           episode: 530,
           chapter: 611,
+          place: 'fish-man-district',
           value: {
             it: 'Quartiere degli Uomini-Pesce',
             en: 'Fish-Man District',
@@ -796,7 +804,14 @@ export const fishManIsland: Saga = {
           value: { it: 'Regno di Ryugu, re', en: 'Ryugu Kingdom, king' },
         },
       ],
-      origin: [{ episode: 530, value: FISH_MAN_ISLAND }],
+      origin: [
+        {
+          episode: 530,
+          chapter: 611,
+          place: 'fish-man-island',
+          value: FISH_MAN_ISLAND,
+        },
+      ],
       epithet: [
         {
           episode: 533,
@@ -830,7 +845,14 @@ export const fishManIsland: Saga = {
           },
         },
       ],
-      origin: [{ episode: 529, value: FISH_MAN_ISLAND }],
+      origin: [
+        {
+          episode: 529,
+          chapter: 616,
+          place: 'fish-man-island',
+          value: FISH_MAN_ISLAND,
+        },
+      ],
     },
     'ryuboshi': {
       role: { it: 'Principe di Ryugu', en: 'Prince of Ryugu' },
@@ -848,7 +870,14 @@ export const fishManIsland: Saga = {
           },
         },
       ],
-      origin: [{ episode: 529, value: FISH_MAN_ISLAND }],
+      origin: [
+        {
+          episode: 529,
+          chapter: 616,
+          place: 'fish-man-island',
+          value: FISH_MAN_ISLAND,
+        },
+      ],
     },
     'manboshi': {
       role: { it: 'Principe di Ryugu', en: 'Prince of Ryugu' },
@@ -866,7 +895,14 @@ export const fishManIsland: Saga = {
           },
         },
       ],
-      origin: [{ episode: 529, value: FISH_MAN_ISLAND }],
+      origin: [
+        {
+          episode: 529,
+          chapter: 616,
+          place: 'fish-man-island',
+          value: FISH_MAN_ISLAND,
+        },
+      ],
     },
     'shirahoshi': {
       role: {
@@ -894,7 +930,14 @@ export const fishManIsland: Saga = {
           },
         },
       ],
-      origin: [{ episode: 531, value: FISH_MAN_ISLAND }],
+      origin: [
+        {
+          episode: 531,
+          chapter: 618,
+          place: 'fish-man-island',
+          value: FISH_MAN_ISLAND,
+        },
+      ],
       epithet: [
         {
           episode: 531,
@@ -946,7 +989,16 @@ export const fishManIsland: Saga = {
         { episode: 569, chapter: 649, value: 'imprisoned' },
       ],
       affiliation: [{ episode: 539, value: NEW_FISH_MAN_OFFICER }],
-      origin: [{ episode: 539, value: FISH_MAN_ISLAND }],
+      // Jinbe's flashback shows the officers growing up in the Fish-Man
+      // District in ch 622, ep 541.
+      origin: [
+        {
+          episode: 541,
+          chapter: 622,
+          place: 'fish-man-island',
+          value: FISH_MAN_ISLAND,
+        },
+      ],
     },
     'daruma': {
       role: {
@@ -964,7 +1016,16 @@ export const fishManIsland: Saga = {
         { episode: 569, chapter: 649, value: 'imprisoned' },
       ],
       affiliation: [{ episode: 539, value: NEW_FISH_MAN_OFFICER }],
-      origin: [{ episode: 539, value: FISH_MAN_ISLAND }],
+      // Jinbe's flashback shows the officers growing up in the Fish-Man
+      // District in ch 622, ep 541.
+      origin: [
+        {
+          episode: 541,
+          chapter: 622,
+          place: 'fish-man-island',
+          value: FISH_MAN_ISLAND,
+        },
+      ],
     },
     'ikaros-much': {
       role: {
@@ -985,7 +1046,16 @@ export const fishManIsland: Saga = {
         { episode: 530, value: NEW_FISH_MAN_PIRATES },
         { episode: 539, value: NEW_FISH_MAN_OFFICER },
       ],
-      origin: [{ episode: 530, value: FISH_MAN_ISLAND }],
+      // Jinbe's flashback shows the officers growing up in the Fish-Man
+      // District in ch 622, ep 541.
+      origin: [
+        {
+          episode: 541,
+          chapter: 622,
+          place: 'fish-man-island',
+          value: FISH_MAN_ISLAND,
+        },
+      ],
     },
     'dosun': {
       role: {
@@ -1006,7 +1076,16 @@ export const fishManIsland: Saga = {
         { episode: 538, value: NEW_FISH_MAN_PIRATES },
         { episode: 539, value: NEW_FISH_MAN_OFFICER },
       ],
-      origin: [{ episode: 538, value: FISH_MAN_ISLAND }],
+      // Jinbe's flashback shows the officers growing up in the Fish-Man
+      // District in ch 622, ep 541.
+      origin: [
+        {
+          episode: 541,
+          chapter: 622,
+          place: 'fish-man-island',
+          value: FISH_MAN_ISLAND,
+        },
+      ],
     },
     'megalo': {
       chronicle: fishManIslandChronicles.megalo,
@@ -1053,7 +1132,14 @@ export const fishManIsland: Saga = {
           },
         },
       ],
-      origin: [{ episode: 535, value: FISH_MAN_ISLAND }],
+      origin: [
+        {
+          episode: 535,
+          chapter: 620,
+          place: 'fish-man-island',
+          value: FISH_MAN_ISLAND,
+        },
+      ],
     },
     'minister-of-the-right': {
       chronicle: fishManIslandChronicles['minister-of-the-right'],
@@ -1096,7 +1182,14 @@ export const fishManIsland: Saga = {
           value: { it: 'Regno di Ryugu, regina', en: 'Ryugu Kingdom, queen' },
         },
       ],
-      origin: [{ episode: 540, value: FISH_MAN_ISLAND }],
+      origin: [
+        {
+          episode: 540,
+          chapter: 626,
+          place: 'fish-man-island',
+          value: FISH_MAN_ISLAND,
+        },
+      ],
     },
     'fisher-tiger': {
       role: {
@@ -1121,7 +1214,14 @@ export const fishManIsland: Saga = {
           },
         },
       ],
-      origin: [{ episode: 539, value: FISH_MAN_ISLAND }],
+      origin: [
+        {
+          episode: 539,
+          chapter: 626,
+          place: 'fish-man-island',
+          value: FISH_MAN_ISLAND,
+        },
+      ],
       epithet: [
         { episode: 539, value: { it: 'l’Avventuriero', en: 'the Adventurer' } },
       ],
@@ -1147,7 +1247,16 @@ export const fishManIsland: Saga = {
           },
         },
       ],
-      origin: [{ episode: 543, value: FISH_MAN_ISLAND }],
+      // The manga's caption calls him a former Neptune Army soldier (ch 623);
+      // the anime brings him home with the freed slaves in ep 545.
+      origin: [
+        {
+          episode: 545,
+          chapter: 628,
+          place: 'fish-man-island',
+          value: FISH_MAN_ISLAND,
+        },
+      ],
     },
     'minister-of-the-left': {
       chronicle: fishManIslandChronicles['minister-of-the-left'],
@@ -1207,7 +1316,14 @@ export const fishManIsland: Saga = {
           },
         },
       ],
-      origin: [{ episode: 762, value: { it: 'Zou', en: 'Zou' } }],
+      origin: [
+        {
+          episode: 762,
+          chapter: 811,
+          place: 'zou',
+          value: { it: 'Zou', en: 'Zou' },
+        },
+      ],
       devilFruit: [
         { episode: 776, chapter: 822, value: ['turtle-turtle-fruit'] },
       ],

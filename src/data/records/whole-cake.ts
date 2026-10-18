@@ -923,7 +923,7 @@ export const wholeCake: Saga = {
       // duke's musketeers at 758.
       status: [{ episode: 754, value: 'alive' }],
       affiliation: [{ episode: 758, value: MOKOMO_MUSKETEERS }],
-      origin: [{ episode: 754, value: ZOU }],
+      origin: [{ episode: 754, chapter: 806, place: 'zou', value: ZOU }],
     },
     'carrot': {
       // Not a musketeer role: the musketeers are first shown at 758.
@@ -952,7 +952,7 @@ export const wholeCake: Saga = {
           },
         },
       ],
-      origin: [{ episode: 753, value: ZOU }],
+      origin: [{ episode: 753, chapter: 807, place: 'zou', value: ZOU }],
     },
     'inuarashi': {
       role: {
@@ -981,7 +981,7 @@ export const wholeCake: Saga = {
           },
         },
       ],
-      origin: [{ episode: 758, value: ZOU }],
+      origin: [{ episode: 758, chapter: 808, place: 'zou', value: ZOU }],
     },
     'pedro': {
       role: { it: 'Capitano dei Guardiani', en: 'Captain of the Guardians' },
@@ -1005,7 +1005,7 @@ export const wholeCake: Saga = {
           },
         },
       ],
-      origin: [{ episode: 757, value: ZOU }],
+      origin: [{ episode: 757, chapter: 810, place: 'zou', value: ZOU }],
       bounty: [{ episode: 816, value: 382_000_000 }],
     },
     'nekomamushi': {
@@ -1027,7 +1027,7 @@ export const wholeCake: Saga = {
           },
         },
       ],
-      origin: [{ episode: 761, value: ZOU }],
+      origin: [{ episode: 761, chapter: 813, place: 'zou', value: ZOU }],
     },
     'raizo': {
       role: { it: 'Ninja del Paese di Wano', en: 'Ninja of Wano Country' },
@@ -1630,7 +1630,14 @@ export const wholeCake: Saga = {
           },
         },
       ],
-      origin: [{ episode: 836, value: { it: 'Elbaf', en: 'Elbaph' } }],
+      origin: [
+        {
+          episode: 836,
+          chapter: 872,
+          place: 'elbaf-island',
+          value: { it: 'Elbaf', en: 'Elbaph' },
+        },
+      ],
     },
     'jarul': {
       role: { it: 'Anziano di Elbaf', en: 'Elder of Elbaph' },
@@ -1642,7 +1649,14 @@ export const wholeCake: Saga = {
       affiliation: [
         { episode: 836, value: { it: 'Elbaf, anziano', en: 'Elbaph, elder' } },
       ],
-      origin: [{ episode: 836, value: { it: 'Elbaf', en: 'Elbaph' } }],
+      origin: [
+        {
+          episode: 836,
+          chapter: 872,
+          place: 'elbaf-island',
+          value: { it: 'Elbaf', en: 'Elbaph' },
+        },
+      ],
       epithet: [
         {
           episode: 836,
@@ -1671,7 +1685,14 @@ export const wholeCake: Saga = {
           },
         },
       ],
-      origin: [{ episode: 886, value: MARY_GEOISE }],
+      origin: [
+        {
+          episode: 886,
+          chapter: 907,
+          place: 'mary-geoise',
+          value: MARY_GEOISE,
+        },
+      ],
     },
     'belo-betty': {
       role: {
@@ -1803,7 +1824,14 @@ export const wholeCake: Saga = {
           },
         },
       ],
-      origin: [{ episode: 889, value: MARY_GEOISE }],
+      origin: [
+        {
+          episode: 889,
+          chapter: 908,
+          place: 'mary-geoise',
+          value: MARY_GEOISE,
+        },
+      ],
     },
     'ryokugyu': {
       role: { it: 'Ammiraglio della Marina', en: 'Marine admiral' },
@@ -1949,7 +1977,7 @@ export const wholeCake: Saga = {
           },
         },
       ],
-      origin: [{ episode: 758, value: ZOU }],
+      origin: [{ episode: 758, chapter: 808, place: 'zou', value: ZOU }],
       epithet: [
         { episode: 758, value: { it: 'A tutta forza', en: 'Full Power' } },
       ],
@@ -2285,7 +2313,14 @@ export const wholeCake: Saga = {
           },
         },
       ],
-      origin: [{ episode: 836, value: { it: 'Elbaf', en: 'Elbaph' } }],
+      origin: [
+        {
+          episode: 836,
+          chapter: 866,
+          place: 'elbaf-island',
+          value: { it: 'Elbaf', en: 'Elbaph' },
+        },
+      ],
       epithet: [
         {
           episode: 836,

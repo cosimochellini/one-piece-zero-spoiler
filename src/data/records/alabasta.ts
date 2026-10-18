@@ -904,6 +904,8 @@ export const alabasta: Saga = {
         { episode: 67, value: ALABASTA },
         {
           episode: 92,
+          chapter: 161,
+          place: 'alubarna',
           value: { it: 'Alubarna, Alabasta', en: 'Alubarna, Alabasta' },
         },
       ],
@@ -989,7 +991,14 @@ export const alabasta: Saga = {
           },
         },
       ],
-      origin: [{ episode: 71, value: { it: 'Elbaf', en: 'Elbaph' } }],
+      origin: [
+        {
+          episode: 71,
+          chapter: 120,
+          place: 'elbaf-island',
+          value: { it: 'Elbaf', en: 'Elbaph' },
+        },
+      ],
       epithet: [{ episode: 71, value: { it: 'Orco Blu', en: 'Blue Ogre' } }],
       bounty: [
         { episode: 71, value: 100_000_000 },
@@ -1012,7 +1021,14 @@ export const alabasta: Saga = {
           },
         },
       ],
-      origin: [{ episode: 71, value: { it: 'Elbaf', en: 'Elbaph' } }],
+      origin: [
+        {
+          episode: 71,
+          chapter: 120,
+          place: 'elbaf-island',
+          value: { it: 'Elbaf', en: 'Elbaph' },
+        },
+      ],
       epithet: [{ episode: 71, value: { it: 'Orco Rosso', en: 'Red Ogre' } }],
       bounty: [
         { episode: 71, value: 100_000_000 },
@@ -1055,7 +1071,14 @@ export const alabasta: Saga = {
           },
         },
       ],
-      origin: [{ episode: 80, chapter: 133, value: DRUM_KINGDOM }],
+      origin: [
+        {
+          episode: 80,
+          chapter: 133,
+          place: 'drum-island',
+          value: DRUM_KINGDOM,
+        },
+      ],
       epithet: [
         { episode: 79, value: { it: 'Wapol di Latta', en: 'Tin-Plate' } },
       ],
@@ -1119,7 +1142,9 @@ export const alabasta: Saga = {
           value: { it: 'Isola di Drum, re', en: 'Drum Island, king' },
         },
       ],
-      origin: [{ episode: 80, value: DRUM_ISLAND }],
+      origin: [
+        { episode: 80, chapter: 135, place: 'drum-island', value: DRUM_ISLAND },
+      ],
       devilFruit: [
         { episode: 82, chapter: 136, value: ['ox-ox-fruit-model-bison'] },
       ],
@@ -1157,7 +1182,9 @@ export const alabasta: Saga = {
           },
         },
       ],
-      origin: [{ episode: 82, value: DRUM_ISLAND }],
+      origin: [
+        { episode: 82, chapter: 136, place: 'drum-island', value: DRUM_ISLAND },
+      ],
       epithet: [{ episode: 82, value: { it: 'Dottorina', en: 'Doctorine' } }],
     },
     'tony-tony-chopper': {
@@ -1182,6 +1209,8 @@ export const alabasta: Saga = {
       origin: [
         {
           episode: 83,
+          chapter: 134,
+          place: 'drum-island',
           value: {
             it: 'Isola di Drum, Rotta Maggiore',
             en: 'Drum Island, Grand Line',
@@ -1221,7 +1250,9 @@ export const alabasta: Saga = {
           value: { it: 'Ciarlatano di Drum', en: 'Quack doctor of Drum' },
         },
       ],
-      origin: [{ episode: 85, value: DRUM_ISLAND }],
+      origin: [
+        { episode: 85, chapter: 145, place: 'drum-island', value: DRUM_ISLAND },
+      ],
     },
     'chess': {
       role: {
@@ -1242,7 +1273,14 @@ export const alabasta: Saga = {
           },
         },
       ],
-      origin: [{ episode: 87, value: DRUM_KINGDOM }],
+      origin: [
+        {
+          episode: 87,
+          chapter: 147,
+          place: 'drum-island',
+          value: DRUM_KINGDOM,
+        },
+      ],
     },
     'kuromarimo': {
       role: { it: 'Magistrato di Wapol', en: 'Wapol’s magistrate' },
@@ -1260,7 +1298,14 @@ export const alabasta: Saga = {
           },
         },
       ],
-      origin: [{ episode: 87, value: DRUM_KINGDOM }],
+      origin: [
+        {
+          episode: 87,
+          chapter: 147,
+          place: 'drum-island',
+          value: DRUM_KINGDOM,
+        },
+      ],
     },
     'mr-13': {
       role: UNLUCKIES_ROLE,
@@ -1366,6 +1411,8 @@ export const alabasta: Saga = {
       origin: [
         {
           episode: 93,
+          chapter: 161,
+          place: 'alubarna',
           value: { it: 'Alubarna, Alabasta', en: 'Alubarna, Alabasta' },
         },
       ],
@@ -1539,6 +1586,8 @@ export const alabasta: Saga = {
       origin: [
         {
           episode: 110,
+          chapter: 176,
+          place: 'rainbase',
           value: { it: 'Rainbase, Alabasta', en: 'Rainbase, Alabasta' },
         },
       ],

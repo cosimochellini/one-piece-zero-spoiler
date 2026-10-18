@@ -1,3 +1,5 @@
+import type { Origin } from '~/data/types'
+
 import type { Saga } from './saga'
 import { summitWarChronicles } from './summit-war.chronicle'
 
@@ -17,6 +19,10 @@ const BEASTS_HEADLINER = {
   en: 'Beasts Pirates, headliner',
 }
 const AMAZON_LILY = { it: 'Amazon Lily', en: 'Amazon Lily' }
+// Hancock's two sisters, at home in the palace from chapter 521, episode 412.
+const SISTERS_ORIGIN: Origin[] = [
+  { episode: 412, chapter: 521, place: 'amazon-lily', value: AMAZON_LILY },
+]
 // Shown at 484 as the Blackbeard Pirates, the erased criminals of level 6.
 const LEVEL_SIX_ESCAPEE = {
   it: 'Pirati di Barbanera; ex prigioniero del sesto livello di Impel Down',
@@ -1158,7 +1164,12 @@ export const summitWar: Saga = {
         },
       ],
       origin: [
-        { episode: 410, value: { it: 'Amazon Lily', en: 'Amazon Lily' } },
+        {
+          episode: 410,
+          chapter: 516,
+          place: 'amazon-lily',
+          value: { it: 'Amazon Lily', en: 'Amazon Lily' },
+        },
       ],
       epithet: [
         {
@@ -1206,6 +1217,8 @@ export const summitWar: Saga = {
       origin: [
         {
           episode: 430,
+          chapter: 529,
+          place: 'fish-man-island',
           value: { it: 'Isola degli Uomini-Pesce', en: 'Fish-Man Island' },
         },
       ],
@@ -1252,9 +1265,13 @@ export const summitWar: Saga = {
           },
         },
       ],
+      // Shown at her home in Mermaid Cove in ch 608, ep 527; Sabaody never says
+      // where she lives.
       origin: [
         {
-          episode: 385,
+          episode: 527,
+          chapter: 608,
+          place: 'fish-man-island',
           value: { it: 'Isola degli Uomini-Pesce', en: 'Fish-Man Island' },
         },
       ],
@@ -1401,9 +1418,12 @@ export const summitWar: Saga = {
           value: { it: 'Pirati Heart, membro', en: 'Heart Pirates, member' },
         },
       ],
+      // Law says Bepo left Zou as a child in ch 805, ep 754.
       origin: [
         {
-          episode: 757,
+          episode: 754,
+          chapter: 805,
+          place: 'zou',
           value: { it: 'Zou, Ducato di Mokomo', en: 'Zou, Mokomo Dukedom' },
         },
       ],
@@ -1667,7 +1687,16 @@ export const summitWar: Saga = {
       },
       status: [{ episode: 396, value: 'alive' }],
       affiliation: [{ episode: 396, value: CELESTIAL_DRAGONS }],
-      origin: [{ episode: 396, value: MARY_GEOISE }],
+      // Hatchan says the World Nobles live in Mary Geoise in ch 496, ep 390,
+      // before the record opens.
+      origin: [
+        {
+          episode: 396,
+          chapter: 502,
+          place: 'mary-geoise',
+          value: MARY_GEOISE,
+        },
+      ],
     },
     'borsalino': {
       chronicle: summitWarChronicles.borsalino,
@@ -1735,7 +1764,7 @@ export const summitWar: Saga = {
           value: { it: 'Pirate Kuja', en: 'Kuja Pirates' },
         },
       ],
-      origin: [{ episode: 412, value: AMAZON_LILY }],
+      origin: SISTERS_ORIGIN,
       devilFruit: [
         // Episode 413 captions the model; 412 names the fruit only in the
         // preview. The true chapter is 519; pin at her record’s chapter, 521.
@@ -1760,7 +1789,7 @@ export const summitWar: Saga = {
           value: { it: 'Pirate Kuja', en: 'Kuja Pirates' },
         },
       ],
-      origin: [{ episode: 412, value: AMAZON_LILY }],
+      origin: SISTERS_ORIGIN,
       devilFruit: [
         // Episode 413 captions the model; 412 names the fruit only in the
         // preview. The true chapter is 519; pin at her record’s chapter, 521.
@@ -1779,7 +1808,14 @@ export const summitWar: Saga = {
       },
       status: [{ episode: 409, value: 'alive' }],
       affiliation: [{ episode: 409, value: KUJA_WARRIOR }],
-      origin: [{ episode: 409, value: AMAZON_LILY }],
+      origin: [
+        {
+          episode: 409,
+          chapter: 518,
+          place: 'amazon-lily',
+          value: AMAZON_LILY,
+        },
+      ],
     },
     'nyon': {
       role: { it: 'Anziana di Amazon Lily', en: 'Elder of Amazon Lily' },
@@ -1797,7 +1833,14 @@ export const summitWar: Saga = {
           },
         },
       ],
-      origin: [{ episode: 412, value: AMAZON_LILY }],
+      origin: [
+        {
+          episode: 412,
+          chapter: 522,
+          place: 'amazon-lily',
+          value: AMAZON_LILY,
+        },
+      ],
       epithet: [{ episode: 412, value: { it: 'Gloriosa', en: 'Gloriosa' } }],
     },
     'magellan': {
@@ -2461,7 +2504,16 @@ export const summitWar: Saga = {
       },
       status: [{ episode: 394, value: 'alive' }],
       affiliation: [{ episode: 394, value: CELESTIAL_DRAGONS }],
-      origin: [{ episode: 394, value: MARY_GEOISE }],
+      // Hatchan says the World Nobles live in Mary Geoise in ch 496, ep 390,
+      // before the record opens.
+      origin: [
+        {
+          episode: 394,
+          chapter: 501,
+          place: 'mary-geoise',
+          value: MARY_GEOISE,
+        },
+      ],
     },
     'shalria': {
       role: { it: 'Nobile Mondiale', en: 'World Noble' },
@@ -2471,7 +2523,16 @@ export const summitWar: Saga = {
       },
       status: [{ episode: 394, value: 'alive' }],
       affiliation: [{ episode: 394, value: CELESTIAL_DRAGONS }],
-      origin: [{ episode: 394, value: MARY_GEOISE }],
+      // Hatchan says the World Nobles live in Mary Geoise in ch 496, ep 390,
+      // before the record opens.
+      origin: [
+        {
+          episode: 394,
+          chapter: 501,
+          place: 'mary-geoise',
+          value: MARY_GEOISE,
+        },
+      ],
     },
     'disco': {
       role: {
@@ -2522,7 +2583,14 @@ export const summitWar: Saga = {
       },
       status: [{ episode: 409, value: 'alive' }],
       affiliation: [{ episode: 409, value: KUJA_WARRIOR }],
-      origin: [{ episode: 409, value: AMAZON_LILY }],
+      origin: [
+        {
+          episode: 409,
+          chapter: 515,
+          place: 'amazon-lily',
+          value: AMAZON_LILY,
+        },
+      ],
     },
     'aphelandra': {
       role: KUJA_WARRIOR_ROLE,
@@ -2532,7 +2600,14 @@ export const summitWar: Saga = {
       },
       status: [{ episode: 409, value: 'alive' }],
       affiliation: [{ episode: 409, value: KUJA_WARRIOR }],
-      origin: [{ episode: 409, value: AMAZON_LILY }],
+      origin: [
+        {
+          episode: 409,
+          chapter: 515,
+          place: 'amazon-lily',
+          value: AMAZON_LILY,
+        },
+      ],
     },
     'kikyo': {
       role: KUJA_WARRIOR_ROLE,
@@ -2542,7 +2617,14 @@ export const summitWar: Saga = {
       },
       status: [{ episode: 410, value: 'alive' }],
       affiliation: [{ episode: 410, value: KUJA_WARRIOR }],
-      origin: [{ episode: 410, value: AMAZON_LILY }],
+      origin: [
+        {
+          episode: 410,
+          chapter: 516,
+          place: 'amazon-lily',
+          value: AMAZON_LILY,
+        },
+      ],
     },
     'bacura': {
       role: { it: 'Boia dell’arena kuja', en: 'Executioner of the Kuja arena' },

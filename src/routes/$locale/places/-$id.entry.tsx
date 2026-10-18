@@ -8,7 +8,7 @@
  * generated route tree.
  */
 import * as stylex from '@stylexjs/stylex'
-import type { ComponentType, ReactElement } from 'react'
+import type { ComponentType, ReactElement, ReactNode } from 'react'
 
 import { FiledHere } from '~/components/FiledHere'
 import { PortFacts, ShipFacts } from '~/components/PortFacts'
@@ -16,6 +16,7 @@ import { OpenPortPlate, PortPlate } from '~/components/PortPlate'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { useLocale } from '~/i18n/LocaleContext'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
+import type { PlaceDetail } from '~/lib/view/places'
 import type { PortView, RecordView, ShipView, Slot } from '~/lib/view/records'
 import { styles } from '~/routes/$locale/characters/-$id.styles'
 
@@ -51,6 +52,11 @@ export interface BodyProps<T> {
 
 /** What the band is given: the record, how to lift its fog, and its body. */
 export interface EntryProps<T extends Entry> {
+  /**
+   * What the page adds under the body once the record is open: a place's
+   * natives. Never drawn under fog, so it adds nothing to a covered page.
+   */
+  after?: ReactNode
   /** Its facts, its log entry and the records it names, once open. */
   Body: ComponentType<BodyProps<T>>
   kind: keyof typeof WORDS
@@ -101,6 +107,7 @@ export function EntryDiptych<T extends Entry>(
  * 336" is the promise the page makes to a reader who has not got there yet.
  */
 function EntryColumn<T extends Entry>({
+  after,
   Body,
   kind,
   peek,
@@ -142,6 +149,7 @@ function EntryColumn<T extends Entry>({
                 peekRecord={peekRecord}
                 record={record}
               />
+              {after}
             </div>
           )
         }}
@@ -151,7 +159,7 @@ function EntryColumn<T extends Entry>({
 }
 
 /** A port's facts, its log entry and the records found there. */
-export function PortBody({
+function PortBody({
   peekRecord,
   record: port,
 }: BodyProps<PortView>): null | ReactElement {
@@ -168,6 +176,59 @@ export function PortBody({
           title={t('places.filedHere')}
         />
       </>
+}
+
+/**
+ * A place's entry: the diptych with its facts, its log entry and the records
+ * found there, then the characters who come from it.
+ */
+export function PlaceEntry({
+  detail,
+  peek,
+  peekRecord,
+}: {
+  detail: PlaceDetail
+  peek: (handle: string) => Promise<PortView>
+  peekRecord: PeekRecord
+}): ReactElement {
+  return (
+    <EntryDiptych
+      after={
+        <Natives
+          natives={detail.natives}
+          peekRecord={peekRecord}
+        />
+      }
+      Body={PortBody}
+      kind="place"
+      peek={peek}
+      peekRecord={peekRecord}
+      slot={detail.slot}
+    />
+  )
+}
+
+/**
+ * The characters who come from a place, under the records found there. Only
+ * those the reader has reached are sent, so each is open and none is
+ * counted; nothing is drawn while there are none.
+ */
+function Natives({
+  natives,
+  peekRecord,
+}: {
+  natives: RecordView[]
+  peekRecord: PeekRecord
+}): null | ReactElement {
+  const { t } = useLocale()
+
+  return (
+    <FiledHere
+      filed={natives.map((record) => ({ open: true, record }))}
+      peekRecord={peekRecord}
+      title={t('place.nativesTitle')}
+    />
+  )
 }
 
 /**

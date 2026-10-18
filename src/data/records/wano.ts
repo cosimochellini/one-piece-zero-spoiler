@@ -2084,8 +2084,15 @@ export const wano: Saga = {
           },
         },
       ],
+      // Big Mom says the Numbers come from the Punk Hazard experiments in ch
+      // 989, ep 999.
       origin: [
-        { episode: 1002, value: { it: 'Punk Hazard', en: 'Punk Hazard' } },
+        {
+          episode: 999,
+          chapter: 989,
+          place: 'punk-hazard',
+          value: { it: 'Punk Hazard', en: 'Punk Hazard' },
+        },
       ],
     },
     // No `devilFruit` line: from 1058 the anime shows him with a horse's body,
@@ -2122,8 +2129,15 @@ export const wano: Saga = {
           },
         },
       ],
+      // Named as one of the Numbers in ch 1030, ep 1055; their Punk Hazard
+      // origin is told in ch 989.
       origin: [
-        { episode: 1057, value: { it: 'Punk Hazard', en: 'Punk Hazard' } },
+        {
+          episode: 1055,
+          chapter: 1030,
+          place: 'punk-hazard',
+          value: { it: 'Punk Hazard', en: 'Punk Hazard' },
+        },
       ],
     },
     'kazenbo': {

@@ -139,6 +139,19 @@ export interface Affiliation extends Dated<LocalizedText> {
 }
 
 /**
+ * One origin entry: the prose, and the filed place it names, as a place
+ * record's id, so the place's page can say who comes from it. Set only where
+ * the prose names one of the filed places, or clearly means it ("Drum
+ * Kingdom" is Drum Island); a sea or an island the archive does not file
+ * names none. An entry that names a place carries the chapter that tells it,
+ * checked like the episode, because the place's page opens it at that pair.
+ * Data tests hold both.
+ */
+export interface Origin extends Dated<LocalizedText> {
+  place?: string
+}
+
+/**
  * One story of a character's chronicle: a short title and one paragraph, each
  * in every locale.
  *
@@ -186,7 +199,7 @@ export interface CharacterDossier {
   devilFruit?: Timeline<FruitId[]>
   epithet?: Timeline<LocalizedText>
   log: LocalizedText
-  origin?: Timeline<LocalizedText>
+  origin?: Origin[]
   role: LocalizedText
   /**
    * Where the character stands, and from which episode. A vocabulary rather
