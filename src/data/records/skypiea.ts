@@ -1168,8 +1168,15 @@ export const skypiea: Saga = {
           value: { it: 'Skypiea, un tempo Jaya', en: 'Skypiea, once Jaya' },
         },
       ],
+      // Chapter 256 is titled "Wyper the Berserker" and ends in episode 169,
+      // whose title names him the same way. Episodes 163–168 never say it,
+      // save for 168's preview reading out that title.
       epithet: [
-        { episode: 163, value: { it: 'Il Berserker', en: 'the Berserker' } },
+        {
+          episode: 169,
+          chapter: 256,
+          value: { it: 'Il Berserker', en: 'the Berserker' },
+        },
       ],
     },
     'kamakiri': {
