@@ -901,8 +901,8 @@ export const waterSeven: Saga = {
       // Frozen at episode 230, which adapts chapters 323 (p. 13-19), 324
       // (p. 9-18) and 325 (p. 6-9): who he is comes in 231.
       log: {
-        it: 'Kokoro dà ai Cappello di Paglia una lettera da portare a lui, perché faccia riparare la loro nave. Califa gli riferisce che i pirati del Dock 1 si rifiutano di pagare le riparazioni, e lui li chiama clienti seccanti. Tiene un topolino nella tasca della giacca.',
-        en: 'Kokoro gives the Straw Hats a letter to take to him, so he will get their ship repaired. Kalifa tells him that the pirates at Dock One refuse to pay for their repairs, and he calls them troublesome customers. He keeps a small mouse in his coat pocket.',
+        it: 'Kokoro dà ai Cappello di Paglia una lettera da portare a lui, perché faccia riparare la loro nave. Califa gli riferisce che i pirati del Dock 1 si rifiutano di pagare le riparazioni, e lui li chiama clienti seccanti. Un topolino gli viaggia nella tasca della giacca.',
+        en: 'Kokoro gives the Straw Hats a letter to take to him, so he will get their ship repaired. Kalifa tells him that the pirates at Dock One refuse to pay for their repairs, and he calls them troublesome customers. A small mouse rides in his coat pocket.',
       },
       status: [{ episode: 230, value: 'alive' }],
       affiliation: [
