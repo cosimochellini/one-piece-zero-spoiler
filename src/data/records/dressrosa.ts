@@ -1246,7 +1246,9 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      origin: [{ episode: 651, value: DRESSROSA }],
+      origin: [
+        { episode: 651, chapter: 721, place: 'dressrosa', value: DRESSROSA },
+      ],
       epithet: [
         {
           episode: 634,
@@ -1340,7 +1342,9 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      origin: [{ episode: 662, value: DRESSROSA }],
+      origin: [
+        { episode: 662, chapter: 730, place: 'dressrosa', value: DRESSROSA },
+      ],
       epithet: [{ episode: 662, value: { it: 'Ricky', en: 'Ricky' } }],
     },
     'trebol': {
@@ -1641,7 +1645,15 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      origin: [{ episode: 639, value: { it: 'Elbaf', en: 'Elbaph' } }],
+      // Gatz announces him as a warrior of Elbaph in ch 714, ep 644.
+      origin: [
+        {
+          episode: 644,
+          chapter: 714,
+          place: 'elbaf-island',
+          value: { it: 'Elbaf', en: 'Elbaph' },
+        },
+      ],
     },
     'bastille': {
       role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
@@ -1755,7 +1767,11 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      origin: [{ episode: 640, value: DRESSROSA }],
+      // Violet is revealed as Riku's daughter in ch 728, ep 660; before that,
+      // Dressrosa as her origin is the secret.
+      origin: [
+        { episode: 660, chapter: 728, place: 'dressrosa', value: DRESSROSA },
+      ],
       epithet: [{ episode: 640, value: { it: 'Violet', en: 'Violet' } }],
       devilFruit: [{ episode: 640, value: ['glare-glare-fruit'] }],
     },
@@ -2067,6 +2083,8 @@ export const dressrosa: Saga = {
       origin: [
         {
           episode: 641,
+          chapter: 716,
+          place: 'green-bit',
           value: { it: 'Green Bit, Dressrosa', en: 'Green Bit, Dressrosa' },
         },
       ],
@@ -2091,7 +2109,9 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      origin: [{ episode: 675, value: DRESSROSA }],
+      origin: [
+        { episode: 675, chapter: 742, place: 'dressrosa', value: DRESSROSA },
+      ],
       epithet: [
         { episode: 675, value: { it: 'Soldatino', en: 'Thunder Soldier' } },
       ],
@@ -2124,6 +2144,8 @@ export const dressrosa: Saga = {
       origin: [
         {
           episode: 675,
+          chapter: 746,
+          place: 'green-bit',
           value: { it: 'Green Bit, Dressrosa', en: 'Green Bit, Dressrosa' },
         },
       ],
@@ -2203,7 +2225,12 @@ export const dressrosa: Saga = {
         },
       ],
       origin: [
-        { episode: 704, value: { it: 'Mary Geoise', en: 'Mary Geoise' } },
+        {
+          episode: 704,
+          chapter: 768,
+          place: 'mary-geoise',
+          value: { it: 'Mary Geoise', en: 'Mary Geoise' },
+        },
       ],
       epithet: [{ episode: 704, value: { it: 'Corazon', en: 'Corazon' } }],
       devilFruit: [{ episode: 704, value: ['calm-calm-fruit'] }],
@@ -2664,7 +2691,9 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      origin: [{ episode: 636, value: DRESSROSA }],
+      origin: [
+        { episode: 636, chapter: 707, place: 'dressrosa', value: DRESSROSA },
+      ],
     },
     'wicca': {
       chronicle: dressrosaChronicles.wicca,
@@ -2687,6 +2716,8 @@ export const dressrosa: Saga = {
       origin: [
         {
           episode: 641,
+          chapter: 711,
+          place: 'green-bit',
           value: { it: 'Green Bit, Dressrosa', en: 'Green Bit, Dressrosa' },
         },
       ],
@@ -2764,7 +2795,11 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      origin: [{ episode: 667, value: DRESSROSA }],
+      // Rebecca's flashback shows her mother living in Dressrosa in ch 721, ep
+      // 651.
+      origin: [
+        { episode: 651, chapter: 742, place: 'dressrosa', value: DRESSROSA },
+      ],
     },
     'trafalgar-lami': {
       chronicle: dressrosaChronicles['trafalgar-lami'],
@@ -2803,7 +2838,12 @@ export const dressrosa: Saga = {
         },
       ],
       origin: [
-        { episode: 702, value: { it: 'Mary Geoise', en: 'Mary Geoise' } },
+        {
+          episode: 702,
+          chapter: 763,
+          place: 'mary-geoise',
+          value: { it: 'Mary Geoise', en: 'Mary Geoise' },
+        },
       ],
     },
     'diez-barrels': {

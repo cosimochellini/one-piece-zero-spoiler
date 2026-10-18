@@ -179,3 +179,55 @@ const EATERS = readEaters()
 export function eatersOf(id: string): Eater[] {
   return EATERS.get(id) ?? []
 }
+
+/**
+ * A character whose origin names a place, and the gate of the earliest entry
+ * that names it: the later of that entry and the character, because the
+ * entry is what says where they come from.
+ */
+export interface Native {
+  entity: Entity
+  gate: Gated
+}
+
+/**
+ * Every place's natives, read once out of the origin entries, in the order
+ * the characters are filed. Read backwards, as the eaters are: the link is
+ * written once, on the character's entry, and the place derives its list.
+ * The first entry naming a place is the earliest, because a timeline is in
+ * episode order.
+ */
+function readNatives(): Map<string, Native[]> {
+  const found = new Map<string, Native[]>()
+
+  for (const entity of characters) {
+    const origin = CHARACTER_DOSSIERS[entity.id]?.origin
+    if (origin === undefined) {
+      continue
+    }
+    const named = new Set<string>()
+
+    for (const entry of origin) {
+      const { place } = entry
+      if (place === undefined || named.has(place)) {
+        continue
+      }
+      named.add(place)
+      const native = { entity, gate: gateOf(entry, entity) }
+      found.set(place, [...(found.get(place) ?? []), native])
+    }
+  }
+
+  return found
+}
+
+const NATIVES = readNatives()
+
+/**
+ * Every character whose origin names this place, each with the gate of the
+ * entry that says so. Empty for a place nobody comes from, or an id the
+ * archive does not file.
+ */
+export function nativesOf(id: string): Native[] {
+  return NATIVES.get(id) ?? []
+}

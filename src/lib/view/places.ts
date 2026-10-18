@@ -106,6 +106,12 @@ export interface PlaceDetail {
   drawings: PlaceDrawing[]
   /** Zero-based, in the reader's order; the page prints it plus one. */
   index: number
+  /**
+   * The characters who come from the place, in the reader's order: only
+   * those the reader has met whose origin entry naming it they have reached.
+   * Empty under fog, and nobody past the bookmark is sent, not even counted.
+   */
+  natives: RecordView[]
   /** The stop after this one in the reader's order; `null` for the last. */
   next: null | Slot<RecordView>
   /** The stop before this one in the reader's order; `null` for the first. */

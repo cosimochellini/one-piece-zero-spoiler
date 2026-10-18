@@ -1,8 +1,10 @@
 import { describe, expect, it } from 'vitest'
 
+import { characters } from '~/data/characters'
 import { CHART } from '~/data/chart'
 import { placeDossierOf, places, ships } from '~/data/places'
 import { reveal } from '~/data/reveal'
+import { CHARACTER_DOSSIERS } from '~/data/sagas'
 import type { Bookmark } from '~/lib/progress/episode'
 
 import { BOOKMARKS } from './payloads.server'
@@ -292,6 +294,74 @@ describe('a place’s later visits', () => {
           detail.visits.map((visit) => visit.revealedAtEpisode),
           place.id,
         ).toStrictEqual(expected)
+      }
+    },
+  )
+})
+
+/** The ids of the natives a place's page sends at a bookmark. */
+function nativesAt(id: string, bookmark: Bookmark): string[] {
+  return pageOf(id, bookmark).detail.natives.map((native) => native.id)
+}
+
+/**
+ * The characters a place's page should list at a bookmark, worked out from
+ * the filed pairs rather than from the server's gate: the place open, the
+ * character met, and an origin entry naming the place reached at its own
+ * episode or chapter.
+ */
+function expectedNatives(id: string, bookmark: Bookmark): string[] {
+  const { sees } = reveal(bookmark)
+  if (!pageOf(id, bookmark).detail.slot.open) {
+    return []
+  }
+
+  return characters
+    .filter((character) => {
+      const origin = CHARACTER_DOSSIERS[character.id]?.origin ?? []
+      const told = origin.filter((entry) => entry.place === id)
+
+      return (
+        sees(character)
+        && told.some((entry) =>
+          sees({
+            revealedAtEpisode: entry.episode,
+            revealedAtChapter: entry.chapter ?? Infinity,
+          }),
+        )
+      )
+    })
+    .map((character) => character.id)
+}
+
+const byId = (a: string, b: string): number => a.localeCompare(b)
+
+describe('a place’s natives', () => {
+  it('lists a character from the pair that tells where they come from', () => {
+    // Arlong is met at episode 31, chapter 71; Jinbe's flashback ties him to
+    // Fish-Man Island in chapter 621, episode 540.
+    expect(nativesAt('fish-man-island', ep(539))).not.toContain('arlong')
+    expect(nativesAt('fish-man-island', ep(540))).toContain('arlong')
+    expect(nativesAt('fish-man-island', ch(620))).not.toContain('arlong')
+    expect(nativesAt('fish-man-island', ch(621))).toContain('arlong')
+  })
+
+  it('lists nobody under fog, and nobody not met yet', () => {
+    // Usopp comes from Syrup Village, which opens with him at chapter 23.
+    expect(nativesAt('syrup-village', ep(8))).toStrictEqual([])
+    expect(nativesAt('syrup-village', ch(22))).toStrictEqual([])
+    expect(nativesAt('syrup-village', ch(23))).toContain('usopp')
+    expect(nativesAt('syrup-village', ch(23))).not.toContain('kaya')
+  })
+
+  it.each(BOOKMARKS.map((bookmark) => [JSON.stringify(bookmark), bookmark]))(
+    'sends only characters met whose origin naming it is reached, at %s',
+    (_, bookmark: Bookmark) => {
+      for (const place of places) {
+        expect(
+          nativesAt(place.id, bookmark).toSorted(byId),
+          place.id,
+        ).toStrictEqual(expectedNatives(place.id, bookmark).toSorted(byId))
       }
     },
   )

@@ -912,7 +912,14 @@ export const waterSeven: Saga = {
           },
         },
       ],
-      origin: [{ episode: 230, value: WATER_SEVEN }],
+      origin: [
+        {
+          episode: 230,
+          chapter: 327,
+          place: 'water-seven',
+          value: WATER_SEVEN,
+        },
+      ],
     },
     'paulie': {
       role: DOCK_ONE,
@@ -931,7 +938,14 @@ export const waterSeven: Saga = {
         { episode: 310, chapter: 428, value: 'alive' },
       ],
       affiliation: [{ episode: 232, value: GALLEY_LA_DOCK_ONE }],
-      origin: [{ episode: 232, value: WATER_SEVEN }],
+      origin: [
+        {
+          episode: 232,
+          chapter: 326,
+          place: 'water-seven',
+          value: WATER_SEVEN,
+        },
+      ],
     },
     'kokoro': {
       role: {
@@ -1108,7 +1122,14 @@ export const waterSeven: Saga = {
           value: { it: 'Franky Family', en: 'Franky Family' },
         },
       ],
-      origin: [{ episode: 265, chapter: 377, value: WATER_SEVEN }],
+      origin: [
+        {
+          episode: 265,
+          chapter: 377,
+          place: 'water-seven',
+          value: WATER_SEVEN,
+        },
+      ],
     },
     'zambai': {
       role: {
@@ -1139,7 +1160,14 @@ export const waterSeven: Saga = {
           },
         },
       ],
-      origin: [{ episode: 266, chapter: 378, value: WATER_SEVEN }],
+      origin: [
+        {
+          episode: 266,
+          chapter: 378,
+          place: 'water-seven',
+          value: WATER_SEVEN,
+        },
+      ],
     },
     'peepley-lulu': {
       chronicle: waterSevenChronicles['peepley-lulu'],
@@ -1473,7 +1501,15 @@ export const waterSeven: Saga = {
           },
         },
       ],
-      origin: [{ episode: 265, value: { it: 'Elbaf', en: 'Elbaph' } }],
+      // Oimo first says they come from Elbaph in ch 384, ep 270.
+      origin: [
+        {
+          episode: 270,
+          chapter: 385,
+          place: 'elbaf-island',
+          value: { it: 'Elbaf', en: 'Elbaph' },
+        },
+      ],
     },
     'baskerville': {
       chronicle: waterSevenChronicles.baskerville,

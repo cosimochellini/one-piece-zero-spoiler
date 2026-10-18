@@ -4,7 +4,8 @@
  *   hand-built SVG (the plate, the stretch of the sea chart around the
  *   place, the place's drawings in a row) · nav: N9 (shared) · footer: Ft4
  *   (shared)
- * · structure: the plate | entry diptych · map words and later visits |
+ * · structure: the plate | entry diptych (records found here, characters
+ *   from here) · map words and later visits |
  *   the stretch of the chart · the drawings in order · the stops before
  *   and after
  * · a ship (#676): the same diptych (facts, log, places she reaches) and the
@@ -25,7 +26,7 @@ import { liftPort, liftRecord, liftShip, loadPlace } from '~/server/api'
 import { settleStyles } from '~/styles/settle'
 
 import { DrawingsBand, MapBand, TurnBand } from './-$id.bands'
-import { EntryDiptych, PortBody, ShipBody } from './-$id.entry'
+import { EntryDiptych, PlaceEntry, ShipBody } from './-$id.entry'
 
 // The bands in DOM order. Named rather than counted at the call, so a band
 // inserted in the middle is one edit here and not three down the page.
@@ -48,7 +49,8 @@ export const Route = createFileRoute('/$locale/places/$id')({
  *
  * Four bands down a place's page. The first is the plate beside the entry:
  * kind and episode in mono, the name as the only display line, the
- * sentence, the facts, the log entry and the records found there. The
+ * sentence, the facts, the log entry, the records found there and the
+ * characters who come from it. The
  * second is the place on the map: its stop number and the later visits the
  * reader has reached, beside the stretch of the sea chart around it. The
  * third is every drawing the place has had up to the bookmark, when there
@@ -96,12 +98,10 @@ function PlacePage(): ReactElement {
             peekRecord={peekRecord}
             slot={page.ship.slot}
           />
-        : <EntryDiptych
-            Body={PortBody}
-            kind="place"
+        : <PlaceEntry
+            detail={page.detail}
             peek={peekPort}
             peekRecord={peekRecord}
-            slot={page.detail.slot}
           />
         }
       </Band>

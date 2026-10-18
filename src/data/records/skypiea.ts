@@ -1255,6 +1255,8 @@ export const skypiea: Saga = {
         { episode: 155, value: SKY_ISLAND },
         {
           episode: 158,
+          chapter: 244,
+          place: 'angel-island',
           value: { it: 'Angel Island, Skypiea', en: 'Angel Island, Skypiea' },
         },
       ],
@@ -1287,6 +1289,8 @@ export const skypiea: Saga = {
         { episode: 155, value: SKY_ISLAND },
         {
           episode: 158,
+          chapter: 244,
+          place: 'angel-island',
           value: { it: 'Angel Island, Skypiea', en: 'Angel Island, Skypiea' },
         },
       ],
@@ -1541,6 +1545,8 @@ export const skypiea: Saga = {
       origin: [
         {
           episode: 187,
+          chapter: 292,
+          place: 'jaya',
           value: { it: 'Jaya, Rotta Maggiore', en: 'Jaya, Grand Line' },
         },
       ],
@@ -1564,6 +1570,8 @@ export const skypiea: Saga = {
       origin: [
         {
           episode: 187,
+          chapter: 292,
+          place: 'jaya',
           value: { it: 'Jaya, Rotta Maggiore', en: 'Jaya, Grand Line' },
         },
       ],
@@ -1588,6 +1596,8 @@ export const skypiea: Saga = {
       origin: [
         {
           episode: 187,
+          chapter: 287,
+          place: 'jaya',
           value: { it: 'Jaya, Rotta Maggiore', en: 'Jaya, Grand Line' },
         },
       ],
@@ -1612,6 +1622,8 @@ export const skypiea: Saga = {
       origin: [
         {
           episode: 189,
+          chapter: 292,
+          place: 'jaya',
           value: { it: 'Jaya, Rotta Maggiore', en: 'Jaya, Grand Line' },
         },
       ],
