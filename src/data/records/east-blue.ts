@@ -1382,17 +1382,20 @@ export const eastBlue: Saga = {
         {
           episode: 629,
           chapter: 700,
-          factions: ['warlords'],
-          value: { it: 'Flotta dei Sette', en: 'Seven Warlords of the Sea' },
+          factions: ['buggy-pirates', 'warlords'],
+          value: {
+            it: 'Pirati di Bagy, capitano; Flotta dei Sette',
+            en: 'Buggy Pirates, captain; Seven Warlords',
+          },
         },
         // The Warlord system is abolished at 957 (chapter 956).
         {
           episode: 957,
           chapter: 956,
-          factions: ['independent'],
+          factions: ['buggy-pirates'],
           value: {
-            it: 'Ex membro della Flotta dei Sette',
-            en: 'Former Warlord',
+            it: 'Pirati di Bagy, capitano; ex membro della Flotta dei Sette',
+            en: 'Buggy Pirates, captain; former Warlord',
           },
         },
         // Named one of the new Four Emperors at 1080 (chapter 1053), and put
@@ -1400,8 +1403,11 @@ export const eastBlue: Saga = {
         {
           episode: 1080,
           chapter: 1053,
-          factions: ['emperors'],
-          value: { it: 'Imperatore', en: 'Emperor' },
+          factions: ['buggy-pirates', 'emperors'],
+          value: {
+            it: 'Pirati di Bagy, capitano; Imperatore',
+            en: 'Buggy Pirates, captain; Emperor',
+          },
         },
         {
           episode: 1083,
