@@ -1,6 +1,17 @@
 [
   {
     "date": "2026-10-18",
+    "macrostructure": "Split Studio (a place's own page, as the character page) + Map / Diagram on /places over a short list of links",
+    "theme": "custom (bespoke): Sea Chart — locked, not rotated",
+    "theme_axes": "dark / geometric-sans / chromatic-amber (88°)",
+    "enrichment": "Tier B hand-built SVG: the plate, the sea chart cropped around the place (same geometry as /places, drawn whole and framed), the place's drawings in a row",
+    "nav": "N9 edge-aligned (shared)",
+    "footer": "Ft4 dense colophon (shared)",
+    "sections": "/places/$id: back link · plate | entry (kind + episode, name, sentence, facts, log, found here) · map words | the stretch of the chart (stop before, this one ringed in gold, stop after or the first fog dot) · drawings up to the bookmark (only with two or more) · previous / next stop. /places: chart · places up to the bookmark as links + fog count (until #675) · ships band (until #676)",
+    "brief": "Issue #673 (epic #671): a page for every place. Owner rulings via the orchestrator: the stacked entries leave /places for a minimal list of links; the chart's open stops link to /places/$id; a covered place page carries nothing about the place until the reader asks; the next stop on the mini chart is an anonymous fog dot."
+  },
+  {
+    "date": "2026-10-18",
     "macrostructure": "Map / Diagram (the places page opens on a schematic sea chart, over the existing Narrative Workflow log)",
     "theme": "custom (bespoke): Sea Chart — locked, not rotated",
     "theme_axes": "dark / geometric-sans / chromatic-amber (88°)",

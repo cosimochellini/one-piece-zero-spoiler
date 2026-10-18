@@ -3,6 +3,9 @@ import { describe, expect, it } from 'vitest'
 import {
   across,
   boxOf,
+  CHART_HEIGHT,
+  CHART_WIDTH,
+  cropAround,
   FOG_END,
   legsOf,
   nextOf,
@@ -136,5 +139,46 @@ describe('the chart geometry', () => {
     ['Enter', 5, null],
   ])('moves %s from stop %i to %s', (key, from, to) => {
     expect(nextOf(key, from, 10)).toBe(to)
+  })
+})
+
+describe('the stretch a place’s page frames', () => {
+  it('holds every point with sea around it, in the chart’s proportions', () => {
+    const crop = cropAround([a, b, c])
+
+    expect(crop.width / crop.height).toBeCloseTo(1.5)
+
+    for (const point of [a, b, c]) {
+      expect(point.x).toBeGreaterThan(crop.x)
+      expect(point.x).toBeLessThan(crop.x + crop.width)
+      expect(point.y).toBeGreaterThan(crop.y)
+      expect(point.y).toBeLessThan(crop.y + crop.height)
+    }
+  })
+
+  it('is never smaller than room for a stop either side', () => {
+    expect(cropAround([{ x: 600, y: 300 }])).toStrictEqual({
+      x: 420,
+      y: 180,
+      width: 360,
+      height: 240,
+    })
+  })
+
+  it('stays inside the chart at its edges', () => {
+    const corner = cropAround([{ x: 1190, y: 590 }])
+    const wide = cropAround([
+      { x: 0, y: 0 },
+      { x: CHART_WIDTH, y: CHART_HEIGHT },
+    ])
+
+    expect(corner.x + corner.width).toBe(CHART_WIDTH)
+    expect(corner.y + corner.height).toBe(CHART_HEIGHT)
+    expect(wide).toStrictEqual({
+      x: 0,
+      y: 0,
+      width: CHART_WIDTH,
+      height: CHART_HEIGHT,
+    })
   })
 })

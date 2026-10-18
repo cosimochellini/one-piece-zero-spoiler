@@ -21,7 +21,7 @@ import type { PortView, RecordView } from '~/lib/view/records'
 import { styles } from '~/routes/$locale/characters/-$id.styles'
 
 /** What the band is given: the page, and how to lift the fog on a record. */
-interface EntryProps {
+export interface EntryProps {
   detail: PlaceDetail
   peek: (handle: string) => Promise<PortView>
   peekRecord: (handle: string) => Promise<RecordView>
@@ -75,16 +75,17 @@ export function EntryDiptych({
  * 336" is the promise the page makes to a reader who has not got there yet.
  */
 function EntryColumn({ detail, peek, peekRecord }: EntryProps): ReactElement {
-  const { t } = useLocale()
   const threshold = useThreshold()
-  const filed = detail.slot.open ? detail.slot.record : detail.slot.covered
+  const { t } = useLocale()
+  const { slot } = detail
+  const gate = slot.open ? slot.record : slot.covered
 
   return (
     <div {...stylex.props(styles.dossier)}>
       <p {...stylex.props(styles.meta)}>
         <span {...stylex.props(styles.kind)}>{t('kind.place')}</span>
         <span {...stylex.props(styles.episode)}>
-          {threshold('places.firstSeen', filed)}
+          {threshold('places.firstSeen', gate)}
         </span>
       </p>
 
@@ -94,7 +95,7 @@ function EntryColumn({ detail, peek, peekRecord }: EntryProps): ReactElement {
           <div {...stylex.props(styles.words)}>
             <h1 {...stylex.props(styles.name)}>{t('places.foggedName')}</h1>
             <p {...stylex.props(styles.summary)}>
-              {threshold('places.foggedDescription', filed)}
+              {threshold('places.foggedDescription', gate)}
             </p>
           </div>
         }
