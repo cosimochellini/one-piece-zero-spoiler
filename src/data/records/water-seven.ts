@@ -271,8 +271,8 @@ export const waterSeven: Saga = {
       revealedAtChapter: 326,
       name: { it: 'Rob Lucci', en: 'Rob Lucci' },
       summary: {
-        it: 'Un carpentiere della Galley-La con un piccione bianco sulla spalla, l’uomo che la folla dei cantieri acclama più di chiunque altro.',
-        en: 'A Galley-La shipwright with a white pigeon on his shoulder, the man the crowd at the docks cheers louder than anyone.',
+        it: 'Un carpentiere della Galley-La con un piccione bianco sulla spalla, uno degli uomini che la folla dei cantieri acclama per nome.',
+        en: 'A Galley-La shipwright with a white pigeon on his shoulder, one of the men the crowd at the docks cheers by name.',
       },
       visual: { art: 'rob-lucci', tint: 'ivory' },
     },
@@ -1008,14 +1008,29 @@ export const waterSeven: Saga = {
     },
     'rob-lucci': {
       chronicle: waterSevenChronicles['rob-lucci'],
-      role: DOCK_ONE,
+      role: { it: 'Carpentiere della Galley-La', en: 'Galley-La shipwright' },
+      // Frozen at episode 230 and chapter 326. Episode 230 adapts chapters
+      // 323 (p. 14-19), 324 (p. 9-18) and 325 (p. 6-9): the crowd cheers him
+      // at Dock One. Iceburg calls him a foreman in chapter 327, which
+      // episode 232 adapts.
       log: {
-        it: 'Ai cantieri della Galley-La, poco dopo che i carpentieri hanno messo al tappeto una ciurma pirata che non voleva pagare le riparazioni, una folla si raduna ad acclamarlo. Un piccione bianco gli sta sulla spalla ovunque vada. Ai curiosi non dice nulla, e non ne ha bisogno: per Water Seven gli uomini della Galley-La sono l’orgoglio della città.',
-        en: 'At the Galley-La docks, not long after the shipwrights knocked flat a pirate crew that would not pay for its repairs, a crowd gathers to praise him. A white pigeon rides on his shoulder wherever he goes. He says nothing to the onlookers and does not need to: for Water Seven, the Galley-La men are the pride of the city.',
+        it: 'Ai cantieri della Galley-La, poco dopo che i carpentieri hanno messo al tappeto una ciurma pirata che non voleva pagare le riparazioni, la folla dei curiosi lo acclama per nome. Un piccione bianco gli sta sulla spalla. Un abitante spiega che i carpentieri della Galley-La sono l’orgoglio di Water Seven.',
+        en: 'At the Galley-La docks, not long after the shipwrights knocked flat a pirate crew that would not pay for its repairs, the crowd of onlookers cheers him by name. A white pigeon perches on his shoulder. A local explains that the Galley-La shipwrights are the pride of Water Seven.',
       },
       status: [{ episode: 230, value: 'alive' }],
       affiliation: [
-        { episode: 230, factions: ['galley-la'], value: GALLEY_LA_DOCK_ONE },
+        {
+          episode: 230,
+          factions: ['galley-la'],
+          value: { it: 'Galley-La Company', en: 'Galley-La Company' },
+        },
+        // Iceburg says it in chapter 327, which episode 232 adapts.
+        {
+          episode: 232,
+          chapter: 327,
+          factions: ['galley-la'],
+          value: GALLEY_LA_DOCK_ONE,
+        },
         { episode: 244, factions: ['cp9'], value: CIPHER_POL_9 },
         {
           episode: 266,
