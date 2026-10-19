@@ -223,8 +223,8 @@ export const waterSeven: Saga = {
       revealedAtChapter: 326,
       name: { it: 'Pauly', en: 'Paulie' },
       summary: {
-        it: 'Un caposquadra della Galley-La che combatte con le corde e si scandalizza per qualunque cosa gli sembri indecente, mentre i creditori lo inseguono per la città.',
-        en: 'A Galley-La foreman who fights with rope and is scandalised by anything he finds indecent, while his creditors chase him across the city.',
+        it: 'Un caposquadra della Galley-La che usa le corde per sfuggire ai creditori che lo inseguono per la città.',
+        en: 'A Galley-La foreman who uses ropes to escape the creditors chasing him across the city.',
       },
       visual: { art: 'paulie', tint: 'orange' },
     },
@@ -235,8 +235,8 @@ export const waterSeven: Saga = {
       revealedAtChapter: 325,
       name: { it: 'Kokoro', en: 'Kokoro' },
       summary: {
-        it: 'La capostazione del treno del mare, una gran bevitrice, che conosce a memoria l’unico binario che esce da Water Seven.',
-        en: 'The station master of the sea train, a heavy drinker, who knows by heart the one track that runs out of Water Seven.',
+        it: 'La capostazione del treno del mare, che accoglie i Cappello di Paglia alla Stazione Shift e li indirizza ai cantieri di Water Seven.',
+        en: 'The station master of the sea train, who welcomes the Straw Hats at Shift Station and directs them to Water Seven’s shipyards.',
       },
       visual: { art: 'kokoro', tint: 'green' },
     },
@@ -269,7 +269,7 @@ export const waterSeven: Saga = {
       kind: 'character',
       revealedAtEpisode: 230,
       revealedAtChapter: 326,
-      name: { it: 'Rob Lucci', en: 'Rob Lucci' },
+      name: { it: 'Lucci', en: 'Lucci' },
       summary: {
         it: 'Un carpentiere della Galley-La con un piccione bianco sulla spalla, uno degli uomini che la folla dei cantieri acclama per nome.',
         en: 'A Galley-La shipwright with a white pigeon on his shoulder, one of the men the crowd at the docks cheers by name.',
@@ -927,10 +927,14 @@ export const waterSeven: Saga = {
       ],
     },
     'paulie': {
+      chronicle: waterSevenChronicles.paulie,
+      // The introduction box already calls him a foreman at chapter 326,
+      // page 17 (Paulie wiki intro Qref). Gambling and clothing complaints
+      // follow in chapter 327 and belong in the dated story.
       role: DOCK_ONE,
       log: {
-        it: 'Dirige gli operai del Dock 1 con un sigaro in bocca e una matassa di corda alla cintura, e nessuno in cantiere lavora più in fretta di lui. Ha debiti di gioco in mezza città e passa metà della giornata a scappare da chi li riscuote. Basta una gonna corta perché gridi all’oscenità e si copra gli occhi.',
-        en: 'He runs the men of Dock One with a cigar in his teeth and a coil of rope at his belt, and nobody in the yard works faster. He owes gambling debts across half the city and spends half his day dodging the people who collect them. One short skirt is enough to make him shout about indecency and cover his eyes.',
+        it: 'È un caposquadra del Dock 1, con un sigaro in bocca e gli occhialoni sulla fronte. Inseguito dai creditori, usa le corde per impossessarsi dello Yagara Bull su cui la Franky Family sta portando via le valigie dei Cappello di Paglia.',
+        en: 'He is a Dock One foreman with a cigar in his mouth and goggles on his forehead. Chased by creditors, he uses ropes to seize the Yagara Bull on which the Franky Family is carrying off the Straw Hats’ suitcases.',
       },
       status: [
         { episode: 232, value: 'alive' },
@@ -958,8 +962,8 @@ export const waterSeven: Saga = {
         en: 'Station master of the sea train',
       },
       log: {
-        it: 'Sta alla Stazione Shift, da cui parte l’unico treno che attraversa il mare, e beve dalla mattina con la faccia di chi ha già visto tutto. Ride forte, dà del ragazzino a chiunque e dell’isola sa molto più di quanto lasci intendere. La nipotina le corre intorno tutto il giorno e lei non se ne preoccupa mai.',
-        en: 'She sits at Shift Station, where the only train that crosses the sea departs, and drinks from the morning on with the face of someone who has seen it all. She laughs loudly, calls everyone a kid, and knows far more about the island than she lets on. Her granddaughter runs circles around her all day and she never once worries.',
+        it: 'Alla Stazione Shift chiede a Chimney un lumacofono quando arrivano dei pirati, poi si dimentica chi voleva chiamare. È ubriaca. Prima che i Cappello di Paglia ripartano, dà loro una mappa e una lettera di raccomandazione da portare ai cantieri per far riparare la nave.',
+        en: 'At Shift Station she asks Chimney for a Transponder Snail when pirates arrive, then forgets whom she meant to call. She is drunk. Before the Straw Hats leave, she gives them a map and a letter of recommendation to take to the shipyards to have their ship repaired.',
       },
       status: [{ episode: 230, value: 'alive' }],
       affiliation: [
@@ -978,8 +982,8 @@ export const waterSeven: Saga = {
         en: 'The station master’s granddaughter',
       },
       log: {
-        it: 'Corre sui binari della Stazione Shift e non ha paura di niente, nemmeno del mare che arriva fin sulla banchina. La segue sempre Gonbe, un animale che miagola ma sembra un coniglio e mangia l’erba. Conosce i passaggi della città meglio degli adulti e li indica volentieri a chi si perde.',
-        en: 'She runs along the rails of Shift Station and is frightened of nothing, not even the sea coming up over the platform. Gonbe follows her everywhere, an animal that meows but looks like a rabbit and eats grass. She knows the city’s back ways better than the grown-ups and gladly points them out.',
+        it: 'Alla Stazione Shift è con la nonna Kokoro e il loro “gatto” Gonbe. Spiega ai Cappello di Paglia che il treno del mare corre su binari appena sotto il mare e che Yokozuna continua a sfidarlo, rompendo le protezioni dei binari e creando problemi ai passeggeri.',
+        en: 'At Shift Station she is with Grandma Kokoro and their “cat” Gonbe. She explains to the Straw Hats that the sea train runs on tracks just below the sea and that Yokozuna keeps challenging it, breaking the rail guards and troubling passengers.',
       },
       status: [{ episode: 230, value: 'alive' }],
       affiliation: [
