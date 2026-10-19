@@ -1,7 +1,7 @@
 /**
  * The index under the chart on the places page: a control bar (search,
- * layout, sea, type, saga), then the places the reader has reached grouped
- * by sea, as rows or as a grid of plates, each a link to its own page, and
+ * sea, type, saga), then the places the reader has reached grouped by sea,
+ * as a grid of plates, each a link to its own page, and
  * one line for the stops under fog. A sibling of the route module; the
  * leading `-` keeps the file out of the generated route tree.
  */
@@ -17,7 +17,7 @@ import { useLocale } from '~/i18n/LocaleContext'
 import type { Translate } from '~/i18n/types'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
 import { matchFolded } from '~/lib/search/fold'
-import type { IndexView, PlaceParams } from '~/lib/search/placeParams'
+import type { PlaceParams } from '~/lib/search/placeParams'
 import type { StopView } from '~/lib/view/places'
 import type { CoveredRecord, Sea } from '~/lib/view/records'
 
@@ -75,7 +75,7 @@ export function PlaceIndex({
           <p>{t('places.noneShown')}</p>
           <Button
             onClick={() => {
-              onParams(params.view === undefined ? {} : { view: 'grid' }, false)
+              onParams({}, false)
             }}
           >
             {t('places.showAll')}
@@ -96,7 +96,6 @@ export function PlaceIndex({
               needle={needle}
               open={open}
               stops={stops}
-              view={params.view ?? 'list'}
             />
           </CatalogueSection>
         )
@@ -165,22 +164,18 @@ function groupsOf(open: StopView[], shown: StopView[]): SeaGroup[] {
   })
 }
 
-/** One sea's stops, as rows or as plates. */
+/** One sea's stops, as plates. */
 function Stops({
   needle,
   open,
   stops,
-  view,
 }: {
   needle: string
   open: StopView[]
   stops: StopView[]
-  view: IndexView
 }): ReactElement {
-  const grid = view === 'grid'
-
   return (
-    <ol {...stylex.props(grid ? styles.grid : styles.list)}>
+    <ol {...stylex.props(styles.grid)}>
       {stops.map((stop) => {
         return (
           <li
@@ -188,7 +183,6 @@ function Stops({
             {...stylex.props(styles.item)}
           >
             <Entry
-              grid={grid}
               highlight={matchFolded(stop, needle).highlight}
               number={open.indexOf(stop) + 1}
               stop={stop}
@@ -202,30 +196,28 @@ function Stops({
 
 /**
  * One place, one link: its number on the route, its plate, its name with a
- * search match marked, its type and the episode it first appears in. A
- * plate in the grid drops the type, so the drawing leads.
+ * search match marked and the episode it first appears in. The drawing
+ * leads.
  */
 function Entry({
-  grid,
   highlight,
   number,
   stop,
 }: {
-  grid: boolean
   highlight: [number, number] | null
   number: number
   stop: StopView
 }): ReactElement {
-  const { locale, t } = useLocale()
+  const { locale } = useLocale()
   const threshold = useThreshold()
 
   return (
     <Link
       params={{ locale, id: stop.id }}
       to="/$locale/places/$id"
-      {...stylex.props(styles.entry, grid ? styles.plate : styles.row)}
+      {...stylex.props(styles.entry, styles.plate)}
     >
-      <span {...stylex.props(grid ? styles.plateArt : styles.rowArt)}>
+      <span {...stylex.props(styles.plateArt)}>
         <OpenPortPlate port={stop} />
       </span>
       <span {...stylex.props(styles.words)}>
@@ -239,7 +231,6 @@ function Entry({
           <span {...stylex.props(styles.number)}>
             {String(number).padStart(NUMBER_WIDTH, '0')}
           </span>
-          {grid ? null : <span>{t(`form.${stop.form}`)}</span>}
           <span {...stylex.props(styles.episode)}>
             {threshold('chart.opensAt', stop)}
           </span>

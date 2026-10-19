@@ -1,6 +1,6 @@
 /**
- * The places index's control bar: the search field and its count, the
- * layout switch, and the sea, type and saga pickers. Every pick
+ * The places index's control bar: the search field and its count, and the
+ * sea, type and saga pickers. Every pick
  * lives in the address (`~/lib/search/placeParams`), so a filtered index can
  * be shared and Back steps through the picks.
  */
@@ -8,18 +8,13 @@ import * as stylex from '@stylexjs/stylex'
 import type { ReactElement } from 'react'
 
 import { styles as dialog } from '~/components/BookmarkDialog.styles'
-import { ChoiceGroup } from '~/components/ChoiceGroup'
 import { ControlBar } from '~/components/ControlBar'
 import { SearchField } from '~/components/SearchField'
 import { searchStyles } from '~/components/SearchField.styles'
 import { useSettled } from '~/components/useSettled'
 import { useT } from '~/i18n/LocaleContext'
 import type { Translate } from '~/i18n/types'
-import {
-  type IndexView,
-  parsePlaceParams,
-  type PlaceParams,
-} from '~/lib/search/placeParams'
+import { parsePlaceParams, type PlaceParams } from '~/lib/search/placeParams'
 import type { SagaPick, StopView } from '~/lib/view/places'
 
 import { styles } from './-index.styles'
@@ -48,7 +43,7 @@ export interface PlaceControlsProps {
 /** A pick: the keys to change, each checked as the address would be. */
 type Pick = (next: Record<string, unknown>, replace?: boolean) => void
 
-/** The bar: the search, then the layout and the three picks beside it. */
+/** The bar: the search, then the three picks beside it. */
 export function PlaceControls({
   count,
   fieldId,
@@ -58,8 +53,8 @@ export function PlaceControls({
   sagas,
 }: PlaceControlsProps): ReactElement {
   const t = useT()
-  // Every pick goes through the parser, so a default ("all", the list, a
-  // blank query) is left out of the address rather than written into it.
+  // Every pick goes through the parser, so a default ("all", a blank
+  // query) is left out of the address rather than written into it.
   const pick: Pick = (next, replace = false) => {
     onParams(parsePlaceParams({ ...params, ...next }), replace)
   }
@@ -78,7 +73,6 @@ export function PlaceControls({
         total={open.length}
       />
       <PlaceChoices
-        fieldId={fieldId}
         open={open}
         params={params}
         pick={pick}
@@ -141,15 +135,13 @@ function PlaceSearch({
   )
 }
 
-/** The layout switch, and the sea, type and saga pickers. */
+/** The sea, type and saga pickers. */
 function PlaceChoices({
-  fieldId,
   open,
   params,
   pick,
   sagas,
 }: {
-  fieldId: string
   open: StopView[]
   params: PlaceParams
   pick: Pick
@@ -159,11 +151,6 @@ function PlaceChoices({
 
   return (
     <div {...stylex.props(styles.choices)}>
-      <LayoutSwitch
-        fieldId={fieldId}
-        pick={pick}
-        view={params.view ?? 'list'}
-      />
       <Picker
         label={t('places.sea')}
         onPick={(next) => {
@@ -202,35 +189,6 @@ function PlaceChoices({
 interface Option {
   label: string
   value: string
-}
-
-/** The switch between rows and plates. */
-function LayoutSwitch({
-  fieldId,
-  pick,
-  view,
-}: {
-  fieldId: string
-  pick: Pick
-  view: IndexView
-}): ReactElement {
-  const t = useT()
-
-  return (
-    <ChoiceGroup<IndexView>
-      choices={[
-        { label: t('places.view.list'), value: 'list' },
-        { label: t('places.view.grid'), value: 'grid' },
-      ]}
-      legend={t('places.view.legend')}
-      look="segments"
-      name={`${fieldId}-view`}
-      onChoose={(next) => {
-        pick({ view: next })
-      }}
-      value={view}
-    />
-  )
 }
 
 /** One value of a picker: what it picks, its name, and how many it holds. */
@@ -294,17 +252,16 @@ function counted(
   return rows
 }
 
-/** The folded bar's words: "List · New World · Island · “wano”". */
+/** The folded bar's words: "New World · Island · “wano”". */
 function summaryOf(
   t: Translate,
-  { form, q = '', saga, sea, view }: PlaceParams,
+  { form, q = '', saga, sea }: PlaceParams,
   sagas: SagaPick[],
 ): string {
   const title = sagas.find((candidate) => candidate.number === saga)?.title
   const query = q.trim()
 
   return [
-    t(`places.view.${view ?? 'list'}`),
     t(sea === undefined ? 'places.allSeas' : `sea.${sea}`),
     ...(form === undefined ? [] : [t(`form.${form}`)]),
     ...(title === undefined ? [] : [title]),
