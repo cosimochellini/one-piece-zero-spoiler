@@ -128,6 +128,13 @@ export const itDictionary: Dictionary = {
   'chart.fogOne': '1 tappa nella nebbia',
   'chart.peekOpen': 'Apri la scheda',
   'chart.peekClose': 'Chiudi',
+  'chart.zoom': 'Zoom',
+  'chart.zoomIn': 'Ingrandisci',
+  'chart.zoomOut': 'Riduci',
+  'chart.seeAll': 'Vedi tutto',
+  'chart.seeSaga': 'La tua saga',
+  'chart.zoomHint':
+    'Ctrl o ⌘ con la rotellina per ingrandire, trascina per spostarti.',
 
   'faq.animeQ': 'Anime o manga?',
   'faq.animeA':

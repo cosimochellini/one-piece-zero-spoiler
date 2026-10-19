@@ -1,8 +1,14 @@
 import { describe, expect, it } from 'vitest'
 
-import { CHART_HEIGHT, CHART_WIDTH } from '~/components/chartGeometry'
+import {
+  BELT_TOP,
+  CHART_HEIGHT,
+  CHART_WIDTH,
+  RED_LINE_X,
+} from '~/components/chartGeometry'
 import type { ChartPoint } from '~/lib/view/chart'
 
+import { ISLES } from './art/isles'
 import { CHART, chartPointOf } from './chart'
 import { orderByMode } from './order'
 import { placeDossierOf, places } from './places'
@@ -36,9 +42,10 @@ describe('the sea chart', () => {
   it.each(['episode', 'chapter'] as const)(
     'never sails back along the route in %s order',
     (mode) => {
-      const route = orderByMode(places, mode).filter(
-        (place) => pointAt(place.id).detour !== true,
-      )
+      const route = orderByMode(places, mode).filter((place) => {
+        const point = pointAt(place.id)
+        return point.line === undefined && point.seen !== true
+      })
       const xs = (inEastBlue: boolean): number[] =>
         route
           .filter(
@@ -48,26 +55,41 @@ describe('the sea chart', () => {
           .map((place) => pointAt(place.id).x)
 
       // Towards Reverse Mountain in East Blue, away from it after.
-      expect(xs(true)).toStrictEqual(xs(true).toSorted((a, b) => b - a))
-      expect(xs(false)).toStrictEqual(xs(false).toSorted((a, b) => a - b))
+      expect(xs(true)).toStrictEqual(xs(true).toSorted((a, b) => a - b))
+      expect(xs(false)).toStrictEqual(xs(false).toSorted((a, b) => b - a))
     },
   )
 
-  it('puts every East Blue stop before the Grand Line and above it', () => {
+  it('puts every East Blue stop above the Grand Line, in Paradise’s half', () => {
     for (const place of places) {
       const inEastBlue = placeDossierOf(place)?.sea === 'east-blue'
-      const { y } = pointAt(place.id)
+      const { x, y } = pointAt(place.id)
 
-      expect(y < 190, place.id).toBe(inEastBlue || place.id === 'mary-geoise')
+      expect(y < BELT_TOP, place.id).toBe(inEastBlue)
+      expect(inEastBlue && x < RED_LINE_X, place.id).toBe(false)
     }
   })
 
-  it('branches off only where the ship does not sail', () => {
+  it('draws Luffy’s own line only where he goes alone, and only shows Mary Geoise', () => {
     expect(
       places
-        .filter((place) => pointAt(place.id).detour === true)
+        .filter((place) => pointAt(place.id).line === 'luffy')
         .map((place) => place.id),
-    ).toStrictEqual(['amazon-lily', 'impel-down', 'marineford', 'mary-geoise'])
+    ).toStrictEqual(['amazon-lily', 'impel-down', 'marineford'])
+    expect(
+      places
+        .filter((place) => pointAt(place.id).seen === true)
+        .map((place) => place.id),
+    ).toStrictEqual(['mary-geoise'])
+  })
+
+  it('gives every place but Mary Geoise an island’s outline', () => {
+    expect(
+      places
+        .filter((place) => pointAt(place.id).isle === undefined)
+        .map((place) => place.id),
+    ).toStrictEqual(['mary-geoise'])
+    expect(Object.keys(ISLES).every((id) => CHART[id] !== undefined)).toBe(true)
   })
 
   it('has no point for a record that is not a place', () => {

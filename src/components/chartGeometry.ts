@@ -1,20 +1,21 @@
 import type { TranslationKey } from '~/i18n/types'
-import type { ChartPoint } from '~/lib/view/chart'
 import type { Sea } from '~/lib/view/records'
 
 /**
  * The geometry of the sea chart, apart from any page: the world it is drawn
  * on, how a point turns when the chart stands upright on a phone, which seas
  * a reader has opened, and the legs of the route between the stops. The
- * places page draws the whole chart from it; a place's own page can draw a
+ * places page draws the whole chart from it; a place's own page draws a
  * stretch of it the same way.
  *
- * Schematic, not geographic. The chart lies across in a 1200×600 box: the
- * Red Line a hatched band at the left edge, where Reverse Mountain is, and
- * down the middle, where Mary Geoise is; the Grand Line a band across the
- * middle with a Calm Belt either side, the first half to the left of the
- * Red Line and the New World to the right; the four Blues the quarters above
- * and below. Every point in `~/data/chart` is in this box.
+ * The world as Oda draws it, in a 1600×800 box: the Red Line a continent
+ * standing upright down the middle, where Mary Geoise is, and at both edges,
+ * where Reverse Mountain is; the Grand Line a band across the middle with a
+ * Calm Belt either side, Paradise to the right of the middle and the New
+ * World to the left; North Blue and East Blue above it, West Blue and South
+ * Blue below, East and South on Paradise's side (owner, #728). The route
+ * runs from East Blue up to Reverse Mountain at the right edge, then right
+ * to left. Every point in `~/data/chart` is in this box.
  */
 
 /** A point in the chart's box. */
@@ -35,8 +36,8 @@ export interface Rect extends Point {
  */
 export type Orientation = 'across' | 'down'
 
-export const CHART_WIDTH = 1200
-export const CHART_HEIGHT = 600
+export const CHART_WIDTH = 1600
+export const CHART_HEIGHT = 800
 
 /**
  * How much longer the chart is upright than across. A phone scrolls, so the
@@ -51,11 +52,14 @@ export function boxOf(orientation: Orientation): Point {
     : { x: CHART_HEIGHT, y: CHART_WIDTH * STRETCH }
 }
 
-/** A point of the chart as it is drawn in this orientation. */
+/**
+ * A point of the chart as it is drawn in this orientation. Upright, the
+ * right edge, where the route enters the Grand Line, is the top.
+ */
 export function project(point: Point, orientation: Orientation): Point {
   return orientation === 'across' ?
       { x: point.x, y: point.y }
-    : { x: point.y, y: point.x * STRETCH }
+    : { x: point.y, y: (CHART_WIDTH - point.x) * STRETCH }
 }
 
 /** A rectangle of the chart as it is drawn in this orientation. */
@@ -63,7 +67,7 @@ export function projectRect(rect: Rect, orientation: Orientation): Rect {
   return orientation === 'across' ? rect : (
       {
         x: rect.y,
-        y: rect.x * STRETCH,
+        y: (CHART_WIDTH - rect.x - rect.width) * STRETCH,
         width: rect.height,
         height: rect.width * STRETCH,
       }
@@ -74,14 +78,20 @@ export function projectRect(rect: Rect, orientation: Orientation): Rect {
  * Where the route starts, before the first stop: in East Blue, by the first
  * two stops. With no bookmark it is all the chart shows, a ring with no name.
  */
-export const ORIGIN: Point = { x: 520, y: 100 }
+export const ORIGIN: Point = { x: 860, y: 130 }
 
 /**
- * Where the fog tail ends: the far end of the Grand Line, whatever the
- * reader has reached. It is the same point for everyone, so the tail says
- * nothing about where the stops under fog lie.
+ * Reverse Mountain, where the Red Line's right edge meets the Grand Line:
+ * the route climbs it from East Blue into the Grand Line.
  */
-export const FOG_END: Point = { x: 1185, y: 270 }
+export const REVERSE_MOUNTAIN: Point = { x: 1588, y: 400 }
+
+/**
+ * Where the fog tail ends: the far end of the New World, at the left edge,
+ * whatever the reader has reached. It is the same point for everyone, so the
+ * tail says nothing about where the stops under fog lie.
+ */
+export const FOG_END: Point = { x: 44, y: 400 }
 
 /** One part of the world, drawn and named once the reader has opened it. */
 export type Region =
@@ -95,47 +105,49 @@ export type Region =
   | 'south-blue'
   | 'west-blue'
 
-const EDGE = 14
-const RED_LINE_X = 588
-const RED_LINE_WIDTH = 24
-const BELT_TOP = 190
-const BAND_TOP = 220
-const BAND_BOTTOM = 380
-const BELT_BOTTOM = 410
+/** Half of something: the middle of a length. */
+const HALF = 0.5
+
+/** How wide the Red Line stands at either edge, and down the middle. */
+const EDGE = 24
+const MIDDLE_WIDTH = 40
+export const RED_LINE_X = (CHART_WIDTH - MIDDLE_WIDTH) * HALF
+const PARADISE_X = RED_LINE_X + MIDDLE_WIDTH
+const HALF_WIDTH = RED_LINE_X - EDGE
+export const BELT_TOP = 250
+export const BAND_TOP = 290
+const BAND_BOTTOM = 510
+export const BELT_BOTTOM = 550
 const BELT = BAND_TOP - BELT_TOP
 const BAND = BAND_BOTTOM - BAND_TOP
-const FIRST_HALF = RED_LINE_X - EDGE
-const NEW_WORLD_X = RED_LINE_X + RED_LINE_WIDTH
-const SECOND_HALF = CHART_WIDTH - NEW_WORLD_X
 const BLUE_BOTTOM = CHART_HEIGHT - BELT_BOTTOM
 
 /** The rectangles each region is made of, across. */
 export const REGIONS: Record<Region, Rect[]> = {
-  'east-blue': [{ x: EDGE, y: 0, width: FIRST_HALF, height: BELT_TOP }],
-  'south-blue': [
-    { x: EDGE, y: BELT_BOTTOM, width: FIRST_HALF, height: BLUE_BOTTOM },
-  ],
-  'north-blue': [
-    { x: NEW_WORLD_X, y: 0, width: SECOND_HALF, height: BELT_TOP },
-  ],
+  'north-blue': [{ x: EDGE, y: 0, width: HALF_WIDTH, height: BELT_TOP }],
+  'east-blue': [{ x: PARADISE_X, y: 0, width: HALF_WIDTH, height: BELT_TOP }],
   'west-blue': [
-    { x: NEW_WORLD_X, y: BELT_BOTTOM, width: SECOND_HALF, height: BLUE_BOTTOM },
+    { x: EDGE, y: BELT_BOTTOM, width: HALF_WIDTH, height: BLUE_BOTTOM },
   ],
-  'grand-line': [{ x: EDGE, y: BAND_TOP, width: FIRST_HALF, height: BAND }],
-  'new-world': [
-    { x: NEW_WORLD_X, y: BAND_TOP, width: SECOND_HALF, height: BAND },
+  'south-blue': [
+    { x: PARADISE_X, y: BELT_BOTTOM, width: HALF_WIDTH, height: BLUE_BOTTOM },
   ],
+  'grand-line': [
+    { x: PARADISE_X, y: BAND_TOP, width: HALF_WIDTH, height: BAND },
+  ],
+  'new-world': [{ x: EDGE, y: BAND_TOP, width: HALF_WIDTH, height: BAND }],
   'calm-belt': [
-    { x: EDGE, y: BELT_TOP, width: FIRST_HALF, height: BELT },
-    { x: EDGE, y: BAND_BOTTOM, width: FIRST_HALF, height: BELT },
+    { x: PARADISE_X, y: BELT_TOP, width: HALF_WIDTH, height: BELT },
+    { x: PARADISE_X, y: BAND_BOTTOM, width: HALF_WIDTH, height: BELT },
   ],
   'new-world-calm-belt': [
-    { x: NEW_WORLD_X, y: BELT_TOP, width: SECOND_HALF, height: BELT },
-    { x: NEW_WORLD_X, y: BAND_BOTTOM, width: SECOND_HALF, height: BELT },
+    { x: EDGE, y: BELT_TOP, width: HALF_WIDTH, height: BELT },
+    { x: EDGE, y: BAND_BOTTOM, width: HALF_WIDTH, height: BELT },
   ],
   'red-line': [
     { x: 0, y: 0, width: EDGE, height: CHART_HEIGHT },
-    { x: RED_LINE_X, y: 0, width: RED_LINE_WIDTH, height: CHART_HEIGHT },
+    { x: RED_LINE_X, y: 0, width: MIDDLE_WIDTH, height: CHART_HEIGHT },
+    { x: CHART_WIDTH - EDGE, y: 0, width: EDGE, height: CHART_HEIGHT },
   ],
 }
 
@@ -175,117 +187,31 @@ export interface RegionLabel {
 }
 
 /**
- * One name per region, clear of the route and the ships: the Calm Belt is
- * named on the first half's southern belt only.
+ * One name per region, clear of the route and the ships: in the open sea of
+ * each Blue, and along a Calm Belt for the Grand Line's halves and the Calm
+ * Belt itself, where the sagas' names leave room (`sagaNamesOf`).
  */
 export const LABELS: Partial<Record<Region, RegionLabel>> = {
-  'east-blue': { key: 'sea.east-blue', at: { x: 90, y: 40 } },
-  'south-blue': { key: 'sea.south-blue', at: { x: 250, y: 520 } },
-  'north-blue': { key: 'sea.north-blue', at: { x: 900, y: 95 } },
-  'west-blue': { key: 'sea.west-blue', at: { x: 900, y: 505 } },
+  'east-blue': { key: 'sea.east-blue', at: { x: 1480, y: 36 } },
+  'north-blue': { key: 'sea.north-blue', at: { x: 400, y: 125 } },
+  'west-blue': { key: 'sea.west-blue', at: { x: 400, y: 675 } },
+  'south-blue': { key: 'sea.south-blue', at: { x: 1200, y: 675 } },
   'grand-line': {
     key: 'sea.grand-line',
-    at: { x: 150, y: 232 },
+    at: { x: 1200, y: (BELT_TOP + BAND_TOP) * HALF },
     upright: true,
   },
-  'new-world': { key: 'sea.new-world', at: { x: 900, y: 232 }, upright: true },
-  'calm-belt': { key: 'sea.calm-belt', at: { x: 400, y: 395 }, upright: true },
-  'red-line': { key: 'sea.red-line', at: { x: 600, y: 560 } },
-}
-
-/**
- * How a leg of the route is drawn: before the crew has a ship, aboard the
- * first ship or the second, or on a branch the ship does not sail.
- */
-export type Line = 'boat' | 'branch' | 'first' | 'second'
-
-/** One stop as the route needs it: its point, and the ship that reached it. */
-export interface RouteStop {
-  at: ChartPoint
-  /** Which of the ships the reader has reached sailed here; `null` for none. */
-  ship: null | number
-}
-
-/** A straight leg of the route, from one point to the next. */
-export interface Leg {
-  from: Point
-  line: Line
-  to: Point
-}
-
-/**
- * The legs of the route through these stops, in the order given. The main
- * line runs from the origin through every stop the ship sails to; a detour
- * branches off the last of them, and the main line goes on from there.
- */
-export function legsOf(stops: RouteStop[]): Leg[] {
-  let main: Point = ORIGIN
-  let previous: ChartPoint | null = null
-
-  return stops.map((stop) => {
-    if (stop.at.detour === true) {
-      const from = previous?.detour === true ? previous : main
-      previous = stop.at
-      return { from, to: stop.at, line: 'branch' }
-    }
-
-    const from = main
-    main = stop.at
-    previous = stop.at
-    return { from, to: stop.at, line: lineOf(stop.ship) }
-  })
-}
-
-function lineOf(ship: null | number): Line {
-  if (ship === null) {
-    return 'boat'
-  }
-
-  return ship === 0 ? 'first' : 'second'
-}
-
-/**
- * Where each leg starts along the route, as a share of its whole length
- * from the origin: when the leg is drawn in, as the route draws itself.
- */
-export function startsOf(legs: Leg[]): number[] {
-  const lengths = legs.map(({ from, to }) =>
-    Math.hypot(to.x - from.x, to.y - from.y),
-  )
-  const total = lengths.reduce((sum, length) => sum + length, 0)
-  let start = 0
-
-  return lengths.map((length) => {
-    const share = total === 0 ? 0 : start / total
-    start += length
-    return share
-  })
-}
-
-/** The legs as one path, in order. */
-export function pathOf(legs: Leg[], orientation: Orientation): string {
-  return legs
-    .map(({ from, to }) => {
-      const a = project(from, orientation)
-      const b = project(to, orientation)
-      return `M${String(a.x)} ${String(a.y)}L${String(b.x)} ${String(b.y)}`
-    })
-    .join('')
-}
-
-/**
- * The stops under fog, spaced evenly from the last open stop to the fog's
- * end: where they really lie never reaches the page.
- */
-export function tailOf(from: Point, count: number): Point[] {
-  return Array.from({ length: count }, (_, index) => {
-    const step = (index + 1) / count
-
-    return {
-      x: from.x + (FOG_END.x - from.x) * step,
-      y: from.y + (FOG_END.y - from.y) * step,
-    }
-  })
+  'new-world': {
+    key: 'sea.new-world',
+    at: { x: 400, y: (BELT_TOP + BAND_TOP) * HALF },
+    upright: true,
+  },
+  'calm-belt': {
+    key: 'sea.calm-belt',
+    at: { x: 1200, y: (BAND_BOTTOM + BELT_BOTTOM) * HALF },
+    upright: true,
+  },
+  'red-line': { key: 'sea.red-line', at: { x: 800, y: 700 }, upright: true },
 }
 
 /** Which side of a point something is set on. */
@@ -332,6 +258,23 @@ function percent(value: number, of: number): string {
   return `${((value / of) * PERCENT).toFixed(DECIMALS)}%`
 }
 
+/**
+ * Where a point is drawn in the window (`view`, as drawn), as CSS `left` and
+ * `top` over the frame: what stands outside the world, a peek, is placed so.
+ */
+export function placeIn(
+  point: Point,
+  orientation: Orientation,
+  view: Rect,
+): { left: string; top: string } {
+  const drawn = project(point, orientation)
+
+  return {
+    left: percent(drawn.x - view.x, view.width),
+    top: percent(drawn.y - view.y, view.height),
+  }
+}
+
 /** Where a point is drawn, as CSS `left` and `top` over the drawing. */
 export function placeOf(
   point: Point,
@@ -346,18 +289,36 @@ export function placeOf(
 /** How far words stand off their point. */
 const GAP = '1rem'
 
+/** The whole chart in this orientation, as drawn: the window unzoomed. */
+export function wholeOf(orientation: Orientation): Rect {
+  const box = boxOf(orientation)
+
+  return { x: 0, y: 0, width: box.x, height: box.y }
+}
+
 /**
  * The CSS `transform` for words set beside a point: on the given side, or
  * centred on it with none. Above, below or centred, they are pulled left in
- * proportion to how far right the point is, so words at the edge never run
- * off the chart.
+ * proportion to how far right the point is on the chart, so words at the
+ * edge never run off it.
  */
 export function pullOf(
   point: Point,
   orientation: Orientation,
   side: null | Side,
 ): string {
-  const pull = `-${placeOf(point, orientation).left}`
+  return pullIn(point, side, { orientation, view: wholeOf(orientation) })
+}
+
+/** As `pullOf`, in proportion to where the point is in a zoomed window. */
+export function pullIn(
+  point: Point,
+  side: null | Side,
+  { orientation, view }: { orientation: Orientation; view: Rect },
+): string {
+  const drawn = project(point, orientation)
+  const share = Math.min(Math.max(drawn.x - view.x, 0), view.width)
+  const pull = `-${percent(share, view.width)}`
   const at: Record<'none' | Side, string> = {
     above: `${pull}, calc(-100% - ${GAP})`,
     below: `${pull}, ${GAP}`,

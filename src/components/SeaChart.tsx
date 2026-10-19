@@ -1,23 +1,27 @@
-/* Hallmark · pre-emit critique: P5 H4 E4 S5 R4 V5 */
+/* Hallmark · pre-emit critique: P5 H5 E4 S5 R4 V5 */
 /* Hallmark · genre: atmospheric · macrostructure: Map / Diagram · theme: Sea
- *   Chart (locked) · enrichment: Tier B hand-built SVG (the chart itself; the
- *   ships' own drawings ride on it) · each stop and ship peeks (popover, a
- *   sheet under 40rem: SeaChartPeek.styles)
- * · idea: "where the crew is, drawn on a chart that fills in as you go"
- * · differs from the log under it (Narrative Workflow) on macrostructure;
- *   gold stays the one accent: the route sailed and the ship */
+ *   Chart (locked) · enrichment: Tier B hand-built SVG (the world itself: the
+ *   Red Line's ridges, Reverse Mountain, waves, a Sea King, the compass; an
+ *   outline per island; the ships' own drawings ride on it) · each stop and
+ *   ship peeks (popover, a sheet under 40rem: SeaChartPeek.styles)
+ * · idea: "the world as Oda draws it, filling in as you go: every place you
+ *   have reached named on it, every saga written over its stretch"
+ * · differs from the schematic chart before it (#671) on structure: the
+ *   world's own layout, a window that zooms and pans across, names always
+ *   written; gold stays the one accent: the route sailed and the ship */
 import * as stylex from '@stylexjs/stylex'
-import { type ReactElement, useId } from 'react'
+import { type ReactElement, type ReactNode, useMemo } from 'react'
 
 import {
   boxOf,
   FOG_END,
   type Orientation,
-  ORIGIN,
+  type Rect,
+  wholeOf,
 } from '~/components/chartGeometry'
 import { EpisodeMark } from '~/components/EpisodeMark'
 import { styles } from '~/components/SeaChart.styles'
-import { SeaRoute, SeaWorld } from '~/components/SeaChartDrawing'
+import { Drawing, ZoomButtons } from '~/components/SeaChartLayers'
 import {
   type ChartModel,
   modelOf,
@@ -26,36 +30,46 @@ import {
   type ShipMark,
 } from '~/components/seaChartModel'
 import { FogPeek, ShipPeek, StopPeek } from '~/components/SeaChartPeek'
-import { Here, RegionNames, ShipOnRoute, Spot } from '~/components/SeaChartPins'
+import { ShipOnRoute } from '~/components/SeaChartPins'
 import { SeaChartStops } from '~/components/SeaChartStops'
 import {
   type ChartPeek,
   type PeekProps,
   useChartPeek,
 } from '~/components/useChartPeek'
+import { useChartZoom } from '~/components/useChartZoom'
 import { useT } from '~/i18n/LocaleContext'
 
 /**
  * The sea chart at the top of the places page (Hallmark macrostructure Map /
  * Diagram).
  *
- * The route runs from the origin through every stop the reader has reached,
- * gold, in the line of the ship that sailed it, with the ship at the last
- * one and a label that says where that is. Past it the route goes on dashed
- * into fog, one unnamed dot per stop left, spaced evenly to the fog's end.
- * A sea is drawn and named only once the reader has a stop in it; the rest
- * is a plain fog wash.
+ * The world as Oda draws it, the route running from East Blue over Reverse
+ * Mountain and on through every stop the reader has reached, gold, in the
+ * line of the ship that sailed it, with the ship at the last one and a label
+ * that says where that is. Every reached island is drawn, in its saga's hue,
+ * and named; each saga's name is written over its stretch. Past the ship the
+ * route goes on dashed into fog, one unnamed dot per stop left, spaced
+ * evenly to the fog's end. A sea is drawn and named only once the reader has
+ * a stop in it; the rest is cloud.
  *
  * Drawn twice, across and upright, and the stylesheet shows the one that
- * fits: a phone gets the route running down the page. The open stops lead
- * to their own pages; the stops under fog are buttons that say their
- * number and episode and nothing else. Every stop and every ship opens a
- * peek: a popover beside it, a sheet on a phone. A stop under fog's peek is
- * veiled, and its place comes from the server only when the reader asks.
+ * fits. Across, the chart is a window that opens on the reader's saga and
+ * zooms and pans (`useChartZoom`); a name that would crowd another waits
+ * for a closer zoom. Upright, on a phone, the whole chart runs down the page
+ * and never moves. The open stops lead to their own pages; the stops under
+ * fog are buttons that say their number and episode and nothing else. Every
+ * stop and every ship opens a peek. A stop under fog's peek is veiled, and
+ * its place comes from the server only when the reader asks.
  */
 export function SeaChart(props: SeaChartProps): ReactElement {
   const t = useT()
-  const model = modelOf(props, t)
+  const { bookmark, covered, lit, open, sagas, ships } = props
+  const model = useMemo(
+    () =>
+      modelOf({ bookmark, covered, lit: lit ?? null, open, sagas, ships }, t),
+    [bookmark, covered, lit, open, sagas, ships, t],
+  )
 
   return (
     <div {...stylex.props(styles.chart)}>
@@ -91,110 +105,151 @@ interface ChartProps {
   peekPort: SeaChartProps['peekPort']
 }
 
+const PERCENT = 100
+/** Thousandths of a percent: a fraction of a pixel at the closest zoom. */
+const DECIMALS = 3
+
+/** A share of a length, as a CSS percentage. */
+function percent(value: number, of: number): string {
+  return `${((value / of) * PERCENT).toFixed(DECIMALS)}%`
+}
+
+/** The world placed so the window's part of it fills the frame. */
+function worldAt(view: Rect, orientation: Orientation): stylex.StyleXStyles {
+  const box = boxOf(orientation)
+
+  return [
+    styles.world,
+    styles.at(percent(-view.x, view.width), percent(-view.y, view.height)),
+    styles.size(percent(box.x, view.width), percent(box.y, view.height)),
+  ]
+}
+
 /**
- * The chart in one orientation: the drawing, its words, its stops and
- * ships, and the peek one of them has open. Each peek sits right after what
- * opens it, so Tab walks from a stop or a ship into its peek.
+ * The chart in one orientation: a frame in the chart's proportions, and in
+ * it the world, placed so the window's part of it fills the frame. The
+ * world holds the drawing, its words and its stops; the peek a stop opens
+ * sits right after the stops, then the ships and the peek one of them has
+ * open, so Tab walks from a stop or a ship into its peek.
  */
 function Chart({ model, orientation, peekPort }: ChartProps): ReactElement {
-  const id = useId()
-  const box = boxOf(orientation)
+  const zoomable = orientation === 'across'
+  const { frameRef, hands, scale, show, view, ...buttons } = useChartZoom(
+    zoomable ? model.opening : wholeOf(orientation),
+    zoomable,
+  )
   const { peek, target, trigger } = useChartPeek()
+  const box = boxOf(orientation)
+  const world = worldAt(view, orientation)
+  const shared = { orientation, peek, view }
 
   return (
-    <div {...stylex.props(styles.frame)}>
-      <svg
-        aria-label={model.summary}
-        role="img"
-        viewBox={`0 0 ${String(box.x)} ${String(box.y)}`}
-        {...stylex.props(styles.svg)}
+    <>
+      <div
+        ref={frameRef}
+        {...hands}
+        {...stylex.props(
+          styles.frame,
+          styles.ratio(box.x / box.y),
+          zoomable && styles.pannable,
+        )}
       >
-        <SeaWorld
-          id={id}
-          orientation={orientation}
-          regions={model.regions}
-        />
-        <SeaRoute
-          from={model.here === null ? ORIGIN : pointOf(model.here)}
-          legs={model.legs}
-          orientation={orientation}
-          tail={model.tail}
-        />
-      </svg>
-
-      <Words
-        model={model}
-        orientation={orientation}
-      />
-
-      <SeaChartStops
-        model={model}
-        orientation={orientation}
-        trigger={trigger}
-      />
-      {target?.kind === 'stop' ?
+        <Clip world={world}>
+          <Drawing
+            model={model}
+            orientation={orientation}
+            scale={scale}
+          />
+          <SeaChartStops
+            model={model}
+            onReach={show}
+            orientation={orientation}
+            trigger={trigger}
+          />
+        </Clip>
         <Peek
-          index={target.index}
+          index={target?.kind === 'stop' ? target.index : null}
           model={model}
-          orientation={orientation}
-          peek={peek}
           peekPort={peekPort}
+          {...shared}
         />
-      : null}
-
-      <Ships
-        marks={model.marks}
-        open={target?.kind === 'ship' ? target.index : null}
-        orientation={orientation}
-        peek={peek}
-        trigger={trigger}
+        <Clip world={world}>
+          <ShipLayer
+            marks={model.marks}
+            orientation={orientation}
+            trigger={trigger}
+          />
+        </Clip>
+        <ShipPeekAt
+          mark={target?.kind === 'ship' ? model.marks[target.index] : undefined}
+          {...shared}
+        />
+      </div>
+      <ZoomButtons
+        shown={zoomable}
+        {...buttons}
       />
+    </>
+  )
+}
+
+/** One layer of the world, cut off at the window's edge. */
+function Clip({
+  children,
+  world,
+}: {
+  children: ReactNode
+  world: stylex.StyleXStyles
+}): ReactElement {
+  return (
+    <div {...stylex.props(styles.clip)}>
+      <div {...stylex.props(world)}>{children}</div>
     </div>
   )
 }
 
-/**
- * The ships on the route, each a button, and the peek of the one open:
- * under the stops where their targets overlap, so a tap there is a stop's.
- */
-function Ships({
+/** The peek of the ship at a mark, if there is one there. */
+function ShipPeekAt({
+  mark,
+  ...frame
+}: {
+  mark: ShipMark | undefined
+  orientation: Orientation
+  peek: PeekProps
+  view: Rect
+}): null | ReactElement {
+  return mark === undefined ? null : (
+      <ShipPeek
+        at={mark.at}
+        ship={mark.ship}
+        {...frame}
+      />
+    )
+}
+
+/** The ships on the route, each a button, under the stops where they meet. */
+function ShipLayer({
   marks,
-  open,
   orientation,
-  peek,
   trigger,
 }: {
   marks: ShipMark[]
-  open: null | number
   orientation: Orientation
-  peek: PeekProps
   trigger: ChartPeek['trigger']
 }): ReactElement {
-  const ship = open === null ? undefined : marks[open]
-
   return (
-    <>
-      <div {...stylex.props(styles.layer)}>
-        {marks.map((mark, index) => {
-          return (
-            <ShipOnRoute
-              key={mark.ship.id}
-              mark={mark}
-              orientation={orientation}
-              trigger={trigger({ index, kind: 'ship' }, false)}
-            />
-          )
-        })}
-      </div>
-      {ship === undefined ? null : (
-        <ShipPeek
-          at={ship.at}
-          orientation={orientation}
-          peek={peek}
-          ship={ship.ship}
-        />
-      )}
-    </>
+    <div {...stylex.props(styles.layer)}>
+      {marks.map((mark, index) => {
+        return (
+          <ShipOnRoute
+            key={mark.ship.id}
+            mark={mark}
+            orientation={orientation}
+            trigger={trigger({ index, kind: 'ship' }, false)}
+          />
+        )
+      })}
+    </div>
   )
 }
 
@@ -204,11 +259,16 @@ function Peek({
   model,
   ...rest
 }: Omit<ChartProps, 'model'> & {
-  index: number
+  /** The stop whose peek is open; `null` with none. */
+  index: null | number
   model: ChartModel
   peek: PeekProps
+  view: Rect
 }): null | ReactElement {
   const t = useT()
+  if (index === null) {
+    return null
+  }
   const stage = t('places.stage', { index: index + 1, total: model.total })
   const port = model.open[index]
   if (port !== undefined) {
@@ -234,46 +294,4 @@ function Peek({
         {...rest}
       />
     )
-}
-
-/**
- * Everything written on the chart: the seas' names, the origin and where
- * the reader is. For the eye only;
- * the drawing's label and the stops say the same to a screen reader.
- */
-function Words({
-  model,
-  orientation,
-}: {
-  model: ChartModel
-  orientation: Orientation
-}): ReactElement {
-  const t = useT()
-  const { here } = model
-
-  return (
-    <div
-      aria-hidden="true"
-      {...stylex.props(styles.layer)}
-    >
-      <RegionNames
-        orientation={orientation}
-        regions={model.regions}
-      />
-      <Spot
-        at={ORIGIN}
-        orientation={orientation}
-      />
-      {here === null ? null : (
-        <Here
-          orientation={orientation}
-          port={here}
-          stage={t('places.stage', {
-            index: model.open.length,
-            total: model.total,
-          })}
-        />
-      )}
-    </div>
-  )
 }

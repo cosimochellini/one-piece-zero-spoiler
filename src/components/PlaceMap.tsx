@@ -5,17 +5,21 @@ import {
   CHART_HEIGHT,
   CHART_WIDTH,
   cropAround,
-  legsOf,
   ORIGIN,
   placeOf,
   type Point,
   type Rect,
   regionsFor,
-  tailOf,
 } from '~/components/chartGeometry'
+import { legsOf, tailOf } from '~/components/chartRoute'
 import { tintOf } from '~/components/drawing'
 import { styles as chart } from '~/components/SeaChart.styles'
-import { SeaRoute, SeaWorld } from '~/components/SeaChartDrawing'
+import {
+  type IsleMark,
+  Isles,
+  SeaRoute,
+  SeaWorld,
+} from '~/components/SeaChartDrawing'
 import { Spot } from '~/components/SeaChartPins'
 import type { PlaceChartView } from '~/lib/view/places'
 import { color, radius, rule } from '~/styles/tokens.stylex'
@@ -77,6 +81,10 @@ export function PlaceMap({
             orientation="across"
             regions={[...regionsFor(map.route.flatMap(({ sea }) => sea ?? []))]}
           />
+          <Isles
+            isles={islesOf(map)}
+            orientation="across"
+          />
           <SeaRoute
             from={from}
             legs={legsOf(map.route)}
@@ -92,6 +100,23 @@ export function PlaceMap({
       </div>
     </div>
   )
+}
+
+/** The reached stops' islands, each in its drawing's hue. */
+function islesOf({ route }: PlaceChartView): IsleMark[] {
+  const isles: IsleMark[] = []
+  for (const stop of route) {
+    if (stop.at.isle !== undefined) {
+      isles.push({
+        at: stop.at,
+        id: keyOf(stop.at),
+        outline: stop.at.isle,
+        tint: stop.tint,
+      })
+    }
+  }
+
+  return isles
 }
 
 /**

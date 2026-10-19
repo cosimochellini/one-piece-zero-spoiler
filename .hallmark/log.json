@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-10-19",
+    "macrostructure": "Map / Diagram (the world map) over a Catalogue index",
+    "theme": "custom (bespoke): Sea Chart — locked, not rotated",
+    "theme_axes": "dark / geometric-sans / chromatic-amber (88°)",
+    "enrichment": "Tier B hand-built SVG: the world in Oda's layout (Red Line ridges, Reverse Mountain, waves, Sea King, compass), an outline per island",
+    "nav": "N9 edge-aligned (shared)",
+    "footer": "Ft4 dense colophon (shared)",
+    "sections": "/places: the world map (zoom and pan across, names of every stop and saga, Luffy's own line, fog as cloud), then the index as plates only",
+    "brief": "Issue #728: the owner found the schematic chart unreadable; redraw it as the world map, accurate and clear, and drop the list layout of the index."
+  },
+  {
     "date": "2026-10-18",
     "macrostructure": "Split Studio (a place's own page, unchanged)",
     "theme": "custom (bespoke): Sea Chart — locked, not rotated",
