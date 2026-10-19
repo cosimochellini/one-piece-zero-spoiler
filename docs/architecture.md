@@ -92,7 +92,7 @@ reader is inside a run or the next one starts within the six cells.
 | Arcs, places, ships | 34 · 39 · 2                                             |
 | Saga modules        | 12, plus one for the devil fruits                       |
 | Line drawings       | 737, one per record, plus 308 redrawings of 172 records |
-| Chronicle stories   | 755, for 185 characters                                 |
+| Chronicle stories   | 757, for 186 characters                                 |
 
 <!-- End of the generated counts. -->
 

@@ -365,6 +365,19 @@ export const waterSevenChronicles = {
       },
     },
   ],
+  'paulie': [
+    {
+      episode: 232,
+      chapter: 327,
+      value: {
+        title: { it: 'Debiti di gioco', en: 'Gambling debts' },
+        body: {
+          it: 'Pauly cerca di scappare con le valigie dei Cappello di Paglia, ma [[rob-lucci|Lucci]] lo ferma. Ammette di avere debiti di gioco e chiede a [[monkey-d-luffy|Rufy]] una parte del denaro. Poi protesta per i vestiti di [[nami|Nami]] e [[kalifa|Califa]], che considera indecenti.',
+          en: 'Paulie tries to escape with the Straw Hats’ suitcases, but [[rob-lucci|Lucci]] stops him. He admits to having gambling debts and asks [[monkey-d-luffy|Luffy]] for a share of the money. Then he objects to [[nami|Nami]] and [[kalifa|Kalifa]]’s clothes, which he considers indecent.',
+        },
+      },
+    },
+  ],
   'rob-lucci': [
     {
       episode: 230,
@@ -374,8 +387,19 @@ export const waterSevenChronicles = {
           en: 'The name the crowd chants',
         },
         body: {
-          it: 'Una ciurma pirata si rifiuta di pagare le riparazioni della propria nave, e i carpentieri della Galley-La la mettono al tappeto senza fatica, finendo il lavoro a colpi di cannone. Quando [[monkey-d-luffy|Rufy]], [[nami|Nami]] e [[usopp|Usop]] risalgono con l’ascensore fino all’isola dei cantieri, trovano una folla che acclama un solo uomo: Lucci, uno dei carpentieri della compagnia, con un piccione posato addosso. Un abitante spiega ai pirati che la Galley-La è l’orgoglio di Water Seven. Per ora Lucci è soltanto questo: un operaio famoso, applaudito da tutti.',
-          en: 'A pirate crew refuses to pay for the repairs to their ship, and the Galley-La shipwrights knock them flat without effort, finishing the job with a cannon. When [[monkey-d-luffy|Luffy]], [[nami|Nami]] and [[usopp|Usopp]] ride the lift up to the shipbuilding island, they find a crowd cheering a single man: Lucci, one of the company’s shipwrights, with a pigeon perched on him. A local explains to the pirates that Galley-La is the pride of Water 7. For now, that is all Lucci is: a famous workman, applauded by everyone.',
+          it: 'Una ciurma pirata si rifiuta di pagare le riparazioni della propria nave, e i carpentieri della Galley-La la mettono al tappeto senza fatica, finendo il lavoro a colpi di cannone. Quando [[monkey-d-luffy|Rufy]], [[nami|Nami]] e [[usopp|Usop]] risalgono con l’ascensore fino all’isola dei cantieri, trovano una folla che acclama i carpentieri. Tra loro c’è Lucci, con un piccione posato addosso. Un abitante spiega ai pirati che la Galley-La è l’orgoglio di Water Seven. Per ora Lucci è soltanto questo: un operaio famoso, applaudito da tutti.',
+          en: 'A pirate crew refuses to pay for the repairs to their ship, and the Galley-La shipwrights knock them flat without effort, finishing the job with a cannon. When [[monkey-d-luffy|Luffy]], [[nami|Nami]] and [[usopp|Usopp]] ride the lift up to the shipbuilding island, they find a crowd cheering the shipwrights. Among them is Lucci, with a pigeon perched on him. A local explains to the pirates that Galley-La is the pride of Water 7. For now, that is all Lucci is: a famous workman, applauded by everyone.',
+        },
+      },
+    },
+    {
+      episode: 232,
+      chapter: 327,
+      value: {
+        title: { it: 'Rob Lucci', en: 'Rob Lucci' },
+        body: {
+          it: 'Il piccione sulla spalla di Lucci presenta se stesso e il suo padrone ai Cappello di Paglia: il carpentiere si chiama Rob Lucci. [[nami|Nami]] capisce che Lucci è un ventriloquo e parla attraverso il piccione. Iceburg lo indica come uno dei capisquadra del Dock 1.',
+          en: 'The pigeon on Lucci’s shoulder introduces himself and his master to the Straw Hats: the shipwright is named Rob Lucci. [[nami|Nami]] realises that Lucci is a ventriloquist who speaks through the bird. Iceburg identifies him as one of the Dock One foremen.',
         },
       },
     },
