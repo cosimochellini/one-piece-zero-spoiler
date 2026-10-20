@@ -32,6 +32,7 @@ import {
 import { FogPeek, ShipPeek, StopPeek } from '~/components/SeaChartPeek'
 import { ShipOnRoute } from '~/components/SeaChartPins'
 import { SeaChartStops } from '~/components/SeaChartStops'
+import { byKeys } from '~/components/useChartHands'
 import {
   type ChartPeek,
   type PeekProps,
@@ -269,7 +270,9 @@ function ShipLayer({
             trigger={{
               ...peek,
               onFocus: (event) => {
-                onReach(mark.at)
+                if (byKeys(event.currentTarget)) {
+                  onReach(mark.at)
+                }
                 peek.onFocus(event)
               },
             }}

@@ -20,7 +20,7 @@ import {
   SeaRoute,
   SeaWorld,
 } from '~/components/SeaChartDrawing'
-import { sagaTintOf } from '~/components/seaChartNames'
+import { isOnRoute, sagaTintOf } from '~/components/seaChartNames'
 import { Spot } from '~/components/SeaChartPins'
 import type { PlaceChartView } from '~/lib/view/places'
 import { color, radius, rule } from '~/styles/tokens.stylex'
@@ -133,9 +133,7 @@ function stretchOf({ fogged, here, route }: PlaceChartView): {
 } {
   // From the last stop the ship sails to, as on the places page: not
   // Luffy's own way, not a place only shown.
-  const from =
-    route.findLast(({ at }) => at.line === undefined && at.seen !== true)?.at
-    ?? ORIGIN
+  const from = route.findLast(({ at }) => isOnRoute(at))?.at ?? ORIGIN
   const tail = tailOf(from, fogged)
   const near = [
     ...(here === 0 ? [ORIGIN] : []),

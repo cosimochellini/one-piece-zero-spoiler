@@ -13,6 +13,20 @@ import { panView, zoomView } from '~/components/chartView'
  * and a drag is never a click. Apart from the window for length.
  */
 
+/**
+ * Whether an element's focus came from the keyboard (`:focus-visible`). A
+ * mouse focuses a link on its press: moving the window then would take the
+ * stop from under the pointer, and the click with it.
+ */
+export function byKeys(element: Element): boolean {
+  try {
+    return element.matches(':focus-visible')
+  } catch {
+    // A browser that cannot tell: treat the focus as the keyboard's.
+    return true
+  }
+}
+
 /** How far a press moves before it is a drag and not a click. */
 const DRAG_PX = 5
 /** Half of something: between two fingers. */

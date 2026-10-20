@@ -171,7 +171,9 @@ function ZoomStep({
       aria-disabled={limit}
       aria-label={t(direction === 1 ? 'chart.zoomIn' : 'chart.zoomOut')}
       onClick={() => {
-        zoomBy(direction)
+        if (!limit) {
+          zoomBy(direction)
+        }
       }}
       sx={[styles.zoomButton, limit && styles.zoomLimit]}
     >

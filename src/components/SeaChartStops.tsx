@@ -16,6 +16,7 @@ import {
   pointOf,
   sagaTintOf,
 } from '~/components/seaChartModel'
+import { byKeys } from '~/components/useChartHands'
 import type {
   PeekTarget,
   TriggerProps as PeekTrigger,
@@ -100,7 +101,9 @@ function useTargets({
       ...peek,
       onFocus: (event) => {
         own.onFocus()
-        onReach(index)
+        if (byKeys(event.currentTarget)) {
+          onReach(index)
+        }
         peek.onFocus(event)
       },
     }
