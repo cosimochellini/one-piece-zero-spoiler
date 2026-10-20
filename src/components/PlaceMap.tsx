@@ -82,16 +82,16 @@ export function PlaceMap({
             orientation="across"
             regions={[...regionsFor(map.route.flatMap(({ sea }) => sea ?? []))]}
           />
-          <Isles
-            isles={islesOf(map)}
-            orientation="across"
-          />
           <SeaRoute
             from={from}
             legs={legsOf(map.route)}
             orientation="across"
             still
             tail={tail}
+          />
+          <Isles
+            isles={islesOf(map)}
+            orientation="across"
           />
         </svg>
         <Stops

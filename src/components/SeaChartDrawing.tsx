@@ -242,6 +242,7 @@ export interface IsleMark {
 /**
  * The islands the reader has reached, each its own outline in its saga's
  * hue, at its point: drawn in the chart's units, so they grow as it zooms.
+ * Drawn after the route, so the route runs into each island, not over it.
  */
 export function Isles({
   isles,

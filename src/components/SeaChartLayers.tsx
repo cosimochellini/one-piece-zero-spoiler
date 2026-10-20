@@ -81,15 +81,15 @@ export function Drawing({
           orientation={orientation}
           regions={model.regions}
         />
-        <Isles
-          isles={islesOf(model.open)}
-          orientation={orientation}
-        />
         <SeaRoute
           from={main === undefined ? ORIGIN : pointOf(main)}
           legs={model.legs}
           orientation={orientation}
           tail={model.tail}
+        />
+        <Isles
+          isles={islesOf(model.open)}
+          orientation={orientation}
         />
       </svg>
       <Words
