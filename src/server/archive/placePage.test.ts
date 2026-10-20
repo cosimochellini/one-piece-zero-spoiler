@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
 import { characters } from '~/data/characters'
-import { CHART } from '~/data/chart'
+import { chartPointOf } from '~/data/chart'
 import { placeDossierOf, places, ships } from '~/data/places'
 import { reveal } from '~/data/reveal'
 import { CHARACTER_DOSSIERS } from '~/data/sagas'
@@ -85,7 +85,7 @@ function wrongOn(id: string, bookmark: Bookmark): string[] {
 
   const here = detail.chart?.route[detail.chart.here]?.at
 
-  return JSON.stringify(here) === JSON.stringify(CHART[id]) ?
+  return JSON.stringify(here) === JSON.stringify(chartPointOf(id)) ?
       []
     : [`${id}: not at its point`]
 }
@@ -100,7 +100,7 @@ describe('a place’s own page', () => {
     'places and draws only what the reader has reached at %s',
     (_, bookmark: Bookmark) => {
       const { covered, open } = placesPage(bookmark, 'en')
-      const expected = open.map((port) => CHART[port.id])
+      const expected = open.map((port) => chartPointOf(port.id))
       const wrong = places.flatMap((place) => wrongOn(place.id, bookmark))
 
       expect(wrong).toStrictEqual([])

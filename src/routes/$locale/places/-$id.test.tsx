@@ -40,8 +40,8 @@ const map: PlaceChartView = {
   fogged: 2,
   here: 1,
   route: [
-    { at: { x: 290, y: 60 }, sea: 'east-blue', ship: 0, tint: 'orange' },
-    { at: { x: 190, y: 130 }, sea: 'east-blue', ship: 0, tint: 'teal' },
+    { at: { x: 290, y: 60 }, sea: 'east-blue', saga: 1, ship: 0 },
+    { at: { x: 190, y: 130 }, sea: 'east-blue', saga: 1, ship: 0 },
   ],
 }
 

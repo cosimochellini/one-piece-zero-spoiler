@@ -2,16 +2,14 @@ import { matchFolded } from '~/lib/search/fold'
 import type { StopView } from '~/lib/view/places'
 import type { PlaceForm, Sea } from '~/lib/view/records'
 
-/** How the index lays its places out: rows, or a grid of plates. */
-export type IndexView = 'grid' | 'list'
-
 /**
  * The places page's own search parameters: the sea, the kind and the saga
- * picked, the layout and the query. Named as the fruits page names its own
- * (`form`, `view`, `q`), in English in both locales.
+ * picked and the query. Named as the fruits page names its own (`form`,
+ * `q`), in English in both locales. The index is always a grid: an old
+ * address's `view` is left out, as any unknown key is.
  *
- * A key is left out when it holds its default (every sea, kind and saga, the
- * list, no query), so the plain address stays plain. The names stay clear of
+ * A key is left out when it holds its default (every sea, kind and saga, no
+ * query), so the plain address stays plain. The names stay clear of
  * the bookmark's `ep`, `s` and `ch` (`src/lib/progress/linkBookmark.ts`).
  */
 export interface PlaceParams {
@@ -20,7 +18,6 @@ export interface PlaceParams {
   /** A saga by its place in route order, from 1. */
   saga?: number
   sea?: Sea
-  view?: Exclude<IndexView, 'list'>
 }
 
 const SEAS = new Set<string>([
@@ -65,13 +62,12 @@ function isSaga(value: unknown): value is number {
  * reached is a valid value that matches nothing open, as a typed query can.
  */
 export function parsePlaceParams(search: Record<string, unknown>): PlaceParams {
-  const { form, q, saga, sea, view } = search
+  const { form, q, saga, sea } = search
 
   return {
     ...(isSea(sea) && { sea }),
     ...(isForm(form) && { form }),
     ...(isSaga(saga) && { saga }),
-    ...(view === 'grid' && { view }),
     // Blank is no query; anything else is kept as typed, spaces and all, so
     // the field bound to it never loses a space mid-word.
     ...(typeof q === 'string' && q.trim() !== '' && { q }),

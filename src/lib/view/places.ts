@@ -17,7 +17,6 @@ import type {
   ShipView,
   Slot,
   Stroke,
-  TintId,
 } from '~/lib/view/records'
 
 /**
@@ -58,9 +57,10 @@ export interface RouteStopView {
   at: ChartPoint
   /** Its sea, which opens a region of the chart; `null` with no dossier. */
   sea: null | Sea
+  /** The saga it is filed under, by its place in route order, from 1. */
+  saga: number
   /** Which of the reached ships sailed here (`sailedBy`); `null` for none. */
   ship: null | number
-  tint: TintId
 }
 
 /**

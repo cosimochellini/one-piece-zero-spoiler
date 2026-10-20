@@ -10,6 +10,7 @@ import {
   rule,
   space,
   text,
+  tint,
 } from '~/styles/tokens.stylex'
 
 /** Below this width the chart stands upright and the route runs down. */
@@ -22,6 +23,9 @@ const DRAW = '1500ms'
 const LEG = '250ms'
 
 const appear = stylex.keyframes({ from: { opacity: 0 }, to: { opacity: 1 } })
+
+/** Centred on its point. */
+const CENTRED = 'translate(-50%, -50%)'
 
 /** A thumb's width: every stop is a target this size, whatever its dot. */
 const TARGET = '2.75rem'
@@ -39,15 +43,52 @@ export const styles = stylex.create({
   },
   down: { display: { [PHONE]: 'block', default: 'none' }, width: '100%' },
 
-  frame: { position: 'relative' },
-  svg: {
+  // The window: the chart's proportions, its edge drawn, the world inside it
+  // placed by the zoom. Across, a finger across pans; one down scrolls.
+  frame: {
     borderColor: color.rule,
     borderRadius: radius.card,
     borderStyle: 'solid',
     borderWidth: rule.hair,
-    display: 'block',
-    height: 'auto',
+    position: 'relative',
     width: '100%',
+  },
+  ratio: (ratio: number) => ({ aspectRatio: ratio }),
+  pannable: { cursor: 'grab', touchAction: 'pan-y', userSelect: 'none' },
+  // What the window cuts off: each layer of the world in one of these.
+  clip: {
+    inset: 0,
+    borderRadius: radius.card,
+    overflow: 'hidden',
+    pointerEvents: 'none',
+    position: 'absolute',
+  },
+  world: { position: 'absolute' },
+  size: (width: string, height: string) => ({ height, width }),
+  svg: { display: 'block', height: '100%', width: '100%' },
+  zoomRow: {
+    gap: space.sm,
+    alignItems: 'center',
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    marginBlockStart: space.xs,
+  },
+  zoom: { gap: space.xs2, display: 'flex' },
+  // At the limit a button stays focusable (`aria-disabled`): it does
+  // nothing, and the focus does not fall to the page.
+  zoomLimit: { cursor: 'not-allowed', opacity: 0.55 },
+  zoomButton: {
+    backgroundColor: color.paper,
+    fontFamily: font.mono,
+    fontSize: text.base,
+    minWidth: '2.75rem',
+  },
+  hint: {
+    color: color.muted,
+    fontFamily: font.mono,
+    fontSize: text.xs,
+    marginBlockStart: space.xs,
   },
   // The overlay the words and the stops sit in, the size of the drawing.
   layer: {
@@ -58,17 +99,6 @@ export const styles = stylex.create({
     pointerEvents: 'none',
     position: 'absolute',
   },
-
-  // The world. Fog is the paler ground; a sea once opened is the night sea.
-  fog: { fill: color.paper2 },
-  region: { strokeWidth: rule.hair },
-  sea: { fill: color.paper, stroke: color.rule },
-  band: { fill: color.paper, stroke: color.rule2 },
-  wall: { stroke: color.rule2 },
-  wallGround: { fill: color.paper3 },
-  wallHatch: { stroke: color.rule2, strokeWidth: 2 },
-  seaGround: { fill: color.paper },
-  beltStipple: { stroke: color.rule, strokeLinecap: 'round', strokeWidth: 1 },
 
   // The route. Gold is the one accent: the stretch sailed, in the line of
   // the ship that sailed it, and the ship.
@@ -87,7 +117,8 @@ export const styles = stylex.create({
   first: { stroke: color.accent, strokeWidth: rule.fine },
   second: { stroke: color.accent, strokeWidth: 6 },
   secondInner: { stroke: color.paper, strokeWidth: 2 },
-  branch: { stroke: color.accent, strokeDasharray: '6 4', strokeWidth: 1 },
+  // Luffy alone, where the ship does not sail: his own thin red line.
+  luffy: { stroke: tint.red, strokeWidth: 1.5 },
   tail: { stroke: color.rule2, strokeDasharray: '3 6', strokeWidth: 2 },
 
   // Things set on the chart. `at` puts one at a point; `placed` beside it.
@@ -97,7 +128,7 @@ export const styles = stylex.create({
     left,
     top,
   }),
-  spot: { position: 'absolute', transform: 'translate(-50%, -50%)' },
+  spot: { position: 'absolute', transform: CENTRED },
   origin: {
     borderColor: color.accent,
     borderRadius: radius.pill,
@@ -115,6 +146,37 @@ export const styles = stylex.create({
     position: 'absolute',
     whiteSpace: 'nowrap',
   },
+  // An open stop's name, beside its dot on the side away from the band.
+  stopName: {
+    borderRadius: radius.input,
+    paddingBlock: '0.0625rem',
+    paddingInline: space.xs3,
+    backgroundColor: `color-mix(in oklch, ${color.paper} 78%, transparent)`,
+    color: color.ink2,
+    fontFamily: font.display,
+    fontSize: text.xs,
+    fontWeight: 600,
+    lineHeight: 1.3,
+    position: 'absolute',
+    whiteSpace: 'nowrap',
+  },
+  nameAbove: { transform: 'translate(-50%, calc(-100% - 0.625rem))' },
+  nameBelow: { transform: 'translate(-50%, 0.625rem)' },
+  nameLeft: { transform: 'translate(calc(-100% - 0.625rem), -50%)' },
+  nameRight: { transform: 'translate(0.625rem, -50%)' },
+  // A saga's name: large, faint, in its hue, behind the stops' names.
+  sagaName: (hue: string) => ({
+    color: `color-mix(in oklch, ${hue} 70%, transparent)`,
+    fontFamily: font.display,
+    fontSize: text.xs,
+    fontWeight: 800,
+    letterSpacing: '0.16em',
+    lineHeight: 1,
+    position: 'absolute',
+    textTransform: 'uppercase',
+    transform: CENTRED,
+    whiteSpace: 'nowrap',
+  }),
   // A band that stands upright on a phone is named along its length.
   upright: { writingMode: 'vertical-rl' },
   regionName: {
@@ -202,7 +264,7 @@ export const styles = stylex.create({
   // The stops: a thumb-sized target around a small dot.
   stop: {
     position: 'absolute',
-    transform: 'translate(-50%, -50%)',
+    transform: CENTRED,
     height: TARGET,
     width: TARGET,
   },
@@ -252,6 +314,16 @@ export const styles = stylex.create({
     boxShadow: `0 0 0 ${rule.fine} ${color.paper}`,
     height: '1.125rem',
     width: '1.125rem',
+  },
+  // A place the story only shows: an eye, not a dot.
+  dotSeen: {
+    transform: 'rotate(45deg)',
+    borderBottomLeftRadius: '0',
+    borderBottomRightRadius: '50%',
+    borderTopLeftRadius: '50%',
+    borderTopRightRadius: '0',
+    height: '0.75rem',
+    width: '0.75rem',
   },
   dotFog: {
     borderColor: color.rule2,

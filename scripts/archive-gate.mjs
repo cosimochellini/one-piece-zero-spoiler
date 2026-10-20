@@ -110,8 +110,16 @@ const WORST_CHUNKS = 5
  * focus, tap and Esc handling, the veiled peek of a stop under fog, the
  * ships as buttons with a peek of their own, and two new keys in both
  * dictionaries. The measured build plus ~1 KB, as the epic allows.
+ * Raised to 622.6 KB on 2026-10-19, when main stood at ~605.5 KB and the
+ * world map (#728) added ~16.1 KB: the world in Oda's layout (the Red Line's
+ * ridges, Reverse Mountain, waves, the Sea King, the compass), the route as
+ * curves with Luffy's own line, the window that zooms and pans across, the
+ * names of the stops and the sagas and which of them fit at each zoom, and
+ * six new keys in both dictionaries. The list layout of the index left the
+ * bundle. Each island's outline is the server's, sent with its open stop.
+ * The measured build plus ~1 KB.
  */
-export const MAX_CLIENT_BYTES = 606_200
+export const MAX_CLIENT_BYTES = 622_600
 
 /** Where the prose lives: every saga, the ship's log and the filler guide. */
 const PROSE_DIR = 'src/data/records'

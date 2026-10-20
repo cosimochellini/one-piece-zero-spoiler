@@ -13,9 +13,14 @@ import {
   type Side,
   sideOf,
 } from '~/components/chartGeometry'
-import { ART_VIEWBOX } from '~/components/drawing'
+import { ART_VIEWBOX, tintOf } from '~/components/drawing'
 import { styles } from '~/components/SeaChart.styles'
-import { pointOf, type ShipMark } from '~/components/seaChartModel'
+import {
+  pointOf,
+  type SagaName,
+  type ShipMark,
+  type StopName,
+} from '~/components/seaChartModel'
 import type { TriggerProps } from '~/components/useChartPeek'
 import { useT } from '~/i18n/LocaleContext'
 import type { StopView } from '~/lib/view/places'
@@ -98,6 +103,79 @@ export function RegionNames({
               {t(label.key)}
             </Pin>
           )
+      })}
+    </>
+  )
+}
+
+/** How a stop's name stands off its dot, by side. */
+const NAME_SIDE: Record<Side, stylex.StyleXStyles> = {
+  above: styles.nameAbove,
+  below: styles.nameBelow,
+  left: styles.nameLeft,
+  right: styles.nameRight,
+}
+
+/**
+ * The open stops' names that fit at this zoom (`~/components/chartLabels`),
+ * each beside its dot on the side away from the band's middle.
+ */
+export function StopNames({
+  names,
+  orientation,
+}: {
+  names: StopName[]
+  orientation: Orientation
+}): ReactElement {
+  return (
+    <>
+      {names.map(({ port, side }) => {
+        const { left, top } = placeOf(pointOf(port), orientation)
+        return (
+          <span
+            key={port.id}
+            {...stylex.props(
+              styles.stopName,
+              styles.at(left, top),
+              NAME_SIDE[side[orientation]],
+            )}
+          >
+            {port.name}
+          </span>
+        )
+      })}
+    </>
+  )
+}
+
+/**
+ * Each saga's name, large and faint over the middle of its stops, in its
+ * hue: behind the stops' own names, so it reads as the stretch's title.
+ * Upright it runs along the band, as the bands' names do.
+ */
+export function SagaNames({
+  names,
+  orientation,
+}: {
+  names: SagaName[]
+  orientation: Orientation
+}): ReactElement {
+  return (
+    <>
+      {names.map((name) => {
+        const { left, top } = placeOf(name.at, orientation)
+        return (
+          <span
+            key={name.number}
+            {...stylex.props(
+              styles.sagaName(tintOf(name.tint)),
+              styles.at(left, top),
+              orientation === 'down' && styles.upright,
+            )}
+          >
+            {name.title}
+          </span>
+        )
       })}
     </>
   )

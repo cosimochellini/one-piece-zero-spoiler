@@ -8,12 +8,13 @@ import { Link } from '@tanstack/react-router'
 import type { ReactElement, ReactNode } from 'react'
 
 import {
-  boxOf,
   type Orientation,
-  placeOf,
+  placeIn,
   type Point,
   project,
-  pullOf,
+  pullIn,
+  type Rect,
+  wholeOf,
 } from '~/components/chartGeometry'
 import { OpenPortPlate, PortPlate } from '~/components/PortPlate'
 import { styles } from '~/components/SeaChartPeek.styles'
@@ -40,10 +41,12 @@ export interface PeekFrameProps {
   at: Point
   orientation: Orientation
   peek: PeekProps
+  /** The window the chart shows, as drawn: the whole chart unless zoomed. */
+  view?: Rect
 }
 
 /**
- * The popover itself: below its point in the top half of the chart, above
+ * The popover itself: below its point in the top half of the window, above
  * it in the bottom half, and its ✕ in the corner. A dialog that does not
  * hold the focus: the stop keeps the arrow keys, and Tab walks on into it.
  */
@@ -53,10 +56,12 @@ function Frame({
   label,
   orientation,
   peek,
+  view,
 }: PeekFrameProps & { children: ReactNode; label: string }): ReactElement {
   const { t } = useLocale()
-  const { left, top } = placeOf(at, orientation)
-  const below = project(at, orientation).y < boxOf(orientation).y / HALF
+  const window = view ?? wholeOf(orientation)
+  const { left, top } = placeIn(at, orientation, window)
+  const below = project(at, orientation).y - window.y < window.height / HALF
   const { attach, id, onClose, onPointerEnter, onPointerLeave } = peek
 
   return (
@@ -75,7 +80,7 @@ function Frame({
         styles.placed(
           left,
           top,
-          pullOf(at, orientation, below ? 'below' : 'above'),
+          pullIn(at, below ? 'below' : 'above', { orientation, view: window }),
         ),
       )}
     >

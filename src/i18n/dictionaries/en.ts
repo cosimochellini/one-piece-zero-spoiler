@@ -131,6 +131,12 @@ export const enDictionary = {
   'chart.fogOne': '1 stop under fog',
   'chart.peekOpen': 'Open the entry',
   'chart.peekClose': 'Close',
+  'chart.zoom': 'Zoom',
+  'chart.zoomIn': 'Zoom in',
+  'chart.zoomOut': 'Zoom out',
+  'chart.seeAll': 'See all',
+  'chart.seeSaga': 'Your saga',
+  'chart.zoomHint': 'Ctrl or ⌘ with the wheel to zoom, drag to move.',
 
   'faq.animeQ': 'Anime or manga?',
   'faq.animeA':
@@ -246,9 +252,6 @@ export const enDictionary = {
   'places.noMatch': 'No open place matches “{query}”.',
   'places.noneShown': 'No open place matches these filters.',
   'places.showAll': 'Show all',
-  'places.view.legend': 'Layout',
-  'places.view.list': 'List',
-  'places.view.grid': 'Grid',
   'places.allSeas': 'All seas',
   'places.allForms': 'All types',
   'places.saga': 'Saga',

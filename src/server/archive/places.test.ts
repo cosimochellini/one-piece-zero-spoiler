@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { CHART } from '~/data/chart'
+import { chartPointOf } from '~/data/chart'
 import type { Bookmark } from '~/lib/progress/episode'
 
 import { handleOf } from './handle.server'
@@ -15,7 +15,7 @@ describe('the sea chart in the places payload', () => {
       const { covered, open } = placesPage(bookmark, 'en')
 
       for (const port of open) {
-        expect(port.chart, port.id).toStrictEqual(CHART[port.id])
+        expect(port.chart, port.id).toStrictEqual(chartPointOf(port.id))
       }
       // A covered stop is its handle, its kind and its two thresholds: no
       // point, so where it lies is not in the page.

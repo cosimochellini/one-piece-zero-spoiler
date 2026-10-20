@@ -13,9 +13,8 @@ import {
 } from '~/styles/tokens.stylex'
 
 /**
- * The places index's declarations. Rows are dense, three across on a wide
- * page and one on a phone; plates are two across on a phone and up to seven
- * on a wide page, where the drawing is what you browse by.
+ * The places index's declarations. Plates are two across on a phone and up
+ * to seven on a wide page, where the drawing is what you browse by.
  */
 
 // The small-caps tracking every meta line here is set in.
@@ -30,9 +29,9 @@ export const styles = stylex.create({
     display: 'grid',
   },
 
-  // The layout switch and the three pickers, side by side while they fit. A
-  // row of its own under the field, the bar's whole width: four controls do
-  // not share a line with the field as the fruits page's chips do.
+  // The three pickers, side by side while they fit. A row of its own under
+  // the field, the bar's whole width: they do not share a line with the
+  // field as the fruits page's chips do.
   choices: {
     gap: space.sm,
     alignItems: 'center',
@@ -54,14 +53,6 @@ export const styles = stylex.create({
     lineHeight: leading.body,
   },
 
-  list: {
-    padding: 0,
-    columnGap: space.lg,
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 20rem), 1fr))',
-    listStyleType: 'none',
-    rowGap: space.xs,
-  },
   grid: {
     padding: 0,
     columnGap: space.md,
@@ -85,14 +76,7 @@ export const styles = stylex.create({
     textDecorationLine: 'none',
     minWidth: 0,
   },
-  row: {
-    paddingBlock: space.xs,
-    alignItems: 'center',
-    gridTemplateColumns: '3.5rem minmax(0, 1fr)',
-    minHeight: '2.75rem',
-  },
   plate: { alignContent: 'start' },
-  rowArt: { aspectRatio: '1', display: 'block', width: '3.5rem' },
   plateArt: { aspectRatio: '1', display: 'block', width: '100%' },
 
   words: { gap: space.xs3, display: 'grid', minWidth: 0 },

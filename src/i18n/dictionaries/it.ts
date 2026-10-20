@@ -128,6 +128,13 @@ export const itDictionary: Dictionary = {
   'chart.fogOne': '1 tappa nella nebbia',
   'chart.peekOpen': 'Apri la scheda',
   'chart.peekClose': 'Chiudi',
+  'chart.zoom': 'Zoom',
+  'chart.zoomIn': 'Ingrandisci',
+  'chart.zoomOut': 'Riduci',
+  'chart.seeAll': 'Vedi tutto',
+  'chart.seeSaga': 'La tua saga',
+  'chart.zoomHint':
+    'Ctrl o ⌘ con la rotellina per ingrandire, trascina per spostarti.',
 
   'faq.animeQ': 'Anime o manga?',
   'faq.animeA':
@@ -249,9 +256,6 @@ export const itDictionary: Dictionary = {
   'places.noMatch': 'Nessun luogo visibile corrisponde a “{query}”.',
   'places.noneShown': 'Nessun luogo visibile corrisponde a questi filtri.',
   'places.showAll': 'Mostra tutti',
-  'places.view.legend': 'Vista',
-  'places.view.list': 'Elenco',
-  'places.view.grid': 'Griglia',
   'places.allSeas': 'Tutti i mari',
   'places.allForms': 'Tutti i tipi',
   'places.saga': 'Saga',

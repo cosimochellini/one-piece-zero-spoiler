@@ -95,7 +95,7 @@ describe('the places index', () => {
     ).toHaveAttribute('href', '/en/places/baratie')
     expect(
       screen.getByRole('link', { name: /Whisky Peak/u }),
-    ).toHaveTextContent(/03.*Town.*Episode 64/u)
+    ).toHaveTextContent(/03.*Episode 64/u)
     expect(screen.getByText('Showing 3 of 3 open places')).toBeVisible()
     expect(screen.getByLabelText('lit')).toHaveTextContent('all')
   })
@@ -138,10 +138,12 @@ describe('the places index', () => {
     expect(screen.getByLabelText('lit')).toHaveTextContent('whisky-peak')
   })
 
-  it('reads a type, a saga and the grid from the address', async () => {
-    await draw('?form=town&saga=1&view=grid')
+  it('reads a type and a saga from the address, an old layout left out', async () => {
+    await draw('?form=town&saga=1&view=list')
 
-    expect(screen.getByRole('radio', { name: 'Grid' })).toBeChecked()
+    expect(
+      screen.queryByRole('radio', { name: 'Grid' }),
+    ).not.toBeInTheDocument()
     expect(screen.getByRole('combobox', { name: 'Type' })).toHaveValue('town')
     expect(screen.getByRole('combobox', { name: 'Saga' })).toHaveValue('1')
     expect(screen.getAllByRole('link')).toHaveLength(1)
