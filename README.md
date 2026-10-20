@@ -137,6 +137,35 @@ from either follows the same
 
 [MIT](LICENSE) © 2026 Cosimo Chellini.
 
-One Piece is created by Eiichiro Oda and owned by Shueisha and Toei Animation.
-This is an unofficial, non-commercial fan project. It contains no official
-artwork, scans or frames, and it is not endorsed by the rights holders.
+One Piece was created by Eiichiro Oda. The anime’s
+[official copyright credit](https://www.toei-animation.com/copyrights/) is ©
+Eiichiro Oda/Shueisha, Toei Animation. This credit is not an exhaustive list of
+rights holders.
+
+This is an unofficial, nonprofit fan project, not affiliated with or endorsed by
+One Piece rights holders. Its drawings are made for the site; it uses no
+official artwork, scans or frames. The MIT licence covers this project’s own
+contributions and does not grant rights to One Piece or other third-party
+material. Neither this notice nor the project’s nonprofit status grants
+permission to use third-party material.
+
+For rights inquiries or corrections,
+[open a GitHub issue](https://github.com/cosimochellini/one-piece-zero-spoiler/issues/new?template=blank.md).
+Include the page URL, the material concerned and your request. Keep spoilers out
+of the title. Issues are public and require a GitHub account; do not post
+confidential information.
+
+One Piece è un’opera di Eiichiro Oda. I crediti ufficiali dell’anime sono ©
+Eiichiro Oda/Shueisha, Toei Animation, senza pretendere di elencare tutti i
+titolari dei diritti. Questo è un progetto amatoriale non ufficiale e senza
+scopo di lucro, non affiliato né approvato dai titolari dei diritti. I disegni
+sono fatti per il sito; non usa immagini ufficiali, scansioni o fotogrammi. La
+licenza MIT copre i contributi propri del progetto e non concede diritti su One
+Piece o altri materiali di terzi. Né questa nota né l’assenza di scopo di lucro
+autorizzano l’uso di materiali di terzi.
+
+Per richieste sui diritti o correzioni,
+[apri una issue GitHub](https://github.com/cosimochellini/one-piece-zero-spoiler/issues/new?template=blank.md).
+Indica l’URL della pagina, il materiale interessato e la richiesta. Evita
+spoiler nel titolo. Le issue sono pubbliche e richiedono un account GitHub; non
+inserire informazioni riservate.

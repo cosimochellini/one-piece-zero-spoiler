@@ -12,9 +12,9 @@ export const itDictionary: Dictionary = {
   'site.name': 'Zero Spoiler',
   'site.title': 'Zero Spoiler | La wiki di One Piece senza spoiler',
   'site.description':
-    'Una wiki di One Piece che nasconde personaggi, saghe, luoghi e frutti del diavolo oltre l’ultimo episodio visto o l’ultimo capitolo letto.',
+    'Una wiki amatoriale non ufficiale di One Piece che nasconde personaggi, saghe, luoghi e frutti del diavolo oltre l’ultimo episodio visto o l’ultimo capitolo letto.',
   'seo.imageAlt':
-    'La card di Zero Spoiler: il logo sopra una rotta che sparisce nella nebbia.',
+    'La card della wiki amatoriale non ufficiale Zero Spoiler: il logo sopra una rotta che sparisce nella nebbia.',
 
   'nav.skip': 'Vai al contenuto',
   'nav.characters': 'Personaggi',
@@ -149,7 +149,16 @@ export const itDictionary: Dictionary = {
   'footer.lead':
     'Una wiki di One Piece che nasconde quello che viene dopo il tuo segnalibro.',
   'footer.colophon':
-    'Tutti i disegni sono fatti per questo sito e non ci sono immagini ufficiali. Il segnalibro viene salvato in un cookie su questo dispositivo. Licenza MIT.',
+    'Tutti i disegni sono fatti per questo sito e non ci sono immagini ufficiali. Il segnalibro viene salvato in un cookie su questo dispositivo. Codice del sito sotto licenza MIT; i diritti su One Piece sono esclusi.',
+
+  'footer.unofficial':
+    'Progetto amatoriale non ufficiale e senza scopo di lucro. Non è affiliato né approvato dai titolari dei diritti di One Piece.',
+  'footer.credits':
+    'One Piece è un’opera di Eiichiro Oda. Crediti dell’anime: © Eiichiro Oda/Shueisha, Toei Animation.',
+  'footer.creditSource': 'Fonte ufficiale dei crediti',
+  'footer.contact': 'Richieste sui diritti e correzioni su GitHub',
+  'footer.contactHelp':
+    'Indica l’URL della pagina, il materiale interessato e la richiesta sui diritti o la correzione. Evita spoiler nel titolo. Le issue GitHub sono pubbliche e richiedono un account. Non inserire informazioni riservate.',
 
   'characters.title': 'Personaggi',
   'characters.count':
