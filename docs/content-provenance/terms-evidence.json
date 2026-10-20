@@ -1,0 +1,50 @@
+{
+  "accessed": "2026-10-20",
+  "evidence": [
+    {
+      "source": "https://www.fandom.com/licensing",
+      "accessMethod": "Firecrawl markdown scrape; Licensing heading and policy body verified",
+      "scrapeId": "01a15938-91d3-70b8-8d70-b659c6c16e64",
+      "retrievedMarkdownSha256": "ad770be6c4c9fb7b0d990a908f585f3541a1d5a93e2b7d530bf22bbb67d49d82",
+      "observedDefault": "CC BY-SA 3.0 Unported; subject to exceptions",
+      "sectionsChecked": [
+        "Licensing",
+        "Attribution",
+        "Non-text files",
+        "Using Fandom content"
+      ],
+      "wikiRightsApi": "https://onepiece.fandom.com/api.php?action=query&meta=siteinfo&siprop=rightsinfo&format=json",
+      "wikiRightsDeclaration": {
+        "url": "https://www.fandom.com/licensing",
+        "text": "CC-BY-SA"
+      },
+      "shortPolicyExcerpt": "Creative Commons Attribution-Share Alike License 3.0 (Unported) (CC BY-SA)"
+    },
+    {
+      "source": "https://www.fandom.com/it/licensing-it",
+      "accessMethod": "Firecrawl markdown scrape; Licensing heading and policy body verified",
+      "scrapeId": "01a1593a-4911-72ee-8468-b9f05e5a2adb",
+      "retrievedMarkdownSha256": "44335594c06239cf43751d3554bf0fbb6e7a3d91373d488575c7c1c858ce0979",
+      "observedDefault": "CC BY-SA 3.0 Unported; subject to exceptions",
+      "sectionsChecked": [
+        "Licenza",
+        "Attribuzione",
+        "Contenuti non testuali",
+        "Utilizzo dei testi di FANDOM"
+      ],
+      "wikiRightsApi": "https://onepiece.fandom.com/it/api.php?action=query&meta=siteinfo&siprop=rightsinfo&format=json",
+      "wikiRightsDeclaration": {
+        "url": "https://www.fandom.com/it/licensing-it",
+        "text": "CC-BY-SA"
+      },
+      "shortPolicyExcerpt": "Creative Commons Attribution – ShareAlike 3.0 (Unported) (CC-BY-SA 3.0)."
+    },
+    {
+      "source": "https://www.animefillerlist.com/shows/one-piece",
+      "accessMethod": "curl HTML and browser text",
+      "responseSha256": "143131651bb460ca7448596a321f66b27cc4295c6b355a27f100ad2a63f6fb47",
+      "observed": "Copyright footer and privacy-policy link; no open-content license found on this guide; classifications 54–56,196–198,1029–1030 checked manually; no page revision identifier advertised"
+    }
+  ],
+  "snapshotLimit": "Hashes identify the retrieved responses; full policy/guide snapshots are not committed. Dynamic re-fetches may differ. Read the exact source URLs and named sections to reassess the observed terms; scrape IDs are retrieval records, not public archives."
+}

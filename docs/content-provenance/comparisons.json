@@ -1,0 +1,950 @@
+[
+  {
+    "id": "chronicle-1-en",
+    "file": "src/data/records/east-blue.chronicle.ts",
+    "locale": "en",
+    "source": "en-Episode_1.json",
+    "title": "Episode 1",
+    "revision": 2131598,
+    "revisionDate": "2026-09-04T06:24:37Z",
+    "sha256": "7435adb12b2a8048c41ab619d5bbfb7cdbae09e335e315ff997816b489723d65",
+    "sourceWords": 707,
+    "segments": [
+      {
+        "path": "monkey-d-luffy@1.body.en",
+        "localWords": 109,
+        "longestWords": 3,
+        "localPhrase": "will become the",
+        "sourceToken": 6
+      }
+    ]
+  },
+  {
+    "id": "chronicle-126-en",
+    "file": "src/data/records/east-blue.chronicle.ts",
+    "locale": "en",
+    "source": "en-Episode_126.json",
+    "title": "Episode 126",
+    "revision": 1991739,
+    "revisionDate": "2024-03-04T19:12:25Z",
+    "sha256": "09d00bd3429e758fae88aebb668a1c9fc04fc206283a0433432e5200736d91fe",
+    "sourceWords": 571,
+    "segments": [
+      {
+        "path": "monkey-d-luffy@126.body.en",
+        "localWords": 96,
+        "longestWords": 3,
+        "localPhrase": "luffy gets up",
+        "sourceToken": 180
+      }
+    ]
+  },
+  {
+    "id": "chronicle-869-en",
+    "file": "src/data/records/east-blue.chronicle.ts",
+    "locale": "en",
+    "source": "en-Episode_869.json",
+    "title": "Episode 869",
+    "revision": 2021406,
+    "revisionDate": "2024-08-24T05:41:46Z",
+    "sha256": "12e40210daa21c942fb31c0c9e1feb3c0c39d1695e055827efcfaea0e5c9673d",
+    "sourceWords": 826,
+    "segments": [
+      {
+        "path": "monkey-d-luffy@869.body.en",
+        "localWords": 98,
+        "longestWords": 4,
+        "localPhrase": "in the mirro world",
+        "sourceToken": 38
+      }
+    ]
+  },
+  {
+    "id": "chronicle-916-en",
+    "file": "src/data/records/east-blue.chronicle.ts",
+    "locale": "en",
+    "source": "en-Episode_916.json",
+    "title": "Episode 916",
+    "revision": 2096846,
+    "revisionDate": "2026-01-13T15:25:17Z",
+    "sha256": "1729748f355642841ec66d5828af41ea9a74a9589476d78e2250f479f3bf3f50",
+    "sourceWords": 571,
+    "segments": [
+      {
+        "path": "monkey-d-luffy@916.body.en",
+        "localWords": 110,
+        "longestWords": 2,
+        "localPhrase": "through the",
+        "sourceToken": 419
+      }
+    ]
+  },
+  {
+    "id": "dossier-monkey-d-luffy-en",
+    "file": "src/data/records/east-blue.ts",
+    "locale": "en",
+    "source": "en-Monkey_D._Luffy.json",
+    "title": "Monkey D. Luffy",
+    "revision": 2135832,
+    "revisionDate": "2026-10-16T13:33:58Z",
+    "sha256": "77027f3c8e4232cc8e08bf44be91f325ff201bcecf3dc97e9a76bce7f1577b5e",
+    "sourceWords": 4662,
+    "segments": [
+      {
+        "path": "monkey-d-luffy.role.en",
+        "localWords": 1,
+        "longestWords": 1,
+        "localPhrase": "captain",
+        "sourceToken": 17
+      },
+      {
+        "path": "monkey-d-luffy.log.en",
+        "localWords": 48,
+        "longestWords": 3,
+        "localPhrase": "as a child",
+        "sourceToken": 606
+      },
+      {
+        "path": "monkey-d-luffy.affiliation.0.value.en",
+        "localWords": 9,
+        "longestWords": 2,
+        "localPhrase": "captain of",
+        "sourceToken": 17
+      },
+      {
+        "path": "monkey-d-luffy.affiliation.1.value.en",
+        "localWords": 3,
+        "longestWords": 3,
+        "localPhrase": "straw hat pirates",
+        "sourceToken": 20
+      },
+      {
+        "path": "monkey-d-luffy.affiliation.2.value.en",
+        "localWords": 4,
+        "longestWords": 3,
+        "localPhrase": "straw hat pirates",
+        "sourceToken": 20
+      },
+      {
+        "path": "monkey-d-luffy.affiliation.3.value.en",
+        "localWords": 10,
+        "longestWords": 4,
+        "localPhrase": "straw hat grand fleet",
+        "sourceToken": 381
+      },
+      {
+        "path": "monkey-d-luffy.origin.0.value.en",
+        "localWords": 4,
+        "longestWords": 2,
+        "localPhrase": "foosha village",
+        "sourceToken": 4282
+      },
+      {
+        "path": "monkey-d-luffy.epithet.0.value.en",
+        "localWords": 2,
+        "longestWords": 2,
+        "localPhrase": "straw hat",
+        "sourceToken": 6
+      }
+    ]
+  },
+  {
+    "id": "dossier-tama-en",
+    "file": "src/data/records/wano.ts",
+    "locale": "en",
+    "source": "en-Tama.json",
+    "title": "Kurozumi Tama",
+    "revision": 2132292,
+    "revisionDate": "2026-09-11T19:51:07Z",
+    "sha256": "3b5a77e8b7f454ce2610343ce6813f06cf4aec794e02e8a65924e04748b86b67",
+    "sourceWords": 4527,
+    "segments": [
+      {
+        "path": "tama.role.en",
+        "localWords": 4,
+        "longestWords": 2,
+        "localPhrase": "amigasa village",
+        "sourceToken": 1136
+      },
+      {
+        "path": "tama.log.en",
+        "localWords": 55,
+        "longestWords": 5,
+        "localPhrase": "any animal that eats one",
+        "sourceToken": 1761
+      },
+      {
+        "path": "tama.affiliation.0.value.en",
+        "localWords": 7,
+        "longestWords": 2,
+        "localPhrase": "a child",
+        "sourceToken": 1117
+      },
+      {
+        "path": "tama.affiliation.1.value.en",
+        "localWords": 3,
+        "longestWords": 1,
+        "localPhrase": "apprentice",
+        "sourceToken": 1008
+      },
+      {
+        "path": "tama.origin.0.value.en",
+        "localWords": 2,
+        "longestWords": 2,
+        "localPhrase": "wano country",
+        "sourceToken": 14
+      }
+    ]
+  },
+  {
+    "id": "dossier-jack-en",
+    "file": "src/data/records/whole-cake.ts",
+    "locale": "en",
+    "source": "en-Jack.json",
+    "title": "Jack",
+    "revision": 2119924,
+    "revisionDate": "2026-06-02T15:05:45Z",
+    "sha256": "6acbcd84b277009bb83266835b55f6a423cd152c7010c0de0394b6696b0fb5b5",
+    "sourceWords": 4917,
+    "segments": [
+      {
+        "path": "jack.role.en",
+        "localWords": 4,
+        "longestWords": 2,
+        "localPhrase": "beasts pirates",
+        "sourceToken": 12
+      },
+      {
+        "path": "jack.log.en",
+        "localWords": 70,
+        "longestWords": 3,
+        "localPhrase": "the elephant s",
+        "sourceToken": 3592
+      },
+      {
+        "path": "jack.affiliation.0.value.en",
+        "localWords": 4,
+        "longestWords": 2,
+        "localPhrase": "beasts pirates",
+        "sourceToken": 12
+      },
+      {
+        "path": "jack.epithet.0.value.en",
+        "localWords": 2,
+        "longestWords": 2,
+        "localPhrase": "the drought",
+        "sourceToken": 1
+      }
+    ]
+  },
+  {
+    "id": "filler-film-red-en",
+    "file": "src/data/filler.ts",
+    "locale": "en",
+    "source": "en-Film_Red.json",
+    "title": "One Piece Film: Red",
+    "revision": 2132023,
+    "revisionDate": "2026-09-07T08:25:18Z",
+    "sha256": "99bf5b0ef136464891700341b0c6d2bbef25b245930821887f170953f052507d",
+    "sourceWords": 8032,
+    "segments": [
+      {
+        "path": "film-red.summary.en",
+        "localWords": 36,
+        "longestWords": 6,
+        "localPhrase": "on the island of music elegia",
+        "sourceToken": 50
+      }
+    ]
+  },
+  {
+    "id": "filler-54-en",
+    "file": "src/data/filler.ts",
+    "locale": "en",
+    "source": "en-Episode_54.json",
+    "title": "Episode 54",
+    "revision": 2050360,
+    "revisionDate": "2025-02-12T03:45:52Z",
+    "sha256": "4e612a0094ca4b63126aadbb7ffcfcd277a0c8ba7b92effc42ee2d13f64493ca",
+    "sourceWords": 543,
+    "segments": [
+      {
+        "path": "episode-54.title.en",
+        "localWords": 9,
+        "longestWords": 9,
+        "localPhrase": "precursor to a new adventure apis a mysterious girl",
+        "sourceToken": 38
+      },
+      {
+        "path": "episode-54.summary.en",
+        "localWords": 35,
+        "longestWords": 3,
+        "localPhrase": "the going merry",
+        "sourceToken": 146
+      }
+    ]
+  },
+  {
+    "id": "filler-55-en",
+    "file": "src/data/filler.ts",
+    "locale": "en",
+    "source": "en-Episode_55.json",
+    "title": "Episode 55",
+    "revision": 2127490,
+    "revisionDate": "2026-07-27T18:02:44Z",
+    "sha256": "fa893ef4251e5f40f120c2cc3943aad220f1682eb3f0ae57136be074e1a1d1ad",
+    "sourceWords": 1559,
+    "segments": [
+      {
+        "path": "episode-55.title.en",
+        "localWords": 8,
+        "longestWords": 8,
+        "localPhrase": "miraculous creature apis secret and the legendary island",
+        "sourceToken": 39
+      },
+      {
+        "path": "episode-55.summary.en",
+        "localWords": 36,
+        "longestWords": 4,
+        "localPhrase": "the crew reaches warship",
+        "sourceToken": 62
+      }
+    ]
+  },
+  {
+    "id": "filler-56-en",
+    "file": "src/data/filler.ts",
+    "locale": "en",
+    "source": "en-Episode_56.json",
+    "title": "Episode 56",
+    "revision": 1912305,
+    "revisionDate": "2023-02-10T19:59:07Z",
+    "sha256": "a61129b84f7827101906aaabc1c2cd0323fe850108f757c60b441a7f29a925c5",
+    "sourceWords": 150,
+    "segments": [
+      {
+        "path": "episode-56.title.en",
+        "localWords": 7,
+        "longestWords": 7,
+        "localPhrase": "eric attacks great escape from warship island",
+        "sourceToken": 32
+      },
+      {
+        "path": "episode-56.summary.en",
+        "localWords": 35,
+        "longestWords": 6,
+        "localPhrase": "luffy and sanji fight the marines",
+        "sourceToken": 105
+      }
+    ]
+  },
+  {
+    "id": "filler-196-en",
+    "file": "src/data/filler.ts",
+    "locale": "en",
+    "source": "en-Episode_196.json",
+    "title": "Episode 196",
+    "revision": 2100534,
+    "revisionDate": "2026-02-04T02:17:50Z",
+    "sha256": "c3e99cc5b256eaadd4571170792d601a7e3d16b2204bc273fd27737640277f0d",
+    "sourceWords": 888,
+    "segments": [
+      {
+        "path": "episode-196.title.en",
+        "localWords": 12,
+        "longestWords": 12,
+        "localPhrase": "a state of emergency is issued a notorious pirate ship has infiltrated",
+        "sourceToken": 23
+      },
+      {
+        "path": "episode-196.summary.en",
+        "localWords": 28,
+        "longestWords": 5,
+        "localPhrase": "from the sky the marines",
+        "sourceToken": 192
+      }
+    ]
+  },
+  {
+    "id": "filler-197-en",
+    "file": "src/data/filler.ts",
+    "locale": "en",
+    "source": "en-Episode_197.json",
+    "title": "Episode 197",
+    "revision": 2046047,
+    "revisionDate": "2025-01-22T15:29:30Z",
+    "sha256": "8ab93c21ab07ed6b38a618bb2e947794a326d360d331f8de44d7d79d851b8aa5",
+    "sourceWords": 242,
+    "segments": [
+      {
+        "path": "episode-197.title.en",
+        "localWords": 11,
+        "longestWords": 11,
+        "localPhrase": "sanji the cook proving his merit at the navy dining hall",
+        "sourceToken": 30
+      },
+      {
+        "path": "episode-197.summary.en",
+        "localWords": 30,
+        "longestWords": 5,
+        "localPhrase": "to prepare a decent meal",
+        "sourceToken": 33
+      }
+    ]
+  },
+  {
+    "id": "filler-198-en",
+    "file": "src/data/filler.ts",
+    "locale": "en",
+    "source": "en-Episode_198.json",
+    "title": "Episode 198",
+    "revision": 2100639,
+    "revisionDate": "2026-02-05T01:56:26Z",
+    "sha256": "d79d7111e23d931d951ec6c5f8a875d87c6cf94a4f05d7079406fba335188d92",
+    "sourceWords": 638,
+    "segments": [
+      {
+        "path": "episode-198.title.en",
+        "localWords": 7,
+        "longestWords": 7,
+        "localPhrase": "captured zoro and chopper s emergency operations",
+        "sourceToken": 22
+      },
+      {
+        "path": "episode-198.summary.en",
+        "localWords": 28,
+        "longestWords": 3,
+        "localPhrase": "chopper and nami",
+        "sourceToken": 25
+      }
+    ]
+  },
+  {
+    "id": "filler-1029-en",
+    "file": "src/data/filler.ts",
+    "locale": "en",
+    "source": "en-Episode_1029.json",
+    "title": "Episode 1029",
+    "revision": 2095164,
+    "revisionDate": "2026-01-04T15:02:01Z",
+    "sha256": "424c48836b3bef9bdaa6fcff0e710cb4c4a530859185187516e859cfb6e2a0bd",
+    "sourceWords": 979,
+    "segments": [
+      {
+        "path": "episode-1029.title.en",
+        "localWords": 10,
+        "longestWords": 10,
+        "localPhrase": "a faint memory luffy and red haired s daughter uta",
+        "sourceToken": 4
+      },
+      {
+        "path": "episode-1029.summary.en",
+        "localWords": 36,
+        "longestWords": 4,
+        "localPhrase": "luffy meets shanks and",
+        "sourceToken": 24
+      }
+    ]
+  },
+  {
+    "id": "filler-1030-en",
+    "file": "src/data/filler.ts",
+    "locale": "en",
+    "source": "en-Episode_1030.json",
+    "title": "Episode 1030",
+    "revision": 2124761,
+    "revisionDate": "2026-07-08T18:00:54Z",
+    "sha256": "9b411d35cf503878f3b0d2e71906b2de810bdebc77fdcb5ffbe2154c30688f47",
+    "sourceWords": 697,
+    "segments": [
+      {
+        "path": "episode-1030.title.en",
+        "localWords": 9,
+        "longestWords": 9,
+        "localPhrase": "a pledge for the next genesis luffy and uta",
+        "sourceToken": 36
+      },
+      {
+        "path": "episode-1030.summary.en",
+        "localWords": 31,
+        "longestWords": 10,
+        "localPhrase": "the world with shanks and bringing joy with her singing",
+        "sourceToken": 239
+      }
+    ]
+  },
+  {
+    "id": "chronicle-1-it",
+    "file": "src/data/records/east-blue.chronicle.ts",
+    "locale": "it",
+    "source": "it-Episodio_1.json",
+    "title": "Episodio 1",
+    "revision": 353984,
+    "revisionDate": "2024-07-10T00:42:47Z",
+    "sha256": "1754d3d6762a263fa0bfa9fce9a988c026175cc6d931b9272efd5f97f49a97ea",
+    "sourceWords": 472,
+    "segments": [
+      {
+        "path": "monkey-d-luffy@1.body.it",
+        "localWords": 109,
+        "longestWords": 4,
+        "localPhrase": "il re dei pirati",
+        "sourceToken": 152
+      }
+    ]
+  },
+  {
+    "id": "chronicle-126-it",
+    "file": "src/data/records/east-blue.chronicle.ts",
+    "locale": "it",
+    "source": "it-Episodio_126.json",
+    "title": "Episodio 126",
+    "revision": 326552,
+    "revisionDate": "2022-03-28T19:27:25Z",
+    "sha256": "3ff0ccb7894bb5717b1c33cc7ddb0366dcdf46c821bcaa60cafe26500369036c",
+    "sourceWords": 204,
+    "segments": [
+      {
+        "path": "monkey-d-luffy@126.body.it",
+        "localWords": 100,
+        "longestWords": 3,
+        "localPhrase": "rufy si rialza",
+        "sourceToken": 64
+      }
+    ]
+  },
+  {
+    "id": "chronicle-869-it",
+    "file": "src/data/records/east-blue.chronicle.ts",
+    "locale": "it",
+    "source": "it-Episodio_869.json",
+    "title": "Episodio 869",
+    "revision": 367967,
+    "revisionDate": "2025-12-08T20:59:42Z",
+    "sha256": "43c8a4f9a8e9a43c918e8a1297dc4ae3f5864151e32b70ce992c756900ed2638",
+    "sourceWords": 362,
+    "segments": [
+      {
+        "path": "monkey-d-luffy@869.body.it",
+        "localWords": 102,
+        "longestWords": 3,
+        "localPhrase": "allenamento con rayleigh",
+        "sourceToken": 39
+      }
+    ]
+  },
+  {
+    "id": "chronicle-916-it",
+    "file": "src/data/records/east-blue.chronicle.ts",
+    "locale": "it",
+    "source": "it-Episodio_916.json",
+    "title": "Episodio 916",
+    "revision": 370229,
+    "revisionDate": "2026-05-18T19:51:56Z",
+    "sha256": "8b772ff195765d8a8ab4011678e4717641767d6304c245f8b3457dc48b3414c7",
+    "sourceWords": 465,
+    "segments": [
+      {
+        "path": "monkey-d-luffy@916.body.it",
+        "localWords": 111,
+        "longestWords": 3,
+        "localPhrase": "del re conquistatore",
+        "sourceToken": 40
+      }
+    ]
+  },
+  {
+    "id": "dossier-monkey-d-luffy-it",
+    "file": "src/data/records/east-blue.ts",
+    "locale": "it",
+    "source": "it-Monkey_D._Rufy.json",
+    "title": "Monkey D. Rufy",
+    "revision": 372825,
+    "revisionDate": "2026-09-28T20:32:31Z",
+    "sha256": "d1815dde96581ff28d252fe2b0b11de6fe607e26d3e17a00b231187c14b97f57",
+    "sourceWords": 82245,
+    "segments": [
+      {
+        "path": "monkey-d-luffy.role.it",
+        "localWords": 1,
+        "longestWords": 1,
+        "localPhrase": "capitano",
+        "sourceToken": 5
+      },
+      {
+        "path": "monkey-d-luffy.log.it",
+        "localWords": 50,
+        "longestWords": 5,
+        "localPhrase": "un frutto del diavolo e",
+        "sourceToken": 33015
+      },
+      {
+        "path": "monkey-d-luffy.affiliation.0.value.it",
+        "localWords": 8,
+        "longestWords": 4,
+        "localPhrase": "capitano di una ciurma",
+        "sourceToken": 8808
+      },
+      {
+        "path": "monkey-d-luffy.affiliation.1.value.it",
+        "localWords": 5,
+        "longestWords": 5,
+        "localPhrase": "pirati di cappello di paglia",
+        "sourceToken": 7
+      },
+      {
+        "path": "monkey-d-luffy.affiliation.2.value.it",
+        "localWords": 6,
+        "longestWords": 5,
+        "localPhrase": "pirati di cappello di paglia",
+        "sourceToken": 7
+      },
+      {
+        "path": "monkey-d-luffy.affiliation.3.value.it",
+        "localWords": 14,
+        "longestWords": 5,
+        "localPhrase": "pirati di cappello di paglia",
+        "sourceToken": 7
+      },
+      {
+        "path": "monkey-d-luffy.origin.0.value.it",
+        "localWords": 4,
+        "longestWords": 1,
+        "localPhrase": "villaggio",
+        "sourceToken": 6499
+      },
+      {
+        "path": "monkey-d-luffy.epithet.0.value.it",
+        "localWords": 3,
+        "longestWords": 3,
+        "localPhrase": "cappello di paglia",
+        "sourceToken": 9
+      }
+    ]
+  },
+  {
+    "id": "dossier-tama-it",
+    "file": "src/data/records/wano.ts",
+    "locale": "it",
+    "source": "it-Tama.json",
+    "title": "Kurozumi Tama",
+    "revision": 371833,
+    "revisionDate": "2026-08-09T10:45:38Z",
+    "sha256": "1b35c7637b5e163b164a9fa5a5a93f8d8fdfce9df6813ab7b3c7e28a9a6030c0",
+    "sourceWords": 5544,
+    "segments": [
+      {
+        "path": "tama.role.it",
+        "localWords": 5,
+        "longestWords": 2,
+        "localPhrase": "del villaggio",
+        "sourceToken": 458
+      },
+      {
+        "path": "tama.log.it",
+        "localWords": 61,
+        "longestWords": 4,
+        "localPhrase": "che le permette di",
+        "sourceToken": 259
+      },
+      {
+        "path": "tama.affiliation.0.value.it",
+        "localWords": 9,
+        "longestWords": 2,
+        "localPhrase": "paese di",
+        "sourceToken": 612
+      },
+      {
+        "path": "tama.affiliation.1.value.it",
+        "localWords": 4,
+        "longestWords": 1,
+        "localPhrase": "servitori",
+        "sourceToken": 4014
+      },
+      {
+        "path": "tama.origin.0.value.it",
+        "localWords": 3,
+        "longestWords": 2,
+        "localPhrase": "paese di",
+        "sourceToken": 612
+      }
+    ]
+  },
+  {
+    "id": "dossier-jack-it",
+    "file": "src/data/records/whole-cake.ts",
+    "locale": "it",
+    "source": "it-Jack.json",
+    "title": "Jack",
+    "revision": 365069,
+    "revisionDate": "2025-08-14T17:38:41Z",
+    "sha256": "523e414dc17a7796d119e55162c90c28a915f2503590054a606358c885d2c891",
+    "sourceWords": 3319,
+    "segments": [
+      {
+        "path": "jack.role.it",
+        "localWords": 7,
+        "longestWords": 5,
+        "localPhrase": "dei pirati delle cento bestie",
+        "sourceToken": 12
+      },
+      {
+        "path": "jack.log.it",
+        "localWords": 64,
+        "longestWords": 3,
+        "localPhrase": "come se fossero",
+        "sourceToken": 1216
+      },
+      {
+        "path": "jack.affiliation.0.value.it",
+        "localWords": 6,
+        "longestWords": 4,
+        "localPhrase": "pirati delle cento bestie",
+        "sourceToken": 13
+      },
+      {
+        "path": "jack.epithet.0.value.it",
+        "localWords": 2,
+        "longestWords": 1,
+        "localPhrase": "la",
+        "sourceToken": 168
+      }
+    ]
+  },
+  {
+    "id": "filler-film-red-it",
+    "file": "src/data/filler.ts",
+    "locale": "it",
+    "source": "it-Film_Red.json",
+    "title": "Film 15",
+    "revision": 371933,
+    "revisionDate": "2026-08-09T10:52:21Z",
+    "sha256": "8307f6ceb1f671a1dff9fd6af57866a8ac9b224e37af0c2741064113f2d2b88c",
+    "sourceWords": 2474,
+    "segments": [
+      {
+        "path": "film-red.summary.it",
+        "localWords": 35,
+        "longestWords": 3,
+        "localPhrase": "concerto a elegia",
+        "sourceToken": 29
+      }
+    ]
+  },
+  {
+    "id": "filler-54-it",
+    "file": "src/data/filler.ts",
+    "locale": "it",
+    "source": "it-Episodio_54.json",
+    "title": "Episodio 54",
+    "revision": 326463,
+    "revisionDate": "2022-03-28T19:23:41Z",
+    "sha256": "8e132c476f71343fa0caa1f9d47bf287a2aa4aee842e65d3eb04e740fb84f00c",
+    "sourceWords": 165,
+    "segments": [
+      {
+        "path": "episode-54.title.it",
+        "localWords": 3,
+        "longestWords": 3,
+        "localPhrase": "una ragazza misteriosa",
+        "sourceToken": 3
+      },
+      {
+        "path": "episode-54.summary.it",
+        "localWords": 32,
+        "longestWords": 6,
+        "localPhrase": "fugge da una nave della marina",
+        "sourceToken": 16
+      }
+    ]
+  },
+  {
+    "id": "filler-55-it",
+    "file": "src/data/filler.ts",
+    "locale": "it",
+    "source": "it-Episodio_55.json",
+    "title": "Episodio 55",
+    "revision": 326465,
+    "revisionDate": "2022-03-28T19:23:46Z",
+    "sha256": "edecbf298c40862effbe1c9a47ab889b8ba33f297f5cb1bc1188c48d55d30077",
+    "sourceWords": 318,
+    "segments": [
+      {
+        "path": "episode-55.title.it",
+        "localWords": 3,
+        "longestWords": 3,
+        "localPhrase": "una creatura leggendaria",
+        "sourceToken": 3
+      },
+      {
+        "path": "episode-55.summary.it",
+        "localWords": 33,
+        "longestWords": 4,
+        "localPhrase": "la ciurma raggiunge warship",
+        "sourceToken": 75
+      }
+    ]
+  },
+  {
+    "id": "filler-56-it",
+    "file": "src/data/filler.ts",
+    "locale": "it",
+    "source": "it-Episodio_56.json",
+    "title": "Episodio 56",
+    "revision": 326466,
+    "revisionDate": "2022-03-28T19:23:48Z",
+    "sha256": "9fe26e3cef6387a23d9f567551f4a840dca012c929f3b471c70f0754a0e36507",
+    "sourceWords": 240,
+    "segments": [
+      {
+        "path": "episode-56.title.it",
+        "localWords": 3,
+        "longestWords": 3,
+        "localPhrase": "fuga dall isola",
+        "sourceToken": 3
+      },
+      {
+        "path": "episode-56.summary.it",
+        "localWords": 35,
+        "longestWords": 3,
+        "localPhrase": "rufy e sanji",
+        "sourceToken": 100
+      }
+    ]
+  },
+  {
+    "id": "filler-196-it",
+    "file": "src/data/filler.ts",
+    "locale": "it",
+    "source": "it-Episodio_196.json",
+    "title": "Episodio 196",
+    "revision": 326673,
+    "revisionDate": "2022-03-28T19:32:11Z",
+    "sha256": "5615a751b034ef049c53164bbd5d59ee85b69041a927db48b6f6c55cbd218bc8",
+    "sourceWords": 164,
+    "segments": [
+      {
+        "path": "episode-196.title.it",
+        "localWords": 5,
+        "longestWords": 5,
+        "localPhrase": "il mistero della nave fantasma",
+        "sourceToken": 3
+      },
+      {
+        "path": "episode-196.summary.it",
+        "localWords": 29,
+        "longestWords": 5,
+        "localPhrase": "base g 8 della marina",
+        "sourceToken": 14
+      }
+    ]
+  },
+  {
+    "id": "filler-197-it",
+    "file": "src/data/filler.ts",
+    "locale": "it",
+    "source": "it-Episodio_197.json",
+    "title": "Episodio 197",
+    "revision": 358989,
+    "revisionDate": "2024-12-24T07:42:36Z",
+    "sha256": "b3cb03135f8c142dcae0b519bfc5dd86c6ef4d04817cfacba34812619b533182",
+    "sourceWords": 231,
+    "segments": [
+      {
+        "path": "episode-197.title.it",
+        "localWords": 4,
+        "longestWords": 4,
+        "localPhrase": "il talento di sanji",
+        "sourceToken": 3
+      },
+      {
+        "path": "episode-197.summary.it",
+        "localWords": 30,
+        "longestWords": 3,
+        "localPhrase": "cuochi della marina",
+        "sourceToken": 101
+      }
+    ]
+  },
+  {
+    "id": "filler-198-it",
+    "file": "src/data/filler.ts",
+    "locale": "it",
+    "source": "it-Episodio_198.json",
+    "title": "Episodio 198",
+    "revision": 326675,
+    "revisionDate": "2022-03-28T19:32:18Z",
+    "sha256": "9fe9276c78979188d9dafa2f92f77b7a57465c3b17c36a11c843753aa5c91ecd",
+    "sourceWords": 199,
+    "segments": [
+      {
+        "path": "episode-198.title.it",
+        "localWords": 8,
+        "longestWords": 8,
+        "localPhrase": "zoro in prigione e chopper in sala operatoria",
+        "sourceToken": 3
+      },
+      {
+        "path": "episode-198.summary.it",
+        "localWords": 30,
+        "longestWords": 3,
+        "localPhrase": "a curare i",
+        "sourceToken": 72
+      }
+    ]
+  },
+  {
+    "id": "filler-1029-it",
+    "file": "src/data/filler.ts",
+    "locale": "it",
+    "source": "it-Episodio_1029.json",
+    "title": "Episodio 1029",
+    "revision": 334211,
+    "revisionDate": "2022-08-30T08:53:51Z",
+    "sha256": "d4a0816a2cc62132abd4010473a7b7c72046c4e2d173a871d24943efd1d16bc3",
+    "sourceWords": 382,
+    "segments": [
+      {
+        "path": "episode-1029.title.it",
+        "localWords": 10,
+        "longestWords": 10,
+        "localPhrase": "un ricordo lontano rufy e la figlia del rosso uta",
+        "sourceToken": 18
+      },
+      {
+        "path": "episode-1029.summary.it",
+        "localWords": 33,
+        "longestWords": 3,
+        "localPhrase": "cappello di paglia",
+        "sourceToken": 19
+      }
+    ]
+  },
+  {
+    "id": "filler-1030-it",
+    "file": "src/data/filler.ts",
+    "locale": "it",
+    "source": "it-Episodio_1030.json",
+    "title": "Episodio 1030",
+    "revision": 345562,
+    "revisionDate": "2023-08-01T14:04:26Z",
+    "sha256": "d15df8f9b7a2189971434cd41bf2ed496096d2d1285623b36d74ed6575590583",
+    "sourceWords": 477,
+    "segments": [
+      {
+        "path": "episode-1030.title.it",
+        "localWords": 9,
+        "longestWords": 9,
+        "localPhrase": "una promessa per la nuova era rufy e uta",
+        "sourceToken": 21
+      },
+      {
+        "path": "episode-1030.summary.it",
+        "localWords": 33,
+        "longestWords": 3,
+        "localPhrase": "con shanks e",
+        "sourceToken": 302
+      }
+    ]
+  }
+]
