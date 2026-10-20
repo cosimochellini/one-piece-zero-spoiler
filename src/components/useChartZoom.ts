@@ -11,6 +11,7 @@ import type { Point, Rect } from '~/components/chartGeometry'
 import {
   MAX_ZOOM,
   panView,
+  sameRect,
   showing,
   WHOLE,
   zoomOf,
@@ -19,15 +20,20 @@ import {
 
 /**
  * The chart's window across, and the hands that move it (owner, #728): Ctrl
- * or ⌘ with the wheel zooms about the pointer (a trackpad's pinch is the
- * same wheel), a plain wheel scrolls the page; a drag pans; two fingers
+ * or ⌘ with the wheel zooms about the pointer (Chrome and Firefox send a
+ * trackpad's pinch as the same wheel; Safari zooms the page), a plain wheel
+ * scrolls the page; a drag pans; two fingers
  * pinch; and the buttons zoom in, out, and between the whole chart and the
  * reader's saga. Nothing moves the page: a horizontal finger pans, a
  * vertical one scrolls as ever (`touch-action: pan-y` on the frame).
  */
 
-/** How wide the chart is drawn before the page has measured it. */
+/**
+ * How wide the chart is drawn before the page has measured it: across, at
+ * its widest; upright, on a common phone.
+ */
 const ASSUMED_WIDTH = 1200
+const ASSUMED_PHONE = 375
 /** How far a press moves before it is a drag and not a click. */
 const DRAG_PX = 5
 /** One press of + or −. */
@@ -80,7 +86,7 @@ export function useChartZoom(opening: Rect, zoomable: boolean): ChartZoom {
   const { move, read, view, viewRef } = useWindow(opening)
   const [element, setElement] = useState<HTMLDivElement | null>(null)
   const hold = zoomable ? element : null
-  const width = useFrameWidth(element)
+  const width = useFrameWidth(element, zoomable ? ASSUMED_WIDTH : ASSUMED_PHONE)
   useWheel(hold, viewRef, move)
 
   return {
@@ -158,8 +164,11 @@ function movesOf({
 }
 
 /** The frame's width, measured where the browser can, assumed elsewhere. */
-function useFrameWidth(element: HTMLDivElement | null): number {
-  const [width, setWidth] = useState(ASSUMED_WIDTH)
+function useFrameWidth(
+  element: HTMLDivElement | null,
+  assumed: number,
+): number {
+  const [width, setWidth] = useState(assumed)
 
   useEffect(() => {
     if (element === null || typeof ResizeObserver === 'undefined') {
@@ -251,7 +260,11 @@ function pinch(
 
 /** One pointer: the window follows it, as far as the chart goes. */
 function drag({ element, last, move, now, view }: Gesture): void {
-  const unit = view.width / element.getBoundingClientRect().width
+  const { width } = element.getBoundingClientRect()
+  if (width === 0) {
+    return
+  }
+  const unit = view.width / width
 
   move(
     panView(view, { x: (last.x - now.x) * unit, y: (last.y - now.y) * unit }),
@@ -317,8 +330,9 @@ function useHands(
 
   return {
     onClickCapture: (event) => {
-      // A drag that ends on a stop does not follow its link.
-      if (!pressesRef.current.dragged) {
+      // A drag that ends on a stop does not follow its link. A click from
+      // the keyboard (`detail` 0) is never a drag's.
+      if (!pressesRef.current.dragged || event.detail === 0) {
         return
       }
 
@@ -328,7 +342,12 @@ function useHands(
     },
     onPointerCancel: release,
     onPointerDown: (event) => {
-      if (event.button !== 0 && event.pointerType === 'mouse') {
+      // A press in a peek is the peek's: its links, its veil, its ✕.
+      if (
+        (event.button !== 0 && event.pointerType === 'mouse')
+        || (event.target instanceof Element
+          && event.target.closest('dialog') !== null)
+      ) {
         return
       }
       const at = { x: event.clientX, y: event.clientY }
@@ -367,11 +386,5 @@ function otherPointer(
 function isDrag(press: null | Point, now: Point): boolean {
   return (
     press !== null && Math.hypot(now.x - press.x, now.y - press.y) >= DRAG_PX
-  )
-}
-
-function sameRect(a: Rect, b: Rect): boolean {
-  return (
-    a.x === b.x && a.y === b.y && a.width === b.width && a.height === b.height
   )
 }

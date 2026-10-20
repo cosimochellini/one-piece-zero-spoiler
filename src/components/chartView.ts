@@ -129,3 +129,10 @@ export function openingView(points: Point[], focus: null | Point): Rect {
     height: width / RATIO,
   })
 }
+
+/** Whether two windows are the same. */
+export function sameRect(a: Rect, b: Rect): boolean {
+  return (
+    a.x === b.x && a.y === b.y && a.width === b.width && a.height === b.height
+  )
+}

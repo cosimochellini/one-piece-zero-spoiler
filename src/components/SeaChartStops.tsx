@@ -56,7 +56,9 @@ function useRoving(
     }
     event.preventDefault()
     setActive(next)
-    targetsRef.current[next]?.focus()
+    // The window moves to the stop (`onReach`); the browser must not scroll
+    // the clip it sits in, or the drawing would slide off the ships.
+    targetsRef.current[next]?.focus({ preventScroll: true })
   }
 
   return (index, label) => ({
@@ -198,6 +200,8 @@ function OpenStops({
           >
             <Link
               aria-current={port === here ? 'location' : undefined}
+              // A press that moves pans the chart; it never drags the link.
+              draggable={false}
               params={{ locale, id: port.id }}
               to="/$locale/places/$id"
               {...target(index, `${stage(index)}. ${port.name}`, true)}

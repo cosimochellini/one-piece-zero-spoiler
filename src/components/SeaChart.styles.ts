@@ -75,6 +75,9 @@ export const styles = stylex.create({
     marginBlockStart: space.xs,
   },
   zoom: { gap: space.xs2, display: 'flex' },
+  // At the limit a button stays focusable (`aria-disabled`): it does
+  // nothing, and the focus does not fall to the page.
+  zoomLimit: { cursor: 'not-allowed', opacity: 0.55 },
   zoomButton: {
     backgroundColor: color.paper,
     fontFamily: font.mono,

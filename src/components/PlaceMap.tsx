@@ -130,7 +130,11 @@ function stretchOf({ fogged, here, route }: PlaceChartView): {
   from: Point
   tail: Point[]
 } {
-  const from = route.at(-1)?.at ?? ORIGIN
+  // From the last stop the ship sails to, as on the places page: not
+  // Luffy's own way, not a place only shown.
+  const from =
+    route.findLast(({ at }) => at.line === undefined && at.seen !== true)?.at
+    ?? ORIGIN
   const tail = tailOf(from, fogged)
   const near = [
     ...(here === 0 ? [ORIGIN] : []),

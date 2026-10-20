@@ -176,6 +176,7 @@ function Chart({ model, orientation, peekPort }: ChartProps): ReactElement {
         <Clip world={world}>
           <ShipLayer
             marks={model.marks}
+            onReach={show}
             orientation={orientation}
             trigger={trigger}
           />
@@ -193,7 +194,11 @@ function Chart({ model, orientation, peekPort }: ChartProps): ReactElement {
   )
 }
 
-/** One layer of the world, cut off at the window's edge. */
+/**
+ * One layer of the world, cut off at the window's edge. It never scrolls: a
+ * focus the browser would scroll into view is the window's to show, and a
+ * scrolled clip would set its layer off the others.
+ */
 function Clip({
   children,
   world,
@@ -202,7 +207,12 @@ function Clip({
   world: stylex.StyleXStyles
 }): ReactElement {
   return (
-    <div {...stylex.props(styles.clip)}>
+    <div
+      onScroll={(event) => {
+        event.currentTarget.scrollTo({ left: 0, top: 0 })
+      }}
+      {...stylex.props(styles.clip)}
+    >
       <div {...stylex.props(world)}>{children}</div>
     </div>
   )
@@ -230,22 +240,32 @@ function ShipPeekAt({
 /** The ships on the route, each a button, under the stops where they meet. */
 function ShipLayer({
   marks,
+  onReach,
   orientation,
   trigger,
 }: {
   marks: ShipMark[]
+  /** Brings a ship the focus reaches into the window, when it zooms. */
+  onReach: (point: ShipMark['at']) => void
   orientation: Orientation
   trigger: ChartPeek['trigger']
 }): ReactElement {
   return (
     <div {...stylex.props(styles.layer)}>
       {marks.map((mark, index) => {
+        const peek = trigger({ index, kind: 'ship' }, false)
         return (
           <ShipOnRoute
             key={mark.ship.id}
             mark={mark}
             orientation={orientation}
-            trigger={trigger({ index, kind: 'ship' }, false)}
+            trigger={{
+              ...peek,
+              onFocus: (event) => {
+                onReach(mark.at)
+                peek.onFocus(event)
+              },
+            }}
           />
         )
       })}

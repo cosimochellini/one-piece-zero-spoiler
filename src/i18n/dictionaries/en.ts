@@ -135,7 +135,7 @@ export const enDictionary = {
   'chart.zoomIn': 'Zoom in',
   'chart.zoomOut': 'Zoom out',
   'chart.seeAll': 'See all',
-  'chart.seeSaga': 'Your arc',
+  'chart.seeSaga': 'Your saga',
   'chart.zoomHint': 'Ctrl or ⌘ with the wheel to zoom, drag to move.',
 
   'faq.animeQ': 'Anime or manga?',

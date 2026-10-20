@@ -130,8 +130,8 @@ export function ZoomButtons({
         {...stylex.props(styles.zoom)}
       >
         <Button
+          aria-disabled={isOut}
           aria-label={t('chart.zoomOut')}
-          disabled={isOut}
           onClick={() => {
             zoomBy(-1)
           }}
@@ -140,8 +140,8 @@ export function ZoomButtons({
           <span aria-hidden="true">−</span>
         </Button>
         <Button
+          aria-disabled={isIn}
           aria-label={t('chart.zoomIn')}
-          disabled={isIn}
           onClick={() => {
             zoomBy(1)
           }}

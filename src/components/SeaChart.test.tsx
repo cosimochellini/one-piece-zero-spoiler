@@ -116,7 +116,7 @@ describe('SeaChart', () => {
 
     expect(screen.getByRole('button', { name: 'Zoom in' })).toBeEnabled()
     expect(
-      screen.queryByRole('button', { name: /See all|Your arc/u }),
+      screen.queryByRole('button', { name: /See all|Your saga/u }),
     ).not.toBeInTheDocument()
   })
 
@@ -218,12 +218,18 @@ describe('SeaChart', () => {
 
     await user.click(whole)
 
-    expect(screen.getByRole('button', { name: 'Zoom out' })).toBeDisabled()
-    expect(screen.getByRole('button', { name: 'Your arc' })).toBeEnabled()
+    expect(screen.getByRole('button', { name: 'Zoom out' })).toHaveAttribute(
+      'aria-disabled',
+      'true',
+    )
+    expect(screen.getByRole('button', { name: 'Your saga' })).toBeEnabled()
 
     await user.click(zoomIn)
 
-    expect(screen.getByRole('button', { name: 'Zoom out' })).toBeEnabled()
+    expect(screen.getByRole('button', { name: 'Zoom out' })).toHaveAttribute(
+      'aria-disabled',
+      'false',
+    )
   })
 
   it('moves between the stops with the arrow keys, one tab stop for all', async () => {
@@ -430,6 +436,34 @@ describe('the peek', () => {
     fireEvent.click(baratie, { detail: 0 })
 
     expect(navigate).toHaveBeenCalledTimes(2)
+  })
+
+  it('follows no link at the end of a drag, and a key’s click after a pan', () => {
+    // jsdom has no pointer capture; the frame takes the pointer once it drags.
+    Object.defineProperty(HTMLElement.prototype, 'setPointerCapture', {
+      configurable: true,
+      value: vi.fn<() => void>(),
+    })
+    const { router } = draw({ bookmark: ep(30), open: eastBlue })
+    const navigate = vi.spyOn(router, 'navigate')
+    const baratie = within(stops()).getByRole('link', { name: /Baratie/u })
+    const press = { button: 0, pointerId: 1, pointerType: 'mouse' }
+
+    fireEvent.pointerDown(baratie, { ...press, clientX: 10, clientY: 10 })
+    fireEvent.pointerMove(baratie, { ...press, clientX: 60, clientY: 10 })
+    fireEvent.pointerUp(baratie, press)
+    fireEvent.click(baratie, { detail: 1 })
+
+    expect(navigate).not.toHaveBeenCalled()
+
+    // A touch pan sends no click; the next click from a key still follows.
+    const touch = { pointerId: 2, pointerType: 'touch' }
+    fireEvent.pointerDown(baratie, { ...touch, clientX: 10, clientY: 10 })
+    fireEvent.pointerMove(baratie, { ...touch, clientX: 60, clientY: 10 })
+    fireEvent.pointerUp(baratie, touch)
+    fireEvent.click(baratie, { detail: 0 })
+
+    expect(navigate).toHaveBeenCalledTimes(1)
   })
 
   it('keeps a held peek when the pointer rests on another stop', async () => {
