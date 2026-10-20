@@ -82,23 +82,32 @@ collective restoration with **375 / 483**. The Risky Brothers' own citations
 establish their shadowless introduction and later survival, but do not by
 themselves show the ground beneath their objects.
 
-**Accepted and implemented.** Chapter **483**, “The End of the Dream,” shows
-Lola and the Risky Brothers beginning to vanish before the shadows return, then
-the Rolling Pirates celebrating with their shadows in the ground-level group
-panel (scan image **007**, middle panel). The inspected
-[reference page](https://onepiece20465.blogspot.com/2019/11/one-piece-chapter-482.html)
-is mislabeled **482** in its URL; its chapter heading explicitly identifies
-**483**. The image, not the URL label, establishes the chapter.
-[Episode 375](https://onepiece.fandom.com/wiki/Episode_375) independently
-describes Lola and her crew celebrating the restoration;
-[episode 374](https://onepiece.fandom.com/wiki/Episode_374) ends with the
-shadowless victims beginning to burn. `wiki:pairs` confirms chapter **482** maps
-to **374** and **483** to **375**.
+**Accepted and implemented in the earlier drawing audit; not newly
+frame-verified by the rights audit.** The earlier audit recorded chapter
+**483**, “The End of the Dream,” as showing the Rolling Pirates celebrating with
+restored shadows in a ground-level group panel, and chapter **482** as showing
+the preceding vanishing victims. Its two references were third-party Blogspot
+manga-image pages, with reported URL/chapter mismatches. Those links have been
+removed: no authorization evidence was recorded, and a mirror is not a suitable
+source recommendation. The old scan filename is not a reliable locator in a
+licensed edition.
 
-The preceding chapter’s final spread was also inspected: victims are still
-vanishing while Moria releases the shadows
-([reference page](https://onepiece20465.blogspot.com/2019/11/one-piece-chapter-481.html),
-actual chapter **482**, despite its URL).
+Use **volume 50, chapters 482–483** in a lawfully accessed edition for a new
+frame check. The
+[official volume listing](https://one-piece.com/comics/o50/index.html) confirms
+that volume 50 contains chapters 482–491, and the
+[authorized English edition](https://www.simonandschuster.com/books/One-Piece-Vol-50/Eiichiro-Oda/One-Piece/9781421534664)
+provides purchase information. These catalog pages establish an access route,
+not the panel geometry; no licensed interior was newly inspected for this rights
+audit. Regional availability and access terms must be checked.
+
+[Episode 375](https://onepiece.fandom.com/wiki/Episode_375) is a secondary lead
+for the restoration celebration;
+[episode 374](https://onepiece.fandom.com/wiki/Episode_374) describes the
+preceding burning victims. The earlier audit reports `wiki:pairs` mapping
+chapter **482** to **374** and **483** to **375**. Preserve the existing stage
+while its source/provenance limitations remain explicit; see
+[the rights inventory](illustration-rights-audit.md#references-and-provenance).
 
 The stage reuses every stroke of the sword and striped shirt, adding only the
 house-style ground shadow. It preserves their tint and identity accents. The
