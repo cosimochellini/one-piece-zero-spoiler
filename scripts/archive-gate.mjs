@@ -117,9 +117,13 @@ const WORST_CHUNKS = 5
  * names of the stops and the sagas and which of them fit at each zoom, and
  * six new keys in both dictionaries. The list layout of the index left the
  * bundle. Each island's outline is the server's, sent with its open stop.
- * The measured build plus ~1 KB.
+ * The measured build plus ~1 KB. Raised to 625.5 KB on 2026-10-20 for the
+ * unofficial-project footer (#723): bilingual rights and contact guidance,
+ * source/contact links and explicit unofficial social descriptions. The
+ * measured client build is 624,448 bytes; the ceiling keeps ~1 KB headroom.
+ * No archive data or drawings move to the client.
  */
-export const MAX_CLIENT_BYTES = 622_600
+export const MAX_CLIENT_BYTES = 625_500
 
 /** Where the prose lives: every saga, the ship's log and the filler guide. */
 const PROSE_DIR = 'src/data/records'

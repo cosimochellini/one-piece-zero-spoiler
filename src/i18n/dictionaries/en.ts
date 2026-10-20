@@ -18,9 +18,9 @@ export const enDictionary = {
   'site.name': 'Zero Spoiler',
   'site.title': 'Zero Spoiler | The One Piece wiki without spoilers',
   'site.description':
-    'A One Piece wiki that hides every character, arc, place and devil fruit you have not reached yet. Set the episode or chapter you are on and read up to there.',
+    'An unofficial One Piece fan wiki that hides every character, arc, place and devil fruit you have not reached yet. Set the episode or chapter you are on and read up to there.',
   'seo.imageAlt':
-    'The Zero Spoiler card: the logo above a route that disappears into fog.',
+    'The Zero Spoiler unofficial fan wiki card: the logo above a route that disappears into fog.',
 
   'nav.skip': 'Skip to content',
   'nav.characters': 'Characters',
@@ -150,7 +150,16 @@ export const enDictionary = {
 
   'footer.lead': 'A One Piece wiki that hides what comes after your bookmark.',
   'footer.colophon':
-    'All the drawings are made for this site; no official artwork is used. Your bookmark is saved in a cookie on this device. MIT licence.',
+    'All the drawings are made for this site; no official artwork is used. Your bookmark is saved in a cookie on this device. Site code under the MIT licence; One Piece rights are excluded.',
+
+  'footer.unofficial':
+    'Unofficial, nonprofit fan project. Not affiliated with or endorsed by One Piece rights holders.',
+  'footer.credits':
+    'One Piece was created by Eiichiro Oda. Anime credit: © Eiichiro Oda/Shueisha, Toei Animation.',
+  'footer.creditSource': 'Official credit source',
+  'footer.contact': 'Rights inquiries and corrections on GitHub',
+  'footer.contactHelp':
+    'Include the page URL, the material concerned and the rights inquiry or correction requested. Keep spoilers out of the title. GitHub issues are public and require an account. Do not post confidential information.',
 
   'characters.title': 'Characters',
   'characters.count':

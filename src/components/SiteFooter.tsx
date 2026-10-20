@@ -21,6 +21,25 @@ export function SiteFooter(): ReactElement {
         <b {...stylex.props(styles.lead)}>{t('footer.lead')}</b>{' '}
         {t('footer.colophon')}
       </p>
+      <p {...stylex.props(styles.colophon)}>{t('footer.unofficial')}</p>
+      <p {...stylex.props(styles.colophon)}>
+        {t('footer.credits')}{' '}
+        <a
+          {...stylex.props(styles.link)}
+          href="https://www.toei-animation.com/copyrights/"
+        >
+          {t('footer.creditSource')}
+        </a>
+      </p>
+      <p {...stylex.props(styles.colophon)}>
+        <a
+          {...stylex.props(styles.link)}
+          href="https://github.com/cosimochellini/one-piece-zero-spoiler/issues/new?template=blank.md"
+        >
+          {t('footer.contact')}
+        </a>{' '}
+        {t('footer.contactHelp')}
+      </p>
     </footer>
   )
 }
@@ -41,7 +60,17 @@ const styles = stylex.create({
     fontFamily: font.body,
     fontSize: text.base,
     lineHeight: leading.body,
+    marginBlockEnd: space.sm,
     maxWidth: '72ch',
+  },
+  link: {
+    color: color.ink2,
+    outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
+    outlineOffset: space.xs3,
+    outlineStyle: 'solid',
+    outlineWidth: rule.fine,
+    textDecorationLine: 'underline',
+    textUnderlineOffset: '3px',
   },
   lead: { color: color.ink2, fontWeight: 700 },
 })
