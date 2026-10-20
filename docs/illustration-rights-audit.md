@@ -145,7 +145,8 @@ notices remain tracked in
 Sources checked 2026-10-20; no copyrighted source images were added as evidence.
 
 - [ONE PIECE.com volume 50](https://one-piece.com/comics/o50/index.html)
-  identifies chapters 482–491.
+  identifies chapters 482–491 in its current search-index extract (direct
+  retrieval returned 403).
   [Authorized English publisher/distributor listing](https://www.simonandschuster.com/books/One-Piece-Vol-50/Eiichiro-Oda/One-Piece/9781421534664)
   identifies VIZ's edition. These replace the Thriller Bark mirror
   recommendations, not the missing licensed panel check. Access/territory
@@ -163,7 +164,7 @@ Sources checked 2026-10-20; no copyrighted source images were added as evidence.
   unlawful reproduction, modification and distribution. Direct retrieval
   returned 403, so no full-term compliance assessment is claimed. Neither
   extract supplies a fan-art license for these assets.
-- [Italian Law 633/1941, current official text](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1941-04-22;633)
+- [Italian Law 633/1941, official portal](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1941-04-22;633)
   and [EU Directive 2001/29](https://eur-lex.europa.eu/eli/dir/2001/29/oj/eng)
   are primary legal starting points for professional review, not a claim that
   any particular exception applies here. Italian and international distribution
