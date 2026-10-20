@@ -256,6 +256,33 @@ describe('SeaChart', () => {
     expect(targets[0]).toHaveAttribute('tabindex', '0')
   })
 
+  it('brings a stop the keys reach into the window, the world moving with it', async () => {
+    const user = userEvent.setup()
+    draw({ bookmark: ep(30), open: eastBlue })
+
+    const [drawing] = screen.getAllByRole('img', { name: /Map of the places/u })
+    const world = (): null | string =>
+      drawing?.parentElement?.getAttribute('style') ?? null
+    const zoomIn = screen.getByRole('button', { name: 'Zoom in' })
+    await user.click(zoomIn)
+    await user.click(zoomIn)
+    const opened = world()
+    const [first, , last] = within(stops()).getAllByRole('link')
+
+    // jsdom never reports a focus as the keyboard's: say that this one is.
+    const visible = vi
+      .spyOn(Element.prototype, 'matches')
+      .mockImplementation(function keyed(this: Element, selector: string) {
+        return selector === ':focus-visible' || this.closest(selector) === this
+      })
+    last?.focus()
+    await user.keyboard('{Home}')
+    visible.mockRestore()
+
+    expect(first).toHaveFocus()
+    expect(world()).not.toBe(opened)
+  })
+
   it('stands the latest ship at the last stop she sails to, not on a detour', () => {
     const { container } = draw({
       bookmark: ep(410),
