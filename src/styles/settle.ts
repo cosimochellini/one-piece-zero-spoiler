@@ -27,18 +27,19 @@ function settleDelay(index: number): string {
 }
 
 export const settleStyles = stylex.create({
+  // The first frame holds through the delay (`backwards`), so a band waits
+  // unseen; once settled the band keeps nothing of the animation. A held
+  // `transform`, even `none` as its last frame, would make every band the
+  // containing block of its fixed children: the chart's peek, a sheet on a
+  // phone, would sit at the foot of the band instead of the screen (#728).
   band: {
     animationDuration: dur.long,
-    animationFillMode: 'forwards',
+    animationFillMode: 'backwards',
     animationName: {
       'default': 'none',
       '@media (prefers-reduced-motion: no-preference)': settle,
     },
     animationTimingFunction: ease.out,
-    opacity: {
-      'default': 1,
-      '@media (prefers-reduced-motion: no-preference)': 0,
-    },
   },
   /** How long the nth band waits before it settles. */
   at: (index: number) => ({ animationDelay: settleDelay(index) }),
