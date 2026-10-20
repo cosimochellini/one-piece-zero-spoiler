@@ -14,7 +14,7 @@ branding SVG sources and their consumers. The registry contains **737 first
 drawings and 308 later entries**. Counts include repeated return drawings as
 separate dated entries; they do not count map outlines. This audit visually
 inspected **45 distinct first drawings and 28 later entries**, plus all **38**
-`ISLES` outlines. It did not inspect the other 692 first drawings or 281 later
+`ISLES` outlines. It did not inspect the other 692 first drawings or 280 later
 entries, nor compare the archive against all manga/anime frames. No sample
 establishes clearance for its family.
 
