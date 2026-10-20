@@ -146,6 +146,54 @@ export const itDictionary: Dictionary = {
   'faq.peekA':
     'Sì. Nelle altre pagine della wiki premi “Mostra comunque”. La scelta non viene salvata e le altre voci restano nella nebbia.',
 
+  'privacy.title': 'Privacy e cookie',
+  'privacy.description':
+    'Come Zero Spoiler usa cookie tecnici, memoria del browser e hosting Netlify.',
+  'privacy.updated': 'Ultima verifica: 20 ottobre 2026.',
+  'privacy.controllerTitle': 'Chi gestisce il sito',
+  'privacy.controller':
+    'Zero Spoiler è un progetto amatoriale personale e senza scopo di lucro. Il gestore e titolare del trattamento è una persona privata in Italia, contattabile su GitHub come @cosimochellini. Per una richiesta iniziale usa il link di contatto GitHub qui sotto.',
+  'privacy.serviceTitle': 'Cosa invia una visita',
+  'privacy.service':
+    'Il browser invia a Netlify l’indirizzo richiesto, l’indirizzo IP, informazioni sul browser e i cookie pertinenti per consegnare le pagine e applicare il limite agli spoiler. Le richieste restano su questo sito; font e disegni sono ospitati qui. L’applicazione non usa account utente, pubblicità, analytics o profilazione.',
+  'privacy.cookiesTitle': 'Cookie tecnici e memoria del browser',
+  'privacy.cookiesIntro':
+    'Questi cookie di prima parte servono alle funzioni che richiedi. Non sono usati per pubblicità o tracciamento tra siti. Le regole italiane sui cookie tecnici necessari non richiedono un banner di consenso per questi usi.',
+  'privacy.bookmark':
+    'opzs_ep: il tuo segnalibro per episodio, capitolo o live action; dura 365 giorni dal salvataggio, oppure fino alla cancellazione. Anche aprire un link con un segnalibro imposta questo cookie. Il valore viene inviato al server per nascondere gli eventi successivi.',
+  'privacy.language':
+    'opzs_lang: la lingua scelta (it o en); dura 365 giorni dalla scelta. Viene inviato al server per ricordare la lingua nelle visite successive.',
+  'privacy.trial':
+    'opzs_try: un segnalibro temporaneo impostato quando provi il sito; è un cookie di sessione senza scadenza fissa, rimosso quando salvi o cancelli un segnalibro o esci dalla prova. Il ripristino della sessione del browser può conservarlo.',
+  'privacy.attributes':
+    'Tutti e tre i cookie usano Path=/ e SameSite=Lax, senza attributi Domain, Secure o HttpOnly. Il sito è servito tramite HTTPS. Sono leggibili dal JavaScript del sito e vengono inviati nelle richieste pertinenti allo stesso sito e nelle navigazioni principali da altri siti.',
+  'privacy.storage':
+    'opzs_welcome è un indicatore in sessionStorage che mostra un benvenuto una sola volta dopo il salvataggio del segnalibro. Viene rimosso quando la pagina iniziale lo legge o alla fine della sessione della scheda; non viene inviato al server. L’applicazione non usa localStorage.',
+  'privacy.controlTitle': 'Le tue scelte',
+  'privacy.control':
+    'Puoi cancellare il segnalibro dalla sua finestra e rimuovere cookie e memoria del sito dalle impostazioni del browser. Bloccarli impedisce di ricordare le preferenze; senza segnalibro vedi la vista introduttiva. Non ci sono cookie di tracciamento facoltativi da accettare o rifiutare.',
+  'privacy.hostingTitle': 'Hosting, log e trasferimenti',
+  'privacy.hosting':
+    'Netlify, Inc. ospita e consegna il sito tramite la propria CDN e funzioni server. La regione configurata delle funzioni è us-east-2 (Ohio, Stati Uniti): le richieste vengono quindi trattate fuori dallo SEE. La configurazione verificata non ha istanze Analytics o Identity, database, snippet aggiunti, moduli o servizi aggiuntivi.',
+  'privacy.logs':
+    'Netlify conserva log dell’attività delle funzioni: la documentazione indica almeno 24 ore, con durate maggiori per alcuni piani. Non è un limite massimo verificato per questo sito né per i log di traffico e sicurezza. Il periodo completo di conservazione del fornitore è ancora da verificare. L’assenza di analytics non significa assenza di trattamento di dati personali.',
+  'privacy.terms':
+    'L’accordo sul trattamento dei dati pubblicato da Netlify fa parte dei suoi termini standard di abbonamento, descrive il ruolo di responsabile e i subfornitori e prevede il Data Privacy Framework UE–USA con clausole contrattuali standard come alternativa. Sono i termini pubblicati dal fornitore; restano da confermare i dettagli contrattuali del sito e le modalità complete di conservazione.',
+  'privacy.basesTitle': 'Finalità e basi giuridiche',
+  'privacy.bases':
+    'Le finalità sono consegnare le pagine richieste, applicare il limite agli spoiler, ricordare le tue scelte e mantenere il sito funzionante e sicuro. La base è il legittimo interesse a fornire questo servizio limitato (articolo 6(1)(f) GDPR); l’applicazione non aggiunge cronologie dei visitatori o profilazione per questi scopi. Le richieste applicabili sui diritti sono gestite per adempiere agli obblighi di legge (articolo 6(1)(c)). L’esenzione dal consenso per i cookie tecnici è distinta da queste basi GDPR. Puoi opporti come descritto sotto.',
+  'privacy.rightsTitle': 'Domande e diritti',
+  'privacy.rights':
+    'Quando applicabili, puoi chiedere accesso, rettifica, cancellazione, limitazione o portabilità dei dati personali, opporti al trattamento e presentare reclamo al Garante italiano o all’autorità del tuo Paese. Le richieste riguardano i dati effettivamente detenuti; il valore di un cookie da solo non identifica un account nominativo.',
+  'privacy.contact': 'Contatto su GitHub',
+  'privacy.contactHelp':
+    'Per un primo contatto sulla privacy apri una issue GitHub senza dati personali o riservati. Le issue sono pubbliche e richiedono un account. Non inserire indirizzi IP, valori dei cookie o documenti di identità. Concorderemo un canale riservato prima di discutere dati personali. GitHub tratta le informazioni che inserisci lì secondo la propria informativa privacy.',
+  'privacy.sourcesTitle': 'Fonti e verifica',
+  'privacy.garante': 'Garante: linee guida su cookie e tracciamento',
+  'privacy.netlifyLogs': 'Netlify: log delle funzioni e conservazione',
+  'privacy.netlifyTerms': 'Netlify: accordo sul trattamento e subfornitori',
+  'privacy.audit': 'Verifica tecnica e controlli da completare',
+
   'footer.lead':
     'Una wiki di One Piece che nasconde quello che viene dopo il tuo segnalibro.',
   'footer.colophon':

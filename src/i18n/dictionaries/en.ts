@@ -148,6 +148,54 @@ export const enDictionary = {
   'faq.peekA':
     'Yes. On the other pages of the wiki, press “Show anyway” on it. The choice is not saved, and every other entry stays under fog.',
 
+  'privacy.title': 'Privacy and cookies',
+  'privacy.description':
+    'How Zero Spoiler uses technical cookies, browser storage and Netlify hosting.',
+  'privacy.updated': 'Last checked: 20 October 2026.',
+  'privacy.controllerTitle': 'Who runs the site',
+  'privacy.controller':
+    'Zero Spoiler is a personal, nonprofit fan project. Its operator and data controller is a private individual based in Italy, reachable as @cosimochellini on GitHub. Use the GitHub contact link below for an initial request.',
+  'privacy.serviceTitle': 'What a visit sends',
+  'privacy.service':
+    'Your browser sends Netlify the requested address, IP address, browser information and applicable cookies to deliver pages and apply your spoiler boundary. Requests stay on this site; fonts and drawings are hosted here. There are no user accounts, advertising, analytics or profiling in the application.',
+  'privacy.cookiesTitle': 'Technical cookies and browser storage',
+  'privacy.cookiesIntro':
+    'These first-party cookies support features you request. They are not used for advertising or tracking across sites. They do not require a consent banner under the Italian rules for necessary technical cookies.',
+  'privacy.bookmark':
+    'opzs_ep: your episode, chapter or live-action bookmark; kept for 365 days after saving it, or until you clear it. Opening a shared bookmark link also sets this cookie. The value is sent to the server to hide later events.',
+  'privacy.language':
+    'opzs_lang: your selected language (it or en); kept for 365 days after choosing it. Sent to the server to remember the language on later visits.',
+  'privacy.trial':
+    'opzs_try: a temporary bookmark set when you try the site; a session cookie with no fixed expiry, removed when you save or clear a bookmark or leave the trial. Browser session restore can preserve session cookies.',
+  'privacy.attributes':
+    'All three cookies use Path=/ and SameSite=Lax, with no Domain, Secure or HttpOnly attribute. The site is served over HTTPS. They can be read by this site’s JavaScript and sent on applicable same-site requests and top-level cross-site navigations.',
+  'privacy.storage':
+    'opzs_welcome is a sessionStorage flag used to show a welcome once after saving a bookmark. It is removed when the home page reads it, or when the tab session ends; it is not sent to the server. The application does not use localStorage.',
+  'privacy.controlTitle': 'Your choices',
+  'privacy.control':
+    'You can clear the bookmark in its dialog and remove cookies and site storage in your browser settings. Blocking them prevents the site from remembering your preferences; without a bookmark you see the introductory view. There are no optional tracking cookies to accept or reject.',
+  'privacy.hostingTitle': 'Hosting, logs and transfers',
+  'privacy.hosting':
+    'Netlify, Inc. hosts and delivers the site using its CDN and server functions. The configured function region is us-east-2 (Ohio, United States), so requests are processed outside the EEA. The checked configuration has no Analytics or Identity instance, database, injected snippets, forms or service add-ons.',
+  'privacy.logs':
+    'Netlify retains function activity logs: its documentation specifies at least 24 hours, with longer retention on some plans. This is not a verified maximum for this site or for traffic and security logs. The complete provider retention period is still being verified. No analytics does not mean no personal data is processed.',
+  'privacy.terms':
+    'Netlify’s published Data Processing Agreement forms part of its standard subscription terms, describes its processor role and subprocessors, and provides for the EU–US Data Privacy Framework with standard contractual clauses as a fallback. These are the provider’s published terms; site-specific contractual details and the full retention arrangements remain to be confirmed.',
+  'privacy.basesTitle': 'Purposes and legal bases',
+  'privacy.bases':
+    'The purposes are delivering the pages you request, applying your spoiler boundary, remembering your choices and keeping the site operational and secure. The basis is the legitimate interest in providing this limited service (GDPR Article 6(1)(f)); the application adds no visitor history or profiling for these purposes. Applicable data-rights requests are handled to meet legal obligations (Article 6(1)(c)). The technical-cookie consent exemption is separate from these GDPR bases. You may object as described below.',
+  'privacy.rightsTitle': 'Questions and your rights',
+  'privacy.rights':
+    'Where applicable, you may request access, correction, erasure, restriction or portability of personal data, object to processing, and complain to the Italian Garante or your local supervisory authority. Requests concern data actually held; a cookie value alone does not identify a named account.',
+  'privacy.contact': 'Contact on GitHub',
+  'privacy.contactHelp':
+    'For an initial privacy contact request, open a GitHub issue without personal or confidential details. Issues are public and require an account. Do not include IP addresses, cookie values or identity documents. We will agree a private channel before discussing any personal details. GitHub processes information you submit there under its own privacy policy.',
+  'privacy.sourcesTitle': 'Sources and verification',
+  'privacy.garante': 'Italian Garante: cookies and tracking guidance',
+  'privacy.netlifyLogs': 'Netlify: function logs and retention',
+  'privacy.netlifyTerms': 'Netlify: DPA and subprocessors',
+  'privacy.audit': 'Technical audit and outstanding checks',
+
   'footer.lead': 'A One Piece wiki that hides what comes after your bookmark.',
   'footer.colophon':
     'All the drawings are made for this site; no official artwork is used. Your bookmark is saved in a cookie on this device. Site code under the MIT licence; One Piece rights are excluded.',
