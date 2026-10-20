@@ -5,17 +5,22 @@ import {
   CHART_HEIGHT,
   CHART_WIDTH,
   cropAround,
-  legsOf,
   ORIGIN,
   placeOf,
   type Point,
   type Rect,
   regionsFor,
-  tailOf,
 } from '~/components/chartGeometry'
+import { legsOf, tailOf } from '~/components/chartRoute'
 import { tintOf } from '~/components/drawing'
 import { styles as chart } from '~/components/SeaChart.styles'
-import { SeaRoute, SeaWorld } from '~/components/SeaChartDrawing'
+import {
+  type IsleMark,
+  Isles,
+  SeaRoute,
+  SeaWorld,
+} from '~/components/SeaChartDrawing'
+import { isOnRoute, sagaTintOf } from '~/components/seaChartNames'
 import { Spot } from '~/components/SeaChartPins'
 import type { PlaceChartView } from '~/lib/view/places'
 import { color, radius, rule } from '~/styles/tokens.stylex'
@@ -84,6 +89,10 @@ export function PlaceMap({
             still
             tail={tail}
           />
+          <Isles
+            isles={islesOf(map)}
+            orientation="across"
+          />
         </svg>
         <Stops
           map={map}
@@ -92,6 +101,23 @@ export function PlaceMap({
       </div>
     </div>
   )
+}
+
+/** The reached stops' islands, each in its saga's hue, as on the places page. */
+function islesOf({ route }: PlaceChartView): IsleMark[] {
+  const isles: IsleMark[] = []
+  for (const stop of route) {
+    if (stop.at.isle !== undefined) {
+      isles.push({
+        at: stop.at,
+        id: keyOf(stop.at),
+        outline: stop.at.isle,
+        tint: sagaTintOf(stop.saga),
+      })
+    }
+  }
+
+  return isles
 }
 
 /**
@@ -105,7 +131,9 @@ function stretchOf({ fogged, here, route }: PlaceChartView): {
   from: Point
   tail: Point[]
 } {
-  const from = route.at(-1)?.at ?? ORIGIN
+  // From the last stop the ship sails to, as on the places page: not
+  // Luffy's own way, not a place only shown.
+  const from = route.findLast(({ at }) => isOnRoute(at))?.at ?? ORIGIN
   const tail = tailOf(from, fogged)
   const near = [
     ...(here === 0 ? [ORIGIN] : []),
@@ -117,7 +145,7 @@ function stretchOf({ fogged, here, route }: PlaceChartView): {
 }
 
 /**
- * The origin, every stop the reader has reached in its drawing's tint with
+ * The origin, every stop the reader has reached in its saga's hue with
  * this one ringed in gold, and the dots under fog. The frame cuts off the
  * ones outside the stretch.
  */
@@ -140,7 +168,7 @@ function Stops({
             key={keyOf(stop.at)}
             at={stop.at}
             sx={[
-              chart.dotOpen(tintOf(stop.tint)),
+              chart.dotOpen(tintOf(sagaTintOf(stop.saga))),
               index === map.here && chart.dotHere,
             ]}
           />

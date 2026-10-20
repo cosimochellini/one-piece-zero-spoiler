@@ -1491,10 +1491,20 @@ export const CHRONICLE_SOURCES = {
       note: 'Shiryu’s stab is in 1121; the split skull, Koby breaking the hand, Garp staying behind with his last message and Kuzan freezing him are in 1122. Dossier: the “captured by the Blackbeard Pirates” affiliation was filed at 1109, an episode Garp is not in; moved to 1122, where “Kuzan captures him, freezing him solid”.',
     },
   },
+  'paulie': {
+    232: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_232',
+      note: 'Chapter 326 page 17 already labels Paulie a Dock One foreman (Paulie page intro Qref), so the frozen title stays. Chapter 327 pages 3, 6–7 show Lucci stopping the theft and Paulie asking for a share to pay gambling debts; page 11 shows his objections to Nami and Kalifa’s clothes. These later details leave the frozen summary/log and open at the explicit 232/327 pair.',
+    },
+  },
   'rob-lucci': {
     230: {
       source: 'https://onepiece.fandom.com/wiki/Episode_230',
-      note: 'Debut: the Galley-La shipwrights beat Mikazuki’s crew with a cannon and the Straw Hats find a crowd praising Lucci, one of the shipwrights; Hattori debuts with him here (Hattori page, ch.323/ep.230). The ventriloquism is not in the ep.230 summaries (History cites it at ep.232), so the story only says a pigeon is perched on him. Second pass: “the women think him handsome” was unattested and removed. Chapter (#169): the last event is chapter 324, at or below the record’s own chapter 326, so no pin.',
+      note: 'Debut: the Galley-La shipwrights beat Mikazuki’s crew with a cannon and the Straw Hats find a crowd praising the shipwrights, including Lucci (episode 230 subtitles also cheer Lulu and Tilestone); Hattori debuts with him here (Hattori page, ch.323/ep.230). The ventriloquism is not in the ep.230 summaries (History cites it at ep.232), so the story only says a pigeon is perched on him. Second pass: “the women think him handsome” was unattested and removed. Chapter (#169): the last event is chapter 324, at or below the record’s own chapter 326, so no pin.',
+    },
+    232: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_232',
+      note: 'Chapter 327 introduces Rob Lucci by his full name as a Dock One foreman (Rob Lucci page intro Qref chap=327 ep=232). The frozen record keeps Lucci, the name the crowd uses at episode 230. nameSaidAt permits earlier mentions only and cannot gate a later full name.',
     },
     246: {
       source: 'https://onepiece.fandom.com/wiki/Episode_246',

@@ -58,14 +58,26 @@ const SAGA_PICKS = sagas.map((saga, at) => ({
 }))
 
 /**
+ * The saga a place is filed under, by its place in route order from 1. A
+ * data test holds that every place is filed under one.
+ */
+export function sagaNumberOf(id: string): number {
+  const saga = SAGA_PICKS.find(({ ids }) => ids.has(id))
+  if (saga === undefined) {
+    throw new Error(`${id} is filed under no saga`)
+  }
+
+  return saga.number
+}
+
+/**
  * One stop the reader has reached, as the chart and the index draw it. A
  * data test holds that every place has a dossier and is filed under a saga.
  */
 function stopOf(entity: Entity, r: Reader): StopView {
   const dossier = placeDossierOf(entity)
-  const saga = SAGA_PICKS.find(({ ids }) => ids.has(entity.id))
-  if (dossier === undefined || saga === undefined) {
-    throw new Error(`${entity.id} has no dossier or no saga`)
+  if (dossier === undefined) {
+    throw new Error(`${entity.id} has no dossier`)
   }
 
   return {
@@ -74,7 +86,7 @@ function stopOf(entity: Entity, r: Reader): StopView {
     chart: chartPointOf(entity.id),
     sea: dossier.sea,
     form: dossier.form,
-    saga: saga.number,
+    saga: sagaNumberOf(entity.id),
   }
 }
 

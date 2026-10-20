@@ -11,7 +11,12 @@ import {
 } from '~/components/chartGeometry'
 import { tintOf } from '~/components/drawing'
 import { styles } from '~/components/SeaChart.styles'
-import { type ChartModel, pointOf } from '~/components/seaChartModel'
+import {
+  type ChartModel,
+  pointOf,
+  sagaTintOf,
+} from '~/components/seaChartModel'
+import { byKeys } from '~/components/useChartHands'
 import type {
   PeekTarget,
   TriggerProps as PeekTrigger,
@@ -52,7 +57,9 @@ function useRoving(
     }
     event.preventDefault()
     setActive(next)
-    targetsRef.current[next]?.focus()
+    // The window moves to the stop (`onReach`); the browser must not scroll
+    // the clip it sits in, or the drawing would slide off the ships.
+    targetsRef.current[next]?.focus({ preventScroll: true })
   }
 
   return (index, label) => ({
@@ -73,11 +80,17 @@ function useRoving(
  * Each stop's target: one tab stop for the lot (`useRoving`) and the peek's
  * handlers, both listening for the focus.
  */
-function useTargets(
-  count: number,
-  start: number,
-  trigger: (target: PeekTarget, link: boolean) => PeekTrigger,
-): (index: number, label: string, link?: boolean) => Target {
+function useTargets({
+  count,
+  onReach,
+  start,
+  trigger,
+}: {
+  count: number
+  onReach: (index: number) => void
+  start: number
+  trigger: (target: PeekTarget, link: boolean) => PeekTrigger
+}): (index: number, label: string, link?: boolean) => Target {
   const roving = useRoving(count, start)
 
   return (index, label, link = false) => {
@@ -88,6 +101,9 @@ function useTargets(
       ...peek,
       onFocus: (event) => {
         own.onFocus()
+        if (byKeys(event.currentTarget)) {
+          onReach(index)
+        }
         peek.onFocus(event)
       },
     }
@@ -104,16 +120,26 @@ function useTargets(
  */
 export function SeaChartStops({
   model,
+  onReach,
   orientation,
   trigger,
 }: {
   model: ChartModel
+  /** Brings a stop the focus reaches into the window, when it zooms. */
+  onReach?: ((point: Point) => void) | undefined
   orientation: Orientation
   trigger: (target: PeekTarget, link: boolean) => PeekTrigger
 }): ReactElement {
-  const { locale, t } = useLocale()
-  const { here, lit, open, total } = model
-  const target = useTargets(total, Math.max(open.length - 1, 0), trigger)
+  const { t } = useLocale()
+  const { open, total } = model
+  const target = useTargets({
+    count: total,
+    onReach: (index) => {
+      onReach?.(stopPoint(model, index))
+    },
+    start: Math.max(open.length - 1, 0),
+    trigger,
+  })
   const stage = (index: number): string =>
     t('places.stage', { index: index + 1, total })
 
@@ -122,6 +148,53 @@ export function SeaChartStops({
       aria-label={t('chart.title')}
       {...stylex.props(styles.layer, styles.stops)}
     >
+      <OpenStops
+        model={model}
+        orientation={orientation}
+        stage={stage}
+        target={target}
+      />
+      <FogStops
+        dim={model.lit !== null}
+        from={open.length}
+        model={model}
+        orientation={orientation}
+        stage={stage}
+        target={target}
+      />
+    </ol>
+  )
+}
+
+/** Where the stop at `index` in the route is drawn: open, or on the tail. */
+function stopPoint(model: ChartModel, index: number): Point {
+  const port = model.open[index]
+
+  return port === undefined ?
+      (model.tail[index - model.open.length] ?? FOG_END)
+    : pointOf(port)
+}
+
+/**
+ * The open stops, each a link to its page with its dot in its saga's hue;
+ * the reader's own marked as where they are.
+ */
+function OpenStops({
+  model,
+  orientation,
+  stage,
+  target,
+}: {
+  model: ChartModel
+  orientation: Orientation
+  stage: (index: number) => string
+  target: (index: number, label: string, link?: boolean) => Target
+}): ReactElement {
+  const { locale } = useLocale()
+  const { here, lit, open } = model
+
+  return (
+    <>
       {open.map((port, index) => {
         return (
           <li
@@ -130,6 +203,8 @@ export function SeaChartStops({
           >
             <Link
               aria-current={port === here ? 'location' : undefined}
+              // A press that moves pans the chart; it never drags the link.
+              draggable={false}
               params={{ locale, id: port.id }}
               to="/$locale/places/$id"
               {...target(index, `${stage(index)}. ${port.name}`, true)}
@@ -137,21 +212,14 @@ export function SeaChartStops({
               <OpenDot
                 dim={lit !== null && !lit.has(port.id)}
                 here={port === here}
-                tint={port.visual.tint}
+                seen={port.chart?.seen === true}
+                tint={sagaTintOf(port.saga)}
               />
             </Link>
           </li>
         )
       })}
-      <FogStops
-        dim={lit !== null}
-        from={open.length}
-        model={model}
-        orientation={orientation}
-        stage={stage}
-        target={target}
-      />
-    </ol>
+    </>
   )
 }
 
@@ -232,16 +300,19 @@ const PILE: Record<string, stylex.StyleXStyles> = {
 }
 
 /**
- * An open stop's dot, in its drawing's tint; ringed in gold where you are,
- * and faint when the index's picks leave it out.
+ * An open stop's dot, in its saga's hue; an eye for a place the story only
+ * shows; ringed in gold where you are, and faint when the index's picks
+ * leave it out.
  */
 function OpenDot({
   dim,
   here,
+  seen,
   tint,
 }: {
   dim: boolean
   here: boolean
+  seen: boolean
   tint: TintId
 }): ReactElement {
   return (
@@ -249,6 +320,7 @@ function OpenDot({
       {...stylex.props(
         styles.dot,
         styles.dotOpen(tintOf(tint)),
+        seen && styles.dotSeen,
         here && styles.dotHere,
         dim && styles.dotDim,
       )}

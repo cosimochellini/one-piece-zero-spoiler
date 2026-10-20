@@ -3,19 +3,26 @@ import { type Gated, thresholdIn } from '~/lib/progress/spoiler'
 
 /**
  * A port's place on the sea chart, in the chart's own box
- * (`~/components/chartGeometry`). Schematic: the stops sit along the route
- * in order, not where the story puts them. Only an open port carries one, so
- * a covered stop's position is never in the HTML. Declared apart from
- * `records.ts` only for that file's length.
+ * (`~/components/chartGeometry`). Close to where Oda puts it, spaced so the
+ * names stay clear: the stops sit along the route in order. Only an open
+ * port carries one, so a covered stop's position is never in the HTML.
+ * Declared apart from `records.ts` only for that file's length.
  */
 export interface ChartPoint {
   x: number
   y: number
   /**
-   * Set on a stop the ship does not sail to (Luffy alone, or a place the
-   * story only shows): the chart draws it on a thin branch off the route.
+   * The island's outline as the chart draws it: path data around the point,
+   * in the chart's own units. Only an open port carries one.
    */
-  detour?: true
+  isle?: string
+  /**
+   * `luffy` on a stop the ship does not sail to, where Luffy goes alone: the
+   * chart draws his own line to it off the route.
+   */
+  line?: 'luffy'
+  /** Set on a place the story only shows: a mark, and no leg to it. */
+  seen?: true
 }
 
 /**

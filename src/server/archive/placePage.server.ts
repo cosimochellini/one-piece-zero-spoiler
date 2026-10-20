@@ -18,7 +18,7 @@ import type {
 import type { DocumentHead, RecordView, Slot } from '~/lib/view/records'
 
 import { headFor, type HeadKeys } from './head.server'
-import { portOf, reachedShips, shipOf } from './places.server'
+import { portOf, reachedShips, sagaNumberOf, shipOf } from './places.server'
 import { recordOf } from './project.server'
 import { type Reader, readerFor } from './reader.server'
 
@@ -151,8 +151,8 @@ function chartOf(
     route.push({
       at,
       sea: placeDossierOf(place)?.sea ?? null,
+      saga: sagaNumberOf(place.id),
       ship: sailedBy(place, ships, r.mode),
-      tint: place.visual.tint,
     })
   }
 

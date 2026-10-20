@@ -1,17 +1,32 @@
 import {
-  type Leg,
-  legsOf,
   ORIGIN,
   type Point,
+  type Rect,
   type Region,
   regionsFor,
-  tailOf,
 } from '~/components/chartGeometry'
+import { type Leg, legsOf, tailOf } from '~/components/chartRoute'
+import {
+  isOnRoute,
+  namesOf,
+  openingOf,
+  pointOf,
+  type SagaName,
+  type StopName,
+} from '~/components/seaChartNames'
 import type { Translate } from '~/i18n/types'
 import { type Bookmark, modeOf } from '~/lib/progress/episode'
-import { type ChartPoint, sailedBy } from '~/lib/view/chart'
-import type { StopView } from '~/lib/view/places'
+import { sailedBy } from '~/lib/view/chart'
+import type { SagaPick, StopView } from '~/lib/view/places'
 import type { CoveredRecord, PortView, ShipView } from '~/lib/view/records'
+
+export {
+  isOnRoute,
+  pointOf,
+  type SagaName,
+  sagaTintOf,
+  type StopName,
+} from '~/components/seaChartNames'
 
 /** What the chart is drawn from: the places page's own payload. */
 export interface SeaChartProps {
@@ -27,6 +42,8 @@ export interface SeaChartProps {
   open: StopView[]
   /** Trades a stop under fog's handle for the place, once the reader asks. */
   peekPort: (handle: string) => Promise<PortView>
+  /** The sagas the open stops are filed under, in route order, named. */
+  sagas: SagaPick[]
   /** The ships the reader has reached, in their order. */
   ships: ShipView[]
 }
@@ -50,20 +67,17 @@ export interface ChartModel {
   lit: null | Set<string>
   marks: ShipMark[]
   open: StopView[]
+  /** The window the chart opens on across: the reader's saga. */
+  opening: Rect
   regions: Region[]
+  sagaNames: SagaName[]
+  /** The open stops' names, the reader's own stop's left to its label. */
+  stopNames: StopName[]
   /** What a screen reader hears for the drawing. */
   summary: string
   /** Where each stop under fog is drawn, in order. */
   tail: Point[]
   total: number
-}
-
-/**
- * Where an open stop is drawn. Every place has a point; the origin stands in
- * for the `null` a record that is not a place would carry.
- */
-export function pointOf(port: StopView): ChartPoint {
-  return port.chart ?? ORIGIN
 }
 
 /** An open stop, and which of the reached ships sailed to it. */
@@ -77,7 +91,10 @@ interface Reached {
  * a covered stop is a handle and two thresholds, so its dot is placed on the
  * tail by its rank alone.
  */
-export function modelOf(props: SeaChartProps, t: Translate): ChartModel {
+export function modelOf(
+  props: Omit<SeaChartProps, 'peekPort'>,
+  t: Translate,
+): ChartModel {
   const { covered, open } = props
   const total = open.length + covered.length
   const reached = reachedOf(props)
@@ -90,6 +107,7 @@ export function modelOf(props: SeaChartProps, t: Translate): ChartModel {
     here === null ?
       []
     : [t('places.stage', { index: open.length, total }), here.name]
+  const main = open.findLast((port) => isOnRoute(pointOf(port))) ?? null
 
   return {
     covered,
@@ -100,14 +118,16 @@ export function modelOf(props: SeaChartProps, t: Translate): ChartModel {
     ),
     lit: props.lit ?? null,
     marks: marksOf(props.ships, reached),
+    ...namesOf(open, here, props.sagas),
     open,
+    opening: openingOf(open, here),
     regions: [...regionsFor(open.flatMap((port) => port.sea))],
     summary: [
       t('chart.title'),
       ...where,
       ...(covered.length === 0 ? [] : [fog]),
     ].join('. '),
-    tail: tailOf(here === null ? ORIGIN : pointOf(here), covered.length),
+    tail: tailOf(main === null ? ORIGIN : pointOf(main), covered.length),
     total,
   }
 }
@@ -116,7 +136,11 @@ export function modelOf(props: SeaChartProps, t: Translate): ChartModel {
  * The ship that reached each open stop: the last one the reader has reached
  * whose own threshold is no later than the stop's, in the reader's unit.
  */
-function reachedOf({ bookmark, open, ships }: SeaChartProps): Reached[] {
+function reachedOf({
+  bookmark,
+  open,
+  ships,
+}: Omit<SeaChartProps, 'peekPort'>): Reached[] {
   const mode = modeOf(bookmark)
 
   return open.map((port) => ({ port, ship: sailedBy(port, ships, mode) }))
@@ -131,7 +155,7 @@ function reachedOf({ bookmark, open, ships }: SeaChartProps): Reached[] {
  * already stands there.
  */
 function marksOf(ships: ShipView[], reached: Reached[]): ShipMark[] {
-  const main = reached.findLast(({ port }) => pointOf(port).detour !== true)
+  const main = reached.findLast(({ port }) => isOnRoute(pointOf(port)))
   if (main === undefined) {
     return []
   }

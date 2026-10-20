@@ -4,6 +4,8 @@ import { getCharacter } from '~/data/characters'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 
+import { chronicleOf } from './chronicle.server'
+import { characterPage } from './pages.server'
 import { factsOf } from './project.server'
 import { type Reader, readerFor } from './reader.server'
 
@@ -124,6 +126,118 @@ describe('the facts a bookmark reaches', () => {
       })
     }
   })
+
+  it('dates Paulie’s gambling and clothing complaints at episode 232 and chapter 327', () => {
+    const paulie = onFile('paulie')
+
+    for (const locale of ['en', 'it'] as const) {
+      const title = locale === 'en' ? 'Gambling debts' : 'Debiti di gioco'
+      const before = readerFor({ mode: 'chapter', chapter: 326 }, locale)
+      const page = JSON.stringify(
+        characterPage(paulie.id, { mode: 'chapter', chapter: 326 }, locale),
+      )
+
+      expect(chronicleOf(paulie, ep(231, locale)).entries).toStrictEqual([])
+      expect(chronicleOf(paulie, before).entries).toStrictEqual([])
+      expect(page).not.toContain(locale === 'en' ? 'gambling' : 'gioco')
+      expect(page).not.toContain('indecent')
+
+      for (const reader of [
+        ep(232, locale),
+        readerFor({ mode: 'chapter', chapter: 327 }, locale),
+      ]) {
+        expect(chronicleOf(paulie, reader).entries).toContainEqual(
+          expect.objectContaining({
+            revealedAtEpisode: 232,
+            revealedAtChapter: 327,
+            title,
+          }),
+        )
+      }
+    }
+  })
+
+  it('keeps Lucci’s full name behind episode 232 and chapter 327', () => {
+    const lucci = onFile('rob-lucci')
+
+    for (const locale of ['en', 'it'] as const) {
+      for (const bookmark of [
+        { mode: 'episode', episode: 230 },
+        { mode: 'episode', episode: 231 },
+        { mode: 'chapter', chapter: 326 },
+      ] as const) {
+        const page = characterPage(lucci.id, bookmark, locale)
+
+        expect(page?.detail.slot).toMatchObject({
+          open: true,
+          record: { name: 'Lucci' },
+        })
+        expect(JSON.stringify(page)).not.toContain('Rob Lucci')
+      }
+      for (const reader of [
+        ep(232, locale),
+        readerFor({ mode: 'chapter', chapter: 327 }, locale),
+      ]) {
+        expect(chronicleOf(lucci, reader).entries).toContainEqual(
+          expect.objectContaining({
+            revealedAtEpisode: 232,
+            revealedAtChapter: 327,
+            title: 'Rob Lucci',
+          }),
+        )
+      }
+    }
+  })
+
+  it.each([
+    {
+      locale: 'en',
+      letter: 'a letter of recommendation',
+      track: 'the one track',
+      rails: 'breaking the rail guards',
+      backways: 'city’s back ways',
+    },
+    {
+      locale: 'it',
+      letter: 'una lettera di raccomandazione',
+      track: 'l’unico binario',
+      rails: 'rompendo le protezioni dei binari',
+      backways: 'passaggi della città',
+    },
+  ] as const)(
+    'keeps the introductory station logs within their sourced scenes in $locale',
+    ({ locale, letter, track, rails, backways }) => {
+      for (const bookmark of [
+        { mode: 'episode', episode: 230 },
+        { mode: 'chapter', chapter: 325 },
+      ] as const) {
+        const kokoro = JSON.stringify(characterPage('kokoro', bookmark, locale))
+        const chimney = JSON.stringify(
+          characterPage('chimney', bookmark, locale),
+        )
+
+        expect(kokoro).toContain(letter)
+        expect(kokoro).not.toContain(track)
+        expect(chimney).toContain(rails)
+        expect(chimney).not.toContain(backways)
+      }
+    },
+  )
+
+  it.each([
+    ['en', 'cheering the shipwrights', 'a single man'],
+    ['it', 'acclama i carpentieri', 'un solo uomo'],
+  ] as const)(
+    'describes the crowd cheering several shipwrights in %s',
+    (locale, shipwrights, single) => {
+      const crowd = JSON.stringify(
+        chronicleOf(onFile('rob-lucci'), ep(230, locale)),
+      )
+
+      expect(crowd).toContain(shipwrights)
+      expect(crowd).not.toContain(single)
+    },
+  )
 
   it('gives each fact as the reader knows it, and no fact not yet learned', () => {
     const found = factsOf(LUFFY, ep(3))

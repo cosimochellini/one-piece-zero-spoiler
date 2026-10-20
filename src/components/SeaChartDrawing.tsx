@@ -3,16 +3,25 @@ import type { ReactElement } from 'react'
 
 import {
   boxOf,
-  type Leg,
   type Orientation,
-  pathOf,
   type Point,
+  project,
   projectRect,
   type Region,
   REGIONS,
-  startsOf,
 } from '~/components/chartGeometry'
+import {
+  type Leg,
+  lineOfPoints,
+  pathsOf,
+  startsOf,
+  tailLine,
+} from '~/components/chartRoute'
+import { tintOf } from '~/components/drawing'
 import { styles } from '~/components/SeaChart.styles'
+import { Compass, Continent, SeaKing } from '~/components/SeaChartDecor'
+import { worldStyles } from '~/components/SeaChartWorld.styles'
+import type { TintId } from '~/lib/view/records'
 
 /** What both halves of the drawing share: its orientation and its ids. */
 export interface DrawingProps {
@@ -22,9 +31,11 @@ export interface DrawingProps {
 }
 
 /**
- * The seas the reader has opened, over the fog. Each kind of region has its
- * own ground: the Blues open sea, the Grand Line a ruled band, the Calm
- * Belts a stipple, the Red Line hatched.
+ * The seas the reader has opened, over the fog, each with its own ground:
+ * the Blues open sea with waves, the Grand Line a ruled band, the Calm
+ * Belts a stipple with a Sea King in the first half's, the Red Line a
+ * continent of ridges with Reverse Mountain at its right edge. The fog is
+ * cloud. The compass rose is always there: it says nothing of the story.
  */
 export function SeaWorld({
   id,
@@ -32,14 +43,15 @@ export function SeaWorld({
   regions,
 }: DrawingProps & { regions: Region[] }): ReactElement {
   const box = boxOf(orientation)
+  const opened = new Set(regions)
 
   return (
     <g aria-hidden="true">
       <Patterns id={id} />
       <rect
+        fill={`url(#${id}-cloud)`}
         height={box.y}
         width={box.x}
-        {...stylex.props(styles.fog)}
       />
       {regions.flatMap((region) => {
         return REGIONS[region].map((rect) => {
@@ -53,34 +65,40 @@ export function SeaWorld({
               width={drawn.width}
               x={drawn.x}
               y={drawn.y}
-              {...stylex.props(styles.region, edgeOf(region))}
+              {...stylex.props(worldStyles.region, edgeOf(region))}
             />
           )
         })
       })}
+      {opened.has('red-line') ?
+        <Continent orientation={orientation} />
+      : null}
+      {opened.has('calm-belt') ?
+        <SeaKing orientation={orientation} />
+      : null}
+      <Compass orientation={orientation} />
     </g>
   )
 }
 
-/** The hatching of the Red Line and the stipple of the Calm Belts. */
+/** The waves of the Blues, the stipple of the Calm Belts, and the fog's cloud. */
 function Patterns({ id }: { id: string }): ReactElement {
   return (
     <defs>
       <pattern
-        height="8"
-        id={`${id}-wall`}
-        patternTransform="rotate(45)"
+        height="34"
+        id={`${id}-waves`}
         patternUnits="userSpaceOnUse"
-        width="8"
+        width="56"
       >
         <rect
-          height="8"
-          width="8"
-          {...stylex.props(styles.wallGround)}
+          height="34"
+          width="56"
+          {...stylex.props(worldStyles.seaGround)}
         />
         <path
-          d="M0 0V8"
-          {...stylex.props(styles.wallHatch)}
+          d="M6 12q4-5 8 0t8 0M34 28q4-5 8 0t8 0"
+          {...stylex.props(worldStyles.wave)}
         />
       </pattern>
       <pattern
@@ -92,35 +110,52 @@ function Patterns({ id }: { id: string }): ReactElement {
         <rect
           height="10"
           width="12"
-          {...stylex.props(styles.seaGround)}
+          {...stylex.props(worldStyles.beltGround)}
         />
         <path
           d="M3 5H9"
-          {...stylex.props(styles.beltStipple)}
+          {...stylex.props(worldStyles.beltStipple)}
+        />
+      </pattern>
+      <pattern
+        height="90"
+        id={`${id}-cloud`}
+        patternUnits="userSpaceOnUse"
+        width="140"
+      >
+        <rect
+          height="90"
+          width="140"
+          {...stylex.props(worldStyles.fog)}
+        />
+        <path
+          d="M14 40a9 9 0 0 1 15-7a12 12 0 0 1 22 2a8 8 0 0 1 3 14H17a7 7 0 0 1-3-9ZM82 82a8 8 0 0 1 13-6a11 11 0 0 1 20 2a7 7 0 0 1 2 12H85a6 6 0 0 1-3-8Z"
+          {...stylex.props(worldStyles.cloud)}
         />
       </pattern>
     </defs>
   )
 }
 
-/** The fill of a region: a pattern for the bands, the stylesheet's otherwise. */
+/** The fill of a region: a pattern for the Blues and the belts, else the stylesheet's. */
 function groundOf(region: Region, id: string): string | undefined {
-  if (region === 'red-line') {
-    return `url(#${id}-wall)`
+  if (region === 'calm-belt' || region === 'new-world-calm-belt') {
+    return `url(#${id}-belt)`
+  }
+  if (region === 'grand-line' || region === 'new-world') {
+    return undefined
   }
 
-  return region === 'calm-belt' || region === 'new-world-calm-belt' ?
-      `url(#${id}-belt)`
-    : undefined
+  return region === 'red-line' ? undefined : `url(#${id}-waves)`
 }
 
-/** The Grand Line's two halves are ruled; every other region is not. */
+/** The Grand Line's two halves are ruled; the Red Line is land; the rest sea. */
 function edgeOf(region: Region): stylex.StyleXStyles {
   if (region === 'grand-line' || region === 'new-world') {
-    return styles.band
+    return worldStyles.band
   }
 
-  return region === 'red-line' ? styles.wall : styles.sea
+  return region === 'red-line' ? worldStyles.wall : worldStyles.sea
 }
 
 /** The route draws itself in over this long, origin to ship (1.5 s). */
@@ -129,16 +164,16 @@ const DRAW_MS = 1500
 /** The one ink each kind of leg is drawn in. */
 const LINE = {
   boat: styles.boat,
-  branch: styles.branch,
   first: styles.first,
+  luffy: styles.luffy,
   second: styles.second,
 } as const
 
 /**
  * The route sailed, drawn in once from the origin to the ship, and the fog
- * tail past it from the last open stop to the last dot. `still` draws it
- * whole at once: a stretch of it on a place's page has no origin to start
- * from.
+ * tail past it from the last stop the ship sailed to, along the Grand Line
+ * to the fog's end. `still` draws it whole at once: a stretch of it on a
+ * place's page has no origin to start from.
  */
 export function SeaRoute({
   from,
@@ -152,23 +187,23 @@ export function SeaRoute({
   still?: boolean
   tail: Point[]
 }): ReactElement {
-  const end = tail.at(-1)
   const delays = startsOf(legs).map(
     (share) => `${String(Math.round(share * DRAW_MS))}ms`,
   )
+  const paths = pathsOf(legs, orientation)
 
   return (
     <g aria-hidden="true">
-      {end === undefined ? null : (
+      {tail.length === 0 ? null : (
         <path
-          d={pathOf([{ from, to: end, line: 'boat' }], orientation)}
+          d={lineOfPoints(tailLine(from), orientation)}
           vectorEffect="non-scaling-stroke"
           {...stylex.props(styles.leg, styles.tail)}
         />
       )}
 
       {legs.map((leg, index) => {
-        const d = pathOf([leg], orientation)
+        const d = paths[index] ?? ''
         return (
           <g
             key={d}
@@ -190,6 +225,44 @@ export function SeaRoute({
               />
             : null}
           </g>
+        )
+      })}
+    </g>
+  )
+}
+
+/** One island to draw: where it is, its outline, and its saga's hue. */
+export interface IsleMark {
+  at: Point
+  id: string
+  outline: string
+  tint: TintId
+}
+
+/**
+ * The islands the reader has reached, each its own outline in its saga's
+ * hue, at its point: drawn in the chart's units, so they grow as it zooms.
+ * Drawn after the route, so the route runs into each island, not over it.
+ */
+export function Isles({
+  isles,
+  orientation,
+}: {
+  isles: IsleMark[]
+  orientation: Orientation
+}): ReactElement {
+  return (
+    <g aria-hidden="true">
+      {isles.map((isle) => {
+        const drawn = project(isle.at, orientation)
+        return (
+          <path
+            key={isle.id}
+            d={isle.outline}
+            transform={`translate(${String(drawn.x)} ${String(drawn.y)})`}
+            vectorEffect="non-scaling-stroke"
+            {...stylex.props(worldStyles.isle(tintOf(isle.tint)))}
+          />
         )
       })}
     </g>

@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event'
 import { describe, expect, it, vi } from 'vitest'
 
 import type { Bookmark } from '~/lib/progress/episode'
-import type { StopView } from '~/lib/view/places'
+import type { SagaPick, StopView } from '~/lib/view/places'
 import type { CoveredRecord, PortView, ShipView } from '~/lib/view/records'
 import { at, coveredRecord, peekTo, port, ship, stop } from '~/test/fixtures'
 import { ep, renderWithProviders, settle } from '~/test/providers'
@@ -15,19 +15,19 @@ const eastBlue = [
     id: 'shells-town',
     name: 'Shells Town',
     ...at(2),
-    chart: { x: 470, y: 140 },
+    chart: { x: 930, y: 185 },
   }),
   stop({
     id: 'syrup-village',
     name: 'Syrup Village',
     ...at(9),
-    chart: { x: 290, y: 60 },
+    chart: { x: 1210, y: 70 },
   }),
   stop({
     id: 'baratie',
     name: 'Baratie',
     ...at(20),
-    chart: { x: 190, y: 130 },
+    chart: { x: 1360, y: 175 },
   }),
 ]
 
@@ -36,21 +36,21 @@ const grandLine = [
     id: 'whisky-peak',
     name: 'Whisky Peak',
     ...at(64),
-    chart: { x: 50, y: 255 },
+    chart: { x: 1520, y: 365 },
     sea: 'grand-line',
   }),
   stop({
     id: 'enies-lobby',
     name: 'Enies Lobby',
     ...at(264),
-    chart: { x: 410, y: 255 },
+    chart: { x: 1010, y: 414 },
     sea: 'grand-line',
   }),
   stop({
     id: 'amazon-lily',
     name: 'Amazon Lily',
     ...at(410),
-    chart: { x: 540, y: 205, detour: true },
+    chart: { x: 930, y: 530, line: 'luffy' },
     sea: 'calm-belt',
   }),
 ]
@@ -69,12 +69,14 @@ function draw({
   covered = [],
   open = [],
   peekPort = peekTo(port()),
+  sagas = [],
   ships = [],
 }: {
   bookmark: Bookmark
   covered?: CoveredRecord[]
   open?: StopView[]
   peekPort?: (handle: string) => Promise<PortView>
+  sagas?: SagaPick[]
   ships?: ShipView[]
 }): ReturnType<typeof renderWithProviders> {
   return renderWithProviders(
@@ -83,6 +85,7 @@ function draw({
       covered={covered}
       open={open}
       peekPort={peekPort}
+      sagas={sagas}
       ships={ships}
     />,
     { bookmark },
@@ -106,6 +109,15 @@ describe('SeaChart', () => {
     expect(
       screen.getAllByRole('list', { name: 'Map of the places' }),
     ).toHaveLength(2)
+  })
+
+  it('offers no way back to a saga with no bookmark', () => {
+    draw({ bookmark: null })
+
+    expect(screen.getByRole('button', { name: 'Zoom in' })).toBeEnabled()
+    expect(
+      screen.queryByRole('button', { name: /See all|Your saga/u }),
+    ).not.toBeInTheDocument()
   })
 
   it('shows only the origin and fog with no bookmark, and asks for one', () => {
@@ -185,6 +197,41 @@ describe('SeaChart', () => {
     expect(view.container).not.toHaveTextContent('New World')
   })
 
+  it('writes the names of the open stops and of their saga on the chart', () => {
+    const { container } = draw({
+      bookmark: ep(30),
+      open: eastBlue,
+      sagas: [{ number: 1, title: 'East Blue Saga' }],
+    })
+
+    expect(container).toHaveTextContent('East Blue Saga')
+    expect(container).toHaveTextContent('Shells Town')
+    expect(container).not.toHaveTextContent('Alabasta Saga')
+  })
+
+  it('zooms across with its buttons, and between the whole chart and the saga', async () => {
+    const user = userEvent.setup()
+    draw({ bookmark: ep(30), open: eastBlue })
+
+    const zoomIn = screen.getByRole('button', { name: 'Zoom in' })
+    const whole = screen.getByRole('button', { name: 'See all' })
+
+    await user.click(whole)
+
+    expect(screen.getByRole('button', { name: 'Zoom out' })).toHaveAttribute(
+      'aria-disabled',
+      'true',
+    )
+    expect(screen.getByRole('button', { name: 'Your saga' })).toBeEnabled()
+
+    await user.click(zoomIn)
+
+    expect(screen.getByRole('button', { name: 'Zoom out' })).toHaveAttribute(
+      'aria-disabled',
+      'false',
+    )
+  })
+
   it('moves between the stops with the arrow keys, one tab stop for all', async () => {
     const user = userEvent.setup()
     draw({ bookmark: ep(30), open: eastBlue, covered: fogged })
@@ -207,6 +254,33 @@ describe('SeaChart', () => {
 
     expect(targets[0]).toHaveFocus()
     expect(targets[0]).toHaveAttribute('tabindex', '0')
+  })
+
+  it('brings a stop the keys reach into the window, the world moving with it', async () => {
+    const user = userEvent.setup()
+    draw({ bookmark: ep(30), open: eastBlue })
+
+    const [drawing] = screen.getAllByRole('img', { name: /Map of the places/u })
+    const world = (): null | string =>
+      drawing?.parentElement?.getAttribute('style') ?? null
+    const zoomIn = screen.getByRole('button', { name: 'Zoom in' })
+    await user.click(zoomIn)
+    await user.click(zoomIn)
+    const opened = world()
+    const [first, , last] = within(stops()).getAllByRole('link')
+
+    // jsdom never reports a focus as the keyboard's: say that this one is.
+    const visible = vi
+      .spyOn(Element.prototype, 'matches')
+      .mockImplementation(function keyed(this: Element, selector: string) {
+        return selector === ':focus-visible' || this.closest(selector) === this
+      })
+    last?.focus()
+    await user.keyboard('{Home}')
+    visible.mockRestore()
+
+    expect(first).toHaveFocus()
+    expect(world()).not.toBe(opened)
   })
 
   it('stands the latest ship at the last stop she sails to, not on a detour', () => {
@@ -389,6 +463,55 @@ describe('the peek', () => {
     fireEvent.click(baratie, { detail: 0 })
 
     expect(navigate).toHaveBeenCalledTimes(2)
+  })
+
+  it('follows no link at the end of a drag, and a key’s click after a pan', () => {
+    // jsdom has no pointer capture; the frame takes the pointer once it drags.
+    Object.defineProperty(HTMLElement.prototype, 'setPointerCapture', {
+      configurable: true,
+      value: vi.fn<() => void>(),
+    })
+    const { router } = draw({ bookmark: ep(30), open: eastBlue })
+    const navigate = vi.spyOn(router, 'navigate')
+    const baratie = within(stops()).getByRole('link', { name: /Baratie/u })
+    const press = { button: 0, pointerId: 1, pointerType: 'mouse' }
+
+    fireEvent.pointerDown(baratie, { ...press, clientX: 10, clientY: 10 })
+    fireEvent.pointerMove(baratie, { ...press, clientX: 60, clientY: 10 })
+    fireEvent.pointerUp(baratie, press)
+    fireEvent.click(baratie, { detail: 1 })
+
+    expect(navigate).not.toHaveBeenCalled()
+
+    // A touch pan sends no click; the next click from a key still follows.
+    const touch = { pointerId: 2, pointerType: 'touch' }
+    fireEvent.pointerDown(baratie, { ...touch, clientX: 10, clientY: 10 })
+    fireEvent.pointerMove(baratie, { ...touch, clientX: 60, clientY: 10 })
+    fireEvent.pointerUp(baratie, touch)
+    fireEvent.click(baratie, { detail: 0 })
+
+    expect(navigate).toHaveBeenCalledTimes(1)
+  })
+
+  it('follows the peek’s link on the first tap after a touch pan', async () => {
+    const { router } = draw({ bookmark: ep(30), open: eastBlue })
+    const navigate = vi.spyOn(router, 'navigate')
+    const baratie = within(stops()).getByRole('link', { name: /Baratie/u })
+    const touch = { pointerId: 3, pointerType: 'touch' }
+
+    // A tap peeks; a pan that starts on the stop sends no click.
+    fireEvent.pointerDown(baratie, touch)
+    fireEvent.click(baratie, { detail: 1 })
+    fireEvent.pointerDown(baratie, { ...touch, clientX: 10, clientY: 10 })
+    fireEvent.pointerMove(baratie, { ...touch, clientX: 60, clientY: 10 })
+    fireEvent.pointerUp(baratie, touch)
+
+    const dialog = await screen.findByRole('dialog', { name: /Baratie/u })
+    const entry = within(dialog).getByRole('link', { name: 'Open the entry' })
+    fireEvent.pointerDown(entry, { pointerId: 4, pointerType: 'touch' })
+    fireEvent.click(entry, { detail: 1 })
+
+    expect(navigate).toHaveBeenCalledTimes(1)
   })
 
   it('keeps a held peek when the pointer rests on another stop', async () => {

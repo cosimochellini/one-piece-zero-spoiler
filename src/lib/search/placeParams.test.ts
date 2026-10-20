@@ -19,22 +19,15 @@ const jaya = stop({
 })
 
 describe('parsePlaceParams', () => {
-  it('keeps every known pick, the grid and a query', () => {
+  it('keeps every known pick and a query', () => {
     expect(
       parsePlaceParams({
         sea: 'new-world',
         form: 'island',
         saga: 8,
-        view: 'grid',
         q: 'dress',
       }),
-    ).toStrictEqual({
-      sea: 'new-world',
-      form: 'island',
-      saga: 8,
-      view: 'grid',
-      q: 'dress',
-    })
+    ).toStrictEqual({ sea: 'new-world', form: 'island', saga: 8, q: 'dress' })
   })
 
   it('leaves out the defaults and anything it does not know', () => {
@@ -43,7 +36,7 @@ describe('parsePlaceParams', () => {
         sea: 'all',
         form: '',
         saga: 0,
-        view: 'list',
+        view: 'grid',
         q: '  ',
       }),
     ).toStrictEqual({})
@@ -57,11 +50,11 @@ describe('parsePlaceParams', () => {
 describe('reachedParams', () => {
   it('drops a sea, a type or a saga no open place holds', () => {
     expect(
-      reachedParams(
-        { sea: 'new-world', form: 'prison', saga: 9, view: 'grid', q: 'j' },
-        [baratie, jaya],
-      ),
-    ).toStrictEqual({ view: 'grid', q: 'j' })
+      reachedParams({ sea: 'new-world', form: 'prison', saga: 9, q: 'j' }, [
+        baratie,
+        jaya,
+      ]),
+    ).toStrictEqual({ q: 'j' })
   })
 
   it('keeps the ones an open place holds', () => {
@@ -86,8 +79,8 @@ describe('stopMatches', () => {
 })
 
 describe('isNarrowed', () => {
-  it('is any pick or a query, and not the layout', () => {
-    expect(isNarrowed({ view: 'grid' })).toBe(false)
+  it('is any pick or a query', () => {
+    expect(isNarrowed({})).toBe(false)
     expect(isNarrowed({ q: 'j' })).toBe(true)
     expect(isNarrowed({ saga: 2 })).toBe(true)
   })
