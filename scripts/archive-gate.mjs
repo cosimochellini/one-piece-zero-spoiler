@@ -121,9 +121,13 @@ const WORST_CHUNKS = 5
  * unofficial-project footer (#723): bilingual rights and contact guidance,
  * source/contact links and explicit unofficial social descriptions. The
  * measured client build is 624,448 bytes; the ceiling keeps ~1 KB headroom.
- * No archive data or drawings move to the client.
+ * No archive data or drawings move to the client. Raised to 641.25 KB on
+ * 2026-10-20 for the bilingual privacy notice (#722): public technical-cookie,
+ * hosting and rights guidance, its route and footer link. The measured build
+ * is 640,233 bytes; the ceiling retains ~1 KB headroom. The added prose is
+ * public policy, not archive records or drawings; all leak canaries remain.
  */
-export const MAX_CLIENT_BYTES = 625_500
+export const MAX_CLIENT_BYTES = 641_250
 
 /** Where the prose lives: every saga, the ship's log and the filler guide. */
 const PROSE_DIR = 'src/data/records'

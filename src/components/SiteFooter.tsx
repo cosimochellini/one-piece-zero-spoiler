@@ -1,7 +1,8 @@
 import * as stylex from '@stylexjs/stylex'
+import { Link } from '@tanstack/react-router'
 import type { ReactElement } from 'react'
 
-import { useT } from '~/i18n/LocaleContext'
+import { useLocale } from '~/i18n/LocaleContext'
 import { color, font, leading, rule, space, text } from '~/styles/tokens.stylex'
 
 /**
@@ -13,7 +14,7 @@ import { color, font, leading, rule, space, text } from '~/styles/tokens.stylex'
  * nothing to put in them. The lead sentence is the one the whole page argues.
  */
 export function SiteFooter(): ReactElement {
-  const t = useT()
+  const { locale, t } = useLocale()
 
   return (
     <footer {...stylex.props(styles.footer)}>
@@ -39,6 +40,15 @@ export function SiteFooter(): ReactElement {
           {t('footer.contact')}
         </a>{' '}
         {t('footer.contactHelp')}
+      </p>
+      <p {...stylex.props(styles.colophon)}>
+        <Link
+          params={{ locale }}
+          to="/$locale/privacy"
+          {...stylex.props(styles.link)}
+        >
+          {t('privacy.title')}
+        </Link>
       </p>
     </footer>
   )
