@@ -129,26 +129,16 @@ export function ZoomButtons({
         role="group"
         {...stylex.props(styles.zoom)}
       >
-        <Button
-          aria-disabled={isOut}
-          aria-label={t('chart.zoomOut')}
-          onClick={() => {
-            zoomBy(-1)
-          }}
-          sx={styles.zoomButton}
-        >
-          <span aria-hidden="true">−</span>
-        </Button>
-        <Button
-          aria-disabled={isIn}
-          aria-label={t('chart.zoomIn')}
-          onClick={() => {
-            zoomBy(1)
-          }}
-          sx={styles.zoomButton}
-        >
-          <span aria-hidden="true">+</span>
-        </Button>
+        <ZoomStep
+          direction={-1}
+          limit={isOut}
+          zoomBy={zoomBy}
+        />
+        <ZoomStep
+          direction={1}
+          limit={isIn}
+          zoomBy={zoomBy}
+        />
         {toggle === null ? null : (
           <Button
             onClick={toggle}
@@ -159,6 +149,34 @@ export function ZoomButtons({
         )}
       </div>
     </div>
+  )
+}
+
+/**
+ * One step of the zoom, out or in. At its limit it stays focusable
+ * (`aria-disabled`) and does nothing, so the focus never falls to the page.
+ */
+function ZoomStep({
+  direction,
+  limit,
+  zoomBy,
+}: Pick<ChartZoom, 'zoomBy'> & {
+  direction: -1 | 1
+  limit: boolean
+}): ReactElement {
+  const t = useT()
+
+  return (
+    <Button
+      aria-disabled={limit}
+      aria-label={t(direction === 1 ? 'chart.zoomIn' : 'chart.zoomOut')}
+      onClick={() => {
+        zoomBy(direction)
+      }}
+      sx={[styles.zoomButton, limit && styles.zoomLimit]}
+    >
+      <span aria-hidden="true">{direction === 1 ? '+' : '−'}</span>
+    </Button>
   )
 }
 

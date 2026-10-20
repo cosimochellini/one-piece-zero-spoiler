@@ -85,13 +85,21 @@ export function panView(view: Rect, by: Point): Rect {
   return clampView({ ...view, x: view.x + by.x, y: view.y + by.y })
 }
 
-/** The window moved so `point` is in it, or as it was if it already is. */
+/**
+ * How far inside the window's edge a point must be to count as shown: a
+ * stop's target and a ship's ring stand round it.
+ */
+const SHOWN_INSET = 0.08
+
+/** The window moved so `point` is well in it, or as it was if it already is. */
 export function showing(view: Rect, point: Point): Rect {
+  const insetX = view.width * SHOWN_INSET
+  const insetY = view.height * SHOWN_INSET
   const inside =
-    point.x > view.x
-    && point.x < view.x + view.width
-    && point.y > view.y
-    && point.y < view.y + view.height
+    point.x > view.x + insetX
+    && point.x < view.x + view.width - insetX
+    && point.y > view.y + insetY
+    && point.y < view.y + view.height - insetY
 
   return inside ? view : (
       clampView({

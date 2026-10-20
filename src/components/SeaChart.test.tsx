@@ -466,6 +466,27 @@ describe('the peek', () => {
     expect(navigate).toHaveBeenCalledTimes(1)
   })
 
+  it('follows the peek’s link on the first tap after a touch pan', async () => {
+    const { router } = draw({ bookmark: ep(30), open: eastBlue })
+    const navigate = vi.spyOn(router, 'navigate')
+    const baratie = within(stops()).getByRole('link', { name: /Baratie/u })
+    const touch = { pointerId: 3, pointerType: 'touch' }
+
+    // A tap peeks; a pan that starts on the stop sends no click.
+    fireEvent.pointerDown(baratie, touch)
+    fireEvent.click(baratie, { detail: 1 })
+    fireEvent.pointerDown(baratie, { ...touch, clientX: 10, clientY: 10 })
+    fireEvent.pointerMove(baratie, { ...touch, clientX: 60, clientY: 10 })
+    fireEvent.pointerUp(baratie, touch)
+
+    const dialog = await screen.findByRole('dialog', { name: /Baratie/u })
+    const entry = within(dialog).getByRole('link', { name: 'Open the entry' })
+    fireEvent.pointerDown(entry, { pointerId: 4, pointerType: 'touch' })
+    fireEvent.click(entry, { detail: 1 })
+
+    expect(navigate).toHaveBeenCalledTimes(1)
+  })
+
   it('keeps a held peek when the pointer rests on another stop', async () => {
     const user = userEvent.setup()
     draw({ bookmark: ep(30), open: eastBlue })

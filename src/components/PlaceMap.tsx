@@ -20,6 +20,7 @@ import {
   SeaRoute,
   SeaWorld,
 } from '~/components/SeaChartDrawing'
+import { sagaTintOf } from '~/components/seaChartNames'
 import { Spot } from '~/components/SeaChartPins'
 import type { PlaceChartView } from '~/lib/view/places'
 import { color, radius, rule } from '~/styles/tokens.stylex'
@@ -102,7 +103,7 @@ export function PlaceMap({
   )
 }
 
-/** The reached stops' islands, each in its drawing's hue. */
+/** The reached stops' islands, each in its saga's hue, as on the places page. */
 function islesOf({ route }: PlaceChartView): IsleMark[] {
   const isles: IsleMark[] = []
   for (const stop of route) {
@@ -111,7 +112,7 @@ function islesOf({ route }: PlaceChartView): IsleMark[] {
         at: stop.at,
         id: keyOf(stop.at),
         outline: stop.at.isle,
-        tint: stop.tint,
+        tint: sagaTintOf(stop.saga),
       })
     }
   }
@@ -146,7 +147,7 @@ function stretchOf({ fogged, here, route }: PlaceChartView): {
 }
 
 /**
- * The origin, every stop the reader has reached in its drawing's tint with
+ * The origin, every stop the reader has reached in its saga's hue with
  * this one ringed in gold, and the dots under fog. The frame cuts off the
  * ones outside the stretch.
  */
@@ -169,7 +170,7 @@ function Stops({
             key={keyOf(stop.at)}
             at={stop.at}
             sx={[
-              chart.dotOpen(tintOf(stop.tint)),
+              chart.dotOpen(tintOf(sagaTintOf(stop.saga))),
               index === map.here && chart.dotHere,
             ]}
           />

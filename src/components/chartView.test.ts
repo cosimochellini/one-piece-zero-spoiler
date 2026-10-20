@@ -41,6 +41,8 @@ describe('the chart’s window', () => {
     const view = { x: 0, y: 0, width: 800, height: 400 }
 
     expect(showing(view, { x: 100, y: 100 })).toBe(view)
+    // A point at the very edge is brought in, ring and all.
+    expect(showing(view, { x: 790, y: 200 })).not.toBe(view)
     expect(showing(view, { x: 1200, y: 600 })).toStrictEqual({
       x: 800,
       y: 400,
@@ -61,7 +63,7 @@ describe('the chart’s window', () => {
     )
 
     expect(view.x + view.width / 2).toBe(1100)
-    expect(view.width).toBeGreaterThanOrEqual(380)
+    expect(view.width).toBeGreaterThanOrEqual(720)
     expect(view.width / view.height).toBe(2)
   })
 })

@@ -114,6 +114,13 @@ function percent(value: number, of: number): string {
   return `${((value / of) * PERCENT).toFixed(DECIMALS)}%`
 }
 
+/** The frame's proportions: the chart's, across or upright. */
+function ratioOf(orientation: Orientation): number {
+  const box = boxOf(orientation)
+
+  return box.x / box.y
+}
+
 /** The world placed so the window's part of it fills the frame. */
 function worldAt(view: Rect, orientation: Orientation): stylex.StyleXStyles {
   const box = boxOf(orientation)
@@ -134,12 +141,12 @@ function worldAt(view: Rect, orientation: Orientation): stylex.StyleXStyles {
  */
 function Chart({ model, orientation, peekPort }: ChartProps): ReactElement {
   const zoomable = orientation === 'across'
+  const { peek, target, trigger } = useChartPeek()
   const { frameRef, hands, scale, show, view, ...buttons } = useChartZoom(
     zoomable ? model.opening : wholeOf(orientation),
     zoomable,
+    peek.onDismiss,
   )
-  const { peek, target, trigger } = useChartPeek()
-  const box = boxOf(orientation)
   const world = worldAt(view, orientation)
   const shared = { orientation, peek, view }
 
@@ -150,7 +157,7 @@ function Chart({ model, orientation, peekPort }: ChartProps): ReactElement {
         {...hands}
         {...stylex.props(
           styles.frame,
-          styles.ratio(box.x / box.y),
+          styles.ratio(ratioOf(orientation)),
           zoomable && styles.pannable,
         )}
       >

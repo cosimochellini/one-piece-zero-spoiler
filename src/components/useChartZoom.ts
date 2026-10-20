@@ -1,22 +1,15 @@
-import {
-  type MouseEvent,
-  type PointerEvent,
-  type RefObject,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
+import { type RefObject, useEffect, useRef, useState } from 'react'
 
 import type { Point, Rect } from '~/components/chartGeometry'
 import {
   MAX_ZOOM,
-  panView,
   sameRect,
   showing,
   WHOLE,
   zoomOf,
   zoomView,
 } from '~/components/chartView'
+import { type ChartHands, toChart, useHands } from '~/components/useChartHands'
 
 /**
  * The chart's window across, and the hands that move it (owner, #728): Ctrl
@@ -34,25 +27,12 @@ import {
  */
 const ASSUMED_WIDTH = 1200
 const ASSUMED_PHONE = 375
-/** How far a press moves before it is a drag and not a click. */
-const DRAG_PX = 5
 /** One press of + or −. */
 const STEP = 1.6
 /** How hard the wheel zooms, per pixel it turns. */
 const WHEEL = 0.0025
 /** How close to the limit counts as there: a zoom is a float. */
 const NEAR = 0.001
-/** Half of something: between two fingers. */
-const HALF = 0.5
-
-/** The frame's pointer and click handlers. */
-export interface ChartHands {
-  onClickCapture: (event: MouseEvent) => void
-  onPointerCancel: (event: PointerEvent) => void
-  onPointerDown: (event: PointerEvent) => void
-  onPointerMove: (event: PointerEvent) => void
-  onPointerUp: (event: PointerEvent) => void
-}
 
 /** What the chart reads from its window, and the hands it lends the frame. */
 export interface ChartZoom {
@@ -81,9 +61,19 @@ export interface ChartZoom {
 /**
  * The window, opening on `opening`, and the hands that move it. Not
  * `zoomable`, it only measures the frame: the window stays as it opened.
+ * Every move a hand makes calls `onMove` first: an open peek closes rather
+ * than drift away from its stop. Bringing a focused stop into view does not.
  */
-export function useChartZoom(opening: Rect, zoomable: boolean): ChartZoom {
-  const { move, read, view, viewRef } = useWindow(opening)
+export function useChartZoom(
+  opening: Rect,
+  zoomable: boolean,
+  onMove: () => void,
+): ChartZoom {
+  const { move: place, read, view, viewRef } = useWindow(opening)
+  const move = (next: Rect): void => {
+    onMove()
+    place(next)
+  }
   const [element, setElement] = useState<HTMLDivElement | null>(null)
   const hold = zoomable ? element : null
   const width = useFrameWidth(element, zoomable ? ASSUMED_WIDTH : ASSUMED_PHONE)
@@ -96,7 +86,7 @@ export function useChartZoom(opening: Rect, zoomable: boolean): ChartZoom {
     isOut: zoomOf(view) <= 1,
     isWhole: sameRect(view, WHOLE),
     scale: width / view.width,
-    ...movesOf({ move, opening, read, zoomable }),
+    ...movesOf({ move, opening, place, read, zoomable }),
     view,
   }
 }
@@ -139,17 +129,20 @@ function useWindow(opening: Rect): {
 function movesOf({
   move,
   opening,
+  place,
   read,
   zoomable,
 }: {
   move: (next: Rect) => void
   opening: Rect
+  /** Moves the window and leaves an open peek alone. */
+  place: (next: Rect) => void
   read: () => Rect
   zoomable: boolean
 }): Pick<ChartZoom, 'show' | 'toggle' | 'zoomBy'> {
   return {
     show: (point) => {
-      move(zoomable ? showing(read(), point) : read())
+      place(zoomable ? showing(read(), point) : read())
     },
     toggle:
       sameRect(opening, WHOLE) ? null : (
@@ -189,16 +182,6 @@ function useFrameWidth(
   return width
 }
 
-/** A point of the page, in the chart's units under the window. */
-function toChart(element: HTMLElement, view: Rect, at: Point): Point {
-  const box = element.getBoundingClientRect()
-
-  return {
-    x: view.x + ((at.x - box.left) / box.width) * view.width,
-    y: view.y + ((at.y - box.top) / box.height) * view.height,
-  }
-}
-
 /** Ctrl or ⌘ with the wheel zooms about the pointer; a plain wheel scrolls. */
 function useWheel(
   element: HTMLDivElement | null,
@@ -233,158 +216,4 @@ function useWheel(
       element.removeEventListener('wheel', onWheel)
     }
   }, [element, viewRef])
-}
-
-/** What a pointer's move works from. */
-interface Gesture {
-  element: HTMLDivElement
-  last: Point
-  move: (next: Rect) => void
-  now: Point
-  view: Rect
-}
-
-/** Two fingers: the gap between them sets the zoom, about their middle. */
-function pinch(
-  { element, last, move, now, view }: Gesture,
-  other: Point,
-): void {
-  const before = Math.hypot(last.x - other.x, last.y - other.y)
-  if (before === 0) {
-    return
-  }
-  const after = Math.hypot(now.x - other.x, now.y - other.y)
-  const middle = { x: (now.x + other.x) * HALF, y: (now.y + other.y) * HALF }
-  move(zoomView(view, after / before, toChart(element, view, middle)))
-}
-
-/** One pointer: the window follows it, as far as the chart goes. */
-function drag({ element, last, move, now, view }: Gesture): void {
-  const { width } = element.getBoundingClientRect()
-  if (width === 0) {
-    return
-  }
-  const unit = view.width / width
-
-  move(
-    panView(view, { x: (last.x - now.x) * unit, y: (last.y - now.y) * unit }),
-  )
-}
-
-/** The presses on the frame: each pointer down, where it began, and whether it dragged. */
-interface Presses {
-  dragged: boolean
-  pointers: Map<number, Point>
-  press: null | Point
-}
-
-/**
- * A pointer moved on the frame: a pinch with two, a drag once far enough.
- * Says whether the press is now a drag.
- */
-function moved(
-  presses: Presses,
-  event: PointerEvent,
-  at: Omit<Gesture, 'last' | 'now'>,
-): boolean {
-  const last = presses.pointers.get(event.pointerId)
-  if (last === undefined) {
-    return presses.dragged
-  }
-  const now = { x: event.clientX, y: event.clientY }
-  const other = otherPointer(presses.pointers, event.pointerId)
-  presses.pointers.set(event.pointerId, now)
-  if (other !== undefined) {
-    pinch({ ...at, last, now }, other)
-    return true
-  }
-  if (!presses.dragged && !isDrag(presses.press, now)) {
-    return false
-  }
-  if (!presses.dragged) {
-    // Once a press is a drag, the frame keeps the pointer till it lifts.
-    at.element.setPointerCapture(event.pointerId)
-  }
-  drag({ ...at, last, now })
-  return true
-}
-
-/** The frame's hands: a drag pans, two fingers pinch, a drag is no click. */
-function useHands(
-  element: HTMLDivElement | null,
-  viewRef: RefObject<Rect>,
-  move: (next: Rect) => void,
-): ChartHands {
-  const pressesRef = useRef<Presses>({
-    dragged: false,
-    pointers: new Map(),
-    press: null,
-  })
-  const release = (event: PointerEvent): void => {
-    const presses = pressesRef.current
-    presses.pointers.delete(event.pointerId)
-    if (presses.pointers.size === 0) {
-      presses.press = null
-    }
-  }
-
-  return {
-    onClickCapture: (event) => {
-      // A drag that ends on a stop does not follow its link. A click from
-      // the keyboard (`detail` 0) is never a drag's.
-      if (!pressesRef.current.dragged || event.detail === 0) {
-        return
-      }
-
-      event.preventDefault()
-      event.stopPropagation()
-      pressesRef.current.dragged = false
-    },
-    onPointerCancel: release,
-    onPointerDown: (event) => {
-      // A press in a peek is the peek's: its links, its veil, its ✕.
-      if (
-        (event.button !== 0 && event.pointerType === 'mouse')
-        || (event.target instanceof Element
-          && event.target.closest('dialog') !== null)
-      ) {
-        return
-      }
-      const at = { x: event.clientX, y: event.clientY }
-      pressesRef.current.pointers.set(event.pointerId, at)
-      pressesRef.current.press = at
-      pressesRef.current.dragged = false
-    },
-    onPointerMove: (event) => {
-      if (element !== null) {
-        pressesRef.current.dragged = moved(pressesRef.current, event, {
-          element,
-          move,
-          view: viewRef.current,
-        })
-      }
-    },
-    onPointerUp: release,
-  }
-}
-
-/** Another pointer down on the frame than this one, if there is one. */
-function otherPointer(
-  pointers: Map<number, Point>,
-  id: number,
-): Point | undefined {
-  for (const [other, at] of pointers) {
-    if (other !== id) {
-      return at
-    }
-  }
-
-  return undefined
-}
-
-/** Whether a press has moved far enough to be a drag. */
-function isDrag(press: null | Point, now: Point): boolean {
-  return (
-    press !== null && Math.hypot(now.x - press.x, now.y - press.y) >= DRAG_PX
-  )
 }
