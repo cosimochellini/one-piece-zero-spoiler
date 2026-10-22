@@ -425,9 +425,9 @@ export interface FruitHistoryEntry {
 
 /**
  * What one of a fruit's drawings shows: the fruit and its power, the real
- * fruit once the story shows it, or the power as an awakening changes it.
+ * fruit once the story shows it, a symbolic alternative, or an awakening.
  */
-export type FruitLook = 'awakening' | 'power' | 'real'
+export type FruitLook = 'awakening' | 'power' | 'real' | 'symbolic'
 
 /** One of the drawings a fruit has had, named by what it shows. */
 export interface FruitDrawing {

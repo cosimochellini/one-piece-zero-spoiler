@@ -486,6 +486,7 @@ export const enDictionary = {
   'fruit.looks': 'Drawings of this fruit',
   'fruit.look.power': 'Power',
   'fruit.look.real': 'Real fruit',
+  'fruit.look.symbolic': 'Symbolic drawing',
   'fruit.look.awakening': 'Awakening',
   'fruit.historyTitle': 'History',
   'fruit.historyLede': 'What happens to this fruit, up to your bookmark.',

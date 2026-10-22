@@ -29,6 +29,7 @@ import type { FruitLook } from '~/lib/view/records'
  * Every fruit's hand-drawn composition. Fruit + power drawings use the body
  * kit, with the accent on the power acting on the fruit. Real-fruit drawings
  * show the fruit itself, without a power, from its showing in the story.
+ * The three #732 replacements are generic power metaphors, not canonical designs.
  *
  * All drawings use absolute commands, no fills, exactly one accent, and
  * stay inside the 160x200 box.
@@ -2506,45 +2507,24 @@ function uncovered(circle: Circle, others: Circle[], from: number): string {
  * helpers above it are shared between them.
  */
 export const fruitArt = {
-  /**
-   * The classic: a sphere under a skin of curls, hung from a long stalk that
-   * runs off sideways and winds up at the end of itself.
-   *
-   * Ten curls and not three. The fruit everybody can draw from memory is not a
-   * target with a couple of rings on it — it is covered, corner to corner, in
-   * spirals of every size, and the stalk is as much of the shape as the fruit.
-   *
-   * Drawn from the first episode, although the show only opens the Red Hair
-   * Pirates' chest in episode 4: the look of the fruit Luffy ate tells a
-   * reader nothing the first episode has not, and every reader knows it.
-   */
+  /** Generic elastic fruit from episode 1; owner-authorized symbolic replacement (#732). */
   'gum-gum-fruit': [
-    { d: ring(80, 126, 44) },
     {
-      d: [
-        curl(80, 126, 14),
-        curl(58, 106, -12),
-        curl(103, 107, 12),
-        curl(106, 143, -12),
-        curl(55, 145, 12),
-        curl(80, 162, -11),
-        curl(47, 124, 10),
-        curl(114, 128, -10),
-        curl(80, 90, 11),
-        curl(66, 128, -8),
-      ].join(' '),
-      role: 'accent',
+      d: 'M69 87 C59 75 39 80 30 98 C19 121 27 151 47 160 C59 165 70 155 80 151 M121 96 C135 91 145 104 144 120 C144 137 132 149 119 145',
     },
     {
-      // The stalk: up out of the crown, along, and wound in on itself. The
-      // curl at its end is the one every drawing of this fruit keeps, so it is
-      // drawn at the size the fruit's own marks are drawn at.
-      d: [
-        'M80 82 C81 70 82 58 84 47',
-        'M44 54 C38 48 42 40 50 42 C62 44 74 44 86 46',
-        'C98 48 108 50 114 54 C122 60 116 70 108 66',
-        'C103 64 104 57 110 58',
-      ].join(' '),
+      d: 'M69 87 C83 102 103 101 121 96 M80 151 C95 142 106 142 119 145',
+      role: 'accent',
+    },
+    { d: 'M51 83 L54 61' },
+    { d: 'M54 66 C58 53 69 49 78 50 C75 61 66 68 54 66 Z' },
+    { d: 'M57 63 L72 54', role: 'soft' },
+    { d: 'M45 86 C50 89 58 89 63 86', role: 'soft' },
+    { d: 'M35 102 C31 111 31 122 34 129', role: 'soft' },
+    { d: 'M42 148 L48 152 M50 151 L56 154 M60 149 L65 151', role: 'ambient' },
+    {
+      d: 'M83 113 C99 117 115 112 130 109 M84 132 C100 127 115 130 131 128',
+      role: 'soft',
     },
     shadowUnder(1),
   ],
@@ -6284,7 +6264,7 @@ export const fruitArt = {
 } satisfies Drawings
 
 /**
- * A fruit drawn again, and what the new drawing shows: the real fruit, or
+ * A fruit drawn again, and what the new drawing shows: a symbolic drawing, the real fruit, or
  * the power as an awakening changes it. The fruit's page names each drawing
  * by it; the first drawing is always the fruit and its power.
  */
@@ -6373,50 +6353,27 @@ export const fruitRedrawn: Record<string, FruitRedrawing[]> = {
     {
       episode: 629,
       chapter: 700,
-      look: 'real',
-      /**
-       * The fruit that is all flame: a body whose crown is a row of tongues, curls
-       * burning across it, and a stalk that runs off with a hook at the end. Not
-       * seen until Doflamingo holds it up in episode 629, so it is drawn from
-       * there, in `fruitRedrawn`; before that the fruit is a grown one.
-       */
+      look: 'symbolic',
+      /** A smooth pear heated by a flame; symbolic replacement at the existing 629/700 gate (#732). */
       value: [
         {
-          // Every tongue leans the same way and hooks back at the tip, which is
-          // what tells a flame from a spike: a crown of points is a crown.
-          d: [
-            'M38 134 C38 118 40 105 45 93',
-            'C46 82 50 72 60 62 C64 74 62 82 66 90',
-            'C66 78 71 62 82 52 C87 64 84 80 86 90',
-            'C87 80 93 66 104 58 C109 70 105 82 107 90',
-            'C108 82 114 74 122 70 C126 78 125 86 128 95',
-            'C131 107 132 120 132 134',
-            'C132 157 111 172 85 172 C58 172 38 157 38 134 Z',
-          ].join(' '),
+          d: 'M75 79 C68 76 61 82 61 97 C59 111 40 123 41 143 C42 164 66 173 87 168 C104 164 113 151 108 136 C103 122 89 113 88 98 C88 86 84 78 75 79 Z',
         },
+        { d: 'M75 80 L72 58' },
+        { d: 'M73 64 C83 51 95 53 101 56 C94 66 84 70 73 64 Z' },
+        { d: 'M78 63 L94 57', role: 'soft' },
+        { d: 'M68 83 C72 86 81 86 85 83', role: 'soft' },
+        { d: 'M65 102 C65 113 54 125 52 133', role: 'soft' },
         {
-          d: [
-            curl(85, 110, 15),
-            curl(55, 132, -12),
-            curl(114, 134, 12),
-            curl(68, 158, 11),
-            curl(103, 158, -11),
-            curl(85, 152, 9),
-            curl(61, 112, -9),
-            curl(110, 111, 9),
-          ].join(' '),
+          d: 'M87 123 L94 129 M92 133 L100 139 M94 145 L102 151',
+          role: 'ambient',
+        },
+        { d: 'M58 156 C66 162 79 162 86 157', role: 'soft' },
+        {
+          d: 'M112 164 C101 155 112 144 113 134 C114 124 109 119 112 106 C116 115 123 115 125 124 C132 118 133 109 131 99 C145 114 146 131 139 143 C132 155 139 162 127 169 C121 172 115 170 112 164 Z',
           role: 'accent',
         },
-        {
-          // The stalk runs off to the left and winds up at its own end. It goes
-          // left because the tallest tongues stand to the right of it, and a stalk
-          // laid across a flame is a knot rather than a stalk.
-          d: [
-            'M60 62 C57 52 55 44 52 34',
-            'M52 34 C42 28 30 30 29 38 C28 45 36 49 40 43',
-            'C42 39 38 37 36 39',
-          ].join(' '),
-        },
+        { d: 'M120 156 C116 145 131 138 130 128', role: 'soft' },
         shadowUnder(1),
       ],
     },
@@ -6428,38 +6385,30 @@ export const fruitRedrawn: Record<string, FruitRedrawing[]> = {
     {
       episode: 704,
       chapter: 765,
-      look: 'real',
-      /**
-       * The real fruit, from episode 704: a heart under a skin of curls, the stalk
-       * a crossbar wound up at both ends.
-       */
+      look: 'symbolic',
+      /** An ordinary fruit cut into separated halves; symbolic replacement at 704/765 (#732). */
       value: [
+        { d: 'M43 103 C38 83 51 67 71 65 C92 61 110 76 113 94' },
         {
-          d: [
-            'M80 82 C72 66 50 60 38 70 C24 82 26 104 38 120',
-            'C50 138 68 150 80 166 C92 150 110 138 122 120',
-            'C134 104 136 82 122 70 C110 60 88 66 80 82 Z',
-          ].join(' '),
-        },
-        {
-          d: [
-            curl(80, 108, 12),
-            curl(57, 88, -10),
-            curl(103, 88, 10),
-            curl(47, 110, 8),
-            curl(113, 110, -8),
-            curl(66, 132, -10),
-            curl(95, 132, 10),
-            curl(80, 151, -7),
-          ].join(' '),
+          d: 'M43 103 C58 91 94 87 113 94 C103 107 65 115 43 103 Z',
           role: 'accent',
         },
+        { d: 'M53 130 C49 155 64 170 87 171 C110 172 128 155 124 132' },
         {
-          d: [
-            'M80 82 L80 62',
-            'M64 54 C60 50 54 54 56 59 C58 63 68 63 80 62',
-            'C92 63 102 63 104 59 C106 54 100 50 96 54',
-          ].join(' '),
+          d: 'M53 130 C70 117 108 117 124 132 C109 143 71 144 53 130 Z',
+          role: 'soft',
+        },
+        {
+          d: 'M64 130 C78 124 101 124 113 132 C98 137 79 137 64 130 Z',
+          role: 'soft',
+        },
+        { d: 'M74 66 L77 46' },
+        { d: 'M77 51 C88 42 99 43 105 48 C96 57 85 58 77 51 Z' },
+        { d: 'M81 51 L98 48', role: 'soft' },
+        { d: 'M51 83 C48 88 48 93 49 96', role: 'soft' },
+        {
+          d: 'M112 148 L117 151 M106 155 L111 159 M98 160 L102 164',
+          role: 'ambient',
         },
         shadowUnder(1),
       ],

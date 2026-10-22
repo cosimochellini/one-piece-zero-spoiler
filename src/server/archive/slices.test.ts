@@ -849,7 +849,7 @@ describe('a record drawn again later in the story', () => {
     },
   )
 
-  it('shows the real Gum-Gum Fruit from episode 1, with no redrawing', () => {
+  it('shows the symbolic Gum-Gum drawing from episode 1, with no redrawing', () => {
     const fruit = filed('gum-gum-fruit')
     const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
       recordOf(fruit, readerFor(bookmark, 'en')).visual.strokes
@@ -874,7 +874,7 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 1007 })).toBe(initial)
   })
 
-  it('shows the real Flame-Flame Fruit only from episode 629', () => {
+  it('shows the symbolic Flame-Flame drawing only from episode 629', () => {
     const fruit = filed('flame-flame-fruit')
     const grown = DRAWINGS['flame-flame-fruit']
     const real = REDRAWINGS['flame-flame-fruit']?.[0]
@@ -891,7 +891,7 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 700 })).toBe(real?.value)
   })
 
-  it('shows the real Op-Op Fruit only from episode 704', () => {
+  it('shows the symbolic Op-Op drawing only from episode 704', () => {
     const fruit = filed('op-op-fruit')
     const room = DRAWINGS['op-op-fruit']
     const real = REDRAWINGS['op-op-fruit']?.[0]

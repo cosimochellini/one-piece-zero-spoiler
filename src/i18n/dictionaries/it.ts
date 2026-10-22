@@ -495,6 +495,7 @@ export const itDictionary: Dictionary = {
   'fruit.looks': 'Disegni di questo frutto',
   'fruit.look.power': 'Potere',
   'fruit.look.real': 'Frutto vero',
+  'fruit.look.symbolic': 'Disegno simbolico',
   'fruit.look.awakening': 'Risveglio',
   'fruit.historyTitle': 'Storia',
   'fruit.historyLede': 'Cosa succede a questo frutto, fino al tuo segnalibro.',

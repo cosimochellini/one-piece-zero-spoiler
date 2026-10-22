@@ -178,7 +178,7 @@ describe('the switch between a fruit’s drawings', () => {
         detail={fruitDetail({
           drawings: [
             { look: 'power', strokes: POWER },
-            { look: 'real', strokes: REAL },
+            { look: 'symbolic', strokes: REAL },
           ],
           slot: openSlot(fruit({ visual: { strokes: REAL, tint: 'red' } })),
         })}
@@ -187,19 +187,19 @@ describe('the switch between a fruit’s drawings', () => {
       { bookmark: ep(650) },
     )
     const power = screen.getByRole('radio', { name: 'Power' })
-    const real = screen.getByRole('radio', { name: 'Real fruit' })
+    const symbolic = screen.getByRole('radio', { name: 'Symbolic drawing' })
 
     expect(
       screen.getByRole('group', { name: 'Drawings of this fruit' }),
     ).toBeInTheDocument()
-    expect(real).toBeChecked()
+    expect(symbolic).toBeChecked()
     // Both are on the page, stacked, so the switch only cross-fades.
     expect(container.querySelectorAll('path')).toHaveLength(2)
 
     fireEvent.click(power)
 
     expect(power).toBeChecked()
-    expect(real).not.toBeChecked()
+    expect(symbolic).not.toBeChecked()
   })
 
   it('starts on the latest when the bookmark brings a second drawing', () => {

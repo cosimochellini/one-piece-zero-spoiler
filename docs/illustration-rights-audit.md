@@ -144,6 +144,12 @@ notices remain tracked in
 
 Sources checked 2026-10-20; no copyrighted source images were added as evidence.
 
+Follow-up #732 replaces the three F1 drawings and their five current fruit
+screenshot copies. See the
+[owner decision, sources and verification](fruit-illustration-disposition.md)
+and the [updated historical screenshot captions](media/issue-500/README.md). The
+observations and counts in this audit describe its original baseline.
+
 - [ONE PIECE.com volume 50](https://one-piece.com/comics/o50/index.html)
   identifies chapters 482–491 in its current search-index extract (direct
   retrieval returned 403).

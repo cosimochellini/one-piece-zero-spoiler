@@ -106,10 +106,13 @@ describe('a fruit’s drawings', () => {
   })
 
   it('is read by the spoiler sweep: a drawing slipped in early fails it', () => {
-    // The Flame-Flame Fruit is open at 628 and shown as a real fruit at 629.
+    // The Flame-Flame Fruit is open at 628 and given its symbolic replacement at 629.
     const real = fruitRedrawn['flame-flame-fruit']?.[0]?.value ?? []
     const detail = detailOf('flame-flame-fruit', ep(628))
-    const slipped = { ...detail, drawings: [{ look: 'real', strokes: real }] }
+    const slipped = {
+      ...detail,
+      drawings: [{ look: 'symbolic', strokes: real }],
+    }
 
     saysNothing(detail, ep(628))
 

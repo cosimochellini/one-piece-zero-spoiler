@@ -253,7 +253,7 @@ describe('the fruit sheet', () => {
 })
 
 describe('the fruits drawn again', () => {
-  it('redraws the ten real fruits and Katakuri’s awakening, and no other', () => {
+  it('keeps the eleven existing redrawing timelines, and no others', () => {
     expect(Object.keys(fruitRedrawn)).toStrictEqual([
       'chop-chop-fruit',
       'ox-ox-fruit-model-bison',
@@ -283,7 +283,7 @@ describe('the fruits drawn again', () => {
   })
 
   // The fruit's page names each drawing by its look, and keys it by it.
-  it('names what each redrawing shows: the real fruit, and one awakening', () => {
+  it('names each real fruit, symbolic alternative and awakening', () => {
     const looks: [string, string[]][] = []
     for (const [id, timeline] of Object.entries(fruitRedrawn)) {
       looks.push([id, timeline.map(({ look }) => look)])
@@ -292,8 +292,8 @@ describe('the fruits drawn again', () => {
     expect(looks).toStrictEqual([
       ['chop-chop-fruit', ['real']],
       ['ox-ox-fruit-model-bison', ['real']],
-      ['flame-flame-fruit', ['real']],
-      ['op-op-fruit', ['real']],
+      ['flame-flame-fruit', ['symbolic']],
+      ['op-op-fruit', ['symbolic']],
       ['string-string-fruit', ['real']],
       ['mochi-mochi-fruit', ['awakening']],
       ['snake-snake-fruit-mythical-model-yamata-no-orochi', ['real']],
