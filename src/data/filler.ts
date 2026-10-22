@@ -2579,8 +2579,8 @@ export const FILLER: FillerEntry[] = [
       it: 'Una promessa per la nuova era! Rufy e Uta',
     },
     summary: {
-      en: 'Uta tells Luffy she dreams of travelling the world with Shanks and bringing joy with her singing. The crew leaves and returns without her, Luffy cries, and Elegia is reported destroyed.',
-      it: 'Uta dice a Rufy che sogna di viaggiare per il mondo con Shanks e portare gioia con il canto. La ciurma parte e torna senza di lei, Rufy piange e Elegia risulta distrutta.',
+      en: 'Shanks returns to the village without Uta, leaving Luffy unable to find her. Years later, the Straw Hats head to Elegia for her concert.',
+      it: 'Quando Shanks torna al villaggio, Rufy cerca Uta senza trovarla. Anni dopo, i Cappello di Paglia fanno rotta su Elegia per il concerto della cantante.',
     },
   },
   {
