@@ -19,7 +19,14 @@ import {
   REVERSE_MOUNTAIN,
   sideOf,
 } from './chartGeometry'
-import { legsOf, pathsOf, startsOf, tailLine, tailOf } from './chartRoute'
+import {
+  legsOf,
+  pathsOf,
+  type RouteStop,
+  startsOf,
+  tailLine,
+  tailOf,
+} from './chartRoute'
 
 const a = { x: 1300, y: 100 }
 const b = { x: 1200, y: 400 }
@@ -80,7 +87,22 @@ describe('the chart geometry', () => {
         to: { x: 1000, y: 530, line: 'luffy' },
         line: 'luffy',
       },
+      { from: { x: 1000, y: 530, line: 'luffy' }, to: b, line: 'luffy' },
       { from: b, to: { x: 700, y: 400 }, line: 'second' },
+    ])
+  })
+
+  it('does not anticipate a return while the solo route is still open', () => {
+    const solo = { ...c, line: 'luffy' }
+    const stops: RouteStop[] = [
+      { at: b, ship: 0 },
+      { at: solo, ship: 0 },
+      { at: { x: 800, y: 320, seen: true }, ship: 0 },
+    ]
+
+    expect(legsOf(stops)).toStrictEqual([
+      { from: ORIGIN, to: b, line: 'first', via: [REVERSE_MOUNTAIN] },
+      { from: b, to: solo, line: 'luffy' },
     ])
   })
 

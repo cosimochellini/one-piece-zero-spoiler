@@ -19,7 +19,6 @@ import {
   pointOf,
   type SagaName,
   type ShipMark,
-  type StopName,
 } from '~/components/seaChartModel'
 import type { TriggerProps } from '~/components/useChartPeek'
 import { useT } from '~/i18n/LocaleContext'
@@ -103,46 +102,6 @@ export function RegionNames({
               {t(label.key)}
             </Pin>
           )
-      })}
-    </>
-  )
-}
-
-/** How a stop's name stands off its dot, by side. */
-const NAME_SIDE: Record<Side, stylex.StyleXStyles> = {
-  above: styles.nameAbove,
-  below: styles.nameBelow,
-  left: styles.nameLeft,
-  right: styles.nameRight,
-}
-
-/**
- * The open stops' names that fit at this zoom (`~/components/chartLabels`),
- * each beside its dot on the side away from the band's middle.
- */
-export function StopNames({
-  names,
-  orientation,
-}: {
-  names: StopName[]
-  orientation: Orientation
-}): ReactElement {
-  return (
-    <>
-      {names.map(({ port, side }) => {
-        const { left, top } = placeOf(pointOf(port), orientation)
-        return (
-          <span
-            key={port.id}
-            {...stylex.props(
-              styles.stopName,
-              styles.at(left, top),
-              NAME_SIDE[side[orientation]],
-            )}
-          >
-            {port.name}
-          </span>
-        )
       })}
     </>
   )

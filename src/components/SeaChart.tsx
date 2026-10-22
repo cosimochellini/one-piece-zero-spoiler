@@ -56,9 +56,9 @@ import { useT } from '~/i18n/LocaleContext'
  *
  * Drawn twice, across and upright, and the stylesheet shows the one that
  * fits. Across, the chart is a window that opens on the reader's saga and
- * zooms and pans (`useChartZoom`); a name that would crowd another waits
- * for a closer zoom. Upright, on a phone, the whole chart runs down the page
- * and never moves. The open stops lead to their own pages; the stops under
+ * zooms and pans (`useChartZoom`); crowded names move aside with a leader
+ * rather than disappearing. Upright, on a phone, the whole chart runs down
+ * the page and never moves. The open stops lead to their own pages; the stops under
  * fog are buttons that say their number and episode and nothing else. Every
  * stop and every ship opens a peek. A stop under fog's peek is veiled, and
  * its place comes from the server only when the reader asks.
@@ -115,11 +115,15 @@ function percent(value: number, of: number): string {
   return `${((value / of) * PERCENT).toFixed(DECIMALS)}%`
 }
 
-/** The frame's proportions: the chart's, across or upright. */
-function ratioOf(orientation: Orientation): number {
+/** The frame's proportions and whether the reader can pan it. */
+function frameStyle(orientation: Orientation): stylex.StyleXStyles {
   const box = boxOf(orientation)
 
-  return box.x / box.y
+  return [
+    styles.frame,
+    styles.ratio(box.x / box.y),
+    orientation === 'across' && styles.pannable,
+  ]
 }
 
 /** The world placed so the window's part of it fills the frame. */
@@ -154,13 +158,10 @@ function Chart({ model, orientation, peekPort }: ChartProps): ReactElement {
   return (
     <>
       <div
+        data-chart-orientation={orientation}
         ref={frameRef}
         {...hands}
-        {...stylex.props(
-          styles.frame,
-          styles.ratio(ratioOf(orientation)),
-          zoomable && styles.pannable,
-        )}
+        {...stylex.props(frameStyle(orientation))}
       >
         <Clip world={world}>
           <Drawing
