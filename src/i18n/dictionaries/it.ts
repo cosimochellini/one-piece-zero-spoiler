@@ -197,7 +197,7 @@ export const itDictionary: Dictionary = {
   'footer.lead':
     'Una wiki di One Piece che nasconde quello che viene dopo il tuo segnalibro.',
   'footer.colophon':
-    'Tutti i disegni sono fatti per questo sito e non ci sono immagini ufficiali. Il segnalibro viene salvato in un cookie su questo dispositivo. Codice del sito sotto licenza MIT; i diritti su One Piece sono esclusi.',
+    'Tutti i disegni sono fatti per questo sito e non ci sono immagini ufficiali. Il segnalibro viene salvato in un cookie su questo dispositivo. La licenza MIT copre il software e la documentazione tecnica originale. Non copre i testi delle voci, i disegni, il branding o i materiali di terzi. Restano applicabili le licenze di terzi.',
 
   'footer.unofficial':
     'Progetto amatoriale non ufficiale e senza scopo di lucro. Non è affiliato né approvato dai titolari dei diritti di One Piece.',

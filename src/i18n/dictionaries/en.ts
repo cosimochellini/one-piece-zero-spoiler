@@ -198,7 +198,7 @@ export const enDictionary = {
 
   'footer.lead': 'A One Piece wiki that hides what comes after your bookmark.',
   'footer.colophon':
-    'All the drawings are made for this site; no official artwork is used. Your bookmark is saved in a cookie on this device. Site code under the MIT licence; One Piece rights are excluded.',
+    'All the drawings are made for this site; no official artwork is used. Your bookmark is saved in a cookie on this device. The MIT licence covers the software and original technical documentation. It does not cover archive text, drawings, branding or third-party material. Third-party licences still apply.',
 
   'footer.unofficial':
     'Unofficial, nonprofit fan project. Not affiliated with or endorsed by One Piece rights holders.',
