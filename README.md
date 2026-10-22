@@ -23,7 +23,7 @@
   <a href="https://github.com/cosimochellini/one-piece-zero-spoiler/releases/latest"><img src="https://img.shields.io/github/v/release/cosimochellini/one-piece-zero-spoiler?sort=semver&display_name=tag&label=release" alt="Latest release"></a>
   <a href="https://app.netlify.com/sites/one-piece-zero-spoiler/deploys"><img src="https://api.netlify.com/api/v1/badges/51908d48-c22b-4c57-939d-6da57ea6982a/deploy-status" alt="Netlify status"></a>
   <a href="https://github.com/cosimochellini/one-piece-zero-spoiler/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22"><img src="https://img.shields.io/github/issues/cosimochellini/one-piece-zero-spoiler/good%20first%20issue?label=good%20first%20issues&color=7057ff" alt="Good first issues"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-informational" alt="License: MIT"></a>
+  <a href="LICENSE-SCOPE.md"><img src="https://img.shields.io/badge/software_license-MIT-informational" alt="Software license: MIT"></a>
 </p>
 
 ## Same page, two bookmarks
@@ -135,7 +135,18 @@ from either follows the same
 
 ## License
 
-[MIT](LICENSE) © 2026 Cosimo Chellini.
+[MIT](LICENSE) © 2026 Cosimo Chellini applies to the software and original
+technical documentation, to the extent contributors hold the relevant rights. It
+does not cover archive text, drawings, branding, screenshots or third-party
+material, including material embedded in code or documentation. No new blanket
+content license is assigned. Existing third-party licenses still apply.
+
+[License scope and content notices](LICENSE-SCOPE.md) separates these
+categories, records source-license obligations and links the unresolved
+decisions from the [provenance audit](docs/content-provenance-audit.md).
+Verified wiki adaptations must follow the applicable source license, including
+attribution, modification notices and ShareAlike. This does not automatically
+relicense unrelated software.
 
 One Piece was created by Eiichiro Oda. The anime’s
 [official copyright credit](https://www.toei-animation.com/copyrights/) is ©
@@ -144,10 +155,10 @@ rights holders.
 
 This is an unofficial, nonprofit fan project, not affiliated with or endorsed by
 One Piece rights holders. Its drawings are made for the site; it uses no
-official artwork, scans or frames. The MIT licence covers this project’s own
-contributions and does not grant rights to One Piece or other third-party
-material. Neither this notice nor the project’s nonprofit status grants
-permission to use third-party material.
+official artwork, scans or frames. Making a drawing for the site does not
+establish rights in the depicted subject. The MIT licence does not grant rights
+to One Piece or other third-party material. Neither this notice nor the
+project’s nonprofit status grants permission to use third-party material.
 
 For rights inquiries or corrections,
 [open a GitHub issue](https://github.com/cosimochellini/one-piece-zero-spoiler/issues/new?template=blank.md).
@@ -155,14 +166,29 @@ Include the page URL, the material concerned and your request. Keep spoilers out
 of the title. Issues are public and require a GitHub account; do not post
 confidential information.
 
+La [licenza MIT](LICENSE) © 2026 Cosimo Chellini si applica al software e alla
+documentazione tecnica originale, nei limiti dei diritti detenuti dai
+contributori. Non copre i testi delle voci, i disegni, il branding, le schermate
+o i materiali di terzi, anche se inclusi nel codice o nella documentazione. Non
+viene assegnata una nuova licenza generale ai contenuti. Restano applicabili le
+licenze di terzi.
+
+Gli [ambiti di licenza e gli avvisi sui contenuti](LICENSE-SCOPE.md) distinguono
+queste categorie, indicano gli obblighi delle licenze delle fonti e rimandano
+alle decisioni ancora aperte nell’audit di provenienza. Gli adattamenti
+verificati dalle wiki devono rispettare la licenza applicabile della fonte,
+compresi attribuzione, avvisi sulle modifiche e ShareAlike. Questo non cambia
+automaticamente la licenza del software indipendente.
+
 One Piece è un’opera di Eiichiro Oda. I crediti ufficiali dell’anime sono ©
 Eiichiro Oda/Shueisha, Toei Animation, senza pretendere di elencare tutti i
 titolari dei diritti. Questo è un progetto amatoriale non ufficiale e senza
 scopo di lucro, non affiliato né approvato dai titolari dei diritti. I disegni
-sono fatti per il sito; non usa immagini ufficiali, scansioni o fotogrammi. La
-licenza MIT copre i contributi propri del progetto e non concede diritti su One
-Piece o altri materiali di terzi. Né questa nota né l’assenza di scopo di lucro
-autorizzano l’uso di materiali di terzi.
+sono fatti per il sito; non usa immagini ufficiali, scansioni o fotogrammi.
+Realizzare un disegno per il sito non dimostra di avere i diritti sul soggetto
+rappresentato. La licenza MIT non concede diritti su One Piece o altri materiali
+di terzi. Né questa nota né l’assenza di scopo di lucro autorizzano l’uso di
+materiali di terzi.
 
 Per richieste sui diritti o correzioni,
 [apri una issue GitHub](https://github.com/cosimochellini/one-piece-zero-spoiler/issues/new?template=blank.md).

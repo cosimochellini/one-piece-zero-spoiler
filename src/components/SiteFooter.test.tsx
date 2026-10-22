@@ -18,6 +18,9 @@ describe('SiteFooter', () => {
       'Your bookmark is saved in a cookie on this device.',
     )
     expect(screen.getByRole('contentinfo')).toHaveTextContent(
+      'The MIT licence covers the software and original technical documentation. It does not cover archive text, drawings, branding or third-party material. Third-party licences still apply.',
+    )
+    expect(screen.getByRole('contentinfo')).toHaveTextContent(
       'Unofficial, nonprofit fan project. Not affiliated with or endorsed by One Piece rights holders.',
     )
     expect(
@@ -44,6 +47,9 @@ describe('SiteFooter', () => {
         'Una wiki di One Piece che nasconde quello che viene dopo il tuo segnalibro.',
       ),
     ).toBeInTheDocument()
+    expect(screen.getByRole('contentinfo')).toHaveTextContent(
+      'La licenza MIT copre il software e la documentazione tecnica originale. Non copre i testi delle voci, i disegni, il branding o i materiali di terzi. Restano applicabili le licenze di terzi.',
+    )
     expect(screen.getByRole('contentinfo')).toHaveTextContent(
       'Progetto amatoriale non ufficiale e senza scopo di lucro.',
     )
