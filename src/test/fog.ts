@@ -268,9 +268,6 @@ const fogs = new Map<string, Fog>()
  */
 type Foreign = Record<keyof Fog, Map<string, string[]>>
 
-/** One per series: it does not depend on the bookmark. */
-const foreigns = new Map<string, Foreign>()
-
 const KINDS = ['plain', 'folded', 'drawn'] as const
 
 /** Each string a series' records go by, with the `slug/id` of every one. */
@@ -310,11 +307,11 @@ function goesBy(series: ListedSeries): Foreign {
  * records go by too: a name both series use is this series' word, and its
  * own fog judges it.
  */
-function foreignTo(series: ListedSeries): Foreign {
+function foreignTo(series: ListedSeries, list: ListedSeries[]): Foreign {
   const own = goesBy(series)
-  const theirs = SERIES.filter(({ slug }) => slug !== series.slug).map(
-    (other) => goesBy(other),
-  )
+  const theirs = list
+    .filter(({ slug }) => slug !== series.slug)
+    .map((other) => goesBy(other))
   const kept = (kind: keyof Fog): Map<string, string[]> => {
     const all = new Map<string, string[]>()
     const entries = theirs.flatMap((words) => [...words[kind]])
@@ -348,15 +345,20 @@ function leakedIn(
  * bookmark has not reached that a payload of the series names, and, as
  * `slug/id`, the records of any other series it names. A string a page says
  * by design (`excused`) is not a leak, whichever other record of the series
- * goes by it too; nothing excuses another series' record.
+ * goes by it too; nothing excuses another series' record. The other series
+ * are the list's (`~/data/series`), or a test's own.
  */
 export function leaksOf(
   series: ListedSeries,
+  list: ListedSeries[] = SERIES,
 ): (
   payload: unknown,
   bookmark: Bookmark,
   excused?: (entity: Entity) => boolean,
 ) => string[] {
+  // Built on the first ask: it does not depend on the bookmark.
+  let foreign: Foreign | undefined
+
   return (payload, bookmark, excused = () => false) => {
     const key = `${series.slug} ${JSON.stringify(bookmark)}`
     const fog = fogs.get(key) ?? {
@@ -365,8 +367,7 @@ export function leaksOf(
       plain: fogOf(bookmark, series.archive),
     }
     fogs.set(key, fog)
-    const foreign = foreigns.get(series.slug) ?? foreignTo(series)
-    foreigns.set(series.slug, foreign)
+    foreign ??= foreignTo(series, list)
 
     const words = {
       drawn: drawnIn(payload),
@@ -375,9 +376,8 @@ export function leaksOf(
     }
     const found = new Set<string>()
     for (const kind of KINDS) {
-      const crossed = [...words[kind]].flatMap(
-        (word) => foreign[kind].get(word) ?? [],
-      )
+      const theirs = foreign[kind]
+      const crossed = [...words[kind]].flatMap((word) => theirs.get(word) ?? [])
       const ids = [
         ...leakedIn(words[kind], fog[kind], excused).map(({ id }) => id),
         ...crossed,

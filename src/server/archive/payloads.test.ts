@@ -101,6 +101,7 @@ describe.each(SERIES)('every payload of $slug', (series) => {
     payloads: [],
   }
   const asks = asksOf(series)
+  const leaksIn = leaksOf(series)
 
   it.each(payloads)(
     '$name names nothing the reader has not reached, nor another series',
@@ -108,7 +109,6 @@ describe.each(SERIES)('every payload of $slug', (series) => {
       const all = keys?.()
       const excuse = byDesign[name] ?? ((): boolean => false)
       const leaks: string[] = []
-      const leaksIn = leaksOf(series)
 
       for (const [at, { bookmark, locale }] of asks.entries()) {
         for (const key of sampled(all, at)) {
