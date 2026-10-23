@@ -306,13 +306,13 @@ Source: "Episode 1", One Piece Wiki, https://onepiece.fandom.com/index.php?oldid
         "Episodio 1", One Piece Wiki italiana, https://onepiece.fandom.com/it/index.php?oldid=353984, read 2026-10-20
 License: CC BY-SA 3.0 Unported; authors: the pages' contributors (page history)
 Changes: abridged to three sentences and reworded; the Italian is not a translation of the English
-Credit: both revisions added to sources.json and mapped in credits.server.ts
+Credit: both revisions in sources.json, mapped in credits.server.ts (already there for this sample)
 ```
 
 ### Quotations
 
 A research note quotes a source only where the exact words prove a name or a
-threshold: at most two quotations of 12 words or fewer.
+threshold: at most two quotations of 12 words and 80 characters or fewer.
 `scripts/chronicle-verification.test.mjs` holds the chronicle notes to it, and
 the [quotation review](docs/chronicle-quotation-review.md) explains why.
 Paraphrase everything else. Archive text reproduces no dialogue, subtitle or
