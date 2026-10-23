@@ -29,6 +29,39 @@ const STORIES = characters.flatMap((character) => {
 
 const DOCUMENT = readFileSync(DOC_PATH, 'utf8')
 
+/** The quotation marks a note quotes with: English, straight, Japanese. */
+const QUOTATION_MARKS = [
+  ['\u{201C}', '\u{201D}'],
+  ['"', '"'],
+  ['\u{300C}', '\u{300D}'],
+  ['\u{2018}', '\u{2019}'],
+]
+
+/**
+ * Every quoted span in a note, without its marks.
+ * @param {string} note The note.
+ * @returns {string[]} The quotations.
+ */
+function quotationsIn(note) {
+  return QUOTATION_MARKS.flatMap(([open, close]) => {
+    const quotations = []
+    let start = note.indexOf(open)
+
+    while (start !== -1) {
+      const end = note.indexOf(close, start + 1)
+
+      if (end === -1) {
+        break
+      }
+
+      quotations.push(note.slice(start + 1, end))
+      start = note.indexOf(open, end + 1)
+    }
+
+    return quotations
+  })
+}
+
 const HEADING =
   /^## (?<name>.+) \(`(?<id>[a-z\d-]+)`, threshold ep (?<threshold>\d+)\)$/u
 
@@ -142,6 +175,24 @@ describe('the chronicle verification log', () => {
 
       expect(source?.source, asLine(row)).toBe(row.source)
       expect(source?.note, asLine(row)).toBe(row.note)
+    }
+  })
+
+  it('quotes a source only as far as a name or a threshold needs', () => {
+    // A note records what the wiki, the manga or the subtitles show, in its own
+    // words. Two short quotations are left for a name or a line an episode
+    // turns on (#738); anything longer goes back to paraphrase.
+    for (const row of ROWS) {
+      const quotations = quotationsIn(row.note)
+
+      expect(quotations.length, asLine(row)).toBeLessThanOrEqual(2)
+
+      for (const quotation of quotations) {
+        const words = quotation.split(/\s+/u).filter(Boolean)
+
+        expect(words.length, quotation).toBeLessThanOrEqual(12)
+        expect(quotation.length, quotation).toBeLessThanOrEqual(80)
+      }
     }
   })
 })
