@@ -16,6 +16,7 @@ import {
   MAX_CLIENT_BYTES,
   PROSE_EXTRA,
   slugsFrom,
+  sourceCanaries,
 } from './archive-gate.mjs'
 
 const repositoryRoot = path.resolve(import.meta.dirname, '..')
@@ -236,7 +237,30 @@ describe('the byte ceiling', () => {
     // React itself is ~318 KB of the current ~449 KB. The archive alone was
     // 599 KB of the 1,049 KB build this replaced, so a ceiling that let it
     // back in would vouch for nothing.
+    // Public bilingual legal notices add code, not private source references.
     expect(MAX_CLIENT_BYTES).toBeGreaterThan(449_410)
-    expect(MAX_CLIENT_BYTES).toBeLessThan(449_410 + 200_000)
+    expect(MAX_CLIENT_BYTES).toBeLessThan(449_410 + 220_000)
+  })
+})
+
+describe('source attribution boundaries', () => {
+  it('checks all pinned revisions and the official replacement source', () => {
+    const sources = sourceCanaries(repositoryRoot)
+    expect(sources).toHaveLength(33)
+    expect(sources.every(({ phrase }) => typeof phrase === 'string')).toBe(true)
+    const leaked = sources.map(({ phrase }, index) =>
+      chunk(`source-${String(index)}.js`, phrase),
+    )
+    expect(judge(leaked, sources).ok).toBe(false)
+    expect(judge([chunk('index.js', 'export {}')], sources).ok).toBe(true)
+  })
+
+  it('fails closed without the source evidence', () => {
+    const missing = sourceCanaries(
+      path.join(repositoryRoot, '.gate', '721-missing-evidence'),
+    )
+    expect(
+      judge([chunk('index.js', 'export {}')], missing).unreadable,
+    ).toStrictEqual(['docs/content-provenance/sources.json'])
   })
 })

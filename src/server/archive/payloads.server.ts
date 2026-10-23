@@ -12,6 +12,7 @@ import {
   EPISODE_CEILING,
 } from '~/lib/progress/episode'
 
+import { creditsPage } from './credits.server'
 import { fillerPage, peekFiller } from './filler.server'
 import { RADIX } from './fillerRows.server'
 import { fruitPage } from './fruitPage.server'
@@ -62,6 +63,7 @@ const placeIds = (): string[] => [...places, ...ships].map(({ id }) => id)
 const handles = (): string[] => entities.map(({ id }) => handleOf(id))
 
 export const PAYLOADS: Payload[] = [
+  { name: 'loadCredits', run: (b, locale) => creditsPage(b, locale) },
   {
     name: 'loadHome',
     // A trial only ever turns the landing into the onboarding, which a

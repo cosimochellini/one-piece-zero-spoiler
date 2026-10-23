@@ -16,6 +16,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as LocaleIndexRouteImport } from './routes/$locale/index'
 import { Route as LocaleFillerRouteImport } from './routes/$locale/filler'
 import { Route as LocalePrivacyRouteImport } from './routes/$locale/privacy'
+import { Route as LocaleSourcesRouteImport } from './routes/$locale/sources'
 import { Route as LocaleCharactersIndexRouteImport } from './routes/$locale/characters/index'
 import { Route as LocaleCharactersIdRouteImport } from './routes/$locale/characters/$id'
 import { Route as LocaleFruitsIndexRouteImport } from './routes/$locale/fruits/index'
@@ -58,6 +59,11 @@ const LocalePrivacyRoute = LocalePrivacyRouteImport.update({
   path: '/privacy',
   getParentRoute: () => LocaleRoute,
 } as any)
+const LocaleSourcesRoute = LocaleSourcesRouteImport.update({
+  id: '/sources',
+  path: '/sources',
+  getParentRoute: () => LocaleRoute,
+} as any)
 const LocaleCharactersIndexRoute = LocaleCharactersIndexRouteImport.update({
   id: '/characters/',
   path: '/characters/',
@@ -96,6 +102,7 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/$locale/filler': typeof LocaleFillerRoute
   '/$locale/privacy': typeof LocalePrivacyRoute
+  '/$locale/sources': typeof LocaleSourcesRoute
   '/$locale/': typeof LocaleIndexRoute
   '/$locale/characters/$id': typeof LocaleCharactersIdRoute
   '/$locale/fruits/$id': typeof LocaleFruitsIdRoute
@@ -110,6 +117,7 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/$locale/filler': typeof LocaleFillerRoute
   '/$locale/privacy': typeof LocalePrivacyRoute
+  '/$locale/sources': typeof LocaleSourcesRoute
   '/$locale': typeof LocaleIndexRoute
   '/$locale/characters/$id': typeof LocaleCharactersIdRoute
   '/$locale/fruits/$id': typeof LocaleFruitsIdRoute
@@ -126,6 +134,7 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/$locale/filler': typeof LocaleFillerRoute
   '/$locale/privacy': typeof LocalePrivacyRoute
+  '/$locale/sources': typeof LocaleSourcesRoute
   '/$locale/': typeof LocaleIndexRoute
   '/$locale/characters/$id': typeof LocaleCharactersIdRoute
   '/$locale/fruits/$id': typeof LocaleFruitsIdRoute
@@ -143,6 +152,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/$locale/filler'
     | '/$locale/privacy'
+    | '/$locale/sources'
     | '/$locale/'
     | '/$locale/characters/$id'
     | '/$locale/fruits/$id'
@@ -157,6 +167,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/$locale/filler'
     | '/$locale/privacy'
+    | '/$locale/sources'
     | '/$locale'
     | '/$locale/characters/$id'
     | '/$locale/fruits/$id'
@@ -172,6 +183,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/$locale/filler'
     | '/$locale/privacy'
+    | '/$locale/sources'
     | '/$locale/'
     | '/$locale/characters/$id'
     | '/$locale/fruits/$id'
@@ -239,6 +251,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocalePrivacyRouteImport
       parentRoute: typeof LocaleRoute
     }
+    '/$locale/sources': {
+      id: '/$locale/sources'
+      path: '/sources'
+      fullPath: '/$locale/sources'
+      preLoaderRoute: typeof LocaleSourcesRouteImport
+      parentRoute: typeof LocaleRoute
+    }
     '/$locale/characters/': {
       id: '/$locale/characters/'
       path: '/characters'
@@ -287,6 +306,7 @@ declare module '@tanstack/react-router' {
 interface LocaleRouteChildren {
   LocaleFillerRoute: typeof LocaleFillerRoute
   LocalePrivacyRoute: typeof LocalePrivacyRoute
+  LocaleSourcesRoute: typeof LocaleSourcesRoute
   LocaleIndexRoute: typeof LocaleIndexRoute
   LocaleCharactersIdRoute: typeof LocaleCharactersIdRoute
   LocaleFruitsIdRoute: typeof LocaleFruitsIdRoute
@@ -299,6 +319,7 @@ interface LocaleRouteChildren {
 const LocaleRouteChildren: LocaleRouteChildren = {
   LocaleFillerRoute: LocaleFillerRoute,
   LocalePrivacyRoute: LocalePrivacyRoute,
+  LocaleSourcesRoute: LocaleSourcesRoute,
   LocaleIndexRoute: LocaleIndexRoute,
   LocaleCharactersIdRoute: LocaleCharactersIdRoute,
   LocaleFruitsIdRoute: LocaleFruitsIdRoute,

@@ -49,6 +49,14 @@ export function SiteFooter(): ReactElement {
         >
           {t('privacy.title')}
         </Link>
+        {' · '}
+        <Link
+          params={{ locale }}
+          to="/$locale/sources"
+          {...stylex.props(styles.link)}
+        >
+          {t('credits.title')}
+        </Link>
       </p>
     </footer>
   )

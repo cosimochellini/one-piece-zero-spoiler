@@ -146,6 +146,54 @@ export const itDictionary: Dictionary = {
   'faq.peekA':
     'Sì. Nelle altre pagine della wiki premi “Mostra comunque”. La scelta non viene salvata e le altre voci restano nella nebbia.',
 
+  'credits.title': 'Fonti e licenze',
+  'credits.description':
+    'Riferimenti alle fonti e avvisi sulle licenze, filtrati in base al segnalibro.',
+  'credits.intro':
+    'Le fonti delle verifiche documentate e le licenze applicabili al progetto e alle fonti.',
+  'credits.licensesTitle': 'Licenze del progetto',
+  'credits.software':
+    'La licenza MIT copre il software e la documentazione tecnica originale, nei limiti dei diritti detenuti dai contributori. Gli avvisi esistenti restano validi.',
+  'credits.scopeNotice': 'Ambito della licenza e avvisi sui contenuti',
+  'credits.content':
+    'Testi delle voci, disegni e identità visiva sono esclusi dalla concessione MIT generale. Non viene assegnata una nuova licenza generale ai contenuti. Restano validi i diritti di terzi e le autorizzazioni esistenti.',
+  'credits.sourcesTitle': 'Condizioni delle fonti',
+  'credits.external':
+    'Le pagine esterne possono anticipare fatti successivi, anche nei titoli. Aprendo una fonte esci dalla protezione dagli spoiler di questa wiki.',
+  'credits.wikiTerms':
+    'Le One Piece Wiki inglese e italiana dichiarano CC BY-SA 3.0 Unported come licenza predefinita dei testi della comunità. Eccezioni, materiali importati e immagini possono avere condizioni diverse. Fandom consente di attribuire gli autori tramite collegamenti agli articoli a cui hanno contribuito.',
+  'credits.otherTerms':
+    'Non è stata accertata una licenza generale aperta per AnimeFillerList o per la sinossi ufficiale dell’episodio. Le classificazioni e le citazioni delle fonti non autorizzano a copiare testi, immagini o un’intera raccolta. I titoli ufficiali e il materiale di One Piece non vengono offerti come contenuti di proprietà del progetto.',
+  'credits.wikiEn': 'One Piece Wiki inglese',
+  'credits.wikiIt': 'One Piece Wiki italiana',
+  'credits.fandomTerms': 'Licenze e attribuzioni Fandom',
+  'credits.fandomTermsIt': 'Licenze Fandom in italiano',
+  'credits.fillerList': 'AnimeFillerList: riferimento per le classificazioni',
+  'credits.referencesTitle': 'Riferimenti documentati',
+  'credits.coverage':
+    'L’elenco copre il campione verificato il 20 ottobre 2026 e la sostituzione del riassunto verificata il 22 ottobre 2026. Altri testi storici, traduzioni e disegni restano non verificati o con questioni aperte. Questi riferimenti non certificano i diritti su tutte le voci.',
+  'credits.bookmark':
+    'Sono elencati solo i riferimenti a materiali visibili al tuo segnalibro. La licenza accanto a una fonte riguarda il suo testo, non l’intero archivio.',
+  'credits.empty':
+    'Al tuo segnalibro non sono ancora visibili riferimenti alle singole voci. Puoi leggere gli avvisi generali sulle fonti e sulle licenze qui sopra.',
+  'credits.episode': 'Episodio {episode}',
+  'credits.scope.dossier': 'Campi della scheda nel campione verificato',
+  'credits.scope.chronicle': 'Voce della storia nel campione verificato',
+  'credits.scope.filler':
+    'Titolo dell’opera e riassunto nel campione verificato',
+  'credits.scope.title': 'Solo il titolo dell’opera',
+  'credits.scope.summary': 'Riassunto sostitutivo',
+  'credits.factCheck':
+    'Riferimento per il confronto o la verifica dei fatti documentati. Il processo di scrittura storico non è accertato: non si dichiarano testi indipendenti né nuove licenze sui contenuti.',
+  'credits.replacement':
+    'Entrambi i riassunti sono stati sostituiti con brevi testi basati su fatti verificati nella sinossi ufficiale. La sinossi non è stata tradotta per intero. Non viene assegnata una nuova licenza ai contenuti.',
+  'credits.source.wiki-en':
+    'Contributori della One Piece Wiki inglese: revisione della fonte',
+  'credits.source.wiki-it':
+    'Contributori della One Piece Wiki italiana: revisione della fonte',
+  'credits.source.official': 'ONE PIECE.com: sinossi ufficiale dell’episodio',
+  'credits.noOpenLicense': 'Nessuna autorizzazione aperta accertata.',
+
   'privacy.title': 'Privacy e cookie',
   'privacy.description':
     'Come Zero Spoiler usa cookie tecnici, memoria del browser e hosting Netlify.',
