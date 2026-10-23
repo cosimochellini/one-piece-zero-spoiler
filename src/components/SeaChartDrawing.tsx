@@ -35,7 +35,7 @@ export interface DrawingProps {
  * the Blues open sea with waves, the Grand Line a ruled band, the Calm
  * Belts a stipple with a Sea King in the first half's, the Red Line a
  * continent of ridges with Reverse Mountain at its right edge. The fog is
- * cloud. The compass rose is always there: it says nothing of the story.
+ * cloud. The compass rose appears with the West Blue it decorates.
  */
 export function SeaWorld({
   id,
@@ -76,7 +76,9 @@ export function SeaWorld({
       {opened.has('calm-belt') ?
         <SeaKing orientation={orientation} />
       : null}
-      <Compass orientation={orientation} />
+      {opened.has('west-blue') ?
+        <Compass orientation={orientation} />
+      : null}
     </g>
   )
 }

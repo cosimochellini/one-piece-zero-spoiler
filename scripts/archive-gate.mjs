@@ -126,8 +126,11 @@ const WORST_CHUNKS = 5
  * hosting and rights guidance, its route and footer link. The measured build
  * is 640,233 bytes; the ceiling retains ~1 KB headroom. The added prose is
  * public policy, not archive records or drawings; all leak canaries remain.
+ * Raised for #728 on 2026-10-22: reached-label placement and leader lines.
+ * The measured build is 642,931 bytes; keep 1 KB headroom. Server payloads
+ * are unchanged, and no covered names, artwork or coordinates are added.
  */
-export const MAX_CLIENT_BYTES = 641_250
+export const MAX_CLIENT_BYTES = 643_931
 
 /** Where the prose lives: every saga, the ship's log and the filler guide. */
 const PROSE_DIR = 'src/data/records'

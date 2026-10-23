@@ -137,6 +137,7 @@ describe('SeaChart', () => {
     // No sea is drawn or named, and nothing in the fog has a name.
     expect(container).not.toHaveTextContent('East Blue')
     expect(container.querySelectorAll('rect[x]')).toHaveLength(0)
+    expect(container.querySelectorAll('circle')).toHaveLength(0)
   })
 
   it('links every open stop to its page and marks where the reader is', () => {
@@ -207,6 +208,20 @@ describe('SeaChart', () => {
     expect(container).toHaveTextContent('East Blue Saga')
     expect(container).toHaveTextContent('Shells Town')
     expect(container).not.toHaveTextContent('Alabasta Saga')
+  })
+
+  it('keeps every reached name written even when their points overlap', () => {
+    const crowded = eastBlue.map((entry) => ({
+      ...entry,
+      chart: { x: 1000, y: 400 },
+    }))
+    const { container } = draw({ bookmark: ep(30), open: crowded })
+
+    expect(container.querySelectorAll('[data-chart-name]')).toHaveLength(4)
+
+    for (const entry of crowded) {
+      expect(screen.getAllByText(entry.name)).toHaveLength(2)
+    }
   })
 
   it('zooms across with its buttons, and between the whole chart and the saga', async () => {

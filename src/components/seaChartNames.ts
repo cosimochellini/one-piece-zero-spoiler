@@ -62,9 +62,8 @@ export function sagaTintOf(saga: number): TintId {
 /** Pixels per unit of the chart as drawn a name shows from, each way up. */
 export type ShowsFrom = Record<Orientation, number>
 
-/** An open stop's name on the chart, and the scale it shows from. */
+/** An open stop's name on the chart, and its preferred side. */
 export interface StopName {
-  from: ShowsFrom
   port: StopView
   side: Record<Orientation, Side>
 }
@@ -193,9 +192,8 @@ export function namesOf(
   })
 
   return {
-    stopNames: claims.ordered.map((port, index) => ({
+    stopNames: claims.ordered.map((port) => ({
       port,
-      from: from(index),
       side: {
         across: nameSideOf(pointOf(port), 'across'),
         down: nameSideOf(pointOf(port), 'down'),

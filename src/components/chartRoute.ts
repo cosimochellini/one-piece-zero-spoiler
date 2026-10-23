@@ -43,8 +43,8 @@ export interface Leg {
  * The legs of the route through these stops, in the order given. The main
  * line runs from the origin through every stop the ship sails to, over
  * Reverse Mountain on the way into the Grand Line. Luffy's own way branches
- * off the last of them and the main line goes on from there; a place the
- * story only shows has no leg at all.
+ * off the last of them and returns there once the main route resumes;
+ * a place the story only shows has no leg at all.
  */
 export function legsOf(stops: RouteStop[]): Leg[] {
   let main: Point = ORIGIN
@@ -60,10 +60,15 @@ export function legsOf(stops: RouteStop[]): Leg[] {
       return [{ from, to: stop.at, line: 'luffy' }]
     }
 
+    const returning: Leg[] =
+      previous?.line === 'luffy' ?
+        [{ from: previous, to: main, line: 'luffy' }]
+      : []
     const from = main
     main = stop.at
     previous = stop.at
     return [
+      ...returning,
       {
         from,
         to: stop.at,
