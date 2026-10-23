@@ -259,9 +259,6 @@ interface Fog {
   plain: Map<string, Entity[]>
 }
 
-/** One fog per series and bookmark: a sweep asks for the same one many times over. */
-const fogs = new Map<string, Fog>()
-
 /**
  * What names a record of another series, as `slug/id`: its strings, as
  * written and as folded, and its drawings, at any bookmark.
@@ -356,11 +353,14 @@ export function leaksOf(
   bookmark: Bookmark,
   excused?: (entity: Entity) => boolean,
 ) => string[] {
-  // Built on the first ask: it does not depend on the bookmark.
+  // Both kept for this series and list alone, so a test's own series never
+  // reads another's. One fog per bookmark: a sweep asks for the same one many
+  // times over. The foreign words do not depend on the bookmark.
+  const fogs = new Map<string, Fog>()
   let foreign: Foreign | undefined
 
   return (payload, bookmark, excused = () => false) => {
-    const key = `${series.slug} ${JSON.stringify(bookmark)}`
+    const key = JSON.stringify(bookmark)
     const fog = fogs.get(key) ?? {
       drawn: drawnFogOf(bookmark, series.archive),
       folded: foldedFogOf(bookmark, series.archive),
