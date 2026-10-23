@@ -207,7 +207,7 @@ async function wikitextBatch(wiki, language, batch) {
     .update(wiki[language] + QUERY + batch.join('|'))
     .digest('hex')
   const { query } = await cached(
-    // fallow-ignore-next-line security-sink -- a folder named in this module and a hex digest
+    // fallow-ignore-next-line security-sink -- the series' cache folder, from its slug in the repository's own list, a literal and a hex digest
     path.join(wiki.cache, 'filler', `${key}.json`),
     `filler ${batch[0] ?? ''}`,
     wiki[language] + QUERY + encodeURIComponent(batch.join('|')),

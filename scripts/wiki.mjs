@@ -310,7 +310,7 @@ async function queried(api, folder, titles) {
     const batch = titles.slice(from, from + BATCH)
     const key = createHash('sha256').update(batch.join('|')).digest('hex')
     const { query } = await fetchBatch(
-      // fallow-ignore-next-line security-sink -- a folder named in this module and a hex digest
+      // fallow-ignore-next-line security-sink -- the series' cache folder (from its slug in the repository's own list) plus a literal, and a hex digest
       path.join(folder, `${key}.json`),
       `${path.basename(folder)} ${String(from)}`,
       api + encodeURIComponent(batch.join('|')),
