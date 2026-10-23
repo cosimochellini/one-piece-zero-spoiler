@@ -145,7 +145,7 @@ export async function cached(file, label, url, isAnswer) {
  */
 export async function fetchPage(title, wiki) {
   const { parse } = await cached(
-    // fallow-ignore-next-line security-sink -- The fixed cache root and URI-encoded filename cannot contain title path separators.
+    // fallow-ignore-next-line security-sink -- the series' cache folder, from its slug in the repository's own list, and a URI-encoded title that cannot contain a path separator
     path.join(wiki.cache, `${encodeURIComponent(title)}.json`),
     title,
     wiki.en + PARSE + encodeURIComponent(title),
@@ -196,7 +196,7 @@ async function fetchChapters({ from, to }, wiki) {
     (_, index) => `Chapter ${String(from + index)}`,
   )
   const { query } = await fetchBatch(
-    // fallow-ignore-next-line security-sink -- The batch loop supplies numeric bounds under the fixed repository cache.
+    // fallow-ignore-next-line security-sink -- the series' cache folder, from its slug in the repository's own list, and numeric bounds from the batch loop
     path.join(wiki.cache, 'chapters', `${String(from)}-${String(to)}.json`),
     label,
     wiki.en + REVISIONS + encodeURIComponent(titles.join('|')),
