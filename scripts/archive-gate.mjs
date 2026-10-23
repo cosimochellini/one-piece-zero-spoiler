@@ -7,7 +7,7 @@
  * both other gates, and the only symptom is a bigger `.js` file that a
  * visitor with no bookmark can read end to end.
  *
- * Three checks over the built client chunks:
+ * Four checks over the built client chunks:
  *
  *   1. Prose canaries. The longest sentence in every archive module — all
  *      twelve sagas and the ship's log — read at gate time rather than
@@ -19,7 +19,8 @@
  *      enough not to occur by accident — `monkey-d-luffy`, `edward-newgate` —
  *      is looked for in the chunks too, because a leak there ships names as
  *      literal identifiers rather than as sentences.
- *   3. A byte budget. The canaries name every module now, but the budget
+ *   3. Source URL canaries for the server-only provenance inventory (#721).
+ *   4. A byte budget. The canaries name every module now, but the budget
  *      still catches bulk arriving through a shape neither pattern matches.
  *
  * Exit codes:
@@ -129,8 +130,11 @@ const WORST_CHUNKS = 5
  * Raised for #728 on 2026-10-22: reached-label placement and leader lines.
  * The measured build is 642,931 bytes; keep 1 KB headroom. Server payloads
  * are unchanged, and no covered names, artwork or coordinates are added.
+ * Raised for #721 on 2026-10-23: public bilingual source/license notices
+ * and their route. Measured client: 653,301 bytes plus 1 KB headroom.
+ * Record-specific source URLs remain server-only and have their own canaries.
  */
-export const MAX_CLIENT_BYTES = 643_931
+export const MAX_CLIENT_BYTES = 654_301
 
 /** Where the prose lives: every saga, the ship's log and the filler guide. */
 const PROSE_DIR = 'src/data/records'
@@ -317,6 +321,42 @@ function slugCanaries(repositoryRoot) {
 }
 
 /**
+ * The documented official synopsis URL, without assuming a page identifier.
+ * @param {string} source The server credit module.
+ * @returns {null | string} Its source URL, or an unreadable canary.
+ */
+function officialSourceIn(source) {
+  return source.match(/https:\/\/one-piece\.com\/anime\/[^'"\s]+/u)?.[0] ?? null
+}
+
+/**
+ * Source revision addresses are identifying archive data too (#721).
+ * @param {string} repositoryRoot The repository root.
+ * @returns {{file: string, phrase: null | string}[]} Source-link canaries.
+ */
+export function sourceCanaries(repositoryRoot) {
+  const file = 'docs/content-provenance/sources.json'
+  const official = 'src/server/archive/credits.server.ts'
+  try {
+    const manifest = JSON.parse(
+      // fallow-ignore-next-line security-sink -- The root is this script’s directory or a test fixture; file is a fixed repository path, never request input.
+      readFileSync(path.join(repositoryRoot, file), 'utf8'),
+    )
+    // fallow-ignore-next-line security-sink -- The root is this script’s directory or a test fixture; official is a fixed repository path, never request input.
+    const source = readFileSync(path.join(repositoryRoot, official), 'utf8')
+    return [
+      ...Object.values(manifest.sources).map(({ revisionUrl }) => ({
+        file,
+        phrase: revisionUrl,
+      })),
+      { file: official, phrase: officialSourceIn(source) },
+    ]
+  } catch {
+    return [{ file, phrase: null }]
+  }
+}
+
+/**
  * The built client scripts, or nothing at all when there is no build.
  * @param {string} repositoryRoot The repository root.
  * @returns {{bytes: number, name: string, text: string}[]} One per script.
@@ -348,6 +388,7 @@ function main() {
   const canaries = [
     ...proseCanaries(repositoryRoot),
     ...slugCanaries(repositoryRoot),
+    ...sourceCanaries(repositoryRoot),
   ]
   const verdict = judge(chunks, canaries)
 

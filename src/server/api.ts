@@ -3,6 +3,7 @@ import { createServerFn } from '@tanstack/react-start'
 import { isLocale, type Locale } from '~/i18n/locales'
 import { readBookmark, readTrial } from '~/lib/progress/readBookmark'
 
+import { creditsPage } from './archive/credits.server'
 import { fillerPage, peekFiller } from './archive/filler.server'
 import { fruitPage } from './archive/fruitPage.server'
 import { fruitEaters, fruitSheet, fruitSiblings } from './archive/fruits.server'
@@ -187,6 +188,10 @@ export const loadPlace = createServerFn()
 export const loadFiller = createServerFn()
   .validator(located)
   .handler(({ data }) => fillerPage(readBookmark(), data.locale))
+
+export const loadCredits = createServerFn()
+  .validator(located)
+  .handler(({ data }) => creditsPage(readBookmark(), data.locale))
 
 // The one function that does not read the bookmark: the dialog that sets it
 // names the saga of any number typed into it, past the bookmark too.

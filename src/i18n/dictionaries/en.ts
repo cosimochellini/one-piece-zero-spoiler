@@ -18,9 +18,9 @@ export const enDictionary = {
   'site.name': 'Zero Spoiler',
   'site.title': 'Zero Spoiler | The One Piece wiki without spoilers',
   'site.description':
-    'An unofficial One Piece fan wiki that hides every character, arc, place and devil fruit you have not reached yet. Set the episode or chapter you are on and read up to there.',
+    'A One Piece wiki that hides every character, arc, place and devil fruit you have not reached yet. Set the episode or chapter you are on and read up to there.',
   'seo.imageAlt':
-    'The Zero Spoiler unofficial fan wiki card: the logo above a route that disappears into fog.',
+    'The Zero Spoiler card: the logo above a route that disappears into fog.',
 
   'nav.skip': 'Skip to content',
   'nav.characters': 'Characters',
@@ -148,9 +148,65 @@ export const enDictionary = {
   'faq.peekA':
     'Yes. On the other pages of the wiki, press “Show anyway” on it. The choice is not saved, and every other entry stays under fog.',
 
+  'legal.title': 'Legal notice',
+  'legal.description':
+    'The unofficial project notice, rights contact, privacy and cookies, sources and licenses.',
+  'legal.projectTitle': 'An unofficial project',
+  'legal.unofficial':
+    'Zero Spoiler is an unofficial, nonprofit fan project. It is not affiliated with or endorsed by the One Piece rights holders.',
+  'legal.credits':
+    'One Piece was created by Eiichiro Oda. Anime credit: © Eiichiro Oda/Shueisha, Toei Animation.',
+  'legal.creditSource': 'Official credit source',
+  'legal.contact': 'Rights inquiries and corrections on GitHub',
+  'legal.contactHelp':
+    'Include the page URL, the material concerned and the rights inquiry or correction requested. Keep spoilers out of the title. GitHub issues are public and require an account. Do not post confidential information.',
+
+  'credits.title': 'Sources and licenses',
+  'credits.intro':
+    'Sources used for documented checks and the licenses that apply to the project and its sources.',
+  'credits.licensesTitle': 'Project licenses',
+  'credits.software':
+    'The MIT license covers the software and original technical documentation, within the rights held by contributors. Existing notices remain valid.',
+  'credits.scopeNotice': 'License scope and content notices',
+  'credits.content':
+    'Archive text, drawings and branding are outside the general MIT grant. No new blanket content license is assigned. Third-party rights and existing permissions remain in force.',
+  'credits.sourcesTitle': 'Source terms',
+  'credits.external':
+    'External pages may contain later story information, including in their titles. Opening a source leaves this wiki’s spoiler protection.',
+  'credits.wikiTerms':
+    'The English and Italian One Piece Wikis declare CC BY-SA 3.0 Unported for community text by default. Exceptions, imported material and images can have different terms. Fandom permits author attribution through links to the contributed articles.',
+  'credits.otherTerms':
+    'No general open-content license was established for AnimeFillerList or the official episode synopsis. Classification facts and citations do not grant permission to copy prose, images or an entire compilation. Official titles and One Piece material are not offered as project-owned content.',
+  'credits.wikiEn': 'English One Piece Wiki',
+  'credits.wikiIt': 'Italian One Piece Wiki',
+  'credits.fandomTerms': 'Fandom licensing and attribution',
+  'credits.fandomTermsIt': 'Fandom licensing in Italian',
+  'credits.fillerList': 'AnimeFillerList: classification reference',
+  'credits.referencesTitle': 'Documented references',
+  'credits.coverage':
+    'This list covers the bounded review recorded on 20 October 2026 and the summary replacement reviewed on 22 October 2026. Other historical text, translations and illustrations remain unreviewed or unresolved. These references do not certify the rights in every entry.',
+  'credits.bookmark':
+    'Only references to material open at your bookmark are listed. The license beside a source refers to its text, not to the whole archive.',
+  'credits.empty':
+    'No entry references are open at your bookmark. You can still read the general source and license notices above.',
+  'credits.episode': 'Episode {episode}',
+  'credits.scope.dossier': 'Character fields in the reviewed sample',
+  'credits.scope.chronicle': 'Story entry in the reviewed sample',
+  'credits.scope.filler': 'Release title and summary in the reviewed sample',
+  'credits.scope.title': 'Release title only',
+  'credits.scope.summary': 'Replacement summary',
+  'credits.factCheck':
+    'Reference for the documented comparison or fact check. The historical writing process is not established; no claim of independent authorship or new content license is made.',
+  'credits.replacement':
+    'Both summaries were replaced with brief accounts of facts checked against the official synopsis. The synopsis was not translated in full. No new content license is assigned.',
+  'credits.source.wiki-en':
+    'English One Piece Wiki contributors: source revision',
+  'credits.source.wiki-it':
+    'Italian One Piece Wiki contributors: source revision',
+  'credits.source.official': 'ONE PIECE.com: official episode synopsis',
+  'credits.noOpenLicense': 'No open-content permission established.',
+
   'privacy.title': 'Privacy and cookies',
-  'privacy.description':
-    'How Zero Spoiler uses technical cookies, browser storage and Netlify hosting.',
   'privacy.updated': 'Last checked: 20 October 2026.',
   'privacy.controllerTitle': 'Who runs the site',
   'privacy.controller':
@@ -198,16 +254,10 @@ export const enDictionary = {
 
   'footer.lead': 'A One Piece wiki that hides what comes after your bookmark.',
   'footer.colophon':
-    'All the drawings are made for this site; no official artwork is used. Your bookmark is saved in a cookie on this device. The MIT licence covers the software and original technical documentation. It does not cover archive text, drawings, branding or third-party material. Third-party licences still apply.',
+    'All the drawings are made for this site; no official artwork is used. Your bookmark is saved in a cookie on this device.',
 
   'footer.unofficial':
-    'Unofficial, nonprofit fan project. Not affiliated with or endorsed by One Piece rights holders.',
-  'footer.credits':
-    'One Piece was created by Eiichiro Oda. Anime credit: © Eiichiro Oda/Shueisha, Toei Animation.',
-  'footer.creditSource': 'Official credit source',
-  'footer.contact': 'Rights inquiries and corrections on GitHub',
-  'footer.contactHelp':
-    'Include the page URL, the material concerned and the rights inquiry or correction requested. Keep spoilers out of the title. GitHub issues are public and require an account. Do not post confidential information.',
+    'Unofficial fan project, not endorsed by the One Piece rights holders.',
 
   'characters.title': 'Characters',
   'characters.count':

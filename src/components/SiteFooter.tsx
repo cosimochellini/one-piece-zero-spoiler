@@ -22,32 +22,14 @@ export function SiteFooter(): ReactElement {
         <b {...stylex.props(styles.lead)}>{t('footer.lead')}</b>{' '}
         {t('footer.colophon')}
       </p>
-      <p {...stylex.props(styles.colophon)}>{t('footer.unofficial')}</p>
       <p {...stylex.props(styles.colophon)}>
-        {t('footer.credits')}{' '}
-        <a
-          {...stylex.props(styles.link)}
-          href="https://www.toei-animation.com/copyrights/"
-        >
-          {t('footer.creditSource')}
-        </a>
-      </p>
-      <p {...stylex.props(styles.colophon)}>
-        <a
-          {...stylex.props(styles.link)}
-          href="https://github.com/cosimochellini/one-piece-zero-spoiler/issues/new?template=blank.md"
-        >
-          {t('footer.contact')}
-        </a>{' '}
-        {t('footer.contactHelp')}
-      </p>
-      <p {...stylex.props(styles.colophon)}>
+        {t('footer.unofficial')}{' '}
         <Link
           params={{ locale }}
-          to="/$locale/privacy"
+          to="/$locale/legal"
           {...stylex.props(styles.link)}
         >
-          {t('privacy.title')}
+          {t('legal.title')}
         </Link>
       </p>
     </footer>

@@ -15,6 +15,7 @@ import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as LocaleIndexRouteImport } from './routes/$locale/index'
 import { Route as LocaleFillerRouteImport } from './routes/$locale/filler'
+import { Route as LocaleLegalRouteImport } from './routes/$locale/legal'
 import { Route as LocalePrivacyRouteImport } from './routes/$locale/privacy'
 import { Route as LocaleCharactersIndexRouteImport } from './routes/$locale/characters/index'
 import { Route as LocaleCharactersIdRouteImport } from './routes/$locale/characters/$id'
@@ -51,6 +52,11 @@ const LocaleIndexRoute = LocaleIndexRouteImport.update({
 const LocaleFillerRoute = LocaleFillerRouteImport.update({
   id: '/filler',
   path: '/filler',
+  getParentRoute: () => LocaleRoute,
+} as any)
+const LocaleLegalRoute = LocaleLegalRouteImport.update({
+  id: '/legal',
+  path: '/legal',
   getParentRoute: () => LocaleRoute,
 } as any)
 const LocalePrivacyRoute = LocalePrivacyRouteImport.update({
@@ -95,6 +101,7 @@ export interface FileRoutesByFullPath {
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/$locale/filler': typeof LocaleFillerRoute
+  '/$locale/legal': typeof LocaleLegalRoute
   '/$locale/privacy': typeof LocalePrivacyRoute
   '/$locale/': typeof LocaleIndexRoute
   '/$locale/characters/$id': typeof LocaleCharactersIdRoute
@@ -109,6 +116,7 @@ export interface FileRoutesByTo {
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/$locale/filler': typeof LocaleFillerRoute
+  '/$locale/legal': typeof LocaleLegalRoute
   '/$locale/privacy': typeof LocalePrivacyRoute
   '/$locale': typeof LocaleIndexRoute
   '/$locale/characters/$id': typeof LocaleCharactersIdRoute
@@ -125,6 +133,7 @@ export interface FileRoutesById {
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/$locale/filler': typeof LocaleFillerRoute
+  '/$locale/legal': typeof LocaleLegalRoute
   '/$locale/privacy': typeof LocalePrivacyRoute
   '/$locale/': typeof LocaleIndexRoute
   '/$locale/characters/$id': typeof LocaleCharactersIdRoute
@@ -142,6 +151,7 @@ export interface FileRouteTypes {
     | '/robots.txt'
     | '/sitemap.xml'
     | '/$locale/filler'
+    | '/$locale/legal'
     | '/$locale/privacy'
     | '/$locale/'
     | '/$locale/characters/$id'
@@ -156,6 +166,7 @@ export interface FileRouteTypes {
     | '/robots.txt'
     | '/sitemap.xml'
     | '/$locale/filler'
+    | '/$locale/legal'
     | '/$locale/privacy'
     | '/$locale'
     | '/$locale/characters/$id'
@@ -171,6 +182,7 @@ export interface FileRouteTypes {
     | '/robots.txt'
     | '/sitemap.xml'
     | '/$locale/filler'
+    | '/$locale/legal'
     | '/$locale/privacy'
     | '/$locale/'
     | '/$locale/characters/$id'
@@ -232,6 +244,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleFillerRouteImport
       parentRoute: typeof LocaleRoute
     }
+    '/$locale/legal': {
+      id: '/$locale/legal'
+      path: '/legal'
+      fullPath: '/$locale/legal'
+      preLoaderRoute: typeof LocaleLegalRouteImport
+      parentRoute: typeof LocaleRoute
+    }
     '/$locale/privacy': {
       id: '/$locale/privacy'
       path: '/privacy'
@@ -286,6 +305,7 @@ declare module '@tanstack/react-router' {
 
 interface LocaleRouteChildren {
   LocaleFillerRoute: typeof LocaleFillerRoute
+  LocaleLegalRoute: typeof LocaleLegalRoute
   LocalePrivacyRoute: typeof LocalePrivacyRoute
   LocaleIndexRoute: typeof LocaleIndexRoute
   LocaleCharactersIdRoute: typeof LocaleCharactersIdRoute
@@ -298,6 +318,7 @@ interface LocaleRouteChildren {
 
 const LocaleRouteChildren: LocaleRouteChildren = {
   LocaleFillerRoute: LocaleFillerRoute,
+  LocaleLegalRoute: LocaleLegalRoute,
   LocalePrivacyRoute: LocalePrivacyRoute,
   LocaleIndexRoute: LocaleIndexRoute,
   LocaleCharactersIdRoute: LocaleCharactersIdRoute,

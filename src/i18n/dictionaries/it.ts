@@ -12,9 +12,9 @@ export const itDictionary: Dictionary = {
   'site.name': 'Zero Spoiler',
   'site.title': 'Zero Spoiler | La wiki di One Piece senza spoiler',
   'site.description':
-    'Una wiki amatoriale non ufficiale di One Piece che nasconde personaggi, saghe, luoghi e frutti del diavolo oltre l’ultimo episodio visto o l’ultimo capitolo letto.',
+    'Una wiki di One Piece che nasconde personaggi, saghe, luoghi e frutti del diavolo oltre l’ultimo episodio visto o l’ultimo capitolo letto.',
   'seo.imageAlt':
-    'La card della wiki amatoriale non ufficiale Zero Spoiler: il logo sopra una rotta che sparisce nella nebbia.',
+    'La card di Zero Spoiler: il logo sopra una rotta che sparisce nella nebbia.',
 
   'nav.skip': 'Vai al contenuto',
   'nav.characters': 'Personaggi',
@@ -146,9 +146,66 @@ export const itDictionary: Dictionary = {
   'faq.peekA':
     'Sì. Nelle altre pagine della wiki premi “Mostra comunque”. La scelta non viene salvata e le altre voci restano nella nebbia.',
 
+  'legal.title': 'Note legali',
+  'legal.description':
+    'Avviso sul progetto non ufficiale, contatti per i diritti, privacy e cookie, fonti e licenze.',
+  'legal.projectTitle': 'Un progetto non ufficiale',
+  'legal.unofficial':
+    'Zero Spoiler è un progetto amatoriale non ufficiale e senza scopo di lucro. Non è affiliato né approvato dai titolari dei diritti di One Piece.',
+  'legal.credits':
+    'One Piece è un’opera di Eiichiro Oda. Crediti dell’anime: © Eiichiro Oda/Shueisha, Toei Animation.',
+  'legal.creditSource': 'Fonte ufficiale dei crediti',
+  'legal.contact': 'Richieste sui diritti e correzioni su GitHub',
+  'legal.contactHelp':
+    'Indica l’URL della pagina, il materiale interessato e la richiesta sui diritti o la correzione. Evita spoiler nel titolo. Le issue GitHub sono pubbliche e richiedono un account. Non inserire informazioni riservate.',
+
+  'credits.title': 'Fonti e licenze',
+  'credits.intro':
+    'Le fonti delle verifiche documentate e le licenze applicabili al progetto e alle fonti.',
+  'credits.licensesTitle': 'Licenze del progetto',
+  'credits.software':
+    'La licenza MIT copre il software e la documentazione tecnica originale, nei limiti dei diritti detenuti dai contributori. Gli avvisi esistenti restano validi.',
+  'credits.scopeNotice': 'Ambito della licenza e avvisi sui contenuti',
+  'credits.content':
+    'Testi delle voci, disegni e identità visiva sono esclusi dalla concessione MIT generale. Non viene assegnata una nuova licenza generale ai contenuti. Restano validi i diritti di terzi e le autorizzazioni esistenti.',
+  'credits.sourcesTitle': 'Condizioni delle fonti',
+  'credits.external':
+    'Le pagine esterne possono anticipare fatti successivi, anche nei titoli. Aprendo una fonte esci dalla protezione dagli spoiler di questa wiki.',
+  'credits.wikiTerms':
+    'Le One Piece Wiki inglese e italiana dichiarano CC BY-SA 3.0 Unported come licenza predefinita dei testi della comunità. Eccezioni, materiali importati e immagini possono avere condizioni diverse. Fandom consente di attribuire gli autori tramite collegamenti agli articoli a cui hanno contribuito.',
+  'credits.otherTerms':
+    'Non è stata accertata una licenza generale aperta per AnimeFillerList o per la sinossi ufficiale dell’episodio. Le classificazioni e le citazioni delle fonti non autorizzano a copiare testi, immagini o un’intera raccolta. I titoli ufficiali e il materiale di One Piece non vengono offerti come contenuti di proprietà del progetto.',
+  'credits.wikiEn': 'One Piece Wiki inglese',
+  'credits.wikiIt': 'One Piece Wiki italiana',
+  'credits.fandomTerms': 'Licenze e attribuzioni Fandom',
+  'credits.fandomTermsIt': 'Licenze Fandom in italiano',
+  'credits.fillerList': 'AnimeFillerList: riferimento per le classificazioni',
+  'credits.referencesTitle': 'Riferimenti documentati',
+  'credits.coverage':
+    'L’elenco copre il campione verificato il 20 ottobre 2026 e la sostituzione del riassunto verificata il 22 ottobre 2026. Altri testi storici, traduzioni e disegni restano non verificati o con questioni aperte. Questi riferimenti non certificano i diritti su tutte le voci.',
+  'credits.bookmark':
+    'Sono elencati solo i riferimenti a materiali visibili al tuo segnalibro. La licenza accanto a una fonte riguarda il suo testo, non l’intero archivio.',
+  'credits.empty':
+    'Al tuo segnalibro non sono ancora visibili riferimenti alle singole voci. Puoi leggere gli avvisi generali sulle fonti e sulle licenze qui sopra.',
+  'credits.episode': 'Episodio {episode}',
+  'credits.scope.dossier': 'Campi della scheda nel campione verificato',
+  'credits.scope.chronicle': 'Voce della storia nel campione verificato',
+  'credits.scope.filler':
+    'Titolo dell’opera e riassunto nel campione verificato',
+  'credits.scope.title': 'Solo il titolo dell’opera',
+  'credits.scope.summary': 'Riassunto sostitutivo',
+  'credits.factCheck':
+    'Riferimento per il confronto o la verifica dei fatti documentati. Il processo di scrittura storico non è accertato: non si dichiarano testi indipendenti né nuove licenze sui contenuti.',
+  'credits.replacement':
+    'Entrambi i riassunti sono stati sostituiti con brevi testi basati su fatti verificati nella sinossi ufficiale. La sinossi non è stata tradotta per intero. Non viene assegnata una nuova licenza ai contenuti.',
+  'credits.source.wiki-en':
+    'Contributori della One Piece Wiki inglese: revisione della fonte',
+  'credits.source.wiki-it':
+    'Contributori della One Piece Wiki italiana: revisione della fonte',
+  'credits.source.official': 'ONE PIECE.com: sinossi ufficiale dell’episodio',
+  'credits.noOpenLicense': 'Nessuna autorizzazione aperta accertata.',
+
   'privacy.title': 'Privacy e cookie',
-  'privacy.description':
-    'Come Zero Spoiler usa cookie tecnici, memoria del browser e hosting Netlify.',
   'privacy.updated': 'Ultima verifica: 20 ottobre 2026.',
   'privacy.controllerTitle': 'Chi gestisce il sito',
   'privacy.controller':
@@ -197,16 +254,10 @@ export const itDictionary: Dictionary = {
   'footer.lead':
     'Una wiki di One Piece che nasconde quello che viene dopo il tuo segnalibro.',
   'footer.colophon':
-    'Tutti i disegni sono fatti per questo sito e non ci sono immagini ufficiali. Il segnalibro viene salvato in un cookie su questo dispositivo. La licenza MIT copre il software e la documentazione tecnica originale. Non copre i testi delle voci, i disegni, il branding o i materiali di terzi. Restano applicabili le licenze di terzi.',
+    'Tutti i disegni sono fatti per questo sito e non ci sono immagini ufficiali. Il segnalibro viene salvato in un cookie su questo dispositivo.',
 
   'footer.unofficial':
-    'Progetto amatoriale non ufficiale e senza scopo di lucro. Non è affiliato né approvato dai titolari dei diritti di One Piece.',
-  'footer.credits':
-    'One Piece è un’opera di Eiichiro Oda. Crediti dell’anime: © Eiichiro Oda/Shueisha, Toei Animation.',
-  'footer.creditSource': 'Fonte ufficiale dei crediti',
-  'footer.contact': 'Richieste sui diritti e correzioni su GitHub',
-  'footer.contactHelp':
-    'Indica l’URL della pagina, il materiale interessato e la richiesta sui diritti o la correzione. Evita spoiler nel titolo. Le issue GitHub sono pubbliche e richiedono un account. Non inserire informazioni riservate.',
+    'Progetto amatoriale non ufficiale, non approvato dai titolari dei diritti di One Piece.',
 
   'characters.title': 'Personaggi',
   'characters.count':

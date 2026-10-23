@@ -1,8 +1,8 @@
 import * as stylex from '@stylexjs/stylex'
 import type { ReactElement } from 'react'
 
+import { styles } from '~/components/LegalNotice.styles'
 import { useT } from '~/i18n/LocaleContext'
-import { color, font, leading, rule, space, text } from '~/styles/tokens.stylex'
 
 const SOURCES = [
   [
@@ -22,17 +22,16 @@ export function PrivacyNotice(): ReactElement {
   const t = useT()
 
   return (
-    <main
-      id="content"
-      {...stylex.props(styles.page)}
-    >
-      <h1 {...stylex.props(styles.title)}>{t('privacy.title')}</h1>
+    <section id="privacy">
+      <h2 {...stylex.props(styles.heading)}>{t('privacy.title')}</h2>
       <p {...stylex.props(styles.paragraph)}>{t('privacy.updated')}</p>
-      <h2 {...stylex.props(styles.heading)}>{t('privacy.controllerTitle')}</h2>
+      <h3 {...stylex.props(styles.subheading)}>
+        {t('privacy.controllerTitle')}
+      </h3>
       <p {...stylex.props(styles.paragraph)}>{t('privacy.controller')}</p>
-      <h2 {...stylex.props(styles.heading)}>{t('privacy.serviceTitle')}</h2>
+      <h3 {...stylex.props(styles.subheading)}>{t('privacy.serviceTitle')}</h3>
       <p {...stylex.props(styles.paragraph)}>{t('privacy.service')}</p>
-      <h2 {...stylex.props(styles.heading)}>{t('privacy.cookiesTitle')}</h2>
+      <h3 {...stylex.props(styles.subheading)}>{t('privacy.cookiesTitle')}</h3>
       <p {...stylex.props(styles.paragraph)}>{t('privacy.cookiesIntro')}</p>
       <ul {...stylex.props(styles.list)}>
         <li>{t('privacy.bookmark')}</li>
@@ -41,15 +40,15 @@ export function PrivacyNotice(): ReactElement {
       </ul>
       <p {...stylex.props(styles.paragraph)}>{t('privacy.attributes')}</p>
       <p {...stylex.props(styles.paragraph)}>{t('privacy.storage')}</p>
-      <h2 {...stylex.props(styles.heading)}>{t('privacy.controlTitle')}</h2>
+      <h3 {...stylex.props(styles.subheading)}>{t('privacy.controlTitle')}</h3>
       <p {...stylex.props(styles.paragraph)}>{t('privacy.control')}</p>
-      <h2 {...stylex.props(styles.heading)}>{t('privacy.hostingTitle')}</h2>
+      <h3 {...stylex.props(styles.subheading)}>{t('privacy.hostingTitle')}</h3>
       <p {...stylex.props(styles.paragraph)}>{t('privacy.hosting')}</p>
       <p {...stylex.props(styles.paragraph)}>{t('privacy.logs')}</p>
       <p {...stylex.props(styles.paragraph)}>{t('privacy.terms')}</p>
-      <h2 {...stylex.props(styles.heading)}>{t('privacy.basesTitle')}</h2>
+      <h3 {...stylex.props(styles.subheading)}>{t('privacy.basesTitle')}</h3>
       <p {...stylex.props(styles.paragraph)}>{t('privacy.bases')}</p>
-      <h2 {...stylex.props(styles.heading)}>{t('privacy.rightsTitle')}</h2>
+      <h3 {...stylex.props(styles.subheading)}>{t('privacy.rightsTitle')}</h3>
       <p {...stylex.props(styles.paragraph)}>{t('privacy.rights')}</p>
       <p {...stylex.props(styles.paragraph)}>
         <a
@@ -60,7 +59,7 @@ export function PrivacyNotice(): ReactElement {
         </a>{' '}
         {t('privacy.contactHelp')}
       </p>
-      <h2 {...stylex.props(styles.heading)}>{t('privacy.sourcesTitle')}</h2>
+      <h3 {...stylex.props(styles.subheading)}>{t('privacy.sourcesTitle')}</h3>
       <ul {...stylex.props(styles.list)}>
         {SOURCES.map(([key, href]) => (
           <li key={key}>
@@ -73,39 +72,6 @@ export function PrivacyNotice(): ReactElement {
           </li>
         ))}
       </ul>
-    </main>
+    </section>
   )
 }
-
-const styles = stylex.create({
-  page: {
-    padding: space.md,
-    marginBlock: space.lg,
-    color: color.ink2,
-    fontFamily: font.body,
-    fontSize: text.base,
-    lineHeight: leading.body,
-    overflowWrap: 'anywhere',
-    maxWidth: '76ch',
-  },
-  title: { color: color.ink, fontFamily: font.display, fontSize: text.display },
-  heading: {
-    color: color.ink,
-    fontFamily: font.display,
-    fontSize: text.xl,
-    lineHeight: leading.heading,
-    marginBlockEnd: space.sm,
-    marginBlockStart: space.lg,
-  },
-  paragraph: { marginBlockEnd: space.sm },
-  list: { marginBlockEnd: space.sm, paddingInlineStart: space.lg },
-  link: {
-    color: color.accent,
-    outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
-    outlineOffset: space.xs3,
-    outlineStyle: 'solid',
-    outlineWidth: rule.fine,
-    textDecorationLine: 'underline',
-    textUnderlineOffset: '3px',
-  },
-})
