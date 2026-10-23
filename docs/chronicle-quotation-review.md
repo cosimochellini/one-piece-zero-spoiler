@@ -80,7 +80,8 @@ manga lines.
    also fails if more than 30 kana or kanji sit outside 「…」, so a subtitle cue
    cannot stay unquoted; Japanese has no spaces, so the 80-character limit is
    the one that binds a 「…」 quotation. Straight single quotes are not checked,
-   because they cannot be told from apostrophes; none is left in a note.
+   because they cannot be told from apostrophes; none is left in a note. The
+   test bounds quotations only: English copied without marks would pass it.
 
 The facts were not researched again at their sources: each paraphrase restates
 only what the original note recorded. Agents did the rewriting and checking
