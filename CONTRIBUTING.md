@@ -211,8 +211,9 @@ sorting and `comm` (for example `LC_ALL=C`).
 
 A change to `src/server` that should change no page can be checked the same way:
 `npm run --silent archive:dump > head.jsonl` writes every payload in `PAYLOADS`,
-for every id or handle, at the sweep's bookmarks and in both locales, about 1
-GB. Dump the base too and `cmp` the two files.
+for every id or handle, at One Piece's sweep bookmarks
+(`src/data/series/index.ts`) and in both locales, about 1 GB. Dump the base too
+and `cmp` the two files.
 
 For characters with redrawings, capture the production site's stage gates:
 
