@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
-import { FILLER, LAST_AIRED } from '~/data/filler'
 import { reveal } from '~/data/reveal'
+import { FILLER, LAST_AIRED } from '~/data/series/one-piece/filler'
 import type { Bookmark } from '~/lib/progress/episode'
 import type {
   FillerGroup,

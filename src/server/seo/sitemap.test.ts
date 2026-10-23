@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest'
 
-import { characters } from '~/data/characters'
-import { fruits } from '~/data/fruits'
-import { places, ships } from '~/data/places'
+import { characters } from '~/data/series/one-piece/characters'
+import { fruits } from '~/data/series/one-piece/fruits'
+import { places, ships } from '~/data/series/one-piece/places'
 import { SITE_ORIGIN } from '~/lib/seo/site'
 
 import { sitemapXml } from './sitemap.server'

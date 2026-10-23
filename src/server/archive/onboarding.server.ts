@@ -1,11 +1,16 @@
-import { DRAWINGS } from '~/data/art'
-import { chapterAtEpisode } from '~/data/chapter-table'
-import { arcs, chart, getCharacter, roleOf } from '~/data/characters'
-import { datedOf } from '~/data/dated'
-import { entities } from '~/data/entities'
-import { ARC_LEADS } from '~/data/leads'
 import { orderByMode } from '~/data/order'
-import { places, ships } from '~/data/places'
+import { DRAWINGS } from '~/data/series/one-piece/art'
+import { chapterAtEpisode } from '~/data/series/one-piece/chapter-table'
+import {
+  arcs,
+  chart,
+  getCharacter,
+  roleOf,
+} from '~/data/series/one-piece/characters'
+import { datedOf } from '~/data/series/one-piece/dated'
+import { entities } from '~/data/series/one-piece/entities'
+import { ARC_LEADS } from '~/data/series/one-piece/leads'
+import { places, ships } from '~/data/series/one-piece/places'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 import { DEMO_LAST_CHAPTER, DEMO_LAST_EPISODE } from '~/lib/progress/bounds'

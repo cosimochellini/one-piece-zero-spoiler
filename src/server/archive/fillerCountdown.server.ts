@@ -1,4 +1,4 @@
-import { FILLER, LAST_AIRED } from '~/data/filler'
+import { FILLER, LAST_AIRED } from '~/data/series/one-piece/filler'
 import { absoluteEpisodeOf, type Bookmark } from '~/lib/progress/episode'
 import type {
   Countdown,

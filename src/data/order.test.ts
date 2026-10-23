@@ -1,7 +1,8 @@
 import { byNumber } from 'sort-es'
 import { describe, expect, it } from 'vitest'
 
-import { entities } from './entities'
+import { entities } from '~/data/series/one-piece/entities'
+
 import { orderByMode } from './order'
 
 describe('orderByMode', () => {

@@ -108,7 +108,12 @@
       { "name": "ui", "patterns": ["src/components/ui/**"] },
       { "name": "components", "patterns": ["src/components/**"] },
       { "name": "lib", "patterns": ["src/lib/**", "src/security-headers.ts"] },
-      { "name": "data", "patterns": ["src/data/**"] },
+      // One zone per series, one per folder under `src/data/series/`, so a
+      // second series gets its own zone without a line here. Listed before
+      // `engine`, because a file belongs to the first zone that matches it.
+      { "name": "series", "autoDiscover": ["src/data/series"] },
+      // What every series shares: the record shapes, the reveal and the order.
+      { "name": "engine", "patterns": ["src/data/**"] },
       { "name": "i18n", "patterns": ["src/i18n/**"] },
       { "name": "styles", "patterns": ["src/styles/**"] },
     ],
@@ -117,12 +122,24 @@
         "from": "routes",
         "allow": ["components", "ui", "lib", "server", "i18n", "styles"],
       },
-      { "from": "server", "allow": ["data", "lib", "i18n", "styles"] },
+      {
+        "from": "server",
+        "allow": ["engine", "series", "lib", "i18n", "styles"],
+      },
       { "from": "components", "allow": ["ui", "lib", "i18n", "styles"] },
       { "from": "ui", "allow": ["styles"] },
       { "from": "lib", "allow": ["i18n", "styles"] },
-      { "from": "data", "allow": ["lib", "i18n", "styles"] },
-      { "from": "i18n", "allow": ["lib", "data", "styles"] },
+      // A series never imports another series.
+      { "from": "series", "allow": ["engine", "lib", "i18n", "styles"] },
+      // The engine imports no series. The one exception is type-only: the
+      // record shapes in `src/data/types.ts` name One Piece's drawing and
+      // fruit ids until a second series generalizes them (#758).
+      {
+        "from": "engine",
+        "allow": ["lib", "i18n", "styles"],
+        "allowTypeOnly": ["series/one-piece"],
+      },
+      { "from": "i18n", "allow": ["lib", "engine", "styles"] },
       { "from": "styles", "allow": [] },
     ],
     "coverage": {

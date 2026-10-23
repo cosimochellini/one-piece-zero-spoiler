@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { entities } from '~/data/entities'
+import { entities } from '~/data/series/one-piece/entities'
 import { foldName } from '~/lib/search/fold'
 
 import { entityForHandle, handleOf } from './handle.server'

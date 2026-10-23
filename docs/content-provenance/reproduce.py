@@ -17,10 +17,10 @@ FOLDER = Path("docs/content-provenance")
 CACHE = Path(".gate/provenance")
 EXPORT = r"""
 import { importArchive } from "./scripts/archive-loader.mjs";
-const { eastBlue } = await importArchive("data/records/east-blue.ts");
-const { wano } = await importArchive("data/records/wano.ts");
-const { wholeCake } = await importArchive("data/records/whole-cake.ts");
-const { FILLER } = await importArchive("data/filler.ts");
+const { eastBlue } = await importArchive("data/series/one-piece/records/east-blue.ts");
+const { wano } = await importArchive("data/series/one-piece/records/wano.ts");
+const { wholeCake } = await importArchive("data/series/one-piece/records/whole-cake.ts");
+const { FILLER } = await importArchive("data/series/one-piece/filler.ts");
 const rows = [];
 function local(obj, locale, prefix = "") {
   if (!obj || typeof obj !== "object") return [];
@@ -39,7 +39,7 @@ for (const locale of ["en", "it"]) {
     );
     rows.push({
       id: `chronicle-${ep}-${locale}`,
-      file: "src/data/records/east-blue.chronicle.ts",
+      file: "src/data/series/one-piece/records/east-blue.chronicle.ts",
       locale,
       source: `${locale}-${locale === "en" ? "Episode" : "Episodio"}_${ep}.json`,
       segments: [
@@ -62,7 +62,7 @@ for (const locale of ["en", "it"]) {
   ])
     rows.push({
       id: `dossier-${id}-${locale}`,
-      file: `src/data/records/${name}.ts`,
+      file: `src/data/series/one-piece/records/${name}.ts`,
       locale,
       source: `${locale}-${title}.json`,
       segments: local(saga.dossiers[id], locale, id),
@@ -71,7 +71,7 @@ for (const locale of ["en", "it"]) {
     const st = FILLER.find((x) => x.kind === "film" && x.after === 1027);
     rows.push({
       id: `filler-film-red-${locale}`,
-      file: "src/data/filler.ts",
+      file: "src/data/series/one-piece/filler.ts",
       locale,
       source: `${locale}-Film_Red.json`,
       segments: [
@@ -83,7 +83,7 @@ for (const locale of ["en", "it"]) {
     const st = FILLER.find((x) => x.episode === ep);
     rows.push({
       id: `filler-${ep}-${locale}`,
-      file: "src/data/filler.ts",
+      file: "src/data/series/one-piece/filler.ts",
       locale,
       source: `${locale}-${locale === "en" ? "Episode" : "Episodio"}_${ep}.json`,
       segments: [

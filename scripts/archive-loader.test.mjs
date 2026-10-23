@@ -9,7 +9,7 @@ import { describe, expect, it } from 'vitest'
 import { resolveArchive, ROOT } from './archive-loader.mjs'
 
 const parentURL = pathToFileURL(
-  path.join(ROOT, 'src', 'data', 'fruits.ts'),
+  path.join(ROOT, 'src', 'data', 'series', 'one-piece', 'fruits.ts'),
 ).href
 
 /**
@@ -28,14 +28,18 @@ function resolving(known) {
 
 describe('the archive resolve hook', () => {
   it('reads `~/` as src/', () => {
-    const href = pathToFileURL(path.join(ROOT, 'src', 'data', 'entities')).href
+    const href = pathToFileURL(
+      path.join(ROOT, 'src', 'data', 'series', 'one-piece', 'entities'),
+    ).href
 
-    expect(resolveArchive('~/data/entities', {}, resolving([href]))).toBe(href)
+    expect(
+      resolveArchive('~/data/series/one-piece/entities', {}, resolving([href])),
+    ).toBe(href)
   })
 
   it('adds `.ts` to a relative specifier that has no extension', () => {
     const href = pathToFileURL(
-      path.join(ROOT, 'src', 'data', 'entities.ts'),
+      path.join(ROOT, 'src', 'data', 'series', 'one-piece', 'entities.ts'),
     ).href
 
     expect(resolveArchive('./entities', { parentURL }, resolving([href]))).toBe(
@@ -45,10 +49,19 @@ describe('the archive resolve hook', () => {
 
   it('reads a directory as its index.ts', () => {
     const href = pathToFileURL(
-      path.join(ROOT, 'src', 'data', 'art', 'fruits', 'index.ts'),
+      path.join(
+        ROOT,
+        'src',
+        'data',
+        'series',
+        'one-piece',
+        'art',
+        'fruits',
+        'index.ts',
+      ),
     ).href
     const parent = pathToFileURL(
-      path.join(ROOT, 'src', 'data', 'art', 'index.ts'),
+      path.join(ROOT, 'src', 'data', 'series', 'one-piece', 'art', 'index.ts'),
     ).href
 
     expect(

@@ -46,10 +46,14 @@ export function withTable(document, table) {
  * @returns {Promise<string>} The markdown table, not yet padded.
  */
 async function countTable() {
-  const { entities } = await importArchive('data/entities.ts')
-  const { sagas } = await importArchive('data/sagas.ts')
-  const { DRAWINGS, REDRAWINGS } = await importArchive('data/art/index.ts')
-  const { characters, dossierOf } = await importArchive('data/characters.ts')
+  const { entities } = await importArchive('data/series/one-piece/entities.ts')
+  const { sagas } = await importArchive('data/series/one-piece/sagas.ts')
+  const { DRAWINGS, REDRAWINGS } = await importArchive(
+    'data/series/one-piece/art/index.ts',
+  )
+  const { characters, dossierOf } = await importArchive(
+    'data/series/one-piece/characters.ts',
+  )
 
   const ofKind = (kind) =>
     entities.filter((entity) => entity.kind === kind).length

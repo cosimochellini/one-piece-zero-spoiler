@@ -1,8 +1,13 @@
-import { chartPointOf } from '~/data/chart'
-import { latestOf } from '~/data/dated'
-import { getEntity } from '~/data/entities'
-import { placeDossierOf, places, shipDossierOf, ships } from '~/data/places'
-import { sagas } from '~/data/sagas'
+import { chartPointOf } from '~/data/series/one-piece/chart'
+import { latestOf } from '~/data/series/one-piece/dated'
+import { getEntity } from '~/data/series/one-piece/entities'
+import {
+  placeDossierOf,
+  places,
+  shipDossierOf,
+  ships,
+} from '~/data/series/one-piece/places'
+import { sagas } from '~/data/series/one-piece/sagas'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'

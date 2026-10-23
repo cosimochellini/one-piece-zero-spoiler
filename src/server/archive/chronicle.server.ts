@@ -1,7 +1,7 @@
 import { byNumber, byValue } from 'sort-es'
 
-import { getCharacter } from '~/data/characters'
-import { reachedOf } from '~/data/dated'
+import { getCharacter } from '~/data/series/one-piece/characters'
+import { reachedOf } from '~/data/series/one-piece/dated'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 import { tokenize } from '~/lib/prose/markers'

@@ -1,5 +1,5 @@
 // Checks every character's Italian name against the Italian One Piece Wiki
-// (onepiece.fandom.com/it), the rule in `src/data/entities.ts`: the dub's
+// (onepiece.fandom.com/it), the rule in `src/data/series/one-piece/entities.ts`: the dub's
 // name, or the Star Comics spelling where the dub's cannot be checked. The
 // Italian wiki's page title follows Star Comics, and its "Nome doppiaggio
 // italiano" field (`nomeita`) gives the dub's name where it differs.
@@ -264,7 +264,7 @@ export function verdictOf(record, pages) {
  * @returns {Promise<Row[]>} One row per character.
  */
 async function verify() {
-  const { entities } = await importArchive('data/entities.ts')
+  const { entities } = await importArchive('data/series/one-piece/entities.ts')
   /** @type {Record_[]} */
   const characters = entities.filter(({ kind }) => kind === 'character')
   const english = characters

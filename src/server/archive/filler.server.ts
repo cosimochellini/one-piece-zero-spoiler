@@ -1,5 +1,10 @@
-import { FILLER, FILLER_ARCS, type FillerArc, LAST_AIRED } from '~/data/filler'
 import { reveal } from '~/data/reveal'
+import {
+  FILLER,
+  FILLER_ARCS,
+  type FillerArc,
+  LAST_AIRED,
+} from '~/data/series/one-piece/filler'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'

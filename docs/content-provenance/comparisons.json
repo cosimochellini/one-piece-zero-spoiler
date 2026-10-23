@@ -1,7 +1,7 @@
 [
   {
     "id": "chronicle-1-en",
-    "file": "src/data/records/east-blue.chronicle.ts",
+    "file": "src/data/series/one-piece/records/east-blue.chronicle.ts",
     "locale": "en",
     "source": "en-Episode_1.json",
     "title": "Episode 1",
@@ -21,7 +21,7 @@
   },
   {
     "id": "chronicle-126-en",
-    "file": "src/data/records/east-blue.chronicle.ts",
+    "file": "src/data/series/one-piece/records/east-blue.chronicle.ts",
     "locale": "en",
     "source": "en-Episode_126.json",
     "title": "Episode 126",
@@ -41,7 +41,7 @@
   },
   {
     "id": "chronicle-869-en",
-    "file": "src/data/records/east-blue.chronicle.ts",
+    "file": "src/data/series/one-piece/records/east-blue.chronicle.ts",
     "locale": "en",
     "source": "en-Episode_869.json",
     "title": "Episode 869",
@@ -61,7 +61,7 @@
   },
   {
     "id": "chronicle-916-en",
-    "file": "src/data/records/east-blue.chronicle.ts",
+    "file": "src/data/series/one-piece/records/east-blue.chronicle.ts",
     "locale": "en",
     "source": "en-Episode_916.json",
     "title": "Episode 916",
@@ -81,7 +81,7 @@
   },
   {
     "id": "dossier-monkey-d-luffy-en",
-    "file": "src/data/records/east-blue.ts",
+    "file": "src/data/series/one-piece/records/east-blue.ts",
     "locale": "en",
     "source": "en-Monkey_D._Luffy.json",
     "title": "Monkey D. Luffy",
@@ -150,7 +150,7 @@
   },
   {
     "id": "dossier-tama-en",
-    "file": "src/data/records/wano.ts",
+    "file": "src/data/series/one-piece/records/wano.ts",
     "locale": "en",
     "source": "en-Tama.json",
     "title": "Kurozumi Tama",
@@ -198,7 +198,7 @@
   },
   {
     "id": "dossier-jack-en",
-    "file": "src/data/records/whole-cake.ts",
+    "file": "src/data/series/one-piece/records/whole-cake.ts",
     "locale": "en",
     "source": "en-Jack.json",
     "title": "Jack",
@@ -239,7 +239,7 @@
   },
   {
     "id": "filler-film-red-en",
-    "file": "src/data/filler.ts",
+    "file": "src/data/series/one-piece/filler.ts",
     "locale": "en",
     "source": "en-Film_Red.json",
     "title": "One Piece Film: Red",
@@ -259,7 +259,7 @@
   },
   {
     "id": "filler-54-en",
-    "file": "src/data/filler.ts",
+    "file": "src/data/series/one-piece/filler.ts",
     "locale": "en",
     "source": "en-Episode_54.json",
     "title": "Episode 54",
@@ -286,7 +286,7 @@
   },
   {
     "id": "filler-55-en",
-    "file": "src/data/filler.ts",
+    "file": "src/data/series/one-piece/filler.ts",
     "locale": "en",
     "source": "en-Episode_55.json",
     "title": "Episode 55",
@@ -313,7 +313,7 @@
   },
   {
     "id": "filler-56-en",
-    "file": "src/data/filler.ts",
+    "file": "src/data/series/one-piece/filler.ts",
     "locale": "en",
     "source": "en-Episode_56.json",
     "title": "Episode 56",
@@ -340,7 +340,7 @@
   },
   {
     "id": "filler-196-en",
-    "file": "src/data/filler.ts",
+    "file": "src/data/series/one-piece/filler.ts",
     "locale": "en",
     "source": "en-Episode_196.json",
     "title": "Episode 196",
@@ -367,7 +367,7 @@
   },
   {
     "id": "filler-197-en",
-    "file": "src/data/filler.ts",
+    "file": "src/data/series/one-piece/filler.ts",
     "locale": "en",
     "source": "en-Episode_197.json",
     "title": "Episode 197",
@@ -394,7 +394,7 @@
   },
   {
     "id": "filler-198-en",
-    "file": "src/data/filler.ts",
+    "file": "src/data/series/one-piece/filler.ts",
     "locale": "en",
     "source": "en-Episode_198.json",
     "title": "Episode 198",
@@ -421,7 +421,7 @@
   },
   {
     "id": "filler-1029-en",
-    "file": "src/data/filler.ts",
+    "file": "src/data/series/one-piece/filler.ts",
     "locale": "en",
     "source": "en-Episode_1029.json",
     "title": "Episode 1029",
@@ -448,7 +448,7 @@
   },
   {
     "id": "filler-1030-en",
-    "file": "src/data/filler.ts",
+    "file": "src/data/series/one-piece/filler.ts",
     "locale": "en",
     "source": "en-Episode_1030.json",
     "title": "Episode 1030",
@@ -475,7 +475,7 @@
   },
   {
     "id": "chronicle-1-it",
-    "file": "src/data/records/east-blue.chronicle.ts",
+    "file": "src/data/series/one-piece/records/east-blue.chronicle.ts",
     "locale": "it",
     "source": "it-Episodio_1.json",
     "title": "Episodio 1",
@@ -495,7 +495,7 @@
   },
   {
     "id": "chronicle-126-it",
-    "file": "src/data/records/east-blue.chronicle.ts",
+    "file": "src/data/series/one-piece/records/east-blue.chronicle.ts",
     "locale": "it",
     "source": "it-Episodio_126.json",
     "title": "Episodio 126",
@@ -515,7 +515,7 @@
   },
   {
     "id": "chronicle-869-it",
-    "file": "src/data/records/east-blue.chronicle.ts",
+    "file": "src/data/series/one-piece/records/east-blue.chronicle.ts",
     "locale": "it",
     "source": "it-Episodio_869.json",
     "title": "Episodio 869",
@@ -535,7 +535,7 @@
   },
   {
     "id": "chronicle-916-it",
-    "file": "src/data/records/east-blue.chronicle.ts",
+    "file": "src/data/series/one-piece/records/east-blue.chronicle.ts",
     "locale": "it",
     "source": "it-Episodio_916.json",
     "title": "Episodio 916",
@@ -555,7 +555,7 @@
   },
   {
     "id": "dossier-monkey-d-luffy-it",
-    "file": "src/data/records/east-blue.ts",
+    "file": "src/data/series/one-piece/records/east-blue.ts",
     "locale": "it",
     "source": "it-Monkey_D._Rufy.json",
     "title": "Monkey D. Rufy",
@@ -624,7 +624,7 @@
   },
   {
     "id": "dossier-tama-it",
-    "file": "src/data/records/wano.ts",
+    "file": "src/data/series/one-piece/records/wano.ts",
     "locale": "it",
     "source": "it-Tama.json",
     "title": "Kurozumi Tama",
@@ -672,7 +672,7 @@
   },
   {
     "id": "dossier-jack-it",
-    "file": "src/data/records/whole-cake.ts",
+    "file": "src/data/series/one-piece/records/whole-cake.ts",
     "locale": "it",
     "source": "it-Jack.json",
     "title": "Jack",
@@ -713,7 +713,7 @@
   },
   {
     "id": "filler-film-red-it",
-    "file": "src/data/filler.ts",
+    "file": "src/data/series/one-piece/filler.ts",
     "locale": "it",
     "source": "it-Film_Red.json",
     "title": "Film 15",
@@ -733,7 +733,7 @@
   },
   {
     "id": "filler-54-it",
-    "file": "src/data/filler.ts",
+    "file": "src/data/series/one-piece/filler.ts",
     "locale": "it",
     "source": "it-Episodio_54.json",
     "title": "Episodio 54",
@@ -760,7 +760,7 @@
   },
   {
     "id": "filler-55-it",
-    "file": "src/data/filler.ts",
+    "file": "src/data/series/one-piece/filler.ts",
     "locale": "it",
     "source": "it-Episodio_55.json",
     "title": "Episodio 55",
@@ -787,7 +787,7 @@
   },
   {
     "id": "filler-56-it",
-    "file": "src/data/filler.ts",
+    "file": "src/data/series/one-piece/filler.ts",
     "locale": "it",
     "source": "it-Episodio_56.json",
     "title": "Episodio 56",
@@ -814,7 +814,7 @@
   },
   {
     "id": "filler-196-it",
-    "file": "src/data/filler.ts",
+    "file": "src/data/series/one-piece/filler.ts",
     "locale": "it",
     "source": "it-Episodio_196.json",
     "title": "Episodio 196",
@@ -841,7 +841,7 @@
   },
   {
     "id": "filler-197-it",
-    "file": "src/data/filler.ts",
+    "file": "src/data/series/one-piece/filler.ts",
     "locale": "it",
     "source": "it-Episodio_197.json",
     "title": "Episodio 197",
@@ -868,7 +868,7 @@
   },
   {
     "id": "filler-198-it",
-    "file": "src/data/filler.ts",
+    "file": "src/data/series/one-piece/filler.ts",
     "locale": "it",
     "source": "it-Episodio_198.json",
     "title": "Episodio 198",
@@ -895,7 +895,7 @@
   },
   {
     "id": "filler-1029-it",
-    "file": "src/data/filler.ts",
+    "file": "src/data/series/one-piece/filler.ts",
     "locale": "it",
     "source": "it-Episodio_1029.json",
     "title": "Episodio 1029",
@@ -922,7 +922,7 @@
   },
   {
     "id": "filler-1030-it",
-    "file": "src/data/filler.ts",
+    "file": "src/data/series/one-piece/filler.ts",
     "locale": "it",
     "source": "it-Episodio_1030.json",
     "title": "Episodio 1030",

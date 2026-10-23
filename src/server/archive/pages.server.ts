@@ -7,8 +7,8 @@ import {
   featuredCharacters,
   getCharacter,
   routePositionOf,
-} from '~/data/characters'
-import { getEntity } from '~/data/entities'
+} from '~/data/series/one-piece/characters'
+import { getEntity } from '~/data/series/one-piece/entities'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'

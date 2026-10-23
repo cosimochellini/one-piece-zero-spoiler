@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
-import { arcs } from '~/data/characters'
-import { sagas } from '~/data/sagas'
+import { arcs } from '~/data/series/one-piece/characters'
+import { sagas } from '~/data/series/one-piece/sagas'
 import type { LocalizedText } from '~/data/types'
 import { thresholdIn } from '~/lib/progress/spoiler'
 

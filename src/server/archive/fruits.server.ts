@@ -1,5 +1,10 @@
-import { type Eater, eatersOf, factionsOf } from '~/data/dated'
-import { fruitFormOf, fruits, fruitsOfForm, getFruit } from '~/data/fruits'
+import { type Eater, eatersOf, factionsOf } from '~/data/series/one-piece/dated'
+import {
+  fruitFormOf,
+  fruits,
+  fruitsOfForm,
+  getFruit,
+} from '~/data/series/one-piece/fruits'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 import { getDictionary } from '~/i18n/translate'
@@ -280,7 +285,7 @@ export function fruitSheet(bookmark: Bookmark, locale: Locale): FruitSheetView {
 /**
  * Who the dossiers say ate this fruit, each under its own fog: named from the
  * later of their own threshold and the dossier entry that says they ate it
- * (`eatersOf` in `~/data/dated`).
+ * (`eatersOf` in `~/data/series/one-piece/dated`).
  *
  * Both halves matter. A character filed long before the story says what they
  * ate would otherwise appear on the fruit's page the moment the reader met

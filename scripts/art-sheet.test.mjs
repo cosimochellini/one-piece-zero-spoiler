@@ -243,7 +243,7 @@ describe('what the command line asks for', { timeout: 60_000 }, () => {
     await expect(cellsFor({ ids: ['nobody'], out })).rejects.toThrow(
       'no record has the id nobody',
     )
-    await expect(cellsFor({ ids: [], out, saga: 'stroke' })).rejects.toThrow(
+    await expect(cellsFor({ ids: [], out, saga: 'isles' })).rejects.toThrow(
       'exports no',
     )
   })

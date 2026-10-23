@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest'
 
-import { DRAWINGS, REDRAWINGS } from '~/data/art'
-import { eatersOf } from '~/data/dated'
-import { entities } from '~/data/entities'
-import { fruits } from '~/data/fruits'
 import { reveal } from '~/data/reveal'
+import { DRAWINGS, REDRAWINGS } from '~/data/series/one-piece/art'
+import { eatersOf } from '~/data/series/one-piece/dated'
+import { entities } from '~/data/series/one-piece/entities'
+import { fruits } from '~/data/series/one-piece/fruits'
 import type { Entity } from '~/data/types'
 import { type Locale, LOCALES } from '~/i18n/locales'
 import { absoluteEpisodeOf, type Bookmark } from '~/lib/progress/episode'
@@ -436,7 +436,7 @@ function fruitLinks(
 
 describe('a fruit and its eaters', () => {
   // A fruit's thresholds are read off the dossier entries that name it
-  // (`~/data/entities`), so every surface that shows the fruit and the eater
+  // (`~/data/series/one-piece/entities`), so every surface that shows the fruit and the eater
   // page that links it must open on the same bookmark, in both units. "Some
   // eater" rather than the first: the earliest eater by episode is not
   // always the first to open in chapters.

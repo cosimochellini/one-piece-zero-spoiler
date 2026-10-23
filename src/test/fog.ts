@@ -1,9 +1,9 @@
 import { expect } from 'vitest'
 
-import { DRAWINGS } from '~/data/art'
-import { datedOf } from '~/data/dated'
-import { entities } from '~/data/entities'
 import { type Reveal, reveal } from '~/data/reveal'
+import { DRAWINGS } from '~/data/series/one-piece/art'
+import { datedOf } from '~/data/series/one-piece/dated'
+import { entities } from '~/data/series/one-piece/entities'
 import type { Entity } from '~/data/types'
 import { type Locale, LOCALES } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'

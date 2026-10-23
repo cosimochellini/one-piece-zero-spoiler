@@ -1,6 +1,6 @@
 ---
 name: tone-of-voice
-description: How Zero Spoiler's text is written, in English and Italian. Load it before writing or editing any user-facing words: the dictionaries in src/i18n/dictionaries, the README, record summaries and chronicle stories in src/data/records, page titles and meta descriptions, aria labels. Also load it when reviewing copy for AI-sounding writing.
+description: How Zero Spoiler's text is written, in English and Italian. Load it before writing or editing any user-facing words: the dictionaries in src/i18n/dictionaries, the README, record summaries and chronicle stories in src/data/series/one-piece/records, page titles and meta descriptions, aria labels. Also load it when reviewing copy for AI-sounding writing.
 ---
 
 # Zero Spoiler tone of voice
@@ -119,7 +119,7 @@ caption), it quotes the current copy.
 
 ## Records: summaries and chronicle stories
 
-These live in `src/data/records` and are written in the same voice.
+These live in `src/data/series/one-piece/records` and are written in the same voice.
 
 - Facts only. Say what happens; add no commentary about how moving, tragic or
   iconic it is.

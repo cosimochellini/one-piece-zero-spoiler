@@ -65,20 +65,21 @@ folded, so an epithet the reader has not reached is not in the browser at all.
 
 The filler guide at `/filler` follows the same rule. It is not in the bar: the
 home page links to it from the welcome card and the filler warning. Its entries
-live in `src/data/filler.ts` and reach the page as a covered row until the
-reader gets there: the episode number and the kind, never the title or the plot.
-An entry opens at its own episode, or at the one a film or special is watched
-after. A chapter reader has no episode, so an entry opens for them at the later
-of two chapters: the one its canon arc opens at, and the last one the anime had
-adapted when the entry aired. The skip ranges and the strip of the whole series
-are numbers and kinds only, so they are sent at every bookmark. So are the saga
-names, canon and filler, by the owner's choice: a reader finds their way by
-them, and the titles and plots under them still wait. The countdown at the top,
-the reader's episode and the five after it, is built from the same rows, so a
-cell past the bookmark is a covered row like any other. A chapter reader gets no
-countdown, because the manga has no filler. The home page's filler warning uses
-the same runs and cells, as an episode and a kind each, and shows only when the
-reader is inside a run or the next one starts within the six cells.
+live in `src/data/series/one-piece/filler.ts` and reach the page as a covered
+row until the reader gets there: the episode number and the kind, never the
+title or the plot. An entry opens at its own episode, or at the one a film or
+special is watched after. A chapter reader has no episode, so an entry opens for
+them at the later of two chapters: the one its canon arc opens at, and the last
+one the anime had adapted when the entry aired. The skip ranges and the strip of
+the whole series are numbers and kinds only, so they are sent at every bookmark.
+So are the saga names, canon and filler, by the owner's choice: a reader finds
+their way by them, and the titles and plots under them still wait. The countdown
+at the top, the reader's episode and the five after it, is built from the same
+rows, so a cell past the bookmark is a covered row like any other. A chapter
+reader gets no countdown, because the manga has no filler. The home page's
+filler warning uses the same runs and cells, as an episode and a kind each, and
+shows only when the reader is inside a run or the next one starts within the six
+cells.
 
 ## The archive in numbers
 
@@ -128,13 +129,13 @@ written by hand.
 
 Every devil fruit has a hand-drawn composition. Fruit + power drawings share
 five silhouettes and a segmented round body through the body kit
-(`src/data/art/fruits/kit.ts`), with a crown, a highlight, hatching and curls
-for volume. The power is the single accent and acts on the fruit's own body.
-Real-fruit drawings show the fruit itself without a power, from the episode and
-chapter that show it. Until then a declared awakening can redraw the power. Once
-the real fruit is drawn, later identity turns keep that drawing. Every fruit
-path uses absolute commands, which lets the drawing tests read its numbers as
-coordinates and check the 160×200 bounds.
+(`src/data/series/one-piece/art/fruits/kit.ts`), with a crown, a highlight,
+hatching and curls for volume. The power is the single accent and acts on the
+fruit's own body. Real-fruit drawings show the fruit itself without a power,
+from the episode and chapter that show it. Until then a declared awakening can
+redraw the power. Once the real fruit is drawn, later identity turns keep that
+drawing. Every fruit path uses absolute commands, which lets the drawing tests
+read its numbers as coordinates and check the 160×200 bounds.
 
 ## Stack
 
@@ -199,9 +200,9 @@ checked on every run:
 - every affiliation entry of a devil fruit eater carries the factions its prose
   names, as ids from a closed vocabulary (`Faction` in
   `src/lib/view/records.ts`, labelled in both dictionaries), and every id in the
-  vocabulary is used (`src/data/factions.test.ts`). A tag never says more than
-  its entry: a former member, a prisoner, a vague line or a group of one eater
-  is `independent`;
+  vocabulary is used (`src/data/series/one-piece/factions.test.ts`). A tag never
+  says more than its entry: a former member, a prisoner, a vague line or a group
+  of one eater is `independent`;
 - every place belongs to an arc that opens no later than the place itself,
   because the place page shows that arc;
 - every later visit to a place comes after the place in both units, in order, at
@@ -216,12 +217,13 @@ checked on every run:
 - every devil fruit opens no later than any character entry that names it, which
   lets a character page link to its fruit without checking anything, and no
   sooner either, in both units, so a fruit page never tells a reader what the
-  story has not. This one holds by construction: `src/data/records/fruits.ts`
-  files no thresholds, and `src/data/entities.ts` reads them off the eaters'
+  story has not. This one holds by construction:
+  `src/data/series/one-piece/records/fruits.ts` files no thresholds, and
+  `src/data/series/one-piece/entities.ts` reads them off the eaters'
   `devilFruit` entries, the earliest episode and the earliest chapter one opens
   at. The chapter table is built first, from the records as they are filed
-  (`src/data/sagas.ts`), so the fruits can be read off it. A test opens every
-  fruit's page with its eater's at both thresholds.
+  (`src/data/series/one-piece/sagas.ts`), so the fruits can be read off it. A
+  test opens every fruit's page with its eater's at both thresholds.
 
 The self-referential one: the pull request title validator reads the release
 configuration and checks that both accept exactly the same commit types. If they
@@ -413,12 +415,14 @@ client payload catches anything large that neither pattern matches. ESLint
 catches the same mistake earlier, at the import.
 
 fallow checks the structure of the codebase instead, with every rule that
-applies set to error: nine zones with a declared import direction between them,
-no export that nothing reads (entry files included), no duplicated block of five
-lines or more outside the tests, near-identical ones included, and limits of 8
-cyclomatic and 8 cognitive complexity. Its CRAP score reads the coverage
-`npm test` writes, so a complex function with no test fails the gate. A second
-run, `fallow security --gate new`, fails a branch that adds a command-injection,
+applies set to error: ten zones with a declared import direction between them
+(the archive is a shared engine in `src/data` and one zone per series under
+`src/data/series`, and no series imports another), no export that nothing reads
+(entry files included), no duplicated block of five lines or more outside the
+tests, near-identical ones included, and limits of 8 cyclomatic and 8 cognitive
+complexity. Its CRAP score reads the coverage `npm test` writes, so a complex
+function with no test fails the gate. A second run,
+`fallow security --gate new`, fails a branch that adds a command-injection,
 path-traversal, secret or other sink against `origin/main`. Two tests fail when
 an upgrade of either tool ships a rule or a security category the configuration
 does not turn on. Both gates write a machine-readable report that CI uploads as

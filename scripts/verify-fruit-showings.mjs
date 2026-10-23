@@ -436,8 +436,10 @@ export function rowsOf(record, page, redrawn) {
  * @returns {Promise<Row[]>} One row per fruit, and one per fruit with showings that do not count.
  */
 async function verify() {
-  const { entities } = await importArchive('data/entities.ts')
-  const { fruitRedrawn } = await importArchive('data/art/fruits/index.ts')
+  const { entities } = await importArchive('data/series/one-piece/entities.ts')
+  const { fruitRedrawn } = await importArchive(
+    'data/series/one-piece/art/fruits/index.ts',
+  )
   const fruits = /** @type {Fruit[]} */ (entities).filter(
     (entry) => entry.kind === 'fruit',
   )

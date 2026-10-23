@@ -62,7 +62,7 @@ when you are not sure about an episode or chapter, **round it up**.
 The same goes for text. A summary, a role or a log line may only say what a
 viewer knows at the entry's own threshold. A later fact goes in a dated timeline
 entry, which carries the episode it is learned in. The comment at the top of
-`src/data/entities.ts` has the full rules.
+`src/data/series/one-piece/entities.ts` has the full rules.
 
 - Episodes count canonical anime episodes only. Filler, films and specials do
   not count.
@@ -74,21 +74,22 @@ entry, which carries the episode it is learned in. The comment at the top of
 
 ## Where things live
 
-| Path              | What is there                                                                      |
-| ----------------- | ---------------------------------------------------------------------------------- |
-| `src/data/`       | The archive: records, drawings and most editorial tests. Server only.              |
-| `src/components/` | React components, styled with StyleX.                                              |
-| `src/routes/`     | TanStack Start file routes, under `$locale/`.                                      |
-| `src/server/`     | Server functions that cut the archive down to what a bookmark reaches.             |
-| `src/lib/`        | Code the client may import: bookmark logic, search, SVG helpers, views.            |
-| `src/i18n/`       | Locales and the English and Italian dictionaries.                                  |
-| `src/styles/`     | Global CSS and the StyleX design tokens.                                           |
-| `scripts/`        | Quality gates, the PR title validator, the wiki checks and the merge helper.       |
-| `docs/`           | [Architecture](docs/architecture.md), media and the chronicle verification report. |
+| Path                         | What is there                                                                               |
+| ---------------------------- | ------------------------------------------------------------------------------------------- |
+| `src/data/`                  | The engine every series shares: the record shapes, the reveal and order rules. Server only. |
+| `src/data/series/one-piece/` | The One Piece archive: records, drawings and most editorial tests. Server only.             |
+| `src/components/`            | React components, styled with StyleX.                                                       |
+| `src/routes/`                | TanStack Start file routes, under `$locale/`.                                               |
+| `src/server/`                | Server functions that cut the archive down to what a bookmark reaches.                      |
+| `src/lib/`                   | Code the client may import: bookmark logic, search, SVG helpers, views.                     |
+| `src/i18n/`                  | Locales and the English and Italian dictionaries.                                           |
+| `src/styles/`                | Global CSS and the StyleX design tokens.                                                    |
+| `scripts/`                   | Quality gates, the PR title validator, the wiki checks and the merge helper.                |
+| `docs/`                      | [Architecture](docs/architecture.md), media and the chronicle verification report.          |
 
 A new module with prose must go into `PROSE_EXTRA` in `scripts/archive-gate.mjs`
-and into `TEXTS` in `src/data/leaks.test.ts`, with the gate its page applies to
-it.
+and into `TEXTS` in `src/data/series/one-piece/leaks.test.ts`, with the gate its
+page applies to it.
 
 A new server function in `src/server/api.ts` must go into `PAYLOADS` in
 `src/server/archive/payloads.server.ts`, with the ids or handles it is asked
@@ -123,16 +124,17 @@ Every record has the same shape, defined as `Entity` in `src/data/types.ts`:
   [One Piece Wiki](https://onepiece.fandom.com/it)'s page titles follow Star
   Comics; its "Nome doppiaggio italiano" field gives the dub's name where it
   differs.
-- Records live in one module per saga, in `src/data/records/<saga>.ts`, plus
-  `src/data/records/fruits.ts` for the devil fruits.
+- Records live in one module per saga, in
+  `src/data/series/one-piece/records/<saga>.ts`, plus
+  `src/data/series/one-piece/records/fruits.ts` for the devil fruits.
 
-| To add            | Edit                                                                                                                                                                                                                                      | Guarded by                                                               |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| A character       | The record and its entry in `dossiers` in `src/data/records/<saga>.ts`, and a drawing in `src/data/art/<saga>.ts`                                                                                                                         | `src/data/characters.test.ts`, `src/data/leaks.test.ts`                  |
-| A devil fruit     | `FRUIT_FORMS` in `src/data/fruit-forms.ts`, the record in `src/data/records/fruits.ts` (no thresholds: they come from the `devilFruit` entry in the eater's `dossiers`), a drawing in `src/data/art/fruits/`, and that `devilFruit` entry | `src/data/fruits.test.ts`                                                |
-| A place           | The record in its saga module, its entry in `PLACE_DOSSIERS` in `src/data/places.ts`, its point on the sea chart in `CHART` in `src/data/chart.ts`, and a drawing                                                                         | `src/data/places.test.ts`, `src/data/chart.test.ts`                      |
-| A chronicle story | The story in `src/data/records/<saga>.chronicle.ts`, its source in `scripts/chronicle-sources.mjs`, then `npm run docs:chronicle` to regenerate `docs/chronicle-verification.md`                                                          | `src/data/characters.test.ts`, `scripts/chronicle-verification.test.mjs` |
-| A redrawing       | A dated entry in the saga's `…Redrawn` timeline in `src/data/art/<saga>.ts`. `skypieaRedrawn` is the model                                                                                                                                | `src/data/art/index.test.ts`, `src/server/archive/slices.test.ts`        |
+| To add            | Edit                                                                                                                                                                                                                                                                                         | Guarded by                                                                                |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| A character       | The record and its entry in `dossiers` in `src/data/series/one-piece/records/<saga>.ts`, and a drawing in `src/data/series/one-piece/art/<saga>.ts`                                                                                                                                          | `src/data/series/one-piece/characters.test.ts`, `src/data/series/one-piece/leaks.test.ts` |
+| A devil fruit     | `FRUIT_FORMS` in `src/data/series/one-piece/fruit-forms.ts`, the record in `src/data/series/one-piece/records/fruits.ts` (no thresholds: they come from the `devilFruit` entry in the eater's `dossiers`), a drawing in `src/data/series/one-piece/art/fruits/`, and that `devilFruit` entry | `src/data/series/one-piece/fruits.test.ts`                                                |
+| A place           | The record in its saga module, its entry in `PLACE_DOSSIERS` in `src/data/series/one-piece/places.ts`, its point on the sea chart in `CHART` in `src/data/series/one-piece/chart.ts`, and a drawing                                                                                          | `src/data/series/one-piece/places.test.ts`, `src/data/series/one-piece/chart.test.ts`     |
+| A chronicle story | The story in `src/data/series/one-piece/records/<saga>.chronicle.ts`, its source in `scripts/chronicle-sources.mjs`, then `npm run docs:chronicle` to regenerate `docs/chronicle-verification.md`                                                                                            | `src/data/series/one-piece/characters.test.ts`, `scripts/chronicle-verification.test.mjs` |
+| A redrawing       | A dated entry in the saga's `…Redrawn` timeline in `src/data/series/one-piece/art/<saga>.ts`. `skypieaRedrawn` is the model                                                                                                                                                                  | `src/data/series/one-piece/art/index.test.ts`, `src/server/archive/slices.test.ts`        |
 
 A few rules that are easy to miss:
 
@@ -149,16 +151,18 @@ A few rules that are easy to miss:
   chapter that covers its episode, which can be too early.
 - **Name facts.** If the show says a name before its record opens, set
   `nameSaidAt` on the record. If the name is an ordinary word, set
-  `commonWord: true`. `src/data/leaks.test.ts` tells you when you need either.
+  `commonWord: true`. `src/data/series/one-piece/leaks.test.ts` tells you when
+  you need either.
 - **Chronicle stories** link other characters with `[[id]]` or
   `[[id|shown text]]` markers, and only to characters already open at the
   story's episode.
 - **A saga's first redrawing** needs a new `…Redrawn` export in its art module,
-  spread into `REDRAWINGS` in `src/data/art/index.ts` and added to the module
-  list in `src/data/art/index.test.ts`.
-- **A new saga module** has to be added to `sagas` in `src/data/sagas.ts`, to
-  `DRAWINGS` in `src/data/art/index.ts`, and to the module list in
-  `src/data/art/index.test.ts`.
+  spread into `REDRAWINGS` in `src/data/series/one-piece/art/index.ts` and added
+  to the module list in `src/data/series/one-piece/art/index.test.ts`.
+- **A new saga module** has to be added to `sagas` in
+  `src/data/series/one-piece/sagas.ts`, to `DRAWINGS` in
+  `src/data/series/one-piece/art/index.ts`, and to the module list in
+  `src/data/series/one-piece/art/index.test.ts`.
 
 `npm run verify:chapters` checks every chapter and every episode against the
 first appearance on the One Piece Wiki. It needs the network, so it is not part
@@ -183,12 +187,13 @@ change an Italian name. A character the English wiki does not link to its
 Italian page goes in `ITALIAN_TITLES` in the script; one with no page of its own
 goes in `NAMES_KEPT`, with the reason.
 
-`npm run verify:filler` checks the filler guide in `src/data/filler.ts`. The
-kinds are checked against AnimeFillerList, with its "anime canon" episodes
-settled by the Italian wiki's `tipo`. The titles are checked against both wikis,
-each entry's chapter against the chapters the anime had adapted by then, and
-where a film or special sits against the Episode Guide. It needs the network.
-Run it when a new filler, film or special airs, or when you edit the guide.
+`npm run verify:filler` checks the filler guide in
+`src/data/series/one-piece/filler.ts`. The kinds are checked against
+AnimeFillerList, with its "anime canon" episodes settled by the Italian wiki's
+`tipo`. The titles are checked against both wikis, each entry's chapter against
+the chapters the anime had adapted by then, and where a film or special sits
+against the Episode Guide. It needs the network. Run it when a new filler, film
+or special airs, or when you edit the guide.
 
 ## Archive and drawing verification
 

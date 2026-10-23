@@ -135,7 +135,7 @@ export type FruitForm = 'logia' | 'paramecia' | 'zoan'
 /**
  * A drawing already resolved: the strokes themselves, never a key into a
  * table. The archive's own test holds that `entity.visual.art === entity.id`
- * (`src/data/entities.test.ts`), so the drawing keys *are* the name slugs —
+ * (`src/data/series/one-piece/entities.test.ts`), so the drawing keys *are* the name slugs —
  * a keyed map could not be shipped even with the records left behind.
  */
 export interface Drawing {
@@ -282,7 +282,7 @@ export type ProseSegment =
 
 /**
  * One story the reader has reached, resolved to their language. Its two
- * thresholds are the story's gate (`~/data/dated`): its episode,
+ * thresholds are the story's gate (`~/data/series/one-piece/dated`): its episode,
  * and the chapter it declares or else the first one that reaches the episode,
  * never before the character's own, so a manga reader's mark reads in
  * chapters. Structurally satisfies `Gated`

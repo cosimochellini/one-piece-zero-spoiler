@@ -12,7 +12,7 @@ import { color, dur, ease, rule } from '~/styles/tokens.stylex'
 
 /**
  * The renderer for every line drawing in the archive. The drawings
- * themselves are data in `~/data/art`, filed by saga, and reach this renderer
+ * themselves are data in `~/data/series/one-piece/art`, filed by saga, and reach this renderer
  * as strokes: the archive stays on the server.
  *
  * The rules they all obey: a 160x200 box; a single uniform 2px stroke with

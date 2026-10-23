@@ -9,7 +9,7 @@ import { DrawInContext } from './drawing'
 /**
  * The renderer's contract only. That every record has a drawing, and that
  * every drawing has at least four strokes and one in its colour, is asserted
- * over the drawings themselves in `src/data/art/index.test.ts` — where it
+ * over the drawings themselves in `src/data/series/one-piece/art/index.test.ts` — where it
  * costs one pass over an object rather than 356 React renders, and where it
  * stays once the archive is no longer something a component can reach.
  */

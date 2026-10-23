@@ -29,8 +29,8 @@ export async function shotRows(args) {
   if (positionals.length === 0) {
     throw new Error('Usage: npm run art:shots -- <id> [<id>…]')
   }
-  const { getEntity } = await importArchive('data/entities.ts')
-  const { datedOf } = await importArchive('data/dated.ts')
+  const { getEntity } = await importArchive('data/series/one-piece/entities.ts')
+  const { datedOf } = await importArchive('data/series/one-piece/dated.ts')
   const { parseBookmark } = await importArchive('lib/progress/episode.ts')
   const { reveal } = await importArchive('data/reveal.ts')
   return positionals.flatMap((id) => {
