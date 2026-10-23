@@ -255,6 +255,7 @@ export function textOf(page) {
 export async function italianTitles(titles, wiki) {
   const pages = await queried(
     wiki.en + LANGLINKS,
+    // fallow-ignore-next-line security-sink -- the series' cache folder, from its slug in the repository's own list, and a literal
     path.join(wiki.cache, 'langlinks'),
     titles,
   )
@@ -277,6 +278,7 @@ export async function italianTitles(titles, wiki) {
 export async function italianPages(titles, wiki) {
   const pages = await queried(
     wiki.it + ITALIAN,
+    // fallow-ignore-next-line security-sink -- the series' cache folder, from its slug in the repository's own list, and a literal
     path.join(wiki.cache, 'it'),
     titles,
   )

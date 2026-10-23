@@ -490,7 +490,7 @@ async function verify(series, wiki) {
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
-  const series = await seriesOrExit(process.argv.slice(2))
+  const series = await seriesOrExit()
   const { problems, kept, count } = await verify(series, wikiOf(series))
   const total = `${String(count)} entries checked, ${String(problems.length)} failures, ${String(kept.length)} kept`
   console.log(problems.map((problem) => `FAIL ${problem}`).join('\n'))

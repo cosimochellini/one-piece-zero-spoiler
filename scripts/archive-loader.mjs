@@ -131,10 +131,10 @@ export async function seriesFrom(args) {
 /**
  * The series of this run, or an exit with code 2 and the reason: an unknown
  * slug or argument is a command to fix, not a check that failed.
- * @param {string[]} args The command line after the script.
+ * @param {string[]} [args] The command line after the script.
  * @returns {Promise<Series>} The series.
  */
-export async function seriesOrExit(args) {
+export async function seriesOrExit(args = process.argv.slice(2)) {
   try {
     return await seriesFrom(args)
   } catch (error) {

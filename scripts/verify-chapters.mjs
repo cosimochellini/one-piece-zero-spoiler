@@ -378,11 +378,12 @@ export function verdictOf(filed, source) {
 /** @typedef {{ id: string, kind: string, filed: number, episode: number, page?: string, wiki?: number, wikiEpisode?: number, verdict: string, episodeVerdict: string }} Row */
 
 /**
- * Every record of a series against its page, in archive order.
- * @param {import('./archive-loader.mjs').Series} series The series.
+ * Every record of the series on the command line against its page, in
+ * archive order.
  * @returns {Promise<Row[]>} One row per record.
  */
-async function verify(series) {
+async function verify() {
+  const series = await seriesOrExit()
   const { CHAPTER_CEILING } = await importArchive('lib/progress/bounds.ts')
   const wiki = wikiOf(series)
   const chapters = await chapterTexts(CHAPTER_CEILING, wiki)
@@ -431,7 +432,7 @@ function table(title, rows, cells) {
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
-  const rows = await verify(await seriesOrExit(process.argv.slice(2)))
+  const rows = await verify()
   const wrong = rows.filter((row) => {
     return (
       row.verdict === 'too low'

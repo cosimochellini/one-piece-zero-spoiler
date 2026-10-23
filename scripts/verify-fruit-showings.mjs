@@ -434,11 +434,12 @@ export function rowsOf(record, page, redrawn) {
 }
 
 /**
- * Every fruit record of a series against its wiki page, in archive order.
- * @param {import('./archive-loader.mjs').Series} series The series.
+ * Every fruit record of the series on the command line against its wiki
+ * page, in archive order.
  * @returns {Promise<Row[]>} One row per fruit, and one per fruit with showings that do not count.
  */
-async function verify(series) {
+async function verify() {
+  const series = await seriesOrExit()
   const { fruitRedrawn } = await importOrExit(
     series,
     'art/fruits/index.ts',
@@ -485,7 +486,7 @@ function table(verdict, rows) {
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
-  const rows = await verify(await seriesOrExit(process.argv.slice(2)))
+  const rows = await verify()
   const failing = Object.values(FAILS)
   const never = rows.filter((row) => row.verdict === LISTED.never)
   const verdicts = [

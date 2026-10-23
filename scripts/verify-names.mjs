@@ -261,11 +261,12 @@ export function verdictOf(record, pages) {
 /** @typedef {{ id: string, it: string, pages: string, verdict: string, suggestion: string, aliases: string }} Row */
 
 /**
- * Every character of a series against its Italian pages, in archive order.
- * @param {import('./archive-loader.mjs').Series} series The series.
+ * Every character of the series on the command line against its Italian
+ * pages, in archive order.
  * @returns {Promise<Row[]>} One row per character.
  */
-async function verify(series) {
+async function verify() {
+  const series = await seriesOrExit()
   const wiki = wikiOf(series)
   /** @type {Record_[]} */
   const characters = /** @type {Record_[]} */ (series.archive.entities).filter(
@@ -315,7 +316,7 @@ async function verify(series) {
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
-  const rows = await verify(await seriesOrExit(process.argv.slice(2)))
+  const rows = await verify()
   const wrong = rows.filter(
     ({ verdict }) => verdict === 'wrong' || verdict === 'unresolved',
   )
