@@ -6,11 +6,13 @@
 // `describe` / `it` / `expect` are imported rather than taken from
 // `test.globals`: this file is linted as plain JavaScript, where ESLint's
 // `no-undef` has no TypeScript program to learn the Vitest globals from.
+import console from 'node:console'
 import { readdirSync, readFileSync } from 'node:fs'
 import path from 'node:path'
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 
 import {
+  canariesOf,
   canaryFrom,
   EXTRA,
   judge,
@@ -20,6 +22,7 @@ import {
   slugsFrom,
   sourceCanaries,
 } from './archive-gate.mjs'
+import { importArchive } from './archive-loader.mjs'
 
 const repositoryRoot = path.resolve(import.meta.dirname, '..')
 
@@ -161,14 +164,50 @@ describe('the prose the gate looks for', () => {
 
       return canaryFrom(source) !== null
     })
-    const extras = Object.values(EXTRA).flatMap((extra) => extra.prose)
 
     expect(prose.length).toBeGreaterThan(0)
     for (const name of prose) {
+      // The gate reads a series' extras by its folder, so that is where a
+      // module has to be listed.
+      const folder = /^series\/(?<folder>[^/]+)\//u.exec(name)?.groups?.folder
       const file = `src/data/${name}`
 
-      expect(extras, file).toContain(file)
+      expect(EXTRA[folder ?? '']?.prose ?? [], file).toContain(file)
     }
+  })
+
+  it('keys its extras by the folders of listed series only', async () => {
+    // An extra under a slug, a typo or an unlisted folder is never read.
+    const { SERIES } = await importArchive('data/series/index.ts')
+    const folders = SERIES.map(({ folder }) => folder)
+
+    for (const key of Object.keys(EXTRA)) {
+      expect(folders, key).toContain(key)
+    }
+  })
+
+  it('reads every listed series, with no canary left unread', async () => {
+    const canaries = await canariesOf(repositoryRoot)
+    const files = canaries.map(({ file }) => file)
+
+    expect(canaries.filter(({ phrase }) => phrase === null)).toStrictEqual([])
+    expect(files).toContain('src/data/series/one-piece/records/egghead.ts')
+    expect(files).toContain('src/data/series/one-piece/fruit-forms.ts')
+  })
+
+  it('is unusable, not a leak, when the series list does not load', async () => {
+    vi.resetModules()
+    vi.doMock('./archive-loader.mjs', () => ({
+      importArchive: () => Promise.reject(new Error('no list')),
+    }))
+    const quiet = vi.spyOn(console, 'error').mockReturnValue()
+    const gate = await import('./archive-gate.mjs')
+
+    await expect(gate.canariesOf(repositoryRoot)).resolves.toStrictEqual([
+      { file: 'src/data/series/index.ts', phrase: null },
+    ])
+    expect(quiet).toHaveBeenCalledOnce()
+    vi.doUnmock('./archive-loader.mjs')
   })
 
   it('refuses to vouch for a series with no records or drawings', () => {

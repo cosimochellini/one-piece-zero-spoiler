@@ -145,7 +145,8 @@ const SERIES_DIR = 'src/data/series'
 /**
  * A series' prose lives in its `records/` folder (every saga), its drawings
  * in its `art/` folder, keyed by the id of the record each was drawn for.
- * These are the modules of a series that live elsewhere, by its folder:
+ * These are the modules of a series that live elsewhere, keyed by its folder
+ * (not its slug):
  * `prose`, the ones with prose (the ship's log and the filler guide), and
  * `slugs`, the ones keyed by record id that carry no prose and sit outside
  * the drawing folder, so neither canary would otherwise see them.
@@ -413,12 +414,20 @@ function readBuild(repositoryRoot) {
 
 /**
  * Every canary: the prose and slugs of every series in the list, and the
- * source URLs.
+ * source URLs. A list that does not load is one unreadable canary, so the
+ * gate exits as unusable rather than as a leak.
  * @param {string} repositoryRoot The repository root.
  * @returns {Promise<{file: string, phrase: null | string}[]>} What to look for.
  */
-async function canariesOf(repositoryRoot) {
-  const { SERIES } = await importArchive('data/series/index.ts')
+export async function canariesOf(repositoryRoot) {
+  let SERIES
+  try {
+    ;({ SERIES } = await importArchive('data/series/index.ts'))
+  } catch (error) {
+    console.error(`archive-gate: the series list did not load: ${error}`)
+
+    return [{ file: 'src/data/series/index.ts', phrase: null }]
+  }
 
   return [
     ...SERIES.flatMap(({ folder }) => [
