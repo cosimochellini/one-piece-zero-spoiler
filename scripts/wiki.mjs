@@ -1,5 +1,6 @@
-// The One Piece Wiki, read through its API: the HTML pages are blocked to
-// scripts, the API is not. Every answer is cached under `.gate/wiki/` so a
+// A series' wiki, read through its API (the endpoints are the series list's,
+// `src/data/series/index.ts`): the HTML pages are blocked to scripts, the API
+// is not. Every answer is cached under `.gate/wiki/<slug>/` so a
 // run of several hundred pages is paid once; only a real answer (a parsed
 // page, a missing title, a complete batch of chapter pages) is written, so a
 // challenge page, a throttling error or a truncated batch does not stick to
@@ -22,18 +23,28 @@ import { animePairs, pairChapters } from './wiki-pairs.mjs'
 // fallow-ignore-next-line security-sink -- ROOT is this repository's absolute path; both child segments are literals.
 const CACHE = path.join(ROOT, '.gate', 'wiki')
 
-const API =
-  'https://onepiece.fandom.com/api.php?action=parse&redirects=1&prop=wikitext|text&format=json&page='
+/** The queries, each missing only its titles, after a wiki's `api.php`. */
+const PARSE = '?action=parse&redirects=1&prop=wikitext|text&format=json&page='
+const REVISIONS =
+  '?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&titles='
+const LANGLINKS =
+  '?action=query&prop=langlinks&lllang=it&lllimit=max&redirects=1&format=json&titles='
+const ITALIAN =
+  '?action=query&prop=revisions&rvprop=content&rvslots=main&redirects=1&format=json&titles='
 
-const CHAPTERS_API =
-  'https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&titles='
+/** @typedef {{ cache: string, en: string, it: string }} Wiki */
 
-const LANGLINKS_API =
-  'https://onepiece.fandom.com/api.php?action=query&prop=langlinks&lllang=it&lllimit=max&redirects=1&format=json&titles='
-
-/** The Italian One Piece Wiki, whose titles follow Star Comics. */
-const ITALIAN_API =
-  'https://onepiece.fandom.com/it/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&redirects=1&format=json&titles='
+/**
+ * The wiki a series' `verify:*` scripts read, and where its answers are
+ * kept: the English and Italian `api.php` of the series list, and a cache
+ * folder of its own, so two series' "Chapter 1" never meet.
+ * @param {import('./archive-loader.mjs').Series} series The series.
+ * @returns {Wiki} Its wiki.
+ */
+export function wikiOf({ slug, wiki }) {
+  // fallow-ignore-next-line security-sink -- the slug comes from the repository's own series list
+  return { cache: path.join(CACHE, slug), en: wiki.en, it: wiki.it }
+}
 
 /** How many chapter pages one API call asks for. */
 const BATCH = 50
@@ -129,14 +140,15 @@ export async function cached(file, label, url, isAnswer) {
 /**
  * One wiki page, from the cache or the API.
  * @param {string} title The page title.
+ * @param {Wiki} wiki The series' wiki.
  * @returns {Promise<Page | undefined>} The page, or nothing when it does not exist.
  */
-export async function fetchPage(title) {
+export async function fetchPage(title, wiki) {
   const { parse } = await cached(
     // fallow-ignore-next-line security-sink -- The fixed cache root and URI-encoded filename cannot contain title path separators.
-    path.join(CACHE, `${encodeURIComponent(title)}.json`),
+    path.join(wiki.cache, `${encodeURIComponent(title)}.json`),
     title,
-    API + encodeURIComponent(title),
+    wiki.en + PARSE + encodeURIComponent(title),
     (answer) =>
       answer.parse !== undefined || answer.error?.code === 'missingtitle',
   )
@@ -154,13 +166,15 @@ export async function fetchPage(title) {
  * Every chapter's wikitext, in chapter order, from the cache or the API in
  * batches of fifty titles.
  * @param {number} ceiling The last chapter to ask for.
+ * @param {Wiki} wiki The series' wiki.
  * @returns {Promise<Map<number, string>>} Chapter to wikitext.
  */
-export async function chapterTexts(ceiling) {
+export async function chapterTexts(ceiling, wiki) {
   /** @type {[number, string][]} */
   const texts = []
   for (let from = 1; from <= ceiling; from += BATCH) {
-    const pages = await fetchChapters(from, Math.min(ceiling, from + BATCH - 1))
+    const to = Math.min(ceiling, from + BATCH - 1)
+    const pages = await fetchChapters({ from, to }, wiki)
     for (const page of pages) {
       texts.push(...textOf(page))
     }
@@ -171,11 +185,11 @@ export async function chapterTexts(ceiling) {
 
 /**
  * One batch of chapter pages, from the cache or the API.
- * @param {number} from The first chapter.
- * @param {number} to The last chapter.
+ * @param {{ from: number, to: number }} batch The first and last chapter.
+ * @param {Wiki} wiki The series' wiki.
  * @returns {Promise<ChapterPage[]>} The pages the API knows.
  */
-async function fetchChapters(from, to) {
+async function fetchChapters({ from, to }, wiki) {
   const label = `chapters ${String(from)}-${String(to)}`
   const titles = Array.from(
     { length: to - from + 1 },
@@ -183,9 +197,9 @@ async function fetchChapters(from, to) {
   )
   const { query } = await fetchBatch(
     // fallow-ignore-next-line security-sink -- The batch loop supplies numeric bounds under the fixed repository cache.
-    path.join(CACHE, 'chapters', `${String(from)}-${String(to)}.json`),
+    path.join(wiki.cache, 'chapters', `${String(from)}-${String(to)}.json`),
     label,
-    CHAPTERS_API + encodeURIComponent(titles.join('|')),
+    wiki.en + REVISIONS + encodeURIComponent(titles.join('|')),
   )
 
   return Object.values(query?.pages ?? {})
@@ -235,10 +249,15 @@ export function textOf(page) {
  * The Italian wiki's page for each English one, through the English page's
  * interlanguage link. A page with no link is left out.
  * @param {string[]} titles English page titles.
+ * @param {Wiki} wiki The series' wiki.
  * @returns {Promise<Map<string, string>>} English title to Italian title.
  */
-export async function italianTitles(titles) {
-  const pages = await queried(LANGLINKS_API, 'langlinks', titles)
+export async function italianTitles(titles, wiki) {
+  const pages = await queried(
+    wiki.en + LANGLINKS,
+    path.join(wiki.cache, 'langlinks'),
+    titles,
+  )
 
   return new Map(
     pages.flatMap(([asked, page]) => {
@@ -252,10 +271,15 @@ export async function italianTitles(titles) {
 /**
  * Each Italian wiki page's title and wikitext. A missing page is left out.
  * @param {string[]} titles Italian page titles.
+ * @param {Wiki} wiki The series' wiki.
  * @returns {Promise<Map<string, Page>>} Asked title to page; `text` is empty.
  */
-export async function italianPages(titles) {
-  const pages = await queried(ITALIAN_API, 'it', titles)
+export async function italianPages(titles, wiki) {
+  const pages = await queried(
+    wiki.it + ITALIAN,
+    path.join(wiki.cache, 'it'),
+    titles,
+  )
 
   return new Map(
     pages.flatMap(([asked, page]) => {
@@ -273,7 +297,7 @@ export async function italianPages(titles) {
  * the title it was asked under: the API answers under the title it lands on
  * after normalising and following redirects.
  * @param {string} api The query, missing only its titles.
- * @param {string} folder The cache folder under `.gate/wiki/`.
+ * @param {string} folder The cache folder, `langlinks` or `it` of a wiki's.
  * @param {string[]} titles The titles.
  * @returns {Promise<[string, ChapterPage][]>} Asked title and page.
  */
@@ -285,8 +309,8 @@ async function queried(api, folder, titles) {
     const key = createHash('sha256').update(batch.join('|')).digest('hex')
     const { query } = await fetchBatch(
       // fallow-ignore-next-line security-sink -- a folder named in this module and a hex digest
-      path.join(CACHE, folder, `${key}.json`),
-      `${folder} ${String(from)}`,
+      path.join(folder, `${key}.json`),
+      `${path.basename(folder)} ${String(from)}`,
       api + encodeURIComponent(batch.join('|')),
     )
     for (const asked of batch) {

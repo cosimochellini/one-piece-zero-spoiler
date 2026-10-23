@@ -16,15 +16,16 @@
 // `./verify-chapters.mjs`), or the one in `ITALIAN_TITLES` where that link is
 // missing or wrong.
 //
-// Run it with `npm run verify:names`. It talks to the network, so it is not
-// part of `npm run check` or CI; the answers are cached under `.gate/wiki/`
-// (`./wiki.mjs`) and never expire.
+// Run it with `npm run verify:names` (`-- --series <slug>` for a series of
+// `src/data/series/index.ts` other than One Piece). It talks to the network,
+// so it is not part of `npm run check` or CI; the answers are cached under
+// `.gate/wiki/<slug>/` (`./wiki.mjs`) and never expire.
 import process from 'node:process'
 import { pathToFileURL } from 'node:url'
 
-import { importArchive } from './archive-loader.mjs'
+import { seriesOrExit } from './archive-loader.mjs'
 import { titlesOf } from './verify-chapters.mjs'
-import { italianPages, italianTitles } from './wiki.mjs'
+import { italianPages, italianTitles, wikiOf } from './wiki.mjs'
 
 /** @typedef {import('./wiki.mjs').Page} Page */
 /** @typedef {{ title: string, dub: string[], aliases: string[] }} Names */
@@ -260,18 +261,21 @@ export function verdictOf(record, pages) {
 /** @typedef {{ id: string, it: string, pages: string, verdict: string, suggestion: string, aliases: string }} Row */
 
 /**
- * Every character against its Italian pages, in archive order.
+ * Every character of a series against its Italian pages, in archive order.
+ * @param {import('./archive-loader.mjs').Series} series The series.
  * @returns {Promise<Row[]>} One row per character.
  */
-async function verify() {
-  const { entities } = await importArchive('data/series/one-piece/entities.ts')
+async function verify(series) {
+  const wiki = wikiOf(series)
   /** @type {Record_[]} */
-  const characters = entities.filter(({ kind }) => kind === 'character')
+  const characters = /** @type {Record_[]} */ (series.archive.entities).filter(
+    ({ kind }) => kind === 'character',
+  )
   const english = characters
     .filter(({ id }) => ITALIAN_TITLES[id] === undefined)
     .flatMap((record) => titlesOf(record)[0] ?? [])
   const asked = new Set(english)
-  const linked = await italianTitles(asked.values().toArray())
+  const linked = await italianTitles(asked.values().toArray(), wiki)
   const titles = new Map(
     characters.map((record) => {
       const known = ITALIAN_TITLES[record.id]
@@ -290,6 +294,7 @@ async function verify() {
       .values()
       .filter((title) => title !== undefined)
       .toArray(),
+    wiki,
   )
 
   return characters.map((record) => {
@@ -310,7 +315,7 @@ async function verify() {
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
-  const rows = await verify()
+  const rows = await verify(await seriesOrExit(process.argv.slice(2)))
   const wrong = rows.filter(
     ({ verdict }) => verdict === 'wrong' || verdict === 'unresolved',
   )

@@ -25,16 +25,18 @@
 // A failure a person has checked (a frame check that found the wiki wrong)
 // goes in `SHOWING_KEPT` with the reason, and is then only listed.
 //
-// Run it with `npm run verify:fruits`. It talks to the network, so it is not
-// part of `npm run check` or CI; the pages it reads are cached under
-// `.gate/wiki/` (`./wiki.mjs`) and never expire, so delete that folder to
-// read the wiki afresh. The fruit pages are found the way
+// Run it with `npm run verify:fruits` (`-- --series <slug>` for a series of
+// `src/data/series/index.ts` other than One Piece, which has to file devil
+// fruits). It talks to the network, so it is not part of `npm run check` or
+// CI; the pages it reads are cached under `.gate/wiki/<slug>/` (`./wiki.mjs`)
+// and never expire, so delete that folder to read the wiki afresh. The fruit pages are found the way
 // `./verify-chapters.mjs` finds them (`pagesOf`).
 import process from 'node:process'
 import { pathToFileURL } from 'node:url'
 
-import { importArchive } from './archive-loader.mjs'
+import { importOrExit, seriesOrExit } from './archive-loader.mjs'
 import { pagesOf } from './verify-chapters.mjs'
+import { wikiOf } from './wiki.mjs'
 
 /** @typedef {{ chapter?: number, episode?: number }} Pair */
 /** @typedef {Pair & { text: string }} Showing */
@@ -432,22 +434,25 @@ export function rowsOf(record, page, redrawn) {
 }
 
 /**
- * Every fruit record against its wiki page, in archive order.
+ * Every fruit record of a series against its wiki page, in archive order.
+ * @param {import('./archive-loader.mjs').Series} series The series.
  * @returns {Promise<Row[]>} One row per fruit, and one per fruit with showings that do not count.
  */
-async function verify() {
-  const { entities } = await importArchive('data/series/one-piece/entities.ts')
-  const { fruitRedrawn } = await importArchive(
-    'data/series/one-piece/art/fruits/index.ts',
+async function verify(series) {
+  const { fruitRedrawn } = await importOrExit(
+    series,
+    'art/fruits/index.ts',
+    'no devil fruits',
   )
-  const fruits = /** @type {Fruit[]} */ (entities).filter(
+  const wiki = wikiOf(series)
+  const fruits = /** @type {Fruit[]} */ (series.archive.entities).filter(
     (entry) => entry.kind === 'fruit',
   )
   const redrawings = /** @type {Record<string, Dated[]>} */ (fruitRedrawn)
   /** @type {Row[]} */
   const rows = []
   for (const record of fruits) {
-    const pages = await pagesOf(record)
+    const pages = await pagesOf(record, wiki)
     rows.push(...rowsOf(record, pages?.[0], redrawings[record.id] ?? []))
   }
 
@@ -480,7 +485,7 @@ function table(verdict, rows) {
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
-  const rows = await verify()
+  const rows = await verify(await seriesOrExit(process.argv.slice(2)))
   const failing = Object.values(FAILS)
   const never = rows.filter((row) => row.verdict === LISTED.never)
   const verdicts = [

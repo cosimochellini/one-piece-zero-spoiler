@@ -6,7 +6,7 @@ import path from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { describe, expect, it } from 'vitest'
 
-import { resolveArchive, ROOT } from './archive-loader.mjs'
+import { resolveArchive, ROOT, seriesFrom } from './archive-loader.mjs'
 
 const parentURL = pathToFileURL(
   path.join(ROOT, 'src', 'data', 'series', 'one-piece', 'fruits.ts'),
@@ -76,5 +76,30 @@ describe('the archive resolve hook', () => {
     expect(() =>
       resolveArchive('./not-a-module', { parentURL }, resolving([])),
     ).toThrow('cannot resolve ./not-a-module')
+  })
+})
+
+describe('the series of a verify run', () => {
+  it('is One Piece when none is asked for, so the old commands still work', async () => {
+    await expect(seriesFrom([])).resolves.toMatchObject({ slug: 'one-piece' })
+  })
+
+  it('is the one `--series` names', async () => {
+    await expect(seriesFrom(['--series', 'one-piece'])).resolves.toMatchObject({
+      folder: 'one-piece',
+      wiki: { en: 'https://onepiece.fandom.com/api.php' },
+    })
+    await expect(seriesFrom(['--series=one-piece'])).resolves.toMatchObject({
+      slug: 'one-piece',
+    })
+  })
+
+  it('refuses a series the list does not hold, and an unknown argument', async () => {
+    await expect(seriesFrom(['--series', 'naruto'])).rejects.toThrow(
+      '--series naruto is not in src/data/series/index.ts (one-piece)',
+    )
+    await expect(seriesFrom(['--serie', 'one-piece'])).rejects.toThrow(
+      /--serie/u,
+    )
   })
 })
