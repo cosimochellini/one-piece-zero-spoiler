@@ -87,9 +87,9 @@ entry, which carries the episode it is learned in. The comment at the top of
 | `scripts/`                   | Quality gates, the PR title validator, the wiki checks and the merge helper.                |
 | `docs/`                      | [Architecture](docs/architecture.md), media and the chronicle verification report.          |
 
-A new module with prose must go into `PROSE_EXTRA` in `scripts/archive-gate.mjs`
-and into `TEXTS` in `src/data/series/one-piece/leaks.test.ts`, with the gate its
-page applies to it.
+A new module with prose outside a series' `records/` must go into its series'
+`prose` in `EXTRA` in `scripts/archive-gate.mjs` and into `TEXTS` in
+`src/data/series/one-piece/leaks.test.ts`, with the gate its page applies to it.
 
 A new server function in `src/server/api.ts` must go into `PAYLOADS` in
 `src/server/archive/payloads.server.ts`, with the ids or handles it is asked

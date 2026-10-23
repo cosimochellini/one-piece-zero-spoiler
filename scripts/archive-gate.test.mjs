@@ -12,9 +12,11 @@ import { describe, expect, it } from 'vitest'
 
 import {
   canaryFrom,
+  EXTRA,
   judge,
   MAX_CLIENT_BYTES,
-  PROSE_EXTRA,
+  proseCanaries,
+  slugCanaries,
   slugsFrom,
   sourceCanaries,
 } from './archive-gate.mjs'
@@ -142,26 +144,52 @@ describe('the slugs the gate looks for', () => {
 
 describe('the prose the gate looks for', () => {
   it('covers every prose module outside the records and drawings', () => {
+    // Of every series: a series' `records/` and `art/` are read whole, and
+    // anything else with prose must be among its extras.
     const dataDir = path.join(repositoryRoot, 'src/data')
-    const modules = readdirSync(dataDir, { recursive: true }).filter(
-      (name) =>
-        name.endsWith('.ts')
-        && !name.endsWith('.test.ts')
-        && !name.startsWith(path.join('series', 'one-piece', 'records', ''))
-        && !name.startsWith(path.join('series', 'one-piece', 'art', '')),
-    )
+    const modules = readdirSync(dataDir, { recursive: true })
+      .map((name) => name.split(path.sep).join('/'))
+      .filter(
+        (name) =>
+          name.endsWith('.ts')
+          && !name.endsWith('.test.ts')
+          && !/^series\/[^/]+\/(?:records|art)\//u.test(name),
+      )
 
     const prose = modules.filter((name) => {
       const source = readFileSync(path.join(dataDir, name), 'utf8')
 
       return canaryFrom(source) !== null
     })
+    const extras = Object.values(EXTRA).flatMap((extra) => extra.prose)
 
+    expect(prose.length).toBeGreaterThan(0)
     for (const name of prose) {
-      const file = `src/data/${name.split(path.sep).join('/')}`
+      const file = `src/data/${name}`
 
-      expect(PROSE_EXTRA, file).toContain(file)
+      expect(extras, file).toContain(file)
     }
+  })
+
+  it('refuses to vouch for a series with no records or drawings', () => {
+    // A series in the list whose folder the gate cannot read would ship its
+    // prose and its slugs unchecked; it is an unreadable canary instead.
+    expect(proseCanaries(repositoryRoot, 'no-such-series')).toStrictEqual([
+      { file: 'src/data/series/no-such-series/records', phrase: null },
+    ])
+    expect(slugCanaries(repositoryRoot, 'no-such-series')).toStrictEqual([
+      { file: 'src/data/series/no-such-series/art', phrase: null },
+    ])
+  })
+
+  it('reads a canary from every module of One Piece it names', () => {
+    const canaries = [
+      ...proseCanaries(repositoryRoot, 'one-piece'),
+      ...slugCanaries(repositoryRoot, 'one-piece'),
+    ]
+
+    expect(canaries.length).toBeGreaterThan(25)
+    expect(canaries.filter(({ phrase }) => phrase === null)).toStrictEqual([])
   })
 
   it('names every saga the archive holds, and the log', () => {
@@ -183,7 +211,8 @@ describe('the prose the gate looks for', () => {
 
       expect(phrase, name).not.toBeNull()
     }
-    for (const extra of PROSE_EXTRA) {
+    const extras = EXTRA['one-piece'].prose
+    for (const extra of extras) {
       const source = readFileSync(path.join(repositoryRoot, extra), 'utf8')
 
       expect(canaryFrom(source), extra).not.toBeNull()
