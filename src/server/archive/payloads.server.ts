@@ -3,14 +3,8 @@ import { entities } from '~/data/series/one-piece/entities'
 import { FILLER } from '~/data/series/one-piece/filler'
 import { fruits } from '~/data/series/one-piece/fruits'
 import { places, ships } from '~/data/series/one-piece/places'
-import { sagas } from '~/data/series/one-piece/sagas'
-import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
-import {
-  type Bookmark,
-  CHAPTER_CEILING,
-  EPISODE_CEILING,
-} from '~/lib/progress/episode'
+import type { Bookmark } from '~/lib/progress/episode'
 
 import { creditsPage } from './credits.server'
 import { fillerPage, peekFiller } from './filler.server'
@@ -151,43 +145,4 @@ export const PAYLOADS: Payload[] = [
     keys: handles,
     run: (b, locale, handle) => peekShip(handle, locale, b) ?? null,
   },
-]
-
-/**
- * Every saga's start in one unit, where the most opens at once, and the
- * number before it. The fruits file no arc, so they have no start.
- */
-function aroundSagas(threshold: (arc: Entity) => number): number[] {
-  const around: number[] = []
-  for (const { entries } of sagas) {
-    const arcs = entries.filter(({ kind }) => kind === 'arc')
-    const start = Math.min(...arcs.map((arc) => threshold(arc)))
-    if (Number.isFinite(start)) {
-      around.push(...[start - 1, start].filter((count) => count > 0))
-    }
-  }
-
-  return around
-}
-
-/**
- * A spread of bookmarks to ask every payload at: none, both sides of every
- * saga's start in both units, both sides of Robin's episode in seasons
- * (S04E38 is 130), and the last episode and chapter. A season that resolves
- * to no episode is not here: the cookie parser turns it into no bookmark.
- */
-export const BOOKMARKS: Bookmark[] = [
-  null,
-  ...aroundSagas((arc) => arc.revealedAtEpisode).map((episode): Bookmark => ({
-    mode: 'episode',
-    episode,
-  })),
-  ...aroundSagas((arc) => arc.revealedAtChapter).map((chapter): Bookmark => ({
-    mode: 'chapter',
-    chapter,
-  })),
-  { mode: 'season', season: 4, episode: 37 },
-  { mode: 'season', season: 4, episode: 38 },
-  { mode: 'episode', episode: EPISODE_CEILING },
-  { mode: 'chapter', chapter: CHAPTER_CEILING },
 ]

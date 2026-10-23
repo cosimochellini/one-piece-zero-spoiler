@@ -1,9 +1,12 @@
 import { expect } from 'vitest'
 
 import { type Reveal, reveal } from '~/data/reveal'
-import { DRAWINGS } from '~/data/series/one-piece/art'
-import { datedOf } from '~/data/series/one-piece/dated'
-import { entities } from '~/data/series/one-piece/entities'
+import {
+  type ListedSeries,
+  ONE_PIECE,
+  SERIES,
+  type SeriesArchive,
+} from '~/data/series'
 import type { Entity } from '~/data/types'
 import { type Locale, LOCALES } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
@@ -19,6 +22,9 @@ import type { Stroke } from '~/lib/view/records'
  *
  * A drawing names a record too, so the drawings are checked as well: a
  * covered record's, and a redrawing the reader has not reached (#136, #669).
+ *
+ * The fog is one series' (`~/data/series`), and every record of every other
+ * series is in it at any bookmark: a page of one series never names another.
  */
 
 /** The two keys a payload may spell a record out under. */
@@ -78,7 +84,10 @@ function aliasesIn(payload: unknown): string[] {
  * still checked, and a payload that sends a record sends its id, so a covered
  * record cannot get through on a shared name.
  */
-function fogOf(bookmark: Bookmark): Map<string, Entity[]> {
+function fogOf(
+  bookmark: Bookmark,
+  { entities }: SeriesArchive,
+): Map<string, Entity[]> {
   const at = reveal(bookmark)
   const covered = entities.filter((entity) => !at.sees(entity))
   const fog = new Map<string, Entity[]>()
@@ -90,7 +99,7 @@ function fogOf(bookmark: Bookmark): Map<string, Entity[]> {
     cover(entity.id, entity)
   }
   for (const locale of LOCALES) {
-    const taken = reachedNames(at, locale)
+    const taken = reachedNames(at, locale, entities)
     for (const entity of covered) {
       if (!taken.has(entity.name[locale])) {
         cover(entity.name[locale], entity)
@@ -106,11 +115,11 @@ function fogOf(bookmark: Bookmark): Map<string, Entity[]> {
  * way a search folds them. An alias carries no locale, so a folded name is
  * taken when a reached record goes by it in either one.
  */
-function foldedFogOf(bookmark: Bookmark): Map<string, Entity[]> {
+function foldedFogOf(
+  bookmark: Bookmark,
+  { entities }: SeriesArchive,
+): Map<string, Entity[]> {
   const at = reveal(bookmark)
-  const fold = (entity: Entity): string[] => [
-    ...new Set(LOCALES.map((locale) => foldName(entity.name[locale]))),
-  ]
   const taken = new Set(
     entities.flatMap((entity) => (at.sees(entity) ? fold(entity) : [])),
   )
@@ -127,8 +136,17 @@ function foldedFogOf(bookmark: Bookmark): Map<string, Entity[]> {
   return fog
 }
 
+/** A record's names in every locale, folded the way a search folds them. */
+function fold(entity: Entity): string[] {
+  return [...new Set(LOCALES.map((locale) => foldName(entity.name[locale])))]
+}
+
 /** The names the records a reader has reached go by in one locale. */
-function reachedNames(at: Reveal, locale: Locale): Set<string> {
+function reachedNames(
+  at: Reveal,
+  locale: Locale,
+  entities: Entity[],
+): Set<string> {
   const names = new Set<string>()
   for (const entity of entities) {
     if (at.sees(entity)) {
@@ -188,10 +206,15 @@ interface Drawn {
  * reader passes its gate. A redrawing's gate is already the later of its own
  * and its record's (`datedOf`), so a covered record's are all unseen.
  */
-function drawingsOf(entity: Entity, at: Reveal): Drawn[] {
-  const first = { gate: entity, value: DRAWINGS[entity.visual.art] }
+function drawingsOf(
+  entity: Entity,
+  at: Reveal,
+  { drawings, redrawn }: SeriesArchive,
+): Drawn[] {
+  const drawing = drawings[entity.visual.art]
+  const first = drawing === undefined ? [] : [{ gate: entity, value: drawing }]
 
-  return [first, ...datedOf(entity, 'redrawing')].map(({ gate, value }) => ({
+  return [...first, ...redrawn(entity)].map(({ gate, value }) => ({
     entity,
     key: drawingKey(value),
     seen: at.sees(gate),
@@ -206,9 +229,14 @@ function drawingsOf(entity: Entity, at: Reveal): Drawn[] {
  * fog, whoever else it belongs to: a feature that comes and goes returns to
  * the very first drawing.
  */
-function drawnFogOf(bookmark: Bookmark): Map<string, Entity[]> {
+function drawnFogOf(
+  bookmark: Bookmark,
+  archive: SeriesArchive,
+): Map<string, Entity[]> {
   const at = reveal(bookmark)
-  const all = entities.flatMap((entity) => drawingsOf(entity, at))
+  const all = archive.entities.flatMap((entity) =>
+    drawingsOf(entity, at, archive),
+  )
   const shown = new Set(all.filter(({ seen }) => seen).map(({ key }) => key))
   const fog = new Map<string, Entity[]>()
 
@@ -231,8 +259,76 @@ interface Fog {
   plain: Map<string, Entity[]>
 }
 
-/** One fog per bookmark: a sweep asks for the same one many times over. */
+/** One fog per series and bookmark: a sweep asks for the same one many times over. */
 const fogs = new Map<string, Fog>()
+
+/**
+ * What names a record of another series, as `slug/id`: its strings, as
+ * written and as folded, and its drawings, at any bookmark.
+ */
+type Foreign = Record<keyof Fog, Map<string, string[]>>
+
+/** One per series: it does not depend on the bookmark. */
+const foreigns = new Map<string, Foreign>()
+
+const KINDS = ['plain', 'folded', 'drawn'] as const
+
+/** Each string a series' records go by, with the `slug/id` of every one. */
+function wordsOf(
+  { archive, slug }: ListedSeries,
+  strings: (entity: Entity) => string[],
+): Map<string, string[]> {
+  const by = new Map<string, string[]>()
+  for (const entity of archive.entities) {
+    const words = new Set(strings(entity))
+    for (const word of words) {
+      by.set(word, [...(by.get(word) ?? []), `${slug}/${entity.id}`])
+    }
+  }
+
+  return by
+}
+
+/** What a series' records go by: ids, names, folded names, drawings. */
+function goesBy(series: ListedSeries): Foreign {
+  const nobody = reveal(null)
+
+  return {
+    drawn: wordsOf(series, (entity) =>
+      drawingsOf(entity, nobody, series.archive).map(({ key }) => key),
+    ),
+    folded: wordsOf(series, fold),
+    plain: wordsOf(series, (entity) => [
+      entity.id,
+      ...LOCALES.map((locale) => entity.name[locale]),
+    ]),
+  }
+}
+
+/**
+ * Everything the other series' records go by, less what this series' own
+ * records go by too: a name both series use is this series' word, and its
+ * own fog judges it.
+ */
+function foreignTo(series: ListedSeries): Foreign {
+  const own = goesBy(series)
+  const theirs = SERIES.filter(({ slug }) => slug !== series.slug).map(
+    (other) => goesBy(other),
+  )
+  const kept = (kind: keyof Fog): Map<string, string[]> => {
+    const all = new Map<string, string[]>()
+    const entries = theirs.flatMap((words) => [...words[kind]])
+    for (const [word, ids] of entries) {
+      if (!own[kind].has(word)) {
+        all.set(word, [...(all.get(word) ?? []), ...ids])
+      }
+    }
+
+    return all
+  }
+
+  return { drawn: kept('drawn'), folded: kept('folded'), plain: kept('plain') }
+}
 
 /** The words a payload says, each checked against its own fog. */
 function leakedIn(
@@ -248,31 +344,55 @@ function leakedIn(
 }
 
 /**
- * The ids of the records the reader at this bookmark has not reached that a
- * payload names. A string a page says by design (`excused`) is not a leak,
- * whichever other record goes by it too.
+ * The leak check of one series: the ids of the records the reader at this
+ * bookmark has not reached that a payload of the series names, and, as
+ * `slug/id`, the records of any other series it names. A string a page says
+ * by design (`excused`) is not a leak, whichever other record of the series
+ * goes by it too; nothing excuses another series' record.
  */
-export function leaksIn(
+export function leaksOf(
+  series: ListedSeries,
+): (
   payload: unknown,
   bookmark: Bookmark,
-  excused: (entity: Entity) => boolean = () => false,
-): string[] {
-  const key = JSON.stringify(bookmark)
-  const fog = fogs.get(key) ?? {
-    drawn: drawnFogOf(bookmark),
-    folded: foldedFogOf(bookmark),
-    plain: fogOf(bookmark),
+  excused?: (entity: Entity) => boolean,
+) => string[] {
+  return (payload, bookmark, excused = () => false) => {
+    const key = `${series.slug} ${JSON.stringify(bookmark)}`
+    const fog = fogs.get(key) ?? {
+      drawn: drawnFogOf(bookmark, series.archive),
+      folded: foldedFogOf(bookmark, series.archive),
+      plain: fogOf(bookmark, series.archive),
+    }
+    fogs.set(key, fog)
+    const foreign = foreigns.get(series.slug) ?? foreignTo(series)
+    foreigns.set(series.slug, foreign)
+
+    const words = {
+      drawn: drawnIn(payload),
+      folded: new Set(aliasesIn(payload)),
+      plain: named(payload),
+    }
+    const found = new Set<string>()
+    for (const kind of KINDS) {
+      const crossed = [...words[kind]].flatMap(
+        (word) => foreign[kind].get(word) ?? [],
+      )
+      const ids = [
+        ...leakedIn(words[kind], fog[kind], excused).map(({ id }) => id),
+        ...crossed,
+      ]
+      for (const id of ids) {
+        found.add(id)
+      }
+    }
+
+    return [...found]
   }
-  fogs.set(key, fog)
-
-  const leaked = [
-    ...leakedIn(named(payload), fog.plain, excused),
-    ...leakedIn(new Set(aliasesIn(payload)), fog.folded, excused),
-    ...leakedIn(drawnIn(payload), fog.drawn, excused),
-  ]
-
-  return [...new Set(leaked.map((entity) => entity.id))]
 }
+
+/** One Piece's leak check (`leaksOf`), which most tests ask. */
+export const leaksIn = leaksOf(ONE_PIECE)
 
 /** Nothing in a payload may name a record the reader has not reached. */
 export function saysNothing(payload: unknown, bookmark: Bookmark): void {

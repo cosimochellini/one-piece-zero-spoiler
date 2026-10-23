@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
 import { type Reveal, reveal } from '~/data/reveal'
+import { ONE_PIECE } from '~/data/series'
 import { gateOf } from '~/data/series/one-piece/chapter-table'
 import { eatersOf } from '~/data/series/one-piece/dated'
 import { fruits } from '~/data/series/one-piece/fruits'
@@ -11,7 +12,8 @@ import type { Bookmark } from '~/lib/progress/episode'
 import type { Faction, FruitFactionView } from '~/lib/view/records'
 
 import { fruitSheet } from './fruits.server'
-import { BOOKMARKS } from './payloads.server'
+
+const BOOKMARKS = ONE_PIECE.bookmarks
 
 /**
  * The faction view's groups: a fruit under the faction of each open eater,
