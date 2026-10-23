@@ -20,7 +20,7 @@ Everything below is for reviewers only: the squashed commit body is left blank.
 
 ## Sources and rights
 
-<!-- CONTRIBUTING.md, "Sources and rights". Delete the lines that do not apply. -->
+<!-- CONTRIBUTING.md, "Sources and rights". Write "none" on a line that does not apply. -->
 
 - Facts checked on:
   <!-- wiki page; chapter and page, or episode and timestamp -->

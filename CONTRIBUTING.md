@@ -270,6 +270,11 @@ default ([Fandom licensing](https://www.fandom.com/licensing),
 carry its own notice, and imported text and images can have other owners. When
 you cannot name the license of a passage, use the facts only.
 
+An adaptation stays under CC BY-SA 3.0, or another license section 4(b) of the
+[legal code](https://creativecommons.org/licenses/by-sa/3.0/legalcode) allows,
+with no added restriction, as
+[LICENSE-SCOPE.md](LICENSE-SCOPE.md#source-terms-and-adaptations) sets out.
+
 An adaptation needs, in the same pull request:
 
 1. the local fields it fills, by record id and field, in each locale;
@@ -280,15 +285,20 @@ An adaptation needs, in the same pull request:
    supplies;
 4. what you changed: abridged, reworded, translated;
 5. a public credit on the legal page (`/en/legal`, `/it/legal`) that opens no
-   later than the text. Add the revision to
+   later than the text. This is a code change: add the revision to
    [`docs/content-provenance/sources.json`](docs/content-provenance/sources.json)
-   in the shape of its entries, and map the record in
-   `src/server/archive/credits.server.ts`.
+   with every field its entries carry (`revision`, `revisionDate`, `url`,
+   `revisionUrl`, `apiUrl`, `contentSha256`), map the record in
+   `src/server/archive/credits.server.ts`, which today lists only the #719
+   sample, and extend `src/server/archive/credits.test.ts`. A record kind with
+   no credit scope yet (`scope` in `src/lib/view/credits.ts`) needs one first.
    [source-credits.md](docs/source-credits.md) has the rules: revision links
    only, nothing sent before the reader's bookmark reaches it. When the credit
-   would spoil at the text's threshold, the text waits.
+   would spoil at the text's threshold, or you cannot make the change, the text
+   waits and the facts go in your own words.
 
-The record in a pull request looks like this:
+The record in a pull request looks like this. The example shows the format only:
+it is not the provenance of the real story.
 
 ```text
 Adapted: monkey-d-luffy, chronicle story at episode 1, body.en and body.it
@@ -319,13 +329,19 @@ by eye and never traced from an image.
 - Keep reference images on your own machine. Commit, upload or paste none, in
   the repository, an issue or a pull request.
 - Record each reference in the pull request as chapter and page, or episode and
-  timestamp.
+  timestamp. An agent that cannot view the source records what the wiki and
+  `npm run wiki:pairs` establish, marked "not viewed", and the human author
+  checks the scene.
 
-A drawing of a distinctive design of the series (a costume ensemble, a ship's
-structure, a landmark, a real devil fruit: the kinds the
-[illustration audit](docs/illustration-rights-audit.md) flags as F1 to F4) waits
-for the owner. Label its issue `status:needs-decision`, with the reference and
-the alternatives you considered.
+A drawing of a distinctive design waits for the owner. A design is distinctive
+when a combination of its features identifies one subject of the series on its
+own: Luffy's banded hat over his costume, Franky's forearm and star, the Going
+Merry's curled prow and hull, a landmark's silhouette, a real devil fruit's
+skin. A single ordinary object (a barrel, a pair of shears, a plain hat) is not.
+The [illustration audit](docs/illustration-rights-audit.md) lists the flagged
+cases as F1 to F4. Label the issue `status:needs-decision`, with the reference
+and the alternatives you considered; the work can go on in a branch, and the
+pull request merges after the owner's ruling.
 
 ### AI-assisted work
 
@@ -342,10 +358,10 @@ Anyone can raise a rights concern through the contact link on the legal page,
 which opens a GitHub issue. Keep spoilers out of the title and confidential
 details out of the issue; the owner agrees a private channel before any
 confidential detail is shared. For a concrete claim about specific material, the
-owner withdraws or replaces that material promptly, labels the issue
+owner unpublishes or replaces that material promptly, labels the issue
 `status:needs-decision`, reviews it and decides whether it needs professional
-legal advice. If a rights holder contacts you about the project, point them to
-that link.
+legal advice. If a rights holder contacts you about the project, by any channel,
+point them to that link and tell the owner, with any deadline the message gives.
 
 ## Writing copy
 

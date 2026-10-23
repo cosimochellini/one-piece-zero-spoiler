@@ -222,7 +222,9 @@ A drawing is gated like any text, and it can spoil just as well.
    page ranges to locate the scene, then check the scene itself in a source
    you can lawfully access: a licensed manga edition or a licensed stream.
    Note each reference as chapter and page, or episode and timestamp, for the
-   pull request's Sources and rights section. The wiki's gallery and image
+   pull request's Sources and rights section; when you cannot view it, write
+   what the wiki and `wiki:pairs` establish, marked "not viewed", for the
+   human author to check. The wiki's gallery and image
    search results are leads, not permission. Reference images stay on your
    machine: commit, upload and paste none. Draw by eye; a trace is not a
    drawing. A distinctive design (a costume ensemble, a ship, a landmark, a
