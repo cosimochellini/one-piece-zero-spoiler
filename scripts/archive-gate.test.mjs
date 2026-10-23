@@ -147,8 +147,8 @@ describe('the prose the gate looks for', () => {
       (name) =>
         name.endsWith('.ts')
         && !name.endsWith('.test.ts')
-        && !name.split(path.sep).includes('records')
-        && !name.split(path.sep).includes('art'),
+        && !name.startsWith(path.join('series', 'one-piece', 'records', ''))
+        && !name.startsWith(path.join('series', 'one-piece', 'art', '')),
     )
 
     const prose = modules.filter((name) => {

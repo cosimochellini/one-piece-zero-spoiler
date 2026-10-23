@@ -321,7 +321,7 @@ function slugCanaries(repositoryRoot) {
       readFileSync(path.join(repositoryRoot, file), 'utf8'),
     )
 
-    // `index.ts`, `stroke.ts`: the table and its type, keyed by nothing.
+    // `index.ts`: the table itself, keyed by nothing.
     return slugs.length === 0 ? [] : { file, phrase: slugs[0] ?? null }
   })
 }

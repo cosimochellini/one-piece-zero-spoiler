@@ -1,7 +1,8 @@
 // The verification log is written from the archive rather than by hand, so a
 // story and the row that vouches for it cannot drift apart. The titles and the
-// episodes come from `src/data/series/one-piece/records/*.chronicle.ts`; the wiki page and the
-// note come from `chronicle-sources.mjs`, which is the only part a human keeps.
+// episodes come from `src/data/series/one-piece/records/*.chronicle.ts`; the
+// wiki page and the note come from `chronicle-sources.mjs`, which is the only
+// part a human keeps.
 //
 // Run it with `npm run docs:chronicle`. The output is already shaped the way
 // Prettier wants it, so `format:check` passes on a freshly generated file.
@@ -25,13 +26,13 @@ const PREAMBLE = `# Chronicle verification
      \`scripts/chronicle-sources.mjs\`, then regenerate. -->
 
 Every story in a character's chronicle (\`chronicle\` in the dossiers, filed in
-\`src/data/series/one-piece/records/<saga>.chronicle.ts\`) was checked against the One Piece Wiki
-(onepiece.fandom.com) twice: once as it was written and once more by an
-independent pass that re-read every episode against the character's \`/History\`
-page (which cites each event as \`{{Qref|…|ep=N}}\`) and the episode page named in
-the table, whose summary settles whether the event is complete by the end of
-that episode. Where the second pass disagreed with the first, the story was
-moved or rewritten; the note says what changed.
+\`src/data/series/one-piece/records/<saga>.chronicle.ts\`) was checked against the
+One Piece Wiki (onepiece.fandom.com) twice: once as it was written and once more
+by an independent pass that re-read every episode against the character's
+\`/History\` page (which cites each event as \`{{Qref|…|ep=N}}\`) and the episode
+page named in the table, whose summary settles whether the event is complete by
+the end of that episode. Where the second pass disagreed with the first, the
+story was moved or rewritten; the note says what changed.
 
 A note says in its own words what the wiki, the manga or the subtitles show. It
 quotes a source only where the exact words prove a name or a threshold, at most
@@ -57,7 +58,8 @@ too-late one only keeps it covered a little longer, and a few are filed late on
 purpose, as the notes say.
 
 Two further rules hold for every story, and the data tests
-(\`src/data/series/one-piece/characters.test.ts\`, "the chronicles") enforce what can be enforced:
+(\`src/data/series/one-piece/characters.test.ts\`, "the chronicles") enforce what
+can be enforced:
 
 - the first story sits at the character's own \`revealedAtEpisode\`, so the band
   never appears because something has happened;
