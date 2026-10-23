@@ -33,6 +33,11 @@ the table, whose summary settles whether the event is complete by the end of
 that episode. Where the second pass disagreed with the first, the story was
 moved or rewritten; the note says what changed.
 
+A note says in its own words what the wiki, the manga or the subtitles show. It
+quotes a source only where the exact words prove a name or a threshold, at most
+twice and briefly; the review behind that rule is in
+[chronicle-quotation-review.md](chronicle-quotation-review.md).
+
 The first batch — the twelve chronicles of the crew, Shanks and Ace — was
 written on 2026-09-15 and re-verified on 2026-09-19. The Dressrosa batch —
 Kaido's chronicle, and the Punk Hazard and Dressrosa stories the twelve were
