@@ -22,14 +22,13 @@ export function SourceCredits({
 }): ReactElement {
   const t = useT()
   return (
-    <main
-      id="content"
-      {...stylex.props(styles.page)}
-    >
-      <h1 {...stylex.props(styles.title)}>{t('credits.title')}</h1>
+    <section id="sources">
+      <h2 {...stylex.props(styles.heading)}>{t('credits.title')}</h2>
       <p {...stylex.props(styles.paragraph)}>{t('credits.intro')}</p>
       <LicenseNotices />
-      <h2 {...stylex.props(styles.heading)}>{t('credits.referencesTitle')}</h2>
+      <h3 {...stylex.props(styles.subheading)}>
+        {t('credits.referencesTitle')}
+      </h3>
       <p {...stylex.props(styles.paragraph)}>{t('credits.coverage')}</p>
       <p {...stylex.props(styles.paragraph)}>{t('credits.factCheck')}</p>
       <p {...stylex.props(styles.paragraph)}>{t('credits.bookmark')}</p>
@@ -44,7 +43,7 @@ export function SourceCredits({
           ))}
         </ul>
       }
-    </main>
+    </section>
   )
 }
 
@@ -52,12 +51,12 @@ function CreditEntry({ credit }: { credit: SourceCredit }): ReactElement {
   const t = useT()
   return (
     <li>
-      <h3>
+      <h4>
         {credit.name}
         {credit.episode === undefined ? null : (
           ` · ${t('credits.episode', { episode: credit.episode })}`
         )}
-      </h3>
+      </h4>
       <p>{t(`credits.scope.${credit.scope}`)}</p>
       {credit.scope === 'summary' ?
         <p>{t('credits.replacement')}</p>
@@ -91,7 +90,7 @@ function LicenseNotices(): ReactElement {
   const t = useT()
   return (
     <>
-      <h2 {...stylex.props(styles.heading)}>{t('credits.licensesTitle')}</h2>
+      <h3 {...stylex.props(styles.subheading)}>{t('credits.licensesTitle')}</h3>
       <p {...stylex.props(styles.paragraph)}>{t('credits.software')}</p>
       <ul {...stylex.props(styles.list)}>
         <li>
@@ -121,7 +120,7 @@ function SourceTerms(): ReactElement {
   const t = useT()
   return (
     <>
-      <h2 {...stylex.props(styles.heading)}>{t('credits.sourcesTitle')}</h2>
+      <h3 {...stylex.props(styles.subheading)}>{t('credits.sourcesTitle')}</h3>
       <p {...stylex.props(styles.paragraph)}>{t('credits.external')}</p>
       <p {...stylex.props(styles.paragraph)}>{t('credits.wikiTerms')}</p>
       <p {...stylex.props(styles.paragraph)}>

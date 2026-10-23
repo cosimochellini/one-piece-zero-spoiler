@@ -1,28 +1,28 @@
 import { createFileRoute } from '@tanstack/react-router'
 import type { ReactElement } from 'react'
 
-import { SourceCredits } from '~/components/SourceCredits'
+import { LegalPage } from '~/components/LegalPage'
 import { isLocale } from '~/i18n/locales'
 import { describeNamedPage } from '~/routes/$locale/-head'
 import { loadCredits } from '~/server/api'
 
-export const Route = createFileRoute('/$locale/sources')({
+export const Route = createFileRoute('/$locale/legal')({
   loader: async ({ context }) =>
     loadCredits({ data: { locale: context.locale } }),
   head: ({ match, params }) =>
     isLocale(params.locale) ?
       describeNamedPage({
-        descriptionKey: 'credits.description',
+        descriptionKey: 'legal.description',
         kind: 'index',
         locale: params.locale,
         pathname: match.pathname,
-        titleKey: 'credits.title',
+        titleKey: 'legal.title',
       })
     : {},
   headers: () => ({ 'Cache-Control': 'private, no-store' }),
-  component: CreditsPage,
+  component: LegalRoute,
 })
 
-function CreditsPage(): ReactElement {
-  return <SourceCredits credits={Route.useLoaderData()} />
+function LegalRoute(): ReactElement {
+  return <LegalPage credits={Route.useLoaderData()} />
 }

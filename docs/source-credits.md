@@ -1,10 +1,10 @@
 # Public sources and licenses (#721)
 
-Implemented on 23 October 2026. `/it/sources` and `/en/sources` are linked from
-the shared footer. The page follows the owner's decision: one public notice with
-entry references filtered by the bookmark on the server. Software and original
-technical documentation retain MIT; no new blanket license is assigned to
-archive text, illustrations, branding or third-party material.
+Implemented on 23 October 2026. `/it/legal` and `/en/legal` (the single legal
+page) are linked from the shared footer. The page follows the owner's decision:
+one public notice with entry references filtered by the bookmark on the server.
+Software and original technical documentation retain MIT; no new blanket license
+is assigned to archive text, illustrations, branding or third-party material.
 
 ## Coverage and provenance
 

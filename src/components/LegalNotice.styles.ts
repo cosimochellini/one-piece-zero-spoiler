@@ -22,6 +22,14 @@ export const styles = stylex.create({
     marginBlockEnd: space.sm,
     marginBlockStart: space.lg,
   },
+  subheading: {
+    color: color.ink,
+    fontFamily: font.display,
+    fontSize: text.lg,
+    lineHeight: leading.heading,
+    marginBlockEnd: space.xs,
+    marginBlockStart: space.md,
+  },
   paragraph: { marginBlockEnd: space.sm },
   list: { marginBlockEnd: space.sm, paddingInlineStart: space.lg },
   link: {

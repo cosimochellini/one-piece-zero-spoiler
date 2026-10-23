@@ -135,63 +135,8 @@ from either follows the same
 
 ## License
 
-[MIT](LICENSE) © 2026 Cosimo Chellini applies to the software and original
-technical documentation, to the extent contributors hold the relevant rights. It
-does not cover archive text, drawings, branding, screenshots or third-party
-material, including material embedded in code or documentation. No new blanket
-content license is assigned. Existing third-party licenses still apply.
-
-[License scope and content notices](LICENSE-SCOPE.md) separates these
-categories, records source-license obligations and links the unresolved
-decisions from the [provenance audit](docs/content-provenance-audit.md).
-Verified wiki adaptations must follow the applicable source license, including
-attribution, modification notices and ShareAlike. This does not automatically
-relicense unrelated software.
-
-One Piece was created by Eiichiro Oda. The anime’s
-[official copyright credit](https://www.toei-animation.com/copyrights/) is ©
-Eiichiro Oda/Shueisha, Toei Animation. This credit is not an exhaustive list of
-rights holders.
-
-This is an unofficial, nonprofit fan project, not affiliated with or endorsed by
-One Piece rights holders. Its drawings are made for the site; it uses no
-official artwork, scans or frames. Making a drawing for the site does not
-establish rights in the depicted subject. The MIT licence does not grant rights
-to One Piece or other third-party material. Neither this notice nor the
-project’s nonprofit status grants permission to use third-party material.
-
-For rights inquiries or corrections,
-[open a GitHub issue](https://github.com/cosimochellini/one-piece-zero-spoiler/issues/new?template=blank.md).
-Include the page URL, the material concerned and your request. Keep spoilers out
-of the title. Issues are public and require a GitHub account; do not post
-confidential information.
-
-La [licenza MIT](LICENSE) © 2026 Cosimo Chellini si applica al software e alla
-documentazione tecnica originale, nei limiti dei diritti detenuti dai
-contributori. Non copre i testi delle voci, i disegni, il branding, le schermate
-o i materiali di terzi, anche se inclusi nel codice o nella documentazione. Non
-viene assegnata una nuova licenza generale ai contenuti. Restano applicabili le
-licenze di terzi.
-
-Gli [ambiti di licenza e gli avvisi sui contenuti](LICENSE-SCOPE.md) distinguono
-queste categorie, indicano gli obblighi delle licenze delle fonti e rimandano
-alle decisioni ancora aperte nell’audit di provenienza. Gli adattamenti
-verificati dalle wiki devono rispettare la licenza applicabile della fonte,
-compresi attribuzione, avvisi sulle modifiche e ShareAlike. Questo non cambia
-automaticamente la licenza del software indipendente.
-
-One Piece è un’opera di Eiichiro Oda. I crediti ufficiali dell’anime sono ©
-Eiichiro Oda/Shueisha, Toei Animation, senza pretendere di elencare tutti i
-titolari dei diritti. Questo è un progetto amatoriale non ufficiale e senza
-scopo di lucro, non affiliato né approvato dai titolari dei diritti. I disegni
-sono fatti per il sito; non usa immagini ufficiali, scansioni o fotogrammi.
-Realizzare un disegno per il sito non dimostra di avere i diritti sul soggetto
-rappresentato. La licenza MIT non concede diritti su One Piece o altri materiali
-di terzi. Né questa nota né l’assenza di scopo di lucro autorizzano l’uso di
-materiali di terzi.
-
-Per richieste sui diritti o correzioni,
-[apri una issue GitHub](https://github.com/cosimochellini/one-piece-zero-spoiler/issues/new?template=blank.md).
-Indica l’URL della pagina, il materiale interessato e la richiesta. Evita
-spoiler nel titolo. Le issue sono pubbliche e richiedono un account GitHub; non
-inserire informazioni riservate.
+[MIT](LICENSE) © 2026 Cosimo Chellini, for the software and original technical
+documentation; [LICENSE-SCOPE.md](LICENSE-SCOPE.md) says what it leaves out.
+This is an unofficial fan project, not endorsed by the One Piece rights holders.
+Credits, the rights contact, privacy and sources are on the
+[legal page](https://one-piece-zero-spoiler.netlify.app/en/legal).

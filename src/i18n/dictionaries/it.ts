@@ -12,9 +12,9 @@ export const itDictionary: Dictionary = {
   'site.name': 'Zero Spoiler',
   'site.title': 'Zero Spoiler | La wiki di One Piece senza spoiler',
   'site.description':
-    'Una wiki amatoriale non ufficiale di One Piece che nasconde personaggi, saghe, luoghi e frutti del diavolo oltre l’ultimo episodio visto o l’ultimo capitolo letto.',
+    'Una wiki di One Piece che nasconde personaggi, saghe, luoghi e frutti del diavolo oltre l’ultimo episodio visto o l’ultimo capitolo letto.',
   'seo.imageAlt':
-    'La card della wiki amatoriale non ufficiale Zero Spoiler: il logo sopra una rotta che sparisce nella nebbia.',
+    'La card di Zero Spoiler: il logo sopra una rotta che sparisce nella nebbia.',
 
   'nav.skip': 'Vai al contenuto',
   'nav.characters': 'Personaggi',
@@ -146,9 +146,20 @@ export const itDictionary: Dictionary = {
   'faq.peekA':
     'Sì. Nelle altre pagine della wiki premi “Mostra comunque”. La scelta non viene salvata e le altre voci restano nella nebbia.',
 
+  'legal.title': 'Note legali',
+  'legal.description':
+    'Avviso sul progetto non ufficiale, contatti per i diritti, privacy e cookie, fonti e licenze.',
+  'legal.projectTitle': 'Un progetto non ufficiale',
+  'legal.unofficial':
+    'Zero Spoiler è un progetto amatoriale non ufficiale e senza scopo di lucro. Non è affiliato né approvato dai titolari dei diritti di One Piece.',
+  'legal.credits':
+    'One Piece è un’opera di Eiichiro Oda. Crediti dell’anime: © Eiichiro Oda/Shueisha, Toei Animation.',
+  'legal.creditSource': 'Fonte ufficiale dei crediti',
+  'legal.contact': 'Richieste sui diritti e correzioni su GitHub',
+  'legal.contactHelp':
+    'Indica l’URL della pagina, il materiale interessato e la richiesta sui diritti o la correzione. Evita spoiler nel titolo. Le issue GitHub sono pubbliche e richiedono un account. Non inserire informazioni riservate.',
+
   'credits.title': 'Fonti e licenze',
-  'credits.description':
-    'Riferimenti alle fonti e avvisi sulle licenze, filtrati in base al segnalibro.',
   'credits.intro':
     'Le fonti delle verifiche documentate e le licenze applicabili al progetto e alle fonti.',
   'credits.licensesTitle': 'Licenze del progetto',
@@ -195,8 +206,6 @@ export const itDictionary: Dictionary = {
   'credits.noOpenLicense': 'Nessuna autorizzazione aperta accertata.',
 
   'privacy.title': 'Privacy e cookie',
-  'privacy.description':
-    'Come Zero Spoiler usa cookie tecnici, memoria del browser e hosting Netlify.',
   'privacy.updated': 'Ultima verifica: 20 ottobre 2026.',
   'privacy.controllerTitle': 'Chi gestisce il sito',
   'privacy.controller':
@@ -245,16 +254,10 @@ export const itDictionary: Dictionary = {
   'footer.lead':
     'Una wiki di One Piece che nasconde quello che viene dopo il tuo segnalibro.',
   'footer.colophon':
-    'Tutti i disegni sono fatti per questo sito e non ci sono immagini ufficiali. Il segnalibro viene salvato in un cookie su questo dispositivo. La licenza MIT copre il software e la documentazione tecnica originale. Non copre i testi delle voci, i disegni, il branding o i materiali di terzi. Restano applicabili le licenze di terzi.',
+    'Tutti i disegni sono fatti per questo sito e non ci sono immagini ufficiali. Il segnalibro viene salvato in un cookie su questo dispositivo.',
 
   'footer.unofficial':
-    'Progetto amatoriale non ufficiale e senza scopo di lucro. Non è affiliato né approvato dai titolari dei diritti di One Piece.',
-  'footer.credits':
-    'One Piece è un’opera di Eiichiro Oda. Crediti dell’anime: © Eiichiro Oda/Shueisha, Toei Animation.',
-  'footer.creditSource': 'Fonte ufficiale dei crediti',
-  'footer.contact': 'Richieste sui diritti e correzioni su GitHub',
-  'footer.contactHelp':
-    'Indica l’URL della pagina, il materiale interessato e la richiesta sui diritti o la correzione. Evita spoiler nel titolo. Le issue GitHub sono pubbliche e richiedono un account. Non inserire informazioni riservate.',
+    'Progetto amatoriale non ufficiale, non approvato dai titolari dei diritti di One Piece.',
 
   'characters.title': 'Personaggi',
   'characters.count':
