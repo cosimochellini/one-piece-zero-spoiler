@@ -16,7 +16,17 @@ import process from 'node:process'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { animePairs, pairChapters } from './wiki-pairs.mjs'
-import { cached, pageOf, printPairs, textOf } from './wiki.mjs'
+import {
+  cached,
+  chapterTexts,
+  fetchPage,
+  italianPages,
+  italianTitles,
+  pageOf,
+  printPairs,
+  textOf,
+  wikiOf,
+} from './wiki.mjs'
 
 // Cache pacing and retry delays need no wall-clock time in unit tests.
 vi.mock('node:timers/promises', () => ({
@@ -382,5 +392,52 @@ describe('the pairs command', () => {
     expect(command.status).toBe(1)
     expect(command.stdout).toBe('')
     expect(command.stderr).toContain('Usage: npm run wiki:pairs')
+  })
+})
+
+describe('the wiki of a series', () => {
+  let directory = ''
+
+  beforeEach(() => {
+    directory = mkdtempSync(path.join(tmpdir(), 'wiki-'))
+  })
+
+  afterEach(() => {
+    vi.unstubAllGlobals()
+    rmSync(directory, { recursive: true, force: true })
+  })
+
+  const onePiece = {
+    slug: 'one-piece',
+    wiki: {
+      en: 'https://onepiece.fandom.com/api.php',
+      it: 'https://onepiece.fandom.com/it/api.php',
+    },
+  }
+
+  it('keeps its answers in a folder of its own', () => {
+    expect(wikiOf(onePiece).cache).toMatch(/\/\.gate\/wiki\/one-piece$/u)
+  })
+
+  it('asks the same queries the One Piece Wiki was asked before the list', async () => {
+    // The answers are cached by file name, not by address, so a query built
+    // wrong would pass unseen on a warm cache.
+    const wiki = { ...wikiOf(onePiece), cache: directory }
+    const fetch = answering(
+      '{"parse":{"title":"T","wikitext":{"*":""},"text":{"*":""}},"query":{"pages":{}},"batchcomplete":""}',
+    )
+
+    await fetchPage('Nami', wiki)
+    await chapterTexts(1, wiki)
+    await italianTitles(['Nami'], wiki)
+    await italianPages(['Nami'], wiki)
+
+    expect(fetch.mock.calls.map(([url]) => url)).toStrictEqual([
+      'https://onepiece.fandom.com/api.php?action=parse&redirects=1&prop=wikitext|text&format=json&page=Nami',
+      'https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&titles=Chapter%201',
+      'https://onepiece.fandom.com/api.php?action=query&prop=langlinks&lllang=it&lllimit=max&redirects=1&format=json&titles=Nami',
+      'https://onepiece.fandom.com/it/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&redirects=1&format=json&titles=Nami',
+    ])
+    expect(existsSync(path.join(directory, 'Nami.json'))).toBe(true)
   })
 })

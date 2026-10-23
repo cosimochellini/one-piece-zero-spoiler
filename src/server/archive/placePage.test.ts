@@ -1,15 +1,17 @@
 import { describe, expect, it } from 'vitest'
 
 import { reveal } from '~/data/reveal'
+import { ONE_PIECE } from '~/data/series'
 import { characters } from '~/data/series/one-piece/characters'
 import { chartPointOf } from '~/data/series/one-piece/chart'
 import { placeDossierOf, places, ships } from '~/data/series/one-piece/places'
 import { CHARACTER_DOSSIERS } from '~/data/series/one-piece/sagas'
 import type { Bookmark } from '~/lib/progress/episode'
 
-import { BOOKMARKS } from './payloads.server'
 import { type PlacePage, placePage, type ShipPage } from './placePage.server'
 import { placesPage } from './places.server'
+
+const BOOKMARKS = ONE_PIECE.bookmarks
 
 const ep = (episode: number): Bookmark => ({ mode: 'episode', episode })
 const ch = (chapter: number): Bookmark => ({ mode: 'chapter', chapter })

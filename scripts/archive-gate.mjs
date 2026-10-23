@@ -7,10 +7,11 @@
  * both other gates, and the only symptom is a bigger `.js` file that a
  * visitor with no bookmark can read end to end.
  *
- * Four checks over the built client chunks:
+ * Four checks over the built client chunks, the first two for every series
+ * in `src/data/series/index.ts`:
  *
- *   1. Prose canaries. The longest sentence in every archive module — all
- *      twelve sagas and the ship's log — read at gate time rather than
+ *   1. Prose canaries. The longest sentence in every archive module — One
+ *      Piece's twelve sagas and the ship's log — read at gate time rather than
  *      hard-coded, so they cannot go stale, and looked for in the chunks.
  *      Never a key such as `revealedAtEpisode`, which legitimately survives
  *      on a covered record.
@@ -33,6 +34,8 @@ import { readdirSync, readFileSync, statSync } from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
 import { byNumber, byValue } from 'sort-es'
+
+import { importArchive } from './archive-loader.mjs'
 
 const EXIT_CLEAN = 0
 const EXIT_FOUND = 1
@@ -136,24 +139,31 @@ const WORST_CHUNKS = 5
  */
 export const MAX_CLIENT_BYTES = 654_301
 
-/** Where the prose lives: every saga, the ship's log and the filler guide. */
-const PROSE_DIR = 'src/data/series/one-piece/records'
-export const PROSE_EXTRA = [
-  'src/data/series/one-piece/places.ts',
-  'src/data/series/one-piece/filler.ts',
-]
-
-/** Where the drawings live, keyed by the id of the record each was drawn for. */
-const ART_DIR = 'src/data/series/one-piece/art'
+/** Where every series' folder is. */
+const SERIES_DIR = 'src/data/series'
 
 /**
- * Archive modules keyed by record id that carry no prose and live outside the
- * drawing directory, so neither canary would otherwise see them.
+ * A series' prose lives in its `records/` folder (every saga), its drawings
+ * in its `art/` folder, keyed by the id of the record each was drawn for.
+ * These are the modules of a series that live elsewhere, keyed by its folder
+ * (not its slug):
+ * `prose`, the ones with prose (the ship's log and the filler guide), and
+ * `slugs`, the ones keyed by record id that carry no prose and sit outside
+ * the drawing folder, so neither canary would otherwise see them.
+ * @type {Record<string, { prose: string[], slugs: string[] }>}
  */
-const SLUG_EXTRA = [
-  'src/data/series/one-piece/art/fruits/index.ts',
-  'src/data/series/one-piece/fruit-forms.ts',
-]
+export const EXTRA = {
+  'one-piece': {
+    prose: [
+      'src/data/series/one-piece/places.ts',
+      'src/data/series/one-piece/filler.ts',
+    ],
+    slugs: [
+      'src/data/series/one-piece/art/fruits/index.ts',
+      'src/data/series/one-piece/fruit-forms.ts',
+    ],
+  },
+}
 
 /**
  * An id hyphenated and long enough that a minifier could not produce it by
@@ -283,16 +293,39 @@ function report(verdict, chunks) {
 }
 
 /**
- * One canary per archive module that carries prose: every saga, and the log.
+ * The modules of one folder of a series, or nothing when it has no such
+ * folder.
  * @param {string} repositoryRoot The repository root.
+ * @param {string} dir The folder, from the root.
+ * @returns {null | string[]} The modules, from the root, or `null`.
+ */
+function modulesIn(repositoryRoot, dir) {
+  try {
+    // fallow-ignore-next-line security-sink -- The root is this script’s directory or a test fixture; dir is a series folder named in the repository's own series list.
+    return readdirSync(path.join(repositoryRoot, dir))
+      .filter((name) => name.endsWith('.ts') && !name.endsWith('.test.ts'))
+      .map((name) => `${dir}/${name}`)
+  } catch {
+    return null
+  }
+}
+
+/**
+ * One canary per archive module of a series that carries prose: every saga,
+ * and the log. A series with no `records/` folder is one unreadable canary,
+ * so the gate refuses to vouch for it.
+ * @param {string} repositoryRoot The repository root.
+ * @param {string} folder The series' folder under `src/data/series/`.
  * @returns {{file: string, phrase: null | string}[]} What to look for.
  */
-function proseCanaries(repositoryRoot) {
-  const sagas = readdirSync(path.join(repositoryRoot, PROSE_DIR))
-    .filter((name) => name.endsWith('.ts') && !name.endsWith('.test.ts'))
-    .map((name) => `${PROSE_DIR}/${name}`)
+export function proseCanaries(repositoryRoot, folder) {
+  const dir = `${SERIES_DIR}/${folder}/records`
+  const sagas = modulesIn(repositoryRoot, dir)
+  if (sagas === null) {
+    return [{ file: dir, phrase: null }]
+  }
 
-  return [...sagas, ...PROSE_EXTRA].flatMap((file) => {
+  return [...sagas, ...(EXTRA[folder]?.prose ?? [])].flatMap((file) => {
     const phrase = canaryFrom(
       readFileSync(path.join(repositoryRoot, file), 'utf8'),
     )
@@ -307,16 +340,20 @@ function proseCanaries(repositoryRoot) {
 }
 
 /**
- * One canary per drawing module: the first id long enough to be unmistakable.
+ * One canary per drawing module of a series: the first id long enough to be
+ * unmistakable. A series with no `art/` folder is one unreadable canary.
  * @param {string} repositoryRoot The repository root.
+ * @param {string} folder The series' folder under `src/data/series/`.
  * @returns {{file: string, phrase: null | string}[]} What to look for.
  */
-function slugCanaries(repositoryRoot) {
-  const drawings = readdirSync(path.join(repositoryRoot, ART_DIR))
-    .filter((name) => name.endsWith('.ts') && !name.endsWith('.test.ts'))
-    .map((name) => `${ART_DIR}/${name}`)
+export function slugCanaries(repositoryRoot, folder) {
+  const dir = `${SERIES_DIR}/${folder}/art`
+  const drawings = modulesIn(repositoryRoot, dir)
+  if (drawings === null) {
+    return [{ file: dir, phrase: null }]
+  }
 
-  return [...drawings, ...SLUG_EXTRA].flatMap((file) => {
+  return [...drawings, ...(EXTRA[folder]?.slugs ?? [])].flatMap((file) => {
     const slugs = slugsFrom(
       readFileSync(path.join(repositoryRoot, file), 'utf8'),
     )
@@ -376,10 +413,36 @@ function readBuild(repositoryRoot) {
 }
 
 /**
- * Reads the build, judges it, and says so.
- * @returns {number} The process exit code.
+ * Every canary: the prose and slugs of every series in the list, and the
+ * source URLs. A list that does not load is one unreadable canary, so the
+ * gate exits as unusable rather than as a leak.
+ * @param {string} repositoryRoot The repository root.
+ * @returns {Promise<{file: string, phrase: null | string}[]>} What to look for.
  */
-function main() {
+export async function canariesOf(repositoryRoot) {
+  let SERIES
+  try {
+    ;({ SERIES } = await importArchive('data/series/index.ts'))
+  } catch (error) {
+    console.error(`archive-gate: the series list did not load: ${error}`)
+
+    return [{ file: 'src/data/series/index.ts', phrase: null }]
+  }
+
+  return [
+    ...SERIES.flatMap(({ folder }) => [
+      ...proseCanaries(repositoryRoot, folder),
+      ...slugCanaries(repositoryRoot, folder),
+    ]),
+    ...sourceCanaries(repositoryRoot),
+  ]
+}
+
+/**
+ * Reads the build, judges it, and says so.
+ * @returns {Promise<number>} The process exit code.
+ */
+async function main() {
   const repositoryRoot = path.resolve(import.meta.dirname, '..')
   const chunks = readBuild(repositoryRoot)
 
@@ -391,12 +454,7 @@ function main() {
     return EXIT_UNUSABLE
   }
 
-  const canaries = [
-    ...proseCanaries(repositoryRoot),
-    ...slugCanaries(repositoryRoot),
-    ...sourceCanaries(repositoryRoot),
-  ]
-  const verdict = judge(chunks, canaries)
+  const verdict = judge(chunks, await canariesOf(repositoryRoot))
 
   if (verdict.unreadable.length > 0) {
     console.error(
@@ -420,5 +478,5 @@ function main() {
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
-  process.exit(main())
+  process.exit(await main())
 }

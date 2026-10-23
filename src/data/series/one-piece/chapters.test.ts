@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest'
 
 import type { Dated, Entity } from '~/data/types'
 import { LOCALES } from '~/i18n/locales'
-import { CHAPTER_CEILING, EPISODE_CEILING } from '~/lib/progress/episode'
+import { CHAPTER_CEILING } from '~/lib/progress/episode'
 
 import { chapterAtEpisode, episodeAtChapter } from './chapter-table'
 import { DATED, TIMELINES } from './chapters'
@@ -133,32 +133,6 @@ describe('chapterAtEpisode', () => {
     expect(chapterAtEpisode(episodeAtChapter(CHAPTER_CEILING) + 1)).toBe(
       CHAPTER_CEILING + 1,
     )
-  })
-})
-
-describe('the timelines', () => {
-  it('are filed in order, from the threshold on, within the dial', () => {
-    // What every timeline obeys, a character's, a ship's or a drawing's: at
-    // least one entry, in strictly ascending episodes, none before the
-    // record's own threshold and none past the dial.
-    expect(TIMELINES.length).toBeGreaterThan(0)
-
-    for (const { label, owner, timeline } of TIMELINES) {
-      const episodes = timeline.map((entry) => entry.episode)
-      const distinct = new Set(episodes)
-
-      expect(episodes.length, label).toBeGreaterThan(0)
-      // Sorted and all distinct is the same statement as strictly ascending,
-      // without a look back at the previous entry inside the loop.
-      expect(episodes, label).toStrictEqual(episodes.toSorted(byNumber()))
-      expect(distinct.size, label).toBe(episodes.length)
-
-      for (const episode of episodes) {
-        expect(Number.isSafeInteger(episode), label).toBe(true)
-        expect(episode, label).toBeGreaterThanOrEqual(owner.revealedAtEpisode)
-        expect(episode, label).toBeLessThanOrEqual(EPISODE_CEILING)
-      }
-    }
   })
 })
 

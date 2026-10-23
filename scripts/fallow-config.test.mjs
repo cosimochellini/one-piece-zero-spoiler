@@ -49,5 +49,18 @@ describe('the fallow configuration', () => {
 
     expect(count('series/one-piece')).toBeGreaterThan(50)
     expect(count('engine-types')).toBe(1)
+    expect(count('series-list')).toBe(1)
+  })
+
+  it('lets no zone import the series list', () => {
+    // The list is for the exempt tests and the scripts. A zone allowed to
+    // import it would let the server or the browser read every series (#751).
+    const reaching = read('config')
+      .boundaries.rules.filter(({ allow = [], allowTypeOnly = [] }) =>
+        [...allow, ...allowTypeOnly].includes('series-list'),
+      )
+      .map(({ from }) => from)
+
+    expect(reaching).toStrictEqual([])
   })
 })

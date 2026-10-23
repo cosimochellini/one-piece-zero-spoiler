@@ -87,9 +87,9 @@ entry, which carries the episode it is learned in. The comment at the top of
 | `scripts/`                   | Quality gates, the PR title validator, the wiki checks and the merge helper.                |
 | `docs/`                      | [Architecture](docs/architecture.md), media and the chronicle verification report.          |
 
-A new module with prose must go into `PROSE_EXTRA` in `scripts/archive-gate.mjs`
-and into `TEXTS` in `src/data/series/one-piece/leaks.test.ts`, with the gate its
-page applies to it.
+A new module with prose outside a series' `records/` must go into its series'
+`prose` in `EXTRA` in `scripts/archive-gate.mjs` and into `TEXTS` in
+`src/data/series/one-piece/leaks.test.ts`, with the gate its page applies to it.
 
 A new server function in `src/server/api.ts` must go into `PAYLOADS` in
 `src/server/archive/payloads.server.ts`, with the ids or handles it is asked
@@ -211,8 +211,9 @@ sorting and `comm` (for example `LC_ALL=C`).
 
 A change to `src/server` that should change no page can be checked the same way:
 `npm run --silent archive:dump > head.jsonl` writes every payload in `PAYLOADS`,
-for every id or handle, at the sweep's bookmarks and in both locales, about 1
-GB. Dump the base too and `cmp` the two files.
+for every id or handle, at One Piece's sweep bookmarks
+(`src/data/series/index.ts`) and in both locales, about 1 GB. Dump the base too
+and `cmp` the two files.
 
 For characters with redrawings, capture the production site's stage gates:
 

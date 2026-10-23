@@ -6,18 +6,23 @@
 // `describe` / `it` / `expect` are imported rather than taken from
 // `test.globals`: this file is linted as plain JavaScript, where ESLint's
 // `no-undef` has no TypeScript program to learn the Vitest globals from.
+import console from 'node:console'
 import { readdirSync, readFileSync } from 'node:fs'
 import path from 'node:path'
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 
 import {
+  canariesOf,
   canaryFrom,
+  EXTRA,
   judge,
   MAX_CLIENT_BYTES,
-  PROSE_EXTRA,
+  proseCanaries,
+  slugCanaries,
   slugsFrom,
   sourceCanaries,
 } from './archive-gate.mjs'
+import { importArchive } from './archive-loader.mjs'
 
 const repositoryRoot = path.resolve(import.meta.dirname, '..')
 
@@ -142,14 +147,17 @@ describe('the slugs the gate looks for', () => {
 
 describe('the prose the gate looks for', () => {
   it('covers every prose module outside the records and drawings', () => {
+    // Of every series: a series' `records/` and `art/` are read whole, and
+    // anything else with prose must be among its extras.
     const dataDir = path.join(repositoryRoot, 'src/data')
-    const modules = readdirSync(dataDir, { recursive: true }).filter(
-      (name) =>
-        name.endsWith('.ts')
-        && !name.endsWith('.test.ts')
-        && !name.startsWith(path.join('series', 'one-piece', 'records', ''))
-        && !name.startsWith(path.join('series', 'one-piece', 'art', '')),
-    )
+    const modules = readdirSync(dataDir, { recursive: true })
+      .map((name) => name.split(path.sep).join('/'))
+      .filter(
+        (name) =>
+          name.endsWith('.ts')
+          && !name.endsWith('.test.ts')
+          && !/^series\/[^/]+\/(?:records|art)\//u.test(name),
+      )
 
     const prose = modules.filter((name) => {
       const source = readFileSync(path.join(dataDir, name), 'utf8')
@@ -157,11 +165,70 @@ describe('the prose the gate looks for', () => {
       return canaryFrom(source) !== null
     })
 
+    expect(prose.length).toBeGreaterThan(0)
     for (const name of prose) {
-      const file = `src/data/${name.split(path.sep).join('/')}`
+      // The gate reads a series' extras by its folder, so that is where a
+      // module has to be listed.
+      const folder = /^series\/(?<folder>[^/]+)\//u.exec(name)?.groups?.folder
+      const file = `src/data/${name}`
 
-      expect(PROSE_EXTRA, file).toContain(file)
+      expect(EXTRA[folder ?? '']?.prose ?? [], file).toContain(file)
     }
+  })
+
+  it('keys its extras by the folders of listed series only', async () => {
+    // An extra under a slug, a typo or an unlisted folder is never read.
+    const { SERIES } = await importArchive('data/series/index.ts')
+    const folders = SERIES.map(({ folder }) => folder)
+
+    for (const key of Object.keys(EXTRA)) {
+      expect(folders, key).toContain(key)
+    }
+  })
+
+  it('reads every listed series, with no canary left unread', async () => {
+    const canaries = await canariesOf(repositoryRoot)
+    const files = canaries.map(({ file }) => file)
+
+    expect(canaries.filter(({ phrase }) => phrase === null)).toStrictEqual([])
+    expect(files).toContain('src/data/series/one-piece/records/egghead.ts')
+    expect(files).toContain('src/data/series/one-piece/fruit-forms.ts')
+  })
+
+  it('is unusable, not a leak, when the series list does not load', async () => {
+    vi.resetModules()
+    vi.doMock('./archive-loader.mjs', () => ({
+      importArchive: () => Promise.reject(new Error('no list')),
+    }))
+    const quiet = vi.spyOn(console, 'error').mockReturnValue()
+    const gate = await import('./archive-gate.mjs')
+
+    await expect(gate.canariesOf(repositoryRoot)).resolves.toStrictEqual([
+      { file: 'src/data/series/index.ts', phrase: null },
+    ])
+    expect(quiet).toHaveBeenCalledOnce()
+    vi.doUnmock('./archive-loader.mjs')
+  })
+
+  it('refuses to vouch for a series with no records or drawings', () => {
+    // A series in the list whose folder the gate cannot read would ship its
+    // prose and its slugs unchecked; it is an unreadable canary instead.
+    expect(proseCanaries(repositoryRoot, 'no-such-series')).toStrictEqual([
+      { file: 'src/data/series/no-such-series/records', phrase: null },
+    ])
+    expect(slugCanaries(repositoryRoot, 'no-such-series')).toStrictEqual([
+      { file: 'src/data/series/no-such-series/art', phrase: null },
+    ])
+  })
+
+  it('reads a canary from every module of One Piece it names', () => {
+    const canaries = [
+      ...proseCanaries(repositoryRoot, 'one-piece'),
+      ...slugCanaries(repositoryRoot, 'one-piece'),
+    ]
+
+    expect(canaries.length).toBeGreaterThan(25)
+    expect(canaries.filter(({ phrase }) => phrase === null)).toStrictEqual([])
   })
 
   it('names every saga the archive holds, and the log', () => {
@@ -183,7 +250,8 @@ describe('the prose the gate looks for', () => {
 
       expect(phrase, name).not.toBeNull()
     }
-    for (const extra of PROSE_EXTRA) {
+    const extras = EXTRA['one-piece'].prose
+    for (const extra of extras) {
       const source = readFileSync(path.join(repositoryRoot, extra), 'utf8')
 
       expect(canaryFrom(source), extra).not.toBeNull()

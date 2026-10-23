@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
 import { reveal } from '~/data/reveal'
+import { ONE_PIECE } from '~/data/series'
 import { DRAWINGS, REDRAWINGS } from '~/data/series/one-piece/art'
 import { eatersOf } from '~/data/series/one-piece/dated'
 import { entities } from '~/data/series/one-piece/entities'
@@ -22,9 +23,10 @@ import { fruitPage } from './fruitPage.server'
 import { fruitEaters, fruitSheet, fruitSiblings } from './fruits.server'
 import { handleOf } from './handle.server'
 import { characterPage, drawingsFor } from './pages.server'
-import { BOOKMARKS } from './payloads.server'
 import { peekFruit } from './peek.server'
 import { sagaOf, type SagaStart, sagaStarts } from './sagaLabels.server'
+
+const BOOKMARKS = ONE_PIECE.bookmarks
 
 /**
  * What the specimen sheet and a fruit's page are allowed to say.

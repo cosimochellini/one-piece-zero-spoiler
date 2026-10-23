@@ -5,9 +5,11 @@
 // `capitoli`, and the films and specials against the English wiki's Episode
 // Guide. Fails with one line per problem.
 //
-// Run it with `npm run verify:filler`. It talks to the network, so it is not
-// part of `npm run check` or CI; what it reads is cached under
-// `.gate/wiki/` and never expires, so delete that folder to read afresh.
+// Run it with `npm run verify:filler` (`-- --series <slug>` for a series of
+// `src/data/series/index.ts` other than One Piece, which has to have a filler
+// guide). It talks to the network, so it is not part of `npm run check` or
+// CI; what it reads is cached under `.gate/wiki/<slug>/filler/` and never
+// expires, so delete that folder to read afresh.
 import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
@@ -15,8 +17,8 @@ import process from 'node:process'
 import { setTimeout as sleep } from 'node:timers/promises'
 import { pathToFileURL } from 'node:url'
 
-import { importArchive, ROOT } from './archive-loader.mjs'
-import { cached, pageOf } from './wiki.mjs'
+import { importOrExit, seriesOrExit } from './archive-loader.mjs'
+import { cached, pageOf, wikiOf } from './wiki.mjs'
 
 /**
  * @typedef {{ episode: number, kind: string, chapter: number, title: { en: string, it: string } }} Numbered
@@ -24,13 +26,12 @@ import { cached, pageOf } from './wiki.mjs'
  * @typedef {{ title: string, after: number }} Special
  * @typedef {Numbered | Unnumbered} Entry
  * @typedef {{ revisions?: { slots?: { main?: { content?: string } } }[] }} Page
+ * @typedef {import('./wiki.mjs').Wiki} Wiki
+ * @typedef {'en' | 'it'} Language
  */
 
-// fallow-ignore-next-line security-sink -- the repository root and three literals
-const FOLDER = path.join(ROOT, '.gate', 'wiki', 'filler')
-const EN_API =
-  'https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&redirects=1&formatversion=2&format=json&titles='
-const IT_API = EN_API.replace('/api.php', '/it/api.php')
+const QUERY =
+  '?action=query&prop=revisions&rvprop=content&rvslots=main&redirects=1&formatversion=2&format=json&titles='
 const AFL = 'https://www.animefillerlist.com/shows/one-piece'
 const AGENT =
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36'
@@ -195,20 +196,21 @@ export function matchSpecials(specials, title) {
 }
 
 /**
- * One batch of wikitext, cached.
- * @param {string} api The query, missing only its titles.
+ * One batch of wikitext, cached under the series' `filler/`.
+ * @param {Wiki} wiki The series' wiki.
+ * @param {Language} language Which of its two wikis to read.
  * @param {string[]} batch The page titles.
  * @returns {Promise<[string, string][]>} Asked title and wikitext.
  */
-async function wikitextBatch(api, batch) {
+async function wikitextBatch(wiki, language, batch) {
   const key = createHash('sha256')
-    .update(api + batch.join('|'))
+    .update(wiki[language] + QUERY + batch.join('|'))
     .digest('hex')
   const { query } = await cached(
-    // fallow-ignore-next-line security-sink -- a folder named in this module and a hex digest
-    path.join(FOLDER, `${key}.json`),
+    // fallow-ignore-next-line security-sink -- the series' cache folder, from its slug in the repository's own list, a literal and a hex digest
+    path.join(wiki.cache, 'filler', `${key}.json`),
     `filler ${batch[0] ?? ''}`,
-    api + encodeURIComponent(batch.join('|')),
+    wiki[language] + QUERY + encodeURIComponent(batch.join('|')),
     (answer) =>
       answer.query?.pages !== undefined && answer.continue === undefined,
   )
@@ -223,34 +225,37 @@ async function wikitextBatch(api, batch) {
 
 /**
  * Wikitext of each title, fifty to a call, cached.
- * @param {string} api The query, missing only its titles.
+ * @param {Wiki} wiki The series' wiki.
+ * @param {Language} language Which of its two wikis to read.
  * @param {string[]} titles The page titles.
  * @returns {Promise<Map<string, string>>} Asked title to wikitext.
  */
-async function wikitexts(api, titles) {
+async function wikitexts(wiki, language, titles) {
   /** @type {[string, string][]} */
   const pairs = []
   for (let from = 0; from < titles.length; from += BATCH) {
-    pairs.push(...(await wikitextBatch(api, titles.slice(from, from + BATCH))))
+    const batch = titles.slice(from, from + BATCH)
+    pairs.push(...(await wikitextBatch(wiki, language, batch)))
   }
 
   return new Map(pairs)
 }
 
 /**
- * The AnimeFillerList page, cached.
+ * The AnimeFillerList page, cached under the series' `filler/`.
+ * @param {Wiki} wiki The series' wiki, for its cache.
  * @returns {Promise<string>} Its HTML.
  */
-async function animeFillerList() {
-  // fallow-ignore-next-line security-sink -- a folder named in this module and a literal
-  const file = path.join(FOLDER, 'animefillerlist.html')
+async function animeFillerList(wiki) {
+  // fallow-ignore-next-line security-sink -- the series' cache folder and two literals
+  const file = path.join(wiki.cache, 'filler', 'animefillerlist.html')
   if (!existsSync(file)) {
     const response = await fetch(AFL, { headers: { 'User-Agent': AGENT } })
     if (!response.ok) {
       throw new Error(`AnimeFillerList: HTTP ${String(response.status)}`)
     }
 
-    mkdirSync(FOLDER, { recursive: true })
+    mkdirSync(path.dirname(file), { recursive: true })
     writeFileSync(file, await response.text())
     await sleep(250)
   }
@@ -260,10 +265,11 @@ async function animeFillerList() {
 
 /**
  * Every Special row of the Episode Guide, in air order.
+ * @param {Wiki} wiki The series' wiki.
  * @returns {Promise<Special[]>} The specials.
  */
-async function guideSpecials() {
-  const index = await wikitexts(EN_API, ['Episode Guide'])
+async function guideSpecials(wiki) {
+  const index = await wikitexts(wiki, 'en', ['Episode Guide'])
   const links = (index.get('Episode Guide') ?? '')
     .split('[[Episode Guide/')
     .slice(1)
@@ -272,7 +278,7 @@ async function guideSpecials() {
       links.map((link) => `Episode Guide/${link.split(/[\]#|]/u, 1)[0] ?? ''}`),
     ),
   ]
-  const pages = await wikitexts(EN_API, sagas)
+  const pages = await wikitexts(wiki, 'en', sagas)
   /** @type {Special[]} */
   const all = []
   let last = 0
@@ -436,32 +442,35 @@ export function specialProblems(entries, specials) {
 }
 
 /**
- * Runs every check against the committed data.
+ * Runs every check against the committed data of a series.
+ * @param {import('./archive-loader.mjs').Series} series The series.
+ * @param {Wiki} wiki Its wiki.
  * @returns {Promise<{ problems: string[], kept: string[], count: number }>} The result.
  */
-async function verify() {
-  const data = await importArchive('data/series/one-piece/filler.ts')
+async function verify(series, wiki) {
+  const data = await importOrExit(series, 'filler.ts', 'no filler guide')
   const all = /** @type {Entry[]} */ (data['FILLER'])
   const arcs = /** @type {unknown[]} */ (data['FILLER_ARCS'])
   const numbered = /** @type {Numbered[]} */ (
     all.filter((entry) => 'episode' in entry)
   )
   const entries = new Map(numbered.map((entry) => [entry.episode, entry]))
-  const classes = classesOf(await animeFillerList())
+  const classes = classesOf(await animeFillerList(wiki))
   const top = Math.max(...classes.keys())
   const last = Math.max(...all.map((entry) => position(entry)), top)
   const titles = Array.from(
     { length: last },
     (_, index) => `Episodio ${String(index + 1)}`,
   )
-  const italian = await wikitexts(IT_API, titles)
+  const italian = await wikitexts(wiki, 'it', titles)
   const english = await wikitexts(
-    EN_API,
+    wiki,
+    'en',
     numbered.map((entry) => `Episode ${String(entry.episode)}`),
   )
   const specials = specialProblems(
     /** @type {Unnumbered[]} */ (all.filter((entry) => !('episode' in entry))),
-    await guideSpecials(),
+    await guideSpecials(wiki),
   )
   const aired = `${String(data['LAST_AIRED'])} vs ${String(top)}`
   console.log(`${String(arcs.length)} arcs; LAST_AIRED ${aired}`)
@@ -481,7 +490,8 @@ async function verify() {
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
-  const { problems, kept, count } = await verify()
+  const series = await seriesOrExit()
+  const { problems, kept, count } = await verify(series, wikiOf(series))
   const total = `${String(count)} entries checked, ${String(problems.length)} failures, ${String(kept.length)} kept`
   console.log(problems.map((problem) => `FAIL ${problem}`).join('\n'))
   console.log(kept.map((entry) => `kept ${entry}`).join('\n'))
