@@ -92,6 +92,11 @@ describe('every payload the server sends', () => {
     expect(Object.keys(SWEEPS).toSorted(alphabetically)).toStrictEqual(
       SERIES.map(({ slug }) => slug).toSorted(alphabetically),
     )
+
+    // An entry with no pages would register no sweep at all.
+    for (const { slug } of SERIES) {
+      expect(SWEEPS[slug]?.payloads.length ?? 0, slug).toBeGreaterThan(0)
+    }
   })
 })
 
