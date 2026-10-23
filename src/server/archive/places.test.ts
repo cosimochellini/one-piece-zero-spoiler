@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { chartPointOf } from '~/data/chart'
+import { chartPointOf } from '~/data/series/one-piece/chart'
 import type { Bookmark } from '~/lib/progress/episode'
 
 import { handleOf } from './handle.server'

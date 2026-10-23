@@ -36,7 +36,10 @@ describe('the canary the archive gate looks for', () => {
   it('is a long sentence from the archive, not a key', () => {
     const phrase = canaryFrom(
       readFileSync(
-        path.join(repositoryRoot, 'src/data/records/egghead.ts'),
+        path.join(
+          repositoryRoot,
+          'src/data/series/one-piece/records/egghead.ts',
+        ),
         'utf8',
       ),
     )
@@ -88,7 +91,7 @@ describe('the slugs the gate looks for', () => {
   })
 
   it('reads a slug-keyed archive table that holds no drawing either', () => {
-    // `src/data/fruit-forms.ts` is a hundred and twenty name slugs and not one
+    // `src/data/series/one-piece/fruit-forms.ts` is a hundred and twenty name slugs and not one
     // sentence, and it sits outside the drawing directory, so neither canary
     // would see it without being told to.
     const source = [
@@ -108,8 +111,8 @@ describe('the slugs the gate looks for', () => {
 
   it('covers the slug-keyed modules that live outside the drawings', () => {
     for (const file of [
-      'src/data/fruit-forms.ts',
-      'src/data/art/fruits/index.ts',
+      'src/data/series/one-piece/fruit-forms.ts',
+      'src/data/series/one-piece/art/fruits/index.ts',
     ]) {
       const source = readFileSync(path.join(repositoryRoot, file), 'utf8')
 
@@ -121,7 +124,7 @@ describe('the slugs the gate looks for', () => {
     // The drawing modules carry no prose at all, so the prose canaries can
     // never cover them — and their keys are the record ids, which are the
     // name slugs. One uncovered module would ship names as identifiers.
-    const artDir = path.join(repositoryRoot, 'src/data/art')
+    const artDir = path.join(repositoryRoot, 'src/data/series/one-piece/art')
     const modules = readdirSync(artDir).filter(
       (name) => name.endsWith('.ts') && !name.endsWith('.test.ts'),
     )
@@ -131,8 +134,8 @@ describe('the slugs the gate looks for', () => {
       return slugsFrom(source).length > 0
     })
 
-    // Every module but the table itself and its type is keyed by records.
-    expect(keyed).toHaveLength(modules.length - 2)
+    // Every module but the table itself is keyed by records.
+    expect(keyed).toHaveLength(modules.length - 1)
     expect(keyed.length).toBeGreaterThan(10)
   })
 })
@@ -144,8 +147,8 @@ describe('the prose the gate looks for', () => {
       (name) =>
         name.endsWith('.ts')
         && !name.endsWith('.test.ts')
-        && !name.startsWith(`records${path.sep}`)
-        && !name.startsWith(`art${path.sep}`),
+        && !name.startsWith(path.join('series', 'one-piece', 'records', ''))
+        && !name.startsWith(path.join('series', 'one-piece', 'art', '')),
     )
 
     const prose = modules.filter((name) => {
@@ -162,7 +165,10 @@ describe('the prose the gate looks for', () => {
   })
 
   it('names every saga the archive holds, and the log', () => {
-    const recordsDir = path.join(repositoryRoot, 'src/data/records')
+    const recordsDir = path.join(
+      repositoryRoot,
+      'src/data/series/one-piece/records',
+    )
     const sagas = readdirSync(recordsDir).filter((name) => {
       return (
         name.endsWith('.ts') && !name.endsWith('.test.ts') && name !== 'saga.ts'
@@ -188,7 +194,10 @@ describe('the prose the gate looks for', () => {
 describe('the verdict the gate reaches', () => {
   const clean = [chunk('index.js', 'const a=1'), chunk('page.js', 'const b=2')]
   const canaries = [
-    { file: 'src/data/records/wano.ts', phrase: 'a long sentence' },
+    {
+      file: 'src/data/series/one-piece/records/wano.ts',
+      phrase: 'a long sentence',
+    },
   ]
 
   it('passes a build with no archive prose and room to spare', () => {
@@ -208,7 +217,7 @@ describe('the verdict the gate reaches', () => {
     expect(verdict.found).toStrictEqual([
       {
         chunk: 'leak.js',
-        file: 'src/data/records/wano.ts',
+        file: 'src/data/series/one-piece/records/wano.ts',
         phrase: 'a long sentence',
       },
     ])
@@ -226,9 +235,13 @@ describe('the verdict the gate reaches', () => {
   })
 
   it('refuses to vouch for anything when a canary could not be read', () => {
-    const verdict = judge(clean, [{ file: 'src/data/places.ts', phrase: null }])
+    const verdict = judge(clean, [
+      { file: 'src/data/series/one-piece/places.ts', phrase: null },
+    ])
 
-    expect(verdict.unreadable).toStrictEqual(['src/data/places.ts'])
+    expect(verdict.unreadable).toStrictEqual([
+      'src/data/series/one-piece/places.ts',
+    ])
   })
 })
 

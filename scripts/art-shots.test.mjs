@@ -97,8 +97,10 @@ describe('stage planning from the real archive', () => {
   })
 
   it('retains argument order and uses Teach’s pinned chapter gate', async () => {
-    const { getEntity } = await importArchive('data/entities.ts')
-    const { datedOf } = await importArchive('data/dated.ts')
+    const { getEntity } = await importArchive(
+      'data/series/one-piece/entities.ts',
+    )
+    const { datedOf } = await importArchive('data/series/one-piece/dated.ts')
     const teach = getEntity('marshall-d-teach')
     const stages = datedOf(teach, 'redrawing')
     const rows = await shotRows(['marshall-d-teach', 'karoo'])

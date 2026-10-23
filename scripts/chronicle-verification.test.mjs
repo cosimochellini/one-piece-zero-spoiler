@@ -12,7 +12,10 @@ import { readFileSync } from 'node:fs'
 import { byString } from 'sort-es'
 import { describe, expect, it } from 'vitest'
 
-import { characters, dossierOf } from '../src/data/characters.ts'
+import {
+  characters,
+  dossierOf,
+} from '../src/data/series/one-piece/characters.ts'
 import { CHRONICLE_SOURCES } from './chronicle-sources.mjs'
 import { DOC_PATH } from './chronicle-verification.mjs'
 

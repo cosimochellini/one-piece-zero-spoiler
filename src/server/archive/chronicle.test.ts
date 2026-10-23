@@ -1,6 +1,10 @@
 import { describe, expect, it } from 'vitest'
 
-import { characters, dossierOf, getCharacter } from '~/data/characters'
+import {
+  characters,
+  dossierOf,
+  getCharacter,
+} from '~/data/series/one-piece/characters'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 

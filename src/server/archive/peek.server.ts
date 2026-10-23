@@ -1,5 +1,5 @@
-import { fruitFormOf } from '~/data/fruits'
-import { shipDossierOf } from '~/data/places'
+import { fruitFormOf } from '~/data/series/one-piece/fruits'
+import { shipDossierOf } from '~/data/series/one-piece/places'
 import type { Locale } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
 import type {

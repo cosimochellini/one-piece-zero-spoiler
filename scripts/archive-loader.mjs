@@ -88,7 +88,7 @@ export function resolveArchive(specifier, context, nextResolve) {
 
 /**
  * Imports one module of the archive by its path under `src/`.
- * @param {string} module The path under `src/`, e.g. `data/entities.ts`.
+ * @param {string} module The path under `src/`, e.g. `data/reveal.ts`.
  * @returns {Promise<Record<string, unknown>>} The module's exports.
  */
 export function importArchive(module) {

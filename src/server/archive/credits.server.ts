@@ -1,5 +1,5 @@
-import { getCharacter } from '~/data/characters'
-import { stories } from '~/data/dated'
+import { getCharacter } from '~/data/series/one-piece/characters'
+import { stories } from '~/data/series/one-piece/dated'
 import type { Locale } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
 import type { CreditSource, SourceCredit } from '~/lib/view/credits'

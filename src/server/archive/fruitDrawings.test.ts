@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest'
 
-import { DRAWINGS } from '~/data/art'
-import { fruitRedrawn } from '~/data/art/fruits'
-import { gateOf } from '~/data/chapter-table'
-import { getFruit } from '~/data/fruits'
+import { DRAWINGS } from '~/data/series/one-piece/art'
+import { fruitRedrawn } from '~/data/series/one-piece/art/fruits'
+import { gateOf } from '~/data/series/one-piece/chapter-table'
+import { getFruit } from '~/data/series/one-piece/fruits'
 import type { Entity } from '~/data/types'
 import type { Bookmark } from '~/lib/progress/episode'
 import { locateEpisode } from '~/lib/progress/seasons'

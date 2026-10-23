@@ -294,7 +294,7 @@ const config = defineConfig(
       ],
       // detectObjects stays false: a StyleX declaration is a table of values,
       // and `fontWeight: 800` is the value rather than a number standing in
-      // for one. Drawing geometry belongs in ~/data/art, which is exempt.
+      // for one. Drawing geometry belongs in ~/data/series/one-piece/art, which is exempt.
       '@typescript-eslint/no-magic-numbers': [
         'error',
         {

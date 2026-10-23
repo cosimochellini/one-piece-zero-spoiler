@@ -1,8 +1,12 @@
 import { byNumber, byValue } from 'sort-es'
 
-import { arcs, bookSections, getCharacter } from '~/data/characters'
-import { type FiledStory, stories } from '~/data/dated'
-import { ARC_LEADS } from '~/data/leads'
+import {
+  arcs,
+  bookSections,
+  getCharacter,
+} from '~/data/series/one-piece/characters'
+import { type FiledStory, stories } from '~/data/series/one-piece/dated'
+import { ARC_LEADS } from '~/data/series/one-piece/leads'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
@@ -42,13 +46,13 @@ export function landingPage(
 
 /**
  * The home page: the arc the reader is in, the stories concluded in it so
- * far, and the arc's leads those stories name most (`~/data/leads`).
+ * far, and the arc's leads those stories name most (`~/data/series/one-piece/leads`).
  *
  * The arc is the last one that opens at or before the bookmark, in the
  * reader's own unit; where two open on the same threshold the later one in
  * route order wins, which is the arc proper rather than the saga around it.
  * The stories are gated on when they conclude and on their subject, both in
- * the one gate `~/data/dated` gives each: a story names only characters met
+ * the one gate `~/data/series/one-piece/dated` gives each: a story names only characters met
  * by then (the data tests hold it), and a subject the reader has not met is
  * not on the page at all — Shiki's Impel Down
  * story is episode 425, but his chapter is 962.

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { entities, getEntity } from '~/data/entities'
+import { entities, getEntity } from '~/data/series/one-piece/entities'
 import type { Bookmark } from '~/lib/progress/episode'
 import type { CoveredRecord, RecordView, Slot } from '~/lib/view/records'
 

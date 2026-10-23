@@ -1,8 +1,13 @@
-import { DRAWINGS } from '~/data/art'
-import { gateOf } from '~/data/chapter-table'
-import { chartPointOf } from '~/data/chart'
-import { nativesOf, reachedOf } from '~/data/dated'
-import { getPlace, getShip, placeDossierOf, places } from '~/data/places'
+import { DRAWINGS } from '~/data/series/one-piece/art'
+import { gateOf } from '~/data/series/one-piece/chapter-table'
+import { chartPointOf } from '~/data/series/one-piece/chart'
+import { nativesOf, reachedOf } from '~/data/series/one-piece/dated'
+import {
+  getPlace,
+  getShip,
+  placeDossierOf,
+  places,
+} from '~/data/series/one-piece/places'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'

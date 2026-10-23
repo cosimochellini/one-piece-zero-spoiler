@@ -280,10 +280,12 @@ export function stagesOf(entity, art) {
  * @returns {Promise<string[]>} The ids.
  */
 async function idsOfSaga(saga) {
-  const module = await importArchive(`data/art/${saga}.ts`)
+  const module = await importArchive(`data/series/one-piece/art/${saga}.ts`)
   const drawings = Object.entries(module).find(([name]) => name.endsWith('Art'))
   if (drawings === undefined) {
-    throw new Error(`src/data/art/${saga}.ts exports no …Art drawings`)
+    throw new Error(
+      `src/data/series/one-piece/art/${saga}.ts exports no …Art drawings`,
+    )
   }
   return Object.keys(drawings[1])
 }
@@ -294,8 +296,10 @@ async function idsOfSaga(saga) {
  * @returns {Promise<{ name: string, cells: Cell[] }>} The sheet's name and cells.
  */
 export async function cellsFor(options) {
-  const art = await importArchive('data/art/index.ts')
-  const { entities, getEntity } = await importArchive('data/entities.ts')
+  const art = await importArchive('data/series/one-piece/art/index.ts')
+  const { entities, getEntity } = await importArchive(
+    'data/series/one-piece/entities.ts',
+  )
   if (options.saga !== undefined || options.kind !== undefined) {
     const ids =
       options.saga === undefined ?

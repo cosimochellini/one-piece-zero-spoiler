@@ -1,5 +1,5 @@
-import { entities } from '~/data/entities'
-import { FILLER, type FillerEntry } from '~/data/filler'
+import { entities } from '~/data/series/one-piece/entities'
+import { FILLER, type FillerEntry } from '~/data/series/one-piece/filler'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 import type { Gated } from '~/lib/progress/spoiler'

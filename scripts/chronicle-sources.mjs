@@ -1424,11 +1424,11 @@ export const CHRONICLE_SOURCES = {
     },
     737: {
       source: 'https://onepiece.fandom.com/wiki/Episode_737',
-      note: 'The issue’s candidate episode 504 does not hold up: that episode only shows Sabo’s boat destroyed and him presumed dead. The actual rescue — a World Noble’s ship firing on ten-year-old Sabo’s stolen boat, Dragon pulling him out of the water barely alive, his name read off his belongings — is the flashback to Sabo’s past at episode 737. Corroborated by the sibling sabo chronicle entry at episode 738 (src/data/records/summit-war.chronicle.ts), which recaps this same rescue from Sabo’s side one episode later.',
+      note: 'The issue’s candidate episode 504 does not hold up: that episode only shows Sabo’s boat destroyed and him presumed dead. The actual rescue — a World Noble’s ship firing on ten-year-old Sabo’s stolen boat, Dragon pulling him out of the water barely alive, his name read off his belongings — is the flashback to Sabo’s past at episode 737. Corroborated by the sibling sabo chronicle entry at episode 738 (src/data/series/one-piece/records/summit-war.chronicle.ts), which recaps this same rescue from Sabo’s side one episode later.',
     },
     1120: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1120',
-      note: 'The issue’s candidate episode 1116 is when Sabo returns to Momoiro Island, but he only reaches the part of his report naming Im, beyond the Empty Throne, three episodes later. Matches the parallel sabo chronicle entry filed at the same episode 1120 in src/data/records/summit-war.chronicle.ts.',
+      note: 'The issue’s candidate episode 1116 is when Sabo returns to Momoiro Island, but he only reaches the part of his report naming Im, beyond the Empty Throne, three episodes later. Matches the parallel sabo chronicle entry filed at the same episode 1120 in src/data/series/one-piece/records/summit-war.chronicle.ts.',
     },
     1131: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1131',

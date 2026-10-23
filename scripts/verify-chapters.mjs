@@ -13,7 +13,7 @@
 // what it is (`namingChapterOf`, or `NAMED_AT` where that was checked by
 // hand), because a fruit is filed where it is named, not where it is first
 // used. A fruit's chapter is derived from the dossier
-// entry that names it (`src/data/entities.ts`), so a too-low fruit is
+// entry that names it (`src/data/series/one-piece/entities.ts`), so a too-low fruit is
 // fixed by pinning `chapter:` on that entry, not here.
 //
 // Episodes are read from the same line and fail the same way: a record
@@ -162,7 +162,7 @@ function storyChapterOf(first) {
  * artificial fruit, chapter 684, its debut), or a fruit whose full name the
  * story never says, held at the chapter that shows the power and who has it
  * (Jack's Zou Zou class, chapter 810; Tama's Kibi Kibi, chapter 911, its
- * debut; the rule is in `src/data/entities.ts`).
+ * debut; the rule is in `src/data/series/one-piece/entities.ts`).
  * @type {Record<string, number>}
  */
 const NAMED_AT = {
@@ -376,7 +376,7 @@ export function verdictOf(filed, source) {
  * @returns {Promise<Row[]>} One row per record.
  */
 async function verify() {
-  const { entities } = await importArchive('data/entities.ts')
+  const { entities } = await importArchive('data/series/one-piece/entities.ts')
   const { CHAPTER_CEILING } = await importArchive('lib/progress/bounds.ts')
   const chapters = await chapterTexts(CHAPTER_CEILING)
   /** @type {Row[]} */

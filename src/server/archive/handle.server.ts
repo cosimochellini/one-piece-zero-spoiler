@@ -1,5 +1,5 @@
-import { entities } from '~/data/entities'
 import { orderByMode } from '~/data/order'
+import { entities } from '~/data/series/one-piece/entities'
 import type { Entity } from '~/data/types'
 
 /**

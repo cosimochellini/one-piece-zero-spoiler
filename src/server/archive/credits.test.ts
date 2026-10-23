@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
-import { getCharacter } from '~/data/characters'
-import { stories } from '~/data/dated'
+import { getCharacter } from '~/data/series/one-piece/characters'
+import { stories } from '~/data/series/one-piece/dated'
 import { LOCALES } from '~/i18n/locales'
 import { CHAPTER_CEILING, EPISODE_CEILING } from '~/lib/progress/episode'
 import type { SourceCredit } from '~/lib/view/credits'

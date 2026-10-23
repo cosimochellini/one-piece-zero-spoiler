@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest'
 
-import { characters } from '~/data/characters'
-import { chartPointOf } from '~/data/chart'
-import { placeDossierOf, places, ships } from '~/data/places'
 import { reveal } from '~/data/reveal'
-import { CHARACTER_DOSSIERS } from '~/data/sagas'
+import { characters } from '~/data/series/one-piece/characters'
+import { chartPointOf } from '~/data/series/one-piece/chart'
+import { placeDossierOf, places, ships } from '~/data/series/one-piece/places'
+import { CHARACTER_DOSSIERS } from '~/data/series/one-piece/sagas'
 import type { Bookmark } from '~/lib/progress/episode'
 
 import { BOOKMARKS } from './payloads.server'

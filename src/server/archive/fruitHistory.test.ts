@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest'
 
-import { fruits } from '~/data/fruits'
 import { orderByMode } from '~/data/order'
 import { reveal } from '~/data/reveal'
+import { fruits } from '~/data/series/one-piece/fruits'
 import type { Bookmark } from '~/lib/progress/episode'
 import type { FruitDetail, FruitView, Slot } from '~/lib/view/records'
 

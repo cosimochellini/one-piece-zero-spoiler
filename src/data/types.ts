@@ -1,3 +1,8 @@
+// The engine's one reach into a series: the drawing and fruit ids are One
+// Piece's own, type-only, and allowed by the fallow zones for that alone. The
+// shapes are generalized when a second series shows what it needs (#758).
+import type { ArtId } from '~/data/series/one-piece/art'
+import type { FruitId } from '~/data/series/one-piece/fruit-forms'
 import type { Locale } from '~/i18n/locales'
 import type {
   CharacterStatus,
@@ -5,9 +10,6 @@ import type {
   Faction,
   TintId,
 } from '~/lib/view/records'
-
-import type { ArtId } from './art'
-import type { FruitId } from './fruit-forms'
 
 /**
  * A string in every published locale. Total over `Locale` on purpose: a record
@@ -17,23 +19,23 @@ import type { FruitId } from './fruit-forms'
 export type LocalizedText = Record<Locale, string>
 
 /**
- * The drawings, one per record, each drawn once in `~/data/art` and rendered
+ * The drawings, one per record, each drawn once in `~/data/series/one-piece/art` and rendered
  * by `~/components/ChartArt`. The ids match the records they were drawn for;
  * the type is derived from the drawings, so a record cannot point at a
  * drawing that does not exist.
  */
-export type { ArtId } from './art'
+export type { ArtId } from '~/data/series/one-piece/art'
 
 /**
- * The devil fruits, filed as records of their own in `~/data/records/fruits`
- * and keyed in `~/data/fruit-forms`. The type is derived from that table, so
+ * The devil fruits, filed as records of their own in `~/data/series/one-piece/records/fruits`
+ * and keyed in `~/data/series/one-piece/fruit-forms`. The type is derived from that table, so
  * a dossier cannot say a character ate a fruit the archive never filed.
  *
  * Imported as `import type`, never as an inline `import { type … }`: under
  * `isolatedModules` the inline form is a live module edge, and this module is
  * imported by every saga. See the note at the head of `~/lib/view/records`.
  */
-export type { FruitId } from './fruit-forms'
+export type { FruitId } from '~/data/series/one-piece/fruit-forms'
 
 /**
  * What a record shows: a line drawing and the one colour its main stroke
@@ -53,13 +55,13 @@ export interface Visual {
  * record rather than derived, because "when does this become safe" is an
  * editorial judgement, not something a script can work out. A devil fruit is
  * the exception: its judgement is made once, on the dossier entry that names
- * it, and `~/data/entities` reads both thresholds off that (`FruitRecord`
+ * it, and `~/data/series/one-piece/entities` reads both thresholds off that (`FruitRecord`
  * below). A reader who counts in seasons is filed at an absolute episode
  * through `~/lib/progress/seasons`, so no third threshold is kept.
  *
  * The two thresholds are independent: the anime and the manga do not always
  * introduce a record in the same order, so a list is sorted by whichever
- * one the reader counts in (`orderByMode` in `~/data/characters`).
+ * one the reader counts in (`orderByMode` in `~/data/series/one-piece/characters`).
  *
  * The shape satisfies `Gated` from `~/lib/progress/spoiler` structurally, so
  * entities can be passed straight to `reveal(bookmark).sees` (`~/data/reveal`).
@@ -74,7 +76,7 @@ export interface Entity {
   /**
    * Set on a record whose two thresholds are too far out of step to say how
    * far a chapter reaches into the anime: Shiki is episode 425 but chapter
-   * 962, and as an anchor of `~/data/chapter-table` he held every chapter
+   * 962, and as an anchor of `~/data/series/one-piece/chapter-table` he held every chapter
    * from 599 to 961 at episode 424. The table leaves such a record out, and
    * a data test holds that nothing dated names it before its own chapter.
    */
@@ -97,8 +99,8 @@ export interface Entity {
 }
 
 /**
- * A devil fruit as `~/data/records/fruits` files it: a record without its
- * thresholds, which `~/data/entities` reads off the dossier entries that name
+ * A devil fruit as `~/data/series/one-piece/records/fruits` files it: a record without its
+ * thresholds, which `~/data/series/one-piece/entities` reads off the dossier entries that name
  * the fruit.
  */
 export type FruitRecord = Omit<
@@ -113,7 +115,7 @@ export type FruitRecord = Omit<
  *
  * `chapter` is the manga chapter that tells the fact, set only where it has
  * been checked against a source. Without it a chapter reader reaches the
- * entry at the first chapter that reaches its episode (`~/data/dated`);
+ * entry at the first chapter that reaches its episode (`~/data/series/one-piece/dated`);
  * with it, at that chapter, and the chapter table then holds every earlier
  * chapter below the episode, so the fix sits on the datum rather than in a
  * list far from it.

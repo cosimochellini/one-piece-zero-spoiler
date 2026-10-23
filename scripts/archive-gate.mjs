@@ -137,17 +137,23 @@ const WORST_CHUNKS = 5
 export const MAX_CLIENT_BYTES = 654_301
 
 /** Where the prose lives: every saga, the ship's log and the filler guide. */
-const PROSE_DIR = 'src/data/records'
-export const PROSE_EXTRA = ['src/data/places.ts', 'src/data/filler.ts']
+const PROSE_DIR = 'src/data/series/one-piece/records'
+export const PROSE_EXTRA = [
+  'src/data/series/one-piece/places.ts',
+  'src/data/series/one-piece/filler.ts',
+]
 
 /** Where the drawings live, keyed by the id of the record each was drawn for. */
-const ART_DIR = 'src/data/art'
+const ART_DIR = 'src/data/series/one-piece/art'
 
 /**
  * Archive modules keyed by record id that carry no prose and live outside the
  * drawing directory, so neither canary would otherwise see them.
  */
-const SLUG_EXTRA = ['src/data/art/fruits/index.ts', 'src/data/fruit-forms.ts']
+const SLUG_EXTRA = [
+  'src/data/series/one-piece/art/fruits/index.ts',
+  'src/data/series/one-piece/fruit-forms.ts',
+]
 
 /**
  * An id hyphenated and long enough that a minifier could not produce it by
@@ -315,7 +321,7 @@ function slugCanaries(repositoryRoot) {
       readFileSync(path.join(repositoryRoot, file), 'utf8'),
     )
 
-    // `index.ts`, `stroke.ts`: the table and its type, keyed by nothing.
+    // `index.ts`: the table itself, keyed by nothing.
     return slugs.length === 0 ? [] : { file, phrase: slugs[0] ?? null }
   })
 }

@@ -1,4 +1,4 @@
-// Holds the filler guide (`src/data/filler.ts`, issue #495) to its sources:
+// Holds the filler guide (`src/data/series/one-piece/filler.ts`, issue #495) to its sources:
 // the kind of each episode against AnimeFillerList (and, for its "anime
 // canon" rows, the Italian wiki's `tipo`), the titles against the English and
 // Italian wiki pages, each entry's chapter against the Italian wiki's
@@ -440,7 +440,7 @@ export function specialProblems(entries, specials) {
  * @returns {Promise<{ problems: string[], kept: string[], count: number }>} The result.
  */
 async function verify() {
-  const data = await importArchive('data/filler.ts')
+  const data = await importArchive('data/series/one-piece/filler.ts')
   const all = /** @type {Entry[]} */ (data['FILLER'])
   const arcs = /** @type {unknown[]} */ (data['FILLER_ARCS'])
   const numbered = /** @type {Numbered[]} */ (
