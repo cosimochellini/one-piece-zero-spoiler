@@ -219,9 +219,9 @@ note is filed under his dog's record, `holy@164`.
 ## Follow-ups
 
 No new issue was opened from this review: every finding of the checks was fixed
-in place. The limits above stay open as recorded, and future provenance records
-remain
-[#725](https://github.com/cosimochellini/one-piece-zero-spoiler/issues/725).
+in place. The limits above stay open as recorded, and future contributions
+follow [Sources and rights](../CONTRIBUTING.md#sources-and-rights)
+([#725](https://github.com/cosimochellini/one-piece-zero-spoiler/issues/725)).
 
 ## Reproduce
 

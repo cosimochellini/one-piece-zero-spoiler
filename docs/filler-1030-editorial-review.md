@@ -97,5 +97,6 @@ does not clear the other entries.
 The historical findings in the [#719 audit](content-provenance-audit.md) and the
 bilingual [license scope](../LICENSE-SCOPE.md) now link this disposition. Public
 attribution infrastructure remains #721, historical quotations were reviewed in
-#738, and future provenance records remain #725. Neither the application's
-spoiler boundary nor those separate scopes change here.
+#738, and future contributions follow the sources and rights rules from #725 in
+[CONTRIBUTING.md](../CONTRIBUTING.md#sources-and-rights). Neither the
+application's spoiler boundary nor those separate scopes change here.

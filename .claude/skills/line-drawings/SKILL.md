@@ -219,11 +219,15 @@ A drawing is gated like any text, and it can spoil just as well.
    Check chapter/episode pairs and their page ranges with
    `npm run wiki:pairs -- 129 157` (ranges work too: `1050-1056`). The command
    reads the rendered chapter infobox and caches it in `.gate/wiki/`; use its
-   page ranges to locate the scene, then check the manga pages themselves.
-   For proportions, find a reference image: load
-   `https://duckduckgo.com/?q=…&iax=images&ia=images` in puppeteer-core and
-   curl the `tse*.mm.bing.net` thumbnails. Keep references in the scratchpad;
-   nothing raster ships.
+   page ranges to locate the scene, then check the scene itself in a source
+   you can lawfully access: a licensed manga edition or a licensed stream.
+   Note each reference as chapter and page, or episode and timestamp, for the
+   pull request's Sources and rights section. The wiki's gallery and image
+   search results are leads, not permission. Reference images stay on your
+   machine: commit, upload and paste none. Draw by eye; a trace is not a
+   drawing. A distinctive design (a costume ensemble, a ship, a landmark, a
+   real fruit) waits for the owner's ruling under `status:needs-decision`, as
+   [CONTRIBUTING.md](../../../CONTRIBUTING.md#sources-and-rights) sets out.
 2. **Render the before.** `npm run art:sheet -- <id>` writes every stage of
    the record to `.gate/art/<id>.png` (`--out` to move it). Read the PNG.
 3. **Draft.** Write candidates in a scratch `.ts` file that default-exports

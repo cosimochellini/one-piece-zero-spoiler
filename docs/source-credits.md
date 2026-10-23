@@ -28,9 +28,11 @@ sampled prose is independent or that the wiki pages are the recovered historical
 writing inputs. The audit's identified possible adaptation was replaced in #739;
 no other retained adaptation was verified by that bounded audit. Historical
 quotations were reduced in #738 ([review](chronicle-quotation-review.md)), other
-unresolved provenance remains as documented by #719/#720, and future provenance
-records remain #725. Do not silently classify unreviewed text as original or as
-licensed adaptations to fill this list.
+unresolved provenance remains as documented by #719/#720, and future
+contributions record sources as
+[CONTRIBUTING.md](../CONTRIBUTING.md#sources-and-rights) sets out (#725). Do not
+silently classify unreviewed text as original or as licensed adaptations to fill
+this list.
 
 The source notice links
 [Fandom's licensing policy](https://www.fandom.com/licensing), its
