@@ -93,9 +93,14 @@ describe('every payload the server sends', () => {
       SERIES.map(({ slug }) => slug).toSorted(alphabetically),
     )
 
-    // An entry with no pages would register no sweep at all.
-    for (const { slug } of SERIES) {
-      expect(SWEEPS[slug]?.payloads.length ?? 0, slug).toBeGreaterThan(0)
+    // An entry with no pages, or a series with no bookmark past the landing,
+    // would be swept without a single check.
+    for (const { bookmarks, slug } of SERIES) {
+      expect(SWEEPS[slug]?.payloads.length, slug).toBeGreaterThan(0)
+      expect(
+        bookmarks.filter((bookmark) => bookmark !== null).length,
+        slug,
+      ).toBeGreaterThan(0)
     }
   })
 })
