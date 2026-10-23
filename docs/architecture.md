@@ -415,18 +415,19 @@ client payload catches anything large that neither pattern matches. ESLint
 catches the same mistake earlier, at the import.
 
 fallow checks the structure of the codebase instead, with every rule that
-applies set to error: ten zones with a declared import direction between them
+applies set to error: eleven zones with a declared import direction between them
 (the archive is a shared engine in `src/data` and one zone per series under
-`src/data/series`, and no series imports another), no export that nothing reads
-(entry files included), no duplicated block of five lines or more outside the
-tests, near-identical ones included, and limits of 8 cyclomatic and 8 cognitive
-complexity. Its CRAP score reads the coverage `npm test` writes, so a complex
-function with no test fails the gate. A second run,
-`fallow security --gate new`, fails a branch that adds a command-injection,
-path-traversal, secret or other sink against `origin/main`. Two tests fail when
-an upgrade of either tool ships a rule or a security category the configuration
-does not turn on. Both gates write a machine-readable report that CI uploads as
-an artifact on every run, passing or failing.
+`src/data/series`, no series imports another, and only the record shapes in
+`src/data/types.ts`, a zone of their own, may take a type from One Piece until
+#758), no export that nothing reads (entry files included), no duplicated block
+of five lines or more outside the tests, near-identical ones included, and
+limits of 8 cyclomatic and 8 cognitive complexity. Its CRAP score reads the
+coverage `npm test` writes, so a complex function with no test fails the gate. A
+second run, `fallow security --gate new`, fails a branch that adds a
+command-injection, path-traversal, secret or other sink against `origin/main`.
+Two tests fail when an upgrade of either tool ships a rule or a security
+category the configuration does not turn on. Both gates write a machine-readable
+report that CI uploads as an artifact on every run, passing or failing.
 
 **ESLint runs over a thousand rules.** Most of them come from unicorn and
 sonarjs, followed by typescript-eslint's type-aware sets, `@eslint-react`,

@@ -141,6 +141,8 @@
       { "from": "engine", "allow": ["engine-types", "lib", "i18n", "styles"] },
       // The one exception, type-only: the record shapes name One Piece's
       // drawing and fruit ids until a second series generalizes them (#758).
+      // Fallow limits it by file, not by name, so a new type taken from a
+      // series here is a review question.
       {
         "from": "engine-types",
         "allow": ["lib", "i18n", "styles"],
