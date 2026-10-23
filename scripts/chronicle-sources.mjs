@@ -358,7 +358,7 @@ export const CHRONICLE_SOURCES = {
     },
     643: {
       source: 'https://onepiece.fandom.com/wiki/Episode_643',
-      note: '641 only has "legendary warrior"; 643 coins "Usoland", gives the Noland legend and the statue, and ends with the dwarves chanting for him to lead them. Second pass: the anniversary is Leo\'s line, not the chief\'s, and nothing says the feeding ever stops.',
+      note: "641 only has the legendary warrior epithet; 643 coins the name Usoland, gives the Noland legend and the statue, and ends with the dwarves chanting for him to lead them. Second pass: the anniversary is Leo's line, not the chief's, and nothing says the feeding ever stops.",
     },
     677: {
       source: 'https://onepiece.fandom.com/wiki/Episode_677',
@@ -400,7 +400,7 @@ export const CHRONICLE_SOURCES = {
     },
     108: {
       source: 'https://onepiece.fandom.com/wiki/Episode_108',
-      note: 'The key slipping to the Bananawani and the flooding VIP room are also this episode, from Crocodile’s side; Sanji’s call as "Mr. Prince" reaches him here.',
+      note: 'The key slipping to the Bananawani and the flooding VIP room are also this episode, from Crocodile’s side; Sanji’s call as Mr. Prince reaches him here.',
     },
     116: {
       source: 'https://onepiece.fandom.com/wiki/Episode_116',
@@ -826,7 +826,7 @@ export const CHRONICLE_SOURCES = {
   'silvers-rayleigh': {
     398: {
       source: 'https://onepiece.fandom.com/wiki/Episode_398',
-      note: 'Second pass: rewritten. The chain-breaking and protecting Camie from Shalria are ep397 events; ep398 itself covers Rayleigh defusing Camie\'s exploding collar and Kid revealing his identity as the "Dark King."',
+      note: "Second pass: rewritten. The chain-breaking and protecting Camie from Shalria are ep397 events; ep398 itself covers Rayleigh defusing Camie's exploding collar and Kid revealing his identity as the Dark King.",
     },
     400: {
       source: 'https://onepiece.fandom.com/wiki/Episode_400',
@@ -864,7 +864,7 @@ export const CHRONICLE_SOURCES = {
     },
     544: {
       source: 'https://onepiece.fandom.com/wiki/Episode_544',
-      note: 'Flashback episode: Arlong is “easily beaten by Vice-Admiral Borsalino” after Fisher Tiger’s death — confirms his rank at the time and the Arlong arrest. Second pass: fixed a claim that Jinbe watches the arrest from a distance — per the wiki, Jinbe only learns of it the next day by reading the newspaper.',
+      note: 'Flashback episode: Arlong falls easily to Vice-Admiral Borsalino after Fisher Tiger’s death — confirms his rank at the time and the Arlong arrest. Second pass: fixed a claim that Jinbe watches the arrest from a distance — per the wiki, Jinbe only learns of it the next day by reading the newspaper.',
     },
     1127: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1127',
@@ -1624,7 +1624,7 @@ export const CHRONICLE_SOURCES = {
     },
     21: {
       source: 'https://onepiece.fandom.com/wiki/Episode_21',
-      note: 'Long Summary: Fullbody tries to flee, his crew reports the escaped starved prisoner; Gin enters, Patty beats him and throws him out. Fullbody page (chap=44 ep=21): Gin broke out of Fullbody’s ship; Fullbody flees. Krieg deliberately not named (filed at 22). Chapter (#169): 47, raised from 44 because the story names Gin, who opens at chapter 47; the last event: Fullbody’s man reports the starved prisoner (Gin) escaped; Patty beats Gin and throws him out while Fullbody slips away (Chapter_44: “Patty kicks the man about to the cheering of the customers while Fullbody makes an escape.’ Fullbody Qref c44 (chap 44, ep 21)).',
+      note: 'Long Summary: Fullbody tries to flee, his crew reports the escaped starved prisoner; Gin enters, Patty beats him and throws him out. Fullbody page (chap=44 ep=21): Gin broke out of Fullbody’s ship; Fullbody flees. Krieg deliberately not named (filed at 22). Chapter (#169): 47, raised from 44 because the story names Gin, who opens at chapter 47; the last event: Fullbody’s man reports the starved prisoner (Gin) escaped; Patty beats Gin and throws him out while Fullbody slips away (Chapter_44: Patty boots Gin around to the customers’ cheers as Fullbody gets away; Fullbody Qref c44 (chap 44, ep 21)).',
     },
     45: {
       source: 'https://onepiece.fandom.com/wiki/Episode_45',
@@ -2580,7 +2580,7 @@ export const CHRONICLE_SOURCES = {
     },
     532: {
       source: 'https://onepiece.fandom.com/wiki/Episode_532',
-      note: 'JP subs 531: そのサメ メガロは— 娘が大層 かわいがっておる ペットじゃもん / メガロが帰ってこんと 泣いて手に負えなんだ / クラーケンに襲われとったとは (dates the pet affiliation at 531). JP subs 532: （メガロ）シャッ （右大臣）くせ者！ ... （しらほし）メガロ おかえりなさい; 私(わたくし)のお話し相手はメガロだけ 大切な お友達なのです, said to Luffy in her room. The ten years in the tower are left out: they are not needed here and were not dated.',
+      note: 'JP subs 531: 「そのサメ メガロは」 the pet the daughter dotes on / when Megalo did not come back she cried beyond control / he had been attacked by a kraken (dates the pet affiliation at 531). JP subs 532: (Megalo) a shark noise, (Minister of the Right) cries intruder ... (Shirahoshi) welcomes Megalo home; says Megalo is the only one she has to talk to, a dear friend, said to Luffy in her room. The ten years in the tower are left out: they are not needed here and were not dated.',
     },
     534: {
       source: 'https://onepiece.fandom.com/wiki/Episode_534',
@@ -2638,11 +2638,11 @@ export const CHRONICLE_SOURCES = {
     },
     823: {
       source: 'https://onepiece.fandom.com/wiki/Episode_823',
-      note: '822.srt: Sanji cooking at night (全部あいつらの好物じゃねえか), Luffy vowing to wait (俺は 戻らなきゃいけねえんだ あの場所へ / お前が戻ってこねえなら 俺はここで餓死してやる！); Bobbin ほう 食い物 ... お前 ヴィンスモーク･サンジか？; Sanji 手放せ！ その肉は… お前のじゃねえよ！ and the kick. 823.srt 04:05-04:58: ボ…ボビン様この壁の穴は？ / なんでもない / お前たちは下がっていろ, the ボヨヨヨヨヨヨ～ン head-swaying, 心配するな 俺が この手で始末をつける. Episode_823 (with Episode_822) describe the same scenes.',
+      note: '822.srt: Sanji cooking at night (all their favourite dishes), Luffy vowing to wait (he must go back to that place / if Sanji does not come back he will starve there); Bobbin notices food ... and asks if this is Vinsmoke Sanji; Sanji tells him to let go, that meat is not his, and the kick. 823.srt 04:05-04:58: Lord Bobbin is asked about the hole in this wall / it is nothing / the others are told to stand back, the boing head-swaying, do not worry, it will be finished by this hand. Episode_823 (with Episode_822) describe the same scenes.',
     },
     827: {
       source: 'https://onepiece.fandom.com/wiki/Episode_827',
-      note: "824.srt: あの野郎 許さねえ 俺が必ず始末してやる ヴィンスモーク･サンジ, then at 18:01 ハア ハア… くっそ… あっ あいつら… うっ ああ… （倒れる音）. 827.srt 05:56: Bege ボビンを消したのか？ / Vito ええ 黒足を 追いかけてたので. Mont-d'Or's anime-added discovery in 829 (撃たれたのは いつごろ？ 恐らく深夜です) does not say he is dead, so the status stays unknown and the story does not call him dead. Verification pass: 824 has only a fall sound (no gunshot), and the shooting is first said at 829, so the 827 story no longer says he was shot.",
+      note: "824.srt: a vow to finish off Vinsmoke Sanji personally, then at 18:01 panting, a curse, someone spotted, a groan (sound of a fall). 827.srt 05:56: Bege asks whether Bobbin was made to disappear / Vito says yes, as he was chasing Black Leg. Mont-d'Or's anime-added discovery in 829 (asked when he was shot: probably late at night) does not say he is dead, so the status stays unknown and the story does not call him dead. Verification pass: 824 has only a fall sound (no gunshot), and the shooting is first said at 829, so the 827 story no longer says he was shot.",
     },
   },
   'sheepshead': {
@@ -2768,11 +2768,11 @@ export const CHRONICLE_SOURCES = {
     },
     818: {
       source: 'https://onepiece.fandom.com/wiki/Episode_818',
-      note: '818.srt 21:08 (Opera) ムチャなヤツファ / 21:14 夜のうちに ローラの居場所を 吐かせるように ママに言われてるファ / 21:22 (Nami) 嫌よ！ 友達 売るわけないでしょ / 21:25 よし 拷問するファ / 21:31 じゃあ ５秒に１回 ボーガンで お前を撃つから 言いたくなったら言うファ / 21:56 (Jinbe) お～い 誰かおらんか / 22:02 お前は今 城への出入りは禁止のはず / 22:11 悪いが オペラ… / 22:16 五千枚瓦 正拳！ / 22:52 すまんの 少し眠っとってくれ. Luffy tearing his arms: 20:40-21:05 and the 819 recap (ろうから脱出). The Prisoner Library is not named in the story: it is first said at 819 (囚人図書室から).',
+      note: "818.srt 21:08 (Opera) remarks on a reckless guy / 21:14 Mama's order: get Lola's hiding place out of them before the night is over / 21:22 (Nami) refuses: she would never sell out a friend / 21:25 torture is decided / 21:31 1 crossbow bolt every 5 seconds until she wants to talk / 21:56 (Jinbe) calls out to ask if anyone is there / 22:02 the reminder that he is barred from the castle for now / 22:11 an apology to Opera / 22:16 a named straight punch / 22:52 sorry, sleep a little. Luffy tearing his arms: 20:40-21:05 and the 819 recap (escape from the cell). The Prisoner Library is not named in the story: it is first said at 819 (「囚人図書室から」).",
     },
     844: {
       source: 'https://onepiece.fandom.com/wiki/Episode_844',
-      note: "The lie: 822.srt 14:35 (Mont-d'Or) 一体 どういうことだ オペラの兄貴？ / 14:52 あいつらからローラの居場所を 聞き出そうと拷問していたんだ / 14:57 ヤツらは なんにも知らず だから そのまま焼き殺した / 15:18 見張りを しくじったなんて絶対に言えるか ママに寿命を全部 抜かれてしまうファ. The rampage: 843.srt 16:54-17:54 (anime-only per the Opera page) やばいファ！ / オペラ兄さん！ / スムージーか 早く逃げるファ！ / こうなったのは すべて兄さんの責任だろう？ / 麦わらを殺したと なぜ ウソをついた？ / ここで逃げても もう兄さんに居場所などないぞ！ 責任を取れ！ / お前は… 逃げるファ！ / うう… ママ！ / なんだ お前… 俺の邪魔する気か？. The outcome is shown at 844.srt 05:54 オペラの兄貴！ / おい しっかりしろ！ / まさか寿命を抜かれたのか？ / 06:03 オペラ兄さんはママを止めようと 立ちはだかったのだ, hence the story is filed at 844. Status stays unknown (Charlotte_Opera: current status unknown). Zeus, named in 844 at 10:26, is not mentioned.",
+      note: "The lie: 822.srt 14:35 (Mont-d'Or) asks Opera what this is all about / 14:52 the claim: they were tortured to learn where Lola is hiding / 14:57 they knew nothing, so they were burned alive / 15:18 the real reason: a failed watch can never be admitted, or Mama would pull out the whole lifespan. The rampage: 843.srt 16:54-17:54 (anime-only per the Opera page): an alarm, Opera is hailed as big brother, Smoothie is told to run; the reply: all this is his responsibility, why lie about killing Straw Hat, even if he flees there is no place left for him, take responsibility; he says to run, cries out to Mama, and is asked whether he means to get in the way. The outcome is shown at 844.srt 05:54: big brother Opera is called, told to hold on, and asked whether his lifespan was pulled out / 06:03 he stood in Mama's way to stop her, hence the story is filed at 844. Status stays unknown (Charlotte_Opera: current status unknown). Zeus, named in 844 at 10:26, is not mentioned.",
     },
   },
   'charlotte-compote': {
@@ -2782,7 +2782,7 @@ export const CHRONICLE_SOURCES = {
     },
     844: {
       source: 'https://onepiece.fandom.com/wiki/Episode_844',
-      note: "844.srt 04:45 (Big Mom) どこだ ウエディングケーキ！ / 08:18 (Compote) ああ… / 08:42 (Daifuku) もしや…？ / 08:44 (Compote) いい手を 思いついたんだね？ / 08:51 (Perospero) ママ ウエディングケーキは あるぞ！ ... なんと麦わらの一味が それを盗んでいったのさ / 10:31 マンマ～！ / 10:57 麦わらたちをママがしとめても ケーキなんてありはしない！ / 11:48 ママは あのケーキを 一口も食ってないんだ / 11:52 (Compote) じゃあ 今回の お題は… 11:55 ママの想像の中で膨らんだ 食べたこともない おいしいケーキだ / 12:08 (Katakuri) まずいな 少なくとも この島は滅ぶ. Perospero's lifespan threat and Zeus are left out.",
+      note: "844.srt 04:45 (Big Mom) demands to know where the wedding cake is / 08:18 (Compote) a sigh / 08:42 (Daifuku) wonders aloud / 08:44 (Compote) asks whether a good plan has come to mind / 08:51 (Perospero) tells Mama there is a wedding cake ... and that the Straw Hat crew stole it / 10:31 a cry of Mamma / 10:57 even if Mama catches the Straw Hats there is no cake / 11:48 Mama never had a bite of that cake / 11:52 (Compote) so this time the task is... 11:55 a delicious cake Mama never tasted, grown in her imagination / 12:08 (Katakuri) bad: at the very least this island is doomed. Perospero's lifespan threat and Zeus are left out.",
     },
   },
   'charlotte-nusstorte': {

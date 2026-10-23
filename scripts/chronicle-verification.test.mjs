@@ -37,8 +37,12 @@ const QUOTATION_MARKS = [
   ['\u{2018}', '\u{2019}'],
 ]
 
+/** One kana or kanji, so subtitle lines left unquoted are counted too. */
+const JAPANESE = /[\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Han}]/gu
+
 /**
- * Every quoted span in a note, without its marks.
+ * Every quoted span in a note, without its marks. A mark left open runs to the
+ * end of the note, so a missing closer cannot hide a long quotation.
  * @param {string} note The note.
  * @returns {string[]} The quotations.
  */
@@ -51,6 +55,7 @@ function quotationsIn(note) {
       const end = note.indexOf(close, start + 1)
 
       if (end === -1) {
+        quotations.push(note.slice(start + 1))
         break
       }
 
@@ -193,6 +198,18 @@ describe('the chronicle verification log', () => {
         expect(words.length, quotation).toBeLessThanOrEqual(12)
         expect(quotation.length, quotation).toBeLessThanOrEqual(80)
       }
+    }
+  })
+
+  it('leaves no subtitle line unquoted', () => {
+    // Japanese has no spaces to count words by, and a cue copied without
+    // marks escapes the quotation count. Outside 「」 a note keeps only speaker
+    // labels and names.
+    for (const row of ROWS) {
+      const quoted = quotationsIn(row.note).join('').match(JAPANESE) ?? []
+      const all = row.note.match(JAPANESE) ?? []
+
+      expect(all.length - quoted.length, asLine(row)).toBeLessThanOrEqual(30)
     }
   })
 })
