@@ -46,6 +46,6 @@ body:
     attributes:
       label: Source
       description:
-        A One Piece Wiki page or another source for the correct episode or
-        chapter.
+        A One Piece Wiki page, or the chapter and page or episode and timestamp
+        of an official edition. No links to unofficial manga or anime sites.
       placeholder: https://onepiece.fandom.com/wiki/...

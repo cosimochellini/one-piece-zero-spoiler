@@ -68,8 +68,9 @@ entry, which carries the episode it is learned in. The comment at the top of
   not count.
 - A character opens at the episode that names them, not the one that first shows
   them.
-- Use the [One Piece Wiki](https://onepiece.fandom.com) as the source, and link
-  the page in your pull request.
+- Check facts on the [One Piece Wiki](https://onepiece.fandom.com) and link the
+  page in your pull request. [Sources and rights](#sources-and-rights) says what
+  else to record.
 
 ## Where things live
 
@@ -230,6 +231,138 @@ for multiple IDs), and include the grid in the PR's verification evidence.
 drawings, other record kinds and draft compositions. Generated screenshots stay
 out of the repository.
 
+## Sources and rights
+
+Zero Spoiler is an unofficial, nonprofit fan project run by a private individual
+in Italy. Neither that, nor a disclaimer, nor an AI rewrite gives anyone rights
+in someone else's work. These rules keep each contribution's sources and rights
+visible from the pull request to the published site. They are editorial
+practice, not legal advice.
+
+[LICENSE-SCOPE.md](LICENSE-SCOPE.md) says what the licenses cover. Code and
+original technical documentation are MIT. Archive text, drawings and branding
+are outside the MIT grant, and third-party material keeps its own terms. A
+contribution does not change that scope.
+
+Every pull request fills in the **Sources and rights** section of the template.
+
+### Facts
+
+Episode and chapter numbers, names and what happens are facts. Check them on the
+One Piece Wiki, or in an official source you can lawfully access: a licensed
+manga edition or a licensed stream. Write the text in your own words, and record
+in the pull request:
+
+- the wiki page you checked;
+- for a manga or anime check, the chapter and page, or the episode and
+  timestamp.
+
+Link no unofficial manga or anime site, in code, docs, issues or pull requests.
+Commit no scan, screenshot, subtitle file or transcript of the series.
+
+### Adapted wording
+
+Wiki text you keep in edited form (abridged, reworded close to the original, or
+translated) is an adaptation of that page. Write your own words where you can.
+The One Piece Wikis license community text under **CC BY-SA 3.0 Unported** by
+default ([Fandom licensing](https://www.fandom.com/licensing),
+[Licenza Fandom](https://www.fandom.com/it/licensing-it)). A page or file can
+carry its own notice, and imported text and images can have other owners. When
+you cannot name the license of a passage, use the facts only.
+
+An adaptation stays under CC BY-SA 3.0, or another license section 4(b) of the
+[legal code](https://creativecommons.org/licenses/by-sa/3.0/legalcode) allows,
+with no added restriction, as
+[LICENSE-SCOPE.md](LICENSE-SCOPE.md#source-terms-and-adaptations) sets out.
+
+An adaptation needs, in the same pull request:
+
+1. the local fields it fills, by record id and field, in each locale;
+2. the article title and its revision link, as
+   `https://onepiece.fandom.com/index.php?oldid=<revision>` (or `/it/index.php`
+   for the Italian wiki), and the date you read it;
+3. the license, with every copyright, attribution or license notice the page
+   supplies;
+4. what you changed: abridged, reworded, translated;
+5. a public credit on the legal page (`/en/legal`, `/it/legal`) that opens no
+   later than the text. This is a code change: add the revision to
+   [`docs/content-provenance/sources.json`](docs/content-provenance/sources.json)
+   with every field its entries carry (`revision`, `revisionDate`, `url`,
+   `revisionUrl`, `apiUrl`, `contentSha256`), map the record in
+   `src/server/archive/credits.server.ts`, which today lists only the #719
+   sample, and extend `src/server/archive/credits.test.ts`. A record kind with
+   no credit scope yet (`scope` in `src/lib/view/credits.ts`) needs one first.
+   [source-credits.md](docs/source-credits.md) has the rules: revision links
+   only, nothing sent before the reader's bookmark reaches it. When the credit
+   would spoil at the text's threshold, or you cannot make the change, the text
+   waits and the facts go in your own words.
+
+The record in a pull request looks like this. The example shows the format only:
+it is not the provenance of the real story.
+
+```text
+Adapted: monkey-d-luffy, chronicle story at episode 1, body.en and body.it
+Source: "Episode 1", One Piece Wiki, https://onepiece.fandom.com/index.php?oldid=2131598, read 2026-10-20
+        "Episodio 1", One Piece Wiki italiana, https://onepiece.fandom.com/it/index.php?oldid=353984, read 2026-10-20
+License: CC BY-SA 3.0 Unported; authors: the pages' contributors (page history)
+Changes: abridged to three sentences and reworded; the Italian is not a translation of the English
+Credit: both revisions in sources.json, mapped in credits.server.ts (already there for this sample)
+```
+
+### Quotations
+
+A research note quotes a source only where the exact words prove a name or a
+threshold: at most two quotations of 12 words and 80 characters or fewer.
+`scripts/chronicle-verification.test.mjs` holds the chronicle notes to it, and
+the [quotation review](docs/chronicle-quotation-review.md) explains why.
+Paraphrase everything else. Archive text reproduces no dialogue, subtitle or
+manga line.
+
+### Drawings
+
+Every drawing is original: stroke paths written for this project in the house
+style of the [line-drawings skill](.claude/skills/line-drawings/SKILL.md), drawn
+by eye and never traced from an image.
+
+- Look at the scene in a source you can lawfully access. The wiki's Appearance
+  section, its gallery and image search results are leads, not permission.
+- Keep reference images on your own machine. Commit, upload or paste none, in
+  the repository, an issue or a pull request.
+- Record each reference in the pull request as chapter and page, or episode and
+  timestamp. An agent that cannot view the source records what the wiki and
+  `npm run wiki:pairs` establish, marked "not viewed", and the human author
+  checks the scene.
+
+A drawing of a distinctive design waits for the owner. A design is distinctive
+when a combination of its features identifies one subject of the series on its
+own: Luffy's banded hat over his costume, Franky's forearm and star, the Going
+Merry's curled prow and hull, a landmark's silhouette, a real devil fruit's
+skin. A single ordinary object (a barrel, a pair of shears, a plain hat) is not.
+The [illustration audit](docs/illustration-rights-audit.md) lists the flagged
+cases as F1 to F4. Label the issue `status:needs-decision`, with the reference
+and the alternatives you considered; the work can go on in a branch, and the
+pull request merges after the owner's ruling.
+
+### AI-assisted work
+
+Say in the pull request which parts an AI helped write or draw, and which
+sources you checked its output against. You stay the author: you identify the
+sources, check every fact and drawing, and apply the rules above. An AI
+paraphrase is not evidence of permission or of independent authorship. Give an
+AI only material you may use yourself: what it reads can come back in its
+output.
+
+### Rights concerns
+
+Anyone can raise a rights concern through the contact link on the legal page,
+which opens a GitHub issue. Keep spoilers out of the title and confidential
+details out of the issue; the owner agrees a private channel before any
+confidential detail is shared. For a concrete claim about specific material, the
+owner unpublishes or replaces that material promptly, labels the issue
+`status:needs-decision`, reviews it and decides whether it needs professional
+legal advice. If a rights holder contacts you about the project, by any channel,
+point them to that link and tell the owner, with any deadline the message gives.
+
 ## Writing copy
 
 The site's text, the README and the record texts follow the
@@ -299,16 +432,18 @@ semantic-release reads it to choose the version: `feat` is a minor release, a
 `!` is a major one, every other type is a patch. So every merged pull request is
 released, and the title is checked in CI.
 
-Fill in the pull request template: what changed, why, and how a reviewer can
-verify it. For a visual change, add a screenshot at the bookmark just before the
-change and at the bookmark where it applies.
+Fill in the pull request template: what changed, why, how a reviewer can verify
+it, and its [sources and rights](#sources-and-rights). For a visual change, add
+a screenshot at the bookmark just before the change and at the bookmark where it
+applies.
 
 ## Working with an agent
 
 The project was built with [Claude Code](https://claude.com/claude-code), and
 agents are welcome. The skills in `.claude/skills/` load in Claude Code, and
 `tone-of-voice` is the one to use for any copy. An agent's pull request goes
-through the same checks and the same review as anyone else's.
+through the same checks and the same review as anyone else's, and says what the
+agent wrote or drew ([AI-assisted work](#ai-assisted-work)).
 
 [CODING_STANDARDS.md](CODING_STANDARDS.md) is what the reviewer reads: the
 judgement calls the tests do not hold, and where owner rulings live.
