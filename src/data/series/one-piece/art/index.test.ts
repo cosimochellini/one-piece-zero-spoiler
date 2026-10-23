@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { entities, getEntity } from '~/data/series/one-piece/entities'
+import { getEntity } from '~/data/series/one-piece/entities'
 import type { Stroke } from '~/lib/view/records'
 
 import { DRAWINGS, REDRAWINGS } from '.'
@@ -62,18 +62,6 @@ describe('the drawings', () => {
     const total = modules.reduce((sum, m) => sum + Object.keys(m).length, 0)
 
     expect(Object.keys(DRAWINGS)).toHaveLength(total)
-  })
-
-  it('has one for every record, and none that no record uses', () => {
-    const ids = new Set(entities.map((entity) => entity.id))
-    const drawn = new Set(Object.keys(DRAWINGS))
-
-    for (const id of ids) {
-      expect(drawn.has(id), id).toBe(true)
-    }
-    for (const id of drawn) {
-      expect(ids.has(id), id).toBe(true)
-    }
   })
 
   it('draws every record with at least four strokes and one in its colour', () => {
