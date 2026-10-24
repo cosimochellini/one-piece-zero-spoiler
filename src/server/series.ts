@@ -3,31 +3,21 @@ import { getRequestHeader } from '@tanstack/react-start/server'
 
 import { archiveOf, descriptionOf, SERIES } from '~/data/series'
 import { parseCookieHeader } from '~/lib/cookies'
-import { parseBookmark } from '~/lib/progress/episode'
 
-import { hubSeries } from './archive/hub.server'
+import { hubFor } from './archive/hub.server'
 
 /** Public descriptions only: this does not load an archive. */
 export const loadSeriesDescriptions = createServerFn().handler(() =>
   SERIES.map(({ description }) => description),
 )
 
-/**
- * The hub: every series with its count and the reader's saved bookmark on
- * it. Only the saved one: a trial is a visit to one series' demo, and a
- * crawler has no bookmark to be shown.
- */
-export const loadHub = createServerFn().handler(async () => {
-  const jar = parseCookieHeader(getRequestHeader('cookie'))
-  return Promise.all(
-    SERIES.map(async ({ description, slug }) =>
-      hubSeries(
-        await archiveOf(slug),
-        parseBookmark(jar.get(description.cookie), description),
-      ),
-    ),
-  )
-})
+/** The hub; the decisions are `hubFor`'s. */
+export const loadHub = createServerFn().handler(async () =>
+  hubFor(
+    parseCookieHeader(getRequestHeader('cookie')),
+    await Promise.all(SERIES.map(async ({ slug }) => archiveOf(slug))),
+  ),
+)
 
 /** Unknown series return nothing so the route can answer with a 404. */
 export const loadSeriesDescription = createServerFn()

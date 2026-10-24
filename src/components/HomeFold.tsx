@@ -7,7 +7,7 @@ import { EpisodeMark } from '~/components/EpisodeMark'
 import { styles } from '~/components/HomeFold.styles'
 import { useT } from '~/i18n/LocaleContext'
 import type { Bookmark } from '~/lib/progress/episode'
-import { pointOf } from '~/lib/progress/threshold'
+import { bookmarkPoint } from '~/lib/progress/threshold'
 import type { TintId, WaypointView } from '~/lib/view/records'
 import { settleStyles } from '~/styles/settle'
 
@@ -79,7 +79,7 @@ export function HomeFold({ band, point, saga }: HomeFoldProps): ReactElement {
           settleStyles.at(band + STAGGER.copy),
         )}
       >
-        <p {...stylex.props(styles.point)}>{pointOf(t, point)}</p>
+        <p {...stylex.props(styles.point)}>{bookmarkPoint(t, point)}</p>
         <h1
           id="home-saga"
           {...stylex.props(styles.headline)}

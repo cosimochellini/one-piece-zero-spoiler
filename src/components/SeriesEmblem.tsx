@@ -5,7 +5,11 @@ import { ART_VIEWBOX } from '~/components/drawing'
 import { EMBLEMS } from '~/components/seriesEmblems'
 import { color, rule } from '~/styles/tokens.stylex'
 
-/** A series' hub drawing, decorative: the card beside it names the series. */
+/**
+ * A series' hub drawing, decorative: the card beside it names the series.
+ * Drawn the way `ArtStrokes` draws a record, but with the theme's accent for
+ * the accent line rather than a record's tint.
+ */
 export function SeriesEmblem({ slug }: { slug: string }): ReactElement {
   return (
     <svg
@@ -15,13 +19,15 @@ export function SeriesEmblem({ slug }: { slug: string }): ReactElement {
     >
       {(EMBLEMS[slug] ?? []).map((stroke) => (
         <path
-          key={stroke.d}
+          key={`${stroke.d}|${stroke.transform ?? ''}`}
           d={stroke.d}
+          transform={stroke.transform}
           vectorEffect="non-scaling-stroke"
           {...stylex.props(
             styles.line,
             stroke.role === 'ambient' && styles.ambient,
             stroke.role === 'accent' && styles.accent,
+            stroke.dashed === true && styles.dashed,
           )}
         />
       ))}
@@ -40,4 +46,5 @@ const styles = stylex.create({
   },
   ambient: { stroke: color.rule2 },
   accent: { stroke: color.accent },
+  dashed: { strokeDasharray: '3 6' },
 })

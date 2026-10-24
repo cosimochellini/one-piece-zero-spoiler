@@ -28,7 +28,7 @@ export function SiteFooter({
         <b {...stylex.props(styles.lead)}>
           {t(shared ? 'footer.sharedLead' : 'footer.lead')}
         </b>{' '}
-        {t('footer.colophon')}
+        {t(shared ? 'footer.sharedColophon' : 'footer.colophon')}
       </p>
       <p {...stylex.props(styles.colophon)}>
         {t(shared ? 'footer.sharedUnofficial' : 'footer.unofficial')}{' '}

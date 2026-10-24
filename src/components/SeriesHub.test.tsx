@@ -56,8 +56,24 @@ describe('SeriesHub', () => {
     const coming = screen.getByRole('heading', { name: 'Hunter x Hunter' })
 
     expect(coming.closest('a')).not.toBeInTheDocument()
-    expect(coming.parentElement).toHaveTextContent('Coming')
+    expect(coming.parentElement).toHaveTextContent('Not open yet')
     expect(screen.getAllByText(/entries/u)).toHaveLength(1)
     expect(screen.getAllByRole('link')).toHaveLength(1)
+  })
+
+  it('drops the announcement once the series is in the registry', () => {
+    const filed = {
+      ...onePiece(null),
+      slug: 'hunter-x-hunter',
+      name: { en: 'Hunter x Hunter', it: 'Hunter x Hunter' },
+    }
+    renderWithProviders(<SeriesHub series={[filed]} />, { path: '/en' })
+
+    expect(
+      screen.getAllByRole('heading', { name: 'Hunter x Hunter' }),
+    ).toHaveLength(1)
+    expect(
+      screen.getByRole('link', { name: /Hunter x Hunter/u }),
+    ).toHaveAttribute('href', '/hunter-x-hunter/en')
   })
 })

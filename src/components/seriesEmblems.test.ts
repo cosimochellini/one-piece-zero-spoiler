@@ -50,4 +50,25 @@ describe('the hub emblems', () => {
       }
     },
   )
+
+  it('draws every series in the registry', () => {
+    expect(
+      LOADED_SERIES.filter(({ slug }) => EMBLEMS[slug] === undefined),
+    ).toStrictEqual([])
+  })
+
+  // The rules a record drawing is held to (the line-drawings skill).
+  it.each(Object.entries(EMBLEMS))(
+    '%s has four strokes or more, an accent, and no line twice',
+    (_, emblem = []) => {
+      const lines = emblem.map((stroke) => lineOf(stroke))
+
+      expect(emblem.length).toBeGreaterThanOrEqual(4)
+      expect(emblem.some(({ role }) => role === 'accent')).toBe(true)
+
+      const distinct = new Set(lines)
+
+      expect(distinct.size).toBe(lines.length)
+    },
+  )
 })

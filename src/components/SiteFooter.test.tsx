@@ -40,21 +40,24 @@ describe('SiteFooter', () => {
     {
       locale: 'en',
       lead: 'Wikis that hide what comes after your bookmark.',
+      colophon: 'Your bookmarks are saved in cookies on this device',
       unofficial:
         'Unofficial fan project, not endorsed by the rights holders of the series.',
     },
     {
       locale: 'it',
       lead: 'Wiki che nascondono quello che viene dopo il tuo segnalibro.',
+      colophon: 'I segnalibri vengono salvati in cookie su questo dispositivo',
       unofficial:
         'Progetto amatoriale non ufficiale, non approvato dai titolari dei diritti delle serie.',
     },
   ] as const)(
     'names no series on a page with none, in $locale',
-    ({ locale, lead, unofficial }) => {
+    ({ locale, lead, colophon, unofficial }) => {
       renderWithProviders(<SiteFooter shared />, { locale, path: `/${locale}` })
 
       expect(screen.getByText(lead)).toBeInTheDocument()
+      expect(screen.getByRole('contentinfo')).toHaveTextContent(colophon)
       expect(screen.getByRole('contentinfo')).toHaveTextContent(unofficial)
       expect(screen.getByRole('contentinfo')).not.toHaveTextContent('One Piece')
     },

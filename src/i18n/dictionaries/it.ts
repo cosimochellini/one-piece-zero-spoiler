@@ -269,6 +269,8 @@ export const itDictionary: Dictionary = {
     'Progetto amatoriale non ufficiale, non approvato dai titolari dei diritti di One Piece.',
   'footer.sharedLead':
     'Wiki che nascondono quello che viene dopo il tuo segnalibro.',
+  'footer.sharedColophon':
+    'Tutti i disegni sono fatti per questo sito e non ci sono immagini ufficiali. I segnalibri vengono salvati in cookie su questo dispositivo, uno per ogni serie.',
   'footer.sharedUnofficial':
     'Progetto amatoriale non ufficiale, non approvato dai titolari dei diritti delle serie.',
 

@@ -4,7 +4,7 @@ import { descriptionOf } from '~/data/series'
 import type { Entity } from '~/data/types'
 import { type Locale, LOCALES } from '~/i18n/locales'
 import { DEMO_LAST_CHAPTER, DEMO_LAST_EPISODE } from '~/lib/progress/bounds'
-import type { Bookmark } from '~/lib/progress/episode'
+import { type Bookmark, serialiseBookmark } from '~/lib/progress/episode'
 import * as api from '~/server/api'
 import * as shared from '~/server/series'
 import { opHandleOf as handleOf } from '~/test/archive'
@@ -15,7 +15,7 @@ import {
   LOADED_SERIES as SERIES,
 } from '~/test/series'
 
-import { hubSeries } from './hub.server'
+import { hubFor } from './hub.server'
 import { type Payload, payloadsFor } from './payloads.server'
 
 const PAYLOADS = payloadsFor(ONE_PIECE_LOADED.archive)
@@ -153,16 +153,21 @@ describe.each(SERIES)('every payload of $slug', (series) => {
 /**
  * The server functions whose address names no series (`~/server/series`),
  * as the plain calls behind them, at a bookmark on one series: the hub reads
- * a saved bookmark for each series, so the series swept gets the bookmark
- * and every other has none.
+ * a saved bookmark cookie for each series, so the series swept has one and
+ * every other has none.
  */
 const SHARED: Record<
   string,
   (series: ListedSeries, bookmark: Bookmark) => unknown
 > = {
   loadHub: (series, bookmark) =>
-    SERIES.map((each) =>
-      hubSeries(each.archive, each.slug === series.slug ? bookmark : null),
+    hubFor(
+      new Map(
+        bookmark === null ?
+          []
+        : [[series.description.cookie, serialiseBookmark(bookmark)]],
+      ),
+      SERIES.map(({ archive }) => archive),
     ),
   loadSeriesDescription: () => SERIES.map(({ slug }) => descriptionOf(slug)),
   loadSeriesDescriptions: () => SERIES.map(({ description }) => description),

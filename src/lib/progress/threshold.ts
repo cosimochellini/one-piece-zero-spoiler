@@ -70,7 +70,10 @@ export function describeBookmark(
  * or "Season 2 · episode 3". Spelled out per mode rather than through
  * `describeBookmark`, because the season form carries two numbers.
  */
-export function pointOf(t: Translate, bookmark: NonNullable<Bookmark>): string {
+export function bookmarkPoint(
+  t: Translate,
+  bookmark: NonNullable<Bookmark>,
+): string {
   switch (bookmark.mode) {
     case 'chapter': {
       return t('home.point.chapter', { threshold: bookmark.chapter })

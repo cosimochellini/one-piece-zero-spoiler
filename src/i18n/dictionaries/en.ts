@@ -27,7 +27,7 @@ export const enDictionary = {
     'One wiki per series, each with its own bookmark. Entries past your bookmark stay under fog.',
   'hub.count': '{count} entries',
   'hub.noBookmark': 'No bookmark yet',
-  'hub.coming': 'Coming',
+  'hub.coming': 'Not open yet',
   'seo.imageAlt':
     'The Zero Spoiler card: the logo above a route that disappears into fog.',
 
@@ -268,6 +268,8 @@ export const enDictionary = {
   'footer.unofficial':
     'Unofficial fan project, not endorsed by the One Piece rights holders.',
   'footer.sharedLead': 'Wikis that hide what comes after your bookmark.',
+  'footer.sharedColophon':
+    'All the drawings are made for this site; no official artwork is used. Your bookmarks are saved in cookies on this device, one for each series.',
   'footer.sharedUnofficial':
     'Unofficial fan project, not endorsed by the rights holders of the series.',
 

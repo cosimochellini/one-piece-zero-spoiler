@@ -4,7 +4,7 @@ import type { ReactElement } from 'react'
 
 import { SeriesEmblem } from '~/components/SeriesEmblem'
 import { useLocale } from '~/i18n/LocaleContext'
-import { pointOf } from '~/lib/progress/threshold'
+import { bookmarkPoint } from '~/lib/progress/threshold'
 import type { HubSeries } from '~/lib/view/hub'
 import { settleStyles } from '~/styles/settle'
 import { THEMES } from '~/styles/themes'
@@ -22,8 +22,9 @@ import {
 
 /**
  * A series announced on the hub before it is one in `~/data/series`: a name
- * and nothing else, so no link, no count, no colour and no drawing. #758
- * files Hunter x Hunter and #763 opens it; the entry goes then.
+ * and nothing else, so no link, no count, no colour and no drawing. Once
+ * #758 files Hunter x Hunter its own stage replaces this one; #763, which
+ * opens it, deletes the entry.
  */
 interface Coming {
   name: string
@@ -45,6 +46,10 @@ const COMING: Coming[] = [{ slug: 'hunter-x-hunter', name: 'Hunter x Hunter' }]
  */
 export function SeriesHub({ series }: { series: HubSeries[] }): ReactElement {
   const { t } = useLocale()
+  // Once a series is in the registry its own stage stands for it.
+  const coming = COMING.filter(({ slug }) =>
+    series.every((entry) => entry.slug !== slug),
+  )
 
   return (
     <main
@@ -68,16 +73,16 @@ export function SeriesHub({ series }: { series: HubSeries[] }): ReactElement {
             <Stage entry={entry} />
           </li>
         ))}
-        {COMING.map((coming, index) => (
+        {coming.map((announced, index) => (
           <li
-            key={coming.slug}
+            key={announced.slug}
             {...stylex.props(
               styles.item,
               settleStyles.band,
               settleStyles.at(series.length + index + 1),
             )}
           >
-            <DarkStage name={coming.name} />
+            <DarkStage name={announced.name} />
           </li>
         ))}
       </ul>
@@ -105,7 +110,7 @@ function Stage({ entry }: { entry: HubSeries }): ReactElement {
       >
         <SeriesEmblem slug={entry.slug} />
       </span>
-      <span {...stylex.props(styles.copy)}>
+      <div {...stylex.props(styles.copy)}>
         <h2 {...stylex.props(styles.name)}>{entry.name[locale]}</h2>
         <span
           {...stylex.props(
@@ -116,12 +121,12 @@ function Stage({ entry }: { entry: HubSeries }): ReactElement {
         >
           {entry.bookmark === null ?
             t('hub.noBookmark')
-          : pointOf(t, entry.bookmark)}
+          : bookmarkPoint(t, entry.bookmark)}
         </span>
         <span {...stylex.props(styles.mono, styles.count)}>
           {t('hub.count', { count: entry.count })}
         </span>
-      </span>
+      </div>
     </Link>
   )
 }
@@ -136,12 +141,12 @@ function DarkStage({ name }: { name: string }): ReactElement {
         aria-hidden="true"
         {...stylex.props(styles.fog)}
       />
-      <span {...stylex.props(styles.copy)}>
+      <div {...stylex.props(styles.copy)}>
         <h2 {...stylex.props(styles.name, styles.unlitName)}>{name}</h2>
         <span {...stylex.props(styles.mono, styles.point, styles.unset)}>
           {t('hub.coming')}
         </span>
-      </span>
+      </div>
     </div>
   )
 }
