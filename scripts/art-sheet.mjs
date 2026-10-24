@@ -94,19 +94,39 @@ export function oklchToHex(css) {
 }
 
 /**
- * Every `name: 'oklch(…)',` line in the tokens file, as hex by name. The tints and
+ * Every `name: 'oklch(…)',` line in a styles file, as hex by name. The tints and
  * the colours share one namespace here, which holds because no tint is named
  * like a colour.
- * @param {string} source The text of `src/styles/tokens.stylex.ts`.
+ * @param {string} source The text of a file in `src/styles`.
  * @returns {Palette} The colours by token name.
  */
-export function parseTokens(source) {
+function parseTokens(source) {
   const declarations = source
     .split('\n')
     .map((line) => line.trim().split(': '))
     .filter(([, value]) => value?.startsWith("'oklch(") === true)
   return Object.fromEntries(
     declarations.map(([name, value]) => [name, oklchToHex(value)]),
+  )
+}
+
+/**
+ * The tints from the tokens file, on One Piece's surfaces and inks: the
+ * drawings are One Piece's, and since #757 its colours are a theme in
+ * `src/styles/themes.ts`, while the tokens file holds the site's own neutral
+ * ones.
+ * `themes.ts` holds one series today; a second one needs the sheet to pick.
+ * @returns {Palette} The colours by token name.
+ */
+export function onePiecePalette() {
+  return Object.assign(
+    {},
+    ...['tokens.stylex.ts', 'themes.ts'].map((file) =>
+      parseTokens(
+        // fallow-ignore-next-line security-sink -- a constant path under the repository
+        readFileSync(path.join(ROOT, 'src', 'styles', file), 'utf8'),
+      ),
+    ),
   )
 }
 
@@ -395,10 +415,7 @@ export function writeSheets({ name, cells }, palette, out) {
 
 if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
   const options = readArgs(process.argv.slice(2))
-  const palette = parseTokens(
-    // fallow-ignore-next-line security-sink -- a constant path under the repository
-    readFileSync(path.join(ROOT, 'src', 'styles', 'tokens.stylex.ts'), 'utf8'),
-  )
+  const palette = onePiecePalette()
   const sheet = await cellsFor(options)
   for (const line of writeSheets(sheet, palette, options.out)) {
     console.log(line)
