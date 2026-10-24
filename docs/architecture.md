@@ -372,7 +372,8 @@ tapped a link a friend sent. The list is in `src/lib/crawler.ts`.
   under the dial for a visitor with no bookmark, the reader's arc and its
   stories for one with a bookmark), the places chart and a character page are
   awaited instead: they are the page, and a reader with scripting off should get
-  them in full.
+  them in full. The places index under the chart is not: it follows once the
+  page has hydrated (#781, below).
 - The fruits page's HTML stops at the saga marquee and the control bar: the
   server sends the marquee's fruits, each plate's counts and the number filed
   (`loadFruits`). The plates and the saga and faction groups are a second server

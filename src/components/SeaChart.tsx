@@ -60,10 +60,11 @@ import { useT } from '~/i18n/LocaleContext'
  * (`useChartOrientation`). Across, the chart is a window that opens on the
  * reader's saga and zooms and pans (`useChartZoom`); crowded names move aside
  * with a leader rather than disappearing. Upright, on a phone, the whole
- * chart runs down the page and never moves. The open stops lead to their own pages; the stops under
- * fog are buttons that say their number and episode and nothing else. Every
- * stop and every ship opens a peek. A stop under fog's peek is veiled, and
- * its place comes from the server only when the reader asks.
+ * chart runs down the page and never moves. The open stops lead to their own
+ * pages; the stops under fog are buttons that say their number and episode
+ * and nothing else. Every stop and every ship opens a peek. A stop under
+ * fog's peek is veiled, and its place comes from the server only when the
+ * reader asks.
  */
 export function SeaChart(props: SeaChartProps): ReactElement {
   const t = useT()

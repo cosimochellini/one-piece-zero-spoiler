@@ -57,6 +57,9 @@ export const Route = createFileRoute('/$series/$locale/places/')({
         })
       : {}
   },
+  // The served chart's orientation is guessed from these request headers
+  // (`servedOrientation`), so the HTML varies by them too.
+  headers: () => ({ Vary: 'User-Agent, Sec-CH-UA-Mobile' }),
   component: PlacesPage,
 })
 
