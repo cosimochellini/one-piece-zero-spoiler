@@ -14,6 +14,7 @@ import { CharacterCard } from '~/components/CharacterCard'
 import { styles } from '~/components/CharacterGrid.styles'
 import {
   CharacterShelves,
+  type Shelves,
   type ShelvesSource,
 } from '~/components/CharacterShelves'
 import { FogBand, type FogTitles } from '~/components/FogBand'
@@ -27,6 +28,7 @@ import type {
   CharacterView,
   CoveredRecord,
   SearchableCharacter,
+  ShelfView,
 } from '~/lib/view/records'
 
 // Long enough that a reader typing "Nami" hears one count and not four, short
@@ -46,12 +48,14 @@ export interface CharacterGridProps {
   /** The characters in evidence: the ones drawn as crests. */
   featuredCovered: CoveredRecord[]
   featuredOpen: SearchableCharacter[]
+  /** Asks for the shelves again after a failed call. */
+  onRetry: () => void
   peek: (handle: string) => Promise<CharacterView>
   /**
-   * The shelves, streamed. The crests are above the fold and there are
-   * thirty-six of them; the shelves are three hundred and twenty-six tiles
-   * with a drawing each, and they are the part of this page worth not
-   * waiting for.
+   * The shelves, asked for once the page is up. The crests are above the
+   * fold and there are thirty-six of them; the shelves are three hundred and
+   * twenty-six tiles with a drawing each, and they are the part of this page
+   * worth not waiting for.
    */
   shelfCount: number
   shelves: ShelvesSource
@@ -77,6 +81,7 @@ export function CharacterGrid({
   featuredCovered,
   shelves,
   shelfCount,
+  onRetry,
   peek,
 }: CharacterGridProps): ReactElement {
   const t = useT()
@@ -100,21 +105,15 @@ export function CharacterGrid({
           // until the shelves have landed. Its own boundary, so the field
           // beside it never suspends: an input that unmounts mid-word loses
           // the word and the focus with it.
-          <Suspense
-            fallback={
-              <p
-                aria-busy="true"
-                aria-live="polite"
-                {...stylex.props(searchStyles.status)}
+          shelves === null ?
+            <StatusPending />
+          : <Suspense fallback={<StatusPending />}>
+              <SearchStatus
+                needle={needle}
+                query={trimmed}
+                shelves={shelves}
               />
-            }
-          >
-            <SearchStatus
-              needle={needle}
-              query={trimmed}
-              shelves={shelves}
-            />
-          </Suspense>
+            </Suspense>
         }
       />
 
@@ -130,11 +129,23 @@ export function CharacterGrid({
         featured={new Set(featuredOpen.map((entry) => entry.id))}
         fieldId={fieldId}
         needle={needle}
+        onRetry={onRetry}
         peek={peek}
         shelfCount={shelfCount}
         shelves={shelves}
       />
     </div>
+  )
+}
+
+/** The count's place while the shelves are on their way, or did not come. */
+function StatusPending(): ReactElement {
+  return (
+    <p
+      aria-busy="true"
+      aria-live="polite"
+      {...stylex.props(searchStyles.status)}
+    />
   )
 }
 
@@ -149,10 +160,30 @@ function SearchStatus({
 }: {
   needle: string
   query: string
-  shelves: ShelvesSource
+  shelves: Promise<Shelves> | Shelves
+}): ReactElement {
+  const sections = shelves instanceof Promise ? use(shelves) : shelves
+
+  return sections === 'failed' ?
+      <StatusPending />
+    : <SearchCount
+        needle={needle}
+        query={query}
+        sections={sections}
+      />
+}
+
+/** The count itself, once the shelves are here. */
+function SearchCount({
+  sections,
+  needle,
+  query,
+}: {
+  needle: string
+  query: string
+  sections: ShelfView[]
 }): ReactElement {
   const t = useT()
-  const sections = shelves instanceof Promise ? use(shelves) : shelves
   const open = sections.flatMap((section) => section.open)
   const count = matchesIn(open, needle).length
   const empty = query !== '' && count === 0

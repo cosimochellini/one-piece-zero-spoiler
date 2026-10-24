@@ -20,6 +20,9 @@ import { type Payload, payloadsFor } from './payloads.server'
 
 const PAYLOADS = payloadsFor(ONE_PIECE_LOADED.archive)
 
+/** The server functions that answer with `plain` rather than seroval. */
+const PLAIN = new Set(['loadShelves'])
+
 /** A record a page names past the bookmark on purpose. */
 type Excuse = (entity: Entity, key: string, bookmark: Bookmark) => boolean
 
@@ -146,6 +149,21 @@ describe.each(SERIES)('every payload of $slug', (series) => {
       }
 
       expect(leaks).toStrictEqual([])
+    },
+  )
+
+  // Sent as plain JSON (`~/lib/plain`): what `JSON.stringify` writes has to
+  // read back as the very payload, with no `undefined`, `Map` or `Date` lost
+  // on the way.
+  it.each(payloads.filter(({ name }) => PLAIN.has(name)))(
+    '$name reads back whole from plain JSON',
+    ({ run }) => {
+      for (const { bookmark, locale } of asks) {
+        const payload = run(bookmark, locale, '')
+        const sent = JSON.stringify(payload)
+
+        expect(JSON.parse(sent)).toStrictEqual(payload)
+      }
     },
   )
 })

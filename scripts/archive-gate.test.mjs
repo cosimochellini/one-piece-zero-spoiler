@@ -319,9 +319,10 @@ describe('the byte ceiling', () => {
     // React itself is ~318 KB of the current ~449 KB. The archive alone was
     // 599 KB of the 1,049 KB build this replaced, so a ceiling that let it
     // back in would vouch for nothing.
-    // Public bilingual legal notices add code, not private source references.
+    // Public bilingual legal notices add code, not private source references,
+    // and so does the shelves' loading in the browser (#776).
     expect(MAX_CLIENT_BYTES).toBeGreaterThan(449_410)
-    expect(MAX_CLIENT_BYTES).toBeLessThan(449_410 + 220_000)
+    expect(MAX_CLIENT_BYTES).toBeLessThan(449_410 + 230_000)
   })
 })
 
