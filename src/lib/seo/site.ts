@@ -12,7 +12,7 @@
  * the variable, so the override costs nothing at runtime and is visible in the
  * built output.
  */
-const FALLBACK_ORIGIN = 'https://one-piece-zero-spoiler.netlify.app'
+const FALLBACK_ORIGIN = 'https://zerospoiler.app'
 const HTTPS = 'https://'
 
 /**

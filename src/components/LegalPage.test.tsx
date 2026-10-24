@@ -62,7 +62,7 @@ describe('LegalPage', () => {
         expect(main).toHaveTextContent(name)
       }
 
-      expect(main).toHaveTextContent('us-east-2')
+      expect(main).toHaveTextContent('Workers Logs')
       expect(main).toHaveTextContent('6(1)(f)')
       expect(main).toHaveTextContent('CC BY-SA 3.0 Unported')
       expect(screen.queryAllByRole('heading', { level: 4 })).toHaveLength(0)

@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  <a href="https://one-piece-zero-spoiler.netlify.app/en"><strong>Open the wiki</strong></a>
+  <a href="https://zerospoiler.app/en"><strong>Open the wiki</strong></a>
   ·
   <a href="CONTRIBUTING.md">Contribute</a>
   ·
@@ -21,7 +21,6 @@
 <p align="center">
   <a href="https://github.com/cosimochellini/zero-spoiler/actions/workflows/ci.yml"><img src="https://github.com/cosimochellini/zero-spoiler/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI"></a>
   <a href="https://github.com/cosimochellini/zero-spoiler/releases/latest"><img src="https://img.shields.io/github/v/release/cosimochellini/zero-spoiler?sort=semver&display_name=tag&label=release" alt="Latest release"></a>
-  <a href="https://app.netlify.com/sites/one-piece-zero-spoiler/deploys"><img src="https://api.netlify.com/api/v1/badges/51908d48-c22b-4c57-939d-6da57ea6982a/deploy-status" alt="Netlify status"></a>
   <a href="https://github.com/cosimochellini/zero-spoiler/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22"><img src="https://img.shields.io/github/issues/cosimochellini/zero-spoiler/good%20first%20issue?label=good%20first%20issues&color=7057ff" alt="Good first issues"></a>
   <a href="LICENSE-SCOPE.md"><img src="https://img.shields.io/badge/software_license-MIT-informational" alt="Software license: MIT"></a>
 </p>
@@ -48,11 +47,11 @@ The fog is not a blur over the full page. Ask the live site for a character you
 have not met yet, with no bookmark set:
 
 ```sh
-curl -s https://one-piece-zero-spoiler.netlify.app/one-piece/en/characters/trafalgar-law \
+curl -s https://zerospoiler.app/one-piece/en/characters/trafalgar-law \
   | grep -c 'Trafalgar Law'
 # 0
 
-curl -s https://one-piece-zero-spoiler.netlify.app/one-piece/en/characters/trafalgar-law \
+curl -s https://zerospoiler.app/one-piece/en/characters/trafalgar-law \
   | grep -o '<title>[^<]*</title>'
 # <title>A character under fog | Zero Spoiler</title>
 ```
@@ -122,7 +121,7 @@ which tests guard it and how pull requests are released.
 ## Stack
 
 React 19 · TanStack Start (SSR) · StyleX · TypeScript `strict` · Vite · Vitest ·
-Netlify. Six runtime dependencies, each pinned to an exact version.
+Cloudflare Workers. Six runtime dependencies, each pinned to an exact version.
 
 ## Built with Claude Code
 
@@ -140,4 +139,4 @@ from either follows the same
 documentation; [LICENSE-SCOPE.md](LICENSE-SCOPE.md) says what it leaves out.
 This is an unofficial fan project, not endorsed by the One Piece rights holders.
 Credits, the rights contact, privacy and sources are on the
-[legal page](https://one-piece-zero-spoiler.netlify.app/en/legal).
+[legal page](https://zerospoiler.app/en/legal).

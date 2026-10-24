@@ -6,8 +6,8 @@ Report it privately through
 [GitHub's private vulnerability reporting](https://github.com/cosimochellini/zero-spoiler/security/advisories/new).
 Do not open a public issue.
 
-Only the current `main` branch and the live site at
-<https://one-piece-zero-spoiler.netlify.app> are supported.
+Only the current `main` branch and the live site at <https://zerospoiler.app>
+are supported.
 
 ## What is not a vulnerability
 

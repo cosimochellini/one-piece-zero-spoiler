@@ -90,7 +90,7 @@ describe('character route head', () => {
 
     expect(canonical).toHaveLength(1)
     expect(canonical[0]?.href).toBe(
-      'https://one-piece-zero-spoiler.netlify.app/one-piece/en/characters/nico-robin',
+      'https://zerospoiler.app/one-piece/en/characters/nico-robin',
     )
     // Italian, English and the x-default.
     expect(alternates).toHaveLength(3)

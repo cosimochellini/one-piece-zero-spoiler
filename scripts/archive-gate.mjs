@@ -150,8 +150,12 @@ const WORST_CHUNKS = 5
  * shared footer's three, in both dictionaries. The measured client build is
  * 666,769 bytes; the ceiling retains 1 KB headroom. The hub sends counts and the reader's own
  * bookmarks only; no record, name or record drawing enters the client.
+ * Raised for #727 on 2026-10-24: the privacy notice names Cloudflare as the
+ * host, keeps the old Netlify address for now and adds two source links, in
+ * both dictionaries. The measured client build is 667,836 bytes; the ceiling
+ * retains 1 KB headroom. No archive data or drawings move to the client.
  */
-export const MAX_CLIENT_BYTES = 667_769
+export const MAX_CLIENT_BYTES = 668_836
 
 /** Where every series' folder is. */
 const SERIES_DIR = 'src/data/series'

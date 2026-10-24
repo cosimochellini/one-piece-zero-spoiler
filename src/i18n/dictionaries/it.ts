@@ -215,13 +215,13 @@ export const itDictionary: Dictionary = {
   'credits.noOpenLicense': 'Nessuna autorizzazione aperta accertata.',
 
   'privacy.title': 'Privacy e cookie',
-  'privacy.updated': 'Ultima verifica: 20 ottobre 2026.',
+  'privacy.updated': 'Ultima verifica: 24 ottobre 2026.',
   'privacy.controllerTitle': 'Chi gestisce il sito',
   'privacy.controller':
     'Zero Spoiler è un progetto amatoriale personale e senza scopo di lucro. Il gestore e titolare del trattamento è una persona privata in Italia, contattabile su GitHub come @cosimochellini. Per una richiesta iniziale usa il link di contatto GitHub qui sotto.',
   'privacy.serviceTitle': 'Cosa invia una visita',
   'privacy.service':
-    'Il browser invia a Netlify l’indirizzo richiesto, l’indirizzo IP, informazioni sul browser e i cookie pertinenti per consegnare le pagine e applicare il limite agli spoiler. Le richieste restano su questo sito; font e disegni sono ospitati qui. L’applicazione non usa account utente, pubblicità, analytics o profilazione.',
+    'Il browser invia a Cloudflare l’indirizzo richiesto, l’indirizzo IP, informazioni sul browser e i cookie pertinenti per consegnare le pagine e applicare il limite agli spoiler. Le richieste restano su questo sito; font e disegni sono ospitati qui. L’applicazione non usa account utente, pubblicità, analytics o profilazione.',
   'privacy.cookiesTitle': 'Cookie tecnici e memoria del browser',
   'privacy.cookiesIntro':
     'Questi cookie di prima parte servono alle funzioni che richiedi. Non sono usati per pubblicità o tracciamento tra siti. Le regole italiane sui cookie tecnici necessari non richiedono un banner di consenso per questi usi.',
@@ -240,11 +240,11 @@ export const itDictionary: Dictionary = {
     'Puoi cancellare il segnalibro dalla sua finestra e rimuovere cookie e memoria del sito dalle impostazioni del browser. Bloccarli impedisce di ricordare le preferenze; senza segnalibro vedi la vista introduttiva. Non ci sono cookie di tracciamento facoltativi da accettare o rifiutare.',
   'privacy.hostingTitle': 'Hosting, log e trasferimenti',
   'privacy.hosting':
-    'Netlify, Inc. ospita e consegna il sito tramite la propria CDN e funzioni server. La regione configurata delle funzioni è us-east-2 (Ohio, Stati Uniti): le richieste vengono quindi trattate fuori dallo SEE. La configurazione verificata non ha istanze Analytics o Identity, database, snippet aggiunti, moduli o servizi aggiuntivi.',
+    'Cloudflare, Inc. ospita e consegna il sito tramite la propria rete e Cloudflare Workers. Ogni richiesta viene gestita in un data center Cloudflare, di solito vicino a te, che può trovarsi fuori dallo SEE. Cloudflare è una società statunitense, quindi i dati possono essere trasferiti negli Stati Uniti. Il sito non usa database, archiviazione di file, analytics o moduli di Cloudflare. Finché non viene spento, il vecchio indirizzo one-piece-zero-spoiler.netlify.app è ancora servito da Netlify, Inc., le cui funzioni girano in Ohio, negli Stati Uniti.',
   'privacy.logs':
-    'Netlify conserva log dell’attività delle funzioni: la documentazione indica almeno 24 ore, con durate maggiori per alcuni piani. Non è un limite massimo verificato per questo sito né per i log di traffico e sicurezza. Il periodo completo di conservazione del fornitore è ancora da verificare. L’assenza di analytics non significa assenza di trattamento di dati personali.',
+    'Workers Logs è disattivato, quindi l’account Cloudflare del sito non conserva un log delle richieste. Cloudflare tratta comunque i dati delle richieste sulla propria rete per la sicurezza e per metriche aggregate sul traffico; per quanto tempo li conservi non è verificato per questo sito. Sul vecchio indirizzo Netlify conserva i log dell’attività delle funzioni per almeno 24 ore, più a lungo con alcuni piani. L’assenza di analytics non significa assenza di trattamento di dati personali.',
   'privacy.terms':
-    'L’accordo sul trattamento dei dati pubblicato da Netlify fa parte dei suoi termini standard di abbonamento, descrive il ruolo di responsabile e i subfornitori e prevede il Data Privacy Framework UE–USA con clausole contrattuali standard come alternativa. Sono i termini pubblicati dal fornitore; restano da confermare i dettagli contrattuali del sito e le modalità complete di conservazione.',
+    'L’accordo sul trattamento dei dati pubblicato da Cloudflare fa parte dei suoi termini di abbonamento. Descrive Cloudflare come responsabile del trattamento e i suoi subfornitori, e si basa sul Data Privacy Framework UE–USA, con clausole contrattuali standard se la certificazione decade. I termini pubblicati da Netlify valgono allo stesso modo per il vecchio indirizzo. Sono i termini pubblicati dai fornitori; restano da confermare i dettagli contrattuali del sito e le modalità complete di conservazione.',
   'privacy.basesTitle': 'Finalità e basi giuridiche',
   'privacy.bases':
     'Le finalità sono consegnare le pagine richieste, applicare il limite agli spoiler, ricordare le tue scelte e mantenere il sito funzionante e sicuro. La base è il legittimo interesse a fornire questo servizio limitato (articolo 6(1)(f) GDPR); l’applicazione non aggiunge cronologie dei visitatori o profilazione per questi scopi. Le richieste applicabili sui diritti sono gestite per adempiere agli obblighi di legge (articolo 6(1)(c)). L’esenzione dal consenso per i cookie tecnici è distinta da queste basi GDPR. Puoi opporti come descritto sotto.',
@@ -256,6 +256,8 @@ export const itDictionary: Dictionary = {
     'Per un primo contatto sulla privacy apri una issue GitHub senza dati personali o riservati. Le issue sono pubbliche e richiedono un account. Non inserire indirizzi IP, valori dei cookie o documenti di identità. Concorderemo un canale riservato prima di discutere dati personali. GitHub tratta le informazioni che inserisci lì secondo la propria informativa privacy.',
   'privacy.sourcesTitle': 'Fonti e verifica',
   'privacy.garante': 'Garante: linee guida su cookie e tracciamento',
+  'privacy.cloudflareLogs': 'Cloudflare: Workers Logs e conservazione',
+  'privacy.cloudflareTerms': 'Cloudflare: accordo sul trattamento dei dati',
   'privacy.netlifyLogs': 'Netlify: log delle funzioni e conservazione',
   'privacy.netlifyTerms': 'Netlify: accordo sul trattamento e subfornitori',
   'privacy.audit': 'Verifica tecnica e controlli da completare',

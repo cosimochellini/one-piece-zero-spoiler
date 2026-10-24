@@ -5,6 +5,7 @@ coverage
 .output
 .nitro
 .netlify
+.wrangler
 .gate
 package-lock.json
 # Vendored agent skills. skills-lock.json pins their content hash, so

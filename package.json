@@ -14,6 +14,7 @@
     "art:shots": "node scripts/art-shots.mjs",
     "build": "vite build",
     "check": "npm run typecheck && npm run lint && npm run format:check && npm run gate:docs && npm run test && npm run build && npm run gate:react-doctor && npm run gate:fallow && npm run gate:archive",
+    "deploy": "npm run build && wrangler deploy",
     "dev": "vite dev",
     "docs:chronicle": "node scripts/chronicle-verification.mjs",
     "docs:counts": "node scripts/archive-counts.mjs",
@@ -50,6 +51,7 @@
     "sort-es": "1.7.18"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "1.65.0",
     "@commitlint/cli": "21.2.3",
     "@commitlint/config-conventional": "21.2.3",
     "@eslint-community/eslint-plugin-eslint-comments": "4.8.1",
@@ -101,7 +103,8 @@
     "typescript": "6.0.3",
     "typescript-eslint": "8.71.2",
     "vite": "8.3.4",
-    "vitest": "5.0.4"
+    "vitest": "5.0.4",
+    "wrangler": "4.152.0"
   },
   "packageManager": "npm@12.2.0",
   "engines": {

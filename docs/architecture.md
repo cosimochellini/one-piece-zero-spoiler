@@ -213,7 +213,7 @@ read its numbers as coordinates and check the 160×200 bounds.
 | Tests     | Vitest 5.0.4, jsdom, Testing Library                     |
 | Lint      | ESLint 10 flat config, over a thousand rules, type-aware |
 | Gates     | react-doctor 0.9.18, fallow 3.33.1                       |
-| Host      | Netlify, SSR function plus CDN assets                    |
+| Host      | Cloudflare Workers, SSR Worker plus static assets        |
 | Runtime   | Node 24.21.0, npm 12.2.0                                 |
 
 Six runtime dependencies. Every version is pinned exactly, with no ranges and
@@ -320,9 +320,8 @@ banned phrase in either language.
 - A per-request nonce Content Security Policy, `default-src 'self'`,
   `object-src 'none'`, `frame-ancestors 'none'`, plus HSTS, Referrer-Policy and
   Permissions-Policy.
-- The headers are set in the app, not in `netlify.toml`, because Netlify does
-  not apply file headers to responses from a function, and every document here
-  is rendered by one.
+- The headers are set in the app, not in `public/_headers`, because that file
+  reaches static files only, and every document here is rendered by the server.
 - In CI the pull request title reaches the validator through the environment,
   never through template interpolation, because anyone opening a pull request
   controls the title.
@@ -390,6 +389,11 @@ tapped a link a friend sent. The list is in `src/lib/crawler.ts`.
   responses vary by cookie and are never stored in a shared cache.
 
 ### Server time
+
+The site moved from Netlify to a Cloudflare Worker on `zerospoiler.app` (#727).
+The figures below were taken on Netlify, whose function ran in Ohio; a Worker
+runs in the data centre nearest the reader, so the fixed hop they describe is
+not the floor any more. The render costs are the same code and still hold.
 
 Measured on 2026-10-15 from Italy with the `Server-Timing` header every response
 carries (`app;dur=…`, the time inside the function until the response exists,

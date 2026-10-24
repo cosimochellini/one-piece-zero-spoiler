@@ -216,13 +216,13 @@ export const enDictionary = {
   'credits.noOpenLicense': 'No open-content permission established.',
 
   'privacy.title': 'Privacy and cookies',
-  'privacy.updated': 'Last checked: 20 October 2026.',
+  'privacy.updated': 'Last checked: 24 October 2026.',
   'privacy.controllerTitle': 'Who runs the site',
   'privacy.controller':
     'Zero Spoiler is a personal, nonprofit fan project. Its operator and data controller is a private individual based in Italy, reachable as @cosimochellini on GitHub. Use the GitHub contact link below for an initial request.',
   'privacy.serviceTitle': 'What a visit sends',
   'privacy.service':
-    'Your browser sends Netlify the requested address, IP address, browser information and applicable cookies to deliver pages and apply your spoiler boundary. Requests stay on this site; fonts and drawings are hosted here. There are no user accounts, advertising, analytics or profiling in the application.',
+    'Your browser sends Cloudflare the requested address, IP address, browser information and applicable cookies to deliver pages and apply your spoiler boundary. Requests stay on this site; fonts and drawings are hosted here. There are no user accounts, advertising, analytics or profiling in the application.',
   'privacy.cookiesTitle': 'Technical cookies and browser storage',
   'privacy.cookiesIntro':
     'These first-party cookies support features you request. They are not used for advertising or tracking across sites. They do not require a consent banner under the Italian rules for necessary technical cookies.',
@@ -241,11 +241,11 @@ export const enDictionary = {
     'You can clear the bookmark in its dialog and remove cookies and site storage in your browser settings. Blocking them prevents the site from remembering your preferences; without a bookmark you see the introductory view. There are no optional tracking cookies to accept or reject.',
   'privacy.hostingTitle': 'Hosting, logs and transfers',
   'privacy.hosting':
-    'Netlify, Inc. hosts and delivers the site using its CDN and server functions. The configured function region is us-east-2 (Ohio, United States), so requests are processed outside the EEA. The checked configuration has no Analytics or Identity instance, database, injected snippets, forms or service add-ons.',
+    'Cloudflare, Inc. hosts and delivers the site through its network and Cloudflare Workers. A request is handled in a Cloudflare data centre, usually one near you, which can be outside the EEA. Cloudflare is a US company, so data can be transferred to the United States. The site uses no Cloudflare database, file storage, analytics or forms. Until it is switched off, the old address one-piece-zero-spoiler.netlify.app is still served by Netlify, Inc., whose functions run in Ohio, United States.',
   'privacy.logs':
-    'Netlify retains function activity logs: its documentation specifies at least 24 hours, with longer retention on some plans. This is not a verified maximum for this site or for traffic and security logs. The complete provider retention period is still being verified. No analytics does not mean no personal data is processed.',
+    'Workers Logs is turned off, so no request log is stored in the site’s Cloudflare account. Cloudflare still processes request data on its network for security and for aggregate traffic metrics; how long it keeps that data is not verified for this site. On the old address, Netlify retains function activity logs for at least 24 hours, longer on some plans. No analytics does not mean no personal data is processed.',
   'privacy.terms':
-    'Netlify’s published Data Processing Agreement forms part of its standard subscription terms, describes its processor role and subprocessors, and provides for the EU–US Data Privacy Framework with standard contractual clauses as a fallback. These are the provider’s published terms; site-specific contractual details and the full retention arrangements remain to be confirmed.',
+    'Cloudflare’s published Data Processing Addendum forms part of its subscription terms. It describes Cloudflare as processor and its subprocessors, and relies on the EU–US Data Privacy Framework, with standard contractual clauses if that certification lapses. Netlify’s published terms work the same way for the old address. These are the providers’ published terms; site-specific contractual details and the full retention arrangements remain to be confirmed.',
   'privacy.basesTitle': 'Purposes and legal bases',
   'privacy.bases':
     'The purposes are delivering the pages you request, applying your spoiler boundary, remembering your choices and keeping the site operational and secure. The basis is the legitimate interest in providing this limited service (GDPR Article 6(1)(f)); the application adds no visitor history or profiling for these purposes. Applicable data-rights requests are handled to meet legal obligations (Article 6(1)(c)). The technical-cookie consent exemption is separate from these GDPR bases. You may object as described below.',
@@ -257,6 +257,8 @@ export const enDictionary = {
     'For an initial privacy contact request, open a GitHub issue without personal or confidential details. Issues are public and require an account. Do not include IP addresses, cookie values or identity documents. We will agree a private channel before discussing any personal details. GitHub processes information you submit there under its own privacy policy.',
   'privacy.sourcesTitle': 'Sources and verification',
   'privacy.garante': 'Italian Garante: cookies and tracking guidance',
+  'privacy.cloudflareLogs': 'Cloudflare: Workers Logs and retention',
+  'privacy.cloudflareTerms': 'Cloudflare: Data Processing Addendum',
   'privacy.netlifyLogs': 'Netlify: function logs and retention',
   'privacy.netlifyTerms': 'Netlify: DPA and subprocessors',
   'privacy.audit': 'Technical audit and outstanding checks',

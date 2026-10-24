@@ -25,7 +25,7 @@ body:
     attributes:
       label: Entry
       description: The page URL or the entry's name.
-      placeholder: https://one-piece-zero-spoiler.netlify.app/en/characters/...
+      placeholder: https://zerospoiler.app/one-piece/en/characters/...
     validations:
       required: true
   - type: input

@@ -67,7 +67,7 @@
   {
     "name": "area:ci",
     "color": "c5def5",
-    "description": "GitHub Actions, release and Netlify"
+    "description": "GitHub Actions, release and hosting"
   },
   {
     "name": "status:triage",

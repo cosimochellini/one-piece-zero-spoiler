@@ -97,9 +97,9 @@ export const Route = createRootRoute({
       : []),
     ],
   }),
-  // Netlify does not apply netlify.toml headers to function responses, and
-  // every document here is server-rendered by the SSR function, so the
-  // security headers have to be part of the response the app itself returns.
+  // public/_headers reaches static files only, and every document here is
+  // rendered by the server, so the security headers have to be part of the
+  // response the app itself returns.
   headers: ({ ssr }) => createSecurityHeaders(ssr?.nonce),
   component: RootComponent,
 })

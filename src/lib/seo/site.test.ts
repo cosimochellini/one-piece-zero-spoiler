@@ -34,7 +34,7 @@ describe('a configured origin', () => {
   it('refuses a value that is not an absolute https address', () => {
     const fallback = normaliseOrigin(undefined)
 
-    expect(normaliseOrigin('one-piece-zero-spoiler.netlify.app')).toBe(fallback)
+    expect(normaliseOrigin('zerospoiler.app')).toBe(fallback)
     expect(normaliseOrigin('//example.test')).toBe(fallback)
     expect(normaliseOrigin('/en')).toBe(fallback)
   })
