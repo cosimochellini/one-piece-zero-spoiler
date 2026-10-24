@@ -147,11 +147,11 @@ const WORST_CHUNKS = 5
  * keep each archive behind its own dynamic import. Raised for #754 on
  * 2026-10-24: the hub's stages (each series in its own theme, its straw-hat
  * drawing, the announced Hunter x Hunter card) and the shared footer's two
- * keys in both dictionaries. The measured client build is 665,988 bytes; the
+ * keys in both dictionaries. The measured client build is 666,753 bytes; the
  * ceiling retains 1 KB headroom. The hub sends counts and the reader's own
  * bookmarks only; no record, name or record drawing enters the client.
  */
-export const MAX_CLIENT_BYTES = 666_988
+export const MAX_CLIENT_BYTES = 667_753
 
 /** Where every series' folder is. */
 const SERIES_DIR = 'src/data/series'
