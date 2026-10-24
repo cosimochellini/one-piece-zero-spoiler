@@ -52,13 +52,11 @@ export interface LabelBox {
   y: number
 }
 
-/** A name's box at a scale, centred: off its point on its side. */
-export function labelBoxOf(
-  spot: NameSpot,
-  orientation: Orientation,
-  scale: number,
-): LabelBox {
-  const drawn = project(spot.at, orientation)
+/**
+ * A name's box with its point at the chart's corner: how far its middle
+ * stands off the point, and its size. Neither changes with the scale.
+ */
+function offsetOf(spot: NameSpot): LabelBox {
   const width = spot.length * LETTER + PAD
   const off: Record<Side, Point> = {
     above: { x: 0, y: -(GAP + LINE * HALF) },
@@ -70,55 +68,44 @@ export function labelBoxOf(
   const by = spot.side === null ? { x: 0, y: 0 } : off[spot.side]
 
   return {
-    x: drawn.x * scale + by.x,
-    y: drawn.y * scale + by.y,
+    x: by.x,
+    y: by.y,
     width: spot.upright === true ? LINE : width,
     height: spot.upright === true ? width : LINE,
   }
 }
 
-function overlap(a: LabelBox, b: LabelBox): boolean {
+/** A name's box at a scale, centred: off its point on its side. */
+export function labelBoxOf(
+  spot: NameSpot,
+  orientation: Orientation,
+  scale: number,
+): LabelBox {
+  const drawn = project(spot.at, orientation)
+  const box = offsetOf(spot)
+
+  return { ...box, x: drawn.x * scale + box.x, y: drawn.y * scale + box.y }
+}
+
+/**
+ * Something a name must stay clear of, worked out once for every scale: its
+ * point as drawn, and its box off that point.
+ */
+interface Obstacle {
+  box: LabelBox
+  drawn: Point
+}
+
+/** A stop's dot, as an obstacle, centred on its point. */
+const DOT_BOX: LabelBox = { x: 0, y: 0, width: DOT, height: DOT }
+
+/** Whether two obstacles' boxes overlap at a scale. */
+function overlapAt(a: Obstacle, b: Obstacle, scale: number): boolean {
   return (
-    Math.abs(a.x - b.x) < (a.width + b.width) * HALF
-    && Math.abs(a.y - b.y) < (a.height + b.height) * HALF
-  )
-}
-
-/** Whether a name's box at a scale runs over another stop's dot. */
-function onADot(
-  spot: NameSpot,
-  dots: Point[],
-  { orientation, scale }: { orientation: Orientation; scale: number },
-): boolean {
-  const box = labelBoxOf(spot, orientation, scale)
-
-  return dots.some((dot) => {
-    const drawn = project(dot, orientation)
-    const own = dot.x === spot.at.x && dot.y === spot.at.y
-    return (
-      !own
-      && overlap(box, {
-        x: drawn.x * scale,
-        y: drawn.y * scale,
-        width: DOT,
-        height: DOT,
-      })
-    )
-  })
-}
-
-/** Whether a name's box at a scale runs over a name before it, shown there. */
-function onAName(
-  spot: NameSpot,
-  before: { from: number; spot: NameSpot }[],
-  { orientation, scale }: { orientation: Orientation; scale: number },
-): boolean {
-  const box = labelBoxOf(spot, orientation, scale)
-
-  return before.some(
-    (other) =>
-      other.from <= scale
-      && overlap(box, labelBoxOf(other.spot, orientation, scale)),
+    Math.abs(a.drawn.x * scale + a.box.x - (b.drawn.x * scale + b.box.x))
+      < (a.box.width + b.box.width) * HALF
+    && Math.abs(a.drawn.y * scale + a.box.y - (b.drawn.y * scale + b.box.y))
+      < (a.box.height + b.box.height) * HALF
   )
 }
 
@@ -126,40 +113,61 @@ function onAName(
  * The least scale each name shows from, in the order given, which is the
  * order of priority: a name gives way to every name before it and to every
  * dot. `Infinity` for a name that never fits.
+ *
+ * Every box is its drawn point times the scale plus a fixed offset, so the
+ * points and offsets are worked out once and each scale is arithmetic only
+ * (#779).
  */
 export function scalesOf(
   spots: NameSpot[],
   dots: Point[],
   orientation: Orientation,
 ): number[] {
-  const placed: { from: number; spot: NameSpot }[] = []
-  for (const spot of spots) {
-    placed.push({ from: leastFor(spot, { dots, orientation, placed }), spot })
+  const names = spots.map((spot) => ({
+    box: offsetOf(spot),
+    drawn: project(spot.at, orientation),
+    spot,
+  }))
+  const marks = dots.map((dot) => ({
+    at: dot,
+    box: DOT_BOX,
+    drawn: project(dot, orientation),
+  }))
+  const placed: { from: number; name: Obstacle }[] = []
+  for (const name of names) {
+    const { x, y } = name.spot.at
+    const others = marks.filter((mark) => mark.at.x !== x || mark.at.y !== y)
+    placed.push({ from: leastFor(name, { others, placed }), name })
   }
 
   return placed.map(({ from }) => from)
 }
 
-/** The least scale one name stands clear from, past every clash. */
+/** The scales tried, the closest zoom first. */
+const DOWNWARD = SCALES.toReversed()
+
+/**
+ * The least scale one name stands clear from: the step past its last clash
+ * with another stop's dot or a name before it, shown there.
+ */
 function leastFor(
-  spot: NameSpot,
+  name: Obstacle,
   {
-    dots,
-    orientation,
+    others,
     placed,
-  }: {
-    dots: Point[]
-    orientation: Orientation
-    placed: { from: number; spot: NameSpot }[]
-  },
+  }: { others: Obstacle[]; placed: { from: number; name: Obstacle }[] },
 ): number {
-  let from = LEAST
-  for (const scale of SCALES) {
-    const at = { orientation, scale }
-    if (onADot(spot, dots, at) || onAName(spot, placed, at)) {
-      from = scale * STEP
+  for (const scale of DOWNWARD) {
+    const clash =
+      others.some((dot) => overlapAt(name, dot, scale))
+      || placed.some(
+        (other) => other.from <= scale && overlapAt(name, other.name, scale),
+      )
+    if (clash) {
+      const from = scale * STEP
+      return from > MOST ? Infinity : from
     }
   }
 
-  return from > MOST ? Infinity : from
+  return LEAST
 }

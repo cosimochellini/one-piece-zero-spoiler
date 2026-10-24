@@ -182,10 +182,13 @@ export function namesOf(
     ordered: claimOrder(open, here),
     placed: placeSagas(open, sagas),
   }
-  const dots = open.map((port) => pointOf(port))
+  const scales = scalesEachWay(
+    claims,
+    open.map((port) => pointOf(port)),
+  )
   const lead = here === null ? 0 : 1
-  const wide = scalesOf(spotsOf(claims, 'across'), dots, 'across').slice(lead)
-  const tall = scalesOf(spotsOf(claims, 'down'), dots, 'down').slice(lead)
+  const wide = scales.across.slice(lead)
+  const tall = scales.down.slice(lead)
   const from = (index: number): ShowsFrom => ({
     across: wide[index] ?? Infinity,
     down: tall[index] ?? Infinity,
@@ -207,6 +210,44 @@ export function namesOf(
       title: saga.title,
     })),
   }
+}
+
+/** How many placements are kept: a few bookmarks in each language. */
+const KEPT = 64
+/** Placements by every name's spot and every dot, least recently used first. */
+const placements = new Map<string, Record<Orientation, number[]>>()
+
+/**
+ * The least scale every name shows from, each way up. Placing the names is
+ * the chart's costliest step and the same names at the same points always
+ * place the same way, so a placement is kept by exactly what it reads: each
+ * name's point, length and side, and each dot (#779). A page at a bookmark
+ * placed before skips it.
+ */
+function scalesEachWay(
+  claims: Claims,
+  dots: Point[],
+): Record<Orientation, number[]> {
+  const wide = spotsOf(claims, 'across')
+  const tall = spotsOf(claims, 'down')
+  const key = JSON.stringify([wide, tall, dots])
+  const kept = placements.get(key)
+  if (kept !== undefined) {
+    placements.delete(key)
+    placements.set(key, kept)
+    return kept
+  }
+
+  const scales = {
+    across: scalesOf(wide, dots, 'across'),
+    down: scalesOf(tall, dots, 'down'),
+  }
+  placements.set(key, scales)
+  if (placements.size > KEPT) {
+    placements.delete(placements.keys().next().value ?? key)
+  }
+
+  return scales
 }
 
 /** The points of the open stops filed under a saga. */

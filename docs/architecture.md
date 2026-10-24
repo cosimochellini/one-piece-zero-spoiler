@@ -379,6 +379,12 @@ tapped a link a friend sent. The list is in `src/lib/crawler.ts`.
   phone with the CPU slowed four times, layout, style and paint took 503 → 159
   ms on `/one-piece/en/characters`, 376 → 193 ms on `/one-piece/en/places` and
   194 → 167 ms on `/one-piece/en/fruits` (#621).
+- The sea chart works out the scale each name shows from once per set of names.
+  Each name's drawn point and box offset are found first, so every scale is
+  plain arithmetic, and the result is kept for up to 64 sets of names and dots
+  in a module-level cache, so a warm Worker skips it. A search or a pick only
+  relights the stops. Locally, `/one-piece/en/places` at episode 1150 went from
+  about 14.5 to 8.5 ms of CPU (#779).
 - Search runs on names folded once by the server, so a keystroke costs one
   folded query and a few hundred `indexOf` calls. The list below the field is
   deferred; the field itself never is.
