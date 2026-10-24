@@ -17,7 +17,7 @@ export const OTHER_BOOKMARK: BookmarkSeries = {
   trialCookie: 'zs_other-series_try',
 }
 
-export const OTHER_PLACE_WORDS: PlaceWords = {
+const OTHER_PLACE_WORDS: PlaceWords = {
   chart: false,
   region: { en: 'Continent', it: 'Continente' },
   allRegions: { en: 'All continents', it: 'Tutti i continenti' },
