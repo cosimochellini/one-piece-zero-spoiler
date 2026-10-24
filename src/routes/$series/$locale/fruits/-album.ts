@@ -4,6 +4,7 @@ import { useEffect, useRef, useSyncExternalStore } from 'react'
 
 import type { Album } from '~/components/SpecimenBands'
 import type { Locale } from '~/i18n/locales'
+import { readPlain } from '~/lib/plain'
 import { useBookmark, useSeriesParams } from '~/lib/progress/BookmarkContext'
 import { serialiseBookmark } from '~/lib/progress/episode'
 import { loadFruitAlbum } from '~/server/api'
@@ -59,7 +60,7 @@ function notify(): void {
  */
 async function fetchAlbum(data: Asked, wanted?: string): Promise<void> {
   try {
-    const { at, ...album } = await loadFruitAlbum({ data })
+    const { at, ...album } = await readPlain(await loadFruitAlbum({ data }))
     albums.set(keyOf(data.series, data.locale, at), album)
   } catch {
     // Filed as failed below.

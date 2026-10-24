@@ -172,8 +172,13 @@ const WORST_CHUNKS = 5
  * hydrated, with the shelves' scroll-back hook moved to share. The measured
  * client build is 672,689 bytes; the ceiling retains 1 KB headroom. The
  * index's data was in the payload already; nothing new reaches the client.
+ * Raised for #780 on 2026-10-24: the fruit album and the deferred drawings
+ * are read back from plain JSON, and a failed response rejects as a failed
+ * call. The measured client build is 672,771 bytes; the ceiling retains 1 KB
+ * headroom. The payloads are the server's, unchanged; nothing new reaches the
+ * client.
  */
-export const MAX_CLIENT_BYTES = 673_689
+export const MAX_CLIENT_BYTES = 673_771
 
 /** Where every series' folder is. */
 const SERIES_DIR = 'src/data/series'

@@ -368,12 +368,17 @@ tapped a link a friend sent. The list is in `src/lib/crawler.ts`.
   KB, and the shelves call from 6.5 ms and 296 KB to 2.1 ms and 145 KB (#776).
   Search engines read the record pages, not the shelves, and a reader with
   scripting off sees the main characters only, and past the first ten of them an
-  empty seal where the drawing would be (#777). The landing page (East Blue
-  under the dial for a visitor with no bookmark, the reader's arc and its
-  stories for one with a bookmark), the places chart and a character page are
-  awaited instead: they are the page, and a reader with scripting off should get
-  them in full. The places index under the chart is not: it follows once the
-  page has hydrated (#781, below).
+  empty seal where the drawing would be (#777). The fruit album and the call for
+  deferred drawings answer plain JSON the same way (#780): at episode 1150 the
+  album went from 3.3 ms and 182 KB to 1.2 ms and 96 KB, and 64 drawings from
+  1.4 ms and 106 KB to 0.3 ms and 64 KB. Every payload sent this way must read
+  back whole from `JSON.stringify`, and `payloads.test.ts` checks that for each
+  one; a test there fails if a `plain(` call in `src/server/api.ts` is left out
+  of that check. The landing page (East Blue under the dial for a visitor with
+  no bookmark, the reader's arc and its stories for one with a bookmark), the
+  places chart and a character page are awaited instead: they are the page, and
+  a reader with scripting off should get them in full. The places index under
+  the chart is not: it follows once the page has hydrated (#781, below).
 - The fruits page's HTML stops at the saga marquee and the control bar: the
   server sends the marquee's fruits, each plate's counts and the number filed
   (`loadFruits`). The plates and the saga and faction groups are a second server
