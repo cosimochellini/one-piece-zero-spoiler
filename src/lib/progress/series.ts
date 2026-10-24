@@ -85,9 +85,7 @@ export function seriesForPath(pathname: string): BookmarkSeries | null {
       return ONE_PIECE_BOOKMARK
     }
     default: {
-      return (
-          RECORD_PAGE.test(page) && parts.length <= 1 && !parts.includes('')
-        ) ?
+      return RECORD_PAGE.test(page) && parts.length <= 1 && parts[0] !== '' ?
           ONE_PIECE_BOOKMARK
         : null
     }

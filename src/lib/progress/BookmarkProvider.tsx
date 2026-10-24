@@ -18,21 +18,6 @@ import { BookmarkContext, type BookmarkContextValue } from './BookmarkContext'
 import { type Bookmark, serialiseBookmark } from './episode'
 import type { BookmarkSeries } from './series'
 
-/** Site-wide pages have no bookmark to save, try or clear. */
-function noBookmark(): void {
-  // The route selects no series.
-}
-
-const NO_SERIES: BookmarkContextValue = {
-  series: null,
-  bookmark: null,
-  trial: false,
-  pending: false,
-  enterTrial: noBookmark,
-  leaveTrial: noBookmark,
-  setBookmark: noBookmark,
-}
-
 /**
  * One bookmark is held for the whole document, so every veil on the page
  * opens and closes together rather than each reading the cookie for itself.
@@ -67,18 +52,11 @@ export interface BookmarkProviderProps {
  * exports a component and nothing else and Vite can refresh it in place.
  */
 export function BookmarkProvider(props: BookmarkProviderProps): ReactElement {
-  // The series and bookmark arrive together; a pending URL must not seed a
-  // new series' state with the previous route's bookmark.
-  const { series } = props
-  if (series === null) {
-    return <BookmarkContext value={NO_SERIES}>{props.children}</BookmarkContext>
-  }
-
+  // The series and bookmark arrive together from the resolved route.
   return (
     <SeriesBookmarkProvider
-      key={series.slug}
+      key={props.series?.slug}
       {...props}
-      series={series}
     />
   )
 }
@@ -89,17 +67,21 @@ function SeriesBookmarkProvider({
   initialTrial = false,
   children,
   series,
-}: BookmarkProviderProps & { series: BookmarkSeries }): ReactElement {
+}: BookmarkProviderProps): ReactElement {
   const router = useRouter()
   // The point and whether it is a trial move together, in one update.
-  const [stored, setStored] = useState<{ bookmark: Bookmark; trial: boolean }>({
-    bookmark: initialBookmark,
-    trial: initialTrial,
-  })
+  const [stored, setStored] = useState<{ bookmark: Bookmark; trial: boolean }>(
+    series === null ?
+      { bookmark: null, trial: false }
+    : { bookmark: initialBookmark, trial: initialTrial },
+  )
   const [pending, startTransition] = useTransition()
 
   const setBookmark = useCallback(
     (next: Bookmark) => {
+      if (series === null) {
+        return
+      }
       // The cookie first, and outside the transition. `invalidate` re-runs
       // every loader, and the server functions they call read this cookie out
       // of the request the browser is about to send; written after, they would
@@ -125,6 +107,9 @@ function SeriesBookmarkProvider({
   // goes, since a page preloaded before the trial was read with no cookie.
   const enterTrial = useCallback(
     (point: NonNullable<Bookmark>) => {
+      if (series === null) {
+        return
+      }
       writeCookie(series.trialCookie, serialiseBookmark(point))
       router.clearCache()
       startTransition(() => {
@@ -135,6 +120,9 @@ function SeriesBookmarkProvider({
   )
 
   const leaveTrial = useCallback(() => {
+    if (series === null) {
+      return
+    }
     expireCookie(series.trialCookie)
     startTransition(async () => {
       setStored({ bookmark: null, trial: false })

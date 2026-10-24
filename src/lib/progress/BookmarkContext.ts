@@ -3,7 +3,7 @@ import { createContext, use, useCallback } from 'react'
 import { useT } from '~/i18n/LocaleContext'
 
 import { type Bookmark, modeOf } from './episode'
-import type { BookmarkSeries } from './series'
+import { type BookmarkSeries, ONE_PIECE_BOOKMARK } from './series'
 import type { Gated } from './spoiler'
 import { describeThreshold, type ThresholdSentence } from './threshold'
 
@@ -65,7 +65,7 @@ export function useThreshold(): (
         mode,
         sentence,
         t,
-        ...(series !== null && { series }),
+        series: series ?? ONE_PIECE_BOOKMARK,
       }),
     [t, mode, series],
   )
