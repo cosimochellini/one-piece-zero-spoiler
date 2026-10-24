@@ -58,8 +58,10 @@ parameters are consumed. `/<series>` negotiates the language and answers 302.
 
 The hub (`src/components/SeriesHub.tsx`) gives each series a card in its own
 theme: its name, a drawing of the series' own
-(`src/components/seriesEmblems.ts`, which shares no line with a record drawing),
-its count of entries and the reader's saved bookmark on it. `loadHub` in
+(`src/components/seriesEmblems.ts`, which shares no line with a record drawing
+but the common sea waves), its count of entries and the reader's saved bookmark
+on it. The count is of the records the reader's source tells, and of the records
+both sources tell for a reader with no bookmark. `loadHub` in
 `src/server/series.ts` loads each archive only to count it, and `hubFor` reads
 each series' saved cookie; a trial or a crawler shows no bookmark there. A
 series announced but not yet in the registry is a hard-coded name with no link

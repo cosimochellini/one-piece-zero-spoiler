@@ -56,7 +56,7 @@ describe('SeriesHub', () => {
     const coming = screen.getByRole('heading', { name: 'Hunter x Hunter' })
 
     expect(coming.closest('a')).not.toBeInTheDocument()
-    expect(coming.parentElement).toHaveTextContent('Not open yet')
+    expect(coming.parentElement).toHaveTextContent('Coming later')
     expect(screen.getAllByText(/entries/u)).toHaveLength(1)
     expect(screen.getAllByRole('link')).toHaveLength(1)
   })

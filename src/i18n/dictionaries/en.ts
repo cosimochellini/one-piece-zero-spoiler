@@ -27,7 +27,7 @@ export const enDictionary = {
     'One wiki per series, each with its own bookmark. Entries past your bookmark stay under fog.',
   'hub.count': '{count} entries',
   'hub.noBookmark': 'No bookmark yet',
-  'hub.coming': 'Not open yet',
+  'hub.coming': 'Coming later',
   'seo.imageAlt':
     'The Zero Spoiler card: the logo above a route that disappears into fog.',
 
