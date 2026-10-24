@@ -1,6 +1,7 @@
+import type { ReaderArchive } from '~/data/features'
 import { orderByMode } from '~/data/order'
 import { toldIn } from '~/data/reveal'
-import type { LocalizedText, SeriesArchive } from '~/data/types'
+import type { LocalizedText } from '~/data/types'
 import type { SagaRow, SagaTable } from '~/lib/progress/sagaLabel'
 import { type Source, thresholdIn } from '~/lib/progress/spoiler'
 
@@ -18,7 +19,7 @@ export interface SagaStart {
   name: LocalizedText
 }
 const cached = new WeakMap<
-  SeriesArchive,
+  ReaderArchive,
   { chapter: SagaStart[]; episode: SagaStart[]; filler: SagaTable['filler'] }
 >()
 

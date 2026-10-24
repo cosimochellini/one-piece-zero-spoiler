@@ -92,6 +92,53 @@ export const ONE_PIECE_SERIES: Series = {
   features: { bounty: true, factions: true, filler: true, fruits: true },
 }
 
+/**
+ * Hunter x Hunter's form ranges, from the 2011 anime (148 episodes, finished)
+ * and the manga. The chapter ceiling sits a little above chapter 420, the
+ * latest published (7 September 2026, Weekly Shōnen Jump No. 41, as the
+ * English Hunter x Hunter Wiki lists it): a form range, raised when new
+ * chapters come out. The demo is the Hunter Exam, Zoldyck Family included:
+ * episodes 1–26 of 2011 and chapters 1–43 (owner, 2026-10-24).
+ *
+ * The seasons are Netflix Italia's split of the 2011 anime, read from the
+ * public title page (netflix.com/it/title/70300472) on 24 October 2026: six
+ * seasons, starting at episodes 1, 27, 39, 59, 76 and 137. Crunchyroll splits
+ * it differently; the Italian catalogue is the one a reader here counts in
+ * (owner, 2026-10-24).
+ */
+const HUNTER_X_HUNTER_BOOKMARK: BookmarkSeries = {
+  slug: 'hunter-x-hunter',
+  cookie: 'zs_hunter-x-hunter',
+  trialCookie: 'zs_hunter-x-hunter_try',
+  episodeCeiling: 148,
+  chapterCeiling: 430,
+  demoLastEpisode: 26,
+  demoLastChapter: 43,
+  seasons: [
+    { number: 1, first: 1, last: 26 },
+    { number: 2, first: 27, last: 38 },
+    { number: 3, first: 39, last: 58 },
+    { number: 4, first: 59, last: 75 },
+    { number: 5, first: 76, last: 136 },
+    { number: 6, first: 137, last: 148 },
+  ],
+}
+
+/**
+ * Hunter x Hunter's public description. No bounty, no factions, no devil
+ * fruits and no filler guide: those are One Piece's (owner, 2026-10-23). The
+ * kinds are the ones it launches with; Nen abilities come later, as a field
+ * of the character.
+ */
+export const HUNTER_X_HUNTER_SERIES: Series = {
+  ...HUNTER_X_HUNTER_BOOKMARK,
+  name: { en: 'Hunter x Hunter', it: 'Hunter x Hunter' },
+  theme: 'hunter-x-hunter',
+  units: ['episode', 'season', 'chapter'],
+  kinds: ['arc', 'character', 'place'],
+  features: { bounty: false, factions: false, filler: false, fruits: false },
+}
+
 const RECORD_PAGE = /^(?:characters|fruits|places)$/u
 
 /** Only an archive index, record or filler page carries a bookmark. */

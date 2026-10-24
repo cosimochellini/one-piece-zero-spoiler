@@ -1,5 +1,5 @@
 import { fishManIslandChronicles } from './fish-man-island.chronicle'
-import type { Saga } from './saga'
+import type { OnePieceSaga } from './saga'
 
 /**
  * The Fish-Man Island saga, episodes 517 to 574: two years later, ten
@@ -25,7 +25,7 @@ const NEW_FISH_MAN_OFFICER = {
   en: 'New Fish-Man Pirates, officer',
 }
 
-export const fishManIsland: Saga = {
+export const fishManIsland: OnePieceSaga = {
   name: {
     it: 'Saga dell’Isola degli Uomini-Pesce',
     en: 'Fish-Man Island Saga',

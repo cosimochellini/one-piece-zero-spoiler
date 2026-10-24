@@ -33,6 +33,10 @@ describe('the table of one series', () => {
         drawings: { a: [], b: [] },
         entities: [owner, { kind: 'fruit' }],
         sagas: [{}],
+        series: {
+          features: { fruits: true },
+          kinds: ['arc', 'character', 'fruit', 'place', 'ship'],
+        },
         timelines: [
           { field: 'redrawing', timeline: [1, 2] },
           { field: 'chronicle', timeline: [1] },
@@ -47,5 +51,26 @@ describe('the table of one series', () => {
       '| Line drawings | 2, one per record, plus 2 redrawings of 1 records |',
     )
     expect(table).toContain('| Chronicle stories | 1, for 1 characters |')
+    expect(table).toContain('| Devil fruits | 1 |')
+    expect(table).toContain('| Arcs, places, ships | 0 · 0 · 0 |')
+  })
+
+  it('leaves out the kinds and features a series does not have', () => {
+    const table = countTable({
+      archive: {
+        drawings: { a: [] },
+        entities: [{ kind: 'arc' }],
+        sagas: [{}],
+        series: {
+          features: { fruits: false },
+          kinds: ['arc', 'character', 'place'],
+        },
+        timelines: [],
+      },
+    })
+
+    expect(table).not.toContain('Devil fruits')
+    expect(table).toContain('| Arcs, places | 1 · 0 |')
+    expect(table).toContain('| Saga modules | 1 |')
   })
 })

@@ -1,4 +1,4 @@
-import { type ListedSeries, SERIES } from '~/data/series'
+import { filedArchiveOf, type ListedSeries, SERIES } from '~/data/series'
 import type { SeriesArchive } from '~/data/types'
 import type { Bookmark } from '~/lib/progress/episode'
 
@@ -10,7 +10,7 @@ export interface LoadedSeries extends ListedSeries {
 
 export const LOADED_SERIES: LoadedSeries[] = await Promise.all(
   SERIES.map(async (entry) => {
-    const archive = await entry.load()
+    const archive = await filedArchiveOf(entry.slug)
     return { ...entry, archive, bookmarks: archive.bookmarks }
   }),
 )

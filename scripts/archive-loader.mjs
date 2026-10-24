@@ -102,7 +102,7 @@ export function importArchive(module) {
 
 /**
  * One series of `src/data/series/index.ts`, as a script reads it.
- * @typedef {{ slug: string, folder: string, archive: { entities: { id: string, kind: string }[] }, wiki: { en: string, it: string } }} Series
+ * @typedef {{ slug: string, folder: string, archive: { entities: { id: string, kind: string }[], series: { chapterCeiling: number } }, wiki: { en: string, it: string } }} Series
  */
 
 /**
@@ -116,7 +116,7 @@ export async function seriesFrom(args) {
     args,
     options: { series: { type: 'string', default: 'one-piece' } },
   })
-  const { SERIES } = await importArchive('data/series/index.ts')
+  const { SERIES, filedArchiveOf } = await importArchive('data/series/index.ts')
   const series = SERIES.find(({ slug }) => slug === values.series)
   if (series === undefined) {
     const known = SERIES.map(({ slug }) => slug).join(', ')
@@ -125,7 +125,7 @@ export async function seriesFrom(args) {
     )
   }
 
-  return { ...series, archive: await series.load() }
+  return { ...series, archive: await filedArchiveOf(series.slug) }
 }
 
 /**

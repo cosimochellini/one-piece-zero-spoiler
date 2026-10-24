@@ -1,12 +1,13 @@
-import { archiveOf, SERIES } from '~/data/series'
+import type { ReaderArchive } from '~/data/features'
+import { archiveOf, OPEN_SERIES } from '~/data/series'
 import { archiveIn } from '~/data/source'
-import type { Entity, SeriesArchive } from '~/data/types'
+import type { Entity } from '~/data/types'
 import { LOCALES } from '~/i18n/locales'
 import { localeAlternates } from '~/lib/seo/paths'
 import { absoluteUrl } from '~/lib/seo/site'
 
 /** XML entries are shared by requests, but never by different series' archives. */
-const pages = new WeakMap<SeriesArchive, string[]>()
+const pages = new WeakMap<ReaderArchive, string[]>()
 const document: { pending?: Promise<string> } = {}
 
 const ESCAPES: Record<string, string> = {
@@ -27,7 +28,7 @@ function pathsFor(section: string, entries: Entity[]): string[] {
 }
 
 /** Only kinds and features the description publishes get addresses. */
-function suffixes(archive: SeriesArchive): string[] {
+function suffixes(archive: ReaderArchive): string[] {
   const { characters, fruits, places, ships, series } = archive
   return [
     '',
@@ -55,7 +56,7 @@ function entryFor(path: string): string {
   ].join('\n')
 }
 
-function seriesEntries(archive: SeriesArchive): string[] {
+function seriesEntries(archive: ReaderArchive): string[] {
   const cached = pages.get(archive)
   if (cached !== undefined) {
     return cached
@@ -71,7 +72,7 @@ function seriesEntries(archive: SeriesArchive): string[] {
 
 async function buildSitemap(): Promise<string> {
   const archives = await Promise.all(
-    SERIES.map(async ({ slug }) => archiveOf(slug)),
+    OPEN_SERIES.map(async ({ slug }) => archiveOf(slug)),
   )
   return [
     '<?xml version="1.0" encoding="UTF-8"?>',

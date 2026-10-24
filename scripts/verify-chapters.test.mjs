@@ -114,6 +114,40 @@ describe('the chapter a page gives', () => {
     ).toBe(31)
   })
 
+  it('reads a Hunter x Hunter arc, counting in the 2011 anime', () => {
+    const arc = page(
+      '{{Arc Template}}',
+      '<td>Chapters</td><td>Chapters 44 - 63</td><td>Episodes</td><td>Episodes 37 - 44 (1999) <br/> Episodes 27 - 36 (2011)</td>',
+    )
+
+    expect(chapterOf(arc, 'arc')).toBe(44)
+    expect(episodeOf(arc, 'arc')).toBe(27)
+    expect(
+      episodeOf(
+        page('{{Arc Template}}', '<td>Episodes</td><td>Episodes 76 - 136</td>'),
+        'arc',
+      ),
+    ).toBe(76)
+    expect(() =>
+      episodeOf(
+        page(
+          '{{Arc Template}}',
+          '<td>Episodes</td><td>Episodes 37 - 44 (1999)</td>',
+        ),
+        'arc',
+      ),
+    ).toThrow(/1999 anime's episodes only/u)
+  })
+
+  it('reads a page under the series it belongs to', () => {
+    const record = { id: 'kakin-arc', kind: 'arc', name: name('Kakin', 'x') }
+
+    expect(titlesOf(record, 'hunter-x-hunter')).toStrictEqual([
+      ['Succession Contest arc'],
+    ])
+    expect(titlesOf(record)).toStrictEqual([['Kakin Arc']])
+  })
+
   it('takes the earliest chapter a line names, chapter 0 only alone', () => {
     expect(
       chapterOf(

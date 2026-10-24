@@ -2,7 +2,10 @@ import { describe, expect, it } from 'vitest'
 
 import { ONE_PIECE_SERIES } from '~/lib/progress/series'
 
-import { archiveOf, descriptionOf, ONE_PIECE } from '.'
+import { archiveOf, descriptionOf, filedArchiveOf, ONE_PIECE, SERIES } from '.'
+
+/** The series filed but not open: none once every series has opened. */
+const CLOSED = SERIES.filter(({ open }) => !open)
 
 describe('the runtime series registry', () => {
   it('returns public metadata without falling back for an unknown series', () => {
@@ -19,6 +22,22 @@ describe('the runtime series registry', () => {
     await expect(ONE_PIECE.load()).resolves.toBe(first)
     expect(first.series).toBe(ONE_PIECE_SERIES)
   })
+
+  // While no series is closed there is nothing to gate; the source of the
+  // gate is held by ESLint (`no-restricted-imports` on `SERIES` and
+  // `filedArchiveOf` outside the tests, gates and scripts).
+  it.skipIf(CLOSED.length === 0)(
+    'loads a series filed but not open for the tests and gates alone',
+    async () => {
+      for (const { slug } of CLOSED) {
+        expect(descriptionOf(slug), slug).toBeNull()
+        await expect(archiveOf(slug), slug).rejects.toThrow('Unknown series')
+        await expect(filedArchiveOf(slug), slug).resolves.toMatchObject({
+          series: { slug },
+        })
+      }
+    },
+  )
 
   it('rejects unknown slugs before choosing any dynamic module', async () => {
     await expect(archiveOf('missing-series')).rejects.toThrow('Unknown series')

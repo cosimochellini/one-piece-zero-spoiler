@@ -1,5 +1,6 @@
 import { byNumber, byValue } from 'sort-es'
 
+import type { ReaderArchive } from '~/data/features'
 import { orderByMode } from '~/data/order'
 import { type Reveal, reveal, sourceOf } from '~/data/reveal'
 import { archiveIn } from '~/data/source'
@@ -27,7 +28,7 @@ export interface Reader extends Reveal {
    * the reader does not have is in none of its lists, so no page can cover,
    * count or hand out a handle for one.
    */
-  archive: SeriesArchive
+  archive: ReaderArchive
   bookmark: Bookmark
   locale: Locale
   /**
@@ -64,7 +65,7 @@ export interface Split<T> {
  */
 export function coveredOf(
   entity: Entity,
-  archive: SeriesArchive,
+  archive: ReaderArchive,
 ): CoveredRecord {
   return {
     handle: handleOf(entity.id, archive),

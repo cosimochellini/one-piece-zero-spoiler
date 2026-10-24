@@ -51,9 +51,12 @@ describe('the hub emblems', () => {
     },
   )
 
-  it('draws every series in the registry', () => {
+  it('draws every open series in the registry', () => {
+    // A series not open yet is announced on the hub by its name alone.
     expect(
-      LOADED_SERIES.filter(({ slug }) => EMBLEMS[slug] === undefined),
+      LOADED_SERIES.filter(
+        ({ open, slug }) => open && EMBLEMS[slug] === undefined,
+      ),
     ).toStrictEqual([])
   })
 

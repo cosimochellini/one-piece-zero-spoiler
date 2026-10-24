@@ -73,6 +73,22 @@ const NATURAL = { type: 'natural', order: 'asc', ignoreCase: true }
 const ALIAS_ONLY =
   'Import through the `~/` alias instead of a parent-relative path.'
 
+/**
+ * react-doctor's js-combine-iterations, caught on commit (see the `src` block
+ * that applies it).
+ */
+const FILTER_MAP = {
+  selector:
+    "CallExpression[callee.property.name='map'] > MemberExpression.callee > CallExpression.object[callee.property.name='filter']",
+  message:
+    '.filter().map() makes two passes and react-doctor (js-combine-iterations) fails it in `npm run check`. Use one for…of loop with push; flatMap with [x]/[], unshift and concat are banned by unicorn.',
+}
+
+/** The registry's list and loader of every filed series, open or not. */
+const FILED_ONLY = ['SERIES', 'filedArchiveOf']
+const OPEN_ONLY =
+  'A reader path reads the open series only: `OPEN_SERIES` and `archiveOf`. `SERIES` and `filedArchiveOf` are for tests, gates and scripts (#758).'
+
 // The syntax bans every file carries. A block that adds one spreads this list,
 // because a later block replaces a rule's options instead of merging them.
 const RESTRICTED_SYNTAX = [
@@ -219,16 +235,7 @@ const config = defineConfig(
     files: ['src/**/*.{ts,tsx}'],
     ignores: TESTS,
     rules: {
-      'no-restricted-syntax': [
-        'error',
-        ...RESTRICTED_SYNTAX,
-        {
-          selector:
-            "CallExpression[callee.property.name='map'] > MemberExpression.callee > CallExpression.object[callee.property.name='filter']",
-          message:
-            '.filter().map() makes two passes and react-doctor (js-combine-iterations) fails it in `npm run check`. Use one for…of loop with push; flatMap with [x]/[], unshift and concat are banned by unicorn.',
-        },
-      ],
+      'no-restricted-syntax': ['error', ...RESTRICTED_SYNTAX, FILTER_MAP],
     },
   },
 
@@ -871,6 +878,50 @@ const config = defineConfig(
                 'The archive stays on the server. Take a view model from `~/lib/view/records` instead (issue #12).',
             },
           ],
+        },
+      ],
+    },
+  },
+
+  // A series filed but not open stays out of every path a reader takes
+  // (#758): the server, the request middleware and the archive itself read
+  // the open series alone, through `OPEN_SERIES` and `archiveOf`. The filed
+  // list and its loader are for the tests, the gates and the scripts. The
+  // client is barred from `~/data` altogether, above.
+  {
+    files: ['src/server/**/*.{ts,tsx}', 'src/start.ts', 'src/data/**/*.ts'],
+    ignores: TESTS,
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          paths: [
+            {
+              name: '~/data/series',
+              importNames: FILED_ONLY,
+              message: OPEN_ONLY,
+            },
+          ],
+          patterns: [
+            { regex: String.raw`^\.\./`, message: ALIAS_ONLY },
+            {
+              regex: String.raw`^(?:~/data/series/(?:index)?|\.(?:/index)?)$`,
+              importNames: FILED_ONLY,
+              message: OPEN_ONLY,
+            },
+          ],
+        },
+      ],
+      // A dynamic import of the registry would take the filed list past the
+      // import rule above. The registry's own imports of a series are
+      // relative and stay allowed.
+      'no-restricted-syntax': [
+        'error',
+        ...RESTRICTED_SYNTAX,
+        FILTER_MAP,
+        {
+          selector: String.raw`ImportExpression[source.value=/^~\/data\/series/]`,
+          message: OPEN_ONLY,
         },
       ],
     },

@@ -1,6 +1,6 @@
 import type { Origin } from '~/data/types'
 
-import type { Saga } from './saga'
+import type { OnePieceSaga } from './saga'
 import { summitWarChronicles } from './summit-war.chronicle'
 
 /**
@@ -37,7 +37,7 @@ const MARY_GEOISE = { it: 'Mary Geoise', en: 'Mary Geoise' }
 const KUJA_WARRIOR = { it: 'Tribù kuja, guerriera', en: 'Kuja tribe, warrior' }
 const KUJA_WARRIOR_ROLE = { it: 'Guerriera kuja', en: 'Kuja warrior' }
 
-export const summitWar: Saga = {
+export const summitWar: OnePieceSaga = {
   name: { it: 'Saga della guerra di Barbabianca', en: 'Summit War Saga' },
   entries: [
     {

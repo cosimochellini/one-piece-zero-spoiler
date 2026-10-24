@@ -1,7 +1,9 @@
 import { sourceOf } from '~/data/reveal'
+import { archiveOf, OPEN_SERIES } from '~/data/series'
 import { archiveIn } from '~/data/source'
 import type { SeriesArchive } from '~/data/types'
 import { type Bookmark, parseBookmark } from '~/lib/progress/episode'
+import type { Series } from '~/lib/progress/series'
 import type { HubSeries } from '~/lib/view/hub'
 
 /**
@@ -41,4 +43,17 @@ export function hubFor(
       parseBookmark(jar.get(archive.series.cookie), archive.series),
     ),
   )
+}
+
+/** The public descriptions of the series readers can reach; loads no archive. */
+export function openDescriptions(): Series[] {
+  return OPEN_SERIES.map(({ description }) => description)
+}
+
+/**
+ * The archives of the series readers can reach, for the hub to count. A
+ * series filed but not open is not among them: the hub announces it as coming.
+ */
+export async function openArchives(): Promise<SeriesArchive[]> {
+  return Promise.all(OPEN_SERIES.map(async ({ slug }) => archiveOf(slug)))
 }

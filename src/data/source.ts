@@ -1,5 +1,6 @@
 import type { Gated, Source } from '~/lib/progress/spoiler'
 
+import { type ReaderArchive, withFeatures } from './features'
 import { toldIn } from './reveal'
 import type { BookSection, Entity, SeriesArchive } from './types'
 
@@ -31,20 +32,23 @@ import type { BookSection, Entity, SeriesArchive } from './types'
  */
 
 /** Each archive's copies, built once per source and kept with the archive. */
-const copies = new WeakMap<SeriesArchive, Map<null | Source, SeriesArchive>>()
+const copies = new WeakMap<SeriesArchive, Map<null | Source, ReaderArchive>>()
 
-/** The archive without the records of the source it is not. */
+/**
+ * The archive without the records of the source it is not, every feature
+ * slice filled (`withFeatures`), as the server reads it.
+ */
 export function archiveIn(
   archive: SeriesArchive,
   source: null | Source,
-): SeriesArchive {
+): ReaderArchive {
   const bySource =
-    copies.get(archive) ?? new Map<null | Source, SeriesArchive>()
+    copies.get(archive) ?? new Map<null | Source, ReaderArchive>()
   copies.set(archive, bySource)
 
   let copy = bySource.get(source)
   if (copy === undefined) {
-    copy = copyIn(archive, source)
+    copy = copyIn(withFeatures(archive), source)
     bySource.set(source, copy)
   }
 
@@ -52,7 +56,7 @@ export function archiveIn(
 }
 
 /** Builds one copy; `archiveIn` keeps it. */
-function copyIn(archive: SeriesArchive, source: null | Source): SeriesArchive {
+function copyIn(archive: ReaderArchive, source: null | Source): ReaderArchive {
   const has = (gated: Gated): boolean => toldIn(gated, source)
   const kept = (entities: Entity[]): Entity[] =>
     entities.filter((entity) => has(entity))

@@ -1,10 +1,11 @@
 import { describe, expect, it } from 'vitest'
 
+import { SERIES } from '~/data/series'
 import { archiveIn } from '~/data/source'
 import { ONE_PIECE_LOADED } from '~/test/series'
 import { plant } from '~/test/sourceOnly'
 
-import { hubFor, hubSeries } from './hub.server'
+import { hubFor, hubSeries, openArchives, openDescriptions } from './hub.server'
 
 describe('hubSeries', () => {
   const { archive } = ONE_PIECE_LOADED
@@ -87,4 +88,28 @@ describe('the count on the hub', () => {
     expect(countAt(anime, null)).toBe(archive.entities.length)
     expect(countAt(manga, null)).toBe(archive.entities.length)
   })
+})
+
+/** The series filed but not open: none once every series has opened. */
+const CLOSED = SERIES.filter(({ open }) => !open).map(({ slug }) => slug)
+
+describe('the series a reader reaches', () => {
+  // A series filed but not open is swept by every gate and shown nowhere:
+  // the hub's cards and the legal page's descriptions leave it out.
+  it.skipIf(CLOSED.length === 0)('describes no series that is not open', () => {
+    const described = openDescriptions().map(({ slug }) => slug)
+
+    expect(described.filter((slug) => CLOSED.includes(slug))).toStrictEqual([])
+  })
+
+  it.skipIf(CLOSED.length === 0)(
+    'puts no card on the hub for a series that is not open',
+    async () => {
+      const cards = hubFor(new Map(), await openArchives()).map(
+        ({ slug }) => slug,
+      )
+
+      expect(cards.filter((slug) => CLOSED.includes(slug))).toStrictEqual([])
+    },
+  )
 })

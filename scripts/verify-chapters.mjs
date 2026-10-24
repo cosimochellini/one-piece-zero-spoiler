@@ -29,35 +29,43 @@
 import process from 'node:process'
 import { pathToFileURL } from 'node:url'
 
-import { importArchive, seriesOrExit } from './archive-loader.mjs'
+import { seriesOrExit } from './archive-loader.mjs'
 import { chapterTexts, fetchPage, wikiOf } from './wiki.mjs'
 
 /** @typedef {import('./wiki.mjs').Page} Page */
 /** @typedef {import('./wiki.mjs').Wiki} Wiki */
 
 /**
- * Records whose English name is not their wiki page. A list names the pages
- * of a paired record (two fish-men filed as one), whose chapter is the later
- * of the two.
- * @type {Record<string, string | string[]>}
+ * Records whose English name is not their wiki page, by series. A list names
+ * the pages of a paired record (two fish-men filed as one), whose chapter is
+ * the later of the two.
+ * @type {Record<string, Record<string, string | string[]>>}
  */
 const TITLES = {
-  'artificial-dragon-dragon-fruit': 'Artificial Devil Fruit',
-  'cat-cat-fruit-ancient-model-sabre-tooth-tiger':
-    'Neko Neko no Mi, Model: Saber Tiger',
-  'dog-dog-fruit-mythical-model-nine-tailed-fox':
-    'Inu Inu no Mi, Model: Kyubi no Kitsune',
-  'egghead-island': 'Egghead',
-  'fish-fish-fruit-mythical-model-azure-dragon': 'Uo Uo no Mi, Model: Seiryu',
-  'kinemon': "Kin'emon",
-  'kiwi-and-mozu': ['Kiwi', 'Mozu'],
-  'lola': 'Lola (Zombie)',
-  'ninjin-piiman-and-tamanegi': ['Ninjin', 'Piiman', 'Tamanegi'],
-  'oimo-and-kashi': ['Oimo', 'Kashi'],
-  'rock-and-scotch': ['Rock', 'Scotch'],
-  'ryuma': 'Ryuma (Zombie)',
-  'sodom-and-gomorrah': ['Sodom', 'Gomorrah'],
-  'water-seven-arc': 'Water 7 Arc',
+  'one-piece': {
+    'artificial-dragon-dragon-fruit': 'Artificial Devil Fruit',
+    'cat-cat-fruit-ancient-model-sabre-tooth-tiger':
+      'Neko Neko no Mi, Model: Saber Tiger',
+    'dog-dog-fruit-mythical-model-nine-tailed-fox':
+      'Inu Inu no Mi, Model: Kyubi no Kitsune',
+    'egghead-island': 'Egghead',
+    'fish-fish-fruit-mythical-model-azure-dragon': 'Uo Uo no Mi, Model: Seiryu',
+    'kinemon': "Kin'emon",
+    'kiwi-and-mozu': ['Kiwi', 'Mozu'],
+    'lola': 'Lola (Zombie)',
+    'ninjin-piiman-and-tamanegi': ['Ninjin', 'Piiman', 'Tamanegi'],
+    'oimo-and-kashi': ['Oimo', 'Kashi'],
+    'rock-and-scotch': ['Rock', 'Scotch'],
+    'ryuma': 'Ryuma (Zombie)',
+    'sodom-and-gomorrah': ['Sodom', 'Gomorrah'],
+    'water-seven-arc': 'Water 7 Arc',
+  },
+  'hunter-x-hunter': {
+    // The wiki's arc titles say more than an arc's name may, since the name
+    // is shown at every bookmark (#758): the archive's names are neutral.
+    'election-arc': '13th Hunter Chairman Election arc',
+    'kakin-arc': 'Succession Contest arc',
+  },
 }
 
 /**
@@ -65,10 +73,11 @@ const TITLES = {
  * edition's name is the page for most records; an arc page ends in `Arc`; a
  * fruit page is the Japanese name, which the Italian edition keeps.
  * @param {{ id: string, kind: string, name: { en: string, it: string } }} record The record.
+ * @param {string} [slug] Its series.
  * @returns {string[][]} Alternatives, each a list of pages whose later chapter counts.
  */
-export function titlesOf(record) {
-  const known = TITLES[record.id]
+export function titlesOf(record, slug = 'one-piece') {
+  const known = TITLES[slug]?.[record.id]
   if (known !== undefined) {
     return [typeof known === 'string' ? [known] : [...known]]
   }
@@ -110,7 +119,7 @@ export function japaneseNameOf(name) {
  */
 export function chapterOf(page, kind) {
   return numberOf(page, kind, {
-    arc: /Chapters?:(?<n>\d+)/u,
+    arc: [/Chapters?:(?<n>\d+)/u, /ChaptersChapters(?<n>\d+)/u],
     debut: /Debut:Chapter(?<n>\d+)/u,
     line: storyChapterOf,
   })
@@ -118,16 +127,21 @@ export function chapterOf(page, kind) {
 
 /**
  * A number a page gives for its subject: an arc's from its rendered range,
+ * by the first of the arc patterns that matches (One Piece's wiki writes
+ * `Chapters: 69-95`, Hunter x Hunter's a label and `Chapters 1 - 43`),
  * anything else's from the infobox first line, or from the rendered debut
  * when the infobox is transcluded.
  * @param {Page} page The parsed page.
  * @param {string} kind The record's kind.
- * @param {{ arc: RegExp, debut: RegExp, line: (first: string) => number | undefined }} read How to read each of the three.
+ * @param {{ arc: RegExp[], debut: RegExp, line: (first: string) => number | undefined }} read How to read each of the three.
  * @returns {number | undefined} The number, or nothing when the page has none.
  */
 function numberOf(page, kind, read) {
   if (kind === 'arc') {
-    return numberAfter(read.arc, tagless(page.text))
+    const text = tagless(page.text)
+    return read.arc
+      .map((pattern) => numberAfter(pattern, text))
+      .find((number) => number !== undefined)
   }
 
   const first = firstLineOf(page)
@@ -227,11 +241,36 @@ export function namingChapterOf(chapters, title) {
  * @returns {number | undefined} The episode, or nothing when the page has none.
  */
 export function episodeOf(page, kind) {
+  if (kind === 'arc') {
+    only1999(page)
+  }
+
   return numberOf(page, kind, {
-    arc: /Episodes?:(?<n>\d+)/u,
+    // The Hunter x Hunter Wiki gives the 1999 and the 2011 anime side by
+    // side; the archive counts in the 2011 one (#749).
+    arc: [
+      /Episodes?:(?<n>\d+)/u,
+      /Episodes(?<n>\d+)-\d+\(2011\)/u,
+      /EpisodesEpisodes(?<n>\d+)/u,
+    ],
     debut: /Debut:Chapter\d+;Episode(?<n>\d+)/u,
     line: (first) => numberAfter(/Episode (?<n>\d+)/u, first),
   })
+}
+
+/**
+ * Fails on an arc page that gives the 1999 anime's episodes and not the 2011
+ * one's: read on, its first range would be the wrong anime's.
+ * @param {Page} page The parsed page.
+ * @returns {void}
+ */
+function only1999(page) {
+  const text = tagless(page.text)
+  if (/Episodes\d+-\d+\(1999\)/u.test(text) && !text.includes('(2011)')) {
+    throw new Error(
+      `${page.title}: the wiki gives the 1999 anime's episodes only, and the archive counts in the 2011 one`,
+    )
+  }
 }
 
 /**
@@ -316,7 +355,7 @@ async function sourceOf(record, { chapters, wiki }) {
  * @returns {Promise<Page[] | undefined>} The pages, or nothing when none resolves.
  */
 export async function pagesOf(record, wiki) {
-  for (const titles of titlesOf(record)) {
+  for (const titles of titlesOf(record, wiki.slug)) {
     const pages = await Promise.all(
       titles.map((title) => fetchPage(title, wiki)),
     )
@@ -384,9 +423,11 @@ export function verdictOf(filed, source) {
  */
 async function verify() {
   const series = await seriesOrExit()
-  const { CHAPTER_CEILING } = await importArchive('lib/progress/bounds.ts')
   const wiki = wikiOf(series)
-  const chapters = await chapterTexts(CHAPTER_CEILING, wiki)
+  const chapters = await chapterTexts(
+    series.archive.series.chapterCeiling,
+    wiki,
+  )
   /** @type {Row[]} */
   const rows = []
   for (const record of series.archive.entities) {

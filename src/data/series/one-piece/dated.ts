@@ -1,11 +1,19 @@
 import { byNumber, byValue, byValues } from 'sort-es'
 
+import type { Eater } from '~/data/features'
 import { type Reveal, toldIn } from '~/data/reveal'
-import type { Dated, Eater, Entity, FiledStory } from '~/data/types'
+import type {
+  Entity,
+  Field,
+  Fields,
+  FiledStory,
+  Native,
+  Opened,
+} from '~/data/types'
 import type { Gated } from '~/lib/progress/spoiler'
 import type { Faction } from '~/lib/view/records'
 
-import { type Field, type Fields, gateOf, timelineOf } from './chapter-table'
+import { gateOf, timelineOf } from './chapter-table'
 import { characters, getCharacter } from './characters'
 import { CHARACTER_DOSSIERS } from './sagas'
 
@@ -20,11 +28,6 @@ import { CHARACTER_DOSSIERS } from './sagas'
  * handed one. The home page's stories and a fruit's eaters are views of the
  * same facts, gated the same way.
  */
-
-/** One dated entry, with the gate a reader must pass to see it. */
-export interface Opened<T> extends Dated<T> {
-  gate: Gated
-}
 
 /**
  * Every entry of one of a record's timelines, each with its gate, whoever is
@@ -71,8 +74,13 @@ export function factionsOf(at: Reveal, owner: Entity): Faction[] | undefined {
   )?.factions
 }
 
-/** One story, with the character whose chronicle it belongs to. */
-export type { FiledStory } from '~/data/types'
+/**
+ * A character the dossiers say ate a fruit, and the gate of the entry that
+ * says so: the later of that entry and the character, because a character
+ * filed long before the story says what they ate must not be named as an
+ * eater the moment the reader meets them.
+ */
+export type { Eater } from '~/data/features'
 
 /**
  * Every story in the archive, ascending by the episode it concludes at; ties
@@ -89,13 +97,8 @@ export const stories: FiledStory[] = characters
   })
   .toSorted(byValue('episode', byNumber()))
 
-/**
- * A character the dossiers say ate a fruit, and the gate of the entry that
- * says so: the later of that entry and the character, because a character
- * filed long before the story says what they ate must not be named as an
- * eater the moment the reader meets them.
- */
-export type { Eater } from '~/data/types'
+/** One story, with the character whose chronicle it belongs to. */
+export type { FiledStory } from '~/data/types'
 
 /**
  * The gate of a link several entries tell, given in timeline order: in each
@@ -197,16 +200,6 @@ const EATERS = readEaters()
  */
 export function eatersOf(id: string): Eater[] {
   return EATERS.get(id) ?? []
-}
-
-/**
- * A character whose origin names a place, and the gate of the earliest entry
- * that names it: the later of that entry and the character, because the
- * entry is what says where they come from.
- */
-export interface Native {
-  entity: Entity
-  gate: Gated
 }
 
 /**

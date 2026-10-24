@@ -1,16 +1,7 @@
-import type { Dated, Entity, Timeline } from '~/data/types'
+import type { Dated, Entity, OwnedTimeline } from '~/data/types'
 
-import { type Field, FIELDS, timelineOf } from './chapter-table'
+import { FIELDS, timelineOf } from './chapter-table'
 import { entities } from './entities'
-
-/** One timeline of the archive, with the record that owns it and its field. */
-export interface OwnedTimeline {
-  field: Field
-  /** `id.field`, for a failure to name. */
-  label: string
-  owner: Entity
-  timeline: Timeline<unknown>
-}
 
 /** One dated entry of the archive, with the record whose timeline holds it. */
 export interface DatedEntry {

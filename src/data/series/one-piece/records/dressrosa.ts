@@ -1,7 +1,7 @@
 import type { CharacterDossier } from '~/data/types'
 
 import { dressrosaChronicles } from './dressrosa.chronicle'
-import type { Saga } from './saga'
+import type { OnePieceSaga } from './saga'
 
 /**
  * The Dressrosa saga, episodes 575 to 746: an island half frozen and half on
@@ -53,7 +53,7 @@ const DROPPED_AT_657: CharacterDossier['status'] = [
 
 const DRESSROSA = { it: 'Dressrosa', en: 'Dressrosa' }
 
-export const dressrosa: Saga = {
+export const dressrosa: OnePieceSaga = {
   name: { it: 'Saga di Dressrosa', en: 'Dressrosa Saga' },
   entries: [
     {

@@ -1,4 +1,5 @@
-import type { Entity, FillerEntry, SeriesArchive } from '~/data/types'
+import type { FillerEntry, ReaderArchive } from '~/data/features'
+import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 import type { Gated } from '~/lib/progress/spoiler'
 import type {
@@ -23,7 +24,7 @@ import { indexHandle } from './handle.server'
 
 /** The reader, as far as this page needs one. */
 export interface Looker {
-  archive: SeriesArchive
+  archive: ReaderArchive
   locale: Locale
   sees: (gated: Gated) => boolean
 }
@@ -41,7 +42,7 @@ export interface Chunk<K, T> {
 }
 
 /** Every entry with its index, in the order a viewer reaches them. */
-const indexed = new WeakMap<SeriesArchive, Indexed[]>()
+const indexed = new WeakMap<ReaderArchive, Indexed[]>()
 /** Filler ordinals are scoped to one loaded archive. */
 export function indexedFor(r: Looker): Indexed[] {
   let items = indexed.get(r.archive)
@@ -79,7 +80,7 @@ export function positionOf(entry: FillerEntry): number {
 }
 
 /** The canon arcs, in the order the anime reaches them. */
-const canon = new WeakMap<SeriesArchive, Entity[]>()
+const canon = new WeakMap<ReaderArchive, Entity[]>()
 function canonArcs(r: Looker): Entity[] {
   let arcs = canon.get(r.archive)
   if (arcs === undefined) {

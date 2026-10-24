@@ -1,6 +1,6 @@
 import type { LocalizedText } from '~/data/types'
 
-import type { Saga } from './saga'
+import type { OnePieceSaga } from './saga'
 
 /**
  * The Elbaph arc, episodes 1156 to 1179 as aired: the giants’ homeland at
@@ -26,7 +26,7 @@ function WALRUS_SCHOOL(it: string, en: string): LocalizedText {
   return { it: `Scuola Walrus, ${it}`, en: `Walrus School, ${en}` }
 }
 
-export const elbaf: Saga = {
+export const elbaf: OnePieceSaga = {
   name: { it: 'Saga di Elbaf', en: 'Elbaph Saga' },
   entries: [
     // Elbaph, not Elbaf, in English: the anime (Crunchyroll), VIZ and the

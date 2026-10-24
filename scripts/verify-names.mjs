@@ -274,7 +274,7 @@ async function verify() {
   )
   const english = characters
     .filter(({ id }) => ITALIAN_TITLES[id] === undefined)
-    .flatMap((record) => titlesOf(record)[0] ?? [])
+    .flatMap((record) => titlesOf(record, wiki.slug)[0] ?? [])
   const asked = new Set(english)
   const linked = await italianTitles(asked.values().toArray(), wiki)
   const titles = new Map(
@@ -284,7 +284,9 @@ async function verify() {
       return [
         record.id,
         known === undefined ?
-          (titlesOf(record)[0] ?? []).map((title) => linked.get(title))
+          (titlesOf(record, wiki.slug)[0] ?? []).map((title) =>
+            linked.get(title),
+          )
         : [known].flat(),
       ]
     }),

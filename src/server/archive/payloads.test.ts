@@ -5,11 +5,9 @@ import { describe, expect, it } from 'vitest'
 import { descriptionOf } from '~/data/series'
 import type { Entity } from '~/data/types'
 import { type Locale, LOCALES } from '~/i18n/locales'
-import { DEMO_LAST_CHAPTER, DEMO_LAST_EPISODE } from '~/lib/progress/bounds'
 import { type Bookmark, serialiseBookmark } from '~/lib/progress/episode'
 import * as api from '~/server/api'
 import * as shared from '~/server/series'
-import { opHandleOf as handleOf } from '~/test/archive'
 import { leaksOf } from '~/test/fog'
 import {
   type LoadedSeries as ListedSeries,
@@ -17,6 +15,7 @@ import {
   LOADED_SERIES as SERIES,
 } from '~/test/series'
 
+import { handleOf } from './handle.server'
 import { hubFor } from './hub.server'
 import { type Payload, payloadsFor } from './payloads.server'
 
@@ -30,26 +29,33 @@ type Excuse = (entity: Entity, key: string, bookmark: Bookmark) => boolean
 
 const isArc: Excuse = (entity) => entity.kind === 'arc'
 
-/** A peek is the reader lifting the fog on one record, and on that one only. */
-const lifted: Excuse = (entity, handle) => handleOf(entity.id) === handle
+/** What every series' pages name past the bookmark on purpose. */
+function byDesignOf({
+  archive,
+}: ListedSeries): Partial<Record<string, Excuse>> {
+  const { demoLastChapter, demoLastEpisode } = archive.series
+  /** A peek is the reader lifting the fog on one record, and on that one only. */
+  const lifted: Excuse = (entity, handle) =>
+    handleOf(entity.id, archive) === handle
 
-const BY_DESIGN: Partial<Record<string, Excuse>> = {
-  // A visitor with no bookmark lands on East Blue under the dial, and on
-  // nothing past it in either unit.
-  loadHome: (entity, _, bookmark) =>
-    bookmark === null
-    && entity.revealedAtEpisode <= DEMO_LAST_EPISODE
-    && entity.revealedAtChapter <= DEMO_LAST_CHAPTER,
-  // The saga names are always shown, so a reader can find their way by them
-  // (owner, 2026-10-12).
-  loadFiller: isArc,
-  loadSagaLabels: isArc,
-  liftCharacter: lifted,
-  liftDossier: lifted,
-  liftFruit: lifted,
-  liftRecord: lifted,
-  liftPort: lifted,
-  liftShip: lifted,
+  return {
+    // A visitor with no bookmark lands on the demo under the dial (East Blue,
+    // the Hunter Exam), and on nothing past it in either unit.
+    loadHome: (entity, _, bookmark) =>
+      bookmark === null
+      && entity.revealedAtEpisode <= demoLastEpisode
+      && entity.revealedAtChapter <= demoLastChapter,
+    // The saga names are always shown, so a reader can find their way by them
+    // (owner, 2026-10-12).
+    loadFiller: isArc,
+    loadSagaLabels: isArc,
+    liftCharacter: lifted,
+    liftDossier: lifted,
+    liftFruit: lifted,
+    liftRecord: lifted,
+    liftPort: lifted,
+    liftShip: lifted,
+  }
 }
 
 /** One series' sweep: the pages it serves, and what they name on purpose. */
@@ -58,14 +64,22 @@ interface Sweep {
   payloads: Payload[]
 }
 
+/** The sweep of one series: every page, with its own archive's excuses. */
+function sweepOf(series: ListedSeries): Sweep {
+  return { byDesign: byDesignOf(series), payloads: payloadsFor(series.archive) }
+}
+
 /**
  * The sweep of every series in `~/data/series`, by slug. A series listed
  * there with no sweep here fails the first test below, so it cannot ship
  * unswept; its bookmarks are its own, in the list.
  */
-const SWEEPS: Partial<Record<string, Sweep>> = {
-  'one-piece': { byDesign: BY_DESIGN, payloads: PAYLOADS },
-}
+const SWEEPS: Partial<Record<string, Sweep>> = Object.fromEntries(
+  ['one-piece', 'hunter-x-hunter'].flatMap((slug) => {
+    const series = SERIES.find((entry) => entry.slug === slug)
+    return series === undefined ? [] : [[slug, sweepOf(series)]]
+  }),
+)
 
 const alphabetically = (a: string, b: string): number => a.localeCompare(b)
 

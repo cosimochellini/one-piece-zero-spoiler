@@ -1,4 +1,5 @@
-import type { Entity, FillerArc, SeriesArchive } from '~/data/types'
+import type { FillerArc, ReaderArchive } from '~/data/features'
+import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 import type {
   FillerGroup,
@@ -37,7 +38,7 @@ import type { Reader } from './reader.server'
  * under them still wait for the bookmark.
  */
 
-const byArc = new WeakMap<SeriesArchive, Chunk<Entity | undefined, Indexed>[]>()
+const byArc = new WeakMap<ReaderArchive, Chunk<Entity | undefined, Indexed>[]>()
 function chunksFor(look: Looker): Chunk<Entity | undefined, Indexed>[] {
   let chunks = byArc.get(look.archive)
   if (chunks === undefined) {

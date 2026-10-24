@@ -1,11 +1,15 @@
 import { describe, expect, it } from 'vitest'
 
+import { SERIES } from '~/data/series'
 import { characters } from '~/data/series/one-piece/characters'
 import { fruits } from '~/data/series/one-piece/fruits'
 import { places, ships } from '~/data/series/one-piece/places'
 import { SITE_ORIGIN } from '~/lib/seo/site'
 
 import { sitemapXml } from './sitemap.server'
+
+/** The series filed but not open: none once every series has opened. */
+const CLOSED = SERIES.filter(({ open }) => !open)
 
 const SECTION_COUNT = 5
 const LOCALE_COUNT = 2
@@ -31,6 +35,15 @@ describe('the sitemap', () => {
     )
     expect(document).toContain('xmlns:xhtml="http://www.w3.org/1999/xhtml"')
   })
+
+  it.skipIf(CLOSED.length === 0)(
+    'lists no page of a series that is not open',
+    () => {
+      for (const { slug } of CLOSED) {
+        expect(document, slug).not.toContain(`/${slug}/`)
+      }
+    },
+  )
 
   it('lists every page of the site in both languages', () => {
     expect(locations()).toHaveLength(

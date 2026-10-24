@@ -8,12 +8,19 @@ import type {
   ShipDetail,
   VisitView,
 } from '~/lib/view/places'
-import type { DocumentHead, RecordView, Slot } from '~/lib/view/records'
+import type { DocumentHead, RecordView, Sea, Slot } from '~/lib/view/records'
 
 import { headFor, type HeadKeys } from './head.server'
 import { portOf, reachedShips, sagaNumberOf, shipOf } from './places.server'
+import { printedSea } from './printed.server'
 import { recordOf } from './project.server'
 import type { Reader } from './reader.server'
+
+/** A stop's sea on the stretch of chart, or `null` for one with no dossier. */
+function seaOf(place: Entity, r: Reader): null | Sea {
+  const region = r.archive.placeDossierOf(place)?.region
+  return region === undefined ? null : printedSea(region)
+}
 
 /**
  * A place's own page: the entry the places page used to stack, the map
@@ -141,7 +148,7 @@ function chartOf(
     }
     route.push({
       at,
-      sea: r.archive.placeDossierOf(place)?.sea ?? null,
+      sea: seaOf(place, r),
       saga: sagaNumberOf(place.id, r),
       ship: sailedBy(place, ships, r.mode),
     })

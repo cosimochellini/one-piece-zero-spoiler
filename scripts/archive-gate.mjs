@@ -220,8 +220,9 @@ const SLUG_PATTERN = /^ {2}'(?<slug>[a-z\d-]{12,})':/gmu
 const HYPHENATED = /-/u
 
 // Forty characters or more of single-quoted English, escapes allowed: long
-// enough to be a sentence of the archive rather than a label from the UI.
-const CANARY_PATTERN = /en: '(?<prose>(?:[^'\\]|\\.){40,})'/gu
+// enough to be a sentence of the archive rather than a label from the UI. An
+// address is not a sentence: a series' wiki endpoint is not prose.
+const CANARY_PATTERN = /en: '(?!https:)(?<prose>(?:[^'\\]|\\.){40,})'/gu
 
 /**
  * The longest single-quoted English string in a module, which is a sentence

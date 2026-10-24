@@ -111,23 +111,39 @@ function parseTokens(source) {
 }
 
 /**
+ * The text of one styles file.
+ * @param {string} file Its name in `src/styles`.
+ * @returns {string} The text.
+ */
+function stylesFile(file) {
+  // fallow-ignore-next-line security-sink -- a constant path under the repository
+  return readFileSync(path.join(ROOT, 'src', 'styles', file), 'utf8')
+}
+
+/**
  * The tints from the tokens file, on One Piece's surfaces and inks: the
  * drawings are One Piece's, and since #757 its colours are a theme in
  * `src/styles/themes.ts`, while the tokens file holds the site's own neutral
- * ones.
- * `themes.ts` holds one series today; a second one needs the sheet to pick.
+ * ones. Only One Piece's palette is read out of `themes.ts`, which holds one
+ * per series.
  * @returns {Palette} The colours by token name.
  */
 export function onePiecePalette() {
-  return Object.assign(
-    {},
-    ...['tokens.stylex.ts', 'themes.ts'].map((file) =>
-      parseTokens(
-        // fallow-ignore-next-line security-sink -- a constant path under the repository
-        readFileSync(path.join(ROOT, 'src', 'styles', file), 'utf8'),
-      ),
-    ),
-  )
+  const themes = stylesFile('themes.ts')
+  const marker = 'const ONE_PIECE: Palette = {'
+  const start = themes.indexOf(marker)
+  if (start === -1) {
+    throw new Error(`src/styles/themes.ts has no \`${marker}\``)
+  }
+  const end = themes.indexOf('\n}\n', start)
+  if (end === -1) {
+    throw new Error(`src/styles/themes.ts does not close \`${marker}\``)
+  }
+  const onePiece = themes.slice(start, end)
+  return {
+    ...parseTokens(stylesFile('tokens.stylex.ts')),
+    ...parseTokens(onePiece),
+  }
 }
 
 /**

@@ -1,13 +1,9 @@
 import { orderByMode } from '~/data/order'
-import type {
-  BookSection,
-  CharacterDossier,
-  Entity,
-  LocalizedText,
-} from '~/data/types'
+import type { BookSection, Entity, LocalizedText } from '~/data/types'
 import type { EntityKind } from '~/lib/view/records'
 
 import { entities } from './entities'
+import type { OnePieceDossier } from './records/saga'
 import { CHARACTER_DOSSIERS } from './sagas'
 
 /**
@@ -136,7 +132,7 @@ export function getCharacter(id: string): Entity | undefined {
  * `undefined` where nothing has been filed yet: every character has a page,
  * and only the ones the story turns on have a role, a bounty and a log entry.
  */
-export function dossierOf(entity: Entity): CharacterDossier | undefined {
+export function dossierOf(entity: Entity): OnePieceDossier | undefined {
   return CHARACTER_DOSSIERS[entity.id]
 }
 
@@ -179,37 +175,3 @@ export const bookSections: BookSection[] = arcs.flatMap((arc) => {
   )
   return shelved.length === 0 ? [] : { arc, characters: shelved }
 })
-
-/**
- * Where a record sits on the chart, and what lies either side of it.
- * `index` is zero-based; the page prints it plus one.
- */
-export interface RoutePosition {
-  index: number
-  next: Entity | undefined
-  previous: Entity | undefined
-  total: number
-}
-
-/**
- * Where a record falls along a drawn route, and what lies either side of it.
- *
- * `drawn` is handed in, already in the reader's unit, rather than worked out
- * here: the page counts its open records along the same list, and computing
- * it twice would let the strip and the "waypoint 23 of 66" line disagree.
- */
-export function routePositionOf(
-  entity: Entity,
-  drawn: Entity[],
-): RoutePosition {
-  const index = drawn.findIndex((candidate) => candidate.id === entity.id)
-
-  return {
-    index,
-    total: drawn.length,
-    // No `index > 0` guard: a negative index reads off the front of the array
-    // and is `undefined` there too, which is the answer either way.
-    previous: drawn[index - 1],
-    next: drawn[index + 1],
-  }
-}

@@ -1,10 +1,11 @@
+import { type Eater, withFeatures } from '~/data/features'
 import { orderByMode } from '~/data/order'
-import type { Field, Fields } from '~/data/series/one-piece/chapter-table'
 import type {
   BookSection,
   Dated,
-  Eater,
   Entity,
+  Field,
+  Fields,
   SeriesArchive,
 } from '~/data/types'
 import type { Source } from '~/lib/progress/spoiler'
@@ -36,9 +37,9 @@ export interface Planted {
 const LISTS: Record<EntityKind, (archive: SeriesArchive) => Entity[]> = {
   arc: (archive) => archive.arcs,
   character: (archive) => archive.featuredCharacters,
-  fruit: (archive) => archive.fruits,
+  fruit: (archive) => withFeatures(archive).fruits,
   place: (archive) => archive.places,
-  ship: (archive) => archive.ships,
+  ship: (archive) => withFeatures(archive).ships,
 }
 
 /** The first record of a kind inside the demo that does not open at 1. */
@@ -109,6 +110,7 @@ function filed(list: Entity[], ...more: Entity[]): Entity[] {
 
 /** The archive with records and facts of `source` alone planted in it. */
 export function plant(base: SeriesArchive, source: Source): Planted {
+  const all = withFeatures(base)
   const twin = twinsOf(base, source)
   const twins = Object.values(twin)
   const byId = new Map(twins.map((entity) => [entity.id, entity]))
@@ -161,9 +163,7 @@ export function plant(base: SeriesArchive, source: Source): Planted {
     featuredCharacters: filed(base.featuredCharacters, twin.character),
     chart,
     arcs: filed(base.arcs, twin.arc),
-    fruits: filed(base.fruits, twin.fruit),
     places: filed(base.places, twin.place),
-    ships: filed(base.ships, twin.ship),
     bookSections: shelved(base, twin.arc, twin.character),
     sagas: base.sagas.map((saga) => ({
       ...saga,
@@ -174,29 +174,41 @@ export function plant(base: SeriesArchive, source: Source): Planted {
     })),
     getEntity: (id) => byId.get(id) ?? base.getEntity(id),
     getCharacter: lookup('character', base.getCharacter),
-    getFruit: lookup('fruit', base.getFruit),
     getPlace: lookup('place', base.getPlace),
-    getShip: lookup('ship', base.getShip),
     dossierOf: (entity) => base.dossierOf(real(entity)),
     roleOf: (entity) => base.roleOf(real(entity)),
     placeDossierOf: (entity) => metAt(real(entity)),
-    shipDossierOf: (entity) => base.shipDossierOf(real(entity)),
-    fruitFormOf: (entity) => base.fruitFormOf(real(entity)),
     chartPointOf: (id) => base.chartPointOf(copied.get(id)?.id ?? id),
-    fruitsOfForm: (form) =>
-      base.fruitFormOf(real(twin.fruit)) === form ?
-        filed(base.fruitsOfForm(form), twin.fruit)
-      : base.fruitsOfForm(form),
     chartWith: (entity) =>
       chart.includes(entity) ? chart : filed(chart, entity),
     datedOf,
     reachedOf,
     latestOf: (at, owner, field) => reachedOf(at, owner, field).at(-1)?.value,
     redrawn: (owner) => datedOf(owner, 'redrawing'),
-    eatersOf: (id) => [
-      ...base.eatersOf(id),
-      ...(id === real(twin.fruit).id ? [eaterOf(twin.character, base)] : []),
-    ],
+    features: {
+      ...base.features,
+      fruits: {
+        fruitRedrawn: all.fruitRedrawn,
+        fruits: filed(all.fruits, twin.fruit),
+        getFruit: lookup('fruit', all.getFruit),
+        fruitFormOf: (entity) => all.fruitFormOf(real(entity)),
+        fruitsOfForm: (form) =>
+          all.fruitFormOf(real(twin.fruit)) === form ?
+            filed(all.fruitsOfForm(form), twin.fruit)
+          : all.fruitsOfForm(form),
+        eatersOf: (id) => [
+          ...all.eatersOf(id),
+          ...(id === real(twin.fruit).id ?
+            [eaterOf(twin.character, base)]
+          : []),
+        ],
+      },
+      ships: {
+        ships: filed(all.ships, twin.ship),
+        getShip: lookup('ship', all.getShip),
+        shipDossierOf: (entity) => all.shipDossierOf(real(entity)),
+      },
+    },
   }
 
   return {

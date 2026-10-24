@@ -1,5 +1,5 @@
 import { eastBlueChronicles } from './east-blue.chronicle'
-import type { Saga } from './saga'
+import type { OnePieceSaga } from './saga'
 
 /**
  * East Blue, episodes 1 to 61: the weakest sea, one crew member per island,
@@ -33,7 +33,7 @@ const ARLONG_OFFICER = {
   en: 'Arlong Pirates, officer',
 }
 
-export const eastBlue: Saga = {
+export const eastBlue: OnePieceSaga = {
   name: { it: 'Saga del East Blue', en: 'East Blue Saga' },
   entries: [
     {
