@@ -7,8 +7,8 @@ import { LOCALES } from '~/i18n/locales'
 import { CHAPTER_CEILING } from '~/lib/progress/episode'
 
 import { chapterAtEpisode, episodeAtChapter, gateOf } from './chapter-table'
-import { DATED, TIMELINES } from './chapters'
-import { datedOf } from './dated'
+import { DATED } from './chapters'
+import { datedOf, timelines } from './dated'
 import { entities } from './entities'
 
 const CHAPTERS = Array.from(
@@ -34,7 +34,7 @@ const ANCHORED = DATED.flatMap(({ entry, label, owner }) => {
 })
 
 /** Every dated entry with the gate `~/data/series/one-piece/dated` opens it at. */
-const OPENED = TIMELINES.flatMap(({ field, owner }) => {
+const OPENED = timelines.flatMap(({ field, owner }) => {
   return datedOf(owner, field).map((entry) => {
     const label = `${owner.id} @${String(entry.episode)}`
 

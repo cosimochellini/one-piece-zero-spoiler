@@ -1,7 +1,9 @@
 import { chapterTable } from '~/data/chapterTable'
-import { orderByMode, routePositionOf } from '~/data/order'
+import { anchorsOf, datedArchive, filedTimelines } from '~/data/dated'
+import { routePositionOf } from '~/data/order'
+import { castOf, keptOf } from '~/data/shelves'
 import { sweepOf } from '~/data/sweep'
-import type { Entity, SeriesArchive } from '~/data/types'
+import type { Entity, PlaceDossier, SeriesArchive } from '~/data/types'
 import { HUNTER_X_HUNTER_SERIES as SERIES } from '~/lib/progress/series'
 
 import { DRAWINGS } from './art'
@@ -9,27 +11,32 @@ import { sagas } from './sagas'
 
 /**
  * Hunter x Hunter's archive: its arcs, for now. The characters and places of
- * the Hunter Exam come next (#760), so its character and place lists are
- * empty and no record has a dated fact yet.
+ * the Hunter Exam come next (#760); the engine derives their lists, shelves
+ * and dated facts from the records and dossiers the sagas file, as it does
+ * One Piece's, so today they are empty.
  */
 const entities: Entity[] = sagas.flatMap((saga) => saga.entries)
 
 const BY_ID = new Map(entities.map((entity) => [entity.id, entity]))
 
-/** The whole archive in the order the anime reaches it. */
-const route = orderByMode(entities, 'episode')
+/** Every character's dossier, merged from the sagas. */
+const DOSSIERS = Object.fromEntries(
+  sagas.flatMap((saga) => Object.entries(saga.dossiers)),
+)
 
-const arcs = route.filter((entity) => entity.kind === 'arc')
+const FILED = filedTimelines(DOSSIERS)
 
 const { chapterAtEpisode, gateOf } = chapterTable({
-  anchors: [],
+  anchors: anchorsOf(entities, FILED),
   chapterCeiling: SERIES.chapterCeiling,
   episodeCeiling: SERIES.episodeCeiling,
   records: entities,
 })
 
-const none = (): undefined => undefined
-const empty = (): never[] => []
+const cast = castOf({ dossiers: DOSSIERS, entities, featured: [] })
+
+// No place dossiers filed yet (#760).
+const places = keptOf<PlaceDossier>(entities, 'place', {})
 
 /** One dynamically loaded archive; its public description contains no records. */
 export const HUNTER_X_HUNTER_ARCHIVE: SeriesArchive = {
@@ -45,31 +52,24 @@ export const HUNTER_X_HUNTER_ARCHIVE: SeriesArchive = {
   drawings: DRAWINGS,
   entities,
   getEntity: (id) => BY_ID.get(id),
-  arcs,
-  chart: arcs,
-  chartWith: (entity) =>
-    arcs.includes(entity) ? arcs : orderByMode([...arcs, entity], 'episode'),
   routePositionOf,
   sagas,
   gateOf,
   chapterAtEpisode,
-  characters: [],
-  featuredCharacters: [],
-  bookSections: [],
-  getCharacter: none,
-  dossierOf: none,
-  roleOf: none,
+  ...cast,
+  ...datedArchive({
+    characters: cast.characters,
+    dossiers: DOSSIERS,
+    entities,
+    filed: FILED,
+    gateOf,
+  }),
+  // No arc leads filed yet.
   leads: {},
-  stories: [],
-  timelines: [],
-  datedOf: empty,
-  reachedOf: empty,
-  latestOf: none,
-  redrawn: empty,
-  nativesOf: empty,
-  places: [],
-  getPlace: none,
-  placeDossierOf: none,
+  places: places.records,
+  getPlace: places.get,
+  placeDossierOf: places.dossierOf,
+  // The places map is One Piece's world map; a series without one is #795.
   chartPointOf: () => null,
   // None of One Piece's features (`features` on its description).
   features: {},

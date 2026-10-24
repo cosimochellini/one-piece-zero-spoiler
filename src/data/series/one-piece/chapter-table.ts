@@ -1,5 +1,5 @@
-import { chapterTable, vouches } from '~/data/chapterTable'
-import type { Entity, Field, Fields, Timeline } from '~/data/types'
+import { chapterTable } from '~/data/chapterTable'
+import { anchorsOf, filedTimelines } from '~/data/dated'
 import { CHAPTER_CEILING, EPISODE_CEILING } from '~/lib/progress/episode'
 
 import { REDRAWINGS } from './art'
@@ -19,58 +19,22 @@ import { CHARACTER_DOSSIERS, sagas } from './sagas'
  * source alone tells (`vouches`).
  */
 
-/** Where each field is filed, by the id of the record it belongs to. */
-type Readers = { [F in Field]: (id: string) => Timeline<Fields[F]> | undefined }
-
-const READERS: Readers = {
-  affiliation: (id) => CHARACTER_DOSSIERS[id]?.affiliation,
-  bounty: (id) => CHARACTER_DOSSIERS[id]?.bounty,
-  chronicle: (id) => CHARACTER_DOSSIERS[id]?.chronicle,
-  devilFruit: (id) => CHARACTER_DOSSIERS[id]?.devilFruit,
-  epithet: (id) => CHARACTER_DOSSIERS[id]?.epithet,
-  origin: (id) => CHARACTER_DOSSIERS[id]?.origin,
-  status: (id) => CHARACTER_DOSSIERS[id]?.status,
+/**
+ * One Piece's timelines as they are filed (`~/data/dated`): the character
+ * dossiers' fields, the ships' fates and the redrawings.
+ */
+export const FILED = filedTimelines(CHARACTER_DOSSIERS, {
   fate: (id) => SHIP_DOSSIERS[id]?.fate,
   redrawing: (id) => REDRAWINGS[id],
-}
-
-export const FIELDS: Field[] = Object.keys(READERS).filter(
-  (key): key is Field => Object.hasOwn(READERS, key),
-)
-
-/**
- * One of a record's timelines as it is filed, with no gate at all. Every page
- * reads it through `~/data/series/one-piece/dated` instead, which holds each entry behind its
- * record; this is the raw read the chapter table and that module are built on.
- */
-export function timelineOf<F extends Field>(
-  owner: Pick<Entity, 'id'>,
-  field: F,
-): Timeline<Fields[F]> | undefined {
-  return READERS[field](owner.id)
-}
-
-/** Every record as it is filed, before the fruits are added to it. */
-const FILED = sagas.flatMap((saga) => saga.entries)
-
-/**
- * The (episode, chapter) pairs the entries vouch for themselves, a fruit's
- * redrawings among them.
- */
-const ANCHORS = [...FILED, ...devilFruits].flatMap((owner) => {
-  return FIELDS.flatMap((field) => {
-    return (timelineOf(owner, field) ?? []).flatMap(
-      (entry): [number, number][] =>
-        entry.chapter === undefined || !vouches(entry) || !vouches(owner) ?
-          []
-        : [[entry.episode, entry.chapter]],
-    )
-  })
 })
 
+/** Every record as it is filed, before the fruits are added to it. */
+const RECORDS = sagas.flatMap((saga) => saga.entries)
+
 export const { chapterAtEpisode, episodeAtChapter, gateOf } = chapterTable({
-  anchors: ANCHORS,
+  // A fruit's redrawings anchor it like any other entry.
+  anchors: anchorsOf([...RECORDS, ...devilFruits], FILED),
   chapterCeiling: CHAPTER_CEILING,
   episodeCeiling: EPISODE_CEILING,
-  records: FILED,
+  records: RECORDS,
 })

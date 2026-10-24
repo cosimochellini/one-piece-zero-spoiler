@@ -13,7 +13,7 @@ import { type Gated, type Source, thresholdIn } from '~/lib/progress/spoiler'
  * Every question the archive asks of a bookmark goes through here: whether a
  * record, or anything gated like one, may be shown, and in which unit its
  * threshold is printed. A dated fact is gated like a record too, by
- * `~/data/series/one-piece/dated`, which works out the gate from the entry and the record it
+ * `~/data/dated`, which works out the gate from the entry and the record it
  * belongs to and asks `sees` of it.
  *
  * A `null` bookmark sees nothing. That asymmetry is the product: a reader who

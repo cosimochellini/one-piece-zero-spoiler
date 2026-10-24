@@ -119,9 +119,13 @@ the reader has not reached; the client holds no table of them, and the archive
 gate looks for each one in the client chunks. Whether a series draws One Piece's
 world map is a feature on its description (`features.worldMap`): without it the
 server sends no map point and no ship, and the places page is the index, grouped
-by region, served in full. The factions are One Piece's alone. The chapter table
-and the sweep's bookmarks are built by the engine (`src/data/chapterTable.ts`,
-`src/data/sweep.ts`) from each series' own records.
+by region, served in full. The factions are One Piece's alone. The chapter
+table, the sweep's bookmarks, the dated facts (timelines, stories, natives) and
+the shelves (characters, arcs, places, the chart and the signal book) are built
+by the engine (`src/data/chapterTable.ts`, `src/data/sweep.ts`,
+`src/data/dated.ts`, `src/data/shelves.ts`) from each series' own records and
+dossiers. A dated field a series does not file reads as an empty timeline, so a
+field one series adds asks nothing of another.
 
 A record or a dated fact can exist in one source only (`source: 'anime'` or
 `'manga'` on the record or the entry; absent means both). An episode or season
@@ -304,21 +308,22 @@ checked on every run:
   for by id is asked for one id in seven at each bookmark, a different seventh
   each time. A test fails when `src/server/api.ts` gains a server function the
   sweep does not know, or when a listed series has no sweep;
-- every folder under `src/data/series/` is in the list and has a leak scan of
-  its own, and for every listed series (`src/data/series/index.test.ts`) ids are
-  unique, thresholds are within the allowed range, and every record is
-  translated in both locales;
+- every folder under `src/data/series/` is in the list, and for every listed
+  series (`src/data/series/index.test.ts`) ids are unique, thresholds are within
+  the allowed range, and every record is translated in both locales;
 - each record has its own drawing, never one borrowed from another record;
 - every timeline, a character's, a ship's or a redrawing's, is in ascending
   order and starts no earlier than the record's own threshold, so a fact can
   never come before the record it belongs to;
-- no text names a record the reader has not reached. The links a chronicle
-  builds from `[[id]]` markers are checked against the story's episode, and
-  every text the archive prints, summaries, roles, logs, affiliations, origins,
-  epithets, stories, ship fates, place visits and the labels of the factions an
-  affiliation is tagged with, is scanned for every later record's full name in
-  both locales. A name the show says before its record opens, or one that is an
-  ordinary word, is declared on the record itself rather than excused in a test;
+- no text names a record the reader has not reached, in any listed series
+  (`src/data/leaks.test.ts`, which reads the texts through the archive). The
+  links a chronicle builds from `[[id]]` markers are checked against the story's
+  episode, and every text the archive prints, summaries, roles, logs,
+  affiliations, origins, epithets, stories, ship fates, place visits and the
+  labels of the factions an affiliation is tagged with, is scanned for every
+  later record's full name in both locales. A name the show says before its
+  record opens, or one that is an ordinary word, is declared on the record
+  itself rather than excused in a test;
 - every affiliation entry of a devil fruit eater carries the factions its prose
   names, as ids from a closed vocabulary (`Faction` in
   `src/lib/view/records.ts`, labelled in both dictionaries), and every id in the

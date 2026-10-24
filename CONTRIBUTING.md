@@ -89,8 +89,8 @@ entry, which carries the episode it is learned in. The comment at the top of
 | `docs/`                            | [Architecture](docs/architecture.md), media and the chronicle verification report.                |
 
 A new module with prose outside a series' `records/` must go into its series'
-`prose` in `EXTRA` in `scripts/archive-gate.mjs` and into `TEXTS` in
-`src/data/series/one-piece/leaks.test.ts`, with the gate its page applies to it.
+`prose` in `EXTRA` in `scripts/archive-gate.mjs` and into `textsOf` in
+`src/data/leaks.test.ts`, with the gate its page applies to it.
 
 A new server function in `src/server/api.ts` must go into `PAYLOADS` in
 `src/server/archive/payloads.server.ts`, with the ids or handles it is asked
@@ -131,7 +131,7 @@ Every record has the same shape, defined as `Entity` in `src/data/types.ts`:
 
 | To add            | Edit                                                                                                                                                                                                                                                                                         | Guarded by                                                                                |
 | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| A character       | The record and its entry in `dossiers` in `src/data/series/one-piece/records/<saga>.ts`, and a drawing in `src/data/series/one-piece/art/<saga>.ts`                                                                                                                                          | `src/data/series/one-piece/characters.test.ts`, `src/data/series/one-piece/leaks.test.ts` |
+| A character       | The record and its entry in `dossiers` in `src/data/series/one-piece/records/<saga>.ts`, and a drawing in `src/data/series/one-piece/art/<saga>.ts`                                                                                                                                          | `src/data/series/one-piece/characters.test.ts`, `src/data/leaks.test.ts`                  |
 | A devil fruit     | `FRUIT_FORMS` in `src/data/series/one-piece/fruit-forms.ts`, the record in `src/data/series/one-piece/records/fruits.ts` (no thresholds: they come from the `devilFruit` entry in the eater's `dossiers`), a drawing in `src/data/series/one-piece/art/fruits/`, and that `devilFruit` entry | `src/data/series/one-piece/fruits.test.ts`                                                |
 | A place           | The record in its saga module, its entry in `PLACE_DOSSIERS` in `src/data/series/one-piece/places.ts`, its point on the sea chart in `CHART` in `src/data/series/one-piece/chart.ts`, and a drawing                                                                                          | `src/data/series/one-piece/places.test.ts`, `src/data/series/one-piece/chart.test.ts`     |
 | A chronicle story | The story in `src/data/series/one-piece/records/<saga>.chronicle.ts`, its source in `scripts/chronicle-sources.mjs`, then `npm run docs:chronicle` to regenerate `docs/chronicle-verification.md`                                                                                            | `src/data/series/one-piece/characters.test.ts`, `scripts/chronicle-verification.test.mjs` |
@@ -152,8 +152,7 @@ A few rules that are easy to miss:
   chapter that covers its episode, which can be too early.
 - **Name facts.** If the show says a name before its record opens, set
   `nameSaidAt` on the record. If the name is an ordinary word, set
-  `commonWord: true`. `src/data/series/one-piece/leaks.test.ts` tells you when
-  you need either.
+  `commonWord: true`. `src/data/leaks.test.ts` tells you when you need either.
 - **Chronicle stories** link other characters with `[[id]]` or
   `[[id|shown text]]` markers, and only to characters already open at the
   story's episode.

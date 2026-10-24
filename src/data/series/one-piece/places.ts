@@ -1,6 +1,4 @@
-import type { ShipDossier } from '~/data/features'
-import { orderByMode } from '~/data/order'
-import type { Entity } from '~/data/types'
+import { keptOf } from '~/data/shelves'
 
 import { entities } from './entities'
 import type { OnePiecePlace } from './records/saga'
@@ -955,41 +953,22 @@ export const PLACE_DOSSIERS: Record<string, OnePiecePlace> = {
   },
 }
 
-/** Every place record, in the order the ship puts in at them. */
-export const places: Entity[] = orderByMode(
-  entities.filter((entity) => entity.kind === 'place'),
-  'episode',
-)
-
 /**
- * Looks a place up by id. A record that exists but is not a place is
- * `undefined` here too: the log has no entry for a character.
+ * Every place record, in the order the ship puts in at them, looked up by id
+ * (a record that is not a place is `undefined` there: the log has no entry
+ * for a character), and the log entry filed for each. A place with no entry
+ * still has a name, a drawing and a threshold – the log is the extra the page
+ * shows once there is something to say.
  */
-export function getPlace(id: string): Entity | undefined {
-  return places.find((candidate) => candidate.id === id)
-}
+export const {
+  dossierOf: placeDossierOf,
+  get: getPlace,
+  records: places,
+} = keptOf(entities, 'place', PLACE_DOSSIERS)
 
-/**
- * The log entry filed for a record, or `undefined` for one the ship never put
- * in at. A place with no entry still has a name, a drawing and a threshold –
- * the log is the extra the page shows once there is something to say.
- */
-export function placeDossierOf(entity: Entity): OnePiecePlace | undefined {
-  return PLACE_DOSSIERS[entity.id]
-}
-
-/** Every ship record, in the order the crew receives them. */
-export const ships: Entity[] = orderByMode(
-  entities.filter((entity) => entity.kind === 'ship'),
-  'episode',
-)
-
-/** Looks a ship up by id; any other record is `undefined` here. */
-export function getShip(id: string): Entity | undefined {
-  return ships.find((candidate) => candidate.id === id)
-}
-
-/** The log entry filed for a ship, or `undefined` for any other record. */
-export function shipDossierOf(entity: Entity): ShipDossier | undefined {
-  return SHIP_DOSSIERS[entity.id]
-}
+/** Every ship record, in the order the crew receives them, and her log. */
+export const {
+  dossierOf: shipDossierOf,
+  get: getShip,
+  records: ships,
+} = keptOf(entities, 'ship', SHIP_DOSSIERS)
