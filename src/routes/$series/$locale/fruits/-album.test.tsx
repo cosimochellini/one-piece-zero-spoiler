@@ -3,6 +3,7 @@ import userEvent from '@testing-library/user-event'
 import type { ReactElement } from 'react'
 import { describe, expect, it, vi } from 'vitest'
 
+import { plain } from '~/lib/plain'
 import { type Bookmark, serialiseBookmark } from '~/lib/progress/episode'
 import { loadFruitAlbum } from '~/server/api'
 import { fruitBand } from '~/test/fixtures'
@@ -21,13 +22,13 @@ const load = vi.mocked(loadFruitAlbum)
 function answerAt(
   bookmark: Bookmark,
 ): Awaited<ReturnType<typeof loadFruitAlbum>> {
-  return {
+  return plain({
     at: bookmark === null ? '' : serialiseBookmark(bookmark),
     bands: [fruitBand()],
     factions: [],
     later: [],
     sagas: [],
-  }
+  })
 }
 
 /** What the page would draw: the plates, or nothing, and the retry. */

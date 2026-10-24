@@ -3,6 +3,7 @@ import { type ReactElement, useCallback } from 'react'
 
 import { isLocale, type Locale } from '~/i18n/locales'
 import { getDictionary, translate } from '~/i18n/translate'
+import { readPlain } from '~/lib/plain'
 import { type SagaTable, SagaTableContext } from '~/lib/progress/sagaLabel'
 import { DrawingsContext } from '~/lib/view/drawings'
 import { LocaleShell } from '~/routes/-LocaleShell'
@@ -62,7 +63,11 @@ function SeriesLayout(): ReactElement {
   )
   const loadStrokes = useCallback(
     async (ids: string[], language: Locale) =>
-      loadDrawings({ data: { series: series.slug, ids, locale: language } }),
+      readPlain(
+        await loadDrawings({
+          data: { series: series.slug, ids, locale: language },
+        }),
+      ),
     [series.slug],
   )
   return (

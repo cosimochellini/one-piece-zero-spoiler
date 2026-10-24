@@ -107,7 +107,7 @@ function setDownByTheSweets(hat: Stroke[]): Stroke[] {
 
   for (const { role, ...stroke } of hat) {
     if (role !== 'ambient') {
-      plain.push({ ...stroke, ...(role !== 'accent' && { role }), transform })
+      plain.push({ ...stroke, ...(role === 'soft' && { role }), transform })
     }
   }
 

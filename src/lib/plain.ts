@@ -20,8 +20,14 @@ export function plain<T>(value: T): Plain<T> {
   return Response.json(value)
 }
 
-/** The payload back, in the browser. */
+/**
+ * The payload back, in the browser. An error page in its place (the host's,
+ * say) rejects as any failed call does, rather than as a JSON parse error.
+ */
 export async function readPlain<T>(response: Plain<T>): Promise<T> {
+  if (!response.ok) {
+    throw new Error(`HTTP ${String(response.status)}`)
+  }
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- the body is what `plain` wrote from a `T`, on our own server.
   return response.json()
 }

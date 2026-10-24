@@ -181,17 +181,21 @@ export const loadNearby = createServerFn()
   .validator(addressed)
   .handler(async ({ data }) => nearbyPage(data.id, await readerIn(data)))
 
+// Plain JSON, as the album below (#780).
 export const loadDrawings = createServerFn()
   .validator(listed)
-  .handler(async ({ data }) => drawingsFor(data.ids, await readerIn(data)))
+  .handler(async ({ data }) =>
+    plain(drawingsFor(data.ids, await readerIn(data))),
+  )
 
 export const loadFruits = createServerFn()
   .validator(located)
   .handler(async ({ data }) => fruitSheet(await readerIn(data)))
 
+// Plain JSON: the browser asks for the plates once the page is up (#780).
 export const loadFruitAlbum = createServerFn()
   .validator(located)
-  .handler(async ({ data }) => fruitAlbum(await readerIn(data)))
+  .handler(async ({ data }) => plain(fruitAlbum(await readerIn(data))))
 
 export const loadFruit = createServerFn()
   .validator(addressed)

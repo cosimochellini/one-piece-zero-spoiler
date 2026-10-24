@@ -1,3 +1,5 @@
+import { readFileSync } from 'node:fs'
+import path from 'node:path'
 import { describe, expect, it } from 'vitest'
 
 import { descriptionOf } from '~/data/series'
@@ -21,7 +23,7 @@ import { type Payload, payloadsFor } from './payloads.server'
 const PAYLOADS = payloadsFor(ONE_PIECE_LOADED.archive)
 
 /** The server functions that answer with `plain` rather than seroval. */
-const PLAIN = new Set(['loadShelves'])
+const PLAIN = new Set(['loadDrawings', 'loadFruitAlbum', 'loadShelves'])
 
 /** A record a page names past the bookmark on purpose. */
 type Excuse = (entity: Entity, key: string, bookmark: Bookmark) => boolean
@@ -100,6 +102,22 @@ describe('every payload the server sends', () => {
     ).toStrictEqual(Object.keys(api).toSorted(alphabetically))
   })
 
+  it('is on the plain list exactly when `api.ts` sends it with `plain`', () => {
+    // One `export const` per server function: the chunk after each names it
+    // and holds its handler.
+    const sent = readFileSync(
+      path.join(import.meta.dirname, '..', 'api.ts'),
+      'utf8',
+    )
+      .split('export const ')
+      .filter((chunk) => chunk.includes('plain('))
+      .map((chunk) => chunk.slice(0, chunk.indexOf(' ')))
+
+    expect(sent.toSorted(alphabetically)).toStrictEqual(
+      [...PLAIN].toSorted(alphabetically),
+    )
+  })
+
   it('is swept for every series listed, and for no other', () => {
     expect(Object.keys(SWEEPS).toSorted(alphabetically)).toStrictEqual(
       SERIES.map(({ slug }) => slug).toSorted(alphabetically),
@@ -157,12 +175,15 @@ describe.each(SERIES)('every payload of $slug', (series) => {
   // on the way.
   it.each(payloads.filter(({ name }) => PLAIN.has(name)))(
     '$name reads back whole from plain JSON',
-    ({ run }) => {
-      for (const { bookmark, locale } of asks) {
-        const payload = run(bookmark, locale, '')
-        const sent = JSON.stringify(payload)
+    ({ keys, run }) => {
+      const all = keys?.()
+      for (const [at, { bookmark, locale }] of asks.entries()) {
+        for (const key of sampled(all, at)) {
+          const payload = run(bookmark, locale, key)
+          const sent = JSON.stringify(payload)
 
-        expect(JSON.parse(sent)).toStrictEqual(payload)
+          expect(JSON.parse(sent)).toStrictEqual(payload)
+        }
       }
     },
   )
