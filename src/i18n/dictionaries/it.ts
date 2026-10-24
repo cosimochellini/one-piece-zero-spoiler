@@ -513,6 +513,8 @@ export const itDictionary: Dictionary = {
   'fruits.foggedHint':
     'I loro nomi sono nascosti, quindi la ricerca non li trova. Sposta avanti il segnalibro per vederli.',
   'fruits.allOpen': 'Nessun frutto di questo tipo è nella nebbia.',
+  'fruits.albumFailed': 'Caricamento dei frutti del diavolo non riuscito.',
+  'fruits.albumRetry': 'Riprova',
   'fruits.wall.title': '{count} frutti del diavolo sono nella nebbia',
   'fruits.wall.ask': 'A che episodio sei?',
   'fruits.wall.browse': 'Sfoglia comunque',

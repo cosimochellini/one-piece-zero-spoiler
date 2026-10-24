@@ -7,6 +7,7 @@ import {
 } from '~/components/AlbumControls'
 import { groupingOf } from '~/components/albumGrouping'
 import { AlbumGroups } from '~/components/AlbumGroups'
+import { LoadFailed } from '~/components/BookmarkSkeleton'
 import { FogBand, type FogTitles } from '~/components/FogBand'
 import { FruitTile, OpenTiles } from '~/components/FruitTile'
 import { matchesIn } from '~/components/recordMatches'
@@ -59,6 +60,8 @@ export interface SpecimenBandsProps {
   onParams: AlbumControlsProps['onParams']
   params: FruitParams
   peek: (handle: string) => Promise<FruitView>
+  /** Asks for the album again; set only when it could not be fetched. */
+  onRetry?: (() => void) | undefined
   /** Every plate's counts, which the bar prints before the album is here. */
   plates: FruitPlateCount[]
 }
@@ -82,6 +85,7 @@ export interface SpecimenBandsProps {
 export function SpecimenBands({
   album,
   onParams,
+  onRetry,
   params,
   peek,
   plates,
@@ -89,18 +93,15 @@ export function SpecimenBands({
   const fieldId = useId()
   // The field is never deferred; the plates behind it are.
   const needle = useDeferredValue(foldName((params.q ?? '').trim()))
-  const shown = album?.bands.filter(
-    (band) => params.form === undefined || band.form === params.form,
-  )
 
   return (
     <div {...stylex.props(styles.sheet)}>
       <AlbumControls
         count={
-          shown === undefined ?
+          album === null ?
             openIn(plates, params.form)
           : matchesIn(
-              shown.flatMap((band) => band.open),
+              shownOf(album.bands, params.form).flatMap((band) => band.open),
               needle,
             ).length
         }
@@ -110,17 +111,40 @@ export function SpecimenBands({
         plates={plates}
       />
 
-      {album === null || shown === undefined ? null : (
-        <Plates
+      {album === null ?
+        onRetry !== undefined && <AlbumFailed onRetry={onRetry} />
+      : <Plates
           album={album}
           fieldId={fieldId}
           needle={needle}
           params={params}
           peek={peek}
-          shown={shown}
         />
-      )}
+      }
     </div>
+  )
+}
+
+/** The plates a kind chip keeps on the page: all of them, or its own. */
+function shownOf(
+  bands: FruitBandView[],
+  form: FruitForm | undefined,
+): FruitBandView[] {
+  return bands.filter((band) => form === undefined || band.form === form)
+}
+
+/** The album could not be fetched: one line, and a button that asks again. */
+export function AlbumFailed({
+  onRetry,
+}: {
+  onRetry: () => void
+}): ReactElement {
+  return (
+    <LoadFailed
+      message="fruits.albumFailed"
+      onRetry={onRetry}
+      retry="fruits.albumRetry"
+    />
   )
 }
 
@@ -141,12 +165,10 @@ function Plates({
   needle,
   params,
   peek,
-  shown,
 }: Pick<SpecimenBandsProps, 'params' | 'peek'> & {
   album: Album
   fieldId: string
   needle: string
-  shown: FruitBandView[]
 }): ReactElement {
   const t = useT()
   const grouping = groupingOf(t, { ...sent, fieldId, view: params.view })
@@ -166,7 +188,7 @@ function Plates({
 
   return (
     <>
-      {shown.map((band) => {
+      {shownOf(bands, params.form).map((band) => {
         return (
           <Plate
             key={band.form}

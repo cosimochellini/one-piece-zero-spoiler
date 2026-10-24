@@ -114,7 +114,7 @@ function FruitsPage(): ReactElement {
   const t = useT()
   const { bookmark } = useBookmark()
   const { filed, marquee, plates } = Route.useLoaderData()
-  const album = useFruitAlbum()
+  const { album, retry } = useFruitAlbum()
 
   const peek = usePeek(liftFruit)
   const [params, onParams] = useFruitParams()
@@ -130,6 +130,7 @@ function FruitsPage(): ReactElement {
         filed={filed}
         marquee={marquee}
         onParams={onParams}
+        onRetry={retry}
         params={params}
         peek={peek}
         plates={plates}

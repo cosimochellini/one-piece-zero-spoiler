@@ -5,6 +5,7 @@ import { EpisodeMark } from '~/components/EpisodeMark'
 import { styles as fog, PHASES } from '~/components/FogTile.styles'
 import { SagaMarquee } from '~/components/SagaMarquee'
 import {
+  AlbumFailed,
   Plate,
   SpecimenBands,
   type SpecimenBandsProps,
@@ -33,6 +34,7 @@ export interface FruitsAlbumProps {
   filed: number
   marquee: FruitMarqueeView | null
   onParams: SpecimenBandsProps['onParams']
+  onRetry?: SpecimenBandsProps['onRetry']
   params: SpecimenBandsProps['params']
   peek: (handle: string) => Promise<FruitView>
   plates: FruitPlateCount[]
@@ -41,7 +43,7 @@ export interface FruitsAlbumProps {
 /** The wall never reads the picks, and has no marquee and no saga view. */
 type FruitWallProps = Pick<
   FruitsAlbumProps,
-  'album' | 'filed' | 'peek' | 'plates'
+  'album' | 'filed' | 'onRetry' | 'peek' | 'plates'
 >
 
 /**
@@ -55,13 +57,11 @@ type FruitWallProps = Pick<
  * never on a first paint, and never away from a control the reader is on.
  */
 export function FruitsAlbum({
-  album,
   filed,
   marquee,
   onParams,
   params,
-  peek,
-  plates,
+  ...sheet
 }: FruitsAlbumProps): ReactElement {
   const { bookmark } = useBookmark()
   const fromWallRef = useRef(false)
@@ -74,10 +74,8 @@ export function FruitsAlbum({
         }}
       >
         <FruitWall
-          album={album}
           filed={filed}
-          peek={peek}
-          plates={plates}
+          {...sheet}
         />
       </div>
     )
@@ -106,11 +104,9 @@ export function FruitsAlbum({
         marquee={marquee}
       />
       <SpecimenBands
-        album={album}
         onParams={onParams}
         params={params}
-        peek={peek}
-        plates={plates}
+        {...sheet}
       />
     </div>
   )
@@ -132,6 +128,7 @@ export function FruitsAlbum({
 function FruitWall({
   album,
   filed,
+  onRetry,
   peek,
   plates,
 }: FruitWallProps): ReactElement {
@@ -151,6 +148,9 @@ function FruitWall({
           {t('fruits.wall.browse')}
         </summary>
         <div {...stylex.props(styles.plates)}>
+          {album === null && onRetry !== undefined ?
+            <AlbumFailed onRetry={onRetry} />
+          : null}
           {album?.bands.map((band, at) => {
             return (
               <Plate

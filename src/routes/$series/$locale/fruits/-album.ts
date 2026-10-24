@@ -31,6 +31,9 @@ interface Asked {
 }
 
 const albums = new Map<string, Album>()
+// The keys a page asked for and did not get: the call failed, or answered
+// for another bookmark. Each waits for the reader's retry.
+const failed = new Set<string>()
 const listeners = new Set<() => void>()
 
 function subscribe(listener: () => void): () => void {
@@ -43,20 +46,28 @@ function subscribe(listener: () => void): () => void {
 const keyOf = (series: string, locale: Locale, at: string): string =>
   `${series} ${locale} ${at}`
 
+function notify(): void {
+  for (const listener of listeners) {
+    listener()
+  }
+}
+
 /**
- * Asks for the album and files it. A failed call leaves the plates out until
- * the page asks again: on the next navigation here, or a bookmark move.
+ * Asks for the album and files it under the bookmark the server read. A
+ * failed call files nothing. With `wanted`, the key the page is waiting
+ * for, a call that leaves it empty marks it failed.
  */
-async function fetchAlbum(data: Asked): Promise<void> {
+async function fetchAlbum(data: Asked, wanted?: string): Promise<void> {
   try {
     const { at, ...album } = await loadFruitAlbum({ data })
     albums.set(keyOf(data.series, data.locale, at), album)
   } catch {
-    return
+    // Filed as failed below.
   }
-  for (const listener of listeners) {
-    listener()
+  if (wanted !== undefined && !albums.has(wanted)) {
+    failed.add(wanted)
   }
+  notify()
 }
 
 /**
@@ -70,8 +81,15 @@ export const primeAlbum = createIsomorphicFn().client(fetchAlbum)
  * The album for the page's series, locale and bookmark, or `null` until it
  * is here. The server renders `null`, and so does the render that hydrates
  * it, so the two agree; the album is asked for after.
+ *
+ * A call that fails, or that answers for another bookmark than this page's
+ * (another tab moved it, a trial ran out), is not asked again on its own:
+ * `retry` is set instead, for the page to offer, and asks once more.
  */
-export function useFruitAlbum(): Album | null {
+export function useFruitAlbum(): {
+  album: Album | null
+  retry: (() => void) | undefined
+} {
   const { locale, series } = useSeriesParams()
   const { bookmark } = useBookmark()
   const key = keyOf(
@@ -84,16 +102,30 @@ export function useFruitAlbum(): Album | null {
     () => albums.get(key) ?? null,
     () => null,
   )
+  const stuck = useSyncExternalStore(
+    subscribe,
+    () => album === null && failed.has(key),
+    () => false,
+  )
 
   useEffect(() => {
-    if (album === null) {
-      void fetchAlbum({ series, locale })
+    if (album === null && !stuck) {
+      void fetchAlbum({ series, locale }, key)
     }
-  }, [album, locale, series])
+  }, [album, key, locale, series, stuck])
 
   useRestoredScroll(album)
 
-  return album
+  return {
+    album,
+    retry:
+      stuck ?
+        () => {
+          failed.delete(key)
+          notify()
+        }
+      : undefined,
+  }
 }
 
 /**
