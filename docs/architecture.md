@@ -393,7 +393,11 @@ tapped a link a friend sent. The list is in `src/lib/crawler.ts`.
 The site moved from Netlify to a Cloudflare Worker on `zerospoiler.app` (#727).
 The figures below were taken on Netlify, whose function ran in Ohio; a Worker
 runs in the data centre nearest the reader, so the fixed hop they describe is
-not the floor any more. The render costs are the same code and still hold.
+not the floor any more. On 2026-10-24, from Italy, the same pages answered in
+0.10–0.30 s. A Worker's clock only moves across I/O, so `app;dur` reads close to
+zero there; `wrangler tail` reports the CPU time instead: 87–132 ms for
+`/one-piece/en/characters`, 16–44 ms for fruits and places, about 10 ms for a
+character page.
 
 Measured on 2026-10-15 from Italy with the `Server-Timing` header every response
 carries (`app;dur=…`, the time inside the function until the response exists,
