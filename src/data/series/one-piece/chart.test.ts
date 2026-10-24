@@ -50,7 +50,7 @@ describe('the sea chart', () => {
         route
           .filter(
             (place) =>
-              (placeDossierOf(place)?.sea === 'east-blue') === inEastBlue,
+              (placeDossierOf(place)?.region === 'east-blue') === inEastBlue,
           )
           .map((place) => pointAt(place.id).x)
 
@@ -62,7 +62,7 @@ describe('the sea chart', () => {
 
   it('puts every East Blue stop above the Grand Line, in Paradise’s half', () => {
     for (const place of places) {
-      const inEastBlue = placeDossierOf(place)?.sea === 'east-blue'
+      const inEastBlue = placeDossierOf(place)?.region === 'east-blue'
       const { x, y } = pointAt(place.id)
 
       expect(y < BELT_TOP, place.id).toBe(inEastBlue)

@@ -1,4 +1,5 @@
-import type { Eater, Entity } from '~/data/types'
+import type { Eater } from '~/data/features'
+import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 import { getDictionary } from '~/i18n/translate'
 import {

@@ -32,7 +32,7 @@ const LANGLINKS =
 const ITALIAN =
   '?action=query&prop=revisions&rvprop=content&rvslots=main&redirects=1&format=json&titles='
 
-/** @typedef {{ cache: string, en: string, it: string }} Wiki */
+/** @typedef {{ cache: string, en: string, it: string, slug: string }} Wiki */
 
 /**
  * The wiki a series' `verify:*` scripts read, and where its answers are
@@ -43,7 +43,7 @@ const ITALIAN =
  */
 export function wikiOf({ slug, wiki }) {
   // fallow-ignore-next-line security-sink -- the slug comes from the repository's own series list
-  return { cache: path.join(CACHE, slug), en: wiki.en, it: wiki.it }
+  return { cache: path.join(CACHE, slug), en: wiki.en, it: wiki.it, slug }
 }
 
 /** How many chapter pages one API call asks for. */

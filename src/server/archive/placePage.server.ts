@@ -141,7 +141,7 @@ function chartOf(
     }
     route.push({
       at,
-      sea: r.archive.placeDossierOf(place)?.sea ?? null,
+      sea: r.archive.placeDossierOf(place)?.region ?? null,
       saga: sagaNumberOf(place.id, r),
       ship: sailedBy(place, ships, r.mode),
     })

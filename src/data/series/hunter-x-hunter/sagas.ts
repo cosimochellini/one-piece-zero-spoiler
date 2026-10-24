@@ -1,9 +1,9 @@
 import { chimeraAnt } from './records/chimera-ant'
-import { darkContinent } from './records/dark-continent'
 import { election } from './records/election'
 import { greedIsland } from './records/greed-island'
 import { heavensArena } from './records/heavens-arena'
 import { hunterExam } from './records/hunter-exam'
+import { kakin } from './records/kakin'
 import type { HunterSaga } from './records/saga'
 import { yorknewCity } from './records/yorknew-city'
 
@@ -15,5 +15,5 @@ export const sagas: HunterSaga[] = [
   greedIsland,
   chimeraAnt,
   election,
-  darkContinent,
+  kakin,
 ]

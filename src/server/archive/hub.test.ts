@@ -4,7 +4,7 @@ import { archiveIn } from '~/data/source'
 import { ONE_PIECE_LOADED } from '~/test/series'
 import { plant } from '~/test/sourceOnly'
 
-import { hubFor, hubSeries } from './hub.server'
+import { hubFor, hubSeries, openArchives, openDescriptions } from './hub.server'
 
 describe('hubSeries', () => {
   const { archive } = ONE_PIECE_LOADED
@@ -86,5 +86,21 @@ describe('the count on the hub', () => {
   it('counts only what both sources tell for a reader with no bookmark', () => {
     expect(countAt(anime, null)).toBe(archive.entities.length)
     expect(countAt(manga, null)).toBe(archive.entities.length)
+  })
+})
+
+describe('the series a reader reaches', () => {
+  // Hunter x Hunter is filed and swept, and not open until #763: the hub's
+  // cards and the legal page's descriptions are the open series alone.
+  it('describes the open series only', () => {
+    expect(openDescriptions().map(({ slug }) => slug)).toStrictEqual([
+      'one-piece',
+    ])
+  })
+
+  it('puts a card on the hub for the open series only', async () => {
+    const hub = hubFor(new Map(), await openArchives())
+
+    expect(hub.map(({ slug }) => slug)).toStrictEqual(['one-piece'])
   })
 })

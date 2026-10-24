@@ -1,12 +1,10 @@
-import type { CharacterDossier } from '~/data/types'
-
 import { alabasta } from './records/alabasta'
 import { dressrosa } from './records/dressrosa'
 import { eastBlue } from './records/east-blue'
 import { egghead } from './records/egghead'
 import { elbaf } from './records/elbaf'
 import { fishManIsland } from './records/fish-man-island'
-import type { OnePieceSaga } from './records/saga'
+import type { OnePieceDossier, OnePieceSaga } from './records/saga'
 import { skypiea } from './records/skypiea'
 import { summitWar } from './records/summit-war'
 import { thrillerBark } from './records/thriller-bark'
@@ -45,5 +43,5 @@ export const sagas: OnePieceSaga[] = [
  * are written and reviewed together; the data tests hold that every
  * character has exactly one.
  */
-export const CHARACTER_DOSSIERS: Record<string, CharacterDossier> =
+export const CHARACTER_DOSSIERS: Record<string, OnePieceDossier> =
   Object.fromEntries(sagas.flatMap((saga) => Object.entries(saga.dossiers)))

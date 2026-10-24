@@ -128,7 +128,7 @@ export const DRAWINGS = {
   // lavender going into its slot: the vote for a new chairman of the Hunter
   // Association that the twelve Zodiacs meet to set up in episode 137 and
   // chapter 319.
-  '13th-hunter-chairman-election-arc': [
+  'election-arc': [
     { d: 'M34 82 L92 82 L126 66 L68 66 Z' },
     { d: 'M34 82 V146 H92 V82 M92 146 L126 130 V66' },
     { d: 'M62 76 L88 76 L96 72 L70 72 Z', role: 'soft' },
@@ -147,7 +147,7 @@ export const DRAWINGS = {
   // edge a far larger land in violet, hatched in shadow: the Dark Continent,
   // the place no world map shows, where the King of Kakin announces a voyage
   // in chapter 340.
-  'dark-continent-expedition-arc': [
+  'kakin-arc': [
     { d: 'M14 60 L84 52 L80 84 L88 112 L84 150 L18 156 Z' },
     {
       d: 'M24 76 C30 70 44 72 46 80 C50 88 40 94 32 90 C24 88 20 82 24 76 Z',

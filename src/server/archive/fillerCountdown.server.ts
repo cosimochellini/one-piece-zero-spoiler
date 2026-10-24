@@ -1,4 +1,4 @@
-import type { SeriesArchive } from '~/data/types'
+import type { ReaderArchive } from '~/data/features'
 import { absoluteEpisodeOf } from '~/lib/progress/episode'
 import type {
   Countdown,
@@ -28,7 +28,7 @@ import type { Reader } from './reader.server'
 const AHEAD = 5
 
 /** Every run that can be skipped, across arcs: a run is one skip. */
-const ranges = new WeakMap<SeriesArchive, ReturnType<typeof skipRangesOf>>()
+const ranges = new WeakMap<ReaderArchive, ReturnType<typeof skipRangesOf>>()
 function rangesFor(r: Reader): ReturnType<typeof skipRangesOf> {
   let found = ranges.get(r.archive)
   if (found === undefined) {

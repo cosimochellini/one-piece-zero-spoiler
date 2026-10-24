@@ -12,8 +12,14 @@ export interface HunterEntity extends Entity {
 /**
  * One arc as a module (`Saga` in `~/data/types`): Hunter x Hunter has no
  * grouping above its arcs, so each arc is a stretch of its own, named after
- * the arc, and later holds the records first met along it.
+ * the arc, and later holds the records first met along it. No place forms,
+ * regions or groups yet: the places and the groups of #760 bring them, with
+ * the pages that print them.
  */
-export interface HunterSaga extends Saga {
+export interface HunterSaga extends Saga<{
+  form: never
+  group: never
+  region: never
+}> {
   entries: HunterEntity[]
 }

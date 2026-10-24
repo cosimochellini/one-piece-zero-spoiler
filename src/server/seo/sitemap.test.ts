@@ -32,6 +32,11 @@ describe('the sitemap', () => {
     expect(document).toContain('xmlns:xhtml="http://www.w3.org/1999/xhtml"')
   })
 
+  it('lists no page of a series that is not open', () => {
+    // Hunter x Hunter is filed and swept, and opens with #763.
+    expect(document).not.toContain('/hunter-x-hunter')
+  })
+
   it('lists every page of the site in both languages', () => {
     expect(locations()).toHaveLength(
       (SECTION_COUNT

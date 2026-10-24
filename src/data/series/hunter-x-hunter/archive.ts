@@ -9,9 +9,8 @@ import { sagas } from './sagas'
 
 /**
  * Hunter x Hunter's archive: its arcs, for now. The characters and places of
- * the Hunter Exam come next (#760). It has none of One Piece's features
- * (`features` on its description), so those parts are empty lists and
- * lookups that find nothing, and no record has a dated fact yet.
+ * the Hunter Exam come next (#760), so its character and place lists are
+ * empty and no record has a dated fact yet.
  */
 const entities: Entity[] = sagas.flatMap((saga) => saga.entries)
 
@@ -67,22 +66,11 @@ export const HUNTER_X_HUNTER_ARCHIVE: SeriesArchive = {
   reachedOf: empty,
   latestOf: none,
   redrawn: empty,
-  factionsOf: none,
-  eatersOf: empty,
   nativesOf: empty,
-  fruits: [],
-  getFruit: none,
-  fruitFormOf: none,
-  fruitsOfForm: empty,
-  fruitRedrawn: {},
   places: [],
-  ships: [],
   getPlace: none,
-  getShip: none,
   placeDossierOf: none,
-  shipDossierOf: none,
   chartPointOf: () => null,
-  filler: [],
-  fillerArcs: [],
-  lastAired: SERIES.episodeCeiling,
+  // None of One Piece's features (`features` on its description).
+  features: {},
 }

@@ -1,4 +1,4 @@
-import type { ShipDossier } from '~/data/types'
+import type { ShipDossier } from '~/data/features'
 
 /**
  * The ships’ log entries, kept apart from the place layer (`~/data/series/one-piece/places`)

@@ -2,19 +2,17 @@
 // here is taken from a series: a series narrows these shapes for its own
 // records (One Piece's `Saga` holds its drawing and fruit ids to the ones it
 // files) and hands its archive to the server through `SeriesArchive`.
+import type { Features, FeatureTimelines } from '~/data/features'
 import type { Reveal } from '~/data/reveal'
 import type { Locale } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
 import type { Series } from '~/lib/progress/series'
 import type { Gated, Source } from '~/lib/progress/spoiler'
 import type { ChartPoint } from '~/lib/view/chart'
-import type { FillerKind } from '~/lib/view/filler'
 import type {
   CharacterStatus,
   EntityKind,
   Faction,
-  FruitForm,
-  FruitLook,
   PlaceForm,
   Sea,
   Stroke,
@@ -129,14 +127,40 @@ export interface Dated<T> {
 export type Timeline<T> = Dated<T>[]
 
 /**
- * One affiliation entry: the prose, and the groups it names as `Faction` ids
- * the pages can sort by. The tags change exactly when the prose does, because
- * they sit on the same entry, and say no more than it: a group the prose has
- * not named is not a tag. Every fruit eater's entries carry them (a data test
- * holds it); a character who never ate a fruit may leave them out for now.
+ * The words a series files its places and its groups under: what kind of
+ * place a place is, the region it lies in, and the groups an affiliation
+ * names. Strings here; each series narrows them to its own closed lists, as
+ * One Piece does to its place forms, its seas and its factions.
  */
-export interface Affiliation extends Dated<LocalizedText> {
-  factions?: Faction[]
+export interface Vocabulary {
+  form: string
+  group: string
+  region: string
+}
+
+/**
+ * The words the shared pages can print today: the ones declared with the
+ * view models and labelled in the dictionaries (`~/lib/view/records`), which
+ * are One Piece's. `SeriesArchive` takes them by default; a series with words
+ * of its own needs the pages to print them first.
+ */
+export interface PageVocabulary extends Vocabulary {
+  form: PlaceForm
+  group: Faction
+  region: Sea
+}
+
+/**
+ * One affiliation entry: the prose, and the groups it names as ids of the
+ * series' own vocabulary the pages can sort by (One Piece's factions). The
+ * tags change exactly when the prose does, because they sit on the same
+ * entry, and say no more than it: a group the prose has not named is not a
+ * tag.
+ */
+export interface Affiliation<
+  V extends Vocabulary = Vocabulary,
+> extends Dated<LocalizedText> {
+  factions?: V['group'][]
 }
 
 /**
@@ -179,8 +203,8 @@ export interface Story {
  * changes when she changes it and a bounty rises when the poster is printed.
  * A fact with no entry yet is simply not on the page.
  */
-export interface CharacterDossier {
-  affiliation: Affiliation[]
+export interface CharacterDossier<V extends Vocabulary = Vocabulary> {
+  affiliation: Affiliation<V>[]
   /**
    * What has happened to the character, one story per turning point, each
    * filed at the first episode by whose end a viewer knows all of it. Unlike
@@ -192,14 +216,6 @@ export interface CharacterDossier {
    * no band at all.
    */
   chronicle?: Timeline<Story>
-  /**
-   * The fruits the story has said this character ate, by id rather than by
-   * name: one entry may carry two, because one episode may say two. The name
-   * the page prints is the fruit record's own, so the two can never drift.
-   * One Piece's alone (`features.fruits`), which narrows the ids to the
-   * fruits it files.
-   */
-  devilFruit?: Timeline<string[]>
   epithet?: Timeline<LocalizedText>
   log: LocalizedText
   origin?: Origin[]
@@ -214,23 +230,26 @@ export interface CharacterDossier {
    * something is coming, which is the spoiler itself.
    */
   status?: Timeline<CharacterStatus>
-  /** In Berry. One Piece's alone (`features.bounty`). */
-  bounty?: Timeline<number>
 }
 
 /**
  * Every dated field of a record, by what an entry of it holds: the character
- * dossiers' timelines, derived from the dossier so that a new one does not
- * compile until a series reads it, a ship's fate and a redrawing.
+ * dossiers' timelines, the features' ones included, derived from the dossier
+ * so that a new one does not compile until a series reads it, a ship's fate
+ * and a redrawing. A series reads the fields it does not file as empty.
  */
 export type Fields = {
   [
-    K in keyof CharacterDossier as NonNullable<CharacterDossier[K]> extends (
-      Timeline<unknown>
-    ) ?
+    K in keyof (CharacterDossier & FeatureTimelines) as NonNullable<
+      (CharacterDossier & FeatureTimelines)[K]
+    > extends Timeline<unknown> ?
       K
     : never
-  ]-?: NonNullable<CharacterDossier[K]> extends Timeline<infer V> ? V : never
+  ]-?: NonNullable<(CharacterDossier & FeatureTimelines)[K]> extends (
+    Timeline<infer T>
+  ) ?
+    T
+  : never
 } & { fate: LocalizedText; redrawing: Stroke[] }
 
 /** The name of a dated field. */
@@ -277,8 +296,8 @@ export interface RoutePosition {
  * them. An archive is the concatenation of these, so a stretch's records and
  * its dossiers are read and reviewed together.
  */
-export interface Saga {
-  dossiers: Record<string, CharacterDossier>
+export interface Saga<V extends Vocabulary = Vocabulary> {
+  dossiers: Record<string, CharacterDossier<V> & FeatureTimelines>
   entries: Entity[]
   /**
    * The stretch's own name. Most of One Piece's sagas hold several arcs, so
@@ -294,9 +313,10 @@ export interface Saga {
  * viewer who has just arrived could say, so nothing here has to be veiled
  * separately from the place itself.
  */
-export interface PlaceDossier {
-  form: PlaceForm
-  sea: Sea
+export interface PlaceDossier<V extends Vocabulary = Vocabulary> {
+  form: V['form']
+  /** Where it lies: One Piece's sea. */
+  region: V['region']
   /** The arc the place belongs to: an `arc` record's id. */
   arc: string
   /** The one thing the drawing shows and the eye would look for. */
@@ -330,64 +350,14 @@ export interface Visit extends Dated<LocalizedText> {
 }
 
 /**
- * The log entry for a ship.
- *
- * Its own shape rather than a `PlaceDossier` with `form: 'ship'`. A ship lies
- * in no one sea and has no landmark to look for, so those words would be
- * wrong on it; and unlike a port, a ship has a story of its own, which is
- * what `fate` holds. The other fields obey the ship's threshold, like a
- * port's.
+ * A loaded archive: what the server reads of a series. The core every series
+ * has, and the features only some have (One Piece's devil fruits, ships,
+ * filler guide and factions) as optional slices in `features`. The server
+ * reads them through `~/data/features`, which fills a missing one with empty
+ * lists and lookups that find nothing, and `~/data/series/index.test.ts`
+ * holds each slice to the flag on the series' description.
  */
-export interface ShipDossier {
-  /** Who made her, as a viewer at the threshold has been told it. */
-  builder: LocalizedText
-  /**
-   * The place the crew receives her at: a `place` record's id, named
-   * outright, because it opens no later than the ship (a data test holds it).
-   */
-  launched: string
-  /** The log entry proper: two or three sentences, safe at the threshold. */
-  log: LocalizedText
-  /**
-   * Where the ship stands, from her threshold on. The page prints the latest
-   * entry the reader has reached, and the first entry is at the threshold,
-   * so the row is there from the start and its arrival announces nothing.
-   */
-  fate: Timeline<LocalizedText>
-  /**
-   * The places she reaches, each with the episode and the chapter at which
-   * she is there or coming in, as checked against the wiki. A place opens
-   * no earlier than her arrival in either unit (a data test holds it):
-   * opened sooner, the tile would tell a reader where she goes next. The
-   * page shows only those the reader has reached, because a covered tile's
-   * episode would say how long she lasts.
-   */
-  ports?: Arrival[]
-}
-
-/** A place a ship reaches, and when she is first there or coming in. */
-export interface Arrival {
-  chapter: number
-  episode: number
-  place: string
-}
-
-/**
- * A fruit drawn again, and what the new drawing shows: the real fruit, or
- * the power as an awakening changes it. The fruit's page names each drawing
- * by it; the first drawing is always the fruit and its power.
- */
-export interface FruitRedrawing extends Dated<Stroke[]> {
-  look: Exclude<FruitLook, 'power'>
-}
-
-/**
- * A loaded archive: what the server reads of a series. Every series fills in
- * all of it; a feature its description leaves out (`Series.features`, the
- * `fruit` and `ship` kinds) is empty lists and lookups that find nothing, and
- * `~/data/series/index.test.ts` holds that it files none.
- */
-export interface SeriesArchive {
+export interface SeriesArchive<V extends Vocabulary = PageVocabulary> {
   arcs: Entity[]
   bookmarks: Bookmark[]
   bookSections: BookSection[]
@@ -397,25 +367,17 @@ export interface SeriesArchive {
   chartPointOf: (id: string) => ChartPoint | null
   chartWith: (entity: Entity) => Entity[]
   datedOf: <F extends Field>(owner: Entity, field: F) => Opened<Fields[F]>[]
-  dossierOf: (entity: Entity) => CharacterDossier | undefined
+  dossierOf: (
+    entity: Entity,
+  ) => (CharacterDossier<V> & FeatureTimelines) | undefined
   drawings: Record<string, Stroke[]>
-  eatersOf: (id: string) => Eater[]
   entities: Entity[]
-  factionsOf: (at: Reveal, owner: Entity) => Faction[] | undefined
   featuredCharacters: Entity[]
-  filler: FillerEntry[]
-  fillerArcs: FillerArc[]
-  fruitFormOf: (entity: Entity) => FruitForm | undefined
-  fruitRedrawn: Record<string, FruitRedrawing[]>
-  fruits: Entity[]
-  fruitsOfForm: (form: FruitForm) => Entity[]
+  features: Features<V>
   gateOf: (entry: Dated<unknown>, owner: Gated) => Gated
   getCharacter: (id: string) => Entity | undefined
   getEntity: (id: string) => Entity | undefined
-  getFruit: (id: string) => Entity | undefined
   getPlace: (id: string) => Entity | undefined
-  getShip: (id: string) => Entity | undefined
-  lastAired: number
   latestOf: <F extends Field>(
     at: Reveal,
     owner: Entity,
@@ -423,7 +385,7 @@ export interface SeriesArchive {
   ) => Fields[F] | undefined
   leads: Record<string, string[]>
   nativesOf: (id: string) => Native[]
-  placeDossierOf: (entity: Entity) => PlaceDossier | undefined
+  placeDossierOf: (entity: Entity) => PlaceDossier<V> | undefined
   places: Entity[]
   reachedOf: <F extends Field>(
     at: Reveal,
@@ -433,10 +395,8 @@ export interface SeriesArchive {
   redrawn: (owner: Entity) => { gate: Gated; value: Stroke[] }[]
   roleOf: (entity: Entity) => LocalizedText | undefined
   routePositionOf: (entity: Entity, drawn: Entity[]) => RoutePosition
-  sagas: Saga[]
+  sagas: Saga<V>[]
   series: Series
-  shipDossierOf: (entity: Entity) => ShipDossier | undefined
-  ships: Entity[]
   stories: FiledStory[]
   timelines: OwnedTimeline[]
 }
@@ -453,27 +413,4 @@ export interface FiledStory {
   episode: number
   gate: Gated
   story: Story
-}
-
-/** An eater relation gated by the fact that names it. */
-export interface Eater {
-  entity: Entity
-  gate: Gated
-}
-
-/** One numbered episode or unnumbered entry of an optional filler guide. */
-export type FillerEntry = (
-  { after: number; released: string } | { episode: number }
-) & {
-  chapter: number
-  kind: FillerKind
-  summary: LocalizedText
-  title: LocalizedText
-}
-
-/** A named run of episodes in a filler guide. */
-export interface FillerArc {
-  first: number
-  last: number
-  name: LocalizedText
 }

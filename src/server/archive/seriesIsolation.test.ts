@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
+import { withFeatures } from '~/data/features'
 import type { Entity, SeriesArchive } from '~/data/types'
 import { OP_ARCHIVE as ONE_PIECE_ARCHIVE } from '~/test/archive'
 
@@ -41,33 +42,35 @@ function otherArchive(): SeriesArchive {
     characters: entities,
     featuredCharacters: entities,
     arcs: [],
-    fruits: [],
     places: [],
-    ships: [],
     sagas: [],
     bookSections: [],
     stories: [],
-    filler: [],
-    fillerArcs: [],
+    features: {},
     timelines: [],
     drawings: {},
     getEntity: (id) => entities.find((entity) => entity.id === id),
     getCharacter: (id) => entities.find((entity) => entity.id === id),
-    lastAired: 20,
   }
 }
 
 /** An independent nonempty guide, retaining the same index in each series. */
 function fillerArchive(slug: string): SeriesArchive {
   const archive = otherArchive()
-  const entry = ONE_PIECE_ARCHIVE.filler[0]
+  const entry = withFeatures(ONE_PIECE_ARCHIVE).filler[0]
   if (entry === undefined) {
     throw new Error('The filler fixture is empty')
   }
   return {
     ...archive,
     series: { ...archive.series, slug },
-    filler: [{ ...entry, title: { en: slug, it: slug } }],
+    features: {
+      filler: {
+        filler: [{ ...entry, title: { en: slug, it: slug } }],
+        fillerArcs: [],
+        lastAired: 20,
+      },
+    },
   }
 }
 

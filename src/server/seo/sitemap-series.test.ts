@@ -34,7 +34,7 @@ vi.mock(import('~/data/series'), async (original) => {
         })),
     ],
     places: [],
-    ships: [],
+    features: {},
   }
   const loadOther = vi
     .fn<() => Promise<SeriesArchive>>()
@@ -78,8 +78,6 @@ describe('a sitemap with more than one series', () => {
     expect(xml).not.toContain(`${SITE_ORIGIN}/test-series/en/fruits`)
     expect(xml).not.toContain(`${SITE_ORIGIN}/test-series/en/filler`)
     expect(xml).not.toContain(`${SITE_ORIGIN}/test-series/en/places`)
-    // Filed, not open (#763).
-    expect(xml).not.toContain('/hunter-x-hunter/')
 
     await expect(sitemapXml()).resolves.toBe(xml)
     expect(archiveOf).toHaveBeenCalledTimes(OPEN_SERIES.length * 2)

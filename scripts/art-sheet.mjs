@@ -130,7 +130,11 @@ function stylesFile(file) {
  */
 export function onePiecePalette() {
   const themes = stylesFile('themes.ts')
-  const start = themes.indexOf('const ONE_PIECE: Palette = {')
+  const marker = 'const ONE_PIECE: Palette = {'
+  const start = themes.indexOf(marker)
+  if (start === -1) {
+    throw new Error(`src/styles/themes.ts has no \`${marker}\``)
+  }
   const onePiece = themes.slice(start, themes.indexOf('\n}\n', start))
   return {
     ...parseTokens(stylesFile('tokens.stylex.ts')),

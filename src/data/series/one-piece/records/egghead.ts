@@ -1,7 +1,7 @@
-import type { Affiliation, Origin } from '~/data/types'
+import type { Origin } from '~/data/types'
 
 import { eggheadChronicles } from './egghead.chronicle'
-import type { OnePieceSaga } from './saga'
+import type { OnePieceAffiliation, OnePieceSaga } from './saga'
 
 /**
  * The Egghead arc, episodes 1090 to 1155: the first island of the final
@@ -15,7 +15,7 @@ const MARY_GEOISE = { it: 'Mary Geoise', en: 'Mary Geoise' }
 const DESTROYED = { it: 'Distrutto', en: 'Destroyed' }
 
 /** The four Seraphim's one affiliation, prose and tag, without its episode. */
-const SERAPHIM: Omit<Affiliation, 'episode'> = {
+const SERAPHIM: Omit<OnePieceAffiliation, 'episode'> = {
   factions: ['world-government'],
   value: {
     it: 'Serafino, arma del Governo Mondiale',

@@ -36,31 +36,39 @@ import { chapterTexts, fetchPage, wikiOf } from './wiki.mjs'
 /** @typedef {import('./wiki.mjs').Wiki} Wiki */
 
 /**
- * Records whose English name is not their wiki page. A list names the pages
- * of a paired record (two fish-men filed as one), whose chapter is the later
- * of the two.
- * @type {Record<string, string | string[]>}
+ * Records whose English name is not their wiki page, by series. A list names
+ * the pages of a paired record (two fish-men filed as one), whose chapter is
+ * the later of the two.
+ * @type {Record<string, Record<string, string | string[]>>}
  */
 const TITLES = {
-  'artificial-dragon-dragon-fruit': 'Artificial Devil Fruit',
-  'cat-cat-fruit-ancient-model-sabre-tooth-tiger':
-    'Neko Neko no Mi, Model: Saber Tiger',
-  'dog-dog-fruit-mythical-model-nine-tailed-fox':
-    'Inu Inu no Mi, Model: Kyubi no Kitsune',
-  'egghead-island': 'Egghead',
-  'fish-fish-fruit-mythical-model-azure-dragon': 'Uo Uo no Mi, Model: Seiryu',
-  'kinemon': "Kin'emon",
-  'kiwi-and-mozu': ['Kiwi', 'Mozu'],
-  'lola': 'Lola (Zombie)',
-  'ninjin-piiman-and-tamanegi': ['Ninjin', 'Piiman', 'Tamanegi'],
-  'oimo-and-kashi': ['Oimo', 'Kashi'],
-  'rock-and-scotch': ['Rock', 'Scotch'],
-  'ryuma': 'Ryuma (Zombie)',
-  'sodom-and-gomorrah': ['Sodom', 'Gomorrah'],
-  'water-seven-arc': 'Water 7 Arc',
-  // The English Hunter x Hunter Wiki files the seventh arc as the Succession
-  // Contest arc; the archive names it the Dark Continent Expedition (#758).
-  'dark-continent-expedition-arc': 'Succession Contest arc',
+  'one-piece': {
+    'artificial-dragon-dragon-fruit': 'Artificial Devil Fruit',
+    'cat-cat-fruit-ancient-model-sabre-tooth-tiger':
+      'Neko Neko no Mi, Model: Saber Tiger',
+    'dog-dog-fruit-mythical-model-nine-tailed-fox':
+      'Inu Inu no Mi, Model: Kyubi no Kitsune',
+    'egghead-island': 'Egghead',
+    'fish-fish-fruit-mythical-model-azure-dragon': 'Uo Uo no Mi, Model: Seiryu',
+    'kinemon': "Kin'emon",
+    'kiwi-and-mozu': ['Kiwi', 'Mozu'],
+    'lola': 'Lola (Zombie)',
+    'ninjin-piiman-and-tamanegi': ['Ninjin', 'Piiman', 'Tamanegi'],
+    'oimo-and-kashi': ['Oimo', 'Kashi'],
+    'rock-and-scotch': ['Rock', 'Scotch'],
+    'ryuma': 'Ryuma (Zombie)',
+    'sodom-and-gomorrah': ['Sodom', 'Gomorrah'],
+    'water-seven-arc': 'Water 7 Arc',
+    // The English Hunter x Hunter Wiki files the seventh arc as the Succession
+    // Contest arc; the archive names it the Dark Continent Expedition (#758).
+    'dark-continent-expedition-arc': 'Succession Contest arc',
+  },
+  'hunter-x-hunter': {
+    // The wiki's arc titles say more than an arc's name may, since the name
+    // is shown at every bookmark (#758): the archive's names are neutral.
+    'election-arc': '13th Hunter Chairman Election arc',
+    'kakin-arc': 'Succession Contest arc',
+  },
 }
 
 /**
@@ -68,10 +76,11 @@ const TITLES = {
  * edition's name is the page for most records; an arc page ends in `Arc`; a
  * fruit page is the Japanese name, which the Italian edition keeps.
  * @param {{ id: string, kind: string, name: { en: string, it: string } }} record The record.
+ * @param {string} [slug] Its series.
  * @returns {string[][]} Alternatives, each a list of pages whose later chapter counts.
  */
-export function titlesOf(record) {
-  const known = TITLES[record.id]
+export function titlesOf(record, slug = 'one-piece') {
+  const known = TITLES[slug]?.[record.id]
   if (known !== undefined) {
     return [typeof known === 'string' ? [known] : [...known]]
   }
@@ -235,6 +244,10 @@ export function namingChapterOf(chapters, title) {
  * @returns {number | undefined} The episode, or nothing when the page has none.
  */
 export function episodeOf(page, kind) {
+  if (kind === 'arc') {
+    only1999(page)
+  }
+
   return numberOf(page, kind, {
     // The Hunter x Hunter Wiki gives the 1999 and the 2011 anime side by
     // side; the archive counts in the 2011 one (#749).
@@ -246,6 +259,21 @@ export function episodeOf(page, kind) {
     debut: /Debut:Chapter\d+;Episode(?<n>\d+)/u,
     line: (first) => numberAfter(/Episode (?<n>\d+)/u, first),
   })
+}
+
+/**
+ * Fails on an arc page that gives the 1999 anime's episodes and not the 2011
+ * one's: read on, its first range would be the wrong anime's.
+ * @param {Page} page The parsed page.
+ * @returns {void}
+ */
+function only1999(page) {
+  const text = tagless(page.text)
+  if (/Episodes\d+-\d+\(1999\)/u.test(text) && !text.includes('(2011)')) {
+    throw new Error(
+      `${page.title}: the wiki gives the 1999 anime's episodes only, and the archive counts in the 2011 one`,
+    )
+  }
 }
 
 /**
@@ -330,7 +358,7 @@ async function sourceOf(record, { chapters, wiki }) {
  * @returns {Promise<Page[] | undefined>} The pages, or nothing when none resolves.
  */
 export async function pagesOf(record, wiki) {
-  for (const titles of titlesOf(record)) {
+  for (const titles of titlesOf(record, wiki.slug)) {
     const pages = await Promise.all(
       titles.map((title) => fetchPage(title, wiki)),
     )

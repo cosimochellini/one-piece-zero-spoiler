@@ -143,26 +143,27 @@ describe.each(LOADED_SERIES)(
       }
     })
 
-    it('files only the kinds and features its description declares', () => {
+    it('has a feature slice exactly where its description declares one', () => {
       // `fruit` and `ship`, the bounty, the factions and the filler guide
-      // are One Piece's (owner, 2026-10-23): a series files them only when
-      // its description says it has them.
+      // are One Piece's (owner, 2026-10-23). A series' archive carries a
+      // slice for each it has (`~/data/features`), and its description says
+      // so: the two are one fact, held together here.
       const { features, kinds } = archive.series
+      const slices = archive.features
       const dossiers = archive.characters.flatMap(
         (entity) => archive.dossierOf(entity) ?? [],
       )
       const bounties = dossiers.filter(({ bounty }) => bounty !== undefined)
-      const tagged = dossiers
-        .flatMap(({ affiliation }) => affiliation)
-        .filter(({ factions }) => factions !== undefined)
 
       expect(
         entities.filter((entity) => !kinds.includes(entity.kind)),
       ).toStrictEqual([])
-      expect(archive.fruits.length > 0).toBe(features.fruits)
-      expect(archive.filler.length > 0).toBe(features.filler)
+      expect(slices.fruits !== undefined).toBe(features.fruits)
+      expect(slices.fruits !== undefined).toBe(kinds.includes('fruit'))
+      expect(slices.ships !== undefined).toBe(kinds.includes('ship'))
+      expect(slices.filler !== undefined).toBe(features.filler)
+      expect(slices.factions !== undefined).toBe(features.factions)
       expect(bounties.length > 0).toBe(features.bounty)
-      expect(tagged.length > 0).toBe(features.factions)
     })
 
     it('ends its demo the episode and the chapter before its second saga', () => {

@@ -1,13 +1,9 @@
 import { orderByMode } from '~/data/order'
-import type {
-  BookSection,
-  CharacterDossier,
-  Entity,
-  LocalizedText,
-} from '~/data/types'
+import type { BookSection, Entity, LocalizedText } from '~/data/types'
 import type { EntityKind } from '~/lib/view/records'
 
 import { entities } from './entities'
+import type { OnePieceDossier } from './records/saga'
 import { CHARACTER_DOSSIERS } from './sagas'
 
 /**
@@ -136,7 +132,7 @@ export function getCharacter(id: string): Entity | undefined {
  * `undefined` where nothing has been filed yet: every character has a page,
  * and only the ones the story turns on have a role, a bounty and a log entry.
  */
-export function dossierOf(entity: Entity): CharacterDossier | undefined {
+export function dossierOf(entity: Entity): OnePieceDossier | undefined {
   return CHARACTER_DOSSIERS[entity.id]
 }
 

@@ -128,6 +128,24 @@ describe('the chapter a page gives', () => {
         'arc',
       ),
     ).toBe(76)
+    expect(() =>
+      episodeOf(
+        page(
+          '{{Arc Template}}',
+          '<td>Episodes</td><td>Episodes 37 - 44 (1999)</td>',
+        ),
+        'arc',
+      ),
+    ).toThrow(/1999 anime's episodes only/u)
+  })
+
+  it('reads a page under the series it belongs to', () => {
+    const record = { id: 'kakin-arc', kind: 'arc', name: name('Kakin', 'x') }
+
+    expect(titlesOf(record, 'hunter-x-hunter')).toStrictEqual([
+      ['Succession Contest arc'],
+    ])
+    expect(titlesOf(record)).toStrictEqual([['Kakin Arc']])
   })
 
   it('takes the earliest chapter a line names, chapter 0 only alone', () => {

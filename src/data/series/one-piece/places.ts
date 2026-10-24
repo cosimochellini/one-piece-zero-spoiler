@@ -1,7 +1,9 @@
+import type { ShipDossier } from '~/data/features'
 import { orderByMode } from '~/data/order'
-import type { Entity, PlaceDossier, ShipDossier } from '~/data/types'
+import type { Entity } from '~/data/types'
 
 import { entities } from './entities'
+import type { OnePiecePlace } from './records/saga'
 import { SHIP_DOSSIERS } from './records/ships'
 
 /**
@@ -28,9 +30,9 @@ import { SHIP_DOSSIERS } from './records/ships'
  * `~/data` may be named from the browser (issue #12).
  */
 
-export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
+export const PLACE_DOSSIERS: Record<string, OnePiecePlace> = {
   'shells-town': {
-    sea: 'east-blue',
+    region: 'east-blue',
     form: 'town',
     arc: 'romance-dawn',
     landmark: {
@@ -44,7 +46,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     filedHere: ['roronoa-zoro', 'rika'],
   },
   'foosha-village': {
-    sea: 'east-blue',
+    region: 'east-blue',
     form: 'village',
     arc: 'romance-dawn',
     landmark: { it: 'Il mulino a vento', en: 'The windmill' },
@@ -66,7 +68,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     ],
   },
   'orange-town': {
-    sea: 'east-blue',
+    region: 'east-blue',
     form: 'town',
     arc: 'orange-town-arc',
     landmark: { it: 'Il tendone dei pirati', en: 'The pirates’ big top' },
@@ -77,7 +79,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     filedHere: ['nami', 'buggy', 'chouchou', 'richie', 'boodle'],
   },
   'syrup-village': {
-    sea: 'east-blue',
+    region: 'east-blue',
     form: 'village',
     arc: 'syrup-village-arc',
     landmark: { it: 'La villa sulla collina', en: 'The mansion on the hill' },
@@ -94,7 +96,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     ],
   },
   'baratie': {
-    sea: 'east-blue',
+    region: 'east-blue',
     form: 'restaurant',
     arc: 'baratie-arc',
     landmark: { it: 'La prua a testa di pesce', en: 'The fish-head prow' },
@@ -105,7 +107,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     filedHere: ['sanji', 'dracule-mihawk', 'fullbody', 'carne', 'patty'],
   },
   'whisky-peak': {
-    sea: 'grand-line',
+    region: 'grand-line',
     form: 'town',
     arc: 'whisky-peak-arc',
     landmark: {
@@ -126,7 +128,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     ],
   },
   'little-garden': {
-    sea: 'grand-line',
+    region: 'grand-line',
     form: 'island',
     arc: 'little-garden-arc',
     landmark: {
@@ -140,7 +142,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     filedHere: ['brogy', 'dorry', 'mr-3', 'miss-goldenweek'],
   },
   'drum-island': {
-    sea: 'grand-line',
+    region: 'grand-line',
     form: 'island',
     arc: 'drum-island-arc',
     landmark: {
@@ -162,7 +164,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     ],
   },
   'alubarna': {
-    sea: 'grand-line',
+    region: 'grand-line',
     form: 'city',
     arc: 'alabasta',
     landmark: {
@@ -186,7 +188,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     ],
   },
   'rainbase': {
-    sea: 'grand-line',
+    region: 'grand-line',
     form: 'town',
     arc: 'alabasta',
     landmark: {
@@ -200,7 +202,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     filedHere: ['crocodile', 'hasami'],
   },
   'jaya': {
-    sea: 'grand-line',
+    region: 'grand-line',
     form: 'island',
     arc: 'jaya-arc',
     landmark: { it: 'Il porto di Mock Town', en: 'Mock Town harbour' },
@@ -231,7 +233,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     ],
   },
   'upper-yard': {
-    sea: 'grand-line',
+    region: 'grand-line',
     form: 'island',
     arc: 'skypiea',
     landmark: {
@@ -255,7 +257,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     ],
   },
   'angel-island': {
-    sea: 'grand-line',
+    region: 'grand-line',
     form: 'island',
     arc: 'skypiea',
     landmark: { it: 'La spiaggia di nuvola', en: 'The beach made of cloud' },
@@ -266,7 +268,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     filedHere: ['su', 'conis', 'pagaya', 'mckinley'],
   },
   'water-seven': {
-    sea: 'grand-line',
+    region: 'grand-line',
     form: 'city',
     arc: 'water-seven-arc',
     landmark: {
@@ -304,7 +306,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     ],
   },
   'puffing-tom': {
-    sea: 'grand-line',
+    region: 'grand-line',
     form: 'train',
     arc: 'water-seven-arc',
     landmark: {
@@ -326,7 +328,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     ],
   },
   'enies-lobby': {
-    sea: 'grand-line',
+    region: 'grand-line',
     form: 'island',
     arc: 'enies-lobby-arc',
     landmark: { it: 'Le Porte della Giustizia', en: 'The Gates of Justice' },
@@ -344,7 +346,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     ],
   },
   'florian-triangle': {
-    sea: 'grand-line',
+    region: 'grand-line',
     form: 'sea',
     arc: 'thriller-bark-arc',
     landmark: {
@@ -358,7 +360,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     filedHere: ['brook'],
   },
   'thriller-bark': {
-    sea: 'grand-line',
+    region: 'grand-line',
     form: 'ship',
     arc: 'thriller-bark-arc',
     landmark: {
@@ -383,7 +385,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     ],
   },
   'sabaody-archipelago': {
-    sea: 'grand-line',
+    region: 'grand-line',
     form: 'archipelago',
     arc: 'sabaody',
     landmark: {
@@ -431,7 +433,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     ],
   },
   'amazon-lily': {
-    sea: 'calm-belt',
+    region: 'calm-belt',
     form: 'island',
     arc: 'amazon-lily-arc',
     landmark: {
@@ -467,7 +469,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     ],
   },
   'impel-down': {
-    sea: 'calm-belt',
+    region: 'calm-belt',
     form: 'prison',
     arc: 'impel-down-arc',
     landmark: {
@@ -492,7 +494,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     ],
   },
   'marineford': {
-    sea: 'grand-line',
+    region: 'grand-line',
     form: 'fortress',
     arc: 'marineford-arc',
     landmark: {
@@ -536,7 +538,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     ],
   },
   'fish-man-island': {
-    sea: 'grand-line',
+    region: 'grand-line',
     form: 'island',
     arc: 'fish-man-island-arc',
     landmark: {
@@ -573,7 +575,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     ],
   },
   'fish-man-district': {
-    sea: 'grand-line',
+    region: 'grand-line',
     form: 'region',
     arc: 'fish-man-island-arc',
     landmark: { it: 'L’enorme nave Noah', en: 'The enormous ship Noah' },
@@ -592,7 +594,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     ],
   },
   'punk-hazard': {
-    sea: 'new-world',
+    region: 'new-world',
     form: 'island',
     arc: 'punk-hazard-arc',
     landmark: {
@@ -618,7 +620,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     ],
   },
   'dressrosa': {
-    sea: 'new-world',
+    region: 'new-world',
     form: 'island',
     arc: 'dressrosa-arc',
     landmark: {
@@ -645,7 +647,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     ],
   },
   'green-bit': {
-    sea: 'new-world',
+    region: 'new-world',
     form: 'island',
     arc: 'dressrosa-arc',
     landmark: {
@@ -659,7 +661,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     filedHere: ['leo'],
   },
   'zou': {
-    sea: 'new-world',
+    region: 'new-world',
     form: 'island',
     arc: 'zou-arc',
     landmark: {
@@ -683,7 +685,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     ],
   },
   'whole-cake-island': {
-    sea: 'new-world',
+    region: 'new-world',
     form: 'island',
     arc: 'whole-cake-island-arc',
     landmark: {
@@ -709,7 +711,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     ],
   },
   'cacao-island': {
-    sea: 'new-world',
+    region: 'new-world',
     form: 'island',
     arc: 'whole-cake-island-arc',
     landmark: {
@@ -723,7 +725,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     filedHere: ['charlotte-pudding'],
   },
   'mary-geoise': {
-    sea: 'red-line',
+    region: 'red-line',
     form: 'city',
     arc: 'reverie',
     landmark: {
@@ -775,7 +777,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     ],
   },
   'kuri': {
-    sea: 'new-world',
+    region: 'new-world',
     form: 'region',
     arc: 'wano',
     landmark: {
@@ -799,7 +801,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     ],
   },
   'flower-capital': {
-    sea: 'new-world',
+    region: 'new-world',
     form: 'city',
     arc: 'wano',
     landmark: {
@@ -823,7 +825,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     ],
   },
   'udon': {
-    sea: 'new-world',
+    region: 'new-world',
     form: 'region',
     arc: 'wano',
     landmark: {
@@ -846,7 +848,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     ],
   },
   'onigashima': {
-    sea: 'new-world',
+    region: 'new-world',
     form: 'island',
     arc: 'wano',
     landmark: {
@@ -873,7 +875,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     ],
   },
   'egghead-island': {
-    sea: 'new-world',
+    region: 'new-world',
     form: 'island',
     arc: 'egghead',
     landmark: {
@@ -901,7 +903,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     ],
   },
   'elbaf-island': {
-    sea: 'new-world',
+    region: 'new-world',
     form: 'island',
     arc: 'elbaf',
     landmark: {
@@ -915,7 +917,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     filedHere: ['road', 'iscat', 'goldberg', 'stansen'],
   },
   'warland': {
-    sea: 'new-world',
+    region: 'new-world',
     form: 'region',
     arc: 'elbaf',
     landmark: {
@@ -929,7 +931,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     filedHere: ['loki', 'ragnir'],
   },
   'sun-world': {
-    sea: 'new-world',
+    region: 'new-world',
     form: 'region',
     arc: 'elbaf',
     landmark: {
@@ -972,7 +974,7 @@ export function getPlace(id: string): Entity | undefined {
  * in at. A place with no entry still has a name, a drawing and a threshold –
  * the log is the extra the page shows once there is something to say.
  */
-export function placeDossierOf(entity: Entity): PlaceDossier | undefined {
+export function placeDossierOf(entity: Entity): OnePiecePlace | undefined {
   return PLACE_DOSSIERS[entity.id]
 }
 

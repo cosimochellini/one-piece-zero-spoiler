@@ -1,4 +1,5 @@
-import type { Entity, LocalizedText, SeriesArchive } from '~/data/types'
+import type { ReaderArchive } from '~/data/features'
+import type { Entity, LocalizedText } from '~/data/types'
 import type { PlacesView, SagaPick, StopView } from '~/lib/view/places'
 import type { PortView, RecordView, ShipView, Slot } from '~/lib/view/records'
 
@@ -45,7 +46,7 @@ function sagasOf(open: StopView[], r: Reader): SagaPick[] {
 
 /** Every saga by its place in route order, from 1, and the places it files. */
 const picksByArchive = new WeakMap<
-  SeriesArchive,
+  ReaderArchive,
   ReturnType<typeof buildPicks>
 >()
 function buildPicks(
@@ -94,7 +95,7 @@ function stopOf(entity: Entity, r: Reader): StopView {
     ...recordOf(entity, r),
     ...namedOf(entity, r),
     chart: r.archive.chartPointOf(entity.id),
-    sea: dossier.sea,
+    sea: dossier.region,
     form: dossier.form,
     saga: sagaNumberOf(entity.id, r),
   }
@@ -135,7 +136,7 @@ export function portOf(entity: Entity, r: Reader): PortView {
     dossier:
       dossier === undefined ? null : (
         {
-          sea: dossier.sea,
+          sea: dossier.region,
           form: dossier.form,
           arc: arc === undefined ? null : arc.name[locale],
           landmark: dossier.landmark[locale],

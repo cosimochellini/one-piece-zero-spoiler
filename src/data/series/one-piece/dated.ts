@@ -1,8 +1,8 @@
 import { byNumber, byValue, byValues } from 'sort-es'
 
+import type { Eater } from '~/data/features'
 import { type Reveal, toldIn } from '~/data/reveal'
 import type {
-  Eater,
   Entity,
   Field,
   Fields,
@@ -74,8 +74,13 @@ export function factionsOf(at: Reveal, owner: Entity): Faction[] | undefined {
   )?.factions
 }
 
-/** One story, with the character whose chronicle it belongs to. */
-export type { FiledStory } from '~/data/types'
+/**
+ * A character the dossiers say ate a fruit, and the gate of the entry that
+ * says so: the later of that entry and the character, because a character
+ * filed long before the story says what they ate must not be named as an
+ * eater the moment the reader meets them.
+ */
+export type { Eater } from '~/data/features'
 
 /**
  * Every story in the archive, ascending by the episode it concludes at; ties
@@ -92,13 +97,8 @@ export const stories: FiledStory[] = characters
   })
   .toSorted(byValue('episode', byNumber()))
 
-/**
- * A character the dossiers say ate a fruit, and the gate of the entry that
- * says so: the later of that entry and the character, because a character
- * filed long before the story says what they ate must not be named as an
- * eater the moment the reader meets them.
- */
-export type { Eater } from '~/data/types'
+/** One story, with the character whose chronicle it belongs to. */
+export type { FiledStory } from '~/data/types'
 
 /**
  * The gate of a link several entries tell, given in timeline order: in each

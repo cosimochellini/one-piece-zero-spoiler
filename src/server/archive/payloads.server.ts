@@ -1,3 +1,4 @@
+import { withFeatures } from '~/data/features'
 import type { SeriesArchive } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
@@ -75,7 +76,8 @@ function listPayloads(archive: SeriesArchive): Payload[] {
 
 function recordPayloads(archive: SeriesArchive): Payload[] {
   const characterIds = (): string[] => archive.characters.map(({ id }) => id)
-  const fruitIds = (): string[] => archive.fruits.map(({ id }) => id)
+  const fruitIds = (): string[] =>
+    withFeatures(archive).fruits.map(({ id }) => id)
   return [
     {
       name: 'loadCharacter',
@@ -114,7 +116,8 @@ function recordPayloads(archive: SeriesArchive): Payload[] {
     },
     {
       name: 'loadPlace',
-      keys: () => [...archive.places, ...archive.ships].map(({ id }) => id),
+      keys: () =>
+        [...archive.places, ...withFeatures(archive).ships].map(({ id }) => id),
       run: (b, l, id) => placePage(id, readerFor(archive, b, l)) ?? null,
     },
   ]
@@ -126,7 +129,10 @@ function liftedPayloads(archive: SeriesArchive): Payload[] {
   return [
     {
       name: 'liftFiller',
-      keys: () => archive.filler.map((_, index) => indexHandle(index, archive)),
+      keys: () =>
+        withFeatures(archive).filler.map((_, index) =>
+          indexHandle(index, archive),
+        ),
       run: (b, l, h) => peekFiller(h, readerFor(archive, b, l)) ?? null,
     },
     {

@@ -1,4 +1,5 @@
 import type { Drawings, Stroke } from '~/data/art/stroke'
+import type { FruitRedrawing } from '~/data/features'
 import {
   billow,
   type Body,
@@ -26,7 +27,6 @@ import {
 import { bezier } from '~/data/series/one-piece/art/fruits/shape'
 import { ring } from '~/data/series/one-piece/art/fruits/swirls'
 import { point } from '~/data/series/one-piece/art/fruits/units'
-import type { FruitRedrawing } from '~/data/types'
 
 /**
  * Every fruit's hand-drawn composition. Fruit + power drawings use the body

@@ -99,11 +99,11 @@ export function countTable({ archive }) {
  * @returns {Promise<string>} The markdown, not yet padded.
  */
 async function countTables() {
-  const { SERIES } = await importArchive('data/series/index.ts')
+  const { SERIES, filedArchiveOf } = await importArchive('data/series/index.ts')
 
   const tables = await Promise.all(
     SERIES.map(async (series) => {
-      const archive = await series.load()
+      const archive = await filedArchiveOf(series.slug)
       return `### \`${series.slug}\`\n\n${countTable({ archive })}`
     }),
   )

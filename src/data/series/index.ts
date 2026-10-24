@@ -61,7 +61,10 @@ const HUNTER_X_HUNTER: ListedSeries = {
   },
 }
 
-/** Every series filed: what the gates, the tests and the scripts go through. */
+/**
+ * Every series filed: what the gates, the tests and the scripts go through.
+ * Nothing a reader reaches imports it (`registry.test.ts`).
+ */
 export const SERIES: ListedSeries[] = [ONE_PIECE, HUNTER_X_HUNTER]
 
 /** The series readers can reach: what every page and the sitemap go through. */
@@ -78,8 +81,24 @@ export function descriptionOf(slug: string): null | Series {
   return OPEN_SERIES.find((series) => series.slug === slug)?.description ?? null
 }
 
-/** Loads only a registered series and reuses the archive for this server instance. */
+/**
+ * The archive of an open series, reused for this server instance: what the
+ * server reads. A series filed but not open is as unknown here as a slug
+ * nobody filed, so no reader path can load it.
+ */
 export async function archiveOf(slug: string): Promise<SeriesArchive> {
+  if (OPEN_SERIES.every((series) => series.slug !== slug)) {
+    throw new Error(`Unknown series: ${slug}`)
+  }
+  return filedArchiveOf(slug)
+}
+
+/**
+ * The archive of any filed series, open or not: for the tests, the gates and
+ * the scripts alone, which check a series before it opens. Nothing a reader
+ * reaches imports it (`registry.test.ts`).
+ */
+export async function filedArchiveOf(slug: string): Promise<SeriesArchive> {
   const series = SERIES.find((entry) => entry.slug === slug)
   if (series === undefined) {
     throw new Error(`Unknown series: ${slug}`)

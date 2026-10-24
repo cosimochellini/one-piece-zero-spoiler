@@ -1,4 +1,4 @@
-import type { FillerArc, FillerEntry } from '~/data/types'
+import type { FillerArc, FillerEntry } from '~/data/features'
 
 /**
  * Every filler, mixed and recap episode of the anime, and the films and TV
@@ -22,10 +22,10 @@ import type { FillerArc, FillerEntry } from '~/data/types'
  * episode it is watched after and its Japanese release or air date. `chapter`
  * is the last chapter the anime had adapted when it aired.
  */
-export type { FillerEntry } from '~/data/types'
+export type { FillerEntry } from '~/data/features'
 
 /** A filler arc: a run of episodes the wikis name as one story. */
-export type { FillerArc } from '~/data/types'
+export type { FillerArc } from '~/data/features'
 
 /** The last episode aired when the list was checked. */
 export const LAST_AIRED = 1168

@@ -83,20 +83,31 @@ well as client leak canaries.
 A series can be filed before it opens (`open` on its registry entry). Hunter x
 Hunter is, until #763: it is in `SERIES`, so the payload sweep, the leak scan,
 the data tests, the archive gate, the counts and the `verify:*` scripts all run
-for it, and it is in none of the paths a reader takes, which read `OPEN_SERIES`.
-Its addresses answer 404, no server function serves it, the sitemap leaves it
-out, and the hub still announces it as coming.
+for it, through `filedArchiveOf`. Every path a reader takes goes through
+`OPEN_SERIES` and `archiveOf`, which refuses a series that is not open, and a
+test fails a source file outside the tests that imports `SERIES` or
+`filedArchiveOf`. Its addresses answer 404, no server function serves it, the
+sitemap leaves it out, and the hub still announces it as coming.
+
+An arc's name is shown at every bookmark (the dialog's saga rows), so it may say
+no event, death, departure or twist the reader may not have reached. Hunter x
+Hunter names its arcs neutrally for that reason: "Election", not the wiki's
+"13th Hunter Chairman Election", which says the chairman has gone, and "Kakin",
+not "Succession Contest", which the manga tells nine chapters into the arc.
 
 The record shapes and the archive contract (`SeriesArchive`) in
-`src/data/types.ts` take nothing from a series. A series narrows them for its
-own records: One Piece's `Saga` holds a record's drawing and a dossier's fruits
-to the ids it files. The devil fruits, the ships, the bounty, the factions and
-the filler guide are One Piece's, declared in `features` and `kinds` on its
-description; another series fills those parts of the contract with empty lists
-and lookups that find nothing, and a data test holds that a series files only
-what its description declares. The chapter table and the sweep's bookmarks are
-built by the engine (`src/data/chapterTable.ts`, `src/data/sweep.ts`) from each
-series' own records.
+`src/data/types.ts` take nothing from a series. The core is what every series
+has: arcs, characters, places, dossiers, the chapter table. The devil fruits,
+the ships, the filler guide and the factions are One Piece's, optional slices in
+`features` (`src/data/features.ts`), which the server reads filled with nothing
+where a series has none; a data test holds each slice to the flag on the series'
+description. Place forms, regions and affiliation groups are strings in the
+engine (`Vocabulary`), narrowed by each series, as One Piece's `Saga` narrows
+them to its forms, seas and factions and a record's drawing and fruits to the
+ids it files. The pages still print One Piece's words (`PageVocabulary`), the
+default of `SeriesArchive` until each series' pages print their own. The chapter
+table and the sweep's bookmarks are built by the engine
+(`src/data/chapterTable.ts`, `src/data/sweep.ts`) from each series' own records.
 
 A record or a dated fact can exist in one source only (`source: 'anime'` or
 `'manga'` on the record or the entry; absent means both). An episode or season
