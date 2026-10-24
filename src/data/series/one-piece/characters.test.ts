@@ -1,7 +1,7 @@
 import { byNumber, byString } from 'sort-es'
 import { describe, expect, it } from 'vitest'
 
-import { orderByMode } from '~/data/order'
+import { orderByMode, routePositionOf } from '~/data/order'
 import { toldIn } from '~/data/reveal'
 import type { Entity, LocalizedText, Story, Timeline } from '~/data/types'
 import { type Locale, LOCALES } from '~/i18n/locales'
@@ -19,7 +19,6 @@ import {
   FEATURED_CHARACTER_IDS,
   featuredCharacters,
   getCharacter,
-  routePositionOf,
 } from './characters'
 import { datedOf, stories } from './dated'
 import { entities } from './entities'

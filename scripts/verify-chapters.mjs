@@ -29,7 +29,7 @@
 import process from 'node:process'
 import { pathToFileURL } from 'node:url'
 
-import { importArchive, seriesOrExit } from './archive-loader.mjs'
+import { seriesOrExit } from './archive-loader.mjs'
 import { chapterTexts, fetchPage, wikiOf } from './wiki.mjs'
 
 /** @typedef {import('./wiki.mjs').Page} Page */
@@ -58,6 +58,9 @@ const TITLES = {
   'ryuma': 'Ryuma (Zombie)',
   'sodom-and-gomorrah': ['Sodom', 'Gomorrah'],
   'water-seven-arc': 'Water 7 Arc',
+  // The English Hunter x Hunter Wiki files the seventh arc as the Succession
+  // Contest arc; the archive names it the Dark Continent Expedition (#758).
+  'dark-continent-expedition-arc': 'Succession Contest arc',
 }
 
 /**
@@ -110,7 +113,7 @@ export function japaneseNameOf(name) {
  */
 export function chapterOf(page, kind) {
   return numberOf(page, kind, {
-    arc: /Chapters?:(?<n>\d+)/u,
+    arc: [/Chapters?:(?<n>\d+)/u, /ChaptersChapters(?<n>\d+)/u],
     debut: /Debut:Chapter(?<n>\d+)/u,
     line: storyChapterOf,
   })
@@ -118,16 +121,21 @@ export function chapterOf(page, kind) {
 
 /**
  * A number a page gives for its subject: an arc's from its rendered range,
+ * by the first of the arc patterns that matches (One Piece's wiki writes
+ * `Chapters: 69-95`, Hunter x Hunter's a label and `Chapters 1 - 43`),
  * anything else's from the infobox first line, or from the rendered debut
  * when the infobox is transcluded.
  * @param {Page} page The parsed page.
  * @param {string} kind The record's kind.
- * @param {{ arc: RegExp, debut: RegExp, line: (first: string) => number | undefined }} read How to read each of the three.
+ * @param {{ arc: RegExp[], debut: RegExp, line: (first: string) => number | undefined }} read How to read each of the three.
  * @returns {number | undefined} The number, or nothing when the page has none.
  */
 function numberOf(page, kind, read) {
   if (kind === 'arc') {
-    return numberAfter(read.arc, tagless(page.text))
+    const text = tagless(page.text)
+    return read.arc
+      .map((pattern) => numberAfter(pattern, text))
+      .find((number) => number !== undefined)
   }
 
   const first = firstLineOf(page)
@@ -228,7 +236,13 @@ export function namingChapterOf(chapters, title) {
  */
 export function episodeOf(page, kind) {
   return numberOf(page, kind, {
-    arc: /Episodes?:(?<n>\d+)/u,
+    // The Hunter x Hunter Wiki gives the 1999 and the 2011 anime side by
+    // side; the archive counts in the 2011 one (#749).
+    arc: [
+      /Episodes?:(?<n>\d+)/u,
+      /Episodes(?<n>\d+)-\d+\(2011\)/u,
+      /EpisodesEpisodes(?<n>\d+)/u,
+    ],
     debut: /Debut:Chapter\d+;Episode(?<n>\d+)/u,
     line: (first) => numberAfter(/Episode (?<n>\d+)/u, first),
   })
@@ -384,9 +398,11 @@ export function verdictOf(filed, source) {
  */
 async function verify() {
   const series = await seriesOrExit()
-  const { CHAPTER_CEILING } = await importArchive('lib/progress/bounds.ts')
   const wiki = wikiOf(series)
-  const chapters = await chapterTexts(CHAPTER_CEILING, wiki)
+  const chapters = await chapterTexts(
+    series.archive.series.chapterCeiling,
+    wiki,
+  )
   /** @type {Row[]} */
   const rows = []
   for (const record of series.archive.entities) {

@@ -1,21 +1,24 @@
 import { createServerFn } from '@tanstack/react-start'
 import { getRequestHeader } from '@tanstack/react-start/server'
 
-import { archiveOf, descriptionOf, SERIES } from '~/data/series'
+import { archiveOf, descriptionOf, OPEN_SERIES } from '~/data/series'
 import { parseCookieHeader } from '~/lib/cookies'
 
 import { hubFor } from './archive/hub.server'
 
-/** Public descriptions only: this does not load an archive. */
+/** Public descriptions of the open series only: this loads no archive. */
 export const loadSeriesDescriptions = createServerFn().handler(() =>
-  SERIES.map(({ description }) => description),
+  OPEN_SERIES.map(({ description }) => description),
 )
 
-/** The hub; the decisions are `hubFor`'s. */
+/**
+ * The hub, of the open series; the decisions are `hubFor`'s. A series filed
+ * but not open is still a name the hub announces as coming.
+ */
 export const loadHub = createServerFn().handler(async () =>
   hubFor(
     parseCookieHeader(getRequestHeader('cookie')),
-    await Promise.all(SERIES.map(async ({ slug }) => archiveOf(slug))),
+    await Promise.all(OPEN_SERIES.map(async ({ slug }) => archiveOf(slug))),
   ),
 )
 

@@ -23,6 +23,24 @@ function read(subcommand) {
   return JSON.parse(child.stdout)
 }
 
+/**
+ * Whether a boundary zone is a series' own.
+ * @param {string} zone The zone's name.
+ * @returns {boolean} Whether it is `series` or one under it.
+ */
+function isSeries(zone) {
+  return zone === 'series' || zone.startsWith('series/')
+}
+
+/**
+ * Whether a boundary rule lets its zone import from a series, types included.
+ * @param {{ allow?: string[], allowTypeOnly?: string[] }} rule The rule.
+ * @returns {boolean} Whether it names a series zone.
+ */
+function reachesSeries({ allow = [], allowTypeOnly = [] }) {
+  return [...allow, ...allowTypeOnly].some((zone) => isSeries(zone))
+}
+
 describe('the fallow configuration', () => {
   it('lists every security category this fallow version has', () => {
     // Once `include` is set, a category it leaves out never runs, and an
@@ -48,6 +66,7 @@ describe('the fallow configuration', () => {
     const count = (name) => zones.find((zone) => zone.name === name)?.file_count
 
     expect(count('series/one-piece')).toBeGreaterThan(50)
+    expect(count('series/hunter-x-hunter')).toBeGreaterThan(5)
     expect(count('engine-types')).toBe(1)
     expect(count('series-list')).toBe(1)
   })
@@ -69,5 +88,15 @@ describe('the fallow configuration', () => {
 
     expect(reaching).toStrictEqual(['server'])
     expect(direct).toStrictEqual([])
+  })
+
+  it('lets no zone but the registry take anything from a series, types included', () => {
+    // The record shapes took One Piece's types until #758; a series now
+    // narrows the engine's shapes for itself.
+    const reaching = read('config')
+      .boundaries.rules.filter((rule) => reachesSeries(rule))
+      .map(({ from }) => from)
+
+    expect(reaching).toStrictEqual(['series-list'])
   })
 })

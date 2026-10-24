@@ -1,4 +1,4 @@
-import type { FruitRecord } from '~/data/types'
+import type { OnePieceFruit } from './saga'
 
 /**
  * The devil fruits.
@@ -26,7 +26,7 @@ import type { FruitRecord } from '~/data/types'
  * says what the power does as a viewer at the threshold episode has already
  * seen it do, and nothing later.
  */
-export const devilFruits: FruitRecord[] = [
+export const devilFruits: OnePieceFruit[] = [
   {
     id: 'gum-gum-fruit',
     kind: 'fruit',

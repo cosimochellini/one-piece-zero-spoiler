@@ -1,4 +1,4 @@
-import type { Saga } from './saga'
+import type { OnePieceSaga } from './saga'
 import { skypieaChronicles } from './skypiea.chronicle'
 
 /**
@@ -12,7 +12,7 @@ const SKY_ISLAND = { it: 'Skypiea', en: 'Skypiea' }
 const ENEL_PRIESTS = { it: 'Sacerdoti di Ener', en: 'Enel’s priests' }
 const ENEL_PRIEST = { it: 'Sacerdote di Ener', en: 'One of Enel’s priests' }
 
-export const skypiea: Saga = {
+export const skypiea: OnePieceSaga = {
   name: { it: 'Saga di Skypiea', en: 'Skypiea Saga' },
   entries: [
     {

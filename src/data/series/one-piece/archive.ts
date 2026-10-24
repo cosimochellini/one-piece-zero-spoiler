@@ -1,5 +1,6 @@
-import type { Entity, SeriesArchive } from '~/data/types'
-import type { Bookmark } from '~/lib/progress/episode'
+import { routePositionOf } from '~/data/order'
+import { sweepOf } from '~/data/sweep'
+import type { SeriesArchive } from '~/data/types'
 import { ONE_PIECE_SERIES } from '~/lib/progress/series'
 
 import * as Art from './art'
@@ -16,39 +17,13 @@ import * as Leads from './leads'
 import * as Places from './places'
 import * as Sagas from './sagas'
 
-/** Every saga boundary, on both sides, in one unit. */
-function aroundSagas(threshold: (arc: Entity) => number): number[] {
-  return Sagas.sagas.flatMap(({ entries }) => {
-    let start = Infinity
-    for (const entry of entries) {
-      if (entry.kind === 'arc') {
-        start = Math.min(start, threshold(entry))
-      }
-    }
-    return Number.isFinite(start) ?
-        [start - 1, start].filter((count) => count > 0)
-      : []
-  })
-}
-
 /** One dynamically loaded archive; its public description contains no records. */
 export const ONE_PIECE_ARCHIVE: SeriesArchive = {
   series: ONE_PIECE_SERIES,
-  bookmarks: [
-    null,
-    ...aroundSagas((arc) => arc.revealedAtEpisode).map((episode): Bookmark => ({
-      mode: 'episode',
-      episode,
-    })),
-    ...aroundSagas((arc) => arc.revealedAtChapter).map((chapter): Bookmark => ({
-      mode: 'chapter',
-      chapter,
-    })),
+  bookmarks: sweepOf(Sagas.sagas, ONE_PIECE_SERIES, [
     { mode: 'season', season: 4, episode: 37 },
     { mode: 'season', season: 4, episode: 38 },
-    { mode: 'episode', episode: ONE_PIECE_SERIES.episodeCeiling },
-    { mode: 'chapter', chapter: ONE_PIECE_SERIES.chapterCeiling },
-  ],
+  ]),
   drawings: Art.DRAWINGS,
   fruitRedrawn: FruitArt.fruitRedrawn,
   gateOf: Chapters.gateOf,
@@ -62,7 +37,7 @@ export const ONE_PIECE_ARCHIVE: SeriesArchive = {
   dossierOf: Characters.dossierOf,
   roleOf: Characters.roleOf,
   chartWith: Characters.chartWith,
-  routePositionOf: Characters.routePositionOf,
+  routePositionOf,
   entities: Entities.entities,
   getEntity: Entities.getEntity,
   datedOf: DatedArchive.datedOf,

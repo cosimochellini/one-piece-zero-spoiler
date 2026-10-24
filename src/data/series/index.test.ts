@@ -3,6 +3,7 @@ import path from 'node:path'
 import { byNumber, byString } from 'sort-es'
 import { describe, expect, it } from 'vitest'
 
+import type { Entity } from '~/data/types'
 import { LOCALES } from '~/i18n/locales'
 import { FIRST_CHAPTER, FIRST_EPISODE } from '~/lib/progress/episode'
 import { LOADED_SERIES } from '~/test/series'
@@ -41,6 +42,11 @@ describe('the series list', () => {
     }
   })
 })
+
+/** Whether a record is an arc. */
+function isArc(entity: Entity): boolean {
+  return entity.kind === 'arc'
+}
 
 describe.each(LOADED_SERIES)(
   'the archive of $slug',
@@ -113,8 +119,9 @@ describe.each(LOADED_SERIES)(
     it('files every timeline in order, from the threshold on, within the dial', () => {
       // What every timeline obeys, a character's, a ship's or a drawing's: at
       // least one entry, in strictly ascending episodes, none before the
-      // record's own threshold and none past the dial.
-      expect(timelines.length).toBeGreaterThan(0)
+      // record's own threshold and none past the dial. A series with
+      // characters has timelines; one with arcs alone may have none yet.
+      expect(timelines.length > 0 || archive.characters.length === 0).toBe(true)
 
       for (const { label, owner, timeline } of timelines) {
         const episodes = timeline.map((entry) => entry.episode)
@@ -134,6 +141,44 @@ describe.each(LOADED_SERIES)(
           )
         }
       }
+    })
+
+    it('files only the kinds and features its description declares', () => {
+      // `fruit` and `ship`, the bounty, the factions and the filler guide
+      // are One Piece's (owner, 2026-10-23): a series files them only when
+      // its description says it has them.
+      const { features, kinds } = archive.series
+      const dossiers = archive.characters.flatMap(
+        (entity) => archive.dossierOf(entity) ?? [],
+      )
+      const bounties = dossiers.filter(({ bounty }) => bounty !== undefined)
+      const tagged = dossiers
+        .flatMap(({ affiliation }) => affiliation)
+        .filter(({ factions }) => factions !== undefined)
+
+      expect(
+        entities.filter((entity) => !kinds.includes(entity.kind)),
+      ).toStrictEqual([])
+      expect(archive.fruits.length > 0).toBe(features.fruits)
+      expect(archive.filler.length > 0).toBe(features.filler)
+      expect(bounties.length > 0).toBe(features.bounty)
+      expect(tagged.length > 0).toBe(features.factions)
+    })
+
+    it('ends its demo the episode and the chapter before its second saga', () => {
+      // The demo is the first saga: a visitor with no bookmark is sent all of
+      // it and nothing of the next.
+      const second =
+        archive.sagas[1]?.entries.filter((entry) => isArc(entry)) ?? []
+      const opens = (unit: 'revealedAtChapter' | 'revealedAtEpisode'): number =>
+        Math.min(...second.map((arc) => arc[unit]))
+
+      expect(opens('revealedAtEpisode')).toBe(
+        archive.series.demoLastEpisode + 1,
+      )
+      expect(opens('revealedAtChapter')).toBe(
+        archive.series.demoLastChapter + 1,
+      )
     })
   },
 )

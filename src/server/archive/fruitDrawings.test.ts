@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
+import type { Drawings } from '~/data/art/stroke'
 import { DRAWINGS } from '~/data/series/one-piece/art'
 import { fruitRedrawn } from '~/data/series/one-piece/art/fruits'
 import { gateOf } from '~/data/series/one-piece/chapter-table'
@@ -10,6 +11,9 @@ import { locateEpisode } from '~/lib/progress/seasons'
 import type { FruitDetail } from '~/lib/view/records'
 import { opFruitPage as fruitPage } from '~/test/archive'
 import { leaksIn, saysNothing } from '~/test/fog'
+
+/** The drawings by any record's id, as the archive hands them out. */
+const DRAWN: Drawings = DRAWINGS
 
 /**
  * The drawings a fruit's page lets the reader switch between: only those
@@ -61,7 +65,7 @@ describe('a fruit’s drawings', () => {
   it.each(REDRAWN)(
     'switches $id only from its redrawing, in every unit',
     ({ entry, gate, id }) => {
-      const first = DRAWINGS[fruitOf(id).visual.art]
+      const first = DRAWN[fruitOf(id).visual.art]
       const before = [
         ep(gate.revealedAtEpisode - 1),
         season(gate.revealedAtEpisode - 1),

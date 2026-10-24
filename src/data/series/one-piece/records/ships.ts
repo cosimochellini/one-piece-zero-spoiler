@@ -1,53 +1,10 @@
-import type { LocalizedText, Timeline } from '~/data/types'
+import type { ShipDossier } from '~/data/types'
 
 /**
  * The ships’ log entries, kept apart from the place layer (`~/data/series/one-piece/places`)
  * because the chapter table (`~/data/series/one-piece/chapter-table`) reads their fates before
  * the archive is assembled, and the place layer reads the assembled archive.
  */
-
-/**
- * The log entry for a ship.
- *
- * Its own shape rather than a `PlaceDossier` with `form: 'ship'`. A ship lies
- * in no one sea and has no landmark to look for, so those words would be
- * wrong on it; and unlike a port, a ship has a story of its own, which is
- * what `fate` holds. The other fields obey the ship's threshold, like a
- * port's.
- */
-export interface ShipDossier {
-  /** Who made her, as a viewer at the threshold has been told it. */
-  builder: LocalizedText
-  /**
-   * The place the crew receives her at: a `place` record's id, named
-   * outright, because it opens no later than the ship (a data test holds it).
-   */
-  launched: string
-  /** The log entry proper: two or three sentences, safe at the threshold. */
-  log: LocalizedText
-  /**
-   * Where the ship stands, from her threshold on. The page prints the latest
-   * entry the reader has reached, and the first entry is at the threshold,
-   * so the row is there from the start and its arrival announces nothing.
-   */
-  fate: Timeline<LocalizedText>
-  /**
-   * The places she reaches, each with the episode and the chapter at which
-   * she is there or coming in, as checked against the wiki. A place opens
-   * no earlier than her arrival in either unit (a data test holds it):
-   * opened sooner, the tile would tell a reader where she goes next. The
-   * page shows only those the reader has reached, because a covered tile's
-   * episode would say how long she lasts.
-   */
-  ports?: Arrival[]
-}
-
-/** A place a ship reaches, and when she is first there or coming in. */
-export interface Arrival {
-  chapter: number
-  episode: number
-  place: string
-}
 
 export const SHIP_DOSSIERS: Record<string, ShipDossier> = {
   'going-merry': {

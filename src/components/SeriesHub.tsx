@@ -21,10 +21,10 @@ import {
 } from '~/styles/tokens.stylex'
 
 /**
- * A series announced on the hub before it is one in `~/data/series`: a name
- * and nothing else, so no link, no count, no colour and no drawing. Once
- * #758 files Hunter x Hunter its own stage replaces this one; #763, which
- * opens it, deletes the entry.
+ * A series announced on the hub before readers can reach it: a name and
+ * nothing else, so no link, no count, no colour and no drawing. Hunter x
+ * Hunter is filed in `~/data/series` but not open, so the hub is not sent
+ * it; #763, which opens it, deletes the entry and its own stage takes over.
  */
 interface Coming {
   name: string

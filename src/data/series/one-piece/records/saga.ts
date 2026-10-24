@@ -1,18 +1,48 @@
-import type { CharacterDossier, Entity, LocalizedText } from '~/data/types'
+import type { ArtId } from '~/data/series/one-piece/art'
+import type { FruitId } from '~/data/series/one-piece/fruit-forms'
+import type {
+  CharacterDossier,
+  Entity,
+  Saga,
+  Timeline,
+  Visual,
+} from '~/data/types'
 
 /**
- * One stretch of the route as a module: the records filed along it, in the
- * order the anime reaches them, and the dossier of every character among
- * them. The archive is the concatenation of these, saga by saga, so a saga's
- * records and its dossiers are read and reviewed together.
+ * A One Piece record, drawn by one of its own drawings: `art` is the id of a
+ * drawing filed in `../art`, a type derived from the drawings, so a record
+ * cannot point at one that does not exist.
  */
-export interface Saga {
-  dossiers: Record<string, CharacterDossier>
-  entries: Entity[]
-  /**
-   * The saga's own name, for the fruits page's marquee. Most sagas hold
-   * several arcs, so no arc record names the whole of one. Not gated: saga
-   * names are not spoilers (owner, 2026-10-17).
-   */
-  name: LocalizedText
+export interface OnePieceEntity extends Entity {
+  visual: Visual & { art: ArtId }
+}
+
+/**
+ * A devil fruit as `./fruits` files it: a record without its thresholds or
+ * its source, which `../entities` reads off the dossier entries that name the
+ * fruit, drawn by its own drawing.
+ */
+export interface OnePieceFruit extends Omit<
+  Entity,
+  'revealedAtChapter' | 'revealedAtEpisode' | 'source' | 'visual'
+> {
+  visual: Visual & { art: ArtId }
+}
+
+/**
+ * A One Piece dossier: a fruit is named by the id of a fruit
+ * `../fruit-forms` files, so a dossier cannot say a character ate a fruit the
+ * archive never filed.
+ */
+export interface OnePieceDossier extends CharacterDossier {
+  devilFruit?: Timeline<FruitId[]>
+}
+
+/**
+ * One stretch of the route as a module (`Saga` in `~/data/types`), with its
+ * records and dossiers held to One Piece's own drawings and fruits.
+ */
+export interface OnePieceSaga extends Saga {
+  dossiers: Record<string, OnePieceDossier>
+  entries: OnePieceEntity[]
 }

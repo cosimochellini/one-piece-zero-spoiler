@@ -1,4 +1,4 @@
-import type { Saga } from './saga'
+import type { OnePieceSaga } from './saga'
 import { wanoChronicles } from './wano.chronicle'
 
 /**
@@ -20,7 +20,7 @@ const TOBIROPPO_ROLE = {
   en: 'Beasts Pirates Tobiroppo',
 }
 
-export const wano: Saga = {
+export const wano: OnePieceSaga = {
   name: { it: 'Saga del Paese di Wano', en: 'Wano Country Saga' },
   entries: [
     {

@@ -116,8 +116,8 @@
       // second series gets its own zone without a line here. Listed before
       // `engine`, because a file belongs to the first zone that matches it.
       { "name": "series", "autoDiscover": ["src/data/series"] },
-      // The record shapes, on their own so that the engine's one type-only
-      // reach into a series below is this file's alone.
+      // The record shapes and the archive contract, on their own so that
+      // nothing below them can reach a series.
       { "name": "engine-types", "patterns": ["src/data/types.ts"] },
       // What every series shares: the reveal, the order and the drawing helper.
       { "name": "engine", "patterns": ["src/data/**"] },
@@ -156,14 +156,13 @@
       },
       // The engine imports no series.
       { "from": "engine", "allow": ["engine-types", "lib", "i18n", "styles"] },
-      // The one exception, type-only: records and the archive contract reuse
-      // One Piece's editorial shapes until #758 generalizes the second series.
-      // Fallow limits it by file, not by name, so a new type taken from a
-      // series here is a review question.
+      // The record shapes and the archive contract take no series' types
+      // (#758): a series narrows them for itself. The archive contract names
+      // the reader's `Reveal`, a type of the engine's.
       {
         "from": "engine-types",
         "allow": ["lib", "i18n", "styles"],
-        "allowTypeOnly": ["series/one-piece"],
+        "allowTypeOnly": ["engine"],
       },
       { "from": "i18n", "allow": ["lib", "engine", "engine-types", "styles"] },
       { "from": "styles", "allow": [] },

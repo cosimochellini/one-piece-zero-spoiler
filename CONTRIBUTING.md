@@ -74,18 +74,19 @@ entry, which carries the episode it is learned in. The comment at the top of
 
 ## Where things live
 
-| Path                         | What is there                                                                               |
-| ---------------------------- | ------------------------------------------------------------------------------------------- |
-| `src/data/`                  | The engine every series shares: the record shapes, the reveal and order rules. Server only. |
-| `src/data/series/one-piece/` | The One Piece archive: records, drawings and most editorial tests. Server only.             |
-| `src/components/`            | React components, styled with StyleX.                                                       |
-| `src/routes/`                | TanStack Start file routes, under `$locale/`.                                               |
-| `src/server/`                | Server functions that cut the archive down to what a bookmark reaches.                      |
-| `src/lib/`                   | Code the client may import: bookmark logic, search, SVG helpers, views.                     |
-| `src/i18n/`                  | Locales and the English and Italian dictionaries.                                           |
-| `src/styles/`                | Global CSS and the StyleX design tokens.                                                    |
-| `scripts/`                   | Quality gates, the PR title validator, the wiki checks and the merge helper.                |
-| `docs/`                      | [Architecture](docs/architecture.md), media and the chronicle verification report.          |
+| Path                               | What is there                                                                                     |
+| ---------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `src/data/`                        | The engine every series shares: the record shapes, the reveal and order rules. Server only.       |
+| `src/data/series/one-piece/`       | The One Piece archive: records, drawings and most editorial tests. Server only.                   |
+| `src/data/series/hunter-x-hunter/` | The Hunter x Hunter archive, its arcs so far. Filed, not open to readers yet (#763). Server only. |
+| `src/components/`                  | React components, styled with StyleX.                                                             |
+| `src/routes/`                      | TanStack Start file routes, under `$locale/`.                                                     |
+| `src/server/`                      | Server functions that cut the archive down to what a bookmark reaches.                            |
+| `src/lib/`                         | Code the client may import: bookmark logic, search, SVG helpers, views.                           |
+| `src/i18n/`                        | Locales and the English and Italian dictionaries.                                                 |
+| `src/styles/`                      | Global CSS and the StyleX design tokens.                                                          |
+| `scripts/`                         | Quality gates, the PR title validator, the wiki checks and the merge helper.                      |
+| `docs/`                            | [Architecture](docs/architecture.md), media and the chronicle verification report.                |
 
 A new module with prose outside a series' `records/` must go into its series'
 `prose` in `EXTRA` in `scripts/archive-gate.mjs` and into `TEXTS` in
@@ -377,9 +378,11 @@ sentences, one term per concept, Italian written by a native speaker and not
 translated from English. `src/i18n/translate.test.ts` fails on an em dash, an
 exclamation mark or a banned phrase in either dictionary.
 
-New interface strings go in `src/i18n/dictionaries/en.ts` and `it.ts`. The
-Italian dictionary is typed against the English one, so a missing key fails
-`npm run typecheck`.
+New interface strings go in `src/i18n/dictionaries/en.ts` and `it.ts`, or, for a
+feature only One Piece has (devil fruits, ships and seas, bounties, factions,
+the filler guide), in `src/i18n/dictionaries/one-piece/`. The Italian dictionary
+is typed against the English one, so a missing key fails `npm run typecheck`,
+and a series' file cannot redefine a shared key.
 
 ## Checks
 

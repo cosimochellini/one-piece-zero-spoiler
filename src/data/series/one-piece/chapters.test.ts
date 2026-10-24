@@ -1,16 +1,12 @@
 import { byNumber } from 'sort-es'
 import { describe, expect, it } from 'vitest'
 
+import { vouches } from '~/data/chapterTable'
 import type { Dated, Entity } from '~/data/types'
 import { LOCALES } from '~/i18n/locales'
 import { CHAPTER_CEILING } from '~/lib/progress/episode'
 
-import {
-  chapterAtEpisode,
-  episodeAtChapter,
-  gateOf,
-  vouches,
-} from './chapter-table'
+import { chapterAtEpisode, episodeAtChapter, gateOf } from './chapter-table'
 import { DATED, TIMELINES } from './chapters'
 import { datedOf } from './dated'
 import { entities } from './entities'

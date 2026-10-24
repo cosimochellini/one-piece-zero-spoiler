@@ -1,7 +1,7 @@
 import type { Affiliation, Origin } from '~/data/types'
 
 import { eggheadChronicles } from './egghead.chronicle'
-import type { Saga } from './saga'
+import type { OnePieceSaga } from './saga'
 
 /**
  * The Egghead arc, episodes 1090 to 1155: the first island of the final
@@ -48,7 +48,7 @@ const ELDER_ROLE = {
   en: 'One of the Five Elders',
 }
 
-export const egghead: Saga = {
+export const egghead: OnePieceSaga = {
   name: { it: 'Saga di Egghead', en: 'Egghead Saga' },
   entries: [
     {

@@ -1,4 +1,4 @@
-import { archiveOf, SERIES } from '~/data/series'
+import { archiveOf, OPEN_SERIES } from '~/data/series'
 import { archiveIn } from '~/data/source'
 import type { Entity, SeriesArchive } from '~/data/types'
 import { LOCALES } from '~/i18n/locales'
@@ -71,7 +71,7 @@ function seriesEntries(archive: SeriesArchive): string[] {
 
 async function buildSitemap(): Promise<string> {
   const archives = await Promise.all(
-    SERIES.map(async ({ slug }) => archiveOf(slug)),
+    OPEN_SERIES.map(async ({ slug }) => archiveOf(slug)),
   )
   return [
     '<?xml version="1.0" encoding="UTF-8"?>',

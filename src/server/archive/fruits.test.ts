@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
+import type { Drawings } from '~/data/art/stroke'
 import { reveal } from '~/data/reveal'
 import { DRAWINGS, REDRAWINGS } from '~/data/series/one-piece/art'
 import { eatersOf } from '~/data/series/one-piece/dated'
@@ -33,6 +34,9 @@ import { leaksIn, saysNothing } from '~/test/fog'
 import { ONE_PIECE_LOADED as ONE_PIECE } from '~/test/series'
 
 import type { SagaStart } from './sagaLabels.server'
+
+/** The drawings by any record's id, as the archive hands them out. */
+const DRAWN: Drawings = DRAWINGS
 
 const BOOKMARKS = ONE_PIECE.bookmarks
 
@@ -402,8 +406,7 @@ describe('a fruit’s own page', () => {
     'opens $id with its power only at its thresholds',
     ({ id, episode, chapter }) => {
       const fruit = fruits.find((record) => record.id === id)
-      const strokes =
-        fruit === undefined ? undefined : DRAWINGS[fruit.visual.art]
+      const strokes = fruit === undefined ? undefined : DRAWN[fruit.visual.art]
 
       for (const locale of ['en', 'it'] as const) {
         for (const [before, at] of [
@@ -505,7 +508,7 @@ describe('a fruit and its eaters', () => {
           ).toBe(open)
           expect(linked).toBe(open)
           expect(drawingsFor([id], bookmark, locale)[id]).toStrictEqual(
-            open ? DRAWINGS[visual.art] : undefined,
+            open ? DRAWN[visual.art] : undefined,
           )
 
           saysNothing(page, bookmark)

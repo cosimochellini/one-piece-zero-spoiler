@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest'
 
-import { archiveOf, SERIES } from '~/data/series'
+import { archiveOf, OPEN_SERIES } from '~/data/series'
 import type { SeriesArchive } from '~/data/types'
 import { SITE_ORIGIN } from '~/lib/seo/site'
 
@@ -40,8 +40,8 @@ vi.mock(import('~/data/series'), async (original) => {
     .fn<() => Promise<SeriesArchive>>()
     .mockResolvedValue(other)
   return {
-    SERIES: [
-      ...registry.SERIES,
+    OPEN_SERIES: [
+      ...registry.OPEN_SERIES,
       {
         ...registry.ONE_PIECE,
         slug: other.series.slug,
@@ -78,8 +78,10 @@ describe('a sitemap with more than one series', () => {
     expect(xml).not.toContain(`${SITE_ORIGIN}/test-series/en/fruits`)
     expect(xml).not.toContain(`${SITE_ORIGIN}/test-series/en/filler`)
     expect(xml).not.toContain(`${SITE_ORIGIN}/test-series/en/places`)
+    // Filed, not open (#763).
+    expect(xml).not.toContain('/hunter-x-hunter/')
 
     await expect(sitemapXml()).resolves.toBe(xml)
-    expect(archiveOf).toHaveBeenCalledTimes(SERIES.length * 2)
+    expect(archiveOf).toHaveBeenCalledTimes(OPEN_SERIES.length * 2)
   })
 })

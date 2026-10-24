@@ -26,8 +26,7 @@ import {
 import { bezier } from '~/data/series/one-piece/art/fruits/shape'
 import { ring } from '~/data/series/one-piece/art/fruits/swirls'
 import { point } from '~/data/series/one-piece/art/fruits/units'
-import type { Dated } from '~/data/types'
-import type { FruitLook } from '~/lib/view/records'
+import type { FruitRedrawing } from '~/data/types'
 
 /**
  * Every fruit's hand-drawn composition. Fruit + power drawings use the body
@@ -6286,15 +6285,6 @@ export const fruitArt = {
     shadowUnder(1),
   ],
 } satisfies Drawings
-
-/**
- * A fruit drawn again, and what the new drawing shows: the real fruit, or
- * the power as an awakening changes it. The fruit's page names each drawing
- * by it; the first drawing is always the fruit and its power.
- */
-export interface FruitRedrawing extends Dated<Stroke[]> {
-  look: Exclude<FruitLook, 'power'>
-}
 
 /**
  * Real fruits replace fruit + power drawings once the story shows them.

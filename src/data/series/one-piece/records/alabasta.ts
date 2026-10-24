@@ -1,5 +1,5 @@
 import { alabastaChronicles } from './alabasta.chronicle'
-import type { Saga } from './saga'
+import type { OnePieceSaga } from './saga'
 
 /**
  * The Alabasta saga, episodes 62 to 135: over Reverse Mountain into the
@@ -63,7 +63,7 @@ const ALABASTA = { it: 'Alabasta', en: 'Alabasta' }
 
 const DRUM_ISLAND = { it: 'Isola di Drum', en: 'Drum Island' }
 
-export const alabasta: Saga = {
+export const alabasta: OnePieceSaga = {
   name: { it: 'Saga di Alabasta', en: 'Alabasta Saga' },
   entries: [
     {

@@ -1,10 +1,11 @@
 import { orderByMode } from '~/data/order'
-import type { Field, Fields } from '~/data/series/one-piece/chapter-table'
 import type {
   BookSection,
   Dated,
   Eater,
   Entity,
+  Field,
+  Fields,
   SeriesArchive,
 } from '~/data/types'
 import type { Source } from '~/lib/progress/spoiler'

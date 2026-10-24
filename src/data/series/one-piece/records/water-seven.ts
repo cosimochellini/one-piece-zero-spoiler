@@ -1,4 +1,4 @@
-import type { Saga } from './saga'
+import type { OnePieceSaga } from './saga'
 import { waterSevenChronicles } from './water-seven.chronicle'
 
 /**
@@ -29,7 +29,7 @@ const GALLEY_LA_DOCK_ONE = {
   en: 'Galley-La Company, foreman of Dock One',
 }
 
-export const waterSeven: Saga = {
+export const waterSeven: OnePieceSaga = {
   name: { it: 'Saga di Water Seven', en: 'Water Seven Saga' },
   entries: [
     {

@@ -6,7 +6,7 @@ import { eastBlue } from './records/east-blue'
 import { egghead } from './records/egghead'
 import { elbaf } from './records/elbaf'
 import { fishManIsland } from './records/fish-man-island'
-import type { Saga } from './records/saga'
+import type { OnePieceSaga } from './records/saga'
 import { skypiea } from './records/skypiea'
 import { summitWar } from './records/summit-war'
 import { thrillerBark } from './records/thriller-bark'
@@ -24,7 +24,7 @@ import { wholeCake } from './records/whole-cake'
  */
 
 /** The sagas in the order the anime reaches them. */
-export const sagas: Saga[] = [
+export const sagas: OnePieceSaga[] = [
   eastBlue,
   alabasta,
   skypiea,

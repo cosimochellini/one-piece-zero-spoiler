@@ -1,4 +1,4 @@
-import type { Saga } from './saga'
+import type { OnePieceSaga } from './saga'
 import { thrillerBarkChronicles } from './thriller-bark.chronicle'
 
 /**
@@ -11,7 +11,7 @@ const STRAW_HATS = {
   en: 'Straw Hat Pirates',
 }
 
-export const thrillerBark: Saga = {
+export const thrillerBark: OnePieceSaga = {
   name: { it: 'Saga di Thriller Bark', en: 'Thriller Bark Saga' },
   entries: [
     {

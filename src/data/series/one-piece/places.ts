@@ -1,9 +1,8 @@
 import { orderByMode } from '~/data/order'
-import type { Dated, Entity, LocalizedText } from '~/data/types'
-import type { PlaceForm, Sea } from '~/lib/view/records'
+import type { Entity, PlaceDossier, ShipDossier } from '~/data/types'
 
 import { entities } from './entities'
-import { SHIP_DOSSIERS, type ShipDossier } from './records/ships'
+import { SHIP_DOSSIERS } from './records/ships'
 
 /**
  * The ship's log: the place layer of the archive.
@@ -28,47 +27,6 @@ import { SHIP_DOSSIERS, type ShipDossier } from './records/ships'
  * view models rather than here: the log prints them, and nothing under
  * `~/data` may be named from the browser (issue #12).
  */
-
-/**
- * The log entry for a place, beyond the name and the sentence every record
- * carries. Every field obeys the record's own threshold: it says what a
- * viewer who has just arrived could say, so nothing here has to be veiled
- * separately from the place itself.
- */
-export interface PlaceDossier {
-  form: PlaceForm
-  sea: Sea
-  /** The arc the place belongs to: an `arc` record's id. */
-  arc: string
-  /** The one thing the drawing shows and the eye would look for. */
-  landmark: LocalizedText
-  /** The log entry proper: two or three sentences, safe at the threshold. */
-  log: LocalizedText
-  /**
-   * Records the archive files at this place: the characters met here, the
-   * ship received here. Each keeps its own threshold, so a name filed later
-   * than the place stays under fog on the place's own page.
-   */
-  filedHere: string[]
-  /**
-   * The times the story comes back after the place's own arc: the crew, or
-   * one of them, on screen there again, or a scene there that moves the
-   * story on. Not a flashback, a cover story or a reaction to the news. Each
-   * at the episode and the chapter that show it, as checked against the
-   * wiki, oldest first, the note saying only what that episode shows. A
-   * visit opens at its own pair and the page sends only those the reader
-   * has reached, so a later one says nothing ahead of time.
-   */
-  visits?: Visit[]
-}
-
-/**
- * One return to a place: a dated entry whose value is its note, with the
- * chapter always given, because it is checked rather than derived.
- */
-export interface Visit extends Dated<LocalizedText> {
-  chapter: number
-}
 
 export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
   'shells-town': {

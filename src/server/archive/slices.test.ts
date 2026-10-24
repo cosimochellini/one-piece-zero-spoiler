@@ -1,6 +1,7 @@
 import { byNumber } from 'sort-es'
 import { describe, expect, it } from 'vitest'
 
+import type { Drawings } from '~/data/art/stroke'
 import { orderByMode } from '~/data/order'
 import { reveal } from '~/data/reveal'
 import { DRAWINGS, REDRAWINGS } from '~/data/series/one-piece/art'
@@ -48,6 +49,9 @@ import { saysNothing } from '~/test/fog'
 
 import { characterOf, recordOf, searchableOf } from './project.server'
 import type { Reader } from './reader.server'
+
+/** The drawings by any record's id, as the archive hands them out. */
+const DRAWN: Drawings = DRAWINGS
 
 function ep(episode: number): NonNullable<Bookmark> {
   return { mode: 'episode', episode }
@@ -749,7 +753,7 @@ describe('every record drawn again later in the story', () => {
   // drawing for a reader the timelines cannot place.
   it.each(Object.keys(REDRAWINGS))('walks %s through each stage', (id) => {
     const record = filed(id)
-    const first = DRAWINGS[record.visual.art]
+    const first = DRAWN[record.visual.art]
     const stages = REDRAWINGS[id] ?? []
     const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
       recordOf(record, readerFor(bookmark, 'en')).visual.strokes

@@ -64,8 +64,8 @@ on it. The count is of the records the reader's source tells, and of the records
 both sources tell for a reader with no bookmark. `loadHub` in
 `src/server/series.ts` loads each archive only to count it, and `hubFor` reads
 each series' saved cookie; a trial or a crawler shows no bookmark there. A
-series announced but not yet in the registry is a hard-coded name with no link
-and no count. The payload sweep holds the plain call behind every function in
+series announced but not yet open is a hard-coded name with no link and no
+count. The payload sweep holds the plain call behind every function in
 `src/server/series.ts` to the fog of a reader with no bookmark, so the hub can
 name no record of any series, open or covered. The footer on the shared pages
 names no series.
@@ -79,6 +79,24 @@ deployed ordinal handles; every other series requires its own prefix, so handles
 cannot resolve through another series' table. Fallow forbids direct server
 imports from a series, and the archive gate checks the emitted server graph as
 well as client leak canaries.
+
+A series can be filed before it opens (`open` on its registry entry). Hunter x
+Hunter is, until #763: it is in `SERIES`, so the payload sweep, the leak scan,
+the data tests, the archive gate, the counts and the `verify:*` scripts all run
+for it, and it is in none of the paths a reader takes, which read `OPEN_SERIES`.
+Its addresses answer 404, no server function serves it, the sitemap leaves it
+out, and the hub still announces it as coming.
+
+The record shapes and the archive contract (`SeriesArchive`) in
+`src/data/types.ts` take nothing from a series. A series narrows them for its
+own records: One Piece's `Saga` holds a record's drawing and a dossier's fruits
+to the ids it files. The devil fruits, the ships, the bounty, the factions and
+the filler guide are One Piece's, declared in `features` and `kinds` on its
+description; another series fills those parts of the contract with empty lists
+and lookups that find nothing, and a data test holds that a series files only
+what its description declares. The chapter table and the sweep's bookmarks are
+built by the engine (`src/data/chapterTable.ts`, `src/data/sweep.ts`) from each
+series' own records.
 
 A record or a dated fact can exist in one source only (`source: 'anime'` or
 `'manga'` on the record or the entry; absent means both). An episode or season
@@ -157,6 +175,17 @@ cells.
 | Saga modules        | 12, plus one for the devil fruits                       |
 | Line drawings       | 737, one per record, plus 308 redrawings of 172 records |
 | Chronicle stories   | 757, for 186 characters                                 |
+
+### `hunter-x-hunter`
+
+| Thing             | Count                                             |
+| ----------------- | ------------------------------------------------- |
+| Records           | 7                                                 |
+| Characters        | 0                                                 |
+| Arcs, places      | 7 · 0                                             |
+| Saga modules      | 7                                                 |
+| Line drawings     | 7, one per record, plus 0 redrawings of 0 records |
+| Chronicle stories | 0, for 0 characters                               |
 
 <!-- End of the generated counts. -->
 
@@ -311,9 +340,10 @@ banned phrase in either language.
   reader can reach a spoiler.
 - Contrast is measured and recorded next to the tokens of every theme, and
   `src/styles/themes.test.tsx` holds each one to its floors. One Piece: 17.4:1
-  for body text, 12.2:1 for the accent. The neutral theme of the pages with no
-  series: 16.5:1 and 19.7:1; its accent is within 3:1 of the text, so its links
-  keep their underline, and the test fails a shared page whose link does not.
+  for body text, 12.2:1 for the accent. Hunter x Hunter: 17.4:1 and 12.3:1. The
+  neutral theme of the pages with no series: 16.5:1 and 19.7:1; its accent is
+  within 3:1 of the text, so its links keep their underline, and the test fails
+  a shared page whose link does not.
 
 ## Security
 
@@ -552,16 +582,15 @@ client payload catches anything large that neither pattern matches. ESLint
 catches the same mistake earlier, at the import.
 
 fallow checks the structure of the codebase instead, with every rule that
-applies set to error: twelve zones with a declared import direction between them
-(the archive is a shared engine in `src/data` and one zone per series under
+applies set to error: thirteen zones with a declared import direction between
+them (the archive is a shared engine in `src/data` and one zone per series under
 `src/data/series`, no series imports another, no zone imports the series list,
-and only the record shapes in `src/data/types.ts`, a zone of their own, may take
-a type from One Piece until #758), no export that nothing reads (entry files
-included), no duplicated block of five lines or more outside the tests,
-near-identical ones included, and limits of 8 cyclomatic and 8 cognitive
-complexity. Its CRAP score reads the coverage `npm test` writes, so a complex
-function with no test fails the gate. A second run,
-`fallow security --gate new`, fails a branch that adds a command-injection,
+and no zone but the list takes anything from a series, types included), no
+export that nothing reads (entry files included), no duplicated block of five
+lines or more outside the tests, near-identical ones included, and limits of 8
+cyclomatic and 8 cognitive complexity. Its CRAP score reads the coverage
+`npm test` writes, so a complex function with no test fails the gate. A second
+run, `fallow security --gate new`, fails a branch that adds a command-injection,
 path-traversal, secret or other sink against `origin/main`. Two tests fail when
 an upgrade of either tool ships a rule or a security category the configuration
 does not turn on. Both gates write a machine-readable report that CI uploads as
