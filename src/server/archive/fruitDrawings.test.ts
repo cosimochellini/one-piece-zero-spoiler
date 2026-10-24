@@ -8,9 +8,8 @@ import type { Entity } from '~/data/types'
 import type { Bookmark } from '~/lib/progress/episode'
 import { locateEpisode } from '~/lib/progress/seasons'
 import type { FruitDetail } from '~/lib/view/records'
+import { opFruitPage as fruitPage } from '~/test/archive'
 import { leaksIn, saysNothing } from '~/test/fog'
-
-import { fruitPage } from './fruitPage.server'
 
 /**
  * The drawings a fruit's page lets the reader switch between: only those

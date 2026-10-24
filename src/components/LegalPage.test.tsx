@@ -1,12 +1,16 @@
 import { screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 
+import { archiveOf } from '~/data/series'
 import { LOCALES } from '~/i18n/locales'
 import { EPISODE_CEILING } from '~/lib/progress/episode'
 import { creditsPage } from '~/server/archive/credits.server'
+import { readerFor } from '~/server/archive/reader.server'
 import { ep, renderWithProviders } from '~/test/providers'
 
 import { LegalPage } from './LegalPage'
+
+const archive = await archiveOf('one-piece')
 
 const OFFICIAL = 'https://one-piece.com/anime/o6217/index.html'
 
@@ -27,9 +31,10 @@ describe('LegalPage', () => {
   ] as const)(
     'holds every notice without a bookmark in $locale',
     ({ locale, title, privacy, sources }) => {
-      renderWithProviders(<LegalPage credits={creditsPage(null, locale)} />, {
-        locale,
-      })
+      renderWithProviders(
+        <LegalPage credits={creditsPage(readerFor(archive, null, locale))} />,
+        { locale },
+      )
       const main = screen.getByRole('main')
 
       expect(main).toHaveAttribute('id', 'content')
@@ -73,7 +78,9 @@ describe('LegalPage', () => {
   it.each(LOCALES)(
     'renders article attribution and the official replacement separately in %s',
     (locale) => {
-      const credits = creditsPage(ep(EPISODE_CEILING), locale)
+      const credits = creditsPage(
+        readerFor(archive, ep(EPISODE_CEILING), locale),
+      )
       renderWithProviders(<LegalPage credits={credits} />, { locale })
 
       expect(screen.getAllByRole('heading', { level: 4 })).toHaveLength(17)

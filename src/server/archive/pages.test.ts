@@ -7,8 +7,7 @@ import type {
   CharacterView,
   CoveredRecord,
 } from '~/lib/view/records'
-
-import { characterPage } from './pages.server'
+import { opCharacterPage as characterPage } from '~/test/archive'
 
 const ep = (episode: number): Bookmark => ({ mode: 'episode', episode })
 const chapterAt = (chapter: number): Bookmark => ({ mode: 'chapter', chapter })

@@ -1,6 +1,7 @@
 import { createContext, use, useCallback } from 'react'
 
-import { useT } from '~/i18n/LocaleContext'
+import { useLocale, useT } from '~/i18n/LocaleContext'
+import type { Locale } from '~/i18n/locales'
 
 import { type Bookmark, modeOf } from './episode'
 import { type BookmarkSeries, ONE_PIECE_BOOKMARK } from './series'
@@ -44,6 +45,16 @@ export function useBookmark(): BookmarkContextValue {
   }
 
   return value
+}
+
+/** The selected series and language for content links. */
+export function useSeriesParams(): { locale: Locale; series: string } {
+  const { series } = useBookmark()
+  const { locale } = useLocale()
+  if (series === null) {
+    throw new Error('A series link needs a selected series')
+  }
+  return { locale, series: series.slug }
 }
 
 /**

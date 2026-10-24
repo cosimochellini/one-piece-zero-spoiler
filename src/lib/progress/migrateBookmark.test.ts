@@ -81,10 +81,10 @@ describe('legacy One Piece bookmark migration', () => {
   })
 
   it('keeps a valid shared link ahead of a migrated bookmark', () => {
-    const asked = request('opzs_ep=650; opzs_try=12', '/en?ep=45')
+    const asked = request('opzs_ep=650; opzs_try=12', '/one-piece/en?ep=45')
     const cookies = migrateBookmark(asked)
     const response = withMigratedCookies(
-      linkRedirect(asked) ?? new Response(),
+      linkRedirect(asked, ONE_PIECE_BOOKMARK) ?? new Response(),
       cookies,
     )
 

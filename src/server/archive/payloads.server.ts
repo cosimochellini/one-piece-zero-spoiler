@@ -1,17 +1,12 @@
-import { characters } from '~/data/series/one-piece/characters'
-import { entities } from '~/data/series/one-piece/entities'
-import { FILLER } from '~/data/series/one-piece/filler'
-import { fruits } from '~/data/series/one-piece/fruits'
-import { places, ships } from '~/data/series/one-piece/places'
+import type { SeriesArchive } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
 
 import { creditsPage } from './credits.server'
 import { fillerPage, peekFiller } from './filler.server'
-import { RADIX } from './fillerRows.server'
 import { fruitPage } from './fruitPage.server'
 import { fruitEaters, fruitSheet, fruitSiblings } from './fruits.server'
-import { handleOf } from './handle.server'
+import { handleOf, indexHandle } from './handle.server'
 import { landingPage } from './home.server'
 import {
   characterPage,
@@ -31,118 +26,165 @@ import {
 } from './peek.server'
 import { placePage } from './placePage.server'
 import { placesPage } from './places.server'
+import { readerFor } from './reader.server'
 import { sagaLabels } from './sagaLabels.server'
 
-/**
- * Every payload `~/server/api` sends, as the plain function its server
- * function wraps, so a test or a script can ask for each one at any bookmark.
- *
- * `api.ts` stays as it is: each `createServerFn` has to be written out for
- * the compiler. This list repeats it once, and `payloads.test.ts` fails when
- * the two disagree, so a new page cannot ship without the spoiler sweep.
- */
+/** Every payload served by the compiler-visible server-function wrappers. */
 export interface Payload {
-  /** The server function in `~/server/api` that sends it. */
-  name: string
-  /** Every id or handle the page is asked for, when it is asked for one. */
   keys?: () => string[]
-  /** The payload, as the server function builds it. */
+  name: string
   run: (bookmark: Bookmark, locale: Locale, key: string) => unknown
 }
 
-const characterIds = (): string[] => characters.map(({ id }) => id)
-const fruitIds = (): string[] => fruits.map(({ id }) => id)
-// A ship's page is served from a place's address.
-const placeIds = (): string[] => [...places, ...ships].map(({ id }) => id)
-const handles = (): string[] => entities.map(({ id }) => handleOf(id))
+function listPayloads(archive: SeriesArchive): Payload[] {
+  return [
+    {
+      name: 'loadCredits',
+      run: (b, l) => creditsPage(readerFor(archive, b, l)),
+    },
+    {
+      name: 'loadHome',
+      run: (b, l) => landingPage(readerFor(archive, b, l), null),
+    },
+    {
+      name: 'loadCharacters',
+      run: (b, l) => charactersPage(readerFor(archive, b, l)),
+    },
+    {
+      name: 'loadShelves',
+      run: (b, l) => shelvesPage(readerFor(archive, b, l)),
+    },
+    { name: 'loadFruits', run: (b, l) => fruitSheet(readerFor(archive, b, l)) },
+    { name: 'loadPlaces', run: (b, l) => placesPage(readerFor(archive, b, l)) },
+    { name: 'loadFiller', run: (b, l) => fillerPage(readerFor(archive, b, l)) },
+    {
+      name: 'loadSagaLabels',
+      run: (b, l) => sagaLabels(readerFor(archive, b, l)),
+    },
+  ]
+}
 
-export const PAYLOADS: Payload[] = [
-  { name: 'loadCredits', run: (b, locale) => creditsPage(b, locale) },
-  {
-    name: 'loadHome',
-    // A trial only ever turns the landing into the onboarding, which a
-    // visitor with no bookmark is sent too.
-    run: (bookmark, locale) => landingPage(bookmark, null, locale),
-  },
-  { name: 'loadCharacters', run: (b, locale) => charactersPage(b, locale) },
-  { name: 'loadShelves', run: (b, locale) => shelvesPage(b, locale) },
-  {
-    name: 'loadCharacter',
-    keys: characterIds,
-    run: (b, locale, id) => characterPage(id, b, locale) ?? null,
-  },
-  {
-    name: 'loadRoutePosition',
-    keys: characterIds,
-    run: (b, locale, id) => routePosition(id, b, locale) ?? null,
-  },
-  {
-    name: 'loadNearby',
-    keys: characterIds,
-    run: (b, locale, id) => nearbyPage(id, b, locale),
-  },
-  {
-    name: 'loadDrawings',
-    keys: () => entities.map(({ id }) => id),
-    run: (b, locale, id) => drawingsFor([id], b, locale),
-  },
-  { name: 'loadFruits', run: (b, locale) => fruitSheet(b, locale) },
-  {
-    name: 'loadFruit',
-    keys: fruitIds,
-    run: (b, locale, id) => fruitPage(id, b, locale) ?? null,
-  },
-  {
-    name: 'loadFruitEaters',
-    keys: fruitIds,
-    run: (b, locale, id) => fruitEaters(id, b, locale),
-  },
-  {
-    name: 'loadFruitSiblings',
-    keys: fruitIds,
-    run: (b, locale, id) => fruitSiblings(id, b, locale),
-  },
-  { name: 'loadPlaces', run: (b, locale) => placesPage(b, locale) },
-  {
-    name: 'loadPlace',
-    keys: placeIds,
-    run: (b, locale, id) => placePage(id, b, locale) ?? null,
-  },
-  { name: 'loadFiller', run: (b, locale) => fillerPage(b, locale) },
-  { name: 'loadSagaLabels', run: (_, locale) => sagaLabels(locale) },
-  {
-    name: 'liftFiller',
-    keys: () => FILLER.map((_, index) => index.toString(RADIX)),
-    run: (_, locale, handle) => peekFiller(handle, locale) ?? null,
-  },
-  {
-    name: 'liftCharacter',
-    keys: handles,
-    run: (b, locale, handle) => peekCharacter(handle, locale, b) ?? null,
-  },
-  {
-    name: 'liftDossier',
-    keys: handles,
-    run: (b, locale, handle) => peekDossier(handle, locale, b) ?? null,
-  },
-  {
-    name: 'liftFruit',
-    keys: handles,
-    run: (b, locale, handle) => peekFruit(handle, locale, b) ?? null,
-  },
-  {
-    name: 'liftRecord',
-    keys: handles,
-    run: (b, locale, handle) => peekRecord(handle, locale, b) ?? null,
-  },
-  {
-    name: 'liftPort',
-    keys: handles,
-    run: (b, locale, handle) => peekPort(handle, locale, b) ?? null,
-  },
-  {
-    name: 'liftShip',
-    keys: handles,
-    run: (b, locale, handle) => peekShip(handle, locale, b) ?? null,
-  },
-]
+function recordPayloads(archive: SeriesArchive): Payload[] {
+  const characterIds = (): string[] => archive.characters.map(({ id }) => id)
+  const fruitIds = (): string[] => archive.fruits.map(({ id }) => id)
+  return [
+    {
+      name: 'loadCharacter',
+      keys: characterIds,
+      run: (b, l, id) => characterPage(id, readerFor(archive, b, l)) ?? null,
+    },
+    {
+      name: 'loadRoutePosition',
+      keys: characterIds,
+      run: (b, l, id) => routePosition(id, readerFor(archive, b, l)) ?? null,
+    },
+    {
+      name: 'loadNearby',
+      keys: characterIds,
+      run: (b, l, id) => nearbyPage(id, readerFor(archive, b, l)),
+    },
+    {
+      name: 'loadDrawings',
+      keys: () => archive.entities.map(({ id }) => id),
+      run: (b, l, id) => drawingsFor([id], readerFor(archive, b, l)),
+    },
+    {
+      name: 'loadFruit',
+      keys: fruitIds,
+      run: (b, l, id) => fruitPage(id, readerFor(archive, b, l)) ?? null,
+    },
+    {
+      name: 'loadFruitEaters',
+      keys: fruitIds,
+      run: (b, l, id) => fruitEaters(id, readerFor(archive, b, l)),
+    },
+    {
+      name: 'loadFruitSiblings',
+      keys: fruitIds,
+      run: (b, l, id) => fruitSiblings(id, readerFor(archive, b, l)),
+    },
+    {
+      name: 'loadPlace',
+      keys: () => [...archive.places, ...archive.ships].map(({ id }) => id),
+      run: (b, l, id) => placePage(id, readerFor(archive, b, l)) ?? null,
+    },
+  ]
+}
+
+function liftedPayloads(archive: SeriesArchive): Payload[] {
+  const keys = (): string[] =>
+    archive.entities.map(({ id }) => handleOf(id, archive))
+  return [
+    {
+      name: 'liftFiller',
+      keys: () => archive.filler.map((_, index) => indexHandle(index, archive)),
+      run: (b, l, h) => peekFiller(h, readerFor(archive, b, l)) ?? null,
+    },
+    {
+      name: 'liftCharacter',
+      keys,
+      run: (b, l, h) => peekCharacter(h, readerFor(archive, b, l)) ?? null,
+    },
+    {
+      name: 'liftDossier',
+      keys,
+      run: (b, l, h) => peekDossier(h, readerFor(archive, b, l)) ?? null,
+    },
+    {
+      name: 'liftFruit',
+      keys,
+      run: (b, l, h) => peekFruit(h, readerFor(archive, b, l)) ?? null,
+    },
+    {
+      name: 'liftRecord',
+      keys,
+      run: (b, l, h) => peekRecord(h, readerFor(archive, b, l)) ?? null,
+    },
+    {
+      name: 'liftPort',
+      keys,
+      run: (b, l, h) => peekPort(h, readerFor(archive, b, l)) ?? null,
+    },
+    {
+      name: 'liftShip',
+      keys,
+      run: (b, l, h) => peekShip(h, readerFor(archive, b, l)) ?? null,
+    },
+  ]
+}
+
+/** Load an archive once; every projection and sweep then stays synchronous. */
+export function payloadsFor(archive: SeriesArchive): Payload[] {
+  const all = [
+    ...listPayloads(archive),
+    ...recordPayloads(archive),
+    ...liftedPayloads(archive),
+  ]
+  // Preserve the deployed sweep order for byte-for-byte One Piece parity.
+  const order = [
+    'loadCredits',
+    'loadHome',
+    'loadCharacters',
+    'loadShelves',
+    'loadCharacter',
+    'loadRoutePosition',
+    'loadNearby',
+    'loadDrawings',
+    'loadFruits',
+    'loadFruit',
+    'loadFruitEaters',
+    'loadFruitSiblings',
+    'loadPlaces',
+    'loadPlace',
+    'loadFiller',
+    'loadSagaLabels',
+    'liftFiller',
+    'liftCharacter',
+    'liftDossier',
+    'liftFruit',
+    'liftRecord',
+    'liftPort',
+    'liftShip',
+  ]
+  return order.flatMap((name) => all.filter((payload) => payload.name === name))
+}

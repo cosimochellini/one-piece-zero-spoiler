@@ -1,11 +1,4 @@
-import { type Eater, eatersOf, factionsOf } from '~/data/series/one-piece/dated'
-import {
-  fruitFormOf,
-  fruits,
-  fruitsOfForm,
-  getFruit,
-} from '~/data/series/one-piece/fruits'
-import type { Entity } from '~/data/types'
+import type { Eater, Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 import { getDictionary } from '~/i18n/translate'
 import { absoluteEpisodeOf, type Bookmark } from '~/lib/progress/episode'
@@ -26,7 +19,7 @@ import type {
 
 import { handleOf } from './handle.server'
 import { characterOf, deferredOf, fruitOf, specimenOf } from './project.server'
-import { type Reader, readerFor } from './reader.server'
+import type { Reader } from './reader.server'
 import { sagaOf, type SagaStart, sagaStarts } from './sagaLabels.server'
 
 /**
@@ -60,7 +53,7 @@ function bandOf(
   }: { form: FruitForm; lead: string | undefined; plate: number },
   r: Reader,
 ): FruitBandView {
-  const band = r.split(fruitsOfForm(form), (entity) =>
+  const band = r.split(r.archive.fruitsOfForm(form), (entity) =>
     specimenOf(fruitOf(entity, form, r), openEaters(entity.id, r), r),
   )
 
@@ -97,20 +90,20 @@ export function gatedOf(eater: Eater): Entity {
  * count them, and a count is a spoiler too.
  */
 function openEaters(id: string, r: Reader): Entity[] {
-  return eatersOf(id).flatMap((eater) =>
-    r.sees(gatedOf(eater)) ? [eater.entity] : [],
-  )
+  return r.archive
+    .eatersOf(id)
+    .flatMap((eater) => (r.sees(gatedOf(eater)) ? [eater.entity] : []))
 }
 
 /** Where a bookmark stands in its own unit: the chapter, or the episode. */
-function positionOf(bookmark: Bookmark): null | number {
+function positionOf(bookmark: Bookmark, r: Reader): null | number {
   if (bookmark === null) {
     return null
   }
 
   return bookmark.mode === 'chapter' ?
       bookmark.chapter
-    : absoluteEpisodeOf(bookmark)
+    : absoluteEpisodeOf(bookmark, r.archive.series)
 }
 
 /**
@@ -120,10 +113,10 @@ function positionOf(bookmark: Bookmark): null | number {
  * bookmark, and with no fruit open at all.
  */
 function marqueeOf(bookmark: Bookmark, r: Reader): FruitMarqueeView | null {
-  const at = positionOf(bookmark)
+  const at = positionOf(bookmark, r)
   const unit = r.mode === 'chapter' ? 'chapter' : 'episode'
-  const saga = at === null ? undefined : sagaOf(unit, at)
-  const open = r.order(fruits).filter((fruit) => r.sees(fruit))
+  const saga = at === null ? undefined : sagaOf(unit, at, r)
+  const open = r.order(r.archive.fruits).filter((fruit) => r.sees(fruit))
   const last = open.at(-1)
   if (saga === undefined || last === undefined) {
     return null
@@ -166,24 +159,24 @@ function sagasOf(
   bookmark: Bookmark,
   r: Reader,
 ): Pick<FruitSheetView, 'later' | 'sagas'> {
-  const at = positionOf(bookmark)
+  const at = positionOf(bookmark, r)
   if (at === null) {
     return { later: [], sagas: [] }
   }
 
-  const starts = sagaStarts(r.mode === 'chapter' ? 'chapter' : 'episode')
+  const starts = sagaStarts(r.mode === 'chapter' ? 'chapter' : 'episode', r)
   const sagas = reachedOf(starts, at, r.locale)
   const later: string[] = []
 
-  for (const fruit of r.order(fruits)) {
+  for (const fruit of r.order(r.archive.fruits)) {
     const group =
       sagas[starts.findLastIndex((saga) => saga.from <= r.threshold(fruit))]
     if (r.sees(fruit)) {
       group?.open.push({ id: fruit.id })
     } else if (group === undefined) {
-      later.push(handleOf(fruit.id))
+      later.push(handleOf(fruit.id, r.archive))
     } else {
-      group.covered.push(handleOf(fruit.id))
+      group.covered.push(handleOf(fruit.id, r.archive))
     }
   }
 
@@ -202,7 +195,7 @@ function sagasOf(
  */
 function factionGroupsOf(r: Reader): FruitFactionView[] {
   const groups = new Map<Faction | null, FruitFactionRef[]>()
-  const open = r.order(fruits).filter((fruit) => r.sees(fruit))
+  const open = r.order(r.archive.fruits).filter((fruit) => r.sees(fruit))
 
   for (const fruit of open) {
     const eaters = openEaters(fruit.id, r)
@@ -220,7 +213,7 @@ function factionGroupsOf(r: Reader): FruitFactionView[] {
 
 /** The groups an open eater stands in: their factions, or `null` for none yet. */
 function groupsOfEater(eater: Entity, r: Reader): (Faction | null)[] {
-  const factions = factionsOf(r, eater) ?? []
+  const factions = r.archive.factionsOf(r, eater) ?? []
 
   return factions.length === 0 ? [null] : factions
 }
@@ -268,15 +261,16 @@ function byGroup(
  * reached, the factions its open eaters stand in, and how many fruits the
  * archive files.
  */
-export function fruitSheet(bookmark: Bookmark, locale: Locale): FruitSheetView {
-  const r = readerFor(bookmark, locale)
+export function fruitSheet(r: Reader): FruitSheetView {
+  const { bookmark } = r
+
   const marquee = marqueeOf(bookmark, r)
   const lead = marquee?.fruits.at(-1)?.id
 
   return {
     bands: PLATES.map((form, plate) => bandOf({ form, lead, plate }, r)),
     factions: factionGroupsOf(r),
-    filed: fruits.length,
+    filed: r.archive.fruits.length,
     marquee,
     ...sagasOf(bookmark, r),
   }
@@ -292,18 +286,14 @@ export function fruitSheet(bookmark: Bookmark, locale: Locale): FruitSheetView {
  * them, which tells the reader something the story has not — and a character
  * the reader has not met must not be named at all.
  */
-export function fruitEaters(
-  id: string,
-  bookmark: Bookmark,
-  locale: Locale,
-): FruitEatersView {
-  const r = readerFor(bookmark, locale)
-
+export function fruitEaters(id: string, r: Reader): FruitEatersView {
   return {
     mode: 'eaters',
-    eaters: eatersOf(id).map((eater): Slot<CharacterView> =>
-      r.slot(gatedOf(eater), () => characterOf(eater.entity, r)),
-    ),
+    eaters: r.archive
+      .eatersOf(id)
+      .map((eater): Slot<CharacterView> =>
+        r.slot(gatedOf(eater), () => characterOf(eater.entity, r)),
+      ),
   }
 }
 
@@ -311,20 +301,14 @@ export function fruitEaters(
 export const SIBLING_COUNT = 4
 
 /** The fruits of the same kind filed nearest this one, this one left out. */
-export function fruitSiblings(
-  id: string,
-  bookmark: Bookmark,
-  locale: Locale,
-): Slot<FruitView>[] {
-  const entity = getFruit(id)
-  const form = entity === undefined ? undefined : fruitFormOf(entity)
+export function fruitSiblings(id: string, r: Reader): Slot<FruitView>[] {
+  const entity = r.archive.getFruit(id)
+  const form = entity === undefined ? undefined : r.archive.fruitFormOf(entity)
   if (entity === undefined || form === undefined) {
     return []
   }
 
-  const r = readerFor(bookmark, locale)
-
   return r
-    .nearest(entity, fruitsOfForm(form), SIBLING_COUNT)
+    .nearest(entity, r.archive.fruitsOfForm(form), SIBLING_COUNT)
     .map((near) => r.slot(near, (found) => fruitOf(found, form, r)))
 }

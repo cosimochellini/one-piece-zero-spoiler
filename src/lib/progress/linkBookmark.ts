@@ -2,11 +2,7 @@ import { COOKIE_MAX_AGE_SECONDS, serializeCookie } from '~/lib/cookies'
 import { SERVER_FN_BASE } from '~/lib/endpoints'
 
 import { type Bookmark, parseBookmark, serialiseBookmark } from './episode'
-import {
-  type BookmarkSeries,
-  ONE_PIECE_BOOKMARK,
-  seriesForPath,
-} from './series'
+import { type BookmarkSeries, ONE_PIECE_BOOKMARK } from './series'
 
 /** The query parameters a shared link can carry a bookmark in. */
 const LINK_PARAMS = ['ep', 's', 'ch'] as const
@@ -87,7 +83,10 @@ export function bookmarkFromSearch(
  * whether the URL is relative or absolute, so `/en?ch=1044` sent to `/en`
  * would come back as `/en?ch=1044` and loop (#492). The body is not rewritten.
  */
-export function linkRedirect(request: Request): Response | undefined {
+export function linkRedirect(
+  request: Request,
+  series: BookmarkSeries | null,
+): Response | undefined {
   if (request.method !== 'GET' && request.method !== 'HEAD') {
     return undefined
   }
@@ -100,7 +99,7 @@ export function linkRedirect(request: Request): Response | undefined {
     return undefined
   }
 
-  const cookie = cookieFromLink(url)
+  const cookie = cookieFromLink(url, series)
   for (const name of LINK_PARAMS) {
     url.searchParams.delete(name)
   }
@@ -130,8 +129,10 @@ export function linkRedirect(request: Request): Response | undefined {
 }
 
 /** A link can write only the bookmark of a recognised series content path. */
-function cookieFromLink(url: URL): null | string {
-  const series = seriesForPath(url.pathname)
+function cookieFromLink(
+  url: URL,
+  series: BookmarkSeries | null,
+): null | string {
   if (series === null) {
     return null
   }

@@ -1,13 +1,9 @@
-import { getCharacter } from '~/data/series/one-piece/characters'
-import { stories } from '~/data/series/one-piece/dated'
-import type { Locale } from '~/i18n/locales'
-import type { Bookmark } from '~/lib/progress/episode'
 import type { CreditSource, SourceCredit } from '~/lib/view/credits'
 
 // eslint-disable-next-line no-restricted-imports -- Reuse the immutable audit manifest outside src; this module is server-only.
 import manifest from '../../../docs/content-provenance/sources.json' with { type: 'json' }
-import { INDEXED, rowOf } from './fillerRows.server'
-import { type Reader, readerFor } from './reader.server'
+import { indexedFor, rowOf } from './fillerRows.server'
+import type { Reader } from './reader.server'
 
 /** The bounded #719 sample, not inferred provenance for the whole archive. */
 const DOSSIERS = [
@@ -53,7 +49,7 @@ function episodeSources(episode: number): CreditSource[] {
 
 function dossiersFor(r: Reader): SourceCredit[] {
   return DOSSIERS.flatMap(([id, en, it]): SourceCredit[] => {
-    const entity = getCharacter(id)
+    const entity = r.archive.getCharacter(id)
     return entity !== undefined && r.sees(entity) ?
         [
           {
@@ -67,28 +63,29 @@ function dossiersFor(r: Reader): SourceCredit[] {
 }
 
 function chroniclesFor(r: Reader): SourceCredit[] {
-  return stories.flatMap(({ character, episode, gate }): SourceCredit[] =>
-    (
-      character.id === 'monkey-d-luffy'
-      && CHRONICLES.has(episode)
-      && r.sees(gate)
-    ) ?
-      [
-        {
-          name: character.name[r.locale],
-          episode,
-          scope: 'chronicle',
-          sources: episodeSources(episode),
-        },
-      ]
-    : [],
+  return r.archive.stories.flatMap(
+    ({ character, episode, gate }): SourceCredit[] =>
+      (
+        character.id === 'monkey-d-luffy'
+        && CHRONICLES.has(episode)
+        && r.sees(gate)
+      ) ?
+        [
+          {
+            name: character.name[r.locale],
+            episode,
+            scope: 'chronicle',
+            sources: episodeSources(episode),
+          },
+        ]
+      : [],
   )
 }
 
 /** Reuse the filler guide's episode/chapter gates, including films. */
 function fillerFor(r: Reader): SourceCredit[] {
-  return INDEXED.flatMap((item): SourceCredit[] => {
-    const row = rowOf(item, r.locale)
+  return indexedFor(r).flatMap((item): SourceCredit[] => {
+    const row = rowOf(item, r)
     if (!r.sees(row)) {
       return []
     }
@@ -108,11 +105,7 @@ function fillerFor(r: Reader): SourceCredit[] {
 }
 
 /** No covered names, source URLs, titles or inventory are sent to the client. */
-export function creditsPage(
-  bookmark: Bookmark,
-  locale: Locale,
-): SourceCredit[] {
-  const r = readerFor(bookmark, locale)
+export function creditsPage(r: Reader): SourceCredit[] {
   return [...dossiersFor(r), ...chroniclesFor(r), ...fillerFor(r)]
 }
 

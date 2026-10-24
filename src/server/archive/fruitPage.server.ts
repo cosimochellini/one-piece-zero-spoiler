@@ -1,11 +1,4 @@
-import { DRAWINGS } from '~/data/series/one-piece/art'
-import { fruitRedrawn } from '~/data/series/one-piece/art/fruits'
-import { gateOf } from '~/data/series/one-piece/chapter-table'
-import { eatersOf, reachedOf } from '~/data/series/one-piece/dated'
-import { fruitFormOf, fruits, getFruit } from '~/data/series/one-piece/fruits'
 import type { Entity } from '~/data/types'
-import type { Locale } from '~/i18n/locales'
-import type { Bookmark } from '~/lib/progress/episode'
 import type {
   DocumentHead,
   FruitDetail,
@@ -18,7 +11,7 @@ import type {
 import { gatedOf, SIBLING_COUNT } from './fruits.server'
 import { headFor, type HeadKeys } from './head.server'
 import { fruitOf } from './project.server'
-import { type Reader, readerFor } from './reader.server'
+import type { Reader } from './reader.server'
 import { sagaOf } from './sagaLabels.server'
 
 /**
@@ -46,19 +39,14 @@ export interface FruitPage {
  * page does: `notFound()` is a router signal, and a signal thrown across an
  * RPC boundary is only an error.
  */
-export function fruitPage(
-  id: string,
-  bookmark: Bookmark,
-  locale: Locale,
-): FruitPage | undefined {
-  const entity = getFruit(id)
-  const form = entity === undefined ? undefined : fruitFormOf(entity)
+export function fruitPage(id: string, r: Reader): FruitPage | undefined {
+  const entity = r.archive.getFruit(id)
+  const form = entity === undefined ? undefined : r.archive.fruitFormOf(entity)
   if (entity === undefined || form === undefined) {
     return undefined
   }
 
-  const r = readerFor(bookmark, locale)
-  const order = r.order(fruits)
+  const order = r.order(r.archive.fruits)
   const at = order.findIndex((fruit) => fruit.id === id)
 
   return {
@@ -91,7 +79,7 @@ function storyOf(entity: Entity, r: Reader): FruitStory {
   return {
     drawings: drawingsOf(entity, r),
     history: historyOf(entity, r),
-    saga: sagaOf(unitOf(r), r.threshold(entity))?.name[r.locale] ?? null,
+    saga: sagaOf(unitOf(r), r.threshold(entity), r)?.name[r.locale] ?? null,
     sagaRail: sagaRailOf(entity, r),
   }
 }
@@ -105,15 +93,15 @@ function storyOf(entity: Entity, r: Reader): FruitStory {
  * switch between, and the page then sends the one drawing it always did.
  */
 function drawingsOf(entity: Entity, r: Reader): FruitDrawing[] {
-  const reached = (fruitRedrawn[entity.id] ?? []).filter((entry) =>
-    r.sees(gateOf(entry, entity)),
+  const reached = (r.archive.fruitRedrawn[entity.id] ?? []).filter((entry) =>
+    r.sees(r.archive.gateOf(entry, entity)),
   )
   if (reached.length === 0) {
     return []
   }
 
   return [
-    { look: 'power', strokes: DRAWINGS[entity.visual.art] },
+    { look: 'power', strokes: r.archive.drawings[entity.visual.art] ?? [] },
     ...reached.map(({ look, value }) => ({ look, strokes: value })),
   ]
 }
@@ -128,7 +116,7 @@ function neighbourOf(
   entity: Entity | undefined,
   r: Reader,
 ): null | Slot<FruitView> {
-  const form = entity === undefined ? undefined : fruitFormOf(entity)
+  const form = entity === undefined ? undefined : r.archive.fruitFormOf(entity)
   if (entity === undefined || form === undefined) {
     return null
   }
@@ -157,7 +145,7 @@ function historyOf(entity: Entity, r: Reader): FruitHistoryEntry[] {
     },
   ]
 
-  for (const eater of eatersOf(entity.id)) {
+  for (const eater of r.archive.eatersOf(entity.id)) {
     if (!r.sees(gatedOf(eater))) {
       continue
     }
@@ -165,7 +153,7 @@ function historyOf(entity: Entity, r: Reader): FruitHistoryEntry[] {
     const who = { id: eater.entity.id, name: eater.entity.name[r.locale] }
     history.push({ event: 'eaten', who, ...eater.gate })
 
-    const status = reachedOf(r, eater.entity, 'status').at(-1)
+    const status = r.archive.reachedOf(r, eater.entity, 'status').at(-1)
     if (status?.value === 'deceased' || status?.value === 'presumed-dead') {
       history.push({
         event: status.value,
@@ -198,9 +186,10 @@ const SAGA_RAIL_FLOOR = 2
  * never here, so the rail counts nothing past the bookmark.
  */
 function sagaRailOf(entity: Entity, r: Reader): Slot<FruitView>[] {
-  const saga = sagaOf(unitOf(r), r.threshold(entity))
-  const same = fruits.filter(
-    (fruit) => r.sees(fruit) && sagaOf(unitOf(r), r.threshold(fruit)) === saga,
+  const saga = sagaOf(unitOf(r), r.threshold(entity), r)
+  const same = r.archive.fruits.filter(
+    (fruit) =>
+      r.sees(fruit) && sagaOf(unitOf(r), r.threshold(fruit), r) === saga,
   )
   const near = r.nearest(entity, same, SIBLING_COUNT)
   if (near.length < SAGA_RAIL_FLOOR) {
@@ -208,7 +197,7 @@ function sagaRailOf(entity: Entity, r: Reader): Slot<FruitView>[] {
   }
 
   return near.flatMap((fruit) => {
-    const form = fruitFormOf(fruit)
+    const form = r.archive.fruitFormOf(fruit)
 
     return form === undefined ?
         []

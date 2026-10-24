@@ -26,25 +26,27 @@ import type {
   ShelfView,
   Stroke,
 } from '~/lib/view/records'
+import {
+  opCharacterPage as characterPage,
+  opCharactersPage as charactersPage,
+  opDrawingsFor as drawingsFor,
+  opFruitSheet as fruitSheet,
+  opHandleOf as handleOf,
+  opHomePage as homePage,
+  opLandingPage as landingPage,
+  opNearbyPage as nearbyPage,
+  opOnboardingPage as onboardingPage,
+  opPeekCharacter as peekCharacter,
+  opPlacePage as placePage,
+  opPlacesPage as placesPage,
+  opReaderFor as readerFor,
+  opRoutePosition as routePosition,
+  opShelvesPage as shelvesPage,
+} from '~/test/archive'
 import { saysNothing } from '~/test/fog'
 
-import { fruitSheet } from './fruits.server'
-import { handleOf } from './handle.server'
-import { homePage, landingPage } from './home.server'
-import { onboardingPage } from './onboarding.server'
-import {
-  characterPage,
-  charactersPage,
-  drawingsFor,
-  nearbyPage,
-  routePosition,
-  shelvesPage,
-} from './pages.server'
-import { peekCharacter } from './peek.server'
-import { placePage } from './placePage.server'
-import { placesPage } from './places.server'
 import { characterOf, recordOf, searchableOf } from './project.server'
-import { type Reader, readerFor } from './reader.server'
+import type { Reader } from './reader.server'
 
 function ep(episode: number): NonNullable<Bookmark> {
   return { mode: 'episode', episode }

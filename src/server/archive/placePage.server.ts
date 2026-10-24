@@ -1,16 +1,4 @@
-import { DRAWINGS } from '~/data/series/one-piece/art'
-import { gateOf } from '~/data/series/one-piece/chapter-table'
-import { chartPointOf } from '~/data/series/one-piece/chart'
-import { nativesOf, reachedOf } from '~/data/series/one-piece/dated'
-import {
-  getPlace,
-  getShip,
-  placeDossierOf,
-  places,
-} from '~/data/series/one-piece/places'
 import type { Entity } from '~/data/types'
-import type { Locale } from '~/i18n/locales'
-import type { Bookmark } from '~/lib/progress/episode'
 import { sailedBy } from '~/lib/view/chart'
 import type {
   PlaceChartView,
@@ -25,7 +13,7 @@ import type { DocumentHead, RecordView, Slot } from '~/lib/view/records'
 import { headFor, type HeadKeys } from './head.server'
 import { portOf, reachedShips, sagaNumberOf, shipOf } from './places.server'
 import { recordOf } from './project.server'
-import { type Reader, readerFor } from './reader.server'
+import type { Reader } from './reader.server'
 
 /**
  * A place's own page: the entry the places page used to stack, the map
@@ -68,21 +56,19 @@ export interface ShipPage {
  */
 export function placePage(
   id: string,
-  bookmark: Bookmark,
-  locale: Locale,
+  r: Reader,
 ): PlacePage | ShipPage | undefined {
-  const r = readerFor(bookmark, locale)
-  const ship = getShip(id)
+  const ship = r.archive.getShip(id)
   if (ship !== undefined) {
     return shipPage(ship, r)
   }
 
-  const entity = getPlace(id)
+  const entity = r.archive.getPlace(id)
   if (entity === undefined) {
     return undefined
   }
 
-  const order = r.order(places)
+  const order = r.order(r.archive.places)
   const index = order.findIndex((place) => place.id === id)
   const open = r.sees(entity)
 
@@ -146,7 +132,7 @@ function chartOf(
   let here = -1
 
   for (const place of order) {
-    const at = chartPointOf(place.id)
+    const at = r.archive.chartPointOf(place.id)
     if (at === null || !r.sees(place)) {
       continue
     }
@@ -155,8 +141,8 @@ function chartOf(
     }
     route.push({
       at,
-      sea: placeDossierOf(place)?.sea ?? null,
-      saga: sagaNumberOf(place.id),
+      sea: r.archive.placeDossierOf(place)?.sea ?? null,
+      saga: sagaNumberOf(place.id, r),
       ship: sailedBy(place, ships, r.mode),
     })
   }
@@ -175,14 +161,14 @@ function chartOf(
  * one drawing is not a change.
  */
 function drawingsOf(entity: Entity, r: Reader): PlaceDrawing[] {
-  const reached = reachedOf(r, entity, 'redrawing')
+  const reached = r.archive.reachedOf(r, entity, 'redrawing')
   if (reached.length === 0) {
     return []
   }
 
   return [
     {
-      strokes: DRAWINGS[entity.visual.art],
+      strokes: r.archive.drawings[entity.visual.art] ?? [],
       revealedAtEpisode: entity.revealedAtEpisode,
       revealedAtChapter: entity.revealedAtChapter,
     },
@@ -197,13 +183,13 @@ function drawingsOf(entity: Entity, r: Reader): PlaceDrawing[] {
  */
 function visitsOf(entity: Entity, r: Reader): VisitView[] {
   const reached: VisitView[] = []
-  const visits = placeDossierOf(entity)?.visits
+  const visits = r.archive.placeDossierOf(entity)?.visits
   if (visits === undefined) {
     return reached
   }
 
   for (const visit of visits) {
-    const gate = gateOf(visit, entity)
+    const gate = r.archive.gateOf(visit, entity)
     if (r.sees(gate)) {
       reached.push({ ...gate, note: visit.value[r.locale] })
     }
@@ -219,7 +205,7 @@ function visitsOf(entity: Entity, r: Reader): VisitView[] {
  * covered tile here would say that someone is still to come from it.
  */
 function nativesFor(entity: Entity, r: Reader): RecordView[] {
-  const reached = nativesOf(entity.id).flatMap((native) => {
+  const reached = r.archive.nativesOf(entity.id).flatMap((native) => {
     return r.sees(native.gate) ? [native.entity] : []
   })
 

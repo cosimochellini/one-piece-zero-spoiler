@@ -1,17 +1,4 @@
-import {
-  type BookSection,
-  bookSections,
-  dossierOf as characterDossierOf,
-  characters,
-  chartWith,
-  featuredCharacters,
-  getCharacter,
-  routePositionOf,
-} from '~/data/series/one-piece/characters'
-import { getEntity } from '~/data/series/one-piece/entities'
-import type { Entity } from '~/data/types'
-import type { Locale } from '~/i18n/locales'
-import type { Bookmark } from '~/lib/progress/episode'
+import type { BookSection, Entity } from '~/data/types'
 import type {
   CharacterDetail,
   CharacterView,
@@ -35,7 +22,7 @@ import {
   recordOf,
   searchableOf,
 } from './project.server'
-import { type Reader, readerFor } from './reader.server'
+import type { Reader } from './reader.server'
 
 /**
  * What each page is allowed to know, assembled from the archive.
@@ -66,32 +53,25 @@ export interface CharactersPage {
  * The crests, and how many shelves are coming. Awaited by the route: the
  * featured band is the fold, and the pending shelves need a height.
  */
-export function charactersPage(
-  bookmark: Bookmark,
-  locale: Locale,
-): CharactersPage {
-  const featured = readerFor(bookmark, locale).split(
-    featuredCharacters,
-    searchableOf,
-  )
+export function charactersPage(r: Reader): CharactersPage {
+  const featured = r.split(r.archive.featuredCharacters, searchableOf)
 
   return {
     featuredOpen: featured.open,
     featuredCovered: featured.covered,
-    shelfCount: bookSections.length,
-    filed: characters.length,
+    shelfCount: r.archive.bookSections.length,
+    filed: r.archive.characters.length,
   }
 }
 
 /** The signal book's shelves, in the order the reader's unit reaches them. */
-export function shelvesPage(bookmark: Bookmark, locale: Locale): ShelfView[] {
-  const r = readerFor(bookmark, locale)
+export function shelvesPage(r: Reader): ShelfView[] {
   const byArc = new Map(
-    bookSections.map((section) => [section.arc.id, section]),
+    r.archive.bookSections.map((section) => [section.arc.id, section]),
   )
 
   return r
-    .order(bookSections.map((section) => section.arc))
+    .order(r.archive.bookSections.map((section) => section.arc))
     .flatMap((arc, index) => {
       const section = byArc.get(arc.id)
       if (section === undefined) {
@@ -117,14 +97,11 @@ export function shelvesPage(bookmark: Bookmark, locale: Locale): ShelfView[] {
  */
 export function drawingsFor(
   ids: string[],
-  bookmark: Bookmark,
-  locale: Locale,
+  r: Reader,
 ): Record<string, Stroke[]> {
-  const r = readerFor(bookmark, locale)
-
   return Object.fromEntries(
     ids.flatMap((id) => {
-      const entity = getEntity(id)
+      const entity = r.archive.getEntity(id)
       return entity !== undefined && r.sees(entity) ?
           [[id, drawingOf(entity, r).strokes]]
         : []
@@ -161,16 +138,16 @@ export interface CharacterPage {
  */
 export function characterPage(
   id: string,
-  bookmark: Bookmark,
-  locale: Locale,
+  r: Reader,
 ): CharacterPage | undefined {
-  const entity = getCharacter(id)
+  const { locale } = r
+
+  const entity = r.archive.getCharacter(id)
   if (entity === undefined) {
     return undefined
   }
 
-  const r = readerFor(bookmark, locale)
-  const dossier = characterDossierOf(entity)
+  const dossier = r.archive.dossierOf(entity)
 
   return {
     head: headFor(entity, CHARACTER_HEAD, r),
@@ -194,17 +171,15 @@ function pageRecordOf(
 /** Where a character sits on the route, and the two records beside them. */
 export function routePosition(
   id: string,
-  bookmark: Bookmark,
-  locale: Locale,
+  r: Reader,
 ): RoutePositionView | undefined {
-  const entity = getCharacter(id)
+  const entity = r.archive.getCharacter(id)
   if (entity === undefined) {
     return undefined
   }
 
-  const r = readerFor(bookmark, locale)
-  const ordered = r.order(chartWith(entity))
-  const position = routePositionOf(entity, ordered)
+  const ordered = r.order(r.archive.chartWith(entity))
+  const position = r.archive.routePositionOf(entity, ordered)
   const beside = (near: Entity | undefined): null | Slot<RecordView> =>
     near === undefined ? null : r.slot(near, recordOf)
 
@@ -225,20 +200,14 @@ export function routePosition(
 const NEARBY_COUNT = 5
 
 /** The featured characters filed nearest this one on the route. */
-export function nearbyPage(
-  id: string,
-  bookmark: Bookmark,
-  locale: Locale,
-): Slot<CharacterView>[] {
-  const entity = getCharacter(id)
+export function nearbyPage(id: string, r: Reader): Slot<CharacterView>[] {
+  const entity = r.archive.getCharacter(id)
   if (entity === undefined) {
     return []
   }
 
-  const r = readerFor(bookmark, locale)
-
   return r
-    .nearest(entity, featuredCharacters, NEARBY_COUNT)
+    .nearest(entity, r.archive.featuredCharacters, NEARBY_COUNT)
     .map((near) => r.slot(near, characterOf))
 }
 

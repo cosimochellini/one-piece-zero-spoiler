@@ -1,9 +1,12 @@
 import { describe, expect, it } from 'vitest'
 
-import { type ListedSeries, ONE_PIECE } from '~/data/series'
 import { getEntity } from '~/data/series/one-piece/entities'
 import type { Entity } from '~/data/types'
 import { CHAPTER_CEILING } from '~/lib/progress/episode'
+import {
+  type LoadedSeries as ListedSeries,
+  ONE_PIECE_LOADED as ONE_PIECE,
+} from '~/test/series'
 
 import { leaksOf } from './fog'
 
@@ -33,7 +36,12 @@ const DUMMY: ListedSeries = {
   slug: 'dummy',
   folder: 'dummy',
   archive: {
-    drawings: { 'nami': STROKES, 'roronoa-zoro': [] },
+    ...ONE_PIECE.archive,
+    drawings: {
+      ...ONE_PIECE.archive.drawings,
+      'nami': STROKES,
+      'roronoa-zoro': [],
+    },
     entities: [
       foreignRecord('gon-freecss', 'Gon Freecss', 'nami'),
       foreignRecord('dummy-nami', 'Nami', 'roronoa-zoro'),

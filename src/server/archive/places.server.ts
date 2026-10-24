@@ -1,21 +1,9 @@
-import { chartPointOf } from '~/data/series/one-piece/chart'
-import { latestOf } from '~/data/series/one-piece/dated'
-import { getEntity } from '~/data/series/one-piece/entities'
-import {
-  placeDossierOf,
-  places,
-  shipDossierOf,
-  ships,
-} from '~/data/series/one-piece/places'
-import { sagas } from '~/data/series/one-piece/sagas'
-import type { Entity } from '~/data/types'
-import type { Locale } from '~/i18n/locales'
-import type { Bookmark } from '~/lib/progress/episode'
+import type { Entity, LocalizedText, SeriesArchive } from '~/data/types'
 import type { PlacesView, SagaPick, StopView } from '~/lib/view/places'
 import type { PortView, RecordView, ShipView, Slot } from '~/lib/view/records'
 
 import { deferredOf, namedOf, recordOf } from './project.server'
-import { type Reader, readerFor } from './reader.server'
+import type { Reader } from './reader.server'
 
 /**
  * What the places page and a peeked port are allowed to know. Plain
@@ -26,9 +14,8 @@ import { type Reader, readerFor } from './reader.server'
  * The places page: the stops the reader has reached, each as the chart and
  * the index draw it, the ones past the bookmark as fog, and the ships.
  */
-export function placesPage(bookmark: Bookmark, locale: Locale): PlacesView {
-  const r = readerFor(bookmark, locale)
-  const { covered, open, total } = r.split(places, stopOf)
+export function placesPage(r: Reader): PlacesView {
+  const { covered, open, total } = r.split(r.archive.places, stopOf)
 
   return {
     ships: reachedShips(r).map((entity) => shipOf(entity, r)),
@@ -38,15 +25,16 @@ export function placesPage(bookmark: Bookmark, locale: Locale): PlacesView {
     open: open.map((stop, index) =>
       index < INLINE_STOPS ? stop : deferredOf(stop),
     ),
-    sagas: sagasOf(open, locale),
+    sagas: sagasOf(open, r),
     covered,
   }
 }
 
 /** The sagas these stops are filed under, in route order, named. */
-function sagasOf(open: StopView[], locale: Locale): SagaPick[] {
+function sagasOf(open: StopView[], r: Reader): SagaPick[] {
+  const { locale } = r
   const picks: SagaPick[] = []
-  for (const saga of SAGA_PICKS) {
+  for (const saga of sagaPicks(r)) {
     if (open.some((stop) => stop.saga === saga.number)) {
       picks.push({ number: saga.number, title: saga.name[locale] })
     }
@@ -56,18 +44,35 @@ function sagasOf(open: StopView[], locale: Locale): SagaPick[] {
 }
 
 /** Every saga by its place in route order, from 1, and the places it files. */
-const SAGA_PICKS = sagas.map((saga, at) => ({
-  number: at + 1,
-  name: saga.name,
-  ids: new Set(saga.entries.map((entry) => entry.id)),
-}))
+const picksByArchive = new WeakMap<
+  SeriesArchive,
+  ReturnType<typeof buildPicks>
+>()
+function buildPicks(
+  r: Reader,
+): { ids: Set<string>; name: LocalizedText; number: number }[] {
+  const picks = r.archive.sagas.map((saga, at) => ({
+    number: at + 1,
+    name: saga.name,
+    ids: new Set(saga.entries.map((entry) => entry.id)),
+  }))
+  return picks
+}
+function sagaPicks(r: Reader): ReturnType<typeof buildPicks> {
+  let picks = picksByArchive.get(r.archive)
+  if (picks === undefined) {
+    picks = buildPicks(r)
+    picksByArchive.set(r.archive, picks)
+  }
+  return picks
+}
 
 /**
  * The saga a place is filed under, by its place in route order from 1. A
  * data test holds that every place is filed under one.
  */
-export function sagaNumberOf(id: string): number {
-  const saga = SAGA_PICKS.find(({ ids }) => ids.has(id))
+export function sagaNumberOf(id: string, r: Reader): number {
+  const saga = sagaPicks(r).find(({ ids }) => ids.has(id))
   if (saga === undefined) {
     throw new Error(`${id} is filed under no saga`)
   }
@@ -80,7 +85,7 @@ export function sagaNumberOf(id: string): number {
  * data test holds that every place has a dossier and is filed under a saga.
  */
 function stopOf(entity: Entity, r: Reader): StopView {
-  const dossier = placeDossierOf(entity)
+  const dossier = r.archive.placeDossierOf(entity)
   if (dossier === undefined) {
     throw new Error(`${entity.id} has no dossier`)
   }
@@ -88,10 +93,10 @@ function stopOf(entity: Entity, r: Reader): StopView {
   return {
     ...recordOf(entity, r),
     ...namedOf(entity, r),
-    chart: chartPointOf(entity.id),
+    chart: r.archive.chartPointOf(entity.id),
     sea: dossier.sea,
     form: dossier.form,
-    saga: sagaNumberOf(entity.id),
+    saga: sagaNumberOf(entity.id, r),
   }
 }
 
@@ -105,8 +110,11 @@ const INLINE_STOPS = 3
  */
 export function reachedShips(r: Reader): Entity[] {
   return r
-    .order(ships)
-    .filter((entity) => shipDossierOf(entity) !== undefined && r.sees(entity))
+    .order(r.archive.ships)
+    .filter(
+      (entity) =>
+        r.archive.shipDossierOf(entity) !== undefined && r.sees(entity),
+    )
 }
 
 /**
@@ -115,14 +123,15 @@ export function reachedShips(r: Reader): Entity[] {
  * record filed here with its own fog already decided.
  */
 export function portOf(entity: Entity, r: Reader): PortView {
-  const dossier = placeDossierOf(entity)
-  const arc = dossier === undefined ? undefined : getEntity(dossier.arc)
+  const dossier = r.archive.placeDossierOf(entity)
+  const arc =
+    dossier === undefined ? undefined : r.archive.getEntity(dossier.arc)
   const { locale } = r
 
   return {
     ...recordOf(entity, r),
     summary: entity.summary[locale],
-    chart: chartPointOf(entity.id),
+    chart: r.archive.chartPointOf(entity.id),
     dossier:
       dossier === undefined ? null : (
         {
@@ -132,7 +141,7 @@ export function portOf(entity: Entity, r: Reader): PortView {
           landmark: dossier.landmark[locale],
           log: dossier.log[locale],
           filedHere: dossier.filedHere.flatMap<Slot<RecordView>>((filed) => {
-            const record = getEntity(filed)
+            const record = r.archive.getEntity(filed)
             return record === undefined ? [] : [r.slot(record, recordOf)]
           }),
         }
@@ -147,23 +156,23 @@ export function portOf(entity: Entity, r: Reader): PortView {
  * A data test holds that every ship has a dossier.
  */
 export function shipOf(entity: Entity, r: Reader): ShipView {
-  const dossier = shipDossierOf(entity)
+  const dossier = r.archive.shipDossierOf(entity)
   if (dossier === undefined) {
     throw new Error(`${entity.id} has no dossier`)
   }
   const { locale } = r
-  const fate = latestOf(r, entity, 'fate')?.[locale]
+  const fate = r.archive.latestOf(r, entity, 'fate')?.[locale]
 
   return {
     ...recordOf(entity, r),
     summary: entity.summary[locale],
     dossier: {
       builder: dossier.builder[locale],
-      launched: getEntity(dossier.launched)?.name[locale] ?? null,
+      launched: r.archive.getEntity(dossier.launched)?.name[locale] ?? null,
       log: dossier.log[locale],
       ...(fate !== undefined && { fate }),
       ports: (dossier.ports ?? []).flatMap((arrival) => {
-        const place = getEntity(arrival.place)
+        const place = r.archive.getEntity(arrival.place)
         return place !== undefined && r.sees(place) ? [recordOf(place, r)] : []
       }),
     },

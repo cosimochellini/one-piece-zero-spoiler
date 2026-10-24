@@ -1,7 +1,3 @@
-/* Hallmark · component: notice · genre: atmospheric · theme: Sea Chart (locked)
- * states: default · hover · focus · active (the link; the cells are static)
- * · idea: the filler page's countdown row, cut down to a warning on the home
- *   page: a headline, the countdown's own sentence, the six cells, a link */
 import * as stylex from '@stylexjs/stylex'
 import { Link } from '@tanstack/react-router'
 import type { ReactElement } from 'react'
@@ -14,6 +10,11 @@ import {
   runSentenceOf,
 } from '~/components/fillerLabels'
 import { useLocale, useT } from '~/i18n/LocaleContext'
+/* Hallmark · component: notice · genre: atmospheric · theme: Sea Chart (locked)
+ * states: default · hover · focus · active (the link; the cells are static)
+ * · idea: the filler page's countdown row, cut down to a warning on the home
+ *   page: a headline, the countdown's own sentence, the six cells, a link */
+import { useSeriesParams } from '~/lib/progress/BookmarkContext'
 import type { BookmarkMode } from '~/lib/progress/episode'
 import type { FillerAhead } from '~/lib/view/filler'
 import {
@@ -42,6 +43,7 @@ export function HomeFillerAhead({
   mode: BookmarkMode
 }): ReactElement {
   const { locale, t } = useLocale()
+  const { series } = useSeriesParams()
 
   return (
     <section
@@ -70,8 +72,8 @@ export function HomeFillerAhead({
         mode={mode}
       />
       <Link
-        params={{ locale }}
-        to="/$locale/filler"
+        params={{ series, locale }}
+        to="/$series/$locale/filler"
         {...stylex.props(styles.link)}
       >
         {t('home.filler.link')}

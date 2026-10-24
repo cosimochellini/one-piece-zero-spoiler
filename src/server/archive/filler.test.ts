@@ -11,9 +11,13 @@ import type {
   FillerSlot,
   SkipRange,
 } from '~/lib/view/filler'
+import {
+  opCountdownOf as countdownOf,
+  opFillerAheadOf as fillerAheadOf,
+  opFillerPage as fillerPage,
+  opPeekFiller as peekFiller,
+} from '~/test/archive'
 
-import { fillerPage, peekFiller } from './filler.server'
-import { countdownOf, fillerAheadOf } from './fillerCountdown.server'
 import { chunkBy } from './fillerRows.server'
 
 /** Every row of the page, in order. */

@@ -1,7 +1,3 @@
-import { fruitFormOf } from '~/data/series/one-piece/fruits'
-import { shipDossierOf } from '~/data/series/one-piece/places'
-import type { Locale } from '~/i18n/locales'
-import type { Bookmark } from '~/lib/progress/episode'
 import type {
   CharacterView,
   FruitView,
@@ -13,7 +9,7 @@ import type {
 import { entityForHandle } from './handle.server'
 import { portOf, shipOf } from './places.server'
 import { characterOf, fruitOf, recordOf } from './project.server'
-import { readerFor } from './reader.server'
+import type { Reader } from './reader.server'
 
 /**
  * Trading a handle for the record it stands for.
@@ -38,87 +34,62 @@ import { readerFor } from './reader.server'
 /** A character, as a crest or a tile draws it. */
 export function peekCharacter(
   handle: string,
-  locale: Locale,
-  bookmark: Bookmark,
+  r: Reader,
 ): CharacterView | undefined {
-  const entity = entityForHandle(handle)
-  return entity === undefined ? undefined : (
-      characterOf(entity, readerFor(bookmark, locale))
-    )
+  const entity = entityForHandle(handle, r.archive)
+  return entity === undefined ? undefined : characterOf(entity, r)
 }
 
 /** The crest and the dossier are one record, so they lift as one shape. */
 export function peekDossier(
   handle: string,
-  locale: Locale,
-  bookmark: Bookmark,
+  r: Reader,
 ): (CharacterView & { summary: string }) | undefined {
-  const entity = entityForHandle(handle)
+  const { locale } = r
+
+  const entity = entityForHandle(handle, r.archive)
   if (entity === undefined) {
     return undefined
   }
 
-  return {
-    ...characterOf(entity, readerFor(bookmark, locale)),
-    summary: entity.summary[locale],
-  }
+  return { ...characterOf(entity, r), summary: entity.summary[locale] }
 }
 
 /**
  * A devil fruit, as a specimen draws it. A handle that stands for a record
  * which is not a fruit answers nothing, the way every lookup here fails.
  */
-export function peekFruit(
-  handle: string,
-  locale: Locale,
-  bookmark: Bookmark,
-): FruitView | undefined {
-  const entity = entityForHandle(handle)
-  const form = entity === undefined ? undefined : fruitFormOf(entity)
+export function peekFruit(handle: string, r: Reader): FruitView | undefined {
+  const entity = entityForHandle(handle, r.archive)
+  const form = entity === undefined ? undefined : r.archive.fruitFormOf(entity)
 
   return entity === undefined || form === undefined ?
       undefined
-    : fruitOf(entity, form, readerFor(bookmark, locale))
+    : fruitOf(entity, form, r)
 }
 
 /** Any record, as a small tile draws it. */
-export function peekRecord(
-  handle: string,
-  locale: Locale,
-  bookmark: Bookmark,
-): RecordView | undefined {
-  const entity = entityForHandle(handle)
-  return entity === undefined ? undefined : (
-      recordOf(entity, readerFor(bookmark, locale))
-    )
+export function peekRecord(handle: string, r: Reader): RecordView | undefined {
+  const entity = entityForHandle(handle, r.archive)
+  return entity === undefined ? undefined : recordOf(entity, r)
 }
 
 /**
  * A peeked port keeps the fog on the records filed at it: lifting the fog on
  * one entry is not lifting it on everything the entry mentions.
  */
-export function peekPort(
-  handle: string,
-  locale: Locale,
-  bookmark: Bookmark,
-): PortView | undefined {
-  const entity = entityForHandle(handle)
-  return entity === undefined ? undefined : (
-      portOf(entity, readerFor(bookmark, locale))
-    )
+export function peekPort(handle: string, r: Reader): PortView | undefined {
+  const entity = entityForHandle(handle, r.archive)
+  return entity === undefined ? undefined : portOf(entity, r)
 }
 
 /**
  * A ship, as her page draws her: like a port, the records she mentions keep
  * their own fog. A handle that stands for any other record answers nothing.
  */
-export function peekShip(
-  handle: string,
-  locale: Locale,
-  bookmark: Bookmark,
-): ShipView | undefined {
-  const entity = entityForHandle(handle)
-  return entity === undefined || shipDossierOf(entity) === undefined ?
+export function peekShip(handle: string, r: Reader): ShipView | undefined {
+  const entity = entityForHandle(handle, r.archive)
+  return entity === undefined || r.archive.shipDossierOf(entity) === undefined ?
       undefined
-    : shipOf(entity, readerFor(bookmark, locale))
+    : shipOf(entity, r)
 }

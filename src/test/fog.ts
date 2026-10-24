@@ -1,17 +1,16 @@
 import { expect } from 'vitest'
 
 import { type Reveal, reveal } from '~/data/reveal'
-import {
-  type ListedSeries,
-  ONE_PIECE,
-  SERIES,
-  type SeriesArchive,
-} from '~/data/series'
-import type { Entity } from '~/data/types'
+import type { Entity, SeriesArchive } from '~/data/types'
 import { type Locale, LOCALES } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
 import { foldName } from '~/lib/search/fold'
 import type { Stroke } from '~/lib/view/records'
+import {
+  type LoadedSeries as ListedSeries,
+  ONE_PIECE_LOADED as ONE_PIECE,
+  LOADED_SERIES as SERIES,
+} from '~/test/series'
 
 /**
  * The one check the site exists for: nothing in a payload names a record the
@@ -86,9 +85,9 @@ function aliasesIn(payload: unknown): string[] {
  */
 function fogOf(
   bookmark: Bookmark,
-  { entities }: SeriesArchive,
+  { entities, series }: SeriesArchive,
 ): Map<string, Entity[]> {
-  const at = reveal(bookmark)
+  const at = reveal(bookmark, series)
   const covered = entities.filter((entity) => !at.sees(entity))
   const fog = new Map<string, Entity[]>()
   const cover = (said: string, entity: Entity): void => {
@@ -117,9 +116,9 @@ function fogOf(
  */
 function foldedFogOf(
   bookmark: Bookmark,
-  { entities }: SeriesArchive,
+  { entities, series }: SeriesArchive,
 ): Map<string, Entity[]> {
-  const at = reveal(bookmark)
+  const at = reveal(bookmark, series)
   const taken = new Set(
     entities.flatMap((entity) => (at.sees(entity) ? fold(entity) : [])),
   )
@@ -233,7 +232,7 @@ function drawnFogOf(
   bookmark: Bookmark,
   archive: SeriesArchive,
 ): Map<string, Entity[]> {
-  const at = reveal(bookmark)
+  const at = reveal(bookmark, archive.series)
   const all = archive.entities.flatMap((entity) =>
     drawingsOf(entity, at, archive),
   )

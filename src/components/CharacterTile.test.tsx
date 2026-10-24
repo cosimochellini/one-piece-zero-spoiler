@@ -32,7 +32,7 @@ describe('CharacterTile', () => {
 
     expect(screen.getByRole('link', { name: /Nami/u })).toHaveAttribute(
       'href',
-      '/en/characters/test-navigator',
+      '/one-piece/en/characters/test-navigator',
     )
     expect(screen.getByText('Nam').tagName).toBe('MARK')
     expect(screen.getByText('Episode 5')).toBeVisible()

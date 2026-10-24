@@ -24,7 +24,7 @@ import {
 import {
   type BookmarkSeries,
   ONE_PIECE_BOOKMARK,
-  seriesForPath,
+  seriesSlugFromPath,
 } from './series'
 
 const OTHER: BookmarkSeries = {
@@ -43,38 +43,36 @@ const OTHER: BookmarkSeries = {
 
 const SEASON_DRAFT = { mode: 'season', season: '2', number: '3' } as const
 
-describe('the series of a route', () => {
+describe('the series candidate in a route', () => {
   it.each([
-    '/en',
-    '/it/',
-    '/en/characters',
-    '/it/characters/nami',
-    '/en/fruits/gum-gum',
-    '/it/places',
-    '/en/filler',
+    '/one-piece',
     '/one-piece/en',
     '/one-piece/it/characters/nami',
-  ])('keeps %s in One Piece until the routes move', (path) => {
-    expect(seriesForPath(path)).toBe(ONE_PIECE_BOOKMARK)
+    '/one-piece/en/fruits/gum-gum',
+    '/one-piece/it/places',
+    '/one-piece/en/filler',
+  ])('reads the slug of %s', (path) => {
+    expect(seriesSlugFromPath(path)).toBe('one-piece')
+  })
+
+  it('leaves registration checks to the registry', () => {
+    expect(seriesSlugFromPath('/other-series/en')).toBe('other-series')
   })
 
   it.each([
     '/',
-    '/legal',
-    '/privacy',
+    '/en',
+    '/it/',
     '/en/legal',
     '/it/privacy',
+    '/en/characters',
     '/one-piece/en/legal',
     '/one-piece/it/privacy',
-    '/fr',
-    '/hunter-x-hunter/en',
-    '/missing/en',
-    '/en/missing',
-    '/en/filler/extra',
-    '/en/characters/nami/extra',
+    '/one-piece/fr',
+    '/one-piece/en/characters/nami/extra',
     '//en',
-  ])('gives %s no series', (path) => {
-    expect(seriesForPath(path)).toBeNull()
+  ])('reads no series from %s', (path) => {
+    expect(seriesSlugFromPath(path)).toBeNull()
   })
 })
 

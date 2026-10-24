@@ -1,5 +1,4 @@
-import type { LocalizedText } from '~/data/types'
-import type { FillerKind } from '~/lib/view/filler'
+import type { FillerArc, FillerEntry } from '~/data/types'
 
 /**
  * Every filler, mixed and recap episode of the anime, and the films and TV
@@ -23,21 +22,10 @@ import type { FillerKind } from '~/lib/view/filler'
  * episode it is watched after and its Japanese release or air date. `chapter`
  * is the last chapter the anime had adapted when it aired.
  */
-export type FillerEntry = (
-  { after: number; released: string } | { episode: number }
-) & {
-  chapter: number
-  kind: FillerKind
-  summary: LocalizedText
-  title: LocalizedText
-}
+export type { FillerEntry } from '~/data/types'
 
 /** A filler arc: a run of episodes the wikis name as one story. */
-export interface FillerArc {
-  first: number
-  last: number
-  name: LocalizedText
-}
+export type { FillerArc } from '~/data/types'
 
 /** The last episode aired when the list was checked. */
 export const LAST_AIRED = 1168

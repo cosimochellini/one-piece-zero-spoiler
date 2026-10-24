@@ -18,7 +18,7 @@ import { useBookmark } from './BookmarkContext'
 import { BookmarkProvider } from './BookmarkProvider'
 import { serialiseBookmark } from './episode'
 import { bookmarkFromCookies } from './requestBookmark'
-import { seriesForPath } from './series'
+import { ONE_PIECE_BOOKMARK, seriesSlugFromPath } from './series'
 
 function Controls(): ReactElement {
   const { bookmark, series, setBookmark, enterTrial, leaveTrial } =
@@ -115,7 +115,10 @@ describe('route-scoped bookmark writes', () => {
     writeCookie('zs_one-piece', '650')
     const root = createRootRoute({
       beforeLoad: ({ location }) => {
-        const series = seriesForPath(location.pathname)
+        const series =
+          seriesSlugFromPath(location.pathname) === ONE_PIECE_BOOKMARK.slug ?
+            ONE_PIECE_BOOKMARK
+          : null
         return {
           series,
           initialBookmark:
@@ -139,7 +142,7 @@ describe('route-scoped bookmark writes', () => {
     }
     const page = createRoute({
       getParentRoute: () => root,
-      path: '/en',
+      path: '/one-piece/en',
       component: Controls,
     })
     const privacy = createRoute({
@@ -157,7 +160,10 @@ describe('route-scoped bookmark writes', () => {
     expect(screen.getByRole('status')).toHaveTextContent('none:none')
 
     await act(async () => {
-      await router.navigate({ to: '/$locale', params: { locale: 'en' } })
+      await router.navigate({
+        to: '/$series/$locale',
+        params: { series: 'one-piece', locale: 'en' },
+      })
     })
 
     expect(screen.getByRole('status')).toHaveTextContent('one-piece:650')
@@ -170,7 +176,10 @@ describe('route-scoped bookmark writes', () => {
     })
     writeCookie('zs_one-piece', '45')
     await act(async () => {
-      await router.navigate({ to: '/$locale', params: { locale: 'en' } })
+      await router.navigate({
+        to: '/$series/$locale',
+        params: { series: 'one-piece', locale: 'en' },
+      })
     })
 
     expect(screen.getByRole('status')).toHaveTextContent('one-piece:45')

@@ -4,9 +4,10 @@ import { featuredCharacters } from '~/data/series/one-piece/characters'
 import { entities, getEntity } from '~/data/series/one-piece/entities'
 import type { Entity } from '~/data/types'
 import type { Bookmark } from '~/lib/progress/episode'
-
-import { handleOf } from './handle.server'
-import { readerFor } from './reader.server'
+import {
+  opHandleOf as handleOf,
+  opReaderFor as readerFor,
+} from '~/test/archive'
 
 /** A record the archive is known to file, or the test is wrong. */
 function must(id: string): Entity {

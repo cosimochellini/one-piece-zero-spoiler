@@ -6,7 +6,7 @@ import { ChartArt } from '~/components/ChartArt'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { useLocale } from '~/i18n/LocaleContext'
 import type { TranslationKey } from '~/i18n/types'
-import { useThreshold } from '~/lib/progress/BookmarkContext'
+import { useSeriesParams, useThreshold } from '~/lib/progress/BookmarkContext'
 import { useDrawing } from '~/lib/view/drawings'
 import type { EntityKind, RecordView, Slot } from '~/lib/view/records'
 import {
@@ -113,14 +113,14 @@ function Plate({ record }: { record: RecordView }): ReactElement {
  * it had a page for and no way to reach it.
  */
 function Name({ entry }: { entry: RecordView }): ReactElement {
-  const { locale } = useLocale()
+  const { series, locale } = useSeriesParams()
   const label = entry.name
 
   if (entry.kind === 'character') {
     return (
       <Link
-        params={{ locale, id: entry.id }}
-        to="/$locale/characters/$id"
+        params={{ series, locale, id: entry.id }}
+        to="/$series/$locale/characters/$id"
         {...stylex.props(styles.name, styles.link)}
       >
         {label}
@@ -131,8 +131,8 @@ function Name({ entry }: { entry: RecordView }): ReactElement {
   if (entry.kind === 'place' || entry.kind === 'ship') {
     return (
       <Link
-        params={{ locale, id: entry.id }}
-        to="/$locale/places/$id"
+        params={{ series, locale, id: entry.id }}
+        to="/$series/$locale/places/$id"
         {...stylex.props(styles.name, styles.link)}
       >
         {label}
@@ -143,8 +143,8 @@ function Name({ entry }: { entry: RecordView }): ReactElement {
   if (entry.kind === 'fruit') {
     return (
       <Link
-        params={{ locale, id: entry.id }}
-        to="/$locale/fruits/$id"
+        params={{ series, locale, id: entry.id }}
+        to="/$series/$locale/fruits/$id"
         {...stylex.props(styles.name, styles.link)}
       >
         {label}

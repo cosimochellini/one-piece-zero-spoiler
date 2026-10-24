@@ -4,8 +4,7 @@ import { arcs } from '~/data/series/one-piece/characters'
 import { sagas } from '~/data/series/one-piece/sagas'
 import type { LocalizedText } from '~/data/types'
 import { thresholdIn } from '~/lib/progress/spoiler'
-
-import { sagaOf, sagaStarts } from './sagaLabels.server'
+import { opSagaOf as sagaOf, opSagaStarts as sagaStarts } from '~/test/archive'
 
 const UNITS = ['episode', 'chapter'] as const
 

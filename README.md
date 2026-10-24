@@ -48,11 +48,11 @@ The fog is not a blur over the full page. Ask the live site for a character you
 have not met yet, with no bookmark set:
 
 ```sh
-curl -s https://one-piece-zero-spoiler.netlify.app/en/characters/trafalgar-law \
+curl -s https://one-piece-zero-spoiler.netlify.app/one-piece/en/characters/trafalgar-law \
   | grep -c 'Trafalgar Law'
 # 0
 
-curl -s https://one-piece-zero-spoiler.netlify.app/en/characters/trafalgar-law \
+curl -s https://one-piece-zero-spoiler.netlify.app/one-piece/en/characters/trafalgar-law \
   | grep -o '<title>[^<]*</title>'
 # <title>A character under fog | Zero Spoiler</title>
 ```

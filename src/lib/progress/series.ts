@@ -1,4 +1,5 @@
-import { isLocale } from '~/i18n/locales'
+import { isLocale, type Locale } from '~/i18n/locales'
+import type { EntityKind } from '~/lib/view/records'
 
 import {
   CHAPTER_CEILING,
@@ -8,6 +9,7 @@ import {
   EPISODE_COOKIE,
   TRIAL_COOKIE,
 } from './bounds'
+import type { BookmarkMode } from './episode'
 
 /** One season's inclusive absolute episode range. */
 export interface Season {
@@ -27,6 +29,19 @@ export interface BookmarkSeries {
   seasons: Season[]
   slug: string
   trialCookie: string
+}
+
+/** Public identity and the units and pages a series supports. */
+export interface Series extends BookmarkSeries {
+  features: {
+    bounty: boolean
+    factions: boolean
+    filler: boolean
+    fruits: boolean
+  }
+  kinds: EntityKind[]
+  name: Record<Locale, string>
+  units: BookmarkMode[]
 }
 
 /** One Piece's form ranges and Wikipedia season split (September 2026). */
@@ -64,30 +79,40 @@ export const ONE_PIECE_BOOKMARK: BookmarkSeries = {
   ],
 }
 
+/** One Piece's public description, reusing the bookmark limits and table. */
+export const ONE_PIECE_SERIES: Series = {
+  ...ONE_PIECE_BOOKMARK,
+  name: { en: 'One Piece', it: 'One Piece' },
+  units: ['episode', 'season', 'chapter'],
+  kinds: ['arc', 'character', 'fruit', 'place', 'ship'],
+  features: { bounty: true, factions: true, filler: true, fruits: true },
+}
+
 const RECORD_PAGE = /^(?:characters|fruits|places)$/u
 
-/** The series of a content route; root, legal/privacy and unknown paths have none. */
-export function seriesForPath(pathname: string): BookmarkSeries | null {
-  // #753 replaces this compatibility match when locale-first paths become hubs.
-  const [locale, page, ...parts] = pathname
-    .replace(/^\/one-piece\//u, '/')
+/** Only an archive index, record or filler page carries a bookmark. */
+function isContentPage(page: string | undefined, rest: string[]): boolean {
+  if (page === undefined) {
+    return true
+  }
+  if (page === 'filler') {
+    return rest.length === 0
+  }
+  return RECORD_PAGE.test(page) && rest.length <= 1 && rest[0] !== ''
+}
+
+/** The series slug of a content URL, before registry validation. */
+export function seriesSlugFromPath(pathname: string): null | string {
+  const [slug, locale, page, ...rest] = pathname
     .replace(/\/$/u, '')
     .split('/')
     .slice(1)
-  if (!isLocale(locale)) {
+  if (slug === undefined || slug === '' || isLocale(slug)) {
     return null
   }
-  switch (page) {
-    case 'filler': {
-      return parts.length === 0 ? ONE_PIECE_BOOKMARK : null
-    }
-    case undefined: {
-      return ONE_PIECE_BOOKMARK
-    }
-    default: {
-      return RECORD_PAGE.test(page) && parts.length <= 1 && parts[0] !== '' ?
-          ONE_PIECE_BOOKMARK
-        : null
-    }
-  }
+  return (
+      locale === undefined || (isLocale(locale) && isContentPage(page, rest))
+    ) ?
+      slug
+    : null
 }

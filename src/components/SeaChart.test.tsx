@@ -146,9 +146,9 @@ describe('SeaChart', () => {
     const links = within(stops()).getAllByRole('link')
 
     expect(links.map((link) => link.getAttribute('href'))).toStrictEqual([
-      '/en/places/shells-town',
-      '/en/places/syrup-village',
-      '/en/places/baratie',
+      '/one-piece/en/places/shells-town',
+      '/one-piece/en/places/syrup-village',
+      '/one-piece/en/places/baratie',
     ])
     expect(links.map((link) => link.getAttribute('aria-label'))).toStrictEqual([
       'Stop 1 of 5. Shells Town',
@@ -311,7 +311,7 @@ describe('SeaChart', () => {
 
     const here = within(stops()).getByRole('link', { current: 'location' })
 
-    expect(here).toHaveAttribute('href', '/en/places/amazon-lily')
+    expect(here).toHaveAttribute('href', '/one-piece/en/places/amazon-lily')
   })
 
   it('leaves an earlier ship small at the end of her own stretch', () => {
@@ -360,7 +360,7 @@ describe('the peek', () => {
     expect(dialog).toHaveTextContent('Episode 20')
     expect(
       within(dialog).getByRole('link', { name: 'Open the entry' }),
-    ).toHaveAttribute('href', '/en/places/baratie')
+    ).toHaveAttribute('href', '/one-piece/en/places/baratie')
     expect(baratie).toHaveAttribute('aria-expanded', 'true')
     expect(baratie).toHaveAttribute('aria-controls', dialog.id)
 
@@ -577,7 +577,7 @@ describe('the peek', () => {
     expect(dialog).toHaveTextContent('Whisky Peak')
     expect(
       within(dialog).getByRole('link', { name: 'Open the entry' }),
-    ).toHaveAttribute('href', '/en/places/whisky-peak')
+    ).toHaveAttribute('href', '/one-piece/en/places/whisky-peak')
   })
 
   it('peeks a ship, as her own page has her', async () => {
@@ -600,6 +600,6 @@ describe('the peek', () => {
     expect(dialog).toHaveTextContent('Fate: Given a funeral at sea')
     expect(
       within(dialog).getByRole('link', { name: 'Open the entry' }),
-    ).toHaveAttribute('href', '/en/places/going-merry')
+    ).toHaveAttribute('href', '/one-piece/en/places/going-merry')
   })
 })

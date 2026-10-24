@@ -1,15 +1,21 @@
 import { describe, expect, it } from 'vitest'
 
-import { type ListedSeries, SERIES } from '~/data/series'
 import type { Entity } from '~/data/types'
 import { type Locale, LOCALES } from '~/i18n/locales'
 import { DEMO_LAST_CHAPTER, DEMO_LAST_EPISODE } from '~/lib/progress/bounds'
 import type { Bookmark } from '~/lib/progress/episode'
 import * as api from '~/server/api'
+import { opHandleOf as handleOf } from '~/test/archive'
 import { leaksOf } from '~/test/fog'
+import {
+  type LoadedSeries as ListedSeries,
+  ONE_PIECE_LOADED,
+  LOADED_SERIES as SERIES,
+} from '~/test/series'
 
-import { handleOf } from './handle.server'
-import { type Payload, PAYLOADS } from './payloads.server'
+import { type Payload, payloadsFor } from './payloads.server'
+
+const PAYLOADS = payloadsFor(ONE_PIECE_LOADED.archive)
 
 /** A record a page names past the bookmark on purpose. */
 type Excuse = (entity: Entity, key: string, bookmark: Bookmark) => boolean

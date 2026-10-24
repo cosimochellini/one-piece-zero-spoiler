@@ -5,9 +5,7 @@ import { reveal } from '~/data/reveal'
 import { fruits } from '~/data/series/one-piece/fruits'
 import type { Bookmark } from '~/lib/progress/episode'
 import type { FruitDetail, FruitView, Slot } from '~/lib/view/records'
-
-import { fruitPage } from './fruitPage.server'
-import { sagaOf } from './sagaLabels.server'
+import { opFruitPage as fruitPage, opSagaOf as sagaOf } from '~/test/archive'
 
 /**
  * A fruit's history, its neighbours and the rail of its saga: what the

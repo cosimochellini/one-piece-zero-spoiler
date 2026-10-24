@@ -1,7 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
 import { type Reveal, reveal } from '~/data/reveal'
-import { ONE_PIECE } from '~/data/series'
 import { gateOf } from '~/data/series/one-piece/chapter-table'
 import { eatersOf } from '~/data/series/one-piece/dated'
 import { fruits } from '~/data/series/one-piece/fruits'
@@ -10,8 +9,8 @@ import type { Entity } from '~/data/types'
 import { getDictionary } from '~/i18n/translate'
 import type { Bookmark } from '~/lib/progress/episode'
 import type { Faction, FruitFactionView } from '~/lib/view/records'
-
-import { fruitSheet } from './fruits.server'
+import { opFruitSheet as fruitSheet } from '~/test/archive'
+import { ONE_PIECE_LOADED as ONE_PIECE } from '~/test/series'
 
 const BOOKMARKS = ONE_PIECE.bookmarks
 

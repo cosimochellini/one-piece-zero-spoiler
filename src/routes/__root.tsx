@@ -2,6 +2,7 @@ import * as stylex from '@stylexjs/stylex'
 import {
   createRootRoute,
   HeadContent,
+  notFound,
   Outlet,
   Scripts,
   useParams,
@@ -11,7 +12,8 @@ import { type ReactElement, type ReactNode, useEffect } from 'react'
 import { DEFAULT_LOCALE, isLocale } from '~/i18n/locales'
 import { BookmarkProvider } from '~/lib/progress/BookmarkProvider'
 import { readBookmark, readTrial } from '~/lib/progress/readBookmark'
-import { seriesForPath } from '~/lib/progress/series'
+import { seriesSlugFromPath } from '~/lib/progress/series'
+import { seriesDescription } from '~/routes/-series'
 import { createSecurityHeaders } from '~/security-headers'
 import { stickyStyles } from '~/styles/sticky'
 import { color, dur, ease, font, leading, text } from '~/styles/tokens.stylex'
@@ -28,8 +30,12 @@ export const Route = createRootRoute({
   // Runs on the server for a document request and on the client for a
   // navigation, and `readBookmark` has a branch for each. Reading the bookmark
   // this early is what makes the first painted HTML already correct.
-  beforeLoad: ({ location }) => {
-    const series = seriesForPath(location.pathname)
+  beforeLoad: async ({ location }) => {
+    const slug = seriesSlugFromPath(location.pathname)
+    const series = slug === null ? null : await seriesDescription(slug)
+    if (slug !== null && series === null) {
+      throw notFound()
+    }
     return {
       series,
       initialBookmark: readBookmark(series),

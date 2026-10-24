@@ -22,7 +22,7 @@ import type {
   TriggerProps as PeekTrigger,
 } from '~/components/useChartPeek'
 import { useLocale } from '~/i18n/LocaleContext'
-import { useThreshold } from '~/lib/progress/BookmarkContext'
+import { useSeriesParams, useThreshold } from '~/lib/progress/BookmarkContext'
 import type { TintId } from '~/lib/view/records'
 
 /** What every stop's link or button carries: its name, focus and keys. */
@@ -190,7 +190,7 @@ function OpenStops({
   stage: (index: number) => string
   target: (index: number, label: string, link?: boolean) => Target
 }): ReactElement {
-  const { locale } = useLocale()
+  const { series, locale } = useSeriesParams()
   const { here, lit, open } = model
 
   return (
@@ -205,8 +205,8 @@ function OpenStops({
               aria-current={port === here ? 'location' : undefined}
               // A press that moves pans the chart; it never drags the link.
               draggable={false}
-              params={{ locale, id: port.id }}
-              to="/$locale/places/$id"
+              params={{ series, locale, id: port.id }}
+              to="/$series/$locale/places/$id"
               {...target(index, `${stage(index)}. ${port.name}`, true)}
             >
               <OpenDot

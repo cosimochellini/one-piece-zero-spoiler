@@ -1,7 +1,3 @@
-import { DRAWINGS } from '~/data/series/one-piece/art'
-import { roleOf } from '~/data/series/one-piece/characters'
-import { latestOf, reachedOf } from '~/data/series/one-piece/dated'
-import { getFruit } from '~/data/series/one-piece/fruits'
 import type { Entity } from '~/data/types'
 import { type Locale, LOCALES } from '~/i18n/locales'
 import { foldName } from '~/lib/search/fold'
@@ -39,7 +35,10 @@ import type { Reader } from './reader.server'
  */
 export function drawingOf(entity: Entity, r: Reader): Drawing {
   return {
-    strokes: latestOf(r, entity, 'redrawing') ?? DRAWINGS[entity.visual.art],
+    strokes:
+      r.archive.latestOf(r, entity, 'redrawing')
+      ?? r.archive.drawings[entity.visual.art]
+      ?? [],
     tint: entity.visual.tint,
   }
 }
@@ -69,7 +68,7 @@ export function recordOf(entity: Entity, r: Reader): RecordView {
 
 /** A character, with the role their dossier gives them. */
 export function characterOf(entity: Entity, r: Reader): CharacterView {
-  const role = roleOf(entity)
+  const role = r.archive.roleOf(entity)
 
   return {
     ...recordOf(entity, r),
@@ -111,9 +110,9 @@ function otherNames(entity: Entity, locale: Locale): string[] {
  * is not sent at all rather than sent and declined.
  */
 function reachedEpithets(entity: Entity, r: Reader): string[] {
-  return reachedOf(r, entity, 'epithet').flatMap((entry) =>
-    LOCALES.map((other) => entry.value[other]),
-  )
+  return r.archive
+    .reachedOf(r, entity, 'epithet')
+    .flatMap((entry) => LOCALES.map((other) => entry.value[other]))
 }
 
 /**
@@ -200,16 +199,18 @@ export function specimenOf(
  */
 function linksFor(
   ids: string[] | undefined,
-  locale: Locale,
+  r: Reader,
 ): FruitLink[] | undefined {
   if (ids === undefined) {
     return undefined
   }
 
   const links = ids.flatMap((id) => {
-    const fruit = getFruit(id)
+    const fruit = r.archive.getFruit(id)
 
-    return fruit === undefined ? [] : { id: fruit.id, name: fruit.name[locale] }
+    return fruit === undefined ?
+        []
+      : { id: fruit.id, name: fruit.name[r.locale] }
   })
 
   return links.length === 0 ? undefined : links
@@ -241,7 +242,7 @@ type ReachedFacts = Omit<Extract<CharacterFacts, { mode: 'facts' }>, 'mode'>
 function wordFactsOf(entity: Entity, r: Reader): ReachedFacts {
   const words = (
     field: 'affiliation' | 'epithet' | 'origin',
-  ): string | undefined => latestOf(r, entity, field)?.[r.locale]
+  ): string | undefined => r.archive.latestOf(r, entity, field)?.[r.locale]
 
   const epithet = words('epithet')
   const affiliation = words('affiliation')
@@ -262,9 +263,9 @@ function wordFactsOf(entity: Entity, r: Reader): ReachedFacts {
  * review budget rather than a number to argue with.
  */
 function codedFactsOf(entity: Entity, r: Reader): ReachedFacts {
-  const status = latestOf(r, entity, 'status')
-  const devilFruit = linksFor(latestOf(r, entity, 'devilFruit'), r.locale)
-  const bounty = latestOf(r, entity, 'bounty')
+  const status = r.archive.latestOf(r, entity, 'status')
+  const devilFruit = linksFor(r.archive.latestOf(r, entity, 'devilFruit'), r)
+  const bounty = r.archive.latestOf(r, entity, 'bounty')
 
   return {
     ...(status !== undefined && { status }),

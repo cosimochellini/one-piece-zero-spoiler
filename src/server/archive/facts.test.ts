@@ -3,11 +3,14 @@ import { describe, expect, it } from 'vitest'
 import { getCharacter } from '~/data/series/one-piece/characters'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
+import {
+  opCharacterPage as characterPage,
+  opReaderFor as readerFor,
+} from '~/test/archive'
 
 import { chronicleOf } from './chronicle.server'
-import { characterPage } from './pages.server'
 import { factsOf } from './project.server'
-import { type Reader, readerFor } from './reader.server'
+import type { Reader } from './reader.server'
 
 function ep(episode: number, locale: Locale = 'en'): Reader {
   return readerFor({ mode: 'episode', episode }, locale)

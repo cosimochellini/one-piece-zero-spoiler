@@ -108,8 +108,8 @@
       { "name": "ui", "patterns": ["src/components/ui/**"] },
       { "name": "components", "patterns": ["src/components/**"] },
       { "name": "lib", "patterns": ["src/lib/**", "src/security-headers.ts"] },
-      // The list of the series (`src/data/series/index.ts`), for the tests,
-      // the gates and the scripts. Before `series`, which would take it in.
+      // The one lazy registry, shared by runtime, tests, gates and scripts.
+      // Before `series`, which would otherwise take it in.
       { "name": "series-list", "patterns": ["src/data/series/index.ts"] },
       // One zone per series, one per folder under `src/data/series/`, so a
       // second series gets its own zone without a line here. Listed before
@@ -130,14 +130,20 @@
       },
       {
         "from": "server",
-        "allow": ["engine", "engine-types", "series", "lib", "i18n", "styles"],
+        "allow": [
+          "engine",
+          "engine-types",
+          "series-list",
+          "lib",
+          "i18n",
+          "styles",
+        ],
       },
       { "from": "components", "allow": ["ui", "lib", "i18n", "styles"] },
       { "from": "ui", "allow": ["styles"] },
       { "from": "lib", "allow": ["i18n", "styles"] },
-      // The series list reads every series, and no zone reads it: the server
-      // and the browser never see it, only the exempt tests and the scripts.
-      // The registry that replaces it is the server's (#753).
+      // Only the registry may dynamically reach a series. The server reads
+      // this registry; client consumers receive public descriptions only.
       {
         "from": "series-list",
         "allow": ["series", "engine", "engine-types", "lib", "i18n"],
@@ -149,8 +155,8 @@
       },
       // The engine imports no series.
       { "from": "engine", "allow": ["engine-types", "lib", "i18n", "styles"] },
-      // The one exception, type-only: the record shapes name One Piece's
-      // drawing and fruit ids until a second series generalizes them (#758).
+      // The one exception, type-only: records and the archive contract reuse
+      // One Piece's editorial shapes until #758 generalizes the second series.
       // Fallow limits it by file, not by name, so a new type taken from a
       // series here is a review question.
       {
