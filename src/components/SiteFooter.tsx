@@ -12,18 +12,26 @@ import { color, font, leading, rule, space, text } from '~/styles/tokens.stylex'
  * behaves, the way a colophon closes a book. Four columns of links and a row of
  * social icons is the footer every generated page ships, and this site has
  * nothing to put in them. The lead sentence is the one the whole page argues.
+ * A series page names its series, its 404s included; a `shared` page (the
+ * hub, the legal notices) speaks for every series at once.
  */
-export function SiteFooter(): ReactElement {
+export function SiteFooter({
+  shared = false,
+}: {
+  shared?: boolean
+}): ReactElement {
   const { locale, t } = useLocale()
 
   return (
     <footer {...stylex.props(styles.footer)}>
       <p {...stylex.props(styles.colophon)}>
-        <b {...stylex.props(styles.lead)}>{t('footer.lead')}</b>{' '}
-        {t('footer.colophon')}
+        <b {...stylex.props(styles.lead)}>
+          {t(shared ? 'footer.sharedLead' : 'footer.lead')}
+        </b>{' '}
+        {t(shared ? 'footer.sharedColophon' : 'footer.colophon')}
       </p>
       <p {...stylex.props(styles.colophon)}>
-        {t('footer.unofficial')}{' '}
+        {t(shared ? 'footer.sharedUnofficial' : 'footer.unofficial')}{' '}
         <Link
           params={{ locale }}
           to="/$locale/legal"

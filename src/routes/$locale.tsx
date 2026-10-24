@@ -19,7 +19,10 @@ export const Route = createFileRoute('/$locale')({
 function SharedLayout(): ReactElement {
   const { locale } = Route.useRouteContext()
   return (
-    <LocaleShell locale={locale}>
+    <LocaleShell
+      locale={locale}
+      shared
+    >
       <Outlet />
     </LocaleShell>
   )

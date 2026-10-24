@@ -19,6 +19,15 @@ export const enDictionary = {
   'site.title': 'Zero Spoiler | The One Piece wiki without spoilers',
   'site.description':
     'A One Piece wiki that hides every character, arc, place and devil fruit you have not reached yet. Set the episode or chapter you are on and read up to there.',
+  'hub.title': 'Zero Spoiler | Wikis without spoilers',
+  'hub.description':
+    'Spoiler-free wikis, one per series. Each series keeps its own bookmark, and every entry past it stays under fog.',
+  'hub.headline': 'Wikis without spoilers',
+  'hub.lede':
+    'One wiki per series, each with its own bookmark. Entries past your bookmark stay under fog.',
+  'hub.count': '{count} entries',
+  'hub.noBookmark': 'No bookmark yet',
+  'hub.coming': 'Coming later',
   'seo.imageAlt':
     'The Zero Spoiler card: the logo above a route that disappears into fog.',
 
@@ -258,6 +267,11 @@ export const enDictionary = {
 
   'footer.unofficial':
     'Unofficial fan project, not endorsed by the One Piece rights holders.',
+  'footer.sharedLead': 'Wikis that hide what comes after your bookmark.',
+  'footer.sharedColophon':
+    'All the drawings are made for this site; no official artwork is used. Your bookmarks are saved in cookies on this device, one for each series.',
+  'footer.sharedUnofficial':
+    'Unofficial fan project, not endorsed by the rights holders of the series.',
 
   'characters.title': 'Characters',
   'characters.count':
