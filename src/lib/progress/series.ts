@@ -1,5 +1,6 @@
 import { isLocale, type Locale } from '~/i18n/locales'
 import type { EntityKind } from '~/lib/view/records'
+import type { SeriesTheme } from '~/styles/themes'
 
 import {
   CHAPTER_CEILING,
@@ -41,6 +42,8 @@ export interface Series extends BookmarkSeries {
   }
   kinds: EntityKind[]
   name: Record<Locale, string>
+  /** The colours of its pages; a page with no series keeps the site's own. */
+  theme: SeriesTheme
   units: BookmarkMode[]
 }
 
@@ -83,6 +86,7 @@ export const ONE_PIECE_BOOKMARK: BookmarkSeries = {
 export const ONE_PIECE_SERIES: Series = {
   ...ONE_PIECE_BOOKMARK,
   name: { en: 'One Piece', it: 'One Piece' },
+  theme: 'one-piece',
   units: ['episode', 'season', 'chapter'],
   kinds: ['arc', 'character', 'fruit', 'place', 'ship'],
   features: { bounty: true, factions: true, filler: true, fruits: true },

@@ -66,6 +66,13 @@ cannot resolve through another series' table. Fallow forbids direct server
 imports from a series, and the archive gate checks the emitted server graph as
 well as client leak canaries.
 
+Each public description names its colour theme. The theme is a full override of
+the `color` tokens in `src/styles/themes.ts`, set on `<html>` whenever the
+`/<series>` route matches, its 404s included. The defaults in
+`src/styles/tokens.stylex.ts` are the site's own neutral theme, worn by the hub,
+the legal notices and unknown addresses; One Piece's gold on night blue is its
+theme, not the site's. Layout, type and the drawing tints stay shared.
+
 The same request middleware reads legacy `opzs_ep` and `opzs_try` cookies once,
 validates them as One Piece bookmarks and writes `zs_one-piece` and
 `zs_one-piece_try`, then expires the legacy cookies. It updates the incoming
@@ -276,8 +283,11 @@ banned phrase in either language.
   page inert, Escape closes it, and focus returns to where it was.
 - Covered content has `inert` and `aria-hidden`, so neither Tab nor a screen
   reader can reach a spoiler.
-- Contrast is measured and recorded next to the tokens: 17.4:1 for body text,
-  12.2:1 for the accent.
+- Contrast is measured and recorded next to the tokens of every theme, and
+  `src/styles/themes.test.tsx` holds each one to its floors. One Piece: 17.4:1
+  for body text, 12.2:1 for the accent. The neutral theme of the pages with no
+  series: 16.5:1 and 19.7:1; its accent is within 3:1 of the text, so its links
+  keep their underline, and the test fails a shared page whose link does not.
 
 ## Security
 
