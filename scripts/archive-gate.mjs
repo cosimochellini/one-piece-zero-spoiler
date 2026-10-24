@@ -162,9 +162,13 @@ const WORST_CHUNKS = 5
  * once it lands; the fruits' control bar is drawn from counts until then.
  * The measured client build is 672,116 bytes; the ceiling retains 1 KB
  * headroom. Both still come from the server at the reader's bookmark; no
- * archive data moves to the client.
+ * archive data moves to the client. Raised for #777 on 2026-10-24: the
+ * featured crests past the tenth draw through `useDrawing`. The measured
+ * client build is 672,215 bytes; the ceiling retains 1 KB headroom. The
+ * strokes still come from the server, only for records the reader has
+ * reached.
  */
-export const MAX_CLIENT_BYTES = 673_116
+export const MAX_CLIENT_BYTES = 673_215
 
 /** Where every series' folder is. */
 const SERIES_DIR = 'src/data/series'
