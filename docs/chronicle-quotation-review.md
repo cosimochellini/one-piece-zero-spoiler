@@ -2,8 +2,7 @@
 
 Review date: **2026-10-23**. Baseline:
 `e10aac52f9fd91ae20e2e0870324856b1df733f0`. This completes the bounded editorial
-review in
-[#738](https://github.com/cosimochellini/one-piece-zero-spoiler/issues/738),
+review in [#738](https://github.com/cosimochellini/zero-spoiler/issues/738),
 which the [provenance audit](content-provenance-audit.md) opened. It is risk
 reduction for the project's own research notes, not a legal certification. No
 archive data, story, threshold or source URL changes.
@@ -221,7 +220,7 @@ note is filed under his dog's record, `holy@164`.
 No new issue was opened from this review: every finding of the checks was fixed
 in place. The limits above stay open as recorded, and future contributions
 follow [Sources and rights](../CONTRIBUTING.md#sources-and-rights)
-([#725](https://github.com/cosimochellini/one-piece-zero-spoiler/issues/725)).
+([#725](https://github.com/cosimochellini/zero-spoiler/issues/725)).
 
 ## Reproduce
 
