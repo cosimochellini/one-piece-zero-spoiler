@@ -167,8 +167,13 @@ const WORST_CHUNKS = 5
  * client build is 672,215 bytes; the ceiling retains 1 KB headroom. The
  * strokes still come from the server, only for records the reader has
  * reached.
+ * Raised for #781 on 2026-10-24: the places page draws the chart in the
+ * orientation the window's width asks for and the index once the page has
+ * hydrated, with the shelves' scroll-back hook moved to share. The measured
+ * client build is 672,689 bytes; the ceiling retains 1 KB headroom. The
+ * index's data was in the payload already; nothing new reaches the client.
  */
-export const MAX_CLIENT_BYTES = 673_215
+export const MAX_CLIENT_BYTES = 673_689
 
 /** Where every series' folder is. */
 const SERIES_DIR = 'src/data/series'

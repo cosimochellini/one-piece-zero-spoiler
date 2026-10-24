@@ -1,4 +1,5 @@
 import {
+  type Orientation,
   ORIGIN,
   type Point,
   type Rect,
@@ -44,6 +45,8 @@ export interface SeaChartProps {
   peekPort: (handle: string) => Promise<PortView>
   /** The sagas the open stops are filed under, in route order, named. */
   sagas: SagaPick[]
+  /** The orientation the server drew, kept until the page hydrates. */
+  served: Orientation
   /** The ships the reader has reached, in their order. */
   ships: ShipView[]
 }
@@ -92,7 +95,7 @@ interface Reached {
  * tail by its rank alone.
  */
 export function modelOf(
-  props: Omit<SeaChartProps, 'peekPort'>,
+  props: Omit<SeaChartProps, 'peekPort' | 'served'>,
   t: Translate,
 ): ChartModel {
   const { covered, open } = props
@@ -140,7 +143,7 @@ function reachedOf({
   bookmark,
   open,
   ships,
-}: Omit<SeaChartProps, 'peekPort'>): Reached[] {
+}: Omit<SeaChartProps, 'peekPort' | 'served'>): Reached[] {
   const mode = modeOf(bookmark)
 
   return open.map((port) => ({ port, ship: sailedBy(port, ships, mode) }))
