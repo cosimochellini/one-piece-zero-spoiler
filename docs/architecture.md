@@ -420,15 +420,15 @@ What this says:
 
 - **The hop to the function costs about 0.21 s, whatever the page.** It is the
   same for a 0.1 KB robots file and a 105 KB gzip list, so the size of the body
-  does not add to it. On Netlify Free the function runs in the US and cannot be
-  moved, so this is the floor. (#610 read the body size as the cost; with the
-  header in place, that turned out to be wrong.)
+  does not add to it. On Netlify Free the function ran in the US and could not
+  be moved, so this was the floor. (#610 read the body size as the cost; with
+  the header in place, that turned out to be wrong.)
 - **The rest is the render, and it grows with the number of elements.** At
   episode 1, with almost nothing open, `/one-piece/en/characters` still took
   0.39 s for more than five hundred covered cards. A CPU profile puts most of a
   render in React writing and encoding HTML, and the next largest share in
   serialising the loader data.
-- **Production rendered with React's development build.** Netlify does not set
+- **Production rendered with React's development build.** Netlify did not set
   `NODE_ENV` inside a function, and the server build left React, TanStack and
   StyleX as packages that choose their build from it at run time. The HTML is
   identical either way, so it showed only as time: about twice the work of the
