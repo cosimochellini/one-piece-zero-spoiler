@@ -138,9 +138,18 @@ export function openedBy(namings: Gated[]): Gated {
   const manga = namings.filter((gate) => toldIn(gate, 'manga'))
   const source = aloneIn({ anime, manga })
 
+  // A source with no naming takes every naming's, which only orders the
+  // fruit: its reader never has it (`source`).
+  const inAnime = anime.length === 0 ? namings : anime
+  const inManga = manga.length === 0 ? namings : manga
+
   return {
-    revealedAtEpisode: Math.min(...anime.map((gate) => gate.revealedAtEpisode)),
-    revealedAtChapter: Math.min(...manga.map((gate) => gate.revealedAtChapter)),
+    revealedAtEpisode: Math.min(
+      ...inAnime.map((gate) => gate.revealedAtEpisode),
+    ),
+    revealedAtChapter: Math.min(
+      ...inManga.map((gate) => gate.revealedAtChapter),
+    ),
     ...(source !== undefined && { source }),
   }
 }

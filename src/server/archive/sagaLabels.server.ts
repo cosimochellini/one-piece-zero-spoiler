@@ -2,10 +2,15 @@ import { orderByMode } from '~/data/order'
 import { toldIn } from '~/data/reveal'
 import type { LocalizedText, SeriesArchive } from '~/data/types'
 import type { SagaRow, SagaTable } from '~/lib/progress/sagaLabel'
-import { thresholdIn } from '~/lib/progress/spoiler'
+import { type Source, thresholdIn } from '~/lib/progress/spoiler'
 
 import { skipRangesOf } from './fillerRows.server'
 import type { Reader } from './reader.server'
+
+/** The source a unit counts in. */
+function sourceIn(mode: 'chapter' | 'episode'): Source {
+  return mode === 'chapter' ? 'manga' : 'anime'
+}
 
 /** One saga's opening in one unit. */
 export interface SagaStart {
@@ -17,14 +22,17 @@ const cached = new WeakMap<
   { chapter: SagaStart[]; episode: SagaStart[]; filler: SagaTable['filler'] }
 >()
 
-/** Arcs and skip ranges belong to the loaded archive, never another series. */
+/**
+ * Arcs and skip ranges belong to the loaded archive, never another series. A
+ * unit's saga starts at the arcs its own source tells.
+ */
 function startsIn(mode: 'chapter' | 'episode', r: Reader): SagaStart[] {
   return r.archive.sagas
     .map((saga) => {
       const ids = new Set(saga.entries.map((entry) => entry.id))
       let from = Infinity
       for (const arc of r.archive.arcs) {
-        if (ids.has(arc.id)) {
+        if (ids.has(arc.id) && toldIn(arc, sourceIn(mode))) {
           from = Math.min(from, thresholdIn(arc, mode))
         }
       }
@@ -53,9 +61,7 @@ function tableFor(r: Reader): NonNullable<ReturnType<typeof cached.get>> {
  * unit in the dialog is never shown an arc that unit does not have.
  */
 function rowsIn(mode: 'chapter' | 'episode', r: Reader): SagaRow[] {
-  const told = r.archive.arcs.filter((arc) =>
-    toldIn(arc, mode === 'chapter' ? 'manga' : 'anime'),
-  )
+  const told = r.archive.arcs.filter((arc) => toldIn(arc, sourceIn(mode)))
 
   return orderByMode(told, mode).map((arc) => ({
     from: thresholdIn(arc, mode),

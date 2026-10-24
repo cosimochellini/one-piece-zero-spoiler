@@ -33,14 +33,9 @@ describe('openedBy', () => {
   })
 
   it('keeps a fruit only one source names to that source', () => {
-    expect(openedBy([anime])).toMatchObject({
-      revealedAtEpisode: 5,
-      source: 'anime',
-    })
-    expect(openedBy([manga])).toMatchObject({
-      revealedAtChapter: 4,
-      source: 'manga',
-    })
+    // The other unit's threshold only orders it, and stays within the dial.
+    expect(openedBy([anime])).toStrictEqual(anime)
+    expect(openedBy([manga])).toStrictEqual(manga)
     expect(openedBy([both])).not.toHaveProperty('source')
   })
 })

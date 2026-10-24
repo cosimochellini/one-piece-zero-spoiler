@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
 import { sourceOf } from '~/data/reveal'
+import type { BookSection } from '~/data/types'
 import { type Locale, LOCALES } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
 import type { Source } from '~/lib/progress/spoiler'
@@ -58,6 +59,16 @@ function names(rows: { name: string }[]): string[] {
 /** An excuse for every record, as a page that names arcs by design has. */
 function byDesign(): boolean {
   return true
+}
+
+/** The first two shelves of the archive, and the rest. */
+function firstShelves(): [BookSection, BookSection, BookSection[]] {
+  const [first, second, ...rest] = BASE.bookSections
+  if (first === undefined || second === undefined) {
+    throw new Error('The archive shelves too little')
+  }
+
+  return [first, second, rest]
 }
 
 /** One question to put to a page: a bookmark, a locale and a key. */
@@ -206,5 +217,25 @@ describe('the archive a reader is handed', () => {
       readerFor(BASE, null, 'it').archive,
     )
     expect(readerFor(BASE, null, 'en').archive).not.toBe(anime)
+  })
+
+  it('moves the characters of a first shelf it drops onto the shelf after', () => {
+    const [first, second, rest] = firstShelves()
+    const archive = {
+      ...BASE,
+      bookSections: [
+        { ...first, arc: { ...first.arc, source: 'anime' as const } },
+        second,
+        ...rest,
+      ],
+    }
+    const [shelf] = readerFor(archive, at('manga', 1), 'en').archive
+      .bookSections
+
+    expect(shelf?.arc).toBe(second.arc)
+    expect(shelf?.characters).toStrictEqual([
+      ...first.characters,
+      ...second.characters,
+    ])
   })
 })

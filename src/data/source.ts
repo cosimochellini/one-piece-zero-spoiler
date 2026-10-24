@@ -81,21 +81,28 @@ function copyIn(archive: SeriesArchive, source: null | Source): SeriesArchive {
 
 /**
  * The shelves without the other source's records. A character shelved under
- * an arc this source does not tell moves to the shelf before, which is where
- * the rule of the shelves (`~/data/series/one-piece/characters`) puts it
- * without that arc; a shelf left empty is left out, as there.
+ * an arc this source does not tell moves to the shelf before it, or to the
+ * one after when there is none before; a shelf left empty is left out, as in
+ * `~/data/series/one-piece/characters`. The shelf before is the nearest one
+ * kept, which is the rule's own answer unless a told arc between the two has
+ * no shelf of its own.
  */
 function shelvedIn(
   sections: BookSection[],
   has: (entity: Entity) => boolean,
 ): BookSection[] {
   const shelves: BookSection[] = []
+  let unshelved: Entity[] = []
   for (const { arc, characters } of sections) {
     const kept = characters.filter((character) => has(character))
+    const last = shelves.at(-1)
     if (has(arc)) {
-      shelves.push({ arc, characters: kept })
+      shelves.push({ arc, characters: [...unshelved, ...kept] })
+      unshelved = []
+    } else if (last === undefined) {
+      unshelved = [...unshelved, ...kept]
     } else {
-      shelves.at(-1)?.characters.push(...kept)
+      last.characters.push(...kept)
     }
   }
 

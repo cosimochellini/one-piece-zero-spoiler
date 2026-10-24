@@ -27,6 +27,16 @@ const DECLARED = DATED.flatMap(({ entry, label, owner }) => {
     : { chapter: entry.chapter, episode: entry.episode, label, owner }
 })
 
+/**
+ * The declared entries the table is built on: not one of a single source,
+ * nor of a record of one (`vouches`).
+ */
+const ANCHORED = DATED.flatMap(({ entry, label, owner }) => {
+  return entry.chapter === undefined || !vouches(entry) || !vouches(owner) ?
+      []
+    : { chapter: entry.chapter, episode: entry.episode, label }
+})
+
 /** Every dated entry with the gate `~/data/series/one-piece/dated` opens it at. */
 const OPENED = TIMELINES.flatMap(({ field, owner }) => {
   return datedOf(owner, field).map((entry) => {
@@ -71,7 +81,7 @@ describe('episodeAtChapter', () => {
   it('never reaches an entry’s episode before the chapter it declares', () => {
     // Which is what lets the entries beside it at that episode, which say no
     // chapter, wait for it too.
-    for (const { chapter, episode, label } of DECLARED) {
+    for (const { chapter, episode, label } of ANCHORED) {
       expect(episodeAtChapter(chapter - 1), label).toBeLessThan(episode)
     }
   })
@@ -210,6 +220,21 @@ describe('a record or an entry of one source only', () => {
     expect(gateOf(told, FILED)).not.toHaveProperty('source')
     expect(gateOf({ ...told, source: 'anime' }, FILED).source).toBe('anime')
     expect(gateOf(told, { ...FILED, source: 'manga' }).source).toBe('manga')
+  })
+
+  it('marks a chapter pinned on a fruit of one source only with that source', () => {
+    // The table is built before a fruit's source is read off its namings
+    // (`openedBy`), so it cannot see it: a pinned entry of such a fruit
+    // vouches for its pair unless the entry says its source itself.
+    const pinned = DATED.filter(
+      ({ entry, owner }) =>
+        owner.kind === 'fruit'
+        && owner.source !== undefined
+        && entry.chapter !== undefined
+        && entry.source !== owner.source,
+    ).map(({ label }) => label)
+
+    expect(pinned).toStrictEqual([])
   })
 
   it('is told, on a record of one source only, by that source alone', () => {
