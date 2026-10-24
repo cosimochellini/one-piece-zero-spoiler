@@ -22,6 +22,7 @@ export const sharedEn = {
   'nav.characters': 'Characters',
   'nav.places': 'Places',
   'nav.label': 'Pages',
+  'nav.hub': 'All series',
 
   'hero.headline': 'The One Piece wiki without spoilers',
   'hero.setBookmark': 'Set your bookmark',

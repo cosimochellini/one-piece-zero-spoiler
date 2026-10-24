@@ -1,8 +1,18 @@
-import { screen, within } from '@testing-library/react'
+import {
+  createMemoryHistory,
+  createRootRoute,
+  createRoute,
+  createRouter,
+  RouterProvider,
+} from '@tanstack/react-router'
+import { render, screen, within } from '@testing-library/react'
 import { type ReactElement, useMemo } from 'react'
 import { describe, expect, it } from 'vitest'
 
+import { LocaleProvider } from '~/i18n/LocaleProvider'
+import type { Locale } from '~/i18n/locales'
 import { BookmarkContext, useBookmark } from '~/lib/progress/BookmarkContext'
+import { BookmarkProvider } from '~/lib/progress/BookmarkProvider'
 import { ONE_PIECE_BOOKMARK } from '~/lib/progress/series'
 import { ep, renderWithProviders } from '~/test/providers'
 
@@ -31,6 +41,39 @@ function OtherSeriesBar(): ReactElement {
   )
 }
 
+/**
+ * Renders the bar under a `/$series` match, as the app does, so the series'
+ * name comes from the route's public description. The two names differ only
+ * to show which language is read.
+ */
+async function renderUnderSeries(path: string, locale: Locale): Promise<void> {
+  const rootRoute = createRootRoute()
+  const seriesRoute = createRoute({
+    getParentRoute: () => rootRoute,
+    path: '$series',
+    beforeLoad: () => ({
+      series: { name: { en: 'One Piece', it: 'One Piece (it)' } },
+    }),
+    component: (): ReactElement => (
+      <LocaleProvider locale={locale}>
+        <BookmarkProvider
+          initialBookmark={null}
+          series={ONE_PIECE_BOOKMARK}
+        >
+          <SiteBar />
+        </BookmarkProvider>
+      </LocaleProvider>
+    ),
+  })
+  const page = createRoute({ getParentRoute: () => seriesRoute, path: '$' })
+  const router = createRouter({
+    routeTree: rootRoute.addChildren([seriesRoute.addChildren([page])]),
+    history: createMemoryHistory({ initialEntries: [path] }),
+  })
+  await router.load()
+  render(<RouterProvider router={router} />)
+}
+
 describe('SiteBar', () => {
   it('carries the wordmark, three page links, the bookmark and the language control, and nothing else', () => {
     renderWithProviders(<SiteBar />)
@@ -38,7 +81,12 @@ describe('SiteBar', () => {
     const banner = screen.getByRole('banner')
 
     expect(
-      within(banner).getByRole('link', { name: 'Zero Spoiler' }),
+      within(banner).getByRole('link', { name: 'Zero Spoiler. All series' }),
+    ).toHaveAttribute('href', '/en')
+    // No route has described the series here, so its name falls back to the
+    // slug; `names the series` covers the described name.
+    expect(
+      within(banner).getByRole('link', { name: 'one-piece' }),
     ).toHaveAttribute('href', '/one-piece/en')
     expect(
       within(banner).getByRole('navigation', { name: 'Pages' }),
@@ -63,7 +111,7 @@ describe('SiteBar', () => {
       within(banner).getByRole('button', { name: 'Set episode' }),
     ).toHaveTextContent('EP ?')
     // No link row filling the middle: the space is the design.
-    expect(within(banner).getAllByRole('link')).toHaveLength(4)
+    expect(within(banner).getAllByRole('link')).toHaveLength(5)
     expect(within(banner).getAllByRole('button')).toHaveLength(1)
   })
 
@@ -164,8 +212,10 @@ describe('SiteBar', () => {
       renderWithProviders(<SiteBar />, { path })
 
       expect(
-        screen.getByRole('link', { name: 'Zero Spoiler' }),
+        screen.getByRole('link', { name: 'Zero Spoiler. All series' }),
       ).toHaveAttribute('href', '/en')
+      // The wordmark is the only link: no series to go back to.
+      expect(screen.getAllByRole('link')).toHaveLength(1)
       expect(screen.queryByRole('navigation')).not.toBeInTheDocument()
       expect(screen.queryByRole('button')).not.toBeInTheDocument()
       expect(
@@ -177,7 +227,10 @@ describe('SiteBar', () => {
   it('takes content link parameters from the selected series', () => {
     renderWithProviders(<OtherSeriesBar />)
 
-    expect(screen.getByRole('link', { name: 'Zero Spoiler' })).toHaveAttribute(
+    expect(
+      screen.getByRole('link', { name: 'Zero Spoiler. All series' }),
+    ).toHaveAttribute('href', '/en')
+    expect(screen.getByRole('link', { name: 'other-series' })).toHaveAttribute(
       'href',
       '/other-series/en',
     )
@@ -188,6 +241,50 @@ describe('SiteBar', () => {
     expect(screen.getByRole('link', { name: 'Fruits' })).toHaveAttribute(
       'href',
       '/other-series/en/fruits',
+    )
+  })
+
+  it.each([
+    ['en', 'Zero Spoiler. All series', 'One Piece'],
+    ['it', 'Zero Spoiler. Tutte le serie', 'One Piece (it)'],
+  ] as const)(
+    'names the hub and the series apart, in %s',
+    async (locale, wordmark, name) => {
+      await renderUnderSeries(`/one-piece/${locale}/characters`, locale)
+
+      const banner = screen.getByRole('banner')
+
+      expect(
+        within(banner).getByRole('link', { name: wordmark }),
+      ).toHaveAttribute('href', `/${locale}`)
+      expect(within(banner).getByRole('link', { name })).toHaveAttribute(
+        'href',
+        `/one-piece/${locale}`,
+      )
+      // Tab order is document order: wordmark, series, then its pages.
+      expect(
+        within(banner)
+          .getAllByRole('link')
+          .slice(0, 3)
+          .map((link) => link.getAttribute('href')),
+      ).toStrictEqual([
+        `/${locale}`,
+        `/one-piece/${locale}`,
+        `/one-piece/${locale}/characters`,
+      ])
+      // Not the series' home, so the name is a way back, not the current page.
+      expect(within(banner).getByRole('link', { name })).not.toHaveAttribute(
+        'aria-current',
+      )
+    },
+  )
+
+  it('marks the series name as the current page on the series home', async () => {
+    await renderUnderSeries('/one-piece/en', 'en')
+
+    expect(screen.getByRole('link', { name: 'One Piece' })).toHaveAttribute(
+      'aria-current',
+      'page',
     )
   })
 })
