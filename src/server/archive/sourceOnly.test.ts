@@ -191,3 +191,20 @@ describe.each(SOURCES)('a record of the %s alone', (source) => {
     expect(leaks(named, ownCeiling, byDesign)).toStrictEqual([])
   })
 })
+
+describe('the archive a reader is handed', () => {
+  it('is built once per source and kept, not once per request', () => {
+    const anime = readerFor(BASE, at('anime', 1), 'en').archive
+
+    expect(
+      readerFor(BASE, { mode: 'season', season: 1, episode: 1 }, 'it').archive,
+    ).toBe(anime)
+    expect(readerFor(BASE, at('manga', 1), 'en').archive).toBe(
+      readerFor(BASE, at('manga', 2), 'it').archive,
+    )
+    expect(readerFor(BASE, null, 'en').archive).toBe(
+      readerFor(BASE, null, 'it').archive,
+    )
+    expect(readerFor(BASE, null, 'en').archive).not.toBe(anime)
+  })
+})
