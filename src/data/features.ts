@@ -7,7 +7,6 @@ import type {
   Dated,
   Entity,
   LocalizedText,
-  PageVocabulary,
   SeriesArchive,
   Timeline,
   Vocabulary,
@@ -137,12 +136,12 @@ export interface FillerFeature {
 }
 
 /** The groups a character stands with for one reader, by the latest entry. */
-export interface FactionFeature<V extends Vocabulary = PageVocabulary> {
+export interface FactionFeature<V extends Vocabulary = Vocabulary> {
   factionsOf: (at: Reveal, owner: Entity) => undefined | V['group'][]
 }
 
 /** The feature slices a series has; the rest are left out. */
-export interface Features<V extends Vocabulary = PageVocabulary> {
+export interface Features<V extends Vocabulary = Vocabulary> {
   factions?: FactionFeature<V>
   filler?: FillerFeature
   fruits?: FruitFeature
@@ -150,10 +149,10 @@ export interface Features<V extends Vocabulary = PageVocabulary> {
 }
 
 /** An archive as the server reads it: its core, and every slice filled. */
-export type ReaderArchive = FactionFeature
+export type ReaderArchive<V extends Vocabulary = Vocabulary> = FactionFeature<V>
   & FillerFeature
   & FruitFeature
-  & Omit<SeriesArchive, 'features'>
+  & Omit<SeriesArchive<V>, 'features'>
   & ShipFeature
 
 const none = (): undefined => undefined
@@ -163,7 +162,9 @@ const empty = (): never[] => []
  * An archive with every feature slice it lacks filled with nothing: no fruits,
  * no ships, no filler guide (aired to the series' last episode), no factions.
  */
-export function withFeatures(archive: SeriesArchive): ReaderArchive {
+export function withFeatures<V extends Vocabulary>(
+  archive: SeriesArchive<V>,
+): ReaderArchive<V> {
   const { features, ...core } = archive
 
   return {

@@ -135,7 +135,11 @@ export function onePiecePalette() {
   if (start === -1) {
     throw new Error(`src/styles/themes.ts has no \`${marker}\``)
   }
-  const onePiece = themes.slice(start, themes.indexOf('\n}\n', start))
+  const end = themes.indexOf('\n}\n', start)
+  if (end === -1) {
+    throw new Error(`src/styles/themes.ts does not close \`${marker}\``)
+  }
+  const onePiece = themes.slice(start, end)
   return {
     ...parseTokens(stylesFile('tokens.stylex.ts')),
     ...parseTokens(onePiece),

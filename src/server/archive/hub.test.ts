@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
+import { SERIES } from '~/data/series'
 import { archiveIn } from '~/data/source'
 import { ONE_PIECE_LOADED } from '~/test/series'
 import { plant } from '~/test/sourceOnly'
@@ -89,18 +90,26 @@ describe('the count on the hub', () => {
   })
 })
 
+/** The series filed but not open: none once every series has opened. */
+const CLOSED = SERIES.filter(({ open }) => !open).map(({ slug }) => slug)
+
 describe('the series a reader reaches', () => {
-  // Hunter x Hunter is filed and swept, and not open until #763: the hub's
-  // cards and the legal page's descriptions are the open series alone.
-  it('describes the open series only', () => {
-    expect(openDescriptions().map(({ slug }) => slug)).toStrictEqual([
-      'one-piece',
-    ])
+  // A series filed but not open is swept by every gate and shown nowhere:
+  // the hub's cards and the legal page's descriptions leave it out.
+  it.skipIf(CLOSED.length === 0)('describes no series that is not open', () => {
+    const described = openDescriptions().map(({ slug }) => slug)
+
+    expect(described.filter((slug) => CLOSED.includes(slug))).toStrictEqual([])
   })
 
-  it('puts a card on the hub for the open series only', async () => {
-    const hub = hubFor(new Map(), await openArchives())
+  it.skipIf(CLOSED.length === 0)(
+    'puts no card on the hub for a series that is not open',
+    async () => {
+      const cards = hubFor(new Map(), await openArchives()).map(
+        ({ slug }) => slug,
+      )
 
-    expect(hub.map(({ slug }) => slug)).toStrictEqual(['one-piece'])
-  })
+      expect(cards.filter((slug) => CLOSED.includes(slug))).toStrictEqual([])
+    },
+  )
 })

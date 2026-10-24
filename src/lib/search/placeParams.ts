@@ -43,11 +43,13 @@ const FORMS = new Set<string>([
   'village',
 ] satisfies PlaceForm[])
 
-function isSea(value: unknown): value is Sea {
+/** Whether a value is one of the seas the pages print. */
+export function isSea(value: unknown): value is Sea {
   return typeof value === 'string' && SEAS.has(value)
 }
 
-function isForm(value: unknown): value is PlaceForm {
+/** Whether a value is one of the place forms the pages print. */
+export function isForm(value: unknown): value is PlaceForm {
   return typeof value === 'string' && FORMS.has(value)
 }
 

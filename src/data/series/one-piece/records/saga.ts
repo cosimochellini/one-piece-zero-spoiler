@@ -5,21 +5,29 @@ import type {
   Affiliation,
   CharacterDossier,
   Entity,
-  PageVocabulary,
   PlaceDossier,
   Saga,
   Timeline,
   Visual,
+  Vocabulary,
 } from '~/data/types'
+import type { Faction, PlaceForm, Sea } from '~/lib/view/records'
 
 /**
- * A One Piece place's log entry, in One Piece's words: its place forms, seas
- * and factions are the words the pages print (`PageVocabulary`).
+ * One Piece's words: its place forms, its seas and its factions, the closed
+ * lists the pages label in the dictionaries (`~/lib/view/records`).
  */
-export type OnePiecePlace = PlaceDossier<PageVocabulary>
+export interface OnePieceVocabulary extends Vocabulary {
+  form: PlaceForm
+  group: Faction
+  region: Sea
+}
+
+/** A One Piece place's log entry, in One Piece's words. */
+export type OnePiecePlace = PlaceDossier<OnePieceVocabulary>
 
 /** A One Piece affiliation entry, its groups among One Piece's factions. */
-export type OnePieceAffiliation = Affiliation<PageVocabulary>
+export type OnePieceAffiliation = Affiliation<OnePieceVocabulary>
 
 /**
  * A One Piece record, drawn by one of its own drawings: `art` is the id of a
@@ -49,7 +57,7 @@ export interface OnePieceFruit extends Omit<
  * archive never filed.
  */
 export interface OnePieceDossier
-  extends CharacterDossier<PageVocabulary>, FeatureTimelines {
+  extends CharacterDossier<OnePieceVocabulary>, FeatureTimelines {
   devilFruit?: Timeline<FruitId[]>
 }
 
@@ -57,7 +65,7 @@ export interface OnePieceDossier
  * One stretch of the route as a module (`Saga` in `~/data/types`), with its
  * records and dossiers held to One Piece's own drawings and fruits.
  */
-export interface OnePieceSaga extends Saga<PageVocabulary> {
+export interface OnePieceSaga extends Saga<OnePieceVocabulary> {
   dossiers: Record<string, OnePieceDossier>
   entries: OnePieceEntity[]
 }

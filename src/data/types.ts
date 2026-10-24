@@ -12,9 +12,6 @@ import type { ChartPoint } from '~/lib/view/chart'
 import type {
   CharacterStatus,
   EntityKind,
-  Faction,
-  PlaceForm,
-  Sea,
   Stroke,
   TintId,
 } from '~/lib/view/records'
@@ -136,18 +133,6 @@ export interface Vocabulary {
   form: string
   group: string
   region: string
-}
-
-/**
- * The words the shared pages can print today: the ones declared with the
- * view models and labelled in the dictionaries (`~/lib/view/records`), which
- * are One Piece's. `SeriesArchive` takes them by default; a series with words
- * of its own needs the pages to print them first.
- */
-export interface PageVocabulary extends Vocabulary {
-  form: PlaceForm
-  group: Faction
-  region: Sea
 }
 
 /**
@@ -355,9 +340,11 @@ export interface Visit extends Dated<LocalizedText> {
  * filler guide and factions) as optional slices in `features`. The server
  * reads them through `~/data/features`, which fills a missing one with empty
  * lists and lookups that find nothing, and `~/data/series/index.test.ts`
- * holds each slice to the flag on the series' description.
+ * holds each slice to the flag on the series' description. `V` is the
+ * series' own words; the server holds every archive by the generic ones and
+ * narrows a word only where a page prints it (`~/server/archive/printed`).
  */
-export interface SeriesArchive<V extends Vocabulary = PageVocabulary> {
+export interface SeriesArchive<V extends Vocabulary = Vocabulary> {
   arcs: Entity[]
   bookmarks: Bookmark[]
   bookSections: BookSection[]

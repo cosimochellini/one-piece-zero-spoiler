@@ -1,33 +1,11 @@
-import { readdirSync, readFileSync } from 'node:fs'
-import path from 'node:path'
 import { describe, expect, it } from 'vitest'
 
 import { ONE_PIECE_SERIES } from '~/lib/progress/series'
 
-import { archiveOf, descriptionOf, filedArchiveOf, ONE_PIECE } from '.'
+import { archiveOf, descriptionOf, filedArchiveOf, ONE_PIECE, SERIES } from '.'
 
-/** `src/`, two folders above this one. */
-const SRC = path.resolve(import.meta.dirname, '..', '..')
-
-/** An import of the filed list or the filed loader from the registry. */
-const FILED_IMPORT =
-  /import\s*\{[^}]*\b(?:SERIES|filedArchiveOf)\b[^}]*\}\s*from\s*'~\/data\/series'/u
-
-/** Whether a file is a test, or a helper of the tests. */
-function isTesting(file: string): boolean {
-  return /\.test\.tsx?$/u.test(file) || file.startsWith('test/')
-}
-
-/** Every source file outside the tests that imports the filed list or loader. */
-function readerImports(): string[] {
-  return readdirSync(SRC, { encoding: 'utf8', recursive: true })
-    .map((file) => file.split(path.sep).join('/'))
-    .filter((file) => /\.tsx?$/u.test(file) && !isTesting(file))
-    .filter((file) =>
-      // eslint-disable-next-line security/detect-non-literal-fs-filename -- a file listed under src/ a line above, never outside input.
-      FILED_IMPORT.test(readFileSync(path.join(SRC, file), 'utf8')),
-    )
-}
+/** The series filed but not open: none once every series has opened. */
+const CLOSED = SERIES.filter(({ open }) => !open)
 
 describe('the runtime series registry', () => {
   it('returns public metadata without falling back for an unknown series', () => {
@@ -45,19 +23,21 @@ describe('the runtime series registry', () => {
     expect(first.series).toBe(ONE_PIECE_SERIES)
   })
 
-  it('loads a series filed but not open for the tests and gates alone', async () => {
-    // Hunter x Hunter is filed and swept, and opens with #763.
-    expect(descriptionOf('hunter-x-hunter')).toBeNull()
-    await expect(archiveOf('hunter-x-hunter')).rejects.toThrow('Unknown series')
-    await expect(filedArchiveOf('hunter-x-hunter')).resolves.toMatchObject({
-      series: { slug: 'hunter-x-hunter' },
-    })
-  })
-
-  it('leaves the filed loader and list to the tests, the gates and the scripts', () => {
-    // A reader path that imported either could reach a series not open.
-    expect(readerImports()).toStrictEqual([])
-  })
+  // While no series is closed there is nothing to gate; the source of the
+  // gate is held by ESLint (`no-restricted-imports` on `SERIES` and
+  // `filedArchiveOf` outside the tests, gates and scripts).
+  it.skipIf(CLOSED.length === 0)(
+    'loads a series filed but not open for the tests and gates alone',
+    async () => {
+      for (const { slug } of CLOSED) {
+        expect(descriptionOf(slug), slug).toBeNull()
+        await expect(archiveOf(slug), slug).rejects.toThrow('Unknown series')
+        await expect(filedArchiveOf(slug), slug).resolves.toMatchObject({
+          series: { slug },
+        })
+      }
+    },
+  )
 
   it('rejects unknown slugs before choosing any dynamic module', async () => {
     await expect(archiveOf('missing-series')).rejects.toThrow('Unknown series')

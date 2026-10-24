@@ -154,6 +154,9 @@ describe.each(LOADED_SERIES)(
         (entity) => archive.dossierOf(entity) ?? [],
       )
       const bounties = dossiers.filter(({ bounty }) => bounty !== undefined)
+      const eaters = dossiers.filter(
+        ({ devilFruit }) => devilFruit !== undefined,
+      )
 
       expect(
         entities.filter((entity) => !kinds.includes(entity.kind)),
@@ -164,6 +167,7 @@ describe.each(LOADED_SERIES)(
       expect(slices.filler !== undefined).toBe(features.filler)
       expect(slices.factions !== undefined).toBe(features.factions)
       expect(bounties.length > 0).toBe(features.bounty)
+      expect(eaters.length > 0).toBe(features.fruits)
     })
 
     it('ends its demo the episode and the chapter before its second saga', () => {

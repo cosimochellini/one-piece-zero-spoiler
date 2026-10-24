@@ -27,6 +27,7 @@ import type {
 } from '~/lib/view/records'
 
 import { handleOf } from './handle.server'
+import { printedFaction } from './printed.server'
 import { characterOf, deferredOf, fruitOf, specimenOf } from './project.server'
 import type { Reader } from './reader.server'
 import { type SagaStart, sagaStarts } from './sagaLabels.server'
@@ -233,7 +234,9 @@ function factionGroupsOf(r: Reader): FruitFactionView[] {
 
 /** The groups an open eater stands in: their factions, or `null` for none yet. */
 function groupsOfEater(eater: Entity, r: Reader): (Faction | null)[] {
-  const factions = r.archive.factionsOf(r, eater) ?? []
+  const factions = (r.archive.factionsOf(r, eater) ?? []).map((group) =>
+    printedFaction(group),
+  )
 
   return factions.length === 0 ? [null] : factions
 }

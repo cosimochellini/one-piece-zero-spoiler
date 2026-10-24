@@ -59,9 +59,6 @@ const TITLES = {
     'ryuma': 'Ryuma (Zombie)',
     'sodom-and-gomorrah': ['Sodom', 'Gomorrah'],
     'water-seven-arc': 'Water 7 Arc',
-    // The English Hunter x Hunter Wiki files the seventh arc as the Succession
-    // Contest arc; the archive names it the Dark Continent Expedition (#758).
-    'dark-continent-expedition-arc': 'Succession Contest arc',
   },
   'hunter-x-hunter': {
     // The wiki's arc titles say more than an arc's name may, since the name
