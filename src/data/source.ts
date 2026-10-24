@@ -20,6 +20,12 @@ import type { BookSection, Entity, SeriesArchive } from './types'
  * the reader does not have is left out, by the gate of the entry that names
  * it, which carries the eater's source as well as its own.
  *
+ * A link two entries tell, the first of one source only (`earliestOf`), and a
+ * fruit named so (`openedBy`), keep one gate for both copies: each unit's
+ * threshold from the first entry its source tells. So a covered eater or
+ * fruit carries, in the unit its reader does not count in, a number taken
+ * from the other source. It is never printed and names nothing.
+ *
  * `null` is the copy for a reader with no bookmark, who counts in neither
  * source and so has neither kind.
  */
@@ -81,28 +87,29 @@ function copyIn(archive: SeriesArchive, source: null | Source): SeriesArchive {
 
 /**
  * The shelves without the other source's records. A character shelved under
- * an arc this source does not tell moves to the shelf before it, or to the
- * one after when there is none before; a shelf left empty is left out, as in
- * `~/data/series/one-piece/characters`. The shelf before is the nearest one
- * kept, which is the rule's own answer unless a told arc between the two has
- * no shelf of its own.
+ * an arc this source does not tell moves to the shelf before it, the nearest
+ * one kept: the rule's own answer unless a told arc between the two has no
+ * shelf of its own. A shelf left empty is left out, as in
+ * `~/data/series/one-piece/characters`. A first arc of one source only that
+ * shelves characters of both has no shelf before it and none that would not
+ * open after them, so it throws rather than shelve them wrong.
  */
 function shelvedIn(
   sections: BookSection[],
   has: (entity: Entity) => boolean,
 ): BookSection[] {
   const shelves: BookSection[] = []
-  let unshelved: Entity[] = []
   for (const { arc, characters } of sections) {
     const kept = characters.filter((character) => has(character))
     const last = shelves.at(-1)
     if (has(arc)) {
-      shelves.push({ arc, characters: [...unshelved, ...kept] })
-      unshelved = []
-    } else if (last === undefined) {
-      unshelved = [...unshelved, ...kept]
-    } else {
+      shelves.push({ arc, characters: kept })
+    } else if (last !== undefined) {
       last.characters.push(...kept)
+    } else if (kept.length > 0) {
+      throw new Error(
+        `${arc.id} opens the shelves but one source alone tells it`,
+      )
     }
   }
 

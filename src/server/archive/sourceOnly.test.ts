@@ -219,7 +219,7 @@ describe('the archive a reader is handed', () => {
     expect(readerFor(BASE, null, 'en').archive).not.toBe(anime)
   })
 
-  it('moves the characters of a first shelf it drops onto the shelf after', () => {
+  it('refuses to shelve the characters of a first arc it drops', () => {
     const [first, second, rest] = firstShelves()
     const archive = {
       ...BASE,
@@ -229,13 +229,9 @@ describe('the archive a reader is handed', () => {
         ...rest,
       ],
     }
-    const [shelf] = readerFor(archive, at('manga', 1), 'en').archive
-      .bookSections
 
-    expect(shelf?.arc).toBe(second.arc)
-    expect(shelf?.characters).toStrictEqual([
-      ...first.characters,
-      ...second.characters,
-    ])
+    expect(() => readerFor(archive, at('manga', 1), 'en')).toThrow(
+      /one source alone/u,
+    )
   })
 })
