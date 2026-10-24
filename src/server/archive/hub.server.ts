@@ -1,17 +1,26 @@
+import { sourceOf } from '~/data/reveal'
+import { archiveIn } from '~/data/source'
 import type { SeriesArchive } from '~/data/types'
 import { type Bookmark, parseBookmark } from '~/lib/progress/episode'
 import type { HubSeries } from '~/lib/view/hub'
 
-/** A series' card on the hub, at the reader's saved bookmark on it. */
+/**
+ * A series' card on the hub, at the reader's saved bookmark on it. The count
+ * is of the entries the reader's source tells (`~/data/source`): a chapter
+ * reader's leaves out the anime's own records, and a reader with no bookmark,
+ * who counts in neither source, gets only the records both tell.
+ */
 export function hubSeries(
-  { entities, series }: SeriesArchive,
+  archive: SeriesArchive,
   bookmark: Bookmark,
 ): HubSeries {
+  const { series } = archive
+
   return {
     slug: series.slug,
     name: series.name,
     theme: series.theme,
-    count: entities.length,
+    count: archiveIn(archive, sourceOf(bookmark)).entities.length,
     bookmark,
   }
 }

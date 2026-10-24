@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
 import { ONE_PIECE_LOADED } from '~/test/series'
+import { plant } from '~/test/sourceOnly'
 
 import { hubFor, hubSeries } from './hub.server'
 
@@ -46,5 +47,43 @@ describe('hubFor', () => {
 
   it.each(cases)('shows no bookmark for $case', ({ jar }) => {
     expect(bookmarkIn(jar)).toBeNull()
+  })
+})
+
+describe('the count on the hub', () => {
+  const { archive } = ONE_PIECE_LOADED
+  const anime = plant(archive, 'anime').archive
+  const manga = plant(archive, 'manga').archive
+  const planted = anime.entities.length - archive.entities.length
+  const countAt = (
+    base: typeof archive,
+    bookmark: Parameters<typeof hubSeries>[1],
+  ): number => hubSeries(base, bookmark).count
+
+  it('plants a record of one source of every kind', () => {
+    expect(planted).toBeGreaterThan(0)
+  })
+
+  it.each([
+    { reader: 'an episode', bookmark: { mode: 'episode', episode: 1 } },
+    { reader: 'a season', bookmark: { mode: 'season', season: 1, episode: 1 } },
+  ] as const)(
+    "counts the anime's own records for $reader reader",
+    ({ bookmark }) => {
+      expect(countAt(anime, bookmark)).toBe(archive.entities.length + planted)
+      expect(countAt(manga, bookmark)).toBe(archive.entities.length)
+    },
+  )
+
+  it("counts the manga's own records for a chapter reader", () => {
+    const bookmark = { mode: 'chapter', chapter: 1 } as const
+
+    expect(countAt(manga, bookmark)).toBe(archive.entities.length + planted)
+    expect(countAt(anime, bookmark)).toBe(archive.entities.length)
+  })
+
+  it('counts only what both sources tell for a reader with no bookmark', () => {
+    expect(countAt(anime, null)).toBe(archive.entities.length)
+    expect(countAt(manga, null)).toBe(archive.entities.length)
   })
 })
