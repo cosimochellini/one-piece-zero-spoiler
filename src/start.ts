@@ -4,8 +4,15 @@ import {
   createStart,
 } from '@tanstack/react-start'
 
+import { descriptionOf } from '~/data/series'
 import { SERVER_FN_BASE } from '~/lib/endpoints'
+import { legacyRedirect } from '~/lib/legacyRedirect'
 import { linkRedirect } from '~/lib/progress/linkBookmark'
+import {
+  migrateBookmark,
+  withMigratedCookies,
+} from '~/lib/progress/migrateBookmark'
+import { seriesSlugFromPath } from '~/lib/progress/series'
 
 // Whether this instance has answered a request yet.
 const instance = { warm: false }
@@ -14,9 +21,9 @@ const instance = { warm: false }
  * The Start instance.
  *
  * It exists for its middlewares. One turns a shared link such as
- * `/?ep=650` into the bookmark cookie and redirects to the same address
- * without it, before routing, so even the bare `/` keeps the link's bookmark
- * through its locale redirect.
+ * `/en?ep=650` into the bookmark cookie and redirects to the same address
+ * without it, before routing. Links on pages without a series set nothing.
+ * The same middleware migrates legacy One Piece cookies before loaders run.
  *
  * Another is the CSRF check. Every record the reader has not reached now
  * lives on the server and is fetched by a server function, so those endpoints
@@ -55,7 +62,19 @@ export const startInstance = createStart(() => {
         return timed
       }),
       createMiddleware({ type: 'request' }).server(
-        async ({ next, request }) => linkRedirect(request) ?? next(),
+        async ({ next, request }) => {
+          const cookies = migrateBookmark(request)
+          const url = new URL(request.url)
+          const slug = seriesSlugFromPath(url.pathname)
+          const linked =
+            legacyRedirect(request)
+            ?? linkRedirect(request, slug === null ? null : descriptionOf(slug))
+          if (linked !== undefined) {
+            return withMigratedCookies(linked, cookies)
+          }
+          const { response } = await next()
+          return withMigratedCookies(response, cookies)
+        },
       ),
       createCsrfMiddleware({
         filter: ({ request }) => {

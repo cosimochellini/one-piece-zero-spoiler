@@ -13,24 +13,27 @@
 // what it is (`namingChapterOf`, or `NAMED_AT` where that was checked by
 // hand), because a fruit is filed where it is named, not where it is first
 // used. A fruit's chapter is derived from the dossier
-// entry that names it (`src/data/entities.ts`), so a too-low fruit is
+// entry that names it (`src/data/series/one-piece/entities.ts`), so a too-low fruit is
 // fixed by pinning `chapter:` on that entry, not here.
 //
 // Episodes are read from the same line and fail the same way: a record
 // filed below the wiki's first episode opens before the anime shows it,
 // unless a hand check found the wiki late (`EPISODE_KEPT`, issue #175).
 //
-// Run it with `npm run verify:chapters`. It talks to the network, so it is not
-// part of `npm run check` or CI; the pages it reads are cached under
-// `.gate/wiki/` (`./wiki.mjs`) and never expire, so delete that folder to
-// read the wiki afresh, for instance after new chapters come out.
+// Run it with `npm run verify:chapters`, or `npm run verify:chapters --
+// --series <slug>` for a series of `src/data/series/index.ts` other than One
+// Piece. It talks to the network, so it is not part of `npm run check` or CI;
+// the pages it reads are cached under `.gate/wiki/<slug>/` (`./wiki.mjs`) and
+// never expire, so delete that folder to read the wiki afresh, for instance
+// after new chapters come out.
 import process from 'node:process'
 import { pathToFileURL } from 'node:url'
 
-import { importArchive } from './archive-loader.mjs'
-import { chapterTexts, fetchPage } from './wiki.mjs'
+import { importArchive, seriesOrExit } from './archive-loader.mjs'
+import { chapterTexts, fetchPage, wikiOf } from './wiki.mjs'
 
 /** @typedef {import('./wiki.mjs').Page} Page */
+/** @typedef {import('./wiki.mjs').Wiki} Wiki */
 
 /**
  * Records whose English name is not their wiki page. A list names the pages
@@ -162,7 +165,7 @@ function storyChapterOf(first) {
  * artificial fruit, chapter 684, its debut), or a fruit whose full name the
  * story never says, held at the chapter that shows the power and who has it
  * (Jack's Zou Zou class, chapter 810; Tama's Kibi Kibi, chapter 911, its
- * debut; the rule is in `src/data/entities.ts`).
+ * debut; the rule is in `src/data/series/one-piece/entities.ts`).
  * @type {Record<string, number>}
  */
 const NAMED_AT = {
@@ -296,11 +299,11 @@ function numberAfter(pattern, text) {
 /**
  * The chapter the wiki gives one record, trying each alternative in turn.
  * @param {{ id: string, kind: string, name: { en: string, it: string } }} record The record.
- * @param {Map<number, string>} chapters Every chapter's wikitext.
+ * @param {{ chapters: Map<number, string>, wiki: Wiki }} read Every chapter's wikitext, and the wiki.
  * @returns {Promise<Source>} The page(s) read and the chapter, or neither.
  */
-async function sourceOf(record, chapters) {
-  const pages = await pagesOf(record)
+async function sourceOf(record, { chapters, wiki }) {
+  const pages = await pagesOf(record, wiki)
 
   return pages === undefined ? {} : readingOf(record, pages, chapters)
 }
@@ -309,11 +312,14 @@ async function sourceOf(record, chapters) {
  * The wiki pages of one record: the first alternative of `titlesOf` whose
  * pages all exist.
  * @param {{ id: string, kind: string, name: { en: string, it: string } }} record The record.
+ * @param {Wiki} wiki The series' wiki.
  * @returns {Promise<Page[] | undefined>} The pages, or nothing when none resolves.
  */
-export async function pagesOf(record) {
+export async function pagesOf(record, wiki) {
   for (const titles of titlesOf(record)) {
-    const pages = await Promise.all(titles.map((title) => fetchPage(title)))
+    const pages = await Promise.all(
+      titles.map((title) => fetchPage(title, wiki)),
+    )
     if (pages.every((page) => page !== undefined)) {
       return pages
     }
@@ -372,17 +378,19 @@ export function verdictOf(filed, source) {
 /** @typedef {{ id: string, kind: string, filed: number, episode: number, page?: string, wiki?: number, wikiEpisode?: number, verdict: string, episodeVerdict: string }} Row */
 
 /**
- * Every record against its page, in archive order.
+ * Every record of the series on the command line against its page, in
+ * archive order.
  * @returns {Promise<Row[]>} One row per record.
  */
 async function verify() {
-  const { entities } = await importArchive('data/entities.ts')
+  const series = await seriesOrExit()
   const { CHAPTER_CEILING } = await importArchive('lib/progress/bounds.ts')
-  const chapters = await chapterTexts(CHAPTER_CEILING)
+  const wiki = wikiOf(series)
+  const chapters = await chapterTexts(CHAPTER_CEILING, wiki)
   /** @type {Row[]} */
   const rows = []
-  for (const record of entities) {
-    const source = await sourceOf(record, chapters)
+  for (const record of series.archive.entities) {
+    const source = await sourceOf(record, { chapters, wiki })
 
     rows.push({
       id: record.id,

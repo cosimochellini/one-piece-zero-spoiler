@@ -1,13 +1,17 @@
 import { createContext, use, useCallback } from 'react'
 
-import { useT } from '~/i18n/LocaleContext'
+import { useLocale, useT } from '~/i18n/LocaleContext'
+import type { Locale } from '~/i18n/locales'
 
 import { type Bookmark, modeOf } from './episode'
+import { type BookmarkSeries, ONE_PIECE_BOOKMARK } from './series'
 import type { Gated } from './spoiler'
 import { describeThreshold, type ThresholdSentence } from './threshold'
 
 /** What the provider puts on the context: the bookmark, and how to move it. */
 export interface BookmarkContextValue {
+  /** The series selected by the current route; none on shared site pages. */
+  series: BookmarkSeries | null
   /** The point the pages stand at: the saved bookmark, or a trial point. */
   bookmark: Bookmark
   /**
@@ -43,6 +47,16 @@ export function useBookmark(): BookmarkContextValue {
   return value
 }
 
+/** The selected series and language for content links. */
+export function useSeriesParams(): { locale: Locale; series: string } {
+  const { series } = useBookmark()
+  const { locale } = useLocale()
+  if (series === null) {
+    throw new Error('A series link needs a selected series')
+  }
+  return { locale, series: series.slug }
+}
+
 /**
  * Names a record's threshold in the unit the reader counts in, so a card
  * says "Chapter 218" to a manga reader and "Episode 130" to everyone else.
@@ -52,11 +66,18 @@ export function useThreshold(): (
   gated: Gated,
 ) => string {
   const t = useT()
-  const mode = modeOf(useBookmark().bookmark)
+  const { bookmark, series } = useBookmark()
+  const mode = modeOf(bookmark)
 
   return useCallback(
     (sentence: ThresholdSentence, gated: Gated) =>
-      describeThreshold({ gated, mode, sentence, t }),
-    [t, mode],
+      describeThreshold({
+        gated,
+        mode,
+        sentence,
+        t,
+        series: series ?? ONE_PIECE_BOOKMARK,
+      }),
+    [t, mode, series],
   )
 }

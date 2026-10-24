@@ -29,8 +29,8 @@ export async function shotRows(args) {
   if (positionals.length === 0) {
     throw new Error('Usage: npm run art:shots -- <id> [<id>…]')
   }
-  const { getEntity } = await importArchive('data/entities.ts')
-  const { datedOf } = await importArchive('data/dated.ts')
+  const { getEntity } = await importArchive('data/series/one-piece/entities.ts')
+  const { datedOf } = await importArchive('data/series/one-piece/dated.ts')
   const { parseBookmark } = await importArchive('lib/progress/episode.ts')
   const { reveal } = await importArchive('data/reveal.ts')
   return positionals.flatMap((id) => {
@@ -134,7 +134,7 @@ async function drawingShot(page, selector) {
 export async function captureBookmark(browser, origin, row, bookmark) {
   await using context = await browser.createBrowserContext()
   await context.setCookie({
-    name: 'opzs_ep',
+    name: 'zs_one-piece',
     value: bookmark.value,
     url: origin,
     path: '/',
@@ -144,9 +144,9 @@ export async function captureBookmark(browser, origin, row, bookmark) {
   await page.emulateMediaFeatures([
     { name: 'prefers-reduced-motion', value: 'reduce' },
   ])
-  await navigate(page, `${origin}/en/characters/${row.id}`)
+  await navigate(page, `${origin}/one-piece/en/characters/${row.id}`)
   const crest = bookmark.open ? await drawingShot(page, `main ${ART}`) : null
-  await navigate(page, `${origin}/en/characters`)
+  await navigate(page, `${origin}/one-piece/en/characters`)
   // Featured characters also have crest links; only a tile's SVG is a direct child of its frame.
   const tile =
     bookmark.open ?

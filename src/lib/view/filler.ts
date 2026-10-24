@@ -1,7 +1,7 @@
 /**
  * What the filler guide is allowed to know.
  *
- * The same seam as `./records`: the entries live in `~/data/filler` on the
+ * The same seam as `./records`: the entries live in `~/data/series/one-piece/filler` on the
  * server, and the page receives these shapes, with the strings already in the
  * route locale. A row the reader has not reached carries its position and
  * its kind, which are what the skip ranges print anyway, and nothing else.

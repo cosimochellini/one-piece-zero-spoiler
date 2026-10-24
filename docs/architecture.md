@@ -8,7 +8,7 @@ code comments next to the code they explain.
 
 The archive is 737 records and their line drawings, about 2.7 MB of TypeScript.
 None of it is compiled into the client bundle. A route loader reads the
-`opzs_ep` cookie from the request and returns the records at or below the
+`zs_one-piece` cookie from the request and returns the records at or below the
 bookmark, with their strings already in the page's locale and their drawings
 already turned into stroke paths. A record the reader has not reached is sent as
 its kind, two thresholds and an opaque handle:
@@ -36,15 +36,62 @@ The cost is one round trip. Moving the bookmark used to be instant because every
 record was already in the browser. Now it is a request, made inside a
 `useTransition`, so the current page stays on screen until the new one is ready.
 
-A link can set the bookmark as well: `?ep=650`, `?s=2&ep=3` or `?ch=1044` on any
-page. A request middleware in `src/start.ts` runs before routing, writes the
-`opzs_ep` cookie and sends the reader on to the same address without those
-parameters, so the page that renders reads the new cookie like any other, and a
-reload cannot undo a bookmark moved since. The hop is a meta refresh rather than
-a 302, because Netlify appends the request's query string to any `Location`
-without one, and the link would redirect to itself. A value outside the dialog's
-ranges, a season without an episode, a chapter next to an episode or a repeated
-parameter leaves the cookie as it was and still drops the parameters.
+A link can set the bookmark as well: `?ep=650`, `?s=2&ep=3` or `?ch=1044` on a
+series content page. Root, legal, privacy and unknown paths drop these
+parameters without creating a bookmark. A request middleware in `src/start.ts`
+runs before routing, writes the `zs_one-piece` cookie and sends the reader on to
+the same address without those parameters, so the page that renders reads the
+new cookie like any other, and a reload cannot undo a bookmark moved since. The
+hop is a meta refresh rather than a 302, because Netlify appends the request's
+query string to any `Location` without one, and the link would redirect to
+itself. A value outside the dialog's ranges, a season without an episode, a
+chapter next to an episode or a repeated parameter leaves the cookie as it was
+and still drops the parameters.
+
+Each series has its own saved and trial cookies, ranges, demo bounds and season
+table in the public bookmark metadata (`src/lib/progress/series.ts`), separate
+from the server-only archive. Series content lives under `/<series>/<locale>/…`;
+`/<locale>` is the shared hub, and legal/privacy remain shared. Unknown series
+and locales answer 404. A request to a legacy locale-first content URL receives
+a 301 with the same path and exact query under `/one-piece`, before bookmark
+parameters are consumed. `/<series>` negotiates the language and answers 302.
+
+`src/data/series/index.ts` is the single registry used by runtime, scripts and
+gates. Its public descriptions contain no records; each archive is loaded by a
+literal dynamic import only when requested. The selected archive, bookmark and
+locale travel together on the server's `Reader`. Handles, filler ranges, canon
+arcs and sitemap entries are cached per loaded archive. One Piece keeps its
+deployed ordinal handles; every other series requires its own prefix, so handles
+cannot resolve through another series' table. Fallow forbids direct server
+imports from a series, and the archive gate checks the emitted server graph as
+well as client leak canaries.
+
+A record or a dated fact can exist in one source only (`source: 'anime'` or
+`'manga'` on the record or the entry; absent means both). An episode or season
+bookmark counts in the anime and a chapter bookmark in the manga; no bookmark
+counts in neither. `readerFor` hands each page the archive as the reader's
+source tells it (`src/data/source.ts`, built once per source and cached), so a
+record of the other source is in no list: it is never sent open or covered,
+never counted and has no handle, and its page answers 404. Handles are numbered
+within that copy, so no gap gives a record away. A fact's gate carries its
+source, so `reveal(bookmark).sees` never opens it for the other reader. Neither
+kind is in the demo or the sitemap. The chapter table takes no anchor from them,
+and a devil fruit opens in each unit only by the namings its source tells.
+
+Each public description names its colour theme. The theme is a full override of
+the `color` tokens in `src/styles/themes.ts`, set on `<html>` whenever the
+`/<series>` route matches, its 404s included. The defaults in
+`src/styles/tokens.stylex.ts` are the site's own neutral theme, worn by the hub,
+the legal notices and unknown addresses; One Piece's gold on night blue is its
+theme, not the site's. Layout, type and the drawing tints stay shared.
+
+The same request middleware reads legacy `opzs_ep` and `opzs_try` cookies once,
+validates them as One Piece bookmarks and writes `zs_one-piece` and
+`zs_one-piece_try`, then expires the legacy cookies. It updates the incoming
+cookie header before loaders run, so the first response keeps the old progress.
+An existing new cookie wins even when invalid; a valid shared-link bookmark wins
+over migration. Saved bookmarks keep their one-year lifetime, and trials remain
+session cookies.
 
 The landing page for a visitor with no bookmark is the one exception, and its
 limit is fixed. It sends East Blue (episodes 1–61, chapters 1–100) so a dial can
@@ -52,10 +99,10 @@ open and cover those records in the browser as it moves, and nothing past it:
 every record and every dated fact it carries is inside both limits, and past
 them there are only covered records and a count. A test holds the payload to
 that, in both units. An open card on that page links to its record's page on a
-trial: an `opzs_try` cookie with no `Max-Age`, which normally ends when the
-browser closes and counts as the bookmark only while there is no `opzs_ep`. A
-trial past East Blue or in seasons is ignored, so it cannot be used to reach
-anything the dial could not.
+trial: a `zs_one-piece_try` cookie with no `Max-Age`, which normally ends when
+the browser closes and counts as the bookmark only while there is no
+`zs_one-piece`. A trial past East Blue or in seasons is ignored, so it cannot be
+used to reach anything the dial could not.
 
 Search follows the same rule, by construction: a covered character is not on the
 page, so it cannot be found. Search matches only the epithets the reader has
@@ -65,24 +112,27 @@ folded, so an epithet the reader has not reached is not in the browser at all.
 
 The filler guide at `/filler` follows the same rule. It is not in the bar: the
 home page links to it from the welcome card and the filler warning. Its entries
-live in `src/data/filler.ts` and reach the page as a covered row until the
-reader gets there: the episode number and the kind, never the title or the plot.
-An entry opens at its own episode, or at the one a film or special is watched
-after. A chapter reader has no episode, so an entry opens for them at the later
-of two chapters: the one its canon arc opens at, and the last one the anime had
-adapted when the entry aired. The skip ranges and the strip of the whole series
-are numbers and kinds only, so they are sent at every bookmark. So are the saga
-names, canon and filler, by the owner's choice: a reader finds their way by
-them, and the titles and plots under them still wait. The countdown at the top,
-the reader's episode and the five after it, is built from the same rows, so a
-cell past the bookmark is a covered row like any other. A chapter reader gets no
-countdown, because the manga has no filler. The home page's filler warning uses
-the same runs and cells, as an episode and a kind each, and shows only when the
-reader is inside a run or the next one starts within the six cells.
+live in `src/data/series/one-piece/filler.ts` and reach the page as a covered
+row until the reader gets there: the episode number and the kind, never the
+title or the plot. An entry opens at its own episode, or at the one a film or
+special is watched after. A chapter reader has no episode, so an entry opens for
+them at the later of two chapters: the one its canon arc opens at, and the last
+one the anime had adapted when the entry aired. The skip ranges and the strip of
+the whole series are numbers and kinds only, so they are sent at every bookmark.
+So are the saga names, canon and filler, by the owner's choice: a reader finds
+their way by them, and the titles and plots under them still wait. The countdown
+at the top, the reader's episode and the five after it, is built from the same
+rows, so a cell past the bookmark is a covered row like any other. A chapter
+reader gets no countdown, because the manga has no filler. The home page's
+filler warning uses the same runs and cells, as an episode and a kind each, and
+shows only when the reader is inside a run or the next one starts within the six
+cells.
 
 ## The archive in numbers
 
 <!-- Generated by `npm run docs:counts` from the archive. Do not edit by hand. -->
+
+### `one-piece`
 
 | Thing               | Count                                                   |
 | ------------------- | ------------------------------------------------------- |
@@ -96,11 +146,11 @@ reader is inside a run or the next one starts within the six cells.
 
 <!-- End of the generated counts. -->
 
-The table is generated by `npm run docs:counts`, and `npm run check` fails when
-it is stale. `npx vitest list --staticParse=false` lists the tests. Coverage,
-measured on 2026-10-05, was 80.8 % statements, 78.2 % branches and 82.5 %
-functions, scripts under `scripts/` included. The live counts are on the site:
-each page says how many entries it has.
+The tables, one per series, are generated by `npm run docs:counts`, and
+`npm run check` fails when one is stale. `npx vitest list --staticParse=false`
+lists the tests. Coverage, measured on 2026-10-05, was 80.8 % statements, 78.2 %
+branches and 82.5 % functions, scripts under `scripts/` included. The live
+counts are on the site: each page says how many entries it has.
 
 ## Drawings
 
@@ -128,13 +178,13 @@ written by hand.
 
 Every devil fruit has a hand-drawn composition. Fruit + power drawings share
 five silhouettes and a segmented round body through the body kit
-(`src/data/art/fruits/kit.ts`), with a crown, a highlight, hatching and curls
-for volume. The power is the single accent and acts on the fruit's own body.
-Real-fruit drawings show the fruit itself without a power, from the episode and
-chapter that show it. Until then a declared awakening can redraw the power. Once
-the real fruit is drawn, later identity turns keep that drawing. Every fruit
-path uses absolute commands, which lets the drawing tests read its numbers as
-coordinates and check the 160×200 bounds.
+(`src/data/series/one-piece/art/fruits/kit.ts`), with a crown, a highlight,
+hatching and curls for volume. The power is the single accent and acts on the
+fruit's own body. Real-fruit drawings show the fruit itself without a power,
+from the episode and chapter that show it. Until then a declared awakening can
+redraw the power. Once the real fruit is drawn, later identity turns keep that
+drawing. Every fruit path uses absolute commands, which lets the drawing tests
+read its numbers as coordinates and check the 160×200 bounds.
 
 ## Stack
 
@@ -177,13 +227,18 @@ checked on every run:
 - nothing in a payload names a record the reader has not reached, no handle can
   be turned back into a name, and a covered record has no id. A single handle
   that happened to be `btoa(id)` would undo the whole scheme. One sweep
-  (`src/server/archive/payloads.test.ts`) asks every server function for its
-  payload at about fifty bookmarks, both sides of every saga's start in both
-  units, and in both locales, and walks it for the id or the name of any record
-  not reached. A page asked for by id is asked for one id in seven at each
-  bookmark, a different seventh each time. A test fails when `src/server/api.ts`
-  gains a server function the sweep does not know;
-- ids are unique, thresholds are within the allowed range, and every record is
+  (`src/server/archive/payloads.test.ts`) runs for every series in the series
+  list (`src/data/series/index.ts`, for runtime, the tests, the gates and the
+  scripts). It asks every server function for its payload at the series' own
+  bookmarks, about fifty for One Piece (both sides of every saga's start in both
+  units), and in both locales, and walks it for the id or the name of any record
+  not reached, and for any id, name or drawing of another series. A page asked
+  for by id is asked for one id in seven at each bookmark, a different seventh
+  each time. A test fails when `src/server/api.ts` gains a server function the
+  sweep does not know, or when a listed series has no sweep;
+- every folder under `src/data/series/` is in the list and has a leak scan of
+  its own, and for every listed series (`src/data/series/index.test.ts`) ids are
+  unique, thresholds are within the allowed range, and every record is
   translated in both locales;
 - each record has its own drawing, never one borrowed from another record;
 - every timeline, a character's, a ship's or a redrawing's, is in ascending
@@ -199,9 +254,9 @@ checked on every run:
 - every affiliation entry of a devil fruit eater carries the factions its prose
   names, as ids from a closed vocabulary (`Faction` in
   `src/lib/view/records.ts`, labelled in both dictionaries), and every id in the
-  vocabulary is used (`src/data/factions.test.ts`). A tag never says more than
-  its entry: a former member, a prisoner, a vague line or a group of one eater
-  is `independent`;
+  vocabulary is used (`src/data/series/one-piece/factions.test.ts`). A tag never
+  says more than its entry: a former member, a prisoner, a vague line or a group
+  of one eater is `independent`;
 - every place belongs to an arc that opens no later than the place itself,
   because the place page shows that arc;
 - every later visit to a place comes after the place in both units, in order, at
@@ -216,12 +271,13 @@ checked on every run:
 - every devil fruit opens no later than any character entry that names it, which
   lets a character page link to its fruit without checking anything, and no
   sooner either, in both units, so a fruit page never tells a reader what the
-  story has not. This one holds by construction: `src/data/records/fruits.ts`
-  files no thresholds, and `src/data/entities.ts` reads them off the eaters'
+  story has not. This one holds by construction:
+  `src/data/series/one-piece/records/fruits.ts` files no thresholds, and
+  `src/data/series/one-piece/entities.ts` reads them off the eaters'
   `devilFruit` entries, the earliest episode and the earliest chapter one opens
   at. The chapter table is built first, from the records as they are filed
-  (`src/data/sagas.ts`), so the fruits can be read off it. A test opens every
-  fruit's page with its eater's at both thresholds.
+  (`src/data/series/one-piece/sagas.ts`), so the fruits can be read off it. A
+  test opens every fruit's page with its eater's at both thresholds.
 
 The self-referential one: the pull request title validator reads the release
 configuration and checks that both accept exactly the same commit types. If they
@@ -239,8 +295,11 @@ banned phrase in either language.
   page inert, Escape closes it, and focus returns to where it was.
 - Covered content has `inert` and `aria-hidden`, so neither Tab nor a screen
   reader can reach a spoiler.
-- Contrast is measured and recorded next to the tokens: 17.4:1 for body text,
-  12.2:1 for the accent.
+- Contrast is measured and recorded next to the tokens of every theme, and
+  `src/styles/themes.test.tsx` holds each one to its floors. One Piece: 17.4:1
+  for body text, 12.2:1 for the accent. The neutral theme of the pages with no
+  series: 16.5:1 and 19.7:1; its accent is within 3:1 of the text, so its links
+  keep their underline, and the test fails a shared page whose link does not.
 
 ## Security
 
@@ -299,14 +358,14 @@ tapped a link a friend sent. The list is in `src/lib/crawler.ts`.
   `src/lib/view/drawings.ts`, `drawingsFor` on the server, which answers only
   records the reader has reached). A test in `slices.test.ts` holds each list
   page to 26 KB of inline strokes at the latest bookmark. Deferring the fruits
-  took `/en/fruits` at episode 1150 from 200 KB to 39 KB gzip (#610).
+  took `/one-piece/en/fruits` at episode 1150 from 200 KB to 39 KB gzip (#610).
 - The browser skips the layout and paint of list items far from the screen
   (`content-visibility: auto` on a character tile, a record tile and a fruit's
   drawing margin). Each stands in at its own exact height, the same at every
   width, so the page keeps its height and Back returns to the same tile. On a
   phone with the CPU slowed four times, layout, style and paint took 503 → 159
-  ms on `/en/characters`, 376 → 193 ms on `/en/places` and 194 → 167 ms on
-  `/en/fruits` (#621).
+  ms on `/one-piece/en/characters`, 376 → 193 ms on `/one-piece/en/places` and
+  194 → 167 ms on `/one-piece/en/fruits` (#621).
 - Search runs on names folded once by the server, so a keystroke costs one
   folded query and a few hundred `indexOf` calls. The list below the field is
   deferred; the field itself never is.
@@ -327,10 +386,10 @@ connection, medians of six runs, before the fixes below (#621):
 | ------------------------------- | ------------------ | ------------------- | -------- |
 | `/robots.txt?r=…`, a cache miss | 0.21 s             | 0.00 s              | 0.21 s   |
 | `/en`                           | 0.35 s             | 0.14 s              | 0.21 s   |
-| `/en/characters/nami`           | 0.30 s             | 0.08 s              | 0.21 s   |
-| `/en/fruits`                    | 0.62 s             | 0.38 s              | 0.23 s   |
-| `/en/characters`                | 0.70 s             | 0.48 s              | 0.22 s   |
-| `/en/places`                    | 0.87 s             | 0.59 s              | 0.26 s   |
+| `/one-piece/en/characters/nami` | 0.30 s             | 0.08 s              | 0.21 s   |
+| `/one-piece/en/fruits`          | 0.62 s             | 0.38 s              | 0.23 s   |
+| `/one-piece/en/characters`      | 0.70 s             | 0.48 s              | 0.22 s   |
+| `/one-piece/en/places`          | 0.87 s             | 0.59 s              | 0.26 s   |
 
 What this says:
 
@@ -340,10 +399,10 @@ What this says:
   moved, so this is the floor. (#610 read the body size as the cost; with the
   header in place, that turned out to be wrong.)
 - **The rest is the render, and it grows with the number of elements.** At
-  episode 1, with almost nothing open, `/en/characters` still took 0.39 s for
-  more than five hundred covered cards. A CPU profile puts most of a render in
-  React writing and encoding HTML, and the next largest share in serialising the
-  loader data.
+  episode 1, with almost nothing open, `/one-piece/en/characters` still took
+  0.39 s for more than five hundred covered cards. A CPU profile puts most of a
+  render in React writing and encoding HTML, and the next largest share in
+  serialising the loader data.
 - **Production rendered with React's development build.** Netlify does not set
   `NODE_ENV` inside a function, and the server build left React, TanStack and
   StyleX as packages that choose their build from it at run time. The HTML is
@@ -360,21 +419,22 @@ What was decided:
 - **The server build bundles its dependencies** (`ssr.noExternal` in
   `vite.config.ts`), so the production branch is written in at build time.
   Locally, with `NODE_ENV` unset as on Netlify, renders take about half as long
-  (`/en/characters` 62 → 31 ms, `/en/places` 36 → 18 ms) and a cold start's
-  first response comes in 0.26 s instead of 0.45 s.
+  (`/one-piece/en/characters` 62 → 31 ms, `/one-piece/en/places` 36 → 18 ms) and
+  a cold start's first response comes in 0.26 s instead of 0.45 s.
 - **An open record has no curtain.** Every card the server sent open used to
   carry the hidden "Show anyway" button that lifts the fog, kept only so a
-  reveal could fade. It was a fifth of each list page: `/en/characters` went
-  from 1,165 to 902 KB raw, `/en/places` from 713 to 555 KB, `/en/fruits` from
-  381 to 256 KB.
+  reveal could fade. It was a fifth of each list page:
+  `/one-piece/en/characters` went from 1,165 to 902 KB raw,
+  `/one-piece/en/places` from 713 to 555 KB, `/one-piece/en/fruits` from 381 to
+  256 KB.
 - **Smaller pages first, then fewer elements.** Deferring the fruit drawings cut
   that page by 60% raw (#610). Moving the shared stroke classes from every
   `<path>` to one `<g>` was measured and dropped: most drawings on a list are
   deferred, and an empty `<g>` on each of them costs more than the classes it
   saves.
 - **No Edge Functions for now.** Production renders 5–20 times slower than a
-  laptop, so even a 31 ms local `/en/characters` would not fit the 50 ms Edge
-  CPU limit, and the archive would have to ship in the edge bundle.
+  laptop, so even a 31 ms local `/one-piece/en/characters` would not fit the 50
+  ms Edge CPU limit, and the archive would have to ship in the edge bundle.
 
 ## Localization
 
@@ -413,12 +473,16 @@ client payload catches anything large that neither pattern matches. ESLint
 catches the same mistake earlier, at the import.
 
 fallow checks the structure of the codebase instead, with every rule that
-applies set to error: nine zones with a declared import direction between them,
-no export that nothing reads (entry files included), no duplicated block of five
-lines or more outside the tests, near-identical ones included, and limits of 8
-cyclomatic and 8 cognitive complexity. Its CRAP score reads the coverage
-`npm test` writes, so a complex function with no test fails the gate. A second
-run, `fallow security --gate new`, fails a branch that adds a command-injection,
+applies set to error: twelve zones with a declared import direction between them
+(the archive is a shared engine in `src/data` and one zone per series under
+`src/data/series`, no series imports another, no zone imports the series list,
+and only the record shapes in `src/data/types.ts`, a zone of their own, may take
+a type from One Piece until #758), no export that nothing reads (entry files
+included), no duplicated block of five lines or more outside the tests,
+near-identical ones included, and limits of 8 cyclomatic and 8 cognitive
+complexity. Its CRAP score reads the coverage `npm test` writes, so a complex
+function with no test fails the gate. A second run,
+`fallow security --gate new`, fails a branch that adds a command-injection,
 path-traversal, secret or other sink against `origin/main`. Two tests fail when
 an upgrade of either tool ships a rule or a security category the configuration
 does not turn on. Both gates write a machine-readable report that CI uploads as

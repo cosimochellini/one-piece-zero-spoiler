@@ -1,17 +1,16 @@
 import { describe, expect, it } from 'vitest'
 
-import { entities, getEntity } from '~/data/entities'
+import { entities, getEntity } from '~/data/series/one-piece/entities'
 import type { Bookmark } from '~/lib/progress/episode'
 import type { CoveredRecord, RecordView, Slot } from '~/lib/view/records'
-
-import { handleOf } from './handle.server'
 import {
-  peekCharacter,
-  peekDossier,
-  peekPort,
-  peekRecord,
-  peekShip,
-} from './peek.server'
+  opHandleOf as handleOf,
+  opPeekCharacter as peekCharacter,
+  opPeekDossier as peekDossier,
+  opPeekPort as peekPort,
+  opPeekRecord as peekRecord,
+  opPeekShip as peekShip,
+} from '~/test/archive'
 
 const law = 'trafalgar-law'
 const lawHandle = handleOf(law)

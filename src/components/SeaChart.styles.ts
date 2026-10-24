@@ -157,13 +157,18 @@ export const styles = stylex.create({
     fontSize: text.xs,
     fontWeight: 600,
     lineHeight: 1.3,
+    overflowWrap: 'anywhere',
     position: 'absolute',
-    whiteSpace: 'nowrap',
+    textAlign: 'center',
+    whiteSpace: 'normal',
   },
-  nameAbove: { transform: 'translate(-50%, calc(-100% - 0.625rem))' },
-  nameBelow: { transform: 'translate(-50%, 0.625rem)' },
-  nameLeft: { transform: 'translate(calc(-100% - 0.625rem), -50%)' },
-  nameRight: { transform: 'translate(0.625rem, -50%)' },
+  nameBox: (left: string, top: string, width: string) => ({
+    transform: CENTRED,
+    left,
+    top,
+    width,
+  }),
+  nameLeader: { fill: 'none', stroke: color.rule2, strokeWidth: 1 },
   // A saga's name: large, faint, in its hue, behind the stops' names.
   sagaName: (hue: string) => ({
     color: `color-mix(in oklch, ${hue} 70%, transparent)`,

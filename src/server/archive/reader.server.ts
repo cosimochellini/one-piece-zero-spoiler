@@ -1,8 +1,9 @@
 import { byNumber, byValue } from 'sort-es'
 
 import { orderByMode } from '~/data/order'
-import { type Reveal, reveal } from '~/data/reveal'
-import type { Entity } from '~/data/types'
+import { type Reveal, reveal, sourceOf } from '~/data/reveal'
+import { archiveIn } from '~/data/source'
+import type { Entity, SeriesArchive } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
 import type { CoveredRecord, Slot } from '~/lib/view/records'
@@ -21,6 +22,13 @@ import { handleOf } from './handle.server'
  * the locale and the bookmark travel as one.
  */
 export interface Reader extends Reveal {
+  /**
+   * The archive as the reader's source tells it (`~/data/source`): a record
+   * the reader does not have is in none of its lists, so no page can cover,
+   * count or hand out a handle for one.
+   */
+  archive: SeriesArchive
+  bookmark: Bookmark
   locale: Locale
   /**
    * The records closest to this one, this one excluded. Measured in the
@@ -50,10 +58,16 @@ export interface Split<T> {
   total: number
 }
 
-/** Everything a record under fog is allowed to say about itself. */
-function coveredOf(entity: Entity): CoveredRecord {
+/**
+ * Everything a record under fog is allowed to say about itself, with its
+ * handle in the reader's own archive.
+ */
+export function coveredOf(
+  entity: Entity,
+  archive: SeriesArchive,
+): CoveredRecord {
   return {
-    handle: handleOf(entity.id),
+    handle: handleOf(entity.id, archive),
     kind: entity.kind,
     revealedAtEpisode: entity.revealedAtEpisode,
     revealedAtChapter: entity.revealedAtChapter,
@@ -61,18 +75,25 @@ function coveredOf(entity: Entity): CoveredRecord {
 }
 
 /** The reader at this bookmark, drawing pages in this locale. */
-export function readerFor(bookmark: Bookmark, locale: Locale): Reader {
-  const at = reveal(bookmark)
+export function readerFor(
+  archive: SeriesArchive,
+  bookmark: Bookmark,
+  locale: Locale,
+): Reader {
+  const at = reveal(bookmark, archive.series)
+  const told = archiveIn(archive, sourceOf(bookmark))
   const order = (entries: Entity[]): Entity[] => orderByMode(entries, at.mode)
 
   const reader: Reader = {
     ...at,
+    archive: told,
+    bookmark,
     locale,
     order,
     slot: (entity, open) => {
       return at.sees(entity) ?
           { open: true, record: open(entity, reader) }
-        : { open: false, covered: coveredOf(entity) }
+        : { open: false, covered: coveredOf(entity, told) }
     },
     split: (entries, open) => {
       const ordered = order(entries)
@@ -83,7 +104,7 @@ export function readerFor(bookmark: Bookmark, locale: Locale): Reader {
           at.sees(entity) ? [open(entity, reader)] : [],
         ),
         covered: ordered.flatMap((entity) =>
-          at.sees(entity) ? [] : [coveredOf(entity)],
+          at.sees(entity) ? [] : [coveredOf(entity, told)],
         ),
       }
     },

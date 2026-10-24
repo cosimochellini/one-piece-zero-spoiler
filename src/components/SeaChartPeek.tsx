@@ -22,7 +22,7 @@ import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { Button } from '~/components/ui/Button'
 import type { PeekProps } from '~/components/useChartPeek'
 import { useLocale } from '~/i18n/LocaleContext'
-import { useThreshold } from '~/lib/progress/BookmarkContext'
+import { useSeriesParams, useThreshold } from '~/lib/progress/BookmarkContext'
 import type { StopView } from '~/lib/view/places'
 import type {
   CoveredRecord,
@@ -137,12 +137,13 @@ function PlaceLink({
   onDismiss: () => void
 }): ReactElement {
   const { locale, t } = useLocale()
+  const { series } = useSeriesParams()
 
   return (
     <Link
       onClick={onDismiss}
-      params={{ locale, id }}
-      to="/$locale/places/$id"
+      params={{ series, locale, id }}
+      to="/$series/$locale/places/$id"
       {...stylex.props(styles.link)}
     >
       {t('chart.peekOpen')}

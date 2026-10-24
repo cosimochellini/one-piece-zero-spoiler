@@ -1,7 +1,8 @@
 import * as stylex from '@stylexjs/stylex'
+import { Link } from '@tanstack/react-router'
 import type { ReactElement } from 'react'
 
-import { useT } from '~/i18n/LocaleContext'
+import { useLocale } from '~/i18n/LocaleContext'
 import { color, font, leading, rule, space, text } from '~/styles/tokens.stylex'
 
 /**
@@ -13,13 +14,23 @@ import { color, font, leading, rule, space, text } from '~/styles/tokens.stylex'
  * nothing to put in them. The lead sentence is the one the whole page argues.
  */
 export function SiteFooter(): ReactElement {
-  const t = useT()
+  const { locale, t } = useLocale()
 
   return (
     <footer {...stylex.props(styles.footer)}>
       <p {...stylex.props(styles.colophon)}>
         <b {...stylex.props(styles.lead)}>{t('footer.lead')}</b>{' '}
         {t('footer.colophon')}
+      </p>
+      <p {...stylex.props(styles.colophon)}>
+        {t('footer.unofficial')}{' '}
+        <Link
+          params={{ locale }}
+          to="/$locale/legal"
+          {...stylex.props(styles.link)}
+        >
+          {t('legal.title')}
+        </Link>
       </p>
     </footer>
   )
@@ -41,7 +52,17 @@ const styles = stylex.create({
     fontFamily: font.body,
     fontSize: text.base,
     lineHeight: leading.body,
+    marginBlockEnd: space.sm,
     maxWidth: '72ch',
+  },
+  link: {
+    color: color.ink2,
+    outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
+    outlineOffset: space.xs3,
+    outlineStyle: 'solid',
+    outlineWidth: rule.fine,
+    textDecorationLine: 'underline',
+    textUnderlineOffset: '3px',
   },
   lead: { color: color.ink2, fontWeight: 700 },
 })

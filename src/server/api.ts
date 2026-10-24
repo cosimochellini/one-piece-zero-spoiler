@@ -1,8 +1,10 @@
 import { createServerFn } from '@tanstack/react-start'
 
+import { archiveOf, descriptionOf } from '~/data/series'
 import { isLocale, type Locale } from '~/i18n/locales'
 import { readBookmark, readTrial } from '~/lib/progress/readBookmark'
 
+import { creditsPage } from './archive/credits.server'
 import { fillerPage, peekFiller } from './archive/filler.server'
 import { fruitPage } from './archive/fruitPage.server'
 import { fruitEaters, fruitSheet, fruitSiblings } from './archive/fruits.server'
@@ -25,6 +27,7 @@ import {
 } from './archive/peek.server'
 import { placePage } from './archive/placePage.server'
 import { placesPage } from './archive/places.server'
+import { type Reader, readerFor } from './archive/reader.server'
 import { sagaLabels } from './archive/sagaLabels.server'
 
 /**
@@ -44,6 +47,7 @@ import { sagaLabels } from './archive/sagaLabels.server'
 
 interface Located {
   locale: Locale
+  series: string
 }
 interface Addressed extends Located {
   id: string
@@ -95,12 +99,12 @@ function text(input: unknown, name: 'handle' | 'id'): string {
 
 /** A page that asks for nothing but the locale it is drawn in. */
 function located(input: unknown): Located {
-  return { locale: locale(input) }
+  return { series: seriesSlug(input), locale: locale(input) }
 }
 
 /** A page about one record the reader has already reached, so it has an id. */
 function addressed(input: unknown): Addressed {
-  return { locale: locale(input), id: text(input, 'id') }
+  return { ...located(input), id: text(input, 'id') }
 }
 
 // One screen of a long list asks at once; more than that is not a page.
@@ -114,123 +118,141 @@ function listed(input: unknown): Located & { ids: string[] } {
   }
 
   return {
-    locale: locale(input),
+    ...located(input),
     ids: ids.map((id: unknown) => text({ id }, 'id')),
   }
 }
 
 /** A record still under fog, which the reader can only name by its handle. */
 function handled(input: unknown): Handled {
-  return { locale: locale(input), handle: text(input, 'handle') }
+  return { ...located(input), handle: text(input, 'handle') }
+}
+
+/** A registered slug is required before the archive can be loaded. */
+function seriesSlug(input: unknown): string {
+  const value = field(input, 'series')
+  if (typeof value !== 'string' || descriptionOf(value) === null) {
+    throw new Error('A known series is required')
+  }
+  return value
+}
+
+/** Series, bookmark and locale travel together into every projection. */
+async function readerIn(data: Located): Promise<Reader> {
+  const archive = await archiveOf(data.series)
+  return readerFor(archive, readBookmark(archive.series), data.locale)
 }
 
 export const loadHome = createServerFn()
   .validator(located)
-  .handler(({ data }) => landingPage(readBookmark(), readTrial(), data.locale))
+  .handler(async ({ data }) => {
+    const r = await readerIn(data)
+    return landingPage(r, readTrial(r.archive.series))
+  })
 
 export const loadCharacters = createServerFn()
   .validator(located)
-  .handler(({ data }) => charactersPage(readBookmark(), data.locale))
+  .handler(async ({ data }) => charactersPage(await readerIn(data)))
 
 export const loadShelves = createServerFn()
   .validator(located)
-  .handler(({ data }) => shelvesPage(readBookmark(), data.locale))
+  .handler(async ({ data }) => shelvesPage(await readerIn(data)))
 
 export const loadCharacter = createServerFn()
   .validator(addressed)
   .handler(
-    ({ data }) => characterPage(data.id, readBookmark(), data.locale) ?? null,
+    async ({ data }) => characterPage(data.id, await readerIn(data)) ?? null,
   )
 
 export const loadRoutePosition = createServerFn()
   .validator(addressed)
   .handler(
-    ({ data }) => routePosition(data.id, readBookmark(), data.locale) ?? null,
+    async ({ data }) => routePosition(data.id, await readerIn(data)) ?? null,
   )
 
 export const loadNearby = createServerFn()
   .validator(addressed)
-  .handler(({ data }) => nearbyPage(data.id, readBookmark(), data.locale))
+  .handler(async ({ data }) => nearbyPage(data.id, await readerIn(data)))
 
 export const loadDrawings = createServerFn()
   .validator(listed)
-  .handler(({ data }) => drawingsFor(data.ids, readBookmark(), data.locale))
+  .handler(async ({ data }) => drawingsFor(data.ids, await readerIn(data)))
 
 export const loadFruits = createServerFn()
   .validator(located)
-  .handler(({ data }) => fruitSheet(readBookmark(), data.locale))
+  .handler(async ({ data }) => fruitSheet(await readerIn(data)))
 
 export const loadFruit = createServerFn()
   .validator(addressed)
-  .handler(
-    ({ data }) => fruitPage(data.id, readBookmark(), data.locale) ?? null,
-  )
+  .handler(async ({ data }) => fruitPage(data.id, await readerIn(data)) ?? null)
 
 export const loadFruitEaters = createServerFn()
   .validator(addressed)
-  .handler(({ data }) => fruitEaters(data.id, readBookmark(), data.locale))
+  .handler(async ({ data }) => fruitEaters(data.id, await readerIn(data)))
 
 export const loadFruitSiblings = createServerFn()
   .validator(addressed)
-  .handler(({ data }) => fruitSiblings(data.id, readBookmark(), data.locale))
+  .handler(async ({ data }) => fruitSiblings(data.id, await readerIn(data)))
 
 export const loadPlaces = createServerFn()
   .validator(located)
-  .handler(({ data }) => placesPage(readBookmark(), data.locale))
+  .handler(async ({ data }) => placesPage(await readerIn(data)))
 
 export const loadPlace = createServerFn()
   .validator(addressed)
-  .handler(
-    ({ data }) => placePage(data.id, readBookmark(), data.locale) ?? null,
-  )
+  .handler(async ({ data }) => placePage(data.id, await readerIn(data)) ?? null)
 
 export const loadFiller = createServerFn()
   .validator(located)
-  .handler(({ data }) => fillerPage(readBookmark(), data.locale))
+  .handler(async ({ data }) => fillerPage(await readerIn(data)))
 
-// The one function that does not read the bookmark: the dialog that sets it
-// names the saga of any number typed into it, past the bookmark too.
+export const loadCredits = createServerFn()
+  .validator(located)
+  .handler(async ({ data }) => creditsPage(await readerIn(data)))
+
 export const loadSagaLabels = createServerFn()
   .validator(located)
-  .handler(({ data }) => sagaLabels(data.locale))
+  .handler(async ({ data }) => sagaLabels(await readerIn(data)))
 
 export const liftFiller = createServerFn()
   .validator(handled)
-  .handler(({ data }) => peekFiller(data.handle, data.locale) ?? null)
+  .handler(
+    async ({ data }) => peekFiller(data.handle, await readerIn(data)) ?? null,
+  )
 
 export const liftCharacter = createServerFn()
   .validator(handled)
   .handler(
-    ({ data }) =>
-      peekCharacter(data.handle, data.locale, readBookmark()) ?? null,
+    async ({ data }) =>
+      peekCharacter(data.handle, await readerIn(data)) ?? null,
   )
 
 export const liftDossier = createServerFn()
   .validator(handled)
   .handler(
-    ({ data }) => peekDossier(data.handle, data.locale, readBookmark()) ?? null,
+    async ({ data }) => peekDossier(data.handle, await readerIn(data)) ?? null,
   )
 
 export const liftFruit = createServerFn()
   .validator(handled)
   .handler(
-    ({ data }) => peekFruit(data.handle, data.locale, readBookmark()) ?? null,
+    async ({ data }) => peekFruit(data.handle, await readerIn(data)) ?? null,
   )
 
 export const liftRecord = createServerFn()
   .validator(handled)
   .handler(
-    ({ data }) => peekRecord(data.handle, data.locale, readBookmark()) ?? null,
+    async ({ data }) => peekRecord(data.handle, await readerIn(data)) ?? null,
   )
 
 export const liftPort = createServerFn()
   .validator(handled)
   .handler(
-    ({ data }) => peekPort(data.handle, data.locale, readBookmark()) ?? null,
+    async ({ data }) => peekPort(data.handle, await readerIn(data)) ?? null,
   )
 
 export const liftShip = createServerFn()
   .validator(handled)
   .handler(
-    ({ data }) => peekShip(data.handle, data.locale, readBookmark()) ?? null,
+    async ({ data }) => peekShip(data.handle, await readerIn(data)) ?? null,
   )

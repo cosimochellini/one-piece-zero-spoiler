@@ -9,19 +9,14 @@ import {
   SeaRoute,
   SeaWorld,
 } from '~/components/SeaChartDrawing'
+import { StopNames } from '~/components/SeaChartLabels'
 import {
   type ChartModel,
   isOnRoute,
   pointOf,
   sagaTintOf,
 } from '~/components/seaChartModel'
-import {
-  Here,
-  RegionNames,
-  SagaNames,
-  Spot,
-  StopNames,
-} from '~/components/SeaChartPins'
+import { Here, RegionNames, SagaNames, Spot } from '~/components/SeaChartPins'
 import { Button } from '~/components/ui/Button'
 import type { ChartZoom } from '~/components/useChartZoom'
 import { useT } from '~/i18n/LocaleContext'
@@ -184,7 +179,7 @@ function ZoomStep({
 
 /**
  * Everything written on the chart: the seas' names, the sagas', the open
- * stops' that fit at this scale, the origin and where the reader is. For the
+ * stops', the origin and where the reader is. For the
  * eye only; the drawing's label and the stops say the same to a screen
  * reader.
  */
@@ -216,10 +211,10 @@ function Words({
         regions={model.regions}
       />
       <StopNames
-        names={model.stopNames.filter(
-          (name) => scale >= name.from[orientation],
-        )}
+        here={here}
+        names={model.stopNames}
         orientation={orientation}
+        scale={scale}
       />
       <Spot
         at={ORIGIN}

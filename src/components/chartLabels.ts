@@ -6,13 +6,10 @@ import {
 } from '~/components/chartGeometry'
 
 /**
- * Which of the names on the chart fit, at how close a zoom (owner, #728:
- * every reached place is named). Worked out once from the points and the
- * names' lengths, never by measuring the page, so the server and the browser
- * draw the same names: each name gets the least scale, in pixels per unit
- * of the chart as drawn, from which it stands clear of every name before it
- * and of every stop's dot. The chart shows a name while its own scale is at
- * least that: zoomed out, a crowded name waits; zoomed in, it is there.
+ * Name measurements shared by reached-label placement and saga visibility.
+ * Points and letter counts determine their boxes, without measuring the
+ * page. Saga names get the least clear scale; reached stop names use these
+ * boxes to find room at every scale in `chartLabelLayout` (owner, #728).
  */
 
 /** One name to set beside its stop. */
@@ -48,7 +45,7 @@ for (let scale = LEAST; scale <= MOST; scale *= STEP) {
   SCALES.push(scale)
 }
 
-interface Box {
+export interface LabelBox {
   height: number
   width: number
   x: number
@@ -56,7 +53,11 @@ interface Box {
 }
 
 /** A name's box at a scale, centred: off its point on its side. */
-function boxOf(spot: NameSpot, orientation: Orientation, scale: number): Box {
+export function labelBoxOf(
+  spot: NameSpot,
+  orientation: Orientation,
+  scale: number,
+): LabelBox {
   const drawn = project(spot.at, orientation)
   const width = spot.length * LETTER + PAD
   const off: Record<Side, Point> = {
@@ -76,7 +77,7 @@ function boxOf(spot: NameSpot, orientation: Orientation, scale: number): Box {
   }
 }
 
-function overlap(a: Box, b: Box): boolean {
+function overlap(a: LabelBox, b: LabelBox): boolean {
   return (
     Math.abs(a.x - b.x) < (a.width + b.width) * HALF
     && Math.abs(a.y - b.y) < (a.height + b.height) * HALF
@@ -89,7 +90,7 @@ function onADot(
   dots: Point[],
   { orientation, scale }: { orientation: Orientation; scale: number },
 ): boolean {
-  const box = boxOf(spot, orientation, scale)
+  const box = labelBoxOf(spot, orientation, scale)
 
   return dots.some((dot) => {
     const drawn = project(dot, orientation)
@@ -112,12 +113,12 @@ function onAName(
   before: { from: number; spot: NameSpot }[],
   { orientation, scale }: { orientation: Orientation; scale: number },
 ): boolean {
-  const box = boxOf(spot, orientation, scale)
+  const box = labelBoxOf(spot, orientation, scale)
 
   return before.some(
     (other) =>
       other.from <= scale
-      && overlap(box, boxOf(other.spot, orientation, scale)),
+      && overlap(box, labelBoxOf(other.spot, orientation, scale)),
   )
 }
 

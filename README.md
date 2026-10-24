@@ -23,7 +23,7 @@
   <a href="https://github.com/cosimochellini/one-piece-zero-spoiler/releases/latest"><img src="https://img.shields.io/github/v/release/cosimochellini/one-piece-zero-spoiler?sort=semver&display_name=tag&label=release" alt="Latest release"></a>
   <a href="https://app.netlify.com/sites/one-piece-zero-spoiler/deploys"><img src="https://api.netlify.com/api/v1/badges/51908d48-c22b-4c57-939d-6da57ea6982a/deploy-status" alt="Netlify status"></a>
   <a href="https://github.com/cosimochellini/one-piece-zero-spoiler/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22"><img src="https://img.shields.io/github/issues/cosimochellini/one-piece-zero-spoiler/good%20first%20issue?label=good%20first%20issues&color=7057ff" alt="Good first issues"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-informational" alt="License: MIT"></a>
+  <a href="LICENSE-SCOPE.md"><img src="https://img.shields.io/badge/software_license-MIT-informational" alt="Software license: MIT"></a>
 </p>
 
 ## Same page, two bookmarks
@@ -37,9 +37,10 @@ fog.
 | <img src="docs/media/fog-before.png" alt="The character grid at episode 45: the crests after that point are blurred and unnamed" width="420"> | <img src="docs/media/fog-after.png" alt="The same crop at episode 650: the same crests are open, named and drawn" width="420"> |
 
 A link can set the bookmark too. Add `?ep=650` for an episode, `?s=2&ep=3` for
-an episode in a season, or `?ch=1044` for a chapter to any address on the site.
-The link replaces the bookmark you had, so a link from someone further ahead can
-open entries you have not reached.
+an episode in a season, or `?ch=1044` for a chapter to a One Piece page. Links
+on the root, legal and privacy pages set no bookmark. The link replaces the
+bookmark you had, so a link from someone further ahead can open entries you have
+not reached.
 
 ## Hidden entries never reach the browser
 
@@ -47,22 +48,22 @@ The fog is not a blur over the full page. Ask the live site for a character you
 have not met yet, with no bookmark set:
 
 ```sh
-curl -s https://one-piece-zero-spoiler.netlify.app/en/characters/trafalgar-law \
+curl -s https://one-piece-zero-spoiler.netlify.app/one-piece/en/characters/trafalgar-law \
   | grep -c 'Trafalgar Law'
 # 0
 
-curl -s https://one-piece-zero-spoiler.netlify.app/en/characters/trafalgar-law \
+curl -s https://one-piece-zero-spoiler.netlify.app/one-piece/en/characters/trafalgar-law \
   | grep -o '<title>[^<]*</title>'
 # <title>A character under fog | Zero Spoiler</title>
 ```
 
-With `Cookie: opzs_ep=650` the title is the name. The server reads the bookmark
-before it builds the page. An entry you have not reached is sent as its kind,
-two thresholds and an opaque handle, with no name, no id and no text:
+With `Cookie: zs_one-piece=650` the title is the name. The server reads the
+bookmark before it builds the page. An entry you have not reached is sent as its
+kind, two thresholds and an opaque handle, with no name, no id and no text:
 
 ```mermaid
 flowchart LR
-  A["Request + opzs_ep cookie"] --> B["Loader calls a server function"]
+  A["Request + zs_one-piece cookie"] --> B["Loader calls a server function"]
   B --> C["reveal(bookmark).sees() per record, on the server"]
   C --> D["Revealed records, in the route's locale"]
   C --> E["Covered records: two thresholds and an opaque handle"]
@@ -135,8 +136,8 @@ from either follows the same
 
 ## License
 
-[MIT](LICENSE) © 2026 Cosimo Chellini.
-
-One Piece is created by Eiichiro Oda and owned by Shueisha and Toei Animation.
-This is an unofficial, non-commercial fan project. It contains no official
-artwork, scans or frames, and it is not endorsed by the rights holders.
+[MIT](LICENSE) © 2026 Cosimo Chellini, for the software and original technical
+documentation; [LICENSE-SCOPE.md](LICENSE-SCOPE.md) says what it leaves out.
+This is an unofficial fan project, not endorsed by the One Piece rights holders.
+Credits, the rights contact, privacy and sources are on the
+[legal page](https://one-piece-zero-spoiler.netlify.app/en/legal).

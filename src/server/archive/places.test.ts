@@ -1,12 +1,15 @@
 import { describe, expect, it } from 'vitest'
 
-import { chartPointOf } from '~/data/chart'
+import { chartPointOf } from '~/data/series/one-piece/chart'
 import type { Bookmark } from '~/lib/progress/episode'
+import {
+  opHandleOf as handleOf,
+  opPeekPort as peekPort,
+  opPlacesPage as placesPage,
+} from '~/test/archive'
+import { ONE_PIECE_LOADED as ONE_PIECE } from '~/test/series'
 
-import { handleOf } from './handle.server'
-import { BOOKMARKS } from './payloads.server'
-import { peekPort } from './peek.server'
-import { placesPage } from './places.server'
+const BOOKMARKS = ONE_PIECE.bookmarks
 
 describe('the sea chart in the places payload', () => {
   it.each(BOOKMARKS.map((bookmark) => [JSON.stringify(bookmark), bookmark]))(

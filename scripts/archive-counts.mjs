@@ -2,7 +2,8 @@
 // than by hand, so a pull request that adds a record or a redrawing resolves a
 // conflict on it by running one command instead of counting (#520).
 //
-// `npm run docs:counts` rewrites the table between the two markers.
+// `npm run docs:counts` rewrites the tables between the two markers, one per
+// series in `src/data/series/index.ts`, under its slug.
 // `npm run gate:docs` (`--check`) writes nothing and fails when the committed
 // table differs from what the script would write. The output goes through
 // Prettier, so `format:check` passes on a freshly generated file.
@@ -42,21 +43,21 @@ export function withTable(document, table) {
 }
 
 /**
- * The table, counted from the archive.
- * @returns {Promise<string>} The markdown table, not yet padded.
+ * One series' table, counted from its archive.
+ * @param {{ archive: { drawings: Record<string, unknown>, entities: { kind: string }[], sagas: unknown[], timelines: { field: string, timeline: unknown[] }[] } }} series The series, from the list.
+ * @returns {string} The markdown table, not yet padded.
  */
-async function countTable() {
-  const { entities } = await importArchive('data/entities.ts')
-  const { sagas } = await importArchive('data/sagas.ts')
-  const { DRAWINGS, REDRAWINGS } = await importArchive('data/art/index.ts')
-  const { characters, dossierOf } = await importArchive('data/characters.ts')
-
+export function countTable({ archive }) {
+  const { drawings, entities, sagas, timelines } = archive
   const ofKind = (kind) =>
     entities.filter((entity) => entity.kind === kind).length
-  const redrawings = Object.values(REDRAWINGS).flat().length
-  const chronicles = characters
-    .map((character) => dossierOf(character)?.chronicle ?? [])
-    .filter((chronicle) => chronicle.length > 0)
+  const filed = (field) =>
+    timelines
+      .filter((owned) => owned.field === field)
+      .map(({ timeline }) => timeline)
+      .filter((timeline) => timeline.length > 0)
+  const redrawings = filed('redrawing')
+  const chronicles = filed('chronicle')
 
   const rows = [
     ['Records', entities.length],
@@ -69,7 +70,7 @@ async function countTable() {
     ['Saga modules', `${sagas.length}, plus one for the devil fruits`],
     [
       'Line drawings',
-      `${Object.keys(DRAWINGS).length}, one per record, plus ${redrawings} redrawings of ${Object.keys(REDRAWINGS).length} records`,
+      `${Object.keys(drawings).length}, one per record, plus ${redrawings.flat().length} redrawings of ${redrawings.length} records`,
     ],
     [
       'Chronicle stories',
@@ -85,13 +86,29 @@ async function countTable() {
 }
 
 /**
+ * Every series' table under its slug, in the order of the list.
+ * @returns {Promise<string>} The markdown, not yet padded.
+ */
+async function countTables() {
+  const { SERIES } = await importArchive('data/series/index.ts')
+
+  const tables = await Promise.all(
+    SERIES.map(async (series) => {
+      const archive = await series.load()
+      return `### \`${series.slug}\`\n\n${countTable({ archive })}`
+    }),
+  )
+  return tables.join('\n\n')
+}
+
+/**
  * The document as it is, and as the script would write it.
  * @returns {Promise<{after: string, before: string}>} Both texts.
  */
 async function render() {
   const before = readFileSync(DOC_PATH, 'utf8')
   const options = await resolveConfig(DOC_PATH)
-  const after = await format(withTable(before, await countTable()), {
+  const after = await format(withTable(before, await countTables()), {
     ...options,
     filepath: DOC_PATH,
   })

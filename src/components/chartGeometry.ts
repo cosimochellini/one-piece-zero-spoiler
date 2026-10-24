@@ -15,7 +15,7 @@ import type { Sea } from '~/lib/view/records'
  * World to the left; North Blue and East Blue above it, West Blue and South
  * Blue below, East and South on Paradise's side (owner, #728). The route
  * runs from East Blue up to Reverse Mountain at the right edge, then right
- * to left. Every point in `~/data/chart` is in this box.
+ * to left. Every point in `~/data/series/one-piece/chart` is in this box.
  */
 
 /** A point in the chart's box. */

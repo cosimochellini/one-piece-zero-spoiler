@@ -9,7 +9,7 @@ import { styles } from '~/components/Onboarding.styles'
 import { PortPlate } from '~/components/PortPlate'
 import { formatBounty } from '~/i18n/bounty'
 import { useLocale } from '~/i18n/LocaleContext'
-import { useBookmark } from '~/lib/progress/BookmarkContext'
+import { useBookmark, useSeriesParams } from '~/lib/progress/BookmarkContext'
 import { describeThreshold } from '~/lib/progress/threshold'
 import type { CoveredRecord, DemoEntry } from '~/lib/view/records'
 import { settleStyles } from '~/styles/settle'
@@ -89,7 +89,7 @@ function TrialLink({
   point: DialPoint
   sx: stylex.StyleXStyles
 }): ReactElement {
-  const { locale } = useLocale()
+  const { series, locale } = useSeriesParams()
   const { enterTrial } = useBookmark()
   const onClick = (): void => {
     enterTrial(dialBookmark(point))
@@ -99,9 +99,9 @@ function TrialLink({
     return (
       <Link
         onClick={onClick}
-        params={{ locale, id: entry.id }}
+        params={{ series, locale, id: entry.id }}
         preload={false}
-        to="/$locale/characters/$id"
+        to="/$series/$locale/characters/$id"
         {...stylex.props(sx)}
       >
         {children}
@@ -113,9 +113,9 @@ function TrialLink({
   return (
     <Link
       onClick={onClick}
-      params={{ locale, id: entry.id }}
+      params={{ series, locale, id: entry.id }}
       preload={false}
-      to="/$locale/places/$id"
+      to="/$series/$locale/places/$id"
       {...stylex.props(sx)}
     >
       {children}

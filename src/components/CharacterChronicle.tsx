@@ -2,8 +2,7 @@ import * as stylex from '@stylexjs/stylex'
 import { Link } from '@tanstack/react-router'
 import type { ReactElement } from 'react'
 
-import { useLocale } from '~/i18n/LocaleContext'
-import { useThreshold } from '~/lib/progress/BookmarkContext'
+import { useSeriesParams, useThreshold } from '~/lib/progress/BookmarkContext'
 import type {
   CharacterChronicle as Chronicle,
   ChronicleEntry,
@@ -84,7 +83,7 @@ export function Prose({
 }: {
   segments: ProseSegment[]
 }): ReactElement {
-  const { locale } = useLocale()
+  const { series, locale } = useSeriesParams()
 
   return (
     <>
@@ -93,8 +92,8 @@ export function Prose({
             <span key={key}>{segment.text}</span>
           : <Link
               key={key}
-              params={{ locale, id: segment.id }}
-              to="/$locale/characters/$id"
+              params={{ series, locale, id: segment.id }}
+              to="/$series/$locale/characters/$id"
               {...stylex.props(styles.link)}
             >
               {segment.name}

@@ -1,11 +1,16 @@
 import { describe, expect, it } from 'vitest'
 
-import { characters, dossierOf, getCharacter } from '~/data/characters'
+import {
+  characters,
+  dossierOf,
+  getCharacter,
+} from '~/data/series/one-piece/characters'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
+import { opReaderFor as readerFor } from '~/test/archive'
 
 import { chronicleOf, type ResolveName, segmentsOf } from './chronicle.server'
-import { type Reader, readerFor } from './reader.server'
+import type { Reader } from './reader.server'
 
 function ep(episode: number, locale: Locale = 'en'): Reader {
   return readerFor({ mode: 'episode', episode }, locale)

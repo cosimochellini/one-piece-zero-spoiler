@@ -12,7 +12,21 @@ import type { BookmarkMode } from './episode'
 export interface Gated {
   revealedAtChapter: number
   revealedAtEpisode: number
+  /**
+   * The one source that tells this, for a record or a fact the other source
+   * never does: an anime-original character, a scene only the manga draws.
+   * Absent means both. A reader who counts in the other source is never told
+   * it exists (`~/data/reveal`), and its threshold in that source is kept
+   * only to order it, never shown.
+   */
+  source?: Source
 }
+
+/**
+ * Where a reader counts from: the anime, for an episode or a season
+ * bookmark, or the manga, for a chapter one.
+ */
+export type Source = 'anime' | 'manga'
 
 /**
  * A record's threshold in the unit the reader counts in: the chapter for a

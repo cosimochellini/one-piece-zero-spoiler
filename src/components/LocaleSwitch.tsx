@@ -79,7 +79,10 @@ export function LocaleSwitch(): ReactElement {
           const next = target.value
           remember(next)
           void navigate({
-            params: (previous) => ({ ...previous, locale: next }),
+            params: (previous: Record<string, string | undefined>) => ({
+              ...previous,
+              locale: next,
+            }),
             to: '.',
           })
         }}

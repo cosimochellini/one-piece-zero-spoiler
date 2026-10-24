@@ -1,5 +1,5 @@
 // Checks every character's Italian name against the Italian One Piece Wiki
-// (onepiece.fandom.com/it), the rule in `src/data/entities.ts`: the dub's
+// (onepiece.fandom.com/it), the rule in `src/data/series/one-piece/entities.ts`: the dub's
 // name, or the Star Comics spelling where the dub's cannot be checked. The
 // Italian wiki's page title follows Star Comics, and its "Nome doppiaggio
 // italiano" field (`nomeita`) gives the dub's name where it differs.
@@ -16,15 +16,16 @@
 // `./verify-chapters.mjs`), or the one in `ITALIAN_TITLES` where that link is
 // missing or wrong.
 //
-// Run it with `npm run verify:names`. It talks to the network, so it is not
-// part of `npm run check` or CI; the answers are cached under `.gate/wiki/`
-// (`./wiki.mjs`) and never expire.
+// Run it with `npm run verify:names` (`-- --series <slug>` for a series of
+// `src/data/series/index.ts` other than One Piece). It talks to the network,
+// so it is not part of `npm run check` or CI; the answers are cached under
+// `.gate/wiki/<slug>/` (`./wiki.mjs`) and never expire.
 import process from 'node:process'
 import { pathToFileURL } from 'node:url'
 
-import { importArchive } from './archive-loader.mjs'
+import { seriesOrExit } from './archive-loader.mjs'
 import { titlesOf } from './verify-chapters.mjs'
-import { italianPages, italianTitles } from './wiki.mjs'
+import { italianPages, italianTitles, wikiOf } from './wiki.mjs'
 
 /** @typedef {import('./wiki.mjs').Page} Page */
 /** @typedef {{ title: string, dub: string[], aliases: string[] }} Names */
@@ -260,18 +261,22 @@ export function verdictOf(record, pages) {
 /** @typedef {{ id: string, it: string, pages: string, verdict: string, suggestion: string, aliases: string }} Row */
 
 /**
- * Every character against its Italian pages, in archive order.
+ * Every character of the series on the command line against its Italian
+ * pages, in archive order.
  * @returns {Promise<Row[]>} One row per character.
  */
 async function verify() {
-  const { entities } = await importArchive('data/entities.ts')
+  const series = await seriesOrExit()
+  const wiki = wikiOf(series)
   /** @type {Record_[]} */
-  const characters = entities.filter(({ kind }) => kind === 'character')
+  const characters = /** @type {Record_[]} */ (series.archive.entities).filter(
+    ({ kind }) => kind === 'character',
+  )
   const english = characters
     .filter(({ id }) => ITALIAN_TITLES[id] === undefined)
     .flatMap((record) => titlesOf(record)[0] ?? [])
   const asked = new Set(english)
-  const linked = await italianTitles(asked.values().toArray())
+  const linked = await italianTitles(asked.values().toArray(), wiki)
   const titles = new Map(
     characters.map((record) => {
       const known = ITALIAN_TITLES[record.id]
@@ -290,6 +295,7 @@ async function verify() {
       .values()
       .filter((title) => title !== undefined)
       .toArray(),
+    wiki,
   )
 
   return characters.map((record) => {

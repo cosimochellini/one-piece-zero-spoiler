@@ -1,6 +1,4 @@
-import { entities } from '~/data/entities'
-import { FILLER, type FillerEntry } from '~/data/filler'
-import type { Entity } from '~/data/types'
+import type { Entity, FillerEntry, SeriesArchive } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 import type { Gated } from '~/lib/progress/spoiler'
 import type {
@@ -9,6 +7,8 @@ import type {
   FillerSlot,
   SkipRange,
 } from '~/lib/view/filler'
+
+import { indexHandle } from './handle.server'
 
 /**
  * What every part of the filler guide decides about one entry: where it
@@ -21,11 +21,9 @@ import type {
  * text of a filler near the end of an arc can still say how the arc went.
  */
 
-// Base 36, as the archive's own handles: short, and nothing but an index.
-export const RADIX = 36
-
 /** The reader, as far as this page needs one. */
 export interface Looker {
+  archive: SeriesArchive
   locale: Locale
   sees: (gated: Gated) => boolean
 }
@@ -43,7 +41,16 @@ export interface Chunk<K, T> {
 }
 
 /** Every entry with its index, in the order a viewer reaches them. */
-export const INDEXED = FILLER.map((entry, at) => ({ entry, index: at }))
+const indexed = new WeakMap<SeriesArchive, Indexed[]>()
+/** Filler ordinals are scoped to one loaded archive. */
+export function indexedFor(r: Looker): Indexed[] {
+  let items = indexed.get(r.archive)
+  if (items === undefined) {
+    items = r.archive.filler.map((entry, index) => ({ entry, index }))
+    indexed.set(r.archive, items)
+  }
+  return items
+}
 
 /** Splits a list where the key changes, keeping the order. */
 export function chunkBy<K, T>(
@@ -72,13 +79,21 @@ export function positionOf(entry: FillerEntry): number {
 }
 
 /** The canon arcs, in the order the anime reaches them. */
-const CANON_ARCS = entities
-  .filter((entity) => entity.kind === 'arc')
-  .toSorted((a, b) => a.revealedAtEpisode - b.revealedAtEpisode)
+const canon = new WeakMap<SeriesArchive, Entity[]>()
+function canonArcs(r: Looker): Entity[] {
+  let arcs = canon.get(r.archive)
+  if (arcs === undefined) {
+    arcs = r.archive.entities
+      .filter((entity) => entity.kind === 'arc')
+      .toSorted((a, b) => a.revealedAtEpisode - b.revealedAtEpisode)
+    canon.set(r.archive, arcs)
+  }
+  return arcs
+}
 
 /** The canon arc an episode falls in: the last one opened by then. */
-export function canonArcOf(episode: number): Entity | undefined {
-  return CANON_ARCS.findLast((arc) => arc.revealedAtEpisode <= episode)
+export function canonArcOf(episode: number, r: Looker): Entity | undefined {
+  return canonArcs(r).findLast((arc) => arc.revealedAtEpisode <= episode)
 }
 
 /** When a reader reaches a canon arc's group. */
@@ -90,8 +105,8 @@ export function arcGateOf(arc: Entity | undefined): Gated {
 }
 
 /** When a reader reaches an entry, in both units. */
-function gateOf(entry: FillerEntry): Gated {
-  const arc = canonArcOf(positionOf(entry))
+function gateOf(entry: FillerEntry, r: Looker): Gated {
+  const arc = canonArcOf(positionOf(entry), r)
 
   return {
     revealedAtEpisode: positionOf(entry),
@@ -106,17 +121,14 @@ function placeOf(entry: FillerEntry): FillerPlace {
 }
 
 /** An entry as the page prints it once it is open. */
-export function rowOf(
-  { entry, index }: Indexed,
-  locale: Locale,
-): FillerRowView {
+export function rowOf({ entry, index }: Indexed, look: Looker): FillerRowView {
   return {
     ...placeOf(entry),
-    ...gateOf(entry),
-    handle: index.toString(RADIX),
+    ...gateOf(entry, look),
+    handle: indexHandle(index, look.archive),
     kind: entry.kind,
-    title: entry.title[locale],
-    summary: entry.summary[locale],
+    title: entry.title[look.locale],
+    summary: entry.summary[look.locale],
     ...('released' in entry && { released: entry.released }),
   }
 }
@@ -124,9 +136,9 @@ export function rowOf(
 /** An entry, open or covered, for this reader. */
 export function slotOf(item: Indexed, look: Looker): FillerSlot {
   const { entry, index } = item
-  const gate = gateOf(entry)
+  const gate = gateOf(entry, look)
   if (look.sees(gate)) {
-    return { open: true, record: rowOf(item, look.locale) }
+    return { open: true, record: rowOf(item, look) }
   }
 
   return {
@@ -135,7 +147,7 @@ export function slotOf(item: Indexed, look: Looker): FillerSlot {
       ...placeOf(entry),
       ...gate,
       kind: entry.kind,
-      handle: index.toString(RADIX),
+      handle: indexHandle(index, look.archive),
     },
   }
 }

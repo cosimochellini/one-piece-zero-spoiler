@@ -6,7 +6,7 @@ fails on them, so they are not repeated here.
 
 ## Where the bar lives
 
-- **Drawings** (`src/data/art`): the
+- **Drawings** (`src/data/series/one-piece/art`): the
   [line-drawings skill](.claude/skills/line-drawings/SKILL.md) sets the house
   style, the A/B/C grades and what makes a drawing a spoiler.
 - **User-facing text** (dictionaries, record summaries, stories, README): the
@@ -27,10 +27,11 @@ it as a defect. A B the owner accepted is P3 at most.
   (`src/components/drawing.ts`, and `inkOf` in `scripts/art-sheet.mjs`), so an
   `ivory` record's accent is drawn in the same ink as its lines. That is the
   design, not an invisible accent.
-- **Fruit drawings use `shadowUnder()`** (`src/data/art/fruits/parts.ts`), not
-  `shadow()` from `~/lib/svg/primitives`. `shadow()` writes a relative `q`,
-  which the fruit alphabet test in `drawings.test.ts` rejects. The two are not a
-  duplicate to merge.
+- **Fruit drawings use `shadowUnder()`**
+  (`src/data/series/one-piece/art/fruits/parts.ts`), not `shadow()` from
+  `~/lib/svg/primitives`. `shadow()` writes a relative `q`, which the fruit
+  alphabet test in `drawings.test.ts` rejects. The two are not a duplicate to
+  merge.
 
 ## Drawings: what counts as P0–P2
 
@@ -53,7 +54,7 @@ you report something as missing.
 
 ## Already tested
 
-`src/data/art/index.test.ts` and `src/data/art/fruits/drawings.test.ts` hold the
-mechanical rules: stroke counts, exactly one accent on a fruit, the path
-alphabet, one decimal, the box, no redrawing at the threshold. If CI is green,
-they hold.
+`src/data/series/one-piece/art/index.test.ts` and
+`src/data/series/one-piece/art/fruits/drawings.test.ts` hold the mechanical
+rules: stroke counts, exactly one accent on a fruit, the path alphabet, one
+decimal, the box, no redrawing at the threshold. If CI is green, they hold.

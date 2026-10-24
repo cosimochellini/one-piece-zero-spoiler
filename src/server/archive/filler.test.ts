@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
-import { FILLER, LAST_AIRED } from '~/data/filler'
 import { reveal } from '~/data/reveal'
+import { FILLER, LAST_AIRED } from '~/data/series/one-piece/filler'
 import type { Bookmark } from '~/lib/progress/episode'
 import type {
   FillerGroup,
@@ -11,9 +11,13 @@ import type {
   FillerSlot,
   SkipRange,
 } from '~/lib/view/filler'
+import {
+  opCountdownOf as countdownOf,
+  opFillerAheadOf as fillerAheadOf,
+  opFillerPage as fillerPage,
+  opPeekFiller as peekFiller,
+} from '~/test/archive'
 
-import { fillerPage, peekFiller } from './filler.server'
-import { countdownOf, fillerAheadOf } from './fillerCountdown.server'
 import { chunkBy } from './fillerRows.server'
 
 /** Every row of the page, in order. */

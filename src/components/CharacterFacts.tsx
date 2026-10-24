@@ -5,6 +5,7 @@ import { Fragment, type ReactElement, type ReactNode } from 'react'
 import { formatBounty } from '~/i18n/bounty'
 import { useLocale } from '~/i18n/LocaleContext'
 import type { Translate } from '~/i18n/types'
+import { useSeriesParams } from '~/lib/progress/BookmarkContext'
 import type {
   CharacterStatus,
   CharacterFacts as Facts,
@@ -110,7 +111,7 @@ function fruitRow(links: FruitLink[] | undefined): ReactNode {
 
 /** One link per fruit, comma-separated: an entry may name more than one. */
 function FruitLinks({ links }: { links: FruitLink[] }): ReactElement {
-  const { locale } = useLocale()
+  const { series, locale } = useSeriesParams()
 
   return (
     <>
@@ -119,8 +120,8 @@ function FruitLinks({ links }: { links: FruitLink[] }): ReactElement {
           <Fragment key={link.id}>
             {at === 0 ? null : ', '}
             <Link
-              params={{ locale, id: link.id }}
-              to="/$locale/fruits/$id"
+              params={{ series, locale, id: link.id }}
+              to="/$series/$locale/fruits/$id"
               {...stylex.props(styles.link)}
             >
               {link.name}

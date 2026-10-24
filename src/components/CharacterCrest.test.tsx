@@ -12,7 +12,7 @@ function segments(path: Element | undefined): number {
 
 /**
  * The seal's contract only. That every character has a drawing is asserted
- * over the drawings themselves in `src/data/art/index.test.ts`.
+ * over the drawings themselves in `src/data/series/one-piece/art/index.test.ts`.
  */
 describe('CharacterCrest', () => {
   it('sets the drawing inside the seal', () => {

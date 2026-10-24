@@ -1,14 +1,14 @@
 import { byNumber } from 'sort-es'
 import { describe, expect, it } from 'vitest'
 
-import { DRAWINGS, REDRAWINGS } from '~/data/art'
-import { chapterAtEpisode } from '~/data/chapter-table'
-import { arcs, characters } from '~/data/characters'
-import { entities, getEntity } from '~/data/entities'
-import { ARC_LEADS } from '~/data/leads'
 import { orderByMode } from '~/data/order'
-import { shipDossierOf } from '~/data/places'
 import { reveal } from '~/data/reveal'
+import { DRAWINGS, REDRAWINGS } from '~/data/series/one-piece/art'
+import { chapterAtEpisode } from '~/data/series/one-piece/chapter-table'
+import { arcs, characters } from '~/data/series/one-piece/characters'
+import { entities, getEntity } from '~/data/series/one-piece/entities'
+import { ARC_LEADS } from '~/data/series/one-piece/leads'
+import { shipDossierOf } from '~/data/series/one-piece/places'
 import type { Entity } from '~/data/types'
 import { LOCALES } from '~/i18n/locales'
 import { DEMO_LAST_CHAPTER, DEMO_LAST_EPISODE } from '~/lib/progress/bounds'
@@ -26,25 +26,27 @@ import type {
   ShelfView,
   Stroke,
 } from '~/lib/view/records'
+import {
+  opCharacterPage as characterPage,
+  opCharactersPage as charactersPage,
+  opDrawingsFor as drawingsFor,
+  opFruitSheet as fruitSheet,
+  opHandleOf as handleOf,
+  opHomePage as homePage,
+  opLandingPage as landingPage,
+  opNearbyPage as nearbyPage,
+  opOnboardingPage as onboardingPage,
+  opPeekCharacter as peekCharacter,
+  opPlacePage as placePage,
+  opPlacesPage as placesPage,
+  opReaderFor as readerFor,
+  opRoutePosition as routePosition,
+  opShelvesPage as shelvesPage,
+} from '~/test/archive'
 import { saysNothing } from '~/test/fog'
 
-import { fruitSheet } from './fruits.server'
-import { handleOf } from './handle.server'
-import { homePage, landingPage } from './home.server'
-import { onboardingPage } from './onboarding.server'
-import {
-  characterPage,
-  charactersPage,
-  drawingsFor,
-  nearbyPage,
-  routePosition,
-  shelvesPage,
-} from './pages.server'
-import { peekCharacter } from './peek.server'
-import { placePage } from './placePage.server'
-import { placesPage } from './places.server'
 import { characterOf, recordOf, searchableOf } from './project.server'
-import { type Reader, readerFor } from './reader.server'
+import type { Reader } from './reader.server'
 
 function ep(episode: number): NonNullable<Bookmark> {
   return { mode: 'episode', episode }

@@ -1,11 +1,12 @@
 import { describe, expect, it } from 'vitest'
 
 import { absoluteUrl } from '~/lib/seo/site'
+import { Route as CharactersRoute } from '~/routes/$series/$locale/characters'
+import { Route as FruitsRoute } from '~/routes/$series/$locale/fruits'
+import { Route as LandingRoute } from '~/routes/$series/$locale/index'
+import { Route as PlacesRoute } from '~/routes/$series/$locale/places'
 
-import { Route as LandingRoute } from '.'
-import { Route as CharactersRoute } from './characters'
-import { Route as FruitsRoute } from './fruits'
-import { Route as PlacesRoute } from './places'
+import { describeNamedPage, type HeadTags, recordHead } from './-head'
 
 type Head = (input: {
   match: { pathname: string }
@@ -42,14 +43,26 @@ function headOf(
 // matches it with — index routes carry a trailing slash — and the canonical
 // address that must come out the other side.
 const PAGES = [
-  { route: LandingRoute, matched: '/en/', canonical: '/en' },
+  {
+    route: LandingRoute,
+    matched: '/one-piece/en/',
+    canonical: '/one-piece/en',
+  },
   {
     route: CharactersRoute,
-    matched: '/en/characters/',
-    canonical: '/en/characters',
+    matched: '/one-piece/en/characters/',
+    canonical: '/one-piece/en/characters',
   },
-  { route: FruitsRoute, matched: '/en/fruits/', canonical: '/en/fruits' },
-  { route: PlacesRoute, matched: '/en/places/', canonical: '/en/places' },
+  {
+    route: FruitsRoute,
+    matched: '/one-piece/en/fruits/',
+    canonical: '/one-piece/en/fruits',
+  },
+  {
+    route: PlacesRoute,
+    matched: '/one-piece/en/places/',
+    canonical: '/one-piece/en/places',
+  },
 ] as const
 
 describe('every page that is not a record’s own', () => {
@@ -91,8 +104,10 @@ describe('every page that is not a record’s own', () => {
   })
 
   it('files the three indexes as collections and the landing as a page', () => {
-    const landing = headOf(LandingRoute, '/en/').scripts?.[0]?.children ?? ''
-    const index = headOf(CharactersRoute, '/en/characters/').scripts?.[0]
+    const landing =
+      headOf(LandingRoute, '/one-piece/en/').scripts?.[0]?.children ?? ''
+    const index = headOf(CharactersRoute, '/one-piece/en/characters/')
+      .scripts?.[0]
 
     expect(landing).not.toContain('CollectionPage')
     expect(index?.children).toContain('CollectionPage')
@@ -106,8 +121,76 @@ describe('every page that is not a record’s own', () => {
       }
 
       expect(
-        describeHead({ match: { pathname: '/fr/' }, params: { locale: 'fr' } }),
+        describeHead({
+          match: { pathname: '/one-piece/fr/' },
+          params: { locale: 'fr' },
+        }),
       ).toStrictEqual({})
     }
+  })
+})
+
+function presentHead(head: HeadTags | undefined): HeadTags {
+  if (head === undefined) {
+    throw new TypeError('Expected a record head')
+  }
+  return head
+}
+
+describe('series-specific structured data and social addresses', () => {
+  it('keeps a record, its index, and its website inside the same series', () => {
+    const pathname = '/hunter-x-hunter/en/characters/gon'
+    const head = presentHead(
+      recordHead(
+        {
+          loaderData: {
+            head: {
+              title: 'A character under fog',
+              description: 'A covered record.',
+            },
+          },
+          match: { pathname },
+          params: { locale: 'en' },
+        },
+        'characters',
+      ),
+    )
+    const structured = head.scripts[0]?.children ?? ''
+
+    expect(head.links).toContainEqual({
+      rel: 'canonical',
+      href: absoluteUrl(pathname),
+    })
+    expect(head.links).toContainEqual({
+      rel: 'alternate',
+      hrefLang: 'it',
+      href: absoluteUrl('/hunter-x-hunter/it/characters/gon'),
+    })
+    expect(head.meta).toContainEqual({
+      property: 'og:url',
+      content: absoluteUrl(pathname),
+    })
+    expect(structured).toContain(
+      `${absoluteUrl('/hunter-x-hunter/en')}#website`,
+    )
+    expect(structured).toContain(absoluteUrl('/hunter-x-hunter/en/characters'))
+    expect(structured).not.toContain(absoluteUrl('/en/characters'))
+  })
+
+  it('keeps the legal page attached to the series-free hub', () => {
+    const head = describeNamedPage({
+      descriptionKey: 'legal.description',
+      kind: 'index',
+      locale: 'en',
+      pathname: '/en/legal',
+      titleKey: 'legal.title',
+    })
+
+    expect(head.links).toContainEqual({
+      rel: 'canonical',
+      href: absoluteUrl('/en/legal'),
+    })
+    expect(head.scripts[0]?.children).toContain(`${absoluteUrl('/en')}#website`)
+    expect(head.scripts[0]?.children).not.toContain('/one-piece/')
   })
 })

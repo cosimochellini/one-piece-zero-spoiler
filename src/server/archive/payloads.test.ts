@@ -1,14 +1,21 @@
 import { describe, expect, it } from 'vitest'
 
 import type { Entity } from '~/data/types'
-import { LOCALES } from '~/i18n/locales'
+import { type Locale, LOCALES } from '~/i18n/locales'
 import { DEMO_LAST_CHAPTER, DEMO_LAST_EPISODE } from '~/lib/progress/bounds'
 import type { Bookmark } from '~/lib/progress/episode'
 import * as api from '~/server/api'
-import { leaksIn } from '~/test/fog'
+import { opHandleOf as handleOf } from '~/test/archive'
+import { leaksOf } from '~/test/fog'
+import {
+  type LoadedSeries as ListedSeries,
+  ONE_PIECE_LOADED,
+  LOADED_SERIES as SERIES,
+} from '~/test/series'
 
-import { handleOf } from './handle.server'
-import { BOOKMARKS, PAYLOADS } from './payloads.server'
+import { type Payload, payloadsFor } from './payloads.server'
+
+const PAYLOADS = payloadsFor(ONE_PIECE_LOADED.archive)
 
 /** A record a page names past the bookmark on purpose. */
 type Excuse = (entity: Entity, key: string, bookmark: Bookmark) => boolean
@@ -37,11 +44,30 @@ const BY_DESIGN: Partial<Record<string, Excuse>> = {
   liftShip: lifted,
 }
 
+/** One series' sweep: the pages it serves, and what they name on purpose. */
+interface Sweep {
+  byDesign: Partial<Record<string, Excuse>>
+  payloads: Payload[]
+}
+
+/**
+ * The sweep of every series in `~/data/series`, by slug. A series listed
+ * there with no sweep here fails the first test below, so it cannot ship
+ * unswept; its bookmarks are its own, in the list.
+ */
+const SWEEPS: Partial<Record<string, Sweep>> = {
+  'one-piece': { byDesign: BY_DESIGN, payloads: PAYLOADS },
+}
+
 const alphabetically = (a: string, b: string): number => a.localeCompare(b)
 
-const ASKS = BOOKMARKS.flatMap((bookmark) =>
-  LOCALES.map((locale) => ({ bookmark, locale })),
-)
+/** Every bookmark of a series' sweep, in every locale. */
+const asksOf = ({
+  bookmarks,
+}: ListedSeries): { bookmark: Bookmark; locale: Locale }[] =>
+  bookmarks.flatMap((bookmark) =>
+    LOCALES.map((locale) => ({ bookmark, locale })),
+  )
 
 /**
  * Every key at every bookmark is about 400,000 pages and 11s, most of it the
@@ -52,7 +78,7 @@ const ASKS = BOOKMARKS.flatMap((bookmark) =>
  */
 const STRIDE = 7
 
-/** The keys asked for at the bookmark and locale at this place in `ASKS`. */
+/** The keys asked for at the bookmark and locale at this place in the asks. */
 function sampled(keys: string[] | undefined, at: number): string[] {
   return keys === undefined ?
       ['']
@@ -68,14 +94,39 @@ describe('every payload the server sends', () => {
     ).toStrictEqual(Object.keys(api).toSorted(alphabetically))
   })
 
-  it.each(PAYLOADS)(
-    '$name names nothing the reader has not reached',
+  it('is swept for every series listed, and for no other', () => {
+    expect(Object.keys(SWEEPS).toSorted(alphabetically)).toStrictEqual(
+      SERIES.map(({ slug }) => slug).toSorted(alphabetically),
+    )
+
+    // An entry with no pages, or a series with no bookmark past the landing,
+    // would be swept without a single check.
+    for (const { bookmarks, slug } of SERIES) {
+      expect(SWEEPS[slug]?.payloads.length, slug).toBeGreaterThan(0)
+      expect(
+        bookmarks.filter((bookmark) => bookmark !== null).length,
+        slug,
+      ).toBeGreaterThan(0)
+    }
+  })
+})
+
+describe.each(SERIES)('every payload of $slug', (series) => {
+  const { byDesign, payloads } = SWEEPS[series.slug] ?? {
+    byDesign: {},
+    payloads: [],
+  }
+  const asks = asksOf(series)
+  const leaksIn = leaksOf(series)
+
+  it.each(payloads)(
+    '$name names nothing the reader has not reached, nor another series',
     ({ keys, name, run }) => {
       const all = keys?.()
-      const excuse = BY_DESIGN[name] ?? ((): boolean => false)
+      const excuse = byDesign[name] ?? ((): boolean => false)
       const leaks: string[] = []
 
-      for (const [at, { bookmark, locale }] of ASKS.entries()) {
+      for (const [at, { bookmark, locale }] of asks.entries()) {
         for (const key of sampled(all, at)) {
           const leaked = leaksIn(
             run(bookmark, locale, key),

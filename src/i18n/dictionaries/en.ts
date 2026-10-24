@@ -148,9 +148,116 @@ export const enDictionary = {
   'faq.peekA':
     'Yes. On the other pages of the wiki, press “Show anyway” on it. The choice is not saved, and every other entry stays under fog.',
 
+  'legal.title': 'Legal notice',
+  'legal.description':
+    'The unofficial project notice, rights contact, privacy and cookies, sources and licenses.',
+  'legal.projectTitle': 'An unofficial project',
+  'legal.unofficial':
+    'Zero Spoiler is an unofficial, nonprofit fan project. It is not affiliated with or endorsed by the One Piece rights holders.',
+  'legal.credits':
+    'One Piece was created by Eiichiro Oda. Anime credit: © Eiichiro Oda/Shueisha, Toei Animation.',
+  'legal.creditSource': 'Official credit source',
+  'legal.contact': 'Rights inquiries and corrections on GitHub',
+  'legal.contactHelp':
+    'Include the page URL, the material concerned and the rights inquiry or correction requested. Keep spoilers out of the title. GitHub issues are public and require an account. Do not post confidential information.',
+
+  'credits.title': 'Sources and licenses',
+  'credits.intro':
+    'Sources used for documented checks and the licenses that apply to the project and its sources.',
+  'credits.licensesTitle': 'Project licenses',
+  'credits.software':
+    'The MIT license covers the software and original technical documentation, within the rights held by contributors. Existing notices remain valid.',
+  'credits.scopeNotice': 'License scope and content notices',
+  'credits.content':
+    'Archive text, drawings and branding are outside the general MIT grant. No new blanket content license is assigned. Third-party rights and existing permissions remain in force.',
+  'credits.sourcesTitle': 'Source terms',
+  'credits.external':
+    'External pages may contain later story information, including in their titles. Opening a source leaves this wiki’s spoiler protection.',
+  'credits.wikiTerms':
+    'The English and Italian One Piece Wikis declare CC BY-SA 3.0 Unported for community text by default. Exceptions, imported material and images can have different terms. Fandom permits author attribution through links to the contributed articles.',
+  'credits.otherTerms':
+    'No general open-content license was established for AnimeFillerList or the official episode synopsis. Classification facts and citations do not grant permission to copy prose, images or an entire compilation. Official titles and One Piece material are not offered as project-owned content.',
+  'credits.wikiEn': 'English One Piece Wiki',
+  'credits.wikiIt': 'Italian One Piece Wiki',
+  'credits.fandomTerms': 'Fandom licensing and attribution',
+  'credits.fandomTermsIt': 'Fandom licensing in Italian',
+  'credits.fillerList': 'AnimeFillerList: classification reference',
+  'credits.referencesTitle': 'Documented references',
+  'credits.coverage':
+    'This list covers the bounded review recorded on 20 October 2026 and the summary replacement reviewed on 22 October 2026. Other historical text, translations and illustrations remain unreviewed or unresolved. These references do not certify the rights in every entry.',
+  'credits.bookmark':
+    'Only references to material open at your bookmark are listed. The license beside a source refers to its text, not to the whole archive.',
+  'credits.empty':
+    'No entry references are open at your bookmark. You can still read the general source and license notices above.',
+  'credits.episode': 'Episode {episode}',
+  'credits.scope.dossier': 'Character fields in the reviewed sample',
+  'credits.scope.chronicle': 'Story entry in the reviewed sample',
+  'credits.scope.filler': 'Release title and summary in the reviewed sample',
+  'credits.scope.title': 'Release title only',
+  'credits.scope.summary': 'Replacement summary',
+  'credits.factCheck':
+    'Reference for the documented comparison or fact check. The historical writing process is not established; no claim of independent authorship or new content license is made.',
+  'credits.replacement':
+    'Both summaries were replaced with brief accounts of facts checked against the official synopsis. The synopsis was not translated in full. No new content license is assigned.',
+  'credits.source.wiki-en':
+    'English One Piece Wiki contributors: source revision',
+  'credits.source.wiki-it':
+    'Italian One Piece Wiki contributors: source revision',
+  'credits.source.official': 'ONE PIECE.com: official episode synopsis',
+  'credits.noOpenLicense': 'No open-content permission established.',
+
+  'privacy.title': 'Privacy and cookies',
+  'privacy.updated': 'Last checked: 20 October 2026.',
+  'privacy.controllerTitle': 'Who runs the site',
+  'privacy.controller':
+    'Zero Spoiler is a personal, nonprofit fan project. Its operator and data controller is a private individual based in Italy, reachable as @cosimochellini on GitHub. Use the GitHub contact link below for an initial request.',
+  'privacy.serviceTitle': 'What a visit sends',
+  'privacy.service':
+    'Your browser sends Netlify the requested address, IP address, browser information and applicable cookies to deliver pages and apply your spoiler boundary. Requests stay on this site; fonts and drawings are hosted here. There are no user accounts, advertising, analytics or profiling in the application.',
+  'privacy.cookiesTitle': 'Technical cookies and browser storage',
+  'privacy.cookiesIntro':
+    'These first-party cookies support features you request. They are not used for advertising or tracking across sites. They do not require a consent banner under the Italian rules for necessary technical cookies.',
+  'privacy.bookmark':
+    'zs_one-piece: your episode, chapter or live-action bookmark; kept for 365 days after saving it, or until you clear it. Opening a shared bookmark link also sets this cookie. The value is sent to the server to hide later events.',
+  'privacy.language':
+    'opzs_lang: your selected language (it or en); kept for 365 days after choosing it. Sent to the server to remember the language on later visits.',
+  'privacy.trial':
+    'zs_one-piece_try: a temporary bookmark set when you try the site; a session cookie with no fixed expiry, removed when you save or clear a bookmark or leave the trial. Browser session restore can preserve session cookies.',
+  'privacy.attributes':
+    'All three cookies use Path=/ and SameSite=Lax, with no Domain, Secure or HttpOnly attribute. The site is served over HTTPS. They can be read by this site’s JavaScript and sent on applicable same-site requests and top-level cross-site navigations.',
+  'privacy.storage':
+    'opzs_welcome is a sessionStorage flag used to show a welcome once after saving a bookmark. It is removed when the home page reads it, or when the tab session ends; it is not sent to the server. The application does not use localStorage.',
+  'privacy.controlTitle': 'Your choices',
+  'privacy.control':
+    'You can clear the bookmark in its dialog and remove cookies and site storage in your browser settings. Blocking them prevents the site from remembering your preferences; without a bookmark you see the introductory view. There are no optional tracking cookies to accept or reject.',
+  'privacy.hostingTitle': 'Hosting, logs and transfers',
+  'privacy.hosting':
+    'Netlify, Inc. hosts and delivers the site using its CDN and server functions. The configured function region is us-east-2 (Ohio, United States), so requests are processed outside the EEA. The checked configuration has no Analytics or Identity instance, database, injected snippets, forms or service add-ons.',
+  'privacy.logs':
+    'Netlify retains function activity logs: its documentation specifies at least 24 hours, with longer retention on some plans. This is not a verified maximum for this site or for traffic and security logs. The complete provider retention period is still being verified. No analytics does not mean no personal data is processed.',
+  'privacy.terms':
+    'Netlify’s published Data Processing Agreement forms part of its standard subscription terms, describes its processor role and subprocessors, and provides for the EU–US Data Privacy Framework with standard contractual clauses as a fallback. These are the provider’s published terms; site-specific contractual details and the full retention arrangements remain to be confirmed.',
+  'privacy.basesTitle': 'Purposes and legal bases',
+  'privacy.bases':
+    'The purposes are delivering the pages you request, applying your spoiler boundary, remembering your choices and keeping the site operational and secure. The basis is the legitimate interest in providing this limited service (GDPR Article 6(1)(f)); the application adds no visitor history or profiling for these purposes. Applicable data-rights requests are handled to meet legal obligations (Article 6(1)(c)). The technical-cookie consent exemption is separate from these GDPR bases. You may object as described below.',
+  'privacy.rightsTitle': 'Questions and your rights',
+  'privacy.rights':
+    'Where applicable, you may request access, correction, erasure, restriction or portability of personal data, object to processing, and complain to the Italian Garante or your local supervisory authority. Requests concern data actually held; a cookie value alone does not identify a named account.',
+  'privacy.contact': 'Contact on GitHub',
+  'privacy.contactHelp':
+    'For an initial privacy contact request, open a GitHub issue without personal or confidential details. Issues are public and require an account. Do not include IP addresses, cookie values or identity documents. We will agree a private channel before discussing any personal details. GitHub processes information you submit there under its own privacy policy.',
+  'privacy.sourcesTitle': 'Sources and verification',
+  'privacy.garante': 'Italian Garante: cookies and tracking guidance',
+  'privacy.netlifyLogs': 'Netlify: function logs and retention',
+  'privacy.netlifyTerms': 'Netlify: DPA and subprocessors',
+  'privacy.audit': 'Technical audit and outstanding checks',
+
   'footer.lead': 'A One Piece wiki that hides what comes after your bookmark.',
   'footer.colophon':
-    'All the drawings are made for this site; no official artwork is used. Your bookmark is saved in a cookie on this device. MIT licence.',
+    'All the drawings are made for this site; no official artwork is used. Your bookmark is saved in a cookie on this device.',
+
+  'footer.unofficial':
+    'Unofficial fan project, not endorsed by the One Piece rights holders.',
 
   'characters.title': 'Characters',
   'characters.count':

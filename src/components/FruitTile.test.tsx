@@ -47,7 +47,7 @@ describe('FruitTile', () => {
 
     const link = screen.getByRole('link')
 
-    expect(link).toHaveAttribute('href', '/en/fruits/gum-gum-fruit')
+    expect(link).toHaveAttribute('href', '/one-piece/en/fruits/gum-gum-fruit')
     expect(link).toHaveTextContent('Gum-Gum Fruit')
     expect(link.querySelectorAll('path').length).toBeGreaterThan(0)
     expect(container).toHaveTextContent('Paramecia')
@@ -70,8 +70,14 @@ describe('FruitTile', () => {
 
     const [fruitLink, eaterLink] = screen.getAllByRole('link')
 
-    expect(fruitLink).toHaveAttribute('href', '/en/fruits/flame-flame-fruit')
-    expect(eaterLink).toHaveAttribute('href', '/en/characters/portgas-d-ace')
+    expect(fruitLink).toHaveAttribute(
+      'href',
+      '/one-piece/en/fruits/flame-flame-fruit',
+    )
+    expect(eaterLink).toHaveAttribute(
+      'href',
+      '/one-piece/en/characters/portgas-d-ace',
+    )
     expect(eaterLink).toHaveTextContent('Portgas D. Ace')
     expect(eaterLink?.querySelectorAll('path').length).toBeGreaterThan(0)
     expect(
@@ -118,7 +124,7 @@ describe('FruitTile', () => {
 
     const eaterLink = screen.getByRole('link', { name: 'Sabo' })
 
-    expect(eaterLink).toHaveAttribute('href', '/en/characters/sabo')
+    expect(eaterLink).toHaveAttribute('href', '/one-piece/en/characters/sabo')
     expect(eaterLink.querySelector('mark')).toHaveTextContent('Sab')
     expect(screen.getByText('+1')).toBeInTheDocument()
   })
@@ -227,7 +233,10 @@ describe('FruitTile', () => {
 
     const link = await screen.findByRole('link', { name: 'Flame-Flame Fruit' })
 
-    expect(link).toHaveAttribute('href', '/en/fruits/flame-flame-fruit')
+    expect(link).toHaveAttribute(
+      'href',
+      '/one-piece/en/fruits/flame-flame-fruit',
+    )
     // Every drawn line is measured for the pen.
     expect(container.querySelector('path')).toHaveAttribute('pathLength', '1')
     // The kind is already printed under the tile; the lifted link does not

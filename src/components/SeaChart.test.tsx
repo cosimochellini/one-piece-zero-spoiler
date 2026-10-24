@@ -137,6 +137,7 @@ describe('SeaChart', () => {
     // No sea is drawn or named, and nothing in the fog has a name.
     expect(container).not.toHaveTextContent('East Blue')
     expect(container.querySelectorAll('rect[x]')).toHaveLength(0)
+    expect(container.querySelectorAll('circle')).toHaveLength(0)
   })
 
   it('links every open stop to its page and marks where the reader is', () => {
@@ -145,9 +146,9 @@ describe('SeaChart', () => {
     const links = within(stops()).getAllByRole('link')
 
     expect(links.map((link) => link.getAttribute('href'))).toStrictEqual([
-      '/en/places/shells-town',
-      '/en/places/syrup-village',
-      '/en/places/baratie',
+      '/one-piece/en/places/shells-town',
+      '/one-piece/en/places/syrup-village',
+      '/one-piece/en/places/baratie',
     ])
     expect(links.map((link) => link.getAttribute('aria-label'))).toStrictEqual([
       'Stop 1 of 5. Shells Town',
@@ -207,6 +208,20 @@ describe('SeaChart', () => {
     expect(container).toHaveTextContent('East Blue Saga')
     expect(container).toHaveTextContent('Shells Town')
     expect(container).not.toHaveTextContent('Alabasta Saga')
+  })
+
+  it('keeps every reached name written even when their points overlap', () => {
+    const crowded = eastBlue.map((entry) => ({
+      ...entry,
+      chart: { x: 1000, y: 400 },
+    }))
+    const { container } = draw({ bookmark: ep(30), open: crowded })
+
+    expect(container.querySelectorAll('[data-chart-name]')).toHaveLength(4)
+
+    for (const entry of crowded) {
+      expect(screen.getAllByText(entry.name)).toHaveLength(2)
+    }
   })
 
   it('zooms across with its buttons, and between the whole chart and the saga', async () => {
@@ -296,7 +311,7 @@ describe('SeaChart', () => {
 
     const here = within(stops()).getByRole('link', { current: 'location' })
 
-    expect(here).toHaveAttribute('href', '/en/places/amazon-lily')
+    expect(here).toHaveAttribute('href', '/one-piece/en/places/amazon-lily')
   })
 
   it('leaves an earlier ship small at the end of her own stretch', () => {
@@ -345,7 +360,7 @@ describe('the peek', () => {
     expect(dialog).toHaveTextContent('Episode 20')
     expect(
       within(dialog).getByRole('link', { name: 'Open the entry' }),
-    ).toHaveAttribute('href', '/en/places/baratie')
+    ).toHaveAttribute('href', '/one-piece/en/places/baratie')
     expect(baratie).toHaveAttribute('aria-expanded', 'true')
     expect(baratie).toHaveAttribute('aria-controls', dialog.id)
 
@@ -562,7 +577,7 @@ describe('the peek', () => {
     expect(dialog).toHaveTextContent('Whisky Peak')
     expect(
       within(dialog).getByRole('link', { name: 'Open the entry' }),
-    ).toHaveAttribute('href', '/en/places/whisky-peak')
+    ).toHaveAttribute('href', '/one-piece/en/places/whisky-peak')
   })
 
   it('peeks a ship, as her own page has her', async () => {
@@ -585,6 +600,6 @@ describe('the peek', () => {
     expect(dialog).toHaveTextContent('Fate: Given a funeral at sea')
     expect(
       within(dialog).getByRole('link', { name: 'Open the entry' }),
-    ).toHaveAttribute('href', '/en/places/going-merry')
+    ).toHaveAttribute('href', '/one-piece/en/places/going-merry')
   })
 })

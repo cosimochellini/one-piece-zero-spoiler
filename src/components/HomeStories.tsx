@@ -4,7 +4,7 @@ import type { ReactElement } from 'react'
 
 import { Prose } from '~/components/CharacterChronicle'
 import { useLocale } from '~/i18n/LocaleContext'
-import { useThreshold } from '~/lib/progress/BookmarkContext'
+import { useSeriesParams, useThreshold } from '~/lib/progress/BookmarkContext'
 import type { HomeStory } from '~/lib/view/records'
 import {
   color,
@@ -128,7 +128,7 @@ export function HomeMoreStories({
 
 /** The mark in the reader's unit, and whose story it is, as one line. */
 function Byline({ story }: { story: HomeStory }): ReactElement {
-  const { locale } = useLocale()
+  const { series, locale } = useSeriesParams()
   const threshold = useThreshold()
 
   return (
@@ -137,8 +137,8 @@ function Byline({ story }: { story: HomeStory }): ReactElement {
         {threshold('home.storyAt', story)}
       </span>
       <Link
-        params={{ locale, id: story.subject.id }}
-        to="/$locale/characters/$id"
+        params={{ series, locale, id: story.subject.id }}
+        to="/$series/$locale/characters/$id"
         {...stylex.props(styles.subject)}
       >
         {story.subject.name}

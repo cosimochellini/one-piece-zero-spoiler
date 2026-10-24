@@ -34,4 +34,40 @@ describe('the fallow configuration', () => {
 
     expect(new Set(listed)).toStrictEqual(new Set(known))
   })
+
+  it('puts the series zones before the engine, which would swallow them', () => {
+    // A file belongs to the first zone that matches it, and the engine's
+    // `src/data/**` matches every series file too. Listed after it, a series
+    // zone would hold nothing, and its boundary would pass without a check.
+    const child = spawnSync(
+      fallow,
+      ['list', '--boundaries', '--format', 'json'],
+      { cwd: repositoryRoot, encoding: 'utf8' },
+    )
+    const zones = JSON.parse(child.stdout).boundaries.zones
+    const count = (name) => zones.find((zone) => zone.name === name)?.file_count
+
+    expect(count('series/one-piece')).toBeGreaterThan(50)
+    expect(count('engine-types')).toBe(1)
+    expect(count('series-list')).toBe(1)
+  })
+
+  it('lets only the server read the registry, without directly importing a series', () => {
+    // Runtime requests select archives through the same registry as the gates.
+    const rules = read('config').boundaries.rules
+    const reaching = rules
+      .filter(({ allow = [], allowTypeOnly = [] }) =>
+        [...allow, ...allowTypeOnly].includes('series-list'),
+      )
+      .map(({ from }) => from)
+
+    const server = rules.find(({ from }) => from === 'server')
+    const direct = [
+      ...(server.allow ?? []),
+      ...(server.allowTypeOnly ?? []),
+    ].filter((zone) => zone === 'series' || zone.startsWith('series/'))
+
+    expect(reaching).toStrictEqual(['server'])
+    expect(direct).toStrictEqual([])
+  })
 })

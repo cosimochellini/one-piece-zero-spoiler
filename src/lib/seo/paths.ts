@@ -1,10 +1,10 @@
-import { DEFAULT_LOCALE, type Locale, LOCALES } from '~/i18n/locales'
+import { DEFAULT_LOCALE, isLocale, type Locale, LOCALES } from '~/i18n/locales'
 
 /**
  * The same page in the other language.
  *
- * Every address on the site is `/<locale>/<rest>`, so a translation is the
- * same path with the first segment swapped. Doing it here rather than at each
+ * Shared pages use `/<locale>/<rest>` and archive pages use
+ * `/<series>/<locale>/<rest>`, so a translation swaps only the locale. Doing it here rather than at each
  * call keeps the canonical link and the `hreflang` alternates spelling the
  * same URL, which is the one thing a search engine checks about them.
  */
@@ -29,15 +29,20 @@ export function normalisePath(pathname: string): string {
   return trimmed === '' ? '/' : trimmed
 }
 
-// A path is `/<locale>/<rest>`, so the rest starts after the empty segment
-// before the leading slash and the locale that follows it.
-const REST_FROM = 2
+const ROOT_PARTS = 2
 
-/** The given path with its locale segment replaced by `locale`. */
+/** The locale's home, within the selected series or on the shared site. */
+export function localeRoot(pathname: string, locale: Locale): string {
+  const first = normalisePath(pathname).split('/', ROOT_PARTS)[1] ?? ''
+  return first === '' || isLocale(first) ? `/${locale}` : `/${first}/${locale}`
+}
+
+/** The given path with only its locale segment replaced by `locale`. */
 export function withLocale(pathname: string, locale: Locale): string {
-  const rest = normalisePath(pathname).split('/').slice(REST_FROM).join('/')
-
-  return rest === '' ? `/${locale}` : `/${locale}/${rest}`
+  const parts = normalisePath(pathname).split('/').slice(1)
+  const position = isLocale(parts[0]) || parts[0] === '' ? 0 : 1
+  parts[position] = locale
+  return `/${parts.join('/')}`
 }
 
 function alternateFor(pathname: string, locale: Locale): Alternate {

@@ -2,7 +2,7 @@
 //
 // The suite-wide environment is jsdom for the React components. This module is
 // plain Node, so a DOM here would only cost startup time.
-import { existsSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdtempSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import path from 'node:path'
 import { describe, expect, it } from 'vitest'
@@ -13,7 +13,7 @@ import {
   cellSvg,
   drawingSvg,
   oklchToHex,
-  parseTokens,
+  onePiecePalette,
   readArgs,
   scaleOf,
   sheetSvg,
@@ -49,10 +49,8 @@ describe('the colours', () => {
     expect(oklchToHex('oklch(62.8% 0.2577 29.23)')).toBe('#ff0000')
   })
 
-  it('reads every tint and the inks from the tokens file', () => {
-    const tokens = parseTokens(
-      readFileSync(path.join(ROOT, 'src/styles/tokens.stylex.ts'), 'utf8'),
-    )
+  it("reads every tint and One Piece's inks", () => {
+    const tokens = onePiecePalette()
 
     const tints = [
       ...'red vermilion orange ocher yellow acid green teal cyan azure'.split(
@@ -72,6 +70,7 @@ describe('the colours', () => {
     ]) {
       expect(tokens[name], name).toMatch(/^#[\da-f]{6}$/u)
     }
+    expect(tokens.paper).toBe(oklchToHex('oklch(13% 0.025 250)'))
   })
 })
 
@@ -243,7 +242,7 @@ describe('what the command line asks for', { timeout: 60_000 }, () => {
     await expect(cellsFor({ ids: ['nobody'], out })).rejects.toThrow(
       'no record has the id nobody',
     )
-    await expect(cellsFor({ ids: [], out, saga: 'stroke' })).rejects.toThrow(
+    await expect(cellsFor({ ids: [], out, saga: 'isles' })).rejects.toThrow(
       'exports no',
     )
   })

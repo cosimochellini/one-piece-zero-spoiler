@@ -5,6 +5,7 @@ import type { ReactElement } from 'react'
 import { Marked } from '~/components/CharacterCard'
 import { CharacterCrest } from '~/components/CharacterCrest'
 import { useLocale } from '~/i18n/LocaleContext'
+import { useSeriesParams } from '~/lib/progress/BookmarkContext'
 import { useDrawing } from '~/lib/view/drawings'
 import type { EaterView } from '~/lib/view/records'
 import {
@@ -40,14 +41,15 @@ export function FruitEater({
   more: number
 }): ReactElement {
   const { locale, t } = useLocale()
+  const { series } = useSeriesParams()
   const { ref, strokes } = useDrawing(eater.id, eater.visual)
   const drawn = eater.visual.deferred !== true || strokes.length > 0
 
   return (
     <div {...stylex.props(styles.eaters)}>
       <Link
-        params={{ locale, id: eater.id }}
-        to="/$locale/characters/$id"
+        params={{ series, locale, id: eater.id }}
+        to="/$series/$locale/characters/$id"
         {...stylex.props(styles.eater)}
       >
         <span

@@ -1,8 +1,5 @@
-import { FILLER, FILLER_ARCS, type FillerArc, LAST_AIRED } from '~/data/filler'
-import { reveal } from '~/data/reveal'
-import type { Entity } from '~/data/types'
+import type { Entity, FillerArc, SeriesArchive } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
-import type { Bookmark } from '~/lib/progress/episode'
 import type {
   FillerGroup,
   FillerMark,
@@ -18,15 +15,16 @@ import {
   canonArcOf,
   type Chunk,
   chunkBy,
-  INDEXED,
   type Indexed,
+  indexedFor,
   type Looker,
   positionOf,
-  RADIX,
   rowOf,
   skipRangesOf,
   slotOf,
 } from './fillerRows.server'
+import { handleIndex } from './handle.server'
+import type { Reader } from './reader.server'
 
 /**
  * What the filler guide may say at one bookmark. The rules for one entry
@@ -39,19 +37,28 @@ import {
  * under them still wait for the bookmark.
  */
 
-const HANDLE_SHAPE = /^[\da-z]{1,3}$/u
-
-/** The entries chunked by the canon arc they air in. */
-const BY_ARC = chunkBy(INDEXED, (item) => canonArcOf(positionOf(item.entry)))
+const byArc = new WeakMap<SeriesArchive, Chunk<Entity | undefined, Indexed>[]>()
+function chunksFor(look: Looker): Chunk<Entity | undefined, Indexed>[] {
+  let chunks = byArc.get(look.archive)
+  if (chunks === undefined) {
+    chunks = chunkBy(indexedFor(look), (item) =>
+      canonArcOf(positionOf(item.entry), look),
+    )
+    byArc.set(look.archive, chunks)
+  }
+  return chunks
+}
 
 /** The filler arc a numbered episode belongs to. */
-function fillerArcOf({ entry }: Indexed): FillerArc | undefined {
+function fillerArcOf({ entry }: Indexed, look: Looker): FillerArc | undefined {
   if (!('episode' in entry)) {
     return undefined
   }
 
   const { episode } = entry
-  return FILLER_ARCS.find((arc) => arc.first <= episode && episode <= arc.last)
+  return look.archive.fillerArcs.find(
+    (arc) => arc.first <= episode && episode <= arc.last,
+  )
 }
 
 /** A run: a filler arc, named, or a stretch of rows that belong to none. */
@@ -72,14 +79,18 @@ function arcName(arc: Entity | undefined, locale: Locale): string {
 
 /** The catalogue: one group per canon arc, the reader's own one current. */
 function groupsFor(look: Looker): FillerGroup[] {
-  const current = BY_ARC.findLastIndex(({ key }) => look.sees(arcGateOf(key)))
+  const current = chunksFor(look).findLastIndex(({ key }) =>
+    look.sees(arcGateOf(key)),
+  )
 
-  return BY_ARC.map((chunk, at) => {
+  return chunksFor(look).map((chunk, at) => {
     return {
       ...arcGateOf(chunk.key),
       current: at === current,
       name: arcName(chunk.key, look.locale),
-      runs: chunkBy(chunk.items, fillerArcOf).map((run) => runOf(run, look)),
+      runs: chunkBy(chunk.items, (item) => fillerArcOf(item, look)).map((run) =>
+        runOf(run, look),
+      ),
     }
   })
 }
@@ -88,7 +99,7 @@ function groupsFor(look: Looker): FillerGroup[] {
 function skipGroupsFor(look: Looker): SkipGroup[] {
   const groups: SkipGroup[] = []
 
-  for (const { key, items } of BY_ARC) {
+  for (const { key, items } of chunksFor(look)) {
     const ranges = skipRangesOf(items.map((item) => item.entry))
     if (ranges.length > 0) {
       groups.push({
@@ -103,10 +114,10 @@ function skipGroupsFor(look: Looker): SkipGroup[] {
 }
 
 /** The numbered entries as the strip draws them: a number and a kind. */
-function marks(): FillerMark[] {
+function marks(look: Looker): FillerMark[] {
   const drawn: FillerMark[] = []
 
-  for (const entry of FILLER) {
+  for (const entry of look.archive.filler) {
     if ('episode' in entry) {
       drawn.push({ episode: entry.episode, kind: entry.kind })
     }
@@ -116,16 +127,17 @@ function marks(): FillerMark[] {
 }
 
 /** The guide at this bookmark. */
-export function fillerPage(bookmark: Bookmark, locale: Locale): FillerPageView {
-  const look = { locale, sees: reveal(bookmark).sees }
+export function fillerPage(r: Reader): FillerPageView {
+  const look = r
 
   return {
-    aired: LAST_AIRED,
-    countdown: countdownOf(bookmark, look),
+    aired: r.archive.lastAired,
+    countdown: countdownOf(r),
     groups: groupsFor(look),
-    marks: marks(),
+    marks: marks(look),
     skipGroups: skipGroupsFor(look),
-    unnumbered: FILLER.filter((entry) => !('episode' in entry)).length,
+    unnumbered: r.archive.filler.filter((entry) => !('episode' in entry))
+      .length,
   }
 }
 
@@ -135,13 +147,11 @@ export function fillerPage(bookmark: Bookmark, locale: Locale): FillerPageView {
  */
 export function peekFiller(
   handle: string,
-  locale: Locale,
+  r: Reader,
 ): FillerRowView | undefined {
-  if (!HANDLE_SHAPE.test(handle)) {
-    return undefined
-  }
-
-  const index = Number.parseInt(handle, RADIX)
-  const entry = FILLER.at(index)
-  return entry === undefined ? undefined : rowOf({ entry, index }, locale)
+  const index = handleIndex(handle, r.archive)
+  const entry = index === undefined ? undefined : r.archive.filler.at(index)
+  return entry === undefined || index === undefined ?
+      undefined
+    : rowOf({ entry, index }, r)
 }

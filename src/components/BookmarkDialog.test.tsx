@@ -88,7 +88,7 @@ describe('EpisodeMark', () => {
     // later assertion pass on the previous test's cookie. jsdom ships no
     // `CookieStore`, which is the only writer the rule accepts.
     // eslint-disable-next-line unicorn/no-document-cookie -- jsdom has no CookieStore, and this is the only way to clear what the component wrote.
-    document.cookie = 'opzs_ep=; Max-Age=0; Path=/'
+    document.cookie = 'zs_one-piece=; Max-Age=0; Path=/'
   })
 
   it('shows the invitation with no bookmark and nothing else', () => {
@@ -141,7 +141,7 @@ describe('EpisodeMark', () => {
 
     expect(stored()).toBe('92')
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
-    expect(document.cookie).toContain('opzs_ep=92')
+    expect(document.cookie).toContain('zs_one-piece=92')
     expect(screen.getByRole('button', { name: /EP 92/u })).toBeInTheDocument()
   })
 
@@ -162,7 +162,7 @@ describe('EpisodeMark', () => {
     await settle()
 
     expect(stored()).toBe('s2e3')
-    expect(document.cookie).toContain('opzs_ep=s2e3')
+    expect(document.cookie).toContain('zs_one-piece=s2e3')
     expect(screen.getByRole('button', { name: /S02E03/u })).toBeInTheDocument()
   })
 

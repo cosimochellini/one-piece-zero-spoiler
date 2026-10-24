@@ -146,10 +146,118 @@ export const itDictionary: Dictionary = {
   'faq.peekA':
     'Sì. Nelle altre pagine della wiki premi “Mostra comunque”. La scelta non viene salvata e le altre voci restano nella nebbia.',
 
+  'legal.title': 'Note legali',
+  'legal.description':
+    'Avviso sul progetto non ufficiale, contatti per i diritti, privacy e cookie, fonti e licenze.',
+  'legal.projectTitle': 'Un progetto non ufficiale',
+  'legal.unofficial':
+    'Zero Spoiler è un progetto amatoriale non ufficiale e senza scopo di lucro. Non è affiliato né approvato dai titolari dei diritti di One Piece.',
+  'legal.credits':
+    'One Piece è un’opera di Eiichiro Oda. Crediti dell’anime: © Eiichiro Oda/Shueisha, Toei Animation.',
+  'legal.creditSource': 'Fonte ufficiale dei crediti',
+  'legal.contact': 'Richieste sui diritti e correzioni su GitHub',
+  'legal.contactHelp':
+    'Indica l’URL della pagina, il materiale interessato e la richiesta sui diritti o la correzione. Evita spoiler nel titolo. Le issue GitHub sono pubbliche e richiedono un account. Non inserire informazioni riservate.',
+
+  'credits.title': 'Fonti e licenze',
+  'credits.intro':
+    'Le fonti delle verifiche documentate e le licenze applicabili al progetto e alle fonti.',
+  'credits.licensesTitle': 'Licenze del progetto',
+  'credits.software':
+    'La licenza MIT copre il software e la documentazione tecnica originale, nei limiti dei diritti detenuti dai contributori. Gli avvisi esistenti restano validi.',
+  'credits.scopeNotice': 'Ambito della licenza e avvisi sui contenuti',
+  'credits.content':
+    'Testi delle voci, disegni e identità visiva sono esclusi dalla concessione MIT generale. Non viene assegnata una nuova licenza generale ai contenuti. Restano validi i diritti di terzi e le autorizzazioni esistenti.',
+  'credits.sourcesTitle': 'Condizioni delle fonti',
+  'credits.external':
+    'Le pagine esterne possono anticipare fatti successivi, anche nei titoli. Aprendo una fonte esci dalla protezione dagli spoiler di questa wiki.',
+  'credits.wikiTerms':
+    'Le One Piece Wiki inglese e italiana dichiarano CC BY-SA 3.0 Unported come licenza predefinita dei testi della comunità. Eccezioni, materiali importati e immagini possono avere condizioni diverse. Fandom consente di attribuire gli autori tramite collegamenti agli articoli a cui hanno contribuito.',
+  'credits.otherTerms':
+    'Non è stata accertata una licenza generale aperta per AnimeFillerList o per la sinossi ufficiale dell’episodio. Le classificazioni e le citazioni delle fonti non autorizzano a copiare testi, immagini o un’intera raccolta. I titoli ufficiali e il materiale di One Piece non vengono offerti come contenuti di proprietà del progetto.',
+  'credits.wikiEn': 'One Piece Wiki inglese',
+  'credits.wikiIt': 'One Piece Wiki italiana',
+  'credits.fandomTerms': 'Licenze e attribuzioni Fandom',
+  'credits.fandomTermsIt': 'Licenze Fandom in italiano',
+  'credits.fillerList': 'AnimeFillerList: riferimento per le classificazioni',
+  'credits.referencesTitle': 'Riferimenti documentati',
+  'credits.coverage':
+    'L’elenco copre il campione verificato il 20 ottobre 2026 e la sostituzione del riassunto verificata il 22 ottobre 2026. Altri testi storici, traduzioni e disegni restano non verificati o con questioni aperte. Questi riferimenti non certificano i diritti su tutte le voci.',
+  'credits.bookmark':
+    'Sono elencati solo i riferimenti a materiali visibili al tuo segnalibro. La licenza accanto a una fonte riguarda il suo testo, non l’intero archivio.',
+  'credits.empty':
+    'Al tuo segnalibro non sono ancora visibili riferimenti alle singole voci. Puoi leggere gli avvisi generali sulle fonti e sulle licenze qui sopra.',
+  'credits.episode': 'Episodio {episode}',
+  'credits.scope.dossier': 'Campi della scheda nel campione verificato',
+  'credits.scope.chronicle': 'Voce della storia nel campione verificato',
+  'credits.scope.filler':
+    'Titolo dell’opera e riassunto nel campione verificato',
+  'credits.scope.title': 'Solo il titolo dell’opera',
+  'credits.scope.summary': 'Riassunto sostitutivo',
+  'credits.factCheck':
+    'Riferimento per il confronto o la verifica dei fatti documentati. Il processo di scrittura storico non è accertato: non si dichiarano testi indipendenti né nuove licenze sui contenuti.',
+  'credits.replacement':
+    'Entrambi i riassunti sono stati sostituiti con brevi testi basati su fatti verificati nella sinossi ufficiale. La sinossi non è stata tradotta per intero. Non viene assegnata una nuova licenza ai contenuti.',
+  'credits.source.wiki-en':
+    'Contributori della One Piece Wiki inglese: revisione della fonte',
+  'credits.source.wiki-it':
+    'Contributori della One Piece Wiki italiana: revisione della fonte',
+  'credits.source.official': 'ONE PIECE.com: sinossi ufficiale dell’episodio',
+  'credits.noOpenLicense': 'Nessuna autorizzazione aperta accertata.',
+
+  'privacy.title': 'Privacy e cookie',
+  'privacy.updated': 'Ultima verifica: 20 ottobre 2026.',
+  'privacy.controllerTitle': 'Chi gestisce il sito',
+  'privacy.controller':
+    'Zero Spoiler è un progetto amatoriale personale e senza scopo di lucro. Il gestore e titolare del trattamento è una persona privata in Italia, contattabile su GitHub come @cosimochellini. Per una richiesta iniziale usa il link di contatto GitHub qui sotto.',
+  'privacy.serviceTitle': 'Cosa invia una visita',
+  'privacy.service':
+    'Il browser invia a Netlify l’indirizzo richiesto, l’indirizzo IP, informazioni sul browser e i cookie pertinenti per consegnare le pagine e applicare il limite agli spoiler. Le richieste restano su questo sito; font e disegni sono ospitati qui. L’applicazione non usa account utente, pubblicità, analytics o profilazione.',
+  'privacy.cookiesTitle': 'Cookie tecnici e memoria del browser',
+  'privacy.cookiesIntro':
+    'Questi cookie di prima parte servono alle funzioni che richiedi. Non sono usati per pubblicità o tracciamento tra siti. Le regole italiane sui cookie tecnici necessari non richiedono un banner di consenso per questi usi.',
+  'privacy.bookmark':
+    'zs_one-piece: il tuo segnalibro per episodio, capitolo o live action; dura 365 giorni dal salvataggio, oppure fino alla cancellazione. Anche aprire un link con un segnalibro imposta questo cookie. Il valore viene inviato al server per nascondere gli eventi successivi.',
+  'privacy.language':
+    'opzs_lang: la lingua scelta (it o en); dura 365 giorni dalla scelta. Viene inviato al server per ricordare la lingua nelle visite successive.',
+  'privacy.trial':
+    'zs_one-piece_try: un segnalibro temporaneo impostato quando provi il sito; è un cookie di sessione senza scadenza fissa, rimosso quando salvi o cancelli un segnalibro o esci dalla prova. Il ripristino della sessione del browser può conservarlo.',
+  'privacy.attributes':
+    'Tutti e tre i cookie usano Path=/ e SameSite=Lax, senza attributi Domain, Secure o HttpOnly. Il sito è servito tramite HTTPS. Sono leggibili dal JavaScript del sito e vengono inviati nelle richieste pertinenti allo stesso sito e nelle navigazioni principali da altri siti.',
+  'privacy.storage':
+    'opzs_welcome è un indicatore in sessionStorage che mostra un benvenuto una sola volta dopo il salvataggio del segnalibro. Viene rimosso quando la pagina iniziale lo legge o alla fine della sessione della scheda; non viene inviato al server. L’applicazione non usa localStorage.',
+  'privacy.controlTitle': 'Le tue scelte',
+  'privacy.control':
+    'Puoi cancellare il segnalibro dalla sua finestra e rimuovere cookie e memoria del sito dalle impostazioni del browser. Bloccarli impedisce di ricordare le preferenze; senza segnalibro vedi la vista introduttiva. Non ci sono cookie di tracciamento facoltativi da accettare o rifiutare.',
+  'privacy.hostingTitle': 'Hosting, log e trasferimenti',
+  'privacy.hosting':
+    'Netlify, Inc. ospita e consegna il sito tramite la propria CDN e funzioni server. La regione configurata delle funzioni è us-east-2 (Ohio, Stati Uniti): le richieste vengono quindi trattate fuori dallo SEE. La configurazione verificata non ha istanze Analytics o Identity, database, snippet aggiunti, moduli o servizi aggiuntivi.',
+  'privacy.logs':
+    'Netlify conserva log dell’attività delle funzioni: la documentazione indica almeno 24 ore, con durate maggiori per alcuni piani. Non è un limite massimo verificato per questo sito né per i log di traffico e sicurezza. Il periodo completo di conservazione del fornitore è ancora da verificare. L’assenza di analytics non significa assenza di trattamento di dati personali.',
+  'privacy.terms':
+    'L’accordo sul trattamento dei dati pubblicato da Netlify fa parte dei suoi termini standard di abbonamento, descrive il ruolo di responsabile e i subfornitori e prevede il Data Privacy Framework UE–USA con clausole contrattuali standard come alternativa. Sono i termini pubblicati dal fornitore; restano da confermare i dettagli contrattuali del sito e le modalità complete di conservazione.',
+  'privacy.basesTitle': 'Finalità e basi giuridiche',
+  'privacy.bases':
+    'Le finalità sono consegnare le pagine richieste, applicare il limite agli spoiler, ricordare le tue scelte e mantenere il sito funzionante e sicuro. La base è il legittimo interesse a fornire questo servizio limitato (articolo 6(1)(f) GDPR); l’applicazione non aggiunge cronologie dei visitatori o profilazione per questi scopi. Le richieste applicabili sui diritti sono gestite per adempiere agli obblighi di legge (articolo 6(1)(c)). L’esenzione dal consenso per i cookie tecnici è distinta da queste basi GDPR. Puoi opporti come descritto sotto.',
+  'privacy.rightsTitle': 'Domande e diritti',
+  'privacy.rights':
+    'Quando applicabili, puoi chiedere accesso, rettifica, cancellazione, limitazione o portabilità dei dati personali, opporti al trattamento e presentare reclamo al Garante italiano o all’autorità del tuo Paese. Le richieste riguardano i dati effettivamente detenuti; il valore di un cookie da solo non identifica un account nominativo.',
+  'privacy.contact': 'Contatto su GitHub',
+  'privacy.contactHelp':
+    'Per un primo contatto sulla privacy apri una issue GitHub senza dati personali o riservati. Le issue sono pubbliche e richiedono un account. Non inserire indirizzi IP, valori dei cookie o documenti di identità. Concorderemo un canale riservato prima di discutere dati personali. GitHub tratta le informazioni che inserisci lì secondo la propria informativa privacy.',
+  'privacy.sourcesTitle': 'Fonti e verifica',
+  'privacy.garante': 'Garante: linee guida su cookie e tracciamento',
+  'privacy.netlifyLogs': 'Netlify: log delle funzioni e conservazione',
+  'privacy.netlifyTerms': 'Netlify: accordo sul trattamento e subfornitori',
+  'privacy.audit': 'Verifica tecnica e controlli da completare',
+
   'footer.lead':
     'Una wiki di One Piece che nasconde quello che viene dopo il tuo segnalibro.',
   'footer.colophon':
-    'Tutti i disegni sono fatti per questo sito e non ci sono immagini ufficiali. Il segnalibro viene salvato in un cookie su questo dispositivo. Licenza MIT.',
+    'Tutti i disegni sono fatti per questo sito e non ci sono immagini ufficiali. Il segnalibro viene salvato in un cookie su questo dispositivo.',
+
+  'footer.unofficial':
+    'Progetto amatoriale non ufficiale, non approvato dai titolari dei diritti di One Piece.',
 
   'characters.title': 'Personaggi',
   'characters.count':

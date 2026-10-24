@@ -1,14 +1,5 @@
-import { DRAWINGS } from '~/data/art'
-import { chapterAtEpisode } from '~/data/chapter-table'
-import { arcs, chart, getCharacter, roleOf } from '~/data/characters'
-import { datedOf } from '~/data/dated'
-import { entities } from '~/data/entities'
-import { ARC_LEADS } from '~/data/leads'
 import { orderByMode } from '~/data/order'
-import { places, ships } from '~/data/places'
 import type { Entity } from '~/data/types'
-import type { Locale } from '~/i18n/locales'
-import { DEMO_LAST_CHAPTER, DEMO_LAST_EPISODE } from '~/lib/progress/bounds'
 import type { Bookmark } from '~/lib/progress/episode'
 import type { Gated } from '~/lib/progress/spoiler'
 import type {
@@ -18,11 +9,10 @@ import type {
   Step,
 } from '~/lib/view/records'
 
-import { recordOf } from './project.server'
-import { readerFor } from './reader.server'
+import { coveredOf, type Reader } from './reader.server'
 
 /**
- * The onboarding: East Blue, sent whole, for a visitor with no bookmark.
+ * The onboarding: the series' demo span, sent to a visitor with no bookmark.
  *
  * The one page that sends a record the visitor has not reached. It is sent
  * so the dial can wake East Blue up in the browser as it moves, and it stops
@@ -35,11 +25,16 @@ import { readerFor } from './reader.server'
 /** How many covered silhouettes stand for the rest of the route. */
 const TAIL_COUNT = 6
 
-/** Whether a record or a fact is inside East Blue in both units. */
-function inEastBlue(gated: Gated): boolean {
+/**
+ * Whether a record or a fact is inside the series' demo in both units. One
+ * that a single source tells is not, wherever it is filed: the dial moves in
+ * either unit, in the browser.
+ */
+function inDemo(gated: Gated, r: Reader): boolean {
   return (
-    gated.revealedAtEpisode <= DEMO_LAST_EPISODE
-    && gated.revealedAtChapter <= DEMO_LAST_CHAPTER
+    gated.source === undefined
+    && gated.revealedAtEpisode <= r.archive.series.demoLastEpisode
+    && gated.revealedAtChapter <= r.archive.series.demoLastChapter
   )
 }
 
@@ -55,10 +50,11 @@ function gateOf(gated: Gated): Gated {
 function stepsOf<T, V>(
   entries: { gate: Gated; value: T }[],
   value: (raw: T) => V,
+  r: Reader,
 ): Step<V>[] {
   const steps: Step<V>[] = []
   for (const entry of entries) {
-    if (inEastBlue(entry.gate)) {
+    if (inDemo(entry.gate, r)) {
       steps.push({ ...gateOf(entry.gate), value: value(entry.value) })
     }
   }
@@ -72,8 +68,9 @@ function drawn(strokes: Drawing['strokes'], tint: Drawing['tint']): Drawing {
 }
 
 /** One East Blue record, with every fact the dial can reach about it. */
-function demoOf(entity: Entity, locale: Locale): DemoEntry {
-  const role = roleOf(entity)
+function demoOf(entity: Entity, r: Reader): DemoEntry {
+  const { locale } = r
+  const role = r.archive.roleOf(entity)
   const tint = entity.visual.tint
 
   return {
@@ -85,63 +82,72 @@ function demoOf(entity: Entity, locale: Locale): DemoEntry {
     drawings: [
       {
         ...gateOf(entity),
-        value: { strokes: DRAWINGS[entity.visual.art], tint },
+        value: { strokes: r.archive.drawings[entity.visual.art] ?? [], tint },
       },
-      ...stepsOf(datedOf(entity, 'redrawing'), (s) => drawn(s, tint)),
+      ...stepsOf(
+        r.archive.datedOf(entity, 'redrawing'),
+        (s) => drawn(s, tint),
+        r,
+      ),
     ],
-    affiliation: stepsOf(datedOf(entity, 'affiliation'), (v) => v[locale]),
-    epithet: stepsOf(datedOf(entity, 'epithet'), (v) => v[locale]),
-    bounty: stepsOf(datedOf(entity, 'bounty'), (v) => v),
+    affiliation: stepsOf(
+      r.archive.datedOf(entity, 'affiliation'),
+      (v) => v[locale],
+      r,
+    ),
+    epithet: stepsOf(r.archive.datedOf(entity, 'epithet'), (v) => v[locale], r),
+    bounty: stepsOf(r.archive.datedOf(entity, 'bounty'), (v) => v, r),
   }
 }
 
 /** The arcs of East Blue: the ones with leads of their own, not the saga. */
-function eastBlueArcs(): Entity[] {
-  return arcs.filter(
-    (arc) => inEastBlue(arc) && Object.hasOwn(ARC_LEADS, arc.id),
+function demoArcs(r: Reader): Entity[] {
+  return r.archive.arcs.filter(
+    (arc) => inDemo(arc, r) && Object.hasOwn(r.archive.leads, arc.id),
   )
 }
 
 /** Every lead of those arcs, once each, in the order they first appear. */
-function eastBlueCast(arcsHere: Entity[]): Entity[] {
-  const ids = new Set(arcsHere.flatMap((arc) => ARC_LEADS[arc.id] ?? []))
+function demoCast(arcsHere: Entity[], r: Reader): Entity[] {
+  const ids = new Set(arcsHere.flatMap((arc) => r.archive.leads[arc.id] ?? []))
 
   return orderByMode(
     [...ids].flatMap((id) => {
-      const character = getCharacter(id)
+      const character = r.archive.getCharacter(id)
 
-      return character !== undefined && inEastBlue(character) ? [character] : []
+      return character !== undefined && inDemo(character, r) ? [character] : []
     }),
     'episode',
   )
 }
 
 /** The page for a visitor with no bookmark, starting the dial at `start`. */
-export function onboardingPage(
-  start: Bookmark,
-  locale: Locale,
-): OnboardingView {
-  const arcsHere = eastBlueArcs()
-  const unreached = readerFor(null, locale)
-  const past = orderByMode(chart, 'episode').filter(
-    (entity) => !inEastBlue(entity),
+export function onboardingPage(start: Bookmark, r: Reader): OnboardingView {
+  const arcsHere = demoArcs(r)
+  const past = orderByMode(r.archive.chart, 'episode').filter(
+    (entity) => !inDemo(entity, r),
   )
 
   return {
-    arcs: arcsHere.map((arc) => demoOf(arc, locale)),
-    cast: eastBlueCast(arcsHere).map((entity) => demoOf(entity, locale)),
-    places: orderByMode([...places, ...ships], 'episode').flatMap((entity) =>
-      inEastBlue(entity) ? [demoOf(entity, locale)] : [],
+    arcs: arcsHere.map((arc) => demoOf(arc, r)),
+    cast: demoCast(arcsHere, r).map((entity) => demoOf(entity, r)),
+    places: orderByMode(
+      [...r.archive.places, ...r.archive.ships],
+      'episode',
+    ).flatMap((entity) => (inDemo(entity, r) ? [demoOf(entity, r)] : [])),
+    chapterAt: Array.from(
+      { length: r.archive.series.demoLastEpisode },
+      (_, index) =>
+        Math.min(
+          r.archive.chapterAtEpisode(index + 1),
+          r.archive.series.demoLastChapter,
+        ),
     ),
-    chapterAt: Array.from({ length: DEMO_LAST_EPISODE }, (_, index) =>
-      Math.min(chapterAtEpisode(index + 1), DEMO_LAST_CHAPTER),
-    ),
-    fogged: entities.filter((entity) => !inEastBlue(entity)).length,
+    fogged: r.archive.entities.filter((entity) => !inDemo(entity, r)).length,
     start,
-    tail: past.slice(0, TAIL_COUNT).flatMap((entity) => {
-      const slot = unreached.slot(entity, recordOf)
-
-      return slot.open ? [] : [slot.covered]
-    }),
+    // Covered whatever the bookmark: the tail is the route past the demo.
+    tail: past
+      .slice(0, TAIL_COUNT)
+      .map((entity) => coveredOf(entity, r.archive)),
   }
 }

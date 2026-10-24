@@ -33,7 +33,10 @@ describe('LocaleSwitch', () => {
         <LocaleSwitch />
         <Where />
       </>,
-      { pattern: '/$locale/characters/$id', path: '/en/characters/nami' },
+      {
+        pattern: '/$series/$locale/characters/$id',
+        path: '/one-piece/en/characters/nami',
+      },
     )
     const pick = screen.getByRole('combobox', { name: 'Language' })
 
@@ -41,7 +44,7 @@ describe('LocaleSwitch', () => {
 
     fireEvent.change(pick, { target: { value: 'it' } })
 
-    const where = await screen.findByText('/it/characters/nami')
+    const where = await screen.findByText('/one-piece/it/characters/nami')
 
     expect(where).toBeInTheDocument()
     expect(document.cookie).toContain('opzs_lang=it')

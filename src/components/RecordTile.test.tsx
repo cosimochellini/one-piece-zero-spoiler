@@ -17,7 +17,7 @@ describe('RecordTile', () => {
 
     expect(screen.getByRole('link', { name: 'Sanji' })).toHaveAttribute(
       'href',
-      '/en/characters/sanji',
+      '/one-piece/en/characters/sanji',
     )
     expect(screen.getByText('Episode 20')).toBeVisible()
   })
@@ -34,7 +34,7 @@ describe('RecordTile', () => {
 
     expect(screen.getByRole('link', { name: 'Baratie' })).toHaveAttribute(
       'href',
-      '/en/places/baratie',
+      '/one-piece/en/places/baratie',
     )
   })
 
@@ -50,7 +50,7 @@ describe('RecordTile', () => {
 
     expect(screen.getByRole('link', { name: 'Going Merry' })).toHaveAttribute(
       'href',
-      '/en/places/going-merry',
+      '/one-piece/en/places/going-merry',
     )
   })
 

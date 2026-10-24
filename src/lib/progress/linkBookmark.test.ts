@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
 import { bookmarkFromSearch, linkRedirect } from './linkBookmark'
+import { ONE_PIECE_BOOKMARK, seriesSlugFromPath } from './series'
 
 const SITE = 'https://onepiecezerospoiler.com'
 
@@ -9,7 +10,12 @@ function search(query: string): URLSearchParams {
 }
 
 function visit(path: string, method = 'GET'): Response | undefined {
-  return linkRedirect(new Request(`${SITE}${path}`, { method }))
+  const url = new URL(`${SITE}${path}`)
+  const series =
+    seriesSlugFromPath(url.pathname) === ONE_PIECE_BOOKMARK.slug ?
+      ONE_PIECE_BOOKMARK
+    : null
+  return linkRedirect(new Request(url, { method }), series)
 }
 
 describe('the bookmark a link names', () => {
@@ -80,37 +86,39 @@ async function target(response: Response | undefined): Promise<string> {
 
 describe('the redirect a link answers with', () => {
   it('sets the cookie and drops the link from the address', async () => {
-    const response = visit('/?ep=650')
+    const response = visit('/one-piece/en?ep=650')
 
     expect(response?.status).toBe(200)
-    await expect(target(response)).resolves.toBe('/')
+    await expect(target(response)).resolves.toBe('/one-piece/en')
     expect(response?.headers.get('Set-Cookie')).toBe(
-      'opzs_ep=650; Path=/; SameSite=Lax; Max-Age=31536000',
+      'zs_one-piece=650; Path=/; SameSite=Lax; Max-Age=31536000',
     )
     expect(response?.headers.get('Cache-Control')).toBe('no-store')
   })
 
   it('sends no Location, which Netlify would append the query to (#492)', () => {
-    expect(visit('/en?ch=1044')?.headers.has('Location')).toBe(false)
+    expect(visit('/one-piece/en?ch=1044')?.headers.has('Location')).toBe(false)
   })
 
   it('keeps the path and every other parameter', async () => {
-    const response = visit('/it/characters?x=1&s=2&ep=3&y=2')
+    const response = visit('/one-piece/it/characters?x=1&s=2&ep=3&y=2')
 
-    await expect(target(response)).resolves.toBe('/it/characters?x=1&y=2')
-    expect(response?.headers.get('Set-Cookie')).toMatch(/^opzs_ep=s2e3;/u)
+    await expect(target(response)).resolves.toBe(
+      '/one-piece/it/characters?x=1&y=2',
+    )
+    expect(response?.headers.get('Set-Cookie')).toMatch(/^zs_one-piece=s2e3;/u)
   })
 
   it('writes the chapter form', () => {
-    expect(visit('/en?ch=1044')?.headers.get('Set-Cookie')).toMatch(
-      /^opzs_ep=c1044;/u,
+    expect(visit('/one-piece/en?ch=1044')?.headers.get('Set-Cookie')).toMatch(
+      /^zs_one-piece=c1044;/u,
     )
   })
 
   it('drops an invalid link without touching the bookmark', async () => {
-    const response = visit('/en?ep=9999')
+    const response = visit('/one-piece/en?ep=9999')
 
-    await expect(target(response)).resolves.toBe('/en')
+    await expect(target(response)).resolves.toBe('/one-piece/en')
     expect(response?.headers.has('Set-Cookie')).toBe(false)
   })
 
@@ -124,11 +132,34 @@ describe('the redirect a link answers with', () => {
   })
 
   it('answers HEAD like GET', () => {
-    expect(visit('/?ep=650', 'HEAD')?.headers.has('Set-Cookie')).toBe(true)
+    expect(
+      visit('/one-piece/en?ep=650', 'HEAD')?.headers.has('Set-Cookie'),
+    ).toBe(true)
+  })
+
+  it('drops parameters on non-series pages without creating a bookmark', async () => {
+    for (const path of [
+      '/',
+      '/en/legal',
+      '/it/privacy',
+      '/hunter-x-hunter/en',
+      '/en/unknown',
+    ]) {
+      const response = visit(`${path}?ep=650&x=1`)
+
+      expect(response?.headers.has('Set-Cookie')).toBe(false)
+      await expect(target(response)).resolves.toBe(`${path}?x=1`)
+    }
+  })
+
+  it('selects the series from a future series-first content path', () => {
+    expect(
+      visit('/one-piece/en/characters?ep=650')?.headers.get('Set-Cookie'),
+    ).toMatch(/^zs_one-piece=650;/u)
   })
 
   it('leaves alone a request with no link, a server function and a POST', () => {
-    expect(visit('/en?x=1')).toBeUndefined()
+    expect(visit('/one-piece/en?x=1')).toBeUndefined()
     expect(visit('/_serverFn/abc?ep=650')).toBeUndefined()
     expect(visit('/?ep=650', 'POST')).toBeUndefined()
   })

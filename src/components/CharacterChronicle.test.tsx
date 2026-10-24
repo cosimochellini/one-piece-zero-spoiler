@@ -50,7 +50,10 @@ describe('CharacterChronicle', () => {
 
     const link = screen.getByRole('link', { name: 'Zoro' })
 
-    expect(link).toHaveAttribute('href', '/en/characters/roronoa-zoro')
+    expect(link).toHaveAttribute(
+      'href',
+      '/one-piece/en/characters/roronoa-zoro',
+    )
     expect(screen.getByText(/from the post/u)).toBeInTheDocument()
   })
 

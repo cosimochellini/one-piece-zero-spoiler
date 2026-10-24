@@ -49,8 +49,8 @@ npm run dev     # http://localhost:3000
   dependency.
 - The dev server and the production build can lay out styles slightly
   differently. To check a visual change, run `npm run build && npm start`.
-- Your bookmark is the `opzs_ep` cookie. You can set it in the bookmark dialog,
-  in the browser's dev tools, or with a link such as `/en?ep=650`,
+- Your bookmark is the `zs_one-piece` cookie. You can set it in the bookmark
+  dialog, in the browser's dev tools, or with a link such as `/en?ep=650`,
   `/en?s=2&ep=3` or `/en?ch=1044`.
 
 ## The one rule
@@ -62,32 +62,34 @@ when you are not sure about an episode or chapter, **round it up**.
 The same goes for text. A summary, a role or a log line may only say what a
 viewer knows at the entry's own threshold. A later fact goes in a dated timeline
 entry, which carries the episode it is learned in. The comment at the top of
-`src/data/entities.ts` has the full rules.
+`src/data/series/one-piece/entities.ts` has the full rules.
 
 - Episodes count canonical anime episodes only. Filler, films and specials do
   not count.
 - A character opens at the episode that names them, not the one that first shows
   them.
-- Use the [One Piece Wiki](https://onepiece.fandom.com) as the source, and link
-  the page in your pull request.
+- Check facts on the [One Piece Wiki](https://onepiece.fandom.com) and link the
+  page in your pull request. [Sources and rights](#sources-and-rights) says what
+  else to record.
 
 ## Where things live
 
-| Path              | What is there                                                                      |
-| ----------------- | ---------------------------------------------------------------------------------- |
-| `src/data/`       | The archive: records, drawings and most editorial tests. Server only.              |
-| `src/components/` | React components, styled with StyleX.                                              |
-| `src/routes/`     | TanStack Start file routes, under `$locale/`.                                      |
-| `src/server/`     | Server functions that cut the archive down to what a bookmark reaches.             |
-| `src/lib/`        | Code the client may import: bookmark logic, search, SVG helpers, views.            |
-| `src/i18n/`       | Locales and the English and Italian dictionaries.                                  |
-| `src/styles/`     | Global CSS and the StyleX design tokens.                                           |
-| `scripts/`        | Quality gates, the PR title validator, the wiki checks and the merge helper.       |
-| `docs/`           | [Architecture](docs/architecture.md), media and the chronicle verification report. |
+| Path                         | What is there                                                                               |
+| ---------------------------- | ------------------------------------------------------------------------------------------- |
+| `src/data/`                  | The engine every series shares: the record shapes, the reveal and order rules. Server only. |
+| `src/data/series/one-piece/` | The One Piece archive: records, drawings and most editorial tests. Server only.             |
+| `src/components/`            | React components, styled with StyleX.                                                       |
+| `src/routes/`                | TanStack Start file routes, under `$locale/`.                                               |
+| `src/server/`                | Server functions that cut the archive down to what a bookmark reaches.                      |
+| `src/lib/`                   | Code the client may import: bookmark logic, search, SVG helpers, views.                     |
+| `src/i18n/`                  | Locales and the English and Italian dictionaries.                                           |
+| `src/styles/`                | Global CSS and the StyleX design tokens.                                                    |
+| `scripts/`                   | Quality gates, the PR title validator, the wiki checks and the merge helper.                |
+| `docs/`                      | [Architecture](docs/architecture.md), media and the chronicle verification report.          |
 
-A new module with prose must go into `PROSE_EXTRA` in `scripts/archive-gate.mjs`
-and into `TEXTS` in `src/data/leaks.test.ts`, with the gate its page applies to
-it.
+A new module with prose outside a series' `records/` must go into its series'
+`prose` in `EXTRA` in `scripts/archive-gate.mjs` and into `TEXTS` in
+`src/data/series/one-piece/leaks.test.ts`, with the gate its page applies to it.
 
 A new server function in `src/server/api.ts` must go into `PAYLOADS` in
 `src/server/archive/payloads.server.ts`, with the ids or handles it is asked
@@ -122,16 +124,17 @@ Every record has the same shape, defined as `Entity` in `src/data/types.ts`:
   [One Piece Wiki](https://onepiece.fandom.com/it)'s page titles follow Star
   Comics; its "Nome doppiaggio italiano" field gives the dub's name where it
   differs.
-- Records live in one module per saga, in `src/data/records/<saga>.ts`, plus
-  `src/data/records/fruits.ts` for the devil fruits.
+- Records live in one module per saga, in
+  `src/data/series/one-piece/records/<saga>.ts`, plus
+  `src/data/series/one-piece/records/fruits.ts` for the devil fruits.
 
-| To add            | Edit                                                                                                                                                                                                                                      | Guarded by                                                               |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| A character       | The record and its entry in `dossiers` in `src/data/records/<saga>.ts`, and a drawing in `src/data/art/<saga>.ts`                                                                                                                         | `src/data/characters.test.ts`, `src/data/leaks.test.ts`                  |
-| A devil fruit     | `FRUIT_FORMS` in `src/data/fruit-forms.ts`, the record in `src/data/records/fruits.ts` (no thresholds: they come from the `devilFruit` entry in the eater's `dossiers`), a drawing in `src/data/art/fruits/`, and that `devilFruit` entry | `src/data/fruits.test.ts`                                                |
-| A place           | The record in its saga module, its entry in `PLACE_DOSSIERS` in `src/data/places.ts`, its point on the sea chart in `CHART` in `src/data/chart.ts`, and a drawing                                                                         | `src/data/places.test.ts`, `src/data/chart.test.ts`                      |
-| A chronicle story | The story in `src/data/records/<saga>.chronicle.ts`, its source in `scripts/chronicle-sources.mjs`, then `npm run docs:chronicle` to regenerate `docs/chronicle-verification.md`                                                          | `src/data/characters.test.ts`, `scripts/chronicle-verification.test.mjs` |
-| A redrawing       | A dated entry in the saga's `…Redrawn` timeline in `src/data/art/<saga>.ts`. `skypieaRedrawn` is the model                                                                                                                                | `src/data/art/index.test.ts`, `src/server/archive/slices.test.ts`        |
+| To add            | Edit                                                                                                                                                                                                                                                                                         | Guarded by                                                                                |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| A character       | The record and its entry in `dossiers` in `src/data/series/one-piece/records/<saga>.ts`, and a drawing in `src/data/series/one-piece/art/<saga>.ts`                                                                                                                                          | `src/data/series/one-piece/characters.test.ts`, `src/data/series/one-piece/leaks.test.ts` |
+| A devil fruit     | `FRUIT_FORMS` in `src/data/series/one-piece/fruit-forms.ts`, the record in `src/data/series/one-piece/records/fruits.ts` (no thresholds: they come from the `devilFruit` entry in the eater's `dossiers`), a drawing in `src/data/series/one-piece/art/fruits/`, and that `devilFruit` entry | `src/data/series/one-piece/fruits.test.ts`                                                |
+| A place           | The record in its saga module, its entry in `PLACE_DOSSIERS` in `src/data/series/one-piece/places.ts`, its point on the sea chart in `CHART` in `src/data/series/one-piece/chart.ts`, and a drawing                                                                                          | `src/data/series/one-piece/places.test.ts`, `src/data/series/one-piece/chart.test.ts`     |
+| A chronicle story | The story in `src/data/series/one-piece/records/<saga>.chronicle.ts`, its source in `scripts/chronicle-sources.mjs`, then `npm run docs:chronicle` to regenerate `docs/chronicle-verification.md`                                                                                            | `src/data/series/one-piece/characters.test.ts`, `scripts/chronicle-verification.test.mjs` |
+| A redrawing       | A dated entry in the saga's `…Redrawn` timeline in `src/data/series/one-piece/art/<saga>.ts`. `skypieaRedrawn` is the model                                                                                                                                                                  | `src/data/series/one-piece/art/index.test.ts`, `src/server/archive/slices.test.ts`        |
 
 A few rules that are easy to miss:
 
@@ -148,16 +151,18 @@ A few rules that are easy to miss:
   chapter that covers its episode, which can be too early.
 - **Name facts.** If the show says a name before its record opens, set
   `nameSaidAt` on the record. If the name is an ordinary word, set
-  `commonWord: true`. `src/data/leaks.test.ts` tells you when you need either.
+  `commonWord: true`. `src/data/series/one-piece/leaks.test.ts` tells you when
+  you need either.
 - **Chronicle stories** link other characters with `[[id]]` or
   `[[id|shown text]]` markers, and only to characters already open at the
   story's episode.
 - **A saga's first redrawing** needs a new `…Redrawn` export in its art module,
-  spread into `REDRAWINGS` in `src/data/art/index.ts` and added to the module
-  list in `src/data/art/index.test.ts`.
-- **A new saga module** has to be added to `sagas` in `src/data/sagas.ts`, to
-  `DRAWINGS` in `src/data/art/index.ts`, and to the module list in
-  `src/data/art/index.test.ts`.
+  spread into `REDRAWINGS` in `src/data/series/one-piece/art/index.ts` and added
+  to the module list in `src/data/series/one-piece/art/index.test.ts`.
+- **A new saga module** has to be added to `sagas` in
+  `src/data/series/one-piece/sagas.ts`, to `DRAWINGS` in
+  `src/data/series/one-piece/art/index.ts`, and to the module list in
+  `src/data/series/one-piece/art/index.test.ts`.
 
 `npm run verify:chapters` checks every chapter and every episode against the
 first appearance on the One Piece Wiki. It needs the network, so it is not part
@@ -182,12 +187,13 @@ change an Italian name. A character the English wiki does not link to its
 Italian page goes in `ITALIAN_TITLES` in the script; one with no page of its own
 goes in `NAMES_KEPT`, with the reason.
 
-`npm run verify:filler` checks the filler guide in `src/data/filler.ts`. The
-kinds are checked against AnimeFillerList, with its "anime canon" episodes
-settled by the Italian wiki's `tipo`. The titles are checked against both wikis,
-each entry's chapter against the chapters the anime had adapted by then, and
-where a film or special sits against the Episode Guide. It needs the network.
-Run it when a new filler, film or special airs, or when you edit the guide.
+`npm run verify:filler` checks the filler guide in
+`src/data/series/one-piece/filler.ts`. The kinds are checked against
+AnimeFillerList, with its "anime canon" episodes settled by the Italian wiki's
+`tipo`. The titles are checked against both wikis, each entry's chapter against
+the chapters the anime had adapted by then, and where a film or special sits
+against the Episode Guide. It needs the network. Run it when a new filler, film
+or special airs, or when you edit the guide.
 
 ## Archive and drawing verification
 
@@ -205,8 +211,9 @@ sorting and `comm` (for example `LC_ALL=C`).
 
 A change to `src/server` that should change no page can be checked the same way:
 `npm run --silent archive:dump > head.jsonl` writes every payload in `PAYLOADS`,
-for every id or handle, at the sweep's bookmarks and in both locales, about 1
-GB. Dump the base too and `cmp` the two files.
+for every id or handle, at One Piece's sweep bookmarks
+(`src/data/series/index.ts`) and in both locales, about 1 GB. Dump the base too
+and `cmp` the two files.
 
 For characters with redrawings, capture the production site's stage gates:
 
@@ -229,6 +236,138 @@ for multiple IDs), and include the grid in the PR's verification evidence.
 `art:shots` accepts character IDs with redrawings; use `art:sheet` for first
 drawings, other record kinds and draft compositions. Generated screenshots stay
 out of the repository.
+
+## Sources and rights
+
+Zero Spoiler is an unofficial, nonprofit fan project run by a private individual
+in Italy. Neither that, nor a disclaimer, nor an AI rewrite gives anyone rights
+in someone else's work. These rules keep each contribution's sources and rights
+visible from the pull request to the published site. They are editorial
+practice, not legal advice.
+
+[LICENSE-SCOPE.md](LICENSE-SCOPE.md) says what the licenses cover. Code and
+original technical documentation are MIT. Archive text, drawings and branding
+are outside the MIT grant, and third-party material keeps its own terms. A
+contribution does not change that scope.
+
+Every pull request fills in the **Sources and rights** section of the template.
+
+### Facts
+
+Episode and chapter numbers, names and what happens are facts. Check them on the
+One Piece Wiki, or in an official source you can lawfully access: a licensed
+manga edition or a licensed stream. Write the text in your own words, and record
+in the pull request:
+
+- the wiki page you checked;
+- for a manga or anime check, the chapter and page, or the episode and
+  timestamp.
+
+Link no unofficial manga or anime site, in code, docs, issues or pull requests.
+Commit no scan, screenshot, subtitle file or transcript of the series.
+
+### Adapted wording
+
+Wiki text you keep in edited form (abridged, reworded close to the original, or
+translated) is an adaptation of that page. Write your own words where you can.
+The One Piece Wikis license community text under **CC BY-SA 3.0 Unported** by
+default ([Fandom licensing](https://www.fandom.com/licensing),
+[Licenza Fandom](https://www.fandom.com/it/licensing-it)). A page or file can
+carry its own notice, and imported text and images can have other owners. When
+you cannot name the license of a passage, use the facts only.
+
+An adaptation stays under CC BY-SA 3.0, or another license section 4(b) of the
+[legal code](https://creativecommons.org/licenses/by-sa/3.0/legalcode) allows,
+with no added restriction, as
+[LICENSE-SCOPE.md](LICENSE-SCOPE.md#source-terms-and-adaptations) sets out.
+
+An adaptation needs, in the same pull request:
+
+1. the local fields it fills, by record id and field, in each locale;
+2. the article title and its revision link, as
+   `https://onepiece.fandom.com/index.php?oldid=<revision>` (or `/it/index.php`
+   for the Italian wiki), and the date you read it;
+3. the license, with every copyright, attribution or license notice the page
+   supplies;
+4. what you changed: abridged, reworded, translated;
+5. a public credit on the legal page (`/en/legal`, `/it/legal`) that opens no
+   later than the text. This is a code change: add the revision to
+   [`docs/content-provenance/sources.json`](docs/content-provenance/sources.json)
+   with every field its entries carry (`revision`, `revisionDate`, `url`,
+   `revisionUrl`, `apiUrl`, `contentSha256`), map the record in
+   `src/server/archive/credits.server.ts`, which today lists only the #719
+   sample, and extend `src/server/archive/credits.test.ts`. A record kind with
+   no credit scope yet (`scope` in `src/lib/view/credits.ts`) needs one first.
+   [source-credits.md](docs/source-credits.md) has the rules: revision links
+   only, nothing sent before the reader's bookmark reaches it. When the credit
+   would spoil at the text's threshold, or you cannot make the change, the text
+   waits and the facts go in your own words.
+
+The record in a pull request looks like this. The example shows the format only:
+it is not the provenance of the real story.
+
+```text
+Adapted: monkey-d-luffy, chronicle story at episode 1, body.en and body.it
+Source: "Episode 1", One Piece Wiki, https://onepiece.fandom.com/index.php?oldid=2131598, read 2026-10-20
+        "Episodio 1", One Piece Wiki italiana, https://onepiece.fandom.com/it/index.php?oldid=353984, read 2026-10-20
+License: CC BY-SA 3.0 Unported; authors: the pages' contributors (page history)
+Changes: abridged to three sentences and reworded; the Italian is not a translation of the English
+Credit: both revisions in sources.json, mapped in credits.server.ts (already there for this sample)
+```
+
+### Quotations
+
+A research note quotes a source only where the exact words prove a name or a
+threshold: at most two quotations of 12 words and 80 characters or fewer.
+`scripts/chronicle-verification.test.mjs` holds the chronicle notes to it, and
+the [quotation review](docs/chronicle-quotation-review.md) explains why.
+Paraphrase everything else. Archive text reproduces no dialogue, subtitle or
+manga line.
+
+### Drawings
+
+Every drawing is original: stroke paths written for this project in the house
+style of the [line-drawings skill](.claude/skills/line-drawings/SKILL.md), drawn
+by eye and never traced from an image.
+
+- Look at the scene in a source you can lawfully access. The wiki's Appearance
+  section, its gallery and image search results are leads, not permission.
+- Keep reference images on your own machine. Commit, upload or paste none, in
+  the repository, an issue or a pull request.
+- Record each reference in the pull request as chapter and page, or episode and
+  timestamp. An agent that cannot view the source records what the wiki and
+  `npm run wiki:pairs` establish, marked "not viewed", and the human author
+  checks the scene.
+
+A drawing of a distinctive design waits for the owner. A design is distinctive
+when a combination of its features identifies one subject of the series on its
+own: Luffy's banded hat over his costume, Franky's forearm and star, the Going
+Merry's curled prow and hull, a landmark's silhouette, a real devil fruit's
+skin. A single ordinary object (a barrel, a pair of shears, a plain hat) is not.
+The [illustration audit](docs/illustration-rights-audit.md) lists the flagged
+cases as F1 to F4. Label the issue `status:needs-decision`, with the reference
+and the alternatives you considered; the work can go on in a branch, and the
+pull request merges after the owner's ruling.
+
+### AI-assisted work
+
+Say in the pull request which parts an AI helped write or draw, and which
+sources you checked its output against. You stay the author: you identify the
+sources, check every fact and drawing, and apply the rules above. An AI
+paraphrase is not evidence of permission or of independent authorship. Give an
+AI only material you may use yourself: what it reads can come back in its
+output.
+
+### Rights concerns
+
+Anyone can raise a rights concern through the contact link on the legal page,
+which opens a GitHub issue. Keep spoilers out of the title and confidential
+details out of the issue; the owner agrees a private channel before any
+confidential detail is shared. For a concrete claim about specific material, the
+owner unpublishes or replaces that material promptly, labels the issue
+`status:needs-decision`, reviews it and decides whether it needs professional
+legal advice. If a rights holder contacts you about the project, by any channel,
+point them to that link and tell the owner, with any deadline the message gives.
 
 ## Writing copy
 
@@ -299,16 +438,18 @@ semantic-release reads it to choose the version: `feat` is a minor release, a
 `!` is a major one, every other type is a patch. So every merged pull request is
 released, and the title is checked in CI.
 
-Fill in the pull request template: what changed, why, and how a reviewer can
-verify it. For a visual change, add a screenshot at the bookmark just before the
-change and at the bookmark where it applies.
+Fill in the pull request template: what changed, why, how a reviewer can verify
+it, and its [sources and rights](#sources-and-rights). For a visual change, add
+a screenshot at the bookmark just before the change and at the bookmark where it
+applies.
 
 ## Working with an agent
 
 The project was built with [Claude Code](https://claude.com/claude-code), and
 agents are welcome. The skills in `.claude/skills/` load in Claude Code, and
 `tone-of-voice` is the one to use for any copy. An agent's pull request goes
-through the same checks and the same review as anyone else's.
+through the same checks and the same review as anyone else's, and says what the
+agent wrote or drew ([AI-assisted work](#ai-assisted-work)).
 
 [CODING_STANDARDS.md](CODING_STANDARDS.md) is what the reviewer reads: the
 judgement calls the tests do not hold, and where owner rulings live.

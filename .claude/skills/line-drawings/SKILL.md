@@ -1,18 +1,18 @@
 ---
 name: line-drawings
-description: How Zero Spoiler's line drawings are made, checked and audited, so every icon on the site reads as one set. Load it before drawing, redrawing, reviewing or auditing any drawing in src/data/art (characters, redrawings, devil fruits in src/data/art/fruits, places, arcs and ships), and before writing an issue that asks for one.
+description: How Zero Spoiler's line drawings are made, checked and audited, so every icon on the site reads as one set. Load it before drawing, redrawing, reviewing or auditing any drawing in src/data/series/one-piece/art (characters, redrawings, devil fruits in src/data/series/one-piece/art/fruits, places, arcs and ships), and before writing an issue that asks for one.
 ---
 
 # Zero Spoiler line drawings
 
 Every record on the site has a line drawing made for this project: an object
 that stands for a character, the place itself for a place, a fruit for a
-fruit. They are data (`src/data/art/<saga>.ts`, `src/data/art/fruits/`), and
+fruit. They are data (`src/data/series/one-piece/art/<saga>.ts`, `src/data/series/one-piece/art/fruits/`), and
 one component draws all of them (`src/components/ChartArt.tsx`). The point of
 this skill is that a drawing made today sits next to one made a year ago and
 the two read as the same hand.
 
-The worked example is Franky, both stages, in `src/data/art/water-seven.ts`:
+The worked example is Franky, both stages, in `src/data/series/one-piece/art/water-seven.ts`:
 the forearm of the first years (ep 235) and the forearm of the two years
 (ep 517, PR #192), drawn over the same wrench and bolt. Render them with
 `npm run art:sheet -- franky` and keep the sheet open while you draw.
@@ -113,7 +113,7 @@ Grade every drawing you make or review. Only A ships.
   (episode − 1, episode, no bookmark, chapter − 1, chapter), so a stage needs
   no test of its own; a stage that is an earlier drawing again gets a row in
   the "redraws %s at stage %i" table there. A saga's first redrawing is
-  also spread into `REDRAWINGS` and added to `src/data/art/index.test.ts`.
+  also spread into `REDRAWINGS` and added to `src/data/series/one-piece/art/index.test.ts`.
   The owner's stage rulings (2026-10-10):
   - **A death is a stage, almost always.** When the story kills a character
     after their record opens, or leaves them for dead (`deceased`,
@@ -159,7 +159,7 @@ Grade every drawing you make or review. Only A ships.
   the ground at y 150, `...SEA` (or `SEA.slice(1|2)`) below. **Ships** are the
   ship side on, with a figurehead but no flag mark.
 - **Devil fruits** are a fruit and its power (#461). The fruit is a body
-  from the kit in `src/data/art/fruits/kit.ts`: one of six (`round`, `pear`,
+  from the kit in `src/data/series/one-piece/art/fruits/kit.ts`: one of six (`round`, `pear`,
   `gourd`, `heart`, `oblong`, `segmented`), shared radii, seen a little from
   above. `crown()` draws the rim of the dimple the stalk sits in, `shine()`
   the highlight on the near shoulder, `hatching()` the far side turning away,
@@ -219,11 +219,17 @@ A drawing is gated like any text, and it can spoil just as well.
    Check chapter/episode pairs and their page ranges with
    `npm run wiki:pairs -- 129 157` (ranges work too: `1050-1056`). The command
    reads the rendered chapter infobox and caches it in `.gate/wiki/`; use its
-   page ranges to locate the scene, then check the manga pages themselves.
-   For proportions, find a reference image: load
-   `https://duckduckgo.com/?q=…&iax=images&ia=images` in puppeteer-core and
-   curl the `tse*.mm.bing.net` thumbnails. Keep references in the scratchpad;
-   nothing raster ships.
+   page ranges to locate the scene, then check the scene itself in a source
+   you can lawfully access: a licensed manga edition or a licensed stream.
+   Note each reference as chapter and page, or episode and timestamp, for the
+   pull request's Sources and rights section; when you cannot view it, write
+   what the wiki and `wiki:pairs` establish, marked "not viewed", for the
+   human author to check. The wiki's gallery and image
+   search results are leads, not permission. Reference images stay on your
+   machine: commit, upload and paste none. Draw by eye; a trace is not a
+   drawing. A distinctive design (a costume ensemble, a ship, a landmark, a
+   real fruit) waits for the owner's ruling under `status:needs-decision`, as
+   [CONTRIBUTING.md](../../../CONTRIBUTING.md#sources-and-rights) sets out.
 2. **Render the before.** `npm run art:sheet -- <id>` writes every stage of
    the record to `.gate/art/<id>.png` (`--out` to move it). Read the PNG.
 3. **Draft.** Write candidates in a scratch `.ts` file that default-exports

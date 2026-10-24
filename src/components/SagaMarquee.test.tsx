@@ -56,7 +56,10 @@ describe('SagaMarquee', () => {
       'Cat-Cat Fruit, Model: LeopardEpisode 246',
       'See the whole saga→',
     ])
-    expect(links[0]).toHaveAttribute('href', '/en/fruits/bubble-bubble-fruit')
+    expect(links[0]).toHaveAttribute(
+      'href',
+      '/one-piece/en/fruits/bubble-bubble-fruit',
+    )
   })
 
   it('goes on to its group in the saga view, the picks kept, in both states', () => {
@@ -72,7 +75,10 @@ describe('SagaMarquee', () => {
 
     expect(
       screen.getByRole('link', { name: 'See the whole saga' }),
-    ).toHaveAttribute('href', '/en/fruits?view=saga&form=zoan&q=cat#saga-4')
+    ).toHaveAttribute(
+      'href',
+      '/one-piece/en/fruits?view=saga&form=zoan&q=cat#saga-4',
+    )
   })
 
   it('says one fruit in the singular', () => {
@@ -120,7 +126,7 @@ describe('SagaMarquee', () => {
     )
     expect(
       screen.getByRole('link', { name: 'Bubble-Bubble Fruit' }),
-    ).toHaveAttribute('href', '/en/fruits/bubble-bubble-fruit')
+    ).toHaveAttribute('href', '/one-piece/en/fruits/bubble-bubble-fruit')
   })
 
   it('draws nothing without a marquee', () => {

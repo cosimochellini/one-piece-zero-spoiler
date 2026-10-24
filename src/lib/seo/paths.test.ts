@@ -1,6 +1,11 @@
 import { describe, expect, it } from 'vitest'
 
-import { localeAlternates, normalisePath, withLocale } from './paths'
+import {
+  localeAlternates,
+  localeRoot,
+  normalisePath,
+  withLocale,
+} from './paths'
 
 describe('a canonical path', () => {
   it('drops the trailing slash an index route is matched with', () => {
@@ -23,6 +28,25 @@ describe('the same page in the other language', () => {
   it('swaps the locale segment and nothing else', () => {
     expect(withLocale('/en/characters/nico-robin', 'it')).toBe(
       '/it/characters/nico-robin',
+    )
+  })
+
+  it('preserves the series and the rest of a record address', () => {
+    expect(withLocale('/one-piece/en/characters/nico-robin', 'it')).toBe(
+      '/one-piece/it/characters/nico-robin',
+    )
+    expect(withLocale('/hunter-x-hunter/it/characters/gon', 'en')).toBe(
+      '/hunter-x-hunter/en/characters/gon',
+    )
+    expect(withLocale('/one-piece/en/', 'it')).toBe('/one-piece/it')
+  })
+
+  it('keeps shared legal and hub pages series-free', () => {
+    expect(withLocale('/en/legal', 'it')).toBe('/it/legal')
+    expect(withLocale('/', 'en')).toBe('/en')
+    expect(localeRoot('/it/legal', 'en')).toBe('/en')
+    expect(localeRoot('/one-piece/it/characters/nami', 'en')).toBe(
+      '/one-piece/en',
     )
   })
 

@@ -1,17 +1,18 @@
 import { describe, expect, it } from 'vitest'
 
-import { gateOf } from '~/data/chapter-table'
-import { eatersOf } from '~/data/dated'
-import { fruits } from '~/data/fruits'
 import { type Reveal, reveal } from '~/data/reveal'
-import { CHARACTER_DOSSIERS } from '~/data/sagas'
+import { gateOf } from '~/data/series/one-piece/chapter-table'
+import { eatersOf } from '~/data/series/one-piece/dated'
+import { fruits } from '~/data/series/one-piece/fruits'
+import { CHARACTER_DOSSIERS } from '~/data/series/one-piece/sagas'
 import type { Entity } from '~/data/types'
 import { getDictionary } from '~/i18n/translate'
 import type { Bookmark } from '~/lib/progress/episode'
 import type { Faction, FruitFactionView } from '~/lib/view/records'
+import { opFruitSheet as fruitSheet } from '~/test/archive'
+import { ONE_PIECE_LOADED as ONE_PIECE } from '~/test/series'
 
-import { fruitSheet } from './fruits.server'
-import { BOOKMARKS } from './payloads.server'
+const BOOKMARKS = ONE_PIECE.bookmarks
 
 /**
  * The faction view's groups: a fruit under the faction of each open eater,
