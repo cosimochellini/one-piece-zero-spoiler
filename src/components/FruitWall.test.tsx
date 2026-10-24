@@ -4,11 +4,18 @@ import type { ReactElement } from 'react'
 import { describe, expect, it, vi } from 'vitest'
 
 import { useBookmark } from '~/lib/progress/BookmarkContext'
-import { coveredRecord, fruitBand, peekTo, specimen } from '~/test/fixtures'
+import type { FruitBandView } from '~/lib/view/records'
+import {
+  coveredRecord,
+  fruitBand,
+  peekTo,
+  platesOf,
+  specimen,
+} from '~/test/fixtures'
 import { ep, renderWithProviders, settle } from '~/test/providers'
 
 import { FruitsAlbum } from './FruitWall'
-import type { SpecimenBandsProps } from './SpecimenBands'
+import type { Album, SpecimenBandsProps } from './SpecimenBands'
 
 const GUM = specimen({ id: 'gum-gum-fruit', name: 'Gum-Gum Fruit' })
 
@@ -34,6 +41,11 @@ const FOGGED = [
 
 const OPEN = [fruitBand({ form: 'paramecia', open: [GUM], total: 1 })]
 
+/** The album the browser asks for, with these plates and no groups. */
+function albumOf(bands: FruitBandView[]): Album {
+  return { bands, factions: [], later: [], sagas: [] }
+}
+
 /** Saves a bookmark the way the dialog's form does, through the provider. */
 function Save(): ReactElement {
   const { setBookmark } = useBookmark()
@@ -55,14 +67,13 @@ describe('FruitsAlbum', () => {
     const user = userEvent.setup()
     const view = renderWithProviders(
       <FruitsAlbum
-        bands={FOGGED}
+        album={albumOf(FOGGED)}
         filed={3}
-        later={[]}
         marquee={null}
         onParams={vi.fn<SpecimenBandsProps['onParams']>()}
         params={{}}
         peek={peekTo(GUM)}
-        sagas={[]}
+        plates={platesOf(FOGGED)}
       />,
     )
 
@@ -97,14 +108,13 @@ describe('FruitsAlbum', () => {
   it('shows the album, search and all, at a trial point', () => {
     renderWithProviders(
       <FruitsAlbum
-        bands={OPEN}
+        album={albumOf(OPEN)}
         filed={1}
-        later={[]}
         marquee={null}
         onParams={vi.fn<SpecimenBandsProps['onParams']>()}
         params={{}}
         peek={peekTo(GUM)}
-        sagas={[]}
+        plates={platesOf(OPEN)}
       />,
       { bookmark: ep(1), trial: true },
     )
@@ -117,14 +127,13 @@ describe('FruitsAlbum', () => {
   it('leaves focus alone on a first paint with a bookmark', () => {
     renderWithProviders(
       <FruitsAlbum
-        bands={OPEN}
+        album={albumOf(OPEN)}
         filed={1}
-        later={[]}
         marquee={null}
         onParams={vi.fn<SpecimenBandsProps['onParams']>()}
         params={{}}
         peek={peekTo(GUM)}
-        sagas={[]}
+        plates={platesOf(OPEN)}
       />,
       { bookmark: ep(650) },
     )
@@ -138,14 +147,13 @@ describe('FruitsAlbum', () => {
       <>
         <Save />
         <FruitsAlbum
-          bands={FOGGED}
+          album={albumOf(FOGGED)}
           filed={3}
-          later={[]}
           marquee={null}
           onParams={vi.fn<SpecimenBandsProps['onParams']>()}
           params={{}}
           peek={peekTo(GUM)}
-          sagas={[]}
+          plates={platesOf(FOGGED)}
         />
       </>,
     )

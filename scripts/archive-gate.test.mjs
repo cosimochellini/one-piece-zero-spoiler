@@ -320,7 +320,8 @@ describe('the byte ceiling', () => {
     // 599 KB of the 1,049 KB build this replaced, so a ceiling that let it
     // back in would vouch for nothing.
     // Public bilingual legal notices add code, not private source references,
-    // and so does the shelves' loading in the browser (#776).
+    // and so does loading the shelves (#776) and the fruit album (#778) in the
+    // browser.
     expect(MAX_CLIENT_BYTES).toBeGreaterThan(449_410)
     expect(MAX_CLIENT_BYTES).toBeLessThan(449_410 + 230_000)
   })

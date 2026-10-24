@@ -8,7 +8,12 @@ import { readBookmark, readTrial } from '~/lib/progress/readBookmark'
 import { creditsPage } from './archive/credits.server'
 import { fillerPage, peekFiller } from './archive/filler.server'
 import { fruitPage } from './archive/fruitPage.server'
-import { fruitEaters, fruitSheet, fruitSiblings } from './archive/fruits.server'
+import {
+  fruitAlbum,
+  fruitEaters,
+  fruitSheet,
+  fruitSiblings,
+} from './archive/fruits.server'
 import { landingPage } from './archive/home.server'
 import {
   characterPage,
@@ -183,6 +188,10 @@ export const loadDrawings = createServerFn()
 export const loadFruits = createServerFn()
   .validator(located)
   .handler(async ({ data }) => fruitSheet(await readerIn(data)))
+
+export const loadFruitAlbum = createServerFn()
+  .validator(located)
+  .handler(async ({ data }) => fruitAlbum(await readerIn(data)))
 
 export const loadFruit = createServerFn()
   .validator(addressed)

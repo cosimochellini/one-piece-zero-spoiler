@@ -1,4 +1,5 @@
 import { foldName } from '~/lib/search/fold'
+import type { FruitPlateCount } from '~/lib/view/fruits'
 import type { StopView } from '~/lib/view/places'
 import type {
   CharacterChronicle,
@@ -118,6 +119,15 @@ export function fruitBand(over: Partial<FruitBandView> = {}): FruitBandView {
     covered: [],
     ...over,
   }
+}
+
+/** The counts the server sends ahead of these plates. */
+export function platesOf(bands: FruitBandView[]): FruitPlateCount[] {
+  return bands.map((band) => ({
+    form: band.form,
+    opened: band.open.length,
+    total: band.total,
+  }))
 }
 
 export function fruitDetail(over: Partial<FruitDetail> = {}): FruitDetail {

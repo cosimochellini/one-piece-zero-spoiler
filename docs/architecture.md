@@ -372,14 +372,30 @@ tapped a link a friend sent. The list is in `src/lib/crawler.ts`.
   one with a bookmark), the places list and a character page are awaited
   instead: they are the page, and a reader with scripting off should get them in
   full.
+- The fruits page's HTML stops at the saga marquee and the control bar: the
+  server sends the marquee's fruits, each plate's counts and the number filed
+  (`loadFruits`). The plates and the saga and faction groups are a second server
+  function, `loadFruitAlbum`, which the browser asks for right after hydration,
+  or in the route's loader on a navigation or a bookmark move, so there they
+  arrive with the page (`src/routes/$series/$locale/fruits/-album.ts`). Search
+  and the chips need every plate, so the whole album comes at once, not as it
+  scrolls. It reads the bookmark from the cookie like every other call, sends
+  back the bookmark it read, and the page files it under that one, so an album
+  never shows under a bookmark it was not cut for. A reader with scripting off
+  sees the marquee and the bar, or the wall, and not the plates. The plates were
+  most of the render and of its loader data: locally, at episode 1150, the page
+  went from 8.5 to 1.7 ms of CPU and from 327 to 39 KB, and at episode 1 from
+  5.5 to 1.7 ms and 212 to 30 KB; the album call costs 3.3 ms and 182 KB at 1150
+  (#778).
 - The three list pages send only the first drawings inline: the first shelf of
-  characters, the first three places and the first three fruits. Every other
-  record carries its tint and `deferred: true`, and the page asks for its
-  strokes by id once it comes within a screen of the viewport (`useDrawing` in
-  `src/lib/view/drawings.ts`, `drawingsFor` on the server, which answers only
-  records the reader has reached). A test in `slices.test.ts` holds each list
-  page to 26 KB of inline strokes at the latest bookmark. Deferring the fruits
-  took `/one-piece/en/fruits` at episode 1150 from 200 KB to 39 KB gzip (#610).
+  characters, the first three places, and the marquee's lead and the first six
+  tiles of the fruit album. Every other record carries its tint and
+  `deferred: true`, and the page asks for its strokes by id once it comes within
+  a screen of the viewport (`useDrawing` in `src/lib/view/drawings.ts`,
+  `drawingsFor` on the server, which answers only records the reader has
+  reached). A test in `slices.test.ts` holds each list payload to 26 KB of
+  inline strokes at the latest bookmark. Deferring the fruits took
+  `/one-piece/en/fruits` at episode 1150 from 200 KB to 39 KB gzip (#610).
 - The browser skips the layout and paint of list items far from the screen
   (`content-visibility: auto` on a character tile, a record tile and a fruit's
   drawing margin). Each stands in at its own exact height, the same at every

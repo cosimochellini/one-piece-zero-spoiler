@@ -1,4 +1,4 @@
-import { screen, within } from '@testing-library/react'
+import { fireEvent, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { type ReactElement, useState } from 'react'
 import { describe, expect, it, vi } from 'vitest'
@@ -12,45 +12,51 @@ import {
   fruitBand,
   peekPending,
   peekTo,
+  platesOf,
   specimen,
 } from '~/test/fixtures'
 import { ep, renderWithProviders } from '~/test/providers'
 
-import { SpecimenBands, type SpecimenBandsProps } from './SpecimenBands'
+import {
+  type Album as AlbumView,
+  SpecimenBands,
+  type SpecimenBandsProps,
+} from './SpecimenBands'
 
-type AlbumProps = Omit<
-  SpecimenBandsProps,
-  'later' | 'onParams' | 'params' | 'sagas'
->
-  & Partial<Pick<SpecimenBandsProps, 'later' | 'sagas'>> & {
+type AlbumProps = Partial<Omit<AlbumView, 'bands'>>
+  & Pick<AlbumView, 'bands'>
+  & Pick<SpecimenBandsProps, 'peek'> & {
     initial?: FruitParams
     onParams?: SpecimenBandsProps['onParams']
   }
 
 const NO_PARAMS: FruitParams = {}
 const NONE: string[] = []
-const NO_SAGAS: SpecimenBandsProps['sagas'] = []
+const NO_SAGAS: AlbumView['sagas'] = []
+const NO_FACTIONS: AlbumView['factions'] = []
 
 /** The album with its picks held in state, as the route holds them in the address. */
 function Album({
+  bands,
+  factions = NO_FACTIONS,
   initial = NO_PARAMS,
   later = NONE,
   onParams,
+  peek,
   sagas = NO_SAGAS,
-  ...props
 }: AlbumProps): ReactElement {
   const [params, setParams] = useState(initial)
 
   return (
     <SpecimenBands
-      {...props}
-      later={later}
+      album={{ bands, factions, later, sagas }}
       onParams={(next, replace) => {
         setParams(next)
         onParams?.(next, replace)
       }}
       params={params}
-      sagas={sagas}
+      peek={peek}
+      plates={platesOf(bands)}
     />
   )
 }
@@ -80,6 +86,32 @@ const BANDS = [
     total: 2,
   }),
 ]
+
+/** The bar on its own, then the album when the button says it has come. */
+function Late({ initial }: { initial: FruitParams }): ReactElement {
+  const [album, setAlbum] = useState<AlbumView | null>(null)
+  const [params, setParams] = useState(initial)
+
+  return (
+    <>
+      <button
+        onClick={() => {
+          setAlbum({ bands: BANDS, factions: [], later: [], sagas: [] })
+        }}
+        type="button"
+      >
+        come
+      </button>
+      <SpecimenBands
+        album={album}
+        onParams={setParams}
+        params={params}
+        peek={peekPending()}
+        plates={platesOf(BANDS)}
+      />
+    </>
+  )
+}
 
 describe('SpecimenBands', () => {
   it('sets out one plate per kind, each labelled and counted', () => {
@@ -152,6 +184,28 @@ describe('SpecimenBands', () => {
         name: 'Fruit 02 · Logia. Under fog until episode 1089. Show anyway',
       }),
     ).toBeInTheDocument()
+  })
+
+  it('draws the bar from the counts before the album is here, and keeps it when the plates come', async () => {
+    renderWithProviders(<Late initial={{ form: 'logia' }} />, {
+      bookmark: ep(650),
+    })
+    const field = screen.getByRole('searchbox')
+    field.focus()
+
+    expect(screen.getByRole('radio', { name: /^Logia/u })).toBeChecked()
+
+    const status = await screen.findByText('Showing 1 of 1 open fruits')
+
+    expect(status).toBeVisible()
+    expect(screen.queryByRole('region')).not.toBeInTheDocument()
+
+    // A synthetic click, which leaves focus where it is.
+    fireEvent.click(screen.getByRole('button', { name: 'come' }))
+
+    expect(screen.getByRole('region', { name: 'Logia' })).toBeInTheDocument()
+    expect(screen.getByRole('searchbox')).toBe(field)
+    expect(field).toHaveFocus()
   })
 
   it('finds a fruit by an eater’s name and shows that eater, marked', async () => {
@@ -531,7 +585,7 @@ describe('the faction view', () => {
     fruitBand({ form: 'logia', open: [FLAME], covered: [NEAR], total: 2 }),
   ]
   // Ace stands with Whitebeard, Sabo with the Revolutionary Army.
-  const FACTIONS: SpecimenBandsProps['factions'] = [
+  const FACTIONS: AlbumView['factions'] = [
     {
       faction: 'whitebeard-pirates',
       open: [

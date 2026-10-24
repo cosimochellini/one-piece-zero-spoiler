@@ -154,14 +154,17 @@ const WORST_CHUNKS = 5
  * host, keeps the old Netlify address for now and adds two source links, in
  * both dictionaries. The measured client build is 667,836 bytes; the ceiling
  * retains 1 KB headroom. No archive data or drawings move to the client.
- * Raised for #776 on 2026-10-24: the browser asks for the character shelves
- * once the page has hydrated, reads them from plain JSON, offers to ask
- * again when the call fails and puts a reload back where it was once they
- * land. The measured client build is 669,608 bytes; the ceiling retains 1 KB
- * headroom. The shelves still come from the server at the reader's bookmark;
- * no archive data moves to the client.
+ * Raised for #776 and #778 on 2026-10-24: the browser asks for the
+ * character shelves and the fruit album once the page has hydrated. The
+ * shelves come as plain JSON; the album comes through the loader on a
+ * navigation, and is filed under the bookmark the server read. Each offers
+ * to ask again when its call fails, and puts a reload back where it was
+ * once it lands; the fruits' control bar is drawn from counts until then.
+ * The measured client build is 672,116 bytes; the ceiling retains 1 KB
+ * headroom. Both still come from the server at the reader's bookmark; no
+ * archive data moves to the client.
  */
-export const MAX_CLIENT_BYTES = 670_608
+export const MAX_CLIENT_BYTES = 673_116
 
 /** Where every series' folder is. */
 const SERIES_DIR = 'src/data/series'

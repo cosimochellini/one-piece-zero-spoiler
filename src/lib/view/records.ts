@@ -343,7 +343,7 @@ export interface FruitBandView {
   total: number
 }
 
-/** A fruit the marquee points at: the id of its open tile in the album. */
+/** A fruit a group points at: the id of its open tile in the album. */
 export interface FruitRef {
   id: string
 }
@@ -352,11 +352,14 @@ export interface FruitRef {
  * The marquee over the album: the saga the bookmark falls in, and the open
  * fruits whose reveal falls inside it, newest last. Only open fruits, so the
  * count is the saga so far and never the saga's total. With none yet, the
- * latest open fruit before the saga, to point back to.
+ * latest open fruit before the saga, to point back to. Records rather than
+ * refs: the marquee is in the page's first answer, and the album is not.
  */
 export interface FruitMarqueeView {
-  fruits: FruitRef[]
-  last: FruitRef | null
+  fruits: FruitView[]
+  /** Its saga's place among the sagas reached: the saga view's last group. */
+  group: number
+  last: FruitView | null
   saga: string
 }
 
@@ -388,26 +391,6 @@ export interface FruitFactionRef extends FruitRef {
 export interface FruitFactionView {
   faction: Faction | null
   open: FruitFactionRef[]
-}
-
-/** The specimen sheet: the three plates, and how many fruits are filed. */
-export interface FruitSheetView {
-  bands: FruitBandView[]
-  /**
-   * The faction view's groups, most fruits first, then by name, the open
-   * eaters with no faction last. Empty with no bookmark.
-   */
-  factions: FruitFactionView[]
-  filed: number
-  /**
-   * The handles of the covered fruits in sagas past the bookmark, in the
-   * reader's order: one band in the saga view, never split by saga.
-   */
-  later: string[]
-  /** `null` with no bookmark, and with no fruit open at all. */
-  marquee: FruitMarqueeView | null
-  /** The sagas the bookmark has reached, in route order. Empty with none. */
-  sagas: FruitSagaView[]
 }
 
 /**

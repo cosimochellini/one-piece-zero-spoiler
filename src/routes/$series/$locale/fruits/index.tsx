@@ -39,6 +39,10 @@ import { useBookmark } from '~/lib/progress/BookmarkContext'
 import { type AlbumView, parseFruitParams } from '~/lib/search/fruitParams'
 import { describeNamedPage } from '~/routes/$locale/-head'
 import { usePeek } from '~/routes/$series/$locale/-peek'
+import {
+  primeAlbum,
+  useFruitAlbum,
+} from '~/routes/$series/$locale/fruits/-album'
 import { useFruitParams } from '~/routes/$series/$locale/fruits/-params'
 import { liftFruit, loadFruits } from '~/server/api'
 
@@ -47,13 +51,15 @@ export const Route = createFileRoute('/$series/$locale/fruits/')({
   // album can be shared and Back steps through the picks. An unknown value
   // falls back to its default.
   validateSearch: parseFruitParams,
-  // Awaited, not streamed. The count under the search field is over all three
-  // plates, so a boundary around it alone would buy nothing while the plates
-  // behind it were still on their way.
-  loader: async ({ context }) =>
-    loadFruits({
-      data: { series: context.series.slug, locale: context.locale },
-    }),
+  // The marquee and the counts, awaited. The plates are not in the page the
+  // server renders: the browser asks for them (`-album`), here on a
+  // navigation, so they come with the page, and after hydration otherwise.
+  loader: async ({ context }) => {
+    const data = { series: context.series.slug, locale: context.locale }
+    const [sheet] = await Promise.all([loadFruits({ data }), primeAlbum(data)])
+
+    return sheet
+  },
   head: ({ match, params }) => {
     return isLocale(params.locale) ?
         describeNamedPage({
@@ -107,8 +113,8 @@ const COUNT_KEY: Record<AlbumView, TranslationKey> = {
 function FruitsPage(): ReactElement {
   const t = useT()
   const { bookmark } = useBookmark()
-  const { bands, factions, filed, later, marquee, sagas } =
-    Route.useLoaderData()
+  const { filed, marquee, plates } = Route.useLoaderData()
+  const album = useFruitAlbum()
 
   const peek = usePeek(liftFruit)
   const [params, onParams] = useFruitParams()
@@ -120,15 +126,13 @@ function FruitsPage(): ReactElement {
       title={t('fruits.title')}
     >
       <FruitsAlbum
-        bands={bands}
-        factions={factions}
+        album={album}
         filed={filed}
-        later={later}
         marquee={marquee}
         onParams={onParams}
         params={params}
         peek={peek}
-        sagas={sagas}
+        plates={plates}
       />
     </ArchivePage>
   )

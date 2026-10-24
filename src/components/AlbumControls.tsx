@@ -14,7 +14,8 @@ import {
   type FruitParams,
   fruitParams,
 } from '~/lib/search/fruitParams'
-import type { FruitBandView, FruitForm } from '~/lib/view/records'
+import type { FruitPlateCount } from '~/lib/view/fruits'
+import type { FruitForm } from '~/lib/view/records'
 
 // The same delay the signal book announces its own count with.
 const ANNOUNCE_DELAY_MS = 250
@@ -24,7 +25,6 @@ type FormPick = 'all' | FruitForm
 
 /** What the bar reads and writes, and the count the album worked out. */
 export interface AlbumControlsProps {
-  bands: FruitBandView[]
   /** The open fruits the query finds on the plates shown. */
   count: number
   fieldId: string
@@ -35,6 +35,8 @@ export interface AlbumControlsProps {
   onParams: (next: FruitParams, replace: boolean) => void
   /** The view, the kind and the query, read from the address. */
   params: FruitParams
+  /** Every plate's counts, for the chips. */
+  plates: FruitPlateCount[]
 }
 
 /**
@@ -43,18 +45,18 @@ export interface AlbumControlsProps {
  * total is the picked chip's own number.
  */
 export function AlbumControls({
-  bands,
   count,
   fieldId,
   onParams,
   params,
+  plates,
 }: AlbumControlsProps): ReactElement {
   const t = useT()
   const query = params.q ?? ''
   const trimmed = query.trim()
   const pick: FormPick = params.form ?? 'all'
   const view: AlbumView = params.view ?? 'type'
-  const choices = formChoices(t, bands)
+  const choices = formChoices(t, plates)
   const empty = trimmed !== '' && count === 0
   const status = useSettled(
     statusOf(t, { choices, count, pick, query: trimmed }),
@@ -191,15 +193,18 @@ function AlbumChoices({
 }
 
 /** The chips: every kind, each with its open fruits and never its covered. */
-function formChoices(t: Translate, bands: FruitBandView[]): Choice<FormPick>[] {
-  const all = bands.reduce((sum, band) => sum + band.open.length, 0)
+function formChoices(
+  t: Translate,
+  plates: FruitPlateCount[],
+): Choice<FormPick>[] {
+  const all = plates.reduce((sum, plate) => sum + plate.opened, 0)
 
   return [
     { count: all, label: t('fruits.form.all'), value: 'all' },
-    ...bands.map((band) => ({
-      count: band.open.length,
-      label: t(`fruitForm.${band.form}`),
-      value: band.form,
+    ...plates.map((plate) => ({
+      count: plate.opened,
+      label: t(`fruitForm.${plate.form}`),
+      value: plate.form,
     })),
   ]
 }
