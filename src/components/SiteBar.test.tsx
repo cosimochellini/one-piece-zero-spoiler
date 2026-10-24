@@ -224,6 +224,21 @@ describe('SiteBar', () => {
     },
   )
 
+  it('marks the wordmark as the current page on the hub only', () => {
+    const { unmount } = renderWithProviders(<SiteBar />, { path: '/en' })
+
+    expect(
+      screen.getByRole('link', { name: 'Zero Spoiler. All series' }),
+    ).toHaveAttribute('aria-current', 'page')
+
+    unmount()
+    renderWithProviders(<SiteBar />, { path: '/en/legal' })
+
+    expect(
+      screen.getByRole('link', { name: 'Zero Spoiler. All series' }),
+    ).not.toHaveAttribute('aria-current')
+  })
+
   it('takes content link parameters from the selected series', () => {
     renderWithProviders(<OtherSeriesBar />)
 

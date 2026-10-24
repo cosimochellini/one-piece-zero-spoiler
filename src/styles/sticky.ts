@@ -10,6 +10,16 @@ import { color, pin, rule, space, z } from '~/styles/tokens.stylex'
  */
 export const STACK_PROPERTY = '--sticky-stack'
 
+/**
+ * A series page's bar keeps two rows up to 56rem, where the site's own bar
+ * is one row from 40rem (`ROOMY` in src/components/SiteBar.tsx). Set on
+ * `<html>` with the series' colours, so everything that pins under the bar
+ * reads the same height.
+ */
+export const seriesBarPin = stylex.createTheme(pin, {
+  bar: { 'default': '6rem', '@media (min-width: 56rem)': '3.25rem' },
+})
+
 /** One compact group line, plus breathing room for anchors and focus. */
 export const stickyStyles = stylex.create({
   bar: {
