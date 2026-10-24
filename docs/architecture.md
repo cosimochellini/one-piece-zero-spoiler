@@ -42,11 +42,11 @@ parameters without creating a bookmark. A request middleware in `src/start.ts`
 runs before routing, writes the `zs_one-piece` cookie and sends the reader on to
 the same address without those parameters, so the page that renders reads the
 new cookie like any other, and a reload cannot undo a bookmark moved since. The
-hop is a meta refresh rather than a 302, because Netlify appends the request's
-query string to any `Location` without one, and the link would redirect to
-itself. A value outside the dialog's ranges, a season without an episode, a
-chapter next to an episode or a repeated parameter leaves the cookie as it was
-and still drops the parameters.
+hop is a meta refresh rather than a 302, because Netlify, which still serves the
+old address, appends the request's query string to any `Location` without one,
+and the link would redirect to itself. A value outside the dialog's ranges, a
+season without an episode, a chapter next to an episode or a repeated parameter
+leaves the cookie as it was and still drops the parameters.
 
 Each series has its own saved and trial cookies, ranges, demo bounds and season
 table in the public bookmark metadata (`src/lib/progress/series.ts`), separate
@@ -213,7 +213,7 @@ read its numbers as coordinates and check the 160×200 bounds.
 | Tests     | Vitest 5.0.4, jsdom, Testing Library                     |
 | Lint      | ESLint 10 flat config, over a thousand rules, type-aware |
 | Gates     | react-doctor 0.9.18, fallow 3.33.1                       |
-| Host      | Netlify, SSR function plus CDN assets                    |
+| Host      | Cloudflare Workers, SSR Worker plus static assets        |
 | Runtime   | Node 24.21.0, npm 12.2.0                                 |
 
 Six runtime dependencies. Every version is pinned exactly, with no ranges and
@@ -320,9 +320,8 @@ banned phrase in either language.
 - A per-request nonce Content Security Policy, `default-src 'self'`,
   `object-src 'none'`, `frame-ancestors 'none'`, plus HSTS, Referrer-Policy and
   Permissions-Policy.
-- The headers are set in the app, not in `netlify.toml`, because Netlify does
-  not apply file headers to responses from a function, and every document here
-  is rendered by one.
+- The headers are set in the app, not in `public/_headers`, because that file
+  reaches static files only, and every document here is rendered by the server.
 - In CI the pull request title reaches the validator through the environment,
   never through template interpolation, because anyone opening a pull request
   controls the title.
@@ -391,6 +390,18 @@ tapped a link a friend sent. The list is in `src/lib/crawler.ts`.
 
 ### Server time
 
+The site moved from Netlify to a Cloudflare Worker on `zerospoiler.app` (#727).
+The figures below were taken on Netlify, whose function ran in Ohio; a Worker
+runs in the data centre nearest the reader, so the fixed hop they describe is
+not the floor any more. On 2026-10-24, from Italy, the same pages answered in
+0.10–0.30 s. A Worker's clock only moves across I/O, so `app;dur` reads close to
+zero there; `wrangler tail` reports the CPU time instead: 87–132 ms for
+`/one-piece/en/characters`, 16–44 ms for fruits and places, about 10 ms for a
+character page. The Workers Free plan documents a 10 ms CPU limit per request,
+and a request over an enforced limit fails with error 1102. Every request
+succeeded on that day, but the list pages are over it. If 1102s show up in the
+Worker's metrics, Workers Paid is the fix.
+
 Measured on 2026-10-15 from Italy with the `Server-Timing` header every response
 carries (`app;dur=…`, the time inside the function until the response exists,
 and `cold` on an instance's first request; `src/start.ts`). One reused
@@ -409,15 +420,15 @@ What this says:
 
 - **The hop to the function costs about 0.21 s, whatever the page.** It is the
   same for a 0.1 KB robots file and a 105 KB gzip list, so the size of the body
-  does not add to it. On Netlify Free the function runs in the US and cannot be
-  moved, so this is the floor. (#610 read the body size as the cost; with the
-  header in place, that turned out to be wrong.)
+  does not add to it. On Netlify Free the function ran in the US and could not
+  be moved, so this was the floor. (#610 read the body size as the cost; with
+  the header in place, that turned out to be wrong.)
 - **The rest is the render, and it grows with the number of elements.** At
   episode 1, with almost nothing open, `/one-piece/en/characters` still took
   0.39 s for more than five hundred covered cards. A CPU profile puts most of a
   render in React writing and encoding HTML, and the next largest share in
   serialising the loader data.
-- **Production rendered with React's development build.** Netlify does not set
+- **Production rendered with React's development build.** Netlify did not set
   `NODE_ENV` inside a function, and the server build left React, TanStack and
   StyleX as packages that choose their build from it at run time. The HTML is
   identical either way, so it showed only as time: about twice the work of the

@@ -98,6 +98,46 @@ flow and changed the language through its control: observed `zs_one-piece` and
 `opzs_lang` both had 365-day expiry, `/` path, `SameSite=Lax`, host-only domain,
 and `Secure: false` / `HttpOnly: false`, matching the source inventory.
 
+## Deployed Cloudflare inventory
+
+Checked on 24 October 2026 for issue #727, when the site moved to a Cloudflare
+Worker on `https://zerospoiler.app`. The Worker's configuration is
+`wrangler.jsonc`; `npm run build` writes the deployed form to
+`dist/server/wrangler.json`, and it was read there before `wrangler deploy`.
+
+| Setting                 | Value                                                              |
+| ----------------------- | ------------------------------------------------------------------ |
+| `observability.enabled` | `false`: Workers Logs stores no invocation or console logs         |
+| `workers_dev`           | `false`: no second address on `workers.dev`                        |
+| `preview_urls`          | `false`: no per-version preview addresses                          |
+| `routes`                | `zerospoiler.app` as a custom domain, nothing else                 |
+| Bindings                | none: no KV, R2, D1, Durable Objects, queues or Analytics Engine   |
+| `assets`                | the built client (`dist/client`), cache rules in `public/_headers` |
+
+A request to the production origin returned no injected script (Rocket Loader,
+email decoding, Web Analytics beacon or challenge page). `wrangler tail` streams
+live events without storing them and was used only to read outcomes and CPU
+time; request headers arrive with cookies redacted.
+
+Cloudflare's sources:
+
+- [Workers Logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/):
+  when enabled, invocation logs hold the request, response and metadata, kept 3
+  days on Workers Free and 7 on Workers Paid. Disabled here.
+- [Data Processing Addendum](https://www.cloudflare.com/cloudflare-customer-dpa/),
+  version 6.4, effective 3 April 2026: forms part of the Self-Serve Subscription
+  Agreement, names the customer controller and Cloudflare processor (2.3),
+  relies on the EU–US Data Privacy Framework with the SCCs as fallback (6.4),
+  and keeps personal data until the agreement ends or processing is no longer
+  necessary.
+- [GDPR FAQ](https://www.cloudflare.com/trust-hub/gdpr/): the transfer
+  mechanisms above, restated.
+
+Still unverified: how long Cloudflare keeps the request data it processes for
+security and aggregate analytics outside Workers Logs. The Netlify inventory
+above still describes the old `one-piece-zero-spoiler.netlify.app` address until
+that site is switched off.
+
 ## Controller facts and remaining work
 
 The owner authorized GitHub where suitable. Public issues require a GitHub

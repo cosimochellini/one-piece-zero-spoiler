@@ -43,6 +43,7 @@
     ".output/**",
     ".nitro/**",
     ".netlify/**",
+    ".wrangler/**",
     ".tanstack/**",
     ".gate/**",
   ],

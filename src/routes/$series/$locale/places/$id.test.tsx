@@ -51,7 +51,7 @@ describe('place route head', () => {
     })
 
     expect(links?.find((link) => link.rel === 'canonical')?.href).toBe(
-      'https://one-piece-zero-spoiler.netlify.app/one-piece/en/places/jaya',
+      'https://zerospoiler.app/one-piece/en/places/jaya',
     )
     expect(JSON.stringify(scripts)).toContain('/one-piece/en/places')
   })

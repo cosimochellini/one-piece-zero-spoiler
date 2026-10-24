@@ -1,3 +1,6 @@
+# Netlify serves the old one-piece-zero-spoiler.netlify.app address until it
+# is switched off. The site itself runs on Cloudflare (wrangler.jsonc). Cache
+# headers for static files are in public/_headers, which both hosts read.
 [build]
   command = "npm run build"
   publish = "dist/client"
@@ -6,28 +9,3 @@
   # Mirrors .nvmrc, which Netlify also reads. Declared explicitly so the
   # runtime is visible in the deploy config itself.
   NODE_VERSION = "24.21.0"
-  # The origin every canonical link, hreflang alternate, og:url and sitemap
-  # entry is written against. Vite inlines it at build time; without it the
-  # constant in src/lib/seo/site.ts is used, which is this same address. It is
-  # declared here so a move to a custom domain is one edit in the deploy
-  # config rather than a code change.
-  VITE_SITE_ORIGIN = "https://one-piece-zero-spoiler.netlify.app"
-
-# Vite content-hashes every client asset, so they are safe to cache forever.
-# These files are served from Netlify's CDN rather than the SSR function, which
-# is why headers declared here reach them. Security headers for HTML documents
-# cannot live here: Netlify does not apply netlify.toml headers to responses
-# produced by a function, and every HTML document is rendered by the SSR
-# function. They are set in src/routes/__root.tsx instead.
-[[headers]]
-  for = "/assets/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-# The font files are not content-hashed, so a change to one of them is shipped
-# under a new filename (bump the name in src/styles/global.css and the preload
-# in src/routes/__root.tsx). That is what lets them be cached forever too.
-[[headers]]
-  for = "/fonts/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"

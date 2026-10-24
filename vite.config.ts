@@ -1,3 +1,4 @@
+import { cloudflare } from '@cloudflare/vite-plugin'
 import netlify from '@netlify/vite-plugin-tanstack-start'
 import stylex, { type UserOptions } from '@stylexjs/unplugin'
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
@@ -10,6 +11,13 @@ import { defineConfig, type Plugin } from 'vite'
 // one place the untyped upstream factory is touched; naming its return type
 // here keeps the rest of the file, and the array, checked.
 const stylexVite: (options?: Partial<UserOptions>) => Plugin = stylex.vite
+
+// The site runs on Cloudflare. Netlify still builds the old
+// one-piece-zero-spoiler.netlify.app address until it is switched off, and it
+// sets `NETLIFY=true` in every build it runs; that is the only place the
+// Netlify adapter is used. Off Netlify, dev and preview run the server inside
+// workerd, the same runtime as production.
+const onNetlify = process.env['NETLIFY'] === 'true'
 
 const config = defineConfig(({ command }) => ({
   server: { port: 3000 },
@@ -68,9 +76,11 @@ const config = defineConfig(({ command }) => ({
     // auto-configures the React plugin, and the old `customViteReactPlugin`
     // option no longer exists.
     viteReact(),
-    netlify({
-      dev: { blobs: { enabled: false }, database: { enabled: false } },
-    }),
+    onNetlify ?
+      netlify({
+        dev: { blobs: { enabled: false }, database: { enabled: false } },
+      })
+    : cloudflare({ viteEnvironment: { name: 'ssr' } }),
   ],
 }))
 

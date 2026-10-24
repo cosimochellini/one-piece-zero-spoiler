@@ -7,12 +7,14 @@
  * attacker-controlled, and a canonical tag written from one would let another
  * domain nominate itself as the original of this page.
  *
- * `VITE_SITE_ORIGIN` overrides it at build time, which is how a custom domain
- * or a deploy preview gets its own value without an edit here. Vite inlines
+ * `VITE_SITE_ORIGIN` overrides it at build time, which is how an ad-hoc build
+ * gets its own value without an edit here. Nothing sets it today: the
+ * Netlify build of the old address inherits this origin on purpose, so its
+ * canonical links point at the new domain. Vite inlines
  * the variable, so the override costs nothing at runtime and is visible in the
  * built output.
  */
-const FALLBACK_ORIGIN = 'https://one-piece-zero-spoiler.netlify.app'
+const FALLBACK_ORIGIN = 'https://zerospoiler.app'
 const HTTPS = 'https://'
 
 /**

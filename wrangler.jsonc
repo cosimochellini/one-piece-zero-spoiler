@@ -1,0 +1,18 @@
+// The Cloudflare Worker that serves the site. `npm run build` writes the
+// deployable config to dist/server/wrangler.json, and `wrangler deploy` reads
+// that one. Workers Builds runs both on every push to main.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "zero-spoiler",
+  "main": "@tanstack/react-start/server-entry",
+  "compatibility_date": "2026-10-19",
+  "compatibility_flags": ["nodejs_compat"],
+  // One address only. The workers.dev subdomain and per-version preview URLs
+  // would serve the same pages under a second origin.
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [{ "pattern": "zerospoiler.app", "custom_domain": true }],
+  // No request logs are stored. The privacy notice says so; turning this on
+  // means rewriting it (src/i18n/dictionaries, `privacy.logs`).
+  "observability": { "enabled": false },
+}

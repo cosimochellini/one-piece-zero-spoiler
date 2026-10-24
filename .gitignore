@@ -5,6 +5,7 @@ dist
 .output
 .nitro
 .netlify
+.wrangler
 
 # TanStack Start temp dir
 .tanstack

@@ -116,6 +116,7 @@ const config = defineConfig(
     '.output/**',
     '.nitro/**',
     '.netlify/**',
+    '.wrangler/**',
     '.gate/**',
     'src/routeTree.gen.ts',
   ]),
