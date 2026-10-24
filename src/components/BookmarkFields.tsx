@@ -6,13 +6,15 @@ import { counterStyles as counter } from '~/components/BookmarkCounter.styles'
 import { styles } from '~/components/BookmarkDialog.styles'
 import { useT } from '~/i18n/LocaleContext'
 import type { Translate, TranslationKey } from '~/i18n/types'
+import { useBookmark } from '~/lib/progress/BookmarkContext'
 import {
   type BookmarkMode,
   type Draft,
   type DraftProblem,
   stepperOf,
 } from '~/lib/progress/episode'
-import { type Season, SEASONS } from '~/lib/progress/seasons'
+import type { Season } from '~/lib/progress/seasons'
+import { ONE_PIECE_BOOKMARK } from '~/lib/progress/series'
 
 const MODES: BookmarkMode[] = ['episode', 'season', 'chapter']
 
@@ -98,16 +100,32 @@ function ModeChooser({
 }): ReactElement {
   const t = useT()
   const groupId = useId()
+  const series = useBookmark().series ?? ONE_PIECE_BOOKMARK
+  const hasSeasons = series.seasons.length > 0
+  const modes = MODES.filter(
+    (candidate) => candidate !== 'season' || hasSeasons,
+  )
+  const marker =
+    !hasSeasons && mode === 'chapter' ? styles.markerAt1 : MARKER_AT[mode]
 
   return (
     <fieldset {...stylex.props(styles.modes)}>
       <legend {...stylex.props(styles.label)}>{t('dialog.modeLabel')}</legend>
-      <div {...stylex.props(styles.track)}>
+      <div
+        {...stylex.props(
+          styles.track,
+          !hasSeasons && styles.trackWithoutSeasons,
+        )}
+      >
         <span
           aria-hidden="true"
-          {...stylex.props(styles.marker, MARKER_AT[mode])}
+          {...stylex.props(
+            styles.marker,
+            !hasSeasons && styles.markerWithoutSeasons,
+            marker,
+          )}
         />
-        {MODES.map((candidate) => {
+        {modes.map((candidate) => {
           return (
             <label
               key={candidate}
@@ -144,6 +162,7 @@ function SeasonPicker({
 }): ReactElement {
   const t = useT()
   const id = useId()
+  const series = useBookmark().series ?? ONE_PIECE_BOOKMARK
 
   return (
     <div {...stylex.props(styles.group)}>
@@ -162,7 +181,7 @@ function SeasonPicker({
         {...stylex.props(styles.select)}
       >
         <option value="">{t('dialog.seasonPlaceholder')}</option>
-        {SEASONS.map((candidate) => {
+        {series.seasons.map((candidate) => {
           return (
             <option
               key={candidate.number}
@@ -267,7 +286,8 @@ function FieldMessage({
   id: string
 }): ReactElement {
   const t = useT()
-  const { ceiling } = stepperOf(draft)
+  const series = useBookmark().series ?? ONE_PIECE_BOOKMARK
+  const { ceiling } = stepperOf(draft, series)
 
   return (
     <p

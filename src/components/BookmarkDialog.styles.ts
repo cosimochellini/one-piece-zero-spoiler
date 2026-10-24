@@ -151,6 +151,8 @@ export const styles = stylex.create({
     transitionTimingFunction: ease.out,
     width: `calc((100% - 2 * ${space.xs3}) / 3)`,
   },
+  trackWithoutSeasons: { gridTemplateColumns: 'repeat(2, minmax(0, 1fr))' },
+  markerWithoutSeasons: { width: `calc((100% - 2 * ${space.xs3}) / 2)` },
   markerAt0: { transform: 'none' },
   markerAt1: { transform: 'translateX(100%)' },
   markerAt2: { transform: 'translateX(200%)' },

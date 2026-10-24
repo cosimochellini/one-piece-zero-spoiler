@@ -1,7 +1,7 @@
 import { isCrawlerAgent } from '~/lib/crawler'
 
-import { DEMO_LAST_CHAPTER, DEMO_LAST_EPISODE, EPISODE_CEILING } from './bounds'
 import { type Bookmark, parseBookmark } from './episode'
+import { type BookmarkSeries, ONE_PIECE_BOOKMARK } from './series'
 
 /**
  * A trial point as the onboarding wrote it, or `null`.
@@ -11,15 +11,18 @@ import { type Bookmark, parseBookmark } from './episode'
  * reading it as a bookmark would turn a session cookie into a way round the
  * one the reader saves.
  */
-export function parseTrial(raw: string | undefined): Bookmark {
-  const point = parseBookmark(raw)
+export function parseTrial(
+  raw: string | undefined,
+  series: BookmarkSeries = ONE_PIECE_BOOKMARK,
+): Bookmark {
+  const point = parseBookmark(raw, series)
 
   switch (point?.mode) {
     case 'chapter': {
-      return point.chapter <= DEMO_LAST_CHAPTER ? point : null
+      return point.chapter <= series.demoLastChapter ? point : null
     }
     case 'episode': {
-      return point.episode <= DEMO_LAST_EPISODE ? point : null
+      return point.episode <= series.demoLastEpisode ? point : null
     }
     default: {
       return null
@@ -34,8 +37,11 @@ export function parseTrial(raw: string | undefined): Bookmark {
 export function trialForRequest(
   cookie: string | undefined,
   trial: string | undefined,
+  series: BookmarkSeries = ONE_PIECE_BOOKMARK,
 ): Bookmark {
-  return parseBookmark(cookie) === null ? parseTrial(trial) : null
+  return parseBookmark(cookie, series) === null ?
+      parseTrial(trial, series)
+    : null
 }
 
 /**
@@ -57,14 +63,30 @@ export function trialForRequest(
 export function bookmarkForRequest(
   cookie: string | undefined,
   trial: string | undefined,
-  userAgent: string | undefined,
+  {
+    userAgent,
+    series = ONE_PIECE_BOOKMARK,
+  }: { series?: BookmarkSeries; userAgent?: string | undefined } = {},
 ): Bookmark {
-  const bookmark = parseBookmark(cookie) ?? parseTrial(trial)
+  const bookmark = parseBookmark(cookie, series) ?? parseTrial(trial, series)
   if (bookmark !== null) {
     return bookmark
   }
 
   return isCrawlerAgent(userAgent) ?
-      { mode: 'episode', episode: EPISODE_CEILING }
+      { mode: 'episode', episode: series.episodeCeiling }
     : null
+}
+
+/** Reads only this series' cookies; migration happens before rendering. */
+export function bookmarkFromCookies(
+  jar: Map<string, string>,
+  series: BookmarkSeries,
+  userAgent?: string,
+): Bookmark {
+  return bookmarkForRequest(
+    jar.get(series.cookie),
+    jar.get(series.trialCookie),
+    { series, userAgent },
+  )
 }

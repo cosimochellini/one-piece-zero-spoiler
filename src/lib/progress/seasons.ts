@@ -1,67 +1,33 @@
-import { EPISODE_CEILING, FIRST_EPISODE } from './bounds'
+import { FIRST_EPISODE } from './bounds'
+import { type BookmarkSeries, ONE_PIECE_BOOKMARK, type Season } from './series'
 
-/**
- * The anime's seasons, as the English-language Wikipedia "List of One Piece
- * episodes" divides them (read September 2026). A season is a run of
- * absolute episode numbers; the last one is open-ended because it is still
- * airing, and it runs to `EPISODE_CEILING` so a reader can bookmark any
- * episode the dialog accepts.
- *
- * The table exists so a reader can say "S04E38" and be filed at episode 130
- * without knowing that number. No threshold is stored per season: every
- * record keeps its absolute episode, and the season is only a way of saying
- * it.
- */
-export interface Season {
-  number: number
-  /** The absolute number of the season's first episode. */
-  first: number
-  /** The absolute number of its last episode, or `null` while it is airing. */
-  last: null | number
-}
+export type { Season } from './series'
 
-export const SEASONS: Season[] = [
-  { number: 1, first: 1, last: 61 },
-  { number: 2, first: 62, last: 77 },
-  { number: 3, first: 78, last: 92 },
-  { number: 4, first: 93, last: 130 },
-  { number: 5, first: 131, last: 143 },
-  { number: 6, first: 144, last: 195 },
-  { number: 7, first: 196, last: 228 },
-  { number: 8, first: 229, last: 263 },
-  { number: 9, first: 264, last: 336 },
-  { number: 10, first: 337, last: 381 },
-  { number: 11, first: 382, last: 407 },
-  { number: 12, first: 408, last: 421 },
-  { number: 13, first: 422, last: 456 },
-  { number: 14, first: 457, last: 516 },
-  { number: 15, first: 517, last: 578 },
-  { number: 16, first: 579, last: 628 },
-  { number: 17, first: 629, last: 746 },
-  { number: 18, first: 747, last: 782 },
-  { number: 19, first: 783, last: 891 },
-  { number: 20, first: 892, last: 1088 },
-  { number: 21, first: 1089, last: 1155 },
-  { number: 22, first: 1156, last: null },
-]
+export const SEASONS = ONE_PIECE_BOOKMARK.seasons
 
 /**
  * One row of the season table, or `undefined` for a number the table does not
  * run to. Every conversion between a season code and an absolute episode goes
  * through here, so an out-of-range season fails in one place.
  */
-export function getSeason(number: number): Season | undefined {
-  return SEASONS.find((season) => season.number === number)
+export function getSeason(
+  number: number,
+  series: BookmarkSeries = ONE_PIECE_BOOKMARK,
+): Season | undefined {
+  return series.seasons.find((season) => season.number === number)
 }
 
 /** The absolute number of the season's last acceptable episode. */
-function lastEpisodeOf(season: Season): number {
-  return season.last ?? EPISODE_CEILING
+function lastEpisodeOf(season: Season, series: BookmarkSeries): number {
+  return Math.min(season.last ?? series.episodeCeiling, series.episodeCeiling)
 }
 
 /** How many episodes the season holds, the open one counted to the ceiling. */
-export function seasonLength(season: Season): number {
-  return lastEpisodeOf(season) - season.first + 1
+export function seasonLength(
+  season: Season,
+  series: BookmarkSeries = ONE_PIECE_BOOKMARK,
+): number {
+  return lastEpisodeOf(season, series) - season.first + 1
 }
 
 /**
@@ -71,13 +37,14 @@ export function seasonLength(season: Season): number {
 export function resolveEpisode(
   seasonNumber: number,
   episode: number,
+  series: BookmarkSeries = ONE_PIECE_BOOKMARK,
 ): null | number {
-  const season = getSeason(seasonNumber)
+  const season = getSeason(seasonNumber, series)
   if (
     season === undefined
     || !Number.isSafeInteger(episode)
     || episode < 1
-    || episode > seasonLength(season)
+    || episode > seasonLength(season, series)
   ) {
     return null
   }
@@ -97,14 +64,18 @@ export interface SeasonPosition {
 }
 
 /** The season an absolute episode falls in, and its number within it. */
-export function locateEpisode(absolute: number): null | SeasonPosition {
+export function locateEpisode(
+  absolute: number,
+  series: BookmarkSeries = ONE_PIECE_BOOKMARK,
+): null | SeasonPosition {
   if (!Number.isSafeInteger(absolute) || absolute < FIRST_EPISODE) {
     return null
   }
 
-  const season = SEASONS.find(
+  const season = series.seasons.find(
     (candidate) =>
-      absolute >= candidate.first && absolute <= lastEpisodeOf(candidate),
+      absolute >= candidate.first
+      && absolute <= lastEpisodeOf(candidate, series),
   )
   if (season === undefined) {
     return null

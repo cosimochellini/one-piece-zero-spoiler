@@ -4,6 +4,7 @@ import {
   type BookmarkMode,
   modeOf,
 } from '~/lib/progress/episode'
+import { type BookmarkSeries, ONE_PIECE_BOOKMARK } from '~/lib/progress/series'
 import { type Gated, thresholdIn } from '~/lib/progress/spoiler'
 
 /**
@@ -33,7 +34,11 @@ export interface Reveal {
 }
 
 /** Whether a record may be shown at this bookmark; see `Reveal.sees`. */
-function isRevealed(gated: Gated, bookmark: Bookmark): boolean {
+function isRevealed(
+  gated: Gated,
+  bookmark: Bookmark,
+  series: BookmarkSeries,
+): boolean {
   if (bookmark === null) {
     return false
   }
@@ -41,17 +46,20 @@ function isRevealed(gated: Gated, bookmark: Bookmark): boolean {
     return bookmark.chapter >= gated.revealedAtChapter
   }
 
-  const episode = absoluteEpisodeOf(bookmark)
+  const episode = absoluteEpisodeOf(bookmark, series)
   return episode !== null && episode >= gated.revealedAtEpisode
 }
 
 /** The reader at this bookmark. */
-export function reveal(bookmark: Bookmark): Reveal {
+export function reveal(
+  bookmark: Bookmark,
+  series: BookmarkSeries = ONE_PIECE_BOOKMARK,
+): Reveal {
   const mode = modeOf(bookmark)
 
   return {
     mode,
-    sees: (gated) => isRevealed(gated, bookmark),
+    sees: (gated) => isRevealed(gated, bookmark, series),
     threshold: (gated) => thresholdIn(gated, mode),
   }
 }

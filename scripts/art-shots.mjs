@@ -134,7 +134,7 @@ async function drawingShot(page, selector) {
 export async function captureBookmark(browser, origin, row, bookmark) {
   await using context = await browser.createBrowserContext()
   await context.setCookie({
-    name: 'opzs_ep',
+    name: 'zs_one-piece',
     value: bookmark.value,
     url: origin,
     path: '/',

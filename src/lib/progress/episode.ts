@@ -1,9 +1,4 @@
-import {
-  CHAPTER_CEILING,
-  EPISODE_CEILING,
-  FIRST_CHAPTER,
-  FIRST_EPISODE,
-} from './bounds'
+import { FIRST_CHAPTER, FIRST_EPISODE } from './bounds'
 import {
   formatSeasonCode,
   getSeason,
@@ -11,6 +6,7 @@ import {
   resolveEpisode,
   seasonLength,
 } from './seasons'
+import { type BookmarkSeries, ONE_PIECE_BOOKMARK } from './series'
 import { type Gated, thresholdIn } from './spoiler'
 
 export {
@@ -81,13 +77,22 @@ function countIn(
 }
 
 /** The legacy bare integer. */
-function readEpisodeForm(raw: string): Bookmark | undefined {
-  const episode = countIn(EPISODE_FORM, raw, [FIRST_EPISODE, EPISODE_CEILING])
+function readEpisodeForm(
+  raw: string,
+  series: BookmarkSeries,
+): Bookmark | undefined {
+  const episode = countIn(EPISODE_FORM, raw, [
+    FIRST_EPISODE,
+    series.episodeCeiling,
+  ])
   return typeof episode === 'number' ? { mode: 'episode', episode } : episode
 }
 
 /** `s2e3`, checked against the season table rather than a flat range. */
-function readSeasonForm(raw: string): Bookmark | undefined {
+function readSeasonForm(
+  raw: string,
+  series: BookmarkSeries,
+): Bookmark | undefined {
   const match = SEASON_FORM.exec(raw)
   if (match === null) {
     return undefined
@@ -95,14 +100,20 @@ function readSeasonForm(raw: string): Bookmark | undefined {
 
   const season = Number(match.groups?.['season'])
   const episode = Number(match.groups?.['episode'])
-  return resolveEpisode(season, episode) === null ? null : (
+  return resolveEpisode(season, episode, series) === null ? null : (
       { mode: 'season', season, episode }
     )
 }
 
 /** `c1044`. */
-function readChapterForm(raw: string): Bookmark | undefined {
-  const chapter = countIn(CHAPTER_FORM, raw, [FIRST_CHAPTER, CHAPTER_CEILING])
+function readChapterForm(
+  raw: string,
+  series: BookmarkSeries,
+): Bookmark | undefined {
+  const chapter = countIn(CHAPTER_FORM, raw, [
+    FIRST_CHAPTER,
+    series.chapterCeiling,
+  ])
   return typeof chapter === 'number' ? { mode: 'chapter', chapter } : chapter
 }
 
@@ -111,13 +122,16 @@ function readChapterForm(raw: string): Bookmark | undefined {
 const FORMS = [readEpisodeForm, readSeasonForm, readChapterForm] as const
 
 /** Parses a raw cookie value into a valid bookmark, or `null`. */
-export function parseBookmark(raw: null | string | undefined): Bookmark {
+export function parseBookmark(
+  raw: null | string | undefined,
+  series: BookmarkSeries = ONE_PIECE_BOOKMARK,
+): Bookmark {
   if (raw === null || raw === undefined) {
     return null
   }
 
   for (const read of FORMS) {
-    const bookmark = read(raw)
+    const bookmark = read(raw, series)
     if (bookmark !== undefined) {
       return bookmark
     }
@@ -147,6 +161,7 @@ export function serialiseBookmark(bookmark: NonNullable<Bookmark>): string {
  */
 export function absoluteEpisodeOf(
   bookmark: NonNullable<Bookmark>,
+  series: BookmarkSeries = ONE_PIECE_BOOKMARK,
 ): null | number {
   switch (bookmark.mode) {
     case 'chapter': {
@@ -156,7 +171,7 @@ export function absoluteEpisodeOf(
       return bookmark.episode
     }
     case 'season': {
-      return resolveEpisode(bookmark.season, bookmark.episode)
+      return resolveEpisode(bookmark.season, bookmark.episode, series)
     }
   }
 }
@@ -186,8 +201,12 @@ export function bookmarkValue(bookmark: NonNullable<Bookmark>): string {
  * episode past the season table (which cannot happen while the table runs to
  * the ceiling) falls back to the bare number rather than to nothing.
  */
-export function thresholdValue(gated: Gated, mode: BookmarkMode): string {
-  return episodeValue(thresholdIn(gated, mode), mode)
+export function thresholdValue(
+  gated: Gated,
+  mode: BookmarkMode,
+  series: BookmarkSeries = ONE_PIECE_BOOKMARK,
+): string {
+  return episodeValue(thresholdIn(gated, mode), mode, series)
 }
 
 /**
@@ -195,8 +214,12 @@ export function thresholdValue(gated: Gated, mode: BookmarkMode): string {
  * the bare number for anyone else. A chapter reader has no episode of their
  * own, so they are shown the absolute one.
  */
-export function episodeValue(episode: number, mode: BookmarkMode): string {
-  const at = mode === 'season' ? locateEpisode(episode) : null
+export function episodeValue(
+  episode: number,
+  mode: BookmarkMode,
+  series: BookmarkSeries = ONE_PIECE_BOOKMARK,
+): string {
+  const at = mode === 'season' ? locateEpisode(episode, series) : null
 
   return at === null ? String(episode) : formatSeasonCode(at.season, at.episode)
 }
@@ -257,17 +280,20 @@ export function draftOf(bookmark: Bookmark): Draft {
 }
 
 /** The largest number the draft's field accepts, given its mode and season. */
-export function ceilingOf(draft: Draft): null | number {
+export function ceilingOf(
+  draft: Draft,
+  series: BookmarkSeries = ONE_PIECE_BOOKMARK,
+): null | number {
   switch (draft.mode) {
     case 'chapter': {
-      return CHAPTER_CEILING
+      return series.chapterCeiling
     }
     case 'episode': {
-      return EPISODE_CEILING
+      return series.episodeCeiling
     }
     case 'season': {
-      const season = getSeason(Number(draft.season))
-      return season === undefined ? null : seasonLength(season)
+      const season = getSeason(Number(draft.season), series)
+      return season === undefined ? null : seasonLength(season, series)
     }
   }
 }
@@ -290,8 +316,11 @@ export interface Stepper {
  * parsed number: the reader may be mid-edit with an empty or nonsense field,
  * and the buttons still have to say something sensible about the next press.
  */
-export function stepperOf(draft: Draft): Stepper {
-  const ceiling = ceilingOf(draft)
+export function stepperOf(
+  draft: Draft,
+  series: BookmarkSeries = ONE_PIECE_BOOKMARK,
+): Stepper {
+  const ceiling = ceilingOf(draft, series)
   const current = parseWhole(draft.number)
   const base = current ?? 0
 
@@ -320,8 +349,11 @@ function parseWhole(raw: string): null | number {
  * can be tested directly, and so the component is left deciding only *when*
  * to show a message — which depends on whether the field has been blurred.
  */
-export function gradeDraft(draft: Draft): GradedDraft {
-  const ceiling = ceilingOf(draft)
+export function gradeDraft(
+  draft: Draft,
+  series: BookmarkSeries = ONE_PIECE_BOOKMARK,
+): GradedDraft {
+  const ceiling = ceilingOf(draft, series)
   if (ceiling === null) {
     return { bookmark: null, problem: 'season' }
   }
@@ -335,22 +367,20 @@ export function gradeDraft(draft: Draft): GradedDraft {
     return { bookmark: null, problem: 'range' }
   }
 
+  return { bookmark: bookmarkAt(draft, value), problem: null }
+}
+
+/** The validated number in the unit chosen by the draft. */
+function bookmarkAt(draft: Draft, value: number): NonNullable<Bookmark> {
   switch (draft.mode) {
     case 'chapter': {
-      return { bookmark: { mode: 'chapter', chapter: value }, problem: null }
+      return { mode: 'chapter', chapter: value }
     }
     case 'episode': {
-      return { bookmark: { mode: 'episode', episode: value }, problem: null }
+      return { mode: 'episode', episode: value }
     }
     case 'season': {
-      return {
-        bookmark: {
-          mode: 'season',
-          season: Number(draft.season),
-          episode: value,
-        },
-        problem: null,
-      }
+      return { mode: 'season', season: Number(draft.season), episode: value }
     }
   }
 }

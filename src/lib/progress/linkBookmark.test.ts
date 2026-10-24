@@ -80,12 +80,12 @@ async function target(response: Response | undefined): Promise<string> {
 
 describe('the redirect a link answers with', () => {
   it('sets the cookie and drops the link from the address', async () => {
-    const response = visit('/?ep=650')
+    const response = visit('/en?ep=650')
 
     expect(response?.status).toBe(200)
-    await expect(target(response)).resolves.toBe('/')
+    await expect(target(response)).resolves.toBe('/en')
     expect(response?.headers.get('Set-Cookie')).toBe(
-      'opzs_ep=650; Path=/; SameSite=Lax; Max-Age=31536000',
+      'zs_one-piece=650; Path=/; SameSite=Lax; Max-Age=31536000',
     )
     expect(response?.headers.get('Cache-Control')).toBe('no-store')
   })
@@ -98,12 +98,12 @@ describe('the redirect a link answers with', () => {
     const response = visit('/it/characters?x=1&s=2&ep=3&y=2')
 
     await expect(target(response)).resolves.toBe('/it/characters?x=1&y=2')
-    expect(response?.headers.get('Set-Cookie')).toMatch(/^opzs_ep=s2e3;/u)
+    expect(response?.headers.get('Set-Cookie')).toMatch(/^zs_one-piece=s2e3;/u)
   })
 
   it('writes the chapter form', () => {
     expect(visit('/en?ch=1044')?.headers.get('Set-Cookie')).toMatch(
-      /^opzs_ep=c1044;/u,
+      /^zs_one-piece=c1044;/u,
     )
   })
 
@@ -124,7 +124,28 @@ describe('the redirect a link answers with', () => {
   })
 
   it('answers HEAD like GET', () => {
-    expect(visit('/?ep=650', 'HEAD')?.headers.has('Set-Cookie')).toBe(true)
+    expect(visit('/en?ep=650', 'HEAD')?.headers.has('Set-Cookie')).toBe(true)
+  })
+
+  it('drops parameters on non-series pages without creating a bookmark', async () => {
+    for (const path of [
+      '/',
+      '/en/legal',
+      '/it/privacy',
+      '/hunter-x-hunter/en',
+      '/en/unknown',
+    ]) {
+      const response = visit(`${path}?ep=650&x=1`)
+
+      expect(response?.headers.has('Set-Cookie')).toBe(false)
+      await expect(target(response)).resolves.toBe(`${path}?x=1`)
+    }
+  })
+
+  it('selects the series from a future series-first content path', () => {
+    expect(
+      visit('/one-piece/en/characters?ep=650')?.headers.get('Set-Cookie'),
+    ).toMatch(/^zs_one-piece=650;/u)
   })
 
   it('leaves alone a request with no link, a server function and a POST', () => {

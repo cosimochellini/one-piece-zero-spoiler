@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
 import { sagaAt, type SagaTable } from './sagaLabel'
+import { ONE_PIECE_BOOKMARK } from './series'
 
 const TABLE: SagaTable = {
   episode: [
@@ -34,6 +35,21 @@ describe('sagaAt', () => {
     expect(
       sagaAt(TABLE, { mode: 'season', season: '2', number: '1' }),
     ).toStrictEqual({ name: 'Reverse Mountain', filler: false })
+  })
+
+  it('uses the series season table and range for a season draft', () => {
+    const series = {
+      ...ONE_PIECE_BOOKMARK,
+      episodeCeiling: 650,
+      seasons: [{ number: 2, first: 629, last: 650 }],
+    }
+
+    expect(
+      sagaAt(TABLE, { mode: 'season', season: '2', number: '1' }, series),
+    ).toStrictEqual({ name: 'Dressrosa', filler: false })
+    expect(
+      sagaAt(TABLE, { mode: 'season', season: '2', number: '23' }, series),
+    ).toBeNull()
   })
 
   it('reads a chapter against the chapter openings, never as filler', () => {

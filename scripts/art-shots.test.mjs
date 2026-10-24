@@ -142,7 +142,7 @@ describe('bookmark capture', () => {
     })
 
     expect(context.setCookie).toHaveBeenCalledWith({
-      name: 'opzs_ep',
+      name: 'zs_one-piece',
       value: '92',
       url: origin,
       path: '/',

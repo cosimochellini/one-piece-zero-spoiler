@@ -37,9 +37,10 @@ fog.
 | <img src="docs/media/fog-before.png" alt="The character grid at episode 45: the crests after that point are blurred and unnamed" width="420"> | <img src="docs/media/fog-after.png" alt="The same crop at episode 650: the same crests are open, named and drawn" width="420"> |
 
 A link can set the bookmark too. Add `?ep=650` for an episode, `?s=2&ep=3` for
-an episode in a season, or `?ch=1044` for a chapter to any address on the site.
-The link replaces the bookmark you had, so a link from someone further ahead can
-open entries you have not reached.
+an episode in a season, or `?ch=1044` for a chapter to a One Piece page. Links
+on the root, legal and privacy pages set no bookmark. The link replaces the
+bookmark you had, so a link from someone further ahead can open entries you have
+not reached.
 
 ## Hidden entries never reach the browser
 
@@ -56,13 +57,13 @@ curl -s https://one-piece-zero-spoiler.netlify.app/en/characters/trafalgar-law \
 # <title>A character under fog | Zero Spoiler</title>
 ```
 
-With `Cookie: opzs_ep=650` the title is the name. The server reads the bookmark
-before it builds the page. An entry you have not reached is sent as its kind,
-two thresholds and an opaque handle, with no name, no id and no text:
+With `Cookie: zs_one-piece=650` the title is the name. The server reads the
+bookmark before it builds the page. An entry you have not reached is sent as its
+kind, two thresholds and an opaque handle, with no name, no id and no text:
 
 ```mermaid
 flowchart LR
-  A["Request + opzs_ep cookie"] --> B["Loader calls a server function"]
+  A["Request + zs_one-piece cookie"] --> B["Loader calls a server function"]
   B --> C["reveal(bookmark).sees() per record, on the server"]
   C --> D["Revealed records, in the route's locale"]
   C --> E["Covered records: two thresholds and an opaque handle"]

@@ -6,6 +6,7 @@ import type { SkipRange } from '~/lib/view/filler'
 
 import { type Draft, gradeDraft } from './episode'
 import { resolveEpisode } from './seasons'
+import { type BookmarkSeries, ONE_PIECE_BOOKMARK } from './series'
 
 /** One saga as the dialog needs it: where it opens, and its name. */
 export interface SagaRow {
@@ -37,8 +38,12 @@ export interface SagaAt {
  * for. On a shared opening the later saga in route order wins, as it does
  * in the landing's fold.
  */
-export function sagaAt(table: SagaTable, draft: Draft): null | SagaAt {
-  const { bookmark } = gradeDraft(draft)
+export function sagaAt(
+  table: SagaTable,
+  draft: Draft,
+  series: BookmarkSeries = ONE_PIECE_BOOKMARK,
+): null | SagaAt {
+  const { bookmark } = gradeDraft(draft, series)
   if (bookmark === null) {
     return null
   }
@@ -49,7 +54,7 @@ export function sagaAt(table: SagaTable, draft: Draft): null | SagaAt {
     : [
         table.episode,
         bookmark.mode === 'season' ?
-          resolveEpisode(bookmark.season, bookmark.episode)
+          resolveEpisode(bookmark.season, bookmark.episode, series)
         : bookmark.episode,
       ]
   if (at === null) {

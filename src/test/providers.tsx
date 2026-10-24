@@ -14,6 +14,7 @@ import { LocaleProvider } from '~/i18n/LocaleProvider'
 import type { Locale } from '~/i18n/locales'
 import { BookmarkProvider } from '~/lib/progress/BookmarkProvider'
 import type { Bookmark } from '~/lib/progress/episode'
+import { seriesForPath } from '~/lib/progress/series'
 
 /**
  * The context-only router the render helper stands up, named so the helper
@@ -73,6 +74,7 @@ export function renderWithProviders(
           <BookmarkProvider
             initialBookmark={bookmark}
             initialTrial={trial}
+            series={seriesForPath(path ?? `/${locale}`)}
           >
             {/*
               A component that reads a streamed loader slot with `use()`
@@ -130,7 +132,12 @@ export async function renderOnRoute(
     component: (): ReactElement => {
       return (
         <LocaleProvider locale={locale}>
-          <BookmarkProvider initialBookmark={bookmark}>{ui}</BookmarkProvider>
+          <BookmarkProvider
+            initialBookmark={bookmark}
+            series={seriesForPath(path ?? `/${locale}`)}
+          >
+            {ui}
+          </BookmarkProvider>
         </LocaleProvider>
       )
     },

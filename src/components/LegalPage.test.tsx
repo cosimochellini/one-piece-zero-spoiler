@@ -48,7 +48,12 @@ describe('LegalPage', () => {
         ),
       ).toBeInTheDocument()
 
-      for (const name of ['opzs_ep', 'opzs_lang', 'opzs_try', 'opzs_welcome']) {
+      for (const name of [
+        'zs_one-piece',
+        'opzs_lang',
+        'zs_one-piece_try',
+        'opzs_welcome',
+      ]) {
         expect(main).toHaveTextContent(name)
       }
 
