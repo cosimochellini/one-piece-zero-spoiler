@@ -108,7 +108,7 @@ function RootComponent(): ReactElement {
   const { series, initialBookmark, initialTrial } = Route.useRouteContext()
 
   return (
-    <RootDocument>
+    <RootDocument seriesPage={series !== null}>
       <BookmarkProvider
         initialBookmark={initialBookmark}
         initialTrial={initialTrial}
@@ -122,7 +122,14 @@ function RootComponent(): ReactElement {
 
 // The default client entry hydrates the whole document, so the root route has
 // to render <html> itself.
-function RootDocument({ children }: { children: ReactNode }): ReactElement {
+function RootDocument({
+  children,
+  seriesPage,
+}: {
+  children: ReactNode
+  /** A series page, as `SiteBar` reads it: its bar keeps two rows longer. */
+  seriesPage: boolean
+}): ReactElement {
   // Read loosely because the root route has no params of its own; the locale
   // belongs to the `$locale` layout below it. Anything unrecognised falls back
   // to the site default rather than emitting an invalid `lang`.
@@ -130,9 +137,9 @@ function RootDocument({ children }: { children: ReactNode }): ReactElement {
   const locale = isLocale(params.locale) ? params.locale : DEFAULT_LOCALE
   // A series page, its 404s included, wears the theme its description names;
   // the hub, the legal notices and an unknown address keep the site's own.
-  const series = useMatch({ from: '/$series', shouldThrow: false })?.context
-    .series
-  const theme = themeOf(series)
+  const theme = themeOf(
+    useMatch({ from: '/$series', shouldThrow: false })?.context.series,
+  )
 
   // The dev stylesheet above is a static URL, so the browser never refetches
   // it after an edit. `virtual:stylex:css-only` is the shim the plugin ships
@@ -163,7 +170,7 @@ function RootDocument({ children }: { children: ReactNode }): ReactElement {
         stickyStyles.document,
         styles.document,
         theme,
-        theme !== false && seriesBarPin,
+        seriesPage && seriesBarPin,
       )}
     >
       <head>

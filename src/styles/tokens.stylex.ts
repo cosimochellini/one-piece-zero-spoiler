@@ -265,12 +265,26 @@ export const z = stylex.defineVars({
 })
 
 /**
- * How much of the window the site bar keeps, pinned at every width: rows of
- * 2.75rem (two on a phone, where the pages fold under, one elsewhere) and
- * `space.xs2` above and below them. The bar takes this as its height, and
+ * The site bar's two heights, rows of 2.75rem with `space.xs2` above and below
+ * them, and the width from which a series page's bar fits on one row. A
+ * series bar carries the series' name and pages besides the wordmark, so it
+ * needs more room than the site's 40rem: `SiteBar` lays out from
+ * `seriesWide`, and `seriesBarPin` in src/styles/sticky.ts sets `pin.bar` to
+ * match on series pages.
+ */
+export const BAR = stylex.defineConsts({
+  seriesWide: '@media (min-width: 56rem)',
+  twoRows: '6rem',
+  oneRow: '3.25rem',
+})
+
+/**
+ * How much of the window the site bar keeps, pinned at every width: two rows
+ * on a phone, where the pages fold under, one from 40rem. A series page
+ * overrides it with `seriesBarPin` (src/styles/sticky.ts), which keeps two
+ * rows up to `BAR.seriesWide`. The bar takes this as its height, and
  * everything else that pins pins under it, so the two cannot drift apart.
- * Written out: one set of vars cannot read another.
  */
 export const pin = stylex.defineVars({
-  bar: { 'default': '6rem', '@media (min-width: 40rem)': '3.25rem' },
+  bar: { 'default': BAR.twoRows, '@media (min-width: 40rem)': BAR.oneRow },
 })

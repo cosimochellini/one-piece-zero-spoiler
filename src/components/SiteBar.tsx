@@ -7,6 +7,7 @@ import { LocaleSwitch } from '~/components/LocaleSwitch'
 import { useLocale } from '~/i18n/LocaleContext'
 import { useBookmark, useSeriesParams } from '~/lib/progress/BookmarkContext'
 import {
+  BAR,
   color,
   dur,
   ease,
@@ -125,9 +126,8 @@ const WIDE = '@media (min-width: 40rem)'
 // A series bar needs more room for one row: the wordmark, the name, three
 // pages, the bookmark and the language fit from about 52rem with the longest
 // name (Hunter x Hunter, in Italian). Below it the name and the pages fold
-// under, as on a phone. `seriesBarPin` in src/styles/sticky.ts holds the bar's
-// height to the same width.
-const ROOMY = '@media (min-width: 56rem)'
+// under, as on a phone.
+const ROOMY = BAR.seriesWide
 
 const styles = stylex.create({
   // One grid at every width, pinned to the top of the window, its height
