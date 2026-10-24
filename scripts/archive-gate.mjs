@@ -146,9 +146,9 @@ const WORST_CHUNKS = 5
  * or drawings enter the client, and the emitted SSR graph is now checked to
  * keep each archive behind its own dynamic import. Raised for #754 on
  * 2026-10-24: the hub's stages (each series in its own theme, its straw-hat
- * drawing, the announced Hunter x Hunter card) and the shared footer's two
- * keys in both dictionaries. The measured client build is 666,769 bytes; the
- * ceiling retains 1 KB headroom. The hub sends counts and the reader's own
+ * drawing, the announced Hunter x Hunter card), the hub's seven keys and the
+ * shared footer's three, in both dictionaries. The measured client build is
+ * 666,769 bytes; the ceiling retains 1 KB headroom. The hub sends counts and the reader's own
  * bookmarks only; no record, name or record drawing enters the client.
  */
 export const MAX_CLIENT_BYTES = 667_769

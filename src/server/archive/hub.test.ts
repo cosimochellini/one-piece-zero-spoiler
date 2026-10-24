@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
+import { archiveIn } from '~/data/source'
 import { ONE_PIECE_LOADED } from '~/test/series'
 import { plant } from '~/test/sourceOnly'
 
@@ -8,14 +9,14 @@ import { hubFor, hubSeries } from './hub.server'
 describe('hubSeries', () => {
   const { archive } = ONE_PIECE_LOADED
 
-  it('counts every entry and carries only the series and the bookmark', () => {
+  it('carries only the series, its count and the bookmark', () => {
     const bookmark = { mode: 'season', season: 14, episode: 3 } as const
 
     expect(hubSeries(archive, bookmark)).toStrictEqual({
       slug: 'one-piece',
       name: { en: 'One Piece', it: 'One Piece' },
       theme: 'one-piece',
-      count: archive.entities.length,
+      count: archiveIn(archive, 'anime').entities.length,
       bookmark,
     })
   })
