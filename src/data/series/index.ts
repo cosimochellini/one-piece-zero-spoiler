@@ -63,7 +63,7 @@ const HUNTER_X_HUNTER: ListedSeries = {
 
 /**
  * Every series filed: what the gates, the tests and the scripts go through.
- * Nothing a reader reaches imports it (`registry.test.ts`).
+ * Nothing a reader reaches imports it (ESLint `no-restricted-imports`).
  */
 export const SERIES: ListedSeries[] = [ONE_PIECE, HUNTER_X_HUNTER]
 
@@ -96,7 +96,7 @@ export async function archiveOf(slug: string): Promise<SeriesArchive> {
 /**
  * The archive of any filed series, open or not: for the tests, the gates and
  * the scripts alone, which check a series before it opens. Nothing a reader
- * reaches imports it (`registry.test.ts`).
+ * reaches imports it (ESLint `no-restricted-imports`).
  */
 export async function filedArchiveOf(slug: string): Promise<SeriesArchive> {
   const series = SERIES.find((entry) => entry.slug === slug)

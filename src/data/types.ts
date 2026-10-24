@@ -300,7 +300,7 @@ export interface Saga<V extends Vocabulary = Vocabulary> {
  */
 export interface PlaceDossier<V extends Vocabulary = Vocabulary> {
   form: V['form']
-  /** Where it lies: One Piece's sea. */
+  /** Where it lies, in the series' own words (One Piece: its sea). */
   region: V['region']
   /** The arc the place belongs to: an `arc` record's id. */
   arc: string

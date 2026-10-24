@@ -1,5 +1,5 @@
-import { enDictionary } from '~/i18n/dictionaries/en'
 import { isForm, isSea } from '~/lib/search/placeParams'
+import { FACTIONS } from '~/lib/view/factions'
 import type { Faction, PlaceForm, Sea } from '~/lib/view/records'
 
 /**
@@ -32,9 +32,9 @@ export function printedForm(form: string): PlaceForm {
   return form
 }
 
-/** Whether the dictionaries label a group, which makes it a faction. */
+/** Whether a group is one of the factions the pages print. */
 function isFaction(group: string): group is Faction {
-  return Object.hasOwn(enDictionary, `faction.${group}`)
+  return FACTIONS.has(group)
 }
 
 /** An affiliation's group as the pages print it: a faction. */

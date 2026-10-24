@@ -84,10 +84,11 @@ A series can be filed before it opens (`open` on its registry entry). Hunter x
 Hunter is, until #763: it is in `SERIES`, so the payload sweep, the leak scan,
 the data tests, the archive gate, the counts and the `verify:*` scripts all run
 for it, through `filedArchiveOf`. Every path a reader takes goes through
-`OPEN_SERIES` and `archiveOf`, which refuses a series that is not open, and a
-test fails a source file outside the tests that imports `SERIES` or
-`filedArchiveOf`. Its addresses answer 404, no server function serves it, the
-sitemap leaves it out, and the hub still announces it as coming.
+`OPEN_SERIES` and `archiveOf`, which refuses a series that is not open, and
+ESLint (`no-restricted-imports`, and `no-restricted-syntax` for a dynamic
+`import()`) fails the server, the request middleware or the archive importing
+`SERIES` or `filedArchiveOf`. Its addresses answer 404, no server function
+serves it, the sitemap leaves it out, and the hub still announces it as coming.
 
 An arc's name is shown at every bookmark (the dialog's saga rows), so it may say
 no event, death, departure or twist the reader may not have reached. Hunter x

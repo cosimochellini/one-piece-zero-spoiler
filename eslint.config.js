@@ -73,6 +73,17 @@ const NATURAL = { type: 'natural', order: 'asc', ignoreCase: true }
 const ALIAS_ONLY =
   'Import through the `~/` alias instead of a parent-relative path.'
 
+/**
+ * react-doctor's js-combine-iterations, caught on commit (see the `src` block
+ * that applies it).
+ */
+const FILTER_MAP = {
+  selector:
+    "CallExpression[callee.property.name='map'] > MemberExpression.callee > CallExpression.object[callee.property.name='filter']",
+  message:
+    '.filter().map() makes two passes and react-doctor (js-combine-iterations) fails it in `npm run check`. Use one for…of loop with push; flatMap with [x]/[], unshift and concat are banned by unicorn.',
+}
+
 /** The registry's list and loader of every filed series, open or not. */
 const FILED_ONLY = ['SERIES', 'filedArchiveOf']
 const OPEN_ONLY =
@@ -224,16 +235,7 @@ const config = defineConfig(
     files: ['src/**/*.{ts,tsx}'],
     ignores: TESTS,
     rules: {
-      'no-restricted-syntax': [
-        'error',
-        ...RESTRICTED_SYNTAX,
-        {
-          selector:
-            "CallExpression[callee.property.name='map'] > MemberExpression.callee > CallExpression.object[callee.property.name='filter']",
-          message:
-            '.filter().map() makes two passes and react-doctor (js-combine-iterations) fails it in `npm run check`. Use one for…of loop with push; flatMap with [x]/[], unshift and concat are banned by unicorn.',
-        },
-      ],
+      'no-restricted-syntax': ['error', ...RESTRICTED_SYNTAX, FILTER_MAP],
     },
   },
 
@@ -903,11 +905,23 @@ const config = defineConfig(
           patterns: [
             { regex: String.raw`^\.\./`, message: ALIAS_ONLY },
             {
-              regex: String.raw`^(?:~/data/series/index|\.(?:/index)?)$`,
+              regex: String.raw`^(?:~/data/series/(?:index)?|\.(?:/index)?)$`,
               importNames: FILED_ONLY,
               message: OPEN_ONLY,
             },
           ],
+        },
+      ],
+      // A dynamic import of the registry would take the filed list past the
+      // import rule above. The registry's own imports of a series are
+      // relative and stay allowed.
+      'no-restricted-syntax': [
+        'error',
+        ...RESTRICTED_SYNTAX,
+        FILTER_MAP,
+        {
+          selector: String.raw`ImportExpression[source.value=/^~\/data\/series/]`,
+          message: OPEN_ONLY,
         },
       ],
     },

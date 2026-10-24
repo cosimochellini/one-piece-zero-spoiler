@@ -20,28 +20,34 @@ export interface PlaceParams {
   sea?: Sea
 }
 
-const SEAS = new Set<string>([
-  'east-blue',
-  'grand-line',
-  'calm-belt',
-  'red-line',
-  'new-world',
-] satisfies Sea[])
+// Keyed by every member of the union, so a sea or a form added to it does not
+// compile until it is listed here too.
+const SEAS = new Set<string>(
+  Object.keys({
+    'east-blue': true,
+    'grand-line': true,
+    'calm-belt': true,
+    'red-line': true,
+    'new-world': true,
+  } satisfies Record<Sea, true>),
+)
 
-const FORMS = new Set<string>([
-  'archipelago',
-  'city',
-  'fortress',
-  'island',
-  'prison',
-  'region',
-  'restaurant',
-  'sea',
-  'ship',
-  'town',
-  'train',
-  'village',
-] satisfies PlaceForm[])
+const FORMS = new Set<string>(
+  Object.keys({
+    archipelago: true,
+    city: true,
+    fortress: true,
+    island: true,
+    prison: true,
+    region: true,
+    restaurant: true,
+    sea: true,
+    ship: true,
+    town: true,
+    train: true,
+    village: true,
+  } satisfies Record<PlaceForm, true>),
+)
 
 /** Whether a value is one of the seas the pages print. */
 export function isSea(value: unknown): value is Sea {
