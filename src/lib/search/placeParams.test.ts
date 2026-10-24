@@ -30,20 +30,21 @@ describe('parsePlaceParams', () => {
     ).toStrictEqual({ sea: 'new-world', form: 'island', saga: 8, q: 'dress' })
   })
 
-  it('leaves out the defaults and anything it does not know', () => {
+  it('leaves out the defaults and anything of the wrong shape', () => {
     expect(
-      parsePlaceParams({
-        sea: 'all',
-        form: '',
-        saga: 0,
-        view: 'grid',
-        q: '  ',
-      }),
+      parsePlaceParams({ sea: '', form: '', saga: 0, view: 'grid', q: '  ' }),
     ).toStrictEqual({})
     expect(
-      parsePlaceParams({ sea: 'north-blue', form: 'castle', saga: 1.5 }),
+      parsePlaceParams({ sea: 3, form: ['island'], saga: 1.5 }),
     ).toStrictEqual({})
     expect(parsePlaceParams({ saga: '3', q: 12 })).toStrictEqual({})
+  })
+
+  it('keeps any word, which only the open places can match', () => {
+    const params = parsePlaceParams({ sea: 'north-blue', form: 'castle' })
+
+    expect(params).toStrictEqual({ sea: 'north-blue', form: 'castle' })
+    expect(reachedParams(params, [baratie, jaya])).toStrictEqual({})
   })
 })
 

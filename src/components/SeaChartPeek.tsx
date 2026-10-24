@@ -21,15 +21,14 @@ import { styles } from '~/components/SeaChartPeek.styles'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { Button } from '~/components/ui/Button'
 import type { PeekProps } from '~/components/useChartPeek'
+import { usePlaceLabels } from '~/components/usePlaceLabels'
 import { useLocale } from '~/i18n/LocaleContext'
 import { useSeriesParams, useThreshold } from '~/lib/progress/BookmarkContext'
 import type { StopView } from '~/lib/view/places'
 import type {
   CoveredRecord,
-  PlaceForm,
   PortView,
   RecordView,
-  Sea,
   ShipView,
 } from '~/lib/view/records'
 
@@ -157,14 +156,14 @@ function PlaceCard({
   port,
 }: {
   onDismiss: () => void
-  port: RecordView & { form?: PlaceForm | undefined; sea?: Sea | undefined }
+  port: RecordView & { form?: string | undefined; sea?: string | undefined }
 }): ReactElement {
-  const { t } = useLocale()
+  const { formOf, regionOf } = usePlaceLabels()
   const threshold = useThreshold()
   const meta =
     port.sea === undefined || port.form === undefined ?
       undefined
-    : [t(`sea.${port.sea}`), t(`form.${port.form}`)].join(' · ')
+    : [regionOf(port.sea), formOf(port.form)].join(' · ')
 
   return (
     <Card

@@ -26,6 +26,7 @@ import { useT } from '~/i18n/LocaleContext'
 import { isLocale } from '~/i18n/locales'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
 import { parsePlaceParams } from '~/lib/search/placeParams'
+import { placeWordsOf } from '~/lib/view/placeWords'
 import { describeNamedPage } from '~/routes/$locale/-head'
 import { usePeek } from '~/routes/$series/$locale/-peek'
 import { useScrollBackOnceTall } from '~/routes/$series/$locale/-scrollBack'
@@ -78,10 +79,14 @@ export const Route = createFileRoute('/$series/$locale/places/')({
  * data is in the payload already, and leaving it out of the served HTML
  * keeps the render inside a Worker's CPU limit (#781). Each place's own page
  * is served in full.
+ *
+ * The chart is One Piece's world map. A series without one
+ * (`PlaceWords.chart`) has the index alone, its places grouped by region.
  */
 function PlacesPage(): ReactElement {
   const t = useT()
   const { bookmark } = useBookmark()
+  const { chart } = placeWordsOf(Route.useRouteContext().series.slug)
   const { covered, filed, open, sagas, served, ships } = Route.useLoaderData()
 
   const peekPort = usePeek(liftPort)
@@ -95,16 +100,18 @@ function PlacesPage(): ReactElement {
       count={t('places.count', { count: filed })}
       title={t('places.title')}
     >
-      <SeaChart
-        bookmark={bookmark}
-        covered={covered}
-        lit={lit}
-        open={open}
-        peekPort={peekPort}
-        sagas={sagas}
-        served={served}
-        ships={ships}
-      />
+      {chart ?
+        <SeaChart
+          bookmark={bookmark}
+          covered={covered}
+          lit={lit}
+          open={open}
+          peekPort={peekPort}
+          sagas={sagas}
+          served={served}
+          ships={ships}
+        />
+      : null}
       <ClientOnly>
         <PlaceIndex
           covered={covered}

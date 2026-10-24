@@ -11,6 +11,7 @@ import { styles as dialog } from '~/components/BookmarkDialog.styles'
 import { ControlBar } from '~/components/ControlBar'
 import { SearchField } from '~/components/SearchField'
 import { searchStyles } from '~/components/SearchField.styles'
+import { type PlaceLabels, usePlaceLabels } from '~/components/usePlaceLabels'
 import { useSettled } from '~/components/useSettled'
 import { useT } from '~/i18n/LocaleContext'
 import type { Translate } from '~/i18n/types'
@@ -53,6 +54,7 @@ export function PlaceControls({
   sagas,
 }: PlaceControlsProps): ReactElement {
   const t = useT()
+  const labels = usePlaceLabels()
   // Every pick goes through the parser, so a default ("all", a blank
   // query) is left out of the address rather than written into it.
   const pick: Pick = (next, replace = false) => {
@@ -62,7 +64,7 @@ export function PlaceControls({
   return (
     <ControlBar
       searchLabel={t('places.searchOpen')}
-      summary={summaryOf(t, params, sagas)}
+      summary={summaryOf(labels, params, sagas)}
       toggleLabel={t('places.controls')}
     >
       <PlaceSearch
@@ -148,17 +150,18 @@ function PlaceChoices({
   sagas: SagaPick[]
 }): ReactElement {
   const t = useT()
+  const { allRegions, formOf, region, regionOf } = usePlaceLabels()
 
   return (
     <div {...stylex.props(styles.choices)}>
       <Picker
-        label={t('places.sea')}
+        label={region}
         onPick={(next) => {
           pick({ sea: next })
         }}
         options={withAll(
-          t('places.allSeas'),
-          counted(open, ({ sea }) => [sea, t(`sea.${sea}`)]),
+          allRegions,
+          counted(open, ({ sea }) => [sea, regionOf(sea)]),
         )}
         value={params.sea ?? ''}
       />
@@ -169,7 +172,7 @@ function PlaceChoices({
         }}
         options={withAll(
           t('places.allForms'),
-          counted(open, ({ form }) => [form, t(`form.${form}`)]),
+          counted(open, ({ form }) => [form, formOf(form)]),
         )}
         value={params.form ?? ''}
       />
@@ -254,7 +257,7 @@ function counted(
 
 /** The folded bar's words: "New World · Island · “wano”". */
 function summaryOf(
-  t: Translate,
+  { allRegions, formOf, regionOf }: PlaceLabels,
   { form, q = '', saga, sea }: PlaceParams,
   sagas: SagaPick[],
 ): string {
@@ -262,8 +265,8 @@ function summaryOf(
   const query = q.trim()
 
   return [
-    t(sea === undefined ? 'places.allSeas' : `sea.${sea}`),
-    ...(form === undefined ? [] : [t(`form.${form}`)]),
+    sea === undefined ? allRegions : regionOf(sea),
+    ...(form === undefined ? [] : [formOf(form)]),
     ...(title === undefined ? [] : [title]),
     ...(query === '' ? [] : [`“${query}”`]),
   ].join(' · ')

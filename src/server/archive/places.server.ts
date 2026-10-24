@@ -3,7 +3,7 @@ import type { Entity, LocalizedText } from '~/data/types'
 import type { PlacesView, SagaPick, StopView } from '~/lib/view/places'
 import type { PortView, RecordView, ShipView, Slot } from '~/lib/view/records'
 
-import { printedForm, printedSea } from './printed.server'
+import { printedForm, printedRegion } from './printed.server'
 import { deferredOf, namedOf, recordOf } from './project.server'
 import type { Reader } from './reader.server'
 
@@ -96,8 +96,8 @@ function stopOf(entity: Entity, r: Reader): StopView {
     ...recordOf(entity, r),
     ...namedOf(entity, r),
     chart: r.archive.chartPointOf(entity.id),
-    sea: printedSea(dossier.region),
-    form: printedForm(dossier.form),
+    sea: printedRegion(dossier.region, r.archive.series.slug),
+    form: printedForm(dossier.form, r.archive.series.slug),
     saga: sagaNumberOf(entity.id, r),
   }
 }
@@ -137,8 +137,8 @@ export function portOf(entity: Entity, r: Reader): PortView {
     dossier:
       dossier === undefined ? null : (
         {
-          sea: printedSea(dossier.region),
-          form: printedForm(dossier.form),
+          sea: printedRegion(dossier.region, r.archive.series.slug),
+          form: printedForm(dossier.form, r.archive.series.slug),
           arc: arc === undefined ? null : arc.name[locale],
           landmark: dossier.landmark[locale],
           log: dossier.log[locale],

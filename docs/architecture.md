@@ -107,11 +107,16 @@ engine (`Vocabulary`), narrowed by each series, as One Piece's `Saga` narrows
 them to its forms, seas and factions (`OnePieceVocabulary`) and a record's
 drawing and fruits to the ids it files. The registry and the server hold every
 archive by the generic words, so a series with its own registers as it is, and
-the server narrows a word to one the pages print only where a page prints it
-(`src/server/archive/printed.server.ts`), failing on one they cannot: the pages
-print One Piece's today. The chapter table and the sweep's bookmarks are built
-by the engine (`src/data/chapterTable.ts`, `src/data/sweep.ts`) from each
-series' own records.
+the server passes a word on only where a page prints it
+(`src/server/archive/printed.server.ts`), failing on one the series' pages
+cannot print. Each series lists its place words with their labels
+(`placeWordsOf` in `src/lib/view/placeWords.ts`: a dictionary key, or the words
+themselves in each locale) and says whether its places page draws One Piece's
+world map; without it the index, grouped by region, is the page. The list is
+kept out of the series' description, which the hub is sent, because a region's
+id can be a record's. The factions are One Piece's alone. The chapter table and
+the sweep's bookmarks are built by the engine (`src/data/chapterTable.ts`,
+`src/data/sweep.ts`) from each series' own records.
 
 A record or a dated fact can exist in one source only (`source: 'anime'` or
 `'manga'` on the record or the entry; absent means both). An episode or season

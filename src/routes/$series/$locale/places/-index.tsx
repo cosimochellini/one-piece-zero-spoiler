@@ -13,13 +13,14 @@ import { CatalogueSection } from '~/components/CatalogueSection'
 import { Marked } from '~/components/CharacterCard'
 import { OpenPortPlate } from '~/components/PortPlate'
 import { Button } from '~/components/ui/Button'
+import { usePlaceLabels } from '~/components/usePlaceLabels'
 import { useLocale } from '~/i18n/LocaleContext'
 import type { Translate } from '~/i18n/types'
 import { useSeriesParams, useThreshold } from '~/lib/progress/BookmarkContext'
 import { matchFolded } from '~/lib/search/fold'
 import type { PlaceParams } from '~/lib/search/placeParams'
 import type { StopView } from '~/lib/view/places'
-import type { CoveredRecord, Sea } from '~/lib/view/records'
+import type { CoveredRecord } from '~/lib/view/records'
 
 import { PlaceControls, type PlaceControlsProps } from './-index.controls'
 import { styles } from './-index.styles'
@@ -55,6 +56,7 @@ export function PlaceIndex({
   ...controls
 }: PlaceIndexProps): null | ReactElement {
   const { t } = useLocale()
+  const { regionOf } = usePlaceLabels()
   const fieldId = useId()
   const { onParams, open, params } = controls
 
@@ -90,7 +92,7 @@ export function PlaceIndex({
             headingId={`${fieldId}-${sea}`}
             lede={countOf(t, total)}
             sticky
-            title={t(`sea.${sea}`)}
+            title={regionOf(sea)}
           >
             <Stops
               needle={needle}
@@ -142,7 +144,7 @@ function countOf(t: Translate, count: number): string {
 
 /** One sea of the index: its shown stops, and how many it holds open. */
 interface SeaGroup {
-  sea: Sea
+  sea: string
   stops: StopView[]
   total: number
 }

@@ -2,6 +2,7 @@ import * as stylex from '@stylexjs/stylex'
 import type { ReactElement } from 'react'
 
 import { styles } from '~/components/PortEntry.styles'
+import { usePlaceLabels } from '~/components/usePlaceLabels'
 import { useLocale } from '~/i18n/LocaleContext'
 import type { PortDossier, ShipEntry } from '~/lib/view/records'
 
@@ -12,16 +13,17 @@ import type { PortDossier, ShipEntry } from '~/lib/view/records'
  */
 export function PortFacts({ dossier }: { dossier: PortDossier }): ReactElement {
   const { t } = useLocale()
+  const { formOf, region, regionOf } = usePlaceLabels()
 
   return (
     <dl {...stylex.props(styles.facts)}>
       <Fact
-        label={t('places.sea')}
-        value={t(`sea.${dossier.sea}`)}
+        label={region}
+        value={regionOf(dossier.sea)}
       />
       <Fact
         label={t('places.form')}
-        value={t(`form.${dossier.form}`)}
+        value={formOf(dossier.form)}
       />
       {dossier.arc === null ? null : (
         <Fact

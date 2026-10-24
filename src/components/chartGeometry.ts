@@ -173,9 +173,18 @@ const OPENS: Record<Sea, Region[]> = {
   'red-line': ['red-line'],
 }
 
-/** The regions a reader who has entered these seas may see. */
-export function regionsFor(seas: Iterable<Sea>): Set<Region> {
-  return new Set([...seas].flatMap((sea) => OPENS[sea]))
+/** Whether a region is one of the seas the map opens. */
+function isSea(region: string): region is Sea {
+  return Object.hasOwn(OPENS, region)
+}
+
+/**
+ * The regions a reader who has entered these seas may see. A stop's region
+ * is a word of its series (`PlaceWords`); only One Piece draws this map, and
+ * a word that is none of its seas opens nothing.
+ */
+export function regionsFor(seas: Iterable<string>): Set<Region> {
+  return new Set([...seas].flatMap((sea) => (isSea(sea) ? OPENS[sea] : [])))
 }
 
 /** A region's name, and where it is written, across. */

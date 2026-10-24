@@ -453,14 +453,15 @@ export interface FruitEatersView {
 }
 
 /**
- * The stretches of sea the route crosses, and the two bands that cross the
- * route itself: the Calm Belt either side of the Grand Line, and the Red Line
- * across it.
+ * One Piece's regions: the stretches of sea the route crosses, and the two
+ * bands that cross the route itself: the Calm Belt either side of the Grand
+ * Line, and the Red Line across it. A page takes a region as a word of the
+ * series' own (`PlaceWords` in `./placeWords`).
  */
 export type Sea =
   'calm-belt' | 'east-blue' | 'grand-line' | 'new-world' | 'red-line'
 
-/** What kind of place a record is, as the log would put it. */
+/** What kind of place a One Piece record is, as the log would put it. */
 export type PlaceForm =
   | 'archipelago'
   | 'city'
@@ -491,8 +492,10 @@ export interface PortView extends RecordView {
 
 /** What the log knows about a port beyond its name and its sentence. */
 export interface PortDossier {
-  form: PlaceForm
-  sea: Sea
+  /** Its form, one of the series' own words (`PlaceWords`). */
+  form: string
+  /** Its region, one of the series' own words: a sea in One Piece. */
+  sea: string
   /**
    * The arc this port is filed under, named outright rather than veiled: an
    * arc opens no later than any place filed under it, so an open port always

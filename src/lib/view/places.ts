@@ -9,10 +9,8 @@ import type { Gated } from '~/lib/progress/spoiler'
 import type { ChartPoint } from '~/lib/view/chart'
 import type {
   CoveredRecord,
-  PlaceForm,
   PortView,
   RecordView,
-  Sea,
   Searchable,
   ShipView,
   Slot,
@@ -27,10 +25,12 @@ import type {
 export interface StopView extends RecordView, Searchable {
   /** Where it sits on the sea chart; `null` for a record not a place. */
   chart: ChartPoint | null
-  form: PlaceForm
+  /** Its form, one of the series' own words (`PlaceWords`). */
+  form: string
   /** The saga it is filed under, by its place in route order, from 1. */
   saga: number
-  sea: Sea
+  /** Its region, one of the series' own words: a sea in One Piece. */
+  sea: string
 }
 
 /** A saga the index can filter by: its place in route order, and its name. */
@@ -56,7 +56,7 @@ export interface PlacesView {
 export interface RouteStopView {
   at: ChartPoint
   /** Its sea, which opens a region of the chart; `null` with no dossier. */
-  sea: null | Sea
+  sea: null | string
   /** The saga it is filed under, by its place in route order, from 1. */
   saga: number
   /** Which of the reached ships sailed here (`sailedBy`); `null` for none. */
