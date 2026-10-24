@@ -187,6 +187,30 @@ describe.each(SERIES)('every payload of $slug', (series) => {
       }
     },
   )
+
+  // The sampling above asks for a key at a few bookmarks only, so every key
+  // is also asked for at the last two, the furthest a reader gets in each
+  // unit: one drawing JSON changes cannot hide between the samples.
+  const ceilings = series.bookmarks.slice(-2)
+
+  it.each(
+    payloads.filter(({ keys, name }) => PLAIN.has(name) && keys !== undefined),
+  )(
+    '$name reads back whole from plain JSON for every key at the ceilings',
+    ({ keys, run }) => {
+      const all = keys?.() ?? []
+      for (const bookmark of ceilings) {
+        for (const locale of LOCALES) {
+          for (const key of all) {
+            const payload = run(bookmark, locale, key)
+            const sent = JSON.stringify(payload)
+
+            expect(JSON.parse(sent)).toStrictEqual(payload)
+          }
+        }
+      }
+    },
+  )
 })
 
 /**
