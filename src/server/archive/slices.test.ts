@@ -30,6 +30,7 @@ import {
   opCharacterPage as characterPage,
   opCharactersPage as charactersPage,
   opDrawingsFor as drawingsFor,
+  opFruitAlbum as fruitAlbum,
   opFruitSheet as fruitSheet,
   opHandleOf as handleOf,
   opHomePage as homePage,
@@ -505,6 +506,7 @@ describe('the slice of the archive a page is given', () => {
           shelves: shelvesPage(bookmark, locale),
           places: placesPage(bookmark, locale),
           fruits: fruitSheet(bookmark, locale),
+          album: fruitAlbum(bookmark, locale),
         }
 
         for (const [page, payload] of Object.entries(pages)) {

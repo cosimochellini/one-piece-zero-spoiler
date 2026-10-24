@@ -15,10 +15,7 @@ import {
   LazyBookmarkForm,
   preloadBookmarkForm,
 } from '~/components/bookmarkFormLoader'
-import {
-  BookmarkLoadFailed,
-  BookmarkSkeleton,
-} from '~/components/BookmarkSkeleton'
+import { BookmarkSkeleton, LoadFailed } from '~/components/BookmarkSkeleton'
 import { Button } from '~/components/ui/Button'
 import { useT } from '~/i18n/LocaleContext'
 
@@ -146,7 +143,7 @@ function FormSlot({ onDone }: { onDone: () => void }): ReactElement {
 
   if (status === 'failed') {
     return (
-      <BookmarkLoadFailed
+      <LoadFailed
         onRetry={() => {
           setStatus('loading')
         }}

@@ -505,6 +505,8 @@ export const enDictionary = {
   'fruits.foggedHint':
     'Their names are hidden, so search does not find them. Move your bookmark forward to see them.',
   'fruits.allOpen': 'Nothing of this type is under fog.',
+  'fruits.albumFailed': 'The devil fruits could not be loaded.',
+  'fruits.albumRetry': 'Try again',
   'fruits.wall.title': '{count} devil fruits are under fog',
   'fruits.wall.ask': 'Which episode are you on?',
   'fruits.wall.browse': 'Browse anyway',

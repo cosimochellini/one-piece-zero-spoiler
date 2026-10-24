@@ -5,7 +5,12 @@ import type { Bookmark } from '~/lib/progress/episode'
 import { creditsPage } from './credits.server'
 import { fillerPage, peekFiller } from './filler.server'
 import { fruitPage } from './fruitPage.server'
-import { fruitEaters, fruitSheet, fruitSiblings } from './fruits.server'
+import {
+  fruitAlbum,
+  fruitEaters,
+  fruitSheet,
+  fruitSiblings,
+} from './fruits.server'
 import { handleOf, indexHandle } from './handle.server'
 import { landingPage } from './home.server'
 import {
@@ -55,6 +60,10 @@ function listPayloads(archive: SeriesArchive): Payload[] {
       run: (b, l) => shelvesPage(readerFor(archive, b, l)),
     },
     { name: 'loadFruits', run: (b, l) => fruitSheet(readerFor(archive, b, l)) },
+    {
+      name: 'loadFruitAlbum',
+      run: (b, l) => fruitAlbum(readerFor(archive, b, l)),
+    },
     { name: 'loadPlaces', run: (b, l) => placesPage(readerFor(archive, b, l)) },
     { name: 'loadFiller', run: (b, l) => fillerPage(readerFor(archive, b, l)) },
     {
@@ -171,6 +180,7 @@ export function payloadsFor(archive: SeriesArchive): Payload[] {
     'loadNearby',
     'loadDrawings',
     'loadFruits',
+    'loadFruitAlbum',
     'loadFruit',
     'loadFruitEaters',
     'loadFruitSiblings',

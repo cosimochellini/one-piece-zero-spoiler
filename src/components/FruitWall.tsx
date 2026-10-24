@@ -5,6 +5,7 @@ import { EpisodeMark } from '~/components/EpisodeMark'
 import { styles as fog, PHASES } from '~/components/FogTile.styles'
 import { SagaMarquee } from '~/components/SagaMarquee'
 import {
+  AlbumFailed,
   Plate,
   SpecimenBands,
   type SpecimenBandsProps,
@@ -12,11 +13,8 @@ import {
 import { useT } from '~/i18n/LocaleContext'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
 import { sagaAnchor } from '~/lib/search/fruitParams'
-import type {
-  FruitBandView,
-  FruitMarqueeView,
-  FruitView,
-} from '~/lib/view/records'
+import type { FruitPlateCount } from '~/lib/view/fruits'
+import type { FruitMarqueeView, FruitView } from '~/lib/view/records'
 import {
   color,
   font,
@@ -28,23 +26,25 @@ import {
 } from '~/styles/tokens.stylex'
 
 /**
- * What the fruits page is built from: the plates, the sagas, the factions,
- * the count, the marquee, the peek, and the picks the album reads from the address.
+ * What the fruits page is built from: the album once it is here, the counts,
+ * the marquee, the peek, and the picks the album reads from the address.
  */
 export interface FruitsAlbumProps {
-  bands: FruitBandView[]
-  factions?: SpecimenBandsProps['factions']
+  album: SpecimenBandsProps['album']
   filed: number
-  later: SpecimenBandsProps['later']
   marquee: FruitMarqueeView | null
   onParams: SpecimenBandsProps['onParams']
+  onRetry?: SpecimenBandsProps['onRetry']
   params: SpecimenBandsProps['params']
   peek: (handle: string) => Promise<FruitView>
-  sagas: SpecimenBandsProps['sagas']
+  plates: FruitPlateCount[]
 }
 
 /** The wall never reads the picks, and has no marquee and no saga view. */
-type FruitWallProps = Pick<FruitsAlbumProps, 'bands' | 'filed' | 'peek'>
+type FruitWallProps = Pick<
+  FruitsAlbumProps,
+  'album' | 'filed' | 'onRetry' | 'peek' | 'plates'
+>
 
 /**
  * The fruits page under its heading: the saga marquee over the album for a
@@ -57,13 +57,11 @@ type FruitWallProps = Pick<FruitsAlbumProps, 'bands' | 'filed' | 'peek'>
  * never on a first paint, and never away from a control the reader is on.
  */
 export function FruitsAlbum({
-  bands,
   filed,
   marquee,
+  onParams,
   params,
-  peek,
-  sagas,
-  ...groups
+  ...sheet
 }: FruitsAlbumProps): ReactElement {
   const { bookmark } = useBookmark()
   const fromWallRef = useRef(false)
@@ -76,9 +74,8 @@ export function FruitsAlbum({
         }}
       >
         <FruitWall
-          bands={bands}
           filed={filed}
-          peek={peek}
+          {...sheet}
         />
       </div>
     )
@@ -99,20 +96,17 @@ export function FruitsAlbum({
       {...stylex.props(styles.album)}
     >
       <SagaMarquee
-        bands={bands}
         link={{
           // The marquee's saga is the bookmark's, the saga view's last.
-          hash: sagaAnchor(sagas.length - 1),
+          hash: sagaAnchor(marquee?.group ?? 0),
           search: { ...params, view: 'saga' },
         }}
         marquee={marquee}
       />
       <SpecimenBands
-        bands={bands}
+        onParams={onParams}
         params={params}
-        peek={peek}
-        sagas={sagas}
-        {...groups}
+        {...sheet}
       />
     </div>
   )
@@ -126,20 +120,27 @@ export function FruitsAlbum({
  * The fog is `FogTile`'s, two drifting banks, and the same for every fruit
  * because it stands for none of them. Under the wall the covered tiles stay
  * on the page, closed behind a disclosure, so "Show anyway" still works for
- * a reader who does not want a bookmark. There is no control bar: with no
- * bookmark nothing is open, search only finds open fruits and every chip
- * would read 0. The address's view, kind and query wait for the album.
+ * a reader who does not want a bookmark; they come with the album, once the
+ * browser has asked for it. There is no control bar: with no bookmark
+ * nothing is open, search only finds open fruits and every chip would read
+ * 0. The address's view, kind and query wait for the album.
  */
-function FruitWall({ bands, filed, peek }: FruitWallProps): ReactElement {
+function FruitWall({
+  album,
+  filed,
+  onRetry,
+  peek,
+  plates,
+}: FruitWallProps): ReactElement {
   const t = useT()
   const id = useId()
 
   return (
     <div {...stylex.props(styles.stack)}>
       <Wall
-        bands={bands}
         filed={filed}
         headingId={`${id}-wall`}
+        plates={plates}
       />
 
       <details {...stylex.props(styles.browse)}>
@@ -147,7 +148,10 @@ function FruitWall({ bands, filed, peek }: FruitWallProps): ReactElement {
           {t('fruits.wall.browse')}
         </summary>
         <div {...stylex.props(styles.plates)}>
-          {bands.map((band, at) => {
+          {album === null && onRetry !== undefined ?
+            <AlbumFailed onRetry={onRetry} />
+          : null}
+          {album?.bands.map((band, at) => {
             return (
               <Plate
                 key={band.form}
@@ -167,13 +171,13 @@ function FruitWall({ bands, filed, peek }: FruitWallProps): ReactElement {
 
 /** The wall itself: the fog, and the words and the control in its centre. */
 function Wall({
-  bands,
   filed,
   headingId,
+  plates,
 }: {
-  bands: FruitBandView[]
   filed: number
   headingId: string
+  plates: FruitPlateCount[]
 }): ReactElement {
   const t = useT()
 
@@ -201,12 +205,12 @@ function Wall({
         {/* Every fruit, open or not, by kind: "84 Paramecia · 31 Zoan". A
             count never wraps away from its kind. */}
         <p {...stylex.props(styles.kinds)}>
-          {bands.map((band, at) => {
+          {plates.map((plate, at) => {
             return (
-              <Fragment key={band.form}>
+              <Fragment key={plate.form}>
                 {at === 0 ? null : ' · '}
                 <span {...stylex.props(styles.kind)}>
-                  {band.total} {t(`fruitForm.${band.form}`)}
+                  {plate.total} {t(`fruitForm.${plate.form}`)}
                 </span>
               </Fragment>
             )

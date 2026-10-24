@@ -7,6 +7,7 @@ import {
 } from '~/components/AlbumControls'
 import { groupingOf } from '~/components/albumGrouping'
 import { AlbumGroups } from '~/components/AlbumGroups'
+import { LoadFailed } from '~/components/BookmarkSkeleton'
 import { FogBand, type FogTitles } from '~/components/FogBand'
 import { FruitTile, OpenTiles } from '~/components/FruitTile'
 import { matchesIn } from '~/components/recordMatches'
@@ -15,13 +16,8 @@ import { useT } from '~/i18n/LocaleContext'
 import type { Translate, TranslationKey } from '~/i18n/types'
 import { foldName } from '~/lib/search/fold'
 import type { FruitParams } from '~/lib/search/fruitParams'
-import type {
-  FruitBandView,
-  FruitFactionView,
-  FruitForm,
-  FruitSagaView,
-  FruitView,
-} from '~/lib/view/records'
+import type { FruitAlbumView, FruitPlateCount } from '~/lib/view/fruits'
+import type { FruitBandView, FruitForm, FruitView } from '~/lib/view/records'
 import { stickyStyles } from '~/styles/sticky'
 
 /** How wide a plate number is printed. `01`, never `1`. */
@@ -54,18 +50,20 @@ const LEDE_KEY: Record<FruitForm, TranslationKey> = {
   zoan: 'fruits.lede.zoan',
 }
 
-/** What the sheet is built from: the plates, the groups, the picks, the peek. */
+/** The plates and the groups of the saga and faction views. */
+export type Album = Omit<FruitAlbumView, 'at'>
+
+/** What the sheet is built from: the counts, the album, the picks, the peek. */
 export interface SpecimenBandsProps {
-  bands: FruitBandView[]
-  /** The factions the open eaters stand in, for the faction view. */
-  factions?: FruitFactionView[] | undefined
-  /** The covered fruits of the sagas past the bookmark, by handle. */
-  later: string[]
+  /** The plates and the groups, `null` until the page has them. */
+  album: Album | null
   onParams: AlbumControlsProps['onParams']
   params: FruitParams
   peek: (handle: string) => Promise<FruitView>
-  /** The sagas the bookmark has reached, for the saga view. */
-  sagas: FruitSagaView[]
+  /** Asks for the album again; set only when it could not be fetched. */
+  onRetry?: (() => void) | undefined
+  /** Every plate's counts, which the bar prints before the album is here. */
+  plates: FruitPlateCount[]
 }
 
 /**
@@ -80,62 +78,129 @@ export interface SpecimenBandsProps {
  * tiles and leaves every fogged one exactly where it was. A kind chip keeps
  * one plate on the page. The count under the field is over the plates on the
  * page, so its total is the picked chip's number.
+ *
+ * The bar is in the page the server sends; the plates come after, once the
+ * browser has asked for the album, and until then the count is the chip's.
  */
 export function SpecimenBands({
-  bands,
+  album,
   onParams,
+  onRetry,
   params,
   peek,
-  ...sent
+  plates,
 }: SpecimenBandsProps): ReactElement {
-  const t = useT()
   const fieldId = useId()
   // The field is never deferred; the plates behind it are.
   const needle = useDeferredValue(foldName((params.q ?? '').trim()))
-  const grouping = groupingOf(t, { ...sent, fieldId, view: params.view })
-  const shown =
-    params.form === undefined ?
-      bands
-    : bands.filter((band) => band.form === params.form)
 
   return (
     <div {...stylex.props(styles.sheet)}>
       <AlbumControls
-        bands={bands}
         count={
-          matchesIn(
-            shown.flatMap((band) => band.open),
-            needle,
-          ).length
+          album === null ?
+            openIn(plates, params.form)
+          : matchesIn(
+              shownOf(album.bands, params.form).flatMap((band) => band.open),
+              needle,
+            ).length
         }
         fieldId={fieldId}
         onParams={onParams}
         params={params}
+        plates={plates}
       />
 
-      {grouping === undefined ?
-        shown.map((band) => {
-          return (
-            <Plate
-              key={band.form}
-              band={band}
-              fieldId={fieldId}
-              index={bands.indexOf(band)}
-              needle={needle}
-              peek={peek}
-            />
-          )
-        })
-      : <AlbumGroups
-          bands={bands}
+      {album === null ?
+        onRetry !== undefined && <AlbumFailed onRetry={onRetry} />
+      : <Plates
+          album={album}
           fieldId={fieldId}
-          form={params.form}
           needle={needle}
+          params={params}
           peek={peek}
-          {...grouping}
         />
       }
     </div>
+  )
+}
+
+/** The plates a kind chip keeps on the page: all of them, or its own. */
+function shownOf(
+  bands: FruitBandView[],
+  form: FruitForm | undefined,
+): FruitBandView[] {
+  return bands.filter((band) => form === undefined || band.form === form)
+}
+
+/** The album could not be fetched: one line, and a button that asks again. */
+export function AlbumFailed({
+  onRetry,
+}: {
+  onRetry: () => void
+}): ReactElement {
+  return (
+    <LoadFailed
+      message="fruits.albumFailed"
+      onRetry={onRetry}
+      retry="fruits.albumRetry"
+    />
+  )
+}
+
+/** The open fruits of the picked plates, before the album says which match. */
+function openIn(
+  plates: FruitPlateCount[],
+  form: FruitForm | undefined,
+): number {
+  return plates
+    .filter((plate) => form === undefined || plate.form === form)
+    .reduce((sum, plate) => sum + plate.opened, 0)
+}
+
+/** The plates shown, or the groups of the saga or faction view. */
+function Plates({
+  album: { bands, ...sent },
+  fieldId,
+  needle,
+  params,
+  peek,
+}: Pick<SpecimenBandsProps, 'params' | 'peek'> & {
+  album: Album
+  fieldId: string
+  needle: string
+}): ReactElement {
+  const t = useT()
+  const grouping = groupingOf(t, { ...sent, fieldId, view: params.view })
+
+  if (grouping !== undefined) {
+    return (
+      <AlbumGroups
+        bands={bands}
+        fieldId={fieldId}
+        form={params.form}
+        needle={needle}
+        peek={peek}
+        {...grouping}
+      />
+    )
+  }
+
+  return (
+    <>
+      {shownOf(bands, params.form).map((band) => {
+        return (
+          <Plate
+            key={band.form}
+            band={band}
+            fieldId={fieldId}
+            index={bands.indexOf(band)}
+            needle={needle}
+            peek={peek}
+          />
+        )
+      })}
+    </>
   )
 }
 

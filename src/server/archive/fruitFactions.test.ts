@@ -9,7 +9,7 @@ import type { Entity } from '~/data/types'
 import { getDictionary } from '~/i18n/translate'
 import type { Bookmark } from '~/lib/progress/episode'
 import type { Faction, FruitFactionView } from '~/lib/view/records'
-import { opFruitSheet as fruitSheet } from '~/test/archive'
+import { opFruitAlbum as fruitAlbum } from '~/test/archive'
 import { ONE_PIECE_LOADED as ONE_PIECE } from '~/test/series'
 
 const BOOKMARKS = ONE_PIECE.bookmarks
@@ -29,7 +29,7 @@ function groupOf(
   bookmark: Bookmark,
   faction: Faction | null,
 ): string[] | undefined {
-  return fruitSheet(bookmark, 'en')
+  return fruitAlbum(bookmark, 'en')
     .factions.find((group) => group.faction === faction)
     ?.open.map(({ id }) => id)
 }
@@ -134,7 +134,7 @@ function inOrder(groups: FruitFactionView[], locale: 'en' | 'it'): boolean {
 
 describe('the faction view', () => {
   it('is empty without a bookmark', () => {
-    expect(fruitSheet(null, 'en').factions).toStrictEqual([])
+    expect(fruitAlbum(null, 'en').factions).toStrictEqual([])
   })
 
   it('moves the Ice-Ice Fruit out of the Marines when Kuzan leaves them, in episodes', () => {
@@ -152,7 +152,7 @@ describe('the faction view', () => {
   })
 
   it('puts Momonosuke under no faction yet at episode 615, last', () => {
-    const groups = fruitSheet(ep(615), 'en').factions
+    const groups = fruitAlbum(ep(615), 'en').factions
 
     expect(groups.at(-1)?.faction).toBeNull()
     expect(groups.at(-1)?.open.map(({ id }) => id)).toContain(
@@ -162,7 +162,7 @@ describe('the faction view', () => {
   })
 
   it('names both eaters on one tile when they stand in one faction', () => {
-    const emperors = fruitSheet(ep(600), 'en').factions.find(
+    const emperors = fruitAlbum(ep(600), 'en').factions.find(
       ({ faction }) => faction === 'emperors',
     )
     const tremor = emperors?.open.filter(
@@ -176,7 +176,7 @@ describe('the faction view', () => {
 
   it('holds every open fruit under the reached factions of its open eaters, and nothing else, at every bookmark of the sweep', () => {
     for (const bookmark of BOOKMARKS) {
-      const { bands, factions } = fruitSheet(bookmark, 'en')
+      const { bands, factions } = fruitAlbum(bookmark, 'en')
       const open = bands.flatMap((band) => band.open).map(({ id }) => id)
       const label = JSON.stringify(bookmark)
 
@@ -199,7 +199,7 @@ describe('the faction view', () => {
 
   it('orders the groups by the names the reader reads', () => {
     for (const locale of ['en', 'it'] as const) {
-      const { factions } = fruitSheet(ep(1100), locale)
+      const { factions } = fruitAlbum(ep(1100), locale)
 
       expect(inOrder(factions, locale)).toBe(true)
     }

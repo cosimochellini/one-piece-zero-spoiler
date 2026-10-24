@@ -10,11 +10,7 @@ import type { Translate } from '~/i18n/types'
 import { useSeriesParams, useThreshold } from '~/lib/progress/BookmarkContext'
 import type { FruitParams } from '~/lib/search/fruitParams'
 import { useDrawing } from '~/lib/view/drawings'
-import type {
-  FruitBandView,
-  FruitMarqueeView,
-  FruitView,
-} from '~/lib/view/records'
+import type { FruitMarqueeView, FruitView } from '~/lib/view/records'
 import {
   color,
   font,
@@ -25,9 +21,8 @@ import {
   text,
 } from '~/styles/tokens.stylex'
 
-/** What the marquee is built from: the plates it points into, and itself. */
+/** What the marquee is built from: where it links, and itself. */
 export interface SagaMarqueeProps {
-  bands: FruitBandView[]
   /** Where "See the whole saga" goes: the saga view, at this saga's group. */
   link: { hash: string; search: FruitParams }
   marquee: FruitMarqueeView | null
@@ -39,13 +34,12 @@ export interface SagaMarqueeProps {
  * that snaps as it scrolls. The latest opens the rail, larger, in a glow of
  * its own tint, and its drawing draws itself in (not with reduced motion).
  *
- * The server sends ids only: every fruit here is an open tile of the album
- * already, so its record is read from there. With no fruit in the saga yet,
- * one line points back to the last one. Either way a link goes on to the
+ * The server sends its records with the page, ahead of the album, the
+ * lead's drawing whole. With no fruit in the saga yet, one line points back
+ * to the last one. Either way a link goes on to the
  * whole saga in the saga view, the picks kept.
  */
 export function SagaMarquee({
-  bands,
   link,
   marquee,
 }: SagaMarqueeProps): null | ReactElement {
@@ -56,8 +50,7 @@ export function SagaMarquee({
     return null
   }
 
-  const open = openById(bands)
-  const fruits = marquee.fruits.flatMap(({ id }) => open.get(id) ?? [])
+  const { fruits } = marquee
 
   return (
     <section
@@ -72,9 +65,7 @@ export function SagaMarquee({
       </h2>
 
       {fruits.length === 0 ?
-        <Behind
-          last={marquee.last === null ? undefined : open.get(marquee.last.id)}
-        />
+        <Behind last={marquee.last} />
       : <Rail fruits={fruits} />}
 
       <Link
@@ -89,18 +80,6 @@ export function SagaMarquee({
       </Link>
     </section>
   )
-}
-
-/** Every open fruit of the album, by id. */
-function openById(bands: FruitBandView[]): Map<string, FruitView> {
-  const open = new Map<string, FruitView>()
-  for (const band of bands) {
-    for (const fruit of band.open) {
-      open.set(fruit.id, fruit)
-    }
-  }
-
-  return open
 }
 
 /** The saga's name in gold, and how many fruits it has named so far. */
@@ -143,7 +122,7 @@ function Rail({ fruits }: { fruits: FruitView[] }): ReactElement {
 }
 
 /** No fruit in the saga yet: say so, and point back to the last one. */
-function Behind({ last }: { last: FruitView | undefined }): ReactElement {
+function Behind({ last }: { last: FruitView | null }): ReactElement {
   const { locale, t } = useLocale()
   const { series } = useSeriesParams()
   const threshold = useThreshold()
@@ -151,7 +130,7 @@ function Behind({ last }: { last: FruitView | undefined }): ReactElement {
   return (
     <p {...stylex.props(styles.behind)}>
       {t('fruits.marqueeNone')}
-      {last === undefined ? null : (
+      {last === null ? null : (
         <>
           {' '}
           {spliced(

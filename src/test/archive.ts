@@ -13,6 +13,7 @@ import {
 } from '~/server/archive/fillerCountdown.server'
 import { fruitPage as core_fruitPage } from '~/server/archive/fruitPage.server'
 import {
+  fruitAlbum as core_fruitAlbum,
   fruitEaters as core_fruitEaters,
   fruitSheet as core_fruitSheet,
   fruitSiblings as core_fruitSiblings,
@@ -131,6 +132,14 @@ export function opFruitSheet(
   l: Locale,
 ): ReturnType<typeof core_fruitSheet> {
   return core_fruitSheet(coreReader(OP_ARCHIVE, b, l))
+}
+
+/** One Piece-bound fixture for fruitAlbum. */
+export function opFruitAlbum(
+  b: Bookmark,
+  l: Locale,
+): ReturnType<typeof core_fruitAlbum> {
+  return core_fruitAlbum(coreReader(OP_ARCHIVE, b, l))
 }
 
 /** One Piece-bound fixture for fruitEaters. */

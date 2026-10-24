@@ -19,6 +19,7 @@ import type {
 import {
   opCharacterPage as characterPage,
   opDrawingsFor as drawingsFor,
+  opFruitAlbum as fruitAlbum,
   opFruitEaters as fruitEaters,
   opFruitPage as fruitPage,
   opFruitSheet as fruitSheet,
@@ -61,7 +62,7 @@ function tileOf(
   bookmark: Bookmark,
   locale: Locale = 'en',
 ): SpecimenView | undefined {
-  return fruitSheet(bookmark, locale)
+  return fruitAlbum(bookmark, locale)
     .bands.flatMap((band) => band.open)
     .find((fruit) => fruit.id === id)
 }
@@ -73,14 +74,14 @@ function eatersIn(view: FruitEatersView): string[] {
 
 describe('the specimen sheet', () => {
   it('splits every plate at the reader’s bookmark', () => {
-    const sheet = fruitSheet(ep(500), 'en')
+    const sheet = fruitAlbum(ep(500), 'en')
     const open = sheet.bands.flatMap((band) => band.open)
     const covered = sheet.bands.flatMap((band) => band.covered)
 
     expect(open.length).toBeGreaterThan(0)
     expect(covered.length).toBeGreaterThan(0)
-    expect(open.length + covered.length).toBe(sheet.filed)
-    expect(sheet.filed).toBe(fruits.length)
+    expect(open.length + covered.length).toBe(fruitSheet(ep(500), 'en').filed)
+    expect(fruitSheet(ep(500), 'en').filed).toBe(fruits.length)
 
     for (const fruit of open) {
       expect(fruit.revealedAtEpisode).toBeLessThanOrEqual(500)
@@ -100,29 +101,44 @@ describe('the specimen sheet', () => {
     ]
 
     for (const bookmark of marks) {
-      for (const band of fruitSheet(bookmark, 'en').bands) {
+      for (const band of fruitAlbum(bookmark, 'en').bands) {
         expect(band.open.length + band.covered.length).toBe(band.total)
       }
     }
   })
 
   it('opens nothing at all without a bookmark', () => {
-    const sheet = fruitSheet(null, 'en')
+    const sheet = fruitAlbum(null, 'en')
 
     expect(sheet.bands.flatMap((band) => band.open)).toStrictEqual([])
+    expect(sheet.at).toBe('')
   })
 
-  it('leaves the drawings past the first six tiles of the first plate and the marquee’s lead to be asked for', () => {
-    const sheet = fruitSheet(ep(1150), 'en')
+  it('counts every plate as the album splits it, at every bookmark of the sweep', () => {
+    for (const bookmark of BOOKMARKS) {
+      const { bands } = fruitAlbum(bookmark, 'en')
+
+      expect(
+        fruitSheet(bookmark, 'en').plates,
+        String(bookmark?.mode),
+      ).toStrictEqual(
+        bands.map((band) => ({
+          form: band.form,
+          opened: band.open.length,
+          total: band.total,
+        })),
+      )
+    }
+  })
+
+  it('leaves the drawings past the first six tiles of the first plate to be asked for', () => {
+    const sheet = fruitAlbum(ep(1150), 'en')
     const [first, ...rest] = sheet.bands
-    const lead = leadOf(sheet.marquee)
     const inline = first?.open.slice(0, 6) ?? []
     const later = [
       ...(first?.open.slice(6) ?? []),
       ...rest.flatMap((band) => band.open),
-    ].filter((fruit) => fruit.id !== lead)
-
-    expect(lead).toBeDefined()
+    ]
 
     expect(inline).toHaveLength(6)
     expect(later.length).toBeGreaterThan(50)
@@ -161,7 +177,7 @@ describe('the specimen sheet', () => {
   })
 
   it('sets every fruit on the plate its kind names', () => {
-    const sheet = fruitSheet(ep(1200), 'en')
+    const sheet = fruitAlbum(ep(1200), 'en')
 
     for (const band of sheet.bands) {
       for (const fruit of band.open) {
@@ -174,7 +190,7 @@ describe('the specimen sheet', () => {
 describe('the eaters on a tile', () => {
   it('names every open eater at episode 650, in eatersOf order, and no covered one', () => {
     const at = reveal(ep(650))
-    const open = fruitSheet(ep(650), 'en').bands.flatMap((band) => band.open)
+    const open = fruitAlbum(ep(650), 'en').bands.flatMap((band) => band.open)
 
     expect(open.length).toBeGreaterThan(50)
 
@@ -231,7 +247,7 @@ describe('the eaters on a tile', () => {
   )
 
   it('leaves the eaters’ drawings behind with their fruit’s', () => {
-    const [first, ...rest] = fruitSheet(ep(1150), 'en').bands
+    const [first, ...rest] = fruitAlbum(ep(1150), 'en').bands
     const inline = first?.open.slice(0, 6) ?? []
     const later = [
       ...(first?.open.slice(6) ?? []),
@@ -272,7 +288,7 @@ describe('the eaters on a tile', () => {
   it('is read by the spoiler sweep, as a name and as an alias', () => {
     // Sabo is met at 497 but not yet named as an eater; Kaido is not met at
     // all at 650. A tile that slipped him in either way must fail the sweep.
-    const sheet = fruitSheet(ep(650), 'en')
+    const sheet = fruitAlbum(ep(650), 'en')
     const gum = tileOf('gum-gum-fruit', ep(650))
     const slipped = (over: Partial<SpecimenView>): unknown => ({
       ...sheet,
@@ -470,7 +486,7 @@ describe('a fruit and its eaters', () => {
       for (const locale of LOCALES) {
         for (const { bookmark, open } of marks) {
           const page = fruitPage(id, bookmark, locale)
-          const sheet = fruitSheet(bookmark, locale)
+          const sheet = fruitAlbum(bookmark, locale)
           const specimen = sheet.bands
             .flatMap((band) => band.open)
             .find((record) => record.id === id)
@@ -608,11 +624,6 @@ function marqueeAt(
     )
 }
 
-/** The fruit that opens the marquee's rail, the latest. */
-function leadOf(marquee: FruitMarqueeView | null): string | undefined {
-  return marquee?.fruits.at(-1)?.id
-}
-
 /** Every fruit the marquee names: its tiles, and the one it points back to. */
 function namedBy(marquee: FruitMarqueeView | null): string[] {
   if (marquee === null) {
@@ -678,13 +689,13 @@ describe('the marquee', () => {
 
   it('names only open fruits of the saga so far, at every bookmark of the sweep', () => {
     for (const bookmark of BOOKMARKS) {
-      const sheet = fruitSheet(bookmark, 'en')
+      const { bands } = fruitAlbum(bookmark, 'en')
       const at = reveal(bookmark)
       const open = new Set(
-        sheet.bands.flatMap((band) => band.open).map(({ id }) => id),
+        bands.flatMap((band) => band.open).map(({ id }) => id),
       )
 
-      for (const id of namedBy(sheet.marquee)) {
+      for (const id of namedBy(fruitSheet(bookmark, 'en').marquee)) {
         const fruit = fruits.find((entry) => entry.id === id)
 
         expect(fruit !== undefined && at.sees(fruit), id).toBe(true)
@@ -693,27 +704,32 @@ describe('the marquee', () => {
     }
   })
 
-  it('sends the lead’s drawing whole, wherever its plate puts it', () => {
-    const sheet = fruitSheet(ep(650), 'en')
-    const art = sheet.bands
-      .flatMap((band) => band.open)
-      .find(({ id }) => id === 'art-art-fruit')
+  it('sends the lead’s drawing whole and leaves the rest of the rail to be asked for', () => {
+    const rail = fruitSheet(ep(650), 'en').marquee?.fruits ?? []
+    const lead = rail.at(-1)
+    const rest = rail.slice(0, -1)
 
-    expect(art?.visual.deferred).toBeUndefined()
-    expect(art?.visual.strokes.length).toBeGreaterThan(0)
+    expect(lead?.id).toBe('art-art-fruit')
+    expect(lead?.visual.deferred).toBeUndefined()
+    expect(lead?.visual.strokes.length).toBeGreaterThan(0)
+    expect(rest.length).toBeGreaterThan(0)
+
+    for (const fruit of rest) {
+      expect(fruit.visual.deferred, fruit.id).toBe(true)
+    }
   })
 })
 
 describe('the saga view', () => {
   it('is empty without a bookmark', () => {
-    const sheet = fruitSheet(null, 'en')
+    const sheet = fruitAlbum(null, 'en')
 
     expect(sheet.sagas).toStrictEqual([])
     expect(sheet.later).toStrictEqual([])
   })
 
   it('sets out the eight sagas reached at episode 650, Dressrosa last', () => {
-    const sheet = fruitSheet(ep(650), 'en')
+    const sheet = fruitAlbum(ep(650), 'en')
 
     expect(sheet.sagas.map(({ saga }) => saga)).toStrictEqual([
       'East Blue Saga',
@@ -726,15 +742,21 @@ describe('the saga view', () => {
       'Dressrosa Saga',
     ])
     expect(sheet.sagas[0]?.open.map(({ id }) => id)[0]).toBe('gum-gum-fruit')
-    expect(sheet.sagas.at(-1)?.saga).toBe(sheet.marquee?.saga)
-    expect(sheet.sagas.at(-1)?.open).toStrictEqual(sheet.marquee?.fruits)
+
+    const { marquee } = fruitSheet(ep(650), 'en')
+
+    expect(sheet.sagas.at(-1)?.saga).toBe(marquee?.saga)
+    expect(marquee?.group).toBe(sheet.sagas.length - 1)
+    expect(sheet.sagas.at(-1)?.open).toStrictEqual(
+      marquee?.fruits.map(({ id }) => ({ id })),
+    )
     // Dressrosa has fruits still to come at 650: fog tiles in their saga.
     expect(sheet.sagas.at(-1)?.covered.length).toBeGreaterThan(0)
   })
 
   it('groups by chapter for a manga reader', () => {
     const bookmark: Bookmark = { mode: 'chapter', chapter: 1044 }
-    const sheet = fruitSheet(bookmark, 'en')
+    const sheet = fruitAlbum(bookmark, 'en')
     const starts = sagaStarts('chapter')
     const byId = new Map(fruits.map((fruit) => [fruit.id, fruit]))
 
@@ -814,7 +836,7 @@ interface SagaViewAt {
 }
 
 function sagaViewAt(bookmark: NonNullable<Bookmark>): SagaViewAt {
-  const sheet = fruitSheet(bookmark, 'en')
+  const sheet = fruitAlbum(bookmark, 'en')
   const at = reveal(bookmark)
   const starts = sagaStarts(at.mode === 'chapter' ? 'chapter' : 'episode')
   const position =

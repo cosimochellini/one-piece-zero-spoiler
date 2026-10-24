@@ -1,23 +1,23 @@
 import { screen, within } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 
-import { at, fruitBand, specimen } from '~/test/fixtures'
+import { at, fruit } from '~/test/fixtures'
 import { ep, renderWithProviders } from '~/test/providers'
 
 import { SagaMarquee } from './SagaMarquee'
 
-const DOOR = specimen({
+const DOOR = fruit({
   id: 'door-door-fruit',
   name: 'Door-Door Fruit',
   ...at(243),
 })
-const LEOPARD = specimen({
+const LEOPARD = fruit({
   id: 'cat-cat-fruit-model-leopard',
   name: 'Cat-Cat Fruit, Model: Leopard',
   form: 'zoan',
   ...at(246),
 })
-const BUBBLE = specimen({
+const BUBBLE = fruit({
   id: 'bubble-bubble-fruit',
   name: 'Bubble-Bubble Fruit',
   ...at(293),
@@ -25,20 +25,15 @@ const BUBBLE = specimen({
 
 const LINK = { hash: 'saga-4', search: { view: 'saga' as const } }
 
-const BANDS = [
-  fruitBand({ form: 'paramecia', open: [DOOR, BUBBLE], total: 2 }),
-  fruitBand({ form: 'zoan', open: [LEOPARD], total: 1 }),
-]
-
 describe('SagaMarquee', () => {
   it('names the saga and its fruits so far, the latest first and the rest oldest first', () => {
     renderWithProviders(
       <SagaMarquee
-        bands={BANDS}
         link={LINK}
         marquee={{
           saga: 'Water Seven Saga',
-          fruits: [{ id: DOOR.id }, { id: LEOPARD.id }, { id: BUBBLE.id }],
+          group: 3,
+          fruits: [DOOR, LEOPARD, BUBBLE],
           last: null,
         }}
       />,
@@ -66,9 +61,8 @@ describe('SagaMarquee', () => {
     const search = { view: 'saga' as const, form: 'zoan' as const, q: 'cat' }
     renderWithProviders(
       <SagaMarquee
-        bands={BANDS}
         link={{ hash: 'saga-4', search }}
-        marquee={{ saga: 'Water Seven Saga', fruits: [], last: null }}
+        marquee={{ saga: 'Water Seven Saga', group: 3, fruits: [], last: null }}
       />,
       { bookmark: ep(210) },
     )
@@ -84,11 +78,11 @@ describe('SagaMarquee', () => {
   it('says one fruit in the singular', () => {
     renderWithProviders(
       <SagaMarquee
-        bands={BANDS}
         link={LINK}
         marquee={{
           saga: 'Water Seven Saga',
-          fruits: [{ id: DOOR.id }],
+          group: 3,
+          fruits: [DOOR],
           last: null,
         }}
       />,
@@ -103,12 +97,12 @@ describe('SagaMarquee', () => {
   it('points back to the last fruit when the saga has none yet', () => {
     renderWithProviders(
       <SagaMarquee
-        bands={BANDS}
         link={LINK}
         marquee={{
           saga: 'Thriller Bark Saga',
+          group: 4,
           fruits: [],
-          last: { id: BUBBLE.id },
+          last: BUBBLE,
         }}
       />,
       { bookmark: { mode: 'chapter', chapter: 440 } },
@@ -132,7 +126,6 @@ describe('SagaMarquee', () => {
   it('draws nothing without a marquee', () => {
     const view = renderWithProviders(
       <SagaMarquee
-        bands={BANDS}
         link={LINK}
         marquee={null}
       />,
