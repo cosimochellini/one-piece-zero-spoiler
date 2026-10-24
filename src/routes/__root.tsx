@@ -5,6 +5,7 @@ import {
   notFound,
   Outlet,
   Scripts,
+  useMatch,
   useParams,
 } from '@tanstack/react-router'
 import { type ReactElement, type ReactNode, useEffect } from 'react'
@@ -16,6 +17,7 @@ import { seriesSlugFromPath } from '~/lib/progress/series'
 import { seriesDescription } from '~/routes/-series'
 import { createSecurityHeaders } from '~/security-headers'
 import { stickyStyles } from '~/styles/sticky'
+import { themeOf } from '~/styles/themes'
 import { color, dur, ease, font, leading, text } from '~/styles/tokens.stylex'
 // A plain side-effect import, deliberately not `?url`. Vite folds it into the
 // client entry chunk's `viteMetadata.importedCss`, which is the only source
@@ -126,6 +128,11 @@ function RootDocument({ children }: { children: ReactNode }): ReactElement {
   // to the site default rather than emitting an invalid `lang`.
   const params = useParams({ strict: false })
   const locale = isLocale(params.locale) ? params.locale : DEFAULT_LOCALE
+  // A series page, its 404s included, wears the theme its description names;
+  // the hub, the legal notices and an unknown address keep the site's own.
+  const theme = themeOf(
+    useMatch({ from: '/$series', shouldThrow: false })?.context.series,
+  )
 
   // The dev stylesheet above is a static URL, so the browser never refetches
   // it after an edit. `virtual:stylex:css-only` is the shim the plugin ships
@@ -152,7 +159,7 @@ function RootDocument({ children }: { children: ReactNode }): ReactElement {
     <html
       lang={locale}
       suppressHydrationWarning
-      {...stylex.props(stickyStyles.document, styles.document)}
+      {...stylex.props(stickyStyles.document, styles.document, theme)}
     >
       <head>
         <HeadContent />

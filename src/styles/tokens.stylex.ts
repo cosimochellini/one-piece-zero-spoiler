@@ -9,6 +9,8 @@
  *   is a horizon line across the route and everything below it is under fog
  * · idea: "the spoiler boundary is a horizon you move"
  * · theme: custom "Sea Chart" · vibe: night sea, lantern gold, hand-drawn chart
+ *   (One Piece's theme in src/styles/themes.ts since #757; pages with no series
+ *   take the neutral "Blackout" set below)
  * · paper: oklch(13% 0.025 250) · accent: oklch(84% 0.16 88)
  * · display: Bricolage Grotesque 800 · body: Instrument Sans · outlier: JetBrains Mono
  *   (episode numerals + the horizon label)
@@ -37,9 +39,11 @@ import * as stylex from '@stylexjs/stylex'
 
 /**
  * Design tokens for "Sea Chart": a One Piece wiki drawn as a night-time sea
- * route. The taxonomy is Hallmark's canonical set (paper / ink / rule / muted /
- * accent / accentInk / focus, a 4pt space scale, named easings and durations),
- * so a reader of any other Hallmark project knows the names already.
+ * route, now one series among several, so its colours are a theme
+ * (`src/styles/themes.ts`) and the defaults below are the site's own. The
+ * taxonomy is Hallmark's canonical set (paper / ink / rule / muted / accent /
+ * accentInk / focus, a 4pt space scale, named easings and durations), so a
+ * reader of any other Hallmark project knows the names already.
  *
  * Hallmark normally emits a `tokens.css` holding `:root { --color-ink: … }`.
  * We do not, and there is no second source of truth: `stylex.defineVars`
@@ -51,52 +55,59 @@ import * as stylex from '@stylexjs/stylex'
  */
 
 /**
- * Every colour is OKLCH. The neutrals are all tinted toward the same deep blue
- * (hue 250), and there is exactly one accent, a lantern gold set against it.
- * That pairing is complementary on purpose: the accent is a signal on a dark
- * sea, not a tint the neutrals should follow. No `#000`, no `#fff`.
+ * The site's own colours, "Blackout": house lights down and one white
+ * spotlight. Pages that belong to no series (the legal notices, the hub) are
+ * painted in these. A series paints its pages with its own theme, a complete
+ * override of this set in `src/styles/themes.ts` that its description names,
+ * so no series colour is the site's colour. Owner, 2026-10-24.
+ *
+ * Every colour is OKLCH, tinted a trace toward violet (hue 285) so no grey is
+ * flat. The accent is the brightest white on the page and nothing else is
+ * chromatic: on the hub, each series brings the only colour. No `#000`, no
+ * `#fff`.
  *
  * Contrast against `paper`, computed from the OKLCH values (WCAG 2.1):
  *
- *   ink   17.4:1   ink2  12.3:1   muted  8.1:1   accent  12.2:1   focus  14.0:1
+ *   ink   16.5:1   ink2  11.6:1   muted  8.2:1   accent  19.7:1   focus  19.7:1
  *   rule2  3.7:1 (control boundaries)   rule  1.5:1 (decorative hairlines only)
  *
- * On `paper3`, the lightest surface, the same values read 15.0 / 10.6 / 7.0 /
- * 10.5 / 12.0 / 3.15, so body text clears 7:1 and a control boundary clears
- * 3:1 on every surface. `accentInk` on `accent` is 11.8:1.
+ * On `paper3`, the lightest surface, the same values read 14.4 / 10.2 / 7.1 /
+ * 17.2 / 17.2 / 3.2, so body text clears 7:1 and a control boundary clears
+ * 3:1 on every surface. `accentInk` on `accent` is 19.5:1.
  *
- * The chroma on the papers (0.025-0.030) runs above the 0.005-0.015 band
- * Hallmark suggests for neutrals. That is the sea, and it is the one
- * deliberate deviation in this palette.
+ * Links here are told apart by their underline, not their colour: `accent`
+ * is only 1.2:1 against `ink` (1.7:1 against `ink2`), under the 3:1 a colour
+ * alone needs. A link painted `accent` keeps `textDecorationLine: underline`;
+ * `src/styles/themes.test.tsx` fails the shared pages when one does not.
  */
-export const color = stylex.defineVars({
-  paper: 'oklch(13% 0.025 250)',
-  paper2: 'oklch(17% 0.028 250)',
-  paper3: 'oklch(22% 0.03 250)',
+export const NEUTRAL = stylex.defineConsts({
+  paper: 'oklch(12% 0.005 285)',
+  paper2: 'oklch(16% 0.006 285)',
+  paper3: 'oklch(21% 0.007 285)',
   // Decorative hairlines only. A control boundary needs 3:1 and must use
   // `rule2` or `ink` instead.
-  rule: 'oklch(30% 0.025 250)',
-  rule2: 'oklch(52% 0.03 250)',
-  muted: 'oklch(72% 0.02 250)',
-  ink2: 'oklch(84% 0.015 250)',
-  ink: 'oklch(95% 0.01 250)',
-  // Lantern gold. It draws the sailed part of the route, the horizon line, the
-  // active locale, focus rings and one verb per veil. Never a large fill, with
-  // one exception: the Save button of the bookmark dialog (owner, 2026-10-12).
-  accent: 'oklch(84% 0.16 88)',
+  rule: 'oklch(30% 0.006 285)',
+  rule2: 'oklch(52% 0.008 285)',
+  muted: 'oklch(72% 0.006 285)',
+  ink2: 'oklch(82% 0.005 285)',
+  ink: 'oklch(93% 0.005 285)',
+  // The spotlight. It marks links, the active locale and focus rings; it is
+  // never a large fill.
+  accent: 'oklch(99% 0.005 285)',
   // A hard contract. Any surface painted `accent` that carries text sets its
   // colour to this, never to a hardcoded dark.
-  accentInk: 'oklch(16% 0.03 250)',
-  focus: 'oklch(88% 0.15 92)',
+  accentInk: 'oklch(13% 0.005 285)',
+  focus: 'oklch(99% 0.005 285)',
   // The three overlays, and the only tokens with an alpha channel. All are
   // modifiers laid over `paper`, not colours anything is painted in: the
-  // lantern bloom at the top of the page, the sea that darkens the page
-  // behind the bookmark dialog, and the glass of the pinned site bar,
-  // which lets the bloom through where the page begins.
-  glow: 'oklch(70% 0.12 80 / 0.22)',
-  scrim: 'oklch(13% 0.025 250 / 0.72)',
-  veil: 'oklch(13% 0.025 250 / 0.88)',
+  // bloom at the top of the page, the dark behind a dialog, and the glass of
+  // the pinned site bar.
+  glow: 'oklch(92% 0.01 285 / 0.12)',
+  scrim: 'oklch(12% 0.005 285 / 0.72)',
+  veil: 'oklch(12% 0.005 285 / 0.88)',
 })
+
+export const color = stylex.defineVars(NEUTRAL)
 
 /**
  * The one colour each drawing is allowed. Nineteen hues, all light enough
