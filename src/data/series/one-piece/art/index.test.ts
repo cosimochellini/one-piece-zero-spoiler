@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
 import { getEntity } from '~/data/series/one-piece/entities'
-import type { Stroke } from '~/lib/view/records'
+import { isADrawing } from '~/test/drawing'
 
 import { DRAWINGS, REDRAWINGS } from '.'
 import { alabastaArt, alabastaRedrawn } from './alabasta'
@@ -17,28 +17,6 @@ import { thrillerBarkArt, thrillerBarkRedrawn } from './thriller-bark'
 import { wanoArt, wanoRedrawn } from './wano'
 import { waterSevenArt, waterSevenRedrawn } from './water-seven'
 import { wholeCakeArt, wholeCakeRedrawn } from './whole-cake'
-
-/** The rules every drawing on the site obeys, first or redrawn. */
-function isADrawing(id: string, strokes: Stroke[]): void {
-  // Fewer than four strokes is an icon, not a drawing.
-  expect(strokes.length, id).toBeGreaterThan(3)
-  expect(
-    strokes.some((stroke) => stroke.role === 'accent'),
-    id,
-  ).toBe(true)
-
-  for (const stroke of strokes) {
-    expect(stroke.d.length, id).toBeGreaterThan(0)
-  }
-
-  // The renderer keys each path by its `d` and transform, so the same shape
-  // may repeat only under another transform; a true duplicate is a React key
-  // clash and a line drawn over itself.
-  const keys = strokes.map((stroke) => `${stroke.d}|${stroke.transform ?? ''}`)
-  const distinct = new Set(keys)
-
-  expect(distinct.size, id).toBe(keys.length)
-}
 
 describe('the drawings', () => {
   it('never files the same id in two sagas', () => {
@@ -62,14 +40,6 @@ describe('the drawings', () => {
     const total = modules.reduce((sum, m) => sum + Object.keys(m).length, 0)
 
     expect(Object.keys(DRAWINGS)).toHaveLength(total)
-  })
-
-  it('draws every record with at least four strokes and one in its colour', () => {
-    expect.hasAssertions()
-
-    for (const [id, strokes] of Object.entries(DRAWINGS)) {
-      isADrawing(id, strokes)
-    }
   })
 })
 

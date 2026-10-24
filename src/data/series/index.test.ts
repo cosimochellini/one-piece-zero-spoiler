@@ -5,6 +5,7 @@ import { describe, expect, it } from 'vitest'
 import type { Entity } from '~/data/types'
 import { LOCALES } from '~/i18n/locales'
 import { FIRST_CHAPTER, FIRST_EPISODE } from '~/lib/progress/episode'
+import { isADrawing } from '~/test/drawing'
 import { LOADED_SERIES } from '~/test/series'
 
 import { SERIES } from '.'
@@ -97,6 +98,14 @@ describe.each(LOADED_SERIES)(
       }
       for (const id of drawn) {
         expect(ids.has(id), id).toBe(true)
+      }
+    })
+
+    it('draws every record with at least four strokes and one in its colour', () => {
+      expect.hasAssertions()
+
+      for (const [id, strokes] of Object.entries(drawings)) {
+        isADrawing(id, strokes)
       }
     })
 

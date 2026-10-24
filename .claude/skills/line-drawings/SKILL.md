@@ -1,18 +1,18 @@
 ---
 name: line-drawings
-description: How Zero Spoiler's line drawings are made, checked and audited, so every icon on the site reads as one set. Load it before drawing, redrawing, reviewing or auditing any drawing in src/data/series/one-piece/art (characters, redrawings, devil fruits in src/data/series/one-piece/art/fruits, places, arcs and ships), and before writing an issue that asks for one.
+description: How Zero Spoiler's line drawings are made, checked and audited, so every icon on the site reads as one set. Load it before drawing, redrawing, reviewing or auditing any drawing in src/data/series/<series>/art (One Piece's characters, redrawings, devil fruits, places, arcs and ships; Hunter x Hunter's arcs, characters and places), and before writing an issue that asks for one.
 ---
 
 # Zero Spoiler line drawings
 
 Every record on the site has a line drawing made for this project: an object
 that stands for a character, the place itself for a place, a fruit for a
-fruit. They are data (`src/data/series/one-piece/art/<saga>.ts`, `src/data/series/one-piece/art/fruits/`), and
-one component draws all of them (`src/components/ChartArt.tsx`). The point of
+fruit. They are data (`src/data/series/<series>/art/`), and one component
+draws all of them, in every series (`src/components/ChartArt.tsx`). The point of
 this skill is that a drawing made today sits next to one made a year ago and
 the two read as the same hand.
 
-The worked example is Franky, both stages, in `src/data/series/one-piece/art/water-seven.ts`:
+The worked example is One Piece's Franky, both stages, in `src/data/series/one-piece/art/water-seven.ts`:
 the forearm of the first years (ep 235) and the forearm of the two years
 (ep 517, PR #192), drawn over the same wrench and bolt. Render them with
 `npm run art:sheet -- franky` and keep the sheet open while you draw.
@@ -24,8 +24,8 @@ the rest are left to review, so check them yourself.
 
 - **The box.** 160×200, x to the right, y down (`ART_VIEWBOX`). The object
   centred near x 80; ground or a base at y 150; `shadow()` at y 180–190;
-  `SEA` waves at y 158/172/186. Saga drawings may run past the box (a wave
-  does); fruits may not **(test)**.
+  `SEA` waves at y 158/172/186. A drawing may run past the box (a wave
+  does); One Piece's fruits may not **(test)**.
 - **The pen.** One 2 px line, round caps and joins, kept at 2 px at every size
   (`non-scaling-stroke`) **(test)**. No fills, anywhere. A dot is a zero-length
   line (`dot()`), a circle two arcs (`circle()`).
@@ -37,7 +37,8 @@ the rest are left to review, so check them yourself.
   `soft` renders exactly like no role: it is a label for the person drawing
   (folds, knuckles, seams), not a style.
 - **One colour.** The tint (`visual.tint` on the record) is the record's colour,
-  not the object's. A redrawing never changes it. Put the accent on the one
+  not the object's: one of the nineteen `tint` tokens every series shares
+  (`src/styles/tokens.stylex.ts`), never the series' UI `accent`. A redrawing never changes it. Put the accent on the one
   mark that identifies the record (Franky's star, Luffy's hat band), never on
   everything.
 - **Never a face, a logo, an official mark or lettering.** No eyes, no mouth,
@@ -103,8 +104,8 @@ Grade every drawing you make or review. Only A ships.
   the worked example (`east-blue.ts`, `LUFFY_HAT`). When the object is
   hidden under the costume (Luffy's knight helm), the accent moves to the
   costume's own mark (the plume). If the honest composition does not read at
-  56 px, drop the stage rather than draw something false. Each redrawing
-  is a whole drawing in the `<saga>Redrawn` timeline of the saga that first
+  56 px, drop the stage rather than draw something false. In One Piece,
+  each redrawing is a whole drawing in the `<saga>Redrawn` timeline of the saga that first
   drew the record: `{ episode, chapter, value }`, strictly after
   `revealedAtEpisode`, ascending. The `chapter:` must be a true pair with the episode, the chapter
   that same scene is in, or chapter readers see it early; when the true
@@ -129,7 +130,7 @@ Grade every drawing you make or review. Only A ships.
     record opens, or no true composition reads at 56 px.
   - **Back from the dead is a new drawing** that shows what the return leaves
     (Kanjuro at 1024, Orochi at 1051, Sabo at 663).
-  - **A zombie's purification is a stage** (owner, 2026-10-12, #554): the
+  - **A zombie's purification is a stage** (One Piece; owner, 2026-10-12, #554): the
     episode it loses its borrowed shadow, to salt or to the shadow going
     home, and goes still (Kumashi at 360, the Shadow's Asgard at 373). Only
     the first time counts, and the death exceptions apply.
@@ -140,9 +141,9 @@ Grade every drawing you make or review. Only A ships.
     petrified, wounded, a lost limb.
   - **A weapon held beside the object keeps the drawing as it is**, and so
     does a one-fight weapon or technique.
-  - **A Zoan form is a permanent stage** with no exit entry (King, Ulti,
+  - **A Zoan form is a permanent stage** (One Piece) with no exit entry (King, Ulti,
     Queen), drawn as a part of the animal's body (a shell, a foreleg).
-  - **Canon is the manga and the episodes that adapt it.** A cover story
+  - **Canon is the manga and the episodes that adapt it.** A One Piece cover story
     counts only where an episode adapts it as story; anime-only looks stay
     out.
   - **A stage whose true chapter is below its record's chapter is pinned at
@@ -155,10 +156,10 @@ Grade every drawing you make or review. Only A ships.
   - **A frame check on manga pages decides** the start, the end, and what is
     really on the object. The wiki's prose is a lead: Jack's sails, Leo's
     goggles and Tamago's teacup were all wrong or missing in it.
-- **Places and arcs** are the place itself, seen from the sea: the landmark,
+- **One Piece's places and arcs** are the place itself, seen from the sea: the landmark,
   the ground at y 150, `...SEA` (or `SEA.slice(1|2)`) below. **Ships** are the
   ship side on, with a figurehead but no flag mark.
-- **Devil fruits** are a fruit and its power (#461). The fruit is a body
+- **Devil fruits** (One Piece) are a fruit and its power (#461). The fruit is a body
   from the kit in `src/data/series/one-piece/art/fruits/kit.ts`: one of six (`round`, `pear`,
   `gourd`, `heart`, `oblong`, `segmented`), shared radii, seen a little from
   above. `crown()` draws the rim of the dimple the stalk sits in, `shine()`
@@ -209,15 +210,55 @@ A drawing is gated like any text, and it can spoil just as well.
   in "Each kind of record"); check `chapterAtEpisode(episode)` against the
   manga debut.
 
+## Hunter x Hunter
+
+Everything above holds for Hunter x Hunter, with what is its own here. Its
+drawings are `DRAWINGS` in `src/data/series/hunter-x-hunter/art/index.ts`;
+render them with `npm run art:sheet -- --series hunter-x-hunter <id>` (or
+`--kind arc|character|place`), on the series' own paper.
+
+- **The palette.** The `HUNTER_X_HUNTER` theme in `src/styles/themes.ts`:
+  papers and inks tinted forest green (hue 160), and Gon's leaf green,
+  `oklch(82% 0.2 145)`, as the page's `accent`. A record still takes one of
+  the shared tints. `green` and `acid` sit beside the leaf on this paper, so
+  they go to a record whose own colour is that green, not by default.
+- **Motifs.** A character is the object the reader would name first at the
+  record's threshold: Gon's fishing rod, Killua's skateboard, Leorio's
+  briefcase, Kurapika's two wooden swords. The accent goes on the part that
+  makes it theirs (the rod's reel, the board's deck, the case's handle). An
+  arc or a place is its landmark or an object from its opening (the exam ship
+  in a storm, the fighting tower, the auction gavel), on a ground line at
+  y 150 with a `shadow()`, and on `SEA` only when it is at sea.
+- **Nen and later looks.** Weapons and looks in Hunter x Hunter are often Nen
+  abilities shown arcs later, so the threshold check bites hardest here: no
+  later weapon, form, Nen ability or costume. Kurapika at the Hunter Exam is
+  the wooden swords; his chains are a Nen ability first shown in Yorknew City.
+  Nen, from the episode and chapter that show the ability, is open lines
+  around the object, never a glow or a fill.
+- **Redrawings** follow the rulings in "Each kind of record": a dated drawing
+  pinned at a true chapter (the 2011 anime's episode and the chapter of the
+  same scene), a new drawing on a death or a costume change. A Nen ability
+  that becomes part of the object (Kurapika's chained hand) is a stage; a
+  one-fight technique is not. The series has no redrawing timeline yet: the
+  first redrawing adds one to its art module and to the archive's `redrawn`,
+  on One Piece's model.
+- **Research** reads the Hunter x Hunter Wiki API
+  (`https://hunterxhunter.fandom.com/api.php`): `|manga debut` and
+  `|anime debut` (the `Episode N (2011)` entry) give a record's pair, the
+  `Chapter N` and `Episode N (2011)` pages its scene. `wiki:pairs` and
+  `art:shots` read One Piece only.
+
 ## Workflow
 
 1. **Research.** Read the record (threshold, summary, dossier) and the wiki
-   page through the API, which works with curl when the HTML is blocked:
+   page through the series' API (`wiki.en` in `src/data/series/index.ts`),
+   which works with curl when the HTML is blocked:
    `https://onepiece.fandom.com/api.php?action=parse&page=<Page>&prop=wikitext&format=json&redirects=1`.
-   `{{Qref|chap=N|ep=M|…}}` gives the episode and chapter of a fact; the
-   `Episode_N` page confirms it, and N − 1 should still show the old look.
-   Check chapter/episode pairs and their page ranges with
-   `npm run wiki:pairs -- 129 157` (ranges work too: `1050-1056`). The command
+   On the One Piece Wiki, `{{Qref|chap=N|ep=M|…}}` gives the episode and
+   chapter of a fact; the `Episode_N` page confirms it, and N − 1 should
+   still show the old look. Check One Piece chapter/episode pairs and their
+   page ranges with `npm run wiki:pairs -- 129 157` (ranges work too:
+   `1050-1056`). The command
    reads the rendered chapter infobox and caches it in `.gate/wiki/`; use its
    page ranges to locate the scene, then check the scene itself in a source
    you can lawfully access: a licensed manga edition or a licensed stream.
@@ -231,7 +272,8 @@ A drawing is gated like any text, and it can spoil just as well.
    real fruit) waits for the owner's ruling under `status:needs-decision`, as
    [CONTRIBUTING.md](../../../CONTRIBUTING.md#sources-and-rights) sets out.
 2. **Render the before.** `npm run art:sheet -- <id>` writes every stage of
-   the record to `.gate/art/<id>.png` (`--out` to move it). Read the PNG.
+   the record to `.gate/art/<id>.png` (`--out` to move it; `--series <slug>`
+   for a series other than One Piece). Read the PNG.
 3. **Draft.** Write candidates in a scratch `.ts` file that default-exports
    `Record<string, Stroke[]>` (it may import `~/lib/svg/primitives`), and render
    them beside the record: `npm run art:sheet -- <id> --draft <file.ts>`.
@@ -240,7 +282,7 @@ A drawing is gated like any text, and it can spoil just as well.
    shape read as "all the same".
 4. **Look at it at both sizes** on the sheet, then fix what fails the bar.
    Iterate until it is an A.
-5. **Write it in the saga file** as literal paths and helper calls, with the
+5. **Write it in the art module** as literal paths and helper calls, with the
    comment above it. Run `npm run art:sheet -- <id>` again.
 6. **Verify mappings and stage gates.** Save
    `npm run --silent archive:table` dumps from the PR base and head, plus
@@ -248,7 +290,7 @@ A drawing is gated like any text, and it can spoil just as well.
    episode mappings separately; count added and removed dated entries as
    occurrences, preserving duplicate lines. Follow the duplicate-aware
    comparison in `CONTRIBUTING.md` under “Archive and drawing verification.”
-   For characters with redrawings, run `npm run build` then
+   For One Piece characters with redrawings, run `npm run build` then
    `npm run art:shots -- <id> [<id>…]`. It needs installed Chrome
    (`CHROME_PATH` overrides its executable) and manages its own preview server.
    Read `.gate/shots/<ids-joined-with-+>.png`: each redrawing has four crest
@@ -268,7 +310,7 @@ A drawing is gated like any text, and it can spoil just as well.
 
 To bring a whole saga or kind up to the bar:
 
-1. `npm run art:sheet -- --saga <file>` (for example `water-seven`), or
+1. `npm run art:sheet -- --saga <file>` (One Piece, for example `water-seven`), or
    `--kind fruit|place|arc|ship|character`, writes contact sheets of 24 cells,
    each at crest and tile size with its id, threshold and stroke count.
 2. Grade every cell A, B or C against the bar above. For each B or C, read the

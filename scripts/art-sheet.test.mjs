@@ -13,9 +13,9 @@ import {
   cellSvg,
   drawingSvg,
   oklchToHex,
-  onePiecePalette,
   readArgs,
   scaleOf,
+  seriesPalette,
   sheetSvg,
   stagesOf,
   writeSheets,
@@ -49,8 +49,8 @@ describe('the colours', () => {
     expect(oklchToHex('oklch(62.8% 0.2577 29.23)')).toBe('#ff0000')
   })
 
-  it("reads every tint and One Piece's inks", () => {
-    const tokens = onePiecePalette()
+  it("reads every tint and each series' own inks", () => {
+    const tokens = seriesPalette('one-piece')
 
     const tints = [
       ...'red vermilion orange ocher yellow acid green teal cyan azure'.split(
@@ -71,6 +71,11 @@ describe('the colours', () => {
       expect(tokens[name], name).toMatch(/^#[\da-f]{6}$/u)
     }
     expect(tokens.paper).toBe(oklchToHex('oklch(13% 0.025 250)'))
+    expect(seriesPalette('hunter-x-hunter')).toMatchObject({
+      paper: oklchToHex('oklch(13% 0.022 160)'),
+      wine: tokens.wine,
+    })
+    expect(() => seriesPalette('nope')).toThrow('has no `const NOPE')
   })
 })
 
@@ -181,7 +186,15 @@ describe('the command line', () => {
   it('reads ids, a draft, a saga, a kind and where to write', () => {
     expect(
       readArgs(['franky', 'tom', '--draft', 'd.ts', '--out', 'o']),
-    ).toStrictEqual({ draft: 'd.ts', ids: ['franky', 'tom'], out: 'o' })
+    ).toStrictEqual({
+      draft: 'd.ts',
+      ids: ['franky', 'tom'],
+      out: 'o',
+      series: 'one-piece',
+    })
+    expect(readArgs(['--series', 'hunter-x-hunter']).series).toBe(
+      'hunter-x-hunter',
+    )
     expect(readArgs(['--saga', 'water-seven']).saga).toBe('water-seven')
     expect(readArgs(['--kind', 'place']).out).toBe(
       path.join(ROOT, '.gate', 'art'),
@@ -226,6 +239,15 @@ describe('what the command line asks for', { timeout: 60_000 }, () => {
       'going-merry',
       'thousand-sunny',
     ])
+  })
+
+  it("draws another series' records, which have no redrawings yet", async () => {
+    const series = 'hunter-x-hunter'
+    const arcs = await cellsFor({ ids: [], kind: 'arc', out, series })
+    const exam = await cellsFor({ ids: ['hunter-exam-arc'], out, series })
+
+    expect(arcs.cells).toHaveLength(7)
+    expect(exam.cells).toMatchObject([{ note: 'ep 1', tint: 'yellow' }])
   })
 
   it('names a sheet of drafts alone, so it lands inside the folder', async () => {
