@@ -2,8 +2,10 @@ import { byNumber, byString } from 'sort-es'
 import { describe, expect, it } from 'vitest'
 
 import { orderByMode } from '~/data/order'
+import { toldIn } from '~/data/reveal'
 import type { Entity, LocalizedText, Story, Timeline } from '~/data/types'
 import { type Locale, LOCALES } from '~/i18n/locales'
+import type { Source } from '~/lib/progress/spoiler'
 import { markedIds, tokenize } from '~/lib/prose/markers'
 import type { CharacterStatus } from '~/lib/view/records'
 
@@ -122,6 +124,8 @@ interface StoryCase {
   character: Entity
   episode: number
   label: string
+  /** The one source that tells it, if one alone does (its gate's). */
+  source: Source | undefined
   story: Story
 }
 
@@ -133,6 +137,7 @@ const STORIES: StoryCase[] = CHRONICLE_TIMELINES.flatMap(
         character,
         episode: entry.episode,
         label: `${label} @${String(entry.episode)}`,
+        source: entry.gate.source,
         story: entry.value,
       }
     })
@@ -362,7 +367,14 @@ describe('the chronicles', () => {
   })
 
   it('links only characters the reader has already met, and never itself', () => {
-    for (const { chapter, character, episode, label, story } of STORIES) {
+    for (const {
+      chapter,
+      character,
+      episode,
+      label,
+      source,
+      story,
+    } of STORIES) {
       for (const id of markedIds(story.body.en)) {
         const linked = getCharacter(id)
         const where = `${label} -> ${id}`
@@ -371,6 +383,12 @@ describe('the chronicles', () => {
         expect(id, where).not.toBe(character.id)
         expect(linked?.revealedAtEpisode, where).toBeLessThanOrEqual(episode)
         expect(linked?.revealedAtChapter, where).toBeLessThanOrEqual(chapter)
+        // A story both sources tell may not link a record one of them does
+        // not: an unresolved marker prints its id (`segmentsOf`).
+        expect(
+          linked !== undefined && toldIn(linked, source ?? null),
+          where,
+        ).toBe(true)
       }
     }
   })

@@ -1,11 +1,13 @@
 import { byString } from 'sort-es'
 import { describe, expect, it } from 'vitest'
 
+import { toldIn } from '~/data/reveal'
 import type { Entity, LocalizedText, Story } from '~/data/types'
 import { enDictionary } from '~/i18n/dictionaries/en'
 import { itDictionary } from '~/i18n/dictionaries/it'
 import { type Locale, LOCALES } from '~/i18n/locales'
 import { FIRST_EPISODE } from '~/lib/progress/episode'
+import type { Source } from '~/lib/progress/spoiler'
 import { tokenize } from '~/lib/prose/markers'
 
 import { type Field, gateOf } from './chapter-table'
@@ -40,6 +42,8 @@ interface Text {
   label: string
   /** The record the text belongs to; a filler entry belongs to none. */
   owner: Pick<Entity, 'id'>
+  /** The one source that tells it, if one alone does (its gate's). */
+  source: Source | undefined
   text: LocalizedText
 }
 
@@ -93,6 +97,7 @@ function frozen(owner: Entity, field: string, text: LocalizedText): Text {
     episode: owner.revealedAtEpisode,
     label: `${owner.id}.${field}`,
     owner,
+    source: owner.source,
     text,
   }
 }
@@ -109,6 +114,7 @@ function dated(owner: Entity, field: Field): Text[] {
           episode: entry.gate.revealedAtEpisode,
           label: `${owner.id}.${field}@${String(entry.episode)}`,
           owner,
+          source: entry.gate.source,
           text,
         }
   })
@@ -133,6 +139,7 @@ function factionTexts(owner: Entity): Text[] {
           episode: entry.gate.revealedAtEpisode,
           label: `${owner.id}.faction@${String(entry.episode)}`,
           owner,
+          source: entry.gate.source,
           text: {
             en: factions.map((id) => enDictionary[`faction.${id}`]).join('; '),
             it: factions.map((id) => itDictionary[`faction.${id}`]).join('; '),
@@ -153,6 +160,7 @@ function visitTexts(id: string): Text[] {
       episode: gate.revealedAtEpisode,
       label: `${id}.visit@${String(visit.episode)}`,
       owner,
+      source: gate.source,
       text: visit.value,
     }
   })
@@ -195,6 +203,7 @@ function fillerTexts(entry: FillerEntry): Text[] {
       episode,
       label: `${where}.${field}`,
       owner: { id: where },
+      source: undefined,
       text: entry[field],
     }
   })
@@ -281,12 +290,13 @@ const BY_FIRST_WORD = new Map(
  */
 function sharesAReachedName(
   other: Entity,
-  { chapter, episode }: Text,
+  { chapter, episode, source }: Text,
   locale: Locale,
 ): boolean {
   return entities.some((met) => {
     return (
       met.id !== other.id
+      && toldIn(met, source ?? null)
       && met.revealedAtEpisode <= episode
       && met.revealedAtChapter <= chapter
       && met.name[locale] === other.name[locale]
@@ -299,12 +309,17 @@ function sharesAReachedName(
  * characters, but also the arcs, places, ships and fruits, whose names are as
  * much a spoiler as a person's — "Marineford" in a text at episode 400 says
  * where the war will be. A record's own texts are behind its own threshold
- * already.
+ * already. A record one source alone tells is never reached by a text the
+ * other source tells too, so such a text may never name it.
  */
-function filedAfter(other: Entity, { chapter, episode, owner }: Text): boolean {
+function filedAfter(other: Entity, text: Text): boolean {
+  const { chapter, episode, owner, source } = text
+
   return (
     other.id !== owner.id
-    && (other.revealedAtEpisode > episode || other.revealedAtChapter > chapter)
+    && (!toldIn(other, source ?? null)
+      || other.revealedAtEpisode > episode
+      || other.revealedAtChapter > chapter)
   )
 }
 

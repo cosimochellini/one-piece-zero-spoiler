@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest'
 import type { Bookmark, BookmarkMode } from '~/lib/progress/episode'
 import type { Gated } from '~/lib/progress/spoiler'
 
-import { reveal } from './reveal'
+import { reveal, sourceOf } from './reveal'
 
 const ep = (episode: number): Bookmark => ({ mode: 'episode', episode })
 const ch = (chapter: number): Bookmark => ({ mode: 'chapter', chapter })
@@ -120,5 +120,35 @@ describe('reveal, at the edges', () => {
     // Shanks is chapter 1 but episode 4, so the two units disagree.
     expect(reveal(ch(1)).sees(SHANKS)).toBe(true)
     expect(reveal(ep(1)).sees(SHANKS)).toBe(false)
+  })
+})
+
+describe('reveal, for a record of one source only', () => {
+  const ANIME_ONLY: Gated = { ...ROBIN, source: 'anime' }
+  const MANGA_ONLY: Gated = { ...ROBIN, source: 'manga' }
+
+  it('counts an episode and a season in the anime, a chapter in the manga', () => {
+    expect(sourceOf(ep(130))).toBe('anime')
+    expect(sourceOf(se(4, 38))).toBe('anime')
+    expect(sourceOf(ch(218))).toBe('manga')
+    expect(sourceOf(null)).toBeNull()
+  })
+
+  it('has it, and opens it at its threshold, only for a reader of that source', () => {
+    expect(reveal(ep(130)).sees(ANIME_ONLY)).toBe(true)
+    expect(reveal(se(4, 38)).sees(ANIME_ONLY)).toBe(true)
+    expect(reveal(ep(129)).has(ANIME_ONLY)).toBe(true)
+    expect(reveal(ch(218)).sees(MANGA_ONLY)).toBe(true)
+    expect(reveal(ch(1200)).has(ANIME_ONLY)).toBe(false)
+    expect(reveal(ch(1200)).sees(ANIME_ONLY)).toBe(false)
+    expect(reveal(ep(1200)).has(MANGA_ONLY)).toBe(false)
+    expect(reveal(se(4, 38)).has(MANGA_ONLY)).toBe(false)
+  })
+
+  it('has neither for a reader with no bookmark, and both sources for a record of both', () => {
+    expect(reveal(null).has(ANIME_ONLY)).toBe(false)
+    expect(reveal(null).has(MANGA_ONLY)).toBe(false)
+    expect(reveal(null).has(ROBIN)).toBe(true)
+    expect(reveal(ch(1)).has(ROBIN)).toBe(true)
   })
 })

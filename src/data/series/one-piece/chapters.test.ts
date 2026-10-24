@@ -5,7 +5,12 @@ import type { Dated, Entity } from '~/data/types'
 import { LOCALES } from '~/i18n/locales'
 import { CHAPTER_CEILING } from '~/lib/progress/episode'
 
-import { chapterAtEpisode, episodeAtChapter } from './chapter-table'
+import {
+  chapterAtEpisode,
+  episodeAtChapter,
+  gateOf,
+  vouches,
+} from './chapter-table'
 import { DATED, TIMELINES } from './chapters'
 import { datedOf } from './dated'
 import { entities } from './entities'
@@ -48,7 +53,7 @@ function openedEarly(chapter: number): string[] {
   const episode = episodeAtChapter(chapter)
 
   return entities
-    .filter((entity) => entity.unanchored !== true)
+    .filter((entity) => vouches(entity))
     .filter((entity) => entity.revealedAtEpisode <= episode)
     .filter((entity) => entity.revealedAtChapter > chapter)
     .map((entity) => `${entity.id} @ c${String(chapter)}`)
@@ -148,14 +153,15 @@ describe('the dated entries against the table', () => {
     expect(lost).toStrictEqual([])
   })
 
-  it('opens no entry before its own record, unless the record is unanchored', () => {
+  it('opens no entry before its own record, unless the record vouches for nothing', () => {
     // The table makes this hold for every record it is built from, on the
-    // entry's own gate alone. An unanchored record's entries are held by
-    // their owner instead, which `~/data/series/one-piece/dated` folds into every gate.
+    // entry's own gate alone. An unanchored record's entries, or those of a
+    // record of one source only, are held by their owner instead, which
+    // `~/data/series/one-piece/dated` folds into every gate.
     const early = DATED.filter(({ entry, owner }) => {
       const opens = entry.chapter ?? chapterAtEpisode(entry.episode)
 
-      return owner.unanchored !== true && opens < owner.revealedAtChapter
+      return vouches(owner) && opens < owner.revealedAtChapter
     }).map(({ label }) => label)
 
     expect(early).toStrictEqual([])
@@ -185,5 +191,36 @@ describe('the dated entries against the table', () => {
     }
 
     expect(leaks).toStrictEqual([])
+  })
+})
+
+describe('a record or an entry of one source only', () => {
+  const FILED = { revealedAtEpisode: 1, revealedAtChapter: 1 }
+
+  it('vouches for no pair of the table, as an unanchored record does not', () => {
+    expect(vouches({})).toBe(true)
+    expect(vouches({ unanchored: true })).toBe(false)
+    expect(vouches({ source: 'anime' })).toBe(false)
+    expect(vouches({ source: 'manga' })).toBe(false)
+  })
+
+  it('gives its gate the source of its record, or else its own', () => {
+    const told = { episode: 5, value: null }
+
+    expect(gateOf(told, FILED)).not.toHaveProperty('source')
+    expect(gateOf({ ...told, source: 'anime' }, FILED).source).toBe('anime')
+    expect(gateOf(told, { ...FILED, source: 'manga' }).source).toBe('manga')
+  })
+
+  it('is told, on a record of one source only, by that source alone', () => {
+    // The record's source wins in its gate, so an entry may only repeat it.
+    const crossed = DATED.filter(
+      ({ entry, owner }) =>
+        entry.source !== undefined
+        && owner.source !== undefined
+        && entry.source !== owner.source,
+    ).map(({ label }) => label)
+
+    expect(crossed).toStrictEqual([])
   })
 })

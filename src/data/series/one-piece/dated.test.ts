@@ -38,11 +38,15 @@ const ENTRIES = TIMELINES.flatMap(({ field, label, owner }) => {
       entry.chapter ?? firstChapterAt(episode),
     )
 
+    // The one source that tells it, the record's before the entry's own.
+    const source = owner.source ?? entry.source
+
     return {
       chapter,
       entry,
       episode,
       field,
+      source,
       label: `${label} @${String(entry.episode)}`,
       owner,
     }
@@ -66,16 +70,17 @@ describe('every dated entry in the archive', () => {
     expect(ENTRIES.length).toBeGreaterThan(0)
 
     for (const row of ENTRIES) {
-      const { chapter, entry, episode, label } = row
+      const { chapter, entry, episode, label, source } = row
 
       expect(entry.gate, label).toStrictEqual({
         revealedAtEpisode: episode,
         revealedAtChapter: chapter,
+        ...(source !== undefined && { source }),
       })
       expect(reaches(ch(chapter - 1), row), label).toBe(false)
-      expect(reaches(ch(chapter), row), label).toBe(true)
+      expect(reaches(ch(chapter), row), label).toBe(source !== 'anime')
       expect(reaches(ep(episode - 1), row), label).toBe(false)
-      expect(reaches(ep(episode), row), label).toBe(true)
+      expect(reaches(ep(episode), row), label).toBe(source !== 'manga')
       expect(reaches(null, row), label).toBe(false)
     }
   })

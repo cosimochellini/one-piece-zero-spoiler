@@ -22,7 +22,17 @@ vi.mock(import('~/data/series'), async (original) => {
         fruits: false,
       },
     },
-    characters: base.characters.slice(0, 1),
+    // The second is told by the anime alone, so no crawler is sent to it.
+    characters: [
+      ...base.characters.slice(0, 1),
+      ...base.characters
+        .slice(1, 2)
+        .map((entity) => ({
+          ...entity,
+          id: 'anime-only',
+          source: 'anime' as const,
+        })),
+    ],
     places: [],
     ships: [],
   }
@@ -64,6 +74,7 @@ describe('a sitemap with more than one series', () => {
     expect(xml).toContain(
       `hreflang="it" href="${SITE_ORIGIN}/test-series/it/characters/`,
     )
+    expect(xml).not.toContain('/characters/anime-only')
     expect(xml).not.toContain(`${SITE_ORIGIN}/test-series/en/fruits`)
     expect(xml).not.toContain(`${SITE_ORIGIN}/test-series/en/filler`)
     expect(xml).not.toContain(`${SITE_ORIGIN}/test-series/en/places`)
