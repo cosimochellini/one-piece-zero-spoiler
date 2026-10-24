@@ -367,11 +367,12 @@ tapped a link a friend sent. The list is in `src/lib/crawler.ts`.
   episode 1150 the page went from 25 to 5.5 ms of local CPU and from 926 to 247
   KB, and the shelves call from 6.5 ms and 296 KB to 2.1 ms and 145 KB (#776).
   Search engines read the record pages, not the shelves, and a reader with
-  scripting off sees the main characters only. The landing page (East Blue under
-  the dial for a visitor with no bookmark, the reader's arc and its stories for
-  one with a bookmark), the places list and a character page are awaited
-  instead: they are the page, and a reader with scripting off should get them in
-  full.
+  scripting off sees the main characters only, and past the first ten of them an
+  empty seal where the drawing would be (#777). The landing page (East Blue
+  under the dial for a visitor with no bookmark, the reader's arc and its
+  stories for one with a bookmark), the places list and a character page are
+  awaited instead: they are the page, and a reader with scripting off should get
+  them in full.
 - The fruits page's HTML stops at the saga marquee and the control bar: the
   server sends the marquee's fruits, each plate's counts and the number filed
   (`loadFruits`). The plates and the saga and faction groups are a second server
@@ -387,15 +388,20 @@ tapped a link a friend sent. The list is in `src/lib/crawler.ts`.
   went from 8.5 to 1.7 ms of CPU and from 327 to 39 KB, and at episode 1 from
   5.5 to 1.7 ms and 212 to 30 KB; the album call costs 3.3 ms and 182 KB at 1150
   (#778).
-- The three list pages send only the first drawings inline: the first shelf of
-  characters, the first three places, and the marquee's lead and the first six
-  tiles of the fruit album. Every other record carries its tint and
-  `deferred: true`, and the page asks for its strokes by id once it comes within
-  a screen of the viewport (`useDrawing` in `src/lib/view/drawings.ts`,
-  `drawingsFor` on the server, which answers only records the reader has
-  reached). A test in `slices.test.ts` holds each list payload to 26 KB of
-  inline strokes at the latest bookmark. Deferring the fruits took
-  `/one-piece/en/fruits` at episode 1150 from 200 KB to 39 KB gzip (#610).
+- The three list pages send only the first drawings inline: the served
+  characters page the first ten featured crests (the shelves call after it, the
+  first shelf), the places page the first three places, and the fruits page the
+  marquee's lead and the first six tiles of the fruit album. Every other record
+  carries its tint and `deferred: true`, and the page asks for its strokes by id
+  once it comes within a screen of the viewport (`useDrawing` in
+  `src/lib/view/drawings.ts`, `drawingsFor` on the server, which answers only
+  records the reader has reached). The box a drawing sits in keeps its size
+  while the strokes load, so nothing moves. A test in `slices.test.ts` holds
+  each list payload to 28 KB of inline strokes at the latest bookmark. Deferring
+  the fruits took `/one-piece/en/fruits` at episode 1150 from 200 KB to 39 KB
+  gzip (#610). Deferring the crests past the tenth (two rows at the widest grid)
+  took `/one-piece/en/characters` at episode 1150 from about 4.5 to 3 ms of
+  local CPU and from 247 to 150 KB (#777).
 - The browser skips the layout and paint of list items far from the screen
   (`content-visibility: auto` on a character tile, a record tile and a fruit's
   drawing margin). Each stands in at its own exact height, the same at every

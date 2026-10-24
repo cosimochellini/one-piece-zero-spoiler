@@ -467,11 +467,13 @@ describe('the slice of the archive a page is given', () => {
     }
   })
 
-  it('leaves the drawings past the first shelf and the third port to be asked for', () => {
+  it('leaves the drawings past the first shelf, the tenth crest and the third port to be asked for', () => {
     const shelves = shelvesPage(ep(1100), 'en')
+    const crests = charactersPage(ep(1100), 'en').featuredOpen
     const ports = placesPage(ep(1100), 'en').open
     const later = [
       ...shelves.slice(1).flatMap((shelf) => shelf.open),
+      ...crests.slice(10),
       ...shelves.flatMap((shelf) => (shelf.arc.open ? [shelf.arc.record] : [])),
       ...ports.slice(3),
     ]
@@ -485,9 +487,13 @@ describe('the slice of the archive a page is given', () => {
         deferred: true,
       })
     }
-    const inline = [...ports.slice(0, 3), ...(shelves.at(0)?.open ?? [])]
+    const inline = [
+      ...ports.slice(0, 3),
+      ...crests.slice(0, 10),
+      ...(shelves.at(0)?.open ?? []),
+    ]
 
-    expect(inline.length).toBeGreaterThan(3)
+    expect(inline.length).toBeGreaterThan(13)
 
     for (const record of inline) {
       expect(record.visual.strokes.length, record.id).toBeGreaterThan(0)
@@ -503,6 +509,7 @@ describe('the slice of the archive a page is given', () => {
     for (const bookmark of latest) {
       for (const locale of LOCALES) {
         const pages = {
+          characters: charactersPage(bookmark, locale),
           shelves: shelvesPage(bookmark, locale),
           places: placesPage(bookmark, locale),
           fruits: fruitSheet(bookmark, locale),

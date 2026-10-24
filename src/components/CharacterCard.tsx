@@ -6,6 +6,7 @@ import { CharacterCrest } from '~/components/CharacterCrest'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { useLocale } from '~/i18n/LocaleContext'
 import { useSeriesParams, useThreshold } from '~/lib/progress/BookmarkContext'
+import { useDrawing } from '~/lib/view/drawings'
 import type { CharacterView, Slot } from '~/lib/view/records'
 import { morphPart, travelWith, useTravels } from '~/styles/morph'
 import {
@@ -91,6 +92,7 @@ function CardLink({
   // ponytail: a modified click that opens a tab also sets it; harmless, the
   // names pair only on this tab's next navigation.
   const travels = useTravels('character', record.id)
+  const { ref, strokes } = useDrawing(record.id, record.visual)
 
   return (
     <Link
@@ -102,12 +104,13 @@ function CardLink({
       {...stylex.props(styles.link)}
     >
       <span
+        ref={ref}
         {...stylex.props(
           styles.frame,
           travels && morphPart('character', record.id, 'art'),
         )}
       >
-        <CharacterCrest visual={record.visual} />
+        <CharacterCrest visual={{ ...record.visual, strokes }} />
       </span>
       <NameAndRole
         highlight={highlight}

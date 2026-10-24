@@ -57,7 +57,11 @@ export function charactersPage(r: Reader): CharactersPage {
   const featured = r.split(r.archive.featuredCharacters, searchableOf)
 
   return {
-    featuredOpen: featured.open,
+    // The crests' strokes were most of the served page, and past the first
+    // two rows of the widest grid they are below the fold: they come by id.
+    featuredOpen: featured.open.map((crest, index) =>
+      index < INLINE_CRESTS ? crest : deferredOf(crest),
+    ),
     featuredCovered: featured.covered,
     shelfCount: r.archive.bookSections.length,
     filed: r.archive.characters.length,
@@ -108,6 +112,9 @@ export function drawingsFor(
     }),
   )
 }
+
+/** How many featured crests ship their drawings with them: two rows of five. */
+const INLINE_CRESTS = 10
 
 /** How many shelves ship their drawings with them. */
 const INLINE_SHELVES = 1
