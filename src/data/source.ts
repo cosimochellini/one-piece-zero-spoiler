@@ -16,9 +16,9 @@ import type { BookSection, Entity, SeriesArchive } from './types'
  *
  * A fact of one source only is gated rather than filtered: its gate carries
  * the source (`gateOf`), and `reveal(bookmark).sees` never opens it for the
- * other. The lists of facts below are filtered as well, so a page that reads
- * every fact regardless of the bookmark, as the onboarding does, cannot send
- * one either.
+ * other. Except a fruit's eaters, which its page covers one by one: an eater
+ * the reader does not have is left out, by the gate of the entry that names
+ * it, which carries the eater's source as well as its own.
  *
  * `null` is the copy for a reader with no bookmark, who counts in neither
  * source and so has neither kind.
@@ -27,7 +27,7 @@ import type { BookSection, Entity, SeriesArchive } from './types'
 /** Each archive's copies, built once per source and kept with the archive. */
 const copies = new WeakMap<SeriesArchive, Map<null | Source, SeriesArchive>>()
 
-/** The archive without the records and facts of the source it is not. */
+/** The archive without the records of the source it is not. */
 export function archiveIn(
   archive: SeriesArchive,
   source: null | Source,
@@ -75,15 +75,7 @@ function copyIn(archive: SeriesArchive, source: null | Source): SeriesArchive {
     getShip: (id) => found(archive.getShip(id)),
     fruitsOfForm: (form) => kept(archive.fruitsOfForm(form)),
     chartWith: (entity) => kept(archive.chartWith(entity)),
-    // A fact's gate carries its record's source as well as its own.
-    stories: archive.stories.filter((story) => has(story.gate)),
     eatersOf: (id) => archive.eatersOf(id).filter((eater) => has(eater.gate)),
-    nativesOf: (id) =>
-      archive.nativesOf(id).filter((native) => has(native.gate)),
-    datedOf: (owner, field) =>
-      archive.datedOf(owner, field).filter((entry) => has(entry.gate)),
-    redrawn: (owner) =>
-      archive.redrawn(owner).filter((entry) => has(entry.gate)),
   }
 }
 
