@@ -1,4 +1,4 @@
-import { act, fireEvent, screen, within } from '@testing-library/react'
+import { act, fireEvent, render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it, vi } from 'vitest'
 
@@ -9,6 +9,7 @@ import { at, coveredRecord, peekTo, port, ship, stop } from '~/test/fixtures'
 import { ep, renderWithProviders, settle } from '~/test/providers'
 
 import { SeaChart } from './SeaChart'
+import { useChartOrientation } from './useChartOrientation'
 
 const eastBlue = [
   stop({
@@ -63,7 +64,7 @@ const fogged = [
   coveredRecord({ kind: 'place', handle: 'h2', ...at(70) }),
 ]
 
-/** Draws the chart; the first of its two orientations is the one checked. */
+/** Draws the chart in a wide window, so across. */
 function draw({
   bookmark,
   covered = [],
@@ -86,10 +87,18 @@ function draw({
       open={open}
       peekPort={peekPort}
       sagas={sagas}
+      served="across"
       ships={ships}
     />,
     { bookmark },
   )
+}
+
+/** The orientation a page served upright draws, each render noted. */
+function Served({ drawn }: { drawn: string[] }): string {
+  const orientation = useChartOrientation('down')
+  drawn.push(orientation)
+  return orientation
 }
 
 /** The stops of the chart drawn across. */
@@ -103,12 +112,46 @@ function stops(): HTMLElement {
 }
 
 describe('SeaChart', () => {
-  it('draws it twice, across and upright, for the stylesheet to pick', () => {
-    draw({ bookmark: ep(30), open: eastBlue, covered: fogged })
+  it('draws it once, across in a wide window', () => {
+    const { container } = draw({
+      bookmark: ep(30),
+      open: eastBlue,
+      covered: fogged,
+    })
 
     expect(
       screen.getAllByRole('list', { name: 'Map of the places' }),
-    ).toHaveLength(2)
+    ).toHaveLength(1)
+    expect(container.querySelector('[data-chart-orientation]')).toHaveAttribute(
+      'data-chart-orientation',
+      'across',
+    )
+  })
+
+  it('stands it upright in a narrow window', () => {
+    const wide = matchMedia
+    const narrow = vi
+      .spyOn(globalThis, 'matchMedia')
+      .mockImplementation((media) =>
+        Object.assign(wide(media), { matches: true }),
+      )
+    const { container } = draw({ bookmark: ep(30), open: eastBlue })
+    narrow.mockRestore()
+
+    expect(container.querySelector('[data-chart-orientation]')).toHaveAttribute(
+      'data-chart-orientation',
+      'down',
+    )
+  })
+
+  it('hydrates in the orientation served, then takes the window’s', () => {
+    const drawn: string[] = []
+    const container = document.createElement('div')
+    container.textContent = 'down'
+    render(<Served drawn={drawn} />, { container, hydrate: true })
+
+    expect(drawn).toStrictEqual(['down', 'across'])
+    expect(container).toHaveTextContent('across')
   })
 
   it('offers no way back to a saga with no bookmark', () => {
@@ -129,7 +172,7 @@ describe('SeaChart', () => {
       screen.getAllByRole('img', {
         name: 'Map of the places. 2 stops under fog',
       }),
-    ).toHaveLength(2)
+    ).toHaveLength(1)
     expect(screen.getByText('2 stops under fog')).toBeInTheDocument()
     expect(
       screen.getByRole('button', { name: 'Set your bookmark' }),
@@ -160,7 +203,7 @@ describe('SeaChart', () => {
       screen.getAllByRole('img', {
         name: 'Map of the places. Stop 3 of 5. Baratie. 2 stops under fog',
       }),
-    ).toHaveLength(2)
+    ).toHaveLength(1)
   })
 
   it('says a fogged stop’s number and episode, and nothing else', () => {
@@ -217,10 +260,10 @@ describe('SeaChart', () => {
     }))
     const { container } = draw({ bookmark: ep(30), open: crowded })
 
-    expect(container.querySelectorAll('[data-chart-name]')).toHaveLength(4)
+    expect(container.querySelectorAll('[data-chart-name]')).toHaveLength(2)
 
     for (const entry of crowded) {
-      expect(screen.getAllByText(entry.name)).toHaveLength(2)
+      expect(screen.getByText(entry.name)).toBeInTheDocument()
     }
   })
 
@@ -307,7 +350,7 @@ describe('SeaChart', () => {
 
     // The Sunny stands at Enies Lobby; the Merry, whose stretch ends there
     // too, is left out while the Sunny covers her.
-    expect(container.querySelectorAll(':scope button > svg')).toHaveLength(2)
+    expect(container.querySelectorAll(':scope button > svg')).toHaveLength(1)
 
     const here = within(stops()).getByRole('link', { current: 'location' })
 
@@ -328,8 +371,8 @@ describe('SeaChart', () => {
       ships: [merry, sunny],
     })
 
-    // One ship mark per orientation for each of the two ships.
-    expect(container.querySelectorAll(':scope button > svg')).toHaveLength(4)
+    // One ship mark for each of the two ships.
+    expect(container.querySelectorAll(':scope button > svg')).toHaveLength(2)
   })
 
   it('draws no ship before the crew has one', () => {

@@ -15,14 +15,11 @@ import { useT } from '~/i18n/LocaleContext'
 import { isLocale } from '~/i18n/locales'
 import { describeNamedPage } from '~/routes/$locale/-head'
 import { usePeek } from '~/routes/$series/$locale/-peek'
+import { useScrollBackOnceTall } from '~/routes/$series/$locale/-scrollBack'
 import { liftCharacter, loadCharacters } from '~/server/api'
 
 import { seen, shelvesShown } from './-seen'
-import {
-  fetchShelves,
-  useScrollBackOnceTall,
-  useShelvesSource,
-} from './-shelves'
+import { fetchShelves, useShelvesSource } from './-shelves'
 
 export const Route = createFileRoute('/$series/$locale/characters/')({
   loader: async ({ context }) => {

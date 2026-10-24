@@ -370,9 +370,10 @@ tapped a link a friend sent. The list is in `src/lib/crawler.ts`.
   scripting off sees the main characters only, and past the first ten of them an
   empty seal where the drawing would be (#777). The landing page (East Blue
   under the dial for a visitor with no bookmark, the reader's arc and its
-  stories for one with a bookmark), the places list and a character page are
+  stories for one with a bookmark), the places chart and a character page are
   awaited instead: they are the page, and a reader with scripting off should get
-  them in full.
+  them in full. The places index under the chart is not: it follows once the
+  page has hydrated (#781, below).
 - The fruits page's HTML stops at the saga marquee and the control bar: the
   server sends the marquee's fruits, each plate's counts and the number filed
   (`loadFruits`). The plates and the saga and faction groups are a second server
@@ -415,6 +416,18 @@ tapped a link a friend sent. The list is in `src/lib/crawler.ts`.
   in a module-level cache, so a warm Worker skips it. A search or a pick only
   relights the stops. Locally, `/one-piece/en/places` at episode 1150 went from
   about 14.5 to 8.5 ms of CPU (#779).
+- The places page serves the chart in one orientation and no index. The server
+  cannot measure the window, so a phone's browser (`Sec-CH-UA-Mobile` or `Mobi`
+  in the user agent) gets the chart upright and every other one across; once the
+  page runs, `useChartOrientation` follows the window's width and turns it if
+  the guess was wrong. The index under it, whose data is in the payload already,
+  is drawn once the page has hydrated, and a reload is put back where the reader
+  left it (`useScrollBackOnceTall` in
+  `src/routes/$series/$locale/-scrollBack.ts`, shared with the character
+  shelves). A reader with scripting off gets the chart and each place's own
+  page, not the index. Measured back to back on one machine,
+  `/one-piece/en/places` at episode 1150 went from 8.8 to 5.0 ms of CPU and from
+  278 to 121 KB, and at episode 1 from 3.1 to 2.8 ms and 60 to 40 KB (#781).
 - Search runs on names folded once by the server, so a keystroke costs one
   folded query and a few hundred `indexOf` calls. The list below the field is
   deferred; the field itself never is.

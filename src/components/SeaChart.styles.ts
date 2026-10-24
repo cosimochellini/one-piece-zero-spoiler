@@ -13,8 +13,6 @@ import {
   tint,
 } from '~/styles/tokens.stylex'
 
-/** Below this width the chart stands upright and the route runs down. */
-const PHONE = '@media (max-width: 37.5rem)'
 const MOTION = '@media (prefers-reduced-motion: no-preference)'
 
 /** How long the route takes to draw itself in, from the origin to the ship. */
@@ -36,12 +34,8 @@ const TARGET = '2.75rem'
  */
 export const styles = stylex.create({
   chart: { gap: space.md, display: 'grid', justifyItems: 'start' },
-  across: {
-    display: { [PHONE]: 'none', default: 'block' },
-    maxWidth: '75rem',
-    width: '100%',
-  },
-  down: { display: { [PHONE]: 'block', default: 'none' }, width: '100%' },
+  across: { maxWidth: '75rem', width: '100%' },
+  down: { width: '100%' },
 
   // The window: the chart's proportions, its edge drawn, the world inside it
   // placed by the zoom. Across, a finger across pans; one down scrolls.

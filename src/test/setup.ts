@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom/vitest'
 // Registers the jest-dom matchers on Vitest's `expect` and augments the
 // matcher types via `declare module 'vitest'`.
+import { vi } from 'vitest'
 
 // No explicit `afterEach(cleanup)` here on purpose. Vitest runs with
 // `globals: true`, so Testing Library registers its own auto-cleanup, and a
@@ -59,5 +60,28 @@ if (
     if (dialog.dispatchEvent(cancel)) {
       dialog.close()
     }
+  })
+}
+
+/**
+ * jsdom has no `matchMedia`. A window that matches no query stands in, wide
+ * and with no preference, so the sea chart is drawn across; a test that
+ * needs a narrow window spies on it. Skipped under the plain Node
+ * environment, as above.
+ */
+if (
+  typeof document !== 'undefined'
+  && typeof globalThis.matchMedia !== 'function'
+) {
+  Object.defineProperty(globalThis, 'matchMedia', {
+    value: (media: string): MediaQueryList =>
+      Object.assign(new EventTarget(), {
+        matches: false,
+        media,
+        onchange: null,
+        addListener: vi.fn<() => void>(),
+        removeListener: vi.fn<() => void>(),
+      }),
+    writable: true,
   })
 }

@@ -13,17 +13,22 @@
  *   #728); theme is the project's locked system and does not rotate
  * · #676: the ships band at the foot is gone; each ship has her own page,
  *   reached from her peek on the chart */
-import { createFileRoute } from '@tanstack/react-router'
+import { ClientOnly, createFileRoute } from '@tanstack/react-router'
+import { createIsomorphicFn } from '@tanstack/react-start'
+import { getRequestHeader } from '@tanstack/react-start/server'
 import type { ReactElement } from 'react'
 
 import { ArchivePage } from '~/components/ArchivePage'
+import type { Orientation } from '~/components/chartGeometry'
 import { SeaChart } from '~/components/SeaChart'
+import { measuredOrientation } from '~/components/useChartOrientation'
 import { useT } from '~/i18n/LocaleContext'
 import { isLocale } from '~/i18n/locales'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
 import { parsePlaceParams } from '~/lib/search/placeParams'
 import { describeNamedPage } from '~/routes/$locale/-head'
 import { usePeek } from '~/routes/$series/$locale/-peek'
+import { useScrollBackOnceTall } from '~/routes/$series/$locale/-scrollBack'
 import { liftPort, loadPlaces } from '~/server/api'
 
 import { PlaceIndex } from './-index'
@@ -35,10 +40,12 @@ export const Route = createFileRoute('/$series/$locale/places/')({
   // unknown value falls back to its default.
   validateSearch: parsePlaceParams,
   // Awaited, not streamed: the chart is the page.
-  loader: async ({ context }) =>
-    loadPlaces({
+  loader: async ({ context }) => ({
+    ...(await loadPlaces({
       data: { series: context.series.slug, locale: context.locale },
-    }),
+    })),
+    served: servedOrientation(),
+  }),
   head: ({ match, params }) => {
     return isLocale(params.locale) ?
         describeNamedPage({
@@ -50,6 +57,9 @@ export const Route = createFileRoute('/$series/$locale/places/')({
         })
       : {}
   },
+  // The served chart's orientation is guessed from these request headers
+  // (`servedOrientation`), so the HTML varies by them too.
+  headers: () => ({ Vary: 'User-Agent, Sec-CH-UA-Mobile' }),
   component: PlacesPage,
 })
 
@@ -63,14 +73,22 @@ export const Route = createFileRoute('/$series/$locale/places/')({
  * page, and one line for the stops still under fog. The picks and the
  * search light the same stops on the chart and leave the rest faint. The
  * ships the crew sails travel on the chart, and each has a page of her own.
+ *
+ * The index is drawn only in the browser, once the page has hydrated: its
+ * data is in the payload already, and leaving it out of the served HTML
+ * keeps the render inside a Worker's CPU limit (#781). Each place's own page
+ * is served in full.
  */
 function PlacesPage(): ReactElement {
   const t = useT()
   const { bookmark } = useBookmark()
-  const { covered, filed, open, sagas, ships } = Route.useLoaderData()
+  const { covered, filed, open, sagas, served, ships } = Route.useLoaderData()
 
   const peekPort = usePeek(liftPort)
   const { lit, ...picks } = usePlacePicks(open)
+  // Always on: after a client visit the index is drawn at once, the page is
+  // already tall, and the hook stops at its first look.
+  useScrollBackOnceTall(true)
 
   return (
     <ArchivePage
@@ -84,14 +102,35 @@ function PlacesPage(): ReactElement {
         open={open}
         peekPort={peekPort}
         sagas={sagas}
+        served={served}
         ships={ships}
       />
-      <PlaceIndex
-        covered={covered}
-        open={open}
-        sagas={sagas}
-        {...picks}
-      />
+      <ClientOnly>
+        <PlaceIndex
+          covered={covered}
+          open={open}
+          sagas={sagas}
+          {...picks}
+        />
+      </ClientOnly>
     </ArchivePage>
   )
 }
+
+/**
+ * The orientation the server draws the chart in. It cannot measure the
+ * window, so a phone's browser (`Sec-CH-UA-Mobile`, or `Mobi` in the user
+ * agent) gets the chart upright and every other one across; the page turns
+ * it once it runs if the guess was wrong. Drawing one orientation instead of
+ * both halves the chart's render (#781).
+ */
+const servedOrientation = createIsomorphicFn()
+  .server((): Orientation =>
+    (
+      getRequestHeader('sec-ch-ua-mobile') === '?1'
+      || (getRequestHeader('user-agent') ?? '').includes('Mobi')
+    ) ?
+      'down'
+    : 'across',
+  )
+  .client(measuredOrientation)

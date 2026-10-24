@@ -33,6 +33,7 @@ import { FogPeek, ShipPeek, StopPeek } from '~/components/SeaChartPeek'
 import { ShipOnRoute } from '~/components/SeaChartPins'
 import { SeaChartStops } from '~/components/SeaChartStops'
 import { byKeys } from '~/components/useChartHands'
+import { useChartOrientation } from '~/components/useChartOrientation'
 import {
   type ChartPeek,
   type PeekProps,
@@ -54,18 +55,21 @@ import { useT } from '~/i18n/LocaleContext'
  * evenly to the fog's end. A sea is drawn and named only once the reader has
  * a stop in it; the rest is cloud.
  *
- * Drawn twice, across and upright, and the stylesheet shows the one that
- * fits. Across, the chart is a window that opens on the reader's saga and
- * zooms and pans (`useChartZoom`); crowded names move aside with a leader
- * rather than disappearing. Upright, on a phone, the whole chart runs down
- * the page and never moves. The open stops lead to their own pages; the stops under
- * fog are buttons that say their number and episode and nothing else. Every
- * stop and every ship opens a peek. A stop under fog's peek is veiled, and
- * its place comes from the server only when the reader asks.
+ * Drawn across or upright, whichever the window's width asks for: the server
+ * guesses from the browser, and the page takes the right one once it runs
+ * (`useChartOrientation`). Across, the chart is a window that opens on the
+ * reader's saga and zooms and pans (`useChartZoom`); crowded names move aside
+ * with a leader rather than disappearing. Upright, on a phone, the whole
+ * chart runs down the page and never moves. The open stops lead to their own
+ * pages; the stops under fog are buttons that say their number and episode
+ * and nothing else. Every stop and every ship opens a peek. A stop under
+ * fog's peek is veiled, and its place comes from the server only when the
+ * reader asks.
  */
 export function SeaChart(props: SeaChartProps): ReactElement {
   const t = useT()
   const { bookmark, covered, lit, open, sagas, ships } = props
+  const orientation = useChartOrientation(props.served)
   // The picks only light stops: a keystroke must not place the names again.
   const drawn = useMemo(
     () => modelOf({ bookmark, covered, open, sagas, ships }, t),
@@ -79,17 +83,12 @@ export function SeaChart(props: SeaChartProps): ReactElement {
       {props.bookmark === null ?
         <EpisodeMark placement="fold" />
       : null}
-      <div {...stylex.props(styles.across)}>
+      <div {...stylex.props(styles[orientation])}>
         <Chart
+          // The other orientation is another chart, its zoom and peek its own.
+          key={orientation}
           model={model}
-          orientation="across"
-          peekPort={props.peekPort}
-        />
-      </div>
-      <div {...stylex.props(styles.down)}>
-        <Chart
-          model={model}
-          orientation="down"
+          orientation={orientation}
           peekPort={props.peekPort}
         />
       </div>
