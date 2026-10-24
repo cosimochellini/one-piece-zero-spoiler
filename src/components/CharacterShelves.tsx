@@ -6,6 +6,7 @@ import { styles } from '~/components/CharacterGrid.styles'
 import { CharacterTile } from '~/components/CharacterTile'
 import { type Match, matchesIn } from '~/components/recordMatches'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
+import { Button } from '~/components/ui/Button'
 import { useT } from '~/i18n/LocaleContext'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
 import type {
@@ -28,7 +29,15 @@ import { stickyStyles } from '~/styles/sticky'
  * not — and a boundary that cannot be awaited would mean the shelves went
  * untested altogether.
  */
-export type ShelvesSource = null | Promise<ShelfView[]> | ShelfView[]
+export type ShelvesSource = null | Promise<Shelves> | Shelves
+
+/**
+ * The shelves as they came back, or `'failed'` when the call did not answer.
+ * A failure is a value rather than a rejection, so it stays on the shelves and
+ * never reaches the page's error boundary, which would take the crests and
+ * the search down with it.
+ */
+export type Shelves = 'failed' | ShelfView[]
 
 /** What the shelves need: the arcs, the live query, and a way to ask. */
 export interface CharacterShelvesProps {
@@ -42,6 +51,8 @@ export interface CharacterShelvesProps {
   fieldId: string
   /** The query, already folded. Empty matches everything. */
   needle: string
+  /** Asks for the shelves again after a failed call. */
+  onRetry: () => void
   peek: (handle: string) => Promise<CharacterView>
   shelves: ShelvesSource
   /** How many are coming, so the pending state reserves their height. */
@@ -63,6 +74,7 @@ export function CharacterShelves({
   shelfCount,
   fieldId,
   needle,
+  onRetry,
   peek,
 }: CharacterShelvesProps): ReactElement {
   const t = useT()
@@ -80,6 +92,7 @@ export function CharacterShelves({
             featured={featured}
             fieldId={fieldId}
             needle={needle}
+            onRetry={onRetry}
             peek={peek}
             shelves={shelves}
           />
@@ -99,17 +112,36 @@ function Shelves({
   shelves,
   fieldId,
   needle,
+  onRetry,
   peek,
 }: {
   featured: Set<string>
   fieldId: string
   needle: string
+  onRetry: () => void
   peek: (handle: string) => Promise<CharacterView>
-  shelves: Promise<ShelfView[]> | ShelfView[]
+  shelves: Promise<Shelves> | Shelves
 }): ReactElement {
+  const t = useT()
+  const sections = useShelves(shelves)
+
+  if (sections === 'failed') {
+    return (
+      <div>
+        <p
+          role="alert"
+          {...stylex.props(styles.shelvesPending)}
+        >
+          {t('dialog.loadFailed')}
+        </p>
+        <Button onClick={onRetry}>{t('dialog.retry')}</Button>
+      </div>
+    )
+  }
+
   return (
     <>
-      {useShelves(shelves).map((section, index) => {
+      {sections.map((section, index) => {
         // The heading id is built from the shelf's position, not the arc's:
         // the id of a covered arc is its name slug, and it would end up in
         // the markup on `aria-labelledby`. The React key is the arc's own
@@ -143,7 +175,7 @@ function Shelves({
  * `use` is not a hook: it may sit in a branch, which is what lets the array
  * form skip it entirely.
  */
-function useShelves(source: Promise<ShelfView[]> | ShelfView[]): ShelfView[] {
+function useShelves(source: Promise<Shelves> | Shelves): Shelves {
   return source instanceof Promise ? use(source) : source
 }
 

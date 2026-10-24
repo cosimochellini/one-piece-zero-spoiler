@@ -76,6 +76,7 @@ function book({
     <CharacterGrid
       featuredCovered={featuredCovered}
       featuredOpen={featuredOpen}
+      onRetry={vi.fn<() => void>()}
       peek={peekPending()}
       shelfCount={shelves.length}
       shelves={shelves}
@@ -97,6 +98,7 @@ function chapterBook(peek: (handle: string) => Promise<CharacterView>): void {
     <CharacterGrid
       featuredCovered={[]}
       featuredOpen={[]}
+      onRetry={vi.fn<() => void>()}
       peek={peek}
       shelfCount={1}
       shelves={[
@@ -345,6 +347,7 @@ describe('CharacterGrid', () => {
         <CharacterGrid
           featuredCovered={[robinCovered]}
           featuredOpen={[luffy, nami]}
+          onRetry={vi.fn<() => void>()}
           peek={peekPending()}
           shelfCount={2}
           shelves={shelves()}
@@ -359,6 +362,29 @@ describe('CharacterGrid', () => {
       ).not.toBeInTheDocument()
     },
   )
+
+  it('says the shelves failed, keeps the crests and the search, and asks again', async () => {
+    const user = userEvent.setup()
+    const onRetry = vi.fn<() => void>()
+    renderWithProviders(
+      <CharacterGrid
+        featuredCovered={[robinCovered]}
+        featuredOpen={[luffy, nami]}
+        onRetry={onRetry}
+        peek={peekPending()}
+        shelfCount={2}
+        shelves="failed"
+      />,
+    )
+
+    expect(screen.getByRole('alert')).toHaveTextContent('Loading failed')
+    expect(screen.getByRole('searchbox')).toBeInTheDocument()
+    expect(screen.getAllByRole('link', { name: /Nami/u })).toHaveLength(1)
+
+    await user.click(screen.getByRole('button', { name: 'Try again' }))
+
+    expect(onRetry).toHaveBeenCalledTimes(1)
+  })
 
   it('says so when nothing is under fog', () => {
     book({ featuredCovered: [], shelves: [eastBlue] })

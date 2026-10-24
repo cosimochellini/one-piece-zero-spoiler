@@ -1,5 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
+import type { ShelvesSource } from '~/components/CharacterShelves'
 import type { Locale } from '~/i18n/locales'
 import { type Plain, plain } from '~/lib/plain'
 import type { ShelfView } from '~/lib/view/records'
@@ -26,7 +27,7 @@ type Loader = (input: {
   context: { locale: Locale; series: { slug: string } }
 }) => Promise<{
   page: Awaited<ReturnType<typeof loadCharacters>>
-  shelves: null | Promise<ShelfView[]> | ShelfView[]
+  shelves: ShelvesSource
 }>
 
 /** Only the locale is read; the generated route context needs a full router. */
@@ -87,6 +88,15 @@ describe('characters route loader', () => {
     response.deliver()
 
     await expect(data.shelves).resolves.toStrictEqual(shelves)
+  })
+
+  it('answers failed rather than rejecting when the shelves call fails', async () => {
+    vi.stubEnv('SSR', false)
+    vi.mocked(loadShelves).mockRejectedValue(new TypeError('Failed to fetch'))
+
+    const data = await load()
+
+    await expect(data.shelves).resolves.toBe('failed')
   })
 
   it('keeps client loader data pending until replacement shelves have arrived', async () => {

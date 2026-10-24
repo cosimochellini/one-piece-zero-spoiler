@@ -1,28 +1,36 @@
 import { useElementScrollRestoration } from '@tanstack/react-router'
 import { useEffect, useSyncExternalStore } from 'react'
 
+import type { Shelves, ShelvesSource } from '~/components/CharacterShelves'
 import type { Locale } from '~/i18n/locales'
 import { readPlain } from '~/lib/plain'
 import { useSeriesParams } from '~/lib/progress/BookmarkContext'
-import type { ShelfView } from '~/lib/view/records'
 import { loadShelves } from '~/server/api'
 
 // The shelves the browser asks for itself, for the served page that has
 // none (#776). A sibling of the route rather than in it: a route file exports
 // components only, so Fast Refresh can keep their state.
 
-/** The shelves, asked for from the browser and read back from plain JSON. */
+/**
+ * The shelves, asked for from the browser and read back from plain JSON. A
+ * call that fails (offline, a server error) answers `'failed'` instead of
+ * rejecting, so the shelves can offer to ask again and nothing else breaks.
+ */
 export async function fetchShelves(
   series: string,
   locale: Locale,
-): Promise<ShelfView[]> {
-  return readPlain(await loadShelves({ data: { series, locale } }))
+): Promise<Shelves> {
+  try {
+    return await readPlain(await loadShelves({ data: { series, locale } }))
+  } catch {
+    return 'failed'
+  }
 }
 
 // The shelves asked for after the served page, by the page they belong to:
 // a Back to that same page finds them here, already read, instead of the
 // shorter loading placeholders.
-const late = new WeakMap<object, Promise<ShelfView[]>>()
+const late = new WeakMap<object, Promise<Shelves>>()
 
 /** Once the page has hydrated it stays hydrated: there is nothing to hear. */
 function subscribeNothing(): () => void {
@@ -40,8 +48,8 @@ function unsubscribeNothing(): void {
  */
 export function useShelvesSource(
   page: object,
-  shelves: null | Promise<ShelfView[]> | ShelfView[],
-): null | Promise<ShelfView[]> | ShelfView[] {
+  shelves: ShelvesSource,
+): ShelvesSource {
   const { locale, series } = useSeriesParams()
   const hydrated = useSyncExternalStore(
     subscribeNothing,

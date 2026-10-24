@@ -6,7 +6,7 @@
  *   answer a search"
  * · differs from the previous build (Map / Diagram) on macrostructure; theme
  *   is the project's locked system and does not rotate */
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, useRouter } from '@tanstack/react-router'
 import { type ReactElement, useEffect } from 'react'
 
 import { ArchivePage } from '~/components/ArchivePage'
@@ -35,6 +35,8 @@ export const Route = createFileRoute('/$series/$locale/characters/')({
       return { page: await loadCharacters({ data }), shelves: null }
     }
 
+    // Never rejects (a failed call answers `'failed'`), so it cannot go
+    // unhandled if the page call below throws first.
     const shelves = fetchShelves(data.series, data.locale)
     const page = await loadCharacters({ data })
 
@@ -72,6 +74,7 @@ export const Route = createFileRoute('/$series/$locale/characters/')({
  */
 function CharactersPage(): ReactElement {
   const t = useT()
+  const router = useRouter()
   const { page, shelves } = Route.useLoaderData()
   const source = useShelvesSource(page, shelves)
   useScrollBackOnceTall(shelves === null)
@@ -88,6 +91,12 @@ function CharactersPage(): ReactElement {
       <CharacterGrid
         featuredCovered={page.featuredCovered}
         featuredOpen={page.featuredOpen}
+        onRetry={() => {
+          // The loader runs again in the browser and waits for the shelves.
+          void router.invalidate({
+            filter: (match) => match.routeId === Route.id,
+          })
+        }}
         peek={peek}
         shelfCount={page.shelfCount}
         shelves={source}

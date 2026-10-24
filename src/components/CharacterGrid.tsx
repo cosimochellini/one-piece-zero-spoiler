@@ -14,6 +14,7 @@ import { CharacterCard } from '~/components/CharacterCard'
 import { styles } from '~/components/CharacterGrid.styles'
 import {
   CharacterShelves,
+  type Shelves,
   type ShelvesSource,
 } from '~/components/CharacterShelves'
 import { FogBand, type FogTitles } from '~/components/FogBand'
@@ -47,6 +48,8 @@ export interface CharacterGridProps {
   /** The characters in evidence: the ones drawn as crests. */
   featuredCovered: CoveredRecord[]
   featuredOpen: SearchableCharacter[]
+  /** Asks for the shelves again after a failed call. */
+  onRetry: () => void
   peek: (handle: string) => Promise<CharacterView>
   /**
    * The shelves, asked for once the page is up. The crests are above the
@@ -78,6 +81,7 @@ export function CharacterGrid({
   featuredCovered,
   shelves,
   shelfCount,
+  onRetry,
   peek,
 }: CharacterGridProps): ReactElement {
   const t = useT()
@@ -125,6 +129,7 @@ export function CharacterGrid({
         featured={new Set(featuredOpen.map((entry) => entry.id))}
         fieldId={fieldId}
         needle={needle}
+        onRetry={onRetry}
         peek={peek}
         shelfCount={shelfCount}
         shelves={shelves}
@@ -133,7 +138,7 @@ export function CharacterGrid({
   )
 }
 
-/** The count's place while the shelves are on their way. */
+/** The count's place while the shelves are on their way, or did not come. */
 function StatusPending(): ReactElement {
   return (
     <p
@@ -155,10 +160,30 @@ function SearchStatus({
 }: {
   needle: string
   query: string
-  shelves: Promise<ShelfView[]> | ShelfView[]
+  shelves: Promise<Shelves> | Shelves
+}): ReactElement {
+  const sections = shelves instanceof Promise ? use(shelves) : shelves
+
+  return sections === 'failed' ?
+      <StatusPending />
+    : <SearchCount
+        needle={needle}
+        query={query}
+        sections={sections}
+      />
+}
+
+/** The count itself, once the shelves are here. */
+function SearchCount({
+  sections,
+  needle,
+  query,
+}: {
+  needle: string
+  query: string
+  sections: ShelfView[]
 }): ReactElement {
   const t = useT()
-  const sections = shelves instanceof Promise ? use(shelves) : shelves
   const open = sections.flatMap((section) => section.open)
   const count = matchesIn(open, needle).length
   const empty = query !== '' && count === 0
