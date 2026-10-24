@@ -1,4 +1,6 @@
 import * as stylex from '@stylexjs/stylex'
+import { readFileSync } from 'node:fs'
+import path from 'node:path'
 import type { ReactElement } from 'react'
 import { describe, expect, it } from 'vitest'
 
@@ -63,6 +65,14 @@ const FLOORS = [
   { token: 'focus', floor: 3 },
 ] as const
 
+/** The comments the ratios are recorded in, beside each palette. */
+const RECORDS = ['tokens.stylex.ts', 'themes.ts']
+  .map((file) =>
+    // eslint-disable-next-line security/detect-non-literal-fs-filename -- one of the two constant names above, beside this test.
+    readFileSync(path.join(import.meta.dirname, file), 'utf8'),
+  )
+  .join('\n')
+
 const THEMED: [string, Palette][] = [
   ['the neutral theme', NEUTRAL],
   ...Object.entries(PALETTES),
@@ -90,6 +100,18 @@ describe.each(THEMED)('%s', (_name, palette) => {
       }
     },
   )
+
+  it('matches the contrast recorded beside it', () => {
+    const on = (token: keyof Palette): string =>
+      `${contrast(palette[token], palette.paper).toFixed(1)}:1`
+
+    expect(RECORDS).toContain(
+      `ink   ${on('ink')}   ink2  ${on('ink2')}   muted  ${on('muted')}   accent  ${on('accent')}   focus  ${on('focus')}`,
+    )
+    expect(RECORDS).toContain(
+      `\`accentInk\` on \`accent\` is ${contrast(palette.accentInk, palette.accent).toFixed(1)}:1`,
+    )
+  })
 
   it('keeps text on the accent at 4.5:1 or more', () => {
     expect(contrast(palette.accentInk, palette.accent)).toBeGreaterThanOrEqual(
