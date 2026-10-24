@@ -5,6 +5,7 @@ import type { ReactElement } from 'react'
 import { EpisodeMark } from '~/components/EpisodeMark'
 import { LocaleSwitch } from '~/components/LocaleSwitch'
 import { useLocale } from '~/i18n/LocaleContext'
+import { useBookmark } from '~/lib/progress/BookmarkContext'
 import {
   color,
   dur,
@@ -33,6 +34,7 @@ import {
  */
 export function SiteBar(): ReactElement {
   const { locale, t } = useLocale()
+  const { series } = useBookmark()
 
   return (
     <header {...stylex.props(styles.bar)}>
@@ -73,7 +75,7 @@ export function SiteBar(): ReactElement {
           {t('nav.fruits')}
         </Link>
       </nav>
-      <EpisodeMark />
+      {series !== null && <EpisodeMark />}
       <LocaleSwitch />
     </header>
   )

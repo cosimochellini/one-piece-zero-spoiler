@@ -1,5 +1,6 @@
 import { type SyntheticEvent, useState } from 'react'
 
+import { useBookmark } from './BookmarkContext'
 import {
   type Bookmark,
   type Draft,
@@ -7,6 +8,7 @@ import {
   type DraftProblem,
   gradeDraft,
 } from './episode'
+import { ONE_PIECE_BOOKMARK } from './series'
 
 /** A bookmark under edit, and what its fields and its form are handed. */
 export interface BookmarkDraft {
@@ -39,7 +41,8 @@ export function useBookmarkDraft(
 ): BookmarkDraft {
   const [draft, setDraft] = useState<Draft>(() => draftOf(from))
   const [touched, setTouched] = useState(false)
-  const graded = gradeDraft(draft)
+  const series = useBookmark().series ?? ONE_PIECE_BOOKMARK
+  const graded = gradeDraft(draft, series)
 
   return {
     canSave: graded.bookmark !== null,

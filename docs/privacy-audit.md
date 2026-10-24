@@ -5,12 +5,12 @@ remaining provider/controller facts; it is not a legal certification.
 
 ## Application inventory
 
-| Item           | Value/purpose                                                  | Lifetime and destination                                                                                                      | Source                                                                   |
-| -------------- | -------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| `opzs_ep`      | Episode, chapter or live-action bookmark for spoiler filtering | 31,536,000 seconds (365 days) after saving, or deletion; sent with applicable same-origin requests                            | `src/lib/progress/BookmarkProvider.tsx`, `episode.ts`, `linkBookmark.ts` |
-| `opzs_lang`    | Chosen `it`/`en` locale                                        | 365 days after choosing; sent with applicable same-origin requests                                                            | `src/components/LocaleSwitch.tsx`, `src/i18n/locales.ts`                 |
-| `opzs_try`     | Temporary introductory bookmark                                | Session, no `Max-Age`; expired when saving/clearing a bookmark or leaving the trial; browser restore may preserve the session | `src/lib/progress/BookmarkProvider.tsx`, `bounds.ts`                     |
-| `opzs_welcome` | One-time welcome flag, value `1`                               | `sessionStorage`, consumed on the home page or removed with the tab session; not sent to the server                           | `src/lib/progress/welcome.ts`                                            |
+| Item               | Value/purpose                                                  | Lifetime and destination                                                                                                      | Source                                                                   |
+| ------------------ | -------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `zs_one-piece`     | Episode, chapter or live-action bookmark for spoiler filtering | 31,536,000 seconds (365 days) after saving, or deletion; sent with applicable same-origin requests                            | `src/lib/progress/BookmarkProvider.tsx`, `episode.ts`, `linkBookmark.ts` |
+| `opzs_lang`        | Chosen `it`/`en` locale                                        | 365 days after choosing; sent with applicable same-origin requests                                                            | `src/components/LocaleSwitch.tsx`, `src/i18n/locales.ts`                 |
+| `zs_one-piece_try` | Temporary introductory bookmark                                | Session, no `Max-Age`; expired when saving/clearing a bookmark or leaving the trial; browser restore may preserve the session | `src/lib/progress/BookmarkProvider.tsx`, `bounds.ts`                     |
+| `opzs_welcome`     | One-time welcome flag, value `1`                               | `sessionStorage`, consumed on the home page or removed with the tab session; not sent to the server                           | `src/lib/progress/welcome.ts`                                            |
 
 All three cookies are first party, host-only (no `Domain`) with `Path=/` and
 `SameSite=Lax`; neither `Secure` nor `HttpOnly` is currently written. Production
@@ -94,7 +94,7 @@ A fresh headless Chrome visit to `/en` observed requests only to the production
 origin and no initial cookies, localStorage or sessionStorage values before user
 interaction. This is a point-in-time observation, not a claim about all future
 provider behavior. A separate fresh browser opened the supported shared-link
-flow and changed the language through its control: observed `opzs_ep` and
+flow and changed the language through its control: observed `zs_one-piece` and
 `opzs_lang` both had 365-day expiry, `/` path, `SameSite=Lax`, host-only domain,
 and `Secure: false` / `HttpOnly: false`, matching the source inventory.
 

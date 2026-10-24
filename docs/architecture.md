@@ -8,7 +8,7 @@ code comments next to the code they explain.
 
 The archive is 737 records and their line drawings, about 2.7 MB of TypeScript.
 None of it is compiled into the client bundle. A route loader reads the
-`opzs_ep` cookie from the request and returns the records at or below the
+`zs_one-piece` cookie from the request and returns the records at or below the
 bookmark, with their strings already in the page's locale and their drawings
 already turned into stroke paths. A record the reader has not reached is sent as
 its kind, two thresholds and an opaque handle:
@@ -36,15 +36,32 @@ The cost is one round trip. Moving the bookmark used to be instant because every
 record was already in the browser. Now it is a request, made inside a
 `useTransition`, so the current page stays on screen until the new one is ready.
 
-A link can set the bookmark as well: `?ep=650`, `?s=2&ep=3` or `?ch=1044` on any
-page. A request middleware in `src/start.ts` runs before routing, writes the
-`opzs_ep` cookie and sends the reader on to the same address without those
-parameters, so the page that renders reads the new cookie like any other, and a
-reload cannot undo a bookmark moved since. The hop is a meta refresh rather than
-a 302, because Netlify appends the request's query string to any `Location`
-without one, and the link would redirect to itself. A value outside the dialog's
-ranges, a season without an episode, a chapter next to an episode or a repeated
-parameter leaves the cookie as it was and still drops the parameters.
+A link can set the bookmark as well: `?ep=650`, `?s=2&ep=3` or `?ch=1044` on a
+series content page. Root, legal, privacy and unknown paths drop these
+parameters without creating a bookmark. A request middleware in `src/start.ts`
+runs before routing, writes the `zs_one-piece` cookie and sends the reader on to
+the same address without those parameters, so the page that renders reads the
+new cookie like any other, and a reload cannot undo a bookmark moved since. The
+hop is a meta refresh rather than a 302, because Netlify appends the request's
+query string to any `Location` without one, and the link would redirect to
+itself. A value outside the dialog's ranges, a season without an episode, a
+chapter next to an episode or a repeated parameter leaves the cookie as it was
+and still drops the parameters.
+
+Each series has its own saved and trial cookies, ranges, demo bounds and season
+table in the public bookmark metadata (`src/lib/progress/series.ts`), separate
+from the server-only archive. Existing locale-first content pages still select
+One Piece until #753 moves the routes; the server functions remain explicitly
+bound to One Piece in the meantime. The provider resets its state when the route
+changes series.
+
+The same request middleware reads legacy `opzs_ep` and `opzs_try` cookies once,
+validates them as One Piece bookmarks and writes `zs_one-piece` and
+`zs_one-piece_try`, then expires the legacy cookies. It updates the incoming
+cookie header before loaders run, so the first response keeps the old progress.
+An existing new cookie wins even when invalid; a valid shared-link bookmark wins
+over migration. Saved bookmarks keep their one-year lifetime, and trials remain
+session cookies.
 
 The landing page for a visitor with no bookmark is the one exception, and its
 limit is fixed. It sends East Blue (episodes 1–61, chapters 1–100) so a dial can
@@ -52,10 +69,10 @@ open and cover those records in the browser as it moves, and nothing past it:
 every record and every dated fact it carries is inside both limits, and past
 them there are only covered records and a count. A test holds the payload to
 that, in both units. An open card on that page links to its record's page on a
-trial: an `opzs_try` cookie with no `Max-Age`, which normally ends when the
-browser closes and counts as the bookmark only while there is no `opzs_ep`. A
-trial past East Blue or in seasons is ignored, so it cannot be used to reach
-anything the dial could not.
+trial: a `zs_one-piece_try` cookie with no `Max-Age`, which normally ends when
+the browser closes and counts as the bookmark only while there is no
+`zs_one-piece`. A trial past East Blue or in seasons is ignored, so it cannot be
+used to reach anything the dial could not.
 
 Search follows the same rule, by construction: a covered character is not on the
 page, so it cannot be found. Search matches only the epithets the reader has

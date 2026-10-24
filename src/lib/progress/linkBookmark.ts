@@ -1,12 +1,12 @@
 import { COOKIE_MAX_AGE_SECONDS, serializeCookie } from '~/lib/cookies'
 import { SERVER_FN_BASE } from '~/lib/endpoints'
 
+import { type Bookmark, parseBookmark, serialiseBookmark } from './episode'
 import {
-  type Bookmark,
-  EPISODE_COOKIE,
-  parseBookmark,
-  serialiseBookmark,
-} from './episode'
+  type BookmarkSeries,
+  ONE_PIECE_BOOKMARK,
+  seriesForPath,
+} from './series'
 
 /** The query parameters a shared link can carry a bookmark in. */
 const LINK_PARAMS = ['ep', 's', 'ch'] as const
@@ -57,7 +57,10 @@ function linkForm(
  * `parseBookmark`, so a link can name exactly the bookmarks the dialog can
  * save and nothing else. Anything ambiguous fails closed with `null`.
  */
-export function bookmarkFromSearch(search: URLSearchParams): Bookmark {
+export function bookmarkFromSearch(
+  search: URLSearchParams,
+  series: BookmarkSeries = ONE_PIECE_BOOKMARK,
+): Bookmark {
   const ep = linkValue(search, 'ep')
   const season = linkValue(search, 's')
   const chapter = linkValue(search, 'ch')
@@ -65,7 +68,7 @@ export function bookmarkFromSearch(search: URLSearchParams): Bookmark {
     return null
   }
 
-  return parseBookmark(linkForm(ep, season, chapter))
+  return parseBookmark(linkForm(ep, season, chapter), series)
 }
 
 /**
@@ -97,7 +100,7 @@ export function linkRedirect(request: Request): Response | undefined {
     return undefined
   }
 
-  const bookmark = bookmarkFromSearch(url.searchParams)
+  const cookie = cookieFromLink(url)
   for (const name of LINK_PARAMS) {
     url.searchParams.delete(name)
   }
@@ -116,19 +119,28 @@ export function linkRedirect(request: Request): Response | undefined {
     'Cache-Control': 'no-store',
     'Content-Type': 'text/html; charset=utf-8',
   })
-  if (bookmark !== null) {
-    headers.set(
-      'Set-Cookie',
-      serializeCookie(
-        EPISODE_COOKIE,
-        serialiseBookmark(bookmark),
-        COOKIE_MAX_AGE_SECONDS,
-      ),
-    )
+  if (cookie !== null) {
+    headers.set('Set-Cookie', cookie)
   }
 
   return new Response(
     `<!doctype html><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=${target}"><a href="${target}">Zero Spoiler</a>`,
     { status: 200, headers },
   )
+}
+
+/** A link can write only the bookmark of a recognised series content path. */
+function cookieFromLink(url: URL): null | string {
+  const series = seriesForPath(url.pathname)
+  if (series === null) {
+    return null
+  }
+  const bookmark = bookmarkFromSearch(url.searchParams, series)
+  return bookmark === null ? null : (
+      serializeCookie(
+        series.cookie,
+        serialiseBookmark(bookmark),
+        COOKIE_MAX_AGE_SECONDS,
+      )
+    )
 }

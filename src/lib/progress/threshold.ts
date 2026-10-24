@@ -6,6 +6,7 @@ import {
   bookmarkValue,
   thresholdValue,
 } from './episode'
+import type { BookmarkSeries } from './series'
 import type { Gated } from './spoiler'
 
 /**
@@ -33,6 +34,7 @@ export interface ThresholdDescription {
   gated: Gated
   mode: BookmarkMode
   sentence: ThresholdSentence
+  series?: BookmarkSeries
   t: Translate
 }
 
@@ -42,8 +44,11 @@ export function describeThreshold({
   sentence,
   gated,
   mode,
+  series,
 }: ThresholdDescription): string {
-  return t(`${sentence}.${mode}`, { threshold: thresholdValue(gated, mode) })
+  return t(`${sentence}.${mode}`, {
+    threshold: thresholdValue(gated, mode, series),
+  })
 }
 
 /** The sentences that name the reader's own bookmark. */

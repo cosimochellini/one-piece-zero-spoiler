@@ -15,15 +15,32 @@ import {
 } from '~/lib/cookies'
 
 import { BookmarkContext, type BookmarkContextValue } from './BookmarkContext'
-import { TRIAL_COOKIE } from './bounds'
-import { type Bookmark, EPISODE_COOKIE, serialiseBookmark } from './episode'
+import { type Bookmark, serialiseBookmark } from './episode'
+import type { BookmarkSeries } from './series'
+
+/** Site-wide pages have no bookmark to save, try or clear. */
+function noBookmark(): void {
+  // The route selects no series.
+}
+
+const NO_SERIES: BookmarkContextValue = {
+  series: null,
+  bookmark: null,
+  trial: false,
+  pending: false,
+  enterTrial: noBookmark,
+  leaveTrial: noBookmark,
+  setBookmark: noBookmark,
+}
 
 /**
  * One bookmark is held for the whole document, so every veil on the page
  * opens and closes together rather than each reading the cookie for itself.
  */
 export interface BookmarkProviderProps {
+  /** Selected alongside the initial bookmark by the resolved route. */
   children: ReactNode
+  series: BookmarkSeries | null
   /**
    * The bookmark as the server read it. Passing it in rather than reading
    * `document.cookie` in an effect is what keeps the first server-rendered
@@ -49,11 +66,30 @@ export interface BookmarkProviderProps {
  * The context object and its hooks live in BookmarkContext.ts, so this module
  * exports a component and nothing else and Vite can refresh it in place.
  */
-export function BookmarkProvider({
+export function BookmarkProvider(props: BookmarkProviderProps): ReactElement {
+  // The series and bookmark arrive together; a pending URL must not seed a
+  // new series' state with the previous route's bookmark.
+  const { series } = props
+  if (series === null) {
+    return <BookmarkContext value={NO_SERIES}>{props.children}</BookmarkContext>
+  }
+
+  return (
+    <SeriesBookmarkProvider
+      key={series.slug}
+      {...props}
+      series={series}
+    />
+  )
+}
+
+/** A route change between series starts with a fresh, server-read bookmark. */
+function SeriesBookmarkProvider({
   initialBookmark,
   initialTrial = false,
   children,
-}: BookmarkProviderProps): ReactElement {
+  series,
+}: BookmarkProviderProps & { series: BookmarkSeries }): ReactElement {
   const router = useRouter()
   // The point and whether it is a trial move together, in one update.
   const [stored, setStored] = useState<{ bookmark: Bookmark; trial: boolean }>({
@@ -69,16 +105,7 @@ export function BookmarkProvider({
       // of the request the browser is about to send; written after, they would
       // answer for the bookmark the reader has just left.
       // A saved bookmark, or none, ends a trial either way.
-      expireCookie(TRIAL_COOKIE)
-      if (next === null) {
-        expireCookie(EPISODE_COOKIE)
-      } else {
-        writeCookie(
-          EPISODE_COOKIE,
-          serialiseBookmark(next),
-          COOKIE_MAX_AGE_SECONDS,
-        )
-      }
+      saveCookie(series, next)
 
       // Inside a transition, so the pages the reader is looking at stay on
       // screen — already correct, already censored — until the new ones are
@@ -91,34 +118,44 @@ export function BookmarkProvider({
         await router.invalidate()
       })
     },
-    [router],
+    [router, series],
   )
 
   // The caller is a link, so the page it opens reads this cookie; the cache
   // goes, since a page preloaded before the trial was read with no cookie.
   const enterTrial = useCallback(
     (point: NonNullable<Bookmark>) => {
-      writeCookie(TRIAL_COOKIE, serialiseBookmark(point))
+      writeCookie(series.trialCookie, serialiseBookmark(point))
       router.clearCache()
       startTransition(() => {
         setStored({ bookmark: point, trial: true })
       })
     },
-    [router],
+    [router, series],
   )
 
   const leaveTrial = useCallback(() => {
-    expireCookie(TRIAL_COOKIE)
+    expireCookie(series.trialCookie)
     startTransition(async () => {
       setStored({ bookmark: null, trial: false })
       await router.invalidate()
     })
-  }, [router])
+  }, [router, series])
 
   const value = useMemo<BookmarkContextValue>(
-    () => ({ ...stored, enterTrial, leaveTrial, pending, setBookmark }),
-    [stored, enterTrial, leaveTrial, pending, setBookmark],
+    () => ({ ...stored, series, enterTrial, leaveTrial, pending, setBookmark }),
+    [stored, series, enterTrial, leaveTrial, pending, setBookmark],
   )
 
   return <BookmarkContext value={value}>{children}</BookmarkContext>
+}
+
+/** Saving or forgetting progress ends this series' trial. */
+function saveCookie(series: BookmarkSeries, next: Bookmark): void {
+  expireCookie(series.trialCookie)
+  if (next === null) {
+    expireCookie(series.cookie)
+  } else {
+    writeCookie(series.cookie, serialiseBookmark(next), COOKIE_MAX_AGE_SECONDS)
+  }
 }

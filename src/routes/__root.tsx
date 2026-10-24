@@ -11,6 +11,7 @@ import { type ReactElement, type ReactNode, useEffect } from 'react'
 import { DEFAULT_LOCALE, isLocale } from '~/i18n/locales'
 import { BookmarkProvider } from '~/lib/progress/BookmarkProvider'
 import { readBookmark, readTrial } from '~/lib/progress/readBookmark'
+import { seriesForPath } from '~/lib/progress/series'
 import { createSecurityHeaders } from '~/security-headers'
 import { stickyStyles } from '~/styles/sticky'
 import { color, dur, ease, font, leading, text } from '~/styles/tokens.stylex'
@@ -27,10 +28,12 @@ export const Route = createRootRoute({
   // Runs on the server for a document request and on the client for a
   // navigation, and `readBookmark` has a branch for each. Reading the bookmark
   // this early is what makes the first painted HTML already correct.
-  beforeLoad: () => {
+  beforeLoad: ({ location }) => {
+    const series = seriesForPath(location.pathname)
     return {
-      initialBookmark: readBookmark(),
-      initialTrial: readTrial() !== null,
+      series,
+      initialBookmark: readBookmark(series),
+      initialTrial: readTrial(series) !== null,
     }
   },
   head: () => ({
@@ -94,13 +97,14 @@ export const Route = createRootRoute({
 })
 
 function RootComponent(): ReactElement {
-  const { initialBookmark, initialTrial } = Route.useRouteContext()
+  const { series, initialBookmark, initialTrial } = Route.useRouteContext()
 
   return (
     <RootDocument>
       <BookmarkProvider
         initialBookmark={initialBookmark}
         initialTrial={initialTrial}
+        series={series}
       >
         <Outlet />
       </BookmarkProvider>

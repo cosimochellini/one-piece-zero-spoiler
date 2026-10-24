@@ -5,7 +5,7 @@
  */
 
 /** Name of the cookie holding the reader's bookmark. */
-export const EPISODE_COOKIE = 'opzs_ep'
+export const EPISODE_COOKIE = 'zs_one-piece'
 
 export const FIRST_EPISODE = 1
 
@@ -27,7 +27,7 @@ export const CHAPTER_CEILING = 1300
  * for one browser session, so a visitor can open a page at the dial's point
  * without saving it. It carries no Max-Age and ends with the session.
  */
-export const TRIAL_COOKIE = 'opzs_try'
+export const TRIAL_COOKIE = 'zs_one-piece_try'
 
 /**
  * The last episode and chapter of East Blue, the stretch the onboarding dial
