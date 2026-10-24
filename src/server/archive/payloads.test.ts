@@ -168,15 +168,53 @@ const SHARED: Record<
   loadSeriesDescriptions: () => SERIES.map(({ description }) => description),
 }
 
-/** Every record a shared payload names, open or covered, at each bookmark. */
+/** Every string a payload holds, as a key or as a value, however deep. */
+function stringsIn(payload: unknown): string[] {
+  if (typeof payload === 'string') {
+    return [payload]
+  }
+  if (payload === null || typeof payload !== 'object') {
+    return []
+  }
+
+  return Object.entries(payload).flatMap(([key, value]) => [
+    ...(Array.isArray(payload) ? [] : [key]),
+    ...stringsIn(value),
+  ])
+}
+
+/** Every id and name of every record of every series, as `slug/id`. */
+const RECORD_WORDS = new Map(
+  SERIES.flatMap(({ archive, slug }) =>
+    archive.entities.flatMap((entity) =>
+      [entity.id, ...LOCALES.map((locale) => entity.name[locale])].map(
+        (word) => [word, `${slug}/${entity.id}`] as const,
+      ),
+    ),
+  ),
+)
+
+/**
+ * Every record a shared payload names, open or covered, at each bookmark:
+ * the sweep's own check against the fog of a reader with no bookmark, and
+ * any string anywhere in it that is a record's id or name, whatever key it
+ * sits under.
+ */
 function recordsNamed(series: ListedSeries, name: string): string[] {
   const leaksIn = leaksOf(series)
 
-  return series.bookmarks.flatMap((bookmark) =>
-    leaksIn(SHARED[name]?.(series, bookmark), null).map(
-      (id) => `${id} @ ${JSON.stringify(bookmark)}`,
-    ),
-  )
+  return series.bookmarks.flatMap((bookmark) => {
+    const payload = SHARED[name]?.(series, bookmark)
+    const named = new Set(leaksIn(payload, null))
+    for (const word of stringsIn(payload)) {
+      const record = RECORD_WORDS.get(word)
+      if (record !== undefined) {
+        named.add(record)
+      }
+    }
+
+    return [...named].map((id) => `${id} @ ${JSON.stringify(bookmark)}`)
+  })
 }
 
 describe('every payload with no series in its address', () => {
