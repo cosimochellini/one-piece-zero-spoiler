@@ -13,7 +13,7 @@ const SOURCES = [
   ['privacy.netlifyTerms', 'https://www.netlify.com/trust-center/'],
   [
     'privacy.audit',
-    'https://github.com/cosimochellini/one-piece-zero-spoiler/blob/main/docs/privacy-audit.md',
+    'https://github.com/cosimochellini/zero-spoiler/blob/main/docs/privacy-audit.md',
   ],
 ] as const
 
@@ -52,7 +52,7 @@ export function PrivacyNotice(): ReactElement {
       <p {...stylex.props(styles.paragraph)}>{t('privacy.rights')}</p>
       <p {...stylex.props(styles.paragraph)}>
         <a
-          href="https://github.com/cosimochellini/one-piece-zero-spoiler/issues/new?template=blank.md"
+          href="https://github.com/cosimochellini/zero-spoiler/issues/new?template=blank.md"
           {...stylex.props(styles.link)}
         >
           {t('privacy.contact')}

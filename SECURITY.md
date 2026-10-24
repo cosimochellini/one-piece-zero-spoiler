@@ -3,7 +3,7 @@
 ## Reporting a vulnerability
 
 Report it privately through
-[GitHub's private vulnerability reporting](https://github.com/cosimochellini/one-piece-zero-spoiler/security/advisories/new).
+[GitHub's private vulnerability reporting](https://github.com/cosimochellini/zero-spoiler/security/advisories/new).
 Do not open a public issue.
 
 Only the current `main` branch and the live site at
@@ -22,5 +22,5 @@ control, and two ways around it are deliberate:
 [docs/architecture.md](docs/architecture.md#security) explains both. A way to
 read hidden entries without either of them is a real bug. If it is a spoiler
 leak and not a security issue, a public
-[content issue](https://github.com/cosimochellini/one-piece-zero-spoiler/issues/new?template=content.yml)
+[content issue](https://github.com/cosimochellini/zero-spoiler/issues/new?template=content.yml)
 is fine.

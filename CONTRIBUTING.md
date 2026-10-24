@@ -3,21 +3,21 @@
 Thank you for helping. This page tells you where things live, which rules the
 tests enforce and how a pull request becomes a release. If something here is
 unclear, open a
-[discussion](https://github.com/cosimochellini/one-piece-zero-spoiler/discussions).
+[discussion](https://github.com/cosimochellini/zero-spoiler/discussions).
 
 By taking part you agree to the [code of conduct](CODE_OF_CONDUCT.md).
 
 ## Ways to help
 
 - **Report a wrong episode or chapter.** Use the
-  [content form](https://github.com/cosimochellini/one-piece-zero-spoiler/issues/new?template=content.yml)
+  [content form](https://github.com/cosimochellini/zero-spoiler/issues/new?template=content.yml)
   and link a source.
 - **Pick a
-  [good first issue](https://github.com/cosimochellini/one-piece-zero-spoiler/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22).**
+  [good first issue](https://github.com/cosimochellini/zero-spoiler/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22).**
   Most are redrawings: one character, one episode, a checklist.
 - **Add what is missing:** chronicle stories, places, devil fruits, statuses.
   Issues labelled
-  [`help wanted`](https://github.com/cosimochellini/one-piece-zero-spoiler/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
+  [`help wanted`](https://github.com/cosimochellini/zero-spoiler/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
   list the larger gaps.
 - **Fix a bug or improve the code.** Open an issue first for anything larger
   than a small fix, so we can agree on the approach.
@@ -37,8 +37,8 @@ You need Node 24.21 and npm 12.2, as set in `.nvmrc` and in the `packageManager`
 field of `package.json`.
 
 ```sh
-git clone https://github.com/cosimochellini/one-piece-zero-spoiler.git
-cd one-piece-zero-spoiler
+git clone https://github.com/cosimochellini/zero-spoiler.git
+cd zero-spoiler
 nvm use
 npm install
 npm run dev     # http://localhost:3000

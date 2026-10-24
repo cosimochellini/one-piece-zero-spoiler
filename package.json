@@ -1,10 +1,10 @@
 {
-  "name": "one-piece-zero-spoiler",
+  "name": "zero-spoiler",
   "version": "0.184.0",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cosimochellini/one-piece-zero-spoiler.git"
+    "url": "git+https://github.com/cosimochellini/zero-spoiler.git"
   },
   "type": "module",
   "scripts": {

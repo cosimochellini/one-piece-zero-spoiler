@@ -95,7 +95,7 @@ function LicenseNotices(): ReactElement {
       <ul {...stylex.props(styles.list)}>
         <li>
           <a
-            href="https://github.com/cosimochellini/one-piece-zero-spoiler/blob/main/LICENSE"
+            href="https://github.com/cosimochellini/zero-spoiler/blob/main/LICENSE"
             {...stylex.props(styles.link)}
           >
             MIT
@@ -103,7 +103,7 @@ function LicenseNotices(): ReactElement {
         </li>
         <li>
           <a
-            href="https://github.com/cosimochellini/one-piece-zero-spoiler/blob/main/LICENSE-SCOPE.md"
+            href="https://github.com/cosimochellini/zero-spoiler/blob/main/LICENSE-SCOPE.md"
             {...stylex.props(styles.link)}
           >
             {t('credits.scopeNotice')}
