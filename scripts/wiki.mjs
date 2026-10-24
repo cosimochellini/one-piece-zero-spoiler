@@ -87,7 +87,7 @@ async function download(url, label, attempt = 1) {
 async function request(url, label) {
   // fallow-ignore-next-line security-sink -- Callers construct source API URLs; CLI input is only a validated chapter number, never a host or URL.
   const response = await fetch(url, {
-    headers: { 'User-Agent': 'one-piece-zero-spoiler verify-chapters' },
+    headers: { 'User-Agent': 'zero-spoiler verify-chapters' },
   })
   if (!response.ok) {
     throw new Error(`${label}: HTTP ${String(response.status)}`)

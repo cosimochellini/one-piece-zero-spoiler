@@ -35,7 +35,7 @@ export function LegalPage({
         </p>
         <p {...stylex.props(styles.paragraph)}>
           <a
-            href="https://github.com/cosimochellini/one-piece-zero-spoiler/issues/new?template=blank.md"
+            href="https://github.com/cosimochellini/zero-spoiler/issues/new?template=blank.md"
             {...stylex.props(styles.link)}
           >
             {t('legal.contact')}
