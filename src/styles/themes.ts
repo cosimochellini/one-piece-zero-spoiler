@@ -69,3 +69,14 @@ export type SeriesTheme = keyof typeof PALETTES
 export const THEMES: Record<SeriesTheme, typeof onePiece> = {
   'one-piece': onePiece,
 }
+
+/**
+ * The overrides for the series a page belongs to, or none for the site's own.
+ * `null` is not only "no series": a `/$series` match whose guard threw
+ * (`/nope/xx`) keeps the root's context, whose series is `null`.
+ */
+export function themeOf(
+  series: null | undefined | { theme: SeriesTheme },
+): false | typeof onePiece {
+  return series !== null && series !== undefined && THEMES[series.theme]
+}

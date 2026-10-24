@@ -10,6 +10,7 @@ import { type Locale, LOCALES } from '~/i18n/locales'
 import { readPreferredLocale } from '~/i18n/readLocale'
 import { ONE_PIECE_SERIES, type Series } from '~/lib/progress/series'
 import { seriesDescription } from '~/routes/-series'
+import { themeOf, THEMES } from '~/styles/themes'
 
 import { Route as SharedRoute } from './$locale'
 import { Route as SeriesRoute } from './$series'
@@ -45,6 +46,10 @@ function isGuard(value: unknown): value is RouteGuard {
   return typeof value === 'function'
 }
 
+function isSeriesContext(value: unknown): value is { series: Series } {
+  return typeof value === 'object' && value !== null && 'series' in value
+}
+
 function guardOf(route: { options: { beforeLoad?: unknown } }): RouteGuard {
   const guard: unknown = route.options.beforeLoad
   if (!isGuard(guard)) {
@@ -69,8 +74,10 @@ const series = createRoute({
   getParentRoute: () => root,
   path: '$series',
   params: { parse: parserOf<'series'>(SeriesRoute) },
+  // The context it returns is what the root reads the series theme from.
   beforeLoad: async (input) => {
-    await seriesGuard(input)
+    const context = await seriesGuard(input)
+    return isSeriesContext(context) ? context : undefined
   },
 })
 const seriesLocale = createRoute({
@@ -205,4 +212,26 @@ describe('the shared and series route prefixes', () => {
     ).rejects.toMatchObject({ isNotFound: true })
     expect(readPreferredLocale).not.toHaveBeenCalled()
   })
+
+  it.each([
+    { path: '/one-piece/en/characters/nami', theme: THEMES['one-piece'] },
+    { path: '/one-piece/en/nope', theme: THEMES['one-piece'] },
+    { path: '/nope/xx', theme: false },
+    { path: '/nope/en/whatever', theme: false },
+    { path: '/missing/en/characters/nami', theme: false },
+    { path: '/en/legal', theme: false },
+  ])(
+    'paints $path in the theme of its series, if any',
+    async ({ path, theme }) => {
+      vi.mocked(seriesDescription).mockResolvedValue(
+        path.startsWith('/one-piece/') ? ONE_PIECE_SERIES : null,
+      )
+      const router = await at(path)
+      const match = router.state.matches.find(
+        ({ routeId }) => routeId === '/$series',
+      )
+
+      expect(themeOf(match?.context.series)).toBe(theme)
+    },
+  )
 })
