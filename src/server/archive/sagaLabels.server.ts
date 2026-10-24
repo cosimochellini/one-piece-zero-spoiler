@@ -1,4 +1,5 @@
 import { orderByMode } from '~/data/order'
+import { toldIn } from '~/data/reveal'
 import type { LocalizedText, SeriesArchive } from '~/data/types'
 import type { SagaRow, SagaTable } from '~/lib/progress/sagaLabel'
 import { thresholdIn } from '~/lib/progress/spoiler'
@@ -47,8 +48,16 @@ function tableFor(r: Reader): NonNullable<ReturnType<typeof cached.get>> {
   return table
 }
 
+/**
+ * One unit's rows: the arcs its source tells, so a reader trying the other
+ * unit in the dialog is never shown an arc that unit does not have.
+ */
 function rowsIn(mode: 'chapter' | 'episode', r: Reader): SagaRow[] {
-  return orderByMode(r.archive.arcs, mode).map((arc) => ({
+  const told = r.archive.arcs.filter((arc) =>
+    toldIn(arc, mode === 'chapter' ? 'manga' : 'anime'),
+  )
+
+  return orderByMode(told, mode).map((arc) => ({
     from: thresholdIn(arc, mode),
     name: arc.name[r.locale],
   }))

@@ -338,7 +338,8 @@ function leakedIn(
 
 /**
  * The leak check of one series: the ids of the records the reader at this
- * bookmark has not reached that a payload of the series names, and, as
+ * bookmark has not reached, or does not have at all (`Reveal.has`: a record
+ * of the other source), that a payload of the series names, and, as
  * `slug/id`, the records of any other series it names. A string a page says
  * by design (`excused`) is not a leak, whichever other record of the series
  * goes by it too; nothing excuses another series' record. The other series
@@ -373,12 +374,17 @@ export function leaksOf(
       folded: new Set(aliasesIn(payload)),
       plain: named(payload),
     }
+    // A record of the source the reader does not count in is never said on
+    // purpose: no page names it by design, as it does an arc.
+    const at = reveal(bookmark, series.archive.series)
+    const excusable = (entity: Entity): boolean =>
+      at.has(entity) && excused(entity)
     const found = new Set<string>()
     for (const kind of KINDS) {
       const theirs = foreign[kind]
       const crossed = [...words[kind]].flatMap((word) => theirs.get(word) ?? [])
       const ids = [
-        ...leakedIn(words[kind], fog[kind], excused).map(({ id }) => id),
+        ...leakedIn(words[kind], fog[kind], excusable).map(({ id }) => id),
         ...crossed,
       ]
       for (const id of ids) {

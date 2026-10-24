@@ -1,4 +1,5 @@
 import { archiveOf, SERIES } from '~/data/series'
+import { archiveIn } from '~/data/source'
 import type { Entity, SeriesArchive } from '~/data/types'
 import { LOCALES } from '~/i18n/locales'
 import { localeAlternates } from '~/lib/seo/paths'
@@ -79,7 +80,8 @@ async function buildSitemap(): Promise<string> {
       entryFor(`/${locale}`),
       entryFor(`/${locale}/legal`),
     ]),
-    ...archives.flatMap((archive) => seriesEntries(archive)),
+    // A crawler has no bookmark, so no record of one source only answers it.
+    ...archives.flatMap((archive) => seriesEntries(archiveIn(archive, null))),
     '</urlset>',
     '',
   ].join('\n')
