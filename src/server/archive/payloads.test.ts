@@ -1,10 +1,12 @@
 import { describe, expect, it } from 'vitest'
 
+import { descriptionOf } from '~/data/series'
 import type { Entity } from '~/data/types'
 import { type Locale, LOCALES } from '~/i18n/locales'
 import { DEMO_LAST_CHAPTER, DEMO_LAST_EPISODE } from '~/lib/progress/bounds'
 import type { Bookmark } from '~/lib/progress/episode'
 import * as api from '~/server/api'
+import * as shared from '~/server/series'
 import { opHandleOf as handleOf } from '~/test/archive'
 import { leaksOf } from '~/test/fog'
 import {
@@ -13,6 +15,7 @@ import {
   LOADED_SERIES as SERIES,
 } from '~/test/series'
 
+import { hubSeries } from './hub.server'
 import { type Payload, payloadsFor } from './payloads.server'
 
 const PAYLOADS = payloadsFor(ONE_PIECE_LOADED.archive)
@@ -145,4 +148,51 @@ describe.each(SERIES)('every payload of $slug', (series) => {
       expect(leaks).toStrictEqual([])
     },
   )
+})
+
+/**
+ * The server functions whose address names no series (`~/server/series`),
+ * as the plain calls behind them, at a bookmark on one series: the hub reads
+ * a saved bookmark for each series, so the series swept gets the bookmark
+ * and every other has none.
+ */
+const SHARED: Record<
+  string,
+  (series: ListedSeries, bookmark: Bookmark) => unknown
+> = {
+  loadHub: (series, bookmark) =>
+    SERIES.map((each) =>
+      hubSeries(each.archive, each.slug === series.slug ? bookmark : null),
+    ),
+  loadSeriesDescription: () => SERIES.map(({ slug }) => descriptionOf(slug)),
+  loadSeriesDescriptions: () => SERIES.map(({ description }) => description),
+}
+
+/** Every record a shared payload names, open or covered, at each bookmark. */
+function recordsNamed(series: ListedSeries, name: string): string[] {
+  const leaksIn = leaksOf(series)
+
+  return series.bookmarks.flatMap((bookmark) =>
+    leaksIn(SHARED[name]?.(series, bookmark), null).map(
+      (id) => `${id} @ ${JSON.stringify(bookmark)}`,
+    ),
+  )
+}
+
+describe('every payload with no series in its address', () => {
+  it('is on the list, and the list holds nothing else', () => {
+    expect(Object.keys(SHARED).toSorted(alphabetically)).toStrictEqual(
+      Object.keys(shared).toSorted(alphabetically),
+    )
+  })
+
+  // Stricter than the sweep above: no bookmark excuses anything here. The
+  // fog of a reader with no bookmark covers every record of the series, open
+  // or not, and every other series' records are foreign, so a single id,
+  // name or drawing of any record fails. A count is only a number.
+  describe.each(SERIES)('at every bookmark of $slug', (series) => {
+    it.each(Object.keys(SHARED))('%s names no record at all', (name) => {
+      expect(recordsNamed(series, name)).toStrictEqual([])
+    })
+  })
 })

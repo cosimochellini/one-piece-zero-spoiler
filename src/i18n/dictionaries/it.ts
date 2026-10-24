@@ -13,6 +13,15 @@ export const itDictionary: Dictionary = {
   'site.title': 'Zero Spoiler | La wiki di One Piece senza spoiler',
   'site.description':
     'Una wiki di One Piece che nasconde personaggi, saghe, luoghi e frutti del diavolo oltre l’ultimo episodio visto o l’ultimo capitolo letto.',
+  'hub.title': 'Zero Spoiler | Wiki senza spoiler',
+  'hub.description':
+    'Wiki senza spoiler, una per serie. Ogni serie ha il suo segnalibro, e le voci che vengono dopo restano nella nebbia.',
+  'hub.headline': 'Wiki senza spoiler',
+  'hub.lede':
+    'Una wiki per ogni serie, ognuna con il suo segnalibro. Le voci dopo il segnalibro restano nella nebbia.',
+  'hub.count': '{count} voci',
+  'hub.noBookmark': 'Nessun segnalibro',
+  'hub.coming': 'In arrivo',
   'seo.imageAlt':
     'La card di Zero Spoiler: il logo sopra una rotta che sparisce nella nebbia.',
 
@@ -258,6 +267,10 @@ export const itDictionary: Dictionary = {
 
   'footer.unofficial':
     'Progetto amatoriale non ufficiale, non approvato dai titolari dei diritti di One Piece.',
+  'footer.sharedLead':
+    'Wiki che nascondono quello che viene dopo il tuo segnalibro.',
+  'footer.sharedUnofficial':
+    'Progetto amatoriale non ufficiale, non approvato dai titolari dei diritti delle serie.',
 
   'characters.title': 'Personaggi',
   'characters.count':

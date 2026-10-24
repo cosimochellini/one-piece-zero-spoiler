@@ -64,3 +64,25 @@ export function describeBookmark(
     threshold: bookmarkValue(bookmark),
   })
 }
+
+/**
+ * The reader's point, in the unit they chose: "Episode 650", "Chapter 1044"
+ * or "Season 2 · episode 3". Spelled out per mode rather than through
+ * `describeBookmark`, because the season form carries two numbers.
+ */
+export function pointOf(t: Translate, bookmark: NonNullable<Bookmark>): string {
+  switch (bookmark.mode) {
+    case 'chapter': {
+      return t('home.point.chapter', { threshold: bookmark.chapter })
+    }
+    case 'episode': {
+      return t('home.point.episode', { threshold: bookmark.episode })
+    }
+    case 'season': {
+      return t('home.point.season', {
+        season: bookmark.season,
+        episode: bookmark.episode,
+      })
+    }
+  }
+}

@@ -6,8 +6,8 @@ import { tintOf } from '~/components/drawing'
 import { EpisodeMark } from '~/components/EpisodeMark'
 import { styles } from '~/components/HomeFold.styles'
 import { useT } from '~/i18n/LocaleContext'
-import type { Translate } from '~/i18n/types'
 import type { Bookmark } from '~/lib/progress/episode'
+import { pointOf } from '~/lib/progress/threshold'
 import type { TintId, WaypointView } from '~/lib/view/records'
 import { settleStyles } from '~/styles/settle'
 
@@ -25,28 +25,6 @@ export interface HomeFoldProps {
   point: NonNullable<Bookmark>
   /** The arc the reader is in. */
   saga: WaypointView
-}
-
-/**
- * The reader's point, in the unit they chose: "Episode 650", "Chapter 1044"
- * or "Season 2 · episode 3". Spelled out per mode rather than through
- * `describeBookmark`, because the season form carries two numbers.
- */
-function pointOf(t: Translate, bookmark: NonNullable<Bookmark>): string {
-  switch (bookmark.mode) {
-    case 'chapter': {
-      return t('home.point.chapter', { threshold: bookmark.chapter })
-    }
-    case 'episode': {
-      return t('home.point.episode', { threshold: bookmark.episode })
-    }
-    case 'season': {
-      return t('home.point.season', {
-        season: bookmark.season,
-        episode: bookmark.episode,
-      })
-    }
-  }
 }
 
 /**

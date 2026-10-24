@@ -56,6 +56,17 @@ and locales answer 404. A request to a legacy locale-first content URL receives
 a 301 with the same path and exact query under `/one-piece`, before bookmark
 parameters are consumed. `/<series>` negotiates the language and answers 302.
 
+The hub (`src/components/SeriesHub.tsx`) gives each series a card in its own
+theme: its name, a drawing of the series' own
+(`src/components/seriesEmblems.ts`, which shares no line with a record drawing),
+its count of entries and the reader's saved bookmark on it. `loadHub` in
+`src/server/series.ts` loads each archive only to count it and reads each
+series' saved cookie; a trial or a crawler shows no bookmark there. A series
+announced but not yet in the registry is a hard-coded name with no link and no
+count. The payload sweep holds every function in `src/server/series.ts` to the
+fog of a reader with no bookmark, so the hub can name no record of any series,
+open or covered. The footer on the shared pages names no series.
+
 `src/data/series/index.ts` is the single registry used by runtime, scripts and
 gates. Its public descriptions contain no records; each archive is loaded by a
 literal dynamic import only when requested. The selected archive, bookmark and

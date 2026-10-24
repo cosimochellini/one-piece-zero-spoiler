@@ -1,43 +1,26 @@
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { createFileRoute } from '@tanstack/react-router'
 import type { ReactElement } from 'react'
 
-import { useLocale } from '~/i18n/LocaleContext'
-import type { Series } from '~/lib/progress/series'
+import { SeriesHub } from '~/components/SeriesHub'
 import { describeNamedPage } from '~/routes/$locale/-head'
-import { loadSeriesDescriptions } from '~/server/series'
+import { loadHub } from '~/server/series'
 
-/** A minimal series hub; its full presentation belongs to #754. */
+/** The hub: every series, its count, and the reader's bookmark on it. */
 export const Route = createFileRoute('/$locale/')({
-  loader: async () => loadSeriesDescriptions(),
+  loader: async () => loadHub(),
   head: ({ match, params }) =>
     describeNamedPage({
       locale: params.locale,
       pathname: match.pathname,
       kind: 'index',
-      titleKey: 'site.name',
-      descriptionKey: 'site.description',
+      titleKey: 'hub.title',
+      descriptionKey: 'hub.description',
     }),
+  // The cards carry the reader's bookmarks, read from their cookies.
+  headers: () => ({ 'Cache-Control': 'private, no-store' }),
   component: Hub,
 })
 
 function Hub(): ReactElement {
-  const series: Series[] = Route.useLoaderData()
-  const { locale, t } = useLocale()
-  return (
-    <main id="content">
-      <h1>{t('site.name')}</h1>
-      <ul>
-        {series.map((entry) => (
-          <li key={entry.slug}>
-            <Link
-              params={{ series: entry.slug, locale }}
-              to="/$series/$locale"
-            >
-              {entry.name[locale]}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </main>
-  )
+  return <SeriesHub series={Route.useLoaderData()} />
 }
