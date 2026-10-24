@@ -138,7 +138,10 @@ describe('CharacterGrid', () => {
     const links = screen.getAllByRole('link', { name: /Monkey D\. Luffy/u })
 
     for (const link of links) {
-      expect(link).toHaveAttribute('href', '/en/characters/monkey-d-luffy')
+      expect(link).toHaveAttribute(
+        'href',
+        '/one-piece/en/characters/monkey-d-luffy',
+      )
     }
 
     expect(screen.getAllByRole('link', { name: /Nami/u })).toHaveLength(2)

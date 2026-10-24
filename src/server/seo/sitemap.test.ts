@@ -10,24 +10,26 @@ import { sitemapXml } from './sitemap.server'
 const SECTION_COUNT = 5
 const LOCALE_COUNT = 2
 
+const document = await sitemapXml()
+
 const LOCATION = /<loc>(?<url>[^<]+)<\/loc>/gu
 
 function locations(): string[] {
   return Array.from(
-    sitemapXml().matchAll(LOCATION),
+    document.matchAll(LOCATION),
     (match) => match.groups?.['url'] ?? '',
   )
 }
 
 describe('the sitemap', () => {
   it('is a sitemap document with the alternates namespace declared', () => {
-    expect(
-      sitemapXml().startsWith('<?xml version="1.0" encoding="UTF-8"?>'),
-    ).toBe(true)
-    expect(sitemapXml()).toContain(
+    expect(document.startsWith('<?xml version="1.0" encoding="UTF-8"?>')).toBe(
+      true,
+    )
+    expect(document).toContain(
       'xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
     )
-    expect(sitemapXml()).toContain('xmlns:xhtml="http://www.w3.org/1999/xhtml"')
+    expect(document).toContain('xmlns:xhtml="http://www.w3.org/1999/xhtml"')
   })
 
   it('lists every page of the site in both languages', () => {
@@ -37,17 +39,18 @@ describe('the sitemap', () => {
         + fruits.length
         + places.length
         + ships.length)
-        * LOCALE_COUNT,
+        * LOCALE_COUNT
+        + LOCALE_COUNT * 2,
     )
   })
 
   it('carries both ships’ pages, in both languages', () => {
     for (const locale of ['en', 'it']) {
       expect(locations()).toContain(
-        `${SITE_ORIGIN}/${locale}/places/going-merry`,
+        `${SITE_ORIGIN}/one-piece/${locale}/places/going-merry`,
       )
       expect(locations()).toContain(
-        `${SITE_ORIGIN}/${locale}/places/thousand-sunny`,
+        `${SITE_ORIGIN}/one-piece/${locale}/places/thousand-sunny`,
       )
     }
   })
@@ -72,23 +75,55 @@ describe('the sitemap', () => {
   it('carries a record page and its translation', () => {
     const first = characters[0]?.id ?? ''
 
-    expect(locations()).toContain(`${SITE_ORIGIN}/it/characters/${first}`)
-    expect(locations()).toContain(`${SITE_ORIGIN}/en/characters/${first}`)
+    expect(locations()).toContain(
+      `${SITE_ORIGIN}/one-piece/it/characters/${first}`,
+    )
+    expect(locations()).toContain(
+      `${SITE_ORIGIN}/one-piece/en/characters/${first}`,
+    )
   })
 
   it('carries every place page', () => {
-    expect(locations()).toContain(`${SITE_ORIGIN}/en/places/alubarna`)
-    expect(locations()).toContain(`${SITE_ORIGIN}/it/places/alubarna`)
+    expect(locations()).toContain(`${SITE_ORIGIN}/one-piece/en/places/alubarna`)
+    expect(locations()).toContain(`${SITE_ORIGIN}/one-piece/it/places/alubarna`)
   })
 
   it('gives every entry both languages and the x-default', () => {
-    const entries = sitemapXml().split('<url>').length - 1
-    const alternates = sitemapXml().split('<xhtml:link').length - 1
+    const entries = document.split('<url>').length - 1
+    const alternates = document.split('<xhtml:link').length - 1
 
     expect(alternates).toBe(entries * (LOCALE_COUNT + 1))
   })
 
-  it('is built once and handed out again', () => {
-    expect(sitemapXml()).toBe(sitemapXml())
+  it('lists the shared hubs and legal pages without legacy archive addresses', () => {
+    for (const locale of ['en', 'it']) {
+      expect(locations()).toContain(`${SITE_ORIGIN}/${locale}`)
+      expect(locations()).toContain(`${SITE_ORIGIN}/${locale}/legal`)
+      expect(locations()).toContain(`${SITE_ORIGIN}/one-piece/${locale}`)
+      expect(locations()).not.toContain(`${SITE_ORIGIN}/${locale}/privacy`)
+      expect(locations()).not.toContain(`${SITE_ORIGIN}/${locale}/characters`)
+      expect(locations()).not.toContain(`${SITE_ORIGIN}/${locale}/filler`)
+    }
+  })
+
+  it('keeps reciprocal alternates within the same series', () => {
+    const page = document
+      .split('<url>')
+      .find((entry) =>
+        entry.includes(
+          `<loc>${SITE_ORIGIN}/one-piece/en/characters/nami</loc>`,
+        ),
+      )
+
+    expect(page).toContain(
+      `hreflang="it" href="${SITE_ORIGIN}/one-piece/it/characters/nami"`,
+    )
+    expect(page).toContain(
+      `hreflang="en" href="${SITE_ORIGIN}/one-piece/en/characters/nami"`,
+    )
+  })
+
+  it('is built once and handed out again', async () => {
+    await expect(sitemapXml()).resolves.toBe(document)
   })
 })

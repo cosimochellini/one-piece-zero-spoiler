@@ -10,9 +10,11 @@ import process from 'node:process'
 
 import { importArchive } from './archive-loader.mjs'
 
-const { PAYLOADS } = await importArchive('server/archive/payloads.server.ts')
+const { payloadsFor } = await importArchive('server/archive/payloads.server.ts')
 const { ONE_PIECE } = await importArchive('data/series/index.ts')
-const BOOKMARKS = ONE_PIECE.bookmarks
+const archive = await ONE_PIECE.load()
+const PAYLOADS = payloadsFor(archive)
+const BOOKMARKS = archive.bookmarks
 const { LOCALES } = await importArchive('i18n/locales.ts')
 
 const asks = BOOKMARKS.flatMap((bookmark) =>

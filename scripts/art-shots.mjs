@@ -144,9 +144,9 @@ export async function captureBookmark(browser, origin, row, bookmark) {
   await page.emulateMediaFeatures([
     { name: 'prefers-reduced-motion', value: 'reduce' },
   ])
-  await navigate(page, `${origin}/en/characters/${row.id}`)
+  await navigate(page, `${origin}/one-piece/en/characters/${row.id}`)
   const crest = bookmark.open ? await drawingShot(page, `main ${ART}`) : null
-  await navigate(page, `${origin}/en/characters`)
+  await navigate(page, `${origin}/one-piece/en/characters`)
   // Featured characters also have crest links; only a tile's SVG is a direct child of its frame.
   const tile =
     bookmark.open ?

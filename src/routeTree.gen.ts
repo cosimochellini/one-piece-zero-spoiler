@@ -11,18 +11,21 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LocaleRouteImport } from './routes/$locale'
+import { Route as SeriesRouteImport } from './routes/$series'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as LocaleIndexRouteImport } from './routes/$locale/index'
-import { Route as LocaleFillerRouteImport } from './routes/$locale/filler'
 import { Route as LocaleLegalRouteImport } from './routes/$locale/legal'
 import { Route as LocalePrivacyRouteImport } from './routes/$locale/privacy'
-import { Route as LocaleCharactersIndexRouteImport } from './routes/$locale/characters/index'
-import { Route as LocaleCharactersIdRouteImport } from './routes/$locale/characters/$id'
-import { Route as LocaleFruitsIndexRouteImport } from './routes/$locale/fruits/index'
-import { Route as LocaleFruitsIdRouteImport } from './routes/$locale/fruits/$id'
-import { Route as LocalePlacesIndexRouteImport } from './routes/$locale/places/index'
-import { Route as LocalePlacesIdRouteImport } from './routes/$locale/places/$id'
+import { Route as SeriesLocaleRouteImport } from './routes/$series/$locale'
+import { Route as SeriesLocaleIndexRouteImport } from './routes/$series/$locale/index'
+import { Route as SeriesLocaleFillerRouteImport } from './routes/$series/$locale/filler'
+import { Route as SeriesLocaleCharactersIndexRouteImport } from './routes/$series/$locale/characters/index'
+import { Route as SeriesLocaleCharactersIdRouteImport } from './routes/$series/$locale/characters/$id'
+import { Route as SeriesLocaleFruitsIndexRouteImport } from './routes/$series/$locale/fruits/index'
+import { Route as SeriesLocaleFruitsIdRouteImport } from './routes/$series/$locale/fruits/$id'
+import { Route as SeriesLocalePlacesIndexRouteImport } from './routes/$series/$locale/places/index'
+import { Route as SeriesLocalePlacesIdRouteImport } from './routes/$series/$locale/places/$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -32,6 +35,11 @@ const IndexRoute = IndexRouteImport.update({
 const LocaleRoute = LocaleRouteImport.update({
   id: '/$locale',
   path: '/$locale',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SeriesRoute = SeriesRouteImport.update({
+  id: '/$series',
+  path: '/$series',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
@@ -49,11 +57,6 @@ const LocaleIndexRoute = LocaleIndexRouteImport.update({
   path: '/',
   getParentRoute: () => LocaleRoute,
 } as any)
-const LocaleFillerRoute = LocaleFillerRouteImport.update({
-  id: '/filler',
-  path: '/filler',
-  getParentRoute: () => LocaleRoute,
-} as any)
 const LocaleLegalRoute = LocaleLegalRouteImport.update({
   id: '/legal',
   path: '/legal',
@@ -64,138 +67,172 @@ const LocalePrivacyRoute = LocalePrivacyRouteImport.update({
   path: '/privacy',
   getParentRoute: () => LocaleRoute,
 } as any)
-const LocaleCharactersIndexRoute = LocaleCharactersIndexRouteImport.update({
-  id: '/characters/',
-  path: '/characters/',
-  getParentRoute: () => LocaleRoute,
+const SeriesLocaleRoute = SeriesLocaleRouteImport.update({
+  id: '/$locale',
+  path: '/$locale',
+  getParentRoute: () => SeriesRoute,
 } as any)
-const LocaleCharactersIdRoute = LocaleCharactersIdRouteImport.update({
-  id: '/characters/$id',
-  path: '/characters/$id',
-  getParentRoute: () => LocaleRoute,
+const SeriesLocaleIndexRoute = SeriesLocaleIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => SeriesLocaleRoute,
 } as any)
-const LocaleFruitsIndexRoute = LocaleFruitsIndexRouteImport.update({
+const SeriesLocaleFillerRoute = SeriesLocaleFillerRouteImport.update({
+  id: '/filler',
+  path: '/filler',
+  getParentRoute: () => SeriesLocaleRoute,
+} as any)
+const SeriesLocaleCharactersIndexRoute =
+  SeriesLocaleCharactersIndexRouteImport.update({
+    id: '/characters/',
+    path: '/characters/',
+    getParentRoute: () => SeriesLocaleRoute,
+  } as any)
+const SeriesLocaleCharactersIdRoute =
+  SeriesLocaleCharactersIdRouteImport.update({
+    id: '/characters/$id',
+    path: '/characters/$id',
+    getParentRoute: () => SeriesLocaleRoute,
+  } as any)
+const SeriesLocaleFruitsIndexRoute = SeriesLocaleFruitsIndexRouteImport.update({
   id: '/fruits/',
   path: '/fruits/',
-  getParentRoute: () => LocaleRoute,
+  getParentRoute: () => SeriesLocaleRoute,
 } as any)
-const LocaleFruitsIdRoute = LocaleFruitsIdRouteImport.update({
+const SeriesLocaleFruitsIdRoute = SeriesLocaleFruitsIdRouteImport.update({
   id: '/fruits/$id',
   path: '/fruits/$id',
-  getParentRoute: () => LocaleRoute,
+  getParentRoute: () => SeriesLocaleRoute,
 } as any)
-const LocalePlacesIndexRoute = LocalePlacesIndexRouteImport.update({
+const SeriesLocalePlacesIndexRoute = SeriesLocalePlacesIndexRouteImport.update({
   id: '/places/',
   path: '/places/',
-  getParentRoute: () => LocaleRoute,
+  getParentRoute: () => SeriesLocaleRoute,
 } as any)
-const LocalePlacesIdRoute = LocalePlacesIdRouteImport.update({
+const SeriesLocalePlacesIdRoute = SeriesLocalePlacesIdRouteImport.update({
   id: '/places/$id',
   path: '/places/$id',
-  getParentRoute: () => LocaleRoute,
+  getParentRoute: () => SeriesLocaleRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$locale': typeof LocaleRouteWithChildren
+  '/$series': typeof SeriesRouteWithChildren
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/$locale/filler': typeof LocaleFillerRoute
   '/$locale/legal': typeof LocaleLegalRoute
   '/$locale/privacy': typeof LocalePrivacyRoute
+  '/$series/$locale': typeof SeriesLocaleRouteWithChildren
   '/$locale/': typeof LocaleIndexRoute
-  '/$locale/characters/$id': typeof LocaleCharactersIdRoute
-  '/$locale/fruits/$id': typeof LocaleFruitsIdRoute
-  '/$locale/places/$id': typeof LocalePlacesIdRoute
-  '/$locale/characters/': typeof LocaleCharactersIndexRoute
-  '/$locale/fruits/': typeof LocaleFruitsIndexRoute
-  '/$locale/places/': typeof LocalePlacesIndexRoute
+  '/$series/$locale/filler': typeof SeriesLocaleFillerRoute
+  '/$series/$locale/': typeof SeriesLocaleIndexRoute
+  '/$series/$locale/characters/$id': typeof SeriesLocaleCharactersIdRoute
+  '/$series/$locale/fruits/$id': typeof SeriesLocaleFruitsIdRoute
+  '/$series/$locale/places/$id': typeof SeriesLocalePlacesIdRoute
+  '/$series/$locale/characters/': typeof SeriesLocaleCharactersIndexRoute
+  '/$series/$locale/fruits/': typeof SeriesLocaleFruitsIndexRoute
+  '/$series/$locale/places/': typeof SeriesLocalePlacesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/$series': typeof SeriesRouteWithChildren
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/$locale/filler': typeof LocaleFillerRoute
   '/$locale/legal': typeof LocaleLegalRoute
   '/$locale/privacy': typeof LocalePrivacyRoute
   '/$locale': typeof LocaleIndexRoute
-  '/$locale/characters/$id': typeof LocaleCharactersIdRoute
-  '/$locale/fruits/$id': typeof LocaleFruitsIdRoute
-  '/$locale/places/$id': typeof LocalePlacesIdRoute
-  '/$locale/characters': typeof LocaleCharactersIndexRoute
-  '/$locale/fruits': typeof LocaleFruitsIndexRoute
-  '/$locale/places': typeof LocalePlacesIndexRoute
+  '/$series/$locale/filler': typeof SeriesLocaleFillerRoute
+  '/$series/$locale': typeof SeriesLocaleIndexRoute
+  '/$series/$locale/characters/$id': typeof SeriesLocaleCharactersIdRoute
+  '/$series/$locale/fruits/$id': typeof SeriesLocaleFruitsIdRoute
+  '/$series/$locale/places/$id': typeof SeriesLocalePlacesIdRoute
+  '/$series/$locale/characters': typeof SeriesLocaleCharactersIndexRoute
+  '/$series/$locale/fruits': typeof SeriesLocaleFruitsIndexRoute
+  '/$series/$locale/places': typeof SeriesLocalePlacesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/$locale': typeof LocaleRouteWithChildren
+  '/$series': typeof SeriesRouteWithChildren
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/$locale/filler': typeof LocaleFillerRoute
   '/$locale/legal': typeof LocaleLegalRoute
   '/$locale/privacy': typeof LocalePrivacyRoute
+  '/$series/$locale': typeof SeriesLocaleRouteWithChildren
   '/$locale/': typeof LocaleIndexRoute
-  '/$locale/characters/$id': typeof LocaleCharactersIdRoute
-  '/$locale/fruits/$id': typeof LocaleFruitsIdRoute
-  '/$locale/places/$id': typeof LocalePlacesIdRoute
-  '/$locale/characters/': typeof LocaleCharactersIndexRoute
-  '/$locale/fruits/': typeof LocaleFruitsIndexRoute
-  '/$locale/places/': typeof LocalePlacesIndexRoute
+  '/$series/$locale/filler': typeof SeriesLocaleFillerRoute
+  '/$series/$locale/': typeof SeriesLocaleIndexRoute
+  '/$series/$locale/characters/$id': typeof SeriesLocaleCharactersIdRoute
+  '/$series/$locale/fruits/$id': typeof SeriesLocaleFruitsIdRoute
+  '/$series/$locale/places/$id': typeof SeriesLocalePlacesIdRoute
+  '/$series/$locale/characters/': typeof SeriesLocaleCharactersIndexRoute
+  '/$series/$locale/fruits/': typeof SeriesLocaleFruitsIndexRoute
+  '/$series/$locale/places/': typeof SeriesLocalePlacesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/$locale'
+    | '/$series'
     | '/robots.txt'
     | '/sitemap.xml'
-    | '/$locale/filler'
     | '/$locale/legal'
     | '/$locale/privacy'
+    | '/$series/$locale'
     | '/$locale/'
-    | '/$locale/characters/$id'
-    | '/$locale/fruits/$id'
-    | '/$locale/places/$id'
-    | '/$locale/characters/'
-    | '/$locale/fruits/'
-    | '/$locale/places/'
+    | '/$series/$locale/filler'
+    | '/$series/$locale/'
+    | '/$series/$locale/characters/$id'
+    | '/$series/$locale/fruits/$id'
+    | '/$series/$locale/places/$id'
+    | '/$series/$locale/characters/'
+    | '/$series/$locale/fruits/'
+    | '/$series/$locale/places/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/$series'
     | '/robots.txt'
     | '/sitemap.xml'
-    | '/$locale/filler'
     | '/$locale/legal'
     | '/$locale/privacy'
     | '/$locale'
-    | '/$locale/characters/$id'
-    | '/$locale/fruits/$id'
-    | '/$locale/places/$id'
-    | '/$locale/characters'
-    | '/$locale/fruits'
-    | '/$locale/places'
+    | '/$series/$locale/filler'
+    | '/$series/$locale'
+    | '/$series/$locale/characters/$id'
+    | '/$series/$locale/fruits/$id'
+    | '/$series/$locale/places/$id'
+    | '/$series/$locale/characters'
+    | '/$series/$locale/fruits'
+    | '/$series/$locale/places'
   id:
     | '__root__'
     | '/'
     | '/$locale'
+    | '/$series'
     | '/robots.txt'
     | '/sitemap.xml'
-    | '/$locale/filler'
     | '/$locale/legal'
     | '/$locale/privacy'
+    | '/$series/$locale'
     | '/$locale/'
-    | '/$locale/characters/$id'
-    | '/$locale/fruits/$id'
-    | '/$locale/places/$id'
-    | '/$locale/characters/'
-    | '/$locale/fruits/'
-    | '/$locale/places/'
+    | '/$series/$locale/filler'
+    | '/$series/$locale/'
+    | '/$series/$locale/characters/$id'
+    | '/$series/$locale/fruits/$id'
+    | '/$series/$locale/places/$id'
+    | '/$series/$locale/characters/'
+    | '/$series/$locale/fruits/'
+    | '/$series/$locale/places/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   LocaleRoute: typeof LocaleRouteWithChildren
+  SeriesRoute: typeof SeriesRouteWithChildren
   RobotsDottxtRoute: typeof RobotsDottxtRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
@@ -214,6 +251,13 @@ declare module '@tanstack/react-router' {
       path: '/$locale'
       fullPath: '/$locale'
       preLoaderRoute: typeof LocaleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$series': {
+      id: '/$series'
+      path: '/$series'
+      fullPath: '/$series'
+      preLoaderRoute: typeof SeriesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/robots.txt': {
@@ -237,13 +281,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleIndexRouteImport
       parentRoute: typeof LocaleRoute
     }
-    '/$locale/filler': {
-      id: '/$locale/filler'
-      path: '/filler'
-      fullPath: '/$locale/filler'
-      preLoaderRoute: typeof LocaleFillerRouteImport
-      parentRoute: typeof LocaleRoute
-    }
     '/$locale/legal': {
       id: '/$locale/legal'
       path: '/legal'
@@ -258,83 +295,128 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocalePrivacyRouteImport
       parentRoute: typeof LocaleRoute
     }
-    '/$locale/characters/': {
-      id: '/$locale/characters/'
+    '/$series/$locale': {
+      id: '/$series/$locale'
+      path: '/$locale'
+      fullPath: '/$series/$locale'
+      preLoaderRoute: typeof SeriesLocaleRouteImport
+      parentRoute: typeof SeriesRoute
+    }
+    '/$series/$locale/': {
+      id: '/$series/$locale/'
+      path: '/'
+      fullPath: '/$series/$locale/'
+      preLoaderRoute: typeof SeriesLocaleIndexRouteImport
+      parentRoute: typeof SeriesLocaleRoute
+    }
+    '/$series/$locale/filler': {
+      id: '/$series/$locale/filler'
+      path: '/filler'
+      fullPath: '/$series/$locale/filler'
+      preLoaderRoute: typeof SeriesLocaleFillerRouteImport
+      parentRoute: typeof SeriesLocaleRoute
+    }
+    '/$series/$locale/characters/': {
+      id: '/$series/$locale/characters/'
       path: '/characters'
-      fullPath: '/$locale/characters/'
-      preLoaderRoute: typeof LocaleCharactersIndexRouteImport
-      parentRoute: typeof LocaleRoute
+      fullPath: '/$series/$locale/characters/'
+      preLoaderRoute: typeof SeriesLocaleCharactersIndexRouteImport
+      parentRoute: typeof SeriesLocaleRoute
     }
-    '/$locale/characters/$id': {
-      id: '/$locale/characters/$id'
+    '/$series/$locale/characters/$id': {
+      id: '/$series/$locale/characters/$id'
       path: '/characters/$id'
-      fullPath: '/$locale/characters/$id'
-      preLoaderRoute: typeof LocaleCharactersIdRouteImport
-      parentRoute: typeof LocaleRoute
+      fullPath: '/$series/$locale/characters/$id'
+      preLoaderRoute: typeof SeriesLocaleCharactersIdRouteImport
+      parentRoute: typeof SeriesLocaleRoute
     }
-    '/$locale/fruits/': {
-      id: '/$locale/fruits/'
+    '/$series/$locale/fruits/': {
+      id: '/$series/$locale/fruits/'
       path: '/fruits'
-      fullPath: '/$locale/fruits/'
-      preLoaderRoute: typeof LocaleFruitsIndexRouteImport
-      parentRoute: typeof LocaleRoute
+      fullPath: '/$series/$locale/fruits/'
+      preLoaderRoute: typeof SeriesLocaleFruitsIndexRouteImport
+      parentRoute: typeof SeriesLocaleRoute
     }
-    '/$locale/fruits/$id': {
-      id: '/$locale/fruits/$id'
+    '/$series/$locale/fruits/$id': {
+      id: '/$series/$locale/fruits/$id'
       path: '/fruits/$id'
-      fullPath: '/$locale/fruits/$id'
-      preLoaderRoute: typeof LocaleFruitsIdRouteImport
-      parentRoute: typeof LocaleRoute
+      fullPath: '/$series/$locale/fruits/$id'
+      preLoaderRoute: typeof SeriesLocaleFruitsIdRouteImport
+      parentRoute: typeof SeriesLocaleRoute
     }
-    '/$locale/places/': {
-      id: '/$locale/places/'
+    '/$series/$locale/places/': {
+      id: '/$series/$locale/places/'
       path: '/places'
-      fullPath: '/$locale/places/'
-      preLoaderRoute: typeof LocalePlacesIndexRouteImport
-      parentRoute: typeof LocaleRoute
+      fullPath: '/$series/$locale/places/'
+      preLoaderRoute: typeof SeriesLocalePlacesIndexRouteImport
+      parentRoute: typeof SeriesLocaleRoute
     }
-    '/$locale/places/$id': {
-      id: '/$locale/places/$id'
+    '/$series/$locale/places/$id': {
+      id: '/$series/$locale/places/$id'
       path: '/places/$id'
-      fullPath: '/$locale/places/$id'
-      preLoaderRoute: typeof LocalePlacesIdRouteImport
-      parentRoute: typeof LocaleRoute
+      fullPath: '/$series/$locale/places/$id'
+      preLoaderRoute: typeof SeriesLocalePlacesIdRouteImport
+      parentRoute: typeof SeriesLocaleRoute
     }
   }
 }
 
 interface LocaleRouteChildren {
-  LocaleFillerRoute: typeof LocaleFillerRoute
   LocaleLegalRoute: typeof LocaleLegalRoute
   LocalePrivacyRoute: typeof LocalePrivacyRoute
   LocaleIndexRoute: typeof LocaleIndexRoute
-  LocaleCharactersIdRoute: typeof LocaleCharactersIdRoute
-  LocaleFruitsIdRoute: typeof LocaleFruitsIdRoute
-  LocalePlacesIdRoute: typeof LocalePlacesIdRoute
-  LocaleCharactersIndexRoute: typeof LocaleCharactersIndexRoute
-  LocaleFruitsIndexRoute: typeof LocaleFruitsIndexRoute
-  LocalePlacesIndexRoute: typeof LocalePlacesIndexRoute
 }
 
 const LocaleRouteChildren: LocaleRouteChildren = {
-  LocaleFillerRoute: LocaleFillerRoute,
   LocaleLegalRoute: LocaleLegalRoute,
   LocalePrivacyRoute: LocalePrivacyRoute,
   LocaleIndexRoute: LocaleIndexRoute,
-  LocaleCharactersIdRoute: LocaleCharactersIdRoute,
-  LocaleFruitsIdRoute: LocaleFruitsIdRoute,
-  LocalePlacesIdRoute: LocalePlacesIdRoute,
-  LocaleCharactersIndexRoute: LocaleCharactersIndexRoute,
-  LocaleFruitsIndexRoute: LocaleFruitsIndexRoute,
-  LocalePlacesIndexRoute: LocalePlacesIndexRoute,
 }
 
 const LocaleRouteWithChildren =
   LocaleRoute._addFileChildren(LocaleRouteChildren)
 
+interface SeriesLocaleRouteChildren {
+  SeriesLocaleFillerRoute: typeof SeriesLocaleFillerRoute
+  SeriesLocaleIndexRoute: typeof SeriesLocaleIndexRoute
+  SeriesLocaleCharactersIdRoute: typeof SeriesLocaleCharactersIdRoute
+  SeriesLocaleFruitsIdRoute: typeof SeriesLocaleFruitsIdRoute
+  SeriesLocalePlacesIdRoute: typeof SeriesLocalePlacesIdRoute
+  SeriesLocaleCharactersIndexRoute: typeof SeriesLocaleCharactersIndexRoute
+  SeriesLocaleFruitsIndexRoute: typeof SeriesLocaleFruitsIndexRoute
+  SeriesLocalePlacesIndexRoute: typeof SeriesLocalePlacesIndexRoute
+}
+
+const SeriesLocaleRouteChildren: SeriesLocaleRouteChildren = {
+  SeriesLocaleFillerRoute: SeriesLocaleFillerRoute,
+  SeriesLocaleIndexRoute: SeriesLocaleIndexRoute,
+  SeriesLocaleCharactersIdRoute: SeriesLocaleCharactersIdRoute,
+  SeriesLocaleFruitsIdRoute: SeriesLocaleFruitsIdRoute,
+  SeriesLocalePlacesIdRoute: SeriesLocalePlacesIdRoute,
+  SeriesLocaleCharactersIndexRoute: SeriesLocaleCharactersIndexRoute,
+  SeriesLocaleFruitsIndexRoute: SeriesLocaleFruitsIndexRoute,
+  SeriesLocalePlacesIndexRoute: SeriesLocalePlacesIndexRoute,
+}
+
+const SeriesLocaleRouteWithChildren = SeriesLocaleRoute._addFileChildren(
+  SeriesLocaleRouteChildren,
+)
+
+interface SeriesRouteChildren {
+  SeriesLocaleRoute: typeof SeriesLocaleRouteWithChildren
+}
+
+const SeriesRouteChildren: SeriesRouteChildren = {
+  SeriesLocaleRoute: SeriesLocaleRouteWithChildren,
+}
+
+const SeriesRouteWithChildren =
+  SeriesRoute._addFileChildren(SeriesRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   LocaleRoute: LocaleRouteWithChildren,
+  SeriesRoute: SeriesRouteWithChildren,
   RobotsDottxtRoute: RobotsDottxtRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
 }

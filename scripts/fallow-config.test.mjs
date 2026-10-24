@@ -52,15 +52,22 @@ describe('the fallow configuration', () => {
     expect(count('series-list')).toBe(1)
   })
 
-  it('lets no zone import the series list', () => {
-    // The list is for the exempt tests and the scripts. A zone allowed to
-    // import it would let the server or the browser read every series (#751).
-    const reaching = read('config')
-      .boundaries.rules.filter(({ allow = [], allowTypeOnly = [] }) =>
+  it('lets only the server read the registry, without directly importing a series', () => {
+    // Runtime requests select archives through the same registry as the gates.
+    const rules = read('config').boundaries.rules
+    const reaching = rules
+      .filter(({ allow = [], allowTypeOnly = [] }) =>
         [...allow, ...allowTypeOnly].includes('series-list'),
       )
       .map(({ from }) => from)
 
-    expect(reaching).toStrictEqual([])
+    const server = rules.find(({ from }) => from === 'server')
+    const direct = [
+      ...(server.allow ?? []),
+      ...(server.allowTypeOnly ?? []),
+    ].filter((zone) => zone === 'series' || zone.startsWith('series/'))
+
+    expect(reaching).toStrictEqual(['server'])
+    expect(direct).toStrictEqual([])
   })
 })

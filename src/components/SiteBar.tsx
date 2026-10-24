@@ -5,7 +5,7 @@ import type { ReactElement } from 'react'
 import { EpisodeMark } from '~/components/EpisodeMark'
 import { LocaleSwitch } from '~/components/LocaleSwitch'
 import { useLocale } from '~/i18n/LocaleContext'
-import { useBookmark } from '~/lib/progress/BookmarkContext'
+import { useBookmark, useSeriesParams } from '~/lib/progress/BookmarkContext'
 import {
   color,
   dur,
@@ -36,48 +36,67 @@ export function SiteBar(): ReactElement {
   const { locale, t } = useLocale()
   const { series } = useBookmark()
 
+  const home =
+    series === null ?
+      { to: '/$locale' as const, params: { locale } }
+    : {
+        to: '/$series/$locale' as const,
+        params: { locale, series: series.slug },
+      }
+
   return (
-    <header {...stylex.props(styles.bar)}>
+    <header {...stylex.props(styles.bar, series === null && styles.sharedBar)}>
       <Link
-        params={{ locale }}
-        to="/$locale"
+        {...home}
         {...stylex.props(styles.wordmark)}
       >
         {t('site.name')}
       </Link>
-
-      <nav
-        aria-label={t('nav.label')}
-        {...stylex.props(styles.pages)}
-      >
-        <Link
-          activeProps={{ 'aria-current': 'page' }}
-          params={{ locale }}
-          to="/$locale/characters"
-          {...stylex.props(styles.link)}
-        >
-          {t('nav.characters')}
-        </Link>
-        <Link
-          activeProps={{ 'aria-current': 'page' }}
-          params={{ locale }}
-          to="/$locale/places"
-          {...stylex.props(styles.link)}
-        >
-          {t('nav.places')}
-        </Link>
-        <Link
-          activeProps={{ 'aria-current': 'page' }}
-          params={{ locale }}
-          to="/$locale/fruits"
-          {...stylex.props(styles.link)}
-        >
-          {t('nav.fruits')}
-        </Link>
-      </nav>
-      {series !== null && <EpisodeMark />}
+      {series !== null && (
+        <>
+          <SeriesNavigation />
+          <EpisodeMark />
+        </>
+      )}
       <LocaleSwitch />
     </header>
+  )
+}
+
+/** Content navigation belongs to the series selected by the route. */
+function SeriesNavigation(): ReactElement {
+  const { t } = useLocale()
+  const params = useSeriesParams()
+  return (
+    <nav
+      aria-label={t('nav.label')}
+      {...stylex.props(styles.pages)}
+    >
+      <Link
+        activeProps={{ 'aria-current': 'page' }}
+        params={params}
+        to="/$series/$locale/characters"
+        {...stylex.props(styles.link)}
+      >
+        {t('nav.characters')}
+      </Link>
+      <Link
+        activeProps={{ 'aria-current': 'page' }}
+        params={params}
+        to="/$series/$locale/places"
+        {...stylex.props(styles.link)}
+      >
+        {t('nav.places')}
+      </Link>
+      <Link
+        activeProps={{ 'aria-current': 'page' }}
+        params={params}
+        to="/$series/$locale/fruits"
+        {...stylex.props(styles.link)}
+      >
+        {t('nav.fruits')}
+      </Link>
+    </nav>
   )
 }
 
@@ -108,6 +127,12 @@ const styles = stylex.create({
     zIndex: z.bar,
     height: pin.bar,
     minWidth: 0,
+  },
+  sharedBar: {
+    gridTemplateColumns: {
+      [WIDE]: 'minmax(0, 1fr) auto',
+      default: 'minmax(0, 1fr) auto',
+    },
   },
   // Flush with the wordmark on a phone's second row: the first link's own
   // padding is pulled back into the gutter so its word starts where the

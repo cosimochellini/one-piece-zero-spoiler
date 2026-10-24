@@ -4,6 +4,7 @@ import { type ReactElement, useSyncExternalStore } from 'react'
 
 import { Button } from '~/components/ui/Button'
 import { useLocale } from '~/i18n/LocaleContext'
+import { useSeriesParams } from '~/lib/progress/BookmarkContext'
 import {
   dismissWelcome,
   subscribeWelcome,
@@ -29,6 +30,7 @@ import {
  */
 export function HomeWelcome(): null | ReactElement {
   const { locale, t } = useLocale()
+  const { series } = useSeriesParams()
   const shown = useSyncExternalStore(subscribeWelcome, welcomeOwed, () => false)
 
   if (!shown) {
@@ -36,10 +38,10 @@ export function HomeWelcome(): null | ReactElement {
   }
 
   const pages = [
-    { to: '/$locale/characters', label: t('nav.characters') },
-    { to: '/$locale/places', label: t('places.title') },
-    { to: '/$locale/fruits', label: t('fruits.title') },
-    { to: '/$locale/filler', label: t('filler.title') },
+    { to: '/$series/$locale/characters', label: t('nav.characters') },
+    { to: '/$series/$locale/places', label: t('places.title') },
+    { to: '/$series/$locale/fruits', label: t('fruits.title') },
+    { to: '/$series/$locale/filler', label: t('filler.title') },
   ] as const
 
   return (
@@ -59,7 +61,7 @@ export function HomeWelcome(): null | ReactElement {
           return (
             <li key={page.to}>
               <Link
-                params={{ locale }}
+                params={{ series, locale }}
                 to={page.to}
                 {...stylex.props(styles.link)}
               >

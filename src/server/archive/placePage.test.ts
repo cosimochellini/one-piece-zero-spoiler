@@ -1,15 +1,18 @@
 import { describe, expect, it } from 'vitest'
 
 import { reveal } from '~/data/reveal'
-import { ONE_PIECE } from '~/data/series'
 import { characters } from '~/data/series/one-piece/characters'
 import { chartPointOf } from '~/data/series/one-piece/chart'
 import { placeDossierOf, places, ships } from '~/data/series/one-piece/places'
 import { CHARACTER_DOSSIERS } from '~/data/series/one-piece/sagas'
 import type { Bookmark } from '~/lib/progress/episode'
+import {
+  opPlacePage as placePage,
+  opPlacesPage as placesPage,
+} from '~/test/archive'
+import { ONE_PIECE_LOADED as ONE_PIECE } from '~/test/series'
 
-import { type PlacePage, placePage, type ShipPage } from './placePage.server'
-import { placesPage } from './places.server'
+import type { PlacePage, ShipPage } from './placePage.server'
 
 const BOOKMARKS = ONE_PIECE.bookmarks
 

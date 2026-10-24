@@ -50,10 +50,21 @@ and still drops the parameters.
 
 Each series has its own saved and trial cookies, ranges, demo bounds and season
 table in the public bookmark metadata (`src/lib/progress/series.ts`), separate
-from the server-only archive. Existing locale-first content pages still select
-One Piece until #753 moves the routes; the server functions remain explicitly
-bound to One Piece in the meantime. The provider resets its state when the route
-changes series.
+from the server-only archive. Series content lives under `/<series>/<locale>/…`;
+`/<locale>` is the shared hub, and legal/privacy remain shared. Unknown series
+and locales answer 404. A request to a legacy locale-first content URL receives
+a 301 with the same path and exact query under `/one-piece`, before bookmark
+parameters are consumed. `/<series>` negotiates the language and answers 302.
+
+`src/data/series/index.ts` is the single registry used by runtime, scripts and
+gates. Its public descriptions contain no records; each archive is loaded by a
+literal dynamic import only when requested. The selected archive, bookmark and
+locale travel together on the server's `Reader`. Handles, filler ranges, canon
+arcs and sitemap entries are cached per loaded archive. One Piece keeps its
+deployed ordinal handles; every other series requires its own prefix, so handles
+cannot resolve through another series' table. Fallow forbids direct server
+imports from a series, and the archive gate checks the emitted server graph as
+well as client leak canaries.
 
 The same request middleware reads legacy `opzs_ep` and `opzs_try` cookies once,
 validates them as One Piece bookmarks and writes `zs_one-piece` and
@@ -198,8 +209,8 @@ checked on every run:
   be turned back into a name, and a covered record has no id. A single handle
   that happened to be `btoa(id)` would undo the whole scheme. One sweep
   (`src/server/archive/payloads.test.ts`) runs for every series in the series
-  list (`src/data/series/index.ts`, for the tests, the gates and the scripts
-  only). It asks every server function for its payload at the series' own
+  list (`src/data/series/index.ts`, for runtime, the tests, the gates and the
+  scripts). It asks every server function for its payload at the series' own
   bookmarks, about fifty for One Piece (both sides of every saga's start in both
   units), and in both locales, and walks it for the id or the name of any record
   not reached, and for any id, name or drawing of another series. A page asked
@@ -325,14 +336,14 @@ tapped a link a friend sent. The list is in `src/lib/crawler.ts`.
   `src/lib/view/drawings.ts`, `drawingsFor` on the server, which answers only
   records the reader has reached). A test in `slices.test.ts` holds each list
   page to 26 KB of inline strokes at the latest bookmark. Deferring the fruits
-  took `/en/fruits` at episode 1150 from 200 KB to 39 KB gzip (#610).
+  took `/one-piece/en/fruits` at episode 1150 from 200 KB to 39 KB gzip (#610).
 - The browser skips the layout and paint of list items far from the screen
   (`content-visibility: auto` on a character tile, a record tile and a fruit's
   drawing margin). Each stands in at its own exact height, the same at every
   width, so the page keeps its height and Back returns to the same tile. On a
   phone with the CPU slowed four times, layout, style and paint took 503 → 159
-  ms on `/en/characters`, 376 → 193 ms on `/en/places` and 194 → 167 ms on
-  `/en/fruits` (#621).
+  ms on `/one-piece/en/characters`, 376 → 193 ms on `/one-piece/en/places` and
+  194 → 167 ms on `/one-piece/en/fruits` (#621).
 - Search runs on names folded once by the server, so a keystroke costs one
   folded query and a few hundred `indexOf` calls. The list below the field is
   deferred; the field itself never is.
@@ -353,10 +364,10 @@ connection, medians of six runs, before the fixes below (#621):
 | ------------------------------- | ------------------ | ------------------- | -------- |
 | `/robots.txt?r=…`, a cache miss | 0.21 s             | 0.00 s              | 0.21 s   |
 | `/en`                           | 0.35 s             | 0.14 s              | 0.21 s   |
-| `/en/characters/nami`           | 0.30 s             | 0.08 s              | 0.21 s   |
-| `/en/fruits`                    | 0.62 s             | 0.38 s              | 0.23 s   |
-| `/en/characters`                | 0.70 s             | 0.48 s              | 0.22 s   |
-| `/en/places`                    | 0.87 s             | 0.59 s              | 0.26 s   |
+| `/one-piece/en/characters/nami` | 0.30 s             | 0.08 s              | 0.21 s   |
+| `/one-piece/en/fruits`          | 0.62 s             | 0.38 s              | 0.23 s   |
+| `/one-piece/en/characters`      | 0.70 s             | 0.48 s              | 0.22 s   |
+| `/one-piece/en/places`          | 0.87 s             | 0.59 s              | 0.26 s   |
 
 What this says:
 
@@ -366,10 +377,10 @@ What this says:
   moved, so this is the floor. (#610 read the body size as the cost; with the
   header in place, that turned out to be wrong.)
 - **The rest is the render, and it grows with the number of elements.** At
-  episode 1, with almost nothing open, `/en/characters` still took 0.39 s for
-  more than five hundred covered cards. A CPU profile puts most of a render in
-  React writing and encoding HTML, and the next largest share in serialising the
-  loader data.
+  episode 1, with almost nothing open, `/one-piece/en/characters` still took
+  0.39 s for more than five hundred covered cards. A CPU profile puts most of a
+  render in React writing and encoding HTML, and the next largest share in
+  serialising the loader data.
 - **Production rendered with React's development build.** Netlify does not set
   `NODE_ENV` inside a function, and the server build left React, TanStack and
   StyleX as packages that choose their build from it at run time. The HTML is
@@ -386,21 +397,22 @@ What was decided:
 - **The server build bundles its dependencies** (`ssr.noExternal` in
   `vite.config.ts`), so the production branch is written in at build time.
   Locally, with `NODE_ENV` unset as on Netlify, renders take about half as long
-  (`/en/characters` 62 → 31 ms, `/en/places` 36 → 18 ms) and a cold start's
-  first response comes in 0.26 s instead of 0.45 s.
+  (`/one-piece/en/characters` 62 → 31 ms, `/one-piece/en/places` 36 → 18 ms) and
+  a cold start's first response comes in 0.26 s instead of 0.45 s.
 - **An open record has no curtain.** Every card the server sent open used to
   carry the hidden "Show anyway" button that lifts the fog, kept only so a
-  reveal could fade. It was a fifth of each list page: `/en/characters` went
-  from 1,165 to 902 KB raw, `/en/places` from 713 to 555 KB, `/en/fruits` from
-  381 to 256 KB.
+  reveal could fade. It was a fifth of each list page:
+  `/one-piece/en/characters` went from 1,165 to 902 KB raw,
+  `/one-piece/en/places` from 713 to 555 KB, `/one-piece/en/fruits` from 381 to
+  256 KB.
 - **Smaller pages first, then fewer elements.** Deferring the fruit drawings cut
   that page by 60% raw (#610). Moving the shared stroke classes from every
   `<path>` to one `<g>` was measured and dropped: most drawings on a list are
   deferred, and an empty `<g>` on each of them costs more than the classes it
   saves.
 - **No Edge Functions for now.** Production renders 5–20 times slower than a
-  laptop, so even a 31 ms local `/en/characters` would not fit the 50 ms Edge
-  CPU limit, and the archive would have to ship in the edge bundle.
+  laptop, so even a 31 ms local `/one-piece/en/characters` would not fit the 50
+  ms Edge CPU limit, and the archive would have to ship in the edge bundle.
 
 ## Localization
 

@@ -1,13 +1,28 @@
-// The engine's one reach into a series: the drawing and fruit ids are One
-// Piece's own, type-only, and allowed by the fallow zones for that alone. The
-// shapes are generalized when a second series shows what it needs (#758).
+// Editorial shapes are type-only: the runtime archive crosses solely through
+// the lazy registry. #758 generalizes these shapes for the second series.
 import type { ArtId } from '~/data/series/one-piece/art'
+import type * as FruitArt from '~/data/series/one-piece/art/fruits'
+import type * as Chapters from '~/data/series/one-piece/chapter-table'
+import type * as Timelines from '~/data/series/one-piece/chapters'
+import type * as Characters from '~/data/series/one-piece/characters'
+import type * as Chart from '~/data/series/one-piece/chart'
+import type * as DatedArchive from '~/data/series/one-piece/dated'
+import type * as Entities from '~/data/series/one-piece/entities'
 import type { FruitId } from '~/data/series/one-piece/fruit-forms'
+import type * as Fruits from '~/data/series/one-piece/fruits'
+import type * as Leads from '~/data/series/one-piece/leads'
+import type * as Places from '~/data/series/one-piece/places'
+import type * as Sagas from '~/data/series/one-piece/sagas'
 import type { Locale } from '~/i18n/locales'
+import type { Bookmark } from '~/lib/progress/episode'
+import type { Series } from '~/lib/progress/series'
+import type { Gated } from '~/lib/progress/spoiler'
+import type { FillerKind } from '~/lib/view/filler'
 import type {
   CharacterStatus,
   EntityKind,
   Faction,
+  Stroke,
   TintId,
 } from '~/lib/view/records'
 
@@ -25,17 +40,6 @@ export type LocalizedText = Record<Locale, string>
  * drawing that does not exist.
  */
 export type { ArtId } from '~/data/series/one-piece/art'
-
-/**
- * The devil fruits, filed as records of their own in `~/data/series/one-piece/records/fruits`
- * and keyed in `~/data/series/one-piece/fruit-forms`. The type is derived from that table, so
- * a dossier cannot say a character ate a fruit the archive never filed.
- *
- * Imported as `import type`, never as an inline `import { type … }`: under
- * `isolatedModules` the inline form is a live module edge, and this module is
- * imported by every saga. See the note at the head of `~/lib/view/records`.
- */
-export type { FruitId } from '~/data/series/one-piece/fruit-forms'
 
 /**
  * What a record shows: a line drawing and the one colour its main stroke
@@ -215,4 +219,99 @@ export interface CharacterDossier {
   status?: Timeline<CharacterStatus>
   /** In Berry. */
   bounty?: Timeline<number>
+}
+
+/** A loaded archive; series-specific editorial types stay behind this type-only seam until #758. */
+export interface SeriesArchive {
+  arcs: typeof Characters.arcs
+  bookmarks: Bookmark[]
+  bookSections: BookSection[]
+  chapterAtEpisode: typeof Chapters.chapterAtEpisode
+  characters: typeof Characters.characters
+  chart: typeof Characters.chart
+  chartPointOf: typeof Chart.chartPointOf
+  chartWith: typeof Characters.chartWith
+  datedOf: typeof DatedArchive.datedOf
+  dossierOf: typeof Characters.dossierOf
+  drawings: Record<string, Stroke[]>
+  eatersOf: (id: string) => Eater[]
+  entities: typeof Entities.entities
+  factionsOf: typeof DatedArchive.factionsOf
+  featuredCharacters: typeof Characters.featuredCharacters
+  filler: FillerEntry[]
+  fillerArcs: FillerArc[]
+  fruitFormOf: typeof Fruits.fruitFormOf
+  fruitRedrawn: typeof FruitArt.fruitRedrawn
+  fruits: typeof Fruits.fruits
+  fruitsOfForm: typeof Fruits.fruitsOfForm
+  gateOf: typeof Chapters.gateOf
+  getCharacter: typeof Characters.getCharacter
+  getEntity: typeof Entities.getEntity
+  getFruit: typeof Fruits.getFruit
+  getPlace: typeof Places.getPlace
+  getShip: typeof Places.getShip
+  lastAired: number
+  latestOf: typeof DatedArchive.latestOf
+  leads: typeof Leads.ARC_LEADS
+  nativesOf: typeof DatedArchive.nativesOf
+  placeDossierOf: typeof Places.placeDossierOf
+  places: typeof Places.places
+  reachedOf: typeof DatedArchive.reachedOf
+  redrawn: (owner: Entity) => { gate: Gated; value: Stroke[] }[]
+  roleOf: typeof Characters.roleOf
+  routePositionOf: typeof Characters.routePositionOf
+  sagas: typeof Sagas.sagas
+  series: Series
+  shipDossierOf: typeof Places.shipDossierOf
+  ships: typeof Places.ships
+  stories: FiledStory[]
+  timelines: typeof Timelines.TIMELINES
+}
+
+/**
+ * The devil fruits, filed as records of their own in `~/data/series/one-piece/records/fruits`
+ * and keyed in `~/data/series/one-piece/fruit-forms`. The type is derived from that table, so
+ * a dossier cannot say a character ate a fruit the archive never filed.
+ *
+ * Imported as `import type`, never as an inline `import { type … }`: under
+ * `isolatedModules` the inline form is a live module edge, and this module is
+ * imported by every saga. See the note at the head of `~/lib/view/records`.
+ */
+export type { FruitId } from '~/data/series/one-piece/fruit-forms'
+
+/** One arc shelf and the characters first met in it. */
+export interface BookSection {
+  arc: Entity
+  characters: Entity[]
+}
+
+/** A dated story with its owning character and opening gate. */
+export interface FiledStory {
+  character: Entity
+  episode: number
+  gate: Gated
+  story: Story
+}
+
+/** An eater relation gated by the fact that names it. */
+export interface Eater {
+  entity: Entity
+  gate: Gated
+}
+
+/** One numbered episode or unnumbered entry of an optional filler guide. */
+export type FillerEntry = (
+  { after: number; released: string } | { episode: number }
+) & {
+  chapter: number
+  kind: FillerKind
+  summary: LocalizedText
+  title: LocalizedText
+}
+
+/** A named run of episodes in a filler guide. */
+export interface FillerArc {
+  first: number
+  last: number
+  name: LocalizedText
 }

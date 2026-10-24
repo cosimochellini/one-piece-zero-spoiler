@@ -18,8 +18,8 @@ import { isLocale, type Locale } from '~/i18n/locales'
 import { getDictionary, translate } from '~/i18n/translate'
 import type { TranslationKey } from '~/i18n/types'
 import { type Crumb, pageJsonLd, type PageKind } from '~/lib/seo/jsonLd'
-import { localeAlternates, normalisePath } from '~/lib/seo/paths'
-import { absoluteUrl, SITE_ORIGIN } from '~/lib/seo/site'
+import { localeAlternates, localeRoot, normalisePath } from '~/lib/seo/paths'
+import { absoluteUrl } from '~/lib/seo/site'
 import { describeSocial, type MetaTag } from '~/lib/seo/tags'
 import type { DocumentHead } from '~/lib/view/records'
 
@@ -83,7 +83,7 @@ function describePage(page: PageDescription): HeadTags {
           kind: page.kind,
           locale: page.locale,
           siteName,
-          siteUrl: `${SITE_ORIGIN}/${page.locale}`,
+          siteUrl: absoluteUrl(localeRoot(path, page.locale)),
           title: page.head.title,
           trail: page.trail ?? [],
           url,
@@ -143,7 +143,9 @@ function describeRecordPage(page: RecordPage): HeadTags {
     trail: [
       {
         name: translate(dictionary, `${page.section}.pageTitle`),
-        url: absoluteUrl(`/${page.locale}/${page.section}`),
+        url: absoluteUrl(
+          `${localeRoot(page.pathname, page.locale)}/${page.section}`,
+        ),
       },
     ],
   })

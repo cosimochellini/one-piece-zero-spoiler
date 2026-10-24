@@ -7,7 +7,7 @@ import { DrawInContext, tintOf } from '~/components/drawing'
 import { useLocale } from '~/i18n/LocaleContext'
 import { spliced } from '~/i18n/spliced'
 import type { Translate } from '~/i18n/types'
-import { useThreshold } from '~/lib/progress/BookmarkContext'
+import { useSeriesParams, useThreshold } from '~/lib/progress/BookmarkContext'
 import type { FruitParams } from '~/lib/search/fruitParams'
 import { useDrawing } from '~/lib/view/drawings'
 import type {
@@ -50,6 +50,7 @@ export function SagaMarquee({
   marquee,
 }: SagaMarqueeProps): null | ReactElement {
   const { locale, t } = useLocale()
+  const { series } = useSeriesParams()
   const headingId = useId()
   if (marquee === null) {
     return null
@@ -78,9 +79,9 @@ export function SagaMarquee({
 
       <Link
         hash={link.hash}
-        params={{ locale }}
+        params={{ series, locale }}
         search={link.search}
-        to="/$locale/fruits"
+        to="/$series/$locale/fruits"
         {...stylex.props(styles.lastLink, styles.whole)}
       >
         {t('fruits.marqueeLink')}
@@ -144,6 +145,7 @@ function Rail({ fruits }: { fruits: FruitView[] }): ReactElement {
 /** No fruit in the saga yet: say so, and point back to the last one. */
 function Behind({ last }: { last: FruitView | undefined }): ReactElement {
   const { locale, t } = useLocale()
+  const { series } = useSeriesParams()
   const threshold = useThreshold()
 
   return (
@@ -156,8 +158,8 @@ function Behind({ last }: { last: FruitView | undefined }): ReactElement {
             threshold('fruits.lastFruit', last),
             'name',
             <Link
-              params={{ locale, id: last.id }}
-              to="/$locale/fruits/$id"
+              params={{ series, locale, id: last.id }}
+              to="/$series/$locale/fruits/$id"
               {...stylex.props(styles.lastLink)}
             >
               {last.name}
@@ -181,15 +183,15 @@ function Tile({
   lead: boolean
   record: FruitView
 }): ReactElement {
-  const { locale } = useLocale()
+  const { series, locale } = useSeriesParams()
   const threshold = useThreshold()
   const { ref, strokes } = useDrawing(record.id, record.visual)
 
   return (
     <li {...stylex.props(styles.tile, lead && styles.leadTile)}>
       <Link
-        params={{ locale, id: record.id }}
-        to="/$locale/fruits/$id"
+        params={{ series, locale, id: record.id }}
+        to="/$series/$locale/fruits/$id"
         {...stylex.props(styles.link)}
       >
         <span

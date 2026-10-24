@@ -24,6 +24,10 @@
  *   4. A byte budget. The canaries name every module now, but the budget
  *      still catches bulk arriving through a shape neither pattern matches.
  *
+ * The SSR manifest also proves that every series archive enters through a
+ * dynamic import, with no canary-bearing data in another runtime entry's
+ * static dependency closure.
+ *
  * Exit codes:
  *   0  the archive stayed on the server
  *   1  archive prose in a client chunk, or the budget exceeded
@@ -36,8 +40,8 @@ import process from 'node:process'
 import { byNumber, byValue } from 'sort-es'
 
 import { importArchive } from './archive-loader.mjs'
+import { checkServer } from './archive-server-gate.mjs'
 
-const EXIT_CLEAN = 0
 const EXIT_FOUND = 1
 const EXIT_UNUSABLE = 2
 
@@ -136,8 +140,13 @@ const WORST_CHUNKS = 5
  * Raised for #721 on 2026-10-23: public bilingual source/license notices
  * and their route. Measured client: 653,301 bytes plus 1 KB headroom.
  * Record-specific source URLs remain server-only and have their own canaries.
+ * Raised for #753 on 2026-10-24: series-first routing, shared hub/legal shells,
+ * selected-series navigation and public description RPCs. The measured client
+ * build is 662,191 bytes; the ceiling retains 1 KB headroom. No archive records
+ * or drawings enter the client, and the emitted SSR graph is now checked to
+ * keep each archive behind its own dynamic import.
  */
-export const MAX_CLIENT_BYTES = 654_301
+export const MAX_CLIENT_BYTES = 663_191
 
 /** Where every series' folder is. */
 const SERIES_DIR = 'src/data/series'
@@ -454,7 +463,8 @@ async function main() {
     return EXIT_UNUSABLE
   }
 
-  const verdict = judge(chunks, await canariesOf(repositoryRoot))
+  const canaries = await canariesOf(repositoryRoot)
+  const verdict = judge(chunks, canaries)
 
   if (verdict.unreadable.length > 0) {
     console.error(
@@ -474,7 +484,7 @@ async function main() {
     `archive-gate: clean — ${String(chunks.length)} client scripts, ${verdict.total.toLocaleString('en-GB')} bytes, no archive prose.`,
   )
 
-  return EXIT_CLEAN
+  return checkServer(repositoryRoot, canaries)
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {

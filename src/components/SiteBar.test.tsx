@@ -1,7 +1,9 @@
 import { screen, within } from '@testing-library/react'
-import type { ReactElement } from 'react'
+import { type ReactElement, useMemo } from 'react'
 import { describe, expect, it } from 'vitest'
 
+import { BookmarkContext, useBookmark } from '~/lib/progress/BookmarkContext'
+import { ONE_PIECE_BOOKMARK } from '~/lib/progress/series'
 import { ep, renderWithProviders } from '~/test/providers'
 
 import { SiteBar } from './SiteBar'
@@ -14,6 +16,21 @@ function LocaleSwitch(): ReactElement {
 
 vi.mock(import('~/components/LocaleSwitch'), () => ({ LocaleSwitch }))
 
+const OTHER_SERIES = { ...ONE_PIECE_BOOKMARK, slug: 'other-series' }
+
+function OtherSeriesBar(): ReactElement {
+  const bookmark = useBookmark()
+  const value = useMemo(
+    () => ({ ...bookmark, series: OTHER_SERIES }),
+    [bookmark],
+  )
+  return (
+    <BookmarkContext value={value}>
+      <SiteBar />
+    </BookmarkContext>
+  )
+}
+
 describe('SiteBar', () => {
   it('carries the wordmark, three page links, the bookmark and the language control, and nothing else', () => {
     renderWithProviders(<SiteBar />)
@@ -22,19 +39,19 @@ describe('SiteBar', () => {
 
     expect(
       within(banner).getByRole('link', { name: 'Zero Spoiler' }),
-    ).toHaveAttribute('href', '/en')
+    ).toHaveAttribute('href', '/one-piece/en')
     expect(
       within(banner).getByRole('navigation', { name: 'Pages' }),
     ).toBeInTheDocument()
     expect(
       within(banner).getByRole('link', { name: 'Characters' }),
-    ).toHaveAttribute('href', '/en/characters')
+    ).toHaveAttribute('href', '/one-piece/en/characters')
     expect(
       within(banner).getByRole('link', { name: 'Places' }),
-    ).toHaveAttribute('href', '/en/places')
+    ).toHaveAttribute('href', '/one-piece/en/places')
     expect(
       within(banner).getByRole('link', { name: 'Fruits' }),
-    ).toHaveAttribute('href', '/en/fruits')
+    ).toHaveAttribute('href', '/one-piece/en/fruits')
     expect(
       within(banner).getByRole('combobox', { name: 'Language' }),
     ).toBeInTheDocument()
@@ -75,7 +92,7 @@ describe('SiteBar', () => {
   })
 
   it('marks the characters link as the current page when the reader is on it', () => {
-    renderWithProviders(<SiteBar />, { path: '/en/characters' })
+    renderWithProviders(<SiteBar />, { path: '/one-piece/en/characters' })
 
     expect(screen.getByRole('link', { name: 'Characters' })).toHaveAttribute(
       'aria-current',
@@ -84,7 +101,7 @@ describe('SiteBar', () => {
   })
 
   it('marks the places link as the current page when the reader is on it', () => {
-    renderWithProviders(<SiteBar />, { path: '/en/places' })
+    renderWithProviders(<SiteBar />, { path: '/one-piece/en/places' })
 
     expect(screen.getByRole('link', { name: 'Places' })).toHaveAttribute(
       'aria-current',
@@ -96,7 +113,7 @@ describe('SiteBar', () => {
   })
 
   it('marks the fruits link as the current page when the reader is on it', () => {
-    renderWithProviders(<SiteBar />, { path: '/en/fruits' })
+    renderWithProviders(<SiteBar />, { path: '/one-piece/en/fruits' })
 
     expect(screen.getByRole('link', { name: 'Fruits' })).toHaveAttribute(
       'aria-current',
@@ -108,7 +125,7 @@ describe('SiteBar', () => {
   })
 
   it('does not mark any page link on the landing', () => {
-    renderWithProviders(<SiteBar />, { path: '/en' })
+    renderWithProviders(<SiteBar />, { path: '/one-piece/en' })
 
     expect(
       screen.getByRole('link', { name: 'Characters' }),
@@ -126,18 +143,51 @@ describe('SiteBar', () => {
 
     expect(screen.getByRole('link', { name: 'Personaggi' })).toHaveAttribute(
       'href',
-      '/it/characters',
+      '/one-piece/it/characters',
     )
     expect(screen.getByRole('link', { name: 'Luoghi' })).toHaveAttribute(
       'href',
-      '/it/places',
+      '/one-piece/it/places',
     )
     expect(screen.getByRole('link', { name: 'Frutti' })).toHaveAttribute(
       'href',
-      '/it/fruits',
+      '/one-piece/it/fruits',
     )
     expect(
       screen.getByRole('button', { name: 'Imposta episodio' }),
     ).toBeInTheDocument()
+  })
+
+  it.each(['/en', '/en/legal'])(
+    'keeps %s free of series navigation and bookmark controls',
+    (path) => {
+      renderWithProviders(<SiteBar />, { path })
+
+      expect(
+        screen.getByRole('link', { name: 'Zero Spoiler' }),
+      ).toHaveAttribute('href', '/en')
+      expect(screen.queryByRole('navigation')).not.toBeInTheDocument()
+      expect(screen.queryByRole('button')).not.toBeInTheDocument()
+      expect(
+        screen.getByRole('combobox', { name: 'Language' }),
+      ).toBeInTheDocument()
+    },
+  )
+
+  it('takes content link parameters from the selected series', () => {
+    renderWithProviders(<OtherSeriesBar />)
+
+    expect(screen.getByRole('link', { name: 'Zero Spoiler' })).toHaveAttribute(
+      'href',
+      '/other-series/en',
+    )
+    expect(screen.getByRole('link', { name: 'Characters' })).toHaveAttribute(
+      'href',
+      '/other-series/en/characters',
+    )
+    expect(screen.getByRole('link', { name: 'Fruits' })).toHaveAttribute(
+      'href',
+      '/other-series/en/fruits',
+    )
   })
 })

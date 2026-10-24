@@ -92,9 +92,13 @@ export function countTable({ archive }) {
 async function countTables() {
   const { SERIES } = await importArchive('data/series/index.ts')
 
-  return SERIES.map(
-    (series) => `### \`${series.slug}\`\n\n${countTable(series)}`,
-  ).join('\n\n')
+  const tables = await Promise.all(
+    SERIES.map(async (series) => {
+      const archive = await series.load()
+      return `### \`${series.slug}\`\n\n${countTable({ archive })}`
+    }),
+  )
+  return tables.join('\n\n')
 }
 
 /**

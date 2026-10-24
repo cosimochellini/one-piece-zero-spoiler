@@ -5,9 +5,8 @@ import { stories } from '~/data/series/one-piece/dated'
 import { LOCALES } from '~/i18n/locales'
 import { CHAPTER_CEILING, EPISODE_CEILING } from '~/lib/progress/episode'
 import type { SourceCredit } from '~/lib/view/credits'
+import { opCreditsPage as creditsPage } from '~/test/archive'
 import { ep } from '~/test/providers'
-
-import { creditsPage } from './credits.server'
 
 const OFFICIAL = 'https://one-piece.com/anime/o6217/index.html'
 const TAMA_REVISION = 'oldid=2132292'

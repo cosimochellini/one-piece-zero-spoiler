@@ -10,8 +10,8 @@ import { sitemapXml } from '~/server/seo/sitemap.server'
 export const Route = createFileRoute('/sitemap.xml')({
   server: {
     handlers: {
-      GET: () => {
-        return new Response(sitemapXml(), {
+      GET: async () => {
+        return new Response(await sitemapXml(), {
           headers: {
             'Content-Type': 'application/xml; charset=utf-8',
             'Cache-Control': 'public, max-age=3600',

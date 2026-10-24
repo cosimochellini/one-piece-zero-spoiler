@@ -1,5 +1,10 @@
 import { orderByMode } from '~/data/order'
-import type { CharacterDossier, Entity, LocalizedText } from '~/data/types'
+import type {
+  BookSection,
+  CharacterDossier,
+  Entity,
+  LocalizedText,
+} from '~/data/types'
 import type { EntityKind } from '~/lib/view/records'
 
 import { entities } from './entities'
@@ -151,10 +156,7 @@ export function roleOf(entity: Entity): LocalizedText | undefined {
  * character on it is — the heading never has to be veiled above an open
  * name.
  */
-export interface BookSection {
-  arc: Entity
-  characters: Entity[]
-}
+export type { BookSection } from '~/data/types'
 
 /** Every arc, in route order. */
 export const arcs: Entity[] = route.filter((entity) => entity.kind === 'arc')

@@ -5,7 +5,7 @@ import { getCharacter } from '~/data/series/one-piece/characters'
 import type { Locale } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
 import { searchableOf } from '~/server/archive/project.server'
-import { readerFor } from '~/server/archive/reader.server'
+import { opReaderFor as readerFor } from '~/test/archive'
 
 import { foldName, matchFolded } from './fold'
 

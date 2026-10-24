@@ -1,7 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
 import { reveal } from '~/data/reveal'
-import { ONE_PIECE } from '~/data/series'
 import { DRAWINGS, REDRAWINGS } from '~/data/series/one-piece/art'
 import { eatersOf } from '~/data/series/one-piece/dated'
 import { entities } from '~/data/series/one-piece/entities'
@@ -17,14 +16,22 @@ import type {
   Slot,
   SpecimenView,
 } from '~/lib/view/records'
+import {
+  opCharacterPage as characterPage,
+  opDrawingsFor as drawingsFor,
+  opFruitEaters as fruitEaters,
+  opFruitPage as fruitPage,
+  opFruitSheet as fruitSheet,
+  opFruitSiblings as fruitSiblings,
+  opHandleOf as handleOf,
+  opPeekFruit as peekFruit,
+  opSagaOf as sagaOf,
+  opSagaStarts as sagaStarts,
+} from '~/test/archive'
 import { leaksIn, saysNothing } from '~/test/fog'
+import { ONE_PIECE_LOADED as ONE_PIECE } from '~/test/series'
 
-import { fruitPage } from './fruitPage.server'
-import { fruitEaters, fruitSheet, fruitSiblings } from './fruits.server'
-import { handleOf } from './handle.server'
-import { characterPage, drawingsFor } from './pages.server'
-import { peekFruit } from './peek.server'
-import { sagaOf, type SagaStart, sagaStarts } from './sagaLabels.server'
+import type { SagaStart } from './sagaLabels.server'
 
 const BOOKMARKS = ONE_PIECE.bookmarks
 

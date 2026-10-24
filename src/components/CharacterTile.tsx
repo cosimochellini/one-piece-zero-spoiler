@@ -6,7 +6,7 @@ import { NameAndRole } from '~/components/CharacterCard'
 import { ChartArt } from '~/components/ChartArt'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { useLocale } from '~/i18n/LocaleContext'
-import { useThreshold } from '~/lib/progress/BookmarkContext'
+import { useSeriesParams, useThreshold } from '~/lib/progress/BookmarkContext'
 import { useDrawing } from '~/lib/view/drawings'
 import type { CharacterView, Slot } from '~/lib/view/records'
 import { morphPart, travelWith, useTravels } from '~/styles/morph'
@@ -100,7 +100,7 @@ function TileLink({
   morph: boolean
   record: CharacterView
 }): ReactElement {
-  const { locale } = useLocale()
+  const { series, locale } = useSeriesParams()
   const travels = useTravels('character', record.id) && morph
   const { ref, strokes } = useDrawing(record.id, record.visual)
 
@@ -111,8 +111,8 @@ function TileLink({
           travelWith('character', record.id)
         }
       }}
-      params={{ locale, id: record.id }}
-      to="/$locale/characters/$id"
+      params={{ series, locale, id: record.id }}
+      to="/$series/$locale/characters/$id"
       {...stylex.props(styles.row, styles.link)}
     >
       <span

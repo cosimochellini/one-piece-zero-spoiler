@@ -1,12 +1,13 @@
 import { describe, expect, it } from 'vitest'
 
-import { ONE_PIECE } from '~/data/series'
 import { chartPointOf } from '~/data/series/one-piece/chart'
 import type { Bookmark } from '~/lib/progress/episode'
-
-import { handleOf } from './handle.server'
-import { peekPort } from './peek.server'
-import { placesPage } from './places.server'
+import {
+  opHandleOf as handleOf,
+  opPeekPort as peekPort,
+  opPlacesPage as placesPage,
+} from '~/test/archive'
+import { ONE_PIECE_LOADED as ONE_PIECE } from '~/test/series'
 
 const BOOKMARKS = ONE_PIECE.bookmarks
 

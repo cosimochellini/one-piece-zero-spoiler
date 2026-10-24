@@ -41,6 +41,7 @@ export function headFor(
       description: describeThreshold({
         gated: entity,
         mode: r.mode,
+        series: r.archive.series,
         sentence: keys.foggedDescription,
         t,
       }),

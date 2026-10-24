@@ -1,9 +1,6 @@
 import { byNumber, byValue } from 'sort-es'
 
-import { getCharacter } from '~/data/series/one-piece/characters'
-import { reachedOf } from '~/data/series/one-piece/dated'
 import type { Entity } from '~/data/types'
-import type { Locale } from '~/i18n/locales'
 import { tokenize } from '~/lib/prose/markers'
 import type {
   CharacterChronicle,
@@ -49,8 +46,8 @@ export function segmentsOf(text: string, resolve: ResolveName): ProseSegment[] {
 }
 
 /** A filed character's name in one locale, for the markers to resolve against. */
-function characterName(locale: Locale): ResolveName {
-  return (id) => getCharacter(id)?.name[locale]
+function characterName(r: Reader): ResolveName {
+  return (id) => r.archive.getCharacter(id)?.name[r.locale]
 }
 
 /**
@@ -63,11 +60,12 @@ function characterName(locale: Locale): ResolveName {
  * character is met sooner than they are.
  */
 export function chronicleOf(entity: Entity, r: Reader): CharacterChronicle {
-  const resolve = characterName(r.locale)
+  const resolve = characterName(r)
 
   return {
     mode: 'chronicle',
-    entries: reachedOf(r, entity, 'chronicle')
+    entries: r.archive
+      .reachedOf(r, entity, 'chronicle')
       .toSorted(
         byValue((entry) => r.threshold(entry.gate), byNumber({ desc: true })),
       )

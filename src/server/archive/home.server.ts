@@ -1,14 +1,6 @@
 import { byNumber, byValue } from 'sort-es'
 
-import {
-  arcs,
-  bookSections,
-  getCharacter,
-} from '~/data/series/one-piece/characters'
-import { type FiledStory, stories } from '~/data/series/one-piece/dated'
-import { ARC_LEADS } from '~/data/series/one-piece/leads'
-import type { Entity } from '~/data/types'
-import type { Locale } from '~/i18n/locales'
+import type { Entity, FiledStory } from '~/data/types'
 import type { Bookmark } from '~/lib/progress/episode'
 import { markedIds } from '~/lib/prose/markers'
 import type { HomeStory, HomeView, LandingView } from '~/lib/view/records'
@@ -17,7 +9,7 @@ import { segmentsOf } from './chronicle.server'
 import { fillerAheadOf } from './fillerCountdown.server'
 import { onboardingPage } from './onboarding.server'
 import { characterOf, waypointOf } from './project.server'
-import { type Reader, readerFor } from './reader.server'
+import type { Reader } from './reader.server'
 
 /**
  * The home page, assembled from the archive. A plain function like the rest
@@ -34,14 +26,12 @@ const CAST_COUNT = 6
  * opening other pages, and the landing is where it is saved. A reader with a
  * bookmark gets the home page at their point.
  */
-export function landingPage(
-  bookmark: Bookmark,
-  trial: Bookmark,
-  locale: Locale,
-): LandingView {
+export function landingPage(r: Reader, trial: Bookmark): LandingView {
+  const { bookmark } = r
+
   return bookmark === null || trial !== null ?
-      { onboarding: onboardingPage(trial, locale) }
-    : { home: homePage(bookmark, locale) }
+      { onboarding: onboardingPage(trial, r) }
+    : { home: homePage(r) }
 }
 
 /**
@@ -60,17 +50,18 @@ export function landingPage(
  * An episode or season reader with filler in their next few episodes is
  * also warned of it (`./fillerCountdown.server`).
  */
-export function homePage(
-  bookmark: NonNullable<Bookmark>,
-  locale: Locale,
-): HomeView {
-  const r = readerFor(bookmark, locale)
+export function homePage(r: Reader): HomeView {
+  const { bookmark, locale } = r
+
+  if (bookmark === null) {
+    throw new Error('A home page requires a bookmark')
+  }
   const [saga, previous] = reachedArcs(r)
 
   // Floored and ordered in the reader's own unit: a manga reader's arc starts
   // at its chapter, and the stories since are the ones concluded since then.
   const since = (floor: Entity): FiledStory[] => {
-    return stories
+    return r.archive.stories
       .filter(
         (s) => r.sees(s.gate) && r.threshold(s.gate) >= r.threshold(floor),
       )
@@ -87,13 +78,13 @@ export function homePage(
   }
 
   const resolve = (id: string): string | undefined =>
-    getCharacter(id)?.name[locale]
-  const named = leadsNamed(shown, before ? previous : saga)
+    r.archive.getCharacter(id)?.name[locale]
+  const named = leadsNamed(shown, before ? previous : saga, r)
   const cast = named.length > 0 ? named : newcomersOf(saga, r)
 
   return {
     before: before && shown.length > 0,
-    filler: fillerAheadOf(bookmark),
+    filler: fillerAheadOf(r),
     point: bookmark,
     saga: waypointOf(saga, r),
     stories: shown.map((filed): HomeStory => {
@@ -116,8 +107,8 @@ export function homePage(
  * arc; the fallback is for the type, not for a case the route can show.
  */
 function reachedArcs(r: Reader): [Entity, Entity | undefined] {
-  const reached = r.order(arcs).filter((arc) => r.sees(arc))
-  const [saga = arcs[0], previous] = reached.toReversed()
+  const reached = r.order(r.archive.arcs).filter((arc) => r.sees(arc))
+  const [saga = r.archive.arcs[0], previous] = reached.toReversed()
   if (saga === undefined) {
     throw new Error('The archive files no arc')
   }
@@ -131,8 +122,8 @@ function reachedArcs(r: Reader): [Entity, Entity | undefined] {
  * most recent first is the one met first: the tally keeps first-mention order
  * and the sort is stable.
  */
-function leadsNamed(shown: FiledStory[], told: Entity): Entity[] {
-  const leads = new Set(ARC_LEADS[told.id])
+function leadsNamed(shown: FiledStory[], told: Entity, r: Reader): Entity[] {
+  const leads = new Set(r.archive.leads[told.id])
   const tally = new Map<string, number>()
   for (const { character, story } of shown) {
     for (const id of [character.id, ...markedIds(story.body.en)]) {
@@ -145,7 +136,7 @@ function leadsNamed(shown: FiledStory[], told: Entity): Entity[] {
   return [...tally]
     .toSorted(byValue(([, count]) => count, byNumber({ desc: true })))
     .slice(0, CAST_COUNT)
-    .flatMap(([id]) => getCharacter(id) ?? [])
+    .flatMap(([id]) => r.archive.getCharacter(id) ?? [])
 }
 
 /**
@@ -153,9 +144,10 @@ function leadsNamed(shown: FiledStory[], told: Entity): Entity[] {
  * none, and the section is then left off the page.
  */
 function newcomersOf(saga: Entity, r: Reader): Entity[] {
-  const leads = new Set(ARC_LEADS[saga.id])
+  const leads = new Set(r.archive.leads[saga.id])
   const shelved =
-    bookSections.find((section) => section.arc.id === saga.id)?.characters ?? []
+    r.archive.bookSections.find((section) => section.arc.id === saga.id)
+      ?.characters ?? []
 
   return r
     .order(shelved)

@@ -2,8 +2,10 @@ import { describe, expect, it } from 'vitest'
 
 import { entities } from '~/data/series/one-piece/entities'
 import { foldName } from '~/lib/search/fold'
-
-import { entityForHandle, handleOf } from './handle.server'
+import {
+  opEntityForHandle as entityForHandle,
+  opHandleOf as handleOf,
+} from '~/test/archive'
 
 // A base-64 chunk is four characters; a lone trailing character carries no
 // whole byte, and `atob` refuses such a chunk rather than dropping it.

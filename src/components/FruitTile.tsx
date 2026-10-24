@@ -13,7 +13,7 @@ import {
 } from '~/components/recordMatches'
 import { useLocale } from '~/i18n/LocaleContext'
 import type { TranslationKey } from '~/i18n/types'
-import { useThreshold } from '~/lib/progress/BookmarkContext'
+import { useSeriesParams, useThreshold } from '~/lib/progress/BookmarkContext'
 import type {
   EaterView,
   FruitForm,
@@ -225,7 +225,7 @@ function TileLink({
   morph: boolean
   record: FruitView
 }): ReactElement {
-  const { locale } = useLocale()
+  const { series, locale } = useSeriesParams()
   const travels = useTravels('fruit', record.id) && morph
 
   return (
@@ -235,8 +235,8 @@ function TileLink({
           travelWith('fruit', record.id)
         }
       }}
-      params={{ locale, id: record.id }}
-      to="/$locale/fruits/$id"
+      params={{ series, locale, id: record.id }}
+      to="/$series/$locale/fruits/$id"
       {...stylex.props(styles.face, styles.link)}
     >
       <div {...stylex.props(styles.art)}>

@@ -1,75 +1,67 @@
 import { orderByMode } from '~/data/order'
-import { entities } from '~/data/series/one-piece/entities'
-import type { Entity } from '~/data/types'
+import type { Entity, SeriesArchive } from '~/data/types'
 
-/**
- * The address a covered record hands back, in place of its id.
- *
- * A covered record's id is its name slug, so it cannot travel: an id in a
- * React key, an `href` or a DOM `id` spells the name the fog is for. A handle
- * is the record's index in one canonical order, written in base 36. The
- * index-to-id table exists only in the server bundle, and the ordinal itself
- * is something the site already says out loud — "waypoint 23 of 66".
- *
- * It does not depend on the unit the reader counts in. A chapter reader's
- * list is in a different order, but a handle is an identity and not a
- * position in a list: three handles per record would mean a record changed
- * identity the moment a reader switched units.
- *
- * It is ephemeral. It is never persisted, never in a URL, never in the
- * cookie. Filing a new record shifts every index above it, which is only
- * acceptable because nothing holds a handle across a deploy.
- */
-
-// Base 36, so a handle is as short as a number can be written without
-// punctuation: four characters address more records than the archive holds.
 const RADIX = 36
-
-// Up to four base-36 digits, lower case. Anything else was never minted here.
 const HANDLE_SHAPE = /^[\da-z]{1,4}$/u
+interface HandleTable {
+  canonical: Entity[]
+  index: Map<string, number>
+}
+const tables = new WeakMap<SeriesArchive, HandleTable>()
 
-/**
- * The one canonical order, and the index into it. Built on first use and kept
- * in one box rather than in two bindings: a lazily filled cell is a different
- * thing from a module-scope variable a function reaches out and assigns to.
- */
-const table: { canonical: Entity[] | null; index: Map<string, number> | null } =
-  { canonical: null, index: null }
-
-/** The archive in the order the anime reaches it, built once. */
-function order(): Entity[] {
-  table.canonical ??= orderByMode(entities, 'episode')
-
-  return table.canonical
+/** Build one canonical episode order for each loaded archive. */
+function tableOf(archive: SeriesArchive): HandleTable {
+  let table = tables.get(archive)
+  if (table === undefined) {
+    const canonical = orderByMode(archive.entities, 'episode')
+    table = {
+      canonical,
+      index: new Map(canonical.map((entity, at) => [entity.id, at])),
+    }
+    tables.set(archive, table)
+  }
+  return table
 }
 
-/** Where each record sits in that order. */
-function positions(): Map<string, number> {
-  table.index ??= new Map(order().map((entity, at) => [entity.id, at]))
-
-  return table.index
+/** One Piece retains its deployed ordinals; every other series has a namespace. */
+function prefixOf(archive: SeriesArchive): string {
+  return archive.series.slug === 'one-piece' ? '' : `${archive.series.slug}:`
 }
 
-/** The handle that stands in for a record the reader has not reached. */
-export function handleOf(id: string): string {
-  const at = positions().get(id)
+/** A handle names an ordinal only inside the archive that minted it. */
+export function indexHandle(index: number, archive: SeriesArchive): string {
+  return `${prefixOf(archive)}${index.toString(RADIX)}`
+}
+
+/** A foreign, malformed or out-of-range token fails closed. */
+export function handleIndex(
+  handle: string,
+  archive: SeriesArchive,
+): number | undefined {
+  const prefix = prefixOf(archive)
+  if (!handle.startsWith(prefix)) {
+    return undefined
+  }
+  const ordinal = handle.slice(prefix.length)
+  return HANDLE_SHAPE.test(ordinal) ?
+      Number.parseInt(ordinal, RADIX)
+    : undefined
+}
+
+/** The stable handle of a filed record, independent of the reader's unit. */
+export function handleOf(id: string, archive: SeriesArchive): string {
+  const at = tableOf(archive).index.get(id)
   if (at === undefined) {
     throw new Error(`No record is filed under ${id}, so it has no handle`)
   }
-
-  return at.toString(RADIX)
+  return indexHandle(at, archive)
 }
 
-/** Fails closed: anything that is not an index in range is nothing at all. */
-export function entityForHandle(handle: string): Entity | undefined {
-  if (!HANDLE_SHAPE.test(handle)) {
-    return undefined
-  }
-
-  const at = Number.parseInt(handle, RADIX)
-  if (!Number.isSafeInteger(at) || at < 0) {
-    return undefined
-  }
-
-  return order().at(at)
+/** Only this archive's handles can resolve through its table. */
+export function entityForHandle(
+  handle: string,
+  archive: SeriesArchive,
+): Entity | undefined {
+  const at = handleIndex(handle, archive)
+  return at === undefined ? undefined : tableOf(archive).canonical.at(at)
 }

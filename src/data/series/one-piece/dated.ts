@@ -1,7 +1,7 @@
 import { byNumber, byValue, byValues } from 'sort-es'
 
 import type { Reveal } from '~/data/reveal'
-import type { Dated, Entity, Story } from '~/data/types'
+import type { Dated, Eater, Entity, FiledStory } from '~/data/types'
 import type { Gated } from '~/lib/progress/spoiler'
 import type { Faction } from '~/lib/view/records'
 
@@ -72,12 +72,7 @@ export function factionsOf(at: Reveal, owner: Entity): Faction[] | undefined {
 }
 
 /** One story, with the character whose chronicle it belongs to. */
-export interface FiledStory {
-  character: Entity
-  episode: number
-  gate: Gated
-  story: Story
-}
+export type { FiledStory } from '~/data/types'
 
 /**
  * Every story in the archive, ascending by the episode it concludes at; ties
@@ -100,10 +95,7 @@ export const stories: FiledStory[] = characters
  * filed long before the story says what they ate must not be named as an
  * eater the moment the reader meets them.
  */
-export interface Eater {
-  entity: Entity
-  gate: Gated
-}
+export type { Eater } from '~/data/types'
 
 /**
  * The earliest entry each character's dossier names each fruit in.

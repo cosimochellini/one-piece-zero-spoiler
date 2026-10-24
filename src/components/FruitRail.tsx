@@ -6,7 +6,7 @@ import { FruitFrame } from '~/components/FruitFrame'
 import { styles } from '~/components/SpecimenBands.styles'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { useLocale } from '~/i18n/LocaleContext'
-import { useThreshold } from '~/lib/progress/BookmarkContext'
+import { useSeriesParams, useThreshold } from '~/lib/progress/BookmarkContext'
 import type { FruitView, Slot } from '~/lib/view/records'
 
 /** A short row of fruits, each with its own fog already decided. */
@@ -55,6 +55,7 @@ function RailSpecimen({
   slot: Slot<FruitView>
 }): ReactElement {
   const { locale, t } = useLocale()
+  const { series } = useSeriesParams()
   const threshold = useThreshold()
   const filed = slot.open ? slot.record : slot.covered
 
@@ -83,8 +84,8 @@ function RailSpecimen({
         {(record) => {
           return (
             <Link
-              params={{ locale, id: record.id }}
-              to="/$locale/fruits/$id"
+              params={{ series, locale, id: record.id }}
+              to="/$series/$locale/fruits/$id"
               {...stylex.props(styles.railName, styles.link)}
             >
               {record.name}

@@ -125,7 +125,7 @@ export async function seriesFrom(args) {
     )
   }
 
-  return series
+  return { ...series, archive: await series.load() }
 }
 
 /**

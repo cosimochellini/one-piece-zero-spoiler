@@ -13,6 +13,7 @@ const stylexVite: (options?: Partial<UserOptions>) => Plugin = stylex.vite
 
 const config = defineConfig(({ command }) => ({
   server: { port: 3000 },
+  build: { manifest: true },
   // Bundle every dependency into the server build. Left external, React,
   // TanStack and StyleX pick their development or production build at run
   // time from `process.env.NODE_ENV`, which Netlify does not set inside a

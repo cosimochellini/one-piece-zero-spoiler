@@ -14,7 +14,19 @@ import { LocaleProvider } from '~/i18n/LocaleProvider'
 import type { Locale } from '~/i18n/locales'
 import { BookmarkProvider } from '~/lib/progress/BookmarkProvider'
 import type { Bookmark } from '~/lib/progress/episode'
-import { seriesForPath } from '~/lib/progress/series'
+import {
+  type BookmarkSeries,
+  ONE_PIECE_BOOKMARK,
+  seriesSlugFromPath,
+} from '~/lib/progress/series'
+
+/** Test fixtures use One Piece unless a shared page was explicitly requested. */
+function seriesAt(path: string): BookmarkSeries | null {
+  const url = new URL(path, 'https://example.com')
+  return seriesSlugFromPath(url.pathname) === ONE_PIECE_BOOKMARK.slug ?
+      ONE_PIECE_BOOKMARK
+    : null
+}
 
 /**
  * The context-only router the render helper stands up, named so the helper
@@ -64,7 +76,7 @@ export function renderWithProviders(
   ui: ReactElement,
   { locale = 'en', bookmark = null, path, trial = false }: RenderOptions = {},
 ): RenderResult & { router: TestRouter } {
-  const router = contextRouter([path ?? `/${locale}`])
+  const router = contextRouter([path ?? `/one-piece/${locale}`])
 
   return {
     router,
@@ -74,7 +86,7 @@ export function renderWithProviders(
           <BookmarkProvider
             initialBookmark={bookmark}
             initialTrial={trial}
-            series={seriesForPath(path ?? `/${locale}`)}
+            series={seriesAt(path ?? `/one-piece/${locale}`)}
           >
             {/*
               A component that reads a streamed loader slot with `use()`
@@ -134,7 +146,7 @@ export async function renderOnRoute(
         <LocaleProvider locale={locale}>
           <BookmarkProvider
             initialBookmark={bookmark}
-            series={seriesForPath(path ?? `/${locale}`)}
+            series={seriesAt(path ?? `/one-piece/${locale}`)}
           >
             {ui}
           </BookmarkProvider>
@@ -144,7 +156,9 @@ export async function renderOnRoute(
   })
   const router = createRouter({
     routeTree: rootRoute.addChildren([page]),
-    history: createMemoryHistory({ initialEntries: [path ?? `/${locale}`] }),
+    history: createMemoryHistory({
+      initialEntries: [path ?? `/one-piece/${locale}`],
+    }),
   })
   await router.load()
 

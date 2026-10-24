@@ -4,12 +4,15 @@ import {
   createStart,
 } from '@tanstack/react-start'
 
+import { descriptionOf } from '~/data/series'
 import { SERVER_FN_BASE } from '~/lib/endpoints'
+import { legacyRedirect } from '~/lib/legacyRedirect'
 import { linkRedirect } from '~/lib/progress/linkBookmark'
 import {
   migrateBookmark,
   withMigratedCookies,
 } from '~/lib/progress/migrateBookmark'
+import { seriesSlugFromPath } from '~/lib/progress/series'
 
 // Whether this instance has answered a request yet.
 const instance = { warm: false }
@@ -61,7 +64,11 @@ export const startInstance = createStart(() => {
       createMiddleware({ type: 'request' }).server(
         async ({ next, request }) => {
           const cookies = migrateBookmark(request)
-          const linked = linkRedirect(request)
+          const url = new URL(request.url)
+          const slug = seriesSlugFromPath(url.pathname)
+          const linked =
+            legacyRedirect(request)
+            ?? linkRedirect(request, slug === null ? null : descriptionOf(slug))
           if (linked !== undefined) {
             return withMigratedCookies(linked, cookies)
           }

@@ -5,7 +5,7 @@ import type { ReactElement, ReactNode } from 'react'
 import { CharacterCrest } from '~/components/CharacterCrest'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { useLocale } from '~/i18n/LocaleContext'
-import { useThreshold } from '~/lib/progress/BookmarkContext'
+import { useSeriesParams, useThreshold } from '~/lib/progress/BookmarkContext'
 import type { CharacterView, Slot } from '~/lib/view/records'
 import { morphPart, travelWith, useTravels } from '~/styles/morph'
 import {
@@ -87,7 +87,7 @@ function CardLink({
   highlight: [number, number] | null
   record: CharacterView
 }): ReactElement {
-  const { locale } = useLocale()
+  const { series, locale } = useSeriesParams()
   // ponytail: a modified click that opens a tab also sets it; harmless, the
   // names pair only on this tab's next navigation.
   const travels = useTravels('character', record.id)
@@ -97,8 +97,8 @@ function CardLink({
       onClick={() => {
         travelWith('character', record.id)
       }}
-      params={{ locale, id: record.id }}
-      to="/$locale/characters/$id"
+      params={{ series, locale, id: record.id }}
+      to="/$series/$locale/characters/$id"
       {...stylex.props(styles.link)}
     >
       <span

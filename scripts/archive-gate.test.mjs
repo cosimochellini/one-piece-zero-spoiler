@@ -23,6 +23,7 @@ import {
   sourceCanaries,
 } from './archive-gate.mjs'
 import { importArchive } from './archive-loader.mjs'
+import { judgeServer } from './archive-server-gate.mjs'
 
 const repositoryRoot = path.resolve(import.meta.dirname, '..')
 
@@ -343,5 +344,130 @@ describe('source attribution boundaries', () => {
     expect(
       judge([chunk('index.js', 'export {}')], missing).unreadable,
     ).toStrictEqual(['docs/content-provenance/sources.json'])
+  })
+})
+
+/**
+ * A tiny emitted SSR graph, independent of source-code import syntax.
+ * @returns {{manifest: Record<string, object>, chunks: Record<string, string>, archives: {folder: string, canaries: {file: string, phrase: string}[]}[]}} A dynamically isolated archive.
+ */
+function serverBuild() {
+  const key = 'src/data/series/test-series/archive.ts'
+  return {
+    manifest: {
+      server: {
+        file: 'server.js',
+        isEntry: true,
+        imports: ['registry'],
+        dynamicImports: ['api'],
+      },
+      registry: { file: 'registry.js', dynamicImports: [key] },
+      api: { file: 'api.js', isDynamicEntry: true, imports: ['registry'] },
+      [key]: { file: 'archive.js', isDynamicEntry: true, imports: ['shared'] },
+      shared: { file: 'shared.js' },
+    },
+    chunks: {
+      'server.js': 'server',
+      'registry.js': 'registry',
+      'api.js': 'api',
+      'archive.js': 'a sentence held only by the archive',
+      'shared.js': 'shared engine',
+    },
+    archives: [
+      {
+        folder: 'test-series',
+        canaries: [
+          {
+            file: 'src/data/series/test-series/records/first.ts',
+            phrase: 'a sentence held only by the archive',
+          },
+        ],
+      },
+    ],
+  }
+}
+
+describe('emitted server archive boundaries', () => {
+  const key = 'src/data/series/test-series/archive.ts'
+
+  it('allows a dynamically imported archive with only engine chunks shared', () => {
+    const { manifest, archives, chunks } = serverBuild()
+    expect(judgeServer(manifest, archives, chunks)).toStrictEqual({
+      ok: true,
+      problems: [],
+      unreadable: [],
+    })
+  })
+
+  it('rejects a static archive import even when a dynamic import remains', () => {
+    const { manifest, archives, chunks } = serverBuild()
+    manifest.server.imports.push(key)
+    expect(judgeServer(manifest, archives, chunks).problems).toContain(
+      `${key} has a static runtime import`,
+    )
+  })
+
+  it('walks transitive static dependencies and safely handles cycles', () => {
+    const { manifest, archives, chunks } = serverBuild()
+    manifest.registry.imports = ['bridge']
+    manifest.bridge = { file: 'bridge.js', imports: ['registry', key] }
+    chunks['bridge.js'] = 'bridge'
+    expect(judgeServer(manifest, archives, chunks).problems).toContain(
+      `${key} has a static runtime import`,
+    )
+  })
+
+  it('also treats a dynamically loaded API as a runtime entry point', () => {
+    const { manifest, archives, chunks } = serverBuild()
+    manifest.api.imports.push(key)
+    expect(judgeServer(manifest, archives, chunks).problems).toContain(
+      `${key} has a static runtime import`,
+    )
+  })
+
+  it('rejects eager shared archive data even when the adapter remains dynamic', () => {
+    const { manifest, archives, chunks } = serverBuild()
+    manifest.api.imports.push('shared')
+    chunks['shared.js'] = 'a sentence held only by the archive'
+    const verdict = judgeServer(manifest, archives, chunks)
+    expect(verdict.ok).toBe(false)
+    expect(verdict.problems).toContain(
+      'src/data/series/test-series/records/first.ts is statically loaded in shared.js',
+    )
+    expect(verdict.problems).not.toContain(`${key} has a static runtime import`)
+  })
+
+  it('refuses to vouch for a missing manifest', () => {
+    const { archives, chunks } = serverBuild()
+    expect(judgeServer(null, archives, chunks)).toStrictEqual({
+      ok: false,
+      problems: [],
+      unreadable: ['dist/server/.vite/manifest.json'],
+    })
+  })
+
+  it('refuses to vouch for a missing registered archive entry', () => {
+    const { manifest, archives, chunks } = serverBuild()
+    Reflect.deleteProperty(manifest, key)
+    expect(judgeServer(manifest, archives, chunks).unreadable).toContain(key)
+  })
+
+  it('rejects a dynamic-entry flag without an actual dynamic graph edge', () => {
+    const { manifest, archives, chunks } = serverBuild()
+    manifest.registry.dynamicImports = []
+    expect(judgeServer(manifest, archives, chunks).problems).toContain(
+      `${key} is not a dynamically imported archive entry`,
+    )
+  })
+
+  it('refuses incomplete static graph and emitted script evidence', () => {
+    const { manifest, archives, chunks } = serverBuild()
+    manifest.registry.imports = ['missing']
+    delete chunks['server.js']
+    delete chunks['archive.js']
+    const { unreadable } = judgeServer(manifest, archives, chunks)
+    expect(unreadable).toContain('missing')
+    expect(unreadable).toContain('server.js')
+    expect(unreadable).toContain('archive.js')
   })
 })
