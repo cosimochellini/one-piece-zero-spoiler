@@ -42,11 +42,11 @@ parameters without creating a bookmark. A request middleware in `src/start.ts`
 runs before routing, writes the `zs_one-piece` cookie and sends the reader on to
 the same address without those parameters, so the page that renders reads the
 new cookie like any other, and a reload cannot undo a bookmark moved since. The
-hop is a meta refresh rather than a 302, because Netlify appends the request's
-query string to any `Location` without one, and the link would redirect to
-itself. A value outside the dialog's ranges, a season without an episode, a
-chapter next to an episode or a repeated parameter leaves the cookie as it was
-and still drops the parameters.
+hop is a meta refresh rather than a 302, because Netlify, which still serves the
+old address, appends the request's query string to any `Location` without one,
+and the link would redirect to itself. A value outside the dialog's ranges, a
+season without an episode, a chapter next to an episode or a repeated parameter
+leaves the cookie as it was and still drops the parameters.
 
 Each series has its own saved and trial cookies, ranges, demo bounds and season
 table in the public bookmark metadata (`src/lib/progress/series.ts`), separate
@@ -397,7 +397,10 @@ not the floor any more. On 2026-10-24, from Italy, the same pages answered in
 0.10–0.30 s. A Worker's clock only moves across I/O, so `app;dur` reads close to
 zero there; `wrangler tail` reports the CPU time instead: 87–132 ms for
 `/one-piece/en/characters`, 16–44 ms for fruits and places, about 10 ms for a
-character page.
+character page. The Workers Free plan documents a 10 ms CPU limit per request,
+and a request over an enforced limit fails with error 1102. Every request
+succeeded on that day, but the list pages are over it. If 1102s show up in the
+Worker's metrics, Workers Paid is the fix.
 
 Measured on 2026-10-15 from Italy with the `Server-Timing` header every response
 carries (`app;dur=…`, the time inside the function until the response exists,
