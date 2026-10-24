@@ -137,12 +137,14 @@ export function judgeServer(manifest, archives, chunks) {
 function readServerBuild(repositoryRoot) {
   try {
     const manifest = JSON.parse(
+      // fallow-ignore-next-line security-sink -- the caller supplies this script's repository root; SERVER_MANIFEST is a fixed build-artifact path
       readFileSync(path.join(repositoryRoot, SERVER_MANIFEST), 'utf8'),
     )
     const files = new Set(Object.values(manifest).map((entry) => entry.file))
     const chunks = Object.fromEntries(
       [...files].map((file) => [
         file,
+        // fallow-ignore-next-line security-sink -- file comes from Vite's local emitted manifest, never a request or CLI argument
         readFileSync(path.join(repositoryRoot, 'dist/server', file), 'utf8'),
       ]),
     )
