@@ -478,6 +478,7 @@ describe('the slice of the archive a page is given', () => {
       ...ports.slice(3),
     ]
 
+    expect(crests.length).toBeGreaterThan(10)
     expect(later.length).toBeGreaterThan(500)
 
     for (const record of later) {
