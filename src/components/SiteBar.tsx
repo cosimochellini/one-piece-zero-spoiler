@@ -67,7 +67,9 @@ export function SiteBar(): ReactElement {
               to="/$series/$locale"
               {...stylex.props(styles.seriesName)}
             >
-              {described?.name[locale] ?? series.slug}
+              <span {...stylex.props(styles.seriesText)}>
+                {described?.name[locale] ?? series.slug}
+              </span>
             </Link>
             <SeriesNavigation />
           </div>
@@ -155,6 +157,7 @@ const styles = stylex.create({
     gap: space.xs,
     alignItems: 'center',
     display: 'flex',
+    flexShrink: 0,
     justifySelf: { [WIDE]: 'end', default: 'auto' },
   },
   // A phone's second row: the series' name, a hairline, then its pages,
@@ -170,14 +173,18 @@ const styles = stylex.create({
     gridColumnEnd: { [WIDE]: 'auto', default: -1 },
     gridColumnStart: { [WIDE]: 'auto', default: 1 },
   },
+  // A column of no width, the glyph centred on it, so the slash sits halfway
+  // between the wordmark and the name whatever its own width.
   slash: {
-    marginInline: `calc(-1 * ${space.sm})`,
     color: color.rule2,
-    display: { [WIDE]: 'inline', default: 'none' },
+    display: { [WIDE]: 'flex', default: 'none' },
     fontFamily: font.display,
     fontSize: text.lg,
     fontWeight: 400,
+    justifyContent: 'center',
+    width: 0,
   },
+  // On a narrow phone the name gives way first, so the pages stay whole.
   seriesName: {
     alignItems: 'center',
     borderInlineEndColor: color.rule2,
@@ -200,7 +207,9 @@ const styles = stylex.create({
     textTransform: 'uppercase',
     whiteSpace: 'nowrap',
     minHeight: '44px',
+    minWidth: 0,
   },
+  seriesText: { overflow: 'hidden', textOverflow: 'ellipsis' },
   // On a series page the series' name is the louder of the two.
   quiet: { color: { 'default': color.ink2, ':hover': color.accent } },
 
