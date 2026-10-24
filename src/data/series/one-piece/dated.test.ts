@@ -5,7 +5,7 @@ import { type Bookmark, CHAPTER_CEILING } from '~/lib/progress/episode'
 
 import { episodeAtChapter } from './chapter-table'
 import { TIMELINES } from './chapters'
-import { datedOf, eatersOf, latestOf, reachedOf } from './dated'
+import { datedOf, earliestOf, eatersOf, latestOf, reachedOf } from './dated'
 import { fruits } from './fruits'
 
 const ep = (episode: number): Bookmark => ({ mode: 'episode', episode })
@@ -38,11 +38,15 @@ const ENTRIES = TIMELINES.flatMap(({ field, label, owner }) => {
       entry.chapter ?? firstChapterAt(episode),
     )
 
+    // The one source that tells it, the record's before the entry's own.
+    const source = owner.source ?? entry.source
+
     return {
       chapter,
       entry,
       episode,
       field,
+      source,
       label: `${label} @${String(entry.episode)}`,
       owner,
     }
@@ -66,16 +70,17 @@ describe('every dated entry in the archive', () => {
     expect(ENTRIES.length).toBeGreaterThan(0)
 
     for (const row of ENTRIES) {
-      const { chapter, entry, episode, label } = row
+      const { chapter, entry, episode, label, source } = row
 
       expect(entry.gate, label).toStrictEqual({
         revealedAtEpisode: episode,
         revealedAtChapter: chapter,
+        ...(source !== undefined && { source }),
       })
       expect(reaches(ch(chapter - 1), row), label).toBe(false)
-      expect(reaches(ch(chapter), row), label).toBe(true)
+      expect(reaches(ch(chapter), row), label).toBe(source !== 'anime')
       expect(reaches(ep(episode - 1), row), label).toBe(false)
-      expect(reaches(ep(episode), row), label).toBe(true)
+      expect(reaches(ep(episode), row), label).toBe(source !== 'manga')
       expect(reaches(null, row), label).toBe(false)
     }
   })
@@ -104,5 +109,26 @@ describe('the eaters of a fruit', () => {
         )
       }
     }
+  })
+})
+
+describe('earliestOf', () => {
+  const both = { revealedAtEpisode: 100, revealedAtChapter: 90 }
+  const anime = {
+    revealedAtEpisode: 50,
+    revealedAtChapter: 40,
+    source: 'anime' as const,
+  }
+
+  it('reaches a link in each unit at the first entry its source tells', () => {
+    expect(earliestOf([anime, both])).toStrictEqual({
+      revealedAtEpisode: 50,
+      revealedAtChapter: 90,
+    })
+    expect(earliestOf([both, anime])).toBe(both)
+  })
+
+  it('keeps a link that one source alone tells to that source', () => {
+    expect(earliestOf([anime])).toBe(anime)
   })
 })

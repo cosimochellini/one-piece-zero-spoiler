@@ -9,8 +9,7 @@ import type {
   Step,
 } from '~/lib/view/records'
 
-import { recordOf } from './project.server'
-import { type Reader, readerFor } from './reader.server'
+import { coveredOf, type Reader } from './reader.server'
 
 /**
  * The onboarding: the series' demo span, sent to a visitor with no bookmark.
@@ -26,10 +25,15 @@ import { type Reader, readerFor } from './reader.server'
 /** How many covered silhouettes stand for the rest of the route. */
 const TAIL_COUNT = 6
 
-/** Whether a record or a fact is inside the series' demo in both units. */
+/**
+ * Whether a record or a fact is inside the series' demo in both units. One
+ * that a single source tells is not, wherever it is filed: the dial moves in
+ * either unit, in the browser.
+ */
 function inDemo(gated: Gated, r: Reader): boolean {
   return (
-    gated.revealedAtEpisode <= r.archive.series.demoLastEpisode
+    gated.source === undefined
+    && gated.revealedAtEpisode <= r.archive.series.demoLastEpisode
     && gated.revealedAtChapter <= r.archive.series.demoLastChapter
   )
 }
@@ -119,10 +123,7 @@ function demoCast(arcsHere: Entity[], r: Reader): Entity[] {
 
 /** The page for a visitor with no bookmark, starting the dial at `start`. */
 export function onboardingPage(start: Bookmark, r: Reader): OnboardingView {
-  const { locale } = r
-
   const arcsHere = demoArcs(r)
-  const unreached = readerFor(r.archive, null, locale)
   const past = orderByMode(r.archive.chart, 'episode').filter(
     (entity) => !inDemo(entity, r),
   )
@@ -144,10 +145,9 @@ export function onboardingPage(start: Bookmark, r: Reader): OnboardingView {
     ),
     fogged: r.archive.entities.filter((entity) => !inDemo(entity, r)).length,
     start,
-    tail: past.slice(0, TAIL_COUNT).flatMap((entity) => {
-      const slot = unreached.slot(entity, recordOf)
-
-      return slot.open ? [] : [slot.covered]
-    }),
+    // Covered whatever the bookmark: the tail is the route past the demo.
+    tail: past
+      .slice(0, TAIL_COUNT)
+      .map((entity) => coveredOf(entity, r.archive)),
   }
 }

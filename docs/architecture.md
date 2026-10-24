@@ -78,6 +78,18 @@ cannot resolve through another series' table. Fallow forbids direct server
 imports from a series, and the archive gate checks the emitted server graph as
 well as client leak canaries.
 
+A record or a dated fact can exist in one source only (`source: 'anime'` or
+`'manga'` on the record or the entry; absent means both). An episode or season
+bookmark counts in the anime and a chapter bookmark in the manga; no bookmark
+counts in neither. `readerFor` hands each page the archive as the reader's
+source tells it (`src/data/source.ts`, built once per source and cached), so a
+record of the other source is in no list: it is never sent open or covered,
+never counted and has no handle, and its page answers 404. Handles are numbered
+within that copy, so no gap gives a record away. A fact's gate carries its
+source, so `reveal(bookmark).sees` never opens it for the other reader. Neither
+kind is in the demo or the sitemap. The chapter table takes no anchor from them,
+and a devil fruit opens in each unit only by the namings its source tells.
+
 Each public description names its colour theme. The theme is a full override of
 the `color` tokens in `src/styles/themes.ts`, set on `<html>` whenever the
 `/<series>` route matches, its 404s included. The defaults in

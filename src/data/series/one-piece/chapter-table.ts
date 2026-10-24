@@ -1,7 +1,7 @@
 import type { Redrawings } from '~/data/art/stroke'
 import type { CharacterDossier, Dated, Entity, Timeline } from '~/data/types'
 import { CHAPTER_CEILING, EPISODE_CEILING } from '~/lib/progress/episode'
-import type { Gated } from '~/lib/progress/spoiler'
+import type { Gated, Source } from '~/lib/progress/spoiler'
 
 import { REDRAWINGS } from './art'
 import { devilFruits } from './records/fruits'
@@ -35,12 +35,14 @@ import { CHARACTER_DOSSIERS, sagas } from './sagas'
  * seen too early: it opens the entry at that chapter and, through the second
  * bound, holds every earlier chapter below its episode.
  *
- * Two kinds of record are left out. A fruit, because its chapter is read off
+ * Three kinds of record are left out. A fruit, because its chapter is read off
  * this table (`~/data/series/one-piece/entities`) and would otherwise bound itself: the table
  * is built from the records as they are filed (`~/data/series/one-piece/sagas`), before the
  * fruits are added, though a fruit's redrawings still anchor it like any
- * other entry. And a record marked `unanchored`, whose two thresholds are too
- * far apart to say anything about the chapters between them.
+ * other entry. A record marked `unanchored`, whose two thresholds are too
+ * far apart to say anything about the chapters between them. And a record or
+ * an entry one source alone tells (`source`), whose threshold in the other
+ * source only orders it and vouches for nothing (`vouches`).
  */
 
 /**
@@ -99,18 +101,30 @@ export function timelineOf<F extends Field>(
 const FILED = sagas.flatMap((saga) => saga.entries)
 
 /**
+ * Whether a record or an entry vouches for its (episode, chapter) pair: not
+ * when one source alone tells it, and not when it is marked `unanchored`.
+ */
+export function vouches(
+  dated: Pick<Entity, 'unanchored'> & { source?: Source },
+): boolean {
+  return dated.source === undefined && dated.unanchored !== true
+}
+
+/**
  * The (episode, chapter) pairs the entries vouch for themselves, a fruit's
  * redrawings among them.
  */
 const ANCHORS = [...FILED, ...devilFruits].flatMap((owner) => {
   return FIELDS.flatMap((field) => {
-    return (timelineOf(owner, field) ?? []).flatMap(({ chapter, episode }) =>
-      chapter === undefined ? [] : [[episode, chapter] as const],
+    return (timelineOf(owner, field) ?? []).flatMap((entry) =>
+      entry.chapter === undefined || !vouches(entry) || !vouches(owner) ?
+        []
+      : [[entry.episode, entry.chapter] as const],
     )
   })
 })
 
-const RECORDS = FILED.filter((entity) => entity.unanchored !== true)
+const RECORDS = FILED.filter((entity) => vouches(entity))
 
 const EPISODE_AT: number[] = Array.from(
   { length: CHAPTER_CEILING + 1 },
@@ -163,10 +177,13 @@ export function chapterAtEpisode(episode: number): number {
 /**
  * When a dated entry may be shown: from its episode, and from the chapter it
  * declares or, without one, the first chapter that reaches its episode — and
- * never before its record, whichever is later in each unit.
+ * never before its record, whichever is later in each unit. A record of one
+ * source only gives its entries its source; an entry of its own one source
+ * keeps it (`Dated.source`), so a reader of the other never reaches either.
  */
 export function gateOf(entry: Dated<unknown>, owner: Gated): Gated {
   const revealedAtEpisode = Math.max(owner.revealedAtEpisode, entry.episode)
+  const source = owner.source ?? entry.source
 
   return {
     revealedAtEpisode,
@@ -174,5 +191,6 @@ export function gateOf(entry: Dated<unknown>, owner: Gated): Gated {
       owner.revealedAtChapter,
       entry.chapter ?? chapterAtEpisode(revealedAtEpisode),
     ),
+    ...(source !== undefined && { source }),
   }
 }
