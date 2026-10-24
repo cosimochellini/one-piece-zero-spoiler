@@ -66,11 +66,12 @@ import { useT } from '~/i18n/LocaleContext'
 export function SeaChart(props: SeaChartProps): ReactElement {
   const t = useT()
   const { bookmark, covered, lit, open, sagas, ships } = props
-  const model = useMemo(
-    () =>
-      modelOf({ bookmark, covered, lit: lit ?? null, open, sagas, ships }, t),
-    [bookmark, covered, lit, open, sagas, ships, t],
+  // The picks only light stops: a keystroke must not place the names again.
+  const drawn = useMemo(
+    () => modelOf({ bookmark, covered, open, sagas, ships }, t),
+    [bookmark, covered, open, sagas, ships, t],
   )
+  const model = useMemo(() => ({ ...drawn, lit: lit ?? null }), [drawn, lit])
 
   return (
     <div {...stylex.props(styles.chart)}>
