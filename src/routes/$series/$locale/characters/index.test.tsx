@@ -1,6 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import type { Locale } from '~/i18n/locales'
+import { type Plain, plain } from '~/lib/plain'
 import type { ShelfView } from '~/lib/view/records'
 import { loadCharacters, loadShelves } from '~/server/api'
 import { shelf } from '~/test/fixtures'
@@ -25,7 +26,7 @@ type Loader = (input: {
   context: { locale: Locale; series: { slug: string } }
 }) => Promise<{
   page: Awaited<ReturnType<typeof loadCharacters>>
-  shelves: Promise<ShelfView[]> | ShelfView[]
+  shelves: null | Promise<ShelfView[]> | ShelfView[]
 }>
 
 /** Only the locale is read; the generated route context needs a full router. */
@@ -45,12 +46,12 @@ async function load(locale: Locale = 'en'): ReturnType<Loader> {
 /** A shelf response whose arrival the test controls independently of the page. */
 function delayedShelves(): {
   deliver: () => void
-  promise: Promise<ShelfView[]>
+  promise: Promise<Plain<ShelfView[]>>
 } {
   const line = new EventTarget()
-  const promise = new Promise<ShelfView[]>((resolve) => {
+  const promise = new Promise<Plain<ShelfView[]>>((resolve) => {
     line.addEventListener('deliver', () => {
-      resolve(shelves)
+      resolve(plain(shelves))
     })
   })
 
@@ -73,7 +74,7 @@ describe('characters route loader', () => {
     vi.clearAllMocks()
   })
 
-  it('streams the shelves on the first visit, so the page opens at once', async () => {
+  it('hands over the shelves still on their way on the first visit, so the page opens at once', async () => {
     vi.stubEnv('SSR', false)
     const response = delayedShelves()
     vi.mocked(loadShelves).mockReturnValue(response.promise)
@@ -81,7 +82,11 @@ describe('characters route loader', () => {
     const data = await load()
 
     expect(data.page).toBe(page)
-    expect(data.shelves).toBe(response.promise)
+    expect(data.shelves).toBeInstanceOf(Promise)
+
+    response.deliver()
+
+    await expect(data.shelves).resolves.toStrictEqual(shelves)
   })
 
   it('keeps client loader data pending until replacement shelves have arrived', async () => {
@@ -109,25 +114,20 @@ describe('characters route loader', () => {
     await completion
 
     expect(data.page).toBe(page)
-    expect(data.shelves).toBe(shelves)
+    expect(data.shelves).toStrictEqual(shelves)
     expect(returned).toHaveBeenCalledExactlyOnceWith(data)
     expect(loadCharacters).toHaveBeenCalledExactlyOnceWith({
       data: { series: 'one-piece', locale: 'it' },
     })
   })
 
-  it('returns the page on the server while its shelves remain a streamed promise', async () => {
+  it('serves the page without its shelves, which the browser asks for after', async () => {
     vi.stubEnv('SSR', true)
-    const response = delayedShelves()
-    vi.mocked(loadShelves).mockReturnValue(response.promise)
 
     const data = await load()
 
     expect(data.page).toBe(page)
-    expect(data.shelves).toBe(response.promise)
-
-    response.deliver()
-
-    await expect(data.shelves).resolves.toBe(shelves)
+    expect(data.shelves).toBeNull()
+    expect(loadShelves).not.toHaveBeenCalled()
   })
 })

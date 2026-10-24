@@ -19,15 +19,16 @@ import type {
 import { stickyStyles } from '~/styles/sticky'
 
 /**
- * The shelves, or the promise of them.
+ * The shelves, the promise of them, or `null` before the browser has asked.
  *
- * The route hands over a promise so the three hundred and twenty-six tiles
- * stream in behind the crests. A test hands over the array, because `use()`
- * does not resume under jsdom inside an `act` scope — a classic thrown
- * promise does, but `use` does not — and a streaming boundary that cannot be
- * awaited would mean the shelves went untested altogether.
+ * The served page has none: the browser asks for the three hundred and
+ * twenty-six tiles once it has hydrated, and until then they are loading
+ * (#776). A test hands over the array, because `use()` does not resume under
+ * jsdom inside an `act` scope — a classic thrown promise does, but `use` does
+ * not — and a boundary that cannot be awaited would mean the shelves went
+ * untested altogether.
  */
-export type ShelvesSource = Promise<ShelfView[]> | ShelfView[]
+export type ShelvesSource = null | Promise<ShelfView[]> | ShelfView[]
 
 /** What the shelves need: the arcs, the live query, and a way to ask. */
 export interface CharacterShelvesProps {
@@ -72,15 +73,18 @@ export function CharacterShelves({
       lede={t('characters.bookLede')}
       title={t('characters.bookTitle')}
     >
-      <Suspense fallback={<ShelvesPending count={shelfCount} />}>
-        <Shelves
-          featured={featured}
-          fieldId={fieldId}
-          needle={needle}
-          peek={peek}
-          shelves={shelves}
-        />
-      </Suspense>
+      {shelves === null ?
+        <ShelvesPending count={shelfCount} />
+      : <Suspense fallback={<ShelvesPending count={shelfCount} />}>
+          <Shelves
+            featured={featured}
+            fieldId={fieldId}
+            needle={needle}
+            peek={peek}
+            shelves={shelves}
+          />
+        </Suspense>
+      }
     </CatalogueSection>
   )
 }
@@ -101,7 +105,7 @@ function Shelves({
   fieldId: string
   needle: string
   peek: (handle: string) => Promise<CharacterView>
-  shelves: ShelvesSource
+  shelves: Promise<ShelfView[]> | ShelfView[]
 }): ReactElement {
   return (
     <>
@@ -139,7 +143,7 @@ function Shelves({
  * `use` is not a hook: it may sit in a branch, which is what lets the array
  * form skip it entirely.
  */
-function useShelves(source: ShelvesSource): ShelfView[] {
+function useShelves(source: Promise<ShelfView[]> | ShelfView[]): ShelfView[] {
   return source instanceof Promise ? use(source) : source
 }
 

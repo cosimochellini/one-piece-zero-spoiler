@@ -2,6 +2,7 @@ import { createServerFn } from '@tanstack/react-start'
 
 import { archiveOf, descriptionOf } from '~/data/series'
 import { isLocale, type Locale } from '~/i18n/locales'
+import { plain } from '~/lib/plain'
 import { readBookmark, readTrial } from '~/lib/progress/readBookmark'
 
 import { creditsPage } from './archive/credits.server'
@@ -154,9 +155,10 @@ export const loadCharacters = createServerFn()
   .validator(located)
   .handler(async ({ data }) => charactersPage(await readerIn(data)))
 
+// Plain JSON: the browser asks for the shelves once the page is up (#776).
 export const loadShelves = createServerFn()
   .validator(located)
-  .handler(async ({ data }) => shelvesPage(await readerIn(data)))
+  .handler(async ({ data }) => plain(shelvesPage(await readerIn(data))))
 
 export const loadCharacter = createServerFn()
   .validator(addressed)

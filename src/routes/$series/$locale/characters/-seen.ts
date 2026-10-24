@@ -1,5 +1,6 @@
 // Whether this tab has shown the characters page once. Until then there is
-// no position to restore, so the shelves stream and the page opens at once.
+// no position to restore, so the loader does not wait for the shelves and
+// the page opens at once.
 // A sibling of the route rather than in it: a route file exports components
 // only, so Fast Refresh can keep their state.
 export const seen = { shelves: false }

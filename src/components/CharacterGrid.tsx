@@ -27,6 +27,7 @@ import type {
   CharacterView,
   CoveredRecord,
   SearchableCharacter,
+  ShelfView,
 } from '~/lib/view/records'
 
 // Long enough that a reader typing "Nami" hears one count and not four, short
@@ -48,10 +49,10 @@ export interface CharacterGridProps {
   featuredOpen: SearchableCharacter[]
   peek: (handle: string) => Promise<CharacterView>
   /**
-   * The shelves, streamed. The crests are above the fold and there are
-   * thirty-six of them; the shelves are three hundred and twenty-six tiles
-   * with a drawing each, and they are the part of this page worth not
-   * waiting for.
+   * The shelves, asked for once the page is up. The crests are above the
+   * fold and there are thirty-six of them; the shelves are three hundred and
+   * twenty-six tiles with a drawing each, and they are the part of this page
+   * worth not waiting for.
    */
   shelfCount: number
   shelves: ShelvesSource
@@ -100,21 +101,15 @@ export function CharacterGrid({
           // until the shelves have landed. Its own boundary, so the field
           // beside it never suspends: an input that unmounts mid-word loses
           // the word and the focus with it.
-          <Suspense
-            fallback={
-              <p
-                aria-busy="true"
-                aria-live="polite"
-                {...stylex.props(searchStyles.status)}
+          shelves === null ?
+            <StatusPending />
+          : <Suspense fallback={<StatusPending />}>
+              <SearchStatus
+                needle={needle}
+                query={trimmed}
+                shelves={shelves}
               />
-            }
-          >
-            <SearchStatus
-              needle={needle}
-              query={trimmed}
-              shelves={shelves}
-            />
-          </Suspense>
+            </Suspense>
         }
       />
 
@@ -138,6 +133,17 @@ export function CharacterGrid({
   )
 }
 
+/** The count's place while the shelves are on their way. */
+function StatusPending(): ReactElement {
+  return (
+    <p
+      aria-busy="true"
+      aria-live="polite"
+      {...stylex.props(searchStyles.status)}
+    />
+  )
+}
+
 /**
  * How many open characters the query answers, out of how many there are.
  * Reads the shelves, so it lives inside a boundary of its own.
@@ -149,7 +155,7 @@ function SearchStatus({
 }: {
   needle: string
   query: string
-  shelves: ShelvesSource
+  shelves: Promise<ShelfView[]> | ShelfView[]
 }): ReactElement {
   const t = useT()
   const sections = shelves instanceof Promise ? use(shelves) : shelves

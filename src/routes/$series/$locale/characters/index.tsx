@@ -15,20 +15,30 @@ import { useT } from '~/i18n/LocaleContext'
 import { isLocale } from '~/i18n/locales'
 import { describeNamedPage } from '~/routes/$locale/-head'
 import { usePeek } from '~/routes/$series/$locale/-peek'
-import { liftCharacter, loadCharacters, loadShelves } from '~/server/api'
+import { liftCharacter, loadCharacters } from '~/server/api'
 
 import { seen, shelvesShown } from './-seen'
+import {
+  fetchShelves,
+  useScrollBackOnceTall,
+  useShelvesSource,
+} from './-shelves'
 
 export const Route = createFileRoute('/$series/$locale/characters/')({
   loader: async ({ context }) => {
-    const page = await loadCharacters({
-      data: { series: context.series.slug, locale: context.locale },
-    })
-    const shelves = loadShelves({
-      data: { series: context.series.slug, locale: context.locale },
-    })
+    const data = { series: context.series.slug, locale: context.locale }
 
-    if (!seen.shelves || import.meta.env.SSR) {
+    // The served page has no shelves: their seven thousand elements were
+    // most of its render, far past a Worker's CPU limit. The browser asks
+    // for them once the page is up (#776).
+    if (import.meta.env.SSR) {
+      return { page: await loadCharacters({ data }), shelves: null }
+    }
+
+    const shelves = fetchShelves(data.series, data.locale)
+    const page = await loadCharacters({ data })
+
+    if (!seen.shelves) {
       return { page, shelves }
     }
 
@@ -63,6 +73,8 @@ export const Route = createFileRoute('/$series/$locale/characters/')({
 function CharactersPage(): ReactElement {
   const t = useT()
   const { page, shelves } = Route.useLoaderData()
+  const source = useShelvesSource(page, shelves)
+  useScrollBackOnceTall(shelves === null)
 
   const peek = usePeek(liftCharacter)
 
@@ -78,7 +90,7 @@ function CharactersPage(): ReactElement {
         featuredOpen={page.featuredOpen}
         peek={peek}
         shelfCount={page.shelfCount}
-        shelves={shelves}
+        shelves={source}
       />
     </ArchivePage>
   )

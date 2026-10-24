@@ -333,24 +333,32 @@ describe('CharacterGrid', () => {
     expect(screen.getAllByRole('link', { name: /Luffy/u })).toHaveLength(2)
   })
 
-  it('reserves the shelves’ height, and stays usable, while they are on their way', () => {
-    renderWithProviders(
-      <CharacterGrid
-        featuredCovered={[robinCovered]}
-        featuredOpen={[luffy, nami]}
-        peek={peekPending()}
-        shelfCount={2}
-        shelves={onTheirWay()}
-      />,
-    )
+  // `null` is the served page and its first render in the browser, before
+  // the browser has asked for the shelves (#776).
+  it.each([
+    { when: 'on their way', shelves: onTheirWay },
+    { when: 'not asked for yet', shelves: (): null => null },
+  ])(
+    'reserves the shelves’ height, and stays usable, while they are $when',
+    ({ shelves }) => {
+      renderWithProviders(
+        <CharacterGrid
+          featuredCovered={[robinCovered]}
+          featuredOpen={[luffy, nami]}
+          peek={peekPending()}
+          shelfCount={2}
+          shelves={shelves()}
+        />,
+      )
 
-    // The search field and the crests are up before the shelves arrive.
-    expect(screen.getByRole('searchbox')).toBeInTheDocument()
-    expect(screen.getAllByRole('link', { name: /Nami/u })).toHaveLength(1)
-    expect(
-      screen.queryByRole('region', { name: /East Blue/u }),
-    ).not.toBeInTheDocument()
-  })
+      // The search field and the crests are up before the shelves arrive.
+      expect(screen.getByRole('searchbox')).toBeInTheDocument()
+      expect(screen.getAllByRole('link', { name: /Nami/u })).toHaveLength(1)
+      expect(
+        screen.queryByRole('region', { name: /East Blue/u }),
+      ).not.toBeInTheDocument()
+    },
+  )
 
   it('says so when nothing is under fog', () => {
     book({ featuredCovered: [], shelves: [eastBlue] })

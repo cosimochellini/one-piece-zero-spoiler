@@ -358,12 +358,20 @@ tapped a link a friend sent. The list is in `src/lib/crawler.ts`.
 - Payloads carry one locale. A record used to ship its Italian and English name
   and summary together; now it carries only the page's language.
 - The character shelves on the characters page, one tile with a drawing per
-  character below the fold, come from the loader as a promise that is not
-  awaited and stream into a `<Suspense>` boundary, so the search field and the
-  main characters load first. The landing page (East Blue under the dial for a
-  visitor with no bookmark, the reader's arc and its stories for one with a
-  bookmark), the places list and a character page are awaited instead: they are
-  the page, and a reader with scripting off should get them in full.
+  character below the fold, are not in the served page. The browser asks for
+  them once the page has hydrated, in one call that answers plain JSON (`plain`
+  in `src/lib/plain.ts`) instead of going through seroval, and shows
+  placeholders of their height until they land. They had been in the HTML (a
+  promise the loader did not await resolved before React reached its
+  `<Suspense>`), about 7,000 elements and most of the page's server time: at
+  episode 1150 the page went from 25 to 5.5 ms of local CPU and from 926 to 247
+  KB, and the shelves call from 6.5 ms and 296 KB to 2.1 ms and 145 KB (#776).
+  Search engines read the record pages, not the shelves, and a reader with
+  scripting off sees the main characters only. The landing page (East Blue under
+  the dial for a visitor with no bookmark, the reader's arc and its stories for
+  one with a bookmark), the places list and a character page are awaited
+  instead: they are the page, and a reader with scripting off should get them in
+  full.
 - The three list pages send only the first drawings inline: the first shelf of
   characters, the first three places and the first three fruits. Every other
   record carries its tint and `deferred: true`, and the page asks for its
