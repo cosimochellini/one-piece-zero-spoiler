@@ -16,7 +16,7 @@ import type * as Sagas from '~/data/series/one-piece/sagas'
 import type { Locale } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
 import type { Series } from '~/lib/progress/series'
-import type { Gated } from '~/lib/progress/spoiler'
+import type { Gated, Source } from '~/lib/progress/spoiler'
 import type { FillerKind } from '~/lib/view/filler'
 import type {
   CharacterStatus,
@@ -76,6 +76,14 @@ export interface Entity {
   name: LocalizedText
   revealedAtChapter: number
   revealedAtEpisode: number
+  /**
+   * Set on a record one source alone tells: `anime` for an anime-original
+   * character, `manga` for one the anime never shows. Absent means both. A
+   * reader who counts in the other source never receives it: no open card,
+   * no covered one, no count, no handle (`~/data/source`). Both thresholds
+   * are still filed, the other one only to order and shelve the record.
+   */
+  source?: Source
   summary: LocalizedText
   /**
    * Set on a record whose two thresholds are too far out of step to say how
@@ -104,12 +112,12 @@ export interface Entity {
 
 /**
  * A devil fruit as `~/data/series/one-piece/records/fruits` files it: a record without its
- * thresholds, which `~/data/series/one-piece/entities` reads off the dossier entries that name
- * the fruit.
+ * thresholds or its source, which `~/data/series/one-piece/entities` reads off the dossier
+ * entries that name the fruit.
  */
 export type FruitRecord = Omit<
   Entity,
-  'revealedAtChapter' | 'revealedAtEpisode'
+  'revealedAtChapter' | 'revealedAtEpisode' | 'source'
 >
 
 /**
@@ -127,6 +135,13 @@ export type FruitRecord = Omit<
 export interface Dated<T> {
   chapter?: number
   episode: number
+  /**
+   * Set on a fact of a record both sources tell that one of them alone tells,
+   * as on a record (`Entity.source`): its gate carries it, and a reader of
+   * the other source never reaches it. On a record of one source only it
+   * may only repeat the record's.
+   */
+  source?: Source
   value: T
 }
 

@@ -48,7 +48,12 @@ export function handleIndex(
     : undefined
 }
 
-/** The stable handle of a filed record, independent of the reader's unit. */
+/**
+ * The stable handle of a filed record in this archive, the same in either
+ * unit. A reader is handed the copy their source tells (`~/data/source`), so
+ * once a record of one source only is filed, a handle is numbered within
+ * that copy and may stand for another record in the other source's.
+ */
 export function handleOf(id: string, archive: SeriesArchive): string {
   const at = tableOf(archive).index.get(id)
   if (at === undefined) {

@@ -5,7 +5,7 @@ import {
   modeOf,
 } from '~/lib/progress/episode'
 import { type BookmarkSeries, ONE_PIECE_BOOKMARK } from '~/lib/progress/series'
-import { type Gated, thresholdIn } from '~/lib/progress/spoiler'
+import { type Gated, type Source, thresholdIn } from '~/lib/progress/spoiler'
 
 /**
  * What a reader at one bookmark may see, decided once.
@@ -21,12 +21,19 @@ import { type Gated, thresholdIn } from '~/lib/progress/spoiler'
  * reader who has is shown exactly as much as they asked for.
  */
 export interface Reveal {
+  /**
+   * Whether a record exists for this reader at all: a record or a fact of one
+   * source only (`Gated.source`) does not for a reader of the other, nor for
+   * one with no bookmark, who counts in neither. Nothing this answers `false`
+   * for is sent, covered, counted or handed a handle (`~/data/source`).
+   */
+  has: (gated: Gated) => boolean
   /** The unit the reader counts in, and so the one thresholds are printed in. */
   mode: BookmarkMode
   /**
    * Whether a record may be shown. A chapter bookmark is read against the
    * chapter threshold and nothing else; an episode or season bookmark against
-   * the episode one.
+   * the episode one. Never a record the reader does not have (`has`).
    */
   sees: (gated: Gated) => boolean
   /** A record's threshold in the reader's unit. */
@@ -50,16 +57,39 @@ function isRevealed(
   return episode !== null && episode >= gated.revealedAtEpisode
 }
 
+/**
+ * The source a bookmark counts in: the manga for a chapter, the anime for an
+ * episode or a season. `null` for no bookmark, which counts in neither.
+ */
+export function sourceOf(bookmark: Bookmark): null | Source {
+  if (bookmark === null) {
+    return null
+  }
+
+  return bookmark.mode === 'chapter' ? 'manga' : 'anime'
+}
+
+/** Whether a reader of this source, or of none, has this record at all. */
+export function toldIn(
+  gated: Pick<Gated, 'source'>,
+  source: null | Source,
+): boolean {
+  return gated.source === undefined || gated.source === source
+}
+
 /** The reader at this bookmark. */
 export function reveal(
   bookmark: Bookmark,
   series: BookmarkSeries = ONE_PIECE_BOOKMARK,
 ): Reveal {
   const mode = modeOf(bookmark)
+  const source = sourceOf(bookmark)
+  const has = (gated: Gated): boolean => toldIn(gated, source)
 
   return {
+    has,
     mode,
-    sees: (gated) => isRevealed(gated, bookmark, series),
+    sees: (gated) => has(gated) && isRevealed(gated, bookmark, series),
     threshold: (gated) => thresholdIn(gated, mode),
   }
 }

@@ -1,6 +1,6 @@
 import { byNumber, byValue, byValues } from 'sort-es'
 
-import type { Reveal } from '~/data/reveal'
+import { type Reveal, toldIn } from '~/data/reveal'
 import type { Dated, Eater, Entity, FiledStory } from '~/data/types'
 import type { Gated } from '~/lib/progress/spoiler'
 import type { Faction } from '~/lib/view/records'
@@ -98,25 +98,46 @@ export const stories: FiledStory[] = characters
 export type { Eater } from '~/data/types'
 
 /**
- * The earliest entry each character's dossier names each fruit in.
+ * The gate of a link several entries tell, given in timeline order: in each
+ * unit, the first entry that unit's source tells. A link the anime alone
+ * tells first is still reached by a chapter reader, at the first entry the
+ * manga tells too; one that a single source tells at all is that source's
+ * alone. With no source on any entry it is the first entry's gate.
+ */
+export function earliestOf(gates: Gated[]): Gated {
+  const anime = gates.find((gate) => toldIn(gate, 'anime'))
+  const manga = gates.find((gate) => toldIn(gate, 'manga'))
+  if (anime !== undefined && manga !== undefined && anime !== manga) {
+    return {
+      revealedAtEpisode: anime.revealedAtEpisode,
+      revealedAtChapter: manga.revealedAtChapter,
+    }
+  }
+
+  const first = anime ?? manga ?? gates[0]
+  if (first === undefined) {
+    throw new Error('A link is told by at least one entry')
+  }
+
+  return first
+}
+
+/**
+ * The entries each character's dossier names each fruit in, in order.
  *
  * The relation is read backwards on purpose. It is written once, on the
  * character, as a fruit id on a dated dossier entry; the fruit derives its
  * eaters from those entries rather than keeping a list of its own, so the two
  * sides of the reference cannot disagree.
  */
-type Found = Map<string, Map<string, Opened<string[]>>>
+type Found = Map<string, Map<string, Opened<string[]>[]>>
 
-/** Files one dossier entry under every fruit it names, keeping the earliest. */
+/** Files one dossier entry under every fruit it names. */
 function file(found: Found, character: string, entry: Opened<string[]>): void {
   for (const fruitId of entry.value) {
     const byCharacter =
-      found.get(fruitId) ?? new Map<string, Opened<string[]>>()
-    const seen = byCharacter.get(character)
-
-    if (seen === undefined || entry.episode < seen.episode) {
-      byCharacter.set(character, entry)
-    }
+      found.get(fruitId) ?? new Map<string, Opened<string[]>[]>()
+    byCharacter.set(character, [...(byCharacter.get(character) ?? []), entry])
     found.set(fruitId, byCharacter)
   }
 }
@@ -144,13 +165,19 @@ function readEaters(): Map<string, Eater[]> {
   )
 }
 
-/** One fruit's eaters, earliest first, ties broken by the archive's own order. */
-function listed(byCharacter: Map<string, Opened<string[]>>): Eater[] {
+/**
+ * One fruit's eaters, earliest first, ties broken by the archive's own order,
+ * each at the gate its entries give it (`earliestOf`).
+ */
+function listed(byCharacter: Map<string, Opened<string[]>[]>): Eater[] {
   return [...byCharacter]
-    .flatMap(([character, named]) => {
+    .flatMap(([character, entries]) => {
       const entity = getCharacter(character)
+      const [named] = entries
 
-      return entity === undefined ? [] : { entity, named }
+      return entity === undefined || named === undefined ?
+          []
+        : { entity, gate: earliestOf(entries.map(({ gate }) => gate)), named }
     })
     .toSorted(
       byValues([
@@ -158,7 +185,7 @@ function listed(byCharacter: Map<string, Opened<string[]>>): Eater[] {
         [(eater) => eater.entity.revealedAtEpisode, byNumber()],
       ]),
     )
-    .map(({ entity, named }) => ({ entity, gate: named.gate }))
+    .map(({ entity, gate }) => ({ entity, gate }))
 }
 
 const EATERS = readEaters()
@@ -183,21 +210,24 @@ export interface Native {
 }
 
 /**
- * The places one character's origin names, each with the gate of the
- * earliest entry naming it: a timeline is in episode order, so the first
- * entry found is the earliest.
+ * The places one character's origin names, each with the gate the entries
+ * naming it give it (`earliestOf`): a timeline is in episode order, so the
+ * first entry found is the earliest.
  */
 function placesOf(entity: Entity): Map<string, Gated> {
   const origin = CHARACTER_DOSSIERS[entity.id]?.origin ?? []
-  const named = new Map<string, Gated>()
+  const named = new Map<string, Gated[]>()
 
   for (const entry of origin) {
-    if (entry.place !== undefined && !named.has(entry.place)) {
-      named.set(entry.place, gateOf(entry, entity))
+    if (entry.place !== undefined) {
+      named.set(entry.place, [
+        ...(named.get(entry.place) ?? []),
+        gateOf(entry, entity),
+      ])
     }
   }
 
-  return named
+  return new Map([...named].map(([place, gates]) => [place, earliestOf(gates)]))
 }
 
 /**

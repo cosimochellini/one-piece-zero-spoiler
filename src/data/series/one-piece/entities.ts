@@ -1,5 +1,6 @@
+import { toldIn } from '~/data/reveal'
 import type { Entity } from '~/data/types'
-import type { Gated } from '~/lib/progress/spoiler'
+import type { Gated, Source } from '~/lib/progress/spoiler'
 
 import { gateOf } from './chapter-table'
 import { devilFruits } from './records/fruits'
@@ -116,16 +117,50 @@ const NAMINGS = Object.entries(CHARACTER_DOSSIERS).flatMap(([id, dossier]) => {
  * dossier belongs to a filed character.
  */
 function revealOf(id: string): Gated {
-  const named = NAMINGS.filter((naming) => naming.fruitIds.has(id))
+  const namings: Gated[] = []
+  for (const { fruitIds, gate } of NAMINGS) {
+    if (fruitIds.has(id)) {
+      namings.push(gate)
+    }
+  }
+
+  return openedBy(namings)
+}
+
+/**
+ * The gate the namings of one fruit give it, in each unit by the namings its
+ * source tells: an entry, or an eater, of the anime alone opens the fruit for
+ * no chapter reader. A fruit that one source alone names is that source's
+ * alone (`Entity.source`).
+ */
+export function openedBy(namings: Gated[]): Gated {
+  const anime = namings.filter((gate) => toldIn(gate, 'anime'))
+  const manga = namings.filter((gate) => toldIn(gate, 'manga'))
+  const source = aloneIn({ anime, manga })
+
+  // A source with no naming takes every naming's, which only orders the
+  // fruit: its reader never has it (`source`).
+  const inAnime = anime.length === 0 ? namings : anime
+  const inManga = manga.length === 0 ? namings : manga
 
   return {
     revealedAtEpisode: Math.min(
-      ...named.map((naming) => naming.gate.revealedAtEpisode),
+      ...inAnime.map((gate) => gate.revealedAtEpisode),
     ),
     revealedAtChapter: Math.min(
-      ...named.map((naming) => naming.gate.revealedAtChapter),
+      ...inManga.map((gate) => gate.revealedAtChapter),
     ),
+    ...(source !== undefined && { source }),
   }
+}
+
+/** The one source that has namings when the other has none, if any. */
+function aloneIn(told: Record<Source, Gated[]>): Source | undefined {
+  if (told.anime.length === 0) {
+    return told.manga.length === 0 ? undefined : 'manga'
+  }
+
+  return told.manga.length === 0 ? 'anime' : undefined
 }
 
 /**
