@@ -13,10 +13,13 @@ import { color, font, rule, space, text, z } from '~/styles/tokens.stylex'
 export function LocaleShell({
   locale,
   children,
+  shared = false,
   trial = false,
 }: {
   children: ReactNode
   locale: Locale
+  /** A page with no series: the hub and the legal notices. */
+  shared?: boolean
   trial?: boolean
 }): ReactElement {
   return (
@@ -31,7 +34,7 @@ export function LocaleShell({
         <SiteBar />
         <div>{trial && <TrialStrip />}</div>
         {children}
-        <SiteFooter />
+        <SiteFooter shared={shared} />
       </div>
     </LocaleProvider>
   )

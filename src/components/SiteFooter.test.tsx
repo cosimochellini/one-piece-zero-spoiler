@@ -52,7 +52,7 @@ describe('SiteFooter', () => {
   ] as const)(
     'names no series on a page with none, in $locale',
     ({ locale, lead, unofficial }) => {
-      renderWithProviders(<SiteFooter />, { locale, path: `/${locale}` })
+      renderWithProviders(<SiteFooter shared />, { locale, path: `/${locale}` })
 
       expect(screen.getByText(lead)).toBeInTheDocument()
       expect(screen.getByRole('contentinfo')).toHaveTextContent(unofficial)
