@@ -5,6 +5,7 @@ import {
   accepts,
   namesIn,
   namesOf,
+  sectionOf,
   suggestionOf,
   verdictOf,
 } from './verify-names.mjs'
@@ -128,5 +129,41 @@ describe('the verdict on a record', () => {
   it('keeps a name checked by hand while it stays the one checked', () => {
     expect(verdictOf(record('shaka', 'Shaka'), [undefined])).toBe('kept')
     expect(verdictOf(record('shaka', 'Shakka'), [undefined])).toBe('unresolved')
+  })
+})
+
+describe('a section of a list page', () => {
+  const list = {
+    title: 'Personaggi',
+    wikitext: [
+      '==Protagonisti==',
+      '===Leolio Paladiknight===',
+      "{{nihongo|'''Leolio Paladiknight'''|レオリオ|Reorio|'''Leorio''' nella versione italiana dell'anime}} è…",
+      '==Altri==',
+      ";{{nihongo|'''Myto Freecss'''|ミト}}",
+      ':La cugina di Jin.',
+      ";{{nihongo|'''Mashu'''|マシュウ}}",
+    ].join('\n'),
+    text: '',
+  }
+
+  it('reads a heading or a bold term to the next one, its bold names its aliases', () => {
+    const leorio = sectionOf(list, 'Leolio Paladiknight')
+    const mito = sectionOf(list, 'Myto Freecss')
+
+    expect(leorio === undefined ? undefined : namesOf(leorio)).toEqual({
+      title: 'Leolio Paladiknight',
+      dub: [],
+      aliases: ['Leolio Paladiknight', 'Leorio'],
+    })
+    expect(mito?.wikitext).toBe(
+      ";{{nihongo|'''Myto Freecss'''|ミト}}\n:La cugina di Jin.",
+    )
+    expect(accepts('Leorio', [namesOf(leorio ?? list)])).toBe(true)
+    expect(accepts('Mito Freecss', [namesOf(mito ?? list)])).toBe(false)
+  })
+
+  it('is nothing on a page without it', () => {
+    expect(sectionOf(list, 'Kite')).toBeUndefined()
   })
 })

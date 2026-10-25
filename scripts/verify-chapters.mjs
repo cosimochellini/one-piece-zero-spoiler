@@ -121,6 +121,7 @@ export function chapterOf(page, kind) {
   return numberOf(page, kind, {
     arc: [/Chapters?:(?<n>\d+)/u, /ChaptersChapters(?<n>\d+)/u],
     debut: /Debut:Chapter(?<n>\d+)/u,
+    field: 'manga debut',
     line: storyChapterOf,
   })
 }
@@ -129,11 +130,12 @@ export function chapterOf(page, kind) {
  * A number a page gives for its subject: an arc's from its rendered range,
  * by the first of the arc patterns that matches (One Piece's wiki writes
  * `Chapters: 69-95`, Hunter x Hunter's a label and `Chapters 1 - 43`),
- * anything else's from the infobox first line, or from the rendered debut
- * when the infobox is transcluded.
+ * anything else's from the infobox first line (One Piece's `first`, Hunter x
+ * Hunter's `manga debut` or `anime debut`), or from the rendered debut when
+ * the infobox is transcluded.
  * @param {Page} page The parsed page.
  * @param {string} kind The record's kind.
- * @param {{ arc: RegExp[], debut: RegExp, line: (first: string) => number | undefined }} read How to read each of the three.
+ * @param {{ arc: RegExp[], debut: RegExp, field: string, line: (first: string) => number | undefined }} read How to read each of the three, and the infobox field that gives a debut where no `first` line does.
  * @returns {number | undefined} The number, or nothing when the page has none.
  */
 function numberOf(page, kind, read) {
@@ -144,7 +146,7 @@ function numberOf(page, kind, read) {
       .find((number) => number !== undefined)
   }
 
-  const first = firstLineOf(page)
+  const first = firstLineOf(page) ?? infoboxLineOf(page, read.field)
 
   return first === undefined ?
       numberAfter(read.debut, tagless(page.text))
@@ -254,7 +256,14 @@ export function episodeOf(page, kind) {
       /EpisodesEpisodes(?<n>\d+)/u,
     ],
     debut: /Debut:Chapter\d+;Episode(?<n>\d+)/u,
-    line: (first) => numberAfter(/Episode (?<n>\d+)/u, first),
+    field: 'anime debut',
+    line: (first) =>
+      numberAfter(
+        first.includes('(2011)') ?
+          /Episode (?<n>\d+) \(2011\)/u
+        : /Episode (?<n>\d+)/u,
+        first,
+      ),
   })
 }
 
@@ -286,6 +295,20 @@ export function episodeVerdictOf(id, episode, wikiEpisode) {
   }
 
   return EPISODE_KEPT[id] === episode ? 'kept' : 'too low'
+}
+
+/**
+ * One infobox field's line, when the page has it: the Hunter x Hunter Wiki
+ * gives a debut as `| manga debut = [[Chapter 1]]` and `| anime debut = …
+ * [[Episode 1 (2011)]]`, the 1999 anime's and the OVA's beside it.
+ * @param {Page} page The parsed page.
+ * @param {string} field The field.
+ * @returns {string | undefined} The line.
+ */
+function infoboxLineOf(page, field) {
+  return page.wikitext
+    .split('\n')
+    .find((line) => line.replace(/^\s*\|\s*/u, '').startsWith(`${field} `))
 }
 
 /**

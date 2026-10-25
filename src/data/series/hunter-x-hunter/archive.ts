@@ -16,10 +16,10 @@ import { PLACE_DOSSIERS } from './places'
 import { sagas } from './sagas'
 
 /**
- * Hunter x Hunter's archive: its arcs, for now. The characters and places of
- * the Hunter Exam come next (#760); the engine derives their lists, shelves
+ * Hunter x Hunter's archive: its arcs, and the characters and places of the
+ * Hunter Exam filed so far (#760). The engine derives their lists, shelves
  * and dated facts from the records and dossiers the sagas file, as it does
- * One Piece's, so today they are empty.
+ * One Piece's.
  */
 const entities: Entity[] = sagas.flatMap((saga) => saga.entries)
 
@@ -37,7 +37,13 @@ const { chapterAtEpisode, gateOf } = chapterTable({
   records: entities,
 })
 
-const cast = castOf({ dossiers: DOSSIERS, entities, featured: [] })
+// The main characters of the Hunter Exam, as they are filed: the landing
+// chart, the featured row and a character page's nearest featured ones.
+const cast = castOf({
+  dossiers: DOSSIERS,
+  entities,
+  featured: ['gon-freecss', 'kurapika', 'leorio-paradinight'],
+})
 
 const places = keptOf(entities, 'place', PLACE_DOSSIERS)
 

@@ -471,6 +471,14 @@ describe('the place word canaries', () => {
     ).toStrictEqual(['dark-continent', 'Dark Continent', 'Continente Oscuro'])
   })
 
+  it('drops a word or label the shipped dictionaries hold', () => {
+    expect(
+      placeWordCanaries([own], ['sea.dark-continent', 'Continente Oscuro']).map(
+        ({ phrase }) => phrase,
+      ),
+    ).toStrictEqual(['Dark Continent'])
+  })
+
   it('fails a client chunk that ships them', () => {
     const chunk = {
       bytes: 40,

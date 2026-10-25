@@ -77,6 +77,10 @@ export const EXTRA = {
       'src/data/series/one-piece/fruit-forms.ts',
     ],
   },
+  'hunter-x-hunter': {
+    prose: ['src/data/series/hunter-x-hunter/places.ts'],
+    slugs: [],
+  },
 }
 
 /**
@@ -315,11 +319,15 @@ const DISTINCT_WORD = /[\s-]|^.{8,}$/u
 
 /**
  * One canary per word and label of every series that labels its place words
- * itself (`dictionary: false`), distinct enough to look for.
+ * itself (`dictionary: false`), distinct enough to look for, and not found in
+ * the copy every page ships: a word or label inside a dictionary's key or
+ * value ("Fortezza", `fortress`) is in the chunks legitimately, so it would
+ * fail the gate for no leak.
  * @param {{folder: string, placeWords: {dictionary: boolean, forms: Record<string, unknown>, regions: Record<string, unknown>}}[]} series The series list.
+ * @param {string[]} [shipped] The dictionaries' keys and values.
  * @returns {{file: string, phrase: string}[]} What no client chunk may hold.
  */
-export function placeWordCanaries(series) {
+export function placeWordCanaries(series, shipped = []) {
   return series.flatMap(({ folder, placeWords }) => {
     if (placeWords.dictionary) {
       return []
@@ -334,6 +342,7 @@ export function placeWordCanaries(series) {
 
     return [...new Set(phrases)]
       .filter((phrase) => DISTINCT_WORD.test(phrase))
+      .filter((phrase) => shipped.every((text) => !text.includes(phrase)))
       .map((phrase) => ({ file, phrase }))
   })
 }
@@ -372,7 +381,12 @@ export async function canariesOf(repositoryRoot) {
 async function placeWordCanariesOf() {
   try {
     const { SERIES } = await importArchive('data/series/index.ts')
-    return placeWordCanaries(SERIES)
+    const { enDictionary } = await importArchive('i18n/dictionaries/en.ts')
+    const { itDictionary } = await importArchive('i18n/dictionaries/it.ts')
+    const shipped = [enDictionary, itDictionary].flatMap((dictionary) =>
+      Object.entries(dictionary).flat(),
+    )
+    return placeWordCanaries(SERIES, shipped)
   } catch {
     return []
   }
