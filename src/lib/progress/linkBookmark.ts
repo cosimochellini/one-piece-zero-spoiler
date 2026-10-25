@@ -2,7 +2,7 @@ import { COOKIE_MAX_AGE_SECONDS, serializeCookie } from '~/lib/cookies'
 import { SERVER_FN_BASE } from '~/lib/endpoints'
 
 import { type Bookmark, parseBookmark, serialiseBookmark } from './episode'
-import { type BookmarkSeries, ONE_PIECE_BOOKMARK } from './series'
+import type { BookmarkSeries } from './series'
 
 /** The query parameters a shared link can carry a bookmark in. */
 const LINK_PARAMS = ['ep', 's', 'ch'] as const
@@ -55,7 +55,7 @@ function linkForm(
  */
 export function bookmarkFromSearch(
   search: URLSearchParams,
-  series: BookmarkSeries = ONE_PIECE_BOOKMARK,
+  series: BookmarkSeries,
 ): Bookmark {
   const ep = linkValue(search, 'ep')
   const season = linkValue(search, 's')

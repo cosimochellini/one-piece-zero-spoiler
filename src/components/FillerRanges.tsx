@@ -3,6 +3,7 @@ import type { MouseEvent, ReactElement } from 'react'
 
 import { episodesLabel, openTo } from '~/components/fillerLabels'
 import { useT } from '~/i18n/LocaleContext'
+import { useBookmarkSeries } from '~/lib/progress/BookmarkContext'
 import type { BookmarkMode } from '~/lib/progress/episode'
 import type { SkipGroup } from '~/lib/view/filler'
 import { stickyStyles } from '~/styles/sticky'
@@ -36,6 +37,7 @@ export function FillerRanges({
   mode: BookmarkMode
 }): ReactElement {
   const t = useT()
+  const series = useBookmarkSeries()
   return (
     <div {...stylex.props(styles.groups)}>
       {groups.map((group) => {
@@ -63,7 +65,7 @@ export function FillerRanges({
                       {...stylex.props(styles.range)}
                     >
                       <span {...stylex.props(styles.span)}>
-                        {episodesLabel(t, mode, range)}
+                        {episodesLabel(t, { mode, series }, range)}
                       </span>
                       <span {...stylex.props(styles.count)}>
                         {count === 1 ?

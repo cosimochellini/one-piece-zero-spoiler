@@ -4,7 +4,7 @@ import {
   type BookmarkMode,
   modeOf,
 } from '~/lib/progress/episode'
-import { type BookmarkSeries, ONE_PIECE_BOOKMARK } from '~/lib/progress/series'
+import type { BookmarkSeries } from '~/lib/progress/series'
 import { type Gated, type Source, thresholdIn } from '~/lib/progress/spoiler'
 
 /**
@@ -78,10 +78,7 @@ export function toldIn(
 }
 
 /** The reader at this bookmark. */
-export function reveal(
-  bookmark: Bookmark,
-  series: BookmarkSeries = ONE_PIECE_BOOKMARK,
-): Reveal {
+export function reveal(bookmark: Bookmark, series: BookmarkSeries): Reveal {
   const mode = modeOf(bookmark)
   const source = sourceOf(bookmark)
   const has = (gated: Gated): boolean => toldIn(gated, source)

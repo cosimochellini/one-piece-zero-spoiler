@@ -1,5 +1,6 @@
 import type { Translate } from '~/i18n/types'
 import { type BookmarkMode, episodeValue } from '~/lib/progress/episode'
+import type { BookmarkSeries } from '~/lib/progress/series'
 import type {
   Countdown,
   CoveredFillerRow,
@@ -10,17 +11,23 @@ import type {
   SkipRange,
 } from '~/lib/view/filler'
 
+/** The unit the reader counts in, and the series its seasons belong to. */
+export interface Counting {
+  mode: BookmarkMode
+  series: BookmarkSeries
+}
+
 /**
  * An episode, or a run of them, in the reader's unit. A season reader reads
  * codes, which carry their own prefix; everyone else reads `EP 54–60`.
  */
 export function episodesLabel(
   t: Translate,
-  mode: BookmarkMode,
+  { mode, series }: Counting,
   { first, last }: SkipRange,
 ): string {
-  const from = episodeValue(first, mode)
-  const to = episodeValue(last, mode)
+  const from = episodeValue(first, mode, series)
+  const to = episodeValue(last, mode, series)
 
   if (mode === 'season') {
     return first === last ? from : `${from}–${to}`
@@ -34,15 +41,21 @@ export function episodesLabel(
 /** `EP 54`, `S03E01`, or `After EP 1027` for an entry with no number. */
 export function placeLabel(
   t: Translate,
-  mode: BookmarkMode,
+  counting: Counting,
   place: FillerPlace,
 ): string {
   if ('episode' in place) {
-    return episodesLabel(t, mode, { first: place.episode, last: place.episode })
+    return episodesLabel(t, counting, {
+      first: place.episode,
+      last: place.episode,
+    })
   }
 
   return t('filler.after', {
-    value: episodesLabel(t, mode, { first: place.after, last: place.after }),
+    value: episodesLabel(t, counting, {
+      first: place.after,
+      last: place.after,
+    }),
   })
 }
 
@@ -50,10 +63,11 @@ export function placeLabel(
 export function sentenceOf(
   t: Translate,
   countdown: Countdown,
-  { aired, mode }: { aired: number; mode: BookmarkMode },
+  { aired, ...counting }: Counting & { aired: number },
 ): string {
   return (
-    runSentenceOf(t, countdown, mode) ?? t('filler.countdown.none', { aired })
+    runSentenceOf(t, countdown, counting)
+    ?? t('filler.countdown.none', { aired })
   )
 }
 
@@ -64,14 +78,14 @@ export function sentenceOf(
 export function runSentenceOf(
   t: Translate,
   { inRun, next }: Pick<Countdown, 'inRun' | 'next'>,
-  mode: BookmarkMode,
+  counting: Counting,
 ): null | string {
   if (inRun !== null) {
     return inRun.distance === 1 ?
         t('filler.countdown.inRunOne')
       : t('filler.countdown.inRun', {
           count: inRun.distance,
-          resume: episodesLabel(t, mode, {
+          resume: episodesLabel(t, counting, {
             first: inRun.resume,
             last: inRun.resume,
           }),

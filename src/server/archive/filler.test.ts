@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest'
 import { reveal } from '~/data/reveal'
 import { FILLER, LAST_AIRED } from '~/data/series/one-piece/filler'
 import type { Bookmark } from '~/lib/progress/episode'
+import { ONE_PIECE_BOOKMARK } from '~/lib/progress/series'
 import type {
   FillerGroup,
   FillerKind,
@@ -297,7 +298,7 @@ describe('the home page warning', () => {
       const bookmark = ep(episode)
       const countdown = countdownOf(bookmark, {
         locale: 'en',
-        sees: reveal(bookmark).sees,
+        sees: reveal(bookmark, ONE_PIECE_BOOKMARK).sees,
       })
       const close =
         countdown !== null

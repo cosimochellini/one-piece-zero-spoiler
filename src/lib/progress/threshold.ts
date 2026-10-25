@@ -34,7 +34,7 @@ export interface ThresholdDescription {
   gated: Gated
   mode: BookmarkMode
   sentence: ThresholdSentence
-  series?: BookmarkSeries
+  series: BookmarkSeries
   t: Translate
 }
 

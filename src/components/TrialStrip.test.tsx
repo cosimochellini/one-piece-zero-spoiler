@@ -2,8 +2,7 @@ import { fireEvent, screen } from '@testing-library/react'
 import { afterEach, describe, expect, it } from 'vitest'
 
 import { expireCookie, parseCookieHeader, writeCookie } from '~/lib/cookies'
-import { TRIAL_COOKIE } from '~/lib/progress/bounds'
-import { EPISODE_COOKIE } from '~/lib/progress/episode'
+import { ONE_PIECE_BOOKMARK } from '~/lib/progress/series'
 import { dismissWelcome, welcomeOwed } from '~/lib/progress/welcome'
 import { renderWithProviders } from '~/test/providers'
 
@@ -15,8 +14,8 @@ function cookies(): Map<string, string> {
 
 describe('TrialStrip', () => {
   afterEach(() => {
-    expireCookie(EPISODE_COOKIE)
-    expireCookie(TRIAL_COOKIE)
+    expireCookie(ONE_PIECE_BOOKMARK.cookie)
+    expireCookie(ONE_PIECE_BOOKMARK.trialCookie)
     dismissWelcome()
   })
 
@@ -29,7 +28,7 @@ describe('TrialStrip', () => {
   })
 
   it('names the trial point and saves it as the bookmark', () => {
-    writeCookie(TRIAL_COOKIE, '12')
+    writeCookie(ONE_PIECE_BOOKMARK.trialCookie, '12')
     renderWithProviders(<TrialStrip />, {
       bookmark: { mode: 'episode', episode: 12 },
       trial: true,
@@ -41,13 +40,13 @@ describe('TrialStrip', () => {
 
     fireEvent.click(screen.getByRole('button', { name: 'Save this point' }))
 
-    expect(cookies().get(EPISODE_COOKIE)).toBe('12')
-    expect(cookies().has(TRIAL_COOKIE)).toBe(false)
+    expect(cookies().get(ONE_PIECE_BOOKMARK.cookie)).toBe('12')
+    expect(cookies().has(ONE_PIECE_BOOKMARK.trialCookie)).toBe(false)
     expect(welcomeOwed()).toBe(true)
   })
 
   it('leaves the trial without saving anything', () => {
-    writeCookie(TRIAL_COOKIE, 'c40')
+    writeCookie(ONE_PIECE_BOOKMARK.trialCookie, 'c40')
     renderWithProviders(<TrialStrip />, {
       bookmark: { mode: 'chapter', chapter: 40 },
       trial: true,
@@ -59,7 +58,7 @@ describe('TrialStrip', () => {
 
     fireEvent.click(screen.getByRole('button', { name: 'Leave the trial' }))
 
-    expect(cookies().has(TRIAL_COOKIE)).toBe(false)
-    expect(cookies().has(EPISODE_COOKIE)).toBe(false)
+    expect(cookies().has(ONE_PIECE_BOOKMARK.trialCookie)).toBe(false)
+    expect(cookies().has(ONE_PIECE_BOOKMARK.cookie)).toBe(false)
   })
 })

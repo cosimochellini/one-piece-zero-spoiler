@@ -5,6 +5,7 @@ import { itDictionary } from '~/i18n/dictionaries/it'
 import { translate } from '~/i18n/translate'
 import type { Translate } from '~/i18n/types'
 
+import { ONE_PIECE_BOOKMARK } from './series'
 import { describeBookmark, describeThreshold } from './threshold'
 
 const en: Translate = (key, params) => translate(enDictionary, key, params)
@@ -19,6 +20,7 @@ describe('describeThreshold', () => {
         gated: robin,
         mode: 'episode',
         sentence: 'veil.locked',
+        series: ONE_PIECE_BOOKMARK,
         t: en,
       }),
     ).toBe('Under fog until episode 130')
@@ -27,6 +29,7 @@ describe('describeThreshold', () => {
         gated: robin,
         mode: 'season',
         sentence: 'veil.locked',
+        series: ONE_PIECE_BOOKMARK,
         t: en,
       }),
     ).toBe('Under fog until S04E38')
@@ -35,6 +38,7 @@ describe('describeThreshold', () => {
         gated: robin,
         mode: 'chapter',
         sentence: 'veil.locked',
+        series: ONE_PIECE_BOOKMARK,
         t: en,
       }),
     ).toBe('Under fog until chapter 218')
@@ -46,6 +50,7 @@ describe('describeThreshold', () => {
         gated: robin,
         mode: 'episode',
         sentence: 'character.opensAt',
+        series: ONE_PIECE_BOOKMARK,
         t: inItalian,
       }),
     ).toBe('Compare per la prima volta nell’episodio 130')
@@ -54,6 +59,7 @@ describe('describeThreshold', () => {
         gated: robin,
         mode: 'chapter',
         sentence: 'character.opensAt',
+        series: ONE_PIECE_BOOKMARK,
         t: inItalian,
       }),
     ).toBe('Compare per la prima volta nel capitolo 218')
@@ -62,6 +68,7 @@ describe('describeThreshold', () => {
         gated: robin,
         mode: 'season',
         sentence: 'chart.opensAt',
+        series: ONE_PIECE_BOOKMARK,
         t: inItalian,
       }),
     ).toBe('S04E38')

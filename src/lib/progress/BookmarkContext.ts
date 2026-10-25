@@ -4,7 +4,7 @@ import { useLocale, useT } from '~/i18n/LocaleContext'
 import type { Locale } from '~/i18n/locales'
 
 import { type Bookmark, modeOf } from './episode'
-import { type BookmarkSeries, ONE_PIECE_BOOKMARK } from './series'
+import type { BookmarkSeries } from './series'
 import type { Gated } from './spoiler'
 import { describeThreshold, type ThresholdSentence } from './threshold'
 
@@ -47,14 +47,24 @@ export function useBookmark(): BookmarkContextValue {
   return value
 }
 
+/**
+ * The series the route selected. Throws on a shared site page rather than
+ * falling back to One Piece, because a conversion read with another series'
+ * table would name the wrong episode.
+ */
+export function useBookmarkSeries(): BookmarkSeries {
+  const { series } = useBookmark()
+  if (series === null) {
+    throw new Error('A bookmark conversion needs a selected series')
+  }
+  return series
+}
+
 /** The selected series and language for content links. */
 export function useSeriesParams(): { locale: Locale; series: string } {
-  const { series } = useBookmark()
+  const { slug } = useBookmarkSeries()
   const { locale } = useLocale()
-  if (series === null) {
-    throw new Error('A series link needs a selected series')
-  }
-  return { locale, series: series.slug }
+  return { locale, series: slug }
 }
 
 /**
@@ -66,18 +76,13 @@ export function useThreshold(): (
   gated: Gated,
 ) => string {
   const t = useT()
-  const { bookmark, series } = useBookmark()
+  const { bookmark } = useBookmark()
+  const series = useBookmarkSeries()
   const mode = modeOf(bookmark)
 
   return useCallback(
     (sentence: ThresholdSentence, gated: Gated) =>
-      describeThreshold({
-        gated,
-        mode,
-        sentence,
-        t,
-        series: series ?? ONE_PIECE_BOOKMARK,
-      }),
+      describeThreshold({ gated, mode, sentence, t, series }),
     [t, mode, series],
   )
 }

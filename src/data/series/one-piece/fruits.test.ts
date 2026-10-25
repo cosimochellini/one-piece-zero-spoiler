@@ -3,12 +3,8 @@ import { describe, expect, it } from 'vitest'
 
 import type { Entity } from '~/data/types'
 import { LOCALES } from '~/i18n/locales'
-import {
-  CHAPTER_CEILING,
-  EPISODE_CEILING,
-  FIRST_CHAPTER,
-  FIRST_EPISODE,
-} from '~/lib/progress/episode'
+import { FIRST_CHAPTER, FIRST_EPISODE } from '~/lib/progress/episode'
+import { ONE_PIECE_BOOKMARK } from '~/lib/progress/series'
 
 import { DRAWINGS } from './art'
 import { dossierOf, getCharacter } from './characters'
@@ -130,13 +126,13 @@ describe('the specimen sheet', () => {
         FIRST_EPISODE,
       )
       expect(fruit.revealedAtEpisode, fruit.id).toBeLessThanOrEqual(
-        EPISODE_CEILING,
+        ONE_PIECE_BOOKMARK.episodeCeiling,
       )
       expect(fruit.revealedAtChapter, fruit.id).toBeGreaterThanOrEqual(
         FIRST_CHAPTER,
       )
       expect(fruit.revealedAtChapter, fruit.id).toBeLessThanOrEqual(
-        CHAPTER_CEILING,
+        ONE_PIECE_BOOKMARK.chapterCeiling,
       )
     }
   })

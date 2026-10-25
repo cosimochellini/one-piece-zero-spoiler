@@ -59,7 +59,7 @@ if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
     const { chapterAtEpisode, episodeAtChapter } = await importArchive(
       'data/series/one-piece/chapter-table.ts',
     )
-    const { CHAPTER_CEILING } = await importArchive('lib/progress/bounds.ts')
+    const { ONE_PIECE_BOOKMARK } = await importArchive('lib/progress/series.ts')
     const { LAST_AIRED } = await importArchive(
       'data/series/one-piece/filler.ts',
     )
@@ -67,7 +67,7 @@ if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
     process.stdout.write(
       archiveTable(
         {
-          chapterCeiling: CHAPTER_CEILING,
+          chapterCeiling: ONE_PIECE_BOOKMARK.chapterCeiling,
           lastAired: LAST_AIRED,
           chapterAtEpisode,
           episodeAtChapter,

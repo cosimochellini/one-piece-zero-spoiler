@@ -20,19 +20,15 @@ function visit(path: string, method = 'GET'): Response | undefined {
 
 describe('the bookmark a link names', () => {
   it('reads each of the three forms', () => {
-    expect(bookmarkFromSearch(search('ep=650'))).toStrictEqual({
-      mode: 'episode',
-      episode: 650,
-    })
-    expect(bookmarkFromSearch(search('s=2&ep=3'))).toStrictEqual({
-      mode: 'season',
-      season: 2,
-      episode: 3,
-    })
-    expect(bookmarkFromSearch(search('ch=1044'))).toStrictEqual({
-      mode: 'chapter',
-      chapter: 1044,
-    })
+    expect(
+      bookmarkFromSearch(search('ep=650'), ONE_PIECE_BOOKMARK),
+    ).toStrictEqual({ mode: 'episode', episode: 650 })
+    expect(
+      bookmarkFromSearch(search('s=2&ep=3'), ONE_PIECE_BOOKMARK),
+    ).toStrictEqual({ mode: 'season', season: 2, episode: 3 })
+    expect(
+      bookmarkFromSearch(search('ch=1044'), ONE_PIECE_BOOKMARK),
+    ).toStrictEqual({ mode: 'chapter', chapter: 1044 })
   })
 
   it('fails closed outside the ranges the dialog accepts', () => {
@@ -43,7 +39,7 @@ describe('the bookmark a link names', () => {
       's=0&ep=1',
       'ch=1301',
     ]) {
-      expect(bookmarkFromSearch(search(query))).toBeNull()
+      expect(bookmarkFromSearch(search(query), ONE_PIECE_BOOKMARK)).toBeNull()
     }
   })
 
@@ -58,7 +54,7 @@ describe('the bookmark a link names', () => {
       'ch=c5',
       's=2e3&ep=4',
     ]) {
-      expect(bookmarkFromSearch(search(query))).toBeNull()
+      expect(bookmarkFromSearch(search(query), ONE_PIECE_BOOKMARK)).toBeNull()
     }
   })
 
@@ -70,7 +66,7 @@ describe('the bookmark a link names', () => {
       'ep=1&ep=2',
       'ch=1&ch=2',
     ]) {
-      expect(bookmarkFromSearch(search(query))).toBeNull()
+      expect(bookmarkFromSearch(search(query), ONE_PIECE_BOOKMARK)).toBeNull()
     }
   })
 })

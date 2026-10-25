@@ -13,6 +13,7 @@ import {
 } from '~/components/fillerLabels'
 import { FILLER_PANEL_ID, FillerPanel } from '~/components/FillerPanel'
 import { useT } from '~/i18n/LocaleContext'
+import { useBookmarkSeries } from '~/lib/progress/BookmarkContext'
 import type { BookmarkMode } from '~/lib/progress/episode'
 import type {
   Countdown,
@@ -49,6 +50,7 @@ export function FillerCountdown({
   peek,
 }: FillerCountdownProps): ReactElement {
   const t = useT()
+  const series = useBookmarkSeries()
   const [chosen, setChosen] = useState<null | string>(null)
   const slots = [
     ...countdown.cells.flatMap((cell) =>
@@ -74,12 +76,12 @@ export function FillerCountdown({
         id="filler-countdown"
         {...stylex.props(styles.sentence)}
       >
-        {sentenceOf(t, countdown, { aired, mode })}
+        {sentenceOf(t, countdown, { aired, mode, series })}
       </h2>
       {countdown.inRun === null && countdown.next !== null && (
         <p {...stylex.props(styles.span)}>
           {t('filler.countdown.span', {
-            span: episodesLabel(t, mode, countdown.next),
+            span: episodesLabel(t, { mode, series }, countdown.next),
           })}
         </p>
       )}
@@ -156,6 +158,7 @@ function Cell({
   mode: BookmarkMode
 }): ReactElement {
   const t = useT()
+  const series = useBookmarkSeries()
   const { slot } = cell
   const kind = slot === null ? null : entryOf(slot).kind
 
@@ -170,10 +173,11 @@ function Cell({
         name={cellName(t, {
           here,
           kind,
-          number: episodesLabel(t, mode, {
-            first: cell.episode,
-            last: cell.episode,
-          }),
+          number: episodesLabel(
+            t,
+            { mode, series },
+            { first: cell.episode, last: cell.episode },
+          ),
         })}
         slot={slot}
       >
@@ -213,8 +217,12 @@ function Mark({
   slot: FillerSlot
 }): ReactElement {
   const t = useT()
+  const series = useBookmarkSeries()
   const entry = entryOf(slot)
-  const name = [placeLabel(t, mode, entry), t(`filler.kind.${entry.kind}`)]
+  const name = [
+    placeLabel(t, { mode, series }, entry),
+    t(`filler.kind.${entry.kind}`),
+  ]
 
   return (
     <Pressable

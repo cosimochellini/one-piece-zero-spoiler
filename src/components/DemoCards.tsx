@@ -9,7 +9,11 @@ import { styles } from '~/components/Onboarding.styles'
 import { PortPlate } from '~/components/PortPlate'
 import { formatBounty } from '~/i18n/bounty'
 import { useLocale } from '~/i18n/LocaleContext'
-import { useBookmark, useSeriesParams } from '~/lib/progress/BookmarkContext'
+import {
+  useBookmark,
+  useBookmarkSeries,
+  useSeriesParams,
+} from '~/lib/progress/BookmarkContext'
 import { describeThreshold } from '~/lib/progress/threshold'
 import type { CoveredRecord, DemoEntry } from '~/lib/view/records'
 import { settleStyles } from '~/styles/settle'
@@ -206,6 +210,7 @@ export function FogCard({
   point: DialPoint
 }): ReactElement {
   const { t } = useLocale()
+  const series = useBookmarkSeries()
 
   return (
     <div {...stylex.props(styles.card, styles.fogged)}>
@@ -222,6 +227,7 @@ export function FogCard({
           gated: entry,
           mode: point.mode,
           sentence: 'veil.locked',
+          series,
           t,
         })}
       </p>

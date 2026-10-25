@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
+import { OTHER_BOOKMARK } from '~/test/otherSeries'
+
 import { chapterTable } from './chapterTable'
 import {
   anchorsOf,
@@ -90,7 +92,8 @@ describe('a fixture series filed through the engine', () => {
   })
 
   it('reads the latest entry the reader has reached', () => {
-    const at = (episode: number): Reveal => reveal({ mode: 'episode', episode })
+    const at = (episode: number): Reveal =>
+      reveal({ mode: 'episode', episode }, OTHER_BOOKMARK)
 
     expect(ARCHIVE.latestOf(at(2), HERO, 'affiliation')).toBeUndefined()
     expect(ARCHIVE.latestOf(at(4), HERO, 'affiliation')).toStrictEqual(
@@ -101,7 +104,7 @@ describe('a fixture series filed through the engine', () => {
     )
     expect(
       ARCHIVE.reachedOf(
-        reveal({ mode: 'chapter', chapter: 8 }),
+        reveal({ mode: 'chapter', chapter: 8 }, OTHER_BOOKMARK),
         HERO,
         'affiliation',
       ),

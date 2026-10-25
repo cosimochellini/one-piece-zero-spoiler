@@ -12,12 +12,8 @@ import { ARC_LEADS } from '~/data/series/one-piece/leads'
 import { shipDossierOf } from '~/data/series/one-piece/places'
 import type { Entity } from '~/data/types'
 import { LOCALES } from '~/i18n/locales'
-import { DEMO_LAST_CHAPTER, DEMO_LAST_EPISODE } from '~/lib/progress/bounds'
-import {
-  type Bookmark,
-  CHAPTER_CEILING,
-  EPISODE_CEILING,
-} from '~/lib/progress/episode'
+import type { Bookmark } from '~/lib/progress/episode'
+import { ONE_PIECE_BOOKMARK } from '~/lib/progress/series'
 import { foldName } from '~/lib/search/fold'
 import type {
   CharacterChronicle,
@@ -65,7 +61,7 @@ function toldArc(bookmark: NonNullable<Bookmark>, home: HomeView): string {
   if (!home.before) {
     return home.saga.id
   }
-  const at = reveal(bookmark)
+  const at = reveal(bookmark, ONE_PIECE_BOOKMARK)
   const reached = orderByMode(arcs, at.mode).filter((arc) => at.sees(arc))
 
   return reached.at(-2)?.id ?? home.saga.id
@@ -92,10 +88,18 @@ function poolOf(home: HomeView, told: string): Set<string> {
 /** Every episode and every chapter a bookmark can hold. */
 function everyBookmark(): NonNullable<Bookmark>[] {
   const marks: NonNullable<Bookmark>[] = []
-  for (let episode = 1; episode <= EPISODE_CEILING; episode += 1) {
+  for (
+    let episode = 1;
+    episode <= ONE_PIECE_BOOKMARK.episodeCeiling;
+    episode += 1
+  ) {
     marks.push(ep(episode))
   }
-  for (let chapter = 1; chapter <= CHAPTER_CEILING; chapter += 1) {
+  for (
+    let chapter = 1;
+    chapter <= ONE_PIECE_BOOKMARK.chapterCeiling;
+    chapter += 1
+  ) {
     marks.push({ mode: 'chapter', chapter })
   }
 
@@ -253,17 +257,23 @@ describe('the slice of the archive a page is given', () => {
     expect(page.arcs.map((arc) => arc.id)).toContain('loguetown')
     expect(page.cast.map((entry) => entry.id)).toContain('roronoa-zoro')
     expect(page.places.map((entry) => entry.id)).toContain('going-merry')
-    expect(page.chapterAt).toHaveLength(DEMO_LAST_EPISODE)
+    expect(page.chapterAt).toHaveLength(ONE_PIECE_BOOKMARK.demoLastEpisode)
 
     for (const gated of [entries, steps].flat()) {
-      expect(gated.revealedAtEpisode).toBeLessThanOrEqual(DEMO_LAST_EPISODE)
-      expect(gated.revealedAtChapter).toBeLessThanOrEqual(DEMO_LAST_CHAPTER)
+      expect(gated.revealedAtEpisode).toBeLessThanOrEqual(
+        ONE_PIECE_BOOKMARK.demoLastEpisode,
+      )
+      expect(gated.revealedAtChapter).toBeLessThanOrEqual(
+        ONE_PIECE_BOOKMARK.demoLastChapter,
+      )
     }
     for (const covered of page.tail) {
       expect(Object.keys(covered)).toHaveLength(4)
       expect(covered).not.toHaveProperty('id')
       expect(covered).not.toHaveProperty('name')
-      expect(covered.revealedAtEpisode).toBeGreaterThan(DEMO_LAST_EPISODE)
+      expect(covered.revealedAtEpisode).toBeGreaterThan(
+        ONE_PIECE_BOOKMARK.demoLastEpisode,
+      )
     }
 
     expect(page.fogged).toBeGreaterThan(page.tail.length)
@@ -272,8 +282,8 @@ describe('the slice of the archive a page is given', () => {
   it('ends East Blue where the next arc starts', () => {
     const next = onFile('reverse-mountain')
 
-    expect(next.revealedAtEpisode).toBe(DEMO_LAST_EPISODE + 1)
-    expect(next.revealedAtChapter).toBe(DEMO_LAST_CHAPTER + 1)
+    expect(next.revealedAtEpisode).toBe(ONE_PIECE_BOOKMARK.demoLastEpisode + 1)
+    expect(next.revealedAtChapter).toBe(ONE_PIECE_BOOKMARK.demoLastChapter + 1)
   })
 
   it('puts a reader at the first episode in the arc, not the saga', () => {
@@ -302,7 +312,7 @@ describe('the slice of the archive a page is given', () => {
 
     for (const [bookmark, reached] of marks) {
       const home = homePage(bookmark, 'en')
-      const at = reveal(bookmark)
+      const at = reveal(bookmark, ONE_PIECE_BOOKMARK)
       const unit =
         bookmark.mode === 'chapter' ? 'revealedAtChapter' : 'revealedAtEpisode'
       const reaches = home.stories.map((story) => story[unit])
@@ -343,9 +353,13 @@ describe('the slice of the archive a page is given', () => {
     // A story is reached by its own chapter, and Shiki, left out of the
     // chapter table, has one dated long before the chapter that meets him.
     const fogged: string[] = []
-    for (let chapter = 1; chapter <= CHAPTER_CEILING; chapter += 1) {
+    for (
+      let chapter = 1;
+      chapter <= ONE_PIECE_BOOKMARK.chapterCeiling;
+      chapter += 1
+    ) {
       const bookmark: NonNullable<Bookmark> = { mode: 'chapter', chapter }
-      const at = reveal(bookmark)
+      const at = reveal(bookmark, ONE_PIECE_BOOKMARK)
       for (const { subject } of homePage(bookmark, 'en').stories) {
         if (!at.sees(filed(subject.id))) {
           fogged.push(`${subject.id} @ c${String(chapter)}`)
@@ -507,8 +521,8 @@ describe('the slice of the archive a page is given', () => {
 
   it('keeps every list page’s inline drawings under budget at the latest bookmark', () => {
     const latest: NonNullable<Bookmark>[] = [
-      ep(EPISODE_CEILING),
-      { mode: 'chapter', chapter: CHAPTER_CEILING },
+      ep(ONE_PIECE_BOOKMARK.episodeCeiling),
+      { mode: 'chapter', chapter: ONE_PIECE_BOOKMARK.chapterCeiling },
     ]
 
     for (const bookmark of latest) {

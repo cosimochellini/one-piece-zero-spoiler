@@ -12,7 +12,7 @@ import { styles } from '~/components/Onboarding.styles'
 import { Button } from '~/components/ui/Button'
 import { useT } from '~/i18n/LocaleContext'
 import type { Translate } from '~/i18n/types'
-import { useBookmark } from '~/lib/progress/BookmarkContext'
+import { useBookmark, useBookmarkSeries } from '~/lib/progress/BookmarkContext'
 import type { Bookmark } from '~/lib/progress/episode'
 import { useBookmarkDraft } from '~/lib/progress/useBookmarkDraft'
 import { markWelcome } from '~/lib/progress/welcome'
@@ -37,7 +37,8 @@ function unitOf(t: Translate, point: DialPoint): string {
 
 /**
  * The dial, pinned while the preview scrolls under it: the point in large
- * figures, the arc it is in, and a native range input over East Blue.
+ * figures, the arc it is in, and a native range input over the series' demo
+ * span (East Blue for One Piece).
  */
 export function OnboardingDial({
   arc,
@@ -46,6 +47,8 @@ export function OnboardingDial({
 }: Omit<OnboardingDialProps, 'chapterAt'>): ReactElement {
   const t = useT()
   const id = useId()
+  const series = useBookmarkSeries()
+  const last = dialLast(point.mode, series)
 
   return (
     <div {...stylex.props(styles.dial)}>
@@ -63,7 +66,7 @@ export function OnboardingDial({
       <input
         aria-valuetext={`${unitOf(t, point)} ${String(point.value)}`}
         id={id}
-        max={dialLast(point.mode)}
+        max={last}
         min={1}
         onChange={(event) => {
           onPoint({ ...point, value: event.currentTarget.valueAsNumber })
@@ -77,7 +80,7 @@ export function OnboardingDial({
         {...stylex.props(styles.scale)}
       >
         <span>1</span>
-        <span>{dialLast(point.mode)}</span>
+        <span>{last}</span>
       </div>
     </div>
   )
@@ -123,7 +126,8 @@ function Readout({
 
 /**
  * Under the dial: the unit it counts in, and the two other ways to save a
- * point, one for a reader past East Blue and one for a reader starting now.
+ * point, one for a reader past the demo span and one for a reader starting
+ * now.
  */
 export function OnboardingControls({
   chapterAt,

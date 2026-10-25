@@ -6,6 +6,7 @@ import {
 
 import { parseBookmark, serialiseBookmark } from './episode'
 import { parseTrial } from './requestBookmark'
+// eslint-disable-next-line no-restricted-imports -- The legacy `opzs_*` cookies were One Piece's alone.
 import { ONE_PIECE_BOOKMARK } from './series'
 
 const MIGRATIONS = [
@@ -32,7 +33,7 @@ export function migrateBookmark(request: Request): string[] {
     if (!jar.has(old)) {
       continue
     }
-    const bookmark = parse(jar.get(old))
+    const bookmark = parse(jar.get(old), ONE_PIECE_BOOKMARK)
     if (bookmark !== null && !jar.has(name)) {
       const value = serialiseBookmark(bookmark)
       jar.set(name, value)

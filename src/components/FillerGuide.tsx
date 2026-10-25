@@ -9,7 +9,7 @@ import { FillerCountdown } from '~/components/FillerCountdown'
 import { FillerRanges } from '~/components/FillerRanges'
 import { FillerLegend, FillerStrip } from '~/components/FillerStrip'
 import { useT } from '~/i18n/LocaleContext'
-import { useBookmark } from '~/lib/progress/BookmarkContext'
+import { useBookmark, useBookmarkSeries } from '~/lib/progress/BookmarkContext'
 import { absoluteEpisodeOf, modeOf } from '~/lib/progress/episode'
 import type { FillerPageView, FillerRowView } from '~/lib/view/filler'
 import { color, leading, space, text } from '~/styles/tokens.stylex'
@@ -90,6 +90,7 @@ function Overview({
 }): ReactElement {
   const t = useT()
   const { bookmark } = useBookmark()
+  const series = useBookmarkSeries()
 
   return (
     <CatalogueSection
@@ -99,7 +100,7 @@ function Overview({
     >
       <FillerStrip
         aired={aired}
-        here={bookmark === null ? null : absoluteEpisodeOf(bookmark)}
+        here={bookmark === null ? null : absoluteEpisodeOf(bookmark, series)}
         marks={marks}
       />
       <FillerLegend

@@ -8,6 +8,7 @@ import { getFruit } from '~/data/series/one-piece/fruits'
 import type { Entity } from '~/data/types'
 import type { Bookmark } from '~/lib/progress/episode'
 import { locateEpisode } from '~/lib/progress/seasons'
+import { ONE_PIECE_BOOKMARK } from '~/lib/progress/series'
 import type { FruitDetail } from '~/lib/view/records'
 import { opFruitPage as fruitPage } from '~/test/archive'
 import { leaksIn, saysNothing } from '~/test/fog'
@@ -26,7 +27,7 @@ const ch = (chapter: number): Bookmark => ({ mode: 'chapter', chapter })
 
 /** An absolute episode as a season viewer's bookmark. */
 function season(absolute: number): Bookmark {
-  const at = locateEpisode(absolute)
+  const at = locateEpisode(absolute, ONE_PIECE_BOOKMARK)
   if (at === null) {
     throw new Error(`no season holds episode ${String(absolute)}`)
   }

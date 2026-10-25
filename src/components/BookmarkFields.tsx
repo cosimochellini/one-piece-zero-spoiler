@@ -6,7 +6,7 @@ import { counterStyles as counter } from '~/components/BookmarkCounter.styles'
 import { styles } from '~/components/BookmarkDialog.styles'
 import { useT } from '~/i18n/LocaleContext'
 import type { Translate, TranslationKey } from '~/i18n/types'
-import { useBookmark } from '~/lib/progress/BookmarkContext'
+import { useBookmarkSeries } from '~/lib/progress/BookmarkContext'
 import {
   type BookmarkMode,
   type Draft,
@@ -14,7 +14,6 @@ import {
   stepperOf,
 } from '~/lib/progress/episode'
 import type { Season } from '~/lib/progress/seasons'
-import { ONE_PIECE_BOOKMARK } from '~/lib/progress/series'
 
 const MODES: BookmarkMode[] = ['episode', 'season', 'chapter']
 
@@ -100,7 +99,7 @@ function ModeChooser({
 }): ReactElement {
   const t = useT()
   const groupId = useId()
-  const series = useBookmark().series ?? ONE_PIECE_BOOKMARK
+  const series = useBookmarkSeries()
   const hasSeasons = series.seasons.length > 0
   const modes = MODES.filter(
     (candidate) => candidate !== 'season' || hasSeasons,
@@ -162,7 +161,7 @@ function SeasonPicker({
 }): ReactElement {
   const t = useT()
   const id = useId()
-  const series = useBookmark().series ?? ONE_PIECE_BOOKMARK
+  const series = useBookmarkSeries()
 
   return (
     <div {...stylex.props(styles.group)}>
@@ -286,7 +285,7 @@ function FieldMessage({
   id: string
 }): ReactElement {
   const t = useT()
-  const series = useBookmark().series ?? ONE_PIECE_BOOKMARK
+  const series = useBookmarkSeries()
   const { ceiling } = stepperOf(draft, series)
 
   return (

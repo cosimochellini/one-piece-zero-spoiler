@@ -2,14 +2,6 @@ import { isLocale, type Locale } from '~/i18n/locales'
 import type { EntityKind } from '~/lib/view/records'
 import type { SeriesTheme } from '~/styles/themes'
 
-import {
-  CHAPTER_CEILING,
-  DEMO_LAST_CHAPTER,
-  DEMO_LAST_EPISODE,
-  EPISODE_CEILING,
-  EPISODE_COOKIE,
-  TRIAL_COOKIE,
-} from './bounds'
 import type { BookmarkMode } from './episode'
 
 /** One season's inclusive absolute episode range. */
@@ -24,6 +16,11 @@ export interface Season {
 export interface BookmarkSeries {
   chapterCeiling: number
   cookie: string
+  /**
+   * The demo span: the last chapter and episode the onboarding dial covers.
+   * A reader with no bookmark is sent this much and nothing past it, and a
+   * trial point past it is ignored.
+   */
   demoLastChapter: number
   demoLastEpisode: number
   episodeCeiling: number
@@ -56,12 +53,22 @@ export interface Series extends BookmarkSeries {
 /** One Piece's form ranges and Wikipedia season split (September 2026). */
 export const ONE_PIECE_BOOKMARK: BookmarkSeries = {
   slug: 'one-piece',
-  cookie: EPISODE_COOKIE,
-  trialCookie: TRIAL_COOKIE,
-  episodeCeiling: EPISODE_CEILING,
-  chapterCeiling: CHAPTER_CEILING,
-  demoLastEpisode: DEMO_LAST_EPISODE,
-  demoLastChapter: DEMO_LAST_CHAPTER,
+  // Name of the cookie holding the reader's bookmark.
+  cookie: 'zs_one-piece',
+  // A trial point the onboarding sets for one browser session, so a visitor
+  // can open a page at the dial's point without saving it. It carries no
+  // Max-Age and ends with the session.
+  trialCookie: 'zs_one-piece_try',
+  // The ranges the dialog accepts. They are form ranges, not a claim about
+  // how much has come out: raise one when the archive needs to file something
+  // above it. Anything larger is a typo, and a typo that sets the bookmark to
+  // 99999 would quietly reveal the whole site.
+  episodeCeiling: 1300,
+  chapterCeiling: 1300,
+  // The last episode and chapter of East Blue, the stretch the onboarding
+  // dial covers. The data tests hold both against the first arc after it.
+  demoLastEpisode: 61,
+  demoLastChapter: 100,
   seasons: [
     { number: 1, first: 1, last: 61 },
     { number: 2, first: 62, last: 77 },

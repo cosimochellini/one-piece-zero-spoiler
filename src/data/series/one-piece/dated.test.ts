@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest'
 
 import { reveal } from '~/data/reveal'
-import { type Bookmark, CHAPTER_CEILING } from '~/lib/progress/episode'
+import type { Bookmark } from '~/lib/progress/episode'
+import { ONE_PIECE_BOOKMARK } from '~/lib/progress/series'
 
 import { episodeAtChapter } from './chapter-table'
 import { datedOf, eatersOf, latestOf, reachedOf, timelines } from './dated'
@@ -15,13 +16,17 @@ const ch = (chapter: number): Bookmark => ({ mode: 'chapter', chapter })
  * than through the table's own inverse, or one past the ceiling for none.
  */
 function firstChapterAt(episode: number): number {
-  for (let chapter = 1; chapter <= CHAPTER_CEILING; chapter += 1) {
+  for (
+    let chapter = 1;
+    chapter <= ONE_PIECE_BOOKMARK.chapterCeiling;
+    chapter += 1
+  ) {
     if (episodeAtChapter(chapter) >= episode) {
       return chapter
     }
   }
 
-  return CHAPTER_CEILING + 1
+  return ONE_PIECE_BOOKMARK.chapterCeiling + 1
 }
 
 /**
@@ -56,7 +61,7 @@ type Row = (typeof ENTRIES)[number]
 
 /** Whether a reader at this bookmark reaches the row's entry. */
 function reaches(bookmark: Bookmark, { entry, field, owner }: Row): boolean {
-  return reachedOf(reveal(bookmark), owner, field).some(
+  return reachedOf(reveal(bookmark, ONE_PIECE_BOOKMARK), owner, field).some(
     (found) => found.episode === entry.episode,
   )
 }
@@ -86,7 +91,7 @@ describe('every dated entry in the archive', () => {
 
   it('is its record’s latest fact from its own episode on', () => {
     for (const { entry, episode, field, label, owner } of ENTRIES) {
-      const at = reveal(ep(episode))
+      const at = reveal(ep(episode), ONE_PIECE_BOOKMARK)
 
       expect(latestOf(at, owner, field), label).toBe(entry.value)
     }

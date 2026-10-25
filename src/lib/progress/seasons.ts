@@ -1,9 +1,7 @@
 import { FIRST_EPISODE } from './bounds'
-import { type BookmarkSeries, ONE_PIECE_BOOKMARK, type Season } from './series'
+import type { BookmarkSeries, Season } from './series'
 
 export type { Season } from './series'
-
-export const SEASONS = ONE_PIECE_BOOKMARK.seasons
 
 /**
  * One row of the season table, or `undefined` for a number the table does not
@@ -12,7 +10,7 @@ export const SEASONS = ONE_PIECE_BOOKMARK.seasons
  */
 export function getSeason(
   number: number,
-  series: BookmarkSeries = ONE_PIECE_BOOKMARK,
+  series: BookmarkSeries,
 ): Season | undefined {
   return series.seasons.find((season) => season.number === number)
 }
@@ -23,10 +21,7 @@ function lastEpisodeOf(season: Season, series: BookmarkSeries): number {
 }
 
 /** How many episodes the season holds, the open one counted to the ceiling. */
-export function seasonLength(
-  season: Season,
-  series: BookmarkSeries = ONE_PIECE_BOOKMARK,
-): number {
+export function seasonLength(season: Season, series: BookmarkSeries): number {
   return lastEpisodeOf(season, series) - season.first + 1
 }
 
@@ -37,7 +32,7 @@ export function seasonLength(
 export function resolveEpisode(
   seasonNumber: number,
   episode: number,
-  series: BookmarkSeries = ONE_PIECE_BOOKMARK,
+  series: BookmarkSeries,
 ): null | number {
   const season = getSeason(seasonNumber, series)
   if (
@@ -66,7 +61,7 @@ export interface SeasonPosition {
 /** The season an absolute episode falls in, and its number within it. */
 export function locateEpisode(
   absolute: number,
-  series: BookmarkSeries = ONE_PIECE_BOOKMARK,
+  series: BookmarkSeries,
 ): null | SeasonPosition {
   if (!Number.isSafeInteger(absolute) || absolute < FIRST_EPISODE) {
     return null

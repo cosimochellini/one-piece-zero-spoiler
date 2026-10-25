@@ -6,7 +6,7 @@ import type { SkipRange } from '~/lib/view/filler'
 
 import { type Draft, gradeDraft } from './episode'
 import { resolveEpisode } from './seasons'
-import { type BookmarkSeries, ONE_PIECE_BOOKMARK } from './series'
+import type { BookmarkSeries } from './series'
 
 /** One saga as the dialog needs it: where it opens, and its name. */
 export interface SagaRow {
@@ -41,7 +41,7 @@ export interface SagaAt {
 export function sagaAt(
   table: SagaTable,
   draft: Draft,
-  series: BookmarkSeries = ONE_PIECE_BOOKMARK,
+  series: BookmarkSeries,
 ): null | SagaAt {
   const { bookmark } = gradeDraft(draft, series)
   if (bookmark === null) {

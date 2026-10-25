@@ -11,10 +11,9 @@ import { counterStyles as styles } from '~/components/BookmarkCounter.styles'
 import { Button } from '~/components/ui/Button'
 import { useT } from '~/i18n/LocaleContext'
 import type { Translate } from '~/i18n/types'
-import { useBookmark } from '~/lib/progress/BookmarkContext'
+import { useBookmarkSeries } from '~/lib/progress/BookmarkContext'
 import { type Draft, stepperOf } from '~/lib/progress/episode'
 import { type SagaAt, sagaAt, useSagaTable } from '~/lib/progress/sagaLabel'
-import { ONE_PIECE_BOOKMARK } from '~/lib/progress/series'
 
 /**
  * The bookmark dialog's centrepiece: the number between its two steppers,
@@ -48,7 +47,7 @@ export function StepperRow({
   ...field
 }: StepperRowProps): ReactElement {
   const t = useT()
-  const series = useBookmark().series ?? ONE_PIECE_BOOKMARK
+  const series = useBookmarkSeries()
   const { ceiling, atFloor, atCeiling } = stepperOf(draft, series)
   const disabled = ceiling === null
   const [roll, setRoll] = useState<Roll>({ count: 0, delta: 0 })
@@ -271,7 +270,7 @@ export function SagaLine({
 }): ReactElement {
   const t = useT()
   const table = useSagaTable()
-  const series = useBookmark().series ?? ONE_PIECE_BOOKMARK
+  const series = useBookmarkSeries()
   const saga = table === null ? null : sagaAt(table, draft, series)
 
   return (

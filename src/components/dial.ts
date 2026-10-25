@@ -1,12 +1,12 @@
-import { DEMO_LAST_CHAPTER, DEMO_LAST_EPISODE } from '~/lib/progress/bounds'
 import type { Bookmark } from '~/lib/progress/episode'
+import type { BookmarkSeries } from '~/lib/progress/series'
 import { type Gated, thresholdIn } from '~/lib/progress/spoiler'
 import type { Step } from '~/lib/view/records'
 
 /**
- * The onboarding dial's point: an episode or a chapter inside East Blue. A
- * season is not offered; the dial is a demonstration, and the season form is
- * in the fields under it.
+ * The onboarding dial's point: an episode or a chapter inside the series'
+ * demo span (East Blue, for One Piece). A season is not offered; the dial is
+ * a demonstration, and the season form is in the fields under it.
  */
 export interface DialPoint {
   mode: 'chapter' | 'episode'
@@ -35,9 +35,12 @@ export function dialStart(start: Bookmark): DialPoint {
   }
 }
 
-/** The last point the dial reaches in its unit. */
-export function dialLast(mode: DialPoint['mode']): number {
-  return mode === 'chapter' ? DEMO_LAST_CHAPTER : DEMO_LAST_EPISODE
+/** The last point the dial reaches in its unit: the end of the demo span. */
+export function dialLast(
+  mode: DialPoint['mode'],
+  series: BookmarkSeries,
+): number {
+  return mode === 'chapter' ? series.demoLastChapter : series.demoLastEpisode
 }
 
 /**

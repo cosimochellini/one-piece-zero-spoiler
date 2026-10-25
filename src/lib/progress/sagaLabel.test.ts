@@ -20,20 +20,32 @@ const TABLE: SagaTable = {
 describe('sagaAt', () => {
   it('reads an episode against the episode openings', () => {
     expect(
-      sagaAt(TABLE, { mode: 'episode', season: '', number: '650' }),
+      sagaAt(
+        TABLE,
+        { mode: 'episode', season: '', number: '650' },
+        ONE_PIECE_BOOKMARK,
+      ),
     ).toStrictEqual({ name: 'Dressrosa', filler: false })
   })
 
   it('gives a shared opening to the later saga in route order', () => {
     expect(
-      sagaAt(TABLE, { mode: 'episode', season: '', number: '1' }),
+      sagaAt(
+        TABLE,
+        { mode: 'episode', season: '', number: '1' },
+        ONE_PIECE_BOOKMARK,
+      ),
     ).toStrictEqual({ name: 'Romance Dawn', filler: false })
   })
 
   it('reads a season and episode as the absolute episode', () => {
     // Season 2 opens at episode 62.
     expect(
-      sagaAt(TABLE, { mode: 'season', season: '2', number: '1' }),
+      sagaAt(
+        TABLE,
+        { mode: 'season', season: '2', number: '1' },
+        ONE_PIECE_BOOKMARK,
+      ),
     ).toStrictEqual({ name: 'Reverse Mountain', filler: false })
   })
 
@@ -54,28 +66,52 @@ describe('sagaAt', () => {
 
   it('reads a chapter against the chapter openings, never as filler', () => {
     expect(
-      sagaAt(TABLE, { mode: 'chapter', season: '', number: '58' }),
+      sagaAt(
+        TABLE,
+        { mode: 'chapter', season: '', number: '58' },
+        ONE_PIECE_BOOKMARK,
+      ),
     ).toStrictEqual({ name: 'Romance Dawn', filler: false })
     expect(
-      sagaAt(TABLE, { mode: 'chapter', season: '', number: '700' }),
+      sagaAt(
+        TABLE,
+        { mode: 'chapter', season: '', number: '700' },
+        ONE_PIECE_BOOKMARK,
+      ),
     ).toStrictEqual({ name: 'Dressrosa', filler: false })
   })
 
   it('marks an episode inside a run of filler', () => {
     expect(
-      sagaAt(TABLE, { mode: 'episode', season: '', number: '55' }),
+      sagaAt(
+        TABLE,
+        { mode: 'episode', season: '', number: '55' },
+        ONE_PIECE_BOOKMARK,
+      ),
     ).toStrictEqual({ name: 'Romance Dawn', filler: true })
   })
 
   it('names nothing for a draft that is not a bookmark yet', () => {
     expect(
-      sagaAt(TABLE, { mode: 'episode', season: '', number: '' }),
+      sagaAt(
+        TABLE,
+        { mode: 'episode', season: '', number: '' },
+        ONE_PIECE_BOOKMARK,
+      ),
     ).toBeNull()
     expect(
-      sagaAt(TABLE, { mode: 'episode', season: '', number: '99999' }),
+      sagaAt(
+        TABLE,
+        { mode: 'episode', season: '', number: '99999' },
+        ONE_PIECE_BOOKMARK,
+      ),
     ).toBeNull()
     expect(
-      sagaAt(TABLE, { mode: 'season', season: '', number: '3' }),
+      sagaAt(
+        TABLE,
+        { mode: 'season', season: '', number: '3' },
+        ONE_PIECE_BOOKMARK,
+      ),
     ).toBeNull()
   })
 })
