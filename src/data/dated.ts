@@ -37,12 +37,41 @@ import type {
 export type Dossier = CharacterDossier & FeatureTimelines
 
 /** Where each field is filed, by the id of the record it belongs to. */
-export type Readers = {
+type Readers = {
   [F in Field]?: (id: string) => Timeline<Fields[F]> | undefined
 }
 
+/**
+ * Where a series files the fields that are not a character dossier's: a
+ * dossier field is always read off the dossier, so no reader can shadow it.
+ */
+export interface OtherReaders {
+  fate?: (id: string) => Timeline<Fields['fate']> | undefined
+  redrawing?: (id: string) => Timeline<Fields['redrawing']> | undefined
+}
+
 /** The fields a character dossier files. */
-type DossierField = Exclude<Field, 'fate' | 'redrawing'>
+type DossierField = Exclude<Field, keyof OtherReaders>
+
+/**
+ * Every character's dossier, merged from the sagas that file them beside
+ * their records, in the order the sagas are filed. A character filed in two
+ * sagas throws rather than keep one dossier and drop the other.
+ */
+export function dossiersOf<D>(
+  sagas: { dossiers: Record<string, D> }[],
+): Record<string, D> {
+  const merged = new Map<string, D>()
+  const filed = sagas.flatMap((saga) => Object.entries(saga.dossiers))
+  for (const [id, dossier] of filed) {
+    if (merged.has(id)) {
+      throw new Error(`${id} has a dossier in two sagas`)
+    }
+    merged.set(id, dossier)
+  }
+
+  return Object.fromEntries(merged)
+}
 
 /**
  * Every field a character dossier files, read off the dossiers: a field
@@ -86,7 +115,7 @@ export interface Filed {
  */
 export function filedTimelines(
   dossiers: Record<string, Dossier>,
-  readers: Readers = {},
+  readers: OtherReaders = {},
 ): Filed {
   const all: Readers = { ...dossierReaders(dossiers), ...readers }
 
@@ -147,7 +176,6 @@ export function earliestOf(gates: Gated[]): Gated {
 export interface DatedSource {
   /** Every character record, in route order. */
   characters: Entity[]
-  dossiers: Record<string, Dossier>
   /** Every record, in the order its timelines are listed. */
   entities: Entity[]
   filed: Filed
@@ -170,9 +198,12 @@ export type DatedArchive = Pick<
  * A series' dated facts: every entry of a record's timeline at its gate, the
  * stories across characters, every timeline, and every place's natives.
  */
-export function datedArchive(source: DatedSource): DatedArchive {
-  const { characters, entities, filed, gateOf } = source
-
+export function datedArchive({
+  characters,
+  entities,
+  filed,
+  gateOf,
+}: DatedSource): DatedArchive {
   /**
    * Every entry of one of a record's timelines, each with its gate, whoever
    * is reading; empty for a record that files none.
@@ -197,7 +228,7 @@ export function datedArchive(source: DatedSource): DatedArchive {
     return datedOf(owner, field).filter((entry) => at.sees(entry.gate))
   }
 
-  const natives = readNatives(source)
+  const natives = readNatives(characters, datedOf)
 
   return {
     datedOf,
@@ -230,24 +261,29 @@ export function datedArchive(source: DatedSource): DatedArchive {
   }
 }
 
+/** The place an origin entry names (`Origin`), if it names one. */
+function placeOf(entry: object): string | undefined {
+  const place: unknown = Reflect.get(entry, 'place')
+
+  return typeof place === 'string' ? place : undefined
+}
+
 /**
  * The places one character's origin names, each with the gate the entries
- * naming it give it (`earliestOf`): a timeline is in episode order, so the
- * first entry found is the earliest.
+ * naming it give it (`earliestOf`), read through the same timeline and gate
+ * as every other fact: a timeline is in episode order, so the first entry
+ * found is the earliest.
  */
 function placesOf(
   entity: Entity,
-  { dossiers, gateOf }: DatedSource,
+  datedOf: DatedArchive['datedOf'],
 ): Map<string, Gated> {
-  const origin = dossiers[entity.id]?.origin ?? []
   const named = new Map<string, Gated[]>()
 
-  for (const entry of origin) {
-    if (entry.place !== undefined) {
-      named.set(entry.place, [
-        ...(named.get(entry.place) ?? []),
-        gateOf(entry, entity),
-      ])
+  for (const entry of datedOf(entity, 'origin')) {
+    const place = placeOf(entry)
+    if (place !== undefined) {
+      named.set(place, [...(named.get(place) ?? []), entry.gate])
     }
   }
 
@@ -259,11 +295,14 @@ function placesOf(
  * the characters are filed. Read backwards: the link is written once, on the
  * character's entry, and the place derives its list.
  */
-function readNatives(source: DatedSource): Map<string, Native[]> {
+function readNatives(
+  characters: Entity[],
+  datedOf: DatedArchive['datedOf'],
+): Map<string, Native[]> {
   const found = new Map<string, Native[]>()
 
-  for (const entity of source.characters) {
-    for (const [place, gate] of placesOf(entity, source)) {
+  for (const entity of characters) {
+    for (const [place, gate] of placesOf(entity, datedOf)) {
       found.set(place, [...(found.get(place) ?? []), { entity, gate }])
     }
   }

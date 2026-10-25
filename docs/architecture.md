@@ -324,6 +324,17 @@ checked on every run:
   later record's full name in both locales. A name the show says before its
   record opens, or one that is an ordinary word, is declared on the record
   itself rather than excused in a test;
+- for every listed series (`src/data/archive.test.ts`), the dated facts the
+  engine derives follow the same rules: a series files only the dated fields of
+  the core and of its features; each character has one dossier, filed in one
+  saga (the merge throws on a second), and no other record has one; a status
+  opens at its character's threshold, is filed only where it changes and pins
+  every change to its chapter; a chronicle opens at the threshold and links only
+  characters the reader has met, in both units and sources; no shelf heading
+  opens after a character on it, in either unit; every chapter an entry pins is
+  within the dial and no earlier than its record, no entry opens before its
+  record, and nothing dated names an unanchored record before its chapter. A
+  featured id that files no character throws when the archive is built;
 - every affiliation entry of a devil fruit eater carries the factions its prose
   names, as ids from a closed vocabulary (`Faction` in
   `src/lib/view/records.ts`, labelled in both dictionaries), and every id in the
@@ -336,10 +347,10 @@ checked on every run:
   the episode and the chapter that show it (checked against the wiki, not
   derived); the place page sends only the visits the reader has reached, and
   none under fog;
-- every origin entry that names a filed place carries the place's id and the
-  chapter that tells it, and the place page lists a character as coming from it
-  only once the reader has met the character and reached that entry, in both
-  units; nobody else is sent or counted;
+- every origin entry that names a place names a filed place and carries the
+  chapter that tells it (`src/data/archive.test.ts`), and the place page lists a
+  character as coming from it only once the reader has met the character and
+  reached that entry, in both units; nobody else is sent or counted;
 - every drawing belongs to a record;
 - every devil fruit opens no later than any character entry that names it, which
   lets a character page link to its fruit without checking anything, and no

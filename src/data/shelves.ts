@@ -29,7 +29,7 @@ export interface CastSource<D> {
   /**
    * The characters the signal book puts in evidence and the landing chart
    * draws. The pages draw them in route order; this list only decides who is
-   * in.
+   * in. An id that files no character throws.
    */
   featured: Iterable<string>
 }
@@ -59,7 +59,13 @@ export function castOf<D extends { role: LocalizedText }>({
   const route = orderByMode(entities, 'episode')
   const characters = route.filter((entity) => entity.kind === 'character')
   const arcs = route.filter((entity) => entity.kind === 'arc')
+  const byId = new Map(characters.map((entity) => [entity.id, entity]))
   const isFeatured = new Set(featured)
+  for (const id of isFeatured) {
+    if (!byId.has(id)) {
+      throw new Error(`${id} is featured but files no character`)
+    }
+  }
   // Every arc, place and ship, and the featured characters. The other
   // characters are in the signal book but not on the chart, which would
   // otherwise run to several hundred waypoints.
@@ -67,7 +73,6 @@ export function castOf<D extends { role: LocalizedText }>({
     (entity) => CHARTED_KINDS.has(entity.kind) || isFeatured.has(entity.id),
   )
   const onChart = new Set(chart.map((entity) => entity.id))
-  const byId = new Map(characters.map((entity) => [entity.id, entity]))
   // What the archive knows about a character beyond its name and sentence,
   // or `undefined` where nothing has been filed yet.
   const dossierOf = (entity: Entity): D | undefined => dossiers[entity.id]

@@ -1,7 +1,13 @@
 import { describe, expect, it } from 'vitest'
 
 import { chapterTable } from './chapterTable'
-import { anchorsOf, datedArchive, earliestOf, filedTimelines } from './dated'
+import {
+  anchorsOf,
+  datedArchive,
+  dossiersOf,
+  earliestOf,
+  filedTimelines,
+} from './dated'
 import { type Reveal, reveal } from './reveal'
 import { castOf } from './shelves'
 import type { CharacterDossier, Entity } from './types'
@@ -61,7 +67,6 @@ const CAST = castOf({ dossiers: DOSSIERS, entities: ENTITIES, featured: [] })
 
 const ARCHIVE = datedArchive({
   characters: CAST.characters,
-  dossiers: DOSSIERS,
   entities: ENTITIES,
   filed: FILED,
   gateOf: TABLE.gateOf,
@@ -142,6 +147,64 @@ describe('a fixture series filed through the engine', () => {
     expect(CAST.bookSections).toStrictEqual([{ arc: ARC, characters: [HERO] }])
     expect(CAST.chart).toStrictEqual([ARC, HOME])
     expect(CAST.roleOf(HERO)).toStrictEqual(text('The hero'))
+  })
+})
+
+describe('a fixture origin told by one source first', () => {
+  // An anime-only entry names the place at 4; the entry both sources tell
+  // names it again at 6, with no chapter of its own, so the table reads its
+  // chapter off the record filed at episode 6 and chapter 8.
+  const exile = record('exile', 'character', [3, 3])
+  const port = record('port', 'place', [6, 8])
+  const dossiers: Record<string, CharacterDossier> = {
+    exile: {
+      affiliation: [],
+      log: text('A log.'),
+      origin: [
+        { episode: 4, place: 'home', source: 'anime', value: text('Home') },
+        { episode: 6, place: 'home', value: text('Home, again') },
+      ],
+      role: text('The exile'),
+    },
+  }
+  const entities = [ARC, HOME, exile, port]
+  const filed = filedTimelines(dossiers)
+  const table = chapterTable({
+    anchors: anchorsOf(entities, filed),
+    chapterCeiling: 20,
+    episodeCeiling: 20,
+    records: entities,
+  })
+  const archive = datedArchive({
+    characters: [exile],
+    entities,
+    filed,
+    gateOf: table.gateOf,
+  })
+
+  it('reaches each unit at the first entry its source tells', () => {
+    expect(archive.nativesOf('home')).toStrictEqual([
+      { entity: exile, gate: { revealedAtEpisode: 4, revealedAtChapter: 8 } },
+    ])
+  })
+})
+
+describe('the engine refuses', () => {
+  it('a character filed with a dossier in two sagas', () => {
+    const dossier = DOSSIERS['hero']
+
+    expect(() =>
+      dossiersOf([
+        { dossiers: { hero: dossier } },
+        { dossiers: { hero: dossier } },
+      ]),
+    ).toThrow('hero has a dossier in two sagas')
+  })
+
+  it('a featured id that files no character', () => {
+    expect(() =>
+      castOf({ dossiers: DOSSIERS, entities: ENTITIES, featured: ['home'] }),
+    ).toThrow('home is featured but files no character')
   })
 })
 

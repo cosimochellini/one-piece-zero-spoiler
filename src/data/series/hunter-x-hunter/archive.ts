@@ -1,5 +1,10 @@
 import { chapterTable } from '~/data/chapterTable'
-import { anchorsOf, datedArchive, filedTimelines } from '~/data/dated'
+import {
+  anchorsOf,
+  datedArchive,
+  dossiersOf,
+  filedTimelines,
+} from '~/data/dated'
 import { routePositionOf } from '~/data/order'
 import { castOf, keptOf } from '~/data/shelves'
 import { sweepOf } from '~/data/sweep'
@@ -20,9 +25,7 @@ const entities: Entity[] = sagas.flatMap((saga) => saga.entries)
 const BY_ID = new Map(entities.map((entity) => [entity.id, entity]))
 
 /** Every character's dossier, merged from the sagas. */
-const DOSSIERS = Object.fromEntries(
-  sagas.flatMap((saga) => Object.entries(saga.dossiers)),
-)
+const DOSSIERS = dossiersOf(sagas)
 
 const FILED = filedTimelines(DOSSIERS)
 
@@ -59,7 +62,6 @@ export const HUNTER_X_HUNTER_ARCHIVE: SeriesArchive = {
   ...cast,
   ...datedArchive({
     characters: cast.characters,
-    dossiers: DOSSIERS,
     entities,
     filed: FILED,
     gateOf,

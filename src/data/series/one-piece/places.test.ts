@@ -14,7 +14,7 @@ import {
   ships,
 } from './places'
 import { SHIP_DOSSIERS } from './records/ships'
-import { CHARACTER_DOSSIERS, sagas } from './sagas'
+import { sagas } from './sagas'
 
 describe('the ship’s log', () => {
   it('lists every place record, in the order the ship reaches them', () => {
@@ -136,42 +136,6 @@ describe('the ship’s log', () => {
         expect(record?.kind).not.toBe('place')
       }
     }
-  })
-})
-
-/** Every origin entry that names a place, with the character it is on. */
-const LINKED_ORIGINS = Object.entries(CHARACTER_DOSSIERS).flatMap(
-  ([id, dossier]) => {
-    return (dossier.origin ?? []).flatMap((entry) => {
-      return entry.place === undefined ?
-          []
-        : {
-            chapter: entry.chapter,
-            label: `${id} @${String(entry.episode)}`,
-            place: entry.place,
-          }
-    })
-  },
-)
-
-describe('the origins that name a place', () => {
-  it('name a place the archive files', () => {
-    expect(LINKED_ORIGINS.length).toBeGreaterThan(0)
-
-    for (const { label, place } of LINKED_ORIGINS) {
-      expect(getPlace(place), `${label} → ${place}`).toBeDefined()
-    }
-  })
-
-  it('pin the chapter that tells them', () => {
-    // The place's page opens the entry at its own pair. Without a chapter it
-    // would wait on the derived table, which can reach the episode chapters
-    // before the manga says where the character comes from.
-    const unpinned = LINKED_ORIGINS.filter(
-      (origin) => origin.chapter === undefined,
-    ).map(({ label }) => label)
-
-    expect(unpinned).toStrictEqual([])
   })
 })
 

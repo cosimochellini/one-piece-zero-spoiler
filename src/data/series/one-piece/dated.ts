@@ -24,13 +24,7 @@ export const {
   redrawn,
   stories,
   timelines,
-} = datedArchive({
-  characters,
-  dossiers: CHARACTER_DOSSIERS,
-  entities,
-  filed: FILED,
-  gateOf,
-})
+} = datedArchive({ characters, entities, filed: FILED, gateOf })
 
 /**
  * The factions a character stands with for this reader: the tags of the

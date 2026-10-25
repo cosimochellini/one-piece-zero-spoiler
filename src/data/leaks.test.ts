@@ -69,13 +69,33 @@ function told({ body, title }: Story): LocalizedText {
   return { en: `${title.en} ${body.en}`, it: `${title.it} ${body.it}` }
 }
 
-/** The text a dated entry carries, or `undefined` for a fact that is not prose. */
-function textOf(value: unknown): LocalizedText | undefined {
+/** One text found in a value, and the path it was found at. */
+interface Found {
+  /** `''` for the value itself, else `.key` or `.index` steps. */
+  path: string
+  text: LocalizedText
+}
+
+/**
+ * Every text a value holds, however deep: a text in every locale, or a story
+ * as one text. A field that nests its prose (a list of texts, an object of
+ * them) is scanned as much as one that is a text, so no shape a series files
+ * can carry a name past the scan.
+ */
+function textsIn(value: unknown, path = ''): Found[] {
   if (isLocalized(value)) {
-    return value
+    return [{ path, text: value }]
+  }
+  if (isStory(value)) {
+    return [{ path, text: told(value) }]
+  }
+  if (typeof value !== 'object' || value === null) {
+    return []
   }
 
-  return isStory(value) ? told(value) : undefined
+  return Object.entries(value).flatMap(([key, inner]) =>
+    textsIn(inner, `${path}.${key}`),
+  )
 }
 
 /** A text frozen at its record's threshold, like the summary. */
@@ -93,18 +113,14 @@ function frozen(owner: Entity, field: string, text: LocalizedText): Text {
 /** The texts of one of a record's timelines, each reached at its own gate. */
 function dated(archive: ReaderArchive, owner: Entity, field: Field): Text[] {
   return archive.datedOf(owner, field).flatMap((entry) => {
-    const text = textOf(entry.value)
-
-    return text === undefined ?
-        []
-      : {
-          chapter: entry.gate.revealedAtChapter,
-          episode: entry.gate.revealedAtEpisode,
-          label: `${owner.id}.${field}@${String(entry.episode)}`,
-          owner,
-          source: entry.gate.source,
-          text,
-        }
+    return textsIn(entry.value).map(({ path, text }) => ({
+      chapter: entry.gate.revealedAtChapter,
+      episode: entry.gate.revealedAtEpisode,
+      label: `${owner.id}.${field}${path}@${String(entry.episode)}`,
+      owner,
+      source: entry.gate.source,
+      text,
+    }))
   })
 }
 
@@ -169,12 +185,17 @@ function visitTexts(archive: ReaderArchive, owner: Entity): Text[] {
 
 /**
  * Every frozen text a record's dossiers print, found by shape rather than by
- * name: a field that is a text in every locale is frozen at the threshold. A
- * field added to a dossier is scanned the day it is added; a timeline is
- * scanned from the field table (`timelines`), which a new one does not
- * compile without.
+ * name and however deep: every text is frozen at the threshold, except in the
+ * fields read at their own gates (a timeline the archive lists, and a
+ * place's visits). A field added to a dossier is scanned the day it is
+ * added, and a dated field the archive does not list is scanned at the
+ * threshold, which errs towards a reported leak rather than a missed one.
  */
-function frozenTexts(archive: ReaderArchive, owner: Entity): Text[] {
+function frozenTexts(
+  archive: ReaderArchive,
+  owner: Entity,
+  gated: Set<string>,
+): Text[] {
   const dossiers = [
     archive.dossierOf(owner),
     archive.placeDossierOf(owner),
@@ -182,9 +203,13 @@ function frozenTexts(archive: ReaderArchive, owner: Entity): Text[] {
   ]
 
   return dossiers.flatMap((dossier) => {
-    return Object.entries(dossier ?? {}).flatMap(([field, value]) =>
-      isLocalized(value) ? [frozen(owner, field, value)] : [],
-    )
+    return Object.entries(dossier ?? {})
+      .filter(([field]) => !gated.has(field))
+      .flatMap(([field, value]) =>
+        textsIn(value, field).map(({ path, text }) =>
+          frozen(owner, path, text),
+        ),
+      )
   })
 }
 
@@ -215,10 +240,15 @@ function fillerTexts(entry: FillerEntry): Text[] {
 /** Every text an archive prints. */
 function textsOf(archive: ReaderArchive): Text[] {
   const { entities } = archive
+  // The dossier fields whose texts are read at their own gates below.
+  const gated = new Set<string>([
+    ...archive.timelines.map(({ field }) => field),
+    'visits',
+  ])
 
   return [
     ...entities.map((entity) => frozen(entity, 'summary', entity.summary)),
-    ...entities.flatMap((entity) => frozenTexts(archive, entity)),
+    ...entities.flatMap((entity) => frozenTexts(archive, entity, gated)),
     ...archive.timelines.flatMap(({ field, owner }) =>
       dated(archive, owner, field),
     ),
@@ -367,8 +397,14 @@ function scanOf(archive: ReaderArchive): Scan {
   }
 }
 
-/** What each series is known to print, so a scan that misses one fails. */
-const EXPECTED: Record<string, { kinds: string[]; namesSaidEarly: boolean }> = {
+/** What a series is known to print, so a scan that misses one fails. */
+interface Expected {
+  kinds: string[]
+  namesSaidEarly: boolean
+}
+
+/** What each series is known to print. */
+const EXPECTED: Record<string, Expected> = {
   'one-piece': {
     kinds: [
       'affiliation',
@@ -388,6 +424,16 @@ const EXPECTED: Record<string, { kinds: string[]; namesSaidEarly: boolean }> = {
     namesSaidEarly: true,
   },
   'hunter-x-hunter': { kinds: ['summary'], namesSaidEarly: false },
+}
+
+/** A series' row, or the test is wrong: a series filed needs one. */
+function expectedOf(slug: string): Expected {
+  const row = EXPECTED[slug]
+  if (row === undefined) {
+    throw new Error(`no EXPECTED row for ${slug}`)
+  }
+
+  return row
 }
 
 /** Whether two records go by the same name in some locale, as the scan sees it. */
@@ -432,6 +478,7 @@ describe.each(LOADED_SERIES)('the texts of $slug', ({ archive, slug }) => {
   const reader = withFeatures(archive)
   const { entities } = reader
   const scan = scanOf(reader)
+  const expected = expectedOf(slug)
 
   it('cover every kind of text the archive prints', () => {
     const kinds = new Set(
@@ -440,7 +487,7 @@ describe.each(LOADED_SERIES)('the texts of $slug', ({ archive, slug }) => {
       ),
     )
 
-    expect([...kinds].toSorted(byString())).toStrictEqual(EXPECTED[slug]?.kinds)
+    expect([...kinds].toSorted(byString())).toStrictEqual(expected.kinds)
   })
 
   it('name no record the reader has not reached, linked or not', () => {
@@ -470,7 +517,7 @@ describe.each(LOADED_SERIES)('the texts of $slug', ({ archive, slug }) => {
     // a sign the threshold was moved without it.
     const said = entities.filter((entity) => entity.nameSaidAt !== undefined)
 
-    expect(said.length > 0).toBe(EXPECTED[slug]?.namesSaidEarly)
+    expect(said.length > 0).toBe(expected.namesSaidEarly)
 
     for (const entity of said) {
       const saidAt = entity.nameSaidAt ?? Infinity
@@ -504,5 +551,23 @@ describe.each(LOADED_SERIES)('the texts of $slug', ({ archive, slug }) => {
       .map((entity) => entity.id)
 
     expect(unneeded).toStrictEqual([])
+  })
+})
+
+describe('the texts a value holds', () => {
+  it('are found however deep a field nests them, by path', () => {
+    const name = { en: 'Enhancer', it: 'Rafforzamento' }
+    const nested = {
+      count: 3,
+      ids: ['a', 'b'],
+      kind: { name },
+      notes: [name, { story: { body: name, title: name } }],
+    }
+
+    expect(textsIn(nested).map(({ path }) => path)).toStrictEqual([
+      '.kind.name',
+      '.notes.0',
+      '.notes.1.story',
+    ])
   })
 })
