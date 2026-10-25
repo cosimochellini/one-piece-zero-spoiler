@@ -132,14 +132,15 @@ server sends no map point and no ship, and the places page is the index, grouped
 by region, served in full. Which of a series' pages exist (characters, places,
 fruits, filler) is read from the kinds and features on its description by one
 predicate, `hasPage` in `src/lib/progress/series.ts`: each page's route answers
-404 in its `beforeLoad` (`requirePage`), the bar links only those pages, and the
-sitemap lists only their addresses. The factions are One Piece's alone. The
-chapter table, the sweep's bookmarks, the dated facts (timelines, stories,
-natives) and the shelves (characters, arcs, places, the chart and the signal
-book) are built by the engine (`src/data/chapterTable.ts`, `src/data/sweep.ts`,
-`src/data/dated.ts`, `src/data/shelves.ts`) from each series' own records and
-dossiers. A dated field a series does not file reads as an empty timeline, so a
-field one series adds asks nothing of another.
+404 in its `beforeLoad` (`requirePage`), the bar and the home's welcome link
+only those pages (`useDeclares`), a link parameter on any other sets no bookmark
+(`linkedSeries`), and the sitemap lists only their addresses. The factions are
+One Piece's alone. The chapter table, the sweep's bookmarks, the dated facts
+(timelines, stories, natives) and the shelves (characters, arcs, places, the
+chart and the signal book) are built by the engine (`src/data/chapterTable.ts`,
+`src/data/sweep.ts`, `src/data/dated.ts`, `src/data/shelves.ts`) from each
+series' own records and dossiers. A dated field a series does not file reads as
+an empty timeline, so a field one series adds asks nothing of another.
 
 A record or a dated fact can exist in one source only (`source: 'anime'` or
 `'manga'` on the record or the entry; absent means both). An episode or season

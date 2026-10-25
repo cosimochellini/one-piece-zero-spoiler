@@ -207,10 +207,9 @@ const PAGE_SEGMENT = 3
 
 /**
  * Whether a content address (one `seriesSlugFromPath` reads a slug from) is
- * a page the series declares: its home always is. A link parameter on any
- * other is not read, so it sets no bookmark on the way to a 404.
+ * a page the series declares: its home always is.
  */
-export function declaresPath(series: Series, pathname: string): boolean {
+function declaresPath(series: Series, pathname: string): boolean {
   const page = pathname.split('/', PAGE_SEGMENT + 1)[PAGE_SEGMENT]
   return page === undefined || !isSeriesPage(page) || hasPage(series, page)
 }
@@ -229,4 +228,21 @@ export function seriesSlugFromPath(pathname: string): null | string {
     ) ?
       slug
     : null
+}
+
+/**
+ * The series whose bookmark a link parameter on this address sets: the one
+ * in the path, when the registry knows it and declares the page. On any
+ * other page the parameter sets nothing, so no bookmark is written on the
+ * way to a 404.
+ * @param pathname The address the link names.
+ * @param describe The registry's lookup of a series' public description.
+ */
+export function linkedSeries(
+  pathname: string,
+  describe: (slug: string) => null | Series,
+): null | Series {
+  const slug = seriesSlugFromPath(pathname)
+  const series = slug === null ? null : describe(slug)
+  return series !== null && declaresPath(series, pathname) ? series : null
 }
