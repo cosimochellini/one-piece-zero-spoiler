@@ -45,10 +45,18 @@ gates.
 - Personalized HTML and archive responses stay out of shared caches. Deferred
   drawings and lists are filtered server-side too; results belong to the
   bookmark they were fetched for.
-- Fog prevents accidental spoilers, not deliberate access: “Show anyway” reveals
-  a record by handle. Recognized crawlers without a valid saved/trial bookmark
-  receive an end-of-anime bookmark; source filtering still applies. See
-  `src/lib/progress/requestBookmark.ts`.
+
+## Security
+
+SSR security headers, including the per-request nonce CSP, are set in
+`src/security-headers.ts`; static asset headers cannot protect SSR documents.
+Server functions use the CSRF middleware in `src/start.ts` and read progress
+from request cookies, never a client-supplied bookmark.
+
+Fog prevents accidental spoilers, not deliberate access: “Show anyway” reveals a
+record by handle. Recognized crawlers without a valid saved/trial bookmark
+receive an end-of-anime bookmark; source filtering still applies. See
+`src/lib/progress/requestBookmark.ts`.
 
 ## Series and routing
 
