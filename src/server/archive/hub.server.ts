@@ -1,10 +1,10 @@
 import { sourceOf } from '~/data/reveal'
-import { archiveOf, OPEN_SERIES } from '~/data/series'
+import { archiveOf, COMING_SERIES, OPEN_SERIES } from '~/data/series'
 import { archiveIn } from '~/data/source'
 import type { SeriesArchive } from '~/data/types'
 import { type Bookmark, parseBookmark } from '~/lib/progress/episode'
 import type { Series } from '~/lib/progress/series'
-import type { HubSeries } from '~/lib/view/hub'
+import type { ComingSeries, HubSeries } from '~/lib/view/hub'
 
 /**
  * A series' card on the hub, at the reader's saved bookmark on it. The count
@@ -43,6 +43,17 @@ export function hubFor(
       parseBookmark(jar.get(archive.series.cookie), archive.series),
     ),
   )
+}
+
+/**
+ * The hub's whole answer: a card for each open series, and the name of each
+ * series filed but not open.
+ */
+export function hubPageFor(
+  jar: Map<string, string>,
+  archives: SeriesArchive[],
+): { coming: ComingSeries[]; series: HubSeries[] } {
+  return { series: hubFor(jar, archives), coming: COMING_SERIES }
 }
 
 /** The public descriptions of the series readers can reach; loads no archive. */
