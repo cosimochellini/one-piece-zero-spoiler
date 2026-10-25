@@ -17,6 +17,7 @@ import {
   EXTRA,
   judge,
   placeWordCanaries,
+  placeWordCanariesOf,
   proseCanaries,
   slugCanaries,
   slugsFrom,
@@ -487,6 +488,22 @@ describe('the place word canaries', () => {
     }
 
     expect(judge([chunk], placeWordCanaries([own])).found).toHaveLength(2)
+  })
+
+  it('reads the shipped dictionaries, keeping only the words they do not hold', async () => {
+    const canaries = await placeWordCanariesOf()
+
+    expect(
+      canaries
+        .filter(({ file }) => file.includes('hunter-x-hunter'))
+        .map(({ phrase }) => phrase),
+    ).toStrictEqual([
+      'mainland',
+      'Mainland',
+      'Terraferma',
+      'Port town',
+      'Città portuale',
+    ])
   })
 
   it('reads every listed series', async () => {

@@ -374,21 +374,32 @@ export async function canariesOf(repositoryRoot) {
 }
 
 /**
- * The place word canaries of every series in the list; none when the list
- * does not load, which `canariesOf` already reports as unreadable.
- * @returns {Promise<{file: string, phrase: string}[]>} What to look for.
+ * The place word canaries of every series in the list, clear of the copy the
+ * dictionaries ship. None when the list does not load, which `canariesOf`
+ * already reports as unreadable; one unreadable canary when the dictionaries
+ * do not, so the gate exits as unusable rather than passing without them.
+ * @returns {Promise<{file: string, phrase: null | string}[]>} What to look for.
  */
-async function placeWordCanariesOf() {
+export async function placeWordCanariesOf() {
+  let SERIES
   try {
-    const { SERIES } = await importArchive('data/series/index.ts')
+    ;({ SERIES } = await importArchive('data/series/index.ts'))
+  } catch {
+    return []
+  }
+
+  try {
     const { enDictionary } = await importArchive('i18n/dictionaries/en.ts')
     const { itDictionary } = await importArchive('i18n/dictionaries/it.ts')
     const shipped = [enDictionary, itDictionary].flatMap((dictionary) =>
       Object.entries(dictionary).flat(),
     )
+
     return placeWordCanaries(SERIES, shipped)
-  } catch {
-    return []
+  } catch (error) {
+    console.error(`archive-gate: the dictionaries did not load: ${error}`)
+
+    return [{ file: 'src/i18n/dictionaries', phrase: null }]
   }
 }
 
