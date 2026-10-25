@@ -257,13 +257,7 @@ export function episodeOf(page, kind) {
     ],
     debut: /Debut:Chapter\d+;Episode(?<n>\d+)/u,
     field: 'anime debut',
-    line: (first) =>
-      numberAfter(
-        first.includes('(2011)') ?
-          /Episode (?<n>\d+) \(2011\)/u
-        : /Episode (?<n>\d+)/u,
-        first,
-      ),
+    line: episodeIn,
   })
 }
 
@@ -298,17 +292,44 @@ export function episodeVerdictOf(id, episode, wikiEpisode) {
 }
 
 /**
- * One infobox field's line, when the page has it: the Hunter x Hunter Wiki
- * gives a debut as `| manga debut = [[Chapter 1]]` and `| anime debut = …
- * [[Episode 1 (2011)]]`, the 1999 anime's and the OVA's beside it.
+ * One infobox field's value, when the page has it, up to the next field: the
+ * Hunter x Hunter Wiki gives a debut as `| manga debut = [[Chapter 1]]` and
+ * `| anime debut = …`, the 1998 OVA's and the 1999 anime's on that line and
+ * the 2011 anime's after a `----` on the lines below.
  * @param {Page} page The parsed page.
  * @param {string} field The field.
- * @returns {string | undefined} The line.
+ * @returns {string | undefined} The value, from the field's line on.
  */
 function infoboxLineOf(page, field) {
-  return page.wikitext
-    .split('\n')
-    .find((line) => line.replace(/^\s*\|\s*/u, '').startsWith(`${field} `))
+  const lines = page.wikitext.split('\n')
+  const from = lines.findIndex((line) =>
+    line.replace(/^\s*\|\s*/u, '').startsWith(`${field} `),
+  )
+  if (from === -1) {
+    return
+  }
+  const to = lines.findIndex(
+    (line, index) => index > from && /^\s*(?:\||\}\})/u.test(line),
+  )
+
+  return lines.slice(from, to === -1 ? lines.length : to).join('\n')
+}
+
+/**
+ * The episode a debut names: the 2011 anime's where the wiki gives several
+ * anime side by side, never the 1998 OVA's or the 1999 anime's, which the
+ * archive does not count in (#749); else the first one named.
+ * @param {string} debut The infobox line or field.
+ * @returns {number | undefined} The episode.
+ */
+function episodeIn(debut) {
+  if (debut.includes('(2011)')) {
+    return numberAfter(/Episode (?<n>\d+) \(2011\)/u, debut)
+  }
+
+  return /\((?:1998|1999)\)/u.test(debut) ? undefined : (
+      numberAfter(/Episode (?<n>\d+)/u, debut)
+    )
 }
 
 /**
