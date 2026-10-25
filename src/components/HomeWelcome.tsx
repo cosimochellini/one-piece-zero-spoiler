@@ -3,8 +3,11 @@ import { Link } from '@tanstack/react-router'
 import { type ReactElement, useSyncExternalStore } from 'react'
 
 import { Button } from '~/components/ui/Button'
+import { useDeclares } from '~/components/useDeclares'
 import { useLocale } from '~/i18n/LocaleContext'
+import type { TranslationKey } from '~/i18n/types'
 import { useSeriesParams } from '~/lib/progress/BookmarkContext'
+import type { SeriesPage } from '~/lib/progress/series'
 import {
   dismissWelcome,
   subscribeWelcome,
@@ -20,6 +23,18 @@ import {
   text,
 } from '~/styles/tokens.stylex'
 
+/** Every page the welcome can point to; a series shows those it declares. */
+const PAGES = [
+  {
+    page: 'characters',
+    to: '/$series/$locale/characters',
+    label: 'nav.characters',
+  },
+  { page: 'places', to: '/$series/$locale/places', label: 'places.title' },
+  { page: 'fruits', to: '/$series/$locale/fruits', label: 'fruits.title' },
+  { page: 'filler', to: '/$series/$locale/filler', label: 'filler.title' },
+] as const satisfies { label: TranslationKey; page: SeriesPage; to: string }[]
+
 /**
  * Shown once, on the first home page after a bookmark is saved from the
  * onboarding: what the reader can open now, every page of it already at
@@ -31,18 +46,14 @@ import {
 export function HomeWelcome(): null | ReactElement {
   const { locale, t } = useLocale()
   const { series } = useSeriesParams()
+  const declares = useDeclares()
   const shown = useSyncExternalStore(subscribeWelcome, welcomeOwed, () => false)
 
   if (!shown) {
     return null
   }
 
-  const pages = [
-    { to: '/$series/$locale/characters', label: t('nav.characters') },
-    { to: '/$series/$locale/places', label: t('places.title') },
-    { to: '/$series/$locale/fruits', label: t('fruits.title') },
-    { to: '/$series/$locale/filler', label: t('filler.title') },
-  ] as const
+  const pages = PAGES.filter(({ page }) => declares(page))
 
   return (
     <section
@@ -65,7 +76,7 @@ export function HomeWelcome(): null | ReactElement {
                 to={page.to}
                 {...stylex.props(styles.link)}
               >
-                {page.label}
+                {t(page.label)}
               </Link>
             </li>
           )

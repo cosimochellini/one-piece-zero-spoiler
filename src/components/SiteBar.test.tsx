@@ -1,20 +1,15 @@
-import {
-  createMemoryHistory,
-  createRootRoute,
-  createRoute,
-  createRouter,
-  RouterProvider,
-} from '@tanstack/react-router'
-import { render, screen, within } from '@testing-library/react'
+import { screen, within } from '@testing-library/react'
 import { type ReactElement, useMemo } from 'react'
 import { describe, expect, it } from 'vitest'
 
-import { LocaleProvider } from '~/i18n/LocaleProvider'
-import type { Locale } from '~/i18n/locales'
 import { BookmarkContext, useBookmark } from '~/lib/progress/BookmarkContext'
-import { BookmarkProvider } from '~/lib/progress/BookmarkProvider'
-import { ONE_PIECE_BOOKMARK } from '~/lib/progress/series'
-import { ep, renderWithProviders } from '~/test/providers'
+import {
+  HUNTER_X_HUNTER_SERIES,
+  ONE_PIECE_BOOKMARK,
+  ONE_PIECE_SERIES,
+  type Series,
+} from '~/lib/progress/series'
+import { ep, renderUnderSeries, renderWithProviders } from '~/test/providers'
 
 import { SiteBar } from './SiteBar'
 
@@ -41,37 +36,10 @@ function OtherSeriesBar(): ReactElement {
   )
 }
 
-/**
- * Renders the bar under a `/$series` match, as the app does, so the series'
- * name comes from the route's public description. The two names differ only
- * to show which language is read.
- */
-async function renderUnderSeries(path: string, locale: Locale): Promise<void> {
-  const rootRoute = createRootRoute()
-  const seriesRoute = createRoute({
-    getParentRoute: () => rootRoute,
-    path: '$series',
-    beforeLoad: () => ({
-      series: { name: { en: 'One Piece', it: 'One Piece (it)' } },
-    }),
-    component: (): ReactElement => (
-      <LocaleProvider locale={locale}>
-        <BookmarkProvider
-          initialBookmark={null}
-          series={ONE_PIECE_BOOKMARK}
-        >
-          <SiteBar />
-        </BookmarkProvider>
-      </LocaleProvider>
-    ),
-  })
-  const page = createRoute({ getParentRoute: () => seriesRoute, path: '$' })
-  const router = createRouter({
-    routeTree: rootRoute.addChildren([seriesRoute.addChildren([page])]),
-    history: createMemoryHistory({ initialEntries: [path] }),
-  })
-  await router.load()
-  render(<RouterProvider router={router} />)
+/** One Piece, its two names apart, to show which language is read. */
+const NAMED_APART: Series = {
+  ...ONE_PIECE_SERIES,
+  name: { en: 'One Piece', it: 'One Piece (it)' },
 }
 
 describe('SiteBar', () => {
@@ -265,7 +233,11 @@ describe('SiteBar', () => {
   ] as const)(
     'names the hub and the series apart, in %s',
     async (locale, wordmark, name) => {
-      await renderUnderSeries(`/one-piece/${locale}/characters`, locale)
+      await renderUnderSeries(<SiteBar />, {
+        path: `/one-piece/${locale}/characters`,
+        locale,
+        series: NAMED_APART,
+      })
 
       const banner = screen.getByRole('banner')
 
@@ -294,8 +266,32 @@ describe('SiteBar', () => {
     },
   )
 
+  it.each([
+    { series: ONE_PIECE_SERIES, pages: ['Characters', 'Places', 'Fruits'] },
+    { series: HUNTER_X_HUNTER_SERIES, pages: ['Characters', 'Places'] },
+  ])(
+    'links only the pages $series.slug declares',
+    async ({ series, pages }) => {
+      await renderUnderSeries(<SiteBar />, {
+        path: `/${series.slug}/en`,
+        series,
+      })
+
+      expect(
+        within(screen.getByRole('navigation', { name: 'Pages' }))
+          .getAllByRole('link')
+          .map((link) => [link.textContent, link.getAttribute('href')]),
+      ).toStrictEqual(
+        pages.map((page) => [page, `/${series.slug}/en/${page.toLowerCase()}`]),
+      )
+    },
+  )
+
   it('marks the series name as the current page on the series home', async () => {
-    await renderUnderSeries('/one-piece/en', 'en')
+    await renderUnderSeries(<SiteBar />, {
+      path: '/one-piece/en',
+      series: NAMED_APART,
+    })
 
     expect(screen.getByRole('link', { name: 'One Piece' })).toHaveAttribute(
       'aria-current',

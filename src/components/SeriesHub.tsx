@@ -5,7 +5,7 @@ import type { ReactElement } from 'react'
 import { SeriesEmblem } from '~/components/SeriesEmblem'
 import { useLocale } from '~/i18n/LocaleContext'
 import { bookmarkPoint } from '~/lib/progress/threshold'
-import type { HubSeries } from '~/lib/view/hub'
+import type { ComingSeries, HubSeries } from '~/lib/view/hub'
 import { settleStyles } from '~/styles/settle'
 import { THEMES } from '~/styles/themes'
 import {
@@ -21,19 +21,6 @@ import {
 } from '~/styles/tokens.stylex'
 
 /**
- * A series announced on the hub before readers can reach it: a name and
- * nothing else, so no link, no count, no colour and no drawing. Hunter x
- * Hunter is filed in `~/data/series` but not open, so the hub is not sent
- * it; #763, which opens it, deletes the entry and its own stage takes over.
- */
-interface Coming {
-  name: string
-  slug: string
-}
-
-const COMING: Coming[] = [{ slug: 'hunter-x-hunter', name: 'Hunter x Hunter' }]
-
-/**
  * The hub (Hallmark · direction "Stage", owner 2026-10-24): the house lights
  * are down, as on every page with no series, and each series is a stage lit
  * by a beam of its own accent. The card wears the series' whole theme, so
@@ -44,12 +31,15 @@ const COMING: Coming[] = [{ slug: 'hunter-x-hunter', name: 'Hunter x Hunter' }]
  * reader's saved bookmark on it stands. It names no record: the count is a
  * number, and the drawing is the series' own (`SeriesEmblem`).
  */
-export function SeriesHub({ series }: { series: HubSeries[] }): ReactElement {
-  const { t } = useLocale()
-  // Once a series is in the registry its own stage stands for it.
-  const coming = COMING.filter(({ slug }) =>
-    series.every((entry) => entry.slug !== slug),
-  )
+export function SeriesHub({
+  coming,
+  series,
+}: {
+  /** The series filed but not open: a name, no link, no count. */
+  coming: ComingSeries[]
+  series: HubSeries[]
+}): ReactElement {
+  const { locale, t } = useLocale()
 
   return (
     <main
@@ -82,7 +72,7 @@ export function SeriesHub({ series }: { series: HubSeries[] }): ReactElement {
               settleStyles.at(series.length + index + 1),
             )}
           >
-            <DarkStage name={announced.name} />
+            <DarkStage name={announced.name[locale]} />
           </li>
         ))}
       </ul>

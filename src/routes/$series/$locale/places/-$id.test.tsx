@@ -3,6 +3,7 @@ import userEvent from '@testing-library/user-event'
 import type { ReactElement } from 'react'
 import { describe, expect, it } from 'vitest'
 
+import { HUNTER_X_HUNTER_SERIES, ONE_PIECE_SERIES } from '~/lib/progress/series'
 import type { PlaceChartView, PlaceDetail } from '~/lib/view/places'
 import type { PortView, RecordView, ShipView, Slot } from '~/lib/view/records'
 import {
@@ -17,7 +18,12 @@ import {
   ship,
   shipEntry,
 } from '~/test/fixtures'
-import { ep, renderWithProviders, settle } from '~/test/providers'
+import {
+  ep,
+  renderUnderSeries,
+  renderWithProviders,
+  settle,
+} from '~/test/providers'
 
 import { DrawingsBand, MapBand, TurnBand } from './-$id.bands'
 import { EntryDiptych, PlaceEntry, ShipBody } from './-$id.entry'
@@ -262,6 +268,24 @@ describe('a place on the map', () => {
 
     expect(screen.queryByText('Later visits')).not.toBeInTheDocument()
   })
+
+  // Only a series with the world map titles the band with it.
+  it.each([
+    { series: ONE_PIECE_SERIES, title: 'On the map', onTheMap: 1 },
+    { series: HUNTER_X_HUNTER_SERIES, title: 'Stop 5 of 39', onTheMap: 0 },
+  ])(
+    'is titled $title on $series.slug',
+    async ({ series, title, onTheMap }) => {
+      await renderUnderSeries(
+        <MapBand detail={{ ...detailOf(), chart: null }} />,
+        { path: `/${series.slug}/en/places/baratie`, series },
+      )
+
+      expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(title)
+      expect(screen.getAllByText('Stop 5 of 39')).toHaveLength(1)
+      expect(screen.queryAllByText('On the map')).toHaveLength(onTheMap)
+    },
+  )
 
   it('has no map at all under fog, only the stop number', () => {
     renderWithProviders(<MapBand detail={fogged} />, { bookmark: ep(20) })

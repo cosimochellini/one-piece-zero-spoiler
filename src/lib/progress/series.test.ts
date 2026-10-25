@@ -23,7 +23,11 @@ import {
 } from './seasons'
 import {
   type BookmarkSeries,
+  HUNTER_X_HUNTER_SERIES,
+  linkedSeries,
   ONE_PIECE_BOOKMARK,
+  ONE_PIECE_SERIES,
+  type Series,
   seriesSlugFromPath,
 } from './series'
 
@@ -74,6 +78,43 @@ describe('the series candidate in a route', () => {
   ])('reads no series from %s', (path) => {
     expect(seriesSlugFromPath(path)).toBeNull()
   })
+})
+
+/** A registry of the two filed series, both open. */
+function filed(slug: string): null | Series {
+  return (
+    [HUNTER_X_HUNTER_SERIES, ONE_PIECE_SERIES].find(
+      (series) => series.slug === slug,
+    ) ?? null
+  )
+}
+
+describe('the series a link parameter sets the bookmark of', () => {
+  it.each([
+    '/hunter-x-hunter/en',
+    '/hunter-x-hunter/en/',
+    '/hunter-x-hunter/it/characters/gon-freecss',
+    '/hunter-x-hunter/en/places',
+  ])('is Hunter x Hunter on %s, a page it declares', (path) => {
+    expect(linkedSeries(path, filed)).toBe(HUNTER_X_HUNTER_SERIES)
+  })
+
+  it.each([
+    '/hunter-x-hunter/en/fruits',
+    '/hunter-x-hunter/en/fruits/gum-gum',
+    '/hunter-x-hunter/it/filler',
+    '/missing/en/characters',
+    '/en/legal',
+  ])('is none on %s', (path) => {
+    expect(linkedSeries(path, filed)).toBeNull()
+  })
+
+  it.each(['/one-piece/en/fruits', '/one-piece/en/filler'])(
+    'is One Piece on %s',
+    (path) => {
+      expect(linkedSeries(path, filed)).toBe(ONE_PIECE_SERIES)
+    },
+  )
 })
 
 describe('bookmark rules from the series description', () => {

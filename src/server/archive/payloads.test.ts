@@ -16,7 +16,7 @@ import {
 } from '~/test/series'
 
 import { handleOf } from './handle.server'
-import { hubFor } from './hub.server'
+import { hubPageFor } from './hub.server'
 import { type Payload, payloadsFor } from './payloads.server'
 
 const PAYLOADS = payloadsFor(ONE_PIECE_LOADED.archive)
@@ -238,7 +238,7 @@ const SHARED: Record<
   (series: ListedSeries, bookmark: Bookmark) => unknown
 > = {
   loadHub: (series, bookmark) =>
-    hubFor(
+    hubPageFor(
       new Map(
         bookmark === null ?
           []

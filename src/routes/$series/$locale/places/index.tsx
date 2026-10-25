@@ -20,9 +20,9 @@ import type { ReactElement } from 'react'
 
 import type { Orientation } from '~/components/chartGeometry'
 import { measuredOrientation } from '~/components/useChartOrientation'
-import { isLocale } from '~/i18n/locales'
 import { parsePlaceParams } from '~/lib/search/placeParams'
-import { describeNamedPage } from '~/routes/$locale/-head'
+import { seriesPageHead } from '~/routes/$locale/-head'
+import { requirePage } from '~/routes/$series/$locale/-found'
 import { usePeek } from '~/routes/$series/$locale/-peek'
 import { liftPort, loadPlaces } from '~/server/api'
 
@@ -33,6 +33,9 @@ export const Route = createFileRoute('/$series/$locale/places/')({
   // filtered index can be shared and Back steps through the picks. An
   // unknown value falls back to its default.
   validateSearch: parsePlaceParams,
+  beforeLoad: ({ context }) => {
+    requirePage(context.series, 'places')
+  },
   // Awaited, not streamed: the chart, or the index without one, is the
   // page. Only a series with the world map has an orientation to serve it in.
   loader: async ({ context }) => ({
@@ -41,17 +44,7 @@ export const Route = createFileRoute('/$series/$locale/places/')({
     })),
     served: context.series.features.worldMap ? servedOrientation() : null,
   }),
-  head: ({ match, params }) => {
-    return isLocale(params.locale) ?
-        describeNamedPage({
-          descriptionKey: 'places.pageDescription',
-          kind: 'index',
-          locale: params.locale,
-          pathname: match.pathname,
-          titleKey: 'places.pageTitle',
-        })
-      : {}
-  },
+  head: (match) => seriesPageHead('places', match),
   // The served chart's orientation is guessed from these request headers
   // (`servedOrientation`), so the HTML varies by them too; a series without
   // the map serves the same HTML to every browser.

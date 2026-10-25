@@ -164,17 +164,54 @@ export const HUNTER_X_HUNTER_SERIES: Series = {
   },
 }
 
-const RECORD_PAGE = /^(?:characters|fruits|places)$/u
+/** A page under `/{series}/{locale}/` that only some series have. */
+export type SeriesPage = 'characters' | 'filler' | 'fruits' | 'places'
+
+/** What decides each of those pages: a kind the series files, or a feature. */
+const PAGES: Record<SeriesPage, (series: Series) => boolean> = {
+  characters: (series) => series.kinds.includes('character'),
+  places: (series) =>
+    series.kinds.includes('place') || series.kinds.includes('ship'),
+  fruits: (series) => series.features.fruits,
+  filler: (series) => series.features.filler,
+}
+
+/**
+ * Whether the series declares the page: the one answer its routes (404),
+ * the bar (a link) and the sitemap (an address) all read.
+ */
+export function hasPage(series: Series, page: SeriesPage): boolean {
+  return PAGES[page](series)
+}
+
+function isSeriesPage(page: string): page is SeriesPage {
+  return Object.hasOwn(PAGES, page)
+}
 
 /** Only an archive index, record or filler page carries a bookmark. */
 function isContentPage(page: string | undefined, rest: string[]): boolean {
   if (page === undefined) {
     return true
   }
+  if (!isSeriesPage(page)) {
+    return false
+  }
   if (page === 'filler') {
     return rest.length === 0
   }
-  return RECORD_PAGE.test(page) && rest.length <= 1 && rest[0] !== ''
+  return rest.length <= 1 && rest[0] !== ''
+}
+
+/** `/{series}/{locale}/{page}`: the page is the split's fourth part. */
+const PAGE_SEGMENT = 3
+
+/**
+ * Whether a content address (one `seriesSlugFromPath` reads a slug from) is
+ * a page the series declares: its home always is.
+ */
+function declaresPath(series: Series, pathname: string): boolean {
+  const page = pathname.split('/', PAGE_SEGMENT + 1)[PAGE_SEGMENT]
+  return page === undefined || !isSeriesPage(page) || hasPage(series, page)
 }
 
 /** The series slug of a content URL, before registry validation. */
@@ -191,4 +228,21 @@ export function seriesSlugFromPath(pathname: string): null | string {
     ) ?
       slug
     : null
+}
+
+/**
+ * The series whose bookmark a link parameter on this address sets: the one
+ * in the path, when the registry knows it and declares the page. On any
+ * other page the parameter sets nothing, so no bookmark is written on the
+ * way to a 404.
+ * @param pathname The address the link names.
+ * @param describe The registry's lookup of a series' public description.
+ */
+export function linkedSeries(
+  pathname: string,
+  describe: (slug: string) => null | Series,
+): null | Series {
+  const slug = seriesSlugFromPath(pathname)
+  const series = slug === null ? null : describe(slug)
+  return series !== null && declaresPath(series, pathname) ? series : null
 }

@@ -2,7 +2,15 @@ import { describe, expect, it } from 'vitest'
 
 import { ONE_PIECE_SERIES } from '~/lib/progress/series'
 
-import { archiveOf, descriptionOf, filedArchiveOf, ONE_PIECE, SERIES } from '.'
+import {
+  archiveOf,
+  COMING_SERIES,
+  descriptionOf,
+  filedArchiveOf,
+  ONE_PIECE,
+  OPEN_SERIES,
+  SERIES,
+} from '.'
 
 /** The series filed but not open: none once every series has opened. */
 const CLOSED = SERIES.filter(({ open }) => !open)
@@ -38,6 +46,16 @@ describe('the runtime series registry', () => {
       }
     },
   )
+
+  // The hub's two lists: a series is announced or open, never both.
+  it('announces as coming exactly the filed series that are not open', () => {
+    const coming = COMING_SERIES.map(({ slug }) => slug)
+    const open = OPEN_SERIES.map(({ slug }) => slug)
+
+    expect(coming).toStrictEqual(CLOSED.map(({ slug }) => slug))
+    expect(coming.filter((slug) => open.includes(slug))).toStrictEqual([])
+    expect(open.length + coming.length).toBe(SERIES.length)
+  })
 
   it('rejects unknown slugs before choosing any dynamic module', async () => {
     await expect(archiveOf('missing-series')).rejects.toThrow('Unknown series')

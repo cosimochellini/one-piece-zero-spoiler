@@ -71,13 +71,14 @@ on it. The count is of the records the reader's source tells, and of the records
 both sources tell for a reader with no bookmark. `loadHub` in
 `src/server/series.ts` loads each archive only to count it, and `hubFor` reads
 each series' saved cookie; a trial or a crawler shows no bookmark there. A
-series announced but not yet open is a hard-coded name with no link and no
-count. The payload sweep holds the plain call behind every function in
-`src/server/series.ts` to the fog of a reader with no bookmark, so the hub can
-name no record of any series, open or covered. The footer on the shared pages
-names no series. The bar's wordmark leads to the hub from every page; on a
-series page the series' name beside it leads to that series' home
-(`src/components/SiteBar.tsx`).
+series filed but not yet open is announced by name alone, with no link and no
+count: `COMING_SERIES` in the registry, built from `open`, so a series is
+announced or open and never both. The payload sweep holds the plain call behind
+every function in `src/server/series.ts` to the fog of a reader with no
+bookmark, so the hub can name no record of any series, open or covered. The
+footer on the shared pages names no series. The bar's wordmark leads to the hub
+from every page; on a series page the series' name beside it leads to that
+series' home (`src/components/SiteBar.tsx`).
 
 `src/data/series/index.ts` is the single registry used by runtime, scripts and
 gates. Its public descriptions contain no records; each archive is loaded by a
@@ -125,17 +126,23 @@ shared dictionaries (`sea.*`, `form.*`), which every page ships. A series that
 labels its words itself is sent, with the places page and a place's page, the
 labels of the words its open places use and no others, so no page names a region
 the reader has not reached; the client holds no table of them, and the archive
-gate looks for each one in the client chunks. Whether a series draws One Piece's
-world map is a feature on its description (`features.worldMap`): without it the
-server sends no map point and no ship, and the places page is the index, grouped
-by region, served in full. The factions are One Piece's alone; Hunter x Hunter
-files no groups, and its affiliations are prose. The chapter table, the sweep's
-bookmarks, the dated facts (timelines, stories, natives) and the shelves
-(characters, arcs, places, the chart and the signal book) are built by the
-engine (`src/data/chapterTable.ts`, `src/data/sweep.ts`, `src/data/dated.ts`,
-`src/data/shelves.ts`) from each series' own records and dossiers. A dated field
-a series does not file reads as an empty timeline, so a field one series adds
-asks nothing of another.
+gate looks for each one in the client chunks, skipping the words the shipped
+dictionaries already hold. Whether a series draws One Piece's world map is a
+feature on its description (`features.worldMap`): without it the server sends no
+map point and no ship, and the places page is the index, grouped by region,
+served in full. Which of a series' pages exist (characters, places, fruits,
+filler) is read from the kinds and features on its description by one predicate,
+`hasPage` in `src/lib/progress/series.ts`: each page's route answers 404 in its
+`beforeLoad` (`requirePage`), the bar and the home's welcome link only those
+pages (`useDeclares`), a link parameter on any other sets no bookmark
+(`linkedSeries`), and the sitemap lists only their addresses. The factions are
+One Piece's alone; Hunter x Hunter files no groups, and its affiliations are
+prose. The chapter table, the sweep's bookmarks, the dated facts (timelines,
+stories, natives) and the shelves (characters, arcs, places, the chart and the
+signal book) are built by the engine (`src/data/chapterTable.ts`,
+`src/data/sweep.ts`, `src/data/dated.ts`, `src/data/shelves.ts`) from each
+series' own records and dossiers. A dated field a series does not file reads as
+an empty timeline, so a field one series adds asks nothing of another.
 
 A record or a dated fact can exist in one source only (`source: 'anime'` or
 `'manga'` on the record or the entry; absent means both). An episode or season
@@ -372,6 +379,10 @@ checked on every run:
   chapter that tells it (`src/data/archive.test.ts`), and the place page lists a
   character as coming from it only once the reader has met the character and
   reached that entry, in both units; nobody else is sent or counted;
+- a series that labels its place words itself sends none before its reader
+  reaches a place filed under it: the payload sweep holds each region and form,
+  by id and by label in both locales, to the fog of the places that use it, and
+  a word no place uses to the fog at every bookmark (`src/test/fog.ts`);
 - every drawing belongs to a record;
 - every devil fruit opens no later than any character entry that names it, which
   lets a character page link to its fruit without checking anything, and no

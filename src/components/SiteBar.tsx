@@ -4,8 +4,11 @@ import type { ReactElement } from 'react'
 
 import { EpisodeMark } from '~/components/EpisodeMark'
 import { LocaleSwitch } from '~/components/LocaleSwitch'
+import { useDeclares } from '~/components/useDeclares'
 import { useLocale } from '~/i18n/LocaleContext'
+import type { TranslationKey } from '~/i18n/types'
 import { useBookmark, useSeriesParams } from '~/lib/progress/BookmarkContext'
+import type { SeriesPage } from '~/lib/progress/series'
 import {
   BAR,
   color,
@@ -84,39 +87,47 @@ export function SiteBar(): ReactElement {
   )
 }
 
-/** Content navigation belongs to the series selected by the route. */
+/** The bar's pages, in its order; the filler guide is reached by its address. */
+const NAV = [
+  {
+    page: 'characters',
+    to: '/$series/$locale/characters',
+    label: 'nav.characters',
+  },
+  { page: 'places', to: '/$series/$locale/places', label: 'nav.places' },
+  { page: 'fruits', to: '/$series/$locale/fruits', label: 'nav.fruits' },
+] as const satisfies { label: TranslationKey; page: SeriesPage; to: string }[]
+
+/**
+ * Content navigation belongs to the series selected by the route, and lists
+ * the pages it declares.
+ */
 function SeriesNavigation(): ReactElement {
   const { t } = useLocale()
   const params = useSeriesParams()
+  const declares = useDeclares()
+  const links: ReactElement[] = []
+  for (const { label, page, to } of NAV) {
+    if (declares(page)) {
+      links.push(
+        <Link
+          key={to}
+          activeProps={{ 'aria-current': 'page' }}
+          params={params}
+          to={to}
+          {...stylex.props(styles.link)}
+        >
+          {t(label)}
+        </Link>,
+      )
+    }
+  }
   return (
     <nav
       aria-label={t('nav.label')}
       {...stylex.props(styles.pages)}
     >
-      <Link
-        activeProps={{ 'aria-current': 'page' }}
-        params={params}
-        to="/$series/$locale/characters"
-        {...stylex.props(styles.link)}
-      >
-        {t('nav.characters')}
-      </Link>
-      <Link
-        activeProps={{ 'aria-current': 'page' }}
-        params={params}
-        to="/$series/$locale/places"
-        {...stylex.props(styles.link)}
-      >
-        {t('nav.places')}
-      </Link>
-      <Link
-        activeProps={{ 'aria-current': 'page' }}
-        params={params}
-        to="/$series/$locale/fruits"
-        {...stylex.props(styles.link)}
-      >
-        {t('nav.fruits')}
-      </Link>
+      {links}
     </nav>
   )
 }

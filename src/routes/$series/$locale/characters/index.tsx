@@ -12,8 +12,8 @@ import { type ReactElement, useEffect } from 'react'
 import { ArchivePage } from '~/components/ArchivePage'
 import { CharacterGrid } from '~/components/CharacterGrid'
 import { useT } from '~/i18n/LocaleContext'
-import { isLocale } from '~/i18n/locales'
-import { describeNamedPage } from '~/routes/$locale/-head'
+import { seriesPageHead } from '~/routes/$locale/-head'
+import { requirePage } from '~/routes/$series/$locale/-found'
 import { usePeek } from '~/routes/$series/$locale/-peek'
 import { useScrollBackOnceTall } from '~/routes/$series/$locale/-scrollBack'
 import { liftCharacter, loadCharacters } from '~/server/api'
@@ -22,6 +22,9 @@ import { seen, shelvesShown } from './-seen'
 import { fetchShelves, useShelvesSource } from './-shelves'
 
 export const Route = createFileRoute('/$series/$locale/characters/')({
+  beforeLoad: ({ context }) => {
+    requirePage(context.series, 'characters')
+  },
   loader: async ({ context }) => {
     const data = { series: context.series.slug, locale: context.locale }
 
@@ -46,17 +49,7 @@ export const Route = createFileRoute('/$series/$locale/characters/')({
     // clamped by the shorter loading placeholders.
     return { page, shelves: await shelves }
   },
-  head: ({ match, params }) => {
-    return isLocale(params.locale) ?
-        describeNamedPage({
-          descriptionKey: 'characters.pageDescription',
-          kind: 'index',
-          locale: params.locale,
-          pathname: match.pathname,
-          titleKey: 'characters.pageTitle',
-        })
-      : {}
-  },
+  head: (match) => seriesPageHead('characters', match),
   component: CharactersPage,
 })
 
