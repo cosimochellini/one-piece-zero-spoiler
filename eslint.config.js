@@ -107,17 +107,31 @@ const ONE_PIECE_BY_NAME = {
  * (#791). Its types may be named; its words may not be imported, by the alias
  * or by a relative path (`./dictionaries/one-piece/en`, `./one-piece/it`).
  */
+const SERIES_COPY_SPECIFIER = String.raw`^(?:~/i18n/dictionaries/|(?:\.\.?/)+(?:dictionaries/)?)(?!dictionaries/)[a-z-]+/(?:en|it)(?:\.[jt]sx?)?$|^~/server/copy\.server(?:\.[jt]sx?)?$`
+const SERIES_COPY_MESSAGE =
+  'A series’ copy stays on the server: a page gets it through `loadSeriesCopy` and reads it with `useT` or `useSeriesT` (#791).'
 const SERIES_COPY = {
-  regex: String.raw`^(?:~/i18n/dictionaries/|(?:\.\.?/)+(?:dictionaries/)?)(?!dictionaries/)[a-z-]+/(?:en|it)(?:\.ts)?$|^~/server/copy\.server(?:\.ts)?$`,
+  regex: SERIES_COPY_SPECIFIER,
   allowTypeImports: true,
+  message: SERIES_COPY_MESSAGE,
+}
+
+/**
+ * The context holds the page's translate untyped; outside `src/i18n` it is
+ * read only through `useT`, `useSeriesT` and `useLocale` (#791).
+ */
+const CONTEXT_ONLY = {
+  name: '~/i18n/LocaleContext',
+  importNames: ['LocaleContext'],
   message:
-    'A series’ copy stays on the server: a page gets it through `loadSeriesCopy` and reads it with `useT` or `useSeriesT` (#791).',
+    'Read the page’s words through `useT()` or `useSeriesT()`, which type them by what the caller may print (#791).',
 }
 
 /** The server's and the archive's import bans: the open series only (#758). */
 const OPEN_SERIES_IMPORTS = {
   paths: [
     { name: '~/data/series', importNames: FILED_ONLY, message: OPEN_ONLY },
+    CONTEXT_ONLY,
   ],
   patterns: [
     { regex: String.raw`^\.\./`, message: ALIAS_ONLY },
@@ -915,6 +929,11 @@ const config = defineConfig(
           selector: String.raw`ImportExpression[source.value=/^(?:~\/data\/series|\.\.?(?:\/(?:index)?)?(?:\.ts)?$)/]`,
           message: OPEN_ONLY,
         },
+        // Nor may a series' copy be imported dynamically into the client.
+        {
+          selector: String.raw`ImportExpression[source.value=/^(?:~\/i18n\/dictionaries\/|(?:\.\.?\/)+(?:dictionaries\/)?)(?!dictionaries\/)[a-z-]+\/(?:en|it)(?:\.[jt]sx?)?$|^~\/server\/copy\.server(?:\.[jt]sx?)?$/]`,
+          message: SERIES_COPY_MESSAGE,
+        },
         // A template literal hides its specifier from the selector above.
         {
           selector: 'ImportExpression > TemplateLiteral.source',
@@ -949,6 +968,7 @@ const config = defineConfig(
       'no-restricted-imports': [
         'error',
         {
+          paths: [CONTEXT_ONLY],
           patterns: [
             { regex: String.raw`^\.\./`, message: ALIAS_ONLY },
             {
@@ -992,6 +1012,7 @@ const config = defineConfig(
       'no-restricted-imports': [
         'error',
         {
+          paths: [CONTEXT_ONLY],
           patterns: [
             { regex: String.raw`^\.\./`, message: ALIAS_ONLY },
             {

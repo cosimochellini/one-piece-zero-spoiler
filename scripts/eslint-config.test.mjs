@@ -147,6 +147,14 @@ export { indexedArchiveEntries }
         "import { onePieceIt } from './one-piece/it'",
       ],
       ['src/styles/themes.ts', "import { COPIES } from '~/server/copy.server'"],
+      [
+        'src/components/SiteFooter.tsx',
+        "import { onePieceEn } from '~/i18n/dictionaries/one-piece/en.js'",
+      ],
+      [
+        'src/components/SiteFooter.tsx',
+        "import { LocaleContext } from '~/i18n/LocaleContext'",
+      ],
     ])('bars a series’ copy from %s', async (file, statement) => {
       const { messages } = await lint(
         `${statement}\nexport const words = [${statement.split(' ', 3)[2] ?? ''}]\n`,
@@ -157,6 +165,20 @@ export { indexedArchiveEntries }
         'no-restricted-imports',
       )
     })
+
+    it.each(['src/components/SiteFooter.tsx', 'src/i18n/translate.ts'])(
+      'bars a dynamic import of a series’ copy from %s',
+      async (file) => {
+        const { messages } = await lint(
+          "export async function words(): Promise<unknown> {\n  return import('~/i18n/dictionaries/one-piece/en.js')\n}\n",
+          path.join(repositoryRoot, file),
+        )
+
+        expect(messages.map(({ ruleId }) => ruleId)).toContain(
+          'no-restricted-syntax',
+        )
+      },
+    )
 
     it('lets the shared dictionaries and a series’ types through', async () => {
       const { messages } = await lint(
