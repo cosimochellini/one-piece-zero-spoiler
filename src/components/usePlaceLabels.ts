@@ -25,7 +25,7 @@ const SEAS: Record<Sea, TranslationKey<'one-piece'>> = {
   'new-world': 'sea.new-world',
 }
 
-const FORMS: Record<PlaceForm, TranslationKey> = {
+const FORMS: Record<PlaceForm, TranslationKey<'one-piece'>> = {
   archipelago: 'form.archipelago',
   city: 'form.city',
   fortress: 'form.fortress',

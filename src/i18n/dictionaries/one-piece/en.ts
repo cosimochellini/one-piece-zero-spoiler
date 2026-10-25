@@ -37,6 +37,13 @@ export const onePieceEn = {
   'site.description':
     'A One Piece wiki that hides every character, arc, place and devil fruit you have not reached yet. Set the episode or chapter you are on and read up to there.',
 
+  'credits.source.official': 'ONE PIECE.com: official episode synopsis',
+  'credits.fillerList': 'AnimeFillerList: classification reference',
+  'credits.scope.filler': 'Release title and summary in the reviewed sample',
+  'places.sea': 'Sea',
+  'places.allSeas': 'All seas',
+  'form.train': 'Sea train',
+
   'nav.fruits': 'Fruits',
 
   'home.filler.title': 'Watch out for filler',

@@ -34,6 +34,14 @@ export const onePieceIt: SeriesWords<'one-piece'> = {
   'site.description':
     'Una wiki di One Piece che nasconde personaggi, saghe, luoghi e frutti del diavolo oltre l’ultimo episodio visto o l’ultimo capitolo letto.',
 
+  'credits.source.official': 'ONE PIECE.com: sinossi ufficiale dell’episodio',
+  'credits.fillerList': 'AnimeFillerList: riferimento per le classificazioni',
+  'credits.scope.filler':
+    'Titolo dell’opera e riassunto nel campione verificato',
+  'places.sea': 'Mare',
+  'places.allSeas': 'Tutti i mari',
+  'form.train': 'Treno del mare',
+
   'nav.fruits': 'Frutti',
 
   'home.filler.title': 'Occhio ai filler',

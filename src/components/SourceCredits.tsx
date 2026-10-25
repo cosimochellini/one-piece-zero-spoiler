@@ -90,7 +90,9 @@ function CreditEntry({
   slug: SeriesSlug
 }): ReactElement {
   const { licenses } = SERIES_SOURCES[slug]
-  const t = useSeriesT()
+  // The page's own copy, which is the series' here: a filler entry and the
+  // official synopsis are One Piece's, and only its sample files them.
+  const { t } = useLocale()
   return (
     <li>
       <h4>

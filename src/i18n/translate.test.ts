@@ -86,14 +86,14 @@ describe('each series’ own copy', () => {
     }
   })
 
-  it('names no other series', () => {
-    for (const [slug, copy] of Object.entries(COPIES)) {
-      const others = Object.keys(COPIES).filter((other) => other !== slug)
-      for (const locale of LOCALES) {
-        const text = Object.values(copy[locale]).join(' ')
-        for (const other of others) {
-          expect(text, `${slug} ${locale}`).not.toContain(nameOf(other))
-        }
+  it.each(ALL)('%s names no series but its own', (name, copy) => {
+    // The shared copy names none, whatever the case ("ONE PIECE.com").
+    const others = Object.keys(COPIES).filter((slug) => slug !== name)
+    for (const [locale, key, value] of entriesOf(copy)) {
+      for (const other of others) {
+        expect(value.toLowerCase(), `${name} ${locale} ${key}`).not.toContain(
+          nameOf(other).toLowerCase(),
+        )
       }
     }
   })

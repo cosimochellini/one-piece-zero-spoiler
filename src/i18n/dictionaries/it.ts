@@ -170,7 +170,6 @@ export const itDictionary: Dictionary = {
     'Le pagine esterne possono anticipare fatti successivi, anche nei titoli. Aprendo una fonte esci dalla protezione dagli spoiler di questa wiki.',
   'credits.fandomTerms': 'Licenze e attribuzioni Fandom',
   'credits.fandomTermsIt': 'Licenze Fandom in italiano',
-  'credits.fillerList': 'AnimeFillerList: riferimento per le classificazioni',
   'credits.referencesTitle': 'Riferimenti documentati',
   'credits.bookmark':
     'Sono elencati solo i riferimenti a materiali visibili al tuo segnalibro. La licenza accanto a una fonte riguarda il suo testo, non l’intero archivio.',
@@ -179,15 +178,12 @@ export const itDictionary: Dictionary = {
   'credits.episode': 'Episodio {episode}',
   'credits.scope.dossier': 'Campi della scheda nel campione verificato',
   'credits.scope.chronicle': 'Voce della storia nel campione verificato',
-  'credits.scope.filler':
-    'Titolo dell’opera e riassunto nel campione verificato',
   'credits.scope.title': 'Solo il titolo dell’opera',
   'credits.scope.summary': 'Riassunto sostitutivo',
   'credits.factCheck':
     'Riferimento per il confronto o la verifica dei fatti documentati. Il processo di scrittura storico non è accertato: non si dichiarano testi indipendenti né nuove licenze sui contenuti.',
   'credits.replacement':
     'Entrambi i riassunti sono stati sostituiti con brevi testi basati su fatti verificati nella sinossi ufficiale. La sinossi non è stata tradotta per intero. Non viene assegnata una nuova licenza ai contenuti.',
-  'credits.source.official': 'ONE PIECE.com: sinossi ufficiale dell’episodio',
   'credits.noOpenLicense': 'Nessuna autorizzazione aperta accertata.',
 
   'privacy.title': 'Privacy e cookie',
@@ -334,7 +330,6 @@ export const itDictionary: Dictionary = {
   'places.firstSeen.season': 'Compare per la prima volta in {threshold}',
   'places.firstSeen.chapter':
     'Compare per la prima volta nel capitolo {threshold}',
-  'places.sea': 'Mare',
   'places.form': 'Tipo',
   'places.arc': 'Saga',
   'places.landmark': 'Punto di riferimento',
@@ -348,7 +343,6 @@ export const itDictionary: Dictionary = {
   'places.noMatch': 'Nessun luogo visibile corrisponde a “{query}”.',
   'places.noneShown': 'Nessun luogo visibile corrisponde a questi filtri.',
   'places.showAll': 'Mostra tutti',
-  'places.allSeas': 'Tutti i mari',
   'places.allForms': 'Tutti i tipi',
   'places.saga': 'Saga',
   'places.allSagas': 'Tutte le saghe',
@@ -385,7 +379,6 @@ export const itDictionary: Dictionary = {
   'form.archipelago': 'Arcipelago',
   'form.sea': 'Tratto di mare',
   'form.ship': 'Nave',
-  'form.train': 'Treno del mare',
   'form.prison': 'Prigione',
   'form.fortress': 'Fortezza',
 

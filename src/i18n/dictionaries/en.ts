@@ -179,7 +179,6 @@ export const enDictionary = {
     'External pages may contain later story information, including in their titles. Opening a source leaves this wiki’s spoiler protection.',
   'credits.fandomTerms': 'Fandom licensing and attribution',
   'credits.fandomTermsIt': 'Fandom licensing in Italian',
-  'credits.fillerList': 'AnimeFillerList: classification reference',
   'credits.referencesTitle': 'Documented references',
   'credits.bookmark':
     'Only references to material open at your bookmark are listed. The license beside a source refers to its text, not to the whole archive.',
@@ -188,14 +187,12 @@ export const enDictionary = {
   'credits.episode': 'Episode {episode}',
   'credits.scope.dossier': 'Character fields in the reviewed sample',
   'credits.scope.chronicle': 'Story entry in the reviewed sample',
-  'credits.scope.filler': 'Release title and summary in the reviewed sample',
   'credits.scope.title': 'Release title only',
   'credits.scope.summary': 'Replacement summary',
   'credits.factCheck':
     'Reference for the documented comparison or fact check. The historical writing process is not established; no claim of independent authorship or new content license is made.',
   'credits.replacement':
     'Both summaries were replaced with brief accounts of facts checked against the official synopsis. The synopsis was not translated in full. No new content license is assigned.',
-  'credits.source.official': 'ONE PIECE.com: official episode synopsis',
   'credits.noOpenLicense': 'No open-content permission established.',
 
   'privacy.title': 'Privacy and cookies',
@@ -335,7 +332,6 @@ export const enDictionary = {
   'places.firstSeen.episode': 'First seen in episode {threshold}',
   'places.firstSeen.season': 'First seen in {threshold}',
   'places.firstSeen.chapter': 'First seen in chapter {threshold}',
-  'places.sea': 'Sea',
   'places.form': 'Type',
   'places.arc': 'Arc',
   'places.landmark': 'Landmark',
@@ -349,7 +345,6 @@ export const enDictionary = {
   'places.noMatch': 'No open place matches “{query}”.',
   'places.noneShown': 'No open place matches these filters.',
   'places.showAll': 'Show all',
-  'places.allSeas': 'All seas',
   'places.allForms': 'All types',
   'places.saga': 'Saga',
   'places.allSagas': 'All sagas',
@@ -385,7 +380,6 @@ export const enDictionary = {
   'form.archipelago': 'Archipelago',
   'form.sea': 'Stretch of sea',
   'form.ship': 'Ship',
-  'form.train': 'Sea train',
   'form.prison': 'Prison',
   'form.fortress': 'Fortress',
 
