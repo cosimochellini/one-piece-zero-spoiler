@@ -29,16 +29,13 @@
  *      has not reached, fails the gate. One Piece's are its dictionaries'.
  *      The server holds the tables statically, so these are client canaries
  *      only.
- *   5. A byte budget. The canaries name every module now, but the budget
- *      still catches bulk arriving through a shape neither pattern matches.
- *
  * The SSR manifest also proves that every series archive enters through a
  * dynamic import, with no canary-bearing data in another runtime entry's
  * static dependency closure.
  *
  * Exit codes:
  *   0  the archive stayed on the server
- *   1  archive prose in a client chunk, or the budget exceeded
+ *   1  archive prose in a client chunk
  *   2  nothing to check: no build, or no canary could be read
  */
 import console from 'node:console'
@@ -55,143 +52,6 @@ const EXIT_UNUSABLE = 2
 
 /** How much of a canary to quote when one turns up. */
 const QUOTE_LENGTH = 60
-
-/** How many of the largest chunks to name when the budget is blown. */
-const WORST_CHUNKS = 5
-
-/**
- * The ceiling on everything the browser downloads to run the site. Today's
- * build is ~449 KB, of which ~318 KB is React itself; the archive alone was
- * 599 KB of the 1,049 KB build this replaced. The headroom is for ordinary
- * growth, not for a saga. Raised from 520 KB to 530 KB on 2026-10-12, when
- * main stood at ~517 KB and the bookmark dialog redesign added ~4.5 KB of its
- * own code. Raised to 540 KB on 2026-10-17, when main stood at ~529 KB and the
- * living fog tile of the fruits redesign (#661) added ~4.4 KB. Raised to
- * 545 KB on 2026-10-17, when main stood at ~536.4 KB and the fruits control
- * bar (#663) added ~7.8 KB: the generic segmented control and chip group, the
- * pinned bar that folds on a phone, and the search params in the address.
- * 545 KB is the ceiling the owner set for this raise. Raised to 549.75 KB
- * on 2026-10-17, when main stood at ~545.0 KB and the saga marquee over the
- * fruits album (#664) added ~3.7 KB: the rail of tiles, the lead's glow and
- * the line that points back to the last fruit. The new ceiling is the
- * measured build plus ~1 KB, under the 555 KB the owner allowed. Raised to
- * 552.25 KB on 2026-10-17, when main stood at ~548.7 KB and the faction
- * labels for the fruit eaters (#666) added ~2.5 KB to both dictionaries,
- * which ship to the browser. Again the measured build plus ~1 KB, under 555 KB.
- * Raised to 555.75 KB on 2026-10-17, when main stood at ~551.2 KB and the
- * saga view of the fruits album (#665) added ~3.5 KB: the saga groups, the
- * view switch's second option, the marquee's link to the whole saga, the
- * page's line for the saga view and their words in both dictionaries. The
- * grouping itself is the server's. Again the measured build plus ~1 KB,
- * under the 558 KB allowed for this raise. Raised to 557.75 KB on 2026-10-17,
- * when main stood at ~554.7 KB and the faction view (#667) added ~2.1 KB: the
- * view switch's third option, the eater a faction's tile shows, the second
- * copy of a fruit kept from travelling, and the view's words in both
- * dictionaries. The grouping itself is the server's, and the saga view's
- * groups became the generic ones both views draw. Again the measured build
- * plus ~1 KB, under the 562 KB allowed for this raise. Raised to 565.9 KB on
- * 2026-10-17, when main stood at ~556.8 KB and the fruit page's stage (#668)
- * added ~8.1 KB: the stage with its glow and its pen, the fruit before and
- * after with its arrow keys and its swipe, the history, the saga's rail, and
- * their words in both dictionaries (~1.1 KB). The history, the neighbours
- * and the rail are the server's. Again the measured build plus ~1 KB, under
- * the 566 KB allowed for this raise. Raised to 567.6 KB on 2026-10-18, when
- * main stood at ~565.1 KB and the switch between a fruit's drawings (#669)
- * added ~1.4 KB: the drawings stacked on the stage with their cross-fade,
- * the switch (the album's own `ChoiceGroup`, now a chunk both pages share),
- * and its four words in both dictionaries. Which drawings the reader has
- * reached is the server's. Again the measured build plus ~1 KB, under the
- * 570 KB allowed for this raise. Raised to 581.4 KB on 2026-10-18, when main
- * stood at ~566.3 KB and the sea chart that opens the places page (#674)
- * added ~14.3 KB: the chart drawn across and upright, its geometry (the
- * world, the legs, the fog tail, where a label goes), the ships on the
- * route, the stops with their arrow keys, and six new keys in both
- * dictionaries. Where each open stop sits is the server's; a covered stop
- * has no point to send. The measured build plus ~1 KB, as the epic (#671)
- * allows each of its pull requests. Raised to 588.1 KB on 2026-10-18, when
- * main stood at ~580.6 KB and a page for every place (#673) added ~6.5 KB:
- * the new route (the plate and entry, the stretch of the chart around the
- * place, the drawings in a row, the stops either side), the short list of
- * links that replaced the stacked entries, and sixteen new keys in both
- * dictionaries. The stacked log it replaces left the bundle. Again the
- * measured build plus ~1 KB, as the epic allows. Raised to 598 KB on
- * 2026-10-18, when main stood at ~587.2 KB and the index under the chart
- * (#675) added ~9.9 KB: the search, the layout switch and the sea, type
- * and saga pickers in the address, the places by sea as rows or
- * plates, the chart lighting what they keep, and eighteen new keys in both
- * dictionaries. The short list of links it replaces left the bundle. The
- * measured build plus ~1 KB, as the epic allows. Raised to 606.2 KB on
- * 2026-10-18, when main stood at ~597.2 KB and the peek on the sea chart
- * (#679) added ~8.0 KB: the popover that is a sheet on a phone, its hover,
- * focus, tap and Esc handling, the veiled peek of a stop under fog, the
- * ships as buttons with a peek of their own, and two new keys in both
- * dictionaries. The measured build plus ~1 KB, as the epic allows.
- * Raised to 622.6 KB on 2026-10-19, when main stood at ~605.5 KB and the
- * world map (#728) added ~16.1 KB: the world in Oda's layout (the Red Line's
- * ridges, Reverse Mountain, waves, the Sea King, the compass), the route as
- * curves with Luffy's own line, the window that zooms and pans across, the
- * names of the stops and the sagas and which of them fit at each zoom, and
- * six new keys in both dictionaries. The list layout of the index left the
- * bundle. Each island's outline is the server's, sent with its open stop.
- * The measured build plus ~1 KB. Raised to 625.5 KB on 2026-10-20 for the
- * unofficial-project footer (#723): bilingual rights and contact guidance,
- * source/contact links and explicit unofficial social descriptions. The
- * measured client build is 624,448 bytes; the ceiling keeps ~1 KB headroom.
- * No archive data or drawings move to the client. Raised to 641.25 KB on
- * 2026-10-20 for the bilingual privacy notice (#722): public technical-cookie,
- * hosting and rights guidance, its route and footer link. The measured build
- * is 640,233 bytes; the ceiling retains ~1 KB headroom. The added prose is
- * public policy, not archive records or drawings; all leak canaries remain.
- * Raised for #728 on 2026-10-22: reached-label placement and leader lines.
- * The measured build is 642,931 bytes; keep 1 KB headroom. Server payloads
- * are unchanged, and no covered names, artwork or coordinates are added.
- * Raised for #721 on 2026-10-23: public bilingual source/license notices
- * and their route. Measured client: 653,301 bytes plus 1 KB headroom.
- * Record-specific source URLs remain server-only and have their own canaries.
- * Raised for #753 on 2026-10-24: series-first routing, shared hub/legal shells,
- * selected-series navigation and public description RPCs. The measured client
- * build is 662,191 bytes; the ceiling retains 1 KB headroom. No archive records
- * or drawings enter the client, and the emitted SSR graph is now checked to
- * keep each archive behind its own dynamic import. Raised for #754 on
- * 2026-10-24: the hub's stages (each series in its own theme, its straw-hat
- * drawing, the announced Hunter x Hunter card), the hub's seven keys and the
- * shared footer's three, in both dictionaries. The measured client build is
- * 666,769 bytes; the ceiling retains 1 KB headroom. The hub sends counts and the reader's own
- * bookmarks only; no record, name or record drawing enters the client.
- * Raised for #727 on 2026-10-24: the privacy notice names Cloudflare as the
- * host, keeps the old Netlify address for now and adds two source links, in
- * both dictionaries. The measured client build is 667,836 bytes; the ceiling
- * retains 1 KB headroom. No archive data or drawings move to the client.
- * Raised for #776 and #778 on 2026-10-24: the browser asks for the
- * character shelves and the fruit album once the page has hydrated. The
- * shelves come as plain JSON; the album comes through the loader on a
- * navigation, and is filed under the bookmark the server read. Each offers
- * to ask again when its call fails, and puts a reload back where it was
- * once it lands; the fruits' control bar is drawn from counts until then.
- * The measured client build is 672,116 bytes; the ceiling retains 1 KB
- * headroom. Both still come from the server at the reader's bookmark; no
- * archive data moves to the client. Raised for #777 on 2026-10-24: the
- * featured crests past the tenth draw through `useDrawing`. The measured
- * client build is 672,215 bytes; the ceiling retains 1 KB headroom. The
- * strokes still come from the server, only for records the reader has
- * reached.
- * Raised for #781 on 2026-10-24: the places page draws the chart in the
- * orientation the window's width asks for and the index once the page has
- * hydrated, with the shelves' scroll-back hook moved to share. The measured
- * client build is 672,689 bytes; the ceiling retains 1 KB headroom. The
- * index's data was in the payload already; nothing new reaches the client.
- * Raised for #780 on 2026-10-24: the fruit album and the deferred drawings
- * are read back from plain JSON, and a failed response rejects as a failed
- * call. The measured client build is 672,771 bytes; the ceiling retains 1 KB
- * headroom. The payloads are the server's, unchanged; nothing new reaches the
- * client. Raised for #795 on 2026-10-25: the places pages print a series'
- * place words from the labels the server sends with them, One Piece's from
- * the dictionaries, and draw the world map only for a series that has one,
- * the index served in full without it. The measured client build is 673,741
- * bytes; the ceiling retains 1 KB headroom. One Piece's payloads are
- * unchanged; no other series' words reach the client.
- */
-export const MAX_CLIENT_BYTES = 674_741
 
 /** Where every series' folder is. */
 const SERIES_DIR = 'src/data/series'
@@ -275,7 +135,7 @@ export function slugsFrom(source) {
  * @param {string} clientDir The build's client directory.
  * @returns {{bytes: number, name: string, text: string}[]} One per script.
  */
-function clientChunks(clientDir) {
+export function clientChunks(clientDir) {
   const assets = path.join(clientDir, 'assets')
 
   return readdirSync(assets)
@@ -311,39 +171,19 @@ export function judge(chunks, canaries) {
   })
   const total = chunks.reduce((sum, chunk) => sum + chunk.bytes, 0)
 
-  return {
-    found,
-    ok: found.length === 0 && total <= MAX_CLIENT_BYTES,
-    total,
-    unreadable,
-  }
+  return { found, ok: found.length === 0, total, unreadable }
 }
 
 /**
  * Says what went wrong, loudly enough to act on.
  * @param {ReturnType<typeof judge>} verdict What the gate made of the build.
- * @param {{bytes: number, name: string}[]} chunks The scripts, for the budget.
  * @returns {void}
  */
-function report(verdict, chunks) {
+function report(verdict) {
   for (const hit of verdict.found) {
     console.error(
       `archive-gate: ${hit.file} reached the browser — found in dist/client/assets/${hit.chunk}\n  “${hit.phrase.slice(0, QUOTE_LENGTH)}…”`,
     )
-  }
-
-  if (verdict.total <= MAX_CLIENT_BYTES) {
-    return
-  }
-
-  console.error(
-    `archive-gate: client scripts total ${verdict.total.toLocaleString('en-GB')} bytes, over the ${MAX_CLIENT_BYTES.toLocaleString('en-GB')} ceiling.`,
-  )
-  const worst = chunks
-    .toSorted(byValue('bytes', byNumber({ desc: true })))
-    .slice(0, WORST_CHUNKS)
-  for (const chunk of worst) {
-    console.error(`  ${String(chunk.bytes).padStart(9)}  ${chunk.name}`)
   }
 }
 
@@ -566,7 +406,7 @@ async function main() {
   }
 
   if (!verdict.ok) {
-    report(verdict, chunks)
+    report(verdict)
 
     return EXIT_FOUND
   }

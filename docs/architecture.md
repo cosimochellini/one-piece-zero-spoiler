@@ -637,9 +637,21 @@ places list, read when the gate runs so it cannot go stale. It never searches
 for a key such as `revealedAtEpisode`, which is legitimately present on a
 covered record. The drawing modules contain no sentences; they are keyed by
 record id, and a record's id is its name slug, so the gate looks for those ids
-instead, since that is how a leak there would show up. A byte limit on the whole
-client payload catches anything large that neither pattern matches. ESLint
-catches the same mistake earlier, at the import.
+instead, since that is how a leak there would show up. ESLint catches the same
+mistake earlier, at the import.
+
+CI also runs `scripts/client-budget.mjs` on pull requests. It builds the event's
+exact base commit in a separate worktree with its own dependencies and compares
+the total raw bytes of the client JavaScript assets with the head build. Growth
+up to 2,048 bytes passes. Larger growth needs a nonempty line
+`client-budget: <reason>` in the PR body; editing that body reruns CI. The
+report names both totals and their difference, including when growth is
+accepted. This acceptance only affects the size check: all archive canaries and
+server isolation checks still block leaks. On `main` and in a local
+`npm run check`, there is no base build, so only the size comparison is skipped.
+To compare two local builds, run
+`PR_BODY='client-budget: reason if needed' node scripts/client-budget.mjs /path/to/base/dist/client dist/client`.
+The former fixed ceiling's dated raises remain in git history.
 
 fallow checks the structure of the codebase instead, with every rule that
 applies set to error: thirteen zones with a declared import direction between
