@@ -127,7 +127,10 @@ export interface SeriesPageMatch {
 /**
  * The head of one of a series' own indexes, or nothing for a 404, which
  * keeps the shell's title: a prefix that is not a language, or a page the
- * series does not declare.
+ * series does not declare. The router still runs this head when the route's
+ * `beforeLoad` answers 404: without the `hasPage` branch a served
+ * `/hunter-x-hunter/en/fruits` was titled "Devil fruits" (checked in a
+ * preview build with Hunter x Hunter open).
  */
 export function seriesPageHead(
   page: SeriesPage,
