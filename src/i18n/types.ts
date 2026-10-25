@@ -85,9 +85,9 @@ export type OwnCopy = Partial<Record<SharedKey, never>>
  * A series' copy in one locale, as the server sends it with the series'
  * pages: its slug, its name (which fills `{series}`) and its words.
  */
-export interface SeriesCopy {
+export interface SeriesCopy<S extends SeriesSlug = SeriesSlug> {
   name: string
-  slug: SeriesSlug
+  slug: S
   words: Record<string, string>
 }
 

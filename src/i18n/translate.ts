@@ -71,7 +71,7 @@ export function translate(
  */
 export function translatorFor<S extends SeriesSlug = never>(
   locale: Locale,
-  copy?: SeriesCopy,
+  copy?: SeriesCopy<S>,
 ): Translate<S> {
   if (copy === undefined) {
     const dictionary = getDictionary(locale)

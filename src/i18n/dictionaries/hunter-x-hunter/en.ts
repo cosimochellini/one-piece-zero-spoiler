@@ -9,7 +9,7 @@ import type { OwnCopy } from '~/i18n/types'
 export const hunterXHunterEn = {
   'characters.featuredLede': 'The key characters of the story.',
   'credits.coverage':
-    'No Hunter x Hunter entry has a documented source review yet, so none is listed below. Its episode and chapter numbers are checked against the English Hunter x Hunter Wiki, and its Italian names against Italian Wikipedia.',
+    'No Hunter x Hunter entry has a documented source review yet, so none is listed below. Hunter x Hunter’s episode and chapter numbers are checked against the English Hunter x Hunter Wiki, and its Italian names against Italian Wikipedia.',
   'credits.otherTerms':
     'Facts and citations taken from a source do not grant permission to copy its prose, images or an entire compilation. Official titles and Hunter x Hunter material are not offered as project-owned content.',
   'credits.source.wiki-en':

@@ -332,6 +332,22 @@ describe('series copy canaries', () => {
   })
 })
 
+describe('a series copy with nothing to look for', () => {
+  it('is unreadable rather than clean', () => {
+    const canaries = copyCanaries(
+      { 'no-words': { en: { 'site.description': 'Places' }, it: {} } },
+      [{ 'nav.places': 'Places' }],
+    )
+
+    expect(canaries).toStrictEqual([
+      { file: 'src/i18n/dictionaries/no-words', phrase: null },
+    ])
+    expect(
+      judge([chunk('index.js', 'export {}')], canaries).unreadable,
+    ).toStrictEqual(['src/i18n/dictionaries/no-words'])
+  })
+})
+
 describe('source attribution boundaries', () => {
   it('checks the official source every series’ review cites', async () => {
     const { SERIES } = await importArchive('data/series/index.ts')

@@ -112,7 +112,7 @@ export interface NamedPage<S extends SeriesSlug = never> {
 export function describeNamedPage<S extends SeriesSlug = never>(
   page: NamedPage<S>,
 ): HeadTags {
-  const t = translatorFor<SeriesSlug>(page.locale, page.copy)
+  const t = translatorFor(page.locale, page.copy)
 
   return describePage({
     head: { title: t(page.titleKey), description: t(page.descriptionKey) },
@@ -170,7 +170,7 @@ export interface RecordPage {
  * against the reader's bookmark, and are passed through untouched.
  */
 function describeRecordPage(page: RecordPage): HeadTags {
-  const t = translatorFor<SeriesSlug>(page.locale, page.copy)
+  const t = translatorFor(page.locale, page.copy)
 
   return describePage({
     head: page.head,

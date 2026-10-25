@@ -3,7 +3,6 @@ import { type ReactElement, useCallback, useEffect } from 'react'
 
 import { isLocale, type Locale } from '~/i18n/locales'
 import { translatorFor } from '~/i18n/translate'
-import type { SeriesSlug } from '~/i18n/types'
 import { readPlain } from '~/lib/plain'
 import { type SagaTable, SagaTableContext } from '~/lib/progress/sagaLabel'
 import { DrawingsContext } from '~/lib/view/drawings'
@@ -28,7 +27,7 @@ export const Route = createFileRoute('/$series/$locale')({
       return {}
     }
     const { copy, locale } = match.context
-    const t = translatorFor<SeriesSlug>(locale, copy)
+    const t = translatorFor(locale, copy)
     return {
       meta: [
         { title: t('site.title') },

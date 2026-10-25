@@ -3,7 +3,7 @@ import { type ReactElement, type ReactNode, useMemo } from 'react'
 import { LocaleContext, type LocaleContextValue } from './LocaleContext'
 import type { Locale } from './locales'
 import { translatorFor } from './translate'
-import type { SeriesCopy, SeriesSlug } from './types'
+import type { SeriesCopy } from './types'
 
 /**
  * The locale comes from the URL segment the router matched, not from a
@@ -32,7 +32,7 @@ export function LocaleProvider({
     () => ({
       locale,
       series: copy?.slug ?? null,
-      translate: translatorFor<SeriesSlug>(locale, copy),
+      translate: translatorFor(locale, copy),
     }),
     [locale, copy],
   )

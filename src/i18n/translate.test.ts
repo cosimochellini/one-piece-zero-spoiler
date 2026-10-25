@@ -215,7 +215,7 @@ describe('translate', () => {
 
 describe('translatorFor', () => {
   it('names the series a page belongs to', () => {
-    const t = translatorFor<'hunter-x-hunter'>('it', {
+    const t = translatorFor('it', {
       slug: 'hunter-x-hunter',
       name: 'Hunter x Hunter',
       words: COPIES['hunter-x-hunter'].it,
@@ -223,6 +223,21 @@ describe('translatorFor', () => {
 
     expect(t('hero.headline')).toBe('La wiki di Hunter x Hunter senza spoiler')
     expect(t('onboarding.tailTitle')).toBe('Dopo l’Esame Hunter')
+  })
+
+  it('types its keys by the series of the copy it is given', () => {
+    const copy = {
+      slug: 'hunter-x-hunter' as const,
+      name: 'Hunter x Hunter',
+      words: COPIES['hunter-x-hunter'].en,
+    }
+
+    // @ts-expect-error -- a One Piece translate cannot be built on another copy
+    expect(translatorFor<'one-piece'>('en', copy)).toBeTypeOf('function')
+    // @ts-expect-error -- nor read a One Piece key from it (#791)
+    expect(() => translatorFor('en', copy)('fruits.title')).toThrow(
+      'fruits.title',
+    )
   })
 
   it('reads only the shared copy without a series', () => {

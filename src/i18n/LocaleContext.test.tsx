@@ -6,7 +6,12 @@ import { useThreshold } from '~/lib/progress/BookmarkContext'
 import { HUNTER_X_HUNTER_SERIES, ONE_PIECE_SERIES } from '~/lib/progress/series'
 import { copyOf } from '~/server/copy.server'
 
-import { useLocale, useSeriesOnlyT, useSeriesT, useT } from './LocaleContext'
+import {
+  type useLocale,
+  useSeriesOnlyT,
+  useSeriesT,
+  useT,
+} from './LocaleContext'
 import { LocaleProvider } from './LocaleProvider'
 import type { CommonKey, SeriesCopies, TranslationKey } from './types'
 
@@ -60,13 +65,6 @@ function UncheckedOnePieceThreshold(): string {
     revealedAtChapter: 1,
     revealedAtEpisode: 1,
   })
-}
-
-/** Never rendered: the context has no translate of its own to reach for. */
-function KeyThroughTheContext(): unknown {
-  const context = useLocale()
-  // @ts-expect-error -- the context hands out no untyped translate (#791)
-  return context.t
 }
 
 /** Never rendered: a common key needs a page of a series. */
@@ -146,7 +144,11 @@ describe('useSeriesT', () => {
     expect(OnePieceKeyUnderHunter).toBeTypeOf('function')
     expect(SeriesKeyAsShared).toBeTypeOf('function')
     expect(CommonKeyWithoutSeries).toBeTypeOf('function')
-    expect(KeyThroughTheContext).toBeTypeOf('function')
+
+    // The context hands out no untyped translate (#791).
+    expectTypeOf<ReturnType<typeof useLocale>>().not.toHaveProperty('t')
+    expectTypeOf<ReturnType<typeof useLocale>>().not.toHaveProperty('translate')
+
     expect(UncheckedOnePieceKey).toBeTypeOf('function')
     expect(UncheckedOnePieceThreshold).toBeTypeOf('function')
 

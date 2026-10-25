@@ -370,10 +370,11 @@ export function placeWordCanaries(series, shipped = []) {
  * One canary per word of every series' own copy that is distinct enough to
  * look for and is not also in the shared copy, which every page ships: "Your
  * bookmark" is a word of One Piece's filler strip and part of a shared
- * sentence.
+ * sentence. A series left with none is one unreadable canary, so the gate
+ * exits as unusable rather than vouching for a copy it cannot look for.
  * @param {Record<string, Record<string, Record<string, string>>>} copies Each series' copy, by slug and locale.
  * @param {Record<string, string>[]} shared The shared dictionaries.
- * @returns {{file: string, phrase: string}[]} What no client chunk may hold.
+ * @returns {{file: string, phrase: null | string}[]} What no client chunk may hold.
  */
 export function copyCanaries(copies, shared) {
   const common = shared.flatMap((words) => Object.values(words))
@@ -383,9 +384,15 @@ export function copyCanaries(copies, shared) {
     const phrases = Object.values(locales).flatMap((words) =>
       Object.values(words),
     )
-    return [...new Set(phrases)]
-      .filter((phrase) => DISTINCT_WORD.test(phrase) && !isShared(phrase))
-      .map((phrase) => ({ file: `src/i18n/dictionaries/${slug}`, phrase }))
+    const file = `src/i18n/dictionaries/${slug}`
+    const kept = [...new Set(phrases)].filter(
+      (phrase) => DISTINCT_WORD.test(phrase) && !isShared(phrase),
+    )
+
+    // None left is a copy the gate cannot look for: unreadable, not clean.
+    return kept.length === 0 ?
+        { file, phrase: null }
+      : kept.map((phrase) => ({ file, phrase }))
   })
 }
 

@@ -55,7 +55,7 @@ export function translatorOf(
   if (cached !== undefined) {
     return cached
   }
-  const t = translatorFor<SeriesSlug>(locale, copyOf(series, locale))
+  const t = translatorFor(locale, copyOf(series, locale))
   translators.set(key, t)
   return t
 }
