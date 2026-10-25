@@ -265,13 +265,16 @@ arc|character|place`; `--saga` is One Piece's), on the series' own paper.
   chapter it adapts is `lastAdaptedChapter` in `src/data/series/index.ts`
   (339 today). A stage the anime never shows is filed at episode 148 with
   `source: 'manga'` and its true chapter, as the Kakin arc is filed, so an
-  anime viewer who has finished never sees it. At most one such stage per
-  record, and a record filed at episode 148 is not redrawn; anything else
-  waits for an owner ruling. Anything the manga alone tells declares its
-  chapter wherever it is filed, and so does anything at the last episode
-  but an anime-only fact. Anything the 2011 anime omits at or below
-  `lastAdaptedChapter` also takes `source: 'manga'`. The test cannot see
-  that case, so review checks it by hand.
+  anime viewer who has finished never sees it.
+  - **The test enforces:** a record or fact past `lastAdaptedChapter` is
+    `source: 'manga'` at episode 148; anything the manga alone tells
+    declares its chapter wherever it is filed; at episode 148 only an
+    anime-only fact goes without one.
+  - **Review checks by hand:** at most one such stage per record; a record
+    filed at episode 148 is not redrawn; anything the 2011 anime omits at
+    or below `lastAdaptedChapter` also takes `source: 'manga'`. A
+    manga-only fact on an anime-only record, and anything else outside
+    these rules, waits for an owner ruling.
 - **Filing the first redrawing.** The series has none yet, so the first one
   files the timeline: export `REDRAWINGS` (`Redrawings`, keyed by record id)
   from `art/index.ts`, and in `hunter-x-hunter/archive.ts` pass it to

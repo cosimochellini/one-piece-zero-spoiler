@@ -140,6 +140,60 @@ function unpinned(
   ].filter((breach) => breach !== false)
 }
 
+/** A record as the manga-only rules read it. */
+type Filed = Pick<
+  Entity,
+  'id' | 'revealedAtChapter' | 'revealedAtEpisode' | 'source'
+>
+
+/** Where a series' dial ends, and where its anime does. */
+interface RecordRules {
+  /** The last episode of the dial. */
+  ceiling: number
+  /** The last chapter of the dial. */
+  chapterCeiling: number
+  /** The last chapter the anime adapts, for a series whose anime has ended. */
+  last?: number
+}
+
+/**
+ * What breaks the manga-only rules for records: one past the anime's last
+ * chapter is the manga's alone, filed at the last episode; and a last
+ * adapted chapter, when there is one, sits below the dial with some record
+ * past it, or the rule guards nothing.
+ */
+function recordBreaches(records: Filed[], rules: RecordRules): string[] {
+  const { ceiling, last = Infinity } = rules
+  const past = records.filter((record) => record.revealedAtChapter > last)
+
+  return [
+    ...past.flatMap(({ id, revealedAtEpisode, source }) =>
+      [
+        source !== 'manga' && `${id}: past the anime, not the manga's`,
+        revealedAtEpisode !== ceiling
+          && `${id}: past the anime, not at its last episode`,
+      ].filter((breach) => breach !== false),
+    ),
+    ...deadRule(past, rules),
+  ]
+}
+
+/** Why a last adapted chapter would guard nothing. */
+function deadRule(
+  past: Filed[],
+  { chapterCeiling, last }: RecordRules,
+): string[] {
+  if (last === undefined) {
+    return []
+  }
+
+  return [
+    last >= chapterCeiling && 'the last adapted chapter is not below the dial',
+    past.every(({ source }) => source !== 'manga')
+      && 'no record of the manga alone past the last adapted chapter',
+  ].filter((breach) => breach !== false)
+}
+
 describe('the manga-only rules', () => {
   // Episode 10 is the last; the anime adapts up to chapter 5, and a chapter
   // left out follows the episode at half its number.
@@ -157,12 +211,12 @@ describe('the manga-only rules', () => {
       }),
     }),
   }
-  const owner: Gated = { revealedAtEpisode: 1, revealedAtChapter: 1 }
-  const told = (label: string, entry: Omit<Dated<unknown>, 'value'>): Told => ({
-    entry: { ...entry, value: null },
-    label,
-    owner,
-  })
+  const both: Gated = { revealedAtEpisode: 1, revealedAtChapter: 1 }
+  const told = (
+    label: string,
+    entry: Omit<Dated<unknown>, 'value'>,
+    owner: Gated = both,
+  ): Told => ({ entry: { ...entry, value: null }, label, owner })
 
   it('names each breach, and nothing in a clean entry', () => {
     expect(
@@ -175,6 +229,9 @@ describe('the manga-only rules', () => {
           told('clean', { episode: 10, chapter: 8, source: 'manga' }),
           told('anime', { episode: 10, source: 'anime' }),
           told('adapted', { episode: 6, chapter: 3 }),
+          told('off', { episode: 4, source: 'manga' }),
+          // The source is the record's, so the gate's, not the entry's.
+          told('owned', { episode: 6 }, { ...both, source: 'manga' }),
         ],
         rules,
       ),
@@ -183,7 +240,69 @@ describe('the manga-only rules', () => {
       'bare: at the last episode with no chapter',
       'early: past the anime, not at its last episode',
       "unpinned: the manga's, with no chapter",
+      "off: the manga's, with no chapter",
+      "owned: the manga's, with no chapter",
     ])
+  })
+
+  it('holds a series whose anime runs on to the chapter rules alone', () => {
+    const { ceiling, gateOf } = rules
+
+    expect(
+      mangaOnlyBreaches([told('free', { episode: 4 })], { ceiling, gateOf }),
+    ).toStrictEqual([])
+  })
+
+  it('names each record that breaks them, and nothing in a clean one', () => {
+    expect(
+      recordBreaches(
+        [
+          { id: 'unsourced', revealedAtEpisode: 10, revealedAtChapter: 7 },
+          {
+            id: 'early',
+            revealedAtEpisode: 4,
+            revealedAtChapter: 7,
+            source: 'manga',
+          },
+          {
+            id: 'clean',
+            revealedAtEpisode: 10,
+            revealedAtChapter: 7,
+            source: 'manga',
+          },
+          { id: 'adapted', revealedAtEpisode: 6, revealedAtChapter: 3 },
+        ],
+        { ceiling: 10, chapterCeiling: 9, last: 5 },
+      ),
+    ).toStrictEqual([
+      "unsourced: past the anime, not the manga's",
+      'early: past the anime, not at its last episode',
+    ])
+  })
+
+  it('finds a last adapted chapter that guards nothing', () => {
+    const adapted = [
+      { id: 'adapted', revealedAtEpisode: 6, revealedAtChapter: 3 },
+    ]
+
+    expect(
+      recordBreaches(adapted, { ceiling: 10, chapterCeiling: 5, last: 5 }),
+    ).toStrictEqual([
+      'the last adapted chapter is not below the dial',
+      'no record of the manga alone past the last adapted chapter',
+    ])
+    expect(
+      recordBreaches(
+        [{ id: 'unsourced', revealedAtEpisode: 10, revealedAtChapter: 7 }],
+        { ceiling: 10, chapterCeiling: 9, last: 5 },
+      ),
+    ).toStrictEqual([
+      "unsourced: past the anime, not the manga's",
+      'no record of the manga alone past the last adapted chapter',
+    ])
+    expect(
+      recordBreaches(adapted, { ceiling: 10, chapterCeiling: 5 }),
+    ).toStrictEqual([])
   })
 })
 
@@ -298,33 +417,21 @@ describe.each(LOADED_SERIES)(
       // record, a fact or a visit filed there with no source would show them
       // a chapter the anime never adapts. A series whose anime runs on has
       // no last adapted chapter, and only the chapter rules apply to it.
-      const last = lastAdaptedChapter ?? Infinity
-      const records = entities
-        .filter((entity) => entity.revealedAtChapter > last)
-        .filter(
-          (entity) =>
-            entity.source !== 'manga'
-            || entity.revealedAtEpisode !== archive.series.episodeCeiling,
-        )
-        .map((entity) => entity.id)
-      const mangaOnly = entities.some(
-        (entity) =>
-          entity.source === 'manga' && entity.revealedAtChapter > last,
-      )
+      const { chapterCeiling, episodeCeiling: ceiling } = archive.series
+      const last = lastAdaptedChapter !== undefined && {
+        last: lastAdaptedChapter,
+      }
 
-      expect(records).toStrictEqual([])
+      expect(
+        recordBreaches(entities, { ceiling, chapterCeiling, ...last }),
+      ).toStrictEqual([])
       expect(
         mangaOnlyBreaches(toldOf(archive), {
-          ceiling: archive.series.episodeCeiling,
+          ceiling,
           gateOf: archive.gateOf,
-          ...(lastAdaptedChapter !== undefined && { last: lastAdaptedChapter }),
+          ...last,
         }),
       ).toStrictEqual([])
-      // The rule is alive: it is set below the dial, and some record is past it.
-      expect(
-        lastAdaptedChapter === undefined
-          || (lastAdaptedChapter < archive.series.chapterCeiling && mangaOnly),
-      ).toBe(true)
     })
 
     it('reads every redrawing its art module files', async () => {
