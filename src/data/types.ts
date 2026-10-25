@@ -389,6 +389,8 @@ export interface SeriesArchive<V extends Vocabulary = Vocabulary> {
   chart: Entity[]
   chartPointOf: (id: string) => ChartPoint | null
   chartWith: (entity: Entity) => Entity[]
+  /** The documented source review of the series, if it has had one. */
+  credits?: CreditSample
   datedOf: <F extends Field>(owner: Entity, field: F) => Opened<Fields[F]>[]
   dossierOf: (
     entity: Entity,
@@ -422,6 +424,29 @@ export interface SeriesArchive<V extends Vocabulary = Vocabulary> {
   series: Series
   stories: FiledStory[]
   timelines: OwnedTimeline[]
+}
+
+/**
+ * The bounded source review of a series (#719): the entries it covered and
+ * the audit files (`docs/content-provenance/sources.json`) of the revisions it
+ * read. A sample, not provenance for the whole archive. Server-only.
+ */
+export interface CreditSample {
+  /** Story entries reviewed: their character and the episodes they are at. */
+  chronicles: { character: string; episodes: number[] }
+  /** Characters whose fields were reviewed, with their wiki pages' files. */
+  dossiers: { en: string; id: string; it: string }[]
+  /** The audit files of an episode's wiki pages, in both languages. */
+  episodeFiles: (episode: number) => string[]
+  /** Filler-guide rows reviewed, by episode. */
+  filler: number[]
+  /** A film reviewed: the episode it is watched after, and its files. */
+  film?: { after: number; en: string; it: string }
+  /**
+   * An episode whose summary was replaced with facts checked against the
+   * official synopsis, at `url`.
+   */
+  replaced?: { episode: number; url: string }
 }
 
 /** One arc shelf and the characters first met in it. */

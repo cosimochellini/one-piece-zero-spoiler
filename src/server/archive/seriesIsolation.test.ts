@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 
 import { withFeatures } from '~/data/features'
 import type { Entity, SeriesArchive } from '~/data/types'
@@ -9,6 +9,12 @@ import { entityForHandle, handleOf } from './handle.server'
 import { headFor } from './head.server'
 import { readerFor } from './reader.server'
 import { sagaLabels } from './sagaLabels.server'
+
+// Imported inside the factory, which runs before this file's imports do.
+vi.mock(import('~/server/copy.server'), async (importOriginal) => {
+  const { withOtherCopy } = await import('~/test/otherSeries')
+  return withOtherCopy(await importOriginal())
+})
 
 const original = ONE_PIECE_ARCHIVE.entities[0]
 if (original === undefined) {

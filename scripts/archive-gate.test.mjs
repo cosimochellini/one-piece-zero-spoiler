@@ -14,6 +14,7 @@ import { describe, expect, it, vi } from 'vitest'
 import {
   canariesOf,
   canaryFrom,
+  copyCanaries,
   EXTRA,
   judge,
   placeWordCanaries,
@@ -299,6 +300,33 @@ describe('the verdict the gate reaches', () => {
     expect(verdict.unreadable).toStrictEqual([
       'src/data/series/one-piece/places.ts',
     ])
+  })
+})
+
+describe('series copy canaries', () => {
+  it('looks for every series’ own words, and never for a shared one', async () => {
+    const { COPIES } = await importArchive('server/copy.server.ts')
+    const { enDictionary } = await importArchive('i18n/dictionaries/en.ts')
+    const { itDictionary } = await importArchive('i18n/dictionaries/it.ts')
+    const canaries = copyCanaries(COPIES, [enDictionary, itDictionary])
+    const phrases = canaries.map(({ phrase }) => phrase)
+
+    // One Piece's factions and Hunter x Hunter's demo, in both languages.
+    expect(phrases).toContain('Nine Red Scabbards')
+    expect(phrases).toContain('Kozuki alliance')
+    expect(phrases).toContain('Dopo l’Esame Hunter')
+    // A word the shared copy ships on every page is no canary.
+    expect(phrases).not.toContain('Places')
+    expect(phrases).not.toContain(enDictionary['nav.places'])
+    expect(
+      canaries.filter(({ file }) => file.endsWith('hunter-x-hunter')).length,
+    ).toBeGreaterThan(0)
+
+    const leaked = [chunk('index.js', 'const f = "Kozuki alliance"')]
+    expect(judge(leaked, canaries).found.map(({ file }) => file)).toStrictEqual(
+      ['src/i18n/dictionaries/one-piece'],
+    )
+    expect(judge([chunk('index.js', 'export {}')], canaries).ok).toBe(true)
   })
 })
 

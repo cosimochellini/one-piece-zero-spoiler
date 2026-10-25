@@ -5,7 +5,7 @@ import type { ReactElement } from 'react'
 import { ChartArt } from '~/components/ChartArt'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { useLocale } from '~/i18n/LocaleContext'
-import type { TranslationKey } from '~/i18n/types'
+import type { SeriesSlug, TranslationKey } from '~/i18n/types'
 import { useSeriesParams, useThreshold } from '~/lib/progress/BookmarkContext'
 import { useDrawing } from '~/lib/view/drawings'
 import type { EntityKind, RecordView, Slot } from '~/lib/view/records'
@@ -21,7 +21,9 @@ import {
   text,
 } from '~/styles/tokens.stylex'
 
-const KIND_KEY: Record<EntityKind, TranslationKey> = {
+// Every kind the engine files, by the page's own copy: a ship and a fruit
+// are One Piece's, and only its records are of those kinds.
+const KIND_KEY: Record<EntityKind, TranslationKey<SeriesSlug>> = {
   character: 'kind.character',
   arc: 'kind.arc',
   place: 'kind.place',

@@ -15,17 +15,17 @@ export const Route = createFileRoute('/$series/$locale/')({
   // the characters those stories name. Nothing past the bookmark is in it.
   loader: async ({ context }) =>
     loadHome({ data: { series: context.series.slug, locale: context.locale } }),
-  head: ({ match, params }) => {
-    return isLocale(params.locale) ?
-        describeNamedPage({
-          descriptionKey: 'site.description',
-          kind: 'landing',
-          locale: params.locale,
-          pathname: match.pathname,
-          titleKey: 'site.title',
-        })
-      : {}
-  },
+  head: (context) =>
+    isLocale(context.params.locale) ?
+      describeNamedPage({
+        copy: context.match.context.copy,
+        descriptionKey: 'site.description',
+        kind: 'landing',
+        locale: context.params.locale,
+        pathname: context.match.pathname,
+        titleKey: 'site.title',
+      })
+    : {},
 })
 
 /** The landing page, with the loader's data. */

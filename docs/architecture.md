@@ -121,19 +121,20 @@ the server passes a word on only where a page prints it
 (`src/server/archive/printed.server.ts`), failing on one the series' pages
 cannot print. The registry holds each series' place words (`placeWords` on its
 entry, `placeWordsOf` in `src/data/series/index.ts`), keyed by its vocabulary so
-a new word does not compile until it is listed. One Piece's are labelled by the
-shared dictionaries (`sea.*`, `form.*`), which every page ships. A series that
-labels its words itself is sent, with the places page and a place's page, the
-labels of the words its open places use and no others, so no page names a region
-the reader has not reached; the client holds no table of them, and the archive
-gate looks for each one in the client chunks. Whether a series draws One Piece's
-world map is a feature on its description (`features.worldMap`): without it the
-server sends no map point and no ship, and the places page is the index, grouped
-by region, served in full. Which of a series' pages exist (characters, places,
-fruits, filler) is read from the kinds and features on its description by one
-predicate, `hasPage` in `src/lib/progress/series.ts`: each page's route answers
-404 in its `beforeLoad` (`requirePage`), the bar and the home's welcome link
-only those pages (`useDeclares`), a link parameter on any other sets no bookmark
+a new word does not compile until it is listed. One Piece's are labelled by its
+copy and the shared dictionary (`sea.*`, `form.*`), which every page of it
+ships. A series that labels its words itself is sent, with the places page and a
+place's page, the labels of the words its open places use and no others, so no
+page names a region the reader has not reached; the client holds no table of
+them, and the archive gate looks for each one in the client chunks. Whether a
+series draws One Piece's world map is a feature on its description
+(`features.worldMap`): without it the server sends no map point and no ship, and
+the places page is the index, grouped by region, served in full. Which of a
+series' pages exist (characters, places, fruits, filler) is read from the kinds
+and features on its description by one predicate, `hasPage` in
+`src/lib/progress/series.ts`: each page's route answers 404 in its `beforeLoad`
+(`requirePage`), the bar and the home's welcome link only those pages
+(`useDeclares`), a link parameter on any other sets no bookmark
 (`linkedSeries`), and the sitemap lists only their addresses. The factions are
 One Piece's alone. The chapter table, the sweep's bookmarks, the dated facts
 (timelines, stories, natives) and the shelves (characters, arcs, places, the
@@ -302,7 +303,9 @@ before anything runs:
 - `ArtId` is derived from the drawings themselves, so a record cannot name a
   drawing that does not exist.
 - The English dictionary defines the key set and the Italian one is typed
-  against it, so a missing translation fails `typecheck`.
+  against it, so a missing translation fails `typecheck`. The same holds for
+  each series' own copy, and a key of one series used under another fails
+  `typecheck` too (Localization, below).
 - The bookmark is a discriminated union read through an exhaustive switch, under
   `noFallthroughCasesInSwitch`.
 - `strict` is on with nine more flags, including `noUncheckedIndexedAccess`,
@@ -339,10 +342,10 @@ checked on every run:
   affiliations, origins, epithets, stories, ship fates, place visits and the
   labels of the factions an affiliation is tagged with, and the labels of a
   place's region and form for a series that writes its own (sent with the place,
-  so scanned at its threshold; One Piece's are dictionary copy every page
-  ships), is scanned for every later record's full name in both locales. A name
-  the show says before its record opens, or one that is an ordinary word, is
-  declared on the record itself rather than excused in a test;
+  so scanned at its threshold; One Piece's are copy every page of it ships), is
+  scanned for every later record's full name in both locales. A name the show
+  says before its record opens, or one that is an ordinary word, is declared on
+  the record itself rather than excused in a test;
 - for every listed series (`src/data/archive.test.ts`), the dated facts the
   engine derives follow the same rules: a series files only the dated fields of
   the core and of its features; each character has one dossier, filed in one
@@ -396,7 +399,10 @@ the drift fails as a test instead.
 The dictionaries have a test of their own: the copy follows the
 [tone-of-voice skill](../.claude/skills/tone-of-voice/SKILL.md), and
 `src/i18n/translate.test.ts` fails on an em dash, an exclamation mark or a
-banned phrase in either language.
+banned phrase in either language, in the shared copy and in every series' own.
+It also fails when two series define the same key outside the common ones, when
+a series' copy redefines a shared key or leaves a common one out, and when a
+series' copy names another series.
 
 ## Accessibility
 
@@ -618,6 +624,30 @@ Italian and English, as route prefixes: `/it` and `/en`. The root chooses once
 a 301. An unknown prefix is a 404, not a silent redirect. In Italian, character
 names follow the Italian dub.
 
+The copy is in two parts (#791). The shared dictionaries
+(`src/i18n/dictionaries/en.ts`, `it.ts`) say the same thing on every page and
+name no series: a page of a series fills `{series}` with its name ("The {series}
+wiki without spoilers"). Each series' own copy
+(`src/i18n/dictionaries/<series>/`) holds the keys every series words for itself
+(`CommonKey` in `src/i18n/types.ts`: its description, its demo, its crew, its
+sources and its rights holders) and the words of its own features: One Piece's
+devil fruits, ships, seas, factions, bounties and filler guide. The series' copy
+stays on the server (`src/server/copy.server.ts`). The `/<series>/<locale>`
+route asks for it once (`loadSeriesCopy`), so it arrives inside the first page
+and in no client chunk, and a reader of one series never downloads another's;
+the archive gate looks for every series' words in the client chunks. The legal
+page asks for the copy of each open series, for its rights line and its sources,
+and the reference sample of a series' source review lives on its archive
+(`credits` on `SeriesArchive`).
+
+`useT()` reads the shared and the common keys. A component of one series'
+feature reads its keys through `useSeriesT('one-piece')`, typed by the series,
+so a One Piece key under Hunter x Hunter fails `typecheck`; at runtime that
+translate throws under any other series, and so does a key the page's copy
+lacks. A shared component that prints keys a page hands it (a fog band, a kind
+label) takes the page's own translate (`useLocale().t`). ESLint bars the client
+from importing a series' copy.
+
 ## Engineering notes
 
 **The pull request title sets the version bump.** Merges to `main` are squashed
@@ -643,8 +673,10 @@ places list, read when the gate runs so it cannot go stale. It never searches
 for a key such as `revealedAtEpisode`, which is legitimately present on a
 covered record. The drawing modules contain no sentences; they are keyed by
 record id, and a record's id is its name slug, so the gate looks for those ids
-instead, since that is how a leak there would show up. ESLint catches the same
-mistake earlier, at the import.
+instead, since that is how a leak there would show up. It also looks for every
+word of every series' own copy that the shared copy does not also hold, so One
+Piece's faction names cannot reach a Hunter x Hunter reader's bundle. ESLint
+catches the same mistake earlier, at the import.
 
 CI also runs `scripts/client-budget.mjs` on pull requests. It builds the event's
 exact base commit in a separate worktree with its own dependencies and compares

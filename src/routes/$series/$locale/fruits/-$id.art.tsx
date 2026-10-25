@@ -9,7 +9,7 @@ import { ChoiceGroup } from '~/components/ChoiceGroup'
 import { DrawInContext, tintOf } from '~/components/drawing'
 import { OpenArt } from '~/components/FruitArt'
 import { FruitFrame } from '~/components/FruitFrame'
-import { useLocale } from '~/i18n/LocaleContext'
+import { useSeriesT } from '~/i18n/LocaleContext'
 import type { FruitDrawing, FruitLook, FruitView } from '~/lib/view/records'
 import { morphPart } from '~/styles/morph'
 
@@ -34,7 +34,7 @@ export function StageArt({
   drawings: FruitDrawing[]
   record: FruitView
 }): ReactElement {
-  const { t } = useLocale()
+  const t = useSeriesT('one-piece')
   const [drawing, setDrawing] = useState(true)
   const [picked, setPicked] = useState<FruitLook | null>(null)
   // A pick holds while the drawing it names is still sent; a moved bookmark

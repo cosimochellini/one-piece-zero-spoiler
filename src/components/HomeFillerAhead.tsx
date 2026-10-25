@@ -9,7 +9,7 @@ import {
   episodesLabel,
   runSentenceOf,
 } from '~/components/fillerLabels'
-import { useLocale, useT } from '~/i18n/LocaleContext'
+import { useLocale, useSeriesT } from '~/i18n/LocaleContext'
 /* Hallmark · component: notice · genre: atmospheric · theme: Sea Chart (locked)
  * states: default · hover · focus · active (the link; the cells are static)
  * · idea: the filler page's countdown row, cut down to a warning on the home
@@ -99,7 +99,7 @@ function Row({
   ahead: FillerAhead
   mode: BookmarkMode
 }): ReactElement {
-  const t = useT()
+  const t = useSeriesT('one-piece')
   const bookmarkSeries = useBookmarkSeries()
 
   return (

@@ -13,7 +13,7 @@ import { CharacterCrest } from '~/components/CharacterCrest'
 import { CharacterFacts } from '~/components/CharacterFacts'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { useLocale } from '~/i18n/LocaleContext'
-import type { TranslationKey } from '~/i18n/types'
+import type { SeriesSlug, TranslationKey } from '~/i18n/types'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
 import type { CharacterDetail, EntityKind, Slot } from '~/lib/view/records'
 import { morphPart } from '~/styles/morph'
@@ -21,7 +21,9 @@ import { settleStyles } from '~/styles/settle'
 
 import { styles } from './-$id.styles'
 
-const KIND_KEY: Record<EntityKind, TranslationKey> = {
+// Every kind the engine files, by the page's own copy: a ship and a fruit
+// are One Piece's, and only its records are of those kinds.
+const KIND_KEY: Record<EntityKind, TranslationKey<SeriesSlug>> = {
   arc: 'kind.arc',
   character: 'kind.character',
   place: 'kind.place',

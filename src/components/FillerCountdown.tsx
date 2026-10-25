@@ -12,7 +12,7 @@ import {
   sentenceOf,
 } from '~/components/fillerLabels'
 import { FILLER_PANEL_ID, FillerPanel } from '~/components/FillerPanel'
-import { useT } from '~/i18n/LocaleContext'
+import { useSeriesT } from '~/i18n/LocaleContext'
 import { useBookmarkSeries } from '~/lib/progress/BookmarkContext'
 import type { BookmarkMode } from '~/lib/progress/episode'
 import type {
@@ -49,7 +49,7 @@ export function FillerCountdown({
   mode,
   peek,
 }: FillerCountdownProps): ReactElement {
-  const t = useT()
+  const t = useSeriesT('one-piece')
   const series = useBookmarkSeries()
   const [chosen, setChosen] = useState<null | string>(null)
   const slots = [
@@ -114,7 +114,7 @@ function Row({
   countdown: Countdown
   mode: BookmarkMode
 }): ReactElement {
-  const t = useT()
+  const t = useSeriesT('one-piece')
 
   return (
     <ol
@@ -157,7 +157,7 @@ function Cell({
   marks: CountdownMark[]
   mode: BookmarkMode
 }): ReactElement {
-  const t = useT()
+  const t = useSeriesT('one-piece')
   const series = useBookmarkSeries()
   const { slot } = cell
   const kind = slot === null ? null : entryOf(slot).kind
@@ -216,7 +216,7 @@ function Mark({
   mode: BookmarkMode
   slot: FillerSlot
 }): ReactElement {
-  const t = useT()
+  const t = useSeriesT('one-piece')
   const series = useBookmarkSeries()
   const entry = entryOf(slot)
   const name = [

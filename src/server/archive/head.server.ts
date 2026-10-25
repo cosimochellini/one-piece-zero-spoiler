@@ -1,11 +1,11 @@
 import type { Entity } from '~/data/types'
-import { getDictionary, translate } from '~/i18n/translate'
-import type { Translate, TranslationKey } from '~/i18n/types'
+import type { SeriesSlug, TranslationKey } from '~/i18n/types'
 import {
   describeThreshold,
   type ThresholdSentence,
 } from '~/lib/progress/threshold'
 import type { DocumentHead } from '~/lib/view/records'
+import { translatorOf } from '~/server/copy.server'
 
 import type { Reader } from './reader.server'
 
@@ -22,8 +22,8 @@ import type { Reader } from './reader.server'
 /** What a record's page calls itself, with its record and without it. */
 export interface HeadKeys {
   foggedDescription: ThresholdSentence
-  foggedTitle: TranslationKey
-  pageTitle: TranslationKey
+  foggedTitle: TranslationKey<SeriesSlug>
+  pageTitle: TranslationKey<SeriesSlug>
 }
 
 /** Under fog both lines are generic; open, they are the record's own. */
@@ -32,8 +32,7 @@ export function headFor(
   keys: HeadKeys,
   r: Reader,
 ): DocumentHead {
-  const dictionary = getDictionary(r.locale)
-  const t: Translate = (key, params) => translate(dictionary, key, params)
+  const t = translatorOf(r.archive.series, r.locale)
 
   if (!r.sees(entity)) {
     return {

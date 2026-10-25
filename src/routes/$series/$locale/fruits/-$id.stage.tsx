@@ -9,7 +9,7 @@ import type { ReactElement } from 'react'
 
 import { FruitFrame } from '~/components/FruitFrame'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
-import { useLocale } from '~/i18n/LocaleContext'
+import { useSeriesT } from '~/i18n/LocaleContext'
 import type { TranslationKey } from '~/i18n/types'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
 import type {
@@ -23,7 +23,7 @@ import { morphPart } from '~/styles/morph'
 import { StageArt } from './-$id.art'
 import { styles } from './-$id.styles'
 
-const FORM_KEY: Record<FruitForm, TranslationKey> = {
+const FORM_KEY: Record<FruitForm, TranslationKey<'one-piece'>> = {
   logia: 'fruitForm.logia',
   paramecia: 'fruitForm.paramecia',
   zoan: 'fruitForm.zoan',
@@ -89,7 +89,7 @@ function StageText({
   saga: null | string
   slot: Slot<FruitView>
 }): ReactElement {
-  const { t } = useLocale()
+  const t = useSeriesT('one-piece')
   const threshold = useThreshold()
   const gate = slot.open ? slot.record : slot.covered
 
@@ -135,7 +135,7 @@ function StageWords({
   record: FruitView
   saga: null | string
 }): ReactElement {
-  const { t } = useLocale()
+  const t = useSeriesT('one-piece')
 
   return (
     <>

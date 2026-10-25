@@ -4,7 +4,7 @@ import { type ReactElement, type ReactNode, useId } from 'react'
 
 import { ChartArt } from '~/components/ChartArt'
 import { DrawInContext, tintOf } from '~/components/drawing'
-import { useLocale } from '~/i18n/LocaleContext'
+import { useLocale, useSeriesT } from '~/i18n/LocaleContext'
 import { spliced } from '~/i18n/spliced'
 import type { Translate } from '~/i18n/types'
 import { useSeriesParams, useThreshold } from '~/lib/progress/BookmarkContext'
@@ -43,7 +43,8 @@ export function SagaMarquee({
   link,
   marquee,
 }: SagaMarqueeProps): null | ReactElement {
-  const { locale, t } = useLocale()
+  const { locale } = useLocale()
+  const t = useSeriesT('one-piece')
   const { series } = useSeriesParams()
   const headingId = useId()
   if (marquee === null) {
@@ -83,7 +84,11 @@ export function SagaMarquee({
 }
 
 /** The saga's name in gold, and how many fruits it has named so far. */
-function headline(t: Translate, name: string, count: number): ReactNode {
+function headline(
+  t: Translate<'one-piece'>,
+  name: string,
+  count: number,
+): ReactNode {
   const saga = <strong {...stylex.props(styles.saga)}>{name}</strong>
   if (count === 0) {
     return saga
@@ -123,7 +128,8 @@ function Rail({ fruits }: { fruits: FruitView[] }): ReactElement {
 
 /** No fruit in the saga yet: say so, and point back to the last one. */
 function Behind({ last }: { last: FruitView | null }): ReactElement {
-  const { locale, t } = useLocale()
+  const { locale } = useLocale()
+  const t = useSeriesT('one-piece')
   const { series } = useSeriesParams()
   const threshold = useThreshold()
 

@@ -15,12 +15,11 @@ import type {
   PlaceWords,
   Story,
 } from '~/data/types'
-import { enDictionary } from '~/i18n/dictionaries/en'
-import { itDictionary } from '~/i18n/dictionaries/it'
 import { type Locale, LOCALES } from '~/i18n/locales'
 import { FIRST_CHAPTER, FIRST_EPISODE } from '~/lib/progress/episode'
 import type { Source } from '~/lib/progress/spoiler'
 import { tokenize } from '~/lib/prose/markers'
+import { COPIES } from '~/server/copy.server'
 import { expectedOf, LOADED_SERIES } from '~/test/series'
 
 /**
@@ -131,10 +130,7 @@ function dated(archive: ReaderArchive, owner: Entity, field: Field): Text[] {
   })
 }
 
-const DICTIONARIES: Record<Locale, Record<string, string>> = {
-  en: enDictionary,
-  it: itDictionary,
-}
+const DICTIONARIES: Record<Locale, Record<string, string>> = COPIES['one-piece']
 
 /** The label a page prints for a group, or the test is wrong. */
 function groupLabel(locale: Locale, id: string): string {
@@ -262,8 +258,8 @@ function labelOf(
  * The labels of a place's region and form, for a series that labels its
  * words itself: the server sends them with the first open place that uses
  * them (`wordsOf` in `~/server/archive/printed.server.ts`), so each is
- * frozen at the place's threshold. A series the shared dictionaries label
- * (One Piece) sends none: its labels ship with every page whatever the
+ * frozen at the place's threshold. A series whose copy labels them (One
+ * Piece) sends none: its labels ship with every page of it whatever the
  * reader has reached, as the rest of the interface copy does, and are not a
  * text any record gates.
  */

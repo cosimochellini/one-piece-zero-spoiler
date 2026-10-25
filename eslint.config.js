@@ -102,6 +102,17 @@ const ONE_PIECE_BY_NAME = {
     'Take the series as an argument, or `useBookmarkSeries()` in a component: no conversion defaults to One Piece (#793).',
 }
 
+/**
+ * A series' own copy stays on the server and reaches a page with its series
+ * (#791). Its types may be named; its words may not be imported.
+ */
+const SERIES_COPY = {
+  group: ['~/i18n/dictionaries/*/*', '~/server/copy.server'],
+  allowTypeImports: true,
+  message:
+    'A series’ copy stays on the server: a page gets it through `loadSeriesCopy` and reads it with `useT` or `useSeriesT` (#791).',
+}
+
 /** The server's and the archive's import bans: the open series only (#758). */
 const OPEN_SERIES_IMPORTS = {
   paths: [
@@ -109,8 +120,10 @@ const OPEN_SERIES_IMPORTS = {
   ],
   patterns: [
     { regex: String.raw`^\.\./`, message: ALIAS_ONLY },
+    // The registry by any spelling: `~/data/series`, its `index`, a `.ts`
+    // extension, a trailing slash, or `.` and `..` from inside its folders.
     {
-      regex: String.raw`^(?:~/data/series/(?:index)?|\.(?:/index)?)$`,
+      regex: String.raw`^(?:~/data/series|\.\.?)(?:/(?:index)?)?(?:\.ts)?$`,
       importNames: FILED_ONLY,
       message: OPEN_ONLY,
     },
@@ -879,6 +892,37 @@ const config = defineConfig(
     },
   },
 
+  // A series filed but not open stays out of every path a reader takes
+  // (#758): every module that ships, the server, the request middleware, the
+  // archive and the copy alike (#791), reads the open series alone, through
+  // `OPEN_SERIES` and `archiveOf`. The filed list and its loader are for the
+  // tests, the gates and the scripts. The client block below replaces the
+  // import rule for its own files, and bars `~/data` altogether.
+  {
+    files: ['src/**/*.{ts,tsx}'],
+    ignores: TESTS,
+    rules: {
+      'no-restricted-imports': ['error', { ...OPEN_SERIES_IMPORTS }],
+      // A dynamic import of the registry would take the filed list past the
+      // import rule above. The registry's own imports of a series are
+      // relative and stay allowed.
+      'no-restricted-syntax': [
+        'error',
+        ...RESTRICTED_SYNTAX,
+        FILTER_MAP,
+        {
+          selector: String.raw`ImportExpression[source.value=/^(?:~\/data\/series|\.\.?(?:\/(?:index)?)?(?:\.ts)?$)/]`,
+          message: OPEN_ONLY,
+        },
+        // A template literal hides its specifier from the selector above.
+        {
+          selector: 'ImportExpression > TemplateLiteral.source',
+          message: `${OPEN_ONLY} Write a dynamic import's specifier as a string literal.`,
+        },
+      ],
+    },
+  },
+
   // -------------------------------------------------------------------------
   // The archive stays on the server (issue #12).
   //
@@ -905,33 +949,9 @@ const config = defineConfig(
               message:
                 'The archive stays on the server. Take a view model from `~/lib/view/records` instead (issue #12).',
             },
+            SERIES_COPY,
             ONE_PIECE_BY_NAME,
           ],
-        },
-      ],
-    },
-  },
-
-  // A series filed but not open stays out of every path a reader takes
-  // (#758): the server, the request middleware and the archive itself read
-  // the open series alone, through `OPEN_SERIES` and `archiveOf`. The filed
-  // list and its loader are for the tests, the gates and the scripts. The
-  // client is barred from `~/data` altogether, above.
-  {
-    files: ['src/server/**/*.{ts,tsx}', 'src/start.ts', 'src/data/**/*.ts'],
-    ignores: TESTS,
-    rules: {
-      'no-restricted-imports': ['error', { ...OPEN_SERIES_IMPORTS }],
-      // A dynamic import of the registry would take the filed list past the
-      // import rule above. The registry's own imports of a series are
-      // relative and stay allowed.
-      'no-restricted-syntax': [
-        'error',
-        ...RESTRICTED_SYNTAX,
-        FILTER_MAP,
-        {
-          selector: String.raw`ImportExpression[source.value=/^~\/data\/series/]`,
-          message: OPEN_ONLY,
         },
       ],
     },
@@ -972,6 +992,7 @@ const config = defineConfig(
               message:
                 'The archive stays on the server. Take a view model from `~/lib/view/records` instead (issue #12).',
             },
+            SERIES_COPY,
             ONE_PIECE_BY_NAME,
             {
               group: [

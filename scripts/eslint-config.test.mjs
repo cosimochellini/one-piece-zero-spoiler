@@ -90,5 +90,58 @@ export { indexedArchiveEntries }
         messages.filter((message) => message.ruleId === optionalChainRule),
       ).toHaveLength(1)
     })
+
+    // Every module that ships reads the open series only (#758, #791): the
+    // filed list stays out by any spelling, statically or dynamically.
+    it.each([
+      [
+        'a static import',
+        'src/i18n/translate.ts',
+        "import { SERIES } from '~/data/series'\nexport const count = SERIES.length\n",
+        'no-restricted-imports',
+      ],
+      [
+        'a `.ts` specifier',
+        'src/i18n/translate.ts',
+        "import { filedArchiveOf } from '~/data/series/index.ts'\nexport const load = filedArchiveOf\n",
+        'no-restricted-imports',
+      ],
+      [
+        'a bare `..` from a series folder',
+        'src/data/series/one-piece/archive.ts',
+        "import { SERIES } from '..'\nexport const count = SERIES.length\n",
+        'no-restricted-imports',
+      ],
+      [
+        'a dynamic import',
+        'src/i18n/translate.ts',
+        "export async function load(): Promise<unknown> {\n  return import('~/data/series')\n}\n",
+        'no-restricted-syntax',
+      ],
+      [
+        'a template-literal import',
+        'src/i18n/translate.ts',
+        'export async function load(): Promise<unknown> {\n  return import(`~/data/series`)\n}\n',
+        'no-restricted-syntax',
+      ],
+    ])(
+      'bars the filed series through %s',
+      async (_label, file, source, rule) => {
+        const { messages } = await lint(source, path.join(repositoryRoot, file))
+
+        expect(messages.map(({ ruleId }) => ruleId)).toContain(rule)
+      },
+    )
+
+    it('bars a series’ copy from the client', async () => {
+      const { messages } = await lint(
+        "import { onePieceEn } from '~/i18n/dictionaries/one-piece/en'\nexport const words = onePieceEn\n",
+        path.join(repositoryRoot, 'src/components/SiteFooter.tsx'),
+      )
+
+      expect(messages.map(({ ruleId }) => ruleId)).toContain(
+        'no-restricted-imports',
+      )
+    })
   },
 )

@@ -15,8 +15,8 @@
  * said again in the vocabularies a crawler reads, and never anything more.
  */
 import { isLocale, type Locale } from '~/i18n/locales'
-import { getDictionary, translate } from '~/i18n/translate'
-import type { TranslationKey } from '~/i18n/types'
+import { getDictionary, translate, translatorFor } from '~/i18n/translate'
+import type { SeriesCopy, SeriesSlug, TranslationKey } from '~/i18n/types'
 import { hasPage, type Series, type SeriesPage } from '~/lib/progress/series'
 import { type Crumb, pageJsonLd, type PageKind } from '~/lib/seo/jsonLd'
 import { localeAlternates, localeRoot, normalisePath } from '~/lib/seo/paths'
@@ -94,24 +94,28 @@ function describePage(page: PageDescription): HeadTags {
   }
 }
 
-/** A page whose title and description are written in the dictionary. */
-export interface NamedPage {
-  descriptionKey: TranslationKey
+/**
+ * A page whose title and description are written in the dictionary: the
+ * shared one, or with `copy` its series' own as well, whose keys `S` names.
+ */
+export interface NamedPage<S extends SeriesSlug = never> {
+  /** The series' own copy, on a page of a series. */
+  copy?: SeriesCopy
+  descriptionKey: TranslationKey<S>
   kind: PageKind
   locale: Locale
   pathname: string
-  titleKey: TranslationKey
+  titleKey: TranslationKey<S>
 }
 
-/** The head of the landing page or of one of the three indexes. */
-export function describeNamedPage(page: NamedPage): HeadTags {
-  const dictionary = getDictionary(page.locale)
+/** The head of the landing page or of one of the indexes. */
+export function describeNamedPage<S extends SeriesSlug = never>(
+  page: NamedPage<S>,
+): HeadTags {
+  const t = translatorFor<SeriesSlug>(page.locale, page.copy)
 
   return describePage({
-    head: {
-      title: translate(dictionary, page.titleKey),
-      description: translate(dictionary, page.descriptionKey),
-    },
+    head: { title: t(page.titleKey), description: t(page.descriptionKey) },
     kind: page.kind,
     locale: page.locale,
     pathname: page.pathname,
@@ -120,7 +124,7 @@ export function describeNamedPage(page: NamedPage): HeadTags {
 
 /** What a series page's `head` is handed, as far as it reads it. */
 export interface SeriesPageMatch {
-  match: { context: { series: Series }; pathname: string }
+  match: { context: { copy: SeriesCopy; series: Series }; pathname: string }
   params: { locale: string }
 }
 
@@ -137,7 +141,8 @@ export function seriesPageHead(
   { match, params }: SeriesPageMatch,
 ): HeadTags | Record<string, never> {
   return isLocale(params.locale) && hasPage(match.context.series, page) ?
-      describeNamedPage({
+      describeNamedPage<SeriesSlug>({
+        copy: match.context.copy,
         descriptionKey: `${page}.pageDescription`,
         kind: 'index',
         locale: params.locale,
@@ -149,6 +154,8 @@ export function seriesPageHead(
 
 /** A page a single record has to itself, and the index it is filed under. */
 export interface RecordPage {
+  /** The series' own copy, which names a fruit's index. */
+  copy: SeriesCopy
   head: DocumentHead
   locale: Locale
   pathname: string
@@ -163,7 +170,7 @@ export interface RecordPage {
  * against the reader's bookmark, and are passed through untouched.
  */
 function describeRecordPage(page: RecordPage): HeadTags {
-  const dictionary = getDictionary(page.locale)
+  const t = translatorFor<SeriesSlug>(page.locale, page.copy)
 
   return describePage({
     head: page.head,
@@ -172,7 +179,7 @@ function describeRecordPage(page: RecordPage): HeadTags {
     pathname: page.pathname,
     trail: [
       {
-        name: translate(dictionary, `${page.section}.pageTitle`),
+        name: t(`${page.section}.pageTitle`),
         url: absoluteUrl(
           `${localeRoot(page.pathname, page.locale)}/${page.section}`,
         ),
@@ -184,7 +191,7 @@ function describeRecordPage(page: RecordPage): HeadTags {
 /** What a record route's `head` option is handed, as far as it reads it. */
 export interface RecordHeadContext {
   loaderData?: { head: DocumentHead }
-  match: { pathname: string }
+  match: { context: { copy: SeriesCopy }; pathname: string }
   params: { locale: string }
 }
 
@@ -204,6 +211,7 @@ export function recordHead(
   return loaderData === undefined || !isLocale(params.locale) ?
       undefined
     : describeRecordPage({
+        copy: match.context.copy,
         head: loaderData.head,
         locale: params.locale,
         pathname: match.pathname,

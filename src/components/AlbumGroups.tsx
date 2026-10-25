@@ -12,7 +12,7 @@ import {
   matchesIn,
 } from '~/components/recordMatches'
 import { styles } from '~/components/SpecimenBands.styles'
-import { useT } from '~/i18n/LocaleContext'
+import { useSeriesT } from '~/i18n/LocaleContext'
 import type {
   CoveredRecord,
   FruitBandView,
@@ -174,7 +174,7 @@ function Group({
   needle: string
   peek: (handle: string) => Promise<FruitView>
 }): null | ReactElement {
-  const t = useT()
+  const t = useSeriesT('one-piece')
   const fog = pickedOf(lookup.form, lookup.covered, group.covered)
   if (matches.length === 0 && fog.length === 0) {
     return null

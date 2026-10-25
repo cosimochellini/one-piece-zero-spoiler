@@ -35,6 +35,7 @@ import { placePage } from './archive/placePage.server'
 import { placesPage } from './archive/places.server'
 import { type Reader, readerFor } from './archive/reader.server'
 import { sagaLabels } from './archive/sagaLabels.server'
+import { copyOf } from './copy.server'
 
 /**
  * The archive's only door.
@@ -224,6 +225,20 @@ export const loadFiller = createServerFn()
 export const loadCredits = createServerFn()
   .validator(located)
   .handler(async ({ data }) => creditsPage(await readerIn(data)))
+
+/**
+ * A series' own copy in one locale, sent with its pages: its words reach no
+ * client chunk, so a reader of one series never downloads another's.
+ */
+export const loadSeriesCopy = createServerFn()
+  .validator(located)
+  .handler(({ data }) => {
+    const series = descriptionOf(data.series)
+    if (series === null) {
+      throw new Error('A known series is required')
+    }
+    return copyOf(series, data.locale)
+  })
 
 export const loadSagaLabels = createServerFn()
   .validator(located)

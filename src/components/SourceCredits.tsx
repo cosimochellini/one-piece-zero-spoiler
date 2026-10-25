@@ -1,45 +1,74 @@
 import * as stylex from '@stylexjs/stylex'
-import type { ReactElement } from 'react'
+import type { ReactElement, ReactNode } from 'react'
 
 import { styles } from '~/components/LegalNotice.styles'
-import { useT } from '~/i18n/LocaleContext'
-import type { SourceCredit } from '~/lib/view/credits'
+import { SERIES_SOURCES } from '~/components/seriesSources'
+import { useLocale, useT } from '~/i18n/LocaleContext'
+import { LocaleProvider } from '~/i18n/LocaleProvider'
+import type { SeriesCopy, SeriesSlug } from '~/i18n/types'
+import type { SeriesCredits, SourceCredit } from '~/lib/view/credits'
 
-const LICENSE = 'https://creativecommons.org/licenses/by-sa/3.0/'
-const GENERAL_SOURCES = [
-  ['credits.wikiEn', 'https://onepiece.fandom.com/'],
-  ['credits.wikiIt', 'https://onepiece.fandom.com/it/'],
-  ['credits.fandomTerms', 'https://www.fandom.com/licensing'],
-  ['credits.fandomTermsIt', 'https://www.fandom.com/it/licensing-it'],
-  ['credits.fillerList', 'https://www.animefillerlist.com/shows/one-piece'],
-] as const
+/** A part of the page in one series' own words. */
+export function InSeries({
+  copy,
+  children,
+}: {
+  children: ReactNode
+  copy: SeriesCopy
+}): ReactElement {
+  const { locale } = useLocale()
+
+  return (
+    <LocaleProvider
+      copy={copy}
+      locale={locale}
+    >
+      {children}
+    </LocaleProvider>
+  )
+}
 
 /** Only the server-filtered references reach this component. */
 export function SourceCredits({
-  credits,
+  series,
 }: {
-  credits: SourceCredit[]
+  series: SeriesCredits[]
 }): ReactElement {
   const t = useT()
   return (
     <section id="sources">
       <h2 {...stylex.props(styles.heading)}>{t('credits.title')}</h2>
       <p {...stylex.props(styles.paragraph)}>{t('credits.intro')}</p>
-      <LicenseNotices />
+      <LicenseNotices series={series} />
       <h3 {...stylex.props(styles.subheading)}>
         {t('credits.referencesTitle')}
       </h3>
-      <p {...stylex.props(styles.paragraph)}>{t('credits.coverage')}</p>
+      {series.map(({ copy }) => (
+        <InSeries
+          key={copy.slug}
+          copy={copy}
+        >
+          <Coverage />
+        </InSeries>
+      ))}
       <p {...stylex.props(styles.paragraph)}>{t('credits.factCheck')}</p>
       <p {...stylex.props(styles.paragraph)}>{t('credits.bookmark')}</p>
-      {credits.length === 0 ?
+      {series.every(({ credits }) => credits.length === 0) ?
         <p>{t('credits.empty')}</p>
       : <ul {...stylex.props(styles.list)}>
-          {credits.map((credit) => (
-            <CreditEntry
-              key={`${credit.name}-${String(credit.episode)}-${credit.scope}`}
-              credit={credit}
-            />
+          {series.map(({ copy, credits }) => (
+            <InSeries
+              key={copy.slug}
+              copy={copy}
+            >
+              {credits.map((credit) => (
+                <CreditEntry
+                  key={`${credit.name}-${String(credit.episode)}-${credit.scope}`}
+                  credit={credit}
+                  slug={copy.slug}
+                />
+              ))}
+            </InSeries>
           ))}
         </ul>
       }
@@ -47,7 +76,20 @@ export function SourceCredits({
   )
 }
 
-function CreditEntry({ credit }: { credit: SourceCredit }): ReactElement {
+/** Which of a series' entries the references below cover. */
+function Coverage(): ReactElement {
+  const t = useT()
+  return <p {...stylex.props(styles.paragraph)}>{t('credits.coverage')}</p>
+}
+
+function CreditEntry({
+  credit,
+  slug,
+}: {
+  credit: SourceCredit
+  slug: SeriesSlug
+}): ReactElement {
+  const { licenses } = SERIES_SOURCES[slug]
   const t = useT()
   return (
     <li>
@@ -73,10 +115,10 @@ function CreditEntry({ credit }: { credit: SourceCredit }): ReactElement {
             {kind === 'official' ?
               t('credits.noOpenLicense')
             : <a
-                href={LICENSE}
+                href={licenses[kind][1]}
                 {...stylex.props(styles.link)}
               >
-                CC BY-SA 3.0 Unported
+                {licenses[kind][0]}
               </a>
             }
           </li>
@@ -86,7 +128,7 @@ function CreditEntry({ credit }: { credit: SourceCredit }): ReactElement {
   )
 }
 
-function LicenseNotices(): ReactElement {
+function LicenseNotices({ series }: { series: SeriesCredits[] }): ReactElement {
   const t = useT()
   return (
     <>
@@ -111,29 +153,49 @@ function LicenseNotices(): ReactElement {
         </li>
       </ul>
       <p {...stylex.props(styles.paragraph)}>{t('credits.content')}</p>
-      <SourceTerms />
+      <h3 {...stylex.props(styles.subheading)}>{t('credits.sourcesTitle')}</h3>
+      <p {...stylex.props(styles.paragraph)}>{t('credits.external')}</p>
+      {series.map(({ copy }) => (
+        <InSeries
+          key={copy.slug}
+          copy={copy}
+        >
+          <SourceTerms slug={copy.slug} />
+        </InSeries>
+      ))}
     </>
   )
 }
 
-function SourceTerms(): ReactElement {
-  const t = useT()
+/** A series' sources: their terms, their licenses and where they are. */
+function SourceTerms({ slug }: { slug: SeriesSlug }): ReactElement {
+  // The page's own copy, which is the series' here: its links are its keys.
+  const { t } = useLocale()
+  const { licenses, links } = SERIES_SOURCES[slug]
+  // One paragraph per license, though both wikis may share one.
+  const shown = Object.values(licenses).filter(
+    ([, href], index, all) =>
+      all.findIndex((other) => other[1] === href) === index,
+  )
   return (
     <>
-      <h3 {...stylex.props(styles.subheading)}>{t('credits.sourcesTitle')}</h3>
-      <p {...stylex.props(styles.paragraph)}>{t('credits.external')}</p>
       <p {...stylex.props(styles.paragraph)}>{t('credits.wikiTerms')}</p>
-      <p {...stylex.props(styles.paragraph)}>
-        <a
-          href={LICENSE}
-          {...stylex.props(styles.link)}
+      {shown.map(([name, href]) => (
+        <p
+          key={href}
+          {...stylex.props(styles.paragraph)}
         >
-          CC BY-SA 3.0 Unported
-        </a>
-      </p>
+          <a
+            href={href}
+            {...stylex.props(styles.link)}
+          >
+            {name}
+          </a>
+        </p>
+      ))}
       <p {...stylex.props(styles.paragraph)}>{t('credits.otherTerms')}</p>
       <ul {...stylex.props(styles.list)}>
-        {GENERAL_SOURCES.map(([key, href]) => (
+        {links.map(([key, href]) => (
           <li key={key}>
             <a
               href={href}

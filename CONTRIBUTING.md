@@ -382,11 +382,15 @@ sentences, one term per concept, Italian written by a native speaker and not
 translated from English. `src/i18n/translate.test.ts` fails on an em dash, an
 exclamation mark or a banned phrase in either dictionary.
 
-New interface strings go in `src/i18n/dictionaries/en.ts` and `it.ts`, or, for a
-feature only One Piece has (devil fruits, ships and seas, bounties, factions,
-the filler guide), in `src/i18n/dictionaries/one-piece/`. The Italian dictionary
-is typed against the English one, so a missing key fails `npm run typecheck`,
-and a series' file cannot redefine a shared key.
+New interface strings go in `src/i18n/dictionaries/en.ts` and `it.ts` when every
+series says them word for word (with `{series}` for the series' name), or in the
+series' own folder, `src/i18n/dictionaries/<series>/`, when each series words
+them for itself (the common keys) or when only one series has the feature (One
+Piece's devil fruits, ships and seas, bounties, factions, the filler guide). A
+series' copy stays on the server and reaches a page with its series. The Italian
+dictionary is typed against the English one, so a missing key fails
+`npm run typecheck`, and a series' file cannot redefine a shared key. Read a
+series' own key with `useSeriesT('<series>')`.
 
 ## Checks
 

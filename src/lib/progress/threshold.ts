@@ -1,4 +1,4 @@
-import type { Translate } from '~/i18n/types'
+import type { SeriesSlug, Translate } from '~/i18n/types'
 
 import {
   type Bookmark,
@@ -35,7 +35,11 @@ export interface ThresholdDescription {
   mode: BookmarkMode
   sentence: ThresholdSentence
   series: BookmarkSeries
-  t: Translate
+  /**
+   * The page's translate, with its series' own copy: a sentence of a
+   * feature the series lacks (a fruit's, a ship's) throws.
+   */
+  t: Translate<SeriesSlug>
 }
 
 /** A record's threshold, said in the reader's unit. */

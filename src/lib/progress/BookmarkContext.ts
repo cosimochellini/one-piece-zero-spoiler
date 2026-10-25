@@ -1,6 +1,6 @@
 import { createContext, use, useCallback } from 'react'
 
-import { useLocale, useT } from '~/i18n/LocaleContext'
+import { useLocale } from '~/i18n/LocaleContext'
 import type { Locale } from '~/i18n/locales'
 
 import { type Bookmark, modeOf } from './episode'
@@ -75,7 +75,7 @@ export function useThreshold(): (
   sentence: ThresholdSentence,
   gated: Gated,
 ) => string {
-  const t = useT()
+  const { t } = useLocale()
   const { bookmark } = useBookmark()
   const series = useBookmarkSeries()
   const mode = modeOf(bookmark)

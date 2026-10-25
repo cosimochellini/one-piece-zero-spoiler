@@ -6,7 +6,7 @@ import { EpisodeMark } from '~/components/EpisodeMark'
 import { LocaleSwitch } from '~/components/LocaleSwitch'
 import { useDeclares } from '~/components/useDeclares'
 import { useLocale } from '~/i18n/LocaleContext'
-import type { TranslationKey } from '~/i18n/types'
+import type { SeriesSlug, TranslationKey } from '~/i18n/types'
 import { useBookmark, useSeriesParams } from '~/lib/progress/BookmarkContext'
 import type { SeriesPage } from '~/lib/progress/series'
 import {
@@ -87,7 +87,11 @@ export function SiteBar(): ReactElement {
   )
 }
 
-/** The bar's pages, in its order; the filler guide is reached by its address. */
+/**
+ * The bar's pages, in its order; the filler guide is reached by its address.
+ * Labelled by the page's own copy: the fruits and the filler guide are One
+ * Piece's, and only a series that declares them links them.
+ */
 const NAV = [
   {
     page: 'characters',
@@ -96,7 +100,11 @@ const NAV = [
   },
   { page: 'places', to: '/$series/$locale/places', label: 'nav.places' },
   { page: 'fruits', to: '/$series/$locale/fruits', label: 'nav.fruits' },
-] as const satisfies { label: TranslationKey; page: SeriesPage; to: string }[]
+] as const satisfies {
+  label: TranslationKey<SeriesSlug>
+  page: SeriesPage
+  to: string
+}[]
 
 /**
  * Content navigation belongs to the series selected by the route, and lists

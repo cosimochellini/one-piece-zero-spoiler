@@ -1,4 +1,4 @@
-import { useT } from '~/i18n/LocaleContext'
+import { useSeriesT } from '~/i18n/LocaleContext'
 import type { TranslationKey } from '~/i18n/types'
 import type { PlaceForm, PlaceWordsView, Sea } from '~/lib/view/records'
 
@@ -14,11 +14,10 @@ export interface PlaceLabels {
   regionOf: (region: string) => string
 }
 
-// One Piece's words, labelled by the shared dictionaries, which every page
-// ships anyway: these keys add no word a reader of another series does not
-// already download. Keyed by every member of the unions, so a sea or a form
-// added to them does not compile until it is labelled here too.
-const SEAS: Record<Sea, TranslationKey> = {
+// One Piece's words, labelled by its copy (the seas) and the shared one (the
+// forms), which its pages are sent. Keyed by every member of the unions, so a
+// sea or a form added to them does not compile until it is labelled here too.
+const SEAS: Record<Sea, TranslationKey<'one-piece'>> = {
   'east-blue': 'sea.east-blue',
   'grand-line': 'sea.grand-line',
   'calm-belt': 'sea.calm-belt',
@@ -62,7 +61,7 @@ function own(label: string): string {
  * from the dictionaries, when it sent none.
  */
 export function usePlaceLabels(words?: PlaceWordsView): PlaceLabels {
-  const t = useT()
+  const t = useSeriesT('one-piece')
   if (words !== undefined) {
     return {
       allRegions: words.allRegions,
@@ -74,8 +73,8 @@ export function usePlaceLabels(words?: PlaceWordsView): PlaceLabels {
 
   return {
     allRegions: t('places.allSeas'),
-    formOf: (form) => lookUp<TranslationKey>(FORMS, form, t),
+    formOf: (form) => lookUp<TranslationKey<'one-piece'>>(FORMS, form, t),
     region: t('places.sea'),
-    regionOf: (region) => lookUp<TranslationKey>(SEAS, region, t),
+    regionOf: (region) => lookUp<TranslationKey<'one-piece'>>(SEAS, region, t),
   }
 }

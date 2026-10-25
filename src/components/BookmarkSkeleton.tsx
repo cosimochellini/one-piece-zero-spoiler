@@ -2,8 +2,8 @@ import * as stylex from '@stylexjs/stylex'
 import type { ReactElement } from 'react'
 
 import { Button } from '~/components/ui/Button'
-import { useT } from '~/i18n/LocaleContext'
-import type { TranslationKey } from '~/i18n/types'
+import { useLocale, useT } from '~/i18n/LocaleContext'
+import type { SeriesSlug, TranslationKey } from '~/i18n/types'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
 import {
   color,
@@ -65,16 +65,16 @@ export function BookmarkSkeleton(): ReactElement {
  * Something could not be fetched (the form, by default): it says so, and
  * offers to ask again.
  */
-export function LoadFailed({
+export function LoadFailed<S extends SeriesSlug = never>({
   message = 'dialog.loadFailed',
   onRetry,
   retry = 'dialog.retry',
 }: {
-  message?: TranslationKey
+  message?: TranslationKey<S>
   onRetry: () => void
-  retry?: TranslationKey
+  retry?: TranslationKey<S>
 }): ReactElement {
-  const t = useT()
+  const { t } = useLocale()
 
   return (
     <div {...stylex.props(styles.failed)}>

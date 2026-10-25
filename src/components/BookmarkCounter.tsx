@@ -9,8 +9,8 @@ import {
 
 import { counterStyles as styles } from '~/components/BookmarkCounter.styles'
 import { Button } from '~/components/ui/Button'
-import { useT } from '~/i18n/LocaleContext'
-import type { Translate } from '~/i18n/types'
+import { useLocale, useT } from '~/i18n/LocaleContext'
+import type { SeriesSlug, Translate } from '~/i18n/types'
 import { useBookmarkSeries } from '~/lib/progress/BookmarkContext'
 import { type Draft, stepperOf } from '~/lib/progress/episode'
 import { type SagaAt, sagaAt, useSagaTable } from '~/lib/progress/sagaLabel'
@@ -268,7 +268,8 @@ export function SagaLine({
   draft: Draft
   id: string
 }): ReactElement {
-  const t = useT()
+  // A filler saga is One Piece's: the page's own copy names it.
+  const { t } = useLocale()
   const table = useSagaTable()
   const series = useBookmarkSeries()
   const saga = table === null ? null : sagaAt(table, draft, series)
@@ -287,7 +288,7 @@ export function SagaLine({
 // those are shown as they are rather than as "Saga · Saga di Alabasta".
 const NAMED_SAGA = /\b(?:arc|saga)\b/iu
 
-function sagaText(t: Translate, saga: SagaAt): string {
+function sagaText(t: Translate<SeriesSlug>, saga: SagaAt): string {
   const name =
     NAMED_SAGA.test(saga.name) ?
       saga.name

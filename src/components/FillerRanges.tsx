@@ -2,7 +2,7 @@ import * as stylex from '@stylexjs/stylex'
 import type { MouseEvent, ReactElement } from 'react'
 
 import { episodesLabel, openTo } from '~/components/fillerLabels'
-import { useT } from '~/i18n/LocaleContext'
+import { useSeriesT } from '~/i18n/LocaleContext'
 import { useBookmarkSeries } from '~/lib/progress/BookmarkContext'
 import type { BookmarkMode } from '~/lib/progress/episode'
 import type { SkipGroup } from '~/lib/view/filler'
@@ -36,7 +36,7 @@ export function FillerRanges({
   groups: SkipGroup[]
   mode: BookmarkMode
 }): ReactElement {
-  const t = useT()
+  const t = useSeriesT('one-piece')
   const series = useBookmarkSeries()
   return (
     <div {...stylex.props(styles.groups)}>

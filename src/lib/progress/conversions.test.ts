@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 
 import { dialLast } from '~/components/dial'
 import { reveal } from '~/data/reveal'
-import type { Translate } from '~/i18n/types'
+import type { SeriesSlug, Translate } from '~/i18n/types'
 
 import {
   absoluteEpisodeOf,
@@ -125,7 +125,7 @@ const SEASON_DRAFT = { mode: 'season', season: '2', number: '12' } as const
 const GREED_ISLAND = { revealedAtEpisode: 59, revealedAtChapter: 126 }
 const SEASON_TWO = { number: 2, first: 27, last: 38 }
 const NO_SAGAS = { episode: [], chapter: [], filler: [] }
-const t: Translate = (key) => key
+const t: Translate<SeriesSlug> = (key) => key
 
 const WITHOUT_SERIES: [string, () => unknown][] = [
   // @ts-expect-error -- every conversion names its series (#793)

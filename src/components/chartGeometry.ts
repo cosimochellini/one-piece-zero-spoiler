@@ -190,7 +190,7 @@ export function regionsFor(seas: Iterable<string>): Set<Region> {
 /** A region's name, and where it is written, across. */
 export interface RegionLabel {
   at: Point
-  key: TranslationKey
+  key: TranslationKey<'one-piece'>
   /** A band, named along its length when it stands upright. */
   upright?: true
 }

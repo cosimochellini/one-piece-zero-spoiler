@@ -1,53 +1,133 @@
 import { byString } from 'sort-es'
 import { describe, expect, it } from 'vitest'
 
+import { COPIES } from '~/server/copy.server'
+
 import { enDictionary } from './dictionaries/en'
 import { itDictionary } from './dictionaries/it'
 import { type Locale, LOCALES } from './locales'
-import { getDictionary, translate } from './translate'
-
-type DictionaryKey = keyof typeof enDictionary
+import { translate, translatorFor } from './translate'
+import type { CommonKey } from './types'
 
 /**
- * `Object.keys` widens to `string[]`, which loses the only thing that makes
- * the loops below type-check against a dictionary. The guard narrows back
- * without an assertion.
+ * Every dictionary, the shared one and each series' own, by name and locale:
+ * what the checks below read. A series added to `COPIES` is checked with no
+ * line here.
  */
-function dictionaryKeys(): DictionaryKey[] {
-  return Object.keys(enDictionary).filter((key): key is DictionaryKey =>
-    Object.hasOwn(enDictionary, key),
+const ALL: [string, Record<Locale, Record<string, string>>][] = [
+  ['shared', { en: enDictionary, it: itDictionary }],
+  ...Object.entries(COPIES),
+]
+
+/** Every value of a copy, with its locale and key. */
+function entriesOf(
+  copy: Record<Locale, Record<string, string>>,
+): [Locale, string, string][] {
+  return LOCALES.flatMap((locale) =>
+    Object.entries(copy[locale]).map(
+      ([key, value]): [Locale, string, string] => [locale, key, value],
+    ),
   )
 }
 
 describe('the dictionaries', () => {
-  it('publishes one dictionary per locale', () => {
-    for (const locale of LOCALES) {
-      expect(Object.keys(getDictionary(locale)).length).toBeGreaterThan(0)
+  it.each(ALL)('translates every key of %s in every locale', (_, copy) => {
+    // The TypeScript annotations already catch a missing key. This catches
+    // the other half: a key that is present but left empty.
+    for (const [locale, key, value] of entriesOf(copy)) {
+      expect(value.trim(), `${locale} ${key}`).not.toBe('')
     }
   })
 
-  it('translates every key in every locale', () => {
-    // The TypeScript annotation on `it` already catches a missing key. This
-    // catches the other half: a key that is present but left empty.
-    for (const locale of LOCALES) {
-      const dictionary = getDictionary(locale)
+  it.each(ALL)(
+    'carries the same placeholders in both languages in %s',
+    (_, copy) => {
+      // A translation that drops `{threshold}` silently renders a sentence with a
+      // hole in it, and nothing else would notice.
+      for (const [key, value] of Object.entries(copy.en)) {
+        expect(placeholdersIn(copy.it[key] ?? ''), key).toStrictEqual(
+          placeholdersIn(value),
+        )
+      }
+    },
+  )
+})
 
-      for (const key of dictionaryKeys()) {
-        expect(dictionary[key].trim()).not.toBe('')
+describe('each series’ own copy', () => {
+  it('shares no key with another series but the common ones', () => {
+    // A later copy spread over an earlier one would silently change a key
+    // for the first series.
+    const owners = new Map<string, string>()
+    for (const [slug, copy] of Object.entries(COPIES)) {
+      for (const key of Object.keys(copy.en)) {
+        if (COMMON.has(key)) {
+          continue
+        }
+
+        expect(owners.get(key), `${slug} ${key}`).toBeUndefined()
+
+        owners.set(key, slug)
       }
     }
   })
 
-  it('carries the same placeholders in both languages', () => {
-    // A translation that drops `{threshold}` silently renders a sentence with a
-    // hole in it, and nothing else would notice.
-    for (const key of dictionaryKeys()) {
-      expect(placeholdersIn(itDictionary[key]), key).toStrictEqual(
-        placeholdersIn(enDictionary[key]),
-      )
+  it('redefines no shared key, and words every common one', () => {
+    for (const copy of Object.values(COPIES)) {
+      for (const locale of LOCALES) {
+        const keys = Object.keys(copy[locale])
+
+        expect(
+          keys.filter((key) => Object.hasOwn(enDictionary, key)),
+        ).toStrictEqual([])
+        expect([...COMMON].filter((key) => !keys.includes(key))).toStrictEqual(
+          [],
+        )
+      }
+    }
+  })
+
+  it('names no other series', () => {
+    for (const [slug, copy] of Object.entries(COPIES)) {
+      const others = Object.keys(COPIES).filter((other) => other !== slug)
+      for (const locale of LOCALES) {
+        const text = Object.values(copy[locale]).join(' ')
+        for (const other of others) {
+          expect(text, `${slug} ${locale}`).not.toContain(nameOf(other))
+        }
+      }
     }
   })
 })
+
+/** The keys every series words for itself, as the copies hold them. */
+const COMMON = new Set<string>([
+  'characters.featuredLede',
+  'credits.coverage',
+  'credits.otherTerms',
+  'credits.source.wiki-en',
+  'credits.source.wiki-it',
+  'credits.wikiEn',
+  'credits.wikiIt',
+  'credits.wikiTerms',
+  'faq.bookmarkA',
+  'legal.credits',
+  'onboarding.lede',
+  'onboarding.places',
+  'onboarding.tailTitle',
+  'places.count',
+  'places.pageDescription',
+  'site.description',
+] satisfies CommonKey[])
+
+/** A series' name as its copy would print it: One Piece, Hunter x Hunter. */
+function nameOf(slug: string): string {
+  return slug
+    .split('-')
+    .map((word) =>
+      word === 'x' ? word : `${word[0]?.toUpperCase() ?? ''}${word.slice(1)}`,
+    )
+    .join(' ')
+}
 
 /**
  * The phrases the `tone-of-voice` skill in `.claude/skills` rules out, per
@@ -85,28 +165,19 @@ const BANNED: Record<Locale, RegExp[]> = {
 describe('the tone of voice', () => {
   // The en dash stays allowed: it is the right mark for a range such as
   // `{first}–{last}`.
-  it('uses no em dash and no exclamation mark', () => {
-    for (const locale of LOCALES) {
-      const dictionary = getDictionary(locale)
-
-      for (const key of dictionaryKeys()) {
-        expect(dictionary[key], `${locale} ${key}`).not.toMatch(/[—!]/u)
-      }
+  it.each(ALL)('uses no em dash and no exclamation mark in %s', (_, copy) => {
+    for (const [locale, key, value] of entriesOf(copy)) {
+      expect(value, `${locale} ${key}`).not.toMatch(/[—!]/u)
     }
   })
 
-  it('uses none of the banned phrases', () => {
-    for (const locale of LOCALES) {
-      const dictionary = getDictionary(locale)
+  it.each(ALL)('uses none of the banned phrases in %s', (_, copy) => {
+    for (const [locale, key, value] of entriesOf(copy)) {
       const banned = BANNED[locale]
-
-      for (const key of dictionaryKeys()) {
-        for (const pattern of banned) {
-          expect(
-            dictionary[key],
-            `${locale} ${key} ${String(pattern)}`,
-          ).not.toMatch(pattern)
-        }
+      for (const pattern of banned) {
+        expect(value, `${locale} ${key} ${String(pattern)}`).not.toMatch(
+          pattern,
+        )
       }
     }
   })
@@ -132,6 +203,33 @@ describe('translate', () => {
     expect(translate(enDictionary, 'veil.reveal', { unused: 'x' })).toBe(
       'Show anyway',
     )
+  })
+
+  it('throws on a key the dictionary does not hold', () => {
+    // A series' key on a shared page, or under another series.
+    expect(() => translate(enDictionary, 'fruits.title')).toThrow(
+      'fruits.title',
+    )
+  })
+})
+
+describe('translatorFor', () => {
+  it('names the series a page belongs to', () => {
+    const t = translatorFor('it', {
+      slug: 'hunter-x-hunter',
+      name: 'Hunter x Hunter',
+      words: COPIES['hunter-x-hunter'].it,
+    })
+
+    expect(t('hero.headline')).toBe('La wiki di Hunter x Hunter senza spoiler')
+    expect(t('onboarding.tailTitle')).toBe('Dopo l’Esame Hunter')
+  })
+
+  it('reads only the shared copy without a series', () => {
+    const t = translatorFor('en')
+
+    expect(t('nav.places')).toBe('Places')
+    expect(() => t('site.description')).toThrow('site.description')
   })
 })
 

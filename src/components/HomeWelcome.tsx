@@ -5,7 +5,7 @@ import { type ReactElement, useSyncExternalStore } from 'react'
 import { Button } from '~/components/ui/Button'
 import { useDeclares } from '~/components/useDeclares'
 import { useLocale } from '~/i18n/LocaleContext'
-import type { TranslationKey } from '~/i18n/types'
+import type { SeriesSlug, TranslationKey } from '~/i18n/types'
 import { useSeriesParams } from '~/lib/progress/BookmarkContext'
 import type { SeriesPage } from '~/lib/progress/series'
 import {
@@ -23,7 +23,11 @@ import {
   text,
 } from '~/styles/tokens.stylex'
 
-/** Every page the welcome can point to; a series shows those it declares. */
+/**
+ * Every page the welcome can point to; a series shows those it declares.
+ * Labelled by the page's own copy: the fruits and the filler guide are One
+ * Piece's, and only a series that declares them links them.
+ */
 const PAGES = [
   {
     page: 'characters',
@@ -33,7 +37,11 @@ const PAGES = [
   { page: 'places', to: '/$series/$locale/places', label: 'places.title' },
   { page: 'fruits', to: '/$series/$locale/fruits', label: 'fruits.title' },
   { page: 'filler', to: '/$series/$locale/filler', label: 'filler.title' },
-] as const satisfies { label: TranslationKey; page: SeriesPage; to: string }[]
+] as const satisfies {
+  label: TranslationKey<SeriesSlug>
+  page: SeriesPage
+  to: string
+}[]
 
 /**
  * Shown once, on the first home page after a bookmark is saved from the

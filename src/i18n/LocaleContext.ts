@@ -1,12 +1,16 @@
-import { createContext, use } from 'react'
+import { createContext, use, useMemo } from 'react'
 
 import type { Locale } from './locales'
-import type { Translate } from './types'
+import type { SeriesSlug, Translate } from './types'
 
-/** What the provider puts on the context: the active locale and its translate. */
+/**
+ * What the provider puts on the context: the active locale, its translate,
+ * and the series whose copy it holds, if the page belongs to one.
+ */
 export interface LocaleContextValue {
   locale: Locale
-  t: Translate
+  series: null | SeriesSlug
+  t: Translate<SeriesSlug>
 }
 
 export const LocaleContext = createContext<LocaleContextValue | null>(null)
@@ -26,7 +30,28 @@ export function useLocale(): LocaleContextValue {
   return value
 }
 
-/** Shorthand for the common case of needing only the translate function. */
+/** The shared keys and those every series words for itself. */
 export function useT(): Translate {
   return useLocale().t
+}
+
+/**
+ * Translate with one series' own keys as well. Typed by the series, so a key
+ * of another series fails `typecheck`; under another series it throws when
+ * called, so a page reached by a series without the feature cannot print it.
+ */
+export function useSeriesT<S extends SeriesSlug>(slug: S): Translate<S> {
+  const { series, t } = useLocale()
+
+  return useMemo<Translate<S>>(
+    () =>
+      series === slug ? t : (
+        (key): never => {
+          throw new Error(
+            `${key} is ${slug}'s copy, asked for under ${series ?? 'no series'}`,
+          )
+        }
+      ),
+    [series, slug, t],
+  )
 }

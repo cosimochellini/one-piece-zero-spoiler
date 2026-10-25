@@ -10,11 +10,12 @@ import { Route as CharactersRoute } from '~/routes/$series/$locale/characters'
 import { Route as FruitsRoute } from '~/routes/$series/$locale/fruits'
 import { Route as LandingRoute } from '~/routes/$series/$locale/index'
 import { Route as PlacesRoute } from '~/routes/$series/$locale/places'
+import { copyOf } from '~/server/copy.server'
 
 import { describeNamedPage, type HeadTags, recordHead } from './-head'
 
 type Head = (input: {
-  match: { context: { series: Series }; pathname: string }
+  match: { context: { copy?: unknown; series: Series }; pathname: string }
   params: { locale: string }
 }) => {
   links?: { href: string; hrefLang?: string; rel: string }[]
@@ -43,7 +44,7 @@ function headOf(
   }
 
   return describeHead({
-    match: { context: { series }, pathname },
+    match: { context: { copy: copyOf(series, 'en'), series }, pathname },
     params: { locale: 'en' },
   })
 }
@@ -172,7 +173,10 @@ describe('series-specific structured data and social addresses', () => {
               description: 'A covered record.',
             },
           },
-          match: { pathname },
+          match: {
+            context: { copy: copyOf(HUNTER_X_HUNTER_SERIES, 'en') },
+            pathname,
+          },
           params: { locale: 'en' },
         },
         'characters',

@@ -8,6 +8,7 @@ import * as FruitArt from './art/fruits'
 import * as Chapters from './chapter-table'
 import * as Characters from './characters'
 import * as Chart from './chart'
+import { CREDITS } from './credits'
 import * as DatedArchive from './dated'
 import * as Entities from './entities'
 import * as Filler from './filler'
@@ -47,6 +48,7 @@ export const ONE_PIECE_ARCHIVE: SeriesArchive = {
   getPlace: Places.getPlace,
   placeDossierOf: Places.placeDossierOf,
   chartPointOf: Chart.chartPointOf,
+  credits: CREDITS,
   leads: Leads.ARC_LEADS,
   sagas: Sagas.sagas,
   timelines: DatedArchive.timelines,

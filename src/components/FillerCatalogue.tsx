@@ -4,7 +4,7 @@ import { type ReactElement, useEffect } from 'react'
 import { styles } from '~/components/FillerCatalogue.styles'
 import { followHash, placeLabel } from '~/components/fillerLabels'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
-import { useT } from '~/i18n/LocaleContext'
+import { useSeriesT } from '~/i18n/LocaleContext'
 import { useBookmarkSeries } from '~/lib/progress/BookmarkContext'
 import type { BookmarkMode } from '~/lib/progress/episode'
 import type {
@@ -171,7 +171,7 @@ function FogFold({
   peek: (handle: string) => Promise<FillerRowView>
   rows: FillerSlot[]
 }): ReactElement {
-  const t = useT()
+  const t = useSeriesT('one-piece')
 
   return (
     <li>
@@ -212,7 +212,7 @@ function Row({
   peek: (handle: string) => Promise<FillerRowView>
   slot: FillerSlot
 }): ReactElement {
-  const t = useT()
+  const t = useSeriesT('one-piece')
   const series = useBookmarkSeries()
   const entry = slot.open ? slot.record : slot.covered
 
@@ -278,7 +278,7 @@ function ArcLabel({
   count: number
   name: string
 }): ReactElement {
-  const t = useT()
+  const t = useSeriesT('one-piece')
   return (
     <>
       <span

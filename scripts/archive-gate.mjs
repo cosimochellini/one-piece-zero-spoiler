@@ -29,6 +29,12 @@
  *      has not reached, fails the gate. One Piece's are its dictionaries'.
  *      The server holds the tables statically, so these are client canaries
  *      only.
+ *   5. Series copy canaries. Every series' own words (its description, its
+ *      demo, its sources, One Piece's factions and seas) stay on the server
+ *      and reach a page with its series only (`loadSeriesCopy`), so a reader
+ *      of one series never downloads another's (#791). Each word distinct
+ *      enough to look for, and not also a word of the shared copy, is looked
+ *      for in the chunks.
  * The SSR manifest also proves that every series archive enters through a
  * dynamic import, with no canary-bearing data in another runtime entry's
  * static dependency closure.
@@ -274,7 +280,7 @@ function officialSourceIn(source) {
  */
 export function sourceCanaries(repositoryRoot) {
   const file = 'docs/content-provenance/sources.json'
-  const official = 'src/server/archive/credits.server.ts'
+  const official = 'src/data/series/one-piece/credits.ts'
   try {
     const manifest = JSON.parse(
       // fallow-ignore-next-line security-sink -- The root is this script’s directory or a test fixture; file is a fixed repository path, never request input.
@@ -339,6 +345,46 @@ export function placeWordCanaries(series) {
 }
 
 /**
+ * One canary per word of every series' own copy that is distinct enough to
+ * look for and is not also in the shared copy, which every page ships: "Your
+ * bookmark" is a word of One Piece's filler strip and part of a shared
+ * sentence.
+ * @param {Record<string, Record<string, Record<string, string>>>} copies Each series' copy, by slug and locale.
+ * @param {Record<string, string>[]} shared The shared dictionaries.
+ * @returns {{file: string, phrase: string}[]} What no client chunk may hold.
+ */
+export function copyCanaries(copies, shared) {
+  const common = shared.flatMap((words) => Object.values(words))
+  const isShared = (phrase) => common.some((word) => word.includes(phrase))
+
+  return Object.entries(copies).flatMap(([slug, locales]) => {
+    const phrases = Object.values(locales).flatMap((words) =>
+      Object.values(words),
+    )
+    return [...new Set(phrases)]
+      .filter((phrase) => DISTINCT_WORD.test(phrase) && !isShared(phrase))
+      .map((phrase) => ({ file: `src/i18n/dictionaries/${slug}`, phrase }))
+  })
+}
+
+/**
+ * The copy canaries of every series; one unreadable canary when the copy
+ * does not load, so the gate refuses to vouch for it.
+ * @returns {Promise<{file: string, phrase: null | string}[]>} What to look for.
+ */
+async function copyCanariesOf() {
+  try {
+    const { COPIES } = await importArchive('server/copy.server.ts')
+    const { enDictionary } = await importArchive('i18n/dictionaries/en.ts')
+    const { itDictionary } = await importArchive('i18n/dictionaries/it.ts')
+    return copyCanaries(COPIES, [enDictionary, itDictionary])
+  } catch (error) {
+    console.error(`archive-gate: the series copy did not load: ${error}`)
+    return [{ file: 'src/server/copy.server.ts', phrase: null }]
+  }
+}
+
+/**
  * Every canary: the prose and slugs of every series in the list, and the
  * source URLs. A list that does not load is one unreadable canary, so the
  * gate exits as unusable rather than as a leak.
@@ -395,7 +441,11 @@ async function main() {
   }
 
   const canaries = await canariesOf(repositoryRoot)
-  const verdict = judge(chunks, [...canaries, ...(await placeWordCanariesOf())])
+  const verdict = judge(chunks, [
+    ...canaries,
+    ...(await placeWordCanariesOf()),
+    ...(await copyCanariesOf()),
+  ])
 
   if (verdict.unreadable.length > 0) {
     console.error(
@@ -412,7 +462,7 @@ async function main() {
   }
 
   console.log(
-    `archive-gate: clean — ${String(chunks.length)} client scripts, ${verdict.total.toLocaleString('en-GB')} bytes, no archive prose.`,
+    `archive-gate: clean — ${String(chunks.length)} client scripts, ${verdict.total.toLocaleString('en-GB')} bytes, no archive prose and no series copy.`,
   )
 
   return checkServer(repositoryRoot, canaries)

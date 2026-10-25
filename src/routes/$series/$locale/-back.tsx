@@ -2,7 +2,7 @@ import * as stylex from '@stylexjs/stylex'
 import { Link } from '@tanstack/react-router'
 import type { ReactElement } from 'react'
 
-import { useT } from '~/i18n/LocaleContext'
+import { useLocale } from '~/i18n/LocaleContext'
 import { useSeriesParams } from '~/lib/progress/BookmarkContext'
 
 import { recordStyles } from './-record.styles'
@@ -20,7 +20,9 @@ export function RecordBackLink({
   section: keyof typeof BACK
 }): ReactElement {
   const params = useSeriesParams()
-  const t = useT()
+  // Every section's label: a fruit's is One Piece's, and only its pages
+  // link back to the fruits.
+  const { t } = useLocale()
   const { to, label } = BACK[section]
 
   return (

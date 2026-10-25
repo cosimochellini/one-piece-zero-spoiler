@@ -1,34 +1,93 @@
-import type { enDictionary, sharedEn } from './dictionaries/en'
+import type { enDictionary } from './dictionaries/en'
+import type { hunterXHunterEn } from './dictionaries/hunter-x-hunter/en'
 import type { onePieceEn } from './dictionaries/one-piece/en'
 
-/** Every key the app may translate, derived from the English dictionary. */
-export type TranslationKey = keyof typeof enDictionary
+/** A key of the copy every series shares, word for word. */
+export type SharedKey = keyof typeof enDictionary
 
 /**
- * A complete dictionary. Annotating a dictionary with this type is what makes
- * TypeScript report a missing key, and — through the excess property check on
- * an object literal — a key that no longer exists.
+ * The keys every series words for itself: its description, its demo, its
+ * crew, its sources and its rights holders. Each series' copy must define all
+ * of them, so a page that prints one prints the words of its own series.
  */
-export type Dictionary = Record<TranslationKey, string>
-
-/** The copy every series shares, in one locale. */
-export type SharedCopy = Record<keyof typeof sharedEn, string>
-
-/** One Piece's own copy, in one locale. */
-export type OnePieceCopy = Record<keyof typeof onePieceEn, string>
+export type CommonKey =
+  | 'characters.featuredLede'
+  | 'credits.coverage'
+  | 'credits.otherTerms'
+  | 'credits.source.wiki-en'
+  | 'credits.source.wiki-it'
+  | 'credits.wikiEn'
+  | 'credits.wikiIt'
+  | 'credits.wikiTerms'
+  | 'faq.bookmarkA'
+  | 'legal.credits'
+  | 'onboarding.lede'
+  | 'onboarding.places'
+  | 'onboarding.tailTitle'
+  | 'places.count'
+  | 'places.pageDescription'
+  | 'site.description'
 
 /**
- * A series' own copy: keys of its own, none of them a shared key, so a
- * series cannot change what the shared pages say.
+ * Each series' own copy, by slug. English is the source of its keys; the
+ * Italian copy is typed against it. A series reads the shared keys and its
+ * own, and no other series' (`TranslationKey`).
  */
-export type SeriesCopy = Partial<Record<keyof typeof sharedEn, never>>
+export interface SeriesCopies {
+  'hunter-x-hunter': typeof hunterXHunterEn
+  'one-piece': typeof onePieceEn
+}
+
+/** A series that has copy of its own. */
+export type SeriesSlug = keyof SeriesCopies
+
+/**
+ * The keys a page may translate. With no series, the shared keys and the
+ * common ones; under a series, its own keys as well, so a key of another
+ * series fails `typecheck`.
+ */
+export type TranslationKey<S extends SeriesSlug = never> =
+  | CommonKey
+  | SharedKey
+  | { [K in SeriesSlug]: Extract<keyof SeriesCopies[K], string> }[S]
+
+/**
+ * The shared copy, complete. Annotating a dictionary with this type is what
+ * makes TypeScript report a missing key, and — through the excess property
+ * check on an object literal — a key that no longer exists.
+ */
+export type Dictionary = Record<SharedKey, string>
+
+/** One series' copy in another locale, typed against its English copy. */
+export type SeriesWords<S extends SeriesSlug> = Record<
+  keyof SeriesCopies[S],
+  string
+>
+
+/**
+ * What a series' English copy must be: every common key, and keys of its
+ * own, none of them a shared key, so a series cannot change what the shared
+ * pages say.
+ */
+export type OwnCopy = Partial<Record<SharedKey, never>>
+  & Record<CommonKey, string>
   & Record<string, string>
+
+/**
+ * A series' copy in one locale, as the server sends it with the series'
+ * pages: its slug, its name (which fills `{series}`) and its words.
+ */
+export interface SeriesCopy {
+  name: string
+  slug: SeriesSlug
+  words: Record<string, string>
+}
 
 /** Values a `{placeholder}` may be filled with. */
 export type TranslationParams = Record<string, number | string>
 
 /** Translates a key, filling any `{placeholder}` from `params`. */
-export type Translate = (
-  key: TranslationKey,
+export type Translate<S extends SeriesSlug = never> = (
+  key: TranslationKey<S>,
   params?: TranslationParams,
 ) => string

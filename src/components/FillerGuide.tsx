@@ -8,7 +8,7 @@ import { FillerCatalogue } from '~/components/FillerCatalogue'
 import { FillerCountdown } from '~/components/FillerCountdown'
 import { FillerRanges } from '~/components/FillerRanges'
 import { FillerLegend, FillerStrip } from '~/components/FillerStrip'
-import { useT } from '~/i18n/LocaleContext'
+import { useSeriesT } from '~/i18n/LocaleContext'
 import { useBookmark, useBookmarkSeries } from '~/lib/progress/BookmarkContext'
 import { absoluteEpisodeOf, modeOf } from '~/lib/progress/episode'
 import type { FillerPageView, FillerRowView } from '~/lib/view/filler'
@@ -30,7 +30,7 @@ export function FillerGuide({
   page: FillerPageView
   peek: (handle: string) => Promise<FillerRowView>
 }): ReactElement {
-  const t = useT()
+  const t = useSeriesT('one-piece')
   const { bookmark } = useBookmark()
   const { aired, countdown, groups, marks, skipGroups, unnumbered } = page
   const mode = modeOf(bookmark)
@@ -88,7 +88,7 @@ function Overview({
   aired: number
   marks: FillerPageView['marks']
 }): ReactElement {
-  const t = useT()
+  const t = useSeriesT('one-piece')
   const { bookmark } = useBookmark()
   const series = useBookmarkSeries()
 
@@ -112,7 +112,7 @@ function Overview({
 
 /** What a reader with no bookmark is told, with the control to set one. */
 function Notice(): ReactElement {
-  const t = useT()
+  const t = useSeriesT('one-piece')
 
   return (
     <div {...stylex.props(styles.notice)}>

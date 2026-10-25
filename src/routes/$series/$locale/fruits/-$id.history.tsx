@@ -9,7 +9,7 @@ import * as stylex from '@stylexjs/stylex'
 import { Link } from '@tanstack/react-router'
 import type { ReactElement } from 'react'
 
-import { useLocale } from '~/i18n/LocaleContext'
+import { useLocale, useSeriesT } from '~/i18n/LocaleContext'
 import { spliced } from '~/i18n/spliced'
 import type { TranslationKey } from '~/i18n/types'
 import { useSeriesParams, useThreshold } from '~/lib/progress/BookmarkContext'
@@ -21,7 +21,7 @@ import { styles } from './-$id.styles'
 /** The words each kind of entry says. */
 const EVENT_KEY: Record<
   Exclude<FruitHistoryEntry['event'], 'named'>,
-  TranslationKey
+  TranslationKey<'one-piece'>
 > = {
   'deceased': 'fruit.history.deceased',
   'eaten': 'fruit.history.eaten',
@@ -39,7 +39,7 @@ export function HistoryBand({
 }: {
   detail: FruitDetail
 }): null | ReactElement {
-  const { t } = useLocale()
+  const t = useSeriesT('one-piece')
   if (detail.history.length === 0) {
     return null
   }
@@ -73,7 +73,8 @@ function HistoryRow({
   entry: FruitHistoryEntry
   saga: string
 }): ReactElement {
-  const { locale, t } = useLocale()
+  const { locale } = useLocale()
+  const t = useSeriesT('one-piece')
   const { series } = useSeriesParams()
   const threshold = useThreshold()
   const { event, who } = entry

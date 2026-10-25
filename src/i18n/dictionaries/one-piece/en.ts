@@ -1,11 +1,42 @@
-import type { SeriesCopy } from '~/i18n/types'
+import type { OwnCopy } from '~/i18n/types'
 
 /**
- * One Piece's own copy, in English: the words of the features no other
- * series has (owner, 2026-10-23). The keys are its own; `SeriesCopy` fails
- * one that redefines a shared key of `../en.ts`.
+ * One Piece's own copy, in English: the keys every series words for itself
+ * (`CommonKey`) and the words of the features no other series has (owner,
+ * 2026-10-23). It stays on the server and reaches a reader with One Piece's
+ * pages only. `OwnCopy` fails a common key left out and one that redefines a
+ * shared key of `../en.ts`.
  */
 export const onePieceEn = {
+  'characters.featuredLede':
+    'The Straw Hat crew and the other key characters of the story.',
+  'credits.coverage':
+    'This list covers the bounded review recorded on 20 October 2026 and the summary replacement reviewed on 22 October 2026. Other historical text, translations and illustrations remain unreviewed or unresolved. These references do not certify the rights in every entry.',
+  'credits.otherTerms':
+    'No general open-content license was established for AnimeFillerList or the official episode synopsis. Classification facts and citations do not grant permission to copy prose, images or an entire compilation. Official titles and One Piece material are not offered as project-owned content.',
+  'credits.source.wiki-en':
+    'English One Piece Wiki contributors: source revision',
+  'credits.source.wiki-it':
+    'Italian One Piece Wiki contributors: source revision',
+  'credits.wikiEn': 'English One Piece Wiki',
+  'credits.wikiIt': 'Italian One Piece Wiki',
+  'credits.wikiTerms':
+    'The English and Italian One Piece Wikis declare CC BY-SA 3.0 Unported for community text by default. Exceptions, imported material and images can have different terms. Fandom permits author attribution through links to the contributed articles.',
+  'faq.bookmarkA':
+    'In a cookie on this device. The server reads it before it builds the page, so entries past your bookmark are not in the page you receive. Without a bookmark, this page carries East Blue for the dial and nothing past it. There is no account and no tracking.',
+  'legal.credits':
+    'One Piece was created by Eiichiro Oda. Anime credit: © Eiichiro Oda/Shueisha, Toei Animation.',
+  'onboarding.lede':
+    'Move the dial through East Blue. Entries up to that point open, and the ones after it stay under fog. Once you set your bookmark, every page of the wiki works this way.',
+  'onboarding.places': 'Places and ships',
+  'onboarding.tailTitle': 'After East Blue',
+  'places.count':
+    '{count} places, in the order the crew reaches them. Each one opens at the episode where it first appears.',
+  'places.pageDescription':
+    'One Piece places in the order the crew reaches them, each hidden until the episode where it first appears.',
+  'site.description':
+    'A One Piece wiki that hides every character, arc, place and devil fruit you have not reached yet. Set the episode or chapter you are on and read up to there.',
+
   'nav.fruits': 'Fruits',
 
   'home.filler.title': 'Watch out for filler',
@@ -228,4 +259,4 @@ export const onePieceEn = {
 
   'kind.ship': 'Ship',
   'kind.fruit': 'Devil fruit',
-} as const satisfies SeriesCopy
+} as const satisfies OwnCopy

@@ -1,10 +1,39 @@
-import type { OnePieceCopy } from '~/i18n/types'
+import type { SeriesWords } from '~/i18n/types'
 
 /**
  * One Piece's own copy, in Italian, typed against `../one-piece/en.ts` as the
  * shared copy is against `../en.ts`.
  */
-export const onePieceIt: OnePieceCopy = {
+export const onePieceIt: SeriesWords<'one-piece'> = {
+  'characters.featuredLede':
+    'La ciurma di Cappello di Paglia e gli altri personaggi chiave della storia.',
+  'credits.coverage':
+    'L’elenco copre il campione verificato il 20 ottobre 2026 e la sostituzione del riassunto verificata il 22 ottobre 2026. Altri testi storici, traduzioni e disegni restano non verificati o con questioni aperte. Questi riferimenti non certificano i diritti su tutte le voci.',
+  'credits.otherTerms':
+    'Non è stata accertata una licenza generale aperta per AnimeFillerList o per la sinossi ufficiale dell’episodio. Le classificazioni e le citazioni delle fonti non autorizzano a copiare testi, immagini o un’intera raccolta. I titoli ufficiali e il materiale di One Piece non vengono offerti come contenuti di proprietà del progetto.',
+  'credits.source.wiki-en':
+    'Contributori della One Piece Wiki inglese: revisione della fonte',
+  'credits.source.wiki-it':
+    'Contributori della One Piece Wiki italiana: revisione della fonte',
+  'credits.wikiEn': 'One Piece Wiki inglese',
+  'credits.wikiIt': 'One Piece Wiki italiana',
+  'credits.wikiTerms':
+    'Le One Piece Wiki inglese e italiana dichiarano CC BY-SA 3.0 Unported come licenza predefinita dei testi della comunità. Eccezioni, materiali importati e immagini possono avere condizioni diverse. Fandom consente di attribuire gli autori tramite collegamenti agli articoli a cui hanno contribuito.',
+  'faq.bookmarkA':
+    'In un cookie su questo dispositivo. Il server lo legge prima di generare la pagina, quindi le voci dopo il segnalibro non sono nella pagina che ricevi. Senza segnalibro, questa pagina contiene East Blue per il cursore e niente dopo. Non serve un account e non c’è nessun tracciamento.',
+  'legal.credits':
+    'One Piece è un’opera di Eiichiro Oda. Crediti dell’anime: © Eiichiro Oda/Shueisha, Toei Animation.',
+  'onboarding.lede':
+    'Sposta il cursore lungo East Blue. Le voci fino a quel punto sono visibili, quelle dopo restano nella nebbia. Quando imposti il segnalibro, ogni pagina della wiki funziona così.',
+  'onboarding.places': 'Luoghi e navi',
+  'onboarding.tailTitle': 'Dopo East Blue',
+  'places.count':
+    '{count} luoghi, nell’ordine in cui la ciurma li raggiunge. Ognuno si apre all’episodio in cui compare per la prima volta.',
+  'places.pageDescription':
+    'I luoghi di One Piece nell’ordine in cui la ciurma li raggiunge, ognuno nascosto fino all’episodio in cui compare per la prima volta.',
+  'site.description':
+    'Una wiki di One Piece che nasconde personaggi, saghe, luoghi e frutti del diavolo oltre l’ultimo episodio visto o l’ultimo capitolo letto.',
+
   'nav.fruits': 'Frutti',
 
   'home.filler.title': 'Occhio ai filler',
