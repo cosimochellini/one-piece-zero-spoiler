@@ -24,6 +24,7 @@ import { Route as FruitsRoute } from '~/routes/$series/$locale/fruits/index'
 import { Route as PlaceRoute } from '~/routes/$series/$locale/places/$id'
 import { Route as PlacesRoute } from '~/routes/$series/$locale/places/index'
 import { seriesDescription } from '~/routes/-series'
+import { routeTree } from '~/routeTree.gen'
 
 type Guard = (input: unknown) => unknown
 
@@ -51,7 +52,7 @@ function isSeriesContext(value: unknown): value is { series: Series } {
 const PAGE_ROUTES: {
   page: SeriesPage
   path: string
-  route: { options: { beforeLoad?: unknown } }
+  route: { id: string; options: { beforeLoad?: unknown } }
 }[] = [
   { page: 'characters', path: 'characters', route: CharactersRoute },
   { page: 'characters', path: 'characters/$id', route: CharacterRoute },
@@ -123,6 +124,19 @@ const CASES = SERIES.flatMap(({ description }) =>
 describe('the pages a series declares', () => {
   // Each filed series is described as if it were open, Hunter x Hunter
   // included, so the routes are held to what it declares before it opens.
+  // The list above is written by hand, so a page route added under a series
+  // and left out of it fails here rather than going unguarded.
+  it('covers every page route under a series', () => {
+    const { routesById } = createRouter({ routeTree })
+    const pageIds = Object.keys(routesById).filter(
+      (id) => id.startsWith('/$series/$locale/') && id !== '/$series/$locale/',
+    )
+
+    expect(new Set(pageIds)).toStrictEqual(
+      new Set(PAGE_ROUTES.map(({ route }) => route.id)),
+    )
+  })
+
   it.each(CASES)(
     '$address answers by what $description.slug declares',
     async ({ address, description, page }) => {
