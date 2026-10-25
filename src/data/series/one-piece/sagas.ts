@@ -1,3 +1,5 @@
+import { dossiersOf } from '~/data/dated'
+
 import { alabasta } from './records/alabasta'
 import { dressrosa } from './records/dressrosa'
 import { eastBlue } from './records/east-blue'
@@ -40,8 +42,8 @@ export const sagas: OnePieceSaga[] = [
 /**
  * Every character's dossier, merged from the sagas. Each saga files the
  * dossiers of the characters it introduces, beside their records, so the two
- * are written and reviewed together; the data tests hold that every
- * character has exactly one.
+ * are written and reviewed together; a character filed in two throws
+ * (`dossiersOf`), and the data tests hold that every character has one.
  */
 export const CHARACTER_DOSSIERS: Record<string, OnePieceDossier> =
-  Object.fromEntries(sagas.flatMap((saga) => Object.entries(saga.dossiers)))
+  dossiersOf(sagas)

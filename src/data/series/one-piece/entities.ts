@@ -113,7 +113,7 @@ const NAMINGS = Object.entries(CHARACTER_DOSSIERS).flatMap(([id, dossier]) => {
  * earliest episode and the earliest chapter any of them opens at (`gateOf`),
  * never before the eater's own in either unit. A fruit no entry names has no
  * threshold and never opens; `fruits.test.ts` holds that every fruit has an
- * eater and opens within the dial, and `characters.test.ts` that every
+ * eater and opens within the dial, and `~/data/archive.test.ts` that every
  * dossier belongs to a filed character.
  */
 function revealOf(id: string): Gated {

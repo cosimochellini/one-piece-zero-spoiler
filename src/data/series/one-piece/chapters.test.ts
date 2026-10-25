@@ -2,26 +2,16 @@ import { byNumber } from 'sort-es'
 import { describe, expect, it } from 'vitest'
 
 import { vouches } from '~/data/chapterTable'
-import type { Dated, Entity } from '~/data/types'
-import { LOCALES } from '~/i18n/locales'
 import { CHAPTER_CEILING } from '~/lib/progress/episode'
 
 import { chapterAtEpisode, episodeAtChapter, gateOf } from './chapter-table'
-import { DATED, TIMELINES } from './chapters'
-import { datedOf } from './dated'
+import { DATED } from './chapters'
 import { entities } from './entities'
 
 const CHAPTERS = Array.from(
   { length: CHAPTER_CEILING },
   (_, index) => index + 1,
 )
-
-/** The entries that say which chapter tells them. */
-const DECLARED = DATED.flatMap(({ entry, label, owner }) => {
-  return entry.chapter === undefined ?
-      []
-    : { chapter: entry.chapter, episode: entry.episode, label, owner }
-})
 
 /**
  * The declared entries the table is built on: not one of a single source,
@@ -32,27 +22,6 @@ const ANCHORED = DATED.flatMap(({ entry, label, owner }) => {
       []
     : { chapter: entry.chapter, episode: entry.episode, label }
 })
-
-/** Every dated entry with the gate `~/data/series/one-piece/dated` opens it at. */
-const OPENED = TIMELINES.flatMap(({ field, owner }) => {
-  return datedOf(owner, field).map((entry) => {
-    const label = `${owner.id} @${String(entry.episode)}`
-
-    return { entry, label, owner }
-  })
-})
-
-const UNANCHORED = entities.filter((entity) => entity.unanchored === true)
-
-/** Whether an entry names a record, by a marker or in any locale. */
-function names(entry: Dated<unknown>, record: Entity): boolean {
-  const text = JSON.stringify(entry.value)
-
-  return [
-    `[[${record.id}`,
-    ...LOCALES.map((locale) => record.name[locale]),
-  ].some((name) => text.includes(name))
-}
 
 /** The records a chapter's episode reaches that the chapter itself does not. */
 function openedEarly(chapter: number): string[] {
@@ -147,59 +116,6 @@ describe('chapterAtEpisode', () => {
   })
 })
 
-describe('the dated entries against the table', () => {
-  it('opens every entry at some chapter a reader can reach', () => {
-    // A record added or moved shifts the table; an entry it pushes past the
-    // last chapter would be hidden from every manga reader for good, and
-    // needs a chapter of its own.
-    const lost = OPENED.filter(
-      ({ entry }) => entry.gate.revealedAtChapter > CHAPTER_CEILING,
-    ).map(({ label }) => label)
-
-    expect(lost).toStrictEqual([])
-  })
-
-  it('opens no entry before its own record, unless the record vouches for nothing', () => {
-    // The table makes this hold for every record it is built from, on the
-    // entry's own gate alone. An unanchored record's entries, or those of a
-    // record of one source only, are held by their owner instead, which
-    // `~/data/series/one-piece/dated` folds into every gate.
-    const early = DATED.filter(({ entry, owner }) => {
-      const opens = entry.chapter ?? chapterAtEpisode(entry.episode)
-
-      return vouches(owner) && opens < owner.revealedAtChapter
-    }).map(({ label }) => label)
-
-    expect(early).toStrictEqual([])
-  })
-
-  it('declares a chapter no earlier than its record and within the dial', () => {
-    for (const { chapter, label, owner } of DECLARED) {
-      expect(Number.isSafeInteger(chapter), label).toBe(true)
-      expect(chapter, label).toBeGreaterThanOrEqual(owner.revealedAtChapter)
-      expect(chapter, label).toBeLessThanOrEqual(CHAPTER_CEILING)
-    }
-  })
-
-  it('names an unanchored record nowhere a reader meets before its chapter', () => {
-    // The table no longer waits for such a record, so nothing dated may name
-    // it, linked or not, below its own chapter. Its own dossier is behind
-    // its threshold already.
-    const leaks: string[] = []
-    for (const record of UNANCHORED) {
-      for (const { entry, label, owner } of OPENED) {
-        const early = entry.gate.revealedAtChapter < record.revealedAtChapter
-
-        if (early && owner.id !== record.id && names(entry, record)) {
-          leaks.push(`${label} names ${record.id}`)
-        }
-      }
-    }
-
-    expect(leaks).toStrictEqual([])
-  })
-})
-
 describe('a record or an entry of one source only', () => {
   const FILED = { revealedAtEpisode: 1, revealedAtChapter: 1 }
 
@@ -216,32 +132,5 @@ describe('a record or an entry of one source only', () => {
     expect(gateOf(told, FILED)).not.toHaveProperty('source')
     expect(gateOf({ ...told, source: 'anime' }, FILED).source).toBe('anime')
     expect(gateOf(told, { ...FILED, source: 'manga' }).source).toBe('manga')
-  })
-
-  it('marks a chapter pinned on a fruit of one source only with that source', () => {
-    // The table is built before a fruit's source is read off its namings
-    // (`openedBy`), so it cannot see it: a pinned entry of such a fruit
-    // vouches for its pair unless the entry says its source itself.
-    const pinned = DATED.filter(
-      ({ entry, owner }) =>
-        owner.kind === 'fruit'
-        && owner.source !== undefined
-        && entry.chapter !== undefined
-        && entry.source !== owner.source,
-    ).map(({ label }) => label)
-
-    expect(pinned).toStrictEqual([])
-  })
-
-  it('is told, on a record of one source only, by that source alone', () => {
-    // The record's source wins in its gate, so an entry may only repeat it.
-    const crossed = DATED.filter(
-      ({ entry, owner }) =>
-        entry.source !== undefined
-        && owner.source !== undefined
-        && entry.source !== owner.source,
-    ).map(({ label }) => label)
-
-    expect(crossed).toStrictEqual([])
   })
 })

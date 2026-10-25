@@ -6,7 +6,6 @@ import { ONE_PIECE_SERIES } from '~/lib/progress/series'
 import * as Art from './art'
 import * as FruitArt from './art/fruits'
 import * as Chapters from './chapter-table'
-import * as Timelines from './chapters'
 import * as Characters from './characters'
 import * as Chart from './chart'
 import * as DatedArchive from './dated'
@@ -50,8 +49,8 @@ export const ONE_PIECE_ARCHIVE: SeriesArchive = {
   chartPointOf: Chart.chartPointOf,
   leads: Leads.ARC_LEADS,
   sagas: Sagas.sagas,
-  timelines: Timelines.TIMELINES,
-  redrawn: (owner) => DatedArchive.datedOf(owner, 'redrawing'),
+  timelines: DatedArchive.timelines,
+  redrawn: DatedArchive.redrawn,
   // Every feature: One Piece is where they come from.
   features: {
     fruits: {

@@ -23,7 +23,7 @@ const SHANKS = filedAt(4, 1)
 /**
  * One bookmark of each kind, and what it should make of the data: whether
  * it sees the two records, and the unit it counts in. Dated facts are read
- * through `~/data/series/one-piece/dated`, whose own test holds them to the same gates.
+ * through `~/data/dated`, whose own test holds them to the same gates.
  */
 const KINDS: {
   bookmark: Bookmark

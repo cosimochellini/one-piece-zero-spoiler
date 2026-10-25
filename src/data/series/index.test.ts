@@ -1,5 +1,4 @@
 import { readdirSync } from 'node:fs'
-import path from 'node:path'
 import { byNumber, byString } from 'sort-es'
 import { describe, expect, it } from 'vitest'
 
@@ -15,31 +14,16 @@ const FOLDERS = readdirSync(import.meta.dirname, { withFileTypes: true })
   .filter((entry) => entry.isDirectory())
   .map((entry) => entry.name)
 
-/** Every file under `src/data/series/`, as a path from there. */
-const FILES = new Set(
-  readdirSync(import.meta.dirname, { encoding: 'utf8', recursive: true }).map(
-    (file) => file.split(path.sep).join('/'),
-  ),
-)
-
 describe('the series list', () => {
   it('lists every series folder once, and nothing else', () => {
     // A folder left off the list would be swept by nothing below, nor by
-    // the payload sweep, the archive gate or the counts.
+    // the payload sweep, the leak scan, the archive gate or the counts.
     const slugs = new Set(SERIES.map(({ slug }) => slug))
 
     expect(
       SERIES.map(({ folder }) => folder).toSorted(byString()),
     ).toStrictEqual(FOLDERS.toSorted(byString()))
     expect(slugs.size).toBe(SERIES.length)
-  })
-
-  it('gives every series a leak scan of its own', () => {
-    // The texts a series prints have its own shapes, so its scan lives in
-    // its folder; a series without one would print names unchecked.
-    for (const { folder } of SERIES) {
-      expect(FILES.has(`${folder}/leaks.test.ts`), folder).toBe(true)
-    }
   })
 })
 

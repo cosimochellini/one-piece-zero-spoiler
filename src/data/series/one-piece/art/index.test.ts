@@ -123,7 +123,8 @@ describe('the redrawings', () => {
   it('are never filed at the threshold itself', () => {
     // Strictly after: a redrawing at the threshold would be the first
     // drawing, which belongs in `DRAWINGS`. The order and the dial are held
-    // with every other timeline in `chapters.test.ts`.
+    // with every other timeline, for every series, in
+    // `~/data/series/index.test.ts` and `~/data/archive.test.ts`.
     for (const [id, timeline] of Object.entries(REDRAWINGS)) {
       const threshold = getEntity(id)?.revealedAtEpisode ?? Infinity
 

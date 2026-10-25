@@ -58,7 +58,7 @@ too-late one only keeps it covered a little longer, and a few are filed late on
 purpose, as the notes say.
 
 Two further rules hold for every story, and the data tests
-(\`src/data/series/one-piece/characters.test.ts\`, "the chronicles") enforce what
+(\`src/data/archive.test.ts\`, "the chronicles") enforce what
 can be enforced:
 
 - the first story sits at the character's own \`revealedAtEpisode\`, so the band

@@ -4,8 +4,7 @@ import { reveal } from '~/data/reveal'
 import { type Bookmark, CHAPTER_CEILING } from '~/lib/progress/episode'
 
 import { episodeAtChapter } from './chapter-table'
-import { TIMELINES } from './chapters'
-import { datedOf, earliestOf, eatersOf, latestOf, reachedOf } from './dated'
+import { datedOf, eatersOf, latestOf, reachedOf, timelines } from './dated'
 import { fruits } from './fruits'
 
 const ep = (episode: number): Bookmark => ({ mode: 'episode', episode })
@@ -30,7 +29,7 @@ function firstChapterAt(episode: number): number {
  * should open at: the later of its own and its record's, in each unit. Its
  * own chapter is the one it declares or the first that reaches its episode.
  */
-const ENTRIES = TIMELINES.flatMap(({ field, label, owner }) => {
+const ENTRIES = timelines.flatMap(({ field, label, owner }) => {
   return datedOf(owner, field).map((entry) => {
     const episode = Math.max(owner.revealedAtEpisode, entry.episode)
     const chapter = Math.max(
@@ -109,26 +108,5 @@ describe('the eaters of a fruit', () => {
         )
       }
     }
-  })
-})
-
-describe('earliestOf', () => {
-  const both = { revealedAtEpisode: 100, revealedAtChapter: 90 }
-  const anime = {
-    revealedAtEpisode: 50,
-    revealedAtChapter: 40,
-    source: 'anime' as const,
-  }
-
-  it('reaches a link in each unit at the first entry its source tells', () => {
-    expect(earliestOf([anime, both])).toStrictEqual({
-      revealedAtEpisode: 50,
-      revealedAtChapter: 90,
-    })
-    expect(earliestOf([both, anime])).toBe(both)
-  })
-
-  it('keeps a link that one source alone tells to that source', () => {
-    expect(earliestOf([anime])).toBe(anime)
   })
 })

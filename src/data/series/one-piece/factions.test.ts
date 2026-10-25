@@ -13,7 +13,7 @@ import { CHARACTER_DOSSIERS } from './sagas'
  * `./types`). The type already holds every tag to the vocabulary; these hold
  * the rest: every eater's every entry is tagged, and the vocabulary is no
  * larger than the tags. Whether a label names a record too early is the leak
- * scan's (`./leaks.test.ts`).
+ * scan's (`~/data/leaks.test.ts`).
  */
 
 const PREFIX = 'faction.'

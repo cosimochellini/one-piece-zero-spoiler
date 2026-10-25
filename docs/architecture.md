@@ -119,9 +119,13 @@ the reader has not reached; the client holds no table of them, and the archive
 gate looks for each one in the client chunks. Whether a series draws One Piece's
 world map is a feature on its description (`features.worldMap`): without it the
 server sends no map point and no ship, and the places page is the index, grouped
-by region, served in full. The factions are One Piece's alone. The chapter table
-and the sweep's bookmarks are built by the engine (`src/data/chapterTable.ts`,
-`src/data/sweep.ts`) from each series' own records.
+by region, served in full. The factions are One Piece's alone. The chapter
+table, the sweep's bookmarks, the dated facts (timelines, stories, natives) and
+the shelves (characters, arcs, places, the chart and the signal book) are built
+by the engine (`src/data/chapterTable.ts`, `src/data/sweep.ts`,
+`src/data/dated.ts`, `src/data/shelves.ts`) from each series' own records and
+dossiers. A dated field a series does not file reads as an empty timeline, so a
+field one series adds asks nothing of another.
 
 A record or a dated fact can exist in one source only (`source: 'anime'` or
 `'manga'` on the record or the entry; absent means both). An episode or season
@@ -304,37 +308,57 @@ checked on every run:
   for by id is asked for one id in seven at each bookmark, a different seventh
   each time. A test fails when `src/server/api.ts` gains a server function the
   sweep does not know, or when a listed series has no sweep;
-- every folder under `src/data/series/` is in the list and has a leak scan of
-  its own, and for every listed series (`src/data/series/index.test.ts`) ids are
-  unique, thresholds are within the allowed range, and every record is
-  translated in both locales;
+- every folder under `src/data/series/` is in the list, and for every listed
+  series (`src/data/series/index.test.ts`) ids are unique, thresholds are within
+  the allowed range, and every record is translated in both locales;
 - each record has its own drawing, never one borrowed from another record;
 - every timeline, a character's, a ship's or a redrawing's, is in ascending
   order and starts no earlier than the record's own threshold, so a fact can
   never come before the record it belongs to;
-- no text names a record the reader has not reached. The links a chronicle
-  builds from `[[id]]` markers are checked against the story's episode, and
-  every text the archive prints, summaries, roles, logs, affiliations, origins,
-  epithets, stories, ship fates, place visits and the labels of the factions an
-  affiliation is tagged with, is scanned for every later record's full name in
-  both locales. A name the show says before its record opens, or one that is an
-  ordinary word, is declared on the record itself rather than excused in a test;
+- no text names a record the reader has not reached, in any listed series
+  (`src/data/leaks.test.ts`, which reads the texts through the archive). The
+  links a chronicle builds from `[[id]]` markers are checked against the story's
+  episode, and every text the archive prints, summaries, roles, logs,
+  affiliations, origins, epithets, stories, ship fates, place visits and the
+  labels of the factions an affiliation is tagged with, and the labels of a
+  place's region and form for a series that writes its own (sent with the place,
+  so scanned at its threshold; One Piece's are dictionary copy every page
+  ships), is scanned for every later record's full name in both locales. A name
+  the show says before its record opens, or one that is an ordinary word, is
+  declared on the record itself rather than excused in a test;
+- for every listed series (`src/data/archive.test.ts`), the dated facts the
+  engine derives follow the same rules: a series files only the dated fields of
+  the core and of its features; each character has one dossier, filed in one
+  saga (the merge throws on a second), and no other record has one; a status
+  opens at its character's threshold, is filed only where it changes and pins
+  every change to its chapter; a chronicle opens at the threshold and links only
+  characters the reader has met, in both units and sources; no shelf heading
+  opens after a character on it, in either unit; every chapter an entry pins is
+  within the dial and no earlier than its record, no entry opens before its
+  record, and nothing dated names an unanchored record before its chapter. A
+  featured id that files no character, or a place dossier with no place, throws
+  when the archive is built. Each series has a row of floors near what it files
+  (`expectedOf` in `src/test/series.ts`: characters, arcs, places, timelines,
+  statuses, affiliations, stories, linked origins, visits), checked against the
+  archive, and a kind of text its leak scan expects cannot sit on a floor of 0;
 - every affiliation entry of a devil fruit eater carries the factions its prose
   names, as ids from a closed vocabulary (`Faction` in
   `src/lib/view/records.ts`, labelled in both dictionaries), and every id in the
   vocabulary is used (`src/data/series/one-piece/factions.test.ts`). A tag never
   says more than its entry: a former member, a prisoner, a vague line or a group
   of one eater is `independent`;
-- every place belongs to an arc that opens no later than the place itself,
-  because the place page shows that arc;
-- every later visit to a place comes after the place in both units, in order, at
-  the episode and the chapter that show it (checked against the wiki, not
-  derived); the place page sends only the visits the reader has reached, and
-  none under fog;
-- every origin entry that names a filed place carries the place's id and the
-  chapter that tells it, and the place page lists a character as coming from it
-  only once the reader has met the character and reached that entry, in both
-  units; nobody else is sent or counted;
+- for every listed series (`src/data/archive.test.ts`), every place has a
+  dossier and nothing else has one, and it belongs to an arc that opens no later
+  than the place itself in both units, because the places page prints that arc's
+  name; the records it files there exist and are not places;
+- every later visit to a place comes after the place in both units, in order and
+  distinct (`src/data/archive.test.ts`), at the episode and the chapter that
+  show it (checked against the wiki, not derived); the place page sends only the
+  visits the reader has reached, and none under fog;
+- every origin entry that names a place names a filed place and carries the
+  chapter that tells it (`src/data/archive.test.ts`), and the place page lists a
+  character as coming from it only once the reader has met the character and
+  reached that entry, in both units; nobody else is sent or counted;
 - every drawing belongs to a record;
 - every devil fruit opens no later than any character entry that names it, which
   lets a character page link to its fruit without checking anything, and no
