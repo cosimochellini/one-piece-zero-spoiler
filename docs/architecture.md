@@ -641,18 +641,26 @@ devil fruits, ships, seas, factions, bounties and filler guide. The series' copy
 stays on the server (`src/server/copy.server.ts`). The `/<series>/<locale>`
 route asks for it once (`loadSeriesCopy`), so it arrives inside the first page
 and in no client chunk, and a reader of one series never downloads another's;
-the archive gate looks for every series' words in the client chunks. The legal
-page asks for the copy of each open series, for its rights line and its sources,
-and the reference sample of a series' source review lives on its archive
-(`credits` on `SeriesArchive`).
+the archive gate looks for every series' words in the client chunks, and the
+leak scan reads every line of each series' copy at the first episode and
+chapter. One Piece's faction labels are the exception: they ship with every page
+of it, as they did in every bundle before. The legal page asks for the copy and
+the sources (`loadSeriesSources`, `src/server/sources.server.ts`) of each open
+series, for its rights line, its licenses and its links, so a series not open
+yet names no source in the client. The reference sample of a series' source
+review lives on its archive (`credits` on `SeriesArchive`).
 
-`useT()` reads the shared and the common keys. A component of one series'
-feature reads its keys through `useSeriesT('one-piece')`, typed by the series,
-so a One Piece key under Hunter x Hunter fails `typecheck`; at runtime that
-translate throws under any other series, and so does a key the page's copy
-lacks. A shared component that prints keys a page hands it (a fog band, a kind
-label) takes the page's own translate (`useLocale().t`). ESLint bars the client
-from importing a series' copy.
+`useT()` reads the shared keys, the only ones a page of no series has.
+`useSeriesT()` adds the common keys, on a page of any series, and
+`useSeriesT('one-piece')` the keys of One Piece's own features, typed by the
+series, so a One Piece key under Hunter x Hunter fails `typecheck`; at runtime
+each throws on a page of another series, or of none, and so does a key the
+page's copy lacks. A shared component that prints a series' key only when that
+series' data asks for it (a devil fruit row, a kind label, a fog band's words)
+reads it only then, and a test draws every filed series' landing, character and
+place pages in its own copy (`src/routes/$series/$locale/-records.test.tsx`).
+ESLint bars the client, `src/i18n` and `src/styles` from importing a series'
+copy by any path.
 
 ## Engineering notes
 
