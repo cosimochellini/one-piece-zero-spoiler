@@ -4,25 +4,11 @@ import type { SeriesPage } from '~/lib/progress/series'
 
 import { useDeclares } from './useDeclares'
 
-/** Where a series page lives. */
-type PageTo =
-  | '/$series/$locale/characters'
-  | '/$series/$locale/filler'
-  | '/$series/$locale/fruits'
-  | '/$series/$locale/places'
-
-/** A page a link can point to, and the key of its label. */
+/** A page a link can point to, and its label or the key of its label. */
 export interface PageEntry<K> {
   label: K
   page: SeriesPage
-  to: PageTo
-}
-
-/** A page link, labelled. */
-export interface PageLink {
-  label: string
-  page: SeriesPage
-  to: PageTo
+  to: `/$series/$locale/${SeriesPage}`
 }
 
 /**
@@ -33,7 +19,7 @@ export interface PageLink {
 export function usePageLinks(
   shared: PageEntry<TranslationKey>[],
   onePiece: PageEntry<TranslationKey<'one-piece'>>[],
-): PageLink[] {
+): PageEntry<string>[] {
   const t = useT()
   const own = useSeriesT('one-piece')
   const declares = useDeclares()
