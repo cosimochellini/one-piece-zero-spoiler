@@ -8,10 +8,11 @@ import {
 import { routePositionOf } from '~/data/order'
 import { castOf, keptOf } from '~/data/shelves'
 import { sweepOf } from '~/data/sweep'
-import type { Entity, PlaceDossier, SeriesArchive } from '~/data/types'
+import type { Entity, SeriesArchive } from '~/data/types'
 import { HUNTER_X_HUNTER_SERIES as SERIES } from '~/lib/progress/series'
 
 import { DRAWINGS } from './art'
+import { PLACE_DOSSIERS } from './places'
 import { sagas } from './sagas'
 
 /**
@@ -38,8 +39,7 @@ const { chapterAtEpisode, gateOf } = chapterTable({
 
 const cast = castOf({ dossiers: DOSSIERS, entities, featured: [] })
 
-// No place dossiers filed yet (#760).
-const places = keptOf<PlaceDossier>(entities, 'place', {})
+const places = keptOf(entities, 'place', PLACE_DOSSIERS)
 
 /** One dynamically loaded archive; its public description contains no records. */
 export const HUNTER_X_HUNTER_ARCHIVE: SeriesArchive = {

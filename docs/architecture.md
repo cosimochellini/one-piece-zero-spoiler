@@ -334,19 +334,23 @@ checked on every run:
   opens after a character on it, in either unit; every chapter an entry pins is
   within the dial and no earlier than its record, no entry opens before its
   record, and nothing dated names an unanchored record before its chapter. A
-  featured id that files no character throws when the archive is built;
+  featured id that files no character throws when the archive is built, and a
+  series that files content is held to a floor of it (`expectedOf` in
+  `src/test/series.ts`), so no rule passes on nothing;
 - every affiliation entry of a devil fruit eater carries the factions its prose
   names, as ids from a closed vocabulary (`Faction` in
   `src/lib/view/records.ts`, labelled in both dictionaries), and every id in the
   vocabulary is used (`src/data/series/one-piece/factions.test.ts`). A tag never
   says more than its entry: a former member, a prisoner, a vague line or a group
   of one eater is `independent`;
-- every place belongs to an arc that opens no later than the place itself,
-  because the place page shows that arc;
-- every later visit to a place comes after the place in both units, in order, at
-  the episode and the chapter that show it (checked against the wiki, not
-  derived); the place page sends only the visits the reader has reached, and
-  none under fog;
+- for every listed series (`src/data/archive.test.ts`), every place has a
+  dossier and nothing else has one, and it belongs to an arc that opens no later
+  than the place itself in both units, because the places page prints that arc's
+  name; the records it files there exist and are not places;
+- every later visit to a place comes after the place in both units, in order and
+  distinct (`src/data/archive.test.ts`), at the episode and the chapter that
+  show it (checked against the wiki, not derived); the place page sends only the
+  visits the reader has reached, and none under fog;
 - every origin entry that names a place names a filed place and carries the
   chapter that tells it (`src/data/archive.test.ts`), and the place page lists a
   character as coming from it only once the reader has met the character and

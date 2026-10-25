@@ -14,7 +14,7 @@ import { type Locale, LOCALES } from '~/i18n/locales'
 import { FIRST_CHAPTER, FIRST_EPISODE } from '~/lib/progress/episode'
 import type { Source } from '~/lib/progress/spoiler'
 import { tokenize } from '~/lib/prose/markers'
-import { LOADED_SERIES } from '~/test/series'
+import { expectedOf, LOADED_SERIES } from '~/test/series'
 
 /**
  * The one scan for a name said too early, over every text an archive
@@ -395,45 +395,6 @@ function scanOf(archive: ReaderArchive): Scan {
       }),
     texts,
   }
-}
-
-/** What a series is known to print, so a scan that misses one fails. */
-interface Expected {
-  kinds: string[]
-  namesSaidEarly: boolean
-}
-
-/** What each series is known to print. */
-const EXPECTED: Record<string, Expected> = {
-  'one-piece': {
-    kinds: [
-      'affiliation',
-      'builder',
-      'chronicle',
-      'epithet',
-      'faction',
-      'fate',
-      'landmark',
-      'log',
-      'origin',
-      'role',
-      'summary',
-      'title',
-      'visit',
-    ],
-    namesSaidEarly: true,
-  },
-  'hunter-x-hunter': { kinds: ['summary'], namesSaidEarly: false },
-}
-
-/** A series' row, or the test is wrong: a series filed needs one. */
-function expectedOf(slug: string): Expected {
-  const row = EXPECTED[slug]
-  if (row === undefined) {
-    throw new Error(`no EXPECTED row for ${slug}`)
-  }
-
-  return row
 }
 
 /** Whether two records go by the same name in some locale, as the scan sees it. */

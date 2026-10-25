@@ -12,6 +12,7 @@ import type {
   Fields,
   Native,
   Opened,
+  Origin,
   SeriesArchive,
   Timeline,
 } from './types'
@@ -96,6 +97,12 @@ export interface Filed {
   /** Every field the series reads, the dossier's first. */
   fields: Field[]
   /**
+   * A character's origin entries as filed, each with the place it names:
+   * the same timeline `timelineOf(owner, 'origin')` reads, in the dossier's
+   * own shape (`Origin`).
+   */
+  originOf: (owner: Pick<Entity, 'id'>) => Origin[] | undefined
+  /**
    * One of a record's timelines as it is filed. Every page reads it through
    * `datedArchive` instead, which holds each entry behind its record; this is
    * the raw read the chapter table and `datedArchive` are built on. `undefined` for a
@@ -123,6 +130,7 @@ export function filedTimelines(
     fields: Object.keys(all).filter((key): key is Field =>
       Object.hasOwn(all, key),
     ),
+    originOf: (owner) => dossiers[owner.id]?.origin,
     timelineOf: (owner, field) => all[field]?.(owner.id),
   }
 }
@@ -228,7 +236,12 @@ export function datedArchive({
     return datedOf(owner, field).filter((entry) => at.sees(entry.gate))
   }
 
-  const natives = readNatives(characters, datedOf)
+  const natives = readNatives(characters, (entity) =>
+    (filed.originOf(entity) ?? []).map((entry) => ({
+      gate: gateOf(entry, entity),
+      place: entry.place,
+    })),
+  )
 
   return {
     datedOf,
@@ -261,29 +274,21 @@ export function datedArchive({
   }
 }
 
-/** The place an origin entry names (`Origin`), if it names one. */
-function placeOf(entry: object): string | undefined {
-  const place: unknown = Reflect.get(entry, 'place')
-
-  return typeof place === 'string' ? place : undefined
-}
+/** A character's origin entries, each with its gate and the place it names. */
+type Origins = (entity: Entity) => { gate: Gated; place: string | undefined }[]
 
 /**
  * The places one character's origin names, each with the gate the entries
- * naming it give it (`earliestOf`), read through the same timeline and gate
- * as every other fact: a timeline is in episode order, so the first entry
- * found is the earliest.
+ * naming it give it (`earliestOf`), gated as every other entry of the
+ * timeline is: a timeline is in episode order, so the first entry found is
+ * the earliest.
  */
-function placesOf(
-  entity: Entity,
-  datedOf: DatedArchive['datedOf'],
-): Map<string, Gated> {
+function placesOf(entity: Entity, origins: Origins): Map<string, Gated> {
   const named = new Map<string, Gated[]>()
 
-  for (const entry of datedOf(entity, 'origin')) {
-    const place = placeOf(entry)
+  for (const { gate, place } of origins(entity)) {
     if (place !== undefined) {
-      named.set(place, [...(named.get(place) ?? []), entry.gate])
+      named.set(place, [...(named.get(place) ?? []), gate])
     }
   }
 
@@ -297,12 +302,12 @@ function placesOf(
  */
 function readNatives(
   characters: Entity[],
-  datedOf: DatedArchive['datedOf'],
+  origins: Origins,
 ): Map<string, Native[]> {
   const found = new Map<string, Native[]>()
 
   for (const entity of characters) {
-    for (const [place, gate] of placesOf(entity, datedOf)) {
+    for (const [place, gate] of placesOf(entity, origins)) {
       found.set(place, [...(found.get(place) ?? []), { entity, gate }])
     }
   }

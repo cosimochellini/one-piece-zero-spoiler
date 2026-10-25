@@ -4,34 +4,18 @@ import { describe, expect, it } from 'vitest'
 import type { Entity } from '~/data/types'
 import { LOCALES } from '~/i18n/locales'
 
-import { entities, getEntity } from './entities'
+import { getEntity } from './entities'
 import {
   getPlace,
   PLACE_DOSSIERS,
-  placeDossierOf,
   places,
   shipDossierOf,
   ships,
 } from './places'
 import { SHIP_DOSSIERS } from './records/ships'
-import { sagas } from './sagas'
 
 describe('the ship’s log', () => {
-  it('lists every place record, in the order the ship reaches them', () => {
-    const placeIds = entities
-      .filter((entity) => entity.kind === 'place')
-      .map((entity) => entity.id)
-
-    expect(places.map((place) => place.id)).toHaveLength(placeIds.length)
-    expect(new Set(places.map((place) => place.id))).toStrictEqual(
-      new Set(placeIds),
-    )
-
-    const thresholds = places.map((place) => place.revealedAtEpisode)
-
-    expect(thresholds).toStrictEqual(thresholds.toSorted(byNumber()))
-  })
-
+  // The rules every series' places follow are in `~/data/archive.test.ts`.
   it('opens with the five East Blue ports of call', () => {
     expect(places.slice(0, 5).map((place) => place.id)).toStrictEqual([
       'shells-town',
@@ -42,99 +26,9 @@ describe('the ship’s log', () => {
     ])
   })
 
-  it('gives every place a dossier in every locale, and nothing else one', () => {
-    for (const place of places) {
-      const dossier = placeDossierOf(place)
-
-      expect(dossier, place.id).toBeDefined()
-
-      for (const locale of LOCALES) {
-        expect(dossier?.landmark[locale].length).toBeGreaterThan(0)
-        expect(dossier?.log[locale].length).toBeGreaterThan(0)
-      }
-    }
-
+  it('files a log entry only for a place', () => {
     for (const id of Object.keys(PLACE_DOSSIERS)) {
       expect(getPlace(id), id).toBeDefined()
-    }
-  })
-
-  it('files every place under exactly one saga', () => {
-    // The places page's saga picker reads it, and a place under none would
-    // leave the page with nothing to send.
-    const sagaIds: string[] = []
-    for (const saga of sagas) {
-      sagaIds.push(...saga.entries.map(({ id }) => id))
-    }
-    for (const place of places) {
-      expect(
-        sagaIds.filter((id) => id === place.id),
-        place.id,
-      ).toHaveLength(1)
-    }
-  })
-
-  it('files each place under an arc that opens no later than the place', () => {
-    // A place revealed before its arc would name the arc in its dossier while
-    // the arc itself is still under fog.
-    for (const place of places) {
-      const arc = getEntity(placeDossierOf(place)?.arc ?? '')
-
-      expect(arc?.kind, place.id).toBe('arc')
-      expect(arc?.revealedAtEpisode).toBeLessThanOrEqual(
-        place.revealedAtEpisode,
-      )
-      expect(arc?.revealedAtChapter).toBeLessThanOrEqual(
-        place.revealedAtChapter,
-      )
-    }
-  })
-
-  it('dates every later visit after the place, in order, in both units', () => {
-    // A visit at or before the place's own threshold would be its first
-    // arrival, not a return; out of order, the page would list it so.
-    const visited = places.filter(
-      (place) => (placeDossierOf(place)?.visits ?? []).length > 0,
-    )
-
-    expect(visited.length).toBeGreaterThan(0)
-
-    for (const place of visited) {
-      const visits = placeDossierOf(place)?.visits ?? []
-      const episodes = visits.map((visit) => visit.episode)
-      const chapters = visits.map((visit) => visit.chapter)
-
-      const distinctEpisodes = new Set(episodes)
-      const distinctChapters = new Set(chapters)
-
-      // Distinct in both units: the page keys and labels each visit by its
-      // episode or its chapter, whichever the reader counts in.
-      expect(distinctEpisodes.size, place.id).toBe(visits.length)
-      expect(distinctChapters.size, place.id).toBe(visits.length)
-      expect(episodes, place.id).toStrictEqual(episodes.toSorted(byNumber()))
-      expect(chapters, place.id).toStrictEqual(chapters.toSorted(byNumber()))
-
-      for (const visit of visits) {
-        expect(visit.episode, place.id).toBeGreaterThan(place.revealedAtEpisode)
-        expect(visit.chapter, place.id).toBeGreaterThan(place.revealedAtChapter)
-
-        for (const locale of LOCALES) {
-          expect(visit.value[locale].trim(), place.id).not.toBe('')
-        }
-      }
-    }
-  })
-
-  it('files here only records the archive holds, none of them places', () => {
-    for (const place of places) {
-      const filedHere = placeDossierOf(place)?.filedHere ?? []
-
-      for (const id of filedHere) {
-        const record = getEntity(id)
-
-        expect(record, `${place.id} → ${id}`).toBeDefined()
-        expect(record?.kind).not.toBe('place')
-      }
     }
   })
 })

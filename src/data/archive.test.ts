@@ -10,10 +10,11 @@ import type {
   LocalizedText,
   SeriesArchive,
   Timeline,
+  Visit,
 } from '~/data/types'
 import { type Locale, LOCALES } from '~/i18n/locales'
 import { markedIds, tokenize } from '~/lib/prose/markers'
-import { LOADED_SERIES } from '~/test/series'
+import { expectedOf, LOADED_SERIES } from '~/test/series'
 
 /**
  * The data rules that keep a series' dated facts spoiler-safe, run for every
@@ -183,216 +184,248 @@ function arcsBetween(
     .map((arc) => arc.id)
 }
 
-describe.each(LOADED_SERIES)('the dated facts of $slug', ({ archive }) => {
-  const { characters, series } = archive
-  const DATED = datedCases(archive)
-  const DECLARED = DATED.flatMap(({ entry, label, owner }) =>
-    entry.chapter === undefined ? [] : { chapter: entry.chapter, label, owner },
-  )
-  const AFFILIATIONS = casesOf(
-    archive,
-    'affiliation',
-    (c) => archive.dossierOf(c)?.affiliation,
-  )
-  const TEXTS: TimelineCase<LocalizedText>[] = [
-    ...AFFILIATIONS,
-    ...casesOf(archive, 'origin', (c) => archive.dossierOf(c)?.origin),
-    ...casesOf(archive, 'epithet', (c) => archive.dossierOf(c)?.epithet),
-  ]
-  const STATUSES = casesOf(
-    archive,
-    'status',
-    (c) => archive.dossierOf(c)?.status,
-  )
+/** Every place's later visits, with the place they return to. */
+function visitsOf(
+  archive: SeriesArchive,
+): { place: Entity; visits: Visit[] }[] {
+  return archive.places.flatMap((place) => {
+    const visits = archive.placeDossierOf(place)?.visits ?? []
 
-  it('files only the fields of the core and of its features', () => {
-    const allowed = allowedFields(archive)
-    const stray = archive.timelines
-      .filter(({ field }) => !allowed.has(field))
-      .map(({ label }) => label)
-
-    expect(stray).toStrictEqual([])
+    return visits.length === 0 ? [] : { place, visits }
   })
+}
 
-  it('gives every character a dossier with a role and a log in every locale', () => {
-    for (const character of characters) {
-      const dossier = archive.dossierOf(character)
-
-      expect(dossier, character.id).toBeDefined()
-
-      for (const locale of LOCALES) {
-        expect(dossier?.role[locale].length, character.id).toBeGreaterThan(0)
-        expect(dossier?.log[locale].length, character.id).toBeGreaterThan(0)
-      }
-    }
-  })
-
-  it('files each dossier once, and only for a character', () => {
-    const ids = dossierIds(archive)
-
-    const distinct = new Set(ids)
-
-    expect(distinct.size).toBe(ids.length)
-
-    for (const id of ids) {
-      expect(archive.getCharacter(id), id).toBeDefined()
-    }
-    const others = archive.entities.filter(
-      (entity) => entity.kind !== 'character',
+describe.each(LOADED_SERIES)(
+  'the dated facts of $slug',
+  ({ archive, slug }) => {
+    const { characters, series } = archive
+    const DATED = datedCases(archive)
+    const DECLARED = DATED.flatMap(({ entry, label, owner }) =>
+      entry.chapter === undefined ?
+        []
+      : { chapter: entry.chapter, label, owner },
     )
-    for (const other of others) {
-      expect(archive.dossierOf(other), other.id).toBeUndefined()
-    }
-  })
+    const AFFILIATIONS = casesOf(
+      archive,
+      'affiliation',
+      (c) => archive.dossierOf(c)?.affiliation,
+    )
+    const TEXTS: TimelineCase<LocalizedText>[] = [
+      ...AFFILIATIONS,
+      ...casesOf(archive, 'origin', (c) => archive.dossierOf(c)?.origin),
+      ...casesOf(archive, 'epithet', (c) => archive.dossierOf(c)?.epithet),
+    ]
+    const STATUSES = casesOf(
+      archive,
+      'status',
+      (c) => archive.dossierOf(c)?.status,
+    )
 
-  it('writes every dated text in every locale', () => {
-    for (const { label, timeline } of TEXTS) {
-      for (const entry of timeline) {
+    it('files at least what the series is known to file', () => {
+      // The rules below pass on nothing, so a series that files content must
+      // be seen filing it: a reader that lost its characters or its timelines
+      // would otherwise leave every rule here green.
+      const { least } = expectedOf(slug)
+      const visits = visitsOf(archive).flatMap(({ visits: filed }) => filed)
+
+      expect(characters.length).toBeGreaterThanOrEqual(least.characters)
+      expect(archive.timelines.length).toBeGreaterThanOrEqual(least.timelines)
+      expect(linkedOrigins(archive).length).toBeGreaterThanOrEqual(
+        least.linkedOrigins,
+      )
+      expect(archive.places.length).toBeGreaterThanOrEqual(least.places)
+      expect(visits.length).toBeGreaterThanOrEqual(least.visits)
+    })
+
+    it('files only the fields of the core and of its features', () => {
+      const allowed = allowedFields(archive)
+      const stray = archive.timelines
+        .filter(({ field }) => !allowed.has(field))
+        .map(({ label }) => label)
+
+      expect(stray).toStrictEqual([])
+    })
+
+    it('gives every character a dossier with a role and a log in every locale', () => {
+      for (const character of characters) {
+        const dossier = archive.dossierOf(character)
+
+        expect(dossier, character.id).toBeDefined()
+
         for (const locale of LOCALES) {
-          expect(entry.value[locale].length, label).toBeGreaterThan(0)
+          expect(dossier?.role[locale].length, character.id).toBeGreaterThan(0)
+          expect(dossier?.log[locale].length, character.id).toBeGreaterThan(0)
         }
       }
-    }
-  })
+    })
 
-  it('opens every status at the episode the character is filed at', () => {
-    // The row must not be its own spoiler. If a status timeline could begin
-    // at the episode of the death, the mere appearance of the Status row
-    // would announce that something had happened; every timeline instead
-    // opens at the threshold, in the state the character is introduced in.
-    for (const { character, label, timeline } of STATUSES) {
-      expect(timeline[0]?.episode, label).toBe(character.revealedAtEpisode)
-    }
-  })
+    it('files each dossier once, and only for a character', () => {
+      const ids = dossierIds(archive)
 
-  it('files a status only where it changes', () => {
-    for (const { label, timeline } of STATUSES) {
-      const values = timeline.map((entry) => entry.value)
-      const restated = values.filter((value, at) => value === values[at - 1])
+      const distinct = new Set(ids)
 
-      expect(restated, label).toStrictEqual([])
-    }
-  })
+      expect(distinct.size).toBe(ids.length)
 
-  it('pins every change of status to the chapter that tells it', () => {
-    // The opening entry waits on its record. A later one without a chapter
-    // waits on the derived table instead, which can reach its episode
-    // chapters before the manga tells the change.
-    for (const { label, timeline } of STATUSES) {
-      const unpinned = timeline
-        .slice(1)
-        .filter((entry) => entry.chapter === undefined)
-        .map((entry) => entry.episode)
+      for (const id of ids) {
+        expect(archive.getCharacter(id), id).toBeDefined()
+      }
+      const others = archive.entities.filter(
+        (entity) => entity.kind !== 'character',
+      )
+      for (const other of others) {
+        expect(archive.dossierOf(other), other.id).toBeUndefined()
+      }
+    })
 
-      expect(unpinned, label).toStrictEqual([])
-    }
-  })
-
-  it('brings nobody back from a confirmed death', () => {
-    // What `presumed-dead` is for: a character the story drops and picks up
-    // again is filed under the doubt, never under the certainty.
-    for (const { label, timeline } of STATUSES) {
-      const died = timeline.findIndex((entry) => entry.value === 'deceased')
-
-      expect(died === -1 || died === timeline.length - 1, label).toBe(true)
-    }
-  })
-
-  it('leaves a fate to the status and out of the affiliation', () => {
-    // Both halves of the vocabulary that are a fate and nothing else: a
-    // death, and a death the story later takes back. An affiliation that
-    // carried one would print it a second time, and at whichever episode the
-    // affiliation happened to change rather than at the episode the fate
-    // did. Being held is not on this list: a captor and a place are what an
-    // affiliation is for.
-    for (const { label, timeline } of AFFILIATIONS) {
-      for (const entry of timeline) {
-        for (const locale of LOCALES) {
-          expect(entry.value[locale], label).not.toMatch(
-            /decedut|defunt|deceased|uccis|killed|giustiziat|executed|dato per mort|presumed dead/iu,
-          )
+    it('writes every dated text in every locale', () => {
+      for (const { label, timeline } of TEXTS) {
+        for (const entry of timeline) {
+          for (const locale of LOCALES) {
+            expect(entry.value[locale].length, label).toBeGreaterThan(0)
+          }
         }
       }
-    }
-  })
+    })
 
-  it('names, in an origin that links a place, a filed place, and pins its chapter', () => {
-    // The place's page opens the entry at its own pair. Without a chapter it
-    // would wait on the derived table, which can reach the episode chapters
-    // before the manga says where the character comes from.
-    for (const { chapter, label, place } of linkedOrigins(archive)) {
-      expect(archive.getPlace(place), label).toBeDefined()
-      expect(chapter, label).toBeDefined()
-    }
-  })
+    it('opens every status at the episode the character is filed at', () => {
+      // The row must not be its own spoiler. If a status timeline could begin
+      // at the episode of the death, the mere appearance of the Status row
+      // would announce that something had happened; every timeline instead
+      // opens at the threshold, in the state the character is introduced in.
+      for (const { character, label, timeline } of STATUSES) {
+        expect(timeline[0]?.episode, label).toBe(character.revealedAtEpisode)
+      }
+    })
 
-  it('opens every entry at some chapter a reader can reach', () => {
-    // A record added or moved shifts the table; an entry it pushes past the
-    // last chapter would be hidden from every manga reader for good, and
-    // needs a chapter of its own.
-    const lost = openedCases(archive)
-      .filter(({ chapter }) => chapter > series.chapterCeiling)
-      .map(({ label }) => label)
+    it('files a status only where it changes', () => {
+      for (const { label, timeline } of STATUSES) {
+        const values = timeline.map((entry) => entry.value)
+        const restated = values.filter((value, at) => value === values[at - 1])
 
-    expect(lost).toStrictEqual([])
-  })
+        expect(restated, label).toStrictEqual([])
+      }
+    })
 
-  it('opens no entry before its own record, unless the record vouches for nothing', () => {
-    // The table makes this hold for every record it is built from, on the
-    // entry's own gate alone. An unanchored record's entries, or those of a
-    // record of one source only, are held by their owner instead, which
-    // `datedOf` folds into every gate.
-    const early = DATED.filter(({ entry, owner }) => {
-      const opens = entry.chapter ?? archive.chapterAtEpisode(entry.episode)
+    it('pins every change of status to the chapter that tells it', () => {
+      // The opening entry waits on its record. A later one without a chapter
+      // waits on the derived table instead, which can reach its episode
+      // chapters before the manga tells the change.
+      for (const { label, timeline } of STATUSES) {
+        const unpinned = timeline
+          .slice(1)
+          .filter((entry) => entry.chapter === undefined)
+          .map((entry) => entry.episode)
 
-      return vouches(owner) && opens < owner.revealedAtChapter
-    }).map(({ label }) => label)
+        expect(unpinned, label).toStrictEqual([])
+      }
+    })
 
-    expect(early).toStrictEqual([])
-  })
+    it('brings nobody back from a confirmed death', () => {
+      // What `presumed-dead` is for: a character the story drops and picks up
+      // again is filed under the doubt, never under the certainty.
+      for (const { label, timeline } of STATUSES) {
+        const died = timeline.findIndex((entry) => entry.value === 'deceased')
 
-  it('declares a chapter no earlier than its record and within the dial', () => {
-    for (const { chapter, label, owner } of DECLARED) {
-      expect(Number.isSafeInteger(chapter), label).toBe(true)
-      expect(chapter, label).toBeGreaterThanOrEqual(owner.revealedAtChapter)
-      expect(chapter, label).toBeLessThanOrEqual(series.chapterCeiling)
-    }
-  })
+        expect(died === -1 || died === timeline.length - 1, label).toBe(true)
+      }
+    })
 
-  it('names an unanchored record nowhere a reader meets before its chapter', () => {
-    // The table no longer waits for such a record, so nothing dated may name
-    // it, linked or not, below its own chapter. Its own dossier is behind
-    // its threshold already.
-    expect(unanchoredLeaks(archive)).toStrictEqual([])
-  })
+    it('leaves a fate to the status and out of the affiliation', () => {
+      // Both halves of the vocabulary that are a fate and nothing else: a
+      // death, and a death the story later takes back. An affiliation that
+      // carried one would print it a second time, and at whichever episode the
+      // affiliation happened to change rather than at the episode the fate
+      // did. Being held is not on this list: a captor and a place are what an
+      // affiliation is for.
+      for (const { label, timeline } of AFFILIATIONS) {
+        for (const entry of timeline) {
+          for (const locale of LOCALES) {
+            expect(entry.value[locale], label).not.toMatch(
+              /decedut|defunt|deceased|uccis|killed|giustiziat|executed|dato per mort|presumed dead/iu,
+            )
+          }
+        }
+      }
+    })
 
-  it('marks a chapter pinned on a fruit of one source only with that source', () => {
-    // The table is built before a fruit's source is read off its namings, so
-    // it cannot see it: a pinned entry of such a fruit vouches for its pair
-    // unless the entry says its source itself.
-    const pinned = DATED.filter(
-      ({ entry, owner }) =>
-        owner.kind === 'fruit'
-        && owner.source !== undefined
-        && entry.chapter !== undefined
-        && entry.source !== owner.source,
-    ).map(({ label }) => label)
+    it('names, in an origin that links a place, a filed place, and pins its chapter', () => {
+      // The place's page opens the entry at its own pair. Without a chapter it
+      // would wait on the derived table, which can reach the episode chapters
+      // before the manga says where the character comes from.
+      for (const { chapter, label, place } of linkedOrigins(archive)) {
+        expect(archive.getPlace(place), label).toBeDefined()
+        expect(chapter, label).toBeDefined()
+      }
+    })
 
-    expect(pinned).toStrictEqual([])
-  })
+    it('opens every entry at some chapter a reader can reach', () => {
+      // A record added or moved shifts the table; an entry it pushes past the
+      // last chapter would be hidden from every manga reader for good, and
+      // needs a chapter of its own.
+      const lost = openedCases(archive)
+        .filter(({ chapter }) => chapter > series.chapterCeiling)
+        .map(({ label }) => label)
 
-  it('tells an entry of a record of one source only by that source alone', () => {
-    // The record's source wins in its gate, so an entry may only repeat it.
-    const crossed = DATED.filter(
-      ({ entry, owner }) =>
-        entry.source !== undefined
-        && owner.source !== undefined
-        && entry.source !== owner.source,
-    ).map(({ label }) => label)
+      expect(lost).toStrictEqual([])
+    })
 
-    expect(crossed).toStrictEqual([])
-  })
-})
+    it('opens no entry before its own record, unless the record vouches for nothing', () => {
+      // The table makes this hold for every record it is built from, on the
+      // entry's own gate alone. An unanchored record's entries, or those of a
+      // record of one source only, are held by their owner instead, which
+      // `datedOf` folds into every gate.
+      const early = DATED.filter(({ entry, owner }) => {
+        const opens = entry.chapter ?? archive.chapterAtEpisode(entry.episode)
+
+        return vouches(owner) && opens < owner.revealedAtChapter
+      }).map(({ label }) => label)
+
+      expect(early).toStrictEqual([])
+    })
+
+    it('declares a chapter no earlier than its record and within the dial', () => {
+      for (const { chapter, label, owner } of DECLARED) {
+        expect(Number.isSafeInteger(chapter), label).toBe(true)
+        expect(chapter, label).toBeGreaterThanOrEqual(owner.revealedAtChapter)
+        expect(chapter, label).toBeLessThanOrEqual(series.chapterCeiling)
+      }
+    })
+
+    it('names an unanchored record nowhere a reader meets before its chapter', () => {
+      // The table no longer waits for such a record, so nothing dated may name
+      // it, linked or not, below its own chapter. Its own dossier is behind
+      // its threshold already.
+      expect(unanchoredLeaks(archive)).toStrictEqual([])
+    })
+
+    it('marks a chapter pinned on a fruit of one source only with that source', () => {
+      // The table is built before a fruit's source is read off its namings, so
+      // it cannot see it: a pinned entry of such a fruit vouches for its pair
+      // unless the entry says its source itself.
+      const pinned = DATED.filter(
+        ({ entry, owner }) =>
+          owner.kind === 'fruit'
+          && owner.source !== undefined
+          && entry.chapter !== undefined
+          && entry.source !== owner.source,
+      ).map(({ label }) => label)
+
+      expect(pinned).toStrictEqual([])
+    })
+
+    it('tells an entry of a record of one source only by that source alone', () => {
+      // The record's source wins in its gate, so an entry may only repeat it.
+      const crossed = DATED.filter(
+        ({ entry, owner }) =>
+          entry.source !== undefined
+          && owner.source !== undefined
+          && entry.source !== owner.source,
+      ).map(({ label }) => label)
+
+      expect(crossed).toStrictEqual([])
+    })
+  },
+)
 
 describe.each(LOADED_SERIES)('the chronicles of $slug', ({ archive }) => {
   const STORIES = archive.characters.flatMap((character) =>
@@ -567,6 +600,125 @@ describe.each(LOADED_SERIES)('the shelves of $slug', ({ archive }) => {
 
     for (const section of bookSections) {
       expect(section.characters.length, section.arc.id).toBeGreaterThan(0)
+    }
+  })
+})
+
+/** Every record a place's dossier files there, beside the place's id. */
+function filedHereOf(archive: SeriesArchive): [string, string][] {
+  return archive.places.flatMap((place) => {
+    const filed = archive.placeDossierOf(place)?.filedHere ?? []
+
+    return filed.map((id): [string, string] => [place.id, id])
+  })
+}
+
+describe.each(LOADED_SERIES)('the places of $slug', ({ archive }) => {
+  const { entities, places } = archive
+
+  it('lists every place record, in the order the anime reaches them', () => {
+    const ids = entities
+      .filter((entity) => entity.kind === 'place')
+      .map((entity) => entity.id)
+      .toSorted(byString())
+    const thresholds = places.map((place) => place.revealedAtEpisode)
+
+    expect(places.map((place) => place.id).toSorted(byString())).toStrictEqual(
+      ids,
+    )
+    expect(thresholds).toStrictEqual(thresholds.toSorted(byNumber()))
+  })
+
+  it('gives every place a dossier in every locale, and nothing else one', () => {
+    for (const place of places) {
+      const dossier = archive.placeDossierOf(place)
+
+      expect(dossier, place.id).toBeDefined()
+
+      for (const locale of LOCALES) {
+        expect(dossier?.landmark[locale].length, place.id).toBeGreaterThan(0)
+        expect(dossier?.log[locale].length, place.id).toBeGreaterThan(0)
+      }
+    }
+
+    const others = entities.filter((entity) => entity.kind !== 'place')
+    for (const other of others) {
+      expect(archive.placeDossierOf(other), other.id).toBeUndefined()
+    }
+  })
+
+  it('files every place under exactly one saga', () => {
+    // The places page's saga picker reads it, and a place under none would
+    // leave the page with nothing to send.
+    const filed = archive.sagas
+      .flatMap((saga) => saga.entries)
+      .map(({ id }) => id)
+    for (const place of places) {
+      expect(
+        filed.filter((id) => id === place.id),
+        place.id,
+      ).toHaveLength(1)
+    }
+  })
+
+  it('files each place under an arc that opens no later than the place, in both units', () => {
+    // The places page prints the arc's name beside an open place, so an arc
+    // that opened later would be named while still under fog.
+    for (const place of places) {
+      const arc = archive.getEntity(archive.placeDossierOf(place)?.arc ?? '')
+
+      expect(arc?.kind, place.id).toBe('arc')
+      expect(arc?.revealedAtEpisode, place.id).toBeLessThanOrEqual(
+        place.revealedAtEpisode,
+      )
+      expect(arc?.revealedAtChapter, place.id).toBeLessThanOrEqual(
+        place.revealedAtChapter,
+      )
+    }
+  })
+
+  it('dates every later visit after the place, in order, in both units', () => {
+    // A visit at or before the place's own threshold would be its first
+    // arrival, not a return; out of order, the page would list it so.
+    for (const { place, visits } of visitsOf(archive)) {
+      const episodes = visits.map((visit) => visit.episode)
+      const chapters = visits.map((visit) => visit.chapter)
+      const distinctEpisodes = new Set(episodes)
+      const distinctChapters = new Set(chapters)
+
+      // Distinct in both units: the page keys and labels each visit by its
+      // episode or its chapter, whichever the reader counts in.
+      expect(distinctEpisodes.size, place.id).toBe(visits.length)
+      expect(distinctChapters.size, place.id).toBe(visits.length)
+      expect(episodes, place.id).toStrictEqual(episodes.toSorted(byNumber()))
+      expect(chapters, place.id).toStrictEqual(chapters.toSorted(byNumber()))
+
+      for (const visit of visits) {
+        expect(visit.episode, place.id).toBeGreaterThan(place.revealedAtEpisode)
+        expect(visit.chapter, place.id).toBeGreaterThan(place.revealedAtChapter)
+
+        for (const locale of LOCALES) {
+          expect(visit.value[locale].trim(), place.id).not.toBe('')
+        }
+      }
+    }
+  })
+
+  it('files here only records the archive holds, none of them places', () => {
+    const filedHere = filedHereOf(archive)
+    for (const [place, id] of filedHere) {
+      const record = archive.getEntity(id)
+
+      expect(record, `${place} → ${id}`).toBeDefined()
+      expect(record?.kind, `${place} → ${id}`).not.toBe('place')
+    }
+  })
+
+  it('finds every place by id, and nothing else', () => {
+    for (const entity of entities) {
+      expect(archive.getPlace(entity.id), entity.id).toBe(
+        entity.kind === 'place' ? entity : undefined,
+      )
     }
   })
 })
