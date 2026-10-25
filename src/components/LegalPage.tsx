@@ -3,15 +3,15 @@ import type { ReactElement } from 'react'
 
 import { styles } from '~/components/LegalNotice.styles'
 import { PrivacyNotice } from '~/components/PrivacyNotice'
-import { SourceCredits } from '~/components/SourceCredits'
-import { useT } from '~/i18n/LocaleContext'
-import type { SourceCredit } from '~/lib/view/credits'
+import { InSeries, SourceCredits } from '~/components/SourceCredits'
+import { useSeriesT, useT } from '~/i18n/LocaleContext'
+import type { SeriesCredits } from '~/lib/view/credits'
 
 /** Every notice on one page, so the footer carries a single link. */
 export function LegalPage({
-  credits,
+  series,
 }: {
-  credits: SourceCredit[]
+  series: SeriesCredits[]
 }): ReactElement {
   const t = useT()
 
@@ -24,15 +24,14 @@ export function LegalPage({
       <section id="project">
         <h2 {...stylex.props(styles.heading)}>{t('legal.projectTitle')}</h2>
         <p {...stylex.props(styles.paragraph)}>{t('legal.unofficial')}</p>
-        <p {...stylex.props(styles.paragraph)}>
-          {t('legal.credits')}{' '}
-          <a
-            href="https://www.toei-animation.com/copyrights/"
-            {...stylex.props(styles.link)}
+        {series.map(({ copy, sources }) => (
+          <InSeries
+            key={copy.slug}
+            copy={copy}
           >
-            {t('legal.creditSource')}
-          </a>
-        </p>
+            <Rights url={sources.rights} />
+          </InSeries>
+        ))}
         <p {...stylex.props(styles.paragraph)}>
           <a
             href="https://github.com/cosimochellini/zero-spoiler/issues/new?template=blank.md"
@@ -44,7 +43,24 @@ export function LegalPage({
         </p>
       </section>
       <PrivacyNotice />
-      <SourceCredits credits={credits} />
+      <SourceCredits series={series} />
     </main>
+  )
+}
+
+/** A series' rights holders, in its own words, and where they say so. */
+function Rights({ url }: { url: string }): ReactElement {
+  const t = useSeriesT()
+
+  return (
+    <p {...stylex.props(styles.paragraph)}>
+      {t('legal.credits')}{' '}
+      <a
+        href={url}
+        {...stylex.props(styles.link)}
+      >
+        {t('legal.creditSource')}
+      </a>
+    </p>
   )
 }

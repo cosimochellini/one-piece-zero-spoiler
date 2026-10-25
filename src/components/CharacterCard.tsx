@@ -4,7 +4,7 @@ import type { ReactElement, ReactNode } from 'react'
 
 import { CharacterCrest } from '~/components/CharacterCrest'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
-import { useLocale } from '~/i18n/LocaleContext'
+import { useT } from '~/i18n/LocaleContext'
 import { useSeriesParams, useThreshold } from '~/lib/progress/BookmarkContext'
 import { useDrawing } from '~/lib/view/drawings'
 import type { CharacterView, Slot } from '~/lib/view/records'
@@ -43,7 +43,7 @@ export function CharacterCard({
   peek,
   highlight = null,
 }: CharacterCardProps): ReactElement {
-  const { t } = useLocale()
+  const t = useT()
   const threshold = useThreshold()
 
   return (

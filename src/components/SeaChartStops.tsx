@@ -21,7 +21,7 @@ import type {
   PeekTarget,
   TriggerProps as PeekTrigger,
 } from '~/components/useChartPeek'
-import { useLocale } from '~/i18n/LocaleContext'
+import { useT } from '~/i18n/LocaleContext'
 import { useSeriesParams, useThreshold } from '~/lib/progress/BookmarkContext'
 import type { TintId } from '~/lib/view/records'
 
@@ -130,7 +130,7 @@ export function SeaChartStops({
   orientation: Orientation
   trigger: (target: PeekTarget, link: boolean) => PeekTrigger
 }): ReactElement {
-  const { t } = useLocale()
+  const t = useT()
   const { open, total } = model
   const target = useTargets({
     count: total,
@@ -244,7 +244,7 @@ function FogStops({
   stage: (index: number) => string
   target: (index: number, label: string) => Target
 }): ReactElement {
-  const { t } = useLocale()
+  const t = useT()
   const threshold = useThreshold()
 
   return (

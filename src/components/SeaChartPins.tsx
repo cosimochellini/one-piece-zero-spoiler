@@ -21,7 +21,7 @@ import {
   type ShipMark,
 } from '~/components/seaChartModel'
 import type { TriggerProps } from '~/components/useChartPeek'
-import { useT } from '~/i18n/LocaleContext'
+import { useSeriesOnlyT } from '~/i18n/LocaleContext'
 import type { StopView } from '~/lib/view/places'
 
 /**
@@ -80,7 +80,7 @@ export function RegionNames({
   orientation: Orientation
   regions: Region[]
 }): ReactElement {
-  const t = useT()
+  const t = useSeriesOnlyT('one-piece')
 
   return (
     <>

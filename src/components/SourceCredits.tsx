@@ -1,45 +1,77 @@
 import * as stylex from '@stylexjs/stylex'
-import type { ReactElement } from 'react'
+import type { ReactElement, ReactNode } from 'react'
 
 import { styles } from '~/components/LegalNotice.styles'
-import { useT } from '~/i18n/LocaleContext'
-import type { SourceCredit } from '~/lib/view/credits'
+import { onlyUnder, useLocale, useSeriesT, useT } from '~/i18n/LocaleContext'
+import { LocaleProvider } from '~/i18n/LocaleProvider'
+import type { SeriesCopy } from '~/i18n/types'
+import type {
+  SeriesCredits,
+  SeriesSources,
+  SourceCredit,
+} from '~/lib/view/credits'
 
-const LICENSE = 'https://creativecommons.org/licenses/by-sa/3.0/'
-const GENERAL_SOURCES = [
-  ['credits.wikiEn', 'https://onepiece.fandom.com/'],
-  ['credits.wikiIt', 'https://onepiece.fandom.com/it/'],
-  ['credits.fandomTerms', 'https://www.fandom.com/licensing'],
-  ['credits.fandomTermsIt', 'https://www.fandom.com/it/licensing-it'],
-  ['credits.fillerList', 'https://www.animefillerlist.com/shows/one-piece'],
-] as const
+/** A part of the page in one series' own words. */
+export function InSeries({
+  copy,
+  children,
+}: {
+  children: ReactNode
+  copy: SeriesCopy
+}): ReactElement {
+  const { locale } = useLocale()
+
+  return (
+    <LocaleProvider
+      copy={copy}
+      locale={locale}
+    >
+      {children}
+    </LocaleProvider>
+  )
+}
 
 /** Only the server-filtered references reach this component. */
 export function SourceCredits({
-  credits,
+  series,
 }: {
-  credits: SourceCredit[]
+  series: SeriesCredits[]
 }): ReactElement {
   const t = useT()
   return (
     <section id="sources">
       <h2 {...stylex.props(styles.heading)}>{t('credits.title')}</h2>
       <p {...stylex.props(styles.paragraph)}>{t('credits.intro')}</p>
-      <LicenseNotices />
+      <LicenseNotices series={series} />
       <h3 {...stylex.props(styles.subheading)}>
         {t('credits.referencesTitle')}
       </h3>
-      <p {...stylex.props(styles.paragraph)}>{t('credits.coverage')}</p>
+      {series.map(({ copy }) => (
+        <InSeries
+          key={copy.slug}
+          copy={copy}
+        >
+          <Coverage />
+        </InSeries>
+      ))}
       <p {...stylex.props(styles.paragraph)}>{t('credits.factCheck')}</p>
       <p {...stylex.props(styles.paragraph)}>{t('credits.bookmark')}</p>
-      {credits.length === 0 ?
+      {series.every(({ credits }) => credits.length === 0) ?
         <p>{t('credits.empty')}</p>
       : <ul {...stylex.props(styles.list)}>
-          {credits.map((credit) => (
-            <CreditEntry
-              key={`${credit.name}-${String(credit.episode)}-${credit.scope}`}
-              credit={credit}
-            />
+          {series.map(({ copy, credits, sources }) => (
+            <InSeries
+              key={copy.slug}
+              copy={copy}
+            >
+              {credits.map((credit) => (
+                <CreditEntry
+                  key={`${credit.name}-${String(credit.episode)}-${credit.scope}`}
+                  credit={credit}
+                  licenses={sources.licenses}
+                />
+              ))}
+            </InSeries>
           ))}
         </ul>
       }
@@ -47,8 +79,27 @@ export function SourceCredits({
   )
 }
 
-function CreditEntry({ credit }: { credit: SourceCredit }): ReactElement {
-  const t = useT()
+/** Which of a series' entries the references below cover. */
+function Coverage(): ReactElement {
+  const t = useSeriesT()
+  return <p {...stylex.props(styles.paragraph)}>{t('credits.coverage')}</p>
+}
+
+function CreditEntry({
+  credit,
+  licenses,
+}: {
+  credit: SourceCredit
+  licenses: SeriesSources['licenses']
+}): ReactElement {
+  const t = useSeriesT()
+  const onePiece = useSeriesT('one-piece')
+  // A filler entry and the official synopsis are One Piece's: only its
+  // sample files them, so their words are One Piece's.
+  const filler = (): string =>
+    onlyUnder(onePiece, 'one-piece')('credits.scope.filler')
+  const official = (): string =>
+    onlyUnder(onePiece, 'one-piece')('credits.source.official')
   return (
     <li>
       <h4>
@@ -57,7 +108,11 @@ function CreditEntry({ credit }: { credit: SourceCredit }): ReactElement {
           ` · ${t('credits.episode', { episode: credit.episode })}`
         )}
       </h4>
-      <p>{t(`credits.scope.${credit.scope}`)}</p>
+      <p>
+        {credit.scope === 'filler' ?
+          filler()
+        : t(`credits.scope.${credit.scope}`)}
+      </p>
       {credit.scope === 'summary' ?
         <p>{t('credits.replacement')}</p>
       : null}
@@ -68,15 +123,15 @@ function CreditEntry({ credit }: { credit: SourceCredit }): ReactElement {
               href={url}
               {...stylex.props(styles.link)}
             >
-              {t(`credits.source.${kind}`)}
+              {kind === 'official' ? official() : t(`credits.source.${kind}`)}
             </a>{' '}
             {kind === 'official' ?
               t('credits.noOpenLicense')
             : <a
-                href={LICENSE}
+                href={licenses[kind][1]}
                 {...stylex.props(styles.link)}
               >
-                CC BY-SA 3.0 Unported
+                {licenses[kind][0]}
               </a>
             }
           </li>
@@ -86,7 +141,7 @@ function CreditEntry({ credit }: { credit: SourceCredit }): ReactElement {
   )
 }
 
-function LicenseNotices(): ReactElement {
+function LicenseNotices({ series }: { series: SeriesCredits[] }): ReactElement {
   const t = useT()
   return (
     <>
@@ -111,35 +166,54 @@ function LicenseNotices(): ReactElement {
         </li>
       </ul>
       <p {...stylex.props(styles.paragraph)}>{t('credits.content')}</p>
-      <SourceTerms />
+      <h3 {...stylex.props(styles.subheading)}>{t('credits.sourcesTitle')}</h3>
+      <p {...stylex.props(styles.paragraph)}>{t('credits.external')}</p>
+      {series.map(({ copy, sources }) => (
+        <InSeries
+          key={copy.slug}
+          copy={copy}
+        >
+          <SourceTerms sources={sources} />
+        </InSeries>
+      ))}
     </>
   )
 }
 
-function SourceTerms(): ReactElement {
-  const t = useT()
+/** A series' sources: their terms, their licenses and where they are. */
+function SourceTerms({ sources }: { sources: SeriesSources }): ReactElement {
+  const t = useSeriesT()
+  const { licenses, links } = sources
+  // One paragraph per license, though both wikis may share one.
+  const shown = Object.values(licenses).filter(
+    ([, href], index, all) =>
+      all.findIndex((other) => other[1] === href) === index,
+  )
   return (
     <>
-      <h3 {...stylex.props(styles.subheading)}>{t('credits.sourcesTitle')}</h3>
-      <p {...stylex.props(styles.paragraph)}>{t('credits.external')}</p>
       <p {...stylex.props(styles.paragraph)}>{t('credits.wikiTerms')}</p>
-      <p {...stylex.props(styles.paragraph)}>
-        <a
-          href={LICENSE}
-          {...stylex.props(styles.link)}
+      {shown.map(([name, href]) => (
+        <p
+          key={href}
+          {...stylex.props(styles.paragraph)}
         >
-          CC BY-SA 3.0 Unported
-        </a>
-      </p>
+          <a
+            href={href}
+            {...stylex.props(styles.link)}
+          >
+            {name}
+          </a>
+        </p>
+      ))}
       <p {...stylex.props(styles.paragraph)}>{t('credits.otherTerms')}</p>
       <ul {...stylex.props(styles.list)}>
-        {GENERAL_SOURCES.map(([key, href]) => (
-          <li key={key}>
+        {links.map(([label, href]) => (
+          <li key={href}>
             <a
               href={href}
               {...stylex.props(styles.link)}
             >
-              {t(key)}
+              {label}
             </a>
           </li>
         ))}

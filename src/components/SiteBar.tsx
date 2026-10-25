@@ -4,11 +4,10 @@ import type { ReactElement } from 'react'
 
 import { EpisodeMark } from '~/components/EpisodeMark'
 import { LocaleSwitch } from '~/components/LocaleSwitch'
-import { useDeclares } from '~/components/useDeclares'
-import { useLocale } from '~/i18n/LocaleContext'
+import { type PageEntry, usePageLinks } from '~/components/usePageLinks'
+import { useLocale, useT } from '~/i18n/LocaleContext'
 import type { TranslationKey } from '~/i18n/types'
 import { useBookmark, useSeriesParams } from '~/lib/progress/BookmarkContext'
-import type { SeriesPage } from '~/lib/progress/series'
 import {
   BAR,
   color,
@@ -39,7 +38,8 @@ import {
  * which is where the eye goes to see what it did.
  */
 export function SiteBar(): ReactElement {
-  const { locale, t } = useLocale()
+  const { locale } = useLocale()
+  const t = useT()
   const { series } = useBookmark()
   // The public description, for the series' name in the reader's language.
   const described = useMatch({ from: '/$series', shouldThrow: false })?.context
@@ -87,29 +87,39 @@ export function SiteBar(): ReactElement {
   )
 }
 
-/** The bar's pages, in its order; the filler guide is reached by its address. */
-const NAV = [
+/**
+ * The bar's pages, in its order; the filler guide is reached by its address.
+ * Labelled by the page's own copy: the fruits and the filler guide are One
+ * Piece's, and only a series that declares them links them.
+ */
+const NAV: PageEntry<TranslationKey>[] = [
   {
     page: 'characters',
     to: '/$series/$locale/characters',
     label: 'nav.characters',
   },
   { page: 'places', to: '/$series/$locale/places', label: 'nav.places' },
+]
+
+/** One Piece's own page in the bar, in its words. */
+const ONE_PIECE_NAV: PageEntry<TranslationKey<'one-piece'>>[] = [
   { page: 'fruits', to: '/$series/$locale/fruits', label: 'nav.fruits' },
-] as const satisfies { label: TranslationKey; page: SeriesPage; to: string }[]
+]
 
 /**
  * Content navigation belongs to the series selected by the route, and lists
  * the pages it declares.
  */
 function SeriesNavigation(): ReactElement {
-  const { t } = useLocale()
+  const t = useT()
   const params = useSeriesParams()
-  const declares = useDeclares()
-  const links: ReactElement[] = []
-  for (const { label, page, to } of NAV) {
-    if (declares(page)) {
-      links.push(
+  const links = usePageLinks(NAV, ONE_PIECE_NAV)
+  return (
+    <nav
+      aria-label={t('nav.label')}
+      {...stylex.props(styles.pages)}
+    >
+      {links.map(({ label, to }) => (
         <Link
           key={to}
           activeProps={{ 'aria-current': 'page' }}
@@ -117,17 +127,9 @@ function SeriesNavigation(): ReactElement {
           to={to}
           {...stylex.props(styles.link)}
         >
-          {t(label)}
-        </Link>,
-      )
-    }
-  }
-  return (
-    <nav
-      aria-label={t('nav.label')}
-      {...stylex.props(styles.pages)}
-    >
-      {links}
+          {label}
+        </Link>
+      ))}
     </nav>
   )
 }

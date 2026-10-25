@@ -1,16 +1,12 @@
 import { describe, expect, it } from 'vitest'
 
-import { enDictionary } from '~/i18n/dictionaries/en'
-import { itDictionary } from '~/i18n/dictionaries/it'
-import { translate } from '~/i18n/translate'
-import type { Translate } from '~/i18n/types'
+import { translatorOf } from '~/server/copy.server'
 
-import { ONE_PIECE_BOOKMARK } from './series'
+import { ONE_PIECE_BOOKMARK, ONE_PIECE_SERIES } from './series'
 import { describeBookmark, describeThreshold } from './threshold'
 
-const en: Translate = (key, params) => translate(enDictionary, key, params)
-const inItalian: Translate = (key, params) =>
-  translate(itDictionary, key, params)
+const en = translatorOf(ONE_PIECE_SERIES, 'en')
+const inItalian = translatorOf(ONE_PIECE_SERIES, 'it')
 const robin = { revealedAtEpisode: 130, revealedAtChapter: 218 }
 
 describe('describeThreshold', () => {

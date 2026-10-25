@@ -7,6 +7,8 @@ import {
 import { describe, expect, it, vi } from 'vitest'
 
 import { SERIES } from '~/data/series'
+import type { Locale } from '~/i18n/locales'
+import type { SeriesCopy } from '~/i18n/types'
 import {
   hasPage,
   HUNTER_X_HUNTER_SERIES,
@@ -23,8 +25,9 @@ import { Route as FruitRoute } from '~/routes/$series/$locale/fruits/$id'
 import { Route as FruitsRoute } from '~/routes/$series/$locale/fruits/index'
 import { Route as PlaceRoute } from '~/routes/$series/$locale/places/$id'
 import { Route as PlacesRoute } from '~/routes/$series/$locale/places/index'
-import { seriesDescription } from '~/routes/-series'
+import { seriesCopy, seriesDescription } from '~/routes/-series'
 import { routeTree } from '~/routeTree.gen'
+import { copyOf } from '~/server/copy.server'
 
 type Guard = (input: unknown) => unknown
 
@@ -97,6 +100,7 @@ const tree = root.addChildren([
 
 vi.mock(import('~/routes/-series'), () => ({
   seriesDescription: vi.fn<(slug: string) => Promise<null | Series>>(),
+  seriesCopy: vi.fn<(slug: string, locale: Locale) => Promise<SeriesCopy>>(),
 }))
 
 /** Whether the address answers 404. */
@@ -141,6 +145,7 @@ describe('the pages a series declares', () => {
     '$address answers by what $description.slug declares',
     async ({ address, description, page }) => {
       vi.mocked(seriesDescription).mockResolvedValue(description)
+      vi.mocked(seriesCopy).mockResolvedValue(copyOf(description, 'en'))
 
       await expect(isNotFound(address)).resolves.toBe(
         !hasPage(description, page),
@@ -152,6 +157,9 @@ describe('the pages a series declares', () => {
     'answers 404 at /hunter-x-hunter/en/%s with Hunter x Hunter open',
     async (path) => {
       vi.mocked(seriesDescription).mockResolvedValue(HUNTER_X_HUNTER_SERIES)
+      vi.mocked(seriesCopy).mockResolvedValue(
+        copyOf(HUNTER_X_HUNTER_SERIES, 'en'),
+      )
 
       await expect(isNotFound(`/hunter-x-hunter/en/${path}`)).resolves.toBe(
         true,

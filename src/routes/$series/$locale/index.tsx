@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import type { ReactElement } from 'react'
 
 import { isLocale } from '~/i18n/locales'
+import type { SeriesSlug } from '~/i18n/types'
 import { describeNamedPage } from '~/routes/$locale/-head'
 import { LandingPage } from '~/routes/$series/$locale/-landing'
 import { loadHome } from '~/server/api'
@@ -15,17 +16,17 @@ export const Route = createFileRoute('/$series/$locale/')({
   // the characters those stories name. Nothing past the bookmark is in it.
   loader: async ({ context }) =>
     loadHome({ data: { series: context.series.slug, locale: context.locale } }),
-  head: ({ match, params }) => {
-    return isLocale(params.locale) ?
-        describeNamedPage({
-          descriptionKey: 'site.description',
-          kind: 'landing',
-          locale: params.locale,
-          pathname: match.pathname,
-          titleKey: 'site.title',
-        })
-      : {}
-  },
+  head: (context) =>
+    isLocale(context.params.locale) ?
+      describeNamedPage<SeriesSlug>({
+        copy: context.match.context.copy,
+        descriptionKey: 'site.description',
+        kind: 'landing',
+        locale: context.params.locale,
+        pathname: context.match.pathname,
+        titleKey: 'site.title',
+      })
+    : {},
 })
 
 /** The landing page, with the loader's data. */

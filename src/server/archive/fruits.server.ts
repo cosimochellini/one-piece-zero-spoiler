@@ -1,7 +1,6 @@
 import type { Eater } from '~/data/features'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
-import { getDictionary } from '~/i18n/translate'
 import {
   absoluteEpisodeOf,
   type Bookmark,
@@ -25,6 +24,7 @@ import type {
   FruitView,
   Slot,
 } from '~/lib/view/records'
+import { translatorOf } from '~/server/copy.server'
 
 import { handleOf } from './handle.server'
 import { printedFaction } from './printed.server'
@@ -229,7 +229,7 @@ function factionGroupsOf(r: Reader): FruitFactionView[] {
 
   return [...groups]
     .map(([faction, refs]) => ({ faction, open: refs }))
-    .toSorted(byGroup(r.locale))
+    .toSorted(byGroup(r))
 }
 
 /** The groups an open eater stands in: their factions, or `null` for none yet. */
@@ -262,11 +262,12 @@ function fileUnder(
 
 /** No faction last; the rest most fruits first, then by name in this locale. */
 function byGroup(
-  locale: Locale,
+  r: Reader,
 ): (a: FruitFactionView, b: FruitFactionView) => number {
-  const dictionary = getDictionary(locale)
+  const { locale } = r
+  const t = translatorOf(r.archive.series, locale)
   const label = ({ faction }: FruitFactionView): string =>
-    faction === null ? '' : dictionary[`faction.${faction}`]
+    faction === null ? '' : t(`faction.${faction}`)
 
   return (a, b) => {
     const none = Number(a.faction === null) - Number(b.faction === null)

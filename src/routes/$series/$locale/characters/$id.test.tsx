@@ -1,10 +1,16 @@
 import { isNotFound } from '@tanstack/react-router'
 import { describe, expect, it } from 'vitest'
 
+import type { SeriesCopy } from '~/i18n/types'
+import { ONE_PIECE_SERIES } from '~/lib/progress/series'
 import type { DocumentHead } from '~/lib/view/records'
 import { orNotFound } from '~/routes/$series/$locale/-found'
+import { copyOf } from '~/server/copy.server'
 
 import { Route } from './$id'
+
+/** The copy the series route hands every page of One Piece. */
+const COPY = copyOf(ONE_PIECE_SERIES, 'en')
 
 const PATHNAME = '/one-piece/en/characters/nico-robin'
 
@@ -16,7 +22,7 @@ interface Meta {
 
 type Head = (input: {
   loaderData: undefined | { head: DocumentHead }
-  match: { pathname: string }
+  match: { context: { copy: SeriesCopy }; pathname: string }
   params: { locale: string; series: string }
 }) => {
   links?: { href: string; rel: string }[]
@@ -42,7 +48,7 @@ function headFor(head: DocumentHead | undefined): ReturnType<Head> {
 
   return describeHead({
     loaderData: head === undefined ? undefined : { head },
-    match: { pathname: PATHNAME },
+    match: { context: { copy: COPY }, pathname: PATHNAME },
     params: { locale: 'en', series: 'one-piece' },
   })
 }

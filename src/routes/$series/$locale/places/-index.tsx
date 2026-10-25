@@ -14,7 +14,7 @@ import { Marked } from '~/components/CharacterCard'
 import { OpenPortPlate } from '~/components/PortPlate'
 import { Button } from '~/components/ui/Button'
 import { usePlaceLabels } from '~/components/usePlaceLabels'
-import { useLocale } from '~/i18n/LocaleContext'
+import { useT } from '~/i18n/LocaleContext'
 import type { Translate } from '~/i18n/types'
 import { useSeriesParams, useThreshold } from '~/lib/progress/BookmarkContext'
 import { matchFolded } from '~/lib/search/fold'
@@ -61,7 +61,7 @@ export function PlaceIndex({
   shown,
   ...controls
 }: PlaceIndexProps): null | ReactElement {
-  const { t } = useLocale()
+  const t = useT()
   const { regionOf } = usePlaceLabels(controls.words)
   const fieldId = useId()
   const { onParams, open, params } = controls
@@ -116,7 +116,7 @@ export function PlaceIndex({
 
 /** The stops under fog, one line for all of them; nothing with none. */
 function FogLine({ count }: { count: number }): null | ReactElement {
-  const { t } = useLocale()
+  const t = useT()
   if (count === 0) {
     return null
   }

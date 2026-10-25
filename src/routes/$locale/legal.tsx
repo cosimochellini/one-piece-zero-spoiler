@@ -4,18 +4,25 @@ import type { ReactElement } from 'react'
 import { LegalPage } from '~/components/LegalPage'
 import { isLocale } from '~/i18n/locales'
 import { describeNamedPage } from '~/routes/$locale/-head'
-import { loadCredits } from '~/server/api'
+import { loadCredits, loadSeriesLegal } from '~/server/api'
 import { loadSeriesDescriptions } from '~/server/series'
 
 export const Route = createFileRoute('/$locale/legal')({
+  // Each open series' own copy, which words its rights line and its
+  // sources, those sources, and its references open at the reader's
+  // bookmark. A series not open yet sends none of them.
   loader: async ({ context }) => {
     const series = await loadSeriesDescriptions()
-    const credits = await Promise.all(
-      series.map(async ({ slug }) =>
-        loadCredits({ data: { series: slug, locale: context.locale } }),
-      ),
+    return Promise.all(
+      series.map(async ({ slug }) => {
+        const data = { series: slug, locale: context.locale }
+        const [legal, credits] = await Promise.all([
+          loadSeriesLegal({ data }),
+          loadCredits({ data }),
+        ])
+        return { ...legal, credits }
+      }),
     )
-    return credits.flat()
   },
   head: ({ match, params }) =>
     isLocale(params.locale) ?
@@ -32,5 +39,5 @@ export const Route = createFileRoute('/$locale/legal')({
 })
 
 function LegalRoute(): ReactElement {
-  return <LegalPage credits={Route.useLoaderData()} />
+  return <LegalPage series={Route.useLoaderData()} />
 }

@@ -4,7 +4,7 @@ import type { ReactElement } from 'react'
 import { FogCard, OpenCard } from '~/components/DemoCards'
 import { type DialPoint, dialSees } from '~/components/dial'
 import { styles } from '~/components/Onboarding.styles'
-import { useLocale } from '~/i18n/LocaleContext'
+import { useSeriesT } from '~/i18n/LocaleContext'
 import type {
   CoveredRecord,
   DemoEntry,
@@ -27,7 +27,7 @@ export function OnboardingWake({
   point: DialPoint
   view: OnboardingView
 }): ReactElement {
-  const { t } = useLocale()
+  const t = useSeriesT()
   const here = view.arcs.findLast((arc) => dialSees(point, arc))?.id
 
   return (
@@ -108,7 +108,7 @@ function Tail({
   point: DialPoint
   tail: CoveredRecord[]
 }): ReactElement {
-  const { t } = useLocale()
+  const t = useSeriesT()
 
   return (
     <section

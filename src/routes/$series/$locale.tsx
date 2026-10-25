@@ -1,35 +1,37 @@
 import { createFileRoute, notFound, Outlet } from '@tanstack/react-router'
-import { type ReactElement, useCallback } from 'react'
+import { type ReactElement, useCallback, useEffect } from 'react'
 
 import { isLocale, type Locale } from '~/i18n/locales'
-import { getDictionary, translate } from '~/i18n/translate'
+import { translatorFor } from '~/i18n/translate'
 import { readPlain } from '~/lib/plain'
 import { type SagaTable, SagaTableContext } from '~/lib/progress/sagaLabel'
 import { DrawingsContext } from '~/lib/view/drawings'
 import { LocaleShell } from '~/routes/-LocaleShell'
+import { keepSeriesCopy, remembered, seriesCopy } from '~/routes/-series'
 import { loadDrawings, loadSagaLabels } from '~/server/api'
 
 /** The archive shell, after the series and language have both been validated. */
 export const Route = createFileRoute('/$series/$locale')({
   params: { parse: ({ locale }) => (isLocale(locale) ? { locale } : false) },
-  beforeLoad: ({ params }) => {
+  beforeLoad: async ({ params, context }) => {
     if (!isLocale(params.locale)) {
       throw notFound()
     }
-    return { locale: params.locale }
+    return {
+      locale: params.locale,
+      copy: await seriesCopy(context.series.slug, params.locale),
+    }
   },
-  head: ({ params }) => {
+  head: ({ match, params }) => {
     if (!isLocale(params.locale)) {
       return {}
     }
-    const dictionary = getDictionary(params.locale)
+    const { copy, locale } = match.context
+    const t = translatorFor(locale, copy)
     return {
       meta: [
-        { title: translate(dictionary, 'site.title') },
-        {
-          name: 'description',
-          content: translate(dictionary, 'site.description'),
-        },
+        { title: t('site.title') },
+        { name: 'description', content: t('site.description') },
       ],
     }
   },
@@ -38,25 +40,19 @@ export const Route = createFileRoute('/$series/$locale')({
 
 const sagaTables = new Map<string, Promise<SagaTable>>()
 
-/** A failed lookup is retried; successful public saga labels stay per series and locale. */
+/** The public saga labels of a series, per language. */
 async function sagaTableIn(series: string, locale: Locale): Promise<SagaTable> {
-  const key = `${series}:${locale}`
-  const cached = sagaTables.get(key)
-  if (cached !== undefined) {
-    return cached
-  }
-  const table = loadSagaLabels({ data: { series, locale } })
-  sagaTables.set(key, table)
-  try {
-    return await table
-  } catch (error) {
-    sagaTables.delete(key)
-    throw error
-  }
+  return remembered(sagaTables, `${series}:${locale}`, async () =>
+    loadSagaLabels({ data: { series, locale } }),
+  )
 }
 
 function SeriesLayout(): ReactElement {
-  const { series, locale } = Route.useRouteContext()
+  const { series, locale, copy } = Route.useRouteContext()
+  // The copy the page was served with, kept for the client's own navigations.
+  useEffect(() => {
+    keepSeriesCopy(copy, locale)
+  }, [copy, locale])
   const loadSagas = useCallback(
     async (language: Locale) => sagaTableIn(series.slug, language),
     [series.slug],
@@ -74,6 +70,7 @@ function SeriesLayout(): ReactElement {
     <SagaTableContext value={loadSagas}>
       <DrawingsContext value={loadStrokes}>
         <LocaleShell
+          copy={copy}
           locale={locale}
           trial
         >

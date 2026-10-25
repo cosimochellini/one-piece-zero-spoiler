@@ -10,7 +10,7 @@ import {
   SpecimenBands,
   type SpecimenBandsProps,
 } from '~/components/SpecimenBands'
-import { useT } from '~/i18n/LocaleContext'
+import { useSeriesOnlyT } from '~/i18n/LocaleContext'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
 import { sagaAnchor } from '~/lib/search/fruitParams'
 import type { FruitPlateCount } from '~/lib/view/fruits'
@@ -132,7 +132,7 @@ function FruitWall({
   peek,
   plates,
 }: FruitWallProps): ReactElement {
-  const t = useT()
+  const t = useSeriesOnlyT('one-piece')
   const id = useId()
 
   return (
@@ -179,7 +179,7 @@ function Wall({
   headingId: string
   plates: FruitPlateCount[]
 }): ReactElement {
-  const t = useT()
+  const t = useSeriesOnlyT('one-piece')
 
   return (
     <section

@@ -3,7 +3,7 @@ import type { ReactElement } from 'react'
 
 import { Button } from '~/components/ui/Button'
 import { useT } from '~/i18n/LocaleContext'
-import type { TranslationKey } from '~/i18n/types'
+import type { SeriesSlug, Translate, TranslationKey } from '~/i18n/types'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
 import {
   color,
@@ -65,17 +65,18 @@ export function BookmarkSkeleton(): ReactElement {
  * Something could not be fetched (the form, by default): it says so, and
  * offers to ask again.
  */
-export function LoadFailed({
+export function LoadFailed<S extends SeriesSlug = never>({
   message = 'dialog.loadFailed',
   onRetry,
   retry = 'dialog.retry',
+  t,
 }: {
-  message?: TranslationKey
+  message?: TranslationKey<S>
   onRetry: () => void
-  retry?: TranslationKey
+  retry?: TranslationKey<S>
+  /** The page's translate, typed by the keys the words are. */
+  t: Translate<S>
 }): ReactElement {
-  const t = useT()
-
   return (
     <div {...stylex.props(styles.failed)}>
       <p

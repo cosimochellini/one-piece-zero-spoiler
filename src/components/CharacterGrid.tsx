@@ -22,7 +22,7 @@ import { matchesIn } from '~/components/recordMatches'
 import { SearchField } from '~/components/SearchField'
 import { searchStyles } from '~/components/SearchField.styles'
 import { useSettled } from '~/components/useSettled'
-import { useT } from '~/i18n/LocaleContext'
+import { useSeriesT, useT } from '~/i18n/LocaleContext'
 import { foldName } from '~/lib/search/fold'
 import type {
   CharacterView,
@@ -220,7 +220,7 @@ function FeaturedCrests({
   open: SearchableCharacter[]
   peek: (handle: string) => Promise<CharacterView>
 }): ReactElement {
-  const t = useT()
+  const t = useSeriesT()
   const matches = matchesIn(open, needle)
 
   return (
@@ -247,6 +247,7 @@ function FeaturedCrests({
       <FogBand
         count={covered.length}
         headingId={`${fieldId}-fog`}
+        t={t}
         words={CHARACTER_FOG}
       >
         <CharacterCardList>

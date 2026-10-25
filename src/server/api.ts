@@ -4,6 +4,7 @@ import { archiveOf, descriptionOf } from '~/data/series'
 import { isLocale, type Locale } from '~/i18n/locales'
 import { plain } from '~/lib/plain'
 import { readBookmark, readTrial } from '~/lib/progress/readBookmark'
+import type { Series } from '~/lib/progress/series'
 
 import { creditsPage } from './archive/credits.server'
 import { fillerPage, peekFiller } from './archive/filler.server'
@@ -35,6 +36,8 @@ import { placePage } from './archive/placePage.server'
 import { placesPage } from './archive/places.server'
 import { type Reader, readerFor } from './archive/reader.server'
 import { sagaLabels } from './archive/sagaLabels.server'
+import { copyOf } from './copy.server'
+import { legalOf } from './sources.server'
 
 /**
  * The archive's only door.
@@ -134,13 +137,24 @@ function handled(input: unknown): Handled {
   return { ...located(input), handle: text(input, 'handle') }
 }
 
+const UNKNOWN_SERIES = 'A known series is required'
+
 /** A registered slug is required before the archive can be loaded. */
 function seriesSlug(input: unknown): string {
   const value = field(input, 'series')
   if (typeof value !== 'string' || descriptionOf(value) === null) {
-    throw new Error('A known series is required')
+    throw new Error(UNKNOWN_SERIES)
   }
   return value
+}
+
+/** The public description of the open series a call names. */
+function describedBy(data: Located): Series {
+  const series = descriptionOf(data.series)
+  if (series === null) {
+    throw new Error(UNKNOWN_SERIES)
+  }
+  return series
 }
 
 /** Series, bookmark and locale travel together into every projection. */
@@ -224,6 +238,22 @@ export const loadFiller = createServerFn()
 export const loadCredits = createServerFn()
   .validator(located)
   .handler(async ({ data }) => creditsPage(await readerIn(data)))
+
+/**
+ * A series' own copy in one locale, sent with its pages: its words reach no
+ * client chunk, so a reader of one series never downloads another's.
+ */
+export const loadSeriesCopy = createServerFn()
+  .validator(located)
+  .handler(({ data }) => copyOf(describedBy(data), data.locale))
+
+/**
+ * What the legal page needs of an open series: the lines of its copy the
+ * page prints and its sources, never the whole copy.
+ */
+export const loadSeriesLegal = createServerFn()
+  .validator(located)
+  .handler(({ data }) => legalOf(describedBy(data), data.locale))
 
 export const loadSagaLabels = createServerFn()
   .validator(located)

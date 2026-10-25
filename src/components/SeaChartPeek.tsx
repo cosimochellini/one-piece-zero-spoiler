@@ -22,7 +22,7 @@ import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { Button } from '~/components/ui/Button'
 import type { PeekProps } from '~/components/useChartPeek'
 import { usePlaceLabels } from '~/components/usePlaceLabels'
-import { useLocale } from '~/i18n/LocaleContext'
+import { useLocale, useSeriesOnlyT, useT } from '~/i18n/LocaleContext'
 import { useSeriesParams, useThreshold } from '~/lib/progress/BookmarkContext'
 import type { StopView } from '~/lib/view/places'
 import type {
@@ -58,7 +58,7 @@ function Frame({
   peek,
   view,
 }: PeekFrameProps & { children: ReactNode; label: string }): ReactElement {
-  const { t } = useLocale()
+  const t = useT()
   const window = view ?? wholeOf(orientation)
   const { left, top } = placeIn(at, orientation, window)
   const below = project(at, orientation).y - window.y < window.height / HALF
@@ -136,7 +136,8 @@ function PlaceLink({
   id: string
   onDismiss: () => void
 }): ReactElement {
-  const { locale, t } = useLocale()
+  const { locale } = useLocale()
+  const t = useT()
   const { series } = useSeriesParams()
 
   return (
@@ -223,7 +224,7 @@ export function FogPeek({
   peekPort: (handle: string) => Promise<PortView>
   stage: string
 }): ReactElement {
-  const { t } = useLocale()
+  const t = useT()
   const { onDismiss } = frame.peek
 
   return (
@@ -270,7 +271,7 @@ export function ShipPeek({
   ship,
   ...frame
 }: PeekFrameProps & { ship: ShipView }): ReactElement {
-  const { t } = useLocale()
+  const t = useSeriesOnlyT('one-piece')
   const threshold = useThreshold()
   const { fate } = ship.dossier
   const { onDismiss } = frame.peek

@@ -5,7 +5,7 @@ import { type ReactElement, Suspense, use } from 'react'
 import { ArchivePage } from '~/components/ArchivePage'
 import { CharacterCard } from '~/components/CharacterCard'
 import { CharacterCardList } from '~/components/CharacterGrid'
-import { useLocale } from '~/i18n/LocaleContext'
+import { useT } from '~/i18n/LocaleContext'
 /* Hallmark · pre-emit critique: P5 H5 E4 S5 R4 V4 */
 /* Hallmark · genre: atmospheric · macrostructure: Split Studio · theme: Sea
  *   Chart (locked) · enrichment: Tier B hand-built SVG (crest seal + route
@@ -153,7 +153,7 @@ function NearbyRow({
   nearby: Promise<Slot<CharacterView>[]>
   peek: (handle: string) => Promise<CharacterView>
 }): ReactElement {
-  const { t } = useLocale()
+  const t = useT()
 
   return (
     <section
@@ -185,7 +185,7 @@ function NearbyRow({
 
 /** What the nearby row says while its crests are still on their way. */
 function NearbyPending(): ReactElement {
-  const { t } = useLocale()
+  const t = useT()
 
   return (
     <p
@@ -232,7 +232,7 @@ function NearbyCrests({
  * with, and two hand-built copies of that had already drifted into being.
  */
 function CharacterNotFound(): ReactElement {
-  const { t } = useLocale()
+  const t = useT()
 
   return (
     <ArchivePage

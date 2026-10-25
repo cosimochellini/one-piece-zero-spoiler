@@ -9,7 +9,7 @@ import type { ReactElement } from 'react'
 import { ArchivePage } from '~/components/ArchivePage'
 import type { Orientation } from '~/components/chartGeometry'
 import { SeaChart } from '~/components/SeaChart'
-import { useT } from '~/i18n/LocaleContext'
+import { useSeriesT } from '~/i18n/LocaleContext'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
 import type { PlacesView } from '~/lib/view/places'
 import type { PortView } from '~/lib/view/records'
@@ -54,7 +54,7 @@ export function PlacesBody({
   peekPort,
   served,
 }: PlacesBodyProps): ReactElement {
-  const t = useT()
+  const t = useSeriesT()
   const { bookmark } = useBookmark()
   const { lit, ...picks } = usePlacePicks(open)
   // Always on: after a client visit the index is drawn at once, the page is

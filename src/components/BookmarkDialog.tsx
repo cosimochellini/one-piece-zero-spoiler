@@ -118,6 +118,7 @@ type FormStatus = 'failed' | 'loading' | 'ready'
  * again when the fetch failed.
  */
 function FormSlot({ onDone }: { onDone: () => void }): ReactElement {
+  const t = useT()
   const [status, setStatus] = useState<FormStatus>(() =>
     formHasLanded() ? 'ready' : 'loading',
   )
@@ -147,6 +148,7 @@ function FormSlot({ onDone }: { onDone: () => void }): ReactElement {
         onRetry={() => {
           setStatus('loading')
         }}
+        t={t}
       />
     )
   }

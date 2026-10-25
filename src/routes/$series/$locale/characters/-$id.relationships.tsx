@@ -2,7 +2,7 @@ import * as stylex from '@stylexjs/stylex'
 import { Link } from '@tanstack/react-router'
 import type { ReactElement } from 'react'
 
-import { useLocale } from '~/i18n/LocaleContext'
+import { useT } from '~/i18n/LocaleContext'
 import { useSeriesParams, useThreshold } from '~/lib/progress/BookmarkContext'
 import type { RelationshipView } from '~/lib/view/relationships'
 import {
@@ -23,7 +23,7 @@ export function RelationshipBand({
 }: {
   relationships: RelationshipView[]
 }): null | ReactElement {
-  const { t } = useLocale()
+  const t = useT()
   if (relationships.length === 0) {
     return null
   }
@@ -60,7 +60,7 @@ function RelationshipCard({
 }: {
   relation: RelationshipView
 }): ReactElement {
-  const { t } = useLocale()
+  const t = useT()
   const { locale, series } = useSeriesParams()
   const threshold = useThreshold()
   const { history, person, summary, type } = relation

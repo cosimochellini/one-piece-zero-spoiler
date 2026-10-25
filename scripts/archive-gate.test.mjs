@@ -14,8 +14,10 @@ import { describe, expect, it, vi } from 'vitest'
 import {
   canariesOf,
   canaryFrom,
+  copyCanaries,
   EXTRA,
   judge,
+  officialCanaries,
   placeWordCanaries,
   placeWordCanariesOf,
   proseCanaries,
@@ -303,10 +305,64 @@ describe('the verdict the gate reaches', () => {
   })
 })
 
+describe('series copy canaries', () => {
+  it('looks for every series’ own words, and never for a shared one', async () => {
+    const { COPIES } = await importArchive('server/copy.server.ts')
+    const { enDictionary } = await importArchive('i18n/dictionaries/en.ts')
+    const { itDictionary } = await importArchive('i18n/dictionaries/it.ts')
+    const canaries = copyCanaries(COPIES, [enDictionary, itDictionary])
+    const phrases = canaries.map(({ phrase }) => phrase)
+
+    // One Piece's factions and Hunter x Hunter's demo, in both languages.
+    expect(phrases).toContain('Nine Red Scabbards')
+    expect(phrases).toContain('Kozuki alliance')
+    expect(phrases).toContain('Dopo l’Esame Hunter')
+    // A word the shared copy ships on every page is no canary.
+    expect(phrases).not.toContain('Places')
+    expect(phrases).not.toContain(enDictionary['nav.places'])
+    expect(
+      canaries.filter(({ file }) => file.endsWith('hunter-x-hunter')).length,
+    ).toBeGreaterThan(0)
+
+    const leaked = [chunk('index.js', 'const f = "Kozuki alliance"')]
+    expect(judge(leaked, canaries).found.map(({ file }) => file)).toStrictEqual(
+      ['src/i18n/dictionaries/one-piece'],
+    )
+    expect(judge([chunk('index.js', 'export {}')], canaries).ok).toBe(true)
+  })
+})
+
+describe('a series copy with nothing to look for', () => {
+  it('is unreadable rather than clean', () => {
+    const canaries = copyCanaries(
+      { 'no-words': { en: { 'site.description': 'Places' }, it: {} } },
+      [{ 'nav.places': 'Places' }],
+    )
+
+    expect(canaries).toStrictEqual([
+      { file: 'src/i18n/dictionaries/no-words', phrase: null },
+    ])
+    expect(
+      judge([chunk('index.js', 'export {}')], canaries).unreadable,
+    ).toStrictEqual(['src/i18n/dictionaries/no-words'])
+  })
+})
+
 describe('source attribution boundaries', () => {
-  it('checks all pinned revisions and the official replacement source', () => {
+  it('checks the official source every series’ review cites', async () => {
+    const { SERIES } = await importArchive('data/series/index.ts')
+
+    await expect(officialCanaries(SERIES)).resolves.toStrictEqual([
+      {
+        file: 'src/data/series/one-piece/credits',
+        phrase: 'https://one-piece.com/anime/o6217/index.html',
+      },
+    ])
+  })
+
+  it('checks all pinned revisions', () => {
     const sources = sourceCanaries(repositoryRoot)
-    expect(sources).toHaveLength(37)
+    expect(sources).toHaveLength(36)
     expect(sources.every(({ phrase }) => typeof phrase === 'string')).toBe(true)
     const leaked = sources.map(({ phrase }, index) =>
       chunk(`source-${String(index)}.js`, phrase),

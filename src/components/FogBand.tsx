@@ -1,8 +1,7 @@
 import * as stylex from '@stylexjs/stylex'
 import type { ReactElement, ReactNode } from 'react'
 
-import { useT } from '~/i18n/LocaleContext'
-import type { TranslationKey } from '~/i18n/types'
+import type { SeriesSlug, Translate, TranslationKey } from '~/i18n/types'
 import { color, font, leading, rule, space, text } from '~/styles/tokens.stylex'
 
 /**
@@ -15,16 +14,19 @@ import { color, font, leading, rule, space, text } from '~/styles/tokens.stylex'
  * both languages the site publishes in.
  */
 
-/** What a band calls itself at each of the three counts. */
-export interface FogTitles {
-  allOpen: TranslationKey
-  hint: TranslationKey
-  many: TranslationKey
-  one: TranslationKey
+/**
+ * What a band calls itself at each of the three counts: shared keys, or the
+ * keys of the series `S` whose page it is on.
+ */
+export interface FogTitles<S extends SeriesSlug = never> {
+  allOpen: TranslationKey<S>
+  hint: TranslationKey<S>
+  many: TranslationKey<S>
+  one: TranslationKey<S>
 }
 
 /** The band, its heading, and whatever list of covered records it holds. */
-export interface FogBandProps {
+export interface FogBandProps<S extends SeriesSlug = never> {
   children: ReactNode
   count: number
   headingId: string
@@ -33,19 +35,20 @@ export interface FogBandProps {
    * that stands beside the page's sections rather than inside one.
    */
   level?: 'h2' | 'h3'
-  words: FogTitles
+  /** The page's translate, typed by the keys `words` names. */
+  t: Translate<S>
+  words: FogTitles<S>
 }
 
 /** A listing's fog band: a dashed rule, a heading, and the covered records. */
-export function FogBand({
+export function FogBand<S extends SeriesSlug = never>({
   children,
   count,
   headingId,
   level: Heading = 'h3',
+  t,
   words,
-}: FogBandProps): ReactElement {
-  const t = useT()
-
+}: FogBandProps<S>): ReactElement {
   return (
     <section
       aria-labelledby={headingId}
@@ -68,10 +71,10 @@ export function FogBand({
 }
 
 /** None, one and many are three sentences rather than one with a hole in it. */
-function title(
-  t: (key: TranslationKey, params?: Record<string, number | string>) => string,
+function title<S extends SeriesSlug>(
+  t: Translate<S>,
   count: number,
-  words: FogTitles,
+  words: FogTitles<S>,
 ): string {
   if (count === 0) {
     return t(words.allOpen)

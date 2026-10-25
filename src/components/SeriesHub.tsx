@@ -3,7 +3,7 @@ import { Link } from '@tanstack/react-router'
 import type { ReactElement } from 'react'
 
 import { SeriesEmblem } from '~/components/SeriesEmblem'
-import { useLocale } from '~/i18n/LocaleContext'
+import { useLocale, useT } from '~/i18n/LocaleContext'
 import { bookmarkPoint } from '~/lib/progress/threshold'
 import type { ComingSeries, HubSeries } from '~/lib/view/hub'
 import { settleStyles } from '~/styles/settle'
@@ -39,7 +39,8 @@ export function SeriesHub({
   coming: ComingSeries[]
   series: HubSeries[]
 }): ReactElement {
-  const { locale, t } = useLocale()
+  const { locale } = useLocale()
+  const t = useT()
 
   return (
     <main
@@ -82,7 +83,8 @@ export function SeriesHub({
 
 /** A series a reader can open: its stage, lit in its own colours. */
 function Stage({ entry }: { entry: HubSeries }): ReactElement {
-  const { locale, t } = useLocale()
+  const { locale } = useLocale()
+  const t = useT()
 
   return (
     <Link
@@ -123,7 +125,7 @@ function Stage({ entry }: { entry: HubSeries }): ReactElement {
 
 /** A series announced but not open: no link, and the lights still off. */
 function DarkStage({ name }: { name: string }): ReactElement {
-  const { t } = useLocale()
+  const t = useT()
 
   return (
     <div {...stylex.props(styles.stage, styles.dark)}>
