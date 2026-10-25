@@ -75,7 +75,9 @@ series announced but not yet open is a hard-coded name with no link and no
 count. The payload sweep holds the plain call behind every function in
 `src/server/series.ts` to the fog of a reader with no bookmark, so the hub can
 name no record of any series, open or covered. The footer on the shared pages
-names no series.
+names no series. The bar's wordmark leads to the hub from every page; on a
+series page the series' name beside it leads to that series' home
+(`src/components/SiteBar.tsx`).
 
 `src/data/series/index.ts` is the single registry used by runtime, scripts and
 gates. Its public descriptions contain no records; each archive is loaded by a

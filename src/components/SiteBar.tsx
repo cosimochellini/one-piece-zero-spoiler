@@ -1,5 +1,5 @@
 import * as stylex from '@stylexjs/stylex'
-import { Link } from '@tanstack/react-router'
+import { Link, useMatch } from '@tanstack/react-router'
 import type { ReactElement } from 'react'
 
 import { EpisodeMark } from '~/components/EpisodeMark'
@@ -7,6 +7,7 @@ import { LocaleSwitch } from '~/components/LocaleSwitch'
 import { useLocale } from '~/i18n/LocaleContext'
 import { useBookmark, useSeriesParams } from '~/lib/progress/BookmarkContext'
 import {
+  BAR,
   color,
   dur,
   ease,
@@ -22,39 +23,59 @@ import {
 /**
  * The bar (Hallmark N9, edge-aligned).
  *
- * Wordmark hard-left, the controls hard-right, and nothing in between. It
+ * The wordmark hard-left, the controls hard-right. On a series page the
+ * series' name follows the wordmark, a breadcrumb: the wordmark is the way
+ * back to the hub, the name the series' home. Past them the row is empty. It
  * stays pinned at every width, so the pages and the bookmark are one tap
- * away from anywhere down a long listing; a phone only folds the pages onto
- * a second row. The site has four pages and two languages, so the right edge
- * carries three links, the reader's bookmark and the language select, and no
- * more. The bookmark is the one control the whole site turns on, so it lives here, on
- * every page, as a single mark that opens the dialog where it is set; the
- * route still draws it as the horizon line, which is where the eye goes to
- * see what it did.
+ * away from anywhere down a long listing. Below `ROOMY` a series bar folds
+ * the name and the pages onto a second row.
+ * The right edge carries the series' pages, the reader's bookmark and the
+ * language select, and no more. The bookmark is the one control the whole
+ * site turns on, so it lives here, on every page, as a single mark that opens
+ * the dialog where it is set; the route still draws it as the horizon line,
+ * which is where the eye goes to see what it did.
  */
 export function SiteBar(): ReactElement {
   const { locale, t } = useLocale()
   const { series } = useBookmark()
-
-  const home =
-    series === null ?
-      { to: '/$locale' as const, params: { locale } }
-    : {
-        to: '/$series/$locale' as const,
-        params: { locale, series: series.slug },
-      }
+  // The public description, for the series' name in the reader's language.
+  const described = useMatch({ from: '/$series', shouldThrow: false })?.context
+    .series
 
   return (
     <header {...stylex.props(styles.bar, series === null && styles.sharedBar)}>
+      {/* The wordmark is the site's, so it goes to the hub on every page. */}
       <Link
-        {...home}
-        {...stylex.props(styles.wordmark)}
+        activeOptions={{ exact: true }}
+        aria-label={`${t('site.name')}. ${t('nav.hub')}`}
+        params={{ locale }}
+        to="/$locale"
+        {...stylex.props(styles.wordmark, series !== null && styles.quiet)}
       >
         {t('site.name')}
       </Link>
       {series !== null && (
         <>
-          <SeriesNavigation />
+          <div {...stylex.props(styles.seriesRow)}>
+            <span
+              aria-hidden="true"
+              {...stylex.props(styles.slash)}
+            >
+              /
+            </span>
+            <Link
+              activeOptions={{ exact: true }}
+              activeProps={{ 'aria-current': 'page' }}
+              params={{ locale, series: series.slug }}
+              to="/$series/$locale"
+              {...stylex.props(styles.seriesName)}
+            >
+              <span {...stylex.props(styles.seriesText)}>
+                {described?.name[locale] ?? series.slug}
+              </span>
+            </Link>
+            <SeriesNavigation />
+          </div>
           <EpisodeMark />
         </>
       )}
@@ -100,14 +121,22 @@ function SeriesNavigation(): ReactElement {
   )
 }
 
-// One breakpoint, the site's: below it the bar is the phone bar.
+// The site's breakpoint: below it the bar is the phone bar.
 const WIDE = '@media (min-width: 40rem)'
+// A series bar needs more room for one row: the wordmark, the name, three
+// pages, the bookmark and the language fit from about 52rem with the longest
+// name (Hunter x Hunter, in Italian). Below it the name and the pages fold
+// under, as on a phone.
+const ROOMY = BAR.seriesWide
 
 const styles = stylex.create({
   // One grid at every width, pinned to the top of the window, its height
-  // `pin.bar`: the value every other pinned element offsets itself by. A wide
-  // screen sets wordmark, pages, bookmark and language on one row; a phone
-  // has room for three of them, so the pages fold onto a second row.
+  // `pin.bar`: the value every other pinned element offsets itself by. From
+  // `ROOMY` a series bar sets wordmark, slash, name, pages, bookmark and
+  // language on one row, and the free space is the name's column, so a name
+  // too long for the row ends in an ellipsis rather than under the pages.
+  // Below it the first row has the wordmark, bookmark and language, and the
+  // series' row folds under.
   bar: {
     paddingBlock: space.xs2,
     paddingInline: space.md,
@@ -119,7 +148,7 @@ const styles = stylex.create({
     columnGap: { [WIDE]: space.lg, default: space.sm },
     display: 'grid',
     gridTemplateColumns: {
-      [WIDE]: 'minmax(0, 1fr) auto auto auto',
+      [ROOMY]: 'auto auto minmax(0, 1fr) auto auto auto',
       default: 'minmax(0, 1fr) auto auto',
     },
     insetBlockStart: 0,
@@ -134,20 +163,65 @@ const styles = stylex.create({
       default: 'minmax(0, 1fr) auto',
     },
   },
-  // Flush with the wordmark on a phone's second row: the first link's own
-  // padding is pulled back into the gutter so its word starts where the
-  // wordmark does, and the row spans the bar rather than the first column,
-  // which the bookmark's width decides. The bookmark and the language
-  // follow on their own, into the next free cells.
   pages: {
     gap: space.xs,
-    gridRow: { [WIDE]: 1, default: 2 },
     alignItems: 'center',
     display: 'flex',
-    gridColumnEnd: { [WIDE]: 'auto', default: -1 },
-    gridColumnStart: { [WIDE]: 2, default: 1 },
-    marginInlineStart: { [WIDE]: 0, default: `calc(-1 * ${space.xs2})` },
+    flexShrink: 0,
   },
+  // A phone's second row: the series' name, a hairline, then its pages,
+  // flush with the wordmark above. The row spans the bar rather than the
+  // first column, which the bookmark's width decides. From `ROOMY` the row
+  // unwraps, so the slash, the name and the pages take their own columns.
+  seriesRow: {
+    gridRow: { [ROOMY]: 'auto', default: 2 },
+    alignItems: 'center',
+    columnGap: space.xs,
+    display: { [ROOMY]: 'contents', default: 'flex' },
+    gridColumnEnd: { [ROOMY]: 'auto', default: -1 },
+    gridColumnStart: { [ROOMY]: 'auto', default: 1 },
+  },
+  // A column of no width, the glyph centred on it, so the slash sits halfway
+  // between the wordmark and the name whatever its own width.
+  slash: {
+    color: color.rule2,
+    display: { [ROOMY]: 'flex', default: 'none' },
+    fontFamily: font.display,
+    fontSize: text.lg,
+    fontWeight: 400,
+    justifyContent: 'center',
+    width: 0,
+  },
+  // On a narrow phone the name gives way first, so the pages stay whole.
+  seriesName: {
+    alignItems: 'center',
+    borderInlineEndColor: color.rule2,
+    borderInlineEndStyle: { [ROOMY]: 'none', default: 'solid' },
+    borderInlineEndWidth: rule.hair,
+    color: { 'default': color.ink, ':hover': color.accent },
+    display: 'inline-flex',
+    fontFamily: font.display,
+    fontSize: { [ROOMY]: text.lg, default: text.base },
+    fontStretch: 'semi-condensed',
+    fontWeight: 800,
+    justifySelf: 'start',
+    letterSpacing: '-0.02em',
+    lineHeight: leading.heading,
+    outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
+    outlineOffset: space.xs2,
+    outlineStyle: 'solid',
+    outlineWidth: rule.fine,
+    paddingInlineEnd: { [ROOMY]: 0, default: space.sm },
+    textDecorationLine: 'none',
+    textTransform: 'uppercase',
+    whiteSpace: 'nowrap',
+    maxWidth: '100%',
+    minHeight: '44px',
+    minWidth: 0,
+  },
+  seriesText: { overflow: 'hidden', textOverflow: 'ellipsis' },
+  // On a series page the series' name is the louder of the two.
+  quiet: { color: { 'default': color.ink2, ':hover': color.accent } },
 
   wordmark: {
     color: color.ink,

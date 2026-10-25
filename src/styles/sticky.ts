@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex'
 
-import { color, pin, rule, space, z } from '~/styles/tokens.stylex'
+import { BAR, color, pin, rule, space, z } from '~/styles/tokens.stylex'
 
 /**
  * The custom property a pinned control bar (`ControlBar`) writes on the
@@ -9,6 +9,15 @@ import { color, pin, rule, space, z } from '~/styles/tokens.stylex'
  * adds it; with no bar it is unset and both are as they were.
  */
 export const STACK_PROPERTY = '--sticky-stack'
+
+/**
+ * A series page's bar keeps two rows up to `BAR.seriesWide`, where the site's
+ * own bar is one row from 40rem. Set on `<html>` on a series page, so
+ * everything that pins under the bar reads the same height.
+ */
+export const seriesBarPin = stylex.createTheme(pin, {
+  bar: { default: BAR.twoRows, [BAR.seriesWide]: BAR.oneRow },
+})
 
 /** One compact group line, plus breathing room for anchors and focus. */
 export const stickyStyles = stylex.create({

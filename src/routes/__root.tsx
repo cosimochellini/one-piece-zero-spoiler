@@ -16,7 +16,7 @@ import { readBookmark, readTrial } from '~/lib/progress/readBookmark'
 import { seriesSlugFromPath } from '~/lib/progress/series'
 import { seriesDescription } from '~/routes/-series'
 import { createSecurityHeaders } from '~/security-headers'
-import { stickyStyles } from '~/styles/sticky'
+import { seriesBarPin, stickyStyles } from '~/styles/sticky'
 import { themeOf } from '~/styles/themes'
 import { color, dur, ease, font, leading, text } from '~/styles/tokens.stylex'
 // A plain side-effect import, deliberately not `?url`. Vite folds it into the
@@ -108,7 +108,7 @@ function RootComponent(): ReactElement {
   const { series, initialBookmark, initialTrial } = Route.useRouteContext()
 
   return (
-    <RootDocument>
+    <RootDocument seriesPage={series !== null}>
       <BookmarkProvider
         initialBookmark={initialBookmark}
         initialTrial={initialTrial}
@@ -122,7 +122,14 @@ function RootComponent(): ReactElement {
 
 // The default client entry hydrates the whole document, so the root route has
 // to render <html> itself.
-function RootDocument({ children }: { children: ReactNode }): ReactElement {
+function RootDocument({
+  children,
+  seriesPage,
+}: {
+  children: ReactNode
+  /** A series page, as `SiteBar` reads it: its bar keeps two rows longer. */
+  seriesPage: boolean
+}): ReactElement {
   // Read loosely because the root route has no params of its own; the locale
   // belongs to the `$locale` layout below it. Anything unrecognised falls back
   // to the site default rather than emitting an invalid `lang`.
@@ -159,7 +166,12 @@ function RootDocument({ children }: { children: ReactNode }): ReactElement {
     <html
       lang={locale}
       suppressHydrationWarning
-      {...stylex.props(stickyStyles.document, styles.document, theme)}
+      {...stylex.props(
+        stickyStyles.document,
+        styles.document,
+        theme,
+        seriesPage && seriesBarPin,
+      )}
     >
       <head>
         <HeadContent />

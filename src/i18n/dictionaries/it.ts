@@ -24,6 +24,7 @@ const sharedIt: SharedCopy = {
   'nav.characters': 'Personaggi',
   'nav.places': 'Luoghi',
   'nav.label': 'Pagine',
+  'nav.hub': 'Tutte le serie',
 
   'hero.headline': 'La wiki di One Piece senza spoiler',
   'hero.setBookmark': 'Imposta il segnalibro',
