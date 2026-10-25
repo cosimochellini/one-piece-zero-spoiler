@@ -74,19 +74,19 @@ entry, which carries the episode it is learned in. The comment at the top of
 
 ## Where things live
 
-| Path                               | What is there                                                                                     |
-| ---------------------------------- | ------------------------------------------------------------------------------------------------- |
-| `src/data/`                        | The engine every series shares: the record shapes, the reveal and order rules. Server only.       |
-| `src/data/series/one-piece/`       | The One Piece archive: records, drawings and most editorial tests. Server only.                   |
-| `src/data/series/hunter-x-hunter/` | The Hunter x Hunter archive, its arcs so far. Filed, not open to readers yet (#763). Server only. |
-| `src/components/`                  | React components, styled with StyleX.                                                             |
-| `src/routes/`                      | TanStack Start file routes, under `$locale/`.                                                     |
-| `src/server/`                      | Server functions that cut the archive down to what a bookmark reaches.                            |
-| `src/lib/`                         | Code the client may import: bookmark logic, search, SVG helpers, views.                           |
-| `src/i18n/`                        | Locales and the English and Italian dictionaries.                                                 |
-| `src/styles/`                      | Global CSS and the StyleX design tokens.                                                          |
-| `scripts/`                         | Quality gates, the PR title validator, the wiki checks and the merge helper.                      |
-| `docs/`                            | [Architecture](docs/architecture.md), media and the chronicle verification report.                |
+| Path                               | What is there                                                                                                                                                                             |
+| ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `src/data/`                        | The engine every series shares: the record shapes, the reveal and order rules. Server only.                                                                                               |
+| `src/data/series/one-piece/`       | The One Piece archive: records, drawings and most editorial tests. Server only.                                                                                                           |
+| `src/data/series/hunter-x-hunter/` | The Hunter x Hunter archive: its arcs, and the Hunter Exam's characters and places filed so far, with their drawings and place words. Filed, not open to readers yet (#763). Server only. |
+| `src/components/`                  | React components, styled with StyleX.                                                                                                                                                     |
+| `src/routes/`                      | TanStack Start file routes, under `$locale/`.                                                                                                                                             |
+| `src/server/`                      | Server functions that cut the archive down to what a bookmark reaches.                                                                                                                    |
+| `src/lib/`                         | Code the client may import: bookmark logic, search, SVG helpers, views.                                                                                                                   |
+| `src/i18n/`                        | Locales and the English and Italian dictionaries.                                                                                                                                         |
+| `src/styles/`                      | Global CSS and the StyleX design tokens.                                                                                                                                                  |
+| `scripts/`                         | Quality gates, the PR title validator, the wiki checks and the merge helper.                                                                                                              |
+| `docs/`                            | [Architecture](docs/architecture.md), media and the chronicle verification report.                                                                                                        |
 
 A new module with prose outside a series' `records/` must go into its series'
 `prose` in `EXTRA` in `scripts/archive-gate.mjs` and into `textsOf` in
@@ -190,7 +190,12 @@ an alias, or the bare part of one of them when the rest is a surname or a real
 name said later. It also needs the network. Run it when you add a character or
 change an Italian name. A character the English wiki does not link to its
 Italian page goes in `ITALIAN_TITLES` in the script; one with no page of its own
-goes in `NAMES_KEPT`, with the reason.
+goes in `NAMES_KEPT`, with the reason. Hunter x Hunter has no Italian wiki:
+`npm run verify:names -- --series hunter-x-hunter` reads Italian Wikipedia
+(owner, 2026-10-24), where most characters are entries of a list page. Name one
+in `ITALIAN_TITLES` as `Page#Section`
+(`Personaggi di Hunter × Hunter#Myto Freecss`): the section accepts its heading
+and the bold name that opens it.
 
 `npm run verify:filler` checks the filler guide in
 `src/data/series/one-piece/filler.ts`. The kinds are checked against

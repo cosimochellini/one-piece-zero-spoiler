@@ -5,6 +5,7 @@ import type { Entity } from '~/data/types'
 import { ONE_PIECE_BOOKMARK } from '~/lib/progress/series'
 import {
   type LoadedSeries as ListedSeries,
+  LOADED_SERIES,
   ONE_PIECE_LOADED as ONE_PIECE,
 } from '~/test/series'
 
@@ -93,6 +94,54 @@ describe('the leak check of one series against another', () => {
   it('finds nothing foreign with one series listed', () => {
     expect(
       leaksOf(ONE_PIECE, [ONE_PIECE])({ id: 'gon-freecss' }, ALL),
+    ).toStrictEqual([])
+  })
+})
+
+describe('the place words of a series that labels its own', () => {
+  const HUNTER = LOADED_SERIES.find(({ slug }) => slug === 'hunter-x-hunter')
+  if (HUNTER === undefined) {
+    throw new Error('Hunter x Hunter is not filed')
+  }
+  const leaksIn = leaksOf(HUNTER)
+  const FIRST = { mode: 'episode' as const, episode: 1 }
+
+  it.each([
+    ['its id', { forms: { port: 'x' } }],
+    ['its label', { forms: { x: 'Port town' } }],
+    ['its Italian label', { regions: { x: 'Terraferma' } }],
+  ])('names the places under a word no open place uses, by %s', (_, words) => {
+    expect(leaksIn({ words }, FIRST)).toStrictEqual(['dolle-harbor'])
+  })
+
+  it('holds a word no place is filed under at every bookmark', () => {
+    const unfiled: ListedSeries = {
+      ...HUNTER,
+      placeWords: {
+        ...HUNTER.placeWords,
+        dictionary: false,
+        allRegions: { en: 'All regions', it: 'Tutte le regioni' },
+        region: { en: 'Region', it: 'Regione' },
+        regions: { nowhere: { en: 'Nowhere Sea', it: 'Mare di Nessuno' } },
+        forms: {},
+      },
+    }
+    const last = { mode: 'episode' as const, episode: 148 }
+
+    expect(
+      leaksOf(unfiled)({ words: { regions: { x: 'Nowhere Sea' } } }, last),
+    ).toStrictEqual(['place-words/nowhere'])
+  })
+
+  it('opens a word with the first open place filed under it', () => {
+    expect(
+      leaksIn(
+        { words: { forms: { port: 'Port town' } } },
+        { mode: 'episode', episode: 2 },
+      ),
+    ).toStrictEqual([])
+    expect(
+      leaksIn({ words: { forms: { island: 'Island' } } }, FIRST),
     ).toStrictEqual([])
   })
 })

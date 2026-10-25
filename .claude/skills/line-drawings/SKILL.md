@@ -220,7 +220,8 @@ A drawing is gated like any text, and it can spoil just as well.
 
 Everything above holds for Hunter x Hunter, with what is its own here. Its
 drawings are `DRAWINGS` in `src/data/series/hunter-x-hunter/art/index.ts`:
-the arcs today, the characters and places with #760 and #761. Render them
+the arcs, and the Hunter Exam's characters and places as #760 files them
+(#761 reviews and completes them). Render them
 with `npm run art:sheet -- --series hunter-x-hunter <id>` (or `--kind
 arc|character|place`; `--saga` is One Piece's), on the series' own paper.
 

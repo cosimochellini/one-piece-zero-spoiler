@@ -18,6 +18,7 @@ import {
   EXTRA,
   judge,
   placeWordCanaries,
+  placeWordCanariesOf,
   proseCanaries,
   slugCanaries,
   slugsFrom,
@@ -499,6 +500,28 @@ describe('the place word canaries', () => {
     ).toStrictEqual(['dark-continent', 'Dark Continent', 'Continente Oscuro'])
   })
 
+  it('drops a word or label the shipped dictionaries hold', () => {
+    expect(
+      placeWordCanaries([own], ['sea.dark-continent', 'Continente Oscuro']).map(
+        ({ phrase }) => phrase,
+      ),
+    ).toStrictEqual(['Dark Continent'])
+  })
+
+  it('leaves the gate unusable for a series none of whose words is left', () => {
+    const canaries = placeWordCanaries(
+      [own],
+      ['dark-continent', 'Dark Continent', 'Continente Oscuro'],
+    )
+
+    expect(canaries).toStrictEqual([
+      { file: 'src/data/series/other-series/placeWords.ts', phrase: null },
+    ])
+    expect(judge([], canaries).unreadable).toStrictEqual([
+      'src/data/series/other-series/placeWords.ts',
+    ])
+  })
+
   it('fails a client chunk that ships them', () => {
     const chunk = {
       bytes: 40,
@@ -507,6 +530,22 @@ describe('the place word canaries', () => {
     }
 
     expect(judge([chunk], placeWordCanaries([own])).found).toHaveLength(2)
+  })
+
+  it('reads the shipped dictionaries, keeping only the words they do not hold', async () => {
+    const canaries = await placeWordCanariesOf()
+
+    expect(
+      canaries
+        .filter(({ file }) => file.includes('hunter-x-hunter'))
+        .map(({ phrase }) => phrase),
+    ).toStrictEqual([
+      'mainland',
+      'Mainland',
+      'Terraferma',
+      'Port town',
+      'Città portuale',
+    ])
   })
 
   it('reads every listed series', async () => {

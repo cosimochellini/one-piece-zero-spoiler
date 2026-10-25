@@ -279,6 +279,28 @@ function wordTexts(
   ]
 }
 
+/**
+ * The headers of a series that labels its place words itself: what a region
+ * is called and the picker's first option. The server sends them with the
+ * places page at every bookmark (`wordsOf` in
+ * `~/server/archive/printed.server.ts`), so each is read at the first
+ * episode and chapter.
+ */
+function headerTexts(words: PlaceWords): Text[] {
+  if (words.dictionary) {
+    return []
+  }
+
+  return (['region', 'allRegions'] as const).map((field) => ({
+    chapter: FIRST_CHAPTER,
+    episode: FIRST_EPISODE,
+    label: `place-words.${field}`,
+    owner: { id: 'place-words' },
+    source: undefined,
+    text: words[field],
+  }))
+}
+
 /** Every text an archive prints. */
 function textsOf(archive: ReaderArchive, placeWords: PlaceWords): Text[] {
   const { entities } = archive
@@ -297,6 +319,7 @@ function textsOf(archive: ReaderArchive, placeWords: PlaceWords): Text[] {
     ...entities.flatMap((entity) => factionTexts(archive, entity)),
     ...entities.flatMap((entity) => visitTexts(archive, entity)),
     ...archive.places.flatMap((place) => wordTexts(archive, placeWords, place)),
+    ...headerTexts(placeWords),
     ...archive.filler.flatMap((entry) => fillerTexts(entry)),
   ]
 }
@@ -606,6 +629,28 @@ function lastFiled(): (typeof LOADED_SERIES)[number] {
 }
 
 describe('a place word a series labels itself', () => {
+  it('has its headers scanned at the first episode, so one naming a later record is caught', () => {
+    const base = withFeatures(lastFiled().archive)
+    const last = lastScanned(base.entities)
+    const words: PlaceWords = {
+      allRegions: last.name,
+      dictionary: false,
+      forms: {},
+      region: last.name,
+      regions: {},
+    }
+    // Its places' own words are not what this checks.
+    const leaks = scanOf({ ...base, places: [] }, words).leaks(true)
+
+    for (const field of ['region', 'allRegions']) {
+      for (const locale of LOCALES) {
+        expect(leaks).toContain(
+          `place-words.${field} (${locale}) names ${last.id}`,
+        )
+      }
+    }
+  })
+
   it('is scanned at its place’s threshold, so a label naming a later record is caught', () => {
     const base = withFeatures(lastFiled().archive)
     const last = lastScanned(base.entities)
@@ -635,14 +680,20 @@ describe('a place word a series labels itself', () => {
     const words: PlaceWords = {
       allRegions: everywhere('All regions'),
       dictionary: false,
-      forms: { port: everywhere('Port') },
+      forms: { port: last.name },
       region: everywhere('Region'),
       regions: { far: last.name },
     }
+    const leaks = scanOf(archive, words).leaks(true)
 
-    expect(scanOf(archive, words).leaks(true)).toContain(
-      `fixture-port.region (en) names ${last.id}`,
-    )
+    for (const field of ['region', 'form']) {
+      for (const locale of LOCALES) {
+        expect(leaks).toContain(
+          `fixture-port.${field} (${locale}) names ${last.id}`,
+        )
+      }
+    }
+
     expect(
       scanOf(archive, {
         ...words,

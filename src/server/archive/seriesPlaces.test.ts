@@ -152,12 +152,14 @@ describe('Hunter x Hunter’s place words', () => {
     expect(placesPage(readerAt(base)).words).toStrictEqual({
       region: 'Region',
       allRegions: 'All regions',
-      regions: {},
-      forms: {},
+      regions: { islands: 'Islands', mainland: 'Mainland' },
+      forms: { island: 'Island', port: 'Port town' },
     })
-    expect(placesPage(readerAt(base, 'it')).words).toMatchObject({
+    expect(placesPage(readerAt(base, 'it')).words).toStrictEqual({
       region: 'Regione',
       allRegions: 'Tutte le regioni',
+      regions: { islands: 'Isole', mainland: 'Terraferma' },
+      forms: { island: 'Isola', port: 'Città portuale' },
     })
   })
 })

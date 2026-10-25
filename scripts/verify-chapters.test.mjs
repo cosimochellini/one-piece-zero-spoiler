@@ -114,6 +114,27 @@ describe('the chapter a page gives', () => {
     ).toBe(31)
   })
 
+  it('reads a Hunter x Hunter debut, counting in the 2011 anime', () => {
+    // The wiki's own layout: the 2011 anime after a `----`, below the field.
+    const ging = page(
+      [
+        '{{Hunterpedia:Character',
+        '|manga debut = [[Chapter 1]] (Image) <br /> [[Chapter 66]] (Official)',
+        '|anime debut = [[Hunter × Hunter Pilot OVA|Episode 00 (1998)]] (Image) <br /> [[Episode 1 (1999)]] (Image) <br /> [[Episode 47 (1999)]] (Official)',
+        '----',
+        '[[Episode 1 (2011)]] (Image) <br /> [[Episode 37 (2011)]] (Official)',
+        '|gender = Male',
+      ].join('\n'),
+    )
+    const only1999 = page(
+      '|manga debut = [[Chapter 2]]\n|anime debut = [[Episode 3 (1999)]]\n}}',
+    )
+
+    expect(chapterOf(ging, 'character')).toBe(1)
+    expect(episodeOf(ging, 'character')).toBe(1)
+    expect(episodeOf(only1999, 'character')).toBeUndefined()
+  })
+
   it('reads a Hunter x Hunter arc, counting in the 2011 anime', () => {
     const arc = page(
       '{{Arc Template}}',

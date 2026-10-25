@@ -14,7 +14,10 @@
 //
 // The Italian page is the English page's interlanguage link (`titlesOf` in
 // `./verify-chapters.mjs`), or the one in `ITALIAN_TITLES` where that link is
-// missing or wrong.
+// missing or wrong. Hunter x Hunter has no Italian wiki: its names come from
+// Italian Wikipedia (owner, 2026-10-24), whose minor characters are sections
+// of a list page, named in `ITALIAN_TITLES` as `Page#Section`. A section
+// accepts its heading and the bold name that opens it.
 //
 // Run it with `npm run verify:names` (`-- --series <slug>` for a series of
 // `src/data/series/index.ts` other than One Piece). It talks to the network,
@@ -27,7 +30,7 @@ import { seriesOrExit } from './archive-loader.mjs'
 import { titlesOf } from './verify-chapters.mjs'
 import { italianPages, italianTitles, wikiOf } from './wiki.mjs'
 
-/** @typedef {import('./wiki.mjs').Page} Page */
+/** @typedef {import('./wiki.mjs').Page & { section?: true }} Page */
 /** @typedef {{ title: string, dub: string[], aliases: string[] }} Names */
 /** @typedef {{ id: string, kind: string, name: { en: string, it: string } }} Record_ */
 
@@ -65,6 +68,10 @@ const ITALIAN_TITLES = {
   // The disguise and the man are two records and one page.
   'tenguyama-hitetsu': 'Kozuki Sukiyaki',
   'terracotta': 'Terracotta',
+  // Hunter x Hunter, on Italian Wikipedia.
+  'gon-freecss': 'Gon Freecss',
+  'kurapika': 'Kurapika Kurata',
+  'mito-freecss': 'Personaggi di Hunter × Hunter#Myto Freecss',
 }
 
 /**
@@ -87,6 +94,18 @@ const NAMES_KEPT = {
   'shaka': 'Shaka',
   'shandia-chief': 'Capo degli Shandia',
   'york': 'York',
+  // Hunter x Hunter. Italian Wikipedia's character pages write him "Jin",
+  // the manga's name; the 2011 dub's is "Ging", in the Italian title of its
+  // episode 37, "Ging e Gon" (`Episodi di Hunter × Hunter (serie animata
+  // 2011)`).
+  'ging-freecss': 'Ging Freecss',
+  // Italian Wikipedia's entry is the manga's "Leolio Paladiknight", with a
+  // note that the Italian anime says "Leorio" (`Personaggi di Hunter ×
+  // Hunter`, section `Leolio Paladiknight`).
+  'leorio-paradinight': 'Leorio',
+  // No Italian page names them: the English name stands.
+  'katzo': 'Katzo',
+  'kiriko': 'Kiriko',
 }
 
 /** An honorific the archive writes in front of a name the wiki files bare. */
@@ -170,10 +189,77 @@ export function namesOf(page) {
   return {
     title: page.title.replace(/ \([^)]*\)$/u, ''),
     dub: namesIn(fieldOf(page.wikitext, 'nomeita')),
-    aliases: ['alias', 'nickname'].flatMap((field) =>
-      namesIn(fieldOf(page.wikitext, field)),
-    ),
+    aliases: [
+      ...['alias', 'nickname'].flatMap((field) =>
+        namesIn(fieldOf(page.wikitext, field)),
+      ),
+      ...(page.section === true ? openingBold(page.wikitext) : []),
+    ],
   }
+}
+
+/**
+ * The name that opens a list entry: the first one it sets in bold,
+ * `'''name'''`. A later bold run is a note on another name ("'''Leorio'''
+ * nella versione italiana dell'anime") and is not taken.
+ * @param {string} wikitext The entry.
+ * @returns {string[]} The name, or nothing.
+ */
+function openingBold(wikitext) {
+  const name = /'''(?<name>[^']+)'''/u.exec(wikitext)?.groups?.['name']
+
+  return name === undefined ? [] : [name]
+}
+
+/**
+ * Whether a line opens a section of a list page: a heading or a `;` term.
+ * @param {string} line The line.
+ * @returns {boolean} Whether it does.
+ */
+function opens(line) {
+  return line.startsWith('=') || line.startsWith(';')
+}
+
+/**
+ * One section of a list page as a page of its own: from its heading, or the
+ * `;` line that sets its name in bold, to the next of either.
+ * @param {Page} page The list page.
+ * @param {string} section The section's name.
+ * @returns {Page | undefined} The section, or nothing when the page has none.
+ */
+export function sectionOf(page, section) {
+  const lines = page.wikitext.split('\n')
+  const from = lines.findIndex(
+    (line) =>
+      line.replaceAll('=', '').trim() === section
+      || (line.startsWith(';') && line.includes(`'''${section}'''`)),
+  )
+  if (from === -1) {
+    return
+  }
+  const to = lines.findIndex((line, index) => index > from && opens(line))
+
+  return {
+    title: section,
+    wikitext: lines.slice(from, to === -1 ? lines.length : to).join('\n'),
+    text: '',
+    section: true,
+  }
+}
+
+/**
+ * The page an Italian title names: a whole page, or a `Page#Section` of one.
+ * @param {string} title The title.
+ * @param {Map<string, Page>} read The pages read, by title without section.
+ * @returns {Page | undefined} The page or section, or nothing.
+ */
+function italianPageOf(title, read) {
+  const [base = '', section] = title.split('#', 2)
+  const page = read.get(base)
+
+  return page === undefined || section === undefined ?
+      page
+    : sectionOf(page, section)
 }
 
 /**
@@ -291,18 +377,18 @@ async function verify() {
       ]
     }),
   )
-  const wanted = new Set(titles.values().toArray().flat())
-  const read = await italianPages(
-    wanted
+  const wanted = new Set(
+    titles
       .values()
-      .filter((title) => title !== undefined)
-      .toArray(),
-    wiki,
+      .toArray()
+      .flat()
+      .flatMap((title) => (title === undefined ? [] : title.split('#', 1))),
   )
+  const read = await italianPages(wanted.values().toArray(), wiki)
 
   return characters.map((record) => {
     const pages = (titles.get(record.id) ?? []).map((title) =>
-      title === undefined ? undefined : read.get(title),
+      title === undefined ? undefined : italianPageOf(title, read),
     )
     const found = pages.filter((page) => page !== undefined)
 
