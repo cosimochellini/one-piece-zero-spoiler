@@ -14,7 +14,7 @@ import type {
 } from '~/data/types'
 import { type Locale, LOCALES } from '~/i18n/locales'
 import { markedIds, tokenize } from '~/lib/prose/markers'
-import { expectedOf, LOADED_SERIES } from '~/test/series'
+import { expectedOf, type Least, LOADED_SERIES } from '~/test/series'
 
 /**
  * The data rules that keep a series' dated facts spoiler-safe, run for every
@@ -184,6 +184,53 @@ function arcsBetween(
     .map((arc) => arc.id)
 }
 
+/** What each count of `Least` counts in an archive. */
+function countsOf(archive: SeriesArchive): Least {
+  const dossiers = archive.characters.flatMap(
+    (character) => archive.dossierOf(character) ?? [],
+  )
+
+  return {
+    affiliations: dossiers.flatMap((dossier) => dossier.affiliation).length,
+    arcs: archive.arcs.length,
+    characters: archive.characters.length,
+    chronicles: archive.stories.length,
+    linkedOrigins: linkedOrigins(archive).length,
+    places: archive.places.length,
+    statuses: dossiers.flatMap((dossier) => dossier.status ?? []).length,
+    timelines: archive.timelines.length,
+    visits: visitsOf(archive).flatMap(({ visits }) => visits).length,
+  }
+}
+
+/** Whether a key is one of `Least`'s. */
+function isLeastKey(key: string): key is keyof Least {
+  return [
+    'affiliations',
+    'arcs',
+    'characters',
+    'chronicles',
+    'linkedOrigins',
+    'places',
+    'statuses',
+    'timelines',
+    'visits',
+  ].includes(key)
+}
+
+/** The floor that holds up each kind of text the leak scan reads. */
+const KIND_FLOORS: Partial<Record<string, (keyof Least)[]>> = {
+  affiliation: ['affiliations'],
+  chronicle: ['chronicles'],
+  form: ['places'],
+  landmark: ['places'],
+  origin: ['linkedOrigins'],
+  region: ['places'],
+  role: ['characters'],
+  summary: ['arcs'],
+  visit: ['visits'],
+}
+
 /** Every place's later visits, with the place they return to. */
 function visitsOf(
   archive: SeriesArchive,
@@ -226,15 +273,23 @@ describe.each(LOADED_SERIES)(
       // be seen filing it: a reader that lost its characters or its timelines
       // would otherwise leave every rule here green.
       const { least } = expectedOf(slug)
-      const visits = visitsOf(archive).flatMap(({ visits: filed }) => filed)
+      const counts = countsOf(archive)
 
-      expect(characters.length).toBeGreaterThanOrEqual(least.characters)
-      expect(archive.timelines.length).toBeGreaterThanOrEqual(least.timelines)
-      expect(linkedOrigins(archive).length).toBeGreaterThanOrEqual(
-        least.linkedOrigins,
-      )
-      expect(archive.places.length).toBeGreaterThanOrEqual(least.places)
-      expect(visits.length).toBeGreaterThanOrEqual(least.visits)
+      const keys = Object.keys(least).filter(isLeastKey)
+      for (const key of keys) {
+        expect(counts[key], key).toBeGreaterThanOrEqual(least[key])
+      }
+    })
+
+    it('holds every kind of text it prints to a floor above zero', () => {
+      // A kind the leak scan expects next to a floor of 0 would let the
+      // records behind it vanish with every rule here still green.
+      const { kinds, least } = expectedOf(slug)
+      const floored = kinds.flatMap((kind) => KIND_FLOORS[kind] ?? [])
+
+      for (const key of floored) {
+        expect(least[key], key).toBeGreaterThan(0)
+      }
     })
 
     it('files only the fields of the core and of its features', () => {

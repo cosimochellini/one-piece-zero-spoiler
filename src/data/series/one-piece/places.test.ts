@@ -5,13 +5,7 @@ import type { Entity } from '~/data/types'
 import { LOCALES } from '~/i18n/locales'
 
 import { getEntity } from './entities'
-import {
-  getPlace,
-  PLACE_DOSSIERS,
-  places,
-  shipDossierOf,
-  ships,
-} from './places'
+import { getPlace, places, shipDossierOf, ships } from './places'
 import { SHIP_DOSSIERS } from './records/ships'
 
 describe('the ship’s log', () => {
@@ -24,12 +18,6 @@ describe('the ship’s log', () => {
       'syrup-village',
       'baratie',
     ])
-  })
-
-  it('files a log entry only for a place', () => {
-    for (const id of Object.keys(PLACE_DOSSIERS)) {
-      expect(getPlace(id), id).toBeDefined()
-    }
   })
 })
 

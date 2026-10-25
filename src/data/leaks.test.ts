@@ -7,7 +7,14 @@ import {
   withFeatures,
 } from '~/data/features'
 import { toldIn } from '~/data/reveal'
-import type { Entity, Field, LocalizedText, Story } from '~/data/types'
+import type {
+  Entity,
+  Field,
+  LocalizedText,
+  PlaceDossier,
+  PlaceWords,
+  Story,
+} from '~/data/types'
 import { enDictionary } from '~/i18n/dictionaries/en'
 import { itDictionary } from '~/i18n/dictionaries/it'
 import { type Locale, LOCALES } from '~/i18n/locales'
@@ -237,8 +244,47 @@ function fillerTexts(entry: FillerEntry): Text[] {
   })
 }
 
+/** A label a series' own place words give a word, or the test is wrong. */
+function labelOf(
+  labels: Partial<Record<string, LocalizedText>>,
+  word: string,
+  place: Entity,
+): LocalizedText {
+  const label = labels[word]
+  if (label === undefined) {
+    throw new Error(`${place.id}: no label for ${word}`)
+  }
+
+  return label
+}
+
+/**
+ * The labels of a place's region and form, for a series that labels its
+ * words itself: the server sends them with the first open place that uses
+ * them (`wordsOf` in `~/server/archive/printed.server.ts`), so each is
+ * frozen at the place's threshold. A series the shared dictionaries label
+ * (One Piece) sends none: its labels ship with every page whatever the
+ * reader has reached, as the rest of the interface copy does, and are not a
+ * text any record gates.
+ */
+function wordTexts(
+  archive: ReaderArchive,
+  words: PlaceWords,
+  place: Entity,
+): Text[] {
+  const dossier = archive.placeDossierOf(place)
+  if (dossier === undefined || words.dictionary) {
+    return []
+  }
+
+  return [
+    frozen(place, 'region', labelOf(words.regions, dossier.region, place)),
+    frozen(place, 'form', labelOf(words.forms, dossier.form, place)),
+  ]
+}
+
 /** Every text an archive prints. */
-function textsOf(archive: ReaderArchive): Text[] {
+function textsOf(archive: ReaderArchive, placeWords: PlaceWords): Text[] {
   const { entities } = archive
   // The dossier fields whose texts are read at their own gates below.
   const gated = new Set<string>([
@@ -254,6 +300,7 @@ function textsOf(archive: ReaderArchive): Text[] {
     ),
     ...entities.flatMap((entity) => factionTexts(archive, entity)),
     ...entities.flatMap((entity) => visitTexts(archive, entity)),
+    ...archive.places.flatMap((place) => wordTexts(archive, placeWords, place)),
     ...archive.filler.flatMap((entry) => fillerTexts(entry)),
   ]
 }
@@ -296,9 +343,9 @@ interface Scan {
 }
 
 /** One archive's scan, its name indexes built once for every text. */
-function scanOf(archive: ReaderArchive): Scan {
+function scanOf(archive: ReaderArchive, placeWords: PlaceWords): Scan {
   const { entities } = archive
-  const texts = textsOf(archive)
+  const texts = textsOf(archive, placeWords)
   const nameWords = new Map<string, string>()
 
   const wordsOf = (entity: Entity, locale: Locale): string => {
@@ -435,85 +482,99 @@ function namedIn(line: string): string {
   return line.slice(line.lastIndexOf(' ') + 1)
 }
 
-describe.each(LOADED_SERIES)('the texts of $slug', ({ archive, slug }) => {
-  const reader = withFeatures(archive)
-  const { entities } = reader
-  const scan = scanOf(reader)
-  const expected = expectedOf(slug)
+describe.each(LOADED_SERIES)(
+  'the texts of $slug',
+  ({ archive, placeWords, slug }) => {
+    const reader = withFeatures(archive)
+    const { entities } = reader
+    const scan = scanOf(reader, placeWords)
+    const expected = expectedOf(slug)
 
-  it('cover every kind of text the archive prints', () => {
-    const kinds = new Set(
-      scan.texts.map(({ label }) =>
-        label.replace(/^[^.]+\./u, '').replace(/@\d+$/u, ''),
-      ),
-    )
+    it('cover every kind of text the archive prints', () => {
+      const kinds = new Set(
+        scan.texts.map(({ label }) =>
+          label.replace(/^[^.]+\./u, '').replace(/@\d+$/u, ''),
+        ),
+      )
 
-    expect([...kinds].toSorted(byString())).toStrictEqual(expected.kinds)
-  })
+      expect([...kinds].toSorted(byString())).toStrictEqual(expected.kinds)
+    })
 
-  it('name no record the reader has not reached, linked or not', () => {
-    // Gathered first and asserted once, so a failure lists every leak in
-    // the batch rather than the first one found.
-    expect(scan.leaks(true)).toStrictEqual([])
-  })
+    it('name no record the reader has not reached, linked or not', () => {
+      // Gathered first and asserted once, so a failure lists every leak in
+      // the batch rather than the first one found.
+      expect(scan.leaks(true)).toStrictEqual([])
+    })
 
-  it('would catch a text at the first episode that names the last record', () => {
-    const last = lastScanned(entities)
-    const probe: Text = {
-      chapter: FIRST_CHAPTER,
-      episode: FIRST_EPISODE,
-      label: 'probe',
-      owner: { id: 'probe' },
-      source: undefined,
-      text: { en: `On to ${last.name.en}.`, it: `Verso ${last.name.it}.` },
-    }
+    it('would catch a text at the first episode that names the last record', () => {
+      const last = lastScanned(entities)
 
-    for (const locale of LOCALES) {
-      expect(scan.leaked(probe, locale, true), locale).toContain(last)
-    }
-  })
+      // The probe is only a probe if the record it names opens later.
+      expect(
+        last.revealedAtEpisode,
+        `${last.id} opens at the first episode`,
+      ).toBeGreaterThan(FIRST_EPISODE)
+      expect(
+        last.revealedAtChapter,
+        `${last.id} opens at the first chapter`,
+      ).toBeGreaterThan(FIRST_CHAPTER)
 
-  it('say a name early only before its own record opens', () => {
-    // A `nameSaidAt` at or after the threshold would change nothing, and is
-    // a sign the threshold was moved without it.
-    const said = entities.filter((entity) => entity.nameSaidAt !== undefined)
+      const probe: Text = {
+        chapter: FIRST_CHAPTER,
+        episode: FIRST_EPISODE,
+        label: 'probe',
+        owner: { id: 'probe' },
+        source: undefined,
+        text: { en: `On to ${last.name.en}.`, it: `Verso ${last.name.it}.` },
+      }
 
-    expect(said.length > 0).toBe(expected.namesSaidEarly)
+      for (const locale of LOCALES) {
+        expect(scan.leaked(probe, locale, true), locale).toContain(last)
+      }
+    })
 
-    for (const entity of said) {
-      const saidAt = entity.nameSaidAt ?? Infinity
+    it('say a name early only before its own record opens', () => {
+      // A `nameSaidAt` at or after the threshold would change nothing, and is
+      // a sign the threshold was moved without it.
+      const said = entities.filter((entity) => entity.nameSaidAt !== undefined)
 
-      expect(Number.isSafeInteger(saidAt), entity.id).toBe(true)
-      expect(saidAt, entity.id).toBeGreaterThanOrEqual(FIRST_EPISODE)
-      expect(saidAt, entity.id).toBeLessThan(entity.revealedAtEpisode)
-    }
-  })
+      expect(said.length > 0).toBe(expected.namesSaidEarly)
 
-  it('give records that share a name the same name facts', () => {
-    // The scan matches names, not ids: two records called Marineford, the
-    // arc and the place, are one name to it, and the stricter fact would
-    // silently govern both. Same name, same fact.
-    for (const [entity, other] of namesakePairs(entities)) {
-      const pair = `${entity.id} / ${other.id}`
+      for (const entity of said) {
+        const saidAt = entity.nameSaidAt ?? Infinity
 
-      expect(other.nameSaidAt, pair).toBe(entity.nameSaidAt)
-      expect(other.commonWord, pair).toBe(entity.commonWord)
-    }
-  })
+        expect(Number.isSafeInteger(saidAt), entity.id).toBe(true)
+        expect(saidAt, entity.id).toBeGreaterThanOrEqual(FIRST_EPISODE)
+        expect(saidAt, entity.id).toBeLessThan(entity.revealedAtEpisode)
+      }
+    })
 
-  it('need every name fact for some text to pass', () => {
-    // A fact nobody needs is a scan switched off for nothing: with the facts
-    // ignored, every record that carries one must be named too early by at
-    // least one text. One that is not has outlived its reason, and comes off
-    // the record.
-    const flagged = new Set(scan.leaks(false).map((line) => namedIn(line)))
-    const unneeded = withFacts(entities)
-      .filter((entity) => !flagged.has(entity.id))
-      .map((entity) => entity.id)
+    it('give records that share a name the same name facts', () => {
+      // The scan matches names, not ids: two records called Marineford, the
+      // arc and the place, are one name to it, and the stricter fact would
+      // silently govern both. Same name, same fact.
+      for (const [entity, other] of namesakePairs(entities)) {
+        const pair = `${entity.id} / ${other.id}`
 
-    expect(unneeded).toStrictEqual([])
-  })
-})
+        expect(other.nameSaidAt, pair).toBe(entity.nameSaidAt)
+        expect(other.commonWord, pair).toBe(entity.commonWord)
+      }
+    })
+
+    it('need every name fact for some text to pass', () => {
+      // A fact nobody needs is a scan switched off for nothing: with the facts
+      // ignored, every record that carries one must be named too early by at
+      // least one text. One that is not has outlived its reason, and comes off
+      // the record.
+      const flagged = new Set(scan.leaks(false).map((line) => namedIn(line)))
+      const unneeded = withFacts(entities)
+        .filter((entity) => !flagged.has(entity.id))
+        .map((entity) => entity.id)
+
+      expect(unneeded).toStrictEqual([])
+    })
+  },
+)
 
 describe('the texts a value holds', () => {
   it('are found however deep a field nests them, by path', () => {
@@ -530,5 +591,69 @@ describe('the texts a value holds', () => {
       '.notes.0',
       '.notes.1.story',
     ])
+  })
+})
+
+/** One text, the same in every locale. */
+function everywhere(en: string): LocalizedText {
+  return { en, it: en }
+}
+
+/** The last series filed, the smallest archive to build a fixture on. */
+function lastFiled(): (typeof LOADED_SERIES)[number] {
+  const filed = LOADED_SERIES.at(-1)
+  if (filed === undefined) {
+    throw new Error('no series filed')
+  }
+
+  return filed
+}
+
+describe('a place word a series labels itself', () => {
+  it('is scanned at its place’s threshold, so a label naming a later record is caught', () => {
+    const base = withFeatures(lastFiled().archive)
+    const last = lastScanned(base.entities)
+    const port: Entity = {
+      id: 'fixture-port',
+      kind: 'place',
+      name: everywhere('Fixture Port'),
+      revealedAtChapter: FIRST_CHAPTER,
+      revealedAtEpisode: FIRST_EPISODE,
+      summary: everywhere('A port.'),
+      visual: { art: 'fixture-port', tint: 'yellow' },
+    }
+    const dossier: PlaceDossier = {
+      arc: 'fixture-arc',
+      filedHere: [],
+      form: 'port',
+      landmark: everywhere('A pier.'),
+      log: everywhere('A log.'),
+      region: 'far',
+    }
+    const archive: ReaderArchive = {
+      ...base,
+      entities: [...base.entities, port],
+      placeDossierOf: (entity) => (entity.id === port.id ? dossier : undefined),
+      places: [port],
+    }
+    const words: PlaceWords = {
+      allRegions: everywhere('All regions'),
+      dictionary: false,
+      forms: { port: everywhere('Port') },
+      region: everywhere('Region'),
+      regions: { far: last.name },
+    }
+
+    expect(scanOf(archive, words).leaks(true)).toContain(
+      `fixture-port.region (en) names ${last.id}`,
+    )
+    expect(
+      scanOf(archive, {
+        ...words,
+        dictionary: true,
+        forms: { port: true },
+        regions: { far: true },
+      }).leaks(true),
+    ).toStrictEqual([])
   })
 })

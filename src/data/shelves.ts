@@ -138,7 +138,8 @@ export interface Kept<D> {
 /**
  * The records of one kind, in the order the anime reaches them, looked up by
  * id: a record of another kind is `undefined` there. A record with no
- * dossier still has a name, a drawing and a threshold.
+ * dossier still has a name, a drawing and a threshold; a dossier with no
+ * record of the kind throws, as it would be printed for nothing.
  */
 export function keptOf<D>(
   entities: Entity[],
@@ -150,6 +151,11 @@ export function keptOf<D>(
     'episode',
   )
   const byId = new Map(records.map((entity) => [entity.id, entity]))
+  for (const id of Object.keys(dossiers)) {
+    if (!byId.has(id)) {
+      throw new Error(`${id} has a ${kind} dossier but files no ${kind}`)
+    }
+  }
 
   return {
     dossierOf: (entity) => dossiers[entity.id],

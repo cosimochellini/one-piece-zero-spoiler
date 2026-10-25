@@ -28,7 +28,7 @@ import { SHIP_DOSSIERS } from './records/ships'
  * `~/data` may be named from the browser (issue #12).
  */
 
-export const PLACE_DOSSIERS: Record<string, OnePiecePlace> = {
+const PLACE_DOSSIERS: Record<string, OnePiecePlace> = {
   'shells-town': {
     region: 'east-blue',
     form: 'town',

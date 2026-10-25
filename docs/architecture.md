@@ -320,10 +320,12 @@ checked on every run:
   links a chronicle builds from `[[id]]` markers are checked against the story's
   episode, and every text the archive prints, summaries, roles, logs,
   affiliations, origins, epithets, stories, ship fates, place visits and the
-  labels of the factions an affiliation is tagged with, is scanned for every
-  later record's full name in both locales. A name the show says before its
-  record opens, or one that is an ordinary word, is declared on the record
-  itself rather than excused in a test;
+  labels of the factions an affiliation is tagged with, and the labels of a
+  place's region and form for a series that writes its own (sent with the place,
+  so scanned at its threshold; One Piece's are dictionary copy every page
+  ships), is scanned for every later record's full name in both locales. A name
+  the show says before its record opens, or one that is an ordinary word, is
+  declared on the record itself rather than excused in a test;
 - for every listed series (`src/data/archive.test.ts`), the dated facts the
   engine derives follow the same rules: a series files only the dated fields of
   the core and of its features; each character has one dossier, filed in one
@@ -334,9 +336,11 @@ checked on every run:
   opens after a character on it, in either unit; every chapter an entry pins is
   within the dial and no earlier than its record, no entry opens before its
   record, and nothing dated names an unanchored record before its chapter. A
-  featured id that files no character throws when the archive is built, and a
-  series that files content is held to a floor of it (`expectedOf` in
-  `src/test/series.ts`), so no rule passes on nothing;
+  featured id that files no character, or a place dossier with no place, throws
+  when the archive is built. Each series has a row of floors near what it files
+  (`expectedOf` in `src/test/series.ts`: characters, arcs, places, timelines,
+  statuses, affiliations, stories, linked origins, visits), checked against the
+  archive, and a kind of text its leak scan expects cannot sit on a floor of 0;
 - every affiliation entry of a devil fruit eater carries the factions its prose
   names, as ids from a closed vocabulary (`Faction` in
   `src/lib/view/records.ts`, labelled in both dictionaries), and every id in the

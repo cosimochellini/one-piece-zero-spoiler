@@ -9,7 +9,7 @@ import {
   filedTimelines,
 } from './dated'
 import { type Reveal, reveal } from './reveal'
-import { castOf } from './shelves'
+import { castOf, keptOf } from './shelves'
 import type { CharacterDossier, Entity } from './types'
 
 /** A record of a fixture series, filed at one episode and one chapter. */
@@ -199,6 +199,12 @@ describe('the engine refuses', () => {
         { dossiers: { hero: dossier } },
       ]),
     ).toThrow('hero has a dossier in two sagas')
+  })
+
+  it('a dossier of a kind for a record not of that kind', () => {
+    expect(() =>
+      keptOf(ENTITIES, 'place', { hero: { log: text('A log.') } }),
+    ).toThrow('hero has a place dossier but files no place')
   })
 
   it('a featured id that files no character', () => {
