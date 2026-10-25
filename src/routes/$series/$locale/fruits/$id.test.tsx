@@ -16,7 +16,7 @@ import { ep, renderWithProviders } from '~/test/providers'
 import { Route } from './$id'
 import { EatersBand, KinBand, SagaBand } from './-$id.bands'
 import { HistoryBand } from './-$id.history'
-import { StageBand, TurnBand } from './-$id.stage'
+import { StageBand } from './-$id.stage'
 
 const PATHNAME = '/one-piece/en/fruits/gum-gum'
 
@@ -342,137 +342,38 @@ describe('the history', () => {
   })
 })
 
-describe('the fruit before and after', () => {
-  const open = fruit({ id: 'bomb-bomb-fruit', name: 'Bomb-Bomb Fruit' })
-  const turning = fruitDetail({
-    previous: openSlot(open),
-    next: coveredSlot({ revealedAtEpisode: 462 }),
-  })
-
-  it('names an open neighbour, and never a covered one', () => {
-    const { container } = renderWithProviders(
-      <TurnBand
-        detail={turning}
-        peek={peekPending()}
-      />,
-      { bookmark: ep(100) },
-    )
-
-    expect(
-      screen.getByRole('link', { name: /Bomb-Bomb Fruit/u }),
-    ).toHaveAttribute('href', '/one-piece/en/fruits/bomb-bomb-fruit')
-    expect(screen.getAllByRole('link')).toHaveLength(1)
-    expect(container).toHaveTextContent('Next fruit')
-    expect(container).toHaveTextContent('First named in episode 462')
-    expect(container.querySelectorAll('a[href]')).toHaveLength(1)
-  })
-
-  it('turns to an open neighbour by arrow key or swipe, and not to a covered one', () => {
+describe('the fruit stage', () => {
+  it('does not change fruit on arrow keys or horizontal swipes', () => {
     const { router } = renderWithProviders(
       <StageBand
-        detail={turning}
+        detail={fruitDetail()}
         peek={peekPending()}
       />,
-      { bookmark: ep(100) },
+      { bookmark: ep(1150) },
     )
     const navigate = vi.spyOn(router, 'navigate').mockResolvedValue()
-
-    fireEvent.keyDown(document.body, { key: 'ArrowRight' })
-
-    expect(navigate).not.toHaveBeenCalled()
-
-    fireEvent.keyDown(document.body, { key: 'ArrowLeft', metaKey: true })
-
-    expect(navigate).not.toHaveBeenCalled()
 
     fireEvent.keyDown(document.body, { key: 'ArrowLeft' })
+    fireEvent.keyDown(document.body, { key: 'ArrowRight' })
 
-    expect(navigate).toHaveBeenCalledTimes(1)
-    expect(navigate).toHaveBeenLastCalledWith({
-      params: { series: 'one-piece', locale: 'en', id: 'bomb-bomb-fruit' },
-      to: '/$series/$locale/fruits/$id',
-    })
-
-    // On the name: a pointer event bubbles up to the stage around it.
     const stage = screen.getByRole('heading')
-
-    fireEvent.pointerDown(stage, {
-      pointerType: 'touch',
-      clientX: 50,
-      clientY: 100,
-    })
-    fireEvent.pointerUp(stage, {
-      pointerType: 'touch',
-      clientX: 200,
-      clientY: 110,
-    })
-
-    expect(navigate).toHaveBeenCalledTimes(2)
-
-    fireEvent.pointerDown(stage, {
-      pointerType: 'touch',
-      clientX: 50,
-      clientY: 100,
-    })
-    fireEvent.pointerUp(stage, {
-      pointerType: 'touch',
-      clientX: 90,
-      clientY: 300,
-    })
-
-    expect(navigate).toHaveBeenCalledTimes(2)
-  })
-})
-
-/**
- * A focusable element appended to the page, inside a wrapper with this
- * attribute, or none.
- */
-function focusIn(target: string, wrapper?: [string, string]): HTMLElement {
-  const host = document.createElement('div')
-  if (wrapper !== undefined) {
-    host.setAttribute(...wrapper)
-  }
-  const element = document.createElement(target)
-  element.tabIndex = 0
-  host.append(element)
-  document.body.append(host)
-
-  return element
-}
-
-describe('the arrow keys', () => {
-  const turning = fruitDetail({
-    next: openSlot(fruit({ id: 'bomb-bomb-fruit', name: 'Bomb-Bomb Fruit' })),
-  })
-
-  it('leave fields, editable text and arrow-key controls alone, and a held key', () => {
-    const { router } = renderWithProviders(
-      <StageBand
-        detail={turning}
-        peek={peekPending()}
-      />,
-      { bookmark: ep(650) },
-    )
-    const navigate = vi.spyOn(router, 'navigate').mockResolvedValue()
-
-    fireEvent.keyDown(focusIn('input'), { key: 'ArrowRight' })
-    fireEvent.keyDown(focusIn('span', ['contenteditable', 'true']), {
-      key: 'ArrowRight',
-    })
-    fireEvent.keyDown(focusIn('button', ['role', 'radiogroup']), {
-      key: 'ArrowRight',
-    })
-    fireEvent.keyDown(document.body, { key: 'ArrowRight', repeat: true })
+    for (const [from, to] of [
+      [50, 200],
+      [200, 50],
+    ]) {
+      fireEvent.pointerDown(stage, {
+        pointerType: 'touch',
+        clientX: from,
+        clientY: 100,
+      })
+      fireEvent.pointerUp(stage, {
+        pointerType: 'touch',
+        clientX: to,
+        clientY: 100,
+      })
+    }
 
     expect(navigate).not.toHaveBeenCalled()
-
-    // A live region is not a control: the arrows still turn the page.
-    fireEvent.keyDown(focusIn('button', ['role', 'status']), {
-      key: 'ArrowRight',
-    })
-
-    expect(navigate).toHaveBeenCalledTimes(1)
   })
 })
 

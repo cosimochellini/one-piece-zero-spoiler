@@ -10,8 +10,8 @@ import { useLocale } from '~/i18n/LocaleContext'
  *   large, in a glow of its tint, drawn in on arrival, and a switch under it
  *   between the drawings the reader has reached) · nav: N9 (shared)
  *   · footer: Ft4 (shared)
- * · structure: the stage, the fruit before and after, its history, who ate
- *   it, then the rest of its own kind and of its own saga
+ * · structure: the stage, its history, who ate it, then the rest of its own
+ *   kind and of its own saga
  * · idea: "one fruit under the lights, and its story told in order" */
 import { recordHead } from '~/routes/$locale/-head'
 import { RecordBackLink } from '~/routes/$series/$locale/-back'
@@ -29,18 +29,11 @@ import { settleStyles } from '~/styles/settle'
 
 import { EatersBand, KinBand, SagaBand } from './-$id.bands'
 import { HistoryBand } from './-$id.history'
-import { StageBand, TurnBand } from './-$id.stage'
+import { StageBand } from './-$id.stage'
 
 // The bands in DOM order. Named rather than counted at the call, so a band
 // inserted in the middle is one edit here and not three down the page.
-const BAND = {
-  stage: 0,
-  turn: 1,
-  history: 2,
-  eaters: 3,
-  kin: 4,
-  saga: 5,
-} as const
+const BAND = { stage: 0, history: 1, eaters: 2, kin: 3, saga: 4 } as const
 
 export const Route = createFileRoute('/$series/$locale/fruits/$id')({
   // The one decision the page turns on is made on the server, from the
@@ -67,9 +60,9 @@ export const Route = createFileRoute('/$series/$locale/fruits/$id')({
  * One fruit under the lights: the drawing large in a glow of its tint, with
  * a switch under it once the reader has seen the fruit drawn more than once,
  * the name at display size with its kind and saga, and the sentence. Then the
- * fruit before and after it in the reader's order, its history as far as
- * the reader has reached, who the dossiers say ate it (each character with
- * its own fog, because knowing the fruit is not knowing who carries it), and
+ * history as far as the reader has reached, who the dossiers say ate it
+ * (each character with its own fog, because knowing the fruit is not knowing
+ * who carries it), and
  * two rails: the same kind, and the same saga.
  *
  * No route strip: a fruit is not a waypoint on the landing chart, so there is
@@ -97,13 +90,6 @@ function FruitPage(): ReactElement {
 
       <div {...stylex.props(settleStyles.band, settleStyles.at(BAND.stage))}>
         <StageBand
-          detail={detail}
-          peek={peekFruit}
-        />
-      </div>
-
-      <div {...stylex.props(settleStyles.band, settleStyles.at(BAND.turn))}>
-        <TurnBand
           detail={detail}
           peek={peekFruit}
         />
