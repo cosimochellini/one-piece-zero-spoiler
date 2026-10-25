@@ -17,6 +17,7 @@ import {
   copyCanaries,
   EXTRA,
   judge,
+  officialCanaries,
   placeWordCanaries,
   placeWordCanariesOf,
   proseCanaries,
@@ -332,9 +333,20 @@ describe('series copy canaries', () => {
 })
 
 describe('source attribution boundaries', () => {
-  it('checks all pinned revisions and the official replacement source', () => {
+  it('checks the official source every series’ review cites', async () => {
+    const { SERIES } = await importArchive('data/series/index.ts')
+
+    await expect(officialCanaries(SERIES)).resolves.toStrictEqual([
+      {
+        file: 'src/data/series/one-piece/credits',
+        phrase: 'https://one-piece.com/anime/o6217/index.html',
+      },
+    ])
+  })
+
+  it('checks all pinned revisions', () => {
     const sources = sourceCanaries(repositoryRoot)
-    expect(sources).toHaveLength(33)
+    expect(sources).toHaveLength(32)
     expect(sources.every(({ phrase }) => typeof phrase === 'string')).toBe(true)
     const leaked = sources.map(({ phrase }, index) =>
       chunk(`source-${String(index)}.js`, phrase),

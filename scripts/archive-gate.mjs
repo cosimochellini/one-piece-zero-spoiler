@@ -272,39 +272,44 @@ export function slugCanaries(repositoryRoot, folder) {
 }
 
 /**
- * The documented official synopsis URL, without assuming a page identifier.
- * @param {string} source The server credit module.
- * @returns {null | string} Its source URL, or an unreadable canary.
- */
-function officialSourceIn(source) {
-  return source.match(/https:\/\/one-piece\.com\/anime\/[^'"\s]+/u)?.[0] ?? null
-}
-
-/**
  * Source revision addresses are identifying archive data too (#721).
  * @param {string} repositoryRoot The repository root.
  * @returns {{file: string, phrase: null | string}[]} Source-link canaries.
  */
 export function sourceCanaries(repositoryRoot) {
   const file = 'docs/content-provenance/sources.json'
-  const official = 'src/data/series/one-piece/credits.ts'
   try {
     const manifest = JSON.parse(
       // fallow-ignore-next-line security-sink -- The root is this script’s directory or a test fixture; file is a fixed repository path, never request input.
       readFileSync(path.join(repositoryRoot, file), 'utf8'),
     )
-    // fallow-ignore-next-line security-sink -- The root is this script’s directory or a test fixture; official is a fixed repository path, never request input.
-    const source = readFileSync(path.join(repositoryRoot, official), 'utf8')
-    return [
-      ...Object.values(manifest.sources).map(({ revisionUrl }) => ({
-        file,
-        phrase: revisionUrl,
-      })),
-      { file: official, phrase: officialSourceIn(source) },
-    ]
+    return Object.values(manifest.sources).map(({ revisionUrl }) => ({
+      file,
+      phrase: revisionUrl,
+    }))
   } catch {
     return [{ file, phrase: null }]
   }
+}
+
+/**
+ * The official sources each series' documented review cites (`credits` on
+ * its archive): server-only, like the revisions. Read from the archives
+ * themselves, so a series that files a review is checked with no line here.
+ * @param {{folder: string, load: () => Promise<{credits?: {replaced?: {url: string}}}>}[]} series The series list.
+ * @returns {Promise<{file: string, phrase: string}[]>} Official-source canaries.
+ */
+export async function officialCanaries(series) {
+  const found = await Promise.all(
+    series.map(async ({ folder, load }) => {
+      const archive = await load()
+      const url = archive.credits?.replaced?.url
+      return url === undefined ?
+          []
+        : [{ file: `${SERIES_DIR}/${folder}/credits`, phrase: url }]
+    }),
+  )
+  return found.flat()
 }
 
 /**
@@ -424,6 +429,7 @@ export async function canariesOf(repositoryRoot) {
       ...slugCanaries(repositoryRoot, folder),
     ]),
     ...sourceCanaries(repositoryRoot),
+    ...(await officialCanaries(SERIES)),
   ]
 }
 
