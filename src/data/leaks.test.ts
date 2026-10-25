@@ -301,6 +301,37 @@ function headerTexts(words: PlaceWords): Text[] {
   }))
 }
 
+/**
+ * Every line of a series' own copy (`~/server/copy.server`). The server
+ * sends it with every page of the series at every bookmark, so each is read
+ * at the first episode and chapter (#791). The faction labels are skipped:
+ * One Piece sends them with every page of it, as every page's bundle did
+ * before #791, and some name a record ("Thriller Bark Pirates"). Sending
+ * them with the fruit album alone is a follow-up; `factionTexts` still reads
+ * each at the affiliation that tags it.
+ */
+function copyTexts(slug: string): Text[] {
+  const copies: Partial<
+    Record<string, Record<Locale, Record<string, string>>>
+  > = COPIES
+  const copy = copies[slug]
+  if (copy === undefined) {
+    return []
+  }
+
+  const lines = Object.keys(copy.en).filter(
+    (key) => !key.startsWith('faction.'),
+  )
+  return lines.map((key) => ({
+    chapter: FIRST_CHAPTER,
+    episode: FIRST_EPISODE,
+    label: 'copy.copy',
+    owner: { id: `copy:${key}` },
+    source: undefined,
+    text: { en: copy.en[key] ?? '', it: copy.it[key] ?? '' },
+  }))
+}
+
 /** Every text an archive prints. */
 function textsOf(archive: ReaderArchive, placeWords: PlaceWords): Text[] {
   const { entities } = archive
@@ -321,6 +352,7 @@ function textsOf(archive: ReaderArchive, placeWords: PlaceWords): Text[] {
     ...archive.places.flatMap((place) => wordTexts(archive, placeWords, place)),
     ...headerTexts(placeWords),
     ...archive.filler.flatMap((entry) => fillerTexts(entry)),
+    ...copyTexts(archive.series.slug),
   ]
 }
 

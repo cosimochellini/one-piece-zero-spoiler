@@ -7,8 +7,7 @@ import type { OwnCopy } from '~/i18n/types'
  * are the English Hunter x Hunter Wiki and Italian Wikipedia (#725).
  */
 export const hunterXHunterEn = {
-  'characters.featuredLede':
-    'Gon, his friends and the other key characters of the story.',
+  'characters.featuredLede': 'The key characters of the story.',
   'credits.coverage':
     'No Hunter x Hunter entry has a documented source review yet, so none is listed below. Its episode and chapter numbers are checked against the English Hunter x Hunter Wiki, and its Italian names against Italian Wikipedia.',
   'credits.otherTerms':

@@ -58,6 +58,7 @@ const EXPECTED: Record<string, Expected> = {
       'affiliation',
       'builder',
       'chronicle',
+      'copy',
       'epithet',
       'faction',
       'fate',
@@ -88,6 +89,7 @@ const EXPECTED: Record<string, Expected> = {
     kinds: [
       'affiliation',
       'allRegions',
+      'copy',
       'form',
       'landmark',
       'log',

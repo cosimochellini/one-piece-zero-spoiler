@@ -5,8 +5,7 @@ import type { SeriesWords } from '~/i18n/types'
  * follow the 2011 Italian dub, as Italian Wikipedia gives them.
  */
 export const hunterXHunterIt: SeriesWords<'hunter-x-hunter'> = {
-  'characters.featuredLede':
-    'Gon, i suoi amici e gli altri personaggi chiave della storia.',
+  'characters.featuredLede': 'I personaggi chiave della storia.',
   'credits.coverage':
     'Nessuna voce di Hunter x Hunter ha ancora una verifica documentata delle fonti, quindi qui sotto non ne compare nessuna. I numeri di episodio e di capitolo sono confrontati con la Hunter x Hunter Wiki inglese, i nomi italiani con Wikipedia in italiano.',
   'credits.otherTerms':
