@@ -2,11 +2,14 @@ import * as stylex from '@stylexjs/stylex'
 import type { ReactElement, ReactNode } from 'react'
 
 import { styles } from '~/components/LegalNotice.styles'
-import { SERIES_SOURCES } from '~/components/seriesSources'
 import { useLocale, useSeriesT, useT } from '~/i18n/LocaleContext'
 import { LocaleProvider } from '~/i18n/LocaleProvider'
-import type { SeriesCopy, SeriesSlug } from '~/i18n/types'
-import type { SeriesCredits, SourceCredit } from '~/lib/view/credits'
+import type { SeriesCopy } from '~/i18n/types'
+import type {
+  SeriesCredits,
+  SeriesSources,
+  SourceCredit,
+} from '~/lib/view/credits'
 
 /** A part of the page in one series' own words. */
 export function InSeries({
@@ -56,7 +59,7 @@ export function SourceCredits({
       {series.every(({ credits }) => credits.length === 0) ?
         <p>{t('credits.empty')}</p>
       : <ul {...stylex.props(styles.list)}>
-          {series.map(({ copy, credits }) => (
+          {series.map(({ copy, credits, sources }) => (
             <InSeries
               key={copy.slug}
               copy={copy}
@@ -65,7 +68,7 @@ export function SourceCredits({
                 <CreditEntry
                   key={`${credit.name}-${String(credit.episode)}-${credit.scope}`}
                   credit={credit}
-                  slug={copy.slug}
+                  licenses={sources.licenses}
                 />
               ))}
             </InSeries>
@@ -84,12 +87,11 @@ function Coverage(): ReactElement {
 
 function CreditEntry({
   credit,
-  slug,
+  licenses,
 }: {
   credit: SourceCredit
-  slug: SeriesSlug
+  licenses: SeriesSources['licenses']
 }): ReactElement {
-  const { licenses } = SERIES_SOURCES[slug]
   // The page's own copy, which is the series' here: a filler entry and the
   // official synopsis are One Piece's, and only its sample files them.
   const { t } = useLocale()
@@ -157,12 +159,12 @@ function LicenseNotices({ series }: { series: SeriesCredits[] }): ReactElement {
       <p {...stylex.props(styles.paragraph)}>{t('credits.content')}</p>
       <h3 {...stylex.props(styles.subheading)}>{t('credits.sourcesTitle')}</h3>
       <p {...stylex.props(styles.paragraph)}>{t('credits.external')}</p>
-      {series.map(({ copy }) => (
+      {series.map(({ copy, sources }) => (
         <InSeries
           key={copy.slug}
           copy={copy}
         >
-          <SourceTerms slug={copy.slug} />
+          <SourceTerms sources={sources} />
         </InSeries>
       ))}
     </>
@@ -170,10 +172,10 @@ function LicenseNotices({ series }: { series: SeriesCredits[] }): ReactElement {
 }
 
 /** A series' sources: their terms, their licenses and where they are. */
-function SourceTerms({ slug }: { slug: SeriesSlug }): ReactElement {
+function SourceTerms({ sources }: { sources: SeriesSources }): ReactElement {
   // The page's own copy, which is the series' here: its links are its keys.
   const { t } = useLocale()
-  const { licenses, links } = SERIES_SOURCES[slug]
+  const { licenses, links } = sources
   // One paragraph per license, though both wikis may share one.
   const shown = Object.values(licenses).filter(
     ([, href], index, all) =>

@@ -4,6 +4,7 @@ import { archiveOf, descriptionOf } from '~/data/series'
 import { isLocale, type Locale } from '~/i18n/locales'
 import { plain } from '~/lib/plain'
 import { readBookmark, readTrial } from '~/lib/progress/readBookmark'
+import type { Series } from '~/lib/progress/series'
 
 import { creditsPage } from './archive/credits.server'
 import { fillerPage, peekFiller } from './archive/filler.server'
@@ -36,6 +37,7 @@ import { placesPage } from './archive/places.server'
 import { type Reader, readerFor } from './archive/reader.server'
 import { sagaLabels } from './archive/sagaLabels.server'
 import { copyOf } from './copy.server'
+import { sourcesOf } from './sources.server'
 
 /**
  * The archive's only door.
@@ -135,13 +137,24 @@ function handled(input: unknown): Handled {
   return { ...located(input), handle: text(input, 'handle') }
 }
 
+const UNKNOWN_SERIES = 'A known series is required'
+
 /** A registered slug is required before the archive can be loaded. */
 function seriesSlug(input: unknown): string {
   const value = field(input, 'series')
   if (typeof value !== 'string' || descriptionOf(value) === null) {
-    throw new Error('A known series is required')
+    throw new Error(UNKNOWN_SERIES)
   }
   return value
+}
+
+/** The public description of the open series a call names. */
+function describedBy(data: Located): Series {
+  const series = descriptionOf(data.series)
+  if (series === null) {
+    throw new Error(UNKNOWN_SERIES)
+  }
+  return series
 }
 
 /** Series, bookmark and locale travel together into every projection. */
@@ -232,13 +245,12 @@ export const loadCredits = createServerFn()
  */
 export const loadSeriesCopy = createServerFn()
   .validator(located)
-  .handler(({ data }) => {
-    const series = descriptionOf(data.series)
-    if (series === null) {
-      throw new Error('A known series is required')
-    }
-    return copyOf(series, data.locale)
-  })
+  .handler(({ data }) => copyOf(describedBy(data), data.locale))
+
+/** An open series' sources and rights, for the legal page. */
+export const loadSeriesSources = createServerFn()
+  .validator(located)
+  .handler(({ data }) => sourcesOf(describedBy(data)))
 
 export const loadSagaLabels = createServerFn()
   .validator(located)

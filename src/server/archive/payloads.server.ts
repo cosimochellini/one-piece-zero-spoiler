@@ -3,6 +3,7 @@ import type { SeriesArchive } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
 import { copyOf } from '~/server/copy.server'
+import { sourcesOf } from '~/server/sources.server'
 
 import { creditsPage } from './credits.server'
 import { fillerPage, peekFiller } from './filler.server'
@@ -69,6 +70,7 @@ function listPayloads(archive: SeriesArchive): Payload[] {
     { name: 'loadPlaces', run: (b, l) => placesPage(readerFor(archive, b, l)) },
     { name: 'loadFiller', run: (b, l) => fillerPage(readerFor(archive, b, l)) },
     { name: 'loadSeriesCopy', run: (_, l) => copyOf(archive.series, l) },
+    { name: 'loadSeriesSources', run: () => sourcesOf(archive.series) },
     {
       name: 'loadSagaLabels',
       run: (b, l) => sagaLabels(readerFor(archive, b, l)),
@@ -204,6 +206,7 @@ export function payloadsFor(archive: SeriesArchive): Payload[] {
     'liftPort',
     'liftShip',
     'loadSeriesCopy',
+    'loadSeriesSources',
   ]
   return order.flatMap((name) => all.filter((payload) => payload.name === name))
 }

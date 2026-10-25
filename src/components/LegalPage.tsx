@@ -3,7 +3,6 @@ import type { ReactElement } from 'react'
 
 import { styles } from '~/components/LegalNotice.styles'
 import { PrivacyNotice } from '~/components/PrivacyNotice'
-import { SERIES_SOURCES } from '~/components/seriesSources'
 import { InSeries, SourceCredits } from '~/components/SourceCredits'
 import { useSeriesT, useT } from '~/i18n/LocaleContext'
 import type { SeriesCredits } from '~/lib/view/credits'
@@ -25,12 +24,12 @@ export function LegalPage({
       <section id="project">
         <h2 {...stylex.props(styles.heading)}>{t('legal.projectTitle')}</h2>
         <p {...stylex.props(styles.paragraph)}>{t('legal.unofficial')}</p>
-        {series.map(({ copy }) => (
+        {series.map(({ copy, sources }) => (
           <InSeries
             key={copy.slug}
             copy={copy}
           >
-            <Rights url={SERIES_SOURCES[copy.slug].rights} />
+            <Rights url={sources.rights} />
           </InSeries>
         ))}
         <p {...stylex.props(styles.paragraph)}>

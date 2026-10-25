@@ -1,5 +1,6 @@
 import type { SeriesSlug, TranslationKey } from '~/i18n/types'
-import type { CreditSource } from '~/lib/view/credits'
+import type { Series } from '~/lib/progress/series'
+import type { SeriesSources } from '~/lib/view/credits'
 
 const BY_SA_3: [string, string] = [
   'CC BY-SA 3.0 Unported',
@@ -10,18 +11,11 @@ const FANDOM_TERMS = 'https://www.fandom.com/licensing'
 /**
  * Where each series' rights line is published, the license of the text of
  * each of its two wikis, and its general sources, labelled by its own copy.
- * Addresses only: the words are the series', sent with the page.
+ * Server-only: the legal page is sent the sources of the open series, so a
+ * series not open yet names no source in the client.
  */
-export const SERIES_SOURCES: {
-  [S in SeriesSlug]: {
-    /** Each wiki's license: its name and where it is published. */
-    licenses: Record<
-      Exclude<CreditSource['kind'], 'official'>,
-      [string, string]
-    >
-    links: [TranslationKey<S>, string][]
-    rights: string
-  }
+const SOURCES: {
+  [S in SeriesSlug]: SeriesSources & { links: [TranslationKey<S>, string][] }
 } = {
   'one-piece': {
     rights: 'https://www.toei-animation.com/copyrights/',
@@ -53,4 +47,14 @@ export const SERIES_SOURCES: {
       ],
     ],
   },
+}
+
+/** An open series' sources, for the legal page. */
+export function sourcesOf(series: Series): SeriesSources {
+  const bySlug: Partial<Record<string, SeriesSources>> = SOURCES
+  const found = bySlug[series.slug]
+  if (found === undefined) {
+    throw new Error(`No sources for the series ${series.slug}`)
+  }
+  return found
 }

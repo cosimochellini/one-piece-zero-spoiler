@@ -12,6 +12,7 @@ import type { SeriesCredits, SourceCredit } from '~/lib/view/credits'
 import { creditsPage } from '~/server/archive/credits.server'
 import { readerFor } from '~/server/archive/reader.server'
 import { copyOf } from '~/server/copy.server'
+import { sourcesOf } from '~/server/sources.server'
 import { ep, renderWithProviders } from '~/test/providers'
 
 import { LegalPage } from './LegalPage'
@@ -22,7 +23,13 @@ const OFFICIAL = 'https://one-piece.com/anime/o6217/index.html'
 
 /** One Piece alone, as the legal page is sent while it is the one open. */
 function onePiece(locale: Locale, credits: SourceCredit[]): SeriesCredits[] {
-  return [{ copy: copyOf(ONE_PIECE_SERIES, locale), credits }]
+  return [
+    {
+      copy: copyOf(ONE_PIECE_SERIES, locale),
+      credits,
+      sources: sourcesOf(ONE_PIECE_SERIES),
+    },
+  ]
 }
 
 describe('LegalPage', () => {
@@ -126,7 +133,11 @@ describe('LegalPage', () => {
         <LegalPage
           series={[
             ...onePiece(locale, []),
-            { copy: copyOf(HUNTER_X_HUNTER_SERIES, locale), credits: [] },
+            {
+              copy: copyOf(HUNTER_X_HUNTER_SERIES, locale),
+              credits: [],
+              sources: sourcesOf(HUNTER_X_HUNTER_SERIES),
+            },
           ]}
         />,
         { locale },
