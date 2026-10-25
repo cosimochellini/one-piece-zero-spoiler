@@ -1,7 +1,8 @@
 import { createContext, use, useCallback } from 'react'
 
-import { useLocale } from '~/i18n/LocaleContext'
+import { useLocale, useSeriesT } from '~/i18n/LocaleContext'
 import type { Locale } from '~/i18n/locales'
+import type { SeriesSlug } from '~/i18n/types'
 
 import { type Bookmark, modeOf } from './episode'
 import type { BookmarkSeries } from './series'
@@ -67,22 +68,29 @@ export function useSeriesParams(): { locale: Locale; series: string } {
   return { locale, series: slug }
 }
 
+/** A record's threshold in the reader's unit, by sentence. */
+export type Threshold<S extends SeriesSlug = never> = (
+  sentence: ThresholdSentence<S>,
+  gated: Gated,
+) => string
+
 /**
  * Names a record's threshold in the unit the reader counts in, so a card
  * says "Chapter 218" to a manga reader and "Episode 130" to everyone else.
+ * With a slug, the sentences of that series' own features as well: a
+ * fruit's needs `useThreshold('one-piece')`.
  */
-export function useThreshold(): (
-  sentence: ThresholdSentence,
-  gated: Gated,
-) => string {
-  const { t } = useLocale()
+export function useThreshold(): Threshold
+export function useThreshold<S extends SeriesSlug>(slug: S): Threshold<S>
+export function useThreshold(slug?: SeriesSlug): Threshold<SeriesSlug> {
+  const t = useSeriesT(slug)
   const { bookmark } = useBookmark()
   const series = useBookmarkSeries()
   const mode = modeOf(bookmark)
 
   return useCallback(
-    (sentence: ThresholdSentence, gated: Gated) =>
-      describeThreshold({ gated, mode, sentence, t, series }),
+    (sentence: ThresholdSentence<SeriesSlug>, gated: Gated) =>
+      describeThreshold<SeriesSlug>({ gated, mode, sentence, t, series }),
     [t, mode, series],
   )
 }

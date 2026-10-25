@@ -10,7 +10,7 @@ import * as stylex from '@stylexjs/stylex'
 import { type ReactElement, use } from 'react'
 
 import { RouteStrip } from '~/components/RouteStrip'
-import { useLocale } from '~/i18n/LocaleContext'
+import { useT } from '~/i18n/LocaleContext'
 import type { RecordView, RoutePositionView } from '~/lib/view/records'
 
 import { Neighbour } from './-$id.neighbour'
@@ -29,7 +29,7 @@ export function RouteDiptych({
   peek: (handle: string) => Promise<RecordView>
   position: Promise<null | RoutePositionView>
 }): ReactElement {
-  const { t } = useLocale()
+  const t = useT()
   const at = use(position)
 
   if (at === null) {
@@ -83,7 +83,7 @@ export function RouteDiptych({
 
 /** The heading, while the rest of the band is still on its way. */
 export function RoutePending(): ReactElement {
-  const { t } = useLocale()
+  const t = useT()
 
   return (
     <div {...stylex.props(styles.dossier)}>

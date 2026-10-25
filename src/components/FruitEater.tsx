@@ -4,7 +4,7 @@ import type { ReactElement } from 'react'
 
 import { Marked } from '~/components/CharacterCard'
 import { CharacterCrest } from '~/components/CharacterCrest'
-import { useLocale } from '~/i18n/LocaleContext'
+import { useLocale, useSeriesT } from '~/i18n/LocaleContext'
 import { useSeriesParams } from '~/lib/progress/BookmarkContext'
 import { useDrawing } from '~/lib/view/drawings'
 import type { EaterView } from '~/lib/view/records'
@@ -40,7 +40,8 @@ export function FruitEater({
   highlight: [number, number] | null
   more: number
 }): ReactElement {
-  const { locale, t } = useLocale()
+  const { locale } = useLocale()
+  const t = useSeriesT('one-piece')
   const { series } = useSeriesParams()
   const { ref, strokes } = useDrawing(eater.id, eater.visual)
   const drawn = eater.visual.deferred !== true || strokes.length > 0

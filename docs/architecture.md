@@ -305,8 +305,10 @@ before anything runs:
   drawing that does not exist.
 - The English dictionary defines the key set and the Italian one is typed
   against it, so a missing translation fails `typecheck`. The same holds for
-  each series' own copy, and a key of one series used under another fails
-  `typecheck` too (Localization, below).
+  each series' own copy. A component reaches the translate only through `useT()`
+  or `useSeriesT()`, each typed by the keys it may print, so a key of one series
+  used where only another's or the shared ones are allowed fails `typecheck` too
+  (Localization, below).
 - The bookmark is a discriminated union read through an exhaustive switch, under
   `noFallthroughCasesInSwitch`.
 - `strict` is on with nine more flags, including `noUncheckedIndexedAccess`,
@@ -650,17 +652,23 @@ series, for its rights line, its licenses and its links, so a series not open
 yet names no source in the client. The reference sample of a series' source
 review lives on its archive (`credits` on `SeriesArchive`).
 
-`useT()` reads the shared keys, the only ones a page of no series has.
-`useSeriesT()` adds the common keys, on a page of any series, and
+The context hands out no translate of its own: `useLocale()` gives the locale
+and the series. `useT()` reads the shared keys, the only ones a page of no
+series has. `useSeriesT()` adds the common keys, on a page of any series, and
 `useSeriesT('one-piece')` the keys of One Piece's own features, typed by the
-series, so a One Piece key under Hunter x Hunter fails `typecheck`; at runtime
-each throws on a page of another series, or of none, and so does a key the
-page's copy lacks. A shared component that prints a series' key only when that
-series' data asks for it (a devil fruit row, a kind label, a fog band's words)
-reads it only then, and a test draws every filed series' landing, character and
-place pages in its own copy (`src/routes/$series/$locale/-records.test.tsx`).
-ESLint bars the client, `src/i18n` and `src/styles` from importing a series'
-copy by any path.
+series, so a One Piece key under Hunter x Hunter, or under `useT()`, fails
+`typecheck`. At runtime a key the page's copy lacks throws, and through
+`useSeriesT('one-piece')` on another series' page the error names One Piece. A
+component that may print a key of one series' feature reads it through that
+series' translate, behind its feature check: the devil fruit row, the fruit and
+ship kind labels (`useKindLabel`), the bar's and the welcome's fruit and filler
+links, a fog band or a failed load given One Piece's words (`series` on
+`FogBand` and `LoadFailed`), and the threshold sentences of fruits and ships
+(`useThreshold('one-piece')`; `ThresholdSentence<S>`). A test draws every filed
+series' landing page, both indexes, a sample of its character and place pages,
+the bar and the bookmark dialog in its own copy
+(`src/routes/$series/$locale/-records.test.tsx`). ESLint bars the client,
+`src/i18n` and `src/styles` from importing a series' copy by any path.
 
 ## Engineering notes
 

@@ -51,11 +51,11 @@ export type TranslationKey<S extends SeriesSlug = never> =
   | { [K in SeriesSlug]: CommonKey | Extract<keyof SeriesCopies[K], string> }[S]
 
 /**
- * Translate on a page of whichever series: the shared keys and the common
- * ones, which every series' copy defines.
+ * Translate on a page of a series: the shared keys, the common ones every
+ * series' copy defines, and the own keys of series `S`, if one is named.
  */
-export type SeriesTranslate = (
-  key: CommonKey | SharedKey,
+export type SeriesTranslate<S extends SeriesSlug = never> = (
+  key: CommonKey | TranslationKey<S>,
   params?: TranslationParams,
 ) => string
 

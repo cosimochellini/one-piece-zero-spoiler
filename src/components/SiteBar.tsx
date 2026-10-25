@@ -5,8 +5,8 @@ import type { ReactElement } from 'react'
 import { EpisodeMark } from '~/components/EpisodeMark'
 import { LocaleSwitch } from '~/components/LocaleSwitch'
 import { useDeclares } from '~/components/useDeclares'
-import { useLocale } from '~/i18n/LocaleContext'
-import type { SeriesSlug, TranslationKey } from '~/i18n/types'
+import { useLocale, useSeriesT, useT } from '~/i18n/LocaleContext'
+import type { TranslationKey } from '~/i18n/types'
 import { useBookmark, useSeriesParams } from '~/lib/progress/BookmarkContext'
 import type { SeriesPage } from '~/lib/progress/series'
 import {
@@ -39,7 +39,8 @@ import {
  * which is where the eye goes to see what it did.
  */
 export function SiteBar(): ReactElement {
-  const { locale, t } = useLocale()
+  const { locale } = useLocale()
+  const t = useT()
   const { series } = useBookmark()
   // The public description, for the series' name in the reader's language.
   const described = useMatch({ from: '/$series', shouldThrow: false })?.context
@@ -101,7 +102,7 @@ const NAV = [
   { page: 'places', to: '/$series/$locale/places', label: 'nav.places' },
   { page: 'fruits', to: '/$series/$locale/fruits', label: 'nav.fruits' },
 ] as const satisfies {
-  label: TranslationKey<SeriesSlug>
+  label: TranslationKey<'one-piece'>
   page: SeriesPage
   to: string
 }[]
@@ -111,7 +112,7 @@ const NAV = [
  * the pages it declares.
  */
 function SeriesNavigation(): ReactElement {
-  const { t } = useLocale()
+  const t = useSeriesT('one-piece')
   const params = useSeriesParams()
   const declares = useDeclares()
   const links: ReactElement[] = []

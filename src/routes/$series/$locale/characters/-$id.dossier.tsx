@@ -12,24 +12,14 @@ import type { ReactElement } from 'react'
 import { CharacterCrest } from '~/components/CharacterCrest'
 import { CharacterFacts } from '~/components/CharacterFacts'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
-import { useLocale } from '~/i18n/LocaleContext'
-import type { SeriesSlug, TranslationKey } from '~/i18n/types'
+import { useKindLabel } from '~/components/useKindLabel'
+import { useT } from '~/i18n/LocaleContext'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
-import type { CharacterDetail, EntityKind, Slot } from '~/lib/view/records'
+import type { CharacterDetail, Slot } from '~/lib/view/records'
 import { morphPart } from '~/styles/morph'
 import { settleStyles } from '~/styles/settle'
 
 import { styles } from './-$id.styles'
-
-// Every kind the engine files, by the page's own copy: a ship and a fruit
-// are One Piece's, and only its records are of those kinds.
-const KIND_KEY: Record<EntityKind, TranslationKey<SeriesSlug>> = {
-  arc: 'kind.arc',
-  character: 'kind.character',
-  place: 'kind.place',
-  ship: 'kind.ship',
-  fruit: 'kind.fruit',
-}
 
 // The four bands in DOM order, as the page counts them.
 const DOSSIER_BAND = 0
@@ -124,14 +114,15 @@ function DossierColumn({
   detail: CharacterDetail
   peek: (handle: string) => Promise<DossierRecord>
 }): ReactElement {
-  const { t } = useLocale()
+  const t = useT()
   const threshold = useThreshold()
+  const kindLabel = useKindLabel()
   const filed = detail.slot.open ? detail.slot.record : detail.slot.covered
 
   return (
     <div {...stylex.props(styles.dossier)}>
       <p {...stylex.props(styles.meta)}>
-        <span {...stylex.props(styles.kind)}>{t(KIND_KEY[filed.kind])}</span>
+        <span {...stylex.props(styles.kind)}>{kindLabel(filed.kind)}</span>
         <span {...stylex.props(styles.episode)}>
           {threshold('character.opensAt', filed)}
         </span>

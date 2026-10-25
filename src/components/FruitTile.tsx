@@ -93,7 +93,7 @@ export function FruitTile({
   slot,
 }: FruitTileProps): ReactElement {
   const t = useSeriesT('one-piece')
-  const threshold = useThreshold()
+  const threshold = useThreshold('one-piece')
 
   if (slot.open) {
     return (

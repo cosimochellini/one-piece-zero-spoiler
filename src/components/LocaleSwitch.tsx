@@ -2,7 +2,7 @@ import * as stylex from '@stylexjs/stylex'
 import { useNavigate } from '@tanstack/react-router'
 import type { ReactElement } from 'react'
 
-import { useLocale } from '~/i18n/LocaleContext'
+import { useLocale, useT } from '~/i18n/LocaleContext'
 import { isLocale, type Locale, LOCALE_COOKIE, LOCALES } from '~/i18n/locales'
 import { COOKIE_MAX_AGE_SECONDS, writeCookie } from '~/lib/cookies'
 import {
@@ -44,7 +44,8 @@ function remember(next: Locale): void {
  * alternates, not through this control.
  */
 export function LocaleSwitch(): ReactElement {
-  const { locale, t } = useLocale()
+  const { locale } = useLocale()
+  const t = useT()
   const navigate = useNavigate()
 
   return (
@@ -89,17 +90,15 @@ export function LocaleSwitch(): ReactElement {
         value={locale}
         {...stylex.props(styles.native)}
       >
-        {LOCALES.map((candidate) => {
-          return (
-            <option
-              key={candidate}
-              lang={candidate}
-              value={candidate}
-            >
-              {t(LABEL_KEY[candidate])}
-            </option>
-          )
-        })}
+        {LOCALES.map((candidate) => (
+          <option
+            key={candidate}
+            lang={candidate}
+            value={candidate}
+          >
+            {t(LABEL_KEY[candidate])}
+          </option>
+        ))}
       </select>
     </label>
   )

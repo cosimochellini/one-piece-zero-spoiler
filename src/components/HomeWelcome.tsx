@@ -4,8 +4,8 @@ import { type ReactElement, useSyncExternalStore } from 'react'
 
 import { Button } from '~/components/ui/Button'
 import { useDeclares } from '~/components/useDeclares'
-import { useLocale } from '~/i18n/LocaleContext'
-import type { SeriesSlug, TranslationKey } from '~/i18n/types'
+import { useLocale, useSeriesT } from '~/i18n/LocaleContext'
+import type { TranslationKey } from '~/i18n/types'
 import { useSeriesParams } from '~/lib/progress/BookmarkContext'
 import type { SeriesPage } from '~/lib/progress/series'
 import {
@@ -38,7 +38,7 @@ const PAGES = [
   { page: 'fruits', to: '/$series/$locale/fruits', label: 'fruits.title' },
   { page: 'filler', to: '/$series/$locale/filler', label: 'filler.title' },
 ] as const satisfies {
-  label: TranslationKey<SeriesSlug>
+  label: TranslationKey<'one-piece'>
   page: SeriesPage
   to: string
 }[]
@@ -52,7 +52,8 @@ const PAGES = [
  * agree, and the welcome appears once the browser has read the flag.
  */
 export function HomeWelcome(): null | ReactElement {
-  const { locale, t } = useLocale()
+  const { locale } = useLocale()
+  const t = useSeriesT('one-piece')
   const { series } = useSeriesParams()
   const declares = useDeclares()
   const shown = useSyncExternalStore(subscribeWelcome, welcomeOwed, () => false)

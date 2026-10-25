@@ -90,7 +90,7 @@ function StageText({
   slot: Slot<FruitView>
 }): ReactElement {
   const t = useSeriesT('one-piece')
-  const threshold = useThreshold()
+  const threshold = useThreshold('one-piece')
   const gate = slot.open ? slot.record : slot.covered
 
   return (

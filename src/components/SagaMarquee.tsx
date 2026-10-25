@@ -131,7 +131,7 @@ function Behind({ last }: { last: FruitView | null }): ReactElement {
   const { locale } = useLocale()
   const t = useSeriesT('one-piece')
   const { series } = useSeriesParams()
-  const threshold = useThreshold()
+  const threshold = useThreshold('one-piece')
 
   return (
     <p {...stylex.props(styles.behind)}>

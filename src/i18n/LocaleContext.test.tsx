@@ -5,7 +5,7 @@ import { describe, expect, expectTypeOf, it } from 'vitest'
 import { HUNTER_X_HUNTER_SERIES, ONE_PIECE_SERIES } from '~/lib/progress/series'
 import { copyOf } from '~/server/copy.server'
 
-import { useSeriesT, useT } from './LocaleContext'
+import { useLocale, useSeriesT, useT } from './LocaleContext'
 import { LocaleProvider } from './LocaleProvider'
 import type { CommonKey, SeriesCopies, TranslationKey } from './types'
 
@@ -35,6 +35,13 @@ function OnePieceKeyUnderHunter(): string {
   const t = useSeriesT('hunter-x-hunter')
   // @ts-expect-error -- a One Piece key under Hunter x Hunter
   return t('fruits.title')
+}
+
+/** Never rendered: the context has no translate of its own to reach for. */
+function KeyThroughTheContext(): unknown {
+  const context = useLocale()
+  // @ts-expect-error -- the context hands out no untyped translate (#791)
+  return context.t
 }
 
 /** Never rendered: a common key needs a page of a series. */
@@ -101,6 +108,7 @@ describe('useSeriesT', () => {
     expect(OnePieceKeyUnderHunter).toBeTypeOf('function')
     expect(SeriesKeyAsShared).toBeTypeOf('function')
     expect(CommonKeyWithoutSeries).toBeTypeOf('function')
+    expect(KeyThroughTheContext).toBeTypeOf('function')
 
     expectTypeOf<'fruits.title'>().not.toExtend<
       TranslationKey<'hunter-x-hunter'>

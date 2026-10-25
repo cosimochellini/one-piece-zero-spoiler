@@ -3,7 +3,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import type { ReactElement, ReactNode } from 'react'
 
 import { ArchivePage } from '~/components/ArchivePage'
-import { useLocale } from '~/i18n/LocaleContext'
+import { useT } from '~/i18n/LocaleContext'
 /* Hallmark · pre-emit critique: P5 H4 E4 S5 R4 V4 */
 /* Hallmark · genre: atmospheric · macrostructure: Split Studio (as the
  *   character page) · theme: Sea Chart (locked) · enrichment: Tier B
@@ -153,7 +153,7 @@ function Band({
 
 /** `/places/<not-a-place>`: says so, and points at the places page. */
 function PlaceNotFound(): ReactElement {
-  const { t } = useLocale()
+  const t = useT()
 
   return (
     <ArchivePage

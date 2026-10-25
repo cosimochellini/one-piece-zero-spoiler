@@ -3,7 +3,7 @@ import type { ReactElement } from 'react'
 
 import { styles } from '~/components/PortEntry.styles'
 import { usePlaceLabels } from '~/components/usePlaceLabels'
-import { useLocale } from '~/i18n/LocaleContext'
+import { useSeriesT, useT } from '~/i18n/LocaleContext'
 import type { PortDossier, ShipEntry } from '~/lib/view/records'
 
 /**
@@ -12,7 +12,7 @@ import type { PortDossier, ShipEntry } from '~/lib/view/records'
  * data test holds that), so an open place always has an open arc.
  */
 export function PortFacts({ dossier }: { dossier: PortDossier }): ReactElement {
-  const { t } = useLocale()
+  const t = useT()
   const { formOf, region, regionOf } = usePlaceLabels(dossier.words)
 
   return (
@@ -45,7 +45,7 @@ export function PortFacts({ dossier }: { dossier: PortDossier }): ReactElement {
  * the page says one is coming.
  */
 export function ShipFacts({ entry }: { entry: ShipEntry }): ReactElement {
-  const { t } = useLocale()
+  const t = useSeriesT('one-piece')
 
   return (
     <dl {...stylex.props(styles.facts)}>

@@ -4,7 +4,7 @@ import type { ReactElement, ReactNode } from 'react'
 import { styles } from '~/components/LegalNotice.styles'
 import { useLocale, useSeriesT, useT } from '~/i18n/LocaleContext'
 import { LocaleProvider } from '~/i18n/LocaleProvider'
-import type { SeriesCopy } from '~/i18n/types'
+import type { SeriesCopy, SeriesSlug } from '~/i18n/types'
 import type {
   SeriesCredits,
   SeriesSources,
@@ -69,6 +69,7 @@ export function SourceCredits({
                   key={`${credit.name}-${String(credit.episode)}-${credit.scope}`}
                   credit={credit}
                   licenses={sources.licenses}
+                  slug={copy.slug}
                 />
               ))}
             </InSeries>
@@ -88,13 +89,16 @@ function Coverage(): ReactElement {
 function CreditEntry({
   credit,
   licenses,
+  slug,
 }: {
   credit: SourceCredit
   licenses: SeriesSources['licenses']
+  /** The series it belongs to, whose own words it may print. */
+  slug: SeriesSlug
 }): ReactElement {
-  // The page's own copy, which is the series' here: a filler entry and the
-  // official synopsis are One Piece's, and only its sample files them.
-  const { t } = useLocale()
+  // Typed by the series it belongs to: a filler entry and the official
+  // synopsis are One Piece's, and only its sample files them.
+  const t = useSeriesT(slug)
   return (
     <li>
       <h4>
@@ -164,7 +168,10 @@ function LicenseNotices({ series }: { series: SeriesCredits[] }): ReactElement {
           key={copy.slug}
           copy={copy}
         >
-          <SourceTerms sources={sources} />
+          <SourceTerms
+            slug={copy.slug}
+            sources={sources}
+          />
         </InSeries>
       ))}
     </>
@@ -172,9 +179,15 @@ function LicenseNotices({ series }: { series: SeriesCredits[] }): ReactElement {
 }
 
 /** A series' sources: their terms, their licenses and where they are. */
-function SourceTerms({ sources }: { sources: SeriesSources }): ReactElement {
-  // The page's own copy, which is the series' here: its links are its keys.
-  const { t } = useLocale()
+function SourceTerms({
+  slug,
+  sources,
+}: {
+  slug: SeriesSlug
+  sources: SeriesSources
+}): ReactElement {
+  // Typed by the series it belongs to: its links are keys of its copy.
+  const t = useSeriesT(slug)
   const { licenses, links } = sources
   // One paragraph per license, though both wikis may share one.
   const shown = Object.values(licenses).filter(

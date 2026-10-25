@@ -140,10 +140,11 @@ export function AlbumFailed({
   onRetry: () => void
 }): ReactElement {
   return (
-    <LoadFailed<'one-piece'>
+    <LoadFailed
       message="fruits.albumFailed"
       onRetry={onRetry}
       retry="fruits.albumRetry"
+      series="one-piece"
     />
   )
 }
@@ -245,6 +246,7 @@ export function Plate({
       <FogBand
         count={band.covered.length}
         headingId={`${headingId}-fog`}
+        series="one-piece"
         words={FRUIT_FOG}
       >
         <CoveredTiles

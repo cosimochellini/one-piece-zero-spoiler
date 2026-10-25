@@ -32,7 +32,7 @@ export function LocaleProvider({
     () => ({
       locale,
       series: copy?.slug ?? null,
-      t: translatorFor<SeriesSlug>(locale, copy),
+      translate: translatorFor<SeriesSlug>(locale, copy),
     }),
     [locale, copy],
   )

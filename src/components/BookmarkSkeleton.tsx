@@ -2,7 +2,7 @@ import * as stylex from '@stylexjs/stylex'
 import type { ReactElement } from 'react'
 
 import { Button } from '~/components/ui/Button'
-import { useLocale, useT } from '~/i18n/LocaleContext'
+import { useSeriesT, useT } from '~/i18n/LocaleContext'
 import type { SeriesSlug, TranslationKey } from '~/i18n/types'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
 import {
@@ -69,12 +69,15 @@ export function LoadFailed<S extends SeriesSlug = never>({
   message = 'dialog.loadFailed',
   onRetry,
   retry = 'dialog.retry',
+  series,
 }: {
   message?: TranslationKey<S>
   onRetry: () => void
   retry?: TranslationKey<S>
+  /** The series whose own keys the words are, if they are any. */
+  series?: S
 }): ReactElement {
-  const { t } = useLocale()
+  const t = useSeriesT(series)
 
   return (
     <div {...stylex.props(styles.failed)}>

@@ -3,7 +3,7 @@ import { Link } from '@tanstack/react-router'
 import { Fragment, type ReactElement, type ReactNode } from 'react'
 
 import { formatBounty } from '~/i18n/bounty'
-import { useLocale, useSeriesT } from '~/i18n/LocaleContext'
+import { useLocale, useSeriesT, useT } from '~/i18n/LocaleContext'
 import type { Translate } from '~/i18n/types'
 import { useSeriesParams } from '~/lib/progress/BookmarkContext'
 import type {
@@ -45,7 +45,8 @@ export interface CharacterFactsProps {
 export function CharacterFacts({
   facts,
 }: CharacterFactsProps): null | ReactElement {
-  const { locale, t } = useLocale()
+  const { locale } = useLocale()
+  const t = useT()
   // The devil fruit and the bounty are One Piece's words: their labels are
   // read only for a row that has a value, which only its archive files.
   const onePiece = useSeriesT('one-piece')

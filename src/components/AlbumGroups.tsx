@@ -117,6 +117,7 @@ export function AlbumGroups({
         count={laterTiles.length}
         headingId={`${fieldId}-later`}
         level="h2"
+        series="one-piece"
         words={words}
       >
         <ul {...stylex.props(styles.grid)}>

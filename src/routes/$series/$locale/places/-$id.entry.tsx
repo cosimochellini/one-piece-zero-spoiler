@@ -14,7 +14,7 @@ import { FiledHere } from '~/components/FiledHere'
 import { PortFacts, ShipFacts } from '~/components/PortFacts'
 import { OpenPortPlate, PortPlate } from '~/components/PortPlate'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
-import { useLocale } from '~/i18n/LocaleContext'
+import { useSeriesT, useT } from '~/i18n/LocaleContext'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
 import type { PlaceDetail } from '~/lib/view/places'
 import type { PortView, RecordView, ShipView, Slot } from '~/lib/view/records'
@@ -114,8 +114,8 @@ function EntryColumn<T extends Entry>({
   peekRecord,
   slot,
 }: EntryProps<T>): ReactElement {
-  const threshold = useThreshold()
-  const { t } = useLocale()
+  const threshold = useThreshold('one-piece')
+  const t = useSeriesT('one-piece')
   const words = WORDS[kind]
   const gate = slot.open ? slot.record : slot.covered
 
@@ -163,7 +163,7 @@ function PortBody({
   peekRecord,
   record: port,
 }: BodyProps<PortView>): null | ReactElement {
-  const { t } = useLocale()
+  const t = useT()
 
   return port.dossier === null ?
       null
@@ -220,7 +220,7 @@ function Natives({
   natives: RecordView[]
   peekRecord: PeekRecord
 }): null | ReactElement {
-  const { t } = useLocale()
+  const t = useT()
 
   return (
     <FiledHere
@@ -239,7 +239,7 @@ export function ShipBody({
   peekRecord,
   record: ship,
 }: BodyProps<ShipView>): ReactElement {
-  const { t } = useLocale()
+  const t = useSeriesT('one-piece')
 
   return (
     <>

@@ -10,7 +10,7 @@ import * as stylex from '@stylexjs/stylex'
 import type { ReactElement } from 'react'
 
 import { CharacterChronicle } from '~/components/CharacterChronicle'
-import { useLocale } from '~/i18n/LocaleContext'
+import { useT } from '~/i18n/LocaleContext'
 import type { CharacterDetail } from '~/lib/view/records'
 import { settleStyles } from '~/styles/settle'
 
@@ -32,7 +32,7 @@ export function ChronicleBand({
   band: number
   detail: CharacterDetail
 }): null | ReactElement {
-  const { t } = useLocale()
+  const t = useT()
   const { chronicle } = detail
 
   if (chronicle.entries.length === 0 || !detail.slot.open) {

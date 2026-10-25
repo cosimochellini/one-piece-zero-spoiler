@@ -5,7 +5,7 @@ import type { ReactElement } from 'react'
 import { NameAndRole } from '~/components/CharacterCard'
 import { ChartArt } from '~/components/ChartArt'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
-import { useLocale } from '~/i18n/LocaleContext'
+import { useT } from '~/i18n/LocaleContext'
 import { useSeriesParams, useThreshold } from '~/lib/progress/BookmarkContext'
 import { useDrawing } from '~/lib/view/drawings'
 import type { CharacterView, Slot } from '~/lib/view/records'
@@ -53,7 +53,7 @@ export function CharacterTile({
   highlight = null,
   morph = true,
 }: CharacterTileProps): ReactElement {
-  const { t } = useLocale()
+  const t = useT()
   const threshold = useThreshold()
 
   return (

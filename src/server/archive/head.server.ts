@@ -21,7 +21,7 @@ import type { Reader } from './reader.server'
 
 /** What a record's page calls itself, with its record and without it. */
 export interface HeadKeys {
-  foggedDescription: ThresholdSentence
+  foggedDescription: ThresholdSentence<SeriesSlug>
   foggedTitle: TranslationKey<SeriesSlug>
   pageTitle: TranslationKey<SeriesSlug>
 }
