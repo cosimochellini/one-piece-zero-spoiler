@@ -12,15 +12,6 @@ import {
 import type { Stroke } from '~/lib/view/records'
 
 /**
- * Every Hunter x Hunter line drawing, one per record, keyed by the record's
- * id, in the house style of One Piece's (`~/data/series/one-piece/art`): the
- * same box, pen and rules: the arcs, and the characters and places of the
- * Hunter Exam filed so far (#760), each at its record's threshold.
- *
- * `satisfies` rather than an annotation, so `ArtId` below stays the literal
- * ids and a record cannot name a drawing that is not here.
- */
-/**
  * One of Kurapika's two wooden swords, grip down to the left and point up
  * to the right: the grip in the record's tint, its wrap, the blade and its
  * ridge. The second is the same sword mirrored across the box.
@@ -40,6 +31,15 @@ const BOKKEN: Stroke[] = [
 /** The second wooden sword: the first, mirrored about x 80. */
 const MIRRORED = 'matrix(-1 0 0 1 160 0)'
 
+/**
+ * Every Hunter x Hunter line drawing, one per record, keyed by the record's
+ * id, in the house style of One Piece's (`~/data/series/one-piece/art`): the
+ * same box, pen and rules. The arcs, and the characters and places of the
+ * Hunter Exam filed so far (#760), each at its record's threshold.
+ *
+ * `satisfies` rather than an annotation, so `ArtId` below stays the literal
+ * ids and a record cannot name a drawing that is not here.
+ */
 export const DRAWINGS = {
   // A small sailing ship side on in a storm, the bolt of lightning over her
   // in yellow: the ship that takes Gon away from his island to the exam,
