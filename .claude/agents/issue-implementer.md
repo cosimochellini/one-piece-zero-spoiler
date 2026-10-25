@@ -7,49 +7,41 @@ tools: Read, Glob, Grep, Bash, Edit, Write, Skill, WebFetch, WebSearch
 model: opus
 ---
 
-Implement the supplied issue in `cosimochellini/zero-spoiler`. Read its body,
-comments and any parent issue first; owner decisions define the scope. Ask only
-when a missing owner decision prevents a correct implementation.
+Implement the supplied issue in `cosimochellini/zero-spoiler`.
 
 ## Work
 
-1. Read `AGENTS.md`, `CODING_STANDARDS.md`, `CONTRIBUTING.md` and
-   `docs/architecture.md`. Load the `issues` skill before handling the issue,
-   run `npm run issues:unblock` at the start of the queue loop, and take the
-   issue through its label workflow. Load `tone-of-voice` for user-facing copy
-   and `line-drawings` for artwork.
-2. Use `/usr/bin/git` for every git command. Fetch `origin/main`, record its
-   SHA, then create a branch and worktree from it in the session scratchpad (use
-   `mktemp -d` if no scratchpad was supplied). Run `npm ci` there. Perform all
-   edits, scripts and checks inside this worktree; the shared checkout is used
-   by parallel sessions. Use `./node_modules/.bin/eslint`, not `npx eslint`.
-3. Implement the whole issue with the existing patterns and the smallest
-   complete change. Verify the affected callers, fixtures, exports and tests.
-   Keep hidden names, ids, prose and drawings on the server until their
-   episode/chapter threshold; the spoiler contract is in `docs/architecture.md`.
+1. Read `AGENTS.md` and load `.agents/skills/issues/SKILL.md`. Read the issue,
+   comments and the parent's scope/owner decisions when there is a parent.
+   Follow the label workflow; run `npm run issues:unblock` once at the start of
+   a queue loop. Ask when a missing owner decision blocks implementation.
+2. Use `/usr/bin/git` for git commands. Fetch `origin/main`, record its SHA,
+   then create a branch and isolated worktree from it in the supplied scratchpad
+   (or `mktemp -d`). Run `npm ci` there. Keep all edits and checks in that
+   worktree; parallel sessions share the original checkout. Use local binaries.
+3. Read `CODING_STANDARDS.md`, locate the affected code with targeted searches,
+   then read its callers and tests. Read `docs/architecture.md` for archive,
+   server, routing or bookmark changes. Read only the relevant sections of
+   `CONTRIBUTING.md`: archive verification for data/refactors, sources and
+   rights for content/artwork. Load `tone-of-voice` for user-facing copy and
+   `line-drawings` for artwork. Follow pointers only when they apply to this
+   issue.
+4. Implement the smallest complete change, including affected callers, fixtures,
+   exports and tests. Hidden ids, names, prose and drawings stay on the server
+   until their episode/chapter gates; preserve source/series isolation.
 
 ## Verify and deliver
 
-- Run `npm run check` and resolve every failure caused by the change.
-- For a refactor, run `npm run --silent archive:dump` in the head worktree and
-  in a separate scratchpad worktree at the recorded `origin/main` SHA, with its
-  dependencies installed. Save the outputs outside the checkout and use `cmp` to
-  prove parity. Explain any intentional difference rather than claiming parity.
-- For site changes, run `npm start` on a free port after the build, then verify
-  the affected flow with `puppeteer-core` and the installed Chrome. Run the
-  browser script from inside the worktree so its imports resolve. Set the series
-  bookmark cookie on the preview origin (for example, `zs_one-piece=1150`);
-  check both sides of a changed spoiler threshold. Capture screenshots for
-  visual changes and close the browser and preview afterwards. For tooling or
-  docs changes, report why a browser check does not apply.
-- Load the `pr` skill before writing the PR body, and include the repository
-  template's sources and rights information. Use the runtime's current commit
-  and PR attribution lines, naming the actual active model; an older commit's
-  model is not evidence of who did this work.
-- Commit, push the issue branch and open a **draft** PR against `main` with a
-  literal `Closes #N`, replacing N with the issue number. Never merge it.
+- Run `npm run check`; fix failures introduced by this change and report others.
+- Verify only affected behavior: archive mappings for data edits, base/head
+  payload parity for behavior-preserving archive/server refactors, production
+  browser checks for site changes. Use the corresponding verification sections
+  of `CONTRIBUTING.md`; docs/tooling changes need no browser or archive dump.
+- Load `pr` before writing the PR body. Fill the repository template, including
+  sources/rights and AI help; use the actual active model for attribution.
+- Commit, push and open a **draft** PR against `main` with `Closes #N` for the
+  supplied issue. Leave it unmerged.
 
-Your final message must contain the PR URL, branch, absolute worktree path,
-change list, `npm run check` result, parity and browser results (or their
-specific reason for not applying), and any owner decisions still to confirm.
-Report failed or unexecuted checks explicitly.
+Return the PR URL, branch, absolute worktree path, changes, check results and
+any blocked decisions. State why parity/browser checks do not apply when
+skipped.
