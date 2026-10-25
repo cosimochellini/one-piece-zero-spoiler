@@ -78,7 +78,7 @@ export const DRAWINGS = {
   ],
 
   // A game cartridge standing in the slot of its console, its label recess
-  // in acid and the console's far side hatched: the game sold at the Yorknew
+  // in orange and the console's far side hatched: the game sold at the Yorknew
   // auction, the lead to Ging, in episode 59 and chapter 120.
   'greed-island-arc': [
     { d: 'M24 122 L104 122 L136 106 L56 106 Z' },
