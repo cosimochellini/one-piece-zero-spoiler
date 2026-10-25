@@ -314,7 +314,7 @@ export function stagesOf(entity, art) {
 
 /**
  * The ids a saga module draws first, in the order the module files them.
- * @param {string} series The series' slug, which is its folder.
+ * @param {string} series The series' folder.
  * @param {string} saga The module's file name, e.g. `water-seven`.
  * @returns {Promise<string[]>} The ids.
  */
@@ -336,7 +336,7 @@ async function idsOfSaga(series, saga) {
 
 /**
  * A series' drawings: the first ones, and the redrawings it has, if any.
- * @param {string} series The series' slug, which is its folder.
+ * @param {string} series The series' folder.
  * @returns {Promise<Parameters<typeof stagesOf>[1]>} The drawings.
  */
 async function artOf(series) {
@@ -347,23 +347,33 @@ async function artOf(series) {
 }
 
 /**
+ * A filed series' folder and records, or a throw for a slug the series list
+ * does not have, before any path is built from it.
+ * @param {string} slug The series' slug.
+ * @returns {Promise<{ folder: string, entities: { id: string, kind: string }[], getEntity: (id: string) => ({ id: string, revealedAtEpisode: number, visual: { tint: string } } | undefined) }>} The series.
+ */
+async function seriesOf(slug) {
+  const { SERIES, filedArchiveOf } = await importArchive('data/series/index.ts')
+  const { entities, getEntity } = await filedArchiveOf(slug)
+  const { folder } = SERIES.find((entry) => entry.slug === slug)
+  return { folder, entities, getEntity }
+}
+
+/**
  * The cells the command line asks for.
  * @param {ReturnType<typeof readArgs>} options The command line.
  * @returns {Promise<{ name: string, cells: Cell[] }>} The sheet's name and cells.
  */
 export async function cellsFor(options) {
-  const { series } = options
-  // Throws on a slug the series list does not have, before any path is built.
-  const { filedArchiveOf } = await importArchive('data/series/index.ts')
-  const { entities, getEntity } = await filedArchiveOf(series)
-  const art = await artOf(series)
+  const { folder, entities, getEntity } = await seriesOf(options.series)
+  const art = await artOf(folder)
   if (options.saga !== undefined || options.kind !== undefined) {
     const ids =
       options.saga === undefined ?
         entities
           .filter((entity) => entity.kind === options.kind)
           .map((entity) => entity.id)
-      : await idsOfSaga(series, options.saga)
+      : await idsOfSaga(folder, options.saga)
     return {
       name: options.saga ?? options.kind,
       cells: ids.map((id) => stagesOf(getEntity(id), art)[0]),

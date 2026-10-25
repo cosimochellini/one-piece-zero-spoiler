@@ -157,8 +157,8 @@ Grade every drawing you make or review. Only A ships.
     the Shinobu entry in `wano.ts`, Pekoms in `fish-man-island.ts`. The gate is the later
     of the record's chapter and the entry's `chapter:`, or without one the
     first chapter that reaches its episode, which can be many chapters late.
-    The pin adds nothing to the chapter table, and the stage walk in
-    `slices.test.ts` walks it.
+    The pin adds nothing to the chapter table, and in One Piece the stage
+    walk in `slices.test.ts` walks it.
   - **A frame check on manga pages decides** the start, the end, and what is
     really on the object. The wiki's prose is a lead: Jack's sails, Leo's
     goggles and Tamago's teacup were all wrong or missing in it.
@@ -254,20 +254,30 @@ arc|character|place`; `--saga` is One Piece's), on the series' own paper.
   `ambient` lines around the object: never a glow or a fill, and never the
   accent, which always sits on a real object the show shows, chains
   included. Nen is never added after the threshold, so no redrawing is
-  made for Nen alone (owner, #797).
+  made for Nen alone (owner, #797). Nen lines are never the reason for a
+  stage nor part of one: a weapon the show draws as an object (Kurapika's
+  chains) can be a stage, drawn as the object, with no Nen lines.
 - **Redrawings** follow the rulings in "Each kind of record": a `chapter:`
   pin at the true chapter, a new drawing on a death or a costume change. A
   new weapon that becomes part of the object is a stage; a one-fight
-  technique is not. The series has none yet, so the
-  first one files the timeline: export `REDRAWINGS` (`Redrawings`, keyed by
-  record id) from `art/index.ts`, and in `hunter-x-hunter/archive.ts` pass
-  it to `filedTimelines(DOSSIERS, { redrawing: (id) => REDRAWINGS[id] })`,
-  as One Piece does in `one-piece/chapter-table.ts`. The chapter table's
-  anchors and every dated read (`datedOf`, `reachedOf`, `latestOf`,
-  `redrawn`, `timelines`) then follow. Done when `archive.datedOf(record,
+  technique is not.
+- **Manga-only stages.** The 2011 anime ends at episode 148 and chapter 339
+  (`lastAdaptedChapter` in `src/data/series/index.ts`). A stage the anime
+  never shows is filed at episode 148 with `source: 'manga'` and its true
+  chapter, as the Kakin arc is filed, so an anime viewer who has finished
+  never sees it. At most one such stage per record, and a record filed at
+  episode 148 is not redrawn; anything else waits for an owner ruling.
+- **Filing the first redrawing.** The series has none yet, so the first one
+  files the timeline: export `REDRAWINGS` (`Redrawings`, keyed by record id)
+  from `art/index.ts`, and in `hunter-x-hunter/archive.ts` pass it to
+  `filedTimelines(DOSSIERS, { redrawing: (id) => REDRAWINGS[id] })`, as One
+  Piece does in `one-piece/chapter-table.ts`. The chapter table's anchors
+  and every dated read (`datedOf`, `reachedOf`, `latestOf`, `redrawn`,
+  `timelines`) then follow. Done when `archive.datedOf(record,
   'redrawing')` returns it and the tests pass: `src/data/series/index.test.ts`
   holds every stage to the house style, a `chapter:` pin, an episode after
-  the threshold and ascending order, and fails on an exported `REDRAWINGS`
+  the threshold, ascending episodes and non-decreasing chapters, the
+  manga's source above chapter 339, and fails on an exported `REDRAWINGS`
   the archive does not read; `src/data/archive.test.ts` holds the pin within
   the record's chapter and the dial. The stage walk in `slices.test.ts` is
   One Piece's: until Hunter x Hunter has one, review checks each

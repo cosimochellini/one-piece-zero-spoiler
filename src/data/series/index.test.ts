@@ -3,7 +3,7 @@ import { byNumber, byString } from 'sort-es'
 import { describe, expect, it, vi } from 'vitest'
 
 import type { Redrawings } from '~/data/art/stroke'
-import type { Entity } from '~/data/types'
+import type { Entity, Opened } from '~/data/types'
 import { LOCALES } from '~/i18n/locales'
 import { FIRST_CHAPTER, FIRST_EPISODE } from '~/lib/progress/episode'
 import type { Stroke } from '~/lib/view/records'
@@ -51,6 +51,18 @@ function isADrawing(id: string, strokes: Stroke[]): void {
   expect(distinct.size, id).toBe(keys.length)
 }
 
+/** The facts of one timeline told past a chapter and not marked the manga's. */
+function unsourcedAbove(
+  facts: Opened<unknown>[],
+  chapter: number,
+  label: string,
+): string[] {
+  return facts
+    .filter((fact) => (fact.chapter ?? 0) > chapter)
+    .filter((fact) => fact.gate.source !== 'manga')
+    .map((fact) => `${label} @${String(fact.episode)}`)
+}
+
 /** Whether a record is an arc. */
 function isArc(entity: Entity): boolean {
   return entity.kind === 'arc'
@@ -58,7 +70,7 @@ function isArc(entity: Entity): boolean {
 
 describe.each(LOADED_SERIES)(
   'the archive of $slug',
-  ({ archive, description, folder }) => {
+  ({ archive, description, folder, lastAdaptedChapter }) => {
     it('uses the same public description as its registry entry', () => {
       expect(archive.series).toBe(description)
     })
@@ -133,16 +145,18 @@ describe.each(LOADED_SERIES)(
     })
 
     it('redraws a record as the pages read it: pinned, later, ascending, in the house style', () => {
-      // Read the way every page does (`datedOf`, behind `latestOf` and
-      // `reachedOf`), and `redrawn` must agree, so a half-wired series fails.
+      // Read the way every page does (`datedOf`, behind `latestOf`,
+      // `reachedOf` and `redrawn`). A series that files `REDRAWINGS` without
+      // wiring them is caught by the next test but one.
       for (const entity of entities) {
         const stages = archive.datedOf(entity, 'redrawing')
         const episodes = stages.map((stage) => stage.episode)
+        const chapters = stages.map((stage) => stage.chapter ?? 0)
 
-        expect(archive.redrawn(entity), entity.id).toStrictEqual(stages)
         expect(episodes, entity.id).toStrictEqual(
           [...new Set(episodes)].toSorted(byNumber()),
         )
+        expect(chapters, entity.id).toStrictEqual(chapters.toSorted(byNumber()))
 
         // That the pin is within the record's chapter and the dial is held
         // with every declared chapter in `~/data/archive.test.ts`.
@@ -153,6 +167,23 @@ describe.each(LOADED_SERIES)(
           isADrawing(entity.id, value)
         }
       }
+    })
+
+    it('marks everything told past the last chapter its anime adapts as the manga’s', () => {
+      // An anime viewer who has finished reaches the last episode, so a
+      // record or a fact filed there with no source would show them a
+      // chapter the anime never adapts.
+      const told = lastAdaptedChapter ?? Infinity
+      const records = entities
+        .filter((entity) => entity.revealedAtChapter > told)
+        .filter((entity) => entity.source !== 'manga')
+        .map((entity) => entity.id)
+      const facts = timelines.flatMap(({ field, label, owner }) =>
+        unsourcedAbove(archive.datedOf(owner, field), told, label),
+      )
+
+      expect(records).toStrictEqual([])
+      expect(facts).toStrictEqual([])
     })
 
     it('reads every redrawing its art module files', async () => {
