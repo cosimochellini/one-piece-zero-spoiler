@@ -46,6 +46,18 @@ export async function remembered<T>(
 const copies = new Map<string, Promise<SeriesCopy>>()
 
 /**
+ * Keeps the copy a page arrived with, so the first navigation after the
+ * page hydrates does not ask the server for it again: the router does not run
+ * the series route's `beforeLoad` on hydration, only on the next navigation.
+ */
+export function keepSeriesCopy(copy: SeriesCopy, locale: Locale): void {
+  const key = `${copy.slug}:${locale}`
+  if (!copies.has(key)) {
+    copies.set(key, Promise.resolve(copy))
+  }
+}
+
+/**
  * The series' own copy: the server sends it with the first page, inside the
  * page, and a page of another series never has it.
  */
