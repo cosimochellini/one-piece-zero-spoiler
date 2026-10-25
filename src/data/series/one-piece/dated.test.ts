@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
 import { reveal } from '~/data/reveal'
-import { type Bookmark, CHAPTER_CEILING } from '~/lib/progress/episode'
+import type { Bookmark } from '~/lib/progress/episode'
 import { ONE_PIECE_BOOKMARK } from '~/lib/progress/series'
 
 import { episodeAtChapter } from './chapter-table'
@@ -16,13 +16,17 @@ const ch = (chapter: number): Bookmark => ({ mode: 'chapter', chapter })
  * than through the table's own inverse, or one past the ceiling for none.
  */
 function firstChapterAt(episode: number): number {
-  for (let chapter = 1; chapter <= CHAPTER_CEILING; chapter += 1) {
+  for (
+    let chapter = 1;
+    chapter <= ONE_PIECE_BOOKMARK.chapterCeiling;
+    chapter += 1
+  ) {
     if (episodeAtChapter(chapter) >= episode) {
       return chapter
     }
   }
 
-  return CHAPTER_CEILING + 1
+  return ONE_PIECE_BOOKMARK.chapterCeiling + 1
 }
 
 /**

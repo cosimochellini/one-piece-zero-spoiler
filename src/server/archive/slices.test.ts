@@ -12,11 +12,7 @@ import { ARC_LEADS } from '~/data/series/one-piece/leads'
 import { shipDossierOf } from '~/data/series/one-piece/places'
 import type { Entity } from '~/data/types'
 import { LOCALES } from '~/i18n/locales'
-import {
-  type Bookmark,
-  CHAPTER_CEILING,
-  EPISODE_CEILING,
-} from '~/lib/progress/episode'
+import type { Bookmark } from '~/lib/progress/episode'
 import { ONE_PIECE_BOOKMARK } from '~/lib/progress/series'
 import { foldName } from '~/lib/search/fold'
 import type {
@@ -92,10 +88,18 @@ function poolOf(home: HomeView, told: string): Set<string> {
 /** Every episode and every chapter a bookmark can hold. */
 function everyBookmark(): NonNullable<Bookmark>[] {
   const marks: NonNullable<Bookmark>[] = []
-  for (let episode = 1; episode <= EPISODE_CEILING; episode += 1) {
+  for (
+    let episode = 1;
+    episode <= ONE_PIECE_BOOKMARK.episodeCeiling;
+    episode += 1
+  ) {
     marks.push(ep(episode))
   }
-  for (let chapter = 1; chapter <= CHAPTER_CEILING; chapter += 1) {
+  for (
+    let chapter = 1;
+    chapter <= ONE_PIECE_BOOKMARK.chapterCeiling;
+    chapter += 1
+  ) {
     marks.push({ mode: 'chapter', chapter })
   }
 
@@ -349,7 +353,11 @@ describe('the slice of the archive a page is given', () => {
     // A story is reached by its own chapter, and Shiki, left out of the
     // chapter table, has one dated long before the chapter that meets him.
     const fogged: string[] = []
-    for (let chapter = 1; chapter <= CHAPTER_CEILING; chapter += 1) {
+    for (
+      let chapter = 1;
+      chapter <= ONE_PIECE_BOOKMARK.chapterCeiling;
+      chapter += 1
+    ) {
       const bookmark: NonNullable<Bookmark> = { mode: 'chapter', chapter }
       const at = reveal(bookmark, ONE_PIECE_BOOKMARK)
       for (const { subject } of homePage(bookmark, 'en').stories) {
@@ -513,8 +521,8 @@ describe('the slice of the archive a page is given', () => {
 
   it('keeps every list page’s inline drawings under budget at the latest bookmark', () => {
     const latest: NonNullable<Bookmark>[] = [
-      ep(EPISODE_CEILING),
-      { mode: 'chapter', chapter: CHAPTER_CEILING },
+      ep(ONE_PIECE_BOOKMARK.episodeCeiling),
+      { mode: 'chapter', chapter: ONE_PIECE_BOOKMARK.chapterCeiling },
     ]
 
     for (const bookmark of latest) {

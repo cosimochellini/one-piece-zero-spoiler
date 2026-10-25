@@ -1,6 +1,6 @@
 import { chapterTable } from '~/data/chapterTable'
 import { anchorsOf, filedTimelines } from '~/data/dated'
-import { CHAPTER_CEILING, EPISODE_CEILING } from '~/lib/progress/episode'
+import { ONE_PIECE_BOOKMARK } from '~/lib/progress/series'
 
 import { REDRAWINGS } from './art'
 import { devilFruits } from './records/fruits'
@@ -34,7 +34,7 @@ const RECORDS = sagas.flatMap((saga) => saga.entries)
 export const { chapterAtEpisode, episodeAtChapter, gateOf } = chapterTable({
   // A fruit's redrawings anchor it like any other entry.
   anchors: anchorsOf([...RECORDS, ...devilFruits], FILED),
-  chapterCeiling: CHAPTER_CEILING,
-  episodeCeiling: EPISODE_CEILING,
+  chapterCeiling: ONE_PIECE_BOOKMARK.chapterCeiling,
+  episodeCeiling: ONE_PIECE_BOOKMARK.episodeCeiling,
   records: RECORDS,
 })

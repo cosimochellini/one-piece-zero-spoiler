@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest'
 
+import { dialLast } from '~/components/dial'
 import { reveal } from '~/data/reveal'
+import type { Translate } from '~/i18n/types'
 
 import {
   absoluteEpisodeOf,
@@ -8,12 +10,24 @@ import {
   episodeValue,
   gradeDraft,
   parseBookmark,
+  stepperOf,
+  thresholdValue,
 } from './episode'
 import { bookmarkFromSearch } from './linkBookmark'
-import { parseTrial } from './requestBookmark'
+import {
+  bookmarkForRequest,
+  parseTrial,
+  trialForRequest,
+} from './requestBookmark'
 import { sagaAt } from './sagaLabel'
-import { locateEpisode, resolveEpisode } from './seasons'
+import {
+  getSeason,
+  locateEpisode,
+  resolveEpisode,
+  seasonLength,
+} from './seasons'
 import { HUNTER_X_HUNTER_SERIES, ONE_PIECE_BOOKMARK } from './series'
+import { describeThreshold } from './threshold'
 
 const S2E12 = { mode: 'season', season: 2, episode: 12 } as const
 
@@ -104,20 +118,70 @@ describe.each(CASES)(
   },
 )
 
-describe('a conversion without a series', () => {
+// Each call below leaves the series out. `@ts-expect-error` makes
+// `npm run typecheck` fail the day any of them gets a default back, and the
+// call itself throws instead of quietly reading One Piece's table.
+const SEASON_DRAFT = { mode: 'season', season: '2', number: '12' } as const
+const GREED_ISLAND = { revealedAtEpisode: 59, revealedAtChapter: 126 }
+const SEASON_TWO = { number: 2, first: 27, last: 38 }
+const NO_SAGAS = { episode: [], chapter: [], filler: [] }
+const t: Translate = (key) => key
+
+const WITHOUT_SERIES: [string, () => unknown][] = [
+  // @ts-expect-error -- every conversion names its series (#793)
+  ['reveal', () => reveal(S2E12).sees(GREED_ISLAND)],
+  // @ts-expect-error -- every conversion names its series (#793)
+  ['parseBookmark', () => parseBookmark('s2e12')],
+  // @ts-expect-error -- every conversion names its series (#793)
+  ['absoluteEpisodeOf', () => absoluteEpisodeOf(S2E12)],
+  // @ts-expect-error -- every conversion names its series (#793)
+  ['thresholdValue', () => thresholdValue(GREED_ISLAND, 'season')],
+  // @ts-expect-error -- every conversion names its series (#793)
+  ['episodeValue', () => episodeValue(38, 'season')],
+  // @ts-expect-error -- every conversion names its series (#793)
+  ['ceilingOf', () => ceilingOf(SEASON_DRAFT)],
+  // @ts-expect-error -- every conversion names its series (#793)
+  ['stepperOf', () => stepperOf(SEASON_DRAFT)],
+  // @ts-expect-error -- every conversion names its series (#793)
+  ['gradeDraft', () => gradeDraft(SEASON_DRAFT)],
+  // @ts-expect-error -- every conversion names its series (#793)
+  ['getSeason', () => getSeason(2)],
+  // @ts-expect-error -- every conversion names its series (#793)
+  ['seasonLength', () => seasonLength(SEASON_TWO)],
+  // @ts-expect-error -- every conversion names its series (#793)
+  ['resolveEpisode', () => resolveEpisode(2, 12)],
+  // @ts-expect-error -- every conversion names its series (#793)
+  ['locateEpisode', () => locateEpisode(38)],
+  // @ts-expect-error -- every conversion names its series (#793)
+  ['sagaAt', () => sagaAt(NO_SAGAS, SEASON_DRAFT)],
+  // @ts-expect-error -- every conversion names its series (#793)
+  ['parseTrial', () => parseTrial('12')],
+  // @ts-expect-error -- every conversion names its series (#793)
+  ['trialForRequest', () => trialForRequest(undefined, '12')],
+  // @ts-expect-error -- every conversion names its series (#793)
+  ['bookmarkForRequest', () => bookmarkForRequest('12', undefined, {})],
+  [
+    'bookmarkFromSearch',
+    // @ts-expect-error -- every conversion names its series (#793)
+    () => bookmarkFromSearch(new URLSearchParams({ s: '2', ep: '12' })),
+  ],
+  // @ts-expect-error -- every conversion names its series (#793)
+  ['dialLast', () => dialLast('episode')],
+  [
+    'describeThreshold',
+    () =>
+      // @ts-expect-error -- every conversion names its series (#793)
+      describeThreshold({
+        gated: GREED_ISLAND,
+        mode: 'season',
+        sentence: 'veil.locked',
+        t,
+      }),
+  ],
+]
+
+describe.each(WITHOUT_SERIES)('%s without a series', (_name, call) => {
   it('does not typecheck, and fails rather than read One Piece', () => {
-    // @ts-expect-error -- every conversion names its series (#793)
-    expect(() => resolveEpisode(2, 12)).toThrow(TypeError)
-    // @ts-expect-error -- every conversion names its series (#793)
-    expect(() => absoluteEpisodeOf(S2E12)).toThrow(TypeError)
-    // @ts-expect-error -- every conversion names its series (#793)
-    expect(() => locateEpisode(38)).toThrow(TypeError)
-    // @ts-expect-error -- every conversion names its series (#793)
-    expect(() => parseBookmark('s2e12')).toThrow(TypeError)
-
-    const greedIsland = { revealedAtEpisode: 59, revealedAtChapter: 126 }
-
-    // @ts-expect-error -- every conversion names its series (#793)
-    expect(() => reveal(S2E12).sees(greedIsland)).toThrow(TypeError)
+    expect(call).toThrow(TypeError)
   })
 })

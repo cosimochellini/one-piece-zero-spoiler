@@ -2,14 +2,14 @@ import { byNumber } from 'sort-es'
 import { describe, expect, it } from 'vitest'
 
 import { vouches } from '~/data/chapterTable'
-import { CHAPTER_CEILING } from '~/lib/progress/episode'
+import { ONE_PIECE_BOOKMARK } from '~/lib/progress/series'
 
 import { chapterAtEpisode, episodeAtChapter, gateOf } from './chapter-table'
 import { DATED } from './chapters'
 import { entities } from './entities'
 
 const CHAPTERS = Array.from(
-  { length: CHAPTER_CEILING },
+  { length: ONE_PIECE_BOOKMARK.chapterCeiling },
   (_, index) => index + 1,
 )
 
@@ -110,9 +110,9 @@ describe('chapterAtEpisode', () => {
   })
 
   it('is past the ceiling for an episode no chapter reaches', () => {
-    expect(chapterAtEpisode(episodeAtChapter(CHAPTER_CEILING) + 1)).toBe(
-      CHAPTER_CEILING + 1,
-    )
+    expect(
+      chapterAtEpisode(episodeAtChapter(ONE_PIECE_BOOKMARK.chapterCeiling) + 1),
+    ).toBe(ONE_PIECE_BOOKMARK.chapterCeiling + 1)
   })
 })
 

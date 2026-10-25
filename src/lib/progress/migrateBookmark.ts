@@ -6,6 +6,7 @@ import {
 
 import { parseBookmark, serialiseBookmark } from './episode'
 import { parseTrial } from './requestBookmark'
+// eslint-disable-next-line no-restricted-imports -- The legacy `opzs_*` cookies were One Piece's alone.
 import { ONE_PIECE_BOOKMARK } from './series'
 
 const MIGRATIONS = [

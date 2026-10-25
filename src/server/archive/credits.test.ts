@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest'
 import { getCharacter } from '~/data/series/one-piece/characters'
 import { stories } from '~/data/series/one-piece/dated'
 import { LOCALES } from '~/i18n/locales'
-import { CHAPTER_CEILING, EPISODE_CEILING } from '~/lib/progress/episode'
+import { ONE_PIECE_BOOKMARK } from '~/lib/progress/series'
 import type { SourceCredit } from '~/lib/view/credits'
 import { opCreditsPage as creditsPage } from '~/test/archive'
 import { ep } from '~/test/providers'
@@ -88,7 +88,7 @@ describe('source credits', () => {
   it.each(LOCALES)(
     'lists the complete bounded sample using numeric revision addresses in %s',
     (locale) => {
-      const rows = creditsPage(ep(EPISODE_CEILING), locale)
+      const rows = creditsPage(ep(ONE_PIECE_BOOKMARK.episodeCeiling), locale)
 
       expect(rows).toHaveLength(17)
 
@@ -106,8 +106,10 @@ describe('source credits', () => {
       expect(JSON.stringify(rows)).not.toContain('contentSha256')
       expect(JSON.stringify(rows)).not.toContain('sourceWords')
       expect(
-        creditsPage({ mode: 'chapter', chapter: CHAPTER_CEILING }, locale)
-          .length,
+        creditsPage(
+          { mode: 'chapter', chapter: ONE_PIECE_BOOKMARK.chapterCeiling },
+          locale,
+        ).length,
       ).toBeGreaterThan(0)
     },
   )

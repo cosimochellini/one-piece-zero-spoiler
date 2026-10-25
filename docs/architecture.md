@@ -54,11 +54,14 @@ from the server-only archive. Every conversion that reads them (a season code to
 an absolute episode, a draft's range, a trial point, the onboarding dial's last
 point) takes the series as a required argument, with no One Piece default: a
 Hunter x Hunter S2E12 read with One Piece's table would be episode 73, not 38.
-Series content lives under `/<series>/<locale>/…`; `/<locale>` is the shared
-hub, and legal/privacy remain shared. Unknown series and locales answer 404. A
-request to a legacy locale-first content URL receives a 301 with the same path
-and exact query under `/one-piece`, before bookmark parameters are consumed.
-`/<series>` negotiates the language and answers 302.
+ESLint bans importing `ONE_PIECE_BOOKMARK` or `ONE_PIECE_SERIES` into the
+engine, the server and the shared bookmark code; One Piece's ranges, cookies and
+demo span are written only on its own description. Series content lives under
+`/<series>/<locale>/…`; `/<locale>` is the shared hub, and legal/privacy remain
+shared. Unknown series and locales answer 404. A request to a legacy
+locale-first content URL receives a 301 with the same path and exact query under
+`/one-piece`, before bookmark parameters are consumed. `/<series>` negotiates
+the language and answers 302.
 
 The hub (`src/components/SeriesHub.tsx`) gives each series a card in its own
 theme: its name, a drawing of the series' own
@@ -139,9 +142,10 @@ source tells it (`src/data/source.ts`, built once per source and cached), so a
 record of the other source is in no list: it is never sent open or covered,
 never counted and has no handle, and its page answers 404. Handles are numbered
 within that copy, so no gap gives a record away. A fact's gate carries its
-source, so `reveal(bookmark).sees` never opens it for the other reader. Neither
-kind is in the demo or the sitemap. The chapter table takes no anchor from them,
-and a devil fruit opens in each unit only by the namings its source tells.
+source, so `reveal(bookmark, series).sees` never opens it for the other reader.
+Neither kind is in the demo or the sitemap. The chapter table takes no anchor
+from them, and a devil fruit opens in each unit only by the namings its source
+tells.
 
 Each public description names its colour theme. The theme is a full override of
 the `color` tokens in `src/styles/themes.ts`, set on `<html>` whenever the

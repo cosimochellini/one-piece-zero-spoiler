@@ -37,7 +37,8 @@ function unitOf(t: Translate, point: DialPoint): string {
 
 /**
  * The dial, pinned while the preview scrolls under it: the point in large
- * figures, the arc it is in, and a native range input over East Blue.
+ * figures, the arc it is in, and a native range input over the series' demo
+ * span (East Blue for One Piece).
  */
 export function OnboardingDial({
   arc,
@@ -46,7 +47,8 @@ export function OnboardingDial({
 }: Omit<OnboardingDialProps, 'chapterAt'>): ReactElement {
   const t = useT()
   const id = useId()
-  const last = dialLast(point.mode, useBookmarkSeries())
+  const series = useBookmarkSeries()
+  const last = dialLast(point.mode, series)
 
   return (
     <div {...stylex.props(styles.dial)}>
@@ -124,7 +126,8 @@ function Readout({
 
 /**
  * Under the dial: the unit it counts in, and the two other ways to save a
- * point, one for a reader past East Blue and one for a reader starting now.
+ * point, one for a reader past the demo span and one for a reader starting
+ * now.
  */
 export function OnboardingControls({
   chapterAt,

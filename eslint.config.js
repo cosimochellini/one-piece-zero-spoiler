@@ -89,6 +89,34 @@ const FILED_ONLY = ['SERIES', 'filedArchiveOf']
 const OPEN_ONLY =
   'A reader path reads the open series only: `OPEN_SERIES` and `archiveOf`. `SERIES` and `filedArchiveOf` are for tests, gates and scripts (#758).'
 
+/**
+ * One Piece's bookmark description, by name (#793). The engine and the shared
+ * bookmark code take the series as an argument, or the route's through
+ * `useBookmarkSeries()`, so a Hunter x Hunter page can never be read with One
+ * Piece's season table. Its own data modules, tests and scripts may name it.
+ */
+const ONE_PIECE_BY_NAME = {
+  regex: String.raw`^(?:~/lib/progress/series|\./series)$`,
+  importNames: ['ONE_PIECE_BOOKMARK', 'ONE_PIECE_SERIES'],
+  message:
+    'Take the series as an argument, or `useBookmarkSeries()` in a component: no conversion defaults to One Piece (#793).',
+}
+
+/** The server's and the archive's import bans: the open series only (#758). */
+const OPEN_SERIES_IMPORTS = {
+  paths: [
+    { name: '~/data/series', importNames: FILED_ONLY, message: OPEN_ONLY },
+  ],
+  patterns: [
+    { regex: String.raw`^\.\./`, message: ALIAS_ONLY },
+    {
+      regex: String.raw`^(?:~/data/series/(?:index)?|\.(?:/index)?)$`,
+      importNames: FILED_ONLY,
+      message: OPEN_ONLY,
+    },
+  ],
+}
+
 // The syntax bans every file carries. A block that adds one spreads this list,
 // because a later block replaces a rule's options instead of merging them.
 const RESTRICTED_SYNTAX = [
@@ -877,6 +905,7 @@ const config = defineConfig(
               message:
                 'The archive stays on the server. Take a view model from `~/lib/view/records` instead (issue #12).',
             },
+            ONE_PIECE_BY_NAME,
           ],
         },
       ],
@@ -892,26 +921,7 @@ const config = defineConfig(
     files: ['src/server/**/*.{ts,tsx}', 'src/start.ts', 'src/data/**/*.ts'],
     ignores: TESTS,
     rules: {
-      'no-restricted-imports': [
-        'error',
-        {
-          paths: [
-            {
-              name: '~/data/series',
-              importNames: FILED_ONLY,
-              message: OPEN_ONLY,
-            },
-          ],
-          patterns: [
-            { regex: String.raw`^\.\./`, message: ALIAS_ONLY },
-            {
-              regex: String.raw`^(?:~/data/series/(?:index)?|\.(?:/index)?)$`,
-              importNames: FILED_ONLY,
-              message: OPEN_ONLY,
-            },
-          ],
-        },
-      ],
+      'no-restricted-imports': ['error', { ...OPEN_SERIES_IMPORTS }],
       // A dynamic import of the registry would take the filed list past the
       // import rule above. The registry's own imports of a series are
       // relative and stay allowed.
@@ -922,6 +932,22 @@ const config = defineConfig(
         {
           selector: String.raw`ImportExpression[source.value=/^~\/data\/series/]`,
           message: OPEN_ONLY,
+        },
+      ],
+    },
+  },
+
+  // The engine and the server name no series either (#793). A series' own
+  // modules under `src/data/series` keep the block above alone.
+  {
+    files: ['src/server/**/*.{ts,tsx}', 'src/start.ts', 'src/data/*.ts'],
+    ignores: TESTS,
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          ...OPEN_SERIES_IMPORTS,
+          patterns: [...OPEN_SERIES_IMPORTS.patterns, ONE_PIECE_BY_NAME],
         },
       ],
     },
@@ -946,6 +972,7 @@ const config = defineConfig(
               message:
                 'The archive stays on the server. Take a view model from `~/lib/view/records` instead (issue #12).',
             },
+            ONE_PIECE_BY_NAME,
             {
               group: [
                 '@tanstack/react-start',

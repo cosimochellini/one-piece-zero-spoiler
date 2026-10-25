@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 
 import { getEntity } from '~/data/series/one-piece/entities'
 import type { Entity } from '~/data/types'
-import { CHAPTER_CEILING } from '~/lib/progress/episode'
+import { ONE_PIECE_BOOKMARK } from '~/lib/progress/series'
 import {
   type LoadedSeries as ListedSeries,
   ONE_PIECE_LOADED as ONE_PIECE,
@@ -58,7 +58,7 @@ const LIST = [ONE_PIECE, DUMMY]
 /** A reader who has reached everything One Piece files. */
 const ALL: { chapter: number; mode: 'chapter' } = {
   mode: 'chapter',
-  chapter: CHAPTER_CEILING,
+  chapter: ONE_PIECE_BOOKMARK.chapterCeiling,
 }
 
 describe('the leak check of one series against another', () => {

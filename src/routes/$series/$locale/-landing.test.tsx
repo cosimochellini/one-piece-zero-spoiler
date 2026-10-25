@@ -2,8 +2,7 @@ import { fireEvent, screen } from '@testing-library/react'
 import { afterEach, describe, expect, it } from 'vitest'
 
 import { expireCookie, parseCookieHeader } from '~/lib/cookies'
-import { TRIAL_COOKIE } from '~/lib/progress/bounds'
-import { EPISODE_COOKIE } from '~/lib/progress/episode'
+import { ONE_PIECE_BOOKMARK } from '~/lib/progress/series'
 import {
   dismissWelcome,
   markWelcome,
@@ -78,8 +77,8 @@ const home: HomeView = {
 
 describe('LandingPage', () => {
   afterEach(() => {
-    expireCookie(EPISODE_COOKIE)
-    expireCookie(TRIAL_COOKIE)
+    expireCookie(ONE_PIECE_BOOKMARK.cookie)
+    expireCookie(ONE_PIECE_BOOKMARK.trialCookie)
     dismissWelcome()
   })
 
@@ -89,8 +88,8 @@ describe('LandingPage', () => {
     fireEvent.change(screen.getByRole('slider'), { target: { value: '2' } })
     fireEvent.click(screen.getByRole('link', { name: /Roronoa Zoro/u }))
 
-    expect(cookies().get(TRIAL_COOKIE)).toBe('2')
-    expect(cookies().has(EPISODE_COOKIE)).toBe(false)
+    expect(cookies().get(ONE_PIECE_BOOKMARK.trialCookie)).toBe('2')
+    expect(cookies().has(ONE_PIECE_BOOKMARK.cookie)).toBe(false)
   })
 
   it('saves the dial’s point and owes the welcome', () => {
@@ -99,7 +98,7 @@ describe('LandingPage', () => {
     fireEvent.change(screen.getByRole('slider'), { target: { value: '3' } })
     fireEvent.click(screen.getByRole('button', { name: 'I’m here' }))
 
-    expect(cookies().get(EPISODE_COOKIE)).toBe('3')
+    expect(cookies().get(ONE_PIECE_BOOKMARK.cookie)).toBe('3')
     expect(welcomeOwed()).toBe(true)
   })
 

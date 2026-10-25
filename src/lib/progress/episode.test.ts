@@ -5,10 +5,8 @@ import {
   type Bookmark,
   bookmarkValue,
   ceilingOf,
-  CHAPTER_CEILING,
   clampIndex,
   draftOf,
-  EPISODE_CEILING,
   FIRST_EPISODE,
   gradeDraft,
   modeOf,
@@ -30,8 +28,14 @@ describe('parseBookmark', () => {
       parseBookmark(String(FIRST_EPISODE), ONE_PIECE_BOOKMARK),
     ).toStrictEqual({ mode: 'episode', episode: FIRST_EPISODE })
     expect(
-      parseBookmark(String(EPISODE_CEILING), ONE_PIECE_BOOKMARK),
-    ).toStrictEqual({ mode: 'episode', episode: EPISODE_CEILING })
+      parseBookmark(
+        String(ONE_PIECE_BOOKMARK.episodeCeiling),
+        ONE_PIECE_BOOKMARK,
+      ),
+    ).toStrictEqual({
+      mode: 'episode',
+      episode: ONE_PIECE_BOOKMARK.episodeCeiling,
+    })
   })
 
   it('reads a season and an episode within it', () => {
@@ -53,8 +57,14 @@ describe('parseBookmark', () => {
       chapter: 1044,
     })
     expect(
-      parseBookmark(`c${String(CHAPTER_CEILING)}`, ONE_PIECE_BOOKMARK),
-    ).toStrictEqual({ mode: 'chapter', chapter: CHAPTER_CEILING })
+      parseBookmark(
+        `c${String(ONE_PIECE_BOOKMARK.chapterCeiling)}`,
+        ONE_PIECE_BOOKMARK,
+      ),
+    ).toStrictEqual({
+      mode: 'chapter',
+      chapter: ONE_PIECE_BOOKMARK.chapterCeiling,
+    })
   })
 
   it('fails closed on anything missing', () => {
@@ -79,13 +89,19 @@ describe('parseBookmark', () => {
   it('fails closed outside the range rather than clamping', () => {
     // A cookie holding 99999 must hide everything, not reveal everything.
     expect(
-      parseBookmark(String(EPISODE_CEILING + 1), ONE_PIECE_BOOKMARK),
+      parseBookmark(
+        String(ONE_PIECE_BOOKMARK.episodeCeiling + 1),
+        ONE_PIECE_BOOKMARK,
+      ),
     ).toBeNull()
     expect(parseBookmark('0', ONE_PIECE_BOOKMARK)).toBeNull()
     expect(parseBookmark('-5', ONE_PIECE_BOOKMARK)).toBeNull()
     expect(parseBookmark('c0', ONE_PIECE_BOOKMARK)).toBeNull()
     expect(
-      parseBookmark(`c${String(CHAPTER_CEILING + 1)}`, ONE_PIECE_BOOKMARK),
+      parseBookmark(
+        `c${String(ONE_PIECE_BOOKMARK.chapterCeiling + 1)}`,
+        ONE_PIECE_BOOKMARK,
+      ),
     ).toBeNull()
     // Season 2 has sixteen episodes; there is no season 23.
     expect(parseBookmark('s2e17', ONE_PIECE_BOOKMARK)).toBeNull()
@@ -164,14 +180,17 @@ describe('bookmarkValue and thresholdValue', () => {
 
 describe('clampIndex', () => {
   it('leaves a value inside the range alone', () => {
-    expect(clampIndex(890, EPISODE_CEILING)).toBe(890)
+    expect(clampIndex(890, ONE_PIECE_BOOKMARK.episodeCeiling)).toBe(890)
   })
 
   it('pulls a value back to the nearest bound', () => {
-    expect(clampIndex(0, EPISODE_CEILING)).toBe(1)
-    expect(clampIndex(EPISODE_CEILING + 500, EPISODE_CEILING)).toBe(
-      EPISODE_CEILING,
-    )
+    expect(clampIndex(0, ONE_PIECE_BOOKMARK.episodeCeiling)).toBe(1)
+    expect(
+      clampIndex(
+        ONE_PIECE_BOOKMARK.episodeCeiling + 500,
+        ONE_PIECE_BOOKMARK.episodeCeiling,
+      ),
+    ).toBe(ONE_PIECE_BOOKMARK.episodeCeiling)
   })
 
   it('truncates a fraction and survives a non-finite number', () => {
@@ -215,13 +234,13 @@ describe('ceilingOf', () => {
         { mode: 'episode', season: '', number: '' },
         ONE_PIECE_BOOKMARK,
       ),
-    ).toBe(EPISODE_CEILING)
+    ).toBe(ONE_PIECE_BOOKMARK.episodeCeiling)
     expect(
       ceilingOf(
         { mode: 'chapter', season: '', number: '' },
         ONE_PIECE_BOOKMARK,
       ),
-    ).toBe(CHAPTER_CEILING)
+    ).toBe(ONE_PIECE_BOOKMARK.chapterCeiling)
   })
 
   it('is the season’s length once a season is chosen, and nothing before', () => {
@@ -337,10 +356,12 @@ describe('stepperOf', () => {
     expect(episodeStepperAt('650').stepped(-1)).toBe('649')
     expect(episodeStepperAt('650').atFloor).toBe(false)
     expect(episodeStepperAt('1').atFloor).toBe(true)
-    expect(episodeStepperAt(String(EPISODE_CEILING)).atCeiling).toBe(true)
-    expect(episodeStepperAt(String(EPISODE_CEILING)).stepped(1)).toBe(
-      String(EPISODE_CEILING),
-    )
+    expect(
+      episodeStepperAt(String(ONE_PIECE_BOOKMARK.episodeCeiling)).atCeiling,
+    ).toBe(true)
+    expect(
+      episodeStepperAt(String(ONE_PIECE_BOOKMARK.episodeCeiling)).stepped(1),
+    ).toBe(String(ONE_PIECE_BOOKMARK.episodeCeiling))
   })
 
   it('steps from zero when the field is empty or unreadable', () => {

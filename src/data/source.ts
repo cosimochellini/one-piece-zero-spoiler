@@ -16,8 +16,8 @@ import type { BookSection, Entity, SeriesArchive } from './types'
  * say that something was left out.
  *
  * A fact of one source only is gated rather than filtered: its gate carries
- * the source (`gateOf`), and `reveal(bookmark).sees` never opens it for the
- * other. Except a fruit's eaters, which its page covers one by one: an eater
+ * the source (`gateOf`), and `reveal(bookmark, series).sees` never opens it
+ * for the other. Except a fruit's eaters, which its page covers one by one: an eater
  * the reader does not have is left out, by the gate of the entry that names
  * it, which carries the eater's source as well as its own.
  *

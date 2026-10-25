@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest'
 
 import { archiveOf } from '~/data/series'
 import { LOCALES } from '~/i18n/locales'
-import { EPISODE_CEILING } from '~/lib/progress/episode'
+import { ONE_PIECE_BOOKMARK } from '~/lib/progress/series'
 import { creditsPage } from '~/server/archive/credits.server'
 import { readerFor } from '~/server/archive/reader.server'
 import { ep, renderWithProviders } from '~/test/providers'
@@ -79,7 +79,7 @@ describe('LegalPage', () => {
     'renders article attribution and the official replacement separately in %s',
     (locale) => {
       const credits = creditsPage(
-        readerFor(archive, ep(EPISODE_CEILING), locale),
+        readerFor(archive, ep(ONE_PIECE_BOOKMARK.episodeCeiling), locale),
       )
       renderWithProviders(<LegalPage credits={credits} />, { locale })
 

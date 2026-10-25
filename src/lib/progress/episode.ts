@@ -9,13 +9,7 @@ import {
 import type { BookmarkSeries } from './series'
 import { type Gated, thresholdIn } from './spoiler'
 
-export {
-  CHAPTER_CEILING,
-  EPISODE_CEILING,
-  EPISODE_COOKIE,
-  FIRST_CHAPTER,
-  FIRST_EPISODE,
-} from './bounds'
+export { FIRST_CHAPTER, FIRST_EPISODE } from './bounds'
 
 /**
  * The three ways a reader may count where they have got to. There is no

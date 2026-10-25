@@ -1,6 +1,5 @@
 import { describe, expect, it } from 'vitest'
 
-import { EPISODE_CEILING } from './bounds'
 import {
   formatSeasonCode,
   getSeason,
@@ -54,7 +53,7 @@ describe('the season table', () => {
 
   it('runs the open season to the ceiling', () => {
     expect(seasonLength(OPEN_SEASON, ONE_PIECE_BOOKMARK)).toBe(
-      EPISODE_CEILING - OPEN_SEASON.first + 1,
+      ONE_PIECE_BOOKMARK.episodeCeiling - OPEN_SEASON.first + 1,
     )
   })
 })
@@ -82,7 +81,9 @@ describe('resolveEpisode', () => {
   it('accepts the open season up to the ceiling and no further', () => {
     const length = seasonLength(LAST_NUMBERED_SEASON, ONE_PIECE_BOOKMARK)
 
-    expect(resolveEpisode(22, length, ONE_PIECE_BOOKMARK)).toBe(EPISODE_CEILING)
+    expect(resolveEpisode(22, length, ONE_PIECE_BOOKMARK)).toBe(
+      ONE_PIECE_BOOKMARK.episodeCeiling,
+    )
     expect(resolveEpisode(22, length + 1, ONE_PIECE_BOOKMARK)).toBeNull()
   })
 })
@@ -109,12 +110,17 @@ describe('locateEpisode', () => {
       season: 21,
       episode: 1,
     })
-    expect(locateEpisode(EPISODE_CEILING, ONE_PIECE_BOOKMARK)?.season).toBe(22)
+    expect(
+      locateEpisode(ONE_PIECE_BOOKMARK.episodeCeiling, ONE_PIECE_BOOKMARK)
+        ?.season,
+    ).toBe(22)
   })
 
   it('finds nothing outside the table', () => {
     expect(locateEpisode(0, ONE_PIECE_BOOKMARK)).toBeNull()
-    expect(locateEpisode(EPISODE_CEILING + 1, ONE_PIECE_BOOKMARK)).toBeNull()
+    expect(
+      locateEpisode(ONE_PIECE_BOOKMARK.episodeCeiling + 1, ONE_PIECE_BOOKMARK),
+    ).toBeNull()
     expect(locateEpisode(2.5, ONE_PIECE_BOOKMARK)).toBeNull()
   })
 

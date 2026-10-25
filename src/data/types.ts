@@ -53,7 +53,8 @@ export interface Visual {
  * one the reader counts in (`orderByMode` in `~/data/series/one-piece/characters`).
  *
  * The shape satisfies `Gated` from `~/lib/progress/spoiler` structurally, so
- * entities can be passed straight to `reveal(bookmark).sees` (`~/data/reveal`).
+ * entities can be passed straight to `reveal(bookmark, series).sees`
+ * (`~/data/reveal`).
  */
 export interface Entity {
   id: string
