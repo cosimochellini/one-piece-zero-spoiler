@@ -133,15 +133,40 @@ export { indexedArchiveEntries }
       },
     )
 
-    it('bars a series’ copy from the client', async () => {
+    it.each([
+      [
+        'src/components/SiteFooter.tsx',
+        "import { onePieceEn } from '~/i18n/dictionaries/one-piece/en'",
+      ],
+      [
+        'src/i18n/translate.ts',
+        "import { onePieceEn } from './dictionaries/one-piece/en'",
+      ],
+      [
+        'src/i18n/dictionaries/it.ts',
+        "import { onePieceIt } from './one-piece/it'",
+      ],
+      ['src/styles/themes.ts', "import { COPIES } from '~/server/copy.server'"],
+    ])('bars a series’ copy from %s', async (file, statement) => {
       const { messages } = await lint(
-        "import { onePieceEn } from '~/i18n/dictionaries/one-piece/en'\nexport const words = onePieceEn\n",
-        path.join(repositoryRoot, 'src/components/SiteFooter.tsx'),
+        `${statement}\nexport const words = [${statement.split(' ', 3)[2] ?? ''}]\n`,
+        path.join(repositoryRoot, file),
       )
 
       expect(messages.map(({ ruleId }) => ruleId)).toContain(
         'no-restricted-imports',
       )
+    })
+
+    it('lets the shared dictionaries and a series’ types through', async () => {
+      const { messages } = await lint(
+        "import { enDictionary } from './dictionaries/en'\nimport type { onePieceEn } from './dictionaries/one-piece/en'\nexport const words: [typeof enDictionary, typeof onePieceEn] | null = null\n",
+        path.join(repositoryRoot, 'src/i18n/translate.ts'),
+      )
+
+      expect(
+        messages.filter(({ ruleId }) => ruleId === 'no-restricted-imports'),
+      ).toStrictEqual([])
     })
   },
 )

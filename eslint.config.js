@@ -104,10 +104,11 @@ const ONE_PIECE_BY_NAME = {
 
 /**
  * A series' own copy stays on the server and reaches a page with its series
- * (#791). Its types may be named; its words may not be imported.
+ * (#791). Its types may be named; its words may not be imported, by the alias
+ * or by a relative path (`./dictionaries/one-piece/en`, `./one-piece/it`).
  */
 const SERIES_COPY = {
-  group: ['~/i18n/dictionaries/*/*', '~/server/copy.server'],
+  regex: String.raw`^(?:~/i18n/dictionaries/|(?:\.\.?/)+(?:dictionaries/)?)(?!dictionaries/)[a-z-]+/(?:en|it)(?:\.ts)?$|^~/server/copy\.server(?:\.ts)?$`,
   allowTypeImports: true,
   message:
     'A series’ copy stays on the server: a page gets it through `loadSeriesCopy` and reads it with `useT` or `useSeriesT` (#791).',
@@ -936,7 +937,13 @@ const config = defineConfig(
   // `no-restricted-imports` replaces the earlier one rather than adding to it.
   // -------------------------------------------------------------------------
   {
-    files: [...ROUTES, 'src/components/**/*.{ts,tsx}', 'src/lib/**/*.{ts,tsx}'],
+    files: [
+      ...ROUTES,
+      'src/components/**/*.{ts,tsx}',
+      'src/lib/**/*.{ts,tsx}',
+      'src/i18n/**/*.{ts,tsx}',
+      'src/styles/**/*.{ts,tsx}',
+    ],
     ignores: TESTS,
     rules: {
       'no-restricted-imports': [
