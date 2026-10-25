@@ -136,8 +136,8 @@ export const hunterExam: HunterSaga = {
     'gon-freecss': {
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
-        it: 'È cresciuto sull’Isola Balena con Myto, che lo cresce da quando era in fasce. Suo padre, Ging Freecss, è un Hunter che non ha mai conosciuto. Myto gli lascia sostenere l’esame solo se pesca il pesce più grosso della palude, sicura che non ci riuscirà; lui aspetta per giorni con la canna in mano e ce la fa. Parte con la nave per diventare Hunter e per sapere di più su suo padre.',
-        en: 'He has grown up on Whale Island with Mito, who has raised him since he was a baby. His father, Ging Freecss, is a Hunter he has never met. Mito will let him take the exam only if he catches the biggest fish in the swamp, sure that he cannot; he waits for days with his rod and does it. He sails to become a Hunter and to learn about his father.',
+        it: 'È cresciuto sull’Isola Balena con Myto, che lo cresce da quando era in fasce. Suo padre, Ging Freecss, è un Hunter che non ha mai conosciuto. Myto gli lascia sostenere l’esame solo se pesca il pesce più grosso della palude, sicura che non ci riuscirà; lui ce la fa con la sua canna. Parte con la nave per diventare Hunter e per sapere di più su suo padre.',
+        en: 'He has grown up on Whale Island with Mito, who has raised him since he was a baby. His father, Ging Freecss, is a Hunter he has never met. Mito will let him take the exam only if he catches the biggest fish in the swamp, sure that he cannot; he does it with his rod. He sails to become a Hunter and to learn about his father.',
       },
       status: [{ episode: 1, value: 'alive' }],
       affiliation: [{ episode: 1, value: APPLICANT }],
