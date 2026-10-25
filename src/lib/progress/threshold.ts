@@ -24,17 +24,15 @@ export type ThresholdSentence<S extends SeriesSlug = never> =
   | 'places.firstSeen'
   | 'places.foggedDescription'
   | 'veil.locked'
-  | SeriesSentences[S]
-
-/** The sentences of a series' own features, by series. */
-interface SeriesSentences {
-  'hunter-x-hunter': never
-  'one-piece':
-    | 'fruit.foggedDescription'
-    | 'fruit.opensAt'
-    | 'fruits.lastFruit'
-    | 'ship.foggedDescription'
-}
+  // The sentences of a series' own features, by series.
+  | {
+      'hunter-x-hunter': never
+      'one-piece':
+        | 'fruit.foggedDescription'
+        | 'fruit.opensAt'
+        | 'fruits.lastFruit'
+        | 'ship.foggedDescription'
+    }[S]
 
 /**
  * What a threshold sentence needs to name a record's threshold. `S` names

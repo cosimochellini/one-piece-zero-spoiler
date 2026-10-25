@@ -41,7 +41,6 @@ export function FruitEater({
   more: number
 }): ReactElement {
   const { locale } = useLocale()
-  const t = useSeriesT('one-piece')
   const { series } = useSeriesParams()
   const { ref, strokes } = useDrawing(eater.id, eater.visual)
   const drawn = eater.visual.deferred !== true || strokes.length > 0
@@ -68,17 +67,24 @@ export function FruitEater({
           />
         </span>
       </Link>
-      {more < 1 ? null : (
-        <span {...stylex.props(styles.more)}>
-          <span aria-hidden="true">{`+${String(more)}`}</span>
-          <span {...stylex.props(styles.hidden)}>
-            {more === 1 ?
-              t('fruits.moreEatersOne')
-            : t('fruits.moreEaters', { count: more })}
-          </span>
-        </span>
-      )}
+      {more < 1 ? null : <MoreEaters more={more} />}
     </div>
+  )
+}
+
+/** How many more characters ate the fruit: a number, said in full aloud. */
+function MoreEaters({ more }: { more: number }): ReactElement {
+  const t = useSeriesT('one-piece')
+
+  return (
+    <span {...stylex.props(styles.more)}>
+      <span aria-hidden="true">{`+${String(more)}`}</span>
+      <span {...stylex.props(styles.hidden)}>
+        {more === 1 ?
+          t('fruits.moreEatersOne')
+        : t('fruits.moreEaters', { count: more })}
+      </span>
+    </span>
   )
 }
 
