@@ -11,11 +11,13 @@ import { styles as dialog } from '~/components/BookmarkDialog.styles'
 import { ControlBar } from '~/components/ControlBar'
 import { SearchField } from '~/components/SearchField'
 import { searchStyles } from '~/components/SearchField.styles'
+import { type PlaceLabels, usePlaceLabels } from '~/components/usePlaceLabels'
 import { useSettled } from '~/components/useSettled'
 import { useT } from '~/i18n/LocaleContext'
 import type { Translate } from '~/i18n/types'
 import { parsePlaceParams, type PlaceParams } from '~/lib/search/placeParams'
 import type { SagaPick, StopView } from '~/lib/view/places'
+import type { PlaceWordsView } from '~/lib/view/records'
 
 import { styles } from './-index.styles'
 
@@ -38,6 +40,11 @@ export interface PlaceControlsProps {
   params: PlaceParams
   /** The sagas the open places are filed under, in route order. */
   sagas: SagaPick[]
+  /**
+   * The labels of the open places' words, for a series that labels its
+   * words itself; One Piece's come from the dictionaries.
+   */
+  words?: PlaceWordsView | undefined
 }
 
 /** A pick: the keys to change, each checked as the address would be. */
@@ -51,8 +58,10 @@ export function PlaceControls({
   open,
   params,
   sagas,
+  words,
 }: PlaceControlsProps): ReactElement {
   const t = useT()
+  const labels = usePlaceLabels(words)
   // Every pick goes through the parser, so a default ("all", a blank
   // query) is left out of the address rather than written into it.
   const pick: Pick = (next, replace = false) => {
@@ -62,7 +71,7 @@ export function PlaceControls({
   return (
     <ControlBar
       searchLabel={t('places.searchOpen')}
-      summary={summaryOf(t, params, sagas)}
+      summary={summaryOf(labels, params, sagas)}
       toggleLabel={t('places.controls')}
     >
       <PlaceSearch
@@ -73,6 +82,7 @@ export function PlaceControls({
         total={open.length}
       />
       <PlaceChoices
+        labels={labels}
         open={open}
         params={params}
         pick={pick}
@@ -137,11 +147,13 @@ function PlaceSearch({
 
 /** The sea, type and saga pickers. */
 function PlaceChoices({
+  labels: { allRegions, formOf, region, regionOf },
   open,
   params,
   pick,
   sagas,
 }: {
+  labels: PlaceLabels
   open: StopView[]
   params: PlaceParams
   pick: Pick
@@ -152,13 +164,13 @@ function PlaceChoices({
   return (
     <div {...stylex.props(styles.choices)}>
       <Picker
-        label={t('places.sea')}
+        label={region}
         onPick={(next) => {
           pick({ sea: next })
         }}
         options={withAll(
-          t('places.allSeas'),
-          counted(open, ({ sea }) => [sea, t(`sea.${sea}`)]),
+          allRegions,
+          counted(open, ({ sea }) => [sea, regionOf(sea)]),
         )}
         value={params.sea ?? ''}
       />
@@ -169,7 +181,7 @@ function PlaceChoices({
         }}
         options={withAll(
           t('places.allForms'),
-          counted(open, ({ form }) => [form, t(`form.${form}`)]),
+          counted(open, ({ form }) => [form, formOf(form)]),
         )}
         value={params.form ?? ''}
       />
@@ -254,7 +266,7 @@ function counted(
 
 /** The folded bar's words: "New World · Island · “wano”". */
 function summaryOf(
-  t: Translate,
+  { allRegions, formOf, regionOf }: PlaceLabels,
   { form, q = '', saga, sea }: PlaceParams,
   sagas: SagaPick[],
 ): string {
@@ -262,8 +274,8 @@ function summaryOf(
   const query = q.trim()
 
   return [
-    t(sea === undefined ? 'places.allSeas' : `sea.${sea}`),
-    ...(form === undefined ? [] : [t(`form.${form}`)]),
+    sea === undefined ? allRegions : regionOf(sea),
+    ...(form === undefined ? [] : [formOf(form)]),
     ...(title === undefined ? [] : [title]),
     ...(query === '' ? [] : [`“${query}”`]),
   ].join(' · ')

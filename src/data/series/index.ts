@@ -1,9 +1,12 @@
-import type { SeriesArchive } from '~/data/types'
+import type { PlaceWords, SeriesArchive } from '~/data/types'
 import {
   HUNTER_X_HUNTER_SERIES,
   ONE_PIECE_SERIES,
   type Series,
 } from '~/lib/progress/series'
+
+import { HUNTER_X_HUNTER_PLACE_WORDS } from './hunter-x-hunter/placeWords'
+import { ONE_PIECE_PLACE_WORDS } from './one-piece/placeWords'
 
 /** The single registry consumed by runtime, scripts and spoiler gates. */
 export interface ListedSeries {
@@ -16,6 +19,13 @@ export interface ListedSeries {
    * answer 404, the hub lists it as coming, and the sitemap leaves it out.
    */
   open: boolean
+  /**
+   * The place words its pages may print, with where their labels come from.
+   * Read statically, unlike the archive: a small table, kept off the client
+   * and off the description, which the hub is sent (a region's id can be a
+   * record's).
+   */
+  placeWords: PlaceWords
   slug: string
   /**
    * The `api.php` of the wiki the `verify:*` scripts read for its English
@@ -29,6 +39,7 @@ export const ONE_PIECE: ListedSeries = {
   slug: ONE_PIECE_SERIES.slug,
   folder: 'one-piece',
   open: true,
+  placeWords: ONE_PIECE_PLACE_WORDS,
   wiki: {
     en: 'https://onepiece.fandom.com/api.php',
     it: 'https://onepiece.fandom.com/it/api.php',
@@ -50,6 +61,7 @@ const HUNTER_X_HUNTER: ListedSeries = {
   slug: HUNTER_X_HUNTER_SERIES.slug,
   folder: 'hunter-x-hunter',
   open: false,
+  placeWords: HUNTER_X_HUNTER_PLACE_WORDS,
   wiki: {
     en: 'https://hunterxhunter.fandom.com/api.php',
     it: 'https://it.wikipedia.org/w/api.php',
@@ -71,6 +83,19 @@ export const SERIES: ListedSeries[] = [ONE_PIECE, HUNTER_X_HUNTER]
 export const OPEN_SERIES: ListedSeries[] = SERIES.filter(({ open }) => open)
 
 const loaded = new Map<string, Promise<SeriesArchive>>()
+
+/**
+ * A filed series' place words. Filed rather than open, because the gates and
+ * the sweep print the pages of a series before it opens; a reader only ever
+ * reaches the server with an open one.
+ */
+export function placeWordsOf(slug: string): PlaceWords {
+  const series = SERIES.find((entry) => entry.slug === slug)
+  if (series === undefined) {
+    throw new Error(`Unknown series: ${slug}`)
+  }
+  return series.placeWords
+}
 
 /**
  * Public metadata only, with unknown slugs rejected before any archive loads.

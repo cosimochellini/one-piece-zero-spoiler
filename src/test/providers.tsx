@@ -53,6 +53,8 @@ export interface RenderOptions {
   trial?: boolean
   /** The address the router believes the page is at. Defaults to `/<locale>`. */
   path?: string
+  /** The series the page belongs to; One Piece's on its addresses by default. */
+  series?: BookmarkSeries
 }
 
 /**
@@ -74,7 +76,13 @@ export interface RenderOptions {
  */
 export function renderWithProviders(
   ui: ReactElement,
-  { locale = 'en', bookmark = null, path, trial = false }: RenderOptions = {},
+  {
+    locale = 'en',
+    bookmark = null,
+    path,
+    series,
+    trial = false,
+  }: RenderOptions = {},
 ): RenderResult & { router: TestRouter } {
   const router = contextRouter([path ?? `/one-piece/${locale}`])
 
@@ -86,7 +94,7 @@ export function renderWithProviders(
           <BookmarkProvider
             initialBookmark={bookmark}
             initialTrial={trial}
-            series={seriesAt(path ?? `/one-piece/${locale}`)}
+            series={series ?? seriesAt(path ?? `/one-piece/${locale}`)}
           >
             {/*
               A component that reads a streamed loader slot with `use()`
@@ -135,7 +143,7 @@ export interface RouteRenderOptions extends RenderOptions {
  */
 export async function renderOnRoute(
   ui: ReactElement,
-  { locale = 'en', bookmark = null, path, pattern }: RouteRenderOptions,
+  { locale = 'en', bookmark = null, path, pattern, series }: RouteRenderOptions,
 ): Promise<RenderResult> {
   const rootRoute = createRootRoute()
   const page = createRoute({
@@ -146,7 +154,7 @@ export async function renderOnRoute(
         <LocaleProvider locale={locale}>
           <BookmarkProvider
             initialBookmark={bookmark}
-            series={seriesAt(path ?? `/one-piece/${locale}`)}
+            series={series ?? seriesAt(path ?? `/one-piece/${locale}`)}
           >
             {ui}
           </BookmarkProvider>

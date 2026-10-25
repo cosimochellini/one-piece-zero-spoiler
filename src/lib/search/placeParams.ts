@@ -1,6 +1,5 @@
 import { matchFolded } from '~/lib/search/fold'
 import type { StopView } from '~/lib/view/places'
-import type { PlaceForm, Sea } from '~/lib/view/records'
 
 /**
  * The places page's own search parameters: the sea, the kind and the saga
@@ -13,50 +12,21 @@ import type { PlaceForm, Sea } from '~/lib/view/records'
  * the bookmark's `ep`, `s` and `ch` (`src/lib/progress/linkBookmark.ts`).
  */
 export interface PlaceParams {
-  form?: PlaceForm
+  form?: string
   q?: string
   /** A saga by its place in route order, from 1. */
   saga?: number
-  sea?: Sea
+  sea?: string
 }
 
-// Keyed by every member of the union, so a sea or a form added to it does not
-// compile until it is listed here too.
-const SEAS = new Set<string>(
-  Object.keys({
-    'east-blue': true,
-    'grand-line': true,
-    'calm-belt': true,
-    'red-line': true,
-    'new-world': true,
-  } satisfies Record<Sea, true>),
-)
-
-const FORMS = new Set<string>(
-  Object.keys({
-    archipelago: true,
-    city: true,
-    fortress: true,
-    island: true,
-    prison: true,
-    region: true,
-    restaurant: true,
-    sea: true,
-    ship: true,
-    town: true,
-    train: true,
-    village: true,
-  } satisfies Record<PlaceForm, true>),
-)
-
-/** Whether a value is one of the seas the pages print. */
-export function isSea(value: unknown): value is Sea {
-  return typeof value === 'string' && SEAS.has(value)
-}
-
-/** Whether a value is one of the place forms the pages print. */
-export function isForm(value: unknown): value is PlaceForm {
-  return typeof value === 'string' && FORMS.has(value)
+/**
+ * Whether a value can be a region or a form: any word. Which words a series
+ * has is its own (`PlaceWords`), and the route that parses the address does
+ * not know the series yet; a word no open place holds is dropped by
+ * `reachedParams`, as one the reader has not reached is.
+ */
+function isWord(value: unknown): value is string {
+  return typeof value === 'string' && value !== ''
 }
 
 /** A saga's place in route order: a whole number from 1. */
@@ -65,16 +35,17 @@ function isSaga(value: unknown): value is number {
 }
 
 /**
- * The parameters a query string names, each one checked: an unknown value
- * is left out, which is its default. A sea or a saga the reader has not
- * reached is a valid value that matches nothing open, as a typed query can.
+ * The parameters a query string names, each one checked: a value of the
+ * wrong shape is left out, which is its default. A sea, a form or a saga
+ * the reader has not reached, or the series does not have, is a valid value
+ * that matches nothing open, as a typed query can.
  */
 export function parsePlaceParams(search: Record<string, unknown>): PlaceParams {
   const { form, q, saga, sea } = search
 
   return {
-    ...(isSea(sea) && { sea }),
-    ...(isForm(form) && { form }),
+    ...(isWord(sea) && { sea }),
+    ...(isWord(form) && { form }),
     ...(isSaga(saga) && { saga }),
     // Blank is no query; anything else is kept as typed, spaces and all, so
     // the field bound to it never loses a space mid-word.

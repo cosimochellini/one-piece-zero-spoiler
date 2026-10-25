@@ -17,6 +17,7 @@ import {
   EXTRA,
   judge,
   MAX_CLIENT_BYTES,
+  placeWordCanaries,
   proseCanaries,
   slugCanaries,
   slugsFrom,
@@ -471,5 +472,44 @@ describe('emitted server archive boundaries', () => {
     expect(unreadable).toContain('missing')
     expect(unreadable).toContain('server.js')
     expect(unreadable).toContain('archive.js')
+  })
+})
+
+describe('the place word canaries', () => {
+  const own = {
+    folder: 'other-series',
+    placeWords: {
+      dictionary: false,
+      regions: {
+        'dark-continent': { en: 'Dark Continent', it: 'Continente Oscuro' },
+      },
+      forms: { tower: { en: 'Tower', it: 'Torre' } },
+    },
+  }
+  const dictionary = {
+    folder: 'one-piece',
+    placeWords: { dictionary: true, regions: { 'east-blue': true }, forms: {} },
+  }
+
+  it('looks for the distinct words and labels of a series that labels its own', () => {
+    expect(
+      placeWordCanaries([dictionary, own]).map(({ phrase }) => phrase),
+    ).toStrictEqual(['dark-continent', 'Dark Continent', 'Continente Oscuro'])
+  })
+
+  it('fails a client chunk that ships them', () => {
+    const chunk = {
+      bytes: 40,
+      name: 'places.js',
+      text: 'const w={"dark-continent":{en:"Dark Continent"}}',
+    }
+
+    expect(judge([chunk], placeWordCanaries([own])).found).toHaveLength(2)
+  })
+
+  it('reads every listed series', async () => {
+    const { SERIES } = await importArchive('data/series/index.ts')
+
+    expect(() => placeWordCanaries(SERIES)).not.toThrow()
   })
 })

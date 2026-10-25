@@ -8,18 +8,20 @@ import type {
   ShipDetail,
   VisitView,
 } from '~/lib/view/places'
-import type { DocumentHead, RecordView, Sea, Slot } from '~/lib/view/records'
+import type { DocumentHead, RecordView, Slot } from '~/lib/view/records'
 
 import { headFor, type HeadKeys } from './head.server'
 import { portOf, reachedShips, sagaNumberOf, shipOf } from './places.server'
-import { printedSea } from './printed.server'
+import { printedRegion } from './printed.server'
 import { recordOf } from './project.server'
 import type { Reader } from './reader.server'
 
 /** A stop's sea on the stretch of chart, or `null` for one with no dossier. */
-function seaOf(place: Entity, r: Reader): null | Sea {
+function seaOf(place: Entity, r: Reader): null | string {
   const region = r.archive.placeDossierOf(place)?.region
-  return region === undefined ? null : printedSea(region)
+  return region === undefined ? null : (
+      printedRegion(region, r.archive.series.slug)
+    )
 }
 
 /**
@@ -89,7 +91,11 @@ export function placePage(
       next: neighbourOf(order[index + 1], r),
       // Under fog the page places nothing and draws nothing: where the place
       // lies and how it looks are what the fog is for.
-      chart: open ? chartOf(entity, order, r) : null,
+      // A series without the world map has none to draw.
+      chart:
+        open && r.archive.series.features.worldMap ?
+          chartOf(entity, order, r)
+        : null,
       drawings: open ? drawingsOf(entity, r) : [],
       visits: open ? visitsOf(entity, r) : [],
       natives: open ? nativesFor(entity, r) : [],

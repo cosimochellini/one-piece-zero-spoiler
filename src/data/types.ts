@@ -136,6 +136,41 @@ export interface Vocabulary {
 }
 
 /**
+ * The place words a series' pages may print, each region and form of its
+ * vocabulary, and where their labels come from. The server prints no other
+ * word (`~/server/archive/printed.server.ts`). Held by the registry
+ * (`placeWordsOf` in `~/data/series`), never sent whole: a page is sent the
+ * labels of the words its open places use, and nothing else.
+ */
+export type PlaceWords<V extends Vocabulary = Vocabulary> =
+  DictionaryPlaceWords<V> | OwnPlaceWords<V>
+
+/**
+ * Words the shared dictionaries label (One Piece's `sea.*`, `form.*`,
+ * `places.sea`), which every page already ships: its pages send no label.
+ */
+export interface DictionaryPlaceWords<V extends Vocabulary = Vocabulary> {
+  dictionary: true
+  forms: Record<V['form'], true>
+  regions: Record<V['region'], true>
+}
+
+/**
+ * A series' own words in each locale, sent with a page for the words its
+ * open places use, so a reader is never sent the name of a region or a
+ * form no place they have reached is filed under.
+ */
+export interface OwnPlaceWords<V extends Vocabulary = Vocabulary> {
+  /** The region picker's first option: every region. */
+  allRegions: LocalizedText
+  dictionary: false
+  forms: Record<V['form'], LocalizedText>
+  /** What a region is called: the picker's name, and a place's fact. */
+  region: LocalizedText
+  regions: Record<V['region'], LocalizedText>
+}
+
+/**
  * One affiliation entry: the prose, and the groups it names as ids of the
  * series' own vocabulary the pages can sort by (One Piece's factions). The
  * tags change exactly when the prose does, because they sit on the same

@@ -13,38 +13,33 @@
  *   #728); theme is the project's locked system and does not rotate
  * · #676: the ships band at the foot is gone; each ship has her own page,
  *   reached from her peek on the chart */
-import { ClientOnly, createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@tanstack/react-router'
 import { createIsomorphicFn } from '@tanstack/react-start'
 import { getRequestHeader } from '@tanstack/react-start/server'
 import type { ReactElement } from 'react'
 
-import { ArchivePage } from '~/components/ArchivePage'
 import type { Orientation } from '~/components/chartGeometry'
-import { SeaChart } from '~/components/SeaChart'
 import { measuredOrientation } from '~/components/useChartOrientation'
-import { useT } from '~/i18n/LocaleContext'
 import { isLocale } from '~/i18n/locales'
-import { useBookmark } from '~/lib/progress/BookmarkContext'
 import { parsePlaceParams } from '~/lib/search/placeParams'
 import { describeNamedPage } from '~/routes/$locale/-head'
 import { usePeek } from '~/routes/$series/$locale/-peek'
-import { useScrollBackOnceTall } from '~/routes/$series/$locale/-scrollBack'
 import { liftPort, loadPlaces } from '~/server/api'
 
-import { PlaceIndex } from './-index'
-import { usePlacePicks } from './-params'
+import { PlacesBody } from './-page'
 
 export const Route = createFileRoute('/$series/$locale/places/')({
   // The index's picks and its query live in the address, so a
   // filtered index can be shared and Back steps through the picks. An
   // unknown value falls back to its default.
   validateSearch: parsePlaceParams,
-  // Awaited, not streamed: the chart is the page.
+  // Awaited, not streamed: the chart, or the index without one, is the
+  // page. Only a series with the world map has an orientation to serve it in.
   loader: async ({ context }) => ({
     ...(await loadPlaces({
       data: { series: context.series.slug, locale: context.locale },
     })),
-    served: servedOrientation(),
+    served: context.series.features.worldMap ? servedOrientation() : null,
   }),
   head: ({ match, params }) => {
     return isLocale(params.locale) ?
@@ -58,62 +53,23 @@ export const Route = createFileRoute('/$series/$locale/places/')({
       : {}
   },
   // The served chart's orientation is guessed from these request headers
-  // (`servedOrientation`), so the HTML varies by them too.
-  headers: () => ({ Vary: 'User-Agent, Sec-CH-UA-Mobile' }),
+  // (`servedOrientation`), so the HTML varies by them too; a series without
+  // the map serves the same HTML to every browser.
+  headers: ({ loaderData }) =>
+    loaderData?.served === null ? {} : { Vary: 'User-Agent, Sec-CH-UA-Mobile' },
   component: PlacesPage,
 })
 
-/**
- * The places page (Hallmark macrostructure Map / Diagram).
- *
- * The brand line and a count, then the sea chart: the route as far as the
- * reader has come, the ship on it and fog past it. Under it, the index of
- * the places the reader has reached: a search and three picks (sea, type,
- * saga) in a bar, the places by sea, each a link to its own
- * page, and one line for the stops still under fog. The picks and the
- * search light the same stops on the chart and leave the rest faint. The
- * ships the crew sails travel on the chart, and each has a page of her own.
- *
- * The index is drawn only in the browser, once the page has hydrated: its
- * data is in the payload already, and leaving it out of the served HTML
- * keeps the render inside a Worker's CPU limit (#781). Each place's own page
- * is served in full.
- */
+/** The places page: the loaded stops, drawn by `PlacesBody`. */
 function PlacesPage(): ReactElement {
-  const t = useT()
-  const { bookmark } = useBookmark()
-  const { covered, filed, open, sagas, served, ships } = Route.useLoaderData()
-
-  const peekPort = usePeek(liftPort)
-  const { lit, ...picks } = usePlacePicks(open)
-  // Always on: after a client visit the index is drawn at once, the page is
-  // already tall, and the hook stops at its first look.
-  useScrollBackOnceTall(true)
+  const { served, ...page } = Route.useLoaderData()
 
   return (
-    <ArchivePage
-      count={t('places.count', { count: filed })}
-      title={t('places.title')}
-    >
-      <SeaChart
-        bookmark={bookmark}
-        covered={covered}
-        lit={lit}
-        open={open}
-        peekPort={peekPort}
-        sagas={sagas}
-        served={served}
-        ships={ships}
-      />
-      <ClientOnly>
-        <PlaceIndex
-          covered={covered}
-          open={open}
-          sagas={sagas}
-          {...picks}
-        />
-      </ClientOnly>
-    </ArchivePage>
+    <PlacesBody
+      page={page}
+      peekPort={usePeek(liftPort)}
+      served={served}
+    />
   )
 }
 

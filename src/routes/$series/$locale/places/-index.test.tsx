@@ -49,6 +49,7 @@ function Index({
       <pre aria-label="lit">{lit === null ? 'all' : [...lit].join(',')}</pre>
       <PlaceIndex
         covered={covered}
+        mapAbove
         open={stops}
         sagas={sagas}
         {...picks}
