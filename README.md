@@ -115,8 +115,8 @@ The most useful contributions need no code:
   with a checklist.
 - **Stories, places and devil fruits** that the wiki does not have yet.
 
-[CONTRIBUTING.md](CONTRIBUTING.md) explains where each kind of entry lives,
-which tests guard it and how pull requests are released.
+[CONTRIBUTING.md](CONTRIBUTING.md) covers setup, checks, sources and pull
+requests, with links to the relevant guides.
 
 ## Stack
 
