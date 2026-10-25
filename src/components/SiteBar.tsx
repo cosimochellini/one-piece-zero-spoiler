@@ -4,10 +4,11 @@ import type { ReactElement } from 'react'
 
 import { EpisodeMark } from '~/components/EpisodeMark'
 import { LocaleSwitch } from '~/components/LocaleSwitch'
+import { useDeclares } from '~/components/useDeclares'
 import { useLocale } from '~/i18n/LocaleContext'
 import type { TranslationKey } from '~/i18n/types'
 import { useBookmark, useSeriesParams } from '~/lib/progress/BookmarkContext'
-import { hasPage, type Series, type SeriesPage } from '~/lib/progress/series'
+import type { SeriesPage } from '~/lib/progress/series'
 import {
   BAR,
   color,
@@ -76,7 +77,7 @@ export function SiteBar(): ReactElement {
                 {described?.name[locale] ?? series.slug}
               </span>
             </Link>
-            <SeriesNavigation described={described} />
+            <SeriesNavigation />
           </div>
           <EpisodeMark />
         </>
@@ -99,19 +100,15 @@ const NAV = [
 
 /**
  * Content navigation belongs to the series selected by the route, and lists
- * the pages it declares. With no description (a bare test router, never a
- * series page) it lists them all.
+ * the pages it declares.
  */
-function SeriesNavigation({
-  described,
-}: {
-  described: Series | undefined
-}): ReactElement {
+function SeriesNavigation(): ReactElement {
   const { t } = useLocale()
   const params = useSeriesParams()
+  const declares = useDeclares()
   const links: ReactElement[] = []
   for (const { label, page, to } of NAV) {
-    if (described === undefined || hasPage(described, page)) {
+    if (declares(page)) {
       links.push(
         <Link
           key={to}
