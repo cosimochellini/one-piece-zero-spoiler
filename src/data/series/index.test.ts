@@ -144,6 +144,8 @@ describe.each(LOADED_SERIES)(
           [...new Set(episodes)].toSorted(byNumber()),
         )
 
+        // That the pin is within the record's chapter and the dial is held
+        // with every declared chapter in `~/data/archive.test.ts`.
         for (const { chapter, episode, value } of stages) {
           expect(chapter, entity.id).toBeDefined()
           expect(episode, entity.id).toBeGreaterThan(entity.revealedAtEpisode)
@@ -156,6 +158,9 @@ describe.each(LOADED_SERIES)(
     it('reads every redrawing its art module files', async () => {
       // An exported `REDRAWINGS` the archive does not read would be tested by
       // nothing above and shown to nobody.
+      // `importActual` takes a type argument; a bare dynamic import is `any`,
+      // and `import.meta.glob` makes fallow read the two art modules as
+      // duplicate exports.
       const art = await vi.importActual<{ REDRAWINGS?: Redrawings }>(
         `./${folder}/art/index.ts`,
       )

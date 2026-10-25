@@ -1,7 +1,5 @@
 import { describe, expect, it } from 'vitest'
 
-import { getEntity } from '~/data/series/one-piece/entities'
-
 import { DRAWINGS, REDRAWINGS } from '.'
 import { alabastaArt, alabastaRedrawn } from './alabasta'
 import { dressrosaArt, dressrosaRedrawn } from './dressrosa'
@@ -63,15 +61,5 @@ describe('the redrawings', () => {
     const total = modules.reduce((sum, m) => sum + Object.keys(m).length, 0)
 
     expect(Object.keys(REDRAWINGS)).toHaveLength(total)
-  })
-
-  it('redraw a record that exists', () => {
-    for (const [id, timeline] of Object.entries(REDRAWINGS)) {
-      expect(getEntity(id), id).toBeDefined()
-      // The server looks the first drawing up by `visual.art` and the
-      // redrawings by id; the two are one key space, and this is the tell.
-      expect(Object.keys(DRAWINGS), id).toContain(id)
-      expect(timeline.length, id).toBeGreaterThan(0)
-    }
   })
 })

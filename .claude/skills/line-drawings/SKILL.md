@@ -111,8 +111,9 @@ Grade every drawing you make or review. Only A ships.
   episode, the chapter that same scene is in, or chapter readers see it
   early; when the true chapter is below the record's, pin the record's (see
   the rulings below). `src/data/series/index.test.ts` holds every series'
-  redrawings, read as the pages read them, to the house style, a true
-  `chapter:`, an episode after the threshold and ascending order. The rest of this paragraph is One Piece's
+  redrawings, read as the pages read them, to the house style, a `chapter:`
+  pin, an episode after the threshold and ascending order; that the pin is
+  the true chapter is a review check. The rest of this paragraph is One Piece's
   mechanics: the entry goes in the `<saga>Redrawn` timeline of the saga that
   first drew the record, and `src/server/archive/slices.test.ts` walks every
   stage from the data
@@ -243,32 +244,34 @@ arc|character|place`; `--saga` is One Piece's), on the series' own paper.
   on land, a ground line at y 150 or an object standing on its own base,
   with `shadow()` at y 150–160 (the tower on its ground, the gavel on its
   block, the console on its table); at sea, on `...SEA` with no shadow (the
-  exam ship in a storm).
+  exam ship in a storm). An object that is itself the map or the ground
+  needs no shadow (the Kakin map, over a wave).
 - **Nen and later looks.** Weapons and looks in Hunter x Hunter are often Nen
   abilities shown arcs later, so the threshold check bites hardest here: no
   later weapon, form, Nen ability or costume. Kurapika at the Hunter Exam is
   the wooden swords; his chains are a Nen ability first shown in Yorknew City.
-  Nen, from the first episode and chapter that show the ability, is open
-  `ambient` lines around the object, never a glow or a fill, and never the
-  accent, which stays on the record's own mark (owner, #797). A Nen ability
-  that becomes the object itself (the chained hand) is drawn as the object,
-  and may carry the accent like any identity mark.
-- **Redrawings** follow the rulings in "Each kind of record": a true chapter
-  pin, a new drawing on a death or a costume change. A Nen ability that
-  becomes part of the object (Kurapika's chained hand) is a stage; a
-  one-fight technique is not. The series has none yet, so the first one
-  files the timeline: export `REDRAWINGS` (keyed by record id) from
-  `art/index.ts` and file it as the series' `redrawing` timeline, the one
-  table the chapter table's anchors and every dated read (`datedOf`,
-  `reachedOf`, `latestOf`, `redrawn`, `timelines`) come from. With the
-  engine's dated helpers that means passing it as the `redrawing` reader in
-  `archive.ts`, as One Piece does. Done when `archive.datedOf(record,
-  'redrawing')` returns it and `src/data/series/index.test.ts` passes: it
-  holds every stage to the house style, a true `chapter:`, an episode after
+  Nen is drawn only when the record's threshold already shows it, as open
+  `ambient` lines around the object: never a glow or a fill, and never the
+  accent, which always sits on a real object the show shows, chains
+  included. Nen is never added after the threshold, so no redrawing is
+  made for Nen alone (owner, #797).
+- **Redrawings** follow the rulings in "Each kind of record": a `chapter:`
+  pin at the true chapter, a new drawing on a death or a costume change. A
+  new weapon that becomes part of the object is a stage; a one-fight
+  technique is not. The series has none yet, so the
+  first one files the timeline: export `REDRAWINGS` (`Redrawings`, keyed by
+  record id) from `art/index.ts`, and in `hunter-x-hunter/archive.ts` pass
+  it to `filedTimelines(DOSSIERS, { redrawing: (id) => REDRAWINGS[id] })`,
+  as One Piece does in `one-piece/chapter-table.ts`. The chapter table's
+  anchors and every dated read (`datedOf`, `reachedOf`, `latestOf`,
+  `redrawn`, `timelines`) then follow. Done when `archive.datedOf(record,
+  'redrawing')` returns it and the tests pass: `src/data/series/index.test.ts`
+  holds every stage to the house style, a `chapter:` pin, an episode after
   the threshold and ascending order, and fails on an exported `REDRAWINGS`
-  the archive does not read. The stage walk in `slices.test.ts` is One
-  Piece's: until Hunter x Hunter has one, review checks each redrawing's
-  episode and chapter pair by hand against the wiki.
+  the archive does not read; `src/data/archive.test.ts` holds the pin within
+  the record's chapter and the dial. The stage walk in `slices.test.ts` is
+  One Piece's: until Hunter x Hunter has one, review checks each
+  redrawing's episode and chapter pair by hand against the wiki.
 - **Research** reads the Hunter x Hunter Wiki API
   (`https://hunterxhunter.fandom.com/api.php`): `|manga debut` and
   `|anime debut` (the `Episode N (2011)` entry) give a record's pair, the
