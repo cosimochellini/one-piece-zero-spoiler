@@ -1,8 +1,9 @@
 import * as stylex from '@stylexjs/stylex'
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, DefaultGlobalNotFound } from '@tanstack/react-router'
 import type { ReactElement } from 'react'
 
 import { ArchivePage } from '~/components/ArchivePage'
+import { useDeclares } from '~/components/useDeclares'
 import { useLocale } from '~/i18n/LocaleContext'
 /* Hallmark · pre-emit critique: P5 H5 E4 S5 R4 V4 */
 /* Hallmark · genre: atmospheric · macrostructure: Stage · theme: Sea Chart
@@ -133,6 +134,11 @@ function FruitPage(): ReactElement {
 /** `/fruits/<not-a-fruit>`: says so, and points at the sheet. */
 function FruitNotFound(): ReactElement {
   const { t } = useLocale()
+  const declares = useDeclares()
+  // A series with no fruits page gets the plain 404, with no link back to it.
+  if (!declares('fruits')) {
+    return <DefaultGlobalNotFound />
+  }
 
   return (
     <ArchivePage

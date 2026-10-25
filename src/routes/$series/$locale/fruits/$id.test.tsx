@@ -2,6 +2,7 @@ import { fireEvent, screen } from '@testing-library/react'
 import { type ReactElement, useState } from 'react'
 import { describe, expect, it, vi } from 'vitest'
 
+import { HUNTER_X_HUNTER_SERIES, ONE_PIECE_SERIES } from '~/lib/progress/series'
 import type { DocumentHead } from '~/lib/view/records'
 import {
   coveredSlot,
@@ -11,7 +12,7 @@ import {
   peekPending,
   peekTo,
 } from '~/test/fixtures'
-import { ep, renderWithProviders } from '~/test/providers'
+import { ep, renderUnderSeries, renderWithProviders } from '~/test/providers'
 
 import { Route } from './$id'
 import { EatersBand, KinBand, SagaBand } from './-$id.bands'
@@ -401,5 +402,44 @@ describe('the rail of the same saga', () => {
     expect(
       screen.getByRole('region', { name: 'Other fruits of this saga' }),
     ).toBeInTheDocument()
+  })
+})
+
+/** The fruit route's own 404, as the router renders it. */
+function FruitNotFound(): ReactElement {
+  const NotFound = Route.options.notFoundComponent
+  if (NotFound === undefined) {
+    throw new TypeError('the fruit route has no 404')
+  }
+
+  return (
+    <NotFound
+      data={undefined}
+      isNotFound
+      routeId="/$series/$locale/fruits/$id"
+    />
+  )
+}
+
+describe('a fruit address that is not found', () => {
+  // Its own 404 links back to the album, which only a series with fruits has;
+  // any other series gets the router's plain one.
+  it.each([
+    {
+      series: ONE_PIECE_SERIES,
+      said: 'Fruit not found',
+      back: ['/one-piece/en/fruits'],
+    },
+    { series: HUNTER_X_HUNTER_SERIES, said: 'Not Found', back: [] },
+  ])('says $said on $series.slug', async ({ series, said, back }) => {
+    await renderUnderSeries(<FruitNotFound />, {
+      path: `/${series.slug}/en/fruits/missing`,
+      series,
+    })
+
+    expect(screen.getByText(said)).toBeInTheDocument()
+    expect(
+      screen.queryAllByRole('link').map((link) => link.getAttribute('href')),
+    ).toStrictEqual(back)
   })
 })
