@@ -290,6 +290,11 @@ export const itDictionary: Dictionary = {
     'Un personaggio di {series} che compare per la prima volta nel capitolo {threshold}. Imposta il segnalibro per leggere la pagina.',
   'character.pageTitle': '{name} | Zero Spoiler',
   'character.back': 'Tutti i personaggi',
+  'character.relationshipHistoryFor': 'Storia del legame con {name}',
+  'character.relationshipHistory': 'Storia del legame',
+  'character.relationshipAt.episode': 'Visibile dall’episodio {threshold}',
+  'character.relationshipAt.chapter': 'Visibile dal capitolo {threshold}',
+  'character.relationshipAt.season': 'Visibile da {threshold}',
   'character.relationshipsTitle': 'Relazioni',
   'character.relationshipsLede':
     'I legami importanti del personaggio fino al tuo segnalibro.',

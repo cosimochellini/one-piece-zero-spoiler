@@ -295,6 +295,11 @@ export const enDictionary = {
     'A {series} character who first appears in chapter {threshold}. Set your bookmark to read this page.',
   'character.pageTitle': '{name} | Zero Spoiler',
   'character.back': 'All characters',
+  'character.relationshipHistoryFor': 'Relationship history with {name}',
+  'character.relationshipHistory': 'Relationship history',
+  'character.relationshipAt.episode': 'Available from episode {threshold}',
+  'character.relationshipAt.chapter': 'Available from chapter {threshold}',
+  'character.relationshipAt.season': 'Available from {threshold}',
   'character.relationshipsTitle': 'Relationships',
   'character.relationshipsLede':
     'The important people connected to this character, up to your bookmark.',

@@ -2125,10 +2125,26 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'mansherry': {
-      // Episode 714 / chapter 774, pages 2–15. Pinned source evidence:
-      // docs/content-provenance/relationships-810.md. These facts do not
-      // infer romance, reciprocity or continuing captivity after the rescue.
+      // Sourced intent at 647/717, held behind this character's 693/755 gate,
+      // then the rescue at 714/774. Evidence: relationships-810.md and
+      // relationships-811.md in docs/content-provenance. No romance inferred.
       relationships: [
+        {
+          // Rescue effort is told at 647/717; the wiki's character entry
+          // opens at 693/755, so the connection waits for that later gate.
+          episode: 693,
+          chapter: 755,
+          value: [
+            {
+              character: 'leo',
+              type: { it: 'Tentativo di soccorso', en: 'Rescue effort' },
+              summary: {
+                it: 'Leo vuole liberare Mansherry dalla prigionia.',
+                en: 'Leo wants to free Mansherry from captivity.',
+              },
+            },
+          ],
+        },
         {
           episode: 714,
           chapter: 774,

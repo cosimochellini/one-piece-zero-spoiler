@@ -18,6 +18,7 @@ import type { Gated } from './spoiler'
 export type ThresholdSentence<S extends SeriesSlug = never> =
   | 'character.foggedDescription'
   | 'character.opensAt'
+  | 'character.relationshipAt'
   | 'characters.sectionOpensAt'
   | 'chart.opensAt'
   | 'home.storyAt'
