@@ -190,13 +190,8 @@ const WORST_CHUNKS = 5
  * the index served in full without it. The measured client build is 673,741
  * bytes; the ceiling retains 1 KB headroom. One Piece's payloads are
  * unchanged; no other series' words reach the client.
- * Raised for #770 on 2026-10-25: the bar links the wordmark to the hub and
- * the series' name to its home, and a series page holds its bar to two rows
- * up to 56rem. The measured client build is MEASURED bytes; the ceiling
- * retains 1 KB headroom. The name is the series' public description, already
- * on the page; nothing new reaches the client.
  */
-export const MAX_CLIENT_BYTES = 999_999
+export const MAX_CLIENT_BYTES = 674_741
 
 /** Where every series' folder is. */
 const SERIES_DIR = 'src/data/series'
