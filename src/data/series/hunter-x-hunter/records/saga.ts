@@ -16,7 +16,7 @@ export interface HunterEntity extends Entity {
  * affiliation is prose alone, and the pages sort no one by faction (#760).
  */
 export interface HunterVocabulary extends Vocabulary {
-  form: 'island' | 'port'
+  form: 'city' | 'forest' | 'island' | 'mountain' | 'port' | 'wetland'
   group: never
   region: 'islands' | 'mainland'
 }

@@ -86,12 +86,13 @@ const EXPECTED: Record<string, Expected> = {
     namesSaidEarly: true,
   },
   // What it files on 2026-10-25: the arcs, and the Hunter Exam's road to the
-  // exam (#760). Small enough to hold at the real counts.
+  // exam and first two phases (#760). Held at the real counts.
   'hunter-x-hunter': {
     kinds: [
       'affiliation',
       'allRegions',
       'copy',
+      'epithet',
       'form',
       'landmark',
       'log',
@@ -101,14 +102,14 @@ const EXPECTED: Record<string, Expected> = {
       'summary',
     ],
     least: {
-      affiliations: 7,
+      affiliations: 16,
       arcs: 7,
-      characters: 7,
+      characters: 16,
       chronicles: 0,
       linkedOrigins: 4,
-      places: 2,
-      statuses: 7,
-      timelines: 19,
+      places: 6,
+      statuses: 16,
+      timelines: 38,
       visits: 0,
     },
     namesSaidEarly: true,

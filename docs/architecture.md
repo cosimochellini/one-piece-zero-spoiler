@@ -126,11 +126,11 @@ checks this block.
 
 | Thing             | Count                                              |
 | ----------------- | -------------------------------------------------- |
-| Records           | 16                                                 |
-| Characters        | 7                                                  |
-| Arcs, places      | 7 · 2                                              |
+| Records           | 29                                                 |
+| Characters        | 16                                                 |
+| Arcs, places      | 7 · 6                                              |
 | Saga modules      | 7                                                  |
-| Line drawings     | 16, one per record, plus 0 redrawings of 0 records |
+| Line drawings     | 29, one per record, plus 0 redrawings of 0 records |
 | Chronicle stories | 0, for 0 characters                                |
 
 <!-- End of the generated counts. -->

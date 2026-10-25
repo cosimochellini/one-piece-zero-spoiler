@@ -25,7 +25,7 @@
  *      (`placeWords` in the series list) sends a page the labels of the
  *      words its open places use, and the client holds none: each word and
  *      label distinct enough not to occur by accident, and not already held
- *      by the dictionaries every page ships, is looked for in the chunks, so
+ *      by the dictionaries every page ships, is looked for as a quoted token, so
  *      a table shipped whole, which would name regions a reader has not
  *      reached, fails the gate. A series left with no such word, or
  *      dictionaries that do not load, leave the gate unusable rather than
@@ -166,20 +166,26 @@ export function clientChunks(clientDir) {
  * What the gate makes of a build. Pure, so the decision can be tested without
  * one: the reading of the disk is the caller's job.
  * @param {{bytes: number, name: string, text: string}[]} chunks The scripts.
- * @param {{file: string, phrase: null | string}[]} canaries What to look for.
+ * @param {{file: string, phrase: null | string, quoted?: boolean}[]} canaries What to look for.
  * @returns {{found: {chunk: string, file: string, phrase: string}[], ok: boolean, total: number, unreadable: string[]}} The verdict.
  */
 export function judge(chunks, canaries) {
   const unreadable = canaries
     .filter((canary) => canary.phrase === null)
     .map((canary) => canary.file)
-  const found = canaries.flatMap(({ file, phrase }) => {
+  const found = canaries.flatMap(({ file, phrase, quoted }) => {
     if (phrase === null) {
       return []
     }
 
     return chunks
-      .filter((chunk) => chunk.text.includes(phrase))
+      .filter((chunk) =>
+        quoted ?
+          ["'", '"', '`'].some((quote) =>
+            chunk.text.includes(`${quote}${phrase}${quote}`),
+          )
+        : chunk.text.includes(phrase),
+      )
       .map((chunk) => ({ chunk: chunk.name, file, phrase }))
   })
   const total = chunks.reduce((sum, chunk) => sum + chunk.bytes, 0)
@@ -338,9 +344,11 @@ const DISTINCT_WORD = /[\s-]|^.{8,}$/u
  * value ("Fortezza", `fortress`) is in the chunks legitimately, so it would
  * fail the gate for no leak. A series left with none is one unreadable
  * canary, so the gate exits as unusable rather than vouching for nothing.
+ * Quoted tokens avoid matching client identifiers such as a map’s `mountain`
+ * style or a longer unrelated label.
  * @param {{folder: string, placeWords: {dictionary: boolean, forms: Record<string, unknown>, regions: Record<string, unknown>}}[]} series The series list.
  * @param {string[]} [shipped] The dictionaries' keys and values.
- * @returns {{file: string, phrase: null | string}[]} What no client chunk may hold.
+ * @returns {{file: string, phrase: null | string, quoted?: boolean}[]} What no client chunk may hold.
  */
 export function placeWordCanaries(series, shipped = []) {
   return series.flatMap(({ folder, placeWords }) => {
@@ -362,7 +370,7 @@ export function placeWordCanaries(series, shipped = []) {
     // None left is a table the gate cannot look for: unreadable, not clean.
     return kept.length === 0 ?
         { file, phrase: null }
-      : kept.map((phrase) => ({ file, phrase }))
+      : kept.map((phrase) => ({ file, phrase, quoted: true }))
   })
 }
 

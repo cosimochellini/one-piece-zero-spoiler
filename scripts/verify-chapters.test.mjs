@@ -16,6 +16,22 @@ const page = (wikitext, text = '') => ({ title: 't', wikitext, text })
 const boxed = (title, first) => ({ ...page(`| first = ${first}`), title })
 
 describe('the page a record is read from', () => {
+  it.each([
+    ['killua', 'Killua', 'Killua Zoldyck'],
+    ['hisoka', 'Hisoka', 'Hisoka Morow'],
+    ['netero', 'Netero', 'Isaac Netero'],
+  ])(
+    'reads %s from its full wiki title without exposing it in the record',
+    (id, en, title) => {
+      expect(
+        titlesOf(
+          { id, kind: 'character', name: name(en, en) },
+          'hunter-x-hunter',
+        ),
+      ).toEqual([[title]])
+    },
+  )
+
   it('reads a character from the English edition name, straight apostrophe', () => {
     expect(
       titlesOf({
