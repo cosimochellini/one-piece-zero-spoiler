@@ -51,6 +51,11 @@ function lookUp<T>(
   return label === undefined ? word : print(label)
 }
 
+/** A label the server sent, printed as it came. */
+function own(label: string): string {
+  return label
+}
+
 /**
  * The labels of a page's place words: the ones the server sent with it, for
  * a series that labels its words itself (`PlaceWordsView`), or One Piece's,
@@ -59,8 +64,6 @@ function lookUp<T>(
 export function usePlaceLabels(words?: PlaceWordsView): PlaceLabels {
   const t = useT()
   if (words !== undefined) {
-    const own = (label: string): string => label
-
     return {
       allRegions: words.allRegions,
       formOf: (form) => lookUp(words.forms, form, own),
