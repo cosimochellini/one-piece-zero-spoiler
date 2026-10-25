@@ -1,11 +1,12 @@
 import { screen, within } from '@testing-library/react'
 import type { ReactElement } from 'react'
-import { describe, expect, it, vi } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
-import type { PlaceDetail, StopView } from '~/lib/view/places'
-import type { RecordView } from '~/lib/view/records'
+import type { PlaceDetail, PlacesView, StopView } from '~/lib/view/places'
+import type { PlaceWordsView, RecordView } from '~/lib/view/records'
 import {
   at,
+  coveredRecord,
   coveredSlot,
   dossier,
   openSlot,
@@ -18,13 +19,16 @@ import { ep, renderOnRoute, renderWithProviders } from '~/test/providers'
 
 import { PlaceEntry } from './-$id.entry'
 import { PlaceIndex } from './-index'
+import { PlacesBody } from './-page'
 import { usePlacePicks } from './-params'
 
-// Imported inside the factory, which runs before this file's imports do.
-vi.mock(import('~/lib/view/placeWords'), async (importOriginal) => {
-  const { withOtherSeries } = await import('~/test/otherSeries')
-  return withOtherSeries(await importOriginal())
-})
+/** The words a series labels itself, as the server sends them. */
+const words: PlaceWordsView = {
+  region: 'Continent',
+  allRegions: 'All continents',
+  regions: { 'yorbia': 'Yorbia', 'dark-continent': 'Dark Continent' },
+  forms: { tower: 'Tower', swamp: 'Swamp' },
+}
 
 const open = [
   stop({
@@ -33,6 +37,7 @@ const open = [
     ...at(3),
     sea: 'yorbia',
     form: 'tower',
+    chart: null,
   }),
   stop({
     id: 'numere-wetlands',
@@ -40,6 +45,7 @@ const open = [
     ...at(4),
     sea: 'yorbia',
     form: 'swamp',
+    chart: null,
   }),
   stop({
     id: 'lake-mobius',
@@ -47,8 +53,16 @@ const open = [
     ...at(5),
     sea: 'dark-continent',
     form: 'swamp',
+    chart: null,
   }),
 ]
+
+const onRoute = {
+  bookmark: ep(5),
+  path: '/other-series/en/places',
+  pattern: '/$series/$locale/places',
+  series: OTHER_BOOKMARK,
+}
 
 function Index({ stops }: { stops: StopView[] }): ReactElement {
   const { needle, onParams, params, shown } = usePlacePicks(stops)
@@ -56,12 +70,14 @@ function Index({ stops }: { stops: StopView[] }): ReactElement {
   return (
     <PlaceIndex
       covered={[]}
+      mapAbove={false}
       needle={needle}
       onParams={onParams}
       open={stops}
       params={params}
       sagas={[{ number: 1, title: 'Hunter Exam' }]}
       shown={shown}
+      words={words}
     />
   )
 }
@@ -73,14 +89,22 @@ function options(name: string): string[] {
     .map((option) => option.textContent)
 }
 
+/** A places page without the world map, at this split. */
+function page(over: Partial<PlacesView>): PlacesView {
+  return {
+    covered: [],
+    filed: 3,
+    open: [],
+    sagas: [],
+    ships: [],
+    words,
+    ...over,
+  }
+}
+
 describe('a series’ own place words', () => {
   it('group its places index and fill its pickers', async () => {
-    await renderOnRoute(<Index stops={open} />, {
-      bookmark: ep(5),
-      path: '/other-series/en/places',
-      pattern: '/$series/$locale/places',
-      series: OTHER_BOOKMARK,
-    })
+    await renderOnRoute(<Index stops={open} />, onRoute)
 
     expect(
       screen
@@ -103,7 +127,7 @@ describe('a series’ own place words', () => {
     )
   })
 
-  it('label a place’s facts on its page, in the page’s locale', () => {
+  it('label a place’s facts on its page', () => {
     const detail: PlaceDetail = {
       chart: null,
       drawings: [],
@@ -116,7 +140,16 @@ describe('a series’ own place words', () => {
           id: 'trick-tower',
           name: 'Torre dei Trucchi',
           chart: null,
-          dossier: dossier({ sea: 'yorbia', form: 'tower' }),
+          dossier: dossier({
+            sea: 'yorbia',
+            form: 'tower',
+            words: {
+              region: 'Continente',
+              allRegions: 'Tutti i continenti',
+              regions: { yorbia: 'Yorbia' },
+              forms: { tower: 'Torre' },
+            },
+          }),
         }),
       ),
       total: 3,
@@ -139,5 +172,42 @@ describe('a series’ own place words', () => {
     expect(screen.getByText('Continente')).toBeVisible()
     expect(screen.getByText('Yorbia')).toBeVisible()
     expect(screen.getByText('Torre')).toBeVisible()
+  })
+})
+
+describe('the places page without the world map', () => {
+  it('draws the index in place of the map', async () => {
+    const { container } = await renderOnRoute(
+      <PlacesBody
+        page={page({ open })}
+        peekPort={peekPending()}
+        served={null}
+      />,
+      onRoute,
+    )
+
+    expect(container.querySelector('[data-chart-orientation]')).toBeNull()
+    expect(
+      screen.getByRole('heading', { level: 2, name: 'Yorbia' }),
+    ).toBeVisible()
+  })
+
+  it('says everything is under fog with nothing reached', async () => {
+    const { container } = await renderOnRoute(
+      <PlacesBody
+        page={page({
+          covered: [
+            coveredRecord({ kind: 'place', handle: 'h1', ...at(3) }),
+            coveredRecord({ kind: 'place', handle: 'h2', ...at(4) }),
+          ],
+        })}
+        peekPort={peekPending()}
+        served={null}
+      />,
+      { ...onRoute, bookmark: ep(1) },
+    )
+
+    expect(container.querySelector('[data-chart-orientation]')).toBeNull()
+    expect(screen.getByText('2 stops under fog')).toBeVisible()
   })
 })

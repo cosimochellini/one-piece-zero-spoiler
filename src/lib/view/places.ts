@@ -9,6 +9,7 @@ import type { Gated } from '~/lib/progress/spoiler'
 import type { ChartPoint } from '~/lib/view/chart'
 import type {
   CoveredRecord,
+  PlaceWordsView,
   PortView,
   RecordView,
   Searchable,
@@ -50,6 +51,11 @@ export interface PlacesView {
   sagas: SagaPick[]
   /** The ships the reader has reached, in their order. */
   ships: ShipView[]
+  /**
+   * The labels of the words the open stops use, for a series that labels
+   * its words itself; absent for One Piece.
+   */
+  words?: PlaceWordsView
 }
 
 /** One stop the reader has reached, as a place's map draws it. */

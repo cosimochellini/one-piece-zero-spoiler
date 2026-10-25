@@ -27,6 +27,7 @@ import { useSeriesParams, useThreshold } from '~/lib/progress/BookmarkContext'
 import type { StopView } from '~/lib/view/places'
 import type {
   CoveredRecord,
+  PlaceWordsView,
   PortView,
   RecordView,
   ShipView,
@@ -156,9 +157,13 @@ function PlaceCard({
   port,
 }: {
   onDismiss: () => void
-  port: RecordView & { form?: string | undefined; sea?: string | undefined }
+  port: RecordView & {
+    form?: string | undefined
+    sea?: string | undefined
+    words?: PlaceWordsView | undefined
+  }
 }): ReactElement {
-  const { formOf, regionOf } = usePlaceLabels()
+  const { formOf, regionOf } = usePlaceLabels(port.words)
   const threshold = useThreshold()
   const meta =
     port.sea === undefined || port.form === undefined ?
@@ -247,6 +252,7 @@ export function FogPeek({
                 ...port,
                 form: port.dossier?.form,
                 sea: port.dossier?.sea,
+                words: port.dossier?.words,
               }}
             />
           )

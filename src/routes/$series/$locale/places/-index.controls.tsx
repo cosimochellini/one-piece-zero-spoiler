@@ -17,6 +17,7 @@ import { useT } from '~/i18n/LocaleContext'
 import type { Translate } from '~/i18n/types'
 import { parsePlaceParams, type PlaceParams } from '~/lib/search/placeParams'
 import type { SagaPick, StopView } from '~/lib/view/places'
+import type { PlaceWordsView } from '~/lib/view/records'
 
 import { styles } from './-index.styles'
 
@@ -39,6 +40,11 @@ export interface PlaceControlsProps {
   params: PlaceParams
   /** The sagas the open places are filed under, in route order. */
   sagas: SagaPick[]
+  /**
+   * The labels of the open places' words, for a series that labels its
+   * words itself; One Piece's come from the dictionaries.
+   */
+  words?: PlaceWordsView | undefined
 }
 
 /** A pick: the keys to change, each checked as the address would be. */
@@ -52,9 +58,10 @@ export function PlaceControls({
   open,
   params,
   sagas,
+  words,
 }: PlaceControlsProps): ReactElement {
   const t = useT()
-  const labels = usePlaceLabels()
+  const labels = usePlaceLabels(words)
   // Every pick goes through the parser, so a default ("all", a blank
   // query) is left out of the address rather than written into it.
   const pick: Pick = (next, replace = false) => {
@@ -75,6 +82,7 @@ export function PlaceControls({
         total={open.length}
       />
       <PlaceChoices
+        labels={labels}
         open={open}
         params={params}
         pick={pick}
@@ -139,18 +147,19 @@ function PlaceSearch({
 
 /** The sea, type and saga pickers. */
 function PlaceChoices({
+  labels: { allRegions, formOf, region, regionOf },
   open,
   params,
   pick,
   sagas,
 }: {
+  labels: PlaceLabels
   open: StopView[]
   params: PlaceParams
   pick: Pick
   sagas: SagaPick[]
 }): ReactElement {
   const t = useT()
-  const { allRegions, formOf, region, regionOf } = usePlaceLabels()
 
   return (
     <div {...stylex.props(styles.choices)}>

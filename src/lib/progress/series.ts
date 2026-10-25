@@ -39,6 +39,12 @@ export interface Series extends BookmarkSeries {
     factions: boolean
     filler: boolean
     fruits: boolean
+    /**
+     * Whether its places pages draw One Piece's world map. Without it the
+     * index, grouped by region, is the places page, and a place's page has
+     * no map; the server sends no point to draw.
+     */
+    worldMap: boolean
   }
   kinds: EntityKind[]
   name: Record<Locale, string>
@@ -89,7 +95,13 @@ export const ONE_PIECE_SERIES: Series = {
   theme: 'one-piece',
   units: ['episode', 'season', 'chapter'],
   kinds: ['arc', 'character', 'fruit', 'place', 'ship'],
-  features: { bounty: true, factions: true, filler: true, fruits: true },
+  features: {
+    bounty: true,
+    factions: true,
+    filler: true,
+    fruits: true,
+    worldMap: true,
+  },
 }
 
 /**
@@ -136,7 +148,13 @@ export const HUNTER_X_HUNTER_SERIES: Series = {
   theme: 'hunter-x-hunter',
   units: ['episode', 'season', 'chapter'],
   kinds: ['arc', 'character', 'place'],
-  features: { bounty: false, factions: false, filler: false, fruits: false },
+  features: {
+    bounty: false,
+    factions: false,
+    filler: false,
+    fruits: false,
+    worldMap: false,
+  },
 }
 
 const RECORD_PAGE = /^(?:characters|fruits|places)$/u

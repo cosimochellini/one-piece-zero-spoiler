@@ -20,6 +20,7 @@ vi.mock(import('~/data/series'), async (original) => {
         factions: false,
         filler: false,
         fruits: false,
+        worldMap: false,
       },
     },
     // The second is told by the anime alone, so no crawler is sent to it.

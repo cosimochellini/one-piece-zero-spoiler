@@ -91,7 +91,11 @@ export function placePage(
       next: neighbourOf(order[index + 1], r),
       // Under fog the page places nothing and draws nothing: where the place
       // lies and how it looks are what the fog is for.
-      chart: open ? chartOf(entity, order, r) : null,
+      // A series without the world map has none to draw.
+      chart:
+        open && r.archive.series.features.worldMap ?
+          chartOf(entity, order, r)
+        : null,
       drawings: open ? drawingsOf(entity, r) : [],
       visits: open ? visitsOf(entity, r) : [],
       natives: open ? nativesFor(entity, r) : [],

@@ -1,9 +1,10 @@
 import type { ReaderArchive } from '~/data/features'
 import type { Entity, LocalizedText } from '~/data/types'
+import type { ChartPoint } from '~/lib/view/chart'
 import type { PlacesView, SagaPick, StopView } from '~/lib/view/places'
 import type { PortView, RecordView, ShipView, Slot } from '~/lib/view/records'
 
-import { printedForm, printedRegion } from './printed.server'
+import { printedForm, printedRegion, wordsOf } from './printed.server'
 import { deferredOf, namedOf, recordOf } from './project.server'
 import type { Reader } from './reader.server'
 
@@ -18,9 +19,14 @@ import type { Reader } from './reader.server'
  */
 export function placesPage(r: Reader): PlacesView {
   const { covered, open, total } = r.split(r.archive.places, stopOf)
+  const words = wordsOf(open, r)
 
   return {
-    ships: reachedShips(r).map((entity) => shipOf(entity, r)),
+    // The ships sail the world map; a series without one has none to draw.
+    ships:
+      r.archive.series.features.worldMap ?
+        reachedShips(r).map((entity) => shipOf(entity, r))
+      : [],
     filed: total,
     // The drawings are most of the stops' bytes, and only the first few ship
     // with them; the rest are asked for as the index nears them.
@@ -29,6 +35,7 @@ export function placesPage(r: Reader): PlacesView {
     ),
     sagas: sagasOf(open, r),
     covered,
+    ...(words !== undefined && { words }),
   }
 }
 
@@ -95,11 +102,21 @@ function stopOf(entity: Entity, r: Reader): StopView {
   return {
     ...recordOf(entity, r),
     ...namedOf(entity, r),
-    chart: r.archive.chartPointOf(entity.id),
+    chart: chartPointOf(entity, r),
     sea: printedRegion(dossier.region, r.archive.series.slug),
     form: printedForm(dossier.form, r.archive.series.slug),
     saga: sagaNumberOf(entity.id, r),
   }
+}
+
+/**
+ * Where a place sits on the world map, or `null` for a series without one:
+ * its archive may file a point, but no page of it draws the map.
+ */
+function chartPointOf(entity: Entity, r: Reader): ChartPoint | null {
+  return r.archive.series.features.worldMap ?
+      r.archive.chartPointOf(entity.id)
+    : null
 }
 
 /** How many stops ship their drawings with them. */
@@ -130,10 +147,15 @@ export function portOf(entity: Entity, r: Reader): PortView {
     dossier === undefined ? undefined : r.archive.getEntity(dossier.arc)
   const { locale } = r
 
+  const words =
+    dossier === undefined ? undefined : (
+      wordsOf([{ sea: dossier.region, form: dossier.form }], r)
+    )
+
   return {
     ...recordOf(entity, r),
     summary: entity.summary[locale],
-    chart: r.archive.chartPointOf(entity.id),
+    chart: chartPointOf(entity, r),
     dossier:
       dossier === undefined ? null : (
         {
@@ -146,6 +168,7 @@ export function portOf(entity: Entity, r: Reader): PortView {
             const record = r.archive.getEntity(filed)
             return record === undefined ? [] : [r.slot(record, recordOf)]
           }),
+          ...(words !== undefined && { words }),
         }
       ),
   }

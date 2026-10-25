@@ -2,7 +2,6 @@ import { describe, expect, it, vi } from 'vitest'
 
 import { filedArchiveOf, SERIES } from '~/data/series'
 import type { Entity, PlaceDossier, SeriesArchive } from '~/data/types'
-import { placeWordsOf } from '~/lib/view/placeWords'
 import { OTHER_SLUG } from '~/test/otherSeries'
 
 import { placePage } from './placePage.server'
@@ -10,79 +9,130 @@ import { placesPage } from './places.server'
 import { readerFor } from './reader.server'
 
 // Imported inside the factory, which runs before this file's imports do.
-vi.mock(import('~/lib/view/placeWords'), async (importOriginal) => {
+vi.mock(import('~/data/series'), async (importOriginal) => {
   const { withOtherSeries } = await import('~/test/otherSeries')
   return withOtherSeries(await importOriginal())
 })
 
 const base = await filedArchiveOf('hunter-x-hunter')
 
-const tower: Entity = {
-  id: 'trick-tower',
-  kind: 'place',
-  revealedAtEpisode: 3,
-  revealedAtChapter: 3,
-  name: { en: 'Trick Tower', it: 'Torre dei Trucchi' },
-  summary: { en: 'A tower.', it: 'Una torre.' },
-  visual: { art: 'hunter-exam-arc', tint: 'yellow' },
+function place(id: string, episode: number): Entity {
+  return {
+    id,
+    kind: 'place',
+    revealedAtEpisode: episode,
+    revealedAtChapter: episode,
+    name: { en: id, it: id },
+    summary: { en: 'A place.', it: 'Un luogo.' },
+    visual: { art: 'hunter-exam-arc', tint: 'yellow' },
+  }
 }
 
-const filed: PlaceDossier = {
-  form: 'tower',
-  region: 'yorbia',
-  arc: 'hunter-exam-arc',
-  landmark: { en: 'No door', it: 'Nessuna porta' },
-  log: { en: 'The exam goes down.', it: 'L’esame scende.' },
-  filedHere: [],
+const tower = place('trick-tower', 3)
+const lake = place('lake-mobius', 60)
+
+function dossierOf(region: string, form: string): PlaceDossier {
+  return {
+    form,
+    region,
+    arc: 'hunter-exam-arc',
+    landmark: { en: 'No door', it: 'Nessuna porta' },
+    log: { en: 'The exam goes down.', it: 'L’esame scende.' },
+    filedHere: [],
+  }
 }
 
-/** A series with one place, filed under this dossier, in its own words. */
-function archiveFiledIn(dossier: PlaceDossier): SeriesArchive {
+/**
+ * A series without the world map, with two places in its own words, the
+ * second far past the bookmark, and a point on the map for each all the
+ * same, which no page of it may send.
+ */
+function archiveFiledIn(towerRegion = 'yorbia'): SeriesArchive {
   const [first, ...rest] = base.sagas
   if (first === undefined) {
     throw new Error('The fixture needs a saga')
   }
-  const entities = [...base.entities, tower]
+  const places = [tower, lake]
+  const entities = [...base.entities, ...places]
+  const dossiers = new Map([
+    [tower.id, dossierOf(towerRegion, 'tower')],
+    [lake.id, dossierOf('dark-continent', 'swamp')],
+  ])
 
   return {
     ...base,
     series: { ...base.series, slug: OTHER_SLUG },
     entities,
     getEntity: (id) => entities.find((entity) => entity.id === id),
-    places: [tower],
-    getPlace: (id) => (id === tower.id ? tower : undefined),
-    placeDossierOf: (entity) => (entity.id === tower.id ? dossier : undefined),
-    sagas: [{ ...first, entries: [...first.entries, tower] }, ...rest],
+    places,
+    getPlace: (id) => places.find((entity) => entity.id === id),
+    placeDossierOf: (entity) => dossiers.get(entity.id),
+    chartPointOf: () => ({ x: 10, y: 20 }),
+    sagas: [{ ...first, entries: [...first.entries, ...places] }, ...rest],
   }
 }
 
-function readerAt(archive: SeriesArchive): ReturnType<typeof readerFor> {
-  return readerFor(archive, { mode: 'episode', episode: 26 }, 'en')
+function readerAt(
+  archive: SeriesArchive,
+  locale: 'en' | 'it' = 'en',
+): ReturnType<typeof readerFor> {
+  return readerFor(archive, { mode: 'episode', episode: 26 }, locale)
 }
 
 describe('a series filed in its own place words', () => {
-  it('sends its places page and a place’s page in them', () => {
-    const r = readerAt(archiveFiledIn(filed))
+  it('sends its places page with the labels of the words it reached', () => {
+    const page = placesPage(readerAt(archiveFiledIn()))
 
-    expect(placesPage(r).open).toMatchObject([
+    expect(page.open).toMatchObject([
       { id: 'trick-tower', sea: 'yorbia', form: 'tower', chart: null },
     ])
+    expect(page.ships).toStrictEqual([])
+    expect(page.words).toStrictEqual({
+      region: 'Continent',
+      allRegions: 'All continents',
+      regions: { yorbia: 'Yorbia' },
+      forms: { tower: 'Tower' },
+    })
+  })
 
-    const page = placePage('trick-tower', r)
+  it('never names a word only a place past the bookmark uses', () => {
+    const r = readerAt(archiveFiledIn())
+    const sent = JSON.stringify([
+      placesPage(r),
+      placePage('trick-tower', r),
+      placePage('lake-mobius', r),
+    ])
 
-    expect(page).toMatchObject({
+    expect(sent).not.toMatch(/dark-continent|Dark Continent|swamp|Swamp/u)
+  })
+
+  it('sends a place’s page with its own labels and no map', () => {
+    const r = readerAt(archiveFiledIn(), 'it')
+
+    expect(placePage('trick-tower', r)).toMatchObject({
       detail: {
         chart: null,
         slot: {
           open: true,
-          record: { dossier: { sea: 'yorbia', form: 'tower' } },
+          record: {
+            chart: null,
+            dossier: {
+              sea: 'yorbia',
+              form: 'tower',
+              words: {
+                region: 'Continente',
+                regions: { yorbia: 'Yorbia' },
+                forms: { tower: 'Torre' },
+              },
+            },
+          },
         },
       },
     })
   })
 
   it('fails on a word outside its own, One Piece’s included', () => {
-    const r = readerAt(archiveFiledIn({ ...filed, region: 'east-blue' }))
+    const r = readerAt(archiveFiledIn('east-blue'))
 
     expect(() => placesPage(r)).toThrow(
       /other-series print no region called 'east-blue'/u,
@@ -93,14 +143,31 @@ describe('a series filed in its own place words', () => {
   })
 })
 
-describe('the place words', () => {
-  it.each(SERIES.map(({ slug }) => slug))('%s has its own', (slug) => {
-    expect(placeWordsOf(slug)).toBeDefined()
+describe('Hunter x Hunter’s place words', () => {
+  it('go through the label path, in each locale', () => {
+    expect(placesPage(readerAt(base)).words).toStrictEqual({
+      region: 'Region',
+      allRegions: 'All regions',
+      regions: {},
+      forms: {},
+    })
+    expect(placesPage(readerAt(base, 'it')).words).toMatchObject({
+      region: 'Regione',
+      allRegions: 'Tutte le regioni',
+    })
+  })
+})
+
+describe('the world map', () => {
+  it('is drawn for One Piece alone', () => {
+    expect(
+      SERIES.filter(({ description }) => description.features.worldMap),
+    ).toMatchObject([{ slug: 'one-piece' }])
   })
 
-  it('draws One Piece’s world map for One Piece alone', () => {
-    expect(SERIES.filter(({ slug }) => placeWordsOf(slug).chart)).toMatchObject(
-      [{ slug: 'one-piece' }],
-    )
+  it('leaves One Piece’s pages unlabelled, its dictionaries label them', async () => {
+    const onePiece = await filedArchiveOf('one-piece')
+
+    expect(placesPage(readerAt(onePiece))).not.toHaveProperty('words')
   })
 })

@@ -13,7 +13,7 @@ import type { PortDossier, ShipEntry } from '~/lib/view/records'
  */
 export function PortFacts({ dossier }: { dossier: PortDossier }): ReactElement {
   const { t } = useLocale()
-  const { formOf, region, regionOf } = usePlaceLabels()
+  const { formOf, region, regionOf } = usePlaceLabels(dossier.words)
 
   return (
     <dl {...stylex.props(styles.facts)}>

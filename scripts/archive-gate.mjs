@@ -21,7 +21,15 @@
  *      is looked for in the chunks too, because a leak there ships names as
  *      literal identifiers rather than as sentences.
  *   3. Source URL canaries for the server-only provenance inventory (#721).
- *   4. A byte budget. The canaries name every module now, but the budget
+ *   4. Place word canaries. A series that labels its place words itself
+ *      (`placeWords` in the series list) sends a page the labels of the
+ *      words its open places use, and the client holds none: each word and
+ *      label distinct enough not to occur by accident is looked for in the
+ *      chunks, so a table shipped whole, which would name regions a reader
+ *      has not reached, fails the gate. One Piece's are its dictionaries'.
+ *      The server holds the tables statically, so these are client canaries
+ *      only.
+ *   5. A byte budget. The canaries name every module now, but the budget
  *      still catches bulk arriving through a shape neither pattern matches.
  *
  * The SSR manifest also proves that every series archive enters through a
@@ -459,6 +467,37 @@ function readBuild(repositoryRoot) {
 }
 
 /**
+ * A place word or label distinct enough not to occur by accident: two words
+ * or a hyphenated one, or eight letters. `Tower` or `Isola` could be anyone's.
+ */
+const DISTINCT_WORD = /[\s-]|^.{8,}$/u
+
+/**
+ * One canary per word and label of every series that labels its place words
+ * itself (`dictionary: false`), distinct enough to look for.
+ * @param {{folder: string, placeWords: {dictionary: boolean, forms: Record<string, unknown>, regions: Record<string, unknown>}}[]} series The series list.
+ * @returns {{file: string, phrase: string}[]} What no client chunk may hold.
+ */
+export function placeWordCanaries(series) {
+  return series.flatMap(({ folder, placeWords }) => {
+    if (placeWords.dictionary) {
+      return []
+    }
+    const file = `${SERIES_DIR}/${folder}/placeWords.ts`
+    const phrases = [placeWords.regions, placeWords.forms].flatMap((table) =>
+      Object.entries(table).flatMap(([word, label]) => [
+        word,
+        ...Object.values(/** @type {Record<string, string>} */ (label)),
+      ]),
+    )
+
+    return [...new Set(phrases)]
+      .filter((phrase) => DISTINCT_WORD.test(phrase))
+      .map((phrase) => ({ file, phrase }))
+  })
+}
+
+/**
  * Every canary: the prose and slugs of every series in the list, and the
  * source URLs. A list that does not load is one unreadable canary, so the
  * gate exits as unusable rather than as a leak.
@@ -485,6 +524,20 @@ export async function canariesOf(repositoryRoot) {
 }
 
 /**
+ * The place word canaries of every series in the list; none when the list
+ * does not load, which `canariesOf` already reports as unreadable.
+ * @returns {Promise<{file: string, phrase: string}[]>} What to look for.
+ */
+async function placeWordCanariesOf() {
+  try {
+    const { SERIES } = await importArchive('data/series/index.ts')
+    return placeWordCanaries(SERIES)
+  } catch {
+    return []
+  }
+}
+
+/**
  * Reads the build, judges it, and says so.
  * @returns {Promise<number>} The process exit code.
  */
@@ -501,7 +554,7 @@ async function main() {
   }
 
   const canaries = await canariesOf(repositoryRoot)
-  const verdict = judge(chunks, canaries)
+  const verdict = judge(chunks, [...canaries, ...(await placeWordCanariesOf())])
 
   if (verdict.unreadable.length > 0) {
     console.error(

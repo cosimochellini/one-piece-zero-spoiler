@@ -34,6 +34,11 @@ export interface PlaceIndexProps extends Omit<
   'count' | 'fieldId'
 > {
   covered: CoveredRecord[]
+  /**
+   * Whether the world map is drawn above the index. It says everything is
+   * under fog when nothing is reached; without it the index says so.
+   */
+  mapAbove: boolean
   /** The query, already folded. Empty matches everything. */
   needle: string
   /** The open stops the picks and the query leave, in the reader's order. */
@@ -41,8 +46,8 @@ export interface PlaceIndexProps extends Omit<
 }
 
 /**
- * The index. Nothing with no place reached: the chart above already says
- * everything is under fog.
+ * The index. With no place reached, nothing under the world map, which
+ * already says everything is under fog, and the fog line alone without it.
  *
  * The picks and the search apply to the open places only. A covered stop has
  * no sea, type or saga in the page, so the stops under fog are one line at
@@ -51,17 +56,18 @@ export interface PlaceIndexProps extends Omit<
  */
 export function PlaceIndex({
   covered,
+  mapAbove,
   needle,
   shown,
   ...controls
 }: PlaceIndexProps): null | ReactElement {
   const { t } = useLocale()
-  const { regionOf } = usePlaceLabels()
+  const { regionOf } = usePlaceLabels(controls.words)
   const fieldId = useId()
   const { onParams, open, params } = controls
 
   if (open.length === 0) {
-    return null
+    return mapAbove ? null : <FogLine count={covered.length} />
   }
 
   return (

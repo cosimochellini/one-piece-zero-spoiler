@@ -5,7 +5,7 @@ import { OTHER_SLUG } from '~/test/otherSeries'
 import { printedFaction, printedForm, printedRegion } from './printed.server'
 
 // Imported inside the factory, which runs before this file's imports do.
-vi.mock(import('~/lib/view/placeWords'), async (importOriginal) => {
+vi.mock(import('~/data/series'), async (importOriginal) => {
   const { withOtherSeries } = await import('~/test/otherSeries')
   return withOtherSeries(await importOriginal())
 })

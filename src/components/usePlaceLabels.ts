@@ -1,8 +1,8 @@
-import { useLocale } from '~/i18n/LocaleContext'
-import { useSeriesParams } from '~/lib/progress/BookmarkContext'
-import { labelOf, type PlaceWords, placeWordsOf } from '~/lib/view/placeWords'
+import { useT } from '~/i18n/LocaleContext'
+import type { TranslationKey } from '~/i18n/types'
+import type { PlaceForm, PlaceWordsView, Sea } from '~/lib/view/records'
 
-/** The selected series' place words, as the page's locale prints them. */
+/** A page's place words, as its locale prints them. */
 export interface PlaceLabels {
   /** The region picker's first option: "All seas" in One Piece. */
   allRegions: string
@@ -14,25 +14,65 @@ export interface PlaceLabels {
   regionOf: (region: string) => string
 }
 
+// One Piece's words, labelled by the shared dictionaries, which every page
+// ships anyway: these keys add no word a reader of another series does not
+// already download. Keyed by every member of the unions, so a sea or a form
+// added to them does not compile until it is labelled here too.
+const SEAS: Record<Sea, TranslationKey> = {
+  'east-blue': 'sea.east-blue',
+  'grand-line': 'sea.grand-line',
+  'calm-belt': 'sea.calm-belt',
+  'red-line': 'sea.red-line',
+  'new-world': 'sea.new-world',
+}
+
+const FORMS: Record<PlaceForm, TranslationKey> = {
+  archipelago: 'form.archipelago',
+  city: 'form.city',
+  fortress: 'form.fortress',
+  island: 'form.island',
+  prison: 'form.prison',
+  region: 'form.region',
+  restaurant: 'form.restaurant',
+  sea: 'form.sea',
+  ship: 'form.ship',
+  town: 'form.town',
+  train: 'form.train',
+  village: 'form.village',
+}
+
+/** A word's label from a table, or the bare word: only ever a bug shown. */
+function lookUp<T>(
+  table: Partial<Record<string, T>>,
+  word: string,
+  print: (label: T) => string,
+): string {
+  const label = Object.hasOwn(table, word) ? table[word] : undefined
+  return label === undefined ? word : print(label)
+}
+
 /**
- * The labels of the selected series' place words (`placeWordsOf`), so a
- * places page prints each series' own words without knowing the series.
+ * The labels of a page's place words: the ones the server sent with it, for
+ * a series that labels its words itself (`PlaceWordsView`), or One Piece's,
+ * from the dictionaries, when it sent none.
  */
-export function usePlaceLabels(): PlaceLabels {
-  const { t } = useLocale()
-  const { locale, series } = useSeriesParams()
-  const words = placeWordsOf(series)
-  // The server sends no word the series does not label, so the bare word is
-  // only ever a bug made visible.
-  const wordOf = (labels: PlaceWords['forms'], word: string): string => {
-    const label = labels[word]
-    return label === undefined ? word : labelOf(label, t, locale)
+export function usePlaceLabels(words?: PlaceWordsView): PlaceLabels {
+  const t = useT()
+  if (words !== undefined) {
+    const own = (label: string): string => label
+
+    return {
+      allRegions: words.allRegions,
+      formOf: (form) => lookUp(words.forms, form, own),
+      region: words.region,
+      regionOf: (region) => lookUp(words.regions, region, own),
+    }
   }
 
   return {
-    allRegions: labelOf(words.allRegions, t, locale),
-    formOf: (form) => wordOf(words.forms, form),
-    region: labelOf(words.region, t, locale),
-    regionOf: (region) => wordOf(words.regions, region),
+    allRegions: t('places.allSeas'),
+    formOf: (form) => lookUp<TranslationKey>(FORMS, form, t),
+    region: t('places.sea'),
+    regionOf: (region) => lookUp<TranslationKey>(SEAS, region, t),
   }
 }
