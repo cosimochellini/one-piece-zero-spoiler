@@ -24,9 +24,12 @@
  *   4. Place word canaries. A series that labels its place words itself
  *      (`placeWords` in the series list) sends a page the labels of the
  *      words its open places use, and the client holds none: each word and
- *      label distinct enough not to occur by accident is looked for in the
- *      chunks, so a table shipped whole, which would name regions a reader
- *      has not reached, fails the gate. One Piece's are its dictionaries'.
+ *      label distinct enough not to occur by accident, and not already held
+ *      by the dictionaries every page ships, is looked for in the chunks, so
+ *      a table shipped whole, which would name regions a reader has not
+ *      reached, fails the gate. A series left with no such word, or
+ *      dictionaries that do not load, leave the gate unusable rather than
+ *      clean. One Piece's are its dictionaries'.
  *      The server holds the tables statically, so these are client canaries
  *      only.
  * The SSR manifest also proves that every series archive enters through a
@@ -322,10 +325,11 @@ const DISTINCT_WORD = /[\s-]|^.{8,}$/u
  * itself (`dictionary: false`), distinct enough to look for, and not found in
  * the copy every page ships: a word or label inside a dictionary's key or
  * value ("Fortezza", `fortress`) is in the chunks legitimately, so it would
- * fail the gate for no leak.
+ * fail the gate for no leak. A series left with none is one unreadable
+ * canary, so the gate exits as unusable rather than vouching for nothing.
  * @param {{folder: string, placeWords: {dictionary: boolean, forms: Record<string, unknown>, regions: Record<string, unknown>}}[]} series The series list.
  * @param {string[]} [shipped] The dictionaries' keys and values.
- * @returns {{file: string, phrase: string}[]} What no client chunk may hold.
+ * @returns {{file: string, phrase: null | string}[]} What no client chunk may hold.
  */
 export function placeWordCanaries(series, shipped = []) {
   return series.flatMap(({ folder, placeWords }) => {
@@ -340,10 +344,14 @@ export function placeWordCanaries(series, shipped = []) {
       ]),
     )
 
-    return [...new Set(phrases)]
+    const kept = [...new Set(phrases)]
       .filter((phrase) => DISTINCT_WORD.test(phrase))
       .filter((phrase) => shipped.every((text) => !text.includes(phrase)))
-      .map((phrase) => ({ file, phrase }))
+
+    // None left is a table the gate cannot look for: unreadable, not clean.
+    return kept.length === 0 ?
+        { file, phrase: null }
+      : kept.map((phrase) => ({ file, phrase }))
   })
 }
 

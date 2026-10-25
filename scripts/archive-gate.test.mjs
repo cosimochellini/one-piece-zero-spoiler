@@ -480,6 +480,20 @@ describe('the place word canaries', () => {
     ).toStrictEqual(['Dark Continent'])
   })
 
+  it('leaves the gate unusable for a series none of whose words is left', () => {
+    const canaries = placeWordCanaries(
+      [own],
+      ['dark-continent', 'Dark Continent', 'Continente Oscuro'],
+    )
+
+    expect(canaries).toStrictEqual([
+      { file: 'src/data/series/other-series/placeWords.ts', phrase: null },
+    ])
+    expect(judge([], canaries).unreadable).toStrictEqual([
+      'src/data/series/other-series/placeWords.ts',
+    ])
+  })
+
   it('fails a client chunk that ships them', () => {
     const chunk = {
       bytes: 40,
