@@ -22,7 +22,7 @@ export interface Counting {
  * codes, which carry their own prefix; everyone else reads `EP 54–60`.
  */
 export function episodesLabel(
-  t: Translate,
+  t: Translate<'one-piece'>,
   { mode, series }: Counting,
   { first, last }: SkipRange,
 ): string {
@@ -40,7 +40,7 @@ export function episodesLabel(
 
 /** `EP 54`, `S03E01`, or `After EP 1027` for an entry with no number. */
 export function placeLabel(
-  t: Translate,
+  t: Translate<'one-piece'>,
   counting: Counting,
   place: FillerPlace,
 ): string {
@@ -61,7 +61,7 @@ export function placeLabel(
 
 /** The one sentence the countdown leads with. */
 export function sentenceOf(
-  t: Translate,
+  t: Translate<'one-piece'>,
   countdown: Countdown,
   { aired, ...counting }: Counting & { aired: number },
 ): string {
@@ -76,7 +76,7 @@ export function sentenceOf(
  * is in: `null` when there is neither.
  */
 export function runSentenceOf(
-  t: Translate,
+  t: Translate<'one-piece'>,
   { inRun, next }: Pick<Countdown, 'inRun' | 'next'>,
   counting: Counting,
 ): null | string {
@@ -103,7 +103,7 @@ export function runSentenceOf(
 
 /** A cell's name: its episode, its kind, and whether it is the reader's. */
 export function cellName(
-  t: Translate,
+  t: Translate<'one-piece'>,
   parts: { here: boolean; kind: FillerKind | null; number: string },
 ): string {
   return [

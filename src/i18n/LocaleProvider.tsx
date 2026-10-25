@@ -2,14 +2,17 @@ import { type ReactElement, type ReactNode, useMemo } from 'react'
 
 import { LocaleContext, type LocaleContextValue } from './LocaleContext'
 import type { Locale } from './locales'
-import { getDictionary, translate } from './translate'
+import { translatorFor } from './translate'
+import type { SeriesCopy } from './types'
 
 /**
  * The locale comes from the URL segment the router matched, not from a
  * browser preference, so the same address always renders the same language.
+ * A page of a series also gets that series' copy, sent by the server.
  */
 export interface LocaleProviderProps {
   children: ReactNode
+  copy?: SeriesCopy | undefined
   locale: Locale
 }
 
@@ -22,13 +25,17 @@ export interface LocaleProviderProps {
  */
 export function LocaleProvider({
   locale,
+  copy,
   children,
 }: LocaleProviderProps): ReactElement {
-  const value = useMemo<LocaleContextValue>(() => {
-    const dictionary = getDictionary(locale)
-
-    return { locale, t: (key, params) => translate(dictionary, key, params) }
-  }, [locale])
+  const value = useMemo<LocaleContextValue>(
+    () => ({
+      locale,
+      series: copy?.slug ?? null,
+      translate: translatorFor(locale, copy),
+    }),
+    [locale, copy],
+  )
 
   return <LocaleContext value={value}>{children}</LocaleContext>
 }

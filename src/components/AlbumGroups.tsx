@@ -12,7 +12,7 @@ import {
   matchesIn,
 } from '~/components/recordMatches'
 import { styles } from '~/components/SpecimenBands.styles'
-import { useT } from '~/i18n/LocaleContext'
+import { useSeriesOnlyT } from '~/i18n/LocaleContext'
 import type {
   CoveredRecord,
   FruitBandView,
@@ -86,6 +86,7 @@ export function AlbumGroups({
   peek,
   words,
 }: AlbumGroupsProps): ReactElement {
+  const t = useSeriesOnlyT('one-piece')
   const lookup = { ...byRef(bands), form }
   const laterTiles = pickedOf(form, lookup.covered, later)
   // A fruit shown in two groups travels from the first one only.
@@ -117,6 +118,7 @@ export function AlbumGroups({
         count={laterTiles.length}
         headingId={`${fieldId}-later`}
         level="h2"
+        t={t}
         words={words}
       >
         <ul {...stylex.props(styles.grid)}>
@@ -174,7 +176,7 @@ function Group({
   needle: string
   peek: (handle: string) => Promise<FruitView>
 }): null | ReactElement {
-  const t = useT()
+  const t = useSeriesOnlyT('one-piece')
   const fog = pickedOf(lookup.form, lookup.covered, group.covered)
   if (matches.length === 0 && fog.length === 0) {
     return null

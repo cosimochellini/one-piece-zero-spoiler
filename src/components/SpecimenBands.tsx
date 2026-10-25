@@ -12,7 +12,7 @@ import { FogBand, type FogTitles } from '~/components/FogBand'
 import { FruitTile, OpenTiles } from '~/components/FruitTile'
 import { matchesIn } from '~/components/recordMatches'
 import { styles } from '~/components/SpecimenBands.styles'
-import { useT } from '~/i18n/LocaleContext'
+import { useSeriesOnlyT } from '~/i18n/LocaleContext'
 import type { Translate, TranslationKey } from '~/i18n/types'
 import { foldName } from '~/lib/search/fold'
 import type { FruitParams } from '~/lib/search/fruitParams'
@@ -24,27 +24,27 @@ import { stickyStyles } from '~/styles/sticky'
 const NUMBER_WIDTH = 2
 
 /** How many fruits a plate holds. One and many are two sentences. */
-function countOf(t: Translate, count: number): string {
+function countOf(t: Translate<'one-piece'>, count: number): string {
   return count === 1 ?
       t('fruits.bandCountOne')
     : t('fruits.bandCount', { count })
 }
 
 /** What a plate's fog band calls itself at each count. */
-const FRUIT_FOG: FogTitles = {
+const FRUIT_FOG: FogTitles<'one-piece'> = {
   allOpen: 'fruits.allOpen',
   hint: 'fruits.foggedHint',
   many: 'fruits.foggedTitle',
   one: 'fruits.foggedTitleOne',
 }
 
-const TITLE_KEY: Record<FruitForm, TranslationKey> = {
+const TITLE_KEY: Record<FruitForm, TranslationKey<'one-piece'>> = {
   logia: 'fruitForm.logia',
   paramecia: 'fruitForm.paramecia',
   zoan: 'fruitForm.zoan',
 }
 
-const LEDE_KEY: Record<FruitForm, TranslationKey> = {
+const LEDE_KEY: Record<FruitForm, TranslationKey<'one-piece'>> = {
   logia: 'fruits.lede.logia',
   paramecia: 'fruits.lede.paramecia',
   zoan: 'fruits.lede.zoan',
@@ -139,11 +139,13 @@ export function AlbumFailed({
 }: {
   onRetry: () => void
 }): ReactElement {
+  const t = useSeriesOnlyT('one-piece')
   return (
-    <LoadFailed
+    <LoadFailed<'one-piece'>
       message="fruits.albumFailed"
       onRetry={onRetry}
       retry="fruits.albumRetry"
+      t={t}
     />
   )
 }
@@ -170,7 +172,7 @@ function Plates({
   fieldId: string
   needle: string
 }): ReactElement {
-  const t = useT()
+  const t = useSeriesOnlyT('one-piece')
   const grouping = groupingOf(t, { ...sent, fieldId, view: params.view })
 
   if (grouping !== undefined) {
@@ -218,6 +220,7 @@ export function Plate({
   needle: string
   peek: (handle: string) => Promise<FruitView>
 }): ReactElement {
+  const t = useSeriesOnlyT('one-piece')
   const headingId = `${fieldId}-${band.form}`
   const matches = matchesIn(band.open, needle)
 
@@ -245,6 +248,7 @@ export function Plate({
       <FogBand
         count={band.covered.length}
         headingId={`${headingId}-fog`}
+        t={t}
         words={FRUIT_FOG}
       >
         <CoveredTiles
@@ -298,7 +302,7 @@ function PlateHead({
   headingId: string
   index: number
 }): ReactElement {
-  const t = useT()
+  const t = useSeriesOnlyT('one-piece')
 
   return (
     <>

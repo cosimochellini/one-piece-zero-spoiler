@@ -1,13 +1,17 @@
-import type { Dictionary, SharedCopy } from '~/i18n/types'
+import type { Dictionary } from '~/i18n/types'
 
-import { onePieceIt } from './one-piece/it'
-
-/** The copy every series shares, typed against `sharedEn`. */
-const sharedIt: SharedCopy = {
+/**
+ * The copy every series shares, in Italian. The `Dictionary` annotation is
+ * load-bearing: drop a key that `en.ts` declares and `npm run typecheck`
+ * fails.
+ *
+ * It is written in Italian, not translated from `en.ts`: each key means the
+ * same thing in both, and the `tone-of-voice` skill in `.claude/skills` sets
+ * the wording. See `en.ts` for why this is not called `it`.
+ */
+export const itDictionary: Dictionary = {
   'site.name': 'Zero Spoiler',
-  'site.title': 'Zero Spoiler | La wiki di One Piece senza spoiler',
-  'site.description':
-    'Una wiki di One Piece che nasconde personaggi, saghe, luoghi e frutti del diavolo oltre l’ultimo episodio visto o l’ultimo capitolo letto.',
+  'site.title': 'Zero Spoiler | La wiki di {series} senza spoiler',
   'hub.title': 'Zero Spoiler | Wiki senza spoiler',
   'hub.description':
     'Wiki senza spoiler, una per serie. Ogni serie ha il suo segnalibro, e le voci che vengono dopo restano nella nebbia.',
@@ -26,12 +30,10 @@ const sharedIt: SharedCopy = {
   'nav.label': 'Pagine',
   'nav.hub': 'Tutte le serie',
 
-  'hero.headline': 'La wiki di One Piece senza spoiler',
+  'hero.headline': 'La wiki di {series} senza spoiler',
   'hero.setBookmark': 'Imposta il segnalibro',
   'hero.changeBookmark': 'Cambia segnalibro · {threshold}',
 
-  'onboarding.lede':
-    'Sposta il cursore lungo East Blue. Le voci fino a quel punto sono visibili, quelle dopo restano nella nebbia. Quando imposti il segnalibro, ogni pagina della wiki funziona così.',
   'onboarding.dial': 'Punto della storia',
   'onboarding.unitEpisode': 'Episodio',
   'onboarding.unitChapter': 'Capitolo',
@@ -40,10 +42,8 @@ const sharedIt: SharedCopy = {
   'onboarding.start': 'Inizio ora · EP 1',
   'onboarding.arcs': 'Saghe',
   'onboarding.cast': 'Personaggi',
-  'onboarding.places': 'Luoghi e navi',
   'onboarding.tryHint':
     'Apri una voce per vederne la pagina a questo punto. Il segnalibro non viene salvato.',
-  'onboarding.tailTitle': 'Dopo East Blue',
   'onboarding.tail':
     'Altre {count} voci restano nella nebbia finché il segnalibro non le raggiunge.',
 
@@ -141,8 +141,6 @@ const sharedIt: SharedCopy = {
   'faq.animeA':
     'Tutti e due. Puoi contare per episodio dell’anime, per stagione ed episodio o per capitolo del manga. Ogni voce ha un numero di episodio e uno di capitolo. Quando il punto esatto è incerto si usa quello più avanti, così è più facile che una voce si apra tardi che presto.',
   'faq.bookmarkQ': 'Dove viene salvato il segnalibro?',
-  'faq.bookmarkA':
-    'In un cookie su questo dispositivo. Il server lo legge prima di generare la pagina, quindi le voci dopo il segnalibro non sono nella pagina che ricevi. Senza segnalibro, questa pagina contiene East Blue per il cursore e niente dopo. Non serve un account e non c’è nessun tracciamento.',
   'faq.peekQ': 'Posso vedere una voce nascosta?',
   'faq.peekA':
     'Sì. Nelle altre pagine della wiki premi “Mostra comunque”. La scelta non viene salvata e le altre voci restano nella nebbia.',
@@ -152,9 +150,7 @@ const sharedIt: SharedCopy = {
     'Avviso sul progetto non ufficiale, contatti per i diritti, privacy e cookie, fonti e licenze.',
   'legal.projectTitle': 'Un progetto non ufficiale',
   'legal.unofficial':
-    'Zero Spoiler è un progetto amatoriale non ufficiale e senza scopo di lucro. Non è affiliato né approvato dai titolari dei diritti di One Piece.',
-  'legal.credits':
-    'One Piece è un’opera di Eiichiro Oda. Crediti dell’anime: © Eiichiro Oda/Shueisha, Toei Animation.',
+    'Zero Spoiler è un progetto amatoriale non ufficiale e senza scopo di lucro. Non è affiliato né approvato dai titolari dei diritti delle serie presenti nella wiki.',
   'legal.creditSource': 'Fonte ufficiale dei crediti',
   'legal.contact': 'Richieste sui diritti e correzioni su GitHub',
   'legal.contactHelp':
@@ -172,18 +168,9 @@ const sharedIt: SharedCopy = {
   'credits.sourcesTitle': 'Condizioni delle fonti',
   'credits.external':
     'Le pagine esterne possono anticipare fatti successivi, anche nei titoli. Aprendo una fonte esci dalla protezione dagli spoiler di questa wiki.',
-  'credits.wikiTerms':
-    'Le One Piece Wiki inglese e italiana dichiarano CC BY-SA 3.0 Unported come licenza predefinita dei testi della comunità. Eccezioni, materiali importati e immagini possono avere condizioni diverse. Fandom consente di attribuire gli autori tramite collegamenti agli articoli a cui hanno contribuito.',
-  'credits.otherTerms':
-    'Non è stata accertata una licenza generale aperta per AnimeFillerList o per la sinossi ufficiale dell’episodio. Le classificazioni e le citazioni delle fonti non autorizzano a copiare testi, immagini o un’intera raccolta. I titoli ufficiali e il materiale di One Piece non vengono offerti come contenuti di proprietà del progetto.',
-  'credits.wikiEn': 'One Piece Wiki inglese',
-  'credits.wikiIt': 'One Piece Wiki italiana',
   'credits.fandomTerms': 'Licenze e attribuzioni Fandom',
   'credits.fandomTermsIt': 'Licenze Fandom in italiano',
-  'credits.fillerList': 'AnimeFillerList: riferimento per le classificazioni',
   'credits.referencesTitle': 'Riferimenti documentati',
-  'credits.coverage':
-    'L’elenco copre il campione verificato il 20 ottobre 2026 e la sostituzione del riassunto verificata il 22 ottobre 2026. Altri testi storici, traduzioni e disegni restano non verificati o con questioni aperte. Questi riferimenti non certificano i diritti su tutte le voci.',
   'credits.bookmark':
     'Sono elencati solo i riferimenti a materiali visibili al tuo segnalibro. La licenza accanto a una fonte riguarda il suo testo, non l’intero archivio.',
   'credits.empty':
@@ -191,19 +178,12 @@ const sharedIt: SharedCopy = {
   'credits.episode': 'Episodio {episode}',
   'credits.scope.dossier': 'Campi della scheda nel campione verificato',
   'credits.scope.chronicle': 'Voce della storia nel campione verificato',
-  'credits.scope.filler':
-    'Titolo dell’opera e riassunto nel campione verificato',
   'credits.scope.title': 'Solo il titolo dell’opera',
   'credits.scope.summary': 'Riassunto sostitutivo',
   'credits.factCheck':
     'Riferimento per il confronto o la verifica dei fatti documentati. Il processo di scrittura storico non è accertato: non si dichiarano testi indipendenti né nuove licenze sui contenuti.',
   'credits.replacement':
     'Entrambi i riassunti sono stati sostituiti con brevi testi basati su fatti verificati nella sinossi ufficiale. La sinossi non è stata tradotta per intero. Non viene assegnata una nuova licenza ai contenuti.',
-  'credits.source.wiki-en':
-    'Contributori della One Piece Wiki inglese: revisione della fonte',
-  'credits.source.wiki-it':
-    'Contributori della One Piece Wiki italiana: revisione della fonte',
-  'credits.source.official': 'ONE PIECE.com: sinossi ufficiale dell’episodio',
   'credits.noOpenLicense': 'Nessuna autorizzazione aperta accertata.',
 
   'privacy.title': 'Privacy e cookie',
@@ -255,12 +235,12 @@ const sharedIt: SharedCopy = {
   'privacy.audit': 'Verifica tecnica e controlli da completare',
 
   'footer.lead':
-    'Una wiki di One Piece che nasconde quello che viene dopo il tuo segnalibro.',
+    'Una wiki di {series} che nasconde quello che viene dopo il tuo segnalibro.',
   'footer.colophon':
     'Tutti i disegni sono fatti per questo sito e non ci sono immagini ufficiali. Il segnalibro viene salvato in un cookie su questo dispositivo.',
 
   'footer.unofficial':
-    'Progetto amatoriale non ufficiale, non approvato dai titolari dei diritti di One Piece.',
+    'Progetto amatoriale non ufficiale, non approvato dai titolari dei diritti di {series}.',
   'footer.sharedLead':
     'Wiki che nascondono quello che viene dopo il tuo segnalibro.',
   'footer.sharedColophon':
@@ -282,10 +262,8 @@ const sharedIt: SharedCopy = {
   'characters.allOpen': 'Non c’è niente nella nebbia: vedi tutti i personaggi.',
   'characters.pageTitle': 'Personaggi | Zero Spoiler',
   'characters.pageDescription':
-    'I personaggi di One Piece, ognuno nascosto fino all’episodio in cui compare per la prima volta.',
+    'I personaggi di {series}, ognuno nascosto fino all’episodio in cui compare per la prima volta.',
   'characters.featuredTitle': 'Personaggi principali',
-  'characters.featuredLede':
-    'La ciurma di Cappello di Paglia e gli altri personaggi chiave della storia.',
   'characters.bookTitle': 'Tutti i personaggi',
   'characters.loading': 'Caricamento dei personaggi…',
   'characters.bookLede':
@@ -305,11 +283,11 @@ const sharedIt: SharedCopy = {
   'character.foggedName': 'Un personaggio nella nebbia',
   'character.foggedTitle': 'Un personaggio nella nebbia | Zero Spoiler',
   'character.foggedDescription.episode':
-    'Un personaggio di One Piece che compare per la prima volta nell’episodio {threshold}. Imposta il segnalibro per leggere la pagina.',
+    'Un personaggio di {series} che compare per la prima volta nell’episodio {threshold}. Imposta il segnalibro per leggere la pagina.',
   'character.foggedDescription.season':
-    'Un personaggio di One Piece che compare per la prima volta in {threshold}. Imposta il segnalibro per leggere la pagina.',
+    'Un personaggio di {series} che compare per la prima volta in {threshold}. Imposta il segnalibro per leggere la pagina.',
   'character.foggedDescription.chapter':
-    'Un personaggio di One Piece che compare per la prima volta nel capitolo {threshold}. Imposta il segnalibro per leggere la pagina.',
+    'Un personaggio di {series} che compare per la prima volta nel capitolo {threshold}. Imposta il segnalibro per leggere la pagina.',
   'character.pageTitle': '{name} | Zero Spoiler',
   'character.back': 'Tutti i personaggi',
   'character.relationshipsTitle': 'Relazioni',
@@ -341,25 +319,20 @@ const sharedIt: SharedCopy = {
     'A questo indirizzo non c’è nessun personaggio. Li trovi tutti nella pagina Personaggi.',
 
   'places.title': 'Luoghi',
-  'places.count':
-    '{count} luoghi, nell’ordine in cui la ciurma li raggiunge. Ognuno si apre all’episodio in cui compare per la prima volta.',
   'places.pageTitle': 'Luoghi | Zero Spoiler',
-  'places.pageDescription':
-    'I luoghi di One Piece nell’ordine in cui la ciurma li raggiunge, ognuno nascosto fino all’episodio in cui compare per la prima volta.',
   'places.stage': 'Tappa {index} di {total}',
   'places.foggedName': 'Un luogo nella nebbia',
   'places.foggedDescription.episode':
-    'Un luogo di One Piece che compare per la prima volta nell’episodio {threshold}. Imposta il segnalibro per leggerne la voce.',
+    'Un luogo di {series} che compare per la prima volta nell’episodio {threshold}. Imposta il segnalibro per leggerne la voce.',
   'places.foggedDescription.season':
-    'Un luogo di One Piece che compare per la prima volta in {threshold}. Imposta il segnalibro per leggerne la voce.',
+    'Un luogo di {series} che compare per la prima volta in {threshold}. Imposta il segnalibro per leggerne la voce.',
   'places.foggedDescription.chapter':
-    'Un luogo di One Piece che compare per la prima volta nel capitolo {threshold}. Imposta il segnalibro per leggerne la voce.',
+    'Un luogo di {series} che compare per la prima volta nel capitolo {threshold}. Imposta il segnalibro per leggerne la voce.',
   'places.firstSeen.episode':
     'Compare per la prima volta nell’episodio {threshold}',
   'places.firstSeen.season': 'Compare per la prima volta in {threshold}',
   'places.firstSeen.chapter':
     'Compare per la prima volta nel capitolo {threshold}',
-  'places.sea': 'Mare',
   'places.form': 'Tipo',
   'places.arc': 'Saga',
   'places.landmark': 'Punto di riferimento',
@@ -373,7 +346,6 @@ const sharedIt: SharedCopy = {
   'places.noMatch': 'Nessun luogo visibile corrisponde a “{query}”.',
   'places.noneShown': 'Nessun luogo visibile corrisponde a questi filtri.',
   'places.showAll': 'Mostra tutti',
-  'places.allSeas': 'Tutti i mari',
   'places.allForms': 'Tutti i tipi',
   'places.saga': 'Saga',
   'places.allSagas': 'Tutte le saghe',
@@ -410,7 +382,6 @@ const sharedIt: SharedCopy = {
   'form.archipelago': 'Arcipelago',
   'form.sea': 'Tratto di mare',
   'form.ship': 'Nave',
-  'form.train': 'Treno del mare',
   'form.prison': 'Prigione',
   'form.fortress': 'Fortezza',
 
@@ -430,13 +401,3 @@ const sharedIt: SharedCopy = {
   'locale.it': 'Italiano',
   'locale.en': 'English',
 }
-
-/**
- * The Italian dictionary. The `Dictionary` annotation is load-bearing: drop a
- * key that `en.ts` declares and `npm run typecheck` fails.
- *
- * It is written in Italian, not translated from `en.ts`: each key means the
- * same thing in both, and the `tone-of-voice` skill in `.claude/skills` sets
- * the wording. See `en.ts` for why this is not called `it`.
- */
-export const itDictionary: Dictionary = { ...sharedIt, ...onePieceIt }

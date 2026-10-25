@@ -8,7 +8,7 @@ import { dialBookmark, type DialPoint, latestStep } from '~/components/dial'
 import { styles } from '~/components/Onboarding.styles'
 import { PortPlate } from '~/components/PortPlate'
 import { formatBounty } from '~/i18n/bounty'
-import { useLocale } from '~/i18n/LocaleContext'
+import { useLocale, useSeriesT, useT } from '~/i18n/LocaleContext'
 import {
   useBookmark,
   useBookmarkSeries,
@@ -135,7 +135,8 @@ function CardBody({
   entry: DemoEntry
   point: DialPoint
 }): ReactElement {
-  const { locale, t } = useLocale()
+  const { locale } = useLocale()
+  const onePiece = useSeriesT('one-piece')
   const facts = [
     { slot: 'epithet', text: latestStep(entry.epithet, point), loud: true },
     { slot: 'role', text: entry.role, loud: false },
@@ -146,7 +147,11 @@ function CardBody({
     },
     {
       slot: 'bounty',
-      text: formatBounty(latestStep(entry.bounty, point), locale, t),
+      // A bounty is One Piece's: on another series' card there is none.
+      text:
+        onePiece === undefined ? undefined : (
+          formatBounty(latestStep(entry.bounty, point), locale, onePiece)
+        ),
       loud: true,
     },
   ].filter((fact) => fact.text !== undefined)
@@ -209,7 +214,7 @@ export function FogCard({
   entry: CoveredRecord | DemoEntry
   point: DialPoint
 }): ReactElement {
-  const { t } = useLocale()
+  const t = useT()
   const series = useBookmarkSeries()
 
   return (

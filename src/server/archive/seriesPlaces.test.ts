@@ -13,6 +13,10 @@ vi.mock(import('~/data/series'), async (importOriginal) => {
   const { withOtherSeries } = await import('~/test/otherSeries')
   return withOtherSeries(await importOriginal())
 })
+vi.mock(import('~/server/copy.server'), async (importOriginal) => {
+  const { withOtherCopy } = await import('~/test/otherSeries')
+  return withOtherCopy(await importOriginal())
+})
 
 const base = await filedArchiveOf('hunter-x-hunter')
 

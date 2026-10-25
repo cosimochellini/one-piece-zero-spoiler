@@ -142,6 +142,18 @@ of text its leak scan reads and the least it files of each thing the shared
 rules in `src/data/archive.test.ts` read. Raise the floors as it files more, so
 no shared rule passes on nothing.
 
+For its copy (#791), a new series needs:
+
+- its dictionary folder, `src/i18n/dictionaries/<series>/en.ts` (typed
+  `satisfies OwnCopy`, so every common key is there) and `it.ts` (typed
+  `SeriesWords<'<series>'>`);
+- its entry in `SeriesCopies` in `src/i18n/types.ts`;
+- its entry in `COPIES` in `src/server/copy.server.ts`;
+- its rights page, wiki licenses and links in `SOURCES` in
+  `src/server/sources.server.ts`;
+- its entry in the per-series sentence map of `ThresholdSentence` in
+  `src/lib/progress/threshold.ts` (`never` when it has no feature of its own).
+
 A few rules that are easy to miss:
 
 - **Drawings** are lists of stroke paths in a 160×200 box: at least four
@@ -304,9 +316,10 @@ An adaptation needs, in the same pull request:
    later than the text. This is a code change: add the revision to
    [`docs/content-provenance/sources.json`](docs/content-provenance/sources.json)
    with every field its entries carry (`revision`, `revisionDate`, `url`,
-   `revisionUrl`, `apiUrl`, `contentSha256`), map the record in
-   `src/server/archive/credits.server.ts`, which today lists only the #719
-   sample, and extend `src/server/archive/credits.test.ts`. A record kind with
+   `revisionUrl`, `apiUrl`, `contentSha256`), map the record in the series'
+   review sample (`credits.ts` in its folder, such as
+   `src/data/series/one-piece/credits.ts`, which today lists only the #719
+   sample), and extend `src/server/archive/credits.test.ts`. A record kind with
    no credit scope yet (`scope` in `src/lib/view/credits.ts`) needs one first.
    [source-credits.md](docs/source-credits.md) has the rules: revision links
    only, nothing sent before the reader's bookmark reaches it. When the credit
@@ -322,7 +335,7 @@ Source: "Episode 1", One Piece Wiki, https://onepiece.fandom.com/index.php?oldid
         "Episodio 1", One Piece Wiki italiana, https://onepiece.fandom.com/it/index.php?oldid=353984, read 2026-10-20
 License: CC BY-SA 3.0 Unported; authors: the pages' contributors (page history)
 Changes: abridged to three sentences and reworded; the Italian is not a translation of the English
-Credit: both revisions in sources.json, mapped in credits.server.ts (already there for this sample)
+Credit: both revisions in sources.json, mapped in one-piece/credits.ts (already there for this sample)
 ```
 
 ### Quotations
@@ -387,11 +400,17 @@ sentences, one term per concept, Italian written by a native speaker and not
 translated from English. `src/i18n/translate.test.ts` fails on an em dash, an
 exclamation mark or a banned phrase in either dictionary.
 
-New interface strings go in `src/i18n/dictionaries/en.ts` and `it.ts`, or, for a
-feature only One Piece has (devil fruits, ships and seas, bounties, factions,
-the filler guide), in `src/i18n/dictionaries/one-piece/`. The Italian dictionary
-is typed against the English one, so a missing key fails `npm run typecheck`,
-and a series' file cannot redefine a shared key.
+New interface strings go in `src/i18n/dictionaries/en.ts` and `it.ts` when every
+series says them word for word (with `{series}` for the series' name), or in the
+series' own folder, `src/i18n/dictionaries/<series>/`, when each series words
+them for itself (the common keys) or when only one series has the feature (One
+Piece's devil fruits, ships and seas, bounties, factions, the filler guide). A
+series' copy stays on the server and reaches a page with its series. The Italian
+dictionary is typed against the English one, so a missing key fails
+`npm run typecheck`, and a series' file cannot redefine a shared key. Read a
+series' own key with `useSeriesT('<series>')`, which is `undefined` on another
+series' page, so branch on it; a component only that series' pages reach uses
+`useSeriesOnlyT('<series>')`.
 
 ## Checks
 

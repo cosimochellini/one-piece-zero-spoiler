@@ -3,7 +3,7 @@ import type { ReactElement } from 'react'
 
 import { styles } from '~/components/FillerCountdown.styles'
 import { episodesLabel } from '~/components/fillerLabels'
-import { useT } from '~/i18n/LocaleContext'
+import { useSeriesOnlyT } from '~/i18n/LocaleContext'
 import type { Translate } from '~/i18n/types'
 import { useBookmarkSeries } from '~/lib/progress/BookmarkContext'
 import type { BookmarkMode } from '~/lib/progress/episode'
@@ -11,7 +11,7 @@ import type { FillerKind } from '~/lib/view/filler'
 
 /** The word under a cell's number: its kind, or "now" for the reader's. */
 function kindLabel(
-  t: Translate,
+  t: Translate<'one-piece'>,
   kind: FillerKind | null,
   here: boolean,
 ): string {
@@ -34,7 +34,7 @@ export function CellFace({
   kind: FillerKind | null
   mode: BookmarkMode
 }): ReactElement {
-  const t = useT()
+  const t = useSeriesOnlyT('one-piece')
   const series = useBookmarkSeries()
 
   return (

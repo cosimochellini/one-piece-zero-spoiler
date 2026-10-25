@@ -90,5 +90,105 @@ export { indexedArchiveEntries }
         messages.filter((message) => message.ruleId === optionalChainRule),
       ).toHaveLength(1)
     })
+
+    // Every module that ships reads the open series only (#758, #791): the
+    // filed list stays out by any spelling, statically or dynamically.
+    it.each([
+      [
+        'a static import',
+        'src/i18n/translate.ts',
+        "import { SERIES } from '~/data/series'\nexport const count = SERIES.length\n",
+        'no-restricted-imports',
+      ],
+      [
+        'a `.ts` specifier',
+        'src/i18n/translate.ts',
+        "import { filedArchiveOf } from '~/data/series/index.ts'\nexport const load = filedArchiveOf\n",
+        'no-restricted-imports',
+      ],
+      [
+        'a bare `..` from a series folder',
+        'src/data/series/one-piece/archive.ts',
+        "import { SERIES } from '..'\nexport const count = SERIES.length\n",
+        'no-restricted-imports',
+      ],
+      [
+        'a dynamic import',
+        'src/i18n/translate.ts',
+        "export async function load(): Promise<unknown> {\n  return import('~/data/series')\n}\n",
+        'no-restricted-syntax',
+      ],
+      [
+        'a template-literal import',
+        'src/i18n/translate.ts',
+        'export async function load(): Promise<unknown> {\n  return import(`~/data/series`)\n}\n',
+        'no-restricted-syntax',
+      ],
+    ])(
+      'bars the filed series through %s',
+      async (_label, file, source, rule) => {
+        const { messages } = await lint(source, path.join(repositoryRoot, file))
+
+        expect(messages.map(({ ruleId }) => ruleId)).toContain(rule)
+      },
+    )
+
+    it.each([
+      [
+        'src/components/SiteFooter.tsx',
+        "import { onePieceEn } from '~/i18n/dictionaries/one-piece/en'",
+      ],
+      [
+        'src/i18n/translate.ts',
+        "import { onePieceEn } from './dictionaries/one-piece/en'",
+      ],
+      [
+        'src/i18n/dictionaries/it.ts',
+        "import { onePieceIt } from './one-piece/it'",
+      ],
+      ['src/styles/themes.ts', "import { COPIES } from '~/server/copy.server'"],
+      [
+        'src/components/SiteFooter.tsx',
+        "import { onePieceEn } from '~/i18n/dictionaries/one-piece/en.js'",
+      ],
+      [
+        'src/components/SiteFooter.tsx',
+        "import { LocaleContext } from '~/i18n/LocaleContext'",
+      ],
+    ])('bars a series’ copy from %s', async (file, statement) => {
+      const { messages } = await lint(
+        `${statement}\nexport const words = [${statement.split(' ', 3)[2] ?? ''}]\n`,
+        path.join(repositoryRoot, file),
+      )
+
+      expect(messages.map(({ ruleId }) => ruleId)).toContain(
+        'no-restricted-imports',
+      )
+    })
+
+    it.each(['src/components/SiteFooter.tsx', 'src/i18n/translate.ts'])(
+      'bars a dynamic import of a series’ copy from %s',
+      async (file) => {
+        const { messages } = await lint(
+          "export async function words(): Promise<unknown> {\n  return import('~/i18n/dictionaries/one-piece/en.js')\n}\n",
+          path.join(repositoryRoot, file),
+        )
+
+        expect(messages.map(({ ruleId }) => ruleId)).toContain(
+          'no-restricted-syntax',
+        )
+      },
+    )
+
+    it('lets the shared dictionaries and a series’ types through', async () => {
+      const { messages } = await lint(
+        "import { enDictionary } from './dictionaries/en'\nimport type { onePieceEn } from './dictionaries/one-piece/en'\nexport const words: [typeof enDictionary, typeof onePieceEn] | null = null\n",
+        path.join(repositoryRoot, 'src/i18n/translate.ts'),
+      )
+
+      expect(
+        messages.filter(({ ruleId }) => ruleId === 'no-restricted-imports'),
+      ).toStrictEqual([])
+    })
   },
 )

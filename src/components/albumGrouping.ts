@@ -13,7 +13,7 @@ import type {
  */
 
 /** What the later sagas' band calls itself at each count. */
-const LATER_FOG: FogTitles = {
+const LATER_FOG: FogTitles<'one-piece'> = {
   allOpen: 'fruits.laterAllOpen',
   hint: 'fruits.foggedHint',
   many: 'fruits.later',
@@ -21,7 +21,7 @@ const LATER_FOG: FogTitles = {
 }
 
 /** What the faction view's band of every covered fruit calls itself. */
-const COVERED_FOG: FogTitles = {
+const COVERED_FOG: FogTitles<'one-piece'> = {
   allOpen: 'fruits.noneFogged',
   hint: 'fruits.foggedHint',
   many: 'fruits.foggedTitle',
@@ -44,7 +44,7 @@ export interface AlbumGroup {
 export interface AlbumGrouping {
   groups: AlbumGroup[]
   later: string[]
-  words: FogTitles
+  words: FogTitles<'one-piece'>
 }
 
 /** The view picked, and what the server sent for the grouped views. */
@@ -59,7 +59,7 @@ export interface GroupedData {
 
 /** The groups of a view, or `undefined` for the Type view's plates. */
 export function groupingOf(
-  t: Translate,
+  t: Translate<'one-piece'>,
   data: GroupedData,
 ): AlbumGrouping | undefined {
   if (data.view === 'saga') {
@@ -93,7 +93,7 @@ function sagaGrouping(sagas: FruitSagaView[], later: string[]): AlbumGrouping {
  * ones after, so the band reads them from there in that order.
  */
 function factionGrouping(
-  t: Translate,
+  t: Translate<'one-piece'>,
   { factions = [], fieldId, later, sagas }: GroupedData,
 ): AlbumGrouping {
   return {

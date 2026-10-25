@@ -3,11 +3,10 @@ import { Link } from '@tanstack/react-router'
 import { type ReactElement, useSyncExternalStore } from 'react'
 
 import { Button } from '~/components/ui/Button'
-import { useDeclares } from '~/components/useDeclares'
-import { useLocale } from '~/i18n/LocaleContext'
+import { type PageEntry, usePageLinks } from '~/components/usePageLinks'
+import { useLocale, useT } from '~/i18n/LocaleContext'
 import type { TranslationKey } from '~/i18n/types'
 import { useSeriesParams } from '~/lib/progress/BookmarkContext'
-import type { SeriesPage } from '~/lib/progress/series'
 import {
   dismissWelcome,
   subscribeWelcome,
@@ -24,16 +23,20 @@ import {
 } from '~/styles/tokens.stylex'
 
 /** Every page the welcome can point to; a series shows those it declares. */
-const PAGES = [
+const PAGES: PageEntry<TranslationKey>[] = [
   {
     page: 'characters',
     to: '/$series/$locale/characters',
     label: 'nav.characters',
   },
   { page: 'places', to: '/$series/$locale/places', label: 'places.title' },
+]
+
+/** One Piece's own pages, in its words. */
+const ONE_PIECE_PAGES: PageEntry<TranslationKey<'one-piece'>>[] = [
   { page: 'fruits', to: '/$series/$locale/fruits', label: 'fruits.title' },
   { page: 'filler', to: '/$series/$locale/filler', label: 'filler.title' },
-] as const satisfies { label: TranslationKey; page: SeriesPage; to: string }[]
+]
 
 /**
  * Shown once, on the first home page after a bookmark is saved from the
@@ -44,16 +47,15 @@ const PAGES = [
  * agree, and the welcome appears once the browser has read the flag.
  */
 export function HomeWelcome(): null | ReactElement {
-  const { locale, t } = useLocale()
+  const { locale } = useLocale()
+  const t = useT()
   const { series } = useSeriesParams()
-  const declares = useDeclares()
+  const pages = usePageLinks(PAGES, ONE_PIECE_PAGES)
   const shown = useSyncExternalStore(subscribeWelcome, welcomeOwed, () => false)
 
   if (!shown) {
     return null
   }
-
-  const pages = PAGES.filter(({ page }) => declares(page))
 
   return (
     <section
@@ -76,7 +78,7 @@ export function HomeWelcome(): null | ReactElement {
                 to={page.to}
                 {...stylex.props(styles.link)}
               >
-                {t(page.label)}
+                {page.label}
               </Link>
             </li>
           )

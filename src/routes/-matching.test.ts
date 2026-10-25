@@ -8,6 +8,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { type Locale, LOCALES } from '~/i18n/locales'
 import { readPreferredLocale } from '~/i18n/readLocale'
+import type { SeriesCopy } from '~/i18n/types'
 import { ONE_PIECE_SERIES, type Series } from '~/lib/progress/series'
 import { seriesDescription } from '~/routes/-series'
 import { themeOf, THEMES } from '~/styles/themes'
@@ -100,9 +101,17 @@ const tree = root.addChildren([
   series.addChildren([seriesLocale.addChildren([home, character])]),
 ])
 
-vi.mock(import('~/routes/-series'), () => ({
-  seriesDescription: vi.fn<(slug: string) => Promise<null | Series>>(),
-}))
+vi.mock(import('~/routes/-series'), async () => {
+  const { copyOf } = await import('~/server/copy.server')
+  const progress = await import('~/lib/progress/series')
+  return {
+    seriesDescription: vi.fn<(slug: string) => Promise<null | Series>>(),
+    // The series' copy is the server's to send; here, One Piece's as it would.
+    seriesCopy: vi
+      .fn<(slug: string) => Promise<SeriesCopy>>()
+      .mockResolvedValue(copyOf(progress.ONE_PIECE_SERIES, 'en')),
+  }
+})
 vi.mock(import('~/i18n/readLocale'), () => ({
   readPreferredLocale: vi.fn<() => Locale>(),
 }))

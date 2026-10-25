@@ -7,7 +7,7 @@ import { SearchField } from '~/components/SearchField'
 import { searchStyles } from '~/components/SearchField.styles'
 import { styles } from '~/components/SpecimenBands.styles'
 import { useSettled } from '~/components/useSettled'
-import { useT } from '~/i18n/LocaleContext'
+import { useSeriesOnlyT } from '~/i18n/LocaleContext'
 import type { Translate } from '~/i18n/types'
 import {
   type AlbumView,
@@ -51,7 +51,7 @@ export function AlbumControls({
   params,
   plates,
 }: AlbumControlsProps): ReactElement {
-  const t = useT()
+  const t = useSeriesOnlyT('one-piece')
   const query = params.q ?? ''
   const trimmed = query.trim()
   const pick: FormPick = params.form ?? 'all'
@@ -111,7 +111,7 @@ export function AlbumControls({
  * picked chip's own number, or that it finds none.
  */
 function statusOf(
-  t: Translate,
+  t: Translate<'one-piece'>,
   {
     choices,
     count,
@@ -134,7 +134,7 @@ function statusOf(
 
 /** The folded bar's words: "Type · Zoan · “gum”". */
 function summaryOf(
-  t: Translate,
+  t: Translate<'one-piece'>,
   { pick, query, view }: { pick: FormPick; query: string; view: AlbumView },
 ): string {
   return [
@@ -164,7 +164,7 @@ function AlbumChoices({
   pick: FormPick
   view: AlbumView
 }): ReactElement {
-  const t = useT()
+  const t = useSeriesOnlyT('one-piece')
 
   return (
     <div {...stylex.props(styles.choices)}>
@@ -194,7 +194,7 @@ function AlbumChoices({
 
 /** The chips: every kind, each with its open fruits and never its covered. */
 function formChoices(
-  t: Translate,
+  t: Translate<'one-piece'>,
   plates: FruitPlateCount[],
 ): Choice<FormPick>[] {
   const all = plates.reduce((sum, plate) => sum + plate.opened, 0)

@@ -12,14 +12,19 @@ import { type ReactElement, Suspense } from 'react'
 
 import { LocaleProvider } from '~/i18n/LocaleProvider'
 import type { Locale } from '~/i18n/locales'
+import type { SeriesCopy } from '~/i18n/types'
 import { BookmarkProvider } from '~/lib/progress/BookmarkProvider'
 import type { Bookmark } from '~/lib/progress/episode'
 import {
   type BookmarkSeries,
+  HUNTER_X_HUNTER_SERIES,
   ONE_PIECE_BOOKMARK,
+  ONE_PIECE_SERIES,
   type Series,
   seriesSlugFromPath,
 } from '~/lib/progress/series'
+import { copyOf } from '~/server/copy.server'
+import { OTHER_SLUG } from '~/test/otherSeries'
 
 /** Test fixtures use One Piece unless a shared page was explicitly requested. */
 function seriesAt(path: string): BookmarkSeries | null {
@@ -27,6 +32,23 @@ function seriesAt(path: string): BookmarkSeries | null {
   return seriesSlugFromPath(url.pathname) === ONE_PIECE_BOOKMARK.slug ?
       ONE_PIECE_BOOKMARK
     : null
+}
+
+/**
+ * The copy of the series a page belongs to, as its route sends it; none on a
+ * shared page. The other-series fixture has no feature of its own, so it
+ * reads Hunter x Hunter's.
+ */
+function copyAt(
+  series: BookmarkSeries | null,
+  locale: Locale,
+): SeriesCopy | undefined {
+  const slug =
+    series?.slug === OTHER_SLUG ? HUNTER_X_HUNTER_SERIES.slug : series?.slug
+  const description = [ONE_PIECE_SERIES, HUNTER_X_HUNTER_SERIES].find(
+    (candidate) => candidate.slug === slug,
+  )
+  return description === undefined ? undefined : copyOf(description, locale)
 }
 
 /**
@@ -86,16 +108,20 @@ export function renderWithProviders(
   }: RenderOptions = {},
 ): RenderResult & { router: TestRouter } {
   const router = contextRouter([path ?? `/one-piece/${locale}`])
+  const pageSeries = series ?? seriesAt(path ?? `/one-piece/${locale}`)
 
   return {
     router,
     ...render(
       <RouterContextProvider router={router}>
-        <LocaleProvider locale={locale}>
+        <LocaleProvider
+          copy={copyAt(pageSeries, locale)}
+          locale={locale}
+        >
           <BookmarkProvider
             initialBookmark={bookmark}
             initialTrial={trial}
-            series={series ?? seriesAt(path ?? `/one-piece/${locale}`)}
+            series={pageSeries}
           >
             {/*
               A component that reads a streamed loader slot with `use()`
@@ -151,11 +177,15 @@ export async function renderOnRoute(
     getParentRoute: () => rootRoute,
     path: pattern,
     component: (): ReactElement => {
+      const pageSeries = series ?? seriesAt(path ?? `/one-piece/${locale}`)
       return (
-        <LocaleProvider locale={locale}>
+        <LocaleProvider
+          copy={copyAt(pageSeries, locale)}
+          locale={locale}
+        >
           <BookmarkProvider
             initialBookmark={bookmark}
-            series={series ?? seriesAt(path ?? `/one-piece/${locale}`)}
+            series={pageSeries}
           >
             {ui}
           </BookmarkProvider>
@@ -197,7 +227,10 @@ export async function renderUnderSeries(
     path: '$series',
     beforeLoad: () => ({ series }),
     component: (): ReactElement => (
-      <LocaleProvider locale={locale}>
+      <LocaleProvider
+        copy={copyAt(series, locale)}
+        locale={locale}
+      >
         <BookmarkProvider
           initialBookmark={null}
           series={series}

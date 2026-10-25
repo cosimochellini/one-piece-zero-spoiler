@@ -32,7 +32,7 @@ import type { ReactElement } from 'react'
 
 import { ArchivePage } from '~/components/ArchivePage'
 import { FruitsAlbum } from '~/components/FruitWall'
-import { useT } from '~/i18n/LocaleContext'
+import { useSeriesOnlyT } from '~/i18n/LocaleContext'
 import type { TranslationKey } from '~/i18n/types'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
 import { type AlbumView, parseFruitParams } from '~/lib/search/fruitParams'
@@ -68,7 +68,7 @@ export const Route = createFileRoute('/$series/$locale/fruits/')({
 })
 
 /** The line under the heading, which says how the view groups the fruits. */
-const COUNT_KEY: Record<AlbumView, TranslationKey> = {
+const COUNT_KEY: Record<AlbumView, TranslationKey<'one-piece'>> = {
   faction: 'fruits.countFaction',
   saga: 'fruits.countSaga',
   type: 'fruits.count',
@@ -104,7 +104,7 @@ const COUNT_KEY: Record<AlbumView, TranslationKey> = {
  * goes.
  */
 function FruitsPage(): ReactElement {
-  const t = useT()
+  const t = useSeriesOnlyT('one-piece')
   const { bookmark } = useBookmark()
   const { filed, marquee, plates } = Route.useLoaderData()
   const { album, retry } = useFruitAlbum()

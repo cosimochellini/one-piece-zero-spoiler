@@ -1,4 +1,4 @@
-import type { Translate } from '~/i18n/types'
+import type { SeriesSlug, Translate, TranslationParams } from '~/i18n/types'
 
 import {
   type Bookmark,
@@ -15,37 +15,49 @@ import type { Gated } from './spoiler'
  * only the number: Italian says "nell'episodio 130" and "nel capitolo 218",
  * and a season code stands on its own.
  */
-export type ThresholdSentence =
+export type ThresholdSentence<S extends SeriesSlug = never> =
   | 'character.foggedDescription'
   | 'character.opensAt'
   | 'characters.sectionOpensAt'
   | 'chart.opensAt'
-  | 'fruit.foggedDescription'
-  | 'fruit.opensAt'
-  | 'fruits.lastFruit'
   | 'home.storyAt'
   | 'places.firstSeen'
   | 'places.foggedDescription'
-  | 'ship.foggedDescription'
   | 'veil.locked'
+  // The sentences of a series' own features, by series.
+  | {
+      'hunter-x-hunter': never
+      'one-piece':
+        | 'fruit.foggedDescription'
+        | 'fruit.opensAt'
+        | 'fruits.lastFruit'
+        | 'ship.foggedDescription'
+    }[S]
 
-/** What a threshold sentence needs to name a record's threshold. */
-export interface ThresholdDescription {
+/**
+ * What a threshold sentence needs to name a record's threshold. `S` names
+ * the series whose own sentences it may say, and `t` must hold every key of
+ * them, so a fruit's sentence needs One Piece's translate.
+ */
+export interface ThresholdDescription<S extends SeriesSlug = never> {
   gated: Gated
   mode: BookmarkMode
-  sentence: ThresholdSentence
+  sentence: ThresholdSentence<S>
   series: BookmarkSeries
-  t: Translate
+  t: (
+    key: `${ThresholdSentence<S>}.${BookmarkMode}`,
+    params?: TranslationParams,
+  ) => string
 }
 
 /** A record's threshold, said in the reader's unit. */
-export function describeThreshold({
+export function describeThreshold<S extends SeriesSlug = never>({
   t,
   sentence,
   gated,
   mode,
   series,
-}: ThresholdDescription): string {
+}: ThresholdDescription<S>): string {
   return t(`${sentence}.${mode}`, {
     threshold: thresholdValue(gated, mode, series),
   })

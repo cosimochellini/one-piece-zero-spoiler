@@ -4,11 +4,11 @@ import type { ReactElement } from 'react'
 
 import { ChartArt } from '~/components/ChartArt'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
-import { useLocale } from '~/i18n/LocaleContext'
-import type { TranslationKey } from '~/i18n/types'
+import { useKindLabel } from '~/components/useKindLabel'
+import { useT } from '~/i18n/LocaleContext'
 import { useSeriesParams, useThreshold } from '~/lib/progress/BookmarkContext'
 import { useDrawing } from '~/lib/view/drawings'
-import type { EntityKind, RecordView, Slot } from '~/lib/view/records'
+import type { RecordView, Slot } from '~/lib/view/records'
 import {
   color,
   dur,
@@ -20,14 +20,6 @@ import {
   space,
   text,
 } from '~/styles/tokens.stylex'
-
-const KIND_KEY: Record<EntityKind, TranslationKey> = {
-  character: 'kind.character',
-  arc: 'kind.arc',
-  place: 'kind.place',
-  ship: 'kind.ship',
-  fruit: 'kind.fruit',
-}
 
 /** The slot to file, and how to ask for what fills it. */
 export interface RecordTileProps {
@@ -46,14 +38,15 @@ export interface RecordTileProps {
  * about: the two neighbours on a character page, the crew a port files.
  */
 export function RecordTile({ slot, peek }: RecordTileProps): ReactElement {
-  const { t } = useLocale()
+  const t = useT()
   const threshold = useThreshold()
+  const kindLabel = useKindLabel()
   const filed = slot.open ? slot.record : slot.covered
 
   return (
     <span {...stylex.props(styles.tile)}>
       <span {...stylex.props(styles.meta)}>
-        <span {...stylex.props(styles.kind)}>{t(KIND_KEY[filed.kind])}</span>
+        <span {...stylex.props(styles.kind)}>{kindLabel(filed.kind)}</span>
         <span {...stylex.props(styles.episode)}>
           {threshold('chart.opensAt', filed)}
         </span>

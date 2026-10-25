@@ -2,7 +2,7 @@ import { byString } from 'sort-es'
 import { describe, expect, it } from 'vitest'
 
 import type { Affiliation } from '~/data/types'
-import { enDictionary } from '~/i18n/dictionaries/en'
+import { onePieceEn } from '~/i18n/dictionaries/one-piece/en'
 
 import { eatersOf } from './dated'
 import { fruits } from './fruits'
@@ -19,7 +19,7 @@ import { CHARACTER_DOSSIERS } from './sagas'
 const PREFIX = 'faction.'
 
 /** Every id the dictionaries give a label, which is the vocabulary. */
-const VOCABULARY = Object.keys(enDictionary)
+const VOCABULARY = Object.keys(onePieceEn)
   .filter((key) => key.startsWith(PREFIX))
   .map((key) => key.slice(PREFIX.length))
 

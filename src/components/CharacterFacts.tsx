@@ -3,8 +3,9 @@ import { Link } from '@tanstack/react-router'
 import { Fragment, type ReactElement, type ReactNode } from 'react'
 
 import { formatBounty } from '~/i18n/bounty'
-import { useLocale } from '~/i18n/LocaleContext'
-import type { Translate } from '~/i18n/types'
+import { useLocale, useSeriesT, useT } from '~/i18n/LocaleContext'
+import type { Locale } from '~/i18n/locales'
+import type { SeriesTranslate, Translate } from '~/i18n/types'
 import { useSeriesParams } from '~/lib/progress/BookmarkContext'
 import type {
   CharacterStatus,
@@ -45,17 +46,20 @@ export interface CharacterFactsProps {
 export function CharacterFacts({
   facts,
 }: CharacterFactsProps): null | ReactElement {
-  const { locale, t } = useLocale()
+  const { locale } = useLocale()
+  const t = useT()
+  // The devil fruit and the bounty are One Piece's facts, in its words: on
+  // another series' page there is no such row.
+  const onePiece = useSeriesT('one-piece')
 
   const rows: [string, ReactNode][] = [
     [t('character.status'), statusRow(facts.status, t)],
     [t('character.epithet'), facts.epithet],
     [t('character.affiliation'), facts.affiliation],
     [t('character.origin'), facts.origin],
-    [t('character.devilFruit'), fruitRow(facts.devilFruit)],
-    [t('character.bounty'), formatBounty(facts.bounty, locale, t)],
+    ...(onePiece === undefined ? [] : onePieceRows(facts, locale, onePiece)),
   ]
-  const shown = rows.filter((row) => row[1] !== undefined)
+  const shown = rows.filter(([, value]) => value !== undefined)
 
   if (shown.length === 0) {
     return null
@@ -79,6 +83,18 @@ export function CharacterFacts({
       })}
     </dl>
   )
+}
+
+/** The facts only One Piece files: a devil fruit and a bounty. */
+function onePieceRows(
+  facts: Facts,
+  locale: Locale,
+  t: SeriesTranslate<'one-piece'>,
+): [string, ReactNode][] {
+  return [
+    [t('character.devilFruit'), fruitRow(facts.devilFruit)],
+    [t('character.bounty'), formatBounty(facts.bounty, locale, t)],
+  ]
 }
 
 /**

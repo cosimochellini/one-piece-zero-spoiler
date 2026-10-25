@@ -5,7 +5,7 @@ import type { ReactElement } from 'react'
 import { FruitFrame } from '~/components/FruitFrame'
 import { styles } from '~/components/SpecimenBands.styles'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
-import { useLocale } from '~/i18n/LocaleContext'
+import { onlyUnder, useLocale, useSeriesOnlyT } from '~/i18n/LocaleContext'
 import { useSeriesParams, useThreshold } from '~/lib/progress/BookmarkContext'
 import type { FruitView, Slot } from '~/lib/view/records'
 
@@ -54,9 +54,10 @@ function RailSpecimen({
   peek: (handle: string) => Promise<FruitView>
   slot: Slot<FruitView>
 }): ReactElement {
-  const { locale, t } = useLocale()
+  const { locale } = useLocale()
+  const t = useSeriesOnlyT('one-piece')
   const { series } = useSeriesParams()
-  const threshold = useThreshold()
+  const threshold = onlyUnder(useThreshold('one-piece'), 'one-piece')
   const filed = slot.open ? slot.record : slot.covered
 
   return (

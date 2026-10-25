@@ -10,7 +10,8 @@ is assigned to archive text, illustrations, branding or third-party material.
 
 The page publishes the existing bounded
 [#719 audit](content-provenance-audit.md), not a new archive-wide rights
-finding. `credits.server.ts` reads the original
+finding. `credits.server.ts` reads the sample on each series' archive
+(`src/data/series/one-piece/credits.ts`) against the original
 [source manifest](content-provenance/sources.json); its pinned revisions are not
 copied into the client or replaced with guessed article addresses.
 

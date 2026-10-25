@@ -1,11 +1,30 @@
-import { onePieceEn } from './one-piece/en'
-
-/** The copy every series shares: the site, its pages and its controls. */
-export const sharedEn = {
+/**
+ * The copy every series shares, in English: the site, its pages and its
+ * controls, and the source of truth for the shared key set.
+ *
+ * It is named `enDictionary` rather than `en` for one blunt reason: Vitest
+ * puts `it` in global scope, and a dictionary exported as `it` shadows it in
+ * every test file that imports one. The pair is named symmetrically so the
+ * trap is not reintroduced later.
+ *
+ * `SharedKey` is derived from this object, so adding a key here is what makes
+ * the Italian dictionary fail to typecheck until it catches up. Keys are flat
+ * and dotted rather than nested: a flat record gives an exact key union, where
+ * a nested one would need a recursive path type for no gain.
+ *
+ * Placeholders are `{name}` and are filled by `t()`; `{series}` is the name of
+ * the series the page belongs to. The wording follows the `tone-of-voice`
+ * skill in `.claude/skills`.
+ *
+ * Each series' own words are in its folder (`./one-piece/en.ts`,
+ * `./hunter-x-hunter/en.ts`): the keys every series words for itself
+ * (`CommonKey`) and those of its own features. They stay on the server and
+ * reach a page with the series' pages only, so no reader downloads another
+ * series' copy.
+ */
+export const enDictionary = {
   'site.name': 'Zero Spoiler',
-  'site.title': 'Zero Spoiler | The One Piece wiki without spoilers',
-  'site.description':
-    'A One Piece wiki that hides every character, arc, place and devil fruit you have not reached yet. Set the episode or chapter you are on and read up to there.',
+  'site.title': 'Zero Spoiler | The {series} wiki without spoilers',
   'hub.title': 'Zero Spoiler | Wikis without spoilers',
   'hub.description':
     'Spoiler-free wikis, one per series. Each series keeps its own bookmark, and every entry past it stays under fog.',
@@ -24,12 +43,10 @@ export const sharedEn = {
   'nav.label': 'Pages',
   'nav.hub': 'All series',
 
-  'hero.headline': 'The One Piece wiki without spoilers',
+  'hero.headline': 'The {series} wiki without spoilers',
   'hero.setBookmark': 'Set your bookmark',
   'hero.changeBookmark': 'Change bookmark · {threshold}',
 
-  'onboarding.lede':
-    'Move the dial through East Blue. Entries up to that point open, and the ones after it stay under fog. Once you set your bookmark, every page of the wiki works this way.',
   'onboarding.dial': 'Point in the story',
   'onboarding.unitEpisode': 'Episode',
   'onboarding.unitChapter': 'Chapter',
@@ -38,10 +55,8 @@ export const sharedEn = {
   'onboarding.start': 'Starting now · EP 1',
   'onboarding.arcs': 'Arcs',
   'onboarding.cast': 'Characters',
-  'onboarding.places': 'Places and ships',
   'onboarding.tryHint':
     'Open an entry to see its page at this point. Your bookmark is not saved.',
-  'onboarding.tailTitle': 'After East Blue',
   'onboarding.tail':
     '{count} more entries stay under fog until your bookmark reaches them.',
 
@@ -135,8 +150,6 @@ export const sharedEn = {
   'faq.animeA':
     'Both. You can count by anime episode, by season and episode, or by manga chapter. Every entry has an episode number and a chapter number. When the exact point is uncertain, the later one is used, so an entry is more likely to open late than early.',
   'faq.bookmarkQ': 'Where is my bookmark stored?',
-  'faq.bookmarkA':
-    'In a cookie on this device. The server reads it before it builds the page, so entries past your bookmark are not in the page you receive. Without a bookmark, this page carries East Blue for the dial and nothing past it. There is no account and no tracking.',
   'faq.peekQ': 'Can I see a hidden entry?',
   'faq.peekA':
     'Yes. On the other pages of the wiki, press “Show anyway” on it. The choice is not saved, and every other entry stays under fog.',
@@ -146,9 +159,7 @@ export const sharedEn = {
     'The unofficial project notice, rights contact, privacy and cookies, sources and licenses.',
   'legal.projectTitle': 'An unofficial project',
   'legal.unofficial':
-    'Zero Spoiler is an unofficial, nonprofit fan project. It is not affiliated with or endorsed by the One Piece rights holders.',
-  'legal.credits':
-    'One Piece was created by Eiichiro Oda. Anime credit: © Eiichiro Oda/Shueisha, Toei Animation.',
+    'Zero Spoiler is an unofficial, nonprofit fan project. It is not affiliated with or endorsed by the rights holders of the series in the wiki.',
   'legal.creditSource': 'Official credit source',
   'legal.contact': 'Rights inquiries and corrections on GitHub',
   'legal.contactHelp':
@@ -166,18 +177,9 @@ export const sharedEn = {
   'credits.sourcesTitle': 'Source terms',
   'credits.external':
     'External pages may contain later story information, including in their titles. Opening a source leaves this wiki’s spoiler protection.',
-  'credits.wikiTerms':
-    'The English and Italian One Piece Wikis declare CC BY-SA 3.0 Unported for community text by default. Exceptions, imported material and images can have different terms. Fandom permits author attribution through links to the contributed articles.',
-  'credits.otherTerms':
-    'No general open-content license was established for AnimeFillerList or the official episode synopsis. Classification facts and citations do not grant permission to copy prose, images or an entire compilation. Official titles and One Piece material are not offered as project-owned content.',
-  'credits.wikiEn': 'English One Piece Wiki',
-  'credits.wikiIt': 'Italian One Piece Wiki',
   'credits.fandomTerms': 'Fandom licensing and attribution',
   'credits.fandomTermsIt': 'Fandom licensing in Italian',
-  'credits.fillerList': 'AnimeFillerList: classification reference',
   'credits.referencesTitle': 'Documented references',
-  'credits.coverage':
-    'This list covers the bounded review recorded on 20 October 2026 and the summary replacement reviewed on 22 October 2026. Other historical text, translations and illustrations remain unreviewed or unresolved. These references do not certify the rights in every entry.',
   'credits.bookmark':
     'Only references to material open at your bookmark are listed. The license beside a source refers to its text, not to the whole archive.',
   'credits.empty':
@@ -185,18 +187,12 @@ export const sharedEn = {
   'credits.episode': 'Episode {episode}',
   'credits.scope.dossier': 'Character fields in the reviewed sample',
   'credits.scope.chronicle': 'Story entry in the reviewed sample',
-  'credits.scope.filler': 'Release title and summary in the reviewed sample',
   'credits.scope.title': 'Release title only',
   'credits.scope.summary': 'Replacement summary',
   'credits.factCheck':
     'Reference for the documented comparison or fact check. The historical writing process is not established; no claim of independent authorship or new content license is made.',
   'credits.replacement':
     'Both summaries were replaced with brief accounts of facts checked against the official synopsis. The synopsis was not translated in full. No new content license is assigned.',
-  'credits.source.wiki-en':
-    'English One Piece Wiki contributors: source revision',
-  'credits.source.wiki-it':
-    'Italian One Piece Wiki contributors: source revision',
-  'credits.source.official': 'ONE PIECE.com: official episode synopsis',
   'credits.noOpenLicense': 'No open-content permission established.',
 
   'privacy.title': 'Privacy and cookies',
@@ -247,12 +243,12 @@ export const sharedEn = {
   'privacy.netlifyTerms': 'Netlify: DPA and subprocessors',
   'privacy.audit': 'Technical audit and outstanding checks',
 
-  'footer.lead': 'A One Piece wiki that hides what comes after your bookmark.',
+  'footer.lead': 'A {series} wiki that hides what comes after your bookmark.',
   'footer.colophon':
     'All the drawings are made for this site; no official artwork is used. Your bookmark is saved in a cookie on this device.',
 
   'footer.unofficial':
-    'Unofficial fan project, not endorsed by the One Piece rights holders.',
+    'Unofficial fan project, not endorsed by the {series} rights holders.',
   'footer.sharedLead': 'Wikis that hide what comes after your bookmark.',
   'footer.sharedColophon':
     'All the drawings are made for this site; no official artwork is used. Your bookmarks are saved in cookies on this device, one for each series.',
@@ -273,10 +269,8 @@ export const sharedEn = {
   'characters.allOpen': 'Nothing is under fog. You can see every character.',
   'characters.pageTitle': 'Characters | Zero Spoiler',
   'characters.pageDescription':
-    'One Piece characters, each hidden until the episode where they first appear.',
+    '{series} characters, each hidden until the episode where they first appear.',
   'characters.featuredTitle': 'Main characters',
-  'characters.featuredLede':
-    'The Straw Hat crew and the other key characters of the story.',
   'characters.bookTitle': 'All characters',
   'characters.loading': 'Loading characters…',
   'characters.bookLede':
@@ -294,11 +288,11 @@ export const sharedEn = {
   'character.foggedName': 'A character under fog',
   'character.foggedTitle': 'A character under fog | Zero Spoiler',
   'character.foggedDescription.episode':
-    'A One Piece character who first appears in episode {threshold}. Set your bookmark to read this page.',
+    'A {series} character who first appears in episode {threshold}. Set your bookmark to read this page.',
   'character.foggedDescription.season':
-    'A One Piece character who first appears in {threshold}. Set your bookmark to read this page.',
+    'A {series} character who first appears in {threshold}. Set your bookmark to read this page.',
   'character.foggedDescription.chapter':
-    'A One Piece character who first appears in chapter {threshold}. Set your bookmark to read this page.',
+    'A {series} character who first appears in chapter {threshold}. Set your bookmark to read this page.',
   'character.pageTitle': '{name} | Zero Spoiler',
   'character.back': 'All characters',
   'character.relationshipsTitle': 'Relationships',
@@ -329,23 +323,18 @@ export const sharedEn = {
     'There is no character at this address. The characters page lists all of them.',
 
   'places.title': 'Places',
-  'places.count':
-    '{count} places, in the order the crew reaches them. Each one opens at the episode where it first appears.',
   'places.pageTitle': 'Places | Zero Spoiler',
-  'places.pageDescription':
-    'One Piece places in the order the crew reaches them, each hidden until the episode where it first appears.',
   'places.stage': 'Stop {index} of {total}',
   'places.foggedName': 'A place under fog',
   'places.foggedDescription.episode':
-    'A One Piece place that first appears in episode {threshold}. Set your bookmark to read about it.',
+    'A {series} place that first appears in episode {threshold}. Set your bookmark to read about it.',
   'places.foggedDescription.season':
-    'A One Piece place that first appears in {threshold}. Set your bookmark to read about it.',
+    'A {series} place that first appears in {threshold}. Set your bookmark to read about it.',
   'places.foggedDescription.chapter':
-    'A One Piece place that first appears in chapter {threshold}. Set your bookmark to read about it.',
+    'A {series} place that first appears in chapter {threshold}. Set your bookmark to read about it.',
   'places.firstSeen.episode': 'First seen in episode {threshold}',
   'places.firstSeen.season': 'First seen in {threshold}',
   'places.firstSeen.chapter': 'First seen in chapter {threshold}',
-  'places.sea': 'Sea',
   'places.form': 'Type',
   'places.arc': 'Arc',
   'places.landmark': 'Landmark',
@@ -359,7 +348,6 @@ export const sharedEn = {
   'places.noMatch': 'No open place matches “{query}”.',
   'places.noneShown': 'No open place matches these filters.',
   'places.showAll': 'Show all',
-  'places.allSeas': 'All seas',
   'places.allForms': 'All types',
   'places.saga': 'Saga',
   'places.allSagas': 'All sagas',
@@ -395,7 +383,6 @@ export const sharedEn = {
   'form.archipelago': 'Archipelago',
   'form.sea': 'Stretch of sea',
   'form.ship': 'Ship',
-  'form.train': 'Sea train',
   'form.prison': 'Prison',
   'form.fortress': 'Fortress',
 
@@ -415,26 +402,3 @@ export const sharedEn = {
   'locale.it': 'Italiano',
   'locale.en': 'English',
 } as const
-
-/**
- * The English dictionary, and the source of truth for the key set.
- *
- * It is named `enDictionary` rather than `en` for one blunt reason: Vitest
- * puts `it` in global scope, and a dictionary exported as `it` shadows it in
- * every test file that imports one. The pair is named symmetrically so the
- * trap is not reintroduced later.
- *
- * `TranslationKey` is derived from this object, so adding a key here is what
- * makes every other dictionary fail to typecheck until it catches up. Keys are
- * flat and dotted rather than nested: a flat record gives an exact key union,
- * where a nested one would need a recursive path type for no gain.
- *
- * Placeholders are `{name}` and are filled by `t()`. The wording follows the
- * `tone-of-voice` skill in `.claude/skills`.
- *
- * Two parts: the copy every series shares, here, and the copy of the features
- * only One Piece has (devil fruits, ships and seas, bounties, factions, the
- * filler guide), in `./one-piece/en.ts`, typed against this one so it cannot
- * redefine a shared key.
- */
-export const enDictionary = { ...sharedEn, ...onePieceEn } as const

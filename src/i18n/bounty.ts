@@ -8,7 +8,7 @@ import type { Translate } from './types'
 export function formatBounty(
   amount: number | undefined,
   locale: Locale,
-  t: Translate,
+  t: Translate<'one-piece'>,
 ): string | undefined {
   if (amount === undefined) {
     return undefined

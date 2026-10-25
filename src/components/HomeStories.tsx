@@ -3,7 +3,7 @@ import { Link } from '@tanstack/react-router'
 import type { ReactElement } from 'react'
 
 import { Prose } from '~/components/CharacterChronicle'
-import { useLocale } from '~/i18n/LocaleContext'
+import { useT } from '~/i18n/LocaleContext'
 import { useSeriesParams, useThreshold } from '~/lib/progress/BookmarkContext'
 import type { HomeStory } from '~/lib/view/records'
 import {
@@ -50,7 +50,7 @@ export function HomeStories({
   before,
   stories,
 }: HomeStoriesProps): ReactElement {
-  const { t } = useLocale()
+  const t = useT()
 
   return (
     <section
@@ -92,7 +92,7 @@ export function HomeStories({
 export function HomeMoreStories({
   stories,
 }: HomeMoreStoriesProps): null | ReactElement {
-  const { t } = useLocale()
+  const t = useT()
   const more = stories.slice(OPEN_COUNT)
 
   if (more.length === 0) {

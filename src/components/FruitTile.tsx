@@ -11,7 +11,7 @@ import {
   eaterMatch,
   type Match,
 } from '~/components/recordMatches'
-import { useLocale } from '~/i18n/LocaleContext'
+import { onlyUnder, useSeriesOnlyT } from '~/i18n/LocaleContext'
 import type { TranslationKey } from '~/i18n/types'
 import { useSeriesParams, useThreshold } from '~/lib/progress/BookmarkContext'
 import type {
@@ -37,7 +37,7 @@ import {
 /** How wide a covered tile's number is printed. `01`, never `1`. */
 const NUMBER_WIDTH = 2
 
-const FORM_KEY: Record<FruitForm, TranslationKey> = {
+const FORM_KEY: Record<FruitForm, TranslationKey<'one-piece'>> = {
   logia: 'fruitForm.logia',
   paramecia: 'fruitForm.paramecia',
   zoan: 'fruitForm.zoan',
@@ -92,8 +92,8 @@ export function FruitTile({
   peek,
   slot,
 }: FruitTileProps): ReactElement {
-  const { t } = useLocale()
-  const threshold = useThreshold()
+  const t = useSeriesOnlyT('one-piece')
+  const onePieceThreshold = useThreshold('one-piece')
 
   if (slot.open) {
     return (
@@ -107,6 +107,8 @@ export function FruitTile({
       />
     )
   }
+
+  const threshold = onlyUnder(onePieceThreshold, 'one-piece')
 
   return (
     <li {...stylex.props(styles.tile)}>
@@ -189,7 +191,7 @@ function OpenTile({
   morph: boolean
   record: FruitView
 }): ReactElement {
-  const { t } = useLocale()
+  const t = useSeriesOnlyT('one-piece')
   const shown = eaters[eater.at]
 
   return (

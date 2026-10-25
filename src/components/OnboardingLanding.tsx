@@ -6,7 +6,7 @@ import { styles } from '~/components/Onboarding.styles'
 import { OnboardingControls, OnboardingDial } from '~/components/OnboardingDial'
 import { OnboardingWake } from '~/components/OnboardingWake'
 import { Questions } from '~/components/Questions'
-import { useT } from '~/i18n/LocaleContext'
+import { useSeriesT } from '~/i18n/LocaleContext'
 import type { OnboardingView } from '~/lib/view/records'
 import { settleStyles } from '~/styles/settle'
 
@@ -26,7 +26,7 @@ const BAND = { intro: 0, controls: 1, wake: 2, faq: 3 } as const
  * its page on a trial that ends with the session.
  */
 export function OnboardingLanding(view: OnboardingView): ReactElement {
-  const t = useT()
+  const t = useSeriesT()
   const [point, setPoint] = useState(() => dialStart(view.start))
   const arc = view.arcs.findLast((entry) => dialSees(point, entry))?.name
 

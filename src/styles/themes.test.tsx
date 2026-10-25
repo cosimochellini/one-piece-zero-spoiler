@@ -9,6 +9,7 @@ import { archiveOf, SERIES } from '~/data/series'
 import { LocaleShell } from '~/routes/-LocaleShell'
 import { creditsPage } from '~/server/archive/credits.server'
 import { readerFor } from '~/server/archive/reader.server'
+import { legalOf } from '~/server/sources.server'
 import { PALETTES } from '~/styles/themes'
 import { color, NEUTRAL } from '~/styles/tokens.stylex'
 import { renderWithProviders } from '~/test/providers'
@@ -146,7 +147,14 @@ describe('links on the pages with no series', () => {
       const archive = await archiveOf('one-piece')
       renderWithProviders(
         <LocaleShell locale="en">
-          <LegalPage credits={creditsPage(readerFor(archive, null, 'en'))} />
+          <LegalPage
+            series={[
+              {
+                ...legalOf(archive.series, 'en'),
+                credits: creditsPage(readerFor(archive, null, 'en')),
+              },
+            ]}
+          />
         </LocaleShell>,
         { path: '/en/legal' },
       )
