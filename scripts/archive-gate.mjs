@@ -184,13 +184,14 @@ const WORST_CHUNKS = 5
  * are read back from plain JSON, and a failed response rejects as a failed
  * call. The measured client build is 672,771 bytes; the ceiling retains 1 KB
  * headroom. The payloads are the server's, unchanged; nothing new reaches the
- * client. Raised for #795 on 2026-10-25: each series' place words and their
- * labels (`placeWordsOf`), read by the places pages instead of One Piece's
- * keys, and the places page drawing the world map only for a series that has
- * one. The measured client build is 673,788 bytes; the ceiling retains 1 KB
- * headroom. The payloads are unchanged; no archive record reaches the client.
+ * client. Raised for #795 on 2026-10-25: the places pages print a series'
+ * place words from the labels the server sends with them, One Piece's from
+ * the dictionaries, and draw the world map only for a series that has one,
+ * the index served in full without it. The measured client build is 673,741
+ * bytes; the ceiling retains 1 KB headroom. One Piece's payloads are
+ * unchanged; no other series' words reach the client.
  */
-export const MAX_CLIENT_BYTES = 674_788
+export const MAX_CLIENT_BYTES = 674_741
 
 /** Where every series' folder is. */
 const SERIES_DIR = 'src/data/series'
