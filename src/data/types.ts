@@ -214,6 +214,13 @@ export interface Story {
   title: LocalizedText
 }
 
+/** One authored person-to-person connection, from the dossier owner's perspective. */
+export interface Relationship {
+  character: string
+  summary: LocalizedText
+  type: LocalizedText
+}
+
 /**
  * What the archive knows about a character beyond the name and the sentence.
  *
@@ -240,6 +247,8 @@ export interface CharacterDossier<V extends Vocabulary = Vocabulary> {
   epithet?: Timeline<LocalizedText>
   log: LocalizedText
   origin?: Origin[]
+  /** Important people at this point in the story, in authored order. */
+  relationships?: Timeline<Relationship[]>
   role: LocalizedText
   /**
    * Where the character stands, and from which episode. A vocabulary rather

@@ -17,7 +17,10 @@ import type { BookSection, Entity, SeriesArchive } from './types'
  *
  * A fact of one source only is gated rather than filtered: its gate carries
  * the source (`gateOf`), and `reveal(bookmark, series).sees` never opens it
- * for the other. Except a fruit's eaters, which its page covers one by one: an eater
+ * for the other. Relationship snapshots use the same dated-field gate; their
+ * people are resolved through this copy's filtered `getCharacter`, so a
+ * snapshot cannot reintroduce a person the reader's source does not have.
+ * Except a fruit's eaters, which its page covers one by one: an eater
  * the reader does not have is left out, by the gate of the entry that names
  * it, which carries the eater's source as well as its own.
  *

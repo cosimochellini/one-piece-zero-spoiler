@@ -312,6 +312,9 @@ const sharedIt: SharedCopy = {
     'Un personaggio di One Piece che compare per la prima volta nel capitolo {threshold}. Imposta il segnalibro per leggere la pagina.',
   'character.pageTitle': '{name} | Zero Spoiler',
   'character.back': 'Tutti i personaggi',
+  'character.relationshipsTitle': 'Relazioni',
+  'character.relationshipsLede':
+    'I legami importanti del personaggio fino al tuo segnalibro.',
   'character.routeTitle': 'Nell’ordine della storia',
   'character.position': 'Voce {index} di {total}',
   'character.positionLede':
