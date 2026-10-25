@@ -27,8 +27,8 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier<HunterVocabulary>> = {
     region: 'mainland',
     arc: 'hunter-exam-arc',
     landmark: {
-      it: 'Il pino solitario sulla collina dietro la città',
-      en: 'The lone pine on the hill behind the town',
+      it: 'L’albero solitario sulla collina dietro la città',
+      en: 'The lone tree on the hill behind the town',
     },
     log: {
       it: 'Il capitano fa sbarcare qui Gon, Kurapika e Leorio e indica a Gon un albero solitario sulla collina, dalla parte opposta alla città dell’esame. Quasi tutti gli aspiranti prendono l’autobus, che però non arriva mai. Sulla strada per l’albero, in una via deserta, una vecchia li ferma con un quiz che non ha una risposta giusta.',

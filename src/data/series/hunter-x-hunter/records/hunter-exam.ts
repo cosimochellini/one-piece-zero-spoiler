@@ -117,7 +117,7 @@ export const hunterExam: HunterSaga = {
         it: 'Una città portuale affollata di aspiranti Hunter, dove la nave lascia Gon e i suoi compagni di viaggio.',
         en: 'A port town crowded with would-be Hunters, where the ship leaves Gon and his fellow passengers.',
       },
-      visual: { art: 'dolle-harbor', tint: 'green' },
+      visual: { art: 'dolle-harbor', tint: 'cyan' },
     },
     {
       id: 'kiriko',
@@ -226,8 +226,8 @@ export const hunterExam: HunterSaga = {
           chapter: 4,
           place: 'dolle-harbor',
           value: {
-            it: 'Il pino solitario fuori da Dolle Harbor',
-            en: 'The lone pine outside Dolle Harbor',
+            it: 'L’albero solitario fuori da Dolle Harbor',
+            en: 'The lone tree outside Dolle Harbor',
           },
         },
       ],

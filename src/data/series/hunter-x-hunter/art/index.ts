@@ -279,28 +279,27 @@ export const DRAWINGS = {
     shadow(80, 188, 54),
   ],
 
-  // A sailor's bandana tied round no one, its knot and two tails at the
-  // back, in the record's tint, and a coil of rope on the deck beside it:
-  // the crewman the storm throws over the side in episode 1 and chapter 2.
+  // A coil of deck rope in the record's tint, its end run up to a belaying
+  // pin in the ship's rail: the crewman working the deck in the storm that
+  // throws him over the side, in episode 1 and chapter 2.
   'katzo': [
-    { d: 'M44 100 C42 66 114 62 116 98', role: 'accent' },
+    { d: 'M14 70 H150' },
+    { d: 'M14 78 H150', role: 'soft' },
+    { d: 'M24 78 V126 M136 78 V126' },
+    { d: 'M4 126 H156', role: 'ambient' },
+    { d: 'M110 60 V90 M106 64 h8', role: 'soft' },
+    { d: 'M110 74 C120 70 120 82 110 78 C100 74 100 86 110 82', role: 'soft' },
+    { d: 'M110 88 C114 108 104 128 92 142' },
     {
-      d: 'M44 100 C60 110 100 110 116 98 M44 100 C60 92 100 90 116 98',
+      d: `${ellipse(72, 172, 46, 12)} ${ellipse(72, 146, 30, 8)}`,
       role: 'accent',
     },
     {
-      d: 'M58 76 C66 86 70 92 72 102 M84 70 C88 80 90 90 90 104',
+      d: 'M28 166 C32 152 112 152 116 166 M34 158 C38 146 106 146 110 158',
       role: 'soft',
     },
-    { d: 'M116 98 L126 94 L130 102 L120 106 Z' },
-    {
-      d: 'M126 104 C132 116 128 126 134 138 M120 106 C120 118 114 126 118 138',
-    },
-    { d: ellipse(62, 166, 32, 9) },
-    { d: 'M32 160 C36 152 88 152 92 160', role: 'soft' },
-    { d: `M34 154 C38 146 86 146 90 154 ${ellipse(62, 150, 22, 5)}` },
-    { d: 'M94 166 C108 168 122 160 140 166 l8 -2' },
-    shadow(80, 188, 60),
+    { d: 'M54 146 l6 -4 M66 148 l8 -5 M80 148 l6 -4', role: 'ambient' },
+    shadow(72, 190, 50),
   ],
 
   // A Kiriko's arm raised under a full moon, the feathers of the wing it
@@ -386,7 +385,7 @@ export const DRAWINGS = {
 
   // Dolle Harbor from the water: the quay with its warehouse and houses, a
   // bollard and a boat moored at it, and on the hill behind the town the
-  // lone pine in the record's tint, where the captain sends Gon in episode 2
+  // lone tree in the record's tint, where the captain sends Gon in episode 2
   // and chapter 3.
   'dolle-harbor': [
     { d: 'M4 112 C40 102 70 84 104 82 C128 82 146 90 158 96', role: 'soft' },
