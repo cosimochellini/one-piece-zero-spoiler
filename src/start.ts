@@ -12,7 +12,7 @@ import {
   migrateBookmark,
   withMigratedCookies,
 } from '~/lib/progress/migrateBookmark'
-import { seriesSlugFromPath } from '~/lib/progress/series'
+import { declaresPath, seriesSlugFromPath } from '~/lib/progress/series'
 
 // Whether this instance has answered a request yet.
 const instance = { warm: false }
@@ -66,9 +66,15 @@ export const startInstance = createStart(() => {
           const cookies = migrateBookmark(request)
           const url = new URL(request.url)
           const slug = seriesSlugFromPath(url.pathname)
+          const series = slug === null ? null : descriptionOf(slug)
           const linked =
             legacyRedirect(request)
-            ?? linkRedirect(request, slug === null ? null : descriptionOf(slug))
+            ?? linkRedirect(
+              request,
+              series !== null && declaresPath(series, url.pathname) ?
+                series
+              : null,
+            )
           if (linked !== undefined) {
             return withMigratedCookies(linked, cookies)
           }

@@ -23,7 +23,10 @@ import {
 } from './seasons'
 import {
   type BookmarkSeries,
+  declaresPath,
+  HUNTER_X_HUNTER_SERIES,
   ONE_PIECE_BOOKMARK,
+  ONE_PIECE_SERIES,
   seriesSlugFromPath,
 } from './series'
 
@@ -74,6 +77,32 @@ describe('the series candidate in a route', () => {
   ])('reads no series from %s', (path) => {
     expect(seriesSlugFromPath(path)).toBeNull()
   })
+})
+
+describe('the pages a link parameter is read on', () => {
+  it.each([
+    '/hunter-x-hunter/en',
+    '/hunter-x-hunter/en/',
+    '/hunter-x-hunter/it/characters/gon-freecss',
+    '/hunter-x-hunter/en/places',
+  ])('reads it on %s, a page Hunter x Hunter declares', (path) => {
+    expect(declaresPath(HUNTER_X_HUNTER_SERIES, path)).toBe(true)
+  })
+
+  it.each([
+    '/hunter-x-hunter/en/fruits',
+    '/hunter-x-hunter/en/fruits/gum-gum',
+    '/hunter-x-hunter/it/filler',
+  ])('ignores it on %s, a 404 for Hunter x Hunter', (path) => {
+    expect(declaresPath(HUNTER_X_HUNTER_SERIES, path)).toBe(false)
+  })
+
+  it.each(['/one-piece/en/fruits', '/one-piece/en/filler'])(
+    'reads it on %s for One Piece',
+    (path) => {
+      expect(declaresPath(ONE_PIECE_SERIES, path)).toBe(true)
+    },
+  )
 })
 
 describe('bookmark rules from the series description', () => {

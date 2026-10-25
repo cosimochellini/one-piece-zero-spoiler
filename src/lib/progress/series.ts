@@ -184,17 +184,35 @@ export function hasPage(series: Series, page: SeriesPage): boolean {
   return PAGES[page](series)
 }
 
-const RECORD_PAGE = /^(?:characters|fruits|places)$/u
+function isSeriesPage(page: string): page is SeriesPage {
+  return Object.hasOwn(PAGES, page)
+}
 
 /** Only an archive index, record or filler page carries a bookmark. */
 function isContentPage(page: string | undefined, rest: string[]): boolean {
   if (page === undefined) {
     return true
   }
+  if (!isSeriesPage(page)) {
+    return false
+  }
   if (page === 'filler') {
     return rest.length === 0
   }
-  return RECORD_PAGE.test(page) && rest.length <= 1 && rest[0] !== ''
+  return rest.length <= 1 && rest[0] !== ''
+}
+
+/** `/{series}/{locale}/{page}`: the page is the split's fourth part. */
+const PAGE_SEGMENT = 3
+
+/**
+ * Whether a content address (one `seriesSlugFromPath` reads a slug from) is
+ * a page the series declares: its home always is. A link parameter on any
+ * other is not read, so it sets no bookmark on the way to a 404.
+ */
+export function declaresPath(series: Series, pathname: string): boolean {
+  const page = pathname.split('/', PAGE_SEGMENT + 1)[PAGE_SEGMENT]
+  return page === undefined || !isSeriesPage(page) || hasPage(series, page)
 }
 
 /** The series slug of a content URL, before registry validation. */
