@@ -17,6 +17,7 @@
 import { isLocale, type Locale } from '~/i18n/locales'
 import { getDictionary, translate } from '~/i18n/translate'
 import type { TranslationKey } from '~/i18n/types'
+import { hasPage, type Series, type SeriesPage } from '~/lib/progress/series'
 import { type Crumb, pageJsonLd, type PageKind } from '~/lib/seo/jsonLd'
 import { localeAlternates, localeRoot, normalisePath } from '~/lib/seo/paths'
 import { absoluteUrl } from '~/lib/seo/site'
@@ -115,6 +116,35 @@ export function describeNamedPage(page: NamedPage): HeadTags {
     locale: page.locale,
     pathname: page.pathname,
   })
+}
+
+/** What a series page's `head` is handed, as far as it reads it. */
+export interface SeriesPageMatch {
+  match: { context: { series: Series }; pathname: string }
+  params: { locale: string }
+}
+
+/**
+ * The head of one of a series' own indexes, or nothing for a 404, which
+ * keeps the shell's title: a prefix that is not a language, or a page the
+ * series does not declare. The router still runs this head when the route's
+ * `beforeLoad` answers 404: without the `hasPage` branch a served
+ * `/hunter-x-hunter/en/fruits` was titled "Devil fruits" (checked in a
+ * preview build with Hunter x Hunter open).
+ */
+export function seriesPageHead(
+  page: SeriesPage,
+  { match, params }: SeriesPageMatch,
+): HeadTags | Record<string, never> {
+  return isLocale(params.locale) && hasPage(match.context.series, page) ?
+      describeNamedPage({
+        descriptionKey: `${page}.pageDescription`,
+        kind: 'index',
+        locale: params.locale,
+        pathname: match.pathname,
+        titleKey: `${page}.pageTitle`,
+      })
+    : {}
 }
 
 /** A page a single record has to itself, and the index it is filed under. */

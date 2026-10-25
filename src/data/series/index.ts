@@ -4,6 +4,7 @@ import {
   ONE_PIECE_SERIES,
   type Series,
 } from '~/lib/progress/series'
+import type { ComingSeries } from '~/lib/view/hub'
 
 import { HUNTER_X_HUNTER_PLACE_WORDS } from './hunter-x-hunter/placeWords'
 import { ONE_PIECE_PLACE_WORDS } from './one-piece/placeWords'
@@ -92,6 +93,18 @@ export const SERIES: ListedSeries[] = [ONE_PIECE, HUNTER_X_HUNTER]
 
 /** The series readers can reach: what every page and the sitemap go through. */
 export const OPEN_SERIES: ListedSeries[] = SERIES.filter(({ open }) => open)
+
+/**
+ * The series filed but not open, by slug and name alone: what the hub
+ * announces as coming. Built from `open`, so flipping it moves a series from
+ * here to `OPEN_SERIES` and the hub can never list it twice.
+ */
+export const COMING_SERIES: ComingSeries[] = []
+for (const { open, description } of SERIES) {
+  if (!open) {
+    COMING_SERIES.push({ name: description.name, slug: description.slug })
+  }
+}
 
 const loaded = new Map<string, Promise<SeriesArchive>>()
 

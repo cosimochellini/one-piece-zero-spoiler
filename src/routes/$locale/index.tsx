@@ -22,5 +22,11 @@ export const Route = createFileRoute('/$locale/')({
 })
 
 function Hub(): ReactElement {
-  return <SeriesHub series={Route.useLoaderData()} />
+  const { coming, series } = Route.useLoaderData()
+  return (
+    <SeriesHub
+      coming={coming}
+      series={series}
+    />
+  )
 }

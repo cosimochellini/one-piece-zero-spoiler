@@ -16,7 +16,11 @@ import { useLocale } from '~/i18n/LocaleContext'
 import type { CharacterView, Slot } from '~/lib/view/records'
 import { recordHead } from '~/routes/$locale/-head'
 import { RecordBackLink } from '~/routes/$series/$locale/-back'
-import { orNotFound, recordArgs } from '~/routes/$series/$locale/-found'
+import {
+  orNotFound,
+  recordArgs,
+  requirePage,
+} from '~/routes/$series/$locale/-found'
 import { usePeek } from '~/routes/$series/$locale/-peek'
 import { recordStyles } from '~/routes/$series/$locale/-record.styles'
 import {
@@ -39,6 +43,9 @@ import { styles } from './-$id.styles'
 const BAND = { dossier: 0, chronicle: 1, route: 2, nearby: 3 } as const
 
 export const Route = createFileRoute('/$series/$locale/characters/$id')({
+  beforeLoad: ({ context }) => {
+    requirePage(context.series, 'characters')
+  },
   // The one decision the page turns on is made on the server, from the
   // bookmark in the request: the document title must not carry a name the
   // reader has not reached, and a title is set before any component runs.

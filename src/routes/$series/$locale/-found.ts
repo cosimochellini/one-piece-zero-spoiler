@@ -9,6 +9,7 @@
 import { notFound } from '@tanstack/react-router'
 
 import type { Locale } from '~/i18n/locales'
+import { hasPage, type Series, type SeriesPage } from '~/lib/progress/series'
 
 /**
  * The page, or the router's not-found signal.
@@ -27,6 +28,18 @@ export function orNotFound<T>(page: null | T): T {
   }
 
   return page
+}
+
+/**
+ * A page the series does not declare answers 404, as a series nobody filed
+ * does: a route's `beforeLoad`, so its loader never asks the server.
+ * @param series The series in the address, as its route described it.
+ * @param page The page the route is.
+ */
+export function requirePage(series: Series, page: SeriesPage): void {
+  if (!hasPage(series, page)) {
+    throw notFound()
+  }
 }
 
 /** What a record route's loader is handed, as far as it reads it. */

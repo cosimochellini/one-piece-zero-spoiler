@@ -4,7 +4,11 @@ import { getRequestHeader } from '@tanstack/react-start/server'
 import { descriptionOf } from '~/data/series'
 import { parseCookieHeader } from '~/lib/cookies'
 
-import { hubFor, openArchives, openDescriptions } from './archive/hub.server'
+import {
+  hubPageFor,
+  openArchives,
+  openDescriptions,
+} from './archive/hub.server'
 
 /** Public descriptions of the open series only: this loads no archive. */
 export const loadSeriesDescriptions = createServerFn().handler(() =>
@@ -16,7 +20,10 @@ export const loadSeriesDescriptions = createServerFn().handler(() =>
  * but not open is still a name the hub announces as coming.
  */
 export const loadHub = createServerFn().handler(async () =>
-  hubFor(parseCookieHeader(getRequestHeader('cookie')), await openArchives()),
+  hubPageFor(
+    parseCookieHeader(getRequestHeader('cookie')),
+    await openArchives(),
+  ),
 )
 
 /** Unknown series return nothing so the route can answer with a 404. */

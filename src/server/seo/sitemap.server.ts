@@ -3,6 +3,7 @@ import { archiveOf, OPEN_SERIES } from '~/data/series'
 import { archiveIn } from '~/data/source'
 import type { Entity } from '~/data/types'
 import { LOCALES } from '~/i18n/locales'
+import { hasPage } from '~/lib/progress/series'
 import { localeAlternates } from '~/lib/seo/paths'
 import { absoluteUrl } from '~/lib/seo/site'
 
@@ -27,19 +28,19 @@ function pathsFor(section: string, entries: Entity[]): string[] {
   return [section, ...entries.map((entity) => `${section}/${entity.id}`)]
 }
 
-/** Only kinds and features the description publishes get addresses. */
+/** Only the pages the series declares get addresses. */
 function suffixes(archive: ReaderArchive): string[] {
   const { characters, fruits, places, ships, series } = archive
   return [
     '',
-    ...(series.kinds.includes('character') ?
+    ...(hasPage(series, 'characters') ?
       pathsFor('/characters', characters)
     : []),
-    ...(series.features.fruits ? pathsFor('/fruits', fruits) : []),
-    ...(series.kinds.includes('place') || series.kinds.includes('ship') ?
+    ...(hasPage(series, 'fruits') ? pathsFor('/fruits', fruits) : []),
+    ...(hasPage(series, 'places') ?
       pathsFor('/places', [...places, ...ships])
     : []),
-    ...(series.features.filler ? ['/filler'] : []),
+    ...(hasPage(series, 'filler') ? ['/filler'] : []),
   ]
 }
 

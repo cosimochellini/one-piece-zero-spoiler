@@ -17,6 +17,7 @@ import type { Bookmark } from '~/lib/progress/episode'
 import {
   type BookmarkSeries,
   ONE_PIECE_BOOKMARK,
+  type Series,
   seriesSlugFromPath,
 } from '~/lib/progress/series'
 
@@ -167,6 +168,49 @@ export async function renderOnRoute(
     history: createMemoryHistory({
       initialEntries: [path ?? `/one-piece/${locale}`],
     }),
+  })
+  await router.load()
+
+  return render(<RouterProvider router={router} />)
+}
+
+export interface SeriesRenderOptions {
+  locale?: Locale
+  /** The address, under the series' own slug. */
+  path: string
+  /** The public description the `/$series` route hands its pages. */
+  series: Series
+}
+
+/**
+ * Renders a component under a `/$series` match, as the app does, so what it
+ * reads from the route's public description (the series' name, the pages it
+ * declares) is the series given. Asynchronous, as `renderOnRoute`.
+ */
+export async function renderUnderSeries(
+  ui: ReactElement,
+  { locale = 'en', path, series }: SeriesRenderOptions,
+): Promise<RenderResult> {
+  const rootRoute = createRootRoute()
+  const seriesRoute = createRoute({
+    getParentRoute: () => rootRoute,
+    path: '$series',
+    beforeLoad: () => ({ series }),
+    component: (): ReactElement => (
+      <LocaleProvider locale={locale}>
+        <BookmarkProvider
+          initialBookmark={null}
+          series={series}
+        >
+          {ui}
+        </BookmarkProvider>
+      </LocaleProvider>
+    ),
+  })
+  const page = createRoute({ getParentRoute: () => seriesRoute, path: '$' })
+  const router = createRouter({
+    routeTree: rootRoute.addChildren([seriesRoute.addChildren([page])]),
+    history: createMemoryHistory({ initialEntries: [path] }),
   })
   await router.load()
 

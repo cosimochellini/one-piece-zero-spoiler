@@ -1,10 +1,15 @@
 import { screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 
-import type { HubSeries } from '~/lib/view/hub'
+import type { ComingSeries, HubSeries } from '~/lib/view/hub'
 import { ep, renderWithProviders } from '~/test/providers'
 
 import { SeriesHub } from './SeriesHub'
+
+const HUNTER_X_HUNTER: ComingSeries = {
+  slug: 'hunter-x-hunter',
+  name: { en: 'Hunter x Hunter', it: 'Hunter x Hunter' },
+}
 
 const onePiece = (bookmark: HubSeries['bookmark']): HubSeries => ({
   slug: 'one-piece',
@@ -16,10 +21,13 @@ const onePiece = (bookmark: HubSeries['bookmark']): HubSeries => ({
 
 describe('SeriesHub', () => {
   it('links a series to its own home, with its count and the bookmark', () => {
-    renderWithProviders(<SeriesHub series={[onePiece(ep(650))]} />, {
-      locale: 'it',
-      path: '/it',
-    })
+    renderWithProviders(
+      <SeriesHub
+        coming={[]}
+        series={[onePiece(ep(650))]}
+      />,
+      { locale: 'it', path: '/it' },
+    )
 
     const card = screen.getByRole('link', { name: /One Piece/u })
 
@@ -39,9 +47,13 @@ describe('SeriesHub', () => {
     },
     { bookmark: null, said: 'No bookmark yet' },
   ])('says where the reader stands: $said', ({ bookmark, said }) => {
-    renderWithProviders(<SeriesHub series={[onePiece(bookmark)]} />, {
-      path: '/en',
-    })
+    renderWithProviders(
+      <SeriesHub
+        coming={[]}
+        series={[onePiece(bookmark)]}
+      />,
+      { path: '/en' },
+    )
 
     expect(screen.getByRole('link', { name: /One Piece/u })).toHaveTextContent(
       said,
@@ -49,9 +61,13 @@ describe('SeriesHub', () => {
   })
 
   it('announces a series still to come with no link and no count', () => {
-    renderWithProviders(<SeriesHub series={[onePiece(null)]} />, {
-      path: '/en',
-    })
+    renderWithProviders(
+      <SeriesHub
+        coming={[HUNTER_X_HUNTER]}
+        series={[onePiece(null)]}
+      />,
+      { path: '/en' },
+    )
 
     const coming = screen.getByRole('heading', { name: 'Hunter x Hunter' })
 
@@ -59,21 +75,5 @@ describe('SeriesHub', () => {
     expect(coming.parentElement).toHaveTextContent('Coming later')
     expect(screen.getAllByText(/entries/u)).toHaveLength(1)
     expect(screen.getAllByRole('link')).toHaveLength(1)
-  })
-
-  it('drops the announcement once the series is in the registry', () => {
-    const filed = {
-      ...onePiece(null),
-      slug: 'hunter-x-hunter',
-      name: { en: 'Hunter x Hunter', it: 'Hunter x Hunter' },
-    }
-    renderWithProviders(<SeriesHub series={[filed]} />, { path: '/en' })
-
-    expect(
-      screen.getAllByRole('heading', { name: 'Hunter x Hunter' }),
-    ).toHaveLength(1)
-    expect(
-      screen.getByRole('link', { name: /Hunter x Hunter/u }),
-    ).toHaveAttribute('href', '/hunter-x-hunter/en')
   })
 })

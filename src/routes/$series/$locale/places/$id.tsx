@@ -20,7 +20,11 @@ import { useLocale } from '~/i18n/LocaleContext'
  * · idea: "one stop of the chart, opened flat" */
 import { recordHead } from '~/routes/$locale/-head'
 import { RecordBackLink } from '~/routes/$series/$locale/-back'
-import { orNotFound, recordArgs } from '~/routes/$series/$locale/-found'
+import {
+  orNotFound,
+  recordArgs,
+  requirePage,
+} from '~/routes/$series/$locale/-found'
 import { usePeek } from '~/routes/$series/$locale/-peek'
 import { recordStyles } from '~/routes/$series/$locale/-record.styles'
 import { liftPort, liftRecord, liftShip, loadPlace } from '~/server/api'
@@ -34,6 +38,9 @@ import { EntryDiptych, PlaceEntry, ShipBody } from './-$id.entry'
 const BAND = { entry: 0, map: 1, drawings: 2, turn: 3 } as const
 
 export const Route = createFileRoute('/$series/$locale/places/$id')({
+  beforeLoad: ({ context }) => {
+    requirePage(context.series, 'places')
+  },
   // The one decision the page turns on is made on the server, from the
   // bookmark in the request: the document title must not carry a name the
   // reader has not reached, and a title is set before any component runs.

@@ -7,6 +7,7 @@
  * pages are one macrostructure, with the few declarations of their own below.
  */
 import * as stylex from '@stylexjs/stylex'
+import { useMatch } from '@tanstack/react-router'
 import { type ReactElement, useId } from 'react'
 
 import { PlaceMap } from '~/components/PlaceMap'
@@ -22,22 +23,42 @@ import { styles as page } from '~/routes/$series/$locale/characters/-$id.styles'
 import { color, font, radius, rule, space, text } from '~/styles/tokens.stylex'
 
 /**
+ * Whether the series in the address draws the world map. With no description
+ * (a bare test router, never a series page) it does, as One Piece.
+ */
+function useWorldMap(): boolean {
+  return (
+    useMatch({ from: '/$series', shouldThrow: false })?.context.series.features
+      .worldMap ?? true
+  )
+}
+
+/** The stretch of the chart to draw, with the place's name: none under fog. */
+function mapOf(
+  detail: PlaceDetail,
+): null | { chart: NonNullable<PlaceDetail['chart']>; name: string } {
+  return detail.chart === null || !detail.slot.open ?
+      null
+    : { chart: detail.chart, name: detail.slot.record.name }
+}
+
+/**
  * Where the place is: its stop number and a line on what the map shows,
  * beside the stretch of the sea chart around it, then the times the story
  * comes back to it. Under fog there is no map, nor the line about it: where
- * a place lies is what the fog is for, so only the number stays.
+ * a place lies is what the fog is for, so only the number stays. A series
+ * with no world map (`features.worldMap`) has no map to be on, so the stop
+ * number is the band's title.
  */
 export function MapBand({ detail }: { detail: PlaceDetail }): ReactElement {
   const { t } = useLocale()
   const titleId = useId()
+  const worldMap = useWorldMap()
   const stage = t('places.stage', {
     index: detail.index + 1,
     total: detail.total,
   })
-  const map =
-    detail.chart === null || !detail.slot.open ?
-      null
-    : { chart: detail.chart, name: detail.slot.record.name }
+  const map = mapOf(detail)
 
   return (
     <section
@@ -49,9 +70,11 @@ export function MapBand({ detail }: { detail: PlaceDetail }): ReactElement {
           id={titleId}
           {...stylex.props(page.sectionTitle)}
         >
-          {t('place.mapTitle')}
+          {worldMap ? t('place.mapTitle') : stage}
         </h2>
-        <p {...stylex.props(page.position)}>{stage}</p>
+        {worldMap ?
+          <p {...stylex.props(page.position)}>{stage}</p>
+        : null}
         {map === null ? null : (
           <p {...stylex.props(page.lede)}>{t('place.mapLede')}</p>
         )}

@@ -14,3 +14,6 @@ export interface HubSeries {
   slug: string
   theme: SeriesTheme
 }
+
+/** A series filed but not open: the hub says its name, and nothing else. */
+export type ComingSeries = Pick<HubSeries, 'name' | 'slug'>
