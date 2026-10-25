@@ -5,7 +5,7 @@ import { describe, expect, it } from 'vitest'
 import type { Entity } from '~/data/types'
 import { LOCALES } from '~/i18n/locales'
 import { FIRST_CHAPTER, FIRST_EPISODE } from '~/lib/progress/episode'
-import { isADrawing } from '~/test/drawing'
+import type { Stroke } from '~/lib/view/records'
 import { LOADED_SERIES } from '~/test/series'
 
 import { SERIES } from '.'
@@ -27,6 +27,28 @@ describe('the series list', () => {
     expect(slugs.size).toBe(SERIES.length)
   })
 })
+
+/** The rules every drawing on the site obeys, in every series, first or redrawn. */
+function isADrawing(id: string, strokes: Stroke[]): void {
+  // Fewer than four strokes is an icon, not a drawing.
+  expect(strokes.length, id).toBeGreaterThan(3)
+  expect(
+    strokes.some((stroke) => stroke.role === 'accent'),
+    id,
+  ).toBe(true)
+
+  for (const stroke of strokes) {
+    expect(stroke.d.length, id).toBeGreaterThan(0)
+  }
+
+  // The renderer keys each path by its `d` and transform, so the same shape
+  // may repeat only under another transform; a true duplicate is a React key
+  // clash and a line drawn over itself.
+  const keys = strokes.map((stroke) => `${stroke.d}|${stroke.transform ?? ''}`)
+  const distinct = new Set(keys)
+
+  expect(distinct.size, id).toBe(keys.length)
+}
 
 /** Whether a record is an arc. */
 function isArc(entity: Entity): boolean {
@@ -101,11 +123,18 @@ describe.each(LOADED_SERIES)(
       }
     })
 
-    it('draws every record with at least four strokes and one in its colour', () => {
+    it('draws every record, first or redrawn, with at least four strokes and one in its colour', () => {
       expect.hasAssertions()
 
       for (const [id, strokes] of Object.entries(drawings)) {
         isADrawing(id, strokes)
+      }
+      // Read through the archive, so a series' first redrawing is held to the
+      // house style the day it is wired into `redrawn`.
+      for (const entity of entities) {
+        for (const { value } of archive.redrawn(entity)) {
+          isADrawing(entity.id, value)
+        }
       }
     })
 

@@ -426,7 +426,7 @@ function writePage(file, svg, zoom) {
 export function writeSheets({ name, cells }, palette, out) {
   if (cells.length === 0) {
     throw new Error(
-      'Nothing to draw: name record ids, or pass --saga or --kind.',
+      'Nothing to draw: name record ids, or pass --saga or a --kind this series has records of.',
     )
   }
   const pages = Math.ceil(cells.length / PAGE)

@@ -23,7 +23,8 @@ These rules hold for every drawing. **(test)** marks the ones a test fails on;
 the rest are left to review, so check them yourself.
 
 - **The box.** 160×200, x to the right, y down (`ART_VIEWBOX`). The object
-  centred near x 80; ground or a base at y 150; `shadow()` at y 180–190;
+  centred near x 80; ground or a base at y 150; `shadow()` at y 180–190
+  (Hunter x Hunter's arcs differ; see its section);
   `SEA` waves at y 158/172/186. A drawing may run past the box (a wave
   does); One Piece's fruits may not **(test)**.
 - **The pen.** One 2 px line, round caps and joins, kept at 2 px at every size
@@ -104,13 +105,16 @@ Grade every drawing you make or review. Only A ships.
   the worked example (`east-blue.ts`, `LUFFY_HAT`). When the object is
   hidden under the costume (Luffy's knight helm), the accent moves to the
   costume's own mark (the plume). If the honest composition does not read at
-  56 px, drop the stage rather than draw something false. In One Piece,
-  each redrawing is a whole drawing in the `<saga>Redrawn` timeline of the saga that first
-  drew the record: `{ episode, chapter, value }`, strictly after
-  `revealedAtEpisode`, ascending. The `chapter:` must be a true pair with the episode, the chapter
-  that same scene is in, or chapter readers see it early; when the true
-  chapter is below the record's, pin the record's (see the rulings below).
-  `src/server/archive/slices.test.ts` walks every stage from the data
+  56 px, drop the stage rather than draw something false. Every redrawing
+  is a whole drawing, `{ episode, chapter, value }`, strictly after
+  `revealedAtEpisode`, ascending. The `chapter:` must be a true pair with the
+  episode, the chapter that same scene is in, or chapter readers see it
+  early; when the true chapter is below the record's, pin the record's (see
+  the rulings below). `src/data/series/index.test.ts` holds every series'
+  redrawings to the house style. The rest of this paragraph is One Piece's
+  mechanics: the entry goes in the `<saga>Redrawn` timeline of the saga that
+  first drew the record, and `src/server/archive/slices.test.ts` walks every
+  stage from the data
   (episode − 1, episode, no bookmark, chapter − 1, chapter), so a stage needs
   no test of its own; a stage that is an earlier drawing again gets a row in
   the "redraws %s at stage %i" table there. A saga's first redrawing is
@@ -147,8 +151,8 @@ Grade every drawing you make or review. Only A ships.
     counts only where an episode adapts it as story; anime-only looks stay
     out.
   - **A stage whose true chapter is below its record's chapter is pinned at
-    the record's chapter**, as the status entries are (#459): the Shinobu
-    entry in `wano.ts`, Pekoms in `fish-man-island.ts`. The gate is the later
+    the record's chapter**, as the status entries are (#459): in One Piece,
+    the Shinobu entry in `wano.ts`, Pekoms in `fish-man-island.ts`. The gate is the later
     of the record's chapter and the entry's `chapter:`, or without one the
     first chapter that reaches its episode, which can be many chapters late.
     The pin adds nothing to the chapter table, and the stage walk in
@@ -213,35 +217,47 @@ A drawing is gated like any text, and it can spoil just as well.
 ## Hunter x Hunter
 
 Everything above holds for Hunter x Hunter, with what is its own here. Its
-drawings are `DRAWINGS` in `src/data/series/hunter-x-hunter/art/index.ts`;
-render them with `npm run art:sheet -- --series hunter-x-hunter <id>` (or
-`--kind arc|character|place`), on the series' own paper.
+drawings are `DRAWINGS` in `src/data/series/hunter-x-hunter/art/index.ts`:
+the arcs today, the characters and places with #760 and #761. Render them
+with `npm run art:sheet -- --series hunter-x-hunter <id>` (or `--kind
+arc|character|place`; `--saga` is One Piece's), on the series' own paper.
 
 - **The palette.** The `HUNTER_X_HUNTER` theme in `src/styles/themes.ts`:
   papers and inks tinted forest green (hue 160), and Gon's leaf green,
   `oklch(82% 0.2 145)`, as the page's `accent`. A record still takes one of
-  the shared tints. `green` and `acid` sit beside the leaf on this paper, so
-  they go to a record whose own colour is that green, not by default.
+  the shared tints. `green` and `acid` go only to a record whose accent mark
+  is itself shown green on screen at its threshold (owner, #797); every
+  other record takes another tint.
 - **Motifs.** A character is the object the reader would name first at the
   record's threshold: Gon's fishing rod, Killua's skateboard, Leorio's
-  briefcase, Kurapika's two wooden swords. The accent goes on the part that
-  makes it theirs (the rod's reel, the board's deck, the case's handle). An
-  arc or a place is its landmark or an object from its opening (the exam ship
-  in a storm, the fighting tower, the auction gavel), on a ground line at
-  y 150 with a `shadow()`, and on `SEA` only when it is at sea.
+  briefcase, Kurapika's two wooden swords, each as the threshold episode of
+  the 2011 anime and its chapter show it, settled by the frame check. The
+  accent is the role of a stroke on a real part the show shows (the rod's
+  reel, the board's deck, the case's handle; the swords' grips if the frame
+  shows them apart from the blades, else the blades), never a mark added to
+  carry it.
+- **Arcs and places** are a landmark or an object from the arc's opening:
+  on land, a ground line at y 150 with `shadow()` at y 150–160 under it
+  (the fighting tower, the auction gavel, the game console); at sea, on
+  `...SEA` with no shadow (the exam ship in a storm).
 - **Nen and later looks.** Weapons and looks in Hunter x Hunter are often Nen
   abilities shown arcs later, so the threshold check bites hardest here: no
   later weapon, form, Nen ability or costume. Kurapika at the Hunter Exam is
   the wooden swords; his chains are a Nen ability first shown in Yorknew City.
-  Nen, from the episode and chapter that show the ability, is open lines
-  around the object, never a glow or a fill.
-- **Redrawings** follow the rulings in "Each kind of record": a dated drawing
-  pinned at a true chapter (the 2011 anime's episode and the chapter of the
-  same scene), a new drawing on a death or a costume change. A Nen ability
-  that becomes part of the object (Kurapika's chained hand) is a stage; a
-  one-fight technique is not. The series has no redrawing timeline yet: the
-  first redrawing adds one to its art module and to the archive's `redrawn`,
-  on One Piece's model.
+  Nen, from the first episode and chapter that show the ability, is open
+  lines around the object, never a glow or a fill (owner, #797).
+- **Redrawings** follow the rulings in "Each kind of record": a true chapter
+  pin, a new drawing on a death or a costume change. A Nen ability that
+  becomes part of the object (Kurapika's chained hand) is a stage; a
+  one-fight technique is not. The series has none yet, so the first one
+  adds the timeline: export `REDRAWINGS` (`Redrawings`, keyed by record id)
+  from `art/index.ts`, and wire it into `archive.ts` as the `redrawing`
+  timeline, so the archive's `redrawn` and `timelines` read it and its
+  episode and chapter pairs join the chapter table's `anchors` (One Piece's
+  `chapter-table.ts`, `READERS` and `ANCHORS`, is the model). Then
+  `src/data/series/index.test.ts` holds its strokes and its order; the stage
+  walk in `slices.test.ts` is One Piece's, so that PR extends it to Hunter x
+  Hunter.
 - **Research** reads the Hunter x Hunter Wiki API
   (`https://hunterxhunter.fandom.com/api.php`): `|manga debut` and
   `|anime debut` (the `Episode N (2011)` entry) give a record's pair, the
