@@ -3,7 +3,7 @@ import { Link } from '@tanstack/react-router'
 import { Fragment, type ReactElement, type ReactNode } from 'react'
 
 import { formatBounty } from '~/i18n/bounty'
-import { useLocale } from '~/i18n/LocaleContext'
+import { useLocale, useSeriesT } from '~/i18n/LocaleContext'
 import type { Translate } from '~/i18n/types'
 import { useSeriesParams } from '~/lib/progress/BookmarkContext'
 import type {
@@ -46,16 +46,24 @@ export function CharacterFacts({
   facts,
 }: CharacterFactsProps): null | ReactElement {
   const { locale, t } = useLocale()
+  // The devil fruit and the bounty are One Piece's words: their labels are
+  // read only for a row that has a value, which only its archive files.
+  const onePiece = useSeriesT('one-piece')
 
-  const rows: [string, ReactNode][] = [
-    [t('character.status'), statusRow(facts.status, t)],
-    [t('character.epithet'), facts.epithet],
-    [t('character.affiliation'), facts.affiliation],
-    [t('character.origin'), facts.origin],
-    [t('character.devilFruit'), fruitRow(facts.devilFruit)],
-    [t('character.bounty'), formatBounty(facts.bounty, locale, t)],
+  const rows: [() => string, ReactNode][] = [
+    [() => t('character.status'), statusRow(facts.status, t)],
+    [() => t('character.epithet'), facts.epithet],
+    [() => t('character.affiliation'), facts.affiliation],
+    [() => t('character.origin'), facts.origin],
+    [() => onePiece('character.devilFruit'), fruitRow(facts.devilFruit)],
+    [
+      () => onePiece('character.bounty'),
+      formatBounty(facts.bounty, locale, onePiece),
+    ],
   ]
-  const shown = rows.filter((row) => row[1] !== undefined)
+  const shown = rows.flatMap(([label, value]): [string, ReactNode][] =>
+    value === undefined ? [] : [[label(), value]],
+  )
 
   if (shown.length === 0) {
     return null

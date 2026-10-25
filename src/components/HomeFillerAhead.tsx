@@ -45,7 +45,8 @@ export function HomeFillerAhead({
   ahead: FillerAhead
   mode: BookmarkMode
 }): ReactElement {
-  const { locale, t } = useLocale()
+  const { locale } = useLocale()
+  const t = useSeriesT('one-piece')
   const { series } = useSeriesParams()
   const bookmarkSeries = useBookmarkSeries()
 
