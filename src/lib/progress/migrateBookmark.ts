@@ -32,7 +32,7 @@ export function migrateBookmark(request: Request): string[] {
     if (!jar.has(old)) {
       continue
     }
-    const bookmark = parse(jar.get(old))
+    const bookmark = parse(jar.get(old), ONE_PIECE_BOOKMARK)
     if (bookmark !== null && !jar.has(name)) {
       const value = serialiseBookmark(bookmark)
       jar.set(name, value)

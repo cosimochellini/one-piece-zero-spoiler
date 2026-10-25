@@ -32,6 +32,7 @@ export async function shotRows(args) {
   const { getEntity } = await importArchive('data/series/one-piece/entities.ts')
   const { datedOf } = await importArchive('data/series/one-piece/dated.ts')
   const { parseBookmark } = await importArchive('lib/progress/episode.ts')
+  const { ONE_PIECE_BOOKMARK } = await importArchive('lib/progress/series.ts')
   const { reveal } = await importArchive('data/reveal.ts')
   return positionals.flatMap((id) => {
     const entity = getEntity(id)
@@ -52,7 +53,10 @@ export async function shotRows(args) {
         `c${gate.revealedAtChapter}`,
       ].map((value) => ({
         value,
-        open: reveal(parseBookmark(value)).sees(entity),
+        open: reveal(
+          parseBookmark(value, ONE_PIECE_BOOKMARK),
+          ONE_PIECE_BOOKMARK,
+        ).sees(entity),
       })),
     }))
   })

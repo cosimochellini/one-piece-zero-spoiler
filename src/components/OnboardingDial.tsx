@@ -12,7 +12,7 @@ import { styles } from '~/components/Onboarding.styles'
 import { Button } from '~/components/ui/Button'
 import { useT } from '~/i18n/LocaleContext'
 import type { Translate } from '~/i18n/types'
-import { useBookmark } from '~/lib/progress/BookmarkContext'
+import { useBookmark, useBookmarkSeries } from '~/lib/progress/BookmarkContext'
 import type { Bookmark } from '~/lib/progress/episode'
 import { useBookmarkDraft } from '~/lib/progress/useBookmarkDraft'
 import { markWelcome } from '~/lib/progress/welcome'
@@ -46,6 +46,7 @@ export function OnboardingDial({
 }: Omit<OnboardingDialProps, 'chapterAt'>): ReactElement {
   const t = useT()
   const id = useId()
+  const last = dialLast(point.mode, useBookmarkSeries())
 
   return (
     <div {...stylex.props(styles.dial)}>
@@ -63,7 +64,7 @@ export function OnboardingDial({
       <input
         aria-valuetext={`${unitOf(t, point)} ${String(point.value)}`}
         id={id}
-        max={dialLast(point.mode)}
+        max={last}
         min={1}
         onChange={(event) => {
           onPoint({ ...point, value: event.currentTarget.valueAsNumber })
@@ -77,7 +78,7 @@ export function OnboardingDial({
         {...stylex.props(styles.scale)}
       >
         <span>1</span>
-        <span>{dialLast(point.mode)}</span>
+        <span>{last}</span>
       </div>
     </div>
   )

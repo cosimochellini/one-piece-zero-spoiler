@@ -8,6 +8,7 @@ import { CHARACTER_DOSSIERS } from '~/data/series/one-piece/sagas'
 import type { Entity } from '~/data/types'
 import { getDictionary } from '~/i18n/translate'
 import type { Bookmark } from '~/lib/progress/episode'
+import { ONE_PIECE_BOOKMARK } from '~/lib/progress/series'
 import type { Faction, FruitFactionView } from '~/lib/view/records'
 import { opFruitAlbum as fruitAlbum } from '~/test/archive'
 import { ONE_PIECE_LOADED as ONE_PIECE } from '~/test/series'
@@ -56,7 +57,7 @@ function reachedFactions(at: Reveal, eater: Entity): (Faction | null)[] {
 
 /** Every `fruit|faction|eater position` the groups should hold, worked out here. */
 function expectedCells(bookmark: Bookmark): string[] {
-  const at = reveal(bookmark)
+  const at = reveal(bookmark, ONE_PIECE_BOOKMARK)
 
   return fruits.flatMap((fruit) => {
     if (!at.sees(fruit)) {
@@ -190,7 +191,9 @@ describe('the faction view', () => {
         open.toSorted(byText),
       )
       expect(
-        factions.every((group) => readsInOrder(reveal(bookmark), group)),
+        factions.every((group) =>
+          readsInOrder(reveal(bookmark, ONE_PIECE_BOOKMARK), group),
+        ),
         label,
       ).toBe(true)
       expect(inOrder(factions, 'en'), label).toBe(true)

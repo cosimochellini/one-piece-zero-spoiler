@@ -1,7 +1,7 @@
 import { isCrawlerAgent } from '~/lib/crawler'
 
 import { type Bookmark, parseBookmark } from './episode'
-import { type BookmarkSeries, ONE_PIECE_BOOKMARK } from './series'
+import type { BookmarkSeries } from './series'
 
 /**
  * A trial point as the onboarding wrote it, or `null`.
@@ -13,7 +13,7 @@ import { type BookmarkSeries, ONE_PIECE_BOOKMARK } from './series'
  */
 export function parseTrial(
   raw: string | undefined,
-  series: BookmarkSeries = ONE_PIECE_BOOKMARK,
+  series: BookmarkSeries,
 ): Bookmark {
   const point = parseBookmark(raw, series)
 
@@ -37,7 +37,7 @@ export function parseTrial(
 export function trialForRequest(
   cookie: string | undefined,
   trial: string | undefined,
-  series: BookmarkSeries = ONE_PIECE_BOOKMARK,
+  series: BookmarkSeries,
 ): Bookmark {
   return parseBookmark(cookie, series) === null ?
       parseTrial(trial, series)
@@ -64,9 +64,9 @@ export function bookmarkForRequest(
   cookie: string | undefined,
   trial: string | undefined,
   {
+    series,
     userAgent,
-    series = ONE_PIECE_BOOKMARK,
-  }: { series?: BookmarkSeries; userAgent?: string | undefined } = {},
+  }: { series: BookmarkSeries; userAgent?: string | undefined },
 ): Bookmark {
   const bookmark = parseBookmark(cookie, series) ?? parseTrial(trial, series)
   if (bookmark !== null) {

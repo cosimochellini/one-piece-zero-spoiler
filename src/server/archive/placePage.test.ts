@@ -6,6 +6,7 @@ import { chartPointOf } from '~/data/series/one-piece/chart'
 import { placeDossierOf, places, ships } from '~/data/series/one-piece/places'
 import { CHARACTER_DOSSIERS } from '~/data/series/one-piece/sagas'
 import type { Bookmark } from '~/lib/progress/episode'
+import { ONE_PIECE_BOOKMARK } from '~/lib/progress/series'
 import {
   opPlacePage as placePage,
   opPlacesPage as placesPage,
@@ -277,7 +278,7 @@ describe('a place’s later visits', () => {
   it.each(BOOKMARKS.map((bookmark) => [JSON.stringify(bookmark), bookmark]))(
     'sends none under fog and none past the bookmark, at %s',
     (_, bookmark: Bookmark) => {
-      const { sees } = reveal(bookmark)
+      const { sees } = reveal(bookmark, ONE_PIECE_BOOKMARK)
 
       for (const place of places) {
         const { detail } = pageOf(place.id, bookmark)
@@ -316,7 +317,7 @@ function nativesAt(id: string, bookmark: Bookmark): string[] {
  * episode or chapter.
  */
 function expectedNatives(id: string, bookmark: Bookmark): string[] {
-  const { sees } = reveal(bookmark)
+  const { sees } = reveal(bookmark, ONE_PIECE_BOOKMARK)
   if (!pageOf(id, bookmark).detail.slot.open) {
     return []
   }

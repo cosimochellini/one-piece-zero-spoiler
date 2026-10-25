@@ -284,7 +284,7 @@ function wordsOf(
 
 /** What a series' records go by: ids, names, folded names, drawings. */
 function goesBy(series: ListedSeries): Foreign {
-  const nobody = reveal(null)
+  const nobody = reveal(null, series.archive.series)
 
   return {
     drawn: wordsOf(series, (entity) =>

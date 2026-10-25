@@ -4,8 +4,6 @@ import type { SeriesTheme } from '~/styles/themes'
 
 import {
   CHAPTER_CEILING,
-  DEMO_LAST_CHAPTER,
-  DEMO_LAST_EPISODE,
   EPISODE_CEILING,
   EPISODE_COOKIE,
   TRIAL_COOKIE,
@@ -24,6 +22,11 @@ export interface Season {
 export interface BookmarkSeries {
   chapterCeiling: number
   cookie: string
+  /**
+   * The demo span: the last chapter and episode the onboarding dial covers.
+   * A reader with no bookmark is sent this much and nothing past it, and a
+   * trial point past it is ignored.
+   */
   demoLastChapter: number
   demoLastEpisode: number
   episodeCeiling: number
@@ -60,8 +63,10 @@ export const ONE_PIECE_BOOKMARK: BookmarkSeries = {
   trialCookie: TRIAL_COOKIE,
   episodeCeiling: EPISODE_CEILING,
   chapterCeiling: CHAPTER_CEILING,
-  demoLastEpisode: DEMO_LAST_EPISODE,
-  demoLastChapter: DEMO_LAST_CHAPTER,
+  // The last episode and chapter of East Blue, the stretch the onboarding
+  // dial covers. The data tests hold both against the first arc after it.
+  demoLastEpisode: 61,
+  demoLastChapter: 100,
   seasons: [
     { number: 1, first: 1, last: 61 },
     { number: 2, first: 62, last: 77 },

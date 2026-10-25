@@ -5,6 +5,7 @@ import { styles } from '~/components/FillerCatalogue.styles'
 import { followHash, placeLabel } from '~/components/fillerLabels'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { useT } from '~/i18n/LocaleContext'
+import { useBookmarkSeries } from '~/lib/progress/BookmarkContext'
 import type { BookmarkMode } from '~/lib/progress/episode'
 import type {
   FillerGroup,
@@ -212,6 +213,7 @@ function Row({
   slot: FillerSlot
 }): ReactElement {
   const t = useT()
+  const series = useBookmarkSeries()
   const entry = slot.open ? slot.record : slot.covered
 
   return (
@@ -221,7 +223,7 @@ function Row({
     >
       <p {...stylex.props(styles.meta)}>
         <span {...stylex.props(styles.place)}>
-          {placeLabel(t, mode, entry)}
+          {placeLabel(t, { mode, series }, entry)}
         </span>
         <span {...stylex.props(styles.kind, kindStyle(entry.kind))}>
           {t(`filler.kind.${entry.kind}`)}

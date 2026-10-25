@@ -14,7 +14,10 @@ import { useLocale, useT } from '~/i18n/LocaleContext'
  * states: default · hover · focus · active (the link; the cells are static)
  * · idea: the filler page's countdown row, cut down to a warning on the home
  *   page: a headline, the countdown's own sentence, the six cells, a link */
-import { useSeriesParams } from '~/lib/progress/BookmarkContext'
+import {
+  useBookmarkSeries,
+  useSeriesParams,
+} from '~/lib/progress/BookmarkContext'
 import type { BookmarkMode } from '~/lib/progress/episode'
 import type { FillerAhead } from '~/lib/view/filler'
 import {
@@ -44,6 +47,7 @@ export function HomeFillerAhead({
 }): ReactElement {
   const { locale, t } = useLocale()
   const { series } = useSeriesParams()
+  const bookmarkSeries = useBookmarkSeries()
 
   return (
     <section
@@ -57,12 +61,16 @@ export function HomeFillerAhead({
         {t('home.filler.title')}
       </h2>
       <p {...stylex.props(styles.sentence)}>
-        {runSentenceOf(t, ahead, mode)}
+        {runSentenceOf(t, ahead, { mode, series: bookmarkSeries })}
         {ahead.inRun === null && ahead.next !== null && (
           <>
             {' '}
             {t('filler.countdown.span', {
-              span: episodesLabel(t, mode, ahead.next),
+              span: episodesLabel(
+                t,
+                { mode, series: bookmarkSeries },
+                ahead.next,
+              ),
             })}
           </>
         )}
@@ -92,6 +100,7 @@ function Row({
   mode: BookmarkMode
 }): ReactElement {
   const t = useT()
+  const bookmarkSeries = useBookmarkSeries()
 
   return (
     <ol
@@ -111,10 +120,11 @@ function Row({
               aria-label={cellName(t, {
                 here,
                 kind,
-                number: episodesLabel(t, mode, {
-                  first: episode,
-                  last: episode,
-                }),
+                number: episodesLabel(
+                  t,
+                  { mode, series: bookmarkSeries },
+                  { first: episode, last: episode },
+                ),
               })}
               role="img"
               {...stylex.props(...looksOf(kind, here))}

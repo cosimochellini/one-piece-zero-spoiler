@@ -9,6 +9,7 @@ import { fruits } from '~/data/series/one-piece/fruits'
 import type { Entity } from '~/data/types'
 import { type Locale, LOCALES } from '~/i18n/locales'
 import { absoluteEpisodeOf, type Bookmark } from '~/lib/progress/episode'
+import { ONE_PIECE_BOOKMARK } from '~/lib/progress/series'
 import { foldName, matchFolded } from '~/lib/search/fold'
 import type {
   FruitEatersView,
@@ -193,7 +194,7 @@ describe('the specimen sheet', () => {
 
 describe('the eaters on a tile', () => {
   it('names every open eater at episode 650, in eatersOf order, and no covered one', () => {
-    const at = reveal(ep(650))
+    const at = reveal(ep(650), ONE_PIECE_BOOKMARK)
     const open = fruitAlbum(ep(650), 'en').bands.flatMap((band) => band.open)
 
     expect(open.length).toBeGreaterThan(50)
@@ -693,7 +694,7 @@ describe('the marquee', () => {
   it('names only open fruits of the saga so far, at every bookmark of the sweep', () => {
     for (const bookmark of BOOKMARKS) {
       const { bands } = fruitAlbum(bookmark, 'en')
-      const at = reveal(bookmark)
+      const at = reveal(bookmark, ONE_PIECE_BOOKMARK)
       const open = new Set(
         bands.flatMap((band) => band.open).map(({ id }) => id),
       )
@@ -840,12 +841,12 @@ interface SagaViewAt {
 
 function sagaViewAt(bookmark: NonNullable<Bookmark>): SagaViewAt {
   const sheet = fruitAlbum(bookmark, 'en')
-  const at = reveal(bookmark)
+  const at = reveal(bookmark, ONE_PIECE_BOOKMARK)
   const starts = sagaStarts(at.mode === 'chapter' ? 'chapter' : 'episode')
   const position =
     bookmark.mode === 'chapter' ?
       bookmark.chapter
-    : (absoluteEpisodeOf(bookmark) ?? 0)
+    : (absoluteEpisodeOf(bookmark, ONE_PIECE_BOOKMARK) ?? 0)
 
   return {
     at,

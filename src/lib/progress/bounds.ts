@@ -28,13 +28,3 @@ export const CHAPTER_CEILING = 1300
  * without saving it. It carries no Max-Age and ends with the session.
  */
 export const TRIAL_COOKIE = 'zs_one-piece_try'
-
-/**
- * The last episode and chapter of East Blue, the stretch the onboarding dial
- * covers. A reader with no bookmark is sent this much and nothing past it, and
- * a trial point past it is ignored. The data tests hold both against the
- * first arc after East Blue.
- */
-export const DEMO_LAST_EPISODE = 61
-
-export const DEMO_LAST_CHAPTER = 100

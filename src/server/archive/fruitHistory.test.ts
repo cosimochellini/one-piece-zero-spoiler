@@ -4,6 +4,7 @@ import { orderByMode } from '~/data/order'
 import { reveal } from '~/data/reveal'
 import { fruits } from '~/data/series/one-piece/fruits'
 import type { Bookmark } from '~/lib/progress/episode'
+import { ONE_PIECE_BOOKMARK } from '~/lib/progress/series'
 import type { FruitDetail, FruitView, Slot } from '~/lib/view/records'
 import { opFruitPage as fruitPage, opSagaOf as sagaOf } from '~/test/archive'
 
@@ -26,7 +27,7 @@ function detailOf(id: string, bookmark: Bookmark): FruitDetail {
 
 /** The history as lines: the event, who, and the mark in the reader's unit. */
 function historyOf(id: string, bookmark: Bookmark): string[] {
-  const at = reveal(bookmark)
+  const at = reveal(bookmark, ONE_PIECE_BOOKMARK)
 
   return detailOf(id, bookmark).history.map((entry) =>
     [entry.event, entry.who?.id, at.threshold(entry)]
@@ -113,7 +114,7 @@ describe('a fruit’s history', () => {
 
   it('opens every entry at its own gate, oldest first', () => {
     for (const bookmark of [ep(300), ep(800), ch(900), ep(1200)]) {
-      const at = reveal(bookmark)
+      const at = reveal(bookmark, ONE_PIECE_BOOKMARK)
       for (const fruit of fruits) {
         const { history } = detailOf(fruit.id, bookmark)
         const marks = history.map((entry) => at.threshold(entry))
@@ -148,7 +149,10 @@ function sideOf(slot: null | Slot<FruitView>): string {
 describe('the previous and next fruit', () => {
   it('follow the reader’s order, in their unit', () => {
     for (const bookmark of [ep(1200), ch(1200)]) {
-      const order = orderByMode(fruits, reveal(bookmark).mode)
+      const order = orderByMode(
+        fruits,
+        reveal(bookmark, ONE_PIECE_BOOKMARK).mode,
+      )
       const ids = order.map(({ id }) => id)
       const sides = order.map(({ id }) => {
         const detail = detailOf(id, bookmark)
@@ -190,7 +194,7 @@ describe('the rail of the same saga', () => {
 
   it('holds only open fruits, and is empty under fog', () => {
     for (const bookmark of [ep(100), ep(700), ch(900)]) {
-      const at = reveal(bookmark)
+      const at = reveal(bookmark, ONE_PIECE_BOOKMARK)
       const rails = fruits.map((fruit) => detailOf(fruit.id, bookmark).sagaRail)
       const covered = fruits.flatMap((fruit, index) =>
         at.sees(fruit) ? [] : [rails[index]],

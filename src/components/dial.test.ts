@@ -1,7 +1,13 @@
 import { describe, expect, it } from 'vitest'
 
 import {
+  HUNTER_X_HUNTER_SERIES,
+  ONE_PIECE_BOOKMARK,
+} from '~/lib/progress/series'
+
+import {
   dialBookmark,
+  dialLast,
   dialSees,
   dialStart,
   latestStep,
@@ -12,6 +18,13 @@ import {
 const CHAPTER_AT = [2, 5, 7, 7]
 
 describe('the onboarding dial', () => {
+  it("stops at the end of the series' own demo span", () => {
+    expect(dialLast('episode', ONE_PIECE_BOOKMARK)).toBe(61)
+    expect(dialLast('chapter', ONE_PIECE_BOOKMARK)).toBe(100)
+    expect(dialLast('episode', HUNTER_X_HUNTER_SERIES)).toBe(26)
+    expect(dialLast('chapter', HUNTER_X_HUNTER_SERIES)).toBe(43)
+  })
+
   it('starts at the trial point, or at the first episode', () => {
     expect(dialStart(null)).toStrictEqual({ mode: 'episode', value: 1 })
     expect(dialStart({ mode: 'chapter', chapter: 40 })).toStrictEqual({
