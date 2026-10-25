@@ -12,6 +12,13 @@ import { ONE_PIECE_PLACE_WORDS } from './one-piece/placeWords'
 export interface ListedSeries {
   description: Series
   folder: string
+  /**
+   * The last chapter its anime adapts, once the anime has ended and the
+   * manga runs on. A record or a dated fact told above it is the manga's
+   * alone and must say so (`source: 'manga'`), or an anime viewer who has
+   * finished would be shown it at the last episode.
+   */
+  lastAdaptedChapter?: number
   load: () => Promise<SeriesArchive>
   /**
    * Whether readers can reach it. A series filed but not opened yet is in
@@ -61,6 +68,10 @@ const HUNTER_X_HUNTER: ListedSeries = {
   slug: HUNTER_X_HUNTER_SERIES.slug,
   folder: 'hunter-x-hunter',
   open: false,
+  // The 2011 anime ends with the Election arc, chapters 319-339 and episodes
+  // 137-148 (English Hunter x Hunter Wiki, `13th Hunter Chairman Election
+  // arc`, read 2026-10-24).
+  lastAdaptedChapter: 339,
   placeWords: HUNTER_X_HUNTER_PLACE_WORDS,
   wiki: {
     en: 'https://hunterxhunter.fandom.com/api.php',

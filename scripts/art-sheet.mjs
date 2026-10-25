@@ -6,6 +6,7 @@
 //   npm run art:sheet -- franky --draft d.ts    plus the drafts in d.ts
 //   npm run art:sheet -- --saga water-seven     every first drawing of a saga
 //   npm run art:sheet -- --kind place           every first drawing of a kind
+//   npm run art:sheet -- --series hunter-x-hunter --kind arc   another series
 //
 // A draft module default-exports `Record<string, Stroke[]>` and may import
 // `~/lib/svg/primitives`, wherever it lives. The sheets go to `.gate/art/`
@@ -15,7 +16,7 @@
 // `non-scaling-stroke`, so each path scales its own pen back to 2px, undoing
 // both the box it is placed in and any `scale()` in its own transform.
 import { execFileSync } from 'node:child_process'
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
 import { pathToFileURL } from 'node:url'
@@ -121,16 +122,17 @@ function stylesFile(file) {
 }
 
 /**
- * The tints from the tokens file, on One Piece's surfaces and inks: the
- * drawings are One Piece's, and since #757 its colours are a theme in
- * `src/styles/themes.ts`, while the tokens file holds the site's own neutral
- * ones. Only One Piece's palette is read out of `themes.ts`, which holds one
- * per series.
+ * The tints from the tokens file, on one series' surfaces and inks: since
+ * #757 each series' colours are a theme in `src/styles/themes.ts`, while the
+ * tokens file holds the site's own neutral ones and the tints every series
+ * shares. The theme is the `Palette` const named after the slug
+ * (`hunter-x-hunter` → `HUNTER_X_HUNTER`).
+ * @param {string} series The series' slug.
  * @returns {Palette} The colours by token name.
  */
-export function onePiecePalette() {
+export function seriesPalette(series) {
   const themes = stylesFile('themes.ts')
-  const marker = 'const ONE_PIECE: Palette = {'
+  const marker = `const ${series.toUpperCase().replaceAll('-', '_')}: Palette = {`
   const start = themes.indexOf(marker)
   if (start === -1) {
     throw new Error(`src/styles/themes.ts has no \`${marker}\``)
@@ -139,10 +141,9 @@ export function onePiecePalette() {
   if (end === -1) {
     throw new Error(`src/styles/themes.ts does not close \`${marker}\``)
   }
-  const onePiece = themes.slice(start, end)
   return {
     ...parseTokens(stylesFile('tokens.stylex.ts')),
-    ...parseTokens(onePiece),
+    ...parseTokens(themes.slice(start, end)),
   }
 }
 
@@ -265,7 +266,7 @@ export function sheetSvg(cells, palette) {
 /**
  * The command line, read.
  * @param {string[]} args The arguments after the script.
- * @returns {{ ids: string[], draft?: string, saga?: string, kind?: string, out: string }} What to draw, and where.
+ * @returns {{ ids: string[], draft?: string, saga?: string, kind?: string, out: string, series: string }} What to draw, and where.
  */
 export function readArgs(args) {
   const { positionals, values } = parseArgs({
@@ -277,6 +278,7 @@ export function readArgs(args) {
       // fallow-ignore-next-line security-sink -- a constant default under the repository
       out: { type: 'string', default: path.join(ROOT, '.gate', 'art') },
       saga: { type: 'string' },
+      series: { type: 'string', default: 'one-piece' },
     },
   })
   return { ...values, ids: positionals }
@@ -312,18 +314,49 @@ export function stagesOf(entity, art) {
 
 /**
  * The ids a saga module draws first, in the order the module files them.
+ * @param {string} series The series' folder.
  * @param {string} saga The module's file name, e.g. `water-seven`.
  * @returns {Promise<string[]>} The ids.
  */
-async function idsOfSaga(saga) {
-  const module = await importArchive(`data/series/one-piece/art/${saga}.ts`)
-  const drawings = Object.entries(module).find(([name]) => name.endsWith('Art'))
-  if (drawings === undefined) {
+async function idsOfSaga(series, saga) {
+  const file = `data/series/${series}/art/${saga}.ts`
+  // fallow-ignore-next-line security-sink -- a local CLI: the series is a registered slug and the saga a name the person running it typed
+  if (!existsSync(path.join(ROOT, 'src', file))) {
     throw new Error(
-      `src/data/series/one-piece/art/${saga}.ts exports no …Art drawings`,
+      `${series} has no saga art module ${saga}.ts: pass --kind instead`,
     )
   }
+  const module = await importArchive(file)
+  const drawings = Object.entries(module).find(([name]) => name.endsWith('Art'))
+  if (drawings === undefined) {
+    throw new Error(`src/${file} exports no …Art drawings`)
+  }
   return Object.keys(drawings[1])
+}
+
+/**
+ * A series' drawings: the first ones, and the redrawings it has, if any.
+ * @param {string} series The series' folder.
+ * @returns {Promise<Parameters<typeof stagesOf>[1]>} The drawings.
+ */
+async function artOf(series) {
+  const { DRAWINGS, REDRAWINGS = {} } = await importArchive(
+    `data/series/${series}/art/index.ts`,
+  )
+  return { DRAWINGS, REDRAWINGS }
+}
+
+/**
+ * A filed series' folder and records, or a throw for a slug the series list
+ * does not have, before any path is built from it.
+ * @param {string} slug The series' slug.
+ * @returns {Promise<{ folder: string, entities: { id: string, kind: string }[], getEntity: (id: string) => ({ id: string, revealedAtEpisode: number, visual: { tint: string } } | undefined) }>} The series.
+ */
+async function seriesOf(slug) {
+  const { SERIES, filedArchiveOf } = await importArchive('data/series/index.ts')
+  const { entities, getEntity } = await filedArchiveOf(slug)
+  const { folder } = SERIES.find((entry) => entry.slug === slug)
+  return { folder, entities, getEntity }
 }
 
 /**
@@ -332,17 +365,15 @@ async function idsOfSaga(saga) {
  * @returns {Promise<{ name: string, cells: Cell[] }>} The sheet's name and cells.
  */
 export async function cellsFor(options) {
-  const art = await importArchive('data/series/one-piece/art/index.ts')
-  const { entities, getEntity } = await importArchive(
-    'data/series/one-piece/entities.ts',
-  )
+  const { folder, entities, getEntity } = await seriesOf(options.series)
+  const art = await artOf(folder)
   if (options.saga !== undefined || options.kind !== undefined) {
     const ids =
       options.saga === undefined ?
         entities
           .filter((entity) => entity.kind === options.kind)
           .map((entity) => entity.id)
-      : await idsOfSaga(options.saga)
+      : await idsOfSaga(folder, options.saga)
     return {
       name: options.saga ?? options.kind,
       cells: ids.map((id) => stagesOf(getEntity(id), art)[0]),
@@ -412,7 +443,7 @@ function writePage(file, svg, zoom) {
 export function writeSheets({ name, cells }, palette, out) {
   if (cells.length === 0) {
     throw new Error(
-      'Nothing to draw: name record ids, or pass --saga or --kind.',
+      'Nothing to draw: name record ids, or pass --saga or a --kind this series has records of.',
     )
   }
   const pages = Math.ceil(cells.length / PAGE)
@@ -431,8 +462,8 @@ export function writeSheets({ name, cells }, palette, out) {
 
 if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
   const options = readArgs(process.argv.slice(2))
-  const palette = onePiecePalette()
   const sheet = await cellsFor(options)
+  const palette = seriesPalette(options.series)
   for (const line of writeSheets(sheet, palette, options.out)) {
     console.log(line)
   }
