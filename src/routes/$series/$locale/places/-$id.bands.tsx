@@ -33,6 +33,15 @@ function useWorldMap(): boolean {
   )
 }
 
+/** The stretch of the chart to draw, with the place's name: none under fog. */
+function mapOf(
+  detail: PlaceDetail,
+): null | { chart: NonNullable<PlaceDetail['chart']>; name: string } {
+  return detail.chart === null || !detail.slot.open ?
+      null
+    : { chart: detail.chart, name: detail.slot.record.name }
+}
+
 /**
  * Where the place is: its stop number and a line on what the map shows,
  * beside the stretch of the sea chart around it, then the times the story
@@ -49,10 +58,7 @@ export function MapBand({ detail }: { detail: PlaceDetail }): ReactElement {
     index: detail.index + 1,
     total: detail.total,
   })
-  const map =
-    detail.chart === null || !detail.slot.open ?
-      null
-    : { chart: detail.chart, name: detail.slot.record.name }
+  const map = mapOf(detail)
 
   return (
     <section
