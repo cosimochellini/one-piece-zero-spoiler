@@ -134,8 +134,6 @@ export function fruitDetail(over: Partial<FruitDetail> = {}): FruitDetail {
   return {
     drawings: [],
     history: [],
-    next: null,
-    previous: null,
     saga: null,
     sagaRail: [],
     slot: openSlot(fruit()),

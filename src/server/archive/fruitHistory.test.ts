@@ -1,15 +1,14 @@
 import { describe, expect, it } from 'vitest'
 
-import { orderByMode } from '~/data/order'
 import { reveal } from '~/data/reveal'
 import { fruits } from '~/data/series/one-piece/fruits'
 import type { Bookmark } from '~/lib/progress/episode'
 import { ONE_PIECE_BOOKMARK } from '~/lib/progress/series'
-import type { FruitDetail, FruitView, Slot } from '~/lib/view/records'
+import type { FruitDetail } from '~/lib/view/records'
 import { opFruitPage as fruitPage, opSagaOf as sagaOf } from '~/test/archive'
 
 /**
- * A fruit's history, its neighbours and the rail of its saga: what the
+ * A fruit's history and the rail of its saga: what the
  * stage of a fruit's page may say at one bookmark, and nothing past it.
  */
 
@@ -137,42 +136,14 @@ describe('a fruit’s history', () => {
   })
 })
 
-/** A neighbour's id, or `covered`, or `none`. */
-function sideOf(slot: null | Slot<FruitView>): string {
-  if (slot === null) {
-    return 'none'
-  }
+describe('the fruit page payload', () => {
+  it('omits previous and next fruits, open and under fog in both units', () => {
+    for (const bookmark of [ep(1), ep(1150), ch(1), ch(1100)]) {
+      const detail = detailOf('heal-heal-fruit', bookmark)
 
-  return slot.open ? slot.record.id : 'covered'
-}
-
-describe('the previous and next fruit', () => {
-  it('follow the reader’s order, in their unit', () => {
-    for (const bookmark of [ep(1200), ch(1200)]) {
-      const order = orderByMode(
-        fruits,
-        reveal(bookmark, ONE_PIECE_BOOKMARK).mode,
-      )
-      const ids = order.map(({ id }) => id)
-      const sides = order.map(({ id }) => {
-        const detail = detailOf(id, bookmark)
-
-        return [sideOf(detail.previous), sideOf(detail.next)]
-      })
-
-      expect(sides).toStrictEqual(
-        ids.map((_, at) => [ids[at - 1] ?? 'none', ids[at + 1] ?? 'none']),
-      )
+      expect(detail).not.toHaveProperty('previous')
+      expect(detail).not.toHaveProperty('next')
     }
-  })
-
-  it('cover a neighbour the reader has not reached, with no id or name', () => {
-    const detail = detailOf('gum-gum-fruit', ep(1))
-
-    expect(sideOf(detail.previous)).toBe('none')
-    expect(sideOf(detail.next)).toBe('covered')
-    expect(detail.next).not.toHaveProperty('record')
-    expect(JSON.stringify(detail.next)).not.toMatch(/"(?:id|name)"/u)
   })
 })
 

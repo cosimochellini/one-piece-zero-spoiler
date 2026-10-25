@@ -432,10 +432,6 @@ export interface FruitDetail {
    * bookmark, and no count of it. Empty under fog.
    */
   history: FruitHistoryEntry[]
-  /** The fruit after this one in the reader's order; `null` for the last. */
-  next: null | Slot<FruitView>
-  /** The fruit before this one in the reader's order; `null` for the first. */
-  previous: null | Slot<FruitView>
   /** The saga the story first names it in; `null` under fog. */
   saga: null | string
   /**

@@ -15,9 +15,8 @@ import type { Reader } from './reader.server'
 import { sagaOf } from './sagaLabels.server'
 
 /**
- * A fruit's own page: the stage, its history, the fruits either side of it
- * and the rail of its saga. Apart from the album's module, which it shares
- * only the eaters' gate and the rail's length with.
+ * A fruit's own page: the stage, its history and the rail of its saga. It
+ * shares only the eaters' gate and the rail's length with the album's module.
  */
 
 /** What a fruit's page calls itself, open and under fog. */
@@ -46,16 +45,11 @@ export function fruitPage(id: string, r: Reader): FruitPage | undefined {
     return undefined
   }
 
-  const order = r.order(r.archive.fruits)
-  const at = order.findIndex((fruit) => fruit.id === id)
-
   return {
     head: headFor(entity, FRUIT_HEAD, r),
     detail: {
       slot: r.slot(entity, (seen) => fruitOf(seen, form, r)),
       ...storyOf(entity, r),
-      previous: neighbourOf(order[at - 1], r),
-      next: neighbourOf(order[at + 1], r),
     },
   }
 }
@@ -109,19 +103,6 @@ function drawingsOf(entity: Entity, r: Reader): FruitDrawing[] {
 /** The unit the sagas are counted in: a season reader counts episodes. */
 function unitOf(r: Reader): 'chapter' | 'episode' {
   return r.mode === 'chapter' ? 'chapter' : 'episode'
-}
-
-/** A fruit beside this one in the reader's order, or `null` past either end. */
-function neighbourOf(
-  entity: Entity | undefined,
-  r: Reader,
-): null | Slot<FruitView> {
-  const form = entity === undefined ? undefined : r.archive.fruitFormOf(entity)
-  if (entity === undefined || form === undefined) {
-    return null
-  }
-
-  return r.slot(entity, (seen) => fruitOf(seen, form, r))
 }
 
 /**

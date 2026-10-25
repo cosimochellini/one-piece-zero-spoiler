@@ -176,9 +176,6 @@ export const onePieceEn = {
   'fruit.history.eaten': '{name} eats it',
   'fruit.history.deceased': '{name} dies',
   'fruit.history.presumed-dead': '{name} is presumed dead',
-  'fruit.turn': 'Previous and next fruit',
-  'fruit.previous': 'Previous fruit',
-  'fruit.next': 'Next fruit',
   'fruit.sagaTitle': 'Other fruits of this saga',
   'fruit.sagaLede':
     'The open fruits first named in the same saga, closest to this one.',

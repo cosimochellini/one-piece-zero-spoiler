@@ -1,37 +1,27 @@
 /**
- * The top of a fruit's page: the stage, and the way to the fruit before and
- * after it.
+ * The top of a fruit's page: its drawing, name and story.
  *
  * Siblings of the route module, like the bands under them; the leading `-`
  * keeps the file out of the generated route tree.
  */
 import * as stylex from '@stylexjs/stylex'
-import { Link } from '@tanstack/react-router'
 import type { ReactElement } from 'react'
 
-import { FogTile } from '~/components/FogTile'
-import { OpenArt } from '~/components/FruitArt'
 import { FruitFrame } from '~/components/FruitFrame'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { useLocale } from '~/i18n/LocaleContext'
 import type { TranslationKey } from '~/i18n/types'
-import { useSeriesParams, useThreshold } from '~/lib/progress/BookmarkContext'
+import { useThreshold } from '~/lib/progress/BookmarkContext'
 import type {
   FruitDetail,
   FruitForm,
   FruitView,
   Slot,
 } from '~/lib/view/records'
-import { morphPart, travelWith } from '~/styles/morph'
+import { morphPart } from '~/styles/morph'
 
 import { StageArt } from './-$id.art'
 import { styles } from './-$id.styles'
-import { type Side, useTurning } from './-$id.turn'
-
-const SIDE_KEY: Record<Side, TranslationKey> = {
-  next: 'fruit.next',
-  previous: 'fruit.previous',
-}
 
 const FORM_KEY: Record<FruitForm, TranslationKey> = {
   logia: 'fruitForm.logia',
@@ -42,8 +32,7 @@ const FORM_KEY: Record<FruitForm, TranslationKey> = {
 /**
  * The stage: the drawing large in a glow of its own tint, drawing itself in
  * on arrival, then the name at display size, its kind and its saga, and the
- * sentence. A swipe across it, or an arrow key, turns to the fruit before or
- * after.
+ * sentence.
  *
  * The meta line sits outside the veil on purpose: "a devil fruit, episode
  * 462" is the promise the page makes to a reader who has not got there yet.
@@ -56,13 +45,8 @@ export function StageBand({
   detail: FruitDetail
   peek: (handle: string) => Promise<FruitView>
 }): ReactElement {
-  const swipe = useTurning(detail)
-
   return (
-    <section
-      {...swipe}
-      {...stylex.props(styles.stage)}
-    >
+    <section {...stylex.props(styles.stage)}>
       <div {...stylex.props(styles.drawing)}>
         <SpoilerVeil
           density="block"
@@ -170,125 +154,5 @@ function StageWords({
       </ul>
       <p {...stylex.props(styles.summary)}>{record.summary}</p>
     </>
-  )
-}
-
-/**
- * The fruit before this one and the fruit after it, in the reader's order.
- * An open neighbour is a small drawing and its name; a covered one is a
- * small fog tile that names nothing, and lifted by hand it shows the same
- * link. Nothing past either end is drawn.
- */
-export function TurnBand({
-  detail,
-  peek,
-}: {
-  detail: FruitDetail
-  peek: (handle: string) => Promise<FruitView>
-}): null | ReactElement {
-  const { t } = useLocale()
-  if (detail.previous === null && detail.next === null) {
-    return null
-  }
-
-  return (
-    <nav
-      aria-label={t('fruit.turn')}
-      {...stylex.props(styles.turn)}
-    >
-      <TurnSide
-        peek={peek}
-        side="previous"
-        slot={detail.previous}
-      />
-      <TurnSide
-        peek={peek}
-        side="next"
-        slot={detail.next}
-      />
-    </nav>
-  )
-}
-
-/** One side of the turn: the neighbour, its fog, or an empty cell. */
-function TurnSide({
-  peek,
-  side,
-  slot,
-}: {
-  peek: (handle: string) => Promise<FruitView>
-  side: Side
-  slot: null | Slot<FruitView>
-}): ReactElement {
-  const { t } = useLocale()
-  const threshold = useThreshold()
-
-  if (slot === null) {
-    return <span />
-  }
-
-  return (
-    <div {...stylex.props(styles.side, side === 'next' && styles.nextSide)}>
-      {slot.open ?
-        <TurnLink
-          record={slot.record}
-          side={side}
-        />
-      : <FogTile
-          covered={slot.covered}
-          lines={[t(SIDE_KEY[side]), threshold('fruit.opensAt', slot.covered)]}
-          peek={peek}
-          phase={side === 'next' ? 1 : 0}
-        >
-          {(record) => {
-            return (
-              <TurnLink
-                record={record}
-                side={side}
-              />
-            )
-          }}
-        </FogTile>
-      }
-    </div>
-  )
-}
-
-/** An open neighbour: its drawing, which way it lies, and its name. */
-function TurnLink({
-  record,
-  side,
-}: {
-  record: FruitView
-  side: Side
-}): ReactElement {
-  const { locale, t } = useLocale()
-  const { series } = useSeriesParams()
-
-  return (
-    <Link
-      onClick={() => {
-        travelWith('fruit', record.id)
-      }}
-      params={{ series, locale, id: record.id }}
-      rel={side === 'next' ? 'next' : 'prev'}
-      to="/$series/$locale/fruits/$id"
-      {...stylex.props(styles.turnLink)}
-    >
-      <OpenArt
-        always={false}
-        record={record}
-      />
-      <span {...stylex.props(styles.turnLabel)}>
-        {side === 'previous' ?
-          <span aria-hidden="true">← </span>
-        : null}
-        {t(SIDE_KEY[side])}
-        {side === 'next' ?
-          <span aria-hidden="true"> →</span>
-        : null}
-      </span>
-      <span {...stylex.props(styles.turnName)}>{record.name}</span>
-    </Link>
   )
 }
