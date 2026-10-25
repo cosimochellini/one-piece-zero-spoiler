@@ -1,7 +1,12 @@
 import { expect } from 'vitest'
 
 import { type Reveal, reveal } from '~/data/reveal'
-import type { Entity, SeriesArchive } from '~/data/types'
+import type {
+  Entity,
+  OwnPlaceWords,
+  PlaceWords,
+  SeriesArchive,
+} from '~/data/types'
 import { type Locale, LOCALES } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
 import { foldName } from '~/lib/search/fold'
@@ -29,12 +34,22 @@ import {
 /** The two keys a payload may spell a record out under. */
 const NAMING = new Set(['id', 'name'])
 
+/** Whether a key spells a record out: `id` or `name`. */
+const isNaming = (key: string): boolean => NAMING.has(key)
+
+/** Any key at all: a page sends a place word's label under the word's id. */
+const anyKey = (): boolean => true
+
 /**
- * Every string a payload could name a record by, however deeply nested: the
- * `id` and `name` an object declares, and its keys, which is how a map by id
- * (`drawingsFor`) names one.
+ * Every string a payload could name a record by, however deeply nested: its
+ * keys, which is how a map by id (`drawingsFor`) names one, and the strings
+ * under the keys `says` picks (`isNaming` for a record).
  */
-function named(payload: unknown, found = new Set<string>()): Set<string> {
+function named(
+  payload: unknown,
+  says: (key: string) => boolean,
+  found = new Set<string>(),
+): Set<string> {
   if (payload === null || typeof payload !== 'object') {
     return found
   }
@@ -44,10 +59,10 @@ function named(payload: unknown, found = new Set<string>()): Set<string> {
     if (!isList) {
       found.add(key)
     }
-    if (typeof value === 'string' && NAMING.has(key)) {
+    if (typeof value === 'string' && says(key)) {
       found.add(value)
     }
-    named(value, found)
+    named(value, says, found)
   }
 
   return found
@@ -249,6 +264,81 @@ function drawnFogOf(
 }
 
 /**
+ * A word no place is filed under, as the record it names: no page has a
+ * reason to say it at any bookmark, so it is reported as itself.
+ */
+function unfiledWord(word: string): Entity {
+  return {
+    id: `place-words/${word}`,
+    kind: 'place',
+    name: { en: word, it: word },
+    revealedAtChapter: Infinity,
+    revealedAtEpisode: Infinity,
+    summary: { en: '', it: '' },
+    visual: { art: '', tint: 'ivory' },
+  }
+}
+
+/**
+ * The place words of a series that labels them itself, as fog: a region or
+ * a form, its id and its label in every locale, is open from the first open
+ * place filed under it and absent from every payload before that. Each
+ * names the places filed under it, all covered, and a word no place is
+ * filed under is fog at every bookmark. A series the dictionaries label (One
+ * Piece) ships its words with every page, so it has none.
+ */
+function wordFogOf(
+  bookmark: Bookmark,
+  { archive }: ListedSeries,
+  words: PlaceWords,
+): Map<string, Entity[]> {
+  const fog = new Map<string, Entity[]>()
+  if (words.dictionary) {
+    return fog
+  }
+
+  const at = reveal(bookmark, archive.series)
+  for (const { filed, owners, said } of wordsFiled(archive, words)) {
+    if (filed.every((place) => !at.sees(place))) {
+      for (const string of said) {
+        fog.set(string, [...(fog.get(string) ?? []), ...owners])
+      }
+    }
+  }
+
+  return fog
+}
+
+/**
+ * Each region and form of a series' own words: what says it, its id and its
+ * label in every locale, the places filed under it, and the records a leak
+ * of it names: those places, or the word itself when none is filed.
+ */
+function wordsFiled(
+  archive: SeriesArchive,
+  words: OwnPlaceWords,
+): { filed: Entity[]; owners: Entity[]; said: string[] }[] {
+  const tables = [
+    ['region', words.regions],
+    ['form', words.forms],
+  ] as const
+
+  return tables.flatMap(([field, labels]) => {
+    return Object.entries(labels).map(([word, label]) => {
+      const filed = archive.places.filter(
+        (place) => archive.placeDossierOf(place)?.[field] === word,
+      )
+
+      return {
+        filed,
+        owners: filed.length === 0 ? [unfiledWord(word)] : filed,
+        said: [word, ...LOCALES.map((locale) => label[locale])],
+      }
+    })
+  })
+}
+
+/**
  * What names a covered record: its strings, as written and as folded, and
  * its drawings.
  */
@@ -372,7 +462,7 @@ export function leaksOf(
     const words = {
       drawn: drawnIn(payload),
       folded: new Set(aliasesIn(payload)),
-      plain: named(payload),
+      plain: named(payload, isNaming),
     }
     // A record of the source the reader does not count in is never said on
     // purpose: no page names it by design, as it does an arc.
@@ -380,6 +470,13 @@ export function leaksOf(
     const excusable = (entity: Entity): boolean =>
       at.has(entity) && excused(entity)
     const found = new Set<string>()
+    // A place word names the places filed under it, excused as they are: a
+    // place lifted from the fog brings its own words.
+    const wordFog = wordFogOf(bookmark, series, series.placeWords)
+    const said = wordFog.size === 0 ? new Set<string>() : named(payload, anyKey)
+    for (const { id } of leakedIn(said, wordFog, excusable)) {
+      found.add(id)
+    }
     for (const kind of KINDS) {
       const theirs = foreign[kind]
       const crossed = [...words[kind]].flatMap((word) => theirs.get(word) ?? [])

@@ -1,11 +1,41 @@
 import type { Drawings } from '~/data/art/stroke'
-import { circle, dot, ellipse, SEA, shadow, wave } from '~/lib/svg/primitives'
+import {
+  circle,
+  dot,
+  dots,
+  ellipse,
+  house,
+  SEA,
+  shadow,
+  wave,
+} from '~/lib/svg/primitives'
+import type { Stroke } from '~/lib/view/records'
+
+/**
+ * One of Kurapika's two wooden swords, grip down to the left and point up
+ * to the right: the grip in the record's tint, its wrap, the blade and its
+ * ridge. The second is the same sword mirrored across the box.
+ */
+const BOKKEN: Stroke[] = [
+  { d: 'M31.5 176.4 L56.3 137 L61.4 140.2 L36.5 179.6 Z', role: 'accent' },
+  {
+    d: 'M35.1 170.6 L43 169.4 M39.7 163.3 L47.6 162.1 M44.3 156 L52.2 154.8 M48.9 148.7 L56.8 147.5',
+    role: 'soft',
+  },
+  {
+    d: 'M56.3 137 L118.6 38.4 Q122 33 126 32 M61.4 140.2 L124 41 Q126 36 126 32',
+  },
+  { d: 'M62.4 134.7 L118.9 43.8', role: 'soft' },
+]
+
+/** The second wooden sword: the first, mirrored about x 80. */
+const MIRRORED = 'matrix(-1 0 0 1 160 0)'
 
 /**
  * Every Hunter x Hunter line drawing, one per record, keyed by the record's
  * id, in the house style of One Piece's (`~/data/series/one-piece/art`): the
- * same box, pen and rules. For now the arcs alone; the characters and places
- * of the Hunter Exam come with their records (#760, #761).
+ * same box, pen and rules. The arcs, and the characters and places of the
+ * Hunter Exam filed so far (#760), each at its record's threshold.
  *
  * `satisfies` rather than an annotation, so `ArtId` below stays the literal
  * ids and a record cannot name a drawing that is not here.
@@ -171,6 +201,210 @@ export const DRAWINGS = {
     },
     { d: wave(170), role: 'ambient' },
     { d: 'M18 156 L84 150', role: 'ambient', dashed: true },
+  ],
+
+  // Gon's fishing rod, held at the cork grip, the reel under it in the
+  // record's tint with its handle, the line run out from the tip to a float
+  // and a hook over rings of water: he sits in a tree over the swamp with it
+  // in episode 1 and chapter 1, and strikes the Kiriko with it in chapter 4.
+  'gon-freecss': [
+    { d: 'M32 174 L38 178 L64 148 L58 144 Z' },
+    { d: 'M38 166 l5 3.6 M44 159 l5 3.6 M50 152 l5 3.6', role: 'ambient' },
+    { d: 'M58 144 L136 24 M64 148 L136 24' },
+    { d: 'M86 106 l5 3 M106 76 l4.5 2.6 M124 47 l3.6 2', role: 'soft' },
+    { d: 'M66 151 L72 156', role: 'soft' },
+    { d: circle(76, 164, 12), role: 'accent' },
+    { d: circle(76, 164, 4.5), role: 'soft' },
+    { d: `M76 164 L92 172 ${dot(94, 173)}` },
+    { d: 'M136 24 C142 52 140 82 134 104' },
+    { d: `${ellipse(133.5, 112, 4, 8)} M129.5 112 H137.5` },
+    { d: 'M133.5 120 V128 q0 6 -5 6 q-4 0 -4 -4' },
+    { d: 'M112 142 q10 -5 21 0 q11 5 21 0', role: 'ambient' },
+    { d: 'M118 152 q7 -3.5 15 0 q8 3.5 15 0', role: 'ambient' },
+    shadow(66, 188, 36),
+  ],
+
+  // The form for the Hunter Exam on a table, a card with its blank
+  // fields and the line Mito signs on, and her pen across it in the
+  // record's tint, its nib at the line: catching the fish was the deal, and
+  // she signs in episode 1 and chapter 1. No writing on the card.
+  'mito-freecss': [
+    { d: 'M24 124 L108 106 L136 140 L52 160 Z' },
+    { d: 'M24 124 V128 L52 164 L136 144 V140' },
+    { d: 'M30 129.6 l2 2.6 M38 139.8 l2 2.6 M46 150 l2 2.6', role: 'ambient' },
+    {
+      d: 'M40.8 133 L91.2 122.2 M46.4 140.2 L96.8 129.4 M52 147.4 L80 141.4',
+      role: 'soft',
+    },
+    { d: 'M86 145.6 L120 138.4', role: 'soft' },
+    { d: 'M36 120 L52 116.6 L56 122 L40 125.4 Z', role: 'soft' },
+    {
+      d: 'M64 92 L114 129.5 M61.6 95.2 L111.6 132.7 M64 92 L61.6 95.2',
+      role: 'accent',
+    },
+    { d: 'M114 129.5 L122 137.6 L111.6 132.7' },
+    { d: 'M70 95.5 L84 106 L82.6 108', role: 'soft' },
+    shadow(80, 174, 58),
+  ],
+
+  // Leorio's briefcase in three-quarter view, standing on its base: the
+  // front with its seam and two clasps, the lid's top, the far end hatched,
+  // and the handle in the record's tint. He carries it aboard the ship in
+  // episode 1 and chapter 2.
+  'leorio-paradinight': [
+    { d: 'M28 118 H106 V178 H28 Z' },
+    { d: 'M28 118 L46 106 H124 L106 118' },
+    { d: 'M106 178 L124 166 V106' },
+    {
+      d: 'M110 128 l10 -6.7 M110 140 l10 -6.7 M110 152 l10 -6.7 M110 164 l10 -6.7',
+      role: 'ambient',
+    },
+    {
+      d: 'M64 113 C62 96 90 94 88 111 M68 113 C67 102 85 101 84 111',
+      role: 'accent',
+    },
+    { d: 'M60 114 h8 M84 112 h8', role: 'soft' },
+    { d: 'M28 130 H106 L124 118', role: 'soft' },
+    { d: 'M40 125 h8 v10 h-8 Z M86 125 h8 v10 h-8 Z' },
+    { d: 'M28 172 H106', role: 'soft' },
+    shadow(78, 186, 54),
+  ],
+
+  // Kurapika's two wooden swords crossed, their grips in the record's tint:
+  // he draws them for the duel with Leorio on the deck in episode 1 and
+  // chapter 2.
+  'kurapika': [
+    ...BOKKEN,
+    ...BOKKEN.map((stroke) => ({ ...stroke, transform: MIRRORED })),
+    shadow(80, 188, 54),
+  ],
+
+  // A coil of deck rope in the record's tint, its end run up to a belaying
+  // pin in the ship's rail: the crewman working the deck in the storm that
+  // throws him over the side, in episode 1 and chapter 2.
+  'katzo': [
+    { d: 'M14 70 H150' },
+    { d: 'M14 78 H150', role: 'soft' },
+    { d: 'M24 78 V126 M136 78 V126' },
+    { d: 'M4 126 H156', role: 'ambient' },
+    { d: 'M110 60 V90 M106 64 h8', role: 'soft' },
+    { d: 'M110 74 C120 70 120 82 110 78 C100 74 100 86 110 82', role: 'soft' },
+    { d: 'M110 88 C114 108 104 128 92 142' },
+    {
+      d: `${ellipse(72, 172, 46, 12)} ${ellipse(72, 146, 30, 8)}`,
+      role: 'accent',
+    },
+    {
+      d: 'M28 166 C32 152 112 152 116 166 M34 158 C38 146 106 146 110 158',
+      role: 'soft',
+    },
+    { d: 'M54 146 l6 -4 M66 148 l8 -5 M80 148 l6 -4', role: 'ambient' },
+    shadow(72, 190, 50),
+  ],
+
+  // A Kiriko's arm raised under a full moon, the feathers of the wing it
+  // grows from the arm to fly hanging below it, its three long fingers
+  // ending in claws in the record's tint: the navigators fly Gon, Kurapika
+  // and Leorio to the exam by moonlight in episode 2 and chapter 4.
+  'kiriko': [
+    { d: circle(40, 40, 20), role: 'ambient' },
+    { d: 'M4 134 C30 116 62 94 90 72 M12 148 C38 130 70 106 100 82' },
+    {
+      d: 'M20 124 l-2 -6 M38 112 l-2 -6 M56 100 l-2 -6 M74 88 l-2 -6',
+      role: 'soft',
+    },
+    {
+      d: 'M90 72 C94 58 100 46 106 36 M96 76 C106 64 118 56 130 50 M100 82 C114 78 128 78 140 80',
+    },
+    {
+      d: 'M106 36 C110 26 106 18 98 16 M130 50 C138 42 136 32 128 30 M140 80 C150 74 150 64 142 60',
+      role: 'accent',
+    },
+    {
+      d: 'M20 142 C20 160 26 176 34 184 C38 172 36 154 30 136 M36 132 C38 152 46 168 56 176 C58 162 54 144 46 126 M52 122 C56 140 64 154 74 162 C74 148 70 132 62 116 M68 110 C74 126 82 138 92 144 C90 132 84 116 78 104',
+    },
+    {
+      d: 'M24 148 l4 20 M40 140 l6 18 M56 130 l7 16 M72 118 l8 14',
+      role: 'soft',
+    },
+  ],
+
+  // The cassette Ging left in the box for Gon, in three-quarter view: its
+  // label, the window and the two reels in the record's tint, the tape
+  // between them, the head opening at the bottom and the far side hatched.
+  // Gon plays it at the end of episode 37 and of chapter 65; Ging is first
+  // drawn in chapter 66.
+  'ging-freecss': [
+    { d: 'M26 112 H130 V170 H26 Z' },
+    { d: 'M26 112 L36 104 H140 L130 112' },
+    { d: 'M130 170 L140 162 V104' },
+    {
+      d: 'M133 124 l4 -3 M133 136 l4 -3 M133 148 l4 -3 M133 160 l4 -3',
+      role: 'ambient',
+    },
+    { d: 'M36 120 H120 V146 H36 Z', role: 'soft' },
+    { d: 'M54 126 H102 V140 H54 Z' },
+    { d: `${circle(66, 133, 6)} ${circle(90, 133, 6)}`, role: 'accent' },
+    { d: 'M66 139 C74 140 82 140 90 139', role: 'soft' },
+    { d: 'M46 170 L52 156 H104 L110 170' },
+    {
+      d: dots([
+        [62, 163],
+        [94, 163],
+        [31, 116],
+        [125, 116],
+        [31, 166],
+        [125, 166],
+      ]),
+    },
+    shadow(84, 184, 56),
+  ],
+
+  // Whale Island from the sea: a high mountain at one end and a lower one at
+  // the other, the forest between them in the record's tint, the town's
+  // houses on the shore and a fishing boat at the jetty. Gon's home in
+  // episode 1 and chapter 1.
+  'whale-island': [
+    { d: 'M2 150 C14 122 26 82 42 76 C56 80 64 110 74 128' },
+    {
+      d: 'M46 84 l-6 12 M52 96 l-8 14 M58 108 l-8 14 M64 120 l-6 12',
+      role: 'ambient',
+    },
+    {
+      d: 'M72 132 a6 6 0 0 1 11 -4 a6 6 0 0 1 11 -2 a6 6 0 0 1 11 2 a6 6 0 0 1 9 6 M78 140 a5 5 0 0 1 10 -2 a5 5 0 0 1 10 0 a5 5 0 0 1 9 3',
+      role: 'accent',
+    },
+    { d: 'M108 124 C116 108 124 98 132 100 C142 104 148 128 158 150' },
+    { d: 'M2 150 H158', role: 'soft' },
+    { d: house(86, 10, 140, 134) },
+    { d: house(102, 10, 142, 136) },
+    { d: 'M118 150 V160 M118 154 H144 V160' },
+    { d: 'M126 164 H148 L144 170 H130 Z M137 164 V146' },
+    ...SEA.slice(1),
+  ],
+
+  // Dolle Harbor from the water: the quay with its warehouse and houses, a
+  // bollard and a boat moored at it, and on the hill behind the town the
+  // lone tree in the record's tint, where the captain sends Gon in episode 2
+  // and chapter 3.
+  'dolle-harbor': [
+    { d: 'M4 112 C40 102 70 84 104 82 C128 82 146 90 158 96', role: 'soft' },
+    {
+      d: 'M116 30 L106 46 h6 L100 62 h8 L94 78 h44 L130 62 h8 L126 46 h6 Z',
+      role: 'accent',
+    },
+    { d: 'M116 78 V86', role: 'accent' },
+    { d: house(10, 16, 124, 114) },
+    { d: house(34, 14, 128, 120) },
+    {
+      d: 'M56 150 V118 H98 V150 M56 118 L77 106 L98 118 M70 150 V132 H84 V150',
+    },
+    { d: 'M2 150 H158' },
+    { d: 'M2 150 V156 M158 150 V156', role: 'soft' },
+    { d: 'M110 150 v-6 h6 v6' },
+    { d: 'M112 162 H154 L148 172 H118 Z M134 162 V130' },
+    { d: 'M112 162 Q108 154 113 147', role: 'soft' },
+    ...SEA.slice(1),
   ],
 } satisfies Drawings
 

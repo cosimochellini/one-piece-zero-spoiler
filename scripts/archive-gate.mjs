@@ -24,9 +24,12 @@
  *   4. Place word canaries. A series that labels its place words itself
  *      (`placeWords` in the series list) sends a page the labels of the
  *      words its open places use, and the client holds none: each word and
- *      label distinct enough not to occur by accident is looked for in the
- *      chunks, so a table shipped whole, which would name regions a reader
- *      has not reached, fails the gate. One Piece's are its dictionaries'.
+ *      label distinct enough not to occur by accident, and not already held
+ *      by the dictionaries every page ships, is looked for in the chunks, so
+ *      a table shipped whole, which would name regions a reader has not
+ *      reached, fails the gate. A series left with no such word, or
+ *      dictionaries that do not load, leave the gate unusable rather than
+ *      clean. One Piece's are its dictionaries'.
  *      The server holds the tables statically, so these are client canaries
  *      only.
  * The SSR manifest also proves that every series archive enters through a
@@ -76,6 +79,10 @@ export const EXTRA = {
       'src/data/series/one-piece/art/fruits/index.ts',
       'src/data/series/one-piece/fruit-forms.ts',
     ],
+  },
+  'hunter-x-hunter': {
+    prose: ['src/data/series/hunter-x-hunter/places.ts'],
+    slugs: [],
   },
 }
 
@@ -315,11 +322,16 @@ const DISTINCT_WORD = /[\s-]|^.{8,}$/u
 
 /**
  * One canary per word and label of every series that labels its place words
- * itself (`dictionary: false`), distinct enough to look for.
+ * itself (`dictionary: false`), distinct enough to look for, and not found in
+ * the copy every page ships: a word or label inside a dictionary's key or
+ * value ("Fortezza", `fortress`) is in the chunks legitimately, so it would
+ * fail the gate for no leak. A series left with none is one unreadable
+ * canary, so the gate exits as unusable rather than vouching for nothing.
  * @param {{folder: string, placeWords: {dictionary: boolean, forms: Record<string, unknown>, regions: Record<string, unknown>}}[]} series The series list.
- * @returns {{file: string, phrase: string}[]} What no client chunk may hold.
+ * @param {string[]} [shipped] The dictionaries' keys and values.
+ * @returns {{file: string, phrase: null | string}[]} What no client chunk may hold.
  */
-export function placeWordCanaries(series) {
+export function placeWordCanaries(series, shipped = []) {
   return series.flatMap(({ folder, placeWords }) => {
     if (placeWords.dictionary) {
       return []
@@ -332,9 +344,14 @@ export function placeWordCanaries(series) {
       ]),
     )
 
-    return [...new Set(phrases)]
+    const kept = [...new Set(phrases)]
       .filter((phrase) => DISTINCT_WORD.test(phrase))
-      .map((phrase) => ({ file, phrase }))
+      .filter((phrase) => shipped.every((text) => !text.includes(phrase)))
+
+    // None left is a table the gate cannot look for: unreadable, not clean.
+    return kept.length === 0 ?
+        { file, phrase: null }
+      : kept.map((phrase) => ({ file, phrase }))
   })
 }
 
@@ -365,16 +382,32 @@ export async function canariesOf(repositoryRoot) {
 }
 
 /**
- * The place word canaries of every series in the list; none when the list
- * does not load, which `canariesOf` already reports as unreadable.
- * @returns {Promise<{file: string, phrase: string}[]>} What to look for.
+ * The place word canaries of every series in the list, clear of the copy the
+ * dictionaries ship. None when the list does not load, which `canariesOf`
+ * already reports as unreadable; one unreadable canary when the dictionaries
+ * do not, so the gate exits as unusable rather than passing without them.
+ * @returns {Promise<{file: string, phrase: null | string}[]>} What to look for.
  */
-async function placeWordCanariesOf() {
+export async function placeWordCanariesOf() {
+  let SERIES
   try {
-    const { SERIES } = await importArchive('data/series/index.ts')
-    return placeWordCanaries(SERIES)
+    ;({ SERIES } = await importArchive('data/series/index.ts'))
   } catch {
     return []
+  }
+
+  try {
+    const { enDictionary } = await importArchive('i18n/dictionaries/en.ts')
+    const { itDictionary } = await importArchive('i18n/dictionaries/it.ts')
+    const shipped = [enDictionary, itDictionary].flatMap((dictionary) =>
+      Object.entries(dictionary).flat(),
+    )
+
+    return placeWordCanaries(SERIES, shipped)
+  } catch (error) {
+    console.error(`archive-gate: the dictionaries did not load: ${error}`)
+
+    return [{ file: 'src/i18n/dictionaries', phrase: null }]
   }
 }
 

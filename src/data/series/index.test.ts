@@ -28,6 +28,18 @@ describe('the series list', () => {
     ).toStrictEqual(FOLDERS.toSorted(byString()))
     expect(slugs.size).toBe(SERIES.length)
   })
+
+  it('draws the world map only for a series the dictionaries label', () => {
+    // The map's peeks print a place's sea and form from the dictionaries; a
+    // series with words of its own would see their raw ids there.
+    const mapped = SERIES.filter(({ description }) => {
+      return description.features.worldMap
+    })
+
+    for (const { placeWords, slug } of mapped) {
+      expect(placeWords.dictionary, slug).toBe(true)
+    }
+  })
 })
 
 /** The rules every drawing on the site obeys, in every series, first or redrawn. */

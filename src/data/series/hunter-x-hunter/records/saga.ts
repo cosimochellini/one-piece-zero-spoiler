@@ -10,15 +10,15 @@ export interface HunterEntity extends Entity {
 }
 
 /**
- * Hunter x Hunter's words: no place forms, regions or groups yet. #760 files
- * its places in words of its own, listed with their labels in
- * `../placeWords`. Groups are One Piece's factions today; whether Hunter x
- * Hunter has groups of its own is #760's call.
+ * Hunter x Hunter's words, labelled in `../placeWords`: what kind of place a
+ * place is, and whether it lies on an island or on the mainland, the one
+ * piece of geography the Hunter Exam tells. It has no groups: an
+ * affiliation is prose alone, and the pages sort no one by faction (#760).
  */
 export interface HunterVocabulary extends Vocabulary {
-  form: never
+  form: 'island' | 'port'
   group: never
-  region: never
+  region: 'islands' | 'mainland'
 }
 
 /**

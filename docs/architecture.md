@@ -126,18 +126,20 @@ shared dictionaries (`sea.*`, `form.*`), which every page ships. A series that
 labels its words itself is sent, with the places page and a place's page, the
 labels of the words its open places use and no others, so no page names a region
 the reader has not reached; the client holds no table of them, and the archive
-gate looks for each one in the client chunks. Whether a series draws One Piece's
-world map is a feature on its description (`features.worldMap`): without it the
-server sends no map point and no ship, and the places page is the index, grouped
-by region, served in full. Which of a series' pages exist (characters, places,
-fruits, filler) is read from the kinds and features on its description by one
-predicate, `hasPage` in `src/lib/progress/series.ts`: each page's route answers
-404 in its `beforeLoad` (`requirePage`), the bar and the home's welcome link
-only those pages (`useDeclares`), a link parameter on any other sets no bookmark
+gate looks for each one in the client chunks, skipping the words the shipped
+dictionaries already hold. Whether a series draws One Piece's world map is a
+feature on its description (`features.worldMap`): without it the server sends no
+map point and no ship, and the places page is the index, grouped by region,
+served in full. Which of a series' pages exist (characters, places, fruits,
+filler) is read from the kinds and features on its description by one predicate,
+`hasPage` in `src/lib/progress/series.ts`: each page's route answers 404 in its
+`beforeLoad` (`requirePage`), the bar and the home's welcome link only those
+pages (`useDeclares`), a link parameter on any other sets no bookmark
 (`linkedSeries`), and the sitemap lists only their addresses. The factions are
-One Piece's alone. The chapter table, the sweep's bookmarks, the dated facts
-(timelines, stories, natives) and the shelves (characters, arcs, places, the
-chart and the signal book) are built by the engine (`src/data/chapterTable.ts`,
+One Piece's alone; Hunter x Hunter files no groups, and its affiliations are
+prose. The chapter table, the sweep's bookmarks, the dated facts (timelines,
+stories, natives) and the shelves (characters, arcs, places, the chart and the
+signal book) are built by the engine (`src/data/chapterTable.ts`,
 `src/data/sweep.ts`, `src/data/dated.ts`, `src/data/shelves.ts`) from each
 series' own records and dossiers. A dated field a series does not file reads as
 an empty timeline, so a field one series adds asks nothing of another.
@@ -224,14 +226,14 @@ cells.
 
 ### `hunter-x-hunter`
 
-| Thing             | Count                                             |
-| ----------------- | ------------------------------------------------- |
-| Records           | 7                                                 |
-| Characters        | 0                                                 |
-| Arcs, places      | 7 · 0                                             |
-| Saga modules      | 7                                                 |
-| Line drawings     | 7, one per record, plus 0 redrawings of 0 records |
-| Chronicle stories | 0, for 0 characters                               |
+| Thing             | Count                                              |
+| ----------------- | -------------------------------------------------- |
+| Records           | 16                                                 |
+| Characters        | 7                                                  |
+| Arcs, places      | 7 · 2                                              |
+| Saga modules      | 7                                                  |
+| Line drawings     | 16, one per record, plus 0 redrawings of 0 records |
+| Chronicle stories | 0, for 0 characters                                |
 
 <!-- End of the generated counts. -->
 
@@ -339,10 +341,11 @@ checked on every run:
   affiliations, origins, epithets, stories, ship fates, place visits and the
   labels of the factions an affiliation is tagged with, and the labels of a
   place's region and form for a series that writes its own (sent with the place,
-  so scanned at its threshold; One Piece's are dictionary copy every page
-  ships), is scanned for every later record's full name in both locales. A name
-  the show says before its record opens, or one that is an ordinary word, is
-  declared on the record itself rather than excused in a test;
+  so scanned at its threshold, and its region headers at the first episode; One
+  Piece's are dictionary copy every page ships), is scanned for every later
+  record's full name in both locales. A name the show says before its record
+  opens, or one that is an ordinary word, is declared on the record itself
+  rather than excused in a test;
 - for every listed series (`src/data/archive.test.ts`), the dated facts the
   engine derives follow the same rules: a series files only the dated fields of
   the core and of its features; each character has one dossier, filed in one
@@ -376,6 +379,10 @@ checked on every run:
   chapter that tells it (`src/data/archive.test.ts`), and the place page lists a
   character as coming from it only once the reader has met the character and
   reached that entry, in both units; nobody else is sent or counted;
+- a series that labels its place words itself sends none before its reader
+  reaches a place filed under it: the payload sweep holds each region and form,
+  by id and by label in both locales, to the fog of the places that use it, and
+  a word no place uses to the fog at every bookmark (`src/test/fog.ts`);
 - every drawing belongs to a record;
 - every devil fruit opens no later than any character entry that names it, which
   lets a character page link to its fruit without checking anything, and no
