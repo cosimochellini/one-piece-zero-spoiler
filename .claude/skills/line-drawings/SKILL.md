@@ -111,7 +111,8 @@ Grade every drawing you make or review. Only A ships.
   episode, the chapter that same scene is in, or chapter readers see it
   early; when the true chapter is below the record's, pin the record's (see
   the rulings below). `src/data/series/index.test.ts` holds every series'
-  redrawings to the house style. The rest of this paragraph is One Piece's
+  redrawings, read as the pages read them, to the house style, a true
+  `chapter:`, an episode after the threshold and ascending order. The rest of this paragraph is One Piece's
   mechanics: the entry goes in the `<saga>Redrawn` timeline of the saga that
   first drew the record, and `src/server/archive/slices.test.ts` walks every
   stage from the data
@@ -225,9 +226,11 @@ arc|character|place`; `--saga` is One Piece's), on the series' own paper.
 - **The palette.** The `HUNTER_X_HUNTER` theme in `src/styles/themes.ts`:
   papers and inks tinted forest green (hue 160), and Gon's leaf green,
   `oklch(82% 0.2 145)`, as the page's `accent`. A record still takes one of
-  the shared tints. `green` and `acid` go only to a record whose accent mark
-  is itself shown green on screen at its threshold (owner, #797); every
-  other record takes another tint.
+  the shared tints. `green` and `acid` go only to a record, character, place
+  or arc alike, whose accent mark is itself green in the 2011 anime frame (or
+  the manga colour page) at its threshold, settled by the frame check; the
+  site's leaf accent is never a reason (owner, #797). Every other record
+  takes another tint, which is why the Greed Island arc is `orange`.
 - **Motifs.** A character is the object the reader would name first at the
   record's threshold: Gon's fishing rod, Killua's skateboard, Leorio's
   briefcase, Kurapika's two wooden swords, each as the threshold episode of
@@ -237,27 +240,35 @@ arc|character|place`; `--saga` is One Piece's), on the series' own paper.
   shows them apart from the blades, else the blades), never a mark added to
   carry it.
 - **Arcs and places** are a landmark or an object from the arc's opening:
-  on land, a ground line at y 150 with `shadow()` at y 150–160 under it
-  (the fighting tower, the auction gavel, the game console); at sea, on
-  `...SEA` with no shadow (the exam ship in a storm).
+  on land, a ground line at y 150 or an object standing on its own base,
+  with `shadow()` at y 150–160 (the tower on its ground, the gavel on its
+  block, the console on its table); at sea, on `...SEA` with no shadow (the
+  exam ship in a storm).
 - **Nen and later looks.** Weapons and looks in Hunter x Hunter are often Nen
   abilities shown arcs later, so the threshold check bites hardest here: no
   later weapon, form, Nen ability or costume. Kurapika at the Hunter Exam is
   the wooden swords; his chains are a Nen ability first shown in Yorknew City.
   Nen, from the first episode and chapter that show the ability, is open
-  lines around the object, never a glow or a fill (owner, #797).
+  `ambient` lines around the object, never a glow or a fill, and never the
+  accent, which stays on the record's own mark (owner, #797). A Nen ability
+  that becomes the object itself (the chained hand) is drawn as the object,
+  and may carry the accent like any identity mark.
 - **Redrawings** follow the rulings in "Each kind of record": a true chapter
   pin, a new drawing on a death or a costume change. A Nen ability that
   becomes part of the object (Kurapika's chained hand) is a stage; a
   one-fight technique is not. The series has none yet, so the first one
-  adds the timeline: export `REDRAWINGS` (`Redrawings`, keyed by record id)
-  from `art/index.ts`, and wire it into `archive.ts` as the `redrawing`
-  timeline, so the archive's `redrawn` and `timelines` read it and its
-  episode and chapter pairs join the chapter table's `anchors` (One Piece's
-  `chapter-table.ts`, `READERS` and `ANCHORS`, is the model). Then
-  `src/data/series/index.test.ts` holds its strokes and its order; the stage
-  walk in `slices.test.ts` is One Piece's, so that PR extends it to Hunter x
-  Hunter.
+  files the timeline: export `REDRAWINGS` (keyed by record id) from
+  `art/index.ts` and file it as the series' `redrawing` timeline, the one
+  table the chapter table's anchors and every dated read (`datedOf`,
+  `reachedOf`, `latestOf`, `redrawn`, `timelines`) come from. With the
+  engine's dated helpers that means passing it as the `redrawing` reader in
+  `archive.ts`, as One Piece does. Done when `archive.datedOf(record,
+  'redrawing')` returns it and `src/data/series/index.test.ts` passes: it
+  holds every stage to the house style, a true `chapter:`, an episode after
+  the threshold and ascending order, and fails on an exported `REDRAWINGS`
+  the archive does not read. The stage walk in `slices.test.ts` is One
+  Piece's: until Hunter x Hunter has one, review checks each redrawing's
+  episode and chapter pair by hand against the wiki.
 - **Research** reads the Hunter x Hunter Wiki API
   (`https://hunterxhunter.fandom.com/api.php`): `|manga debut` and
   `|anime debut` (the `Episode N (2011)` entry) give a record's pair, the
@@ -300,7 +311,11 @@ arc|character|place`; `--saga` is One Piece's), on the series' own paper.
    Iterate until it is an A.
 5. **Write it in the art module** as literal paths and helper calls, with the
    comment above it. Run `npm run art:sheet -- <id>` again.
-6. **Verify mappings and stage gates.** Save
+6. **Verify mappings and stage gates.** `archive:table` reads One Piece
+   only (it refuses `--series`): for Hunter x Hunter, check each pinned
+   entry's episode and chapter pair by hand against the wiki and the
+   series' chapter table, say so in the PR, and never report "no changes"
+   from One Piece's dump. For One Piece, save
    `npm run --silent archive:table` dumps from the PR base and head, plus
    `npm run --silent archive:table -- --dated-only` dumps. Compare chapter and
    episode mappings separately; count added and removed dated entries as
@@ -319,7 +334,8 @@ arc|character|place`; `--saga` is One Piece's), on the series' own paper.
 7. **Run `npm run check`.** The PR body states What (where the entry goes,
    what each stroke is), Why (a table of sources with supporting quotations),
    and How to verify (check, tests and the generated stage grid). Include the
-   actual chapter/episode mapping diff, including an explicit “no changes”
+   actual chapter/episode mapping diff (One Piece; Hunter x Hunter's hand
+   check of step 6 instead), including an explicit “no changes”
    when empty, and separate counts of added and removed dated entries.
 
 ## Auditing the archive

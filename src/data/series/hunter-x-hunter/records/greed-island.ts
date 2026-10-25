@@ -18,7 +18,7 @@ export const greedIsland: HunterSaga = {
         it: 'Un videogioco rarissimo, messo all’asta a York Shin City, che contiene un indizio per trovare Ging.',
         en: 'A very rare video game, up for sale at the Yorknew auction, that holds a lead to Ging.',
       },
-      visual: { art: 'greed-island-arc', tint: 'acid' },
+      visual: { art: 'greed-island-arc', tint: 'orange' },
     },
   ],
 }

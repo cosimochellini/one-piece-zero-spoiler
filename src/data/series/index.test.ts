@@ -1,7 +1,8 @@
 import { readdirSync } from 'node:fs'
 import { byNumber, byString } from 'sort-es'
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 
+import type { Redrawings } from '~/data/art/stroke'
 import type { Entity } from '~/data/types'
 import { LOCALES } from '~/i18n/locales'
 import { FIRST_CHAPTER, FIRST_EPISODE } from '~/lib/progress/episode'
@@ -57,7 +58,7 @@ function isArc(entity: Entity): boolean {
 
 describe.each(LOADED_SERIES)(
   'the archive of $slug',
-  ({ archive, description }) => {
+  ({ archive, description, folder }) => {
     it('uses the same public description as its registry entry', () => {
       expect(archive.series).toBe(description)
     })
@@ -123,18 +124,53 @@ describe.each(LOADED_SERIES)(
       }
     })
 
-    it('draws every record, first or redrawn, with at least four strokes and one in its colour', () => {
+    it('draws every record with at least four strokes and one in its colour', () => {
       expect.hasAssertions()
 
       for (const [id, strokes] of Object.entries(drawings)) {
         isADrawing(id, strokes)
       }
-      // Read through the archive, so a series' first redrawing is held to the
-      // house style the day it is wired into `redrawn`.
+    })
+
+    it('redraws a record as the pages read it: pinned, later, ascending, in the house style', () => {
+      // Read the way every page does (`datedOf`, behind `latestOf` and
+      // `reachedOf`), and `redrawn` must agree, so a half-wired series fails.
       for (const entity of entities) {
-        for (const { value } of archive.redrawn(entity)) {
+        const stages = archive.datedOf(entity, 'redrawing')
+        const episodes = stages.map((stage) => stage.episode)
+
+        expect(archive.redrawn(entity), entity.id).toStrictEqual(stages)
+        expect(episodes, entity.id).toStrictEqual(
+          [...new Set(episodes)].toSorted(byNumber()),
+        )
+
+        for (const { chapter, episode, value } of stages) {
+          expect(chapter, entity.id).toBeDefined()
+          expect(episode, entity.id).toBeGreaterThan(entity.revealedAtEpisode)
+
           isADrawing(entity.id, value)
         }
+      }
+    })
+
+    it('reads every redrawing its art module files', async () => {
+      // An exported `REDRAWINGS` the archive does not read would be tested by
+      // nothing above and shown to nobody.
+      const art = await vi.importActual<{ REDRAWINGS?: Redrawings }>(
+        `./${folder}/art/index.ts`,
+      )
+      const filed = art.REDRAWINGS ?? {}
+
+      for (const [id, timeline] of Object.entries(filed)) {
+        const entity = archive.getEntity(id)
+
+        expect(entity, id).toBeDefined()
+        expect(Object.keys(drawings), id).toContain(id)
+        expect(timeline.length, id).toBeGreaterThan(0)
+        expect(
+          entity === undefined ? [] : archive.datedOf(entity, 'redrawing'),
+          id,
+        ).toHaveLength(timeline.length)
       }
     })
 

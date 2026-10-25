@@ -208,12 +208,18 @@ describe('the command line', () => {
 // several checks running at once (#279), so the 5s default is too short.
 describe('what the command line asks for', { timeout: 60_000 }, () => {
   const out = 'unused'
+  const series = 'one-piece'
 
   it('gives every stage of a record, then the drafts in its tint', async () => {
     const folder = mkdtempSync(path.join(tmpdir(), 'art-draft-'))
     const draft = path.join(folder, 'draft.mjs')
     writeFileSync(draft, "export default { arm: [{ d: 'M0 0 L1 1' }] }")
-    const { name, cells } = await cellsFor({ draft, ids: ['franky'], out })
+    const { name, cells } = await cellsFor({
+      draft,
+      ids: ['franky'],
+      out,
+      series,
+    })
 
     expect(name).toBe('franky')
     expect(cells.map((stage) => stage.note)).toStrictEqual([
@@ -228,8 +234,8 @@ describe('what the command line asks for', { timeout: 60_000 }, () => {
   })
 
   it('gives the first drawing of every record in a saga or of a kind', async () => {
-    const saga = await cellsFor({ ids: [], out, saga: 'water-seven' })
-    const ships = await cellsFor({ ids: [], kind: 'ship', out })
+    const saga = await cellsFor({ ids: [], out, saga: 'water-seven', series })
+    const ships = await cellsFor({ ids: [], kind: 'ship', out, series })
 
     expect(saga.cells.map((cell) => cell.label)).toContain('franky')
     expect(saga.cells.find((cell) => cell.label === 'franky')?.note).toBe(
@@ -242,12 +248,30 @@ describe('what the command line asks for', { timeout: 60_000 }, () => {
   })
 
   it("draws another series' records, which have no redrawings yet", async () => {
-    const series = 'hunter-x-hunter'
-    const arcs = await cellsFor({ ids: [], kind: 'arc', out, series })
-    const exam = await cellsFor({ ids: ['hunter-exam-arc'], out, series })
+    const hunter = 'hunter-x-hunter'
+    const arcs = await cellsFor({ ids: [], kind: 'arc', out, series: hunter })
+    const exam = await cellsFor({
+      ids: ['hunter-exam-arc'],
+      out,
+      series: hunter,
+    })
 
     expect(arcs.cells).toHaveLength(7)
     expect(exam.cells).toMatchObject([{ note: 'ep 1', tint: 'yellow' }])
+  })
+
+  it('refuses a series not on the list, and a saga a series does not file', async () => {
+    await expect(
+      cellsFor({ ids: ['x'], out, series: '../one-piece' }),
+    ).rejects.toThrow('Unknown series')
+    await expect(
+      cellsFor({
+        ids: [],
+        out,
+        saga: 'hunter-exam',
+        series: 'hunter-x-hunter',
+      }),
+    ).rejects.toThrow('pass --kind instead')
   })
 
   it('names a sheet of drafts alone, so it lands inside the folder', async () => {
@@ -255,18 +279,18 @@ describe('what the command line asks for', { timeout: 60_000 }, () => {
     const draft = path.join(folder, 'alone.mjs')
     writeFileSync(draft, "export default { arm: [{ d: 'M0 0 L1 1' }] }")
 
-    const sheet = await cellsFor({ draft, ids: [], out })
+    const sheet = await cellsFor({ draft, ids: [], out, series })
 
     expect(sheet.name).toBe('drafts')
   })
 
   it('refuses an id no record has, and a saga with no drawings', async () => {
-    await expect(cellsFor({ ids: ['nobody'], out })).rejects.toThrow(
+    await expect(cellsFor({ ids: ['nobody'], out, series })).rejects.toThrow(
       'no record has the id nobody',
     )
-    await expect(cellsFor({ ids: [], out, saga: 'isles' })).rejects.toThrow(
-      'exports no',
-    )
+    await expect(
+      cellsFor({ ids: [], out, saga: 'isles', series }),
+    ).rejects.toThrow('exports no')
   })
 })
 

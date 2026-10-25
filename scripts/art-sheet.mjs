@@ -16,7 +16,7 @@
 // `non-scaling-stroke`, so each path scales its own pen back to 2px, undoing
 // both the box it is placed in and any `scale()` in its own transform.
 import { execFileSync } from 'node:child_process'
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
 import { pathToFileURL } from 'node:url'
@@ -320,6 +320,12 @@ export function stagesOf(entity, art) {
  */
 async function idsOfSaga(series, saga) {
   const file = `data/series/${series}/art/${saga}.ts`
+  // fallow-ignore-next-line security-sink -- a local CLI: the series is a registered slug and the saga a name the person running it typed
+  if (!existsSync(path.join(ROOT, 'src', file))) {
+    throw new Error(
+      `${series} has no saga art module ${saga}.ts: pass --kind instead`,
+    )
+  }
   const module = await importArchive(file)
   const drawings = Object.entries(module).find(([name]) => name.endsWith('Art'))
   if (drawings === undefined) {
@@ -346,10 +352,11 @@ async function artOf(series) {
  * @returns {Promise<{ name: string, cells: Cell[] }>} The sheet's name and cells.
  */
 export async function cellsFor(options) {
-  const series = options.series ?? 'one-piece'
-  const art = await artOf(series)
+  const { series } = options
+  // Throws on a slug the series list does not have, before any path is built.
   const { filedArchiveOf } = await importArchive('data/series/index.ts')
   const { entities, getEntity } = await filedArchiveOf(series)
+  const art = await artOf(series)
   if (options.saga !== undefined || options.kind !== undefined) {
     const ids =
       options.saga === undefined ?
@@ -445,8 +452,8 @@ export function writeSheets({ name, cells }, palette, out) {
 
 if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
   const options = readArgs(process.argv.slice(2))
-  const palette = seriesPalette(options.series)
   const sheet = await cellsFor(options)
+  const palette = seriesPalette(options.series)
   for (const line of writeSheets(sheet, palette, options.out)) {
     console.log(line)
   }
