@@ -421,7 +421,7 @@ describe('a fruit’s own page', () => {
 
           expect(covered).toMatchObject({ detail: { slot: { open: false } } })
           expect(JSON.stringify(covered)).not.toContain(id)
-          // Its own drawing is nowhere, though an open neighbour's is.
+          // Its own drawing stays out of every covered payload.
           expect(JSON.stringify(covered?.detail.slot)).not.toContain(
             '"strokes"',
           )

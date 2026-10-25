@@ -179,9 +179,6 @@ export const onePieceIt: OnePieceCopy = {
   'fruit.history.eaten': '{name} lo mangia',
   'fruit.history.deceased': '{name} muore',
   'fruit.history.presumed-dead': '{name}: morte presunta',
-  'fruit.turn': 'Frutto precedente e successivo',
-  'fruit.previous': 'Frutto precedente',
-  'fruit.next': 'Frutto successivo',
   'fruit.sagaTitle': 'Altri frutti di questa saga',
   'fruit.sagaLede':
     'I frutti visibili nominati per la prima volta nella stessa saga, i più vicini a questo.',

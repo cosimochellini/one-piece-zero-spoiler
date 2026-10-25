@@ -29,8 +29,7 @@ const ONE_COLUMN = 'minmax(0, 1fr)'
 /** The page's sheet. Exported as one object so the route reads as markup. */
 export const styles = stylex.create({
   // The stage: the drawing full width on a phone and about half the page on
-  // a wide one, the words beside it. A sideways swipe on it turns the page,
-  // so the browser keeps only vertical panning for itself here.
+  // a wide one, the words beside it.
   stage: {
     alignItems: 'center',
     columnGap: space.xl2,
@@ -40,7 +39,6 @@ export const styles = stylex.create({
       '@media (min-width: 60rem)': `${ONE_COLUMN} ${ONE_COLUMN}`,
     },
     rowGap: space.lg,
-    touchAction: 'pan-y',
     minWidth: 0,
   },
   drawing: { justifySelf: 'center', width: 'min(100%, 34rem)' },
@@ -141,53 +139,6 @@ export const styles = stylex.create({
     fontSize: text.lg,
     lineHeight: leading.body,
     maxWidth: '52ch',
-  },
-
-  // The fruit before and after: two cells, the next one at the far edge.
-  turn: {
-    columnGap: space.lg,
-    display: 'grid',
-    gridTemplateColumns: `${ONE_COLUMN} ${ONE_COLUMN}`,
-    minWidth: 0,
-  },
-  side: { minWidth: 0, width: 'min(100%, 9rem)' },
-  nextSide: { justifySelf: 'end', textAlign: 'end' },
-  turnLink: {
-    borderRadius: radius.card,
-    gap: space.xs2,
-    color: color.ink,
-    display: 'grid',
-    outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
-    outlineOffset: space.xs2,
-    outlineStyle: 'solid',
-    outlineWidth: rule.fine,
-    textDecorationLine: 'none',
-    minHeight: '44px',
-  },
-  turnLabel: {
-    color: color.muted,
-    fontFamily: font.mono,
-    fontSize: text.xs,
-    fontWeight: 600,
-    letterSpacing: '0.08em',
-    lineHeight: leading.body,
-    textTransform: 'uppercase',
-  },
-  turnName: {
-    color: {
-      'default': color.ink,
-      ':is(a:focus-visible) > &': color.accent,
-      ':is(a:hover) > &': color.accent,
-    },
-    fontFamily: font.display,
-    fontSize: text.base,
-    fontWeight: 800,
-    letterSpacing: '-0.02em',
-    lineHeight: leading.heading,
-    overflowWrap: 'anywhere',
-    transitionDuration: dur.micro,
-    transitionProperty: 'color',
-    transitionTimingFunction: ease.out,
   },
 
   // The history: one rule down the side, a dot per entry, oldest first.
