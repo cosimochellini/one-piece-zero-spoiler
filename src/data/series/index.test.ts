@@ -3,7 +3,7 @@ import { byNumber, byString } from 'sort-es'
 import { describe, expect, it, vi } from 'vitest'
 
 import type { Redrawings } from '~/data/art/stroke'
-import type { Entity, Opened } from '~/data/types'
+import type { Dated, Entity, SeriesArchive } from '~/data/types'
 import { LOCALES } from '~/i18n/locales'
 import { FIRST_CHAPTER, FIRST_EPISODE } from '~/lib/progress/episode'
 import type { Stroke } from '~/lib/view/records'
@@ -51,16 +51,53 @@ function isADrawing(id: string, strokes: Stroke[]): void {
   expect(distinct.size, id).toBe(keys.length)
 }
 
-/** The facts of one timeline told past a chapter and not marked the manga's. */
-function unsourcedAbove(
-  facts: Opened<unknown>[],
-  chapter: number,
-  label: string,
-): string[] {
-  return facts
-    .filter((fact) => (fact.chapter ?? 0) > chapter)
-    .filter((fact) => fact.gate.source !== 'manga')
-    .map((fact) => `${label} @${String(fact.episode)}`)
+/** A dated fact or a later visit, with the record whose gate it shares. */
+interface Told {
+  entry: Dated<unknown>
+  label: string
+  owner: Entity
+}
+
+/** Everything a page gates on a record: every timeline's entries and every visit. */
+function toldOf(archive: SeriesArchive): Told[] {
+  const facts = archive.timelines.flatMap(({ label, owner, timeline }) =>
+    timeline.map((entry) => ({
+      entry,
+      label: `${label} @${String(entry.episode)}`,
+      owner,
+    })),
+  )
+  const visits = archive.places.flatMap((owner) =>
+    (archive.placeDossierOf(owner)?.visits ?? []).map((entry) => ({
+      entry,
+      label: `${owner.id}.visits @${String(entry.episode)}`,
+      owner,
+    })),
+  )
+
+  return [...facts, ...visits]
+}
+
+/**
+ * What breaks the manga-only rules of a series whose anime has ended, read
+ * on the gate a reader is held to, not on the chapter as written.
+ */
+function mangaOnlyBreaches(archive: SeriesArchive, last: number): string[] {
+  const ceiling = archive.series.episodeCeiling
+
+  return toldOf(archive).flatMap(({ entry, label, owner }) => {
+    const gate = archive.gateOf(entry, owner)
+    const past = gate.revealedAtChapter > last
+
+    return [
+      past && gate.source !== 'manga' && `${label}: no source 'manga'`,
+      past && entry.episode !== ceiling && `${label}: not at the last episode`,
+      entry.episode === ceiling
+        && entry.chapter === undefined
+        && gate.source === undefined
+        && `${label}: at the last episode with no chapter and no source`,
+    ].filter((breach) => breach !== false)
+  })
 }
 
 /** Whether a record is an arc. */
@@ -171,19 +208,30 @@ describe.each(LOADED_SERIES)(
 
     it('marks everything told past the last chapter its anime adapts as the manga’s', () => {
       // An anime viewer who has finished reaches the last episode, so a
-      // record or a fact filed there with no source would show them a
-      // chapter the anime never adapts.
-      const told = lastAdaptedChapter ?? Infinity
+      // record, a fact or a visit filed there with no source would show them
+      // a chapter the anime never adapts. Without a last adapted chapter the
+      // dial's own ceiling stands in, and only the last-episode rule bites.
+      const last = lastAdaptedChapter ?? archive.series.chapterCeiling
       const records = entities
-        .filter((entity) => entity.revealedAtChapter > told)
-        .filter((entity) => entity.source !== 'manga')
+        .filter((entity) => entity.revealedAtChapter > last)
+        .filter(
+          (entity) =>
+            entity.source !== 'manga'
+            || entity.revealedAtEpisode !== archive.series.episodeCeiling,
+        )
         .map((entity) => entity.id)
-      const facts = timelines.flatMap(({ field, label, owner }) =>
-        unsourcedAbove(archive.datedOf(owner, field), told, label),
+      const mangaOnly = entities.some(
+        (entity) =>
+          entity.source === 'manga' && entity.revealedAtChapter > last,
       )
 
       expect(records).toStrictEqual([])
-      expect(facts).toStrictEqual([])
+      expect(mangaOnlyBreaches(archive, last)).toStrictEqual([])
+      // The rule is alive: it is set below the dial, and some record is past it.
+      expect(
+        lastAdaptedChapter === undefined
+          || (lastAdaptedChapter < archive.series.chapterCeiling && mangaOnly),
+      ).toBe(true)
     })
 
     it('reads every redrawing its art module files', async () => {
