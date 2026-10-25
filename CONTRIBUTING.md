@@ -419,6 +419,20 @@ and the archive gate). Run it before you push.
 
 - The gates run after the build and the tests because they need them:
   `gate:archive` reads `dist/` and `gate:fallow` reads `coverage/`.
+
+CI compares each PR's client JavaScript bytes with a separate build of its exact
+base commit. Growth up to 2,048 bytes passes. For larger growth, add a
+standalone `client-budget: <reason>` line to the PR body explaining why it is
+needed; a body edit reruns the check. Leak checks still run and cannot be waived
+this way. `npm run check` locally and CI on `main` skip only the size
+comparison. To run it yourself after building both revisions:
+
+```sh
+node scripts/client-budget.mjs /path/to/base/dist/client dist/client
+```
+
+Pass the PR body through `PR_BODY` if the growth needs its documented exception.
+
 - `gate:fallow` compares your branch with `origin/main`. On a shallow clone, run
   `git fetch --unshallow origin main` first.
 - The git hooks check part of this on the way: `pre-commit` formats, lints and

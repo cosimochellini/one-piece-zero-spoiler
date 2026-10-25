@@ -129,6 +129,27 @@ jobs:
       - name: archive gate
         run: npm run gate:archive
 
+      # A separate worktree leaves the head build intact. Use the event's exact
+      # base commit, not today's main, and install its own pinned dependencies.
+      - name: Build PR base
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          git worktree add --detach "$RUNNER_TEMP/client-budget-base" "$BASE_SHA"
+          cd "$RUNNER_TEMP/client-budget-base"
+          npm ci
+          npm run build
+
+      - name: Client growth budget
+        if: github.event_name == 'pull_request'
+        env:
+          # PR prose is data, never interpolated into the shell script.
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run:
+          node scripts/client-budget.mjs
+          "$RUNNER_TEMP/client-budget-base/dist/client" dist/client
+
       - name: Upload gate reports
         if: always()
         uses: actions/upload-artifact@v7

@@ -16,7 +16,6 @@ import {
   canaryFrom,
   EXTRA,
   judge,
-  MAX_CLIENT_BYTES,
   placeWordCanaries,
   proseCanaries,
   slugCanaries,
@@ -32,11 +31,10 @@ const repositoryRoot = path.resolve(import.meta.dirname, '..')
  * A built script, as the gate reads one.
  * @param {string} name The file's name.
  * @param {string} text Its contents.
- * @param {number} [bytes] Its size, where it differs from the text's length.
  * @returns {{bytes: number, name: string, text: string}} The script.
  */
-function chunk(name, text, bytes = text.length) {
-  return { name, bytes, text }
+function chunk(name, text) {
+  return { name, bytes: text.length, text }
 }
 
 describe('the canary the archive gate looks for', () => {
@@ -293,17 +291,6 @@ describe('the verdict the gate reaches', () => {
     ])
   })
 
-  it('fails a build that is over the ceiling even with no prose in it', () => {
-    // The canaries only catch what they happen to name; the budget is what
-    // catches a whole module coming back through a path they miss.
-    const heavy = [chunk('index.js', 'x', MAX_CLIENT_BYTES + 1)]
-
-    expect(judge(heavy, canaries).ok).toBe(false)
-    expect(judge([chunk('index.js', 'x', MAX_CLIENT_BYTES)], canaries).ok).toBe(
-      true,
-    )
-  })
-
   it('refuses to vouch for anything when a canary could not be read', () => {
     const verdict = judge(clean, [
       { file: 'src/data/series/one-piece/places.ts', phrase: null },
@@ -312,19 +299,6 @@ describe('the verdict the gate reaches', () => {
     expect(verdict.unreadable).toStrictEqual([
       'src/data/series/one-piece/places.ts',
     ])
-  })
-})
-
-describe('the byte ceiling', () => {
-  it('leaves headroom but not a saga’s worth', () => {
-    // React itself is ~318 KB of the current ~449 KB. The archive alone was
-    // 599 KB of the 1,049 KB build this replaced, so a ceiling that let it
-    // back in would vouch for nothing.
-    // Public bilingual legal notices add code, not private source references,
-    // and so does loading the shelves (#776) and the fruit album (#778) in the
-    // browser.
-    expect(MAX_CLIENT_BYTES).toBeGreaterThan(449_410)
-    expect(MAX_CLIENT_BYTES).toBeLessThan(449_410 + 230_000)
   })
 })
 
