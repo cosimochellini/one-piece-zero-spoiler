@@ -150,7 +150,7 @@ export const itDictionary: Dictionary = {
     'Avviso sul progetto non ufficiale, contatti per i diritti, privacy e cookie, fonti e licenze.',
   'legal.projectTitle': 'Un progetto non ufficiale',
   'legal.unofficial':
-    'Zero Spoiler è un progetto amatoriale non ufficiale e senza scopo di lucro. Non è affiliato né approvato dai titolari dei diritti delle serie di cui parla.',
+    'Zero Spoiler è un progetto amatoriale non ufficiale e senza scopo di lucro. Non è affiliato né approvato dai titolari dei diritti delle serie presenti nella wiki.',
   'legal.creditSource': 'Fonte ufficiale dei crediti',
   'legal.contact': 'Richieste sui diritti e correzioni su GitHub',
   'legal.contactHelp':
