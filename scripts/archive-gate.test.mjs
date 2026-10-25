@@ -560,6 +560,39 @@ describe('the place word canaries', () => {
     expect(judge([chunk], placeWordCanaries([own])).found).toHaveLength(2)
   })
 
+  it('ignores bare client identifiers and longer strings while catching quoted place tokens', () => {
+    const canaries = placeWordCanaries([
+      {
+        ...own,
+        placeWords: {
+          ...own.placeWords,
+          forms: { mountain: { en: 'Mountain', it: 'Montagna' } },
+        },
+      },
+    ])
+    expect(
+      judge(
+        [
+          chunk(
+            'map.js',
+            'const styles={mountain:{}};styles.mountain;const label="Mountain range"',
+          ),
+        ],
+        canaries,
+      ).ok,
+    ).toBe(true)
+    for (const quote of ["'", '"', '`']) {
+      for (const word of ['mountain', 'Mountain', 'Montagna']) {
+        expect(
+          judge(
+            [chunk('leak.js', `const label=${quote}${word}${quote}`)],
+            canaries,
+          ).found,
+        ).toHaveLength(1)
+      }
+    }
+  })
+
   it('reads the shipped dictionaries, keeping only the words they do not hold', async () => {
     const canaries = await placeWordCanariesOf()
 
@@ -571,6 +604,12 @@ describe('the place word canaries', () => {
       'mainland',
       'Mainland',
       'Terraferma',
+      'Forest preserve',
+      'Riserva forestale',
+      'mountain',
+      'Mountain',
+      'Montagna',
+      'Wetlands',
       'Port town',
       'Città portuale',
     ])

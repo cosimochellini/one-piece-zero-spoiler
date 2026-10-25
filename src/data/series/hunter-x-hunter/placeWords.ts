@@ -18,6 +18,10 @@ export const HUNTER_X_HUNTER_PLACE_WORDS: PlaceWords<HunterVocabulary> = {
     mainland: { en: 'Mainland', it: 'Terraferma' },
   },
   forms: {
+    city: { en: 'City', it: 'Città' },
+    forest: { en: 'Forest preserve', it: 'Riserva forestale' },
+    mountain: { en: 'Mountain', it: 'Montagna' },
+    wetland: { en: 'Wetlands', it: 'Palude' },
     island: { en: 'Island', it: 'Isola' },
     port: { en: 'Port town', it: 'Città portuale' },
   },

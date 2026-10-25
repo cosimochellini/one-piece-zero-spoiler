@@ -5,8 +5,8 @@ import type { HunterSaga } from './saga'
  * and chapters 1–43 (owner, 2026-10-24). It is the demo span. The English
  * Hunter x Hunter Wiki's arc page gives both ranges.
  *
- * Filed so far: the road to the exam, episodes 1–2 and chapters 1–4, from
- * Whale Island to the Kiriko's flight (#760). Every pair below is the wiki's
+ * Filed so far: episodes 1–6 and chapters 1–12 (#760), from Whale Island
+ * through the first two phases of the exam. Every pair below is the wiki's
  * `manga debut` and its `Episode N (2011)` debut, the episode's `Adapted`
  * chapters agreeing. The unnamed (the captain, the old woman of the quiz,
  * Gon's great-grandmother, the applicant who answers the quiz first) are not
@@ -131,6 +131,162 @@ export const hunterExam: HunterSaga = {
       },
       visual: { art: 'kiriko', tint: 'violet' },
     },
+    {
+      id: 'tonpa',
+      kind: 'character',
+      revealedAtEpisode: 3,
+      revealedAtChapter: 5,
+      name: { it: 'Tonpa', en: 'Tonpa' },
+      summary: {
+        it: 'Un veterano dell’Esame Hunter che si offre di aiutare i nuovi arrivati, dopo trentaquattro tentativi falliti.',
+        en: 'A veteran of the Hunter Exam who offers to help the newcomers after thirty-four failed attempts.',
+      },
+      visual: { art: 'tonpa', tint: 'orange' },
+    },
+    {
+      id: 'hisoka',
+      kind: 'character',
+      revealedAtEpisode: 3,
+      revealedAtChapter: 5,
+      name: { it: 'Hisoka', en: 'Hisoka' },
+      summary: {
+        it: 'Un aspirante dell’Esame Hunter che ferisce un uomo dopo che gli è andato addosso senza scusarsi.',
+        en: 'A Hunter Exam applicant who wounds a man after he bumps into him without apologizing.',
+      },
+      visual: { art: 'hisoka', tint: 'vermilion' },
+    },
+    {
+      id: 'hanzo',
+      kind: 'character',
+      revealedAtEpisode: 3,
+      revealedAtChapter: 6,
+      name: { it: 'Hanzo', en: 'Hanzo' },
+      summary: {
+        it: 'Un ninja che sostiene l’Esame Hunter per poter cercare una pergamena.',
+        en: 'A ninja taking the Hunter Exam so he can search for a scroll.',
+      },
+      visual: { art: 'hanzo', tint: 'wine' },
+    },
+    {
+      id: 'nicholas',
+      kind: 'character',
+      revealedAtEpisode: 3,
+      revealedAtChapter: 6,
+      name: { it: 'Nicole', en: 'Nicholas' },
+      summary: {
+        it: 'Un aspirante Hunter che raccoglie sul portatile informazioni sugli altri candidati.',
+        en: 'A Hunter Exam applicant who gathers information about the other candidates on his laptop.',
+      },
+      visual: { art: 'nicholas', tint: 'blue' },
+    },
+    {
+      id: 'satotz',
+      kind: 'character',
+      revealedAtEpisode: 3,
+      revealedAtChapter: 6,
+      name: { it: 'Satoshi', en: 'Satotz' },
+      summary: {
+        it: 'L’esaminatore della prima prova, che chiede agli aspiranti di seguirlo nel tunnel.',
+        en: 'The First Phase examiner, who asks the applicants to follow him through the tunnel.',
+      },
+      visual: { art: 'satotz', tint: 'violet' },
+    },
+    {
+      id: 'killua',
+      kind: 'character',
+      revealedAtEpisode: 4,
+      revealedAtChapter: 6,
+      name: { it: 'Killua', en: 'Killua' },
+      summary: {
+        it: 'Un ragazzino con lo skateboard che fa amicizia con Gon durante la corsa dell’Esame Hunter.',
+        en: 'A boy with a skateboard who befriends Gon during the Hunter Exam run.',
+      },
+      visual: { art: 'killua', tint: 'azure' },
+    },
+    {
+      id: 'menchi',
+      kind: 'character',
+      revealedAtEpisode: 6,
+      revealedAtChapter: 10,
+      name: { it: 'Menci', en: 'Menchi' },
+      summary: {
+        it: 'Una Hunter buongustaia che esamina gli aspiranti nella seconda prova.',
+        en: 'A Gourmet Hunter examining the applicants in the Second Phase.',
+      },
+      visual: { art: 'menchi', tint: 'pink' },
+    },
+    {
+      id: 'buhara',
+      kind: 'character',
+      revealedAtEpisode: 6,
+      revealedAtChapter: 10,
+      name: { it: 'Buhara', en: 'Buhara' },
+      summary: {
+        it: 'Un Hunter buongustaio che chiede agli aspiranti di preparargli del maiale arrosto.',
+        en: 'A Gourmet Hunter who asks the applicants to prepare roast pork for him.',
+      },
+      visual: { art: 'buhara', tint: 'ocher' },
+    },
+    {
+      id: 'netero',
+      kind: 'character',
+      revealedAtEpisode: 6,
+      revealedAtChapter: 12,
+      name: { it: 'Netero', en: 'Netero' },
+      summary: {
+        it: 'Il presidente dell’Associazione Hunter, chiamato a intervenire sulla seconda prova dell’esame.',
+        en: 'The chairman of the Hunter Association, called in to intervene in the Second Phase of the exam.',
+      },
+      visual: { art: 'netero', tint: 'sand' },
+    },
+    {
+      id: 'zaban-city',
+      kind: 'place',
+      revealedAtEpisode: 3,
+      revealedAtChapter: 5,
+      name: { it: 'Zapan', en: 'Zaban City' },
+      summary: {
+        it: 'La città dove Gon, Kurapika e Leorio raggiungono il luogo dell’Esame Hunter.',
+        en: 'The city where Gon, Kurapika and Leorio reach the Hunter Exam site.',
+      },
+      visual: { art: 'zaban-city', tint: 'cyan' },
+    },
+    {
+      id: 'milsy-wetlands',
+      kind: 'place',
+      revealedAtEpisode: 4,
+      revealedAtChapter: 7,
+      name: { it: 'Palude di Numere', en: 'Milsy Wetlands' },
+      summary: {
+        it: 'Una palude oltre il tunnel dell’esame, dove gli animali ingannano le prede.',
+        en: 'Wetlands beyond the exam tunnel, where the animals deceive their prey.',
+      },
+      visual: { art: 'milsy-wetlands', tint: 'teal' },
+    },
+    {
+      id: 'visca-forest-preserve',
+      kind: 'place',
+      revealedAtEpisode: 6,
+      revealedAtChapter: 10,
+      name: { it: 'Riserva forestale di Visca', en: 'Visca Forest Preserve' },
+      summary: {
+        it: 'La riserva forestale dove si svolge la seconda prova dell’Esame Hunter.',
+        en: 'The forest preserve where the Second Phase of the Hunter Exam takes place.',
+      },
+      visual: { art: 'visca-forest-preserve', tint: 'orange' },
+    },
+    {
+      id: 'split-mountain',
+      kind: 'place',
+      revealedAtEpisode: 6,
+      revealedAtChapter: 12,
+      name: { it: 'Monte Spaccato', en: 'Split Mountain' },
+      summary: {
+        it: 'Una montagna divisa da una gola, dove gli aspiranti cercano uova per ripetere la seconda prova.',
+        en: 'A mountain divided by a ravine, where applicants seek eggs for the Second Phase retest.',
+      },
+      visual: { art: 'split-mountain', tint: 'ice' },
+    },
   ],
   dossiers: {
     'gon-freecss': {
@@ -229,6 +385,172 @@ export const hunterExam: HunterSaga = {
             it: 'L’albero solitario fuori da Dolle Harbor',
             en: 'The lone tree outside Dolle Harbor',
           },
+        },
+      ],
+    },
+    'tonpa': {
+      role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
+      log: {
+        it: 'Dice di conoscere bene l’esame e presenta a Gon alcuni aspiranti abituali. Offre ai tre amici del succo con un lassativo per farli ritirare. Gon sente che c’è qualcosa che non va e sputa il primo sorso; anche Kurapika e Leorio rinunciano alla bevanda.',
+        en: 'He says he knows the exam well and points out some regular applicants to Gon. He offers the three friends juice containing a laxative to make them drop out. Gon tastes something wrong and spits out his first mouthful; Kurapika and Leorio also turn down the drink.',
+      },
+      epithet: [
+        {
+          episode: 3,
+          chapter: 5,
+          value: { it: 'Il devasta-matricole', en: 'Rookie Crusher' },
+        },
+      ],
+      status: [{ episode: 3, chapter: 5, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 3,
+          chapter: 5,
+          value: {
+            it: 'Esame Hunter, aspirante',
+            en: 'Hunter Exam, applicant',
+          },
+        },
+      ],
+    },
+    'hisoka': {
+      role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
+      log: {
+        it: 'Tonpa lo indica a Gon come un aspirante da evitare: l’anno prima è stato squalificato per aver attaccato un esaminatore. Si presenta di nuovo all’esame e punisce un uomo che gli va addosso senza chiedere scusa.',
+        en: 'Tonpa points him out to Gon as an applicant to avoid: the previous year he was disqualified for attacking an examiner. He returns to the exam and punishes a man who bumps into him without apologizing.',
+      },
+      status: [{ episode: 3, chapter: 5, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 3,
+          chapter: 5,
+          value: {
+            it: 'Esame Hunter, aspirante',
+            en: 'Hunter Exam, applicant',
+          },
+        },
+      ],
+    },
+    'hanzo': {
+      role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
+      log: {
+        it: 'Parla volentieri con Tonpa e gli racconta della pergamena che cerca. Quando Tonpa gli offre del succo, però, lo rifiuta: un ninja non accetta cibo o bevande da uno sconosciuto.',
+        en: 'He readily talks to Tonpa and tells him about the scroll he is looking for. When Tonpa offers him juice, though, he refuses: a ninja does not accept food or drink from a stranger.',
+      },
+      status: [{ episode: 3, chapter: 6, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 3,
+          chapter: 6,
+          value: {
+            it: 'Esame Hunter, aspirante',
+            en: 'Hunter Exam, applicant',
+          },
+        },
+      ],
+    },
+    'nicholas': {
+      role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
+      log: {
+        it: 'Ha già trovato sul portatile i precedenti tentativi di Tonpa e sa che cerca di far ritirare i nuovi arrivati. Rifiuta il succo che gli viene offerto.',
+        en: 'He has already found Tonpa’s earlier attempts on his laptop and knows that he tries to make newcomers drop out. He refuses the juice offered to him.',
+      },
+      status: [{ episode: 3, chapter: 6, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 3,
+          chapter: 6,
+          value: {
+            it: 'Esame Hunter, aspirante',
+            en: 'Hunter Exam, applicant',
+          },
+        },
+      ],
+    },
+    'satotz': {
+      role: { it: 'Esaminatore della prima prova', en: 'First Phase examiner' },
+      log: {
+        it: 'Chiude le iscrizioni e avverte gli aspiranti che l’esame può costare loro la vita. Li guida nel tunnel, accelerando il passo senza dire quanto durerà la prova o dove li porterà. Per passare devono soltanto riuscire a seguirlo.',
+        en: 'He closes registration and warns the applicants that the exam can cost them their lives. He leads them through the tunnel, increasing his pace without saying how long the test will last or where it will take them. To pass, they only need to keep up with him.',
+      },
+      status: [{ episode: 3, chapter: 6, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 3,
+          chapter: 6,
+          value: { it: 'Associazione Hunter', en: 'Hunter Association' },
+        },
+      ],
+    },
+    'killua': {
+      role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
+      log: {
+        it: 'Segue l’esaminatore sullo skateboard. Gon lo raggiunge e scopre che hanno quasi la stessa età. Killua prende la tavola in mano e continua a corrergli accanto.',
+        en: 'He follows the examiner on his skateboard. Gon catches up with him and learns that they are nearly the same age. Killua picks up his board and keeps running beside him.',
+      },
+      status: [{ episode: 4, chapter: 6, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 4,
+          chapter: 6,
+          value: {
+            it: 'Esame Hunter, aspirante',
+            en: 'Hunter Exam, applicant',
+          },
+        },
+      ],
+    },
+    'menchi': {
+      role: {
+        it: 'Esaminatrice della seconda prova',
+        en: 'Second Phase examiner',
+      },
+      log: {
+        it: 'Aspetta gli aspiranti con Buhara nella riserva forestale di Visca. Si presenta come Hunter buongustaia: la seconda prova riguarda la cucina.',
+        en: 'She waits for the applicants with Buhara in the Visca Forest Preserve. She introduces herself as a Gourmet Hunter: the Second Phase is about cooking.',
+      },
+      status: [{ episode: 6, chapter: 10, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 6,
+          chapter: 10,
+          value: { it: 'Associazione Hunter', en: 'Hunter Association' },
+        },
+      ],
+    },
+    'buhara': {
+      role: {
+        it: 'Esaminatore della seconda prova',
+        en: 'Second Phase examiner',
+      },
+      log: {
+        it: 'Esamina gli aspiranti insieme a Menci. Per il suo piatto chiede del maiale arrosto e li manda nella foresta a catturare i cinghiali che ci vivono.',
+        en: 'He examines the applicants alongside Menchi. For his dish he asks for roast pork and sends them into the forest to catch the boars living there.',
+      },
+      status: [{ episode: 6, chapter: 10, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 6,
+          chapter: 10,
+          value: { it: 'Associazione Hunter', en: 'Hunter Association' },
+        },
+      ],
+    },
+    'netero': {
+      role: {
+        it: 'Presidente dell’Associazione Hunter',
+        en: 'Chairman of the Hunter Association',
+      },
+      log: {
+        it: 'Arriva in dirigibile dopo che Menci ha bocciato tutti gli aspiranti. Le fa riconoscere di aver perso la calma e le propone di ripetere la prova, mostrando di persona come affrontarla.',
+        en: 'He arrives by airship after Menchi has failed every applicant. He gets her to acknowledge that she lost her temper and proposes that she repeat the test, demonstrating how to attempt it herself.',
+      },
+      status: [{ episode: 6, chapter: 12, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 6,
+          chapter: 12,
+          value: { it: 'Associazione Hunter', en: 'Hunter Association' },
         },
       ],
     },

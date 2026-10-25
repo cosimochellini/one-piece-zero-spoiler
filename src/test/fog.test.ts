@@ -107,12 +107,25 @@ describe('the place words of a series that labels its own', () => {
   const FIRST = { mode: 'episode' as const, episode: 1 }
 
   it.each([
-    ['its id', { forms: { port: 'x' } }],
-    ['its label', { forms: { x: 'Port town' } }],
-    ['its Italian label', { regions: { x: 'Terraferma' } }],
-  ])('names the places under a word no open place uses, by %s', (_, words) => {
-    expect(leaksIn({ words }, FIRST)).toStrictEqual(['dolle-harbor'])
-  })
+    ['its id', { forms: { port: 'x' } }, ['dolle-harbor']],
+    ['its label', { forms: { x: 'Port town' } }, ['dolle-harbor']],
+    [
+      'its Italian label',
+      { regions: { x: 'Terraferma' } },
+      [
+        'dolle-harbor',
+        'zaban-city',
+        'milsy-wetlands',
+        'visca-forest-preserve',
+        'split-mountain',
+      ],
+    ],
+  ])(
+    'names the places under a word no open place uses, by %s',
+    (_, words, expected) => {
+      expect(leaksIn({ words }, FIRST)).toStrictEqual(expected)
+    },
+  )
 
   it('holds a word no place is filed under at every bookmark', () => {
     const unfiled: ListedSeries = {

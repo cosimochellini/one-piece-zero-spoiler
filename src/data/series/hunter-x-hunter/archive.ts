@@ -42,7 +42,13 @@ const { chapterAtEpisode, gateOf } = chapterTable({
 const cast = castOf({
   dossiers: DOSSIERS,
   entities,
-  featured: ['gon-freecss', 'kurapika', 'leorio-paradinight'],
+  featured: [
+    'gon-freecss',
+    'kurapika',
+    'leorio-paradinight',
+    'killua',
+    'hisoka',
+  ],
 })
 
 const places = keptOf(entities, 'place', PLACE_DOSSIERS)
@@ -50,9 +56,17 @@ const places = keptOf(entities, 'place', PLACE_DOSSIERS)
 /** One dynamically loaded archive; its public description contains no records. */
 export const HUNTER_X_HUNTER_ARCHIVE: SeriesArchive = {
   series: SERIES,
-  // Both sides of the first two season boundaries, counted in seasons: the
-  // first is the end of the demo, the second falls inside an arc.
+  // Both sides of the new named-scene gates in each unit, followed by the
+  // first two season boundaries (the demo end and a boundary inside an arc).
   bookmarks: sweepOf(sagas, SERIES, [
+    ...[2, 3, 4, 5, 6].map((episode) => ({
+      mode: 'episode' as const,
+      episode,
+    })),
+    ...[4, 5, 6, 7, 9, 10, 11, 12].map((chapter) => ({
+      mode: 'chapter' as const,
+      chapter,
+    })),
     { mode: 'season', season: 1, episode: 26 },
     { mode: 'season', season: 2, episode: 1 },
     { mode: 'season', season: 2, episode: 12 },
