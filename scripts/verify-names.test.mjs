@@ -147,19 +147,20 @@ describe('a section of a list page', () => {
     text: '',
   }
 
-  it('reads a heading or a bold term to the next one, its bold names its aliases', () => {
+  it('reads a heading or a bold term to the next one, the name it opens with its alias', () => {
     const leorio = sectionOf(list, 'Leolio Paladiknight')
     const mito = sectionOf(list, 'Myto Freecss')
 
     expect(leorio === undefined ? undefined : namesOf(leorio)).toEqual({
       title: 'Leolio Paladiknight',
       dub: [],
-      aliases: ['Leolio Paladiknight', 'Leorio'],
+      aliases: ['Leolio Paladiknight'],
     })
     expect(mito?.wikitext).toBe(
       ";{{nihongo|'''Myto Freecss'''|ミト}}\n:La cugina di Jin.",
     )
-    expect(accepts('Leorio', [namesOf(leorio ?? list)])).toBe(true)
+    expect(accepts('Leorio', [namesOf(leorio ?? list)])).toBe(false)
+    expect(accepts('Myto Freecss', [namesOf(mito ?? list)])).toBe(true)
     expect(accepts('Mito Freecss', [namesOf(mito ?? list)])).toBe(false)
   })
 

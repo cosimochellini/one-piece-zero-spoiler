@@ -17,9 +17,7 @@
 // missing or wrong. Hunter x Hunter has no Italian wiki: its names come from
 // Italian Wikipedia (owner, 2026-10-24), whose minor characters are sections
 // of a list page, named in `ITALIAN_TITLES` as `Page#Section`. A section
-// accepts its heading and every name it sets in bold, which is where the
-// list gives the anime's name ("'''Leorio''' nella versione italiana
-// dell'anime").
+// accepts its heading and the bold name that opens it.
 //
 // Run it with `npm run verify:names` (`-- --series <slug>` for a series of
 // `src/data/series/index.ts` other than One Piece). It talks to the network,
@@ -73,7 +71,6 @@ const ITALIAN_TITLES = {
   // Hunter x Hunter, on Italian Wikipedia.
   'gon-freecss': 'Gon Freecss',
   'kurapika': 'Kurapika Kurata',
-  'leorio-paradinight': 'Personaggi di Hunter × Hunter#Leolio Paladiknight',
   'mito-freecss': 'Personaggi di Hunter × Hunter#Myto Freecss',
 }
 
@@ -102,6 +99,10 @@ const NAMES_KEPT = {
   // episode 37, "Ging e Gon" (`Episodi di Hunter × Hunter (serie animata
   // 2011)`).
   'ging-freecss': 'Ging Freecss',
+  // Italian Wikipedia's entry is the manga's "Leolio Paladiknight", with a
+  // note that the Italian anime says "Leorio" (`Personaggi di Hunter ×
+  // Hunter`, section `Leolio Paladiknight`).
+  'leorio-paradinight': 'Leorio',
   // No Italian page names them: the English name stands.
   'katzo': 'Katzo',
   'kiriko': 'Kiriko',
@@ -192,21 +193,22 @@ export function namesOf(page) {
       ...['alias', 'nickname'].flatMap((field) =>
         namesIn(fieldOf(page.wikitext, field)),
       ),
-      ...(page.section === true ? boldIn(page.wikitext) : []),
+      ...(page.section === true ? openingBold(page.wikitext) : []),
     ],
   }
 }
 
 /**
- * Every name a text sets in bold, `'''name'''`.
- * @param {string} wikitext The text.
- * @returns {string[]} The names, in order.
+ * The name that opens a list entry: the first one it sets in bold,
+ * `'''name'''`. A later bold run is a note on another name ("'''Leorio'''
+ * nella versione italiana dell'anime") and is not taken.
+ * @param {string} wikitext The entry.
+ * @returns {string[]} The name, or nothing.
  */
-function boldIn(wikitext) {
-  return wikitext
-    .matchAll(/'''(?<name>[^']+)'''/gu)
-    .map((match) => match.groups?.['name'] ?? '')
-    .toArray()
+function openingBold(wikitext) {
+  const name = /'''(?<name>[^']+)'''/u.exec(wikitext)?.groups?.['name']
+
+  return name === undefined ? [] : [name]
 }
 
 /**
