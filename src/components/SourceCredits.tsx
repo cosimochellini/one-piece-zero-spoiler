@@ -3,7 +3,7 @@ import type { ReactElement, ReactNode } from 'react'
 
 import { styles } from '~/components/LegalNotice.styles'
 import { SERIES_SOURCES } from '~/components/seriesSources'
-import { useLocale, useT } from '~/i18n/LocaleContext'
+import { useLocale, useSeriesT, useT } from '~/i18n/LocaleContext'
 import { LocaleProvider } from '~/i18n/LocaleProvider'
 import type { SeriesCopy, SeriesSlug } from '~/i18n/types'
 import type { SeriesCredits, SourceCredit } from '~/lib/view/credits'
@@ -78,7 +78,7 @@ export function SourceCredits({
 
 /** Which of a series' entries the references below cover. */
 function Coverage(): ReactElement {
-  const t = useT()
+  const t = useSeriesT()
   return <p {...stylex.props(styles.paragraph)}>{t('credits.coverage')}</p>
 }
 
@@ -90,7 +90,7 @@ function CreditEntry({
   slug: SeriesSlug
 }): ReactElement {
   const { licenses } = SERIES_SOURCES[slug]
-  const t = useT()
+  const t = useSeriesT()
   return (
     <li>
       <h4>

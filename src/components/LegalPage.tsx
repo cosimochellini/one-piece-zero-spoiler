@@ -5,7 +5,7 @@ import { styles } from '~/components/LegalNotice.styles'
 import { PrivacyNotice } from '~/components/PrivacyNotice'
 import { SERIES_SOURCES } from '~/components/seriesSources'
 import { InSeries, SourceCredits } from '~/components/SourceCredits'
-import { useT } from '~/i18n/LocaleContext'
+import { useSeriesT, useT } from '~/i18n/LocaleContext'
 import type { SeriesCredits } from '~/lib/view/credits'
 
 /** Every notice on one page, so the footer carries a single link. */
@@ -51,7 +51,7 @@ export function LegalPage({
 
 /** A series' rights holders, in its own words, and where they say so. */
 function Rights({ url }: { url: string }): ReactElement {
-  const t = useT()
+  const t = useSeriesT()
 
   return (
     <p {...stylex.props(styles.paragraph)}>

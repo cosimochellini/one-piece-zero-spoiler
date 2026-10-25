@@ -1,7 +1,7 @@
 import { createContext, use, useMemo } from 'react'
 
 import type { Locale } from './locales'
-import type { SeriesSlug, Translate } from './types'
+import type { SeriesSlug, SeriesTranslate, Translate } from './types'
 
 /**
  * What the provider puts on the context: the active locale, its translate,
@@ -30,28 +30,33 @@ export function useLocale(): LocaleContextValue {
   return value
 }
 
-/** The shared keys and those every series words for itself. */
+/** The shared keys, which every page has. */
 export function useT(): Translate {
   return useLocale().t
 }
 
 /**
- * Translate with one series' own keys as well. Typed by the series, so a key
- * of another series fails `typecheck`; under another series it throws when
- * called, so a page reached by a series without the feature cannot print it.
+ * Translate on a page of a series: with no slug, the shared keys and the
+ * common ones every series words for itself; with one, that series' own keys
+ * as well. Typed by the series, so a key of another series fails
+ * `typecheck`; it throws when called on a page of another series, or of
+ * none, so a page without the feature cannot print it.
  */
-export function useSeriesT<S extends SeriesSlug>(slug: S): Translate<S> {
+export function useSeriesT(): SeriesTranslate
+export function useSeriesT<S extends SeriesSlug>(slug: S): Translate<S>
+export function useSeriesT(slug?: SeriesSlug): Translate<SeriesSlug> {
   const { series, t } = useLocale()
+  const fits = series !== null && (slug === undefined || series === slug)
 
-  return useMemo<Translate<S>>(
+  return useMemo<Translate<SeriesSlug>>(
     () =>
-      series === slug ? t : (
+      fits ? t : (
         (key): never => {
           throw new Error(
-            `${key} is ${slug}'s copy, asked for under ${series ?? 'no series'}`,
+            `${key} is ${slug ?? 'a series'}'s copy, asked for under ${series ?? 'no series'}`,
           )
         }
       ),
-    [series, slug, t],
+    [fits, series, slug, t],
   )
 }

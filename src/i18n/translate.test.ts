@@ -215,7 +215,7 @@ describe('translate', () => {
 
 describe('translatorFor', () => {
   it('names the series a page belongs to', () => {
-    const t = translatorFor('it', {
+    const t = translatorFor<'hunter-x-hunter'>('it', {
       slug: 'hunter-x-hunter',
       name: 'Hunter x Hunter',
       words: COPIES['hunter-x-hunter'].it,
@@ -229,6 +229,7 @@ describe('translatorFor', () => {
     const t = translatorFor('en')
 
     expect(t('nav.places')).toBe('Places')
+    // @ts-expect-error -- a common key needs a series (#791)
     expect(() => t('site.description')).toThrow('site.description')
   })
 })

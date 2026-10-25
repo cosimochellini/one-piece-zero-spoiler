@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import type { ReactElement } from 'react'
 
 import { isLocale } from '~/i18n/locales'
+import type { SeriesSlug } from '~/i18n/types'
 import { describeNamedPage } from '~/routes/$locale/-head'
 import { LandingPage } from '~/routes/$series/$locale/-landing'
 import { loadHome } from '~/server/api'
@@ -17,7 +18,7 @@ export const Route = createFileRoute('/$series/$locale/')({
     loadHome({ data: { series: context.series.slug, locale: context.locale } }),
   head: (context) =>
     isLocale(context.params.locale) ?
-      describeNamedPage({
+      describeNamedPage<SeriesSlug>({
         copy: context.match.context.copy,
         descriptionKey: 'site.description',
         kind: 'landing',

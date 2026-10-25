@@ -25,7 +25,7 @@ function FruitsTitle(): ReactElement {
 
 /** The shared keys and the common ones, under whichever series. */
 function Lede(): ReactElement {
-  const t = useT()
+  const t = useSeriesT()
 
   return <p>{t('onboarding.lede')}</p>
 }
@@ -35,6 +35,13 @@ function OnePieceKeyUnderHunter(): string {
   const t = useSeriesT('hunter-x-hunter')
   // @ts-expect-error -- a One Piece key under Hunter x Hunter
   return t('fruits.title')
+}
+
+/** Never rendered: a common key needs a page of a series. */
+function CommonKeyWithoutSeries(): string {
+  const t = useT()
+  // @ts-expect-error -- every series words it for itself; no page without one
+  return t('site.description')
 }
 
 /** Never rendered: a series' own key is not a shared one. */
@@ -93,6 +100,7 @@ describe('useSeriesT', () => {
   it('fails typecheck for a key of another series', () => {
     expect(OnePieceKeyUnderHunter).toBeTypeOf('function')
     expect(SeriesKeyAsShared).toBeTypeOf('function')
+    expect(CommonKeyWithoutSeries).toBeTypeOf('function')
 
     expectTypeOf<'fruits.title'>().not.toExtend<
       TranslationKey<'hunter-x-hunter'>

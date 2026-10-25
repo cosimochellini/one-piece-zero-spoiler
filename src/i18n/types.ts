@@ -42,14 +42,22 @@ export interface SeriesCopies {
 export type SeriesSlug = keyof SeriesCopies
 
 /**
- * The keys a page may translate. With no series, the shared keys and the
- * common ones; under a series, its own keys as well, so a key of another
- * series fails `typecheck`.
+ * The keys a page may translate. With no series, the shared keys alone, the
+ * only ones a page with no series has; under series `S`, the common keys and
+ * its own as well, so a key of another series fails `typecheck`.
  */
 export type TranslationKey<S extends SeriesSlug = never> =
-  | CommonKey
   | SharedKey
-  | { [K in SeriesSlug]: Extract<keyof SeriesCopies[K], string> }[S]
+  | { [K in SeriesSlug]: CommonKey | Extract<keyof SeriesCopies[K], string> }[S]
+
+/**
+ * Translate on a page of whichever series: the shared keys and the common
+ * ones, which every series' copy defines.
+ */
+export type SeriesTranslate = (
+  key: CommonKey | SharedKey,
+  params?: TranslationParams,
+) => string
 
 /**
  * The shared copy, complete. Annotating a dictionary with this type is what

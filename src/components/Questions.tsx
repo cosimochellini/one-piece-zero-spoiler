@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex'
 import type { ReactElement } from 'react'
 
-import { useT } from '~/i18n/LocaleContext'
+import { useSeriesT } from '~/i18n/LocaleContext'
 import { color, font, leading, rule, space, text } from '~/styles/tokens.stylex'
 
 const FAQ = [
@@ -17,7 +17,7 @@ const FAQ = [
  * they are set as a conversation down one column and not as a row of cards.
  */
 export function Questions(): ReactElement {
-  const t = useT()
+  const t = useSeriesT()
 
   return (
     <section {...stylex.props(styles.faq)}>
