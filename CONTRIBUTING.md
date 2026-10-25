@@ -304,9 +304,10 @@ An adaptation needs, in the same pull request:
    later than the text. This is a code change: add the revision to
    [`docs/content-provenance/sources.json`](docs/content-provenance/sources.json)
    with every field its entries carry (`revision`, `revisionDate`, `url`,
-   `revisionUrl`, `apiUrl`, `contentSha256`), map the record in
-   `src/server/archive/credits.server.ts`, which today lists only the #719
-   sample, and extend `src/server/archive/credits.test.ts`. A record kind with
+   `revisionUrl`, `apiUrl`, `contentSha256`), map the record in the series'
+   review sample (`credits.ts` in its folder, such as
+   `src/data/series/one-piece/credits.ts`, which today lists only the #719
+   sample), and extend `src/server/archive/credits.test.ts`. A record kind with
    no credit scope yet (`scope` in `src/lib/view/credits.ts`) needs one first.
    [source-credits.md](docs/source-credits.md) has the rules: revision links
    only, nothing sent before the reader's bookmark reaches it. When the credit
@@ -322,7 +323,7 @@ Source: "Episode 1", One Piece Wiki, https://onepiece.fandom.com/index.php?oldid
         "Episodio 1", One Piece Wiki italiana, https://onepiece.fandom.com/it/index.php?oldid=353984, read 2026-10-20
 License: CC BY-SA 3.0 Unported; authors: the pages' contributors (page history)
 Changes: abridged to three sentences and reworded; the Italian is not a translation of the English
-Credit: both revisions in sources.json, mapped in credits.server.ts (already there for this sample)
+Credit: both revisions in sources.json, mapped in one-piece/credits.ts (already there for this sample)
 ```
 
 ### Quotations
