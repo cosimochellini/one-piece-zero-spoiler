@@ -224,8 +224,7 @@ const KIND_FLOORS: Partial<Record<string, (keyof Least)[]>> = {
   chronicle: ['chronicles'],
   form: ['places'],
   landmark: ['places'],
-  // A character's origin need not name a filed place (Kurapika's clan).
-  origin: ['characters'],
+  origin: ['linkedOrigins'],
   region: ['places'],
   role: ['characters'],
   summary: ['arcs'],
