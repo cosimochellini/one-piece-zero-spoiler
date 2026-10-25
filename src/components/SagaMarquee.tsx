@@ -4,7 +4,7 @@ import { type ReactElement, type ReactNode, useId } from 'react'
 
 import { ChartArt } from '~/components/ChartArt'
 import { DrawInContext, tintOf } from '~/components/drawing'
-import { useLocale, useSeriesT } from '~/i18n/LocaleContext'
+import { onlyUnder, useLocale, useSeriesOnlyT } from '~/i18n/LocaleContext'
 import { spliced } from '~/i18n/spliced'
 import type { Translate } from '~/i18n/types'
 import { useSeriesParams, useThreshold } from '~/lib/progress/BookmarkContext'
@@ -44,7 +44,7 @@ export function SagaMarquee({
   marquee,
 }: SagaMarqueeProps): null | ReactElement {
   const { locale } = useLocale()
-  const t = useSeriesT('one-piece')
+  const t = useSeriesOnlyT('one-piece')
   const { series } = useSeriesParams()
   const headingId = useId()
   if (marquee === null) {
@@ -129,9 +129,9 @@ function Rail({ fruits }: { fruits: FruitView[] }): ReactElement {
 /** No fruit in the saga yet: say so, and point back to the last one. */
 function Behind({ last }: { last: FruitView | null }): ReactElement {
   const { locale } = useLocale()
-  const t = useSeriesT('one-piece')
+  const t = useSeriesOnlyT('one-piece')
   const { series } = useSeriesParams()
-  const threshold = useThreshold('one-piece')
+  const threshold = onlyUnder(useThreshold('one-piece'), 'one-piece')
 
   return (
     <p {...stylex.props(styles.behind)}>

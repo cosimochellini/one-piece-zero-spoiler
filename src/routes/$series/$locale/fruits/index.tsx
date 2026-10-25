@@ -32,7 +32,7 @@ import type { ReactElement } from 'react'
 
 import { ArchivePage } from '~/components/ArchivePage'
 import { FruitsAlbum } from '~/components/FruitWall'
-import { useSeriesT } from '~/i18n/LocaleContext'
+import { useSeriesOnlyT } from '~/i18n/LocaleContext'
 import type { TranslationKey } from '~/i18n/types'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
 import { type AlbumView, parseFruitParams } from '~/lib/search/fruitParams'
@@ -104,7 +104,7 @@ const COUNT_KEY: Record<AlbumView, TranslationKey<'one-piece'>> = {
  * goes.
  */
 function FruitsPage(): ReactElement {
-  const t = useSeriesT('one-piece')
+  const t = useSeriesOnlyT('one-piece')
   const { bookmark } = useBookmark()
   const { filed, marquee, plates } = Route.useLoaderData()
   const { album, retry } = useFruitAlbum()

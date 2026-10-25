@@ -12,7 +12,7 @@ import { FogBand, type FogTitles } from '~/components/FogBand'
 import { FruitTile, OpenTiles } from '~/components/FruitTile'
 import { matchesIn } from '~/components/recordMatches'
 import { styles } from '~/components/SpecimenBands.styles'
-import { useSeriesT } from '~/i18n/LocaleContext'
+import { useSeriesOnlyT } from '~/i18n/LocaleContext'
 import type { Translate, TranslationKey } from '~/i18n/types'
 import { foldName } from '~/lib/search/fold'
 import type { FruitParams } from '~/lib/search/fruitParams'
@@ -139,12 +139,13 @@ export function AlbumFailed({
 }: {
   onRetry: () => void
 }): ReactElement {
+  const t = useSeriesOnlyT('one-piece')
   return (
-    <LoadFailed
+    <LoadFailed<'one-piece'>
       message="fruits.albumFailed"
       onRetry={onRetry}
       retry="fruits.albumRetry"
-      series="one-piece"
+      t={t}
     />
   )
 }
@@ -171,7 +172,7 @@ function Plates({
   fieldId: string
   needle: string
 }): ReactElement {
-  const t = useSeriesT('one-piece')
+  const t = useSeriesOnlyT('one-piece')
   const grouping = groupingOf(t, { ...sent, fieldId, view: params.view })
 
   if (grouping !== undefined) {
@@ -219,6 +220,7 @@ export function Plate({
   needle: string
   peek: (handle: string) => Promise<FruitView>
 }): ReactElement {
+  const t = useSeriesOnlyT('one-piece')
   const headingId = `${fieldId}-${band.form}`
   const matches = matchesIn(band.open, needle)
 
@@ -246,7 +248,7 @@ export function Plate({
       <FogBand
         count={band.covered.length}
         headingId={`${headingId}-fog`}
-        series="one-piece"
+        t={t}
         words={FRUIT_FOG}
       >
         <CoveredTiles
@@ -300,7 +302,7 @@ function PlateHead({
   headingId: string
   index: number
 }): ReactElement {
-  const t = useSeriesT('one-piece')
+  const t = useSeriesOnlyT('one-piece')
 
   return (
     <>

@@ -2,23 +2,24 @@ import { render, screen } from '@testing-library/react'
 import type { ReactElement } from 'react'
 import { describe, expect, expectTypeOf, it } from 'vitest'
 
+import { useThreshold } from '~/lib/progress/BookmarkContext'
 import { HUNTER_X_HUNTER_SERIES, ONE_PIECE_SERIES } from '~/lib/progress/series'
 import { copyOf } from '~/server/copy.server'
 
-import { useLocale, useSeriesT, useT } from './LocaleContext'
+import { useLocale, useSeriesOnlyT, useSeriesT, useT } from './LocaleContext'
 import { LocaleProvider } from './LocaleProvider'
 import type { CommonKey, SeriesCopies, TranslationKey } from './types'
 
 /** A part of a Hunter x Hunter page. */
 function HunterPage(): ReactElement {
-  const t = useSeriesT('hunter-x-hunter')
+  const t = useSeriesOnlyT('hunter-x-hunter')
 
   return <p>{t('onboarding.tailTitle')}</p>
 }
 
 /** A part of a One Piece page: its devil fruits. */
 function FruitsTitle(): ReactElement {
-  const t = useSeriesT('one-piece')
+  const t = useSeriesOnlyT('one-piece')
 
   return <h1>{t('fruits.title')}</h1>
 }
@@ -30,11 +31,35 @@ function Lede(): ReactElement {
   return <p>{t('onboarding.lede')}</p>
 }
 
+/** A shared part of a page: One Piece's word, only on its pages. */
+function FruitsLink(): ReactElement {
+  const onePiece = useSeriesT('one-piece')
+
+  return <p>{onePiece === undefined ? 'none' : onePiece('nav.fruits')}</p>
+}
+
 /** Never rendered: what `npm run typecheck` must refuse (#791). */
 function OnePieceKeyUnderHunter(): string {
-  const t = useSeriesT('hunter-x-hunter')
+  const t = useSeriesOnlyT('hunter-x-hunter')
   // @ts-expect-error -- a One Piece key under Hunter x Hunter
   return t('fruits.title')
+}
+
+/** Never rendered: a series' translate is read only behind its check. */
+function UncheckedOnePieceKey(): string {
+  const t = useSeriesT('one-piece')
+  // @ts-expect-error -- undefined on another series' page: branch first
+  return t('fruits.title')
+}
+
+/** Never rendered: nor is a series' threshold sentence said unchecked. */
+function UncheckedOnePieceThreshold(): string {
+  const threshold = useThreshold('one-piece')
+  // @ts-expect-error -- undefined on another series' page: branch first
+  return threshold('fruit.opensAt', {
+    revealedAtChapter: 1,
+    revealedAtEpisode: 1,
+  })
 }
 
 /** Never rendered: the context has no translate of its own to reach for. */
@@ -76,7 +101,20 @@ describe('useSeriesT', () => {
     expect(screen.getByText(/through East Blue/u)).toBeInTheDocument()
   })
 
-  it('throws for a key of another series under this one', () => {
+  it('gives a series’ translate on its own pages only', () => {
+    render(
+      <LocaleProvider
+        copy={copyOf(HUNTER_X_HUNTER_SERIES, 'en')}
+        locale="en"
+      >
+        <FruitsLink />
+      </LocaleProvider>,
+    )
+
+    expect(screen.getByText('none')).toBeInTheDocument()
+  })
+
+  it('throws where only another series’ pages reach', () => {
     expect(() =>
       render(
         <LocaleProvider
@@ -86,7 +124,7 @@ describe('useSeriesT', () => {
           <FruitsTitle />
         </LocaleProvider>,
       ),
-    ).toThrow('fruits.title')
+    ).toThrow('Only a page of one-piece reaches this')
   })
 
   it('reads each series’ common keys in its own words', () => {
@@ -109,6 +147,8 @@ describe('useSeriesT', () => {
     expect(SeriesKeyAsShared).toBeTypeOf('function')
     expect(CommonKeyWithoutSeries).toBeTypeOf('function')
     expect(KeyThroughTheContext).toBeTypeOf('function')
+    expect(UncheckedOnePieceKey).toBeTypeOf('function')
+    expect(UncheckedOnePieceThreshold).toBeTypeOf('function')
 
     expectTypeOf<'fruits.title'>().not.toExtend<
       TranslationKey<'hunter-x-hunter'>

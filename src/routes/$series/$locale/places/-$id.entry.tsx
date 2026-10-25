@@ -14,29 +14,56 @@ import { FiledHere } from '~/components/FiledHere'
 import { PortFacts, ShipFacts } from '~/components/PortFacts'
 import { OpenPortPlate, PortPlate } from '~/components/PortPlate'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
-import { useSeriesT, useT } from '~/i18n/LocaleContext'
+import {
+  onlyUnder,
+  useSeriesOnlyT,
+  useSeriesT,
+  useT,
+} from '~/i18n/LocaleContext'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
+import type { Gated } from '~/lib/progress/spoiler'
 import type { PlaceDetail } from '~/lib/view/places'
 import type { PortView, RecordView, ShipView, Slot } from '~/lib/view/records'
 import { styles } from '~/routes/$series/$locale/characters/-$id.styles'
 
 /** The words a place's entry and a ship's differ by. */
-const WORDS = {
-  place: {
-    kind: 'kind.place',
-    gate: 'places.firstSeen',
-    foggedName: 'places.foggedName',
-    foggedDescription: 'places.foggedDescription',
-  },
-  // "Episode 324" rather than "first seen": the Sunny is unveiled three
-  // episodes before her name, and her entry opens at the name.
-  ship: {
-    kind: 'kind.ship',
-    gate: 'chart.opensAt',
-    foggedName: 'ship.foggedName',
-    foggedDescription: 'ship.foggedDescription',
-  },
-} as const
+interface EntryWords {
+  description: string
+  kind: string
+  name: string
+  /** When the record opens, in the reader's unit. */
+  opens: string
+}
+
+/**
+ * A place's words, or a ship's. A ship is One Piece's, in its words: only its
+ * pages draw one. "Episode 324" rather than "first seen" for a ship: the
+ * Sunny is unveiled three episodes before her name, and her entry opens at
+ * the name.
+ */
+function useEntryWords(kind: 'place' | 'ship', gate: Gated): EntryWords {
+  const t = useT()
+  const threshold = useThreshold()
+  const onePiece = useSeriesT('one-piece')
+  const onePieceThreshold = useThreshold('one-piece')
+
+  if (kind === 'place') {
+    return {
+      kind: t('kind.place'),
+      opens: threshold('places.firstSeen', gate),
+      name: t('places.foggedName'),
+      description: threshold('places.foggedDescription', gate),
+    }
+  }
+  const say = onlyUnder(onePiece, 'one-piece')
+  const at = onlyUnder(onePieceThreshold, 'one-piece')
+  return {
+    kind: say('kind.ship'),
+    opens: at('chart.opensAt', gate),
+    name: say('ship.foggedName'),
+    description: at('ship.foggedDescription', gate),
+  }
+}
 
 /** A place's or a ship's record, as the entry draws it. */
 export type Entry = RecordView & { summary: string }
@@ -59,7 +86,7 @@ export interface EntryProps<T extends Entry> {
   after?: ReactNode
   /** Its facts, its log entry and the records it names, once open. */
   Body: ComponentType<BodyProps<T>>
-  kind: keyof typeof WORDS
+  kind: 'place' | 'ship'
   peek: (handle: string) => Promise<T>
   peekRecord: PeekRecord
   slot: Slot<T>
@@ -114,28 +141,22 @@ function EntryColumn<T extends Entry>({
   peekRecord,
   slot,
 }: EntryProps<T>): ReactElement {
-  const threshold = useThreshold('one-piece')
-  const t = useSeriesT('one-piece')
-  const words = WORDS[kind]
   const gate = slot.open ? slot.record : slot.covered
+  const words = useEntryWords(kind, gate)
 
   return (
     <div {...stylex.props(styles.dossier)}>
       <p {...stylex.props(styles.meta)}>
-        <span {...stylex.props(styles.kind)}>{t(words.kind)}</span>
-        <span {...stylex.props(styles.episode)}>
-          {threshold(words.gate, gate)}
-        </span>
+        <span {...stylex.props(styles.kind)}>{words.kind}</span>
+        <span {...stylex.props(styles.episode)}>{words.opens}</span>
       </p>
 
       <SpoilerVeil
         peek={peek}
         placeholder={
           <div {...stylex.props(styles.words)}>
-            <h1 {...stylex.props(styles.name)}>{t(words.foggedName)}</h1>
-            <p {...stylex.props(styles.summary)}>
-              {threshold(words.foggedDescription, gate)}
-            </p>
+            <h1 {...stylex.props(styles.name)}>{words.name}</h1>
+            <p {...stylex.props(styles.summary)}>{words.description}</p>
           </div>
         }
         slot={slot}
@@ -239,7 +260,8 @@ export function ShipBody({
   peekRecord,
   record: ship,
 }: BodyProps<ShipView>): ReactElement {
-  const t = useSeriesT('one-piece')
+  // A ship is One Piece's: only its pages draw one.
+  const t = useSeriesOnlyT('one-piece')
 
   return (
     <>

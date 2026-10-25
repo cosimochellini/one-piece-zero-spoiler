@@ -4,7 +4,7 @@ import type { ReactElement } from 'react'
 
 import { ArchivePage } from '~/components/ArchivePage'
 import { useDeclares } from '~/components/useDeclares'
-import { useSeriesT } from '~/i18n/LocaleContext'
+import { onlyUnder, useSeriesT } from '~/i18n/LocaleContext'
 /* Hallmark · pre-emit critique: P5 H5 E4 S5 R4 V4 */
 /* Hallmark · genre: atmospheric · macrostructure: Stage · theme: Sea Chart
  *   (locked) · enrichment: Tier B hand-built SVG (the fruit's own drawing,
@@ -133,12 +133,13 @@ function FruitPage(): ReactElement {
 
 /** `/fruits/<not-a-fruit>`: says so, and points at the sheet. */
 function FruitNotFound(): ReactElement {
-  const t = useSeriesT('one-piece')
+  const onePiece = useSeriesT('one-piece')
   const declares = useDeclares()
   // A series with no fruits page gets the plain 404, with no link back to it.
   if (!declares('fruits')) {
     return <DefaultGlobalNotFound />
   }
+  const t = onlyUnder(onePiece, 'one-piece')
 
   return (
     <ArchivePage

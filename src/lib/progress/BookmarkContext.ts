@@ -1,4 +1,4 @@
-import { createContext, use, useCallback } from 'react'
+import { createContext, use, useMemo } from 'react'
 
 import { useLocale, useSeriesT } from '~/i18n/LocaleContext'
 import type { Locale } from '~/i18n/locales'
@@ -77,20 +77,36 @@ export type Threshold<S extends SeriesSlug = never> = (
 /**
  * Names a record's threshold in the unit the reader counts in, so a card
  * says "Chapter 218" to a manga reader and "Episode 130" to everyone else.
- * With a slug, the sentences of that series' own features as well: a
- * fruit's needs `useThreshold('one-piece')`.
+ * With `'one-piece'`, the sentences of its fruits and ships as well, and
+ * `undefined` on another series' page, so a caller branches on it.
  */
 export function useThreshold(): Threshold
-export function useThreshold<S extends SeriesSlug>(slug: S): Threshold<S>
-export function useThreshold(slug?: SeriesSlug): Threshold<SeriesSlug> {
-  const t = useSeriesT(slug)
+export function useThreshold(
+  slug: 'one-piece',
+): Threshold<'one-piece'> | undefined
+export function useThreshold(
+  slug?: 'one-piece',
+): Threshold | Threshold<'one-piece'> | undefined {
+  const shared = useSeriesT()
+  const onePiece = useSeriesT('one-piece')
   const { bookmark } = useBookmark()
   const series = useBookmarkSeries()
   const mode = modeOf(bookmark)
 
-  return useCallback(
-    (sentence: ThresholdSentence<SeriesSlug>, gated: Gated) =>
-      describeThreshold<SeriesSlug>({ gated, mode, sentence, t, series }),
-    [t, mode, series],
-  )
+  return useMemo(() => {
+    if (slug === undefined) {
+      return (sentence: ThresholdSentence, gated: Gated) =>
+        describeThreshold({ gated, mode, sentence, t: shared, series })
+    }
+    return onePiece === undefined ? undefined : (
+        (sentence: ThresholdSentence<'one-piece'>, gated: Gated) =>
+          describeThreshold<'one-piece'>({
+            gated,
+            mode,
+            sentence,
+            t: onePiece,
+            series,
+          })
+      )
+  }, [mode, onePiece, series, shared, slug])
 }

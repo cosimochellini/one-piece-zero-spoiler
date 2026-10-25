@@ -147,7 +147,11 @@ function CardBody({
     },
     {
       slot: 'bounty',
-      text: formatBounty(latestStep(entry.bounty, point), locale, onePiece),
+      // A bounty is One Piece's: on another series' card there is none.
+      text:
+        onePiece === undefined ? undefined : (
+          formatBounty(latestStep(entry.bounty, point), locale, onePiece)
+        ),
       loud: true,
     },
   ].filter((fact) => fact.text !== undefined)

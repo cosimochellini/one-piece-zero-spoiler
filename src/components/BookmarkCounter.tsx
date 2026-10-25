@@ -9,8 +9,8 @@ import {
 
 import { counterStyles as styles } from '~/components/BookmarkCounter.styles'
 import { Button } from '~/components/ui/Button'
-import { useSeriesT, useT } from '~/i18n/LocaleContext'
-import type { Translate } from '~/i18n/types'
+import { onlyUnder, useSeriesT, useT } from '~/i18n/LocaleContext'
+import type { SeriesTranslate, Translate } from '~/i18n/types'
 import { useBookmarkSeries } from '~/lib/progress/BookmarkContext'
 import { type Draft, stepperOf } from '~/lib/progress/episode'
 import { type SagaAt, sagaAt, useSagaTable } from '~/lib/progress/sagaLabel'
@@ -268,8 +268,8 @@ export function SagaLine({
   draft: Draft
   id: string
 }): ReactElement {
-  // A filler saga is One Piece's alone, so its word is One Piece's.
-  const t = useSeriesT('one-piece')
+  const t = useT()
+  const onePiece = useSeriesT('one-piece')
   const table = useSagaTable()
   const series = useBookmarkSeries()
   const saga = table === null ? null : sagaAt(table, draft, series)
@@ -279,7 +279,7 @@ export function SagaLine({
       id={id}
       {...stylex.props(styles.saga)}
     >
-      {saga === null ? '' : sagaText(t, saga)}
+      {saga === null ? '' : sagaText(t, onePiece, saga)}
     </p>
   )
 }
@@ -288,11 +288,18 @@ export function SagaLine({
 // those are shown as they are rather than as "Saga · Saga di Alabasta".
 const NAMED_SAGA = /\b(?:arc|saga)\b/iu
 
-function sagaText(t: Translate<'one-piece'>, saga: SagaAt): string {
+function sagaText(
+  t: Translate,
+  onePiece: SeriesTranslate<'one-piece'> | undefined,
+  saga: SagaAt,
+): string {
   const name =
     NAMED_SAGA.test(saga.name) ?
       saga.name
     : t('dialog.saga', { name: saga.name })
 
-  return saga.filler ? `${name} · ${t('dialog.filler')}` : name
+  // A filler saga is One Piece's alone, so its word is One Piece's.
+  return saga.filler ?
+      `${name} · ${onlyUnder(onePiece, 'one-piece')('dialog.filler')}`
+    : name
 }

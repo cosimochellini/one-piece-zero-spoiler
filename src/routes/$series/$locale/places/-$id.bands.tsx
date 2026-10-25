@@ -14,7 +14,7 @@ import { PlaceMap } from '~/components/PlaceMap'
 import { styles as ledger } from '~/components/PortEntry.styles'
 import { Fact } from '~/components/PortFacts'
 import { PortPlate } from '~/components/PortPlate'
-import { useSeriesT, useT } from '~/i18n/LocaleContext'
+import { onlyUnder, useSeriesT, useT } from '~/i18n/LocaleContext'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
 import type { PlaceDetail, PlaceDrawing, VisitView } from '~/lib/view/places'
 import type { RecordView, Slot } from '~/lib/view/records'
@@ -128,7 +128,8 @@ export function DrawingsBand({
 }: {
   detail: { drawings: PlaceDrawing[]; slot: Slot<RecordView> }
 }): null | ReactElement {
-  const t = useSeriesT('one-piece')
+  const t = useT()
+  const onePiece = useSeriesT('one-piece')
   const threshold = useThreshold()
   const titleId = useId()
   const { drawings, slot } = detail
@@ -150,11 +151,10 @@ export function DrawingsBand({
           {t('place.drawingsTitle')}
         </h2>
         <p {...stylex.props(page.lede)}>
-          {t(
-            slot.record.kind === 'ship' ?
-              'ship.drawingsLede'
-            : 'place.drawingsLede',
-          )}
+          {/* A ship is One Piece's: only its pages draw one. */}
+          {slot.record.kind === 'ship' ?
+            onlyUnder(onePiece, 'one-piece')('ship.drawingsLede')
+          : t('place.drawingsLede')}
         </p>
       </div>
       <ol {...stylex.props(styles.strip)}>

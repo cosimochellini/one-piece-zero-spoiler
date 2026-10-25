@@ -307,8 +307,9 @@ before anything runs:
   against it, so a missing translation fails `typecheck`. The same holds for
   each series' own copy. A component reaches the translate only through `useT()`
   or `useSeriesT()`, each typed by the keys it may print, so a key of one series
-  used where only another's or the shared ones are allowed fails `typecheck` too
-  (Localization, below).
+  used where only another's or the shared ones are allowed fails `typecheck`,
+  and so does a series' key read without first checking that the page is that
+  series' (Localization, below).
 - The bookmark is a discriminated union read through an exhaustive switch, under
   `noFallthroughCasesInSwitch`.
 - `strict` is on with nine more flags, including `noUncheckedIndexedAccess`,
@@ -653,23 +654,36 @@ its rights line, its licenses and its links, so a series not open yet names no
 source in the client. The reference sample of a series' source review lives on
 its archive (`credits` on `SeriesArchive`).
 
-The context hands out no translate of its own: `useLocale()` gives the locale
-and the series. `useT()` reads the shared keys, the only ones a page of no
-series has. `useSeriesT()` adds the common keys, on a page of any series, and
-`useSeriesT('one-piece')` the keys of One Piece's own features, typed by the
-series, so a One Piece key under Hunter x Hunter, or under `useT()`, fails
-`typecheck`. At runtime a key the page's copy lacks throws, and through
-`useSeriesT('one-piece')` on another series' page the error names One Piece. A
-component that may print a key of one series' feature reads it through that
-series' translate, behind its feature check: the devil fruit row, the fruit and
-ship kind labels (`useKindLabel`), the bar's and the welcome's fruit and filler
-links, a fog band or a failed load given One Piece's words (`series` on
-`FogBand` and `LoadFailed`), and the threshold sentences of fruits and ships
-(`useThreshold('one-piece')`; `ThresholdSentence<S>`). A test draws every filed
-series' landing page, both indexes, a sample of its character and place pages,
-the bar and the bookmark dialog in its own copy
+What the compiler enforces:
+
+- The context hands out no translate: `useLocale()` gives the locale and the
+  series, and ESLint bars importing the context itself outside `src/i18n`.
+- `useT()` reads the shared keys, the only ones a page of no series has;
+  `useSeriesT()` adds the common keys, for a page of any series.
+- `useSeriesT('one-piece')` adds One Piece's own keys and is `undefined` on any
+  other series' page, so a caller cannot read a One Piece key without branching
+  on it first. A shared component branches on the series or on the data: the
+  devil fruit and bounty rows exist only on One Piece's pages, the bar and the
+  welcome link the fruits and the filler guide only there (`usePageLinks`), and
+  a ship's words, a fruit or ship kind (`useKindLabel`), a filler saga in the
+  dialog, a fruit's back link and One Piece's seas are read only for data that
+  only its archive files.
+- `useThreshold('one-piece')` is `undefined` the same way, and only it says the
+  sentences of fruits and ships (`ThresholdSentence<S>`). `FogBand` and
+  `LoadFailed` take the translate their words are typed by.
+- A component only One Piece's pages reach (the fruits, the filler guide, the
+  world map) uses `useSeriesOnlyT('one-piece')`, or `onlyUnder` on its
+  threshold: it throws on another series' page, which is a routing bug, since
+  those routes answer 404 for any series that does not declare them.
+- A key the page's copy lacks still throws at runtime.
+
+A test draws every filed series' landing page, both indexes, a sample of its
+character and place pages (Hunter x Hunter's with no bookmark, at the first
+episode and chapter and at its last of each), its not-found pages, the bar and
+the bookmark dialog, in its own copy
 (`src/routes/$series/$locale/-records.test.tsx`). ESLint bars the client,
-`src/i18n` and `src/styles` from importing a series' copy by any path.
+`src/i18n` and `src/styles` from importing a series' copy by any path, `.js` or
+`.ts` suffix or dynamic `import()` included.
 
 ## Engineering notes
 

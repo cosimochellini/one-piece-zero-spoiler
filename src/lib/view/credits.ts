@@ -1,4 +1,4 @@
-import type { SeriesCopy, SeriesSlug, TranslationKey } from '~/i18n/types'
+import type { SeriesCopy } from '~/i18n/types'
 
 /** Only references whose local material is open cross the server boundary. */
 export interface CreditSource {
@@ -20,7 +20,8 @@ export interface SourceCredit {
  */
 export interface SeriesSources {
   licenses: Record<Exclude<CreditSource['kind'], 'official'>, [string, string]>
-  links: [TranslationKey<SeriesSlug>, string][]
+  /** Each general source's label, in the page's language, and address. */
+  links: [string, string][]
   rights: string
 }
 

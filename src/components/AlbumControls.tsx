@@ -7,7 +7,7 @@ import { SearchField } from '~/components/SearchField'
 import { searchStyles } from '~/components/SearchField.styles'
 import { styles } from '~/components/SpecimenBands.styles'
 import { useSettled } from '~/components/useSettled'
-import { useSeriesT } from '~/i18n/LocaleContext'
+import { useSeriesOnlyT } from '~/i18n/LocaleContext'
 import type { Translate } from '~/i18n/types'
 import {
   type AlbumView,
@@ -51,7 +51,7 @@ export function AlbumControls({
   params,
   plates,
 }: AlbumControlsProps): ReactElement {
-  const t = useSeriesT('one-piece')
+  const t = useSeriesOnlyT('one-piece')
   const query = params.q ?? ''
   const trimmed = query.trim()
   const pick: FormPick = params.form ?? 'all'
@@ -164,7 +164,7 @@ function AlbumChoices({
   pick: FormPick
   view: AlbumView
 }): ReactElement {
-  const t = useSeriesT('one-piece')
+  const t = useSeriesOnlyT('one-piece')
 
   return (
     <div {...stylex.props(styles.choices)}>

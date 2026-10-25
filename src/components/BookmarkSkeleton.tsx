@@ -2,8 +2,8 @@ import * as stylex from '@stylexjs/stylex'
 import type { ReactElement } from 'react'
 
 import { Button } from '~/components/ui/Button'
-import { useSeriesT, useT } from '~/i18n/LocaleContext'
-import type { SeriesSlug, TranslationKey } from '~/i18n/types'
+import { useT } from '~/i18n/LocaleContext'
+import type { SeriesSlug, Translate, TranslationKey } from '~/i18n/types'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
 import {
   color,
@@ -69,16 +69,14 @@ export function LoadFailed<S extends SeriesSlug = never>({
   message = 'dialog.loadFailed',
   onRetry,
   retry = 'dialog.retry',
-  series,
+  t,
 }: {
   message?: TranslationKey<S>
   onRetry: () => void
   retry?: TranslationKey<S>
-  /** The series whose own keys the words are, if they are any. */
-  series?: S
+  /** The page's translate, typed by the keys the words are. */
+  t: Translate<S>
 }): ReactElement {
-  const t = useSeriesT(series)
-
   return (
     <div {...stylex.props(styles.failed)}>
       <p

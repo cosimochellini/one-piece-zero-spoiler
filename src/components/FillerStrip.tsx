@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex'
 import type { ReactElement } from 'react'
 
-import { useSeriesT } from '~/i18n/LocaleContext'
+import { useSeriesOnlyT } from '~/i18n/LocaleContext'
 import type { FillerKind, FillerMark } from '~/lib/view/filler'
 import { color, font, space, text } from '~/styles/tokens.stylex'
 
@@ -38,7 +38,7 @@ export function FillerStrip({
   here,
   marks,
 }: FillerStripProps): ReactElement {
-  const t = useSeriesT('one-piece')
+  const t = useSeriesOnlyT('one-piece')
   const kinds = new Map(marks.map((mark) => [mark.episode, mark.kind]))
   const rows = Array.from(
     { length: Math.ceil(aired / PER_ROW) },
@@ -135,7 +135,7 @@ export function FillerLegend({
 }: {
   hasBookmark: boolean
 }): ReactElement {
-  const t = useSeriesT('one-piece')
+  const t = useSeriesOnlyT('one-piece')
   const items = [
     { label: t('filler.kind.filler'), swatch: styles.swatchFiller },
     { label: t('filler.kind.mixed'), swatch: styles.swatchMixed },

@@ -4,7 +4,7 @@ import type { ReactElement } from 'react'
 
 import { Marked } from '~/components/CharacterCard'
 import { CharacterCrest } from '~/components/CharacterCrest'
-import { useLocale, useSeriesT } from '~/i18n/LocaleContext'
+import { useLocale, useSeriesOnlyT } from '~/i18n/LocaleContext'
 import { useSeriesParams } from '~/lib/progress/BookmarkContext'
 import { useDrawing } from '~/lib/view/drawings'
 import type { EaterView } from '~/lib/view/records'
@@ -74,7 +74,7 @@ export function FruitEater({
 
 /** How many more characters ate the fruit: a number, said in full aloud. */
 function MoreEaters({ more }: { more: number }): ReactElement {
-  const t = useSeriesT('one-piece')
+  const t = useSeriesOnlyT('one-piece')
 
   return (
     <span {...stylex.props(styles.more)}>

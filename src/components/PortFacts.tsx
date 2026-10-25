@@ -3,7 +3,7 @@ import type { ReactElement } from 'react'
 
 import { styles } from '~/components/PortEntry.styles'
 import { usePlaceLabels } from '~/components/usePlaceLabels'
-import { useSeriesT, useT } from '~/i18n/LocaleContext'
+import { useSeriesOnlyT, useT } from '~/i18n/LocaleContext'
 import type { PortDossier, ShipEntry } from '~/lib/view/records'
 
 /**
@@ -45,7 +45,7 @@ export function PortFacts({ dossier }: { dossier: PortDossier }): ReactElement {
  * the page says one is coming.
  */
 export function ShipFacts({ entry }: { entry: ShipEntry }): ReactElement {
-  const t = useSeriesT('one-piece')
+  const t = useSeriesOnlyT('one-piece')
 
   return (
     <dl {...stylex.props(styles.facts)}>

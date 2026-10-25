@@ -2,9 +2,9 @@ import * as stylex from '@stylexjs/stylex'
 import type { ReactElement, ReactNode } from 'react'
 
 import { styles } from '~/components/LegalNotice.styles'
-import { useLocale, useSeriesT, useT } from '~/i18n/LocaleContext'
+import { onlyUnder, useLocale, useSeriesT, useT } from '~/i18n/LocaleContext'
 import { LocaleProvider } from '~/i18n/LocaleProvider'
-import type { SeriesCopy, SeriesSlug } from '~/i18n/types'
+import type { SeriesCopy } from '~/i18n/types'
 import type {
   SeriesCredits,
   SeriesSources,
@@ -69,7 +69,6 @@ export function SourceCredits({
                   key={`${credit.name}-${String(credit.episode)}-${credit.scope}`}
                   credit={credit}
                   licenses={sources.licenses}
-                  slug={copy.slug}
                 />
               ))}
             </InSeries>
@@ -89,16 +88,18 @@ function Coverage(): ReactElement {
 function CreditEntry({
   credit,
   licenses,
-  slug,
 }: {
   credit: SourceCredit
   licenses: SeriesSources['licenses']
-  /** The series it belongs to, whose own words it may print. */
-  slug: SeriesSlug
 }): ReactElement {
-  // Typed by the series it belongs to: a filler entry and the official
-  // synopsis are One Piece's, and only its sample files them.
-  const t = useSeriesT(slug)
+  const t = useSeriesT()
+  const onePiece = useSeriesT('one-piece')
+  // A filler entry and the official synopsis are One Piece's: only its
+  // sample files them, so their words are One Piece's.
+  const filler = (): string =>
+    onlyUnder(onePiece, 'one-piece')('credits.scope.filler')
+  const official = (): string =>
+    onlyUnder(onePiece, 'one-piece')('credits.source.official')
   return (
     <li>
       <h4>
@@ -107,7 +108,11 @@ function CreditEntry({
           ` · ${t('credits.episode', { episode: credit.episode })}`
         )}
       </h4>
-      <p>{t(`credits.scope.${credit.scope}`)}</p>
+      <p>
+        {credit.scope === 'filler' ?
+          filler()
+        : t(`credits.scope.${credit.scope}`)}
+      </p>
       {credit.scope === 'summary' ?
         <p>{t('credits.replacement')}</p>
       : null}
@@ -118,7 +123,7 @@ function CreditEntry({
               href={url}
               {...stylex.props(styles.link)}
             >
-              {t(`credits.source.${kind}`)}
+              {kind === 'official' ? official() : t(`credits.source.${kind}`)}
             </a>{' '}
             {kind === 'official' ?
               t('credits.noOpenLicense')
@@ -168,10 +173,7 @@ function LicenseNotices({ series }: { series: SeriesCredits[] }): ReactElement {
           key={copy.slug}
           copy={copy}
         >
-          <SourceTerms
-            slug={copy.slug}
-            sources={sources}
-          />
+          <SourceTerms sources={sources} />
         </InSeries>
       ))}
     </>
@@ -179,15 +181,8 @@ function LicenseNotices({ series }: { series: SeriesCredits[] }): ReactElement {
 }
 
 /** A series' sources: their terms, their licenses and where they are. */
-function SourceTerms({
-  slug,
-  sources,
-}: {
-  slug: SeriesSlug
-  sources: SeriesSources
-}): ReactElement {
-  // Typed by the series it belongs to: its links are keys of its copy.
-  const t = useSeriesT(slug)
+function SourceTerms({ sources }: { sources: SeriesSources }): ReactElement {
+  const t = useSeriesT()
   const { licenses, links } = sources
   // One paragraph per license, though both wikis may share one.
   const shown = Object.values(licenses).filter(
@@ -212,13 +207,13 @@ function SourceTerms({
       ))}
       <p {...stylex.props(styles.paragraph)}>{t('credits.otherTerms')}</p>
       <ul {...stylex.props(styles.list)}>
-        {links.map(([key, href]) => (
-          <li key={key}>
+        {links.map(([label, href]) => (
+          <li key={href}>
             <a
               href={href}
               {...stylex.props(styles.link)}
             >
-              {t(key)}
+              {label}
             </a>
           </li>
         ))}

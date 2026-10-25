@@ -1,4 +1,4 @@
-import { createContext, use, useMemo } from 'react'
+import { createContext, use } from 'react'
 
 import type { Locale } from './locales'
 import type { SeriesSlug, SeriesTranslate, Translate } from './types'
@@ -49,31 +49,41 @@ export function useT(): Translate {
 }
 
 /**
- * Translate on a page of a series: the shared keys and the common ones every
- * series words for itself, and, with a slug, that series' own keys as well.
- * Typed by the series, so a key of another series fails `typecheck`. A key
- * the page's copy lacks throws when called, so a component of one series'
- * feature calls it behind its feature check; the error then names the series
- * the key belongs to.
+ * Translate on a page of a series. With no slug, the shared keys and the
+ * common ones every series words for itself. With a slug, that series' own
+ * keys as well, and `undefined` on a page of any other series: the caller has
+ * to branch on it, so a key of one series' feature cannot be read on another
+ * series' page without the check, and a key of another series fails
+ * `typecheck`.
  */
-export function useSeriesT<S extends SeriesSlug = never>(
-  slug?: S,
-): SeriesTranslate<S> {
+export function useSeriesT(): SeriesTranslate
+export function useSeriesT<S extends SeriesSlug>(
+  slug: S,
+): SeriesTranslate<S> | undefined
+export function useSeriesT(
+  slug?: SeriesSlug,
+): SeriesTranslate | SeriesTranslate<SeriesSlug> | undefined {
   const { series, translate } = useContextValue()
 
-  return useMemo<SeriesTranslate<S>>(
-    () =>
-      slug === undefined || slug === series ?
-        translate
-      : (key, params) => {
-          try {
-            return translate(key, params)
-          } catch {
-            throw new Error(
-              `${key} is ${slug}'s copy, asked for under ${series ?? 'no series'}`,
-            )
-          }
-        },
-    [series, slug, translate],
-  )
+  return slug === undefined || slug === series ? translate : undefined
+}
+
+/**
+ * What a component only one series' pages reach is given, or a throw: the
+ * fruits, the filler guide, the ships and the world map are One Piece's, and
+ * their routes answer 404 for any other series, so reaching one elsewhere is
+ * a routing bug, not a page to draw.
+ */
+export function onlyUnder<T>(value: T | undefined, slug: SeriesSlug): T {
+  if (value === undefined) {
+    throw new Error(`Only a page of ${slug} reaches this`)
+  }
+  return value
+}
+
+/** `useSeriesT(slug)` for a component only that series' pages reach. */
+export function useSeriesOnlyT<S extends SeriesSlug>(
+  slug: S,
+): SeriesTranslate<S> {
+  return onlyUnder(useSeriesT(slug), slug)
 }

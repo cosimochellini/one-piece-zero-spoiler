@@ -11,7 +11,7 @@ import { type ReactElement, type ReactNode, Suspense, use } from 'react'
 import { CharacterCard } from '~/components/CharacterCard'
 import { CharacterCardList } from '~/components/CharacterGrid'
 import { FruitRail } from '~/components/FruitRail'
-import { useSeriesT } from '~/i18n/LocaleContext'
+import { useSeriesOnlyT } from '~/i18n/LocaleContext'
 import type { TranslationKey } from '~/i18n/types'
 import type {
   CharacterView,
@@ -82,7 +82,7 @@ function Eaters({
   eaters: EatersSource
   peek: (handle: string) => Promise<CharacterView>
 }): ReactElement {
-  const t = useSeriesT('one-piece')
+  const t = useSeriesOnlyT('one-piece')
   const answer = eaters instanceof Promise ? use(eaters) : eaters
 
   if (answer.eaters.length === 0) {
@@ -137,7 +137,7 @@ function Kin({
   peek: (handle: string) => Promise<FruitView>
   siblings: KinSource
 }): ReactElement {
-  const t = useSeriesT('one-piece')
+  const t = useSeriesOnlyT('one-piece')
   const rail = siblings instanceof Promise ? use(siblings) : siblings
 
   // Every plate holds dozens today, so this is a sentence nobody reads. It is
@@ -167,7 +167,7 @@ export function SagaBand({
   peek: (handle: string) => Promise<FruitView>
   rail: Slot<FruitView>[]
 }): null | ReactElement {
-  const t = useSeriesT('one-piece')
+  const t = useSeriesOnlyT('one-piece')
   if (rail.length === 0) {
     return null
   }
@@ -199,7 +199,7 @@ function StreamedBand({
   id: string
   words: BandWords
 }): ReactElement {
-  const t = useSeriesT('one-piece')
+  const t = useSeriesOnlyT('one-piece')
 
   return (
     <Band
@@ -251,7 +251,7 @@ function Pending({
 }: {
   words: TranslationKey<'one-piece'>
 }): ReactElement {
-  const t = useSeriesT('one-piece')
+  const t = useSeriesOnlyT('one-piece')
 
   return (
     <p

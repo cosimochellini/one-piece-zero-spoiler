@@ -247,6 +247,7 @@ function FeaturedCrests({
       <FogBand
         count={covered.length}
         headingId={`${fieldId}-fog`}
+        t={t}
         words={CHARACTER_FOG}
       >
         <CharacterCardList>

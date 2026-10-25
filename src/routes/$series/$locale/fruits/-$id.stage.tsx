@@ -9,7 +9,7 @@ import type { ReactElement } from 'react'
 
 import { FruitFrame } from '~/components/FruitFrame'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
-import { useSeriesT } from '~/i18n/LocaleContext'
+import { onlyUnder, useSeriesOnlyT } from '~/i18n/LocaleContext'
 import type { TranslationKey } from '~/i18n/types'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
 import type {
@@ -89,8 +89,8 @@ function StageText({
   saga: null | string
   slot: Slot<FruitView>
 }): ReactElement {
-  const t = useSeriesT('one-piece')
-  const threshold = useThreshold('one-piece')
+  const t = useSeriesOnlyT('one-piece')
+  const threshold = onlyUnder(useThreshold('one-piece'), 'one-piece')
   const gate = slot.open ? slot.record : slot.covered
 
   return (
@@ -135,7 +135,7 @@ function StageWords({
   record: FruitView
   saga: null | string
 }): ReactElement {
-  const t = useSeriesT('one-piece')
+  const t = useSeriesOnlyT('one-piece')
 
   return (
     <>

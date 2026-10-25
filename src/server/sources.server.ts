@@ -2,7 +2,7 @@ import type { Locale } from '~/i18n/locales'
 import type { SeriesSlug, TranslationKey } from '~/i18n/types'
 import type { Series } from '~/lib/progress/series'
 import type { SeriesLegal, SeriesSources } from '~/lib/view/credits'
-import { copyOf } from '~/server/copy.server'
+import { copyOf, translatorOf } from '~/server/copy.server'
 
 const BY_SA_3: [string, string] = [
   'CC BY-SA 3.0 Unported',
@@ -17,7 +17,9 @@ const FANDOM_TERMS = 'https://www.fandom.com/licensing'
  * series not open yet names no source in the client.
  */
 const SOURCES: {
-  [S in SeriesSlug]: SeriesSources & { links: [TranslationKey<S>, string][] }
+  [S in SeriesSlug]: Omit<SeriesSources, 'links'> & {
+    links: [TranslationKey<S>, string][]
+  }
 } = {
   'one-piece': {
     rights: 'https://www.toei-animation.com/copyrights/',
@@ -52,13 +54,26 @@ const SOURCES: {
 }
 
 /** An open series' sources. */
-function sourcesOf(series: Series): SeriesSources {
-  const bySlug: Partial<Record<string, SeriesSources>> = SOURCES
+function sourcesOf(series: Series, locale: Locale): SeriesSources {
+  const bySlug: Partial<
+    Record<
+      string,
+      Omit<SeriesSources, 'links'> & {
+        links: [TranslationKey<SeriesSlug>, string][]
+      }
+    >
+  > = SOURCES
   const found = bySlug[series.slug]
   if (found === undefined) {
     throw new Error(`No sources for the series ${series.slug}`)
   }
-  return found
+  // Labelled here, in the series' own words, so the client is sent words
+  // rather than keys of any series' copy.
+  const t = translatorOf(series, locale)
+  return {
+    ...found,
+    links: found.links.map(([key, url]): [string, string] => [t(key), url]),
+  }
 }
 
 /** The lines of a series' copy the legal page prints. */
@@ -77,6 +92,6 @@ export function legalOf(series: Series, locale: Locale): SeriesLegal {
         Object.entries(words).filter(([key]) => LEGAL_LINE.test(key)),
       ),
     },
-    sources: sourcesOf(series),
+    sources: sourcesOf(series, locale),
   }
 }

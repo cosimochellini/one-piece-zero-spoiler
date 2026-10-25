@@ -10,6 +10,7 @@ import { SiteBar } from '~/components/SiteBar'
 import { filedArchiveOf, SERIES } from '~/data/series'
 import type { SeriesArchive } from '~/data/types'
 import { type Locale, LOCALES } from '~/i18n/locales'
+import type { Bookmark } from '~/lib/progress/episode'
 import { SagaTableContext } from '~/lib/progress/sagaLabel'
 import { landingPage } from '~/server/archive/home.server'
 import {
@@ -32,9 +33,12 @@ import {
 } from '~/test/providers'
 
 import { LandingPage } from './-landing'
+import { Route as CharacterRoute } from './characters/$id'
 import { ChronicleBand } from './characters/-$id.chronicle'
 import { DossierDiptych } from './characters/-$id.dossier'
 import { RouteDiptych } from './characters/-$id.route'
+import { Route as FruitRoute } from './fruits/$id'
+import { Route as PlaceRoute } from './places/$id'
 import { DrawingsBand, MapBand, TurnBand } from './places/-$id.bands'
 import { PlaceEntry } from './places/-$id.entry'
 import { PlacesBody } from './places/-page'
@@ -55,30 +59,64 @@ function sample(ids: string[]): string[] {
   return ids.filter((_, index) => index % step === 0)
 }
 
-/** The page's address, its series and the reader's last episode. */
+/** The page's address, its series and the reader's bookmark. */
 function optionsFor(
   archive: SeriesArchive,
   locale: Locale,
-  path: string,
+  {
+    path,
+    bookmark = ep(archive.series.episodeCeiling),
+  }: { bookmark?: Bookmark; path: string },
 ): RenderOptions {
   return {
-    bookmark: ep(archive.series.episodeCeiling),
+    bookmark,
     locale,
     path: `/${archive.series.slug}/${locale}/${path}`,
     series: archive.series,
   }
 }
 
+/**
+ * The bookmarks each series' pages are drawn at. A series other than One
+ * Piece is drawn at every edge of its fog: no bookmark, the first episode and
+ * chapter, and its last of each. One Piece's pages are many and long, so its
+ * last episode is enough here; the payload sweep reads its other bookmarks.
+ */
+function bookmarksOf(archive: SeriesArchive): Bookmark[] {
+  const last: Bookmark = ep(archive.series.episodeCeiling)
+  return archive.series.slug === 'one-piece' ?
+      [last]
+    : [
+        null,
+        ep(1),
+        { mode: 'chapter', chapter: 1 },
+        last,
+        { mode: 'chapter', chapter: archive.series.chapterCeiling },
+      ]
+}
+
+/** Every id at every bookmark its series is drawn at. */
+function pagesOf(
+  archive: SeriesArchive,
+  ids: string[],
+): { bookmark: Bookmark; id: string }[] {
+  return bookmarksOf(archive).flatMap((bookmark) =>
+    ids.map((id) => ({ bookmark, id })),
+  )
+}
+
 function CharacterBands({
   archive,
+  bookmark,
   id,
   locale,
 }: {
   archive: SeriesArchive
+  bookmark: Bookmark
   id: string
   locale: Locale
 }): null | ReactElement {
-  const r = readerFor(archive, ep(archive.series.episodeCeiling), locale)
+  const r = readerFor(archive, bookmark, locale)
   const page = characterPage(id, r)
   if (page === undefined) {
     return null
@@ -107,14 +145,16 @@ function CharacterBands({
 
 function PlaceBands({
   archive,
+  bookmark,
   id,
   locale,
 }: {
   archive: SeriesArchive
+  bookmark: Bookmark
   id: string
   locale: Locale
 }): null | ReactElement {
-  const r = readerFor(archive, ep(archive.series.episodeCeiling), locale)
+  const r = readerFor(archive, bookmark, locale)
   const page = placePage(id, r)
   if (page === undefined || !('detail' in page)) {
     return null
@@ -158,7 +198,7 @@ describe.each(LOADED)('every index of $series.slug', (archive) => {
           shelfCount={page.shelfCount}
           shelves={shelvesPage(r)}
         />,
-        optionsFor(archive, locale, 'characters'),
+        optionsFor(archive, locale, { path: 'characters' }),
       )
       await settle()
 
@@ -171,7 +211,7 @@ describe.each(LOADED)('every index of $series.slug', (archive) => {
           peekPort={peekPending()}
           served={null}
         />,
-        optionsFor(archive, locale, 'places'),
+        optionsFor(archive, locale, { path: 'places' }),
       )
       await settle()
 
@@ -209,11 +249,12 @@ describe.each(LOADED)('every index of $series.slug', (archive) => {
 
 describe.each(LOADED)('every record page of $series.slug', (archive) => {
   it.each(LOCALES)('draws the landing page in %s', async (locale) => {
-    for (const bookmark of [null, ep(archive.series.episodeCeiling)]) {
+    const bookmarks = [null, ...bookmarksOf(archive)]
+    for (const bookmark of bookmarks) {
       const r = readerFor(archive, bookmark, locale)
       const { unmount } = renderWithProviders(
         <LandingPage landing={landingPage(r, null)} />,
-        { ...optionsFor(archive, locale, ''), bookmark },
+        optionsFor(archive, locale, { path: '', bookmark }),
       )
       await settle()
 
@@ -225,14 +266,16 @@ describe.each(LOADED)('every record page of $series.slug', (archive) => {
 
   it.each(LOCALES)('draws each character’s page in %s', async (locale) => {
     const ids = sample(archive.characters.map((entity) => entity.id))
-    for (const id of ids) {
+    const pages = pagesOf(archive, ids)
+    for (const { bookmark, id } of pages) {
       const { unmount } = renderWithProviders(
         <CharacterBands
           archive={archive}
+          bookmark={bookmark}
           id={id}
           locale={locale}
         />,
-        optionsFor(archive, locale, `characters/${id}`),
+        optionsFor(archive, locale, { path: `characters/${id}`, bookmark }),
       )
       await settle()
 
@@ -244,14 +287,16 @@ describe.each(LOADED)('every record page of $series.slug', (archive) => {
 
   it.each(LOCALES)('draws each place’s page in %s', async (locale) => {
     const ids = sample(archive.places.map((entity) => entity.id))
-    for (const id of ids) {
+    const pages = pagesOf(archive, ids)
+    for (const { bookmark, id } of pages) {
       const { unmount } = renderWithProviders(
         <PlaceBands
           archive={archive}
+          bookmark={bookmark}
           id={id}
           locale={locale}
         />,
-        optionsFor(archive, locale, `places/${id}`),
+        optionsFor(archive, locale, { path: `places/${id}`, bookmark }),
       )
       await settle()
 
@@ -260,4 +305,30 @@ describe.each(LOADED)('every record page of $series.slug', (archive) => {
       unmount()
     }
   })
+
+  it.each(LOCALES)(
+    'draws each record kind’s not-found page in %s',
+    async (locale) => {
+      for (const route of [CharacterRoute, PlaceRoute, FruitRoute]) {
+        const NotFound: unknown = route.options.notFoundComponent
+        if (!isPage(NotFound)) {
+          throw new TypeError(`${route.id} has no not-found page`)
+        }
+        const view = await renderUnderSeries(<NotFound />, {
+          locale,
+          path: `/${archive.series.slug}/${locale}/characters/no-such-record`,
+          series: archive.series,
+        })
+
+        expect(view.container).not.toBeEmptyDOMElement()
+
+        view.unmount()
+      }
+    },
+  )
 })
+
+/** A route's not-found component, which takes no props. */
+function isPage(value: unknown): value is () => ReactElement {
+  return typeof value === 'function'
+}

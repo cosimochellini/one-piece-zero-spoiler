@@ -1,8 +1,7 @@
 import * as stylex from '@stylexjs/stylex'
 import type { ReactElement, ReactNode } from 'react'
 
-import { useSeriesT } from '~/i18n/LocaleContext'
-import type { SeriesSlug, SeriesTranslate, TranslationKey } from '~/i18n/types'
+import type { SeriesSlug, Translate, TranslationKey } from '~/i18n/types'
 import { color, font, leading, rule, space, text } from '~/styles/tokens.stylex'
 
 /**
@@ -36,8 +35,8 @@ export interface FogBandProps<S extends SeriesSlug = never> {
    * that stands beside the page's sections rather than inside one.
    */
   level?: 'h2' | 'h3'
-  /** The series whose own keys `words` names, if it names any. */
-  series?: S
+  /** The page's translate, typed by the keys `words` names. */
+  t: Translate<S>
   words: FogTitles<S>
 }
 
@@ -47,11 +46,9 @@ export function FogBand<S extends SeriesSlug = never>({
   count,
   headingId,
   level: Heading = 'h3',
-  series,
+  t,
   words,
 }: FogBandProps<S>): ReactElement {
-  const t = useSeriesT(series)
-
   return (
     <section
       aria-labelledby={headingId}
@@ -75,7 +72,7 @@ export function FogBand<S extends SeriesSlug = never>({
 
 /** None, one and many are three sentences rather than one with a hole in it. */
 function title<S extends SeriesSlug>(
-  t: SeriesTranslate<S>,
+  t: Translate<S>,
   count: number,
   words: FogTitles<S>,
 ): string {

@@ -142,6 +142,18 @@ of text its leak scan reads and the least it files of each thing the shared
 rules in `src/data/archive.test.ts` read. Raise the floors as it files more, so
 no shared rule passes on nothing.
 
+For its copy (#791), a new series needs:
+
+- its dictionary folder, `src/i18n/dictionaries/<series>/en.ts` (typed
+  `satisfies OwnCopy`, so every common key is there) and `it.ts` (typed
+  `SeriesWords<'<series>'>`);
+- its entry in `SeriesCopies` in `src/i18n/types.ts`;
+- its entry in `COPIES` in `src/server/copy.server.ts`;
+- its rights page, wiki licenses and links in `SOURCES` in
+  `src/server/sources.server.ts`;
+- its entry in the per-series sentence map of `ThresholdSentence` in
+  `src/lib/progress/threshold.ts` (`never` when it has no feature of its own).
+
 A few rules that are easy to miss:
 
 - **Drawings** are lists of stroke paths in a 160×200 box: at least four
@@ -396,7 +408,9 @@ Piece's devil fruits, ships and seas, bounties, factions, the filler guide). A
 series' copy stays on the server and reaches a page with its series. The Italian
 dictionary is typed against the English one, so a missing key fails
 `npm run typecheck`, and a series' file cannot redefine a shared key. Read a
-series' own key with `useSeriesT('<series>')`.
+series' own key with `useSeriesT('<series>')`, which is `undefined` on another
+series' page, so branch on it; a component only that series' pages reach uses
+`useSeriesOnlyT('<series>')`.
 
 ## Checks
 

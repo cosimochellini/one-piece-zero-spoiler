@@ -4,7 +4,7 @@ import type { ReactElement } from 'react'
 import { styles } from '~/components/FillerCountdown.styles'
 import { entryOf, placeLabel } from '~/components/fillerLabels'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
-import { useSeriesT } from '~/i18n/LocaleContext'
+import { useSeriesOnlyT } from '~/i18n/LocaleContext'
 import { useBookmarkSeries } from '~/lib/progress/BookmarkContext'
 import type { BookmarkMode } from '~/lib/progress/episode'
 import type { FillerRowView, FillerSlot } from '~/lib/view/filler'
@@ -22,7 +22,7 @@ export function FillerPanel({
   peek: (handle: string) => Promise<FillerRowView>
   slot: FillerSlot
 }): ReactElement {
-  const t = useSeriesT('one-piece')
+  const t = useSeriesOnlyT('one-piece')
   const series = useBookmarkSeries()
   const entry = entryOf(slot)
   const at = placeLabel(t, { mode, series }, entry)

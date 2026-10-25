@@ -1,4 +1,4 @@
-import { useSeriesT } from '~/i18n/LocaleContext'
+import { onlyUnder, useSeriesT } from '~/i18n/LocaleContext'
 import type { TranslationKey } from '~/i18n/types'
 import type { PlaceForm, PlaceWordsView, Sea } from '~/lib/view/records'
 
@@ -61,7 +61,7 @@ function own(label: string): string {
  * from the dictionaries, when it sent none.
  */
 export function usePlaceLabels(words?: PlaceWordsView): PlaceLabels {
-  const t = useSeriesT('one-piece')
+  const onePiece = useSeriesT('one-piece')
   if (words !== undefined) {
     return {
       allRegions: words.allRegions,
@@ -71,6 +71,9 @@ export function usePlaceLabels(words?: PlaceWordsView): PlaceLabels {
     }
   }
 
+  // A series that sends no words of its own is One Piece, whose seas and
+  // forms its copy labels.
+  const t = onlyUnder(onePiece, 'one-piece')
   return {
     allRegions: t('places.allSeas'),
     formOf: (form) => lookUp<TranslationKey<'one-piece'>>(FORMS, form, t),

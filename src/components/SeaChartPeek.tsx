@@ -22,7 +22,7 @@ import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { Button } from '~/components/ui/Button'
 import type { PeekProps } from '~/components/useChartPeek'
 import { usePlaceLabels } from '~/components/usePlaceLabels'
-import { useLocale, useSeriesT, useT } from '~/i18n/LocaleContext'
+import { useLocale, useSeriesOnlyT, useT } from '~/i18n/LocaleContext'
 import { useSeriesParams, useThreshold } from '~/lib/progress/BookmarkContext'
 import type { StopView } from '~/lib/view/places'
 import type {
@@ -271,7 +271,7 @@ export function ShipPeek({
   ship,
   ...frame
 }: PeekFrameProps & { ship: ShipView }): ReactElement {
-  const t = useSeriesT('one-piece')
+  const t = useSeriesOnlyT('one-piece')
   const threshold = useThreshold()
   const { fate } = ship.dossier
   const { onDismiss } = frame.peek

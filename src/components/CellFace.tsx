@@ -3,7 +3,7 @@ import type { ReactElement } from 'react'
 
 import { styles } from '~/components/FillerCountdown.styles'
 import { episodesLabel } from '~/components/fillerLabels'
-import { useSeriesT } from '~/i18n/LocaleContext'
+import { useSeriesOnlyT } from '~/i18n/LocaleContext'
 import type { Translate } from '~/i18n/types'
 import { useBookmarkSeries } from '~/lib/progress/BookmarkContext'
 import type { BookmarkMode } from '~/lib/progress/episode'
@@ -34,7 +34,7 @@ export function CellFace({
   kind: FillerKind | null
   mode: BookmarkMode
 }): ReactElement {
-  const t = useSeriesT('one-piece')
+  const t = useSeriesOnlyT('one-piece')
   const series = useBookmarkSeries()
 
   return (

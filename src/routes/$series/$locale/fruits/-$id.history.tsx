@@ -9,7 +9,7 @@ import * as stylex from '@stylexjs/stylex'
 import { Link } from '@tanstack/react-router'
 import type { ReactElement } from 'react'
 
-import { useLocale, useSeriesT } from '~/i18n/LocaleContext'
+import { useLocale, useSeriesOnlyT } from '~/i18n/LocaleContext'
 import { spliced } from '~/i18n/spliced'
 import type { TranslationKey } from '~/i18n/types'
 import { useSeriesParams, useThreshold } from '~/lib/progress/BookmarkContext'
@@ -39,7 +39,7 @@ export function HistoryBand({
 }: {
   detail: FruitDetail
 }): null | ReactElement {
-  const t = useSeriesT('one-piece')
+  const t = useSeriesOnlyT('one-piece')
   if (detail.history.length === 0) {
     return null
   }
@@ -74,7 +74,7 @@ function HistoryRow({
   saga: string
 }): ReactElement {
   const { locale } = useLocale()
-  const t = useSeriesT('one-piece')
+  const t = useSeriesOnlyT('one-piece')
   const { series } = useSeriesParams()
   const threshold = useThreshold()
   const { event, who } = entry
