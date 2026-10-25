@@ -4,7 +4,7 @@ import type { ReactElement } from 'react'
 import { LegalPage } from '~/components/LegalPage'
 import { isLocale } from '~/i18n/locales'
 import { describeNamedPage } from '~/routes/$locale/-head'
-import { loadCredits, loadSeriesCopy, loadSeriesSources } from '~/server/api'
+import { loadCredits, loadSeriesLegal } from '~/server/api'
 import { loadSeriesDescriptions } from '~/server/series'
 
 export const Route = createFileRoute('/$locale/legal')({
@@ -16,12 +16,11 @@ export const Route = createFileRoute('/$locale/legal')({
     return Promise.all(
       series.map(async ({ slug }) => {
         const data = { series: slug, locale: context.locale }
-        const [copy, credits, sources] = await Promise.all([
-          loadSeriesCopy({ data }),
+        const [legal, credits] = await Promise.all([
+          loadSeriesLegal({ data }),
           loadCredits({ data }),
-          loadSeriesSources({ data }),
         ])
-        return { copy, credits, sources }
+        return { ...legal, credits }
       }),
     )
   },

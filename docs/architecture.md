@@ -646,11 +646,12 @@ and in no client chunk, and a reader of one series never downloads another's;
 the archive gate looks for every series' words in the client chunks, and the
 leak scan reads every line of each series' copy at the first episode and
 chapter. One Piece's faction labels are the exception: they ship with every page
-of it, as they did in every bundle before. The legal page asks for the copy and
-the sources (`loadSeriesSources`, `src/server/sources.server.ts`) of each open
-series, for its rights line, its licenses and its links, so a series not open
-yet names no source in the client. The reference sample of a series' source
-review lives on its archive (`credits` on `SeriesArchive`).
+of it, as they did in every bundle before. The legal page asks each open series
+for the lines of its copy it prints (`legal.*` and `credits.*`, not the whole
+copy) and its sources (`loadSeriesLegal`, `src/server/sources.server.ts`), for
+its rights line, its licenses and its links, so a series not open yet names no
+source in the client. The reference sample of a series' source review lives on
+its archive (`credits` on `SeriesArchive`).
 
 The context hands out no translate of its own: `useLocale()` gives the locale
 and the series. `useT()` reads the shared keys, the only ones a page of no

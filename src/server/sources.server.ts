@@ -1,6 +1,8 @@
+import type { Locale } from '~/i18n/locales'
 import type { SeriesSlug, TranslationKey } from '~/i18n/types'
 import type { Series } from '~/lib/progress/series'
-import type { SeriesSources } from '~/lib/view/credits'
+import type { SeriesLegal, SeriesSources } from '~/lib/view/credits'
+import { copyOf } from '~/server/copy.server'
 
 const BY_SA_3: [string, string] = [
   'CC BY-SA 3.0 Unported',
@@ -49,12 +51,32 @@ const SOURCES: {
   },
 }
 
-/** An open series' sources, for the legal page. */
-export function sourcesOf(series: Series): SeriesSources {
+/** An open series' sources. */
+function sourcesOf(series: Series): SeriesSources {
   const bySlug: Partial<Record<string, SeriesSources>> = SOURCES
   const found = bySlug[series.slug]
   if (found === undefined) {
     throw new Error(`No sources for the series ${series.slug}`)
   }
   return found
+}
+
+/** The lines of a series' copy the legal page prints. */
+const LEGAL_LINE = /^(?:credits|legal)\./u
+
+/**
+ * What the legal page is sent of an open series: the lines of its copy it
+ * prints, not the whole copy, and its sources.
+ */
+export function legalOf(series: Series, locale: Locale): SeriesLegal {
+  const { words, ...copy } = copyOf(series, locale)
+  return {
+    copy: {
+      ...copy,
+      words: Object.fromEntries(
+        Object.entries(words).filter(([key]) => LEGAL_LINE.test(key)),
+      ),
+    },
+    sources: sourcesOf(series),
+  }
 }

@@ -37,7 +37,7 @@ import { placesPage } from './archive/places.server'
 import { type Reader, readerFor } from './archive/reader.server'
 import { sagaLabels } from './archive/sagaLabels.server'
 import { copyOf } from './copy.server'
-import { sourcesOf } from './sources.server'
+import { legalOf } from './sources.server'
 
 /**
  * The archive's only door.
@@ -247,10 +247,13 @@ export const loadSeriesCopy = createServerFn()
   .validator(located)
   .handler(({ data }) => copyOf(describedBy(data), data.locale))
 
-/** An open series' sources and rights, for the legal page. */
-export const loadSeriesSources = createServerFn()
+/**
+ * What the legal page needs of an open series: the lines of its copy the
+ * page prints and its sources, never the whole copy.
+ */
+export const loadSeriesLegal = createServerFn()
   .validator(located)
-  .handler(({ data }) => sourcesOf(describedBy(data)))
+  .handler(({ data }) => legalOf(describedBy(data), data.locale))
 
 export const loadSagaLabels = createServerFn()
   .validator(located)

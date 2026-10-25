@@ -11,8 +11,7 @@ import {
 import type { SeriesCredits, SourceCredit } from '~/lib/view/credits'
 import { creditsPage } from '~/server/archive/credits.server'
 import { readerFor } from '~/server/archive/reader.server'
-import { copyOf } from '~/server/copy.server'
-import { sourcesOf } from '~/server/sources.server'
+import { legalOf } from '~/server/sources.server'
 import { ep, renderWithProviders } from '~/test/providers'
 
 import { LegalPage } from './LegalPage'
@@ -23,13 +22,7 @@ const OFFICIAL = 'https://one-piece.com/anime/o6217/index.html'
 
 /** One Piece alone, as the legal page is sent while it is the one open. */
 function onePiece(locale: Locale, credits: SourceCredit[]): SeriesCredits[] {
-  return [
-    {
-      copy: copyOf(ONE_PIECE_SERIES, locale),
-      credits,
-      sources: sourcesOf(ONE_PIECE_SERIES),
-    },
-  ]
+  return [{ ...legalOf(ONE_PIECE_SERIES, locale), credits }]
 }
 
 describe('LegalPage', () => {
@@ -133,11 +126,7 @@ describe('LegalPage', () => {
         <LegalPage
           series={[
             ...onePiece(locale, []),
-            {
-              copy: copyOf(HUNTER_X_HUNTER_SERIES, locale),
-              credits: [],
-              sources: sourcesOf(HUNTER_X_HUNTER_SERIES),
-            },
+            { ...legalOf(HUNTER_X_HUNTER_SERIES, locale), credits: [] },
           ]}
         />,
         { locale },
@@ -159,6 +148,22 @@ describe('LegalPage', () => {
 
       expect(main).toHaveTextContent('Eiichiro Oda')
       expect(main).toHaveTextContent('Yoshihiro Togashi')
+    },
+  )
+
+  it.each(LOCALES)(
+    'is sent only the lines of a series it prints in %s',
+    (locale) => {
+      const { copy } = legalOf(ONE_PIECE_SERIES, locale)
+      const keys = Object.keys(copy.words)
+
+      expect(keys).toContain('legal.credits')
+      expect(keys).toContain('credits.wikiTerms')
+      expect(
+        keys.filter((key) => !/^(?:credits|legal)\./u.test(key)),
+      ).toStrictEqual([])
+      // Nothing of the fruits, the factions or the onboarding.
+      expect(JSON.stringify(copy)).not.toContain('Kozuki')
     },
   )
 

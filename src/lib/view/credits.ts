@@ -25,12 +25,16 @@ export interface SeriesSources {
 }
 
 /**
- * One open series on the legal page: its own copy, which words its rights
- * line and its sources, its sources, and the references open at its
- * bookmark.
+ * What the legal page is sent of one open series: the lines of its own copy
+ * the page prints (its rights line and its source credits, `legal.*` and
+ * `credits.*`), and its sources.
  */
-export interface SeriesCredits {
+export interface SeriesLegal {
   copy: SeriesCopy
-  credits: SourceCredit[]
   sources: SeriesSources
+}
+
+/** One open series on the legal page, with its references open at the bookmark. */
+export interface SeriesCredits extends SeriesLegal {
+  credits: SourceCredit[]
 }
