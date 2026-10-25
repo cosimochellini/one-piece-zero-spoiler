@@ -264,11 +264,28 @@ function drawnFogOf(
 }
 
 /**
+ * A word no place is filed under, as the record it names: no page has a
+ * reason to say it at any bookmark, so it is reported as itself.
+ */
+function unfiledWord(word: string): Entity {
+  return {
+    id: `place-words/${word}`,
+    kind: 'place',
+    name: { en: word, it: word },
+    revealedAtChapter: Infinity,
+    revealedAtEpisode: Infinity,
+    summary: { en: '', it: '' },
+    visual: { art: '', tint: 'ivory' },
+  }
+}
+
+/**
  * The place words of a series that labels them itself, as fog: a region or
  * a form, its id and its label in every locale, is open from the first open
  * place filed under it and absent from every payload before that. Each
- * names the places filed under it, all covered. A series the dictionaries
- * label (One Piece) ships its words with every page, so it has none.
+ * names the places filed under it, all covered, and a word no place is
+ * filed under is fog at every bookmark. A series the dictionaries label (One
+ * Piece) ships its words with every page, so it has none.
  */
 function wordFogOf(
   bookmark: Bookmark,
@@ -282,9 +299,10 @@ function wordFogOf(
 
   const at = reveal(bookmark, archive.series)
   for (const { filed, said } of wordsFiled(archive, words)) {
+    const owners = filed.length === 0 ? [unfiledWord(said[0] ?? '')] : filed
     if (filed.every((place) => !at.sees(place))) {
       for (const string of said) {
-        fog.set(string, [...(fog.get(string) ?? []), ...filed])
+        fog.set(string, [...(fog.get(string) ?? []), ...owners])
       }
     }
   }

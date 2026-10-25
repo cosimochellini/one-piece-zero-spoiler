@@ -114,6 +114,25 @@ describe('the place words of a series that labels its own', () => {
     expect(leaksIn({ words }, FIRST)).toStrictEqual(['dolle-harbor'])
   })
 
+  it('holds a word no place is filed under at every bookmark', () => {
+    const unfiled: ListedSeries = {
+      ...HUNTER,
+      placeWords: {
+        ...HUNTER.placeWords,
+        dictionary: false,
+        allRegions: { en: 'All regions', it: 'Tutte le regioni' },
+        region: { en: 'Region', it: 'Regione' },
+        regions: { nowhere: { en: 'Nowhere Sea', it: 'Mare di Nessuno' } },
+        forms: {},
+      },
+    }
+    const last = { mode: 'episode' as const, episode: 148 }
+
+    expect(
+      leaksOf(unfiled)({ words: { regions: { x: 'Nowhere Sea' } } }, last),
+    ).toStrictEqual(['place-words/nowhere'])
+  })
+
   it('opens a word with the first open place filed under it', () => {
     expect(
       leaksIn(
