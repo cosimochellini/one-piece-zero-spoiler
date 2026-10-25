@@ -164,6 +164,26 @@ export const HUNTER_X_HUNTER_SERIES: Series = {
   },
 }
 
+/** A page under `/{series}/{locale}/` that only some series have. */
+export type SeriesPage = 'characters' | 'filler' | 'fruits' | 'places'
+
+/** What decides each of those pages: a kind the series files, or a feature. */
+const PAGES: Record<SeriesPage, (series: Series) => boolean> = {
+  characters: (series) => series.kinds.includes('character'),
+  places: (series) =>
+    series.kinds.includes('place') || series.kinds.includes('ship'),
+  fruits: (series) => series.features.fruits,
+  filler: (series) => series.features.filler,
+}
+
+/**
+ * Whether the series declares the page: the one answer its routes (404),
+ * the bar (a link) and the sitemap (an address) all read.
+ */
+export function hasPage(series: Series, page: SeriesPage): boolean {
+  return PAGES[page](series)
+}
+
 const RECORD_PAGE = /^(?:characters|fruits|places)$/u
 
 /** Only an archive index, record or filler page carries a bookmark. */

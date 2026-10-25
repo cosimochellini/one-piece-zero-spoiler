@@ -33,11 +33,11 @@ import type { ReactElement } from 'react'
 import { ArchivePage } from '~/components/ArchivePage'
 import { FruitsAlbum } from '~/components/FruitWall'
 import { useT } from '~/i18n/LocaleContext'
-import { isLocale } from '~/i18n/locales'
 import type { TranslationKey } from '~/i18n/types'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
 import { type AlbumView, parseFruitParams } from '~/lib/search/fruitParams'
-import { describeNamedPage } from '~/routes/$locale/-head'
+import { seriesPageHead } from '~/routes/$locale/-head'
+import { requirePage } from '~/routes/$series/$locale/-found'
 import { usePeek } from '~/routes/$series/$locale/-peek'
 import {
   primeAlbum,
@@ -51,6 +51,9 @@ export const Route = createFileRoute('/$series/$locale/fruits/')({
   // album can be shared and Back steps through the picks. An unknown value
   // falls back to its default.
   validateSearch: parseFruitParams,
+  beforeLoad: ({ context }) => {
+    requirePage(context.series, 'fruits')
+  },
   // The marquee and the counts, awaited. The plates are not in the page the
   // server renders: the browser asks for them (`-album`), here on a
   // navigation, so they come with the page, and after hydration otherwise.
@@ -60,17 +63,7 @@ export const Route = createFileRoute('/$series/$locale/fruits/')({
 
     return sheet
   },
-  head: ({ match, params }) => {
-    return isLocale(params.locale) ?
-        describeNamedPage({
-          descriptionKey: 'fruits.pageDescription',
-          kind: 'index',
-          locale: params.locale,
-          pathname: match.pathname,
-          titleKey: 'fruits.pageTitle',
-        })
-      : {}
-  },
+  head: (match) => seriesPageHead('fruits', match),
   component: FruitsPage,
 })
 

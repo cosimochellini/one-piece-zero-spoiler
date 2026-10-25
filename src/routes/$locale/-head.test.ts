@@ -1,5 +1,10 @@
 import { describe, expect, it } from 'vitest'
 
+import {
+  HUNTER_X_HUNTER_SERIES,
+  ONE_PIECE_SERIES,
+  type Series,
+} from '~/lib/progress/series'
 import { absoluteUrl } from '~/lib/seo/site'
 import { Route as CharactersRoute } from '~/routes/$series/$locale/characters'
 import { Route as FruitsRoute } from '~/routes/$series/$locale/fruits'
@@ -9,7 +14,7 @@ import { Route as PlacesRoute } from '~/routes/$series/$locale/places'
 import { describeNamedPage, type HeadTags, recordHead } from './-head'
 
 type Head = (input: {
-  match: { pathname: string }
+  match: { context: { series: Series }; pathname: string }
   params: { locale: string }
 }) => {
   links?: { href: string; hrefLang?: string; rel: string }[]
@@ -19,7 +24,7 @@ type Head = (input: {
 
 /**
  * The route options are typed against the whole generated tree, whose context
- * no test can stand up. Each `head` is pure and reads only the two fields
+ * no test can stand up. Each `head` is pure and reads only the fields
  * declared above, so it is reached through a guard over `unknown` rather than
  * through an assertion on the real option type.
  */
@@ -30,13 +35,17 @@ function isHead(value: unknown): value is Head {
 function headOf(
   route: { options: { head?: unknown } },
   pathname: string,
+  series: Series = ONE_PIECE_SERIES,
 ): ReturnType<Head> {
   const describeHead: unknown = route.options.head
   if (!isHead(describeHead)) {
     throw new TypeError('the route has no head')
   }
 
-  return describeHead({ match: { pathname }, params: { locale: 'en' } })
+  return describeHead({
+    match: { context: { series }, pathname },
+    params: { locale: 'en' },
+  })
 }
 
 // Each page that is not a record's own: the route, the path the router
@@ -122,11 +131,25 @@ describe('every page that is not a record’s own', () => {
 
       expect(
         describeHead({
-          match: { pathname: '/one-piece/fr/' },
+          match: {
+            context: { series: ONE_PIECE_SERIES },
+            pathname: '/one-piece/fr/',
+          },
           params: { locale: 'fr' },
         }),
       ).toStrictEqual({})
     }
+  })
+
+  // Its 404 keeps the shell's title, not the name of a page it does not have.
+  it('says nothing at all for a page the series does not declare', () => {
+    expect(
+      headOf(
+        FruitsRoute,
+        '/hunter-x-hunter/en/fruits/',
+        HUNTER_X_HUNTER_SERIES,
+      ),
+    ).toStrictEqual({})
   })
 })
 

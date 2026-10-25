@@ -13,7 +13,12 @@ import { LocaleProvider } from '~/i18n/LocaleProvider'
 import type { Locale } from '~/i18n/locales'
 import { BookmarkContext, useBookmark } from '~/lib/progress/BookmarkContext'
 import { BookmarkProvider } from '~/lib/progress/BookmarkProvider'
-import { ONE_PIECE_BOOKMARK } from '~/lib/progress/series'
+import {
+  HUNTER_X_HUNTER_SERIES,
+  ONE_PIECE_BOOKMARK,
+  ONE_PIECE_SERIES,
+  type Series,
+} from '~/lib/progress/series'
 import { ep, renderWithProviders } from '~/test/providers'
 
 import { SiteBar } from './SiteBar'
@@ -41,24 +46,32 @@ function OtherSeriesBar(): ReactElement {
   )
 }
 
+/** One Piece, its two names apart, to show which language is read. */
+const NAMED_APART: Series = {
+  ...ONE_PIECE_SERIES,
+  name: { en: 'One Piece', it: 'One Piece (it)' },
+}
+
 /**
  * Renders the bar under a `/$series` match, as the app does, so the series'
  * name comes from the route's public description. The two names differ only
  * to show which language is read.
  */
-async function renderUnderSeries(path: string, locale: Locale): Promise<void> {
+async function renderUnderSeries(
+  path: string,
+  locale: Locale,
+  series: Series = NAMED_APART,
+): Promise<void> {
   const rootRoute = createRootRoute()
   const seriesRoute = createRoute({
     getParentRoute: () => rootRoute,
     path: '$series',
-    beforeLoad: () => ({
-      series: { name: { en: 'One Piece', it: 'One Piece (it)' } },
-    }),
+    beforeLoad: () => ({ series }),
     component: (): ReactElement => (
       <LocaleProvider locale={locale}>
         <BookmarkProvider
           initialBookmark={null}
-          series={ONE_PIECE_BOOKMARK}
+          series={series}
         >
           <SiteBar />
         </BookmarkProvider>
@@ -290,6 +303,24 @@ describe('SiteBar', () => {
       // Not the series' home, so the name is a way back, not the current page.
       expect(within(banner).getByRole('link', { name })).not.toHaveAttribute(
         'aria-current',
+      )
+    },
+  )
+
+  it.each([
+    { series: ONE_PIECE_SERIES, pages: ['Characters', 'Places', 'Fruits'] },
+    { series: HUNTER_X_HUNTER_SERIES, pages: ['Characters', 'Places'] },
+  ])(
+    'links only the pages $series.slug declares',
+    async ({ series, pages }) => {
+      await renderUnderSeries(`/${series.slug}/en`, 'en', series)
+
+      expect(
+        within(screen.getByRole('navigation', { name: 'Pages' }))
+          .getAllByRole('link')
+          .map((link) => [link.textContent, link.getAttribute('href')]),
+      ).toStrictEqual(
+        pages.map((page) => [page, `/${series.slug}/en/${page.toLowerCase()}`]),
       )
     },
   )

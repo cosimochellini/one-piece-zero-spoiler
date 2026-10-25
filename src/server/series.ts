@@ -1,7 +1,7 @@
 import { createServerFn } from '@tanstack/react-start'
 import { getRequestHeader } from '@tanstack/react-start/server'
 
-import { descriptionOf } from '~/data/series'
+import { COMING_SERIES, descriptionOf } from '~/data/series'
 import { parseCookieHeader } from '~/lib/cookies'
 
 import { hubFor, openArchives, openDescriptions } from './archive/hub.server'
@@ -15,9 +15,13 @@ export const loadSeriesDescriptions = createServerFn().handler(() =>
  * The hub, of the open series; the decisions are `hubFor`'s. A series filed
  * but not open is still a name the hub announces as coming.
  */
-export const loadHub = createServerFn().handler(async () =>
-  hubFor(parseCookieHeader(getRequestHeader('cookie')), await openArchives()),
-)
+export const loadHub = createServerFn().handler(async () => ({
+  series: hubFor(
+    parseCookieHeader(getRequestHeader('cookie')),
+    await openArchives(),
+  ),
+  coming: COMING_SERIES,
+}))
 
 /** Unknown series return nothing so the route can answer with a 404. */
 export const loadSeriesDescription = createServerFn()
