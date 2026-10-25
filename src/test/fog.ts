@@ -298,8 +298,7 @@ function wordFogOf(
   }
 
   const at = reveal(bookmark, archive.series)
-  for (const { filed, said } of wordsFiled(archive, words)) {
-    const owners = filed.length === 0 ? [unfiledWord(said[0] ?? '')] : filed
+  for (const { filed, owners, said } of wordsFiled(archive, words)) {
     if (filed.every((place) => !at.sees(place))) {
       for (const string of said) {
         fog.set(string, [...(fog.get(string) ?? []), ...owners])
@@ -312,24 +311,30 @@ function wordFogOf(
 
 /**
  * Each region and form of a series' own words: what says it, its id and its
- * label in every locale, and the places filed under it.
+ * label in every locale, the places filed under it, and the records a leak
+ * of it names: those places, or the word itself when none is filed.
  */
 function wordsFiled(
   archive: SeriesArchive,
   words: OwnPlaceWords,
-): { filed: Entity[]; said: string[] }[] {
+): { filed: Entity[]; owners: Entity[]; said: string[] }[] {
   const tables = [
     ['region', words.regions],
     ['form', words.forms],
   ] as const
 
   return tables.flatMap(([field, labels]) => {
-    return Object.entries(labels).map(([word, label]) => ({
-      filed: archive.places.filter(
+    return Object.entries(labels).map(([word, label]) => {
+      const filed = archive.places.filter(
         (place) => archive.placeDossierOf(place)?.[field] === word,
-      ),
-      said: [word, ...LOCALES.map((locale) => label[locale])],
-    }))
+      )
+
+      return {
+        filed,
+        owners: filed.length === 0 ? [unfiledWord(word)] : filed,
+        said: [word, ...LOCALES.map((locale) => label[locale])],
+      }
+    })
   })
 }
 
