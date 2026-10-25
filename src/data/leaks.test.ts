@@ -544,7 +544,10 @@ describe.each(LOADED_SERIES)(
     it('cover every kind of text the archive prints', () => {
       const kinds = new Set(
         scan.texts.map(({ label }) =>
-          label.replace(/^[^.]+\./u, '').replace(/@\d+$/u, ''),
+          label
+            .replace(/^[^.]+\./u, '')
+            .replace(/@\d+$/u, '')
+            .replaceAll(/\.\d+(?=\.|$)/gu, '[]'),
         ),
       )
 

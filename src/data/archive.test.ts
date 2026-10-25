@@ -30,6 +30,7 @@ const CORE_FIELDS = new Set<Field>([
   'epithet',
   'origin',
   'redrawing',
+  'relationships',
   'status',
 ])
 

@@ -295,6 +295,9 @@ export const enDictionary = {
     'A {series} character who first appears in chapter {threshold}. Set your bookmark to read this page.',
   'character.pageTitle': '{name} | Zero Spoiler',
   'character.back': 'All characters',
+  'character.relationshipsTitle': 'Relationships',
+  'character.relationshipsLede':
+    'The important people connected to this character, up to your bookmark.',
   'character.routeTitle': 'In story order',
   'character.position': 'Entry {index} of {total}',
   'character.positionLede':

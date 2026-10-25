@@ -19,6 +19,7 @@
 import type { Bookmark } from '~/lib/progress/episode'
 import type { ChartPoint } from '~/lib/view/chart'
 import type { FillerAhead } from '~/lib/view/filler'
+import type { RelationshipView } from '~/lib/view/relationships'
 
 /** The ink a stroke takes. Structurally `Role` from `~/data/art/stroke`. */
 export type StrokeRole = 'accent' | 'ambient' | 'soft'
@@ -676,5 +677,6 @@ export interface CharacterDetail {
   chronicle: CharacterChronicle
   facts: CharacterFacts
   log: null | string
+  relationships: RelationshipView[]
   slot: Slot<CharacterView & { summary: string }>
 }

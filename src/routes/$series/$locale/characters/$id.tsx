@@ -35,6 +35,7 @@ import { settleStyles } from '~/styles/settle'
 
 import { ChronicleBand } from './-$id.chronicle'
 import { DossierDiptych } from './-$id.dossier'
+import { RelationshipBand } from './-$id.relationships'
 import { RouteDiptych, RoutePending } from './-$id.route'
 import { styles } from './-$id.styles'
 
@@ -111,22 +112,25 @@ function CharacterPage(): ReactElement {
         detail={detail}
       />
 
-      <section
-        aria-labelledby="route-position"
-        {...stylex.props(
-          styles.diptych,
-          styles.reversed,
-          settleStyles.band,
-          settleStyles.at(BAND.route),
-        )}
-      >
-        <Suspense fallback={<RoutePending />}>
-          <RouteDiptych
-            peek={peekRecord}
-            position={position}
-          />
-        </Suspense>
-      </section>
+      {detail.relationships.length > 0 ?
+        <RelationshipBand relationships={detail.relationships} />
+      : <section
+          aria-labelledby="route-position"
+          {...stylex.props(
+            styles.diptych,
+            styles.reversed,
+            settleStyles.band,
+            settleStyles.at(BAND.route),
+          )}
+        >
+          <Suspense fallback={<RoutePending />}>
+            <RouteDiptych
+              peek={peekRecord}
+              position={position}
+            />
+          </Suspense>
+        </section>
+      }
 
       <NearbyRow
         nearby={nearby}

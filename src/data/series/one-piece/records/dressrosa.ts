@@ -2125,6 +2125,33 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'mansherry': {
+      // Episode 714 / chapter 774, pages 2–15. Pinned source evidence:
+      // docs/content-provenance/relationships-810.md. These facts do not
+      // infer romance, reciprocity or continuing captivity after the rescue.
+      relationships: [
+        {
+          episode: 714,
+          chapter: 774,
+          value: [
+            {
+              character: 'leo',
+              type: { it: 'Soccorritore', en: 'Rescuer' },
+              summary: {
+                it: 'Leo sconfigge Jora e libera Mansherry.',
+                en: 'Leo defeats Jora and frees Mansherry.',
+              },
+            },
+            {
+              character: 'jora',
+              type: { it: 'Ostilità', en: 'Hostility' },
+              summary: {
+                it: 'Jora la colpisce per costringerla a curare gli ufficiali sconfitti.',
+                en: 'Jora uses violence to force Mansherry to heal the defeated officers.',
+              },
+            },
+          ],
+        },
+      ],
       role: {
         it: 'Principessa del Regno di Tontatta',
         en: 'Princess of the Tontatta Kingdom',
