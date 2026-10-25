@@ -341,6 +341,26 @@
       "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=1976132",
       "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=1976132",
       "contentSha256": "879d9c1162567c9fdaf83005384385bb6787df5d258ea85e65654ab8e05eca7f"
+    },
+    "en-Chapter_717.json": {
+      "locale": "en",
+      "title": "Chapter 717",
+      "revision": 2021973,
+      "revisionDate": "2024-08-24T06:08:18Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_717",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2021973",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2021973",
+      "contentSha256": "a43a2fb6151386ed6fa4302a13a1c630cfe9aa135233ddf0788cadad96465564"
+    },
+    "en-Episode_647.json": {
+      "locale": "en",
+      "title": "Episode 647",
+      "revision": 2021789,
+      "revisionDate": "2024-08-24T06:00:57Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_647",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2021789",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2021789",
+      "contentSha256": "6e8632fde2ae74cd6f7527f8eb81e7bc44fbd0fe586aaec10c368af3f29a9c0d"
     }
   }
 }

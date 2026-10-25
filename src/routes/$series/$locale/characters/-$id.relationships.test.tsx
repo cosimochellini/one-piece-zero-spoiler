@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 
 import type { RelationshipView } from '~/lib/view/relationships'
@@ -11,11 +11,36 @@ const relationships: RelationshipView[] = [
     person: { id: 'test-person', name: 'A person' },
     type: 'Ally',
     summary: 'Helps them return home.',
+    history: [
+      {
+        key: '5:7:both',
+        revealedAtEpisode: 5,
+        revealedAtChapter: 7,
+        type: 'Stranger',
+        summary: 'They have just met.',
+      },
+      {
+        key: '9:12:both',
+        revealedAtEpisode: 9,
+        revealedAtChapter: 12,
+        type: 'Ally',
+        summary: 'Helps them return home.',
+      },
+    ],
   },
 ]
 
+/** Both native controls must exist before the independent-expansion check. */
+function disclosures(): [HTMLElement, HTMLElement] {
+  const [first, second] = screen.getAllByText('Relationship history')
+  if (first === undefined || second === undefined) {
+    throw new Error('Both disclosures must render')
+  }
+  return [first, second]
+}
+
 describe('the character relationship band', () => {
-  it('links the person and shows the connection without an invented history control', () => {
+  it('keeps current words and the person link outside the closed history', () => {
     renderWithProviders(<RelationshipBand relationships={relationships} />, {
       bookmark: ep(10),
     })
@@ -27,16 +52,25 @@ describe('the character relationship band', () => {
       'href',
       '/one-piece/en/characters/test-person',
     )
-    expect(screen.getByText('Ally')).toBeInTheDocument()
-    expect(screen.getByText('Helps them return home.')).toBeInTheDocument()
-    expect(screen.queryByRole('button')).not.toBeInTheDocument()
+
+    const name = screen.getByRole('link', { name: 'A person' })
+
+    expect(name.closest('details')).toBeNull()
+    expect(screen.getAllByText('Ally')[0]).toBeVisible()
+    expect(screen.getAllByText('Helps them return home.')[0]).toBeVisible()
+    expect(screen.getByText('Stranger')).not.toBeVisible()
+
+    fireEvent.click(screen.getByText('Relationship history'))
+
+    expect(screen.getByText('Stranger')).toBeVisible()
+    expect(screen.getByText('Available from episode 5')).toBeVisible()
     expect(screen.queryByText(/Entry \d+ of/u)).not.toBeInTheDocument()
   })
 
   it('uses the locale in its heading and person link', () => {
     renderWithProviders(<RelationshipBand relationships={relationships} />, {
       locale: 'it',
-      bookmark: ep(10),
+      bookmark: { mode: 'chapter', chapter: 12 },
     })
 
     expect(
@@ -46,6 +80,48 @@ describe('the character relationship band', () => {
       'href',
       '/one-piece/it/characters/test-person',
     )
+
+    fireEvent.click(screen.getByText('Storia del legame'))
+
+    expect(screen.getByText('Visibile dal capitolo 7')).toBeVisible()
+    expect(
+      screen.queryByText('Available from episode 5'),
+    ).not.toBeInTheDocument()
+  })
+
+  it('expands each person independently', () => {
+    renderWithProviders(
+      <RelationshipBand
+        relationships={[
+          ...relationships,
+          {
+            person: { id: 'another-person', name: 'Another person' },
+            type: 'Friend',
+            summary: 'A stable friendship.',
+            history: [
+              {
+                key: '3:4:both',
+                revealedAtEpisode: 3,
+                revealedAtChapter: 4,
+                type: 'Friend',
+                summary: 'A stable friendship.',
+              },
+            ],
+          },
+        ]}
+      />,
+      { bookmark: ep(10) },
+    )
+    const [first, second] = disclosures()
+    fireEvent.click(first)
+
+    expect(first.closest('details')).toHaveAttribute('open')
+    expect(second.closest('details')).not.toHaveAttribute('open')
+
+    fireEvent.click(second)
+
+    expect(first.closest('details')).toHaveAttribute('open')
+    expect(second.closest('details')).toHaveAttribute('open')
   })
 
   it('has no heading, count or placeholder for an empty/covered relation set', () => {

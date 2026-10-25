@@ -306,7 +306,7 @@ describe('the verdict the gate reaches', () => {
 describe('source attribution boundaries', () => {
   it('checks all pinned revisions and the official replacement source', () => {
     const sources = sourceCanaries(repositoryRoot)
-    expect(sources).toHaveLength(35)
+    expect(sources).toHaveLength(37)
     expect(sources.every(({ phrase }) => typeof phrase === 'string')).toBe(true)
     const leaked = sources.map(({ phrase }, index) =>
       chunk(`source-${String(index)}.js`, phrase),

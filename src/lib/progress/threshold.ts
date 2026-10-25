@@ -18,6 +18,7 @@ import type { Gated } from './spoiler'
 export type ThresholdSentence =
   | 'character.foggedDescription'
   | 'character.opensAt'
+  | 'character.relationshipAt'
   | 'characters.sectionOpensAt'
   | 'chart.opensAt'
   | 'fruit.foggedDescription'
