@@ -6,6 +6,7 @@ import type { Redrawings } from '~/data/art/stroke'
 import type { Dated, Entity, SeriesArchive } from '~/data/types'
 import { LOCALES } from '~/i18n/locales'
 import { FIRST_CHAPTER, FIRST_EPISODE } from '~/lib/progress/episode'
+import type { Gated } from '~/lib/progress/spoiler'
 import type { Stroke } from '~/lib/view/records'
 import { LOADED_SERIES } from '~/test/series'
 
@@ -55,10 +56,10 @@ function isADrawing(id: string, strokes: Stroke[]): void {
 interface Told {
   entry: Dated<unknown>
   label: string
-  owner: Entity
+  owner: Gated
 }
 
-/** Everything a page gates on a record: every timeline's entries and every visit. */
+/** Every timeline's entries and every place's later visits, with their records. */
 function toldOf(archive: SeriesArchive): Told[] {
   const facts = archive.timelines.flatMap(({ label, owner, timeline }) =>
     timeline.map((entry) => ({
@@ -78,27 +79,113 @@ function toldOf(archive: SeriesArchive): Told[] {
   return [...facts, ...visits]
 }
 
+/** How a series gates a fact, and where its anime ends. */
+interface MangaOnlyRules {
+  /** The last episode of the dial. */
+  ceiling: number
+  gateOf: (entry: Dated<unknown>, owner: Gated) => Gated
+  /** The last chapter the anime adapts, for a series whose anime has ended. */
+  last?: number
+}
+
 /**
- * What breaks the manga-only rules of a series whose anime has ended, read
- * on the gate a reader is held to, not on the chapter as written.
+ * What breaks the manga-only rules, read on the gate a reader is held to,
+ * not on the chapter as written. A fact the manga alone tells declares its
+ * chapter wherever it is filed: derived, its chapter would follow the
+ * anime's last episode down to the last adapted chapter. At the last
+ * episode only an anime-only fact may go without one. With an anime that
+ * has ended, a fact past its last chapter is the manga's, at the last
+ * episode.
  */
-function mangaOnlyBreaches(archive: SeriesArchive, last: number): string[] {
-  const ceiling = archive.series.episodeCeiling
+function mangaOnlyBreaches(
+  told: Told[],
+  { ceiling, gateOf, last = Infinity }: MangaOnlyRules,
+): string[] {
+  return told.flatMap(({ entry, label, owner }) => {
+    const gate = gateOf(entry, owner)
+    const breaches = [
+      ...(gate.revealedAtChapter > last ?
+        pastTheAnime(entry, gate, ceiling)
+      : []),
+      ...(entry.chapter === undefined ? unpinned(entry, gate, ceiling) : []),
+    ]
 
-  return toldOf(archive).flatMap(({ entry, label, owner }) => {
-    const gate = archive.gateOf(entry, owner)
-    const past = gate.revealedAtChapter > last
-
-    return [
-      past && gate.source !== 'manga' && `${label}: no source 'manga'`,
-      past && entry.episode !== ceiling && `${label}: not at the last episode`,
-      entry.episode === ceiling
-        && entry.chapter === undefined
-        && gate.source === undefined
-        && `${label}: at the last episode with no chapter and no source`,
-    ].filter((breach) => breach !== false)
+    return breaches.map((breach) => `${label}: ${breach}`)
   })
 }
+
+/** What a fact past the anime's last chapter lacks. */
+function pastTheAnime(
+  entry: Dated<unknown>,
+  gate: Gated,
+  ceiling: number,
+): string[] {
+  return [
+    gate.source !== 'manga' && "past the anime, not the manga's",
+    entry.episode !== ceiling && 'past the anime, not at its last episode',
+  ].filter((breach) => breach !== false)
+}
+
+/** What a fact with no chapter of its own may not be. */
+function unpinned(
+  entry: Dated<unknown>,
+  gate: Gated,
+  ceiling: number,
+): string[] {
+  return [
+    gate.source === 'manga' && "the manga's, with no chapter",
+    entry.episode === ceiling
+      && gate.source === undefined
+      && 'at the last episode with no chapter',
+  ].filter((breach) => breach !== false)
+}
+
+describe('the manga-only rules', () => {
+  // Episode 10 is the last; the anime adapts up to chapter 5, and a chapter
+  // left out follows the episode at half its number.
+  const rules: MangaOnlyRules = {
+    ceiling: 10,
+    last: 5,
+    gateOf: (entry, owner) => ({
+      revealedAtEpisode: Math.max(owner.revealedAtEpisode, entry.episode),
+      revealedAtChapter: Math.max(
+        owner.revealedAtChapter,
+        entry.chapter ?? entry.episode / 2,
+      ),
+      ...((owner.source ?? entry.source) !== undefined && {
+        source: owner.source ?? entry.source,
+      }),
+    }),
+  }
+  const owner: Gated = { revealedAtEpisode: 1, revealedAtChapter: 1 }
+  const told = (label: string, entry: Omit<Dated<unknown>, 'value'>): Told => ({
+    entry: { ...entry, value: null },
+    label,
+    owner,
+  })
+
+  it('names each breach, and nothing in a clean entry', () => {
+    expect(
+      mangaOnlyBreaches(
+        [
+          told('visit', { episode: 10, chapter: 7 }),
+          told('bare', { episode: 10 }),
+          told('early', { episode: 4, chapter: 7, source: 'manga' }),
+          told('unpinned', { episode: 10, source: 'manga' }),
+          told('clean', { episode: 10, chapter: 8, source: 'manga' }),
+          told('anime', { episode: 10, source: 'anime' }),
+          told('adapted', { episode: 6, chapter: 3 }),
+        ],
+        rules,
+      ),
+    ).toStrictEqual([
+      "visit: past the anime, not the manga's",
+      'bare: at the last episode with no chapter',
+      'early: past the anime, not at its last episode',
+      "unpinned: the manga's, with no chapter",
+    ])
+  })
+})
 
 /** Whether a record is an arc. */
 function isArc(entity: Entity): boolean {
@@ -209,9 +296,9 @@ describe.each(LOADED_SERIES)(
     it('marks everything told past the last chapter its anime adapts as the manga’s', () => {
       // An anime viewer who has finished reaches the last episode, so a
       // record, a fact or a visit filed there with no source would show them
-      // a chapter the anime never adapts. Without a last adapted chapter the
-      // dial's own ceiling stands in, and only the last-episode rule bites.
-      const last = lastAdaptedChapter ?? archive.series.chapterCeiling
+      // a chapter the anime never adapts. A series whose anime runs on has
+      // no last adapted chapter, and only the chapter rules apply to it.
+      const last = lastAdaptedChapter ?? Infinity
       const records = entities
         .filter((entity) => entity.revealedAtChapter > last)
         .filter(
@@ -226,7 +313,13 @@ describe.each(LOADED_SERIES)(
       )
 
       expect(records).toStrictEqual([])
-      expect(mangaOnlyBreaches(archive, last)).toStrictEqual([])
+      expect(
+        mangaOnlyBreaches(toldOf(archive), {
+          ceiling: archive.series.episodeCeiling,
+          gateOf: archive.gateOf,
+          ...(lastAdaptedChapter !== undefined && { last: lastAdaptedChapter }),
+        }),
+      ).toStrictEqual([])
       // The rule is alive: it is set below the dial, and some record is past it.
       expect(
         lastAdaptedChapter === undefined

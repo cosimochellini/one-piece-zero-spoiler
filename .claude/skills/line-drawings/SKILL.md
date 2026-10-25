@@ -267,9 +267,10 @@ arc|character|place`; `--saga` is One Piece's), on the series' own paper.
   `source: 'manga'` and its true chapter, as the Kakin arc is filed, so an
   anime viewer who has finished never sees it. At most one such stage per
   record, and a record filed at episode 148 is not redrawn; anything else
-  waits for an owner ruling. Anything filed at the last episode declares
-  its chapter, and anything the 2011 anime omits at or below
-  `lastAdaptedChapter` also takes `source: 'manga'`; the test cannot see
+  waits for an owner ruling. Anything the manga alone tells declares its
+  chapter wherever it is filed, and so does anything at the last episode
+  but an anime-only fact. Anything the 2011 anime omits at or below
+  `lastAdaptedChapter` also takes `source: 'manga'`. The test cannot see
   that case, so review checks it by hand.
 - **Filing the first redrawing.** The series has none yet, so the first one
   files the timeline: export `REDRAWINGS` (`Redrawings`, keyed by record id)
