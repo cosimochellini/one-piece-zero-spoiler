@@ -321,6 +321,26 @@
       "revisionUrl": "https://onepiece.fandom.com/it/index.php?oldid=345562",
       "apiUrl": "https://onepiece.fandom.com/it/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=345562",
       "contentSha256": "d15df8f9b7a2189971434cd41bf2ed496096d2d1285623b36d74ed6575590583"
+    },
+    "en-Chapter_774.json": {
+      "locale": "en",
+      "title": "Chapter 774",
+      "revision": 1947586,
+      "revisionDate": "2023-07-30T14:37:37Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_774",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=1947586",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=1947586",
+      "contentSha256": "0491cd3a3cccb1c4b39a841d11d2468d10f54a0bfed67dbf97ebefb288f23928"
+    },
+    "en-Episode_714.json": {
+      "locale": "en",
+      "title": "Episode 714",
+      "revision": 1976132,
+      "revisionDate": "2023-12-01T20:55:31Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_714",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=1976132",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=1976132",
+      "contentSha256": "879d9c1162567c9fdaf83005384385bb6787df5d258ea85e65654ab8e05eca7f"
     }
   }
 }

@@ -23,6 +23,7 @@ import {
   searchableOf,
 } from './project.server'
 import type { Reader } from './reader.server'
+import { relationshipsOf } from './relationships.server'
 
 /**
  * What each page is allowed to know, assembled from the archive.
@@ -163,6 +164,7 @@ export function characterPage(
       log: dossier !== undefined && r.sees(entity) ? dossier.log[locale] : null,
       facts: factsOf(entity, r),
       chronicle: chronicleOf(entity, r),
+      relationships: relationshipsOf(entity, r),
     },
   }
 }

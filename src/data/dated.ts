@@ -88,6 +88,7 @@ function dossierReaders(
     devilFruit: (id) => dossiers[id]?.devilFruit,
     epithet: (id) => dossiers[id]?.epithet,
     origin: (id) => dossiers[id]?.origin,
+    relationships: (id) => dossiers[id]?.relationships,
     status: (id) => dossiers[id]?.status,
   }
 }
