@@ -2,6 +2,7 @@ import type { Gated, Source } from '~/lib/progress/spoiler'
 
 import { type ReaderArchive, withFeatures } from './features'
 import { toldIn } from './reveal'
+import { shelvesOf } from './shelves'
 import type { BookSection, Entity, SeriesArchive } from './types'
 
 /**
@@ -76,7 +77,11 @@ function copyIn(archive: ReaderArchive, source: null | Source): ReaderArchive {
     fruits: kept(archive.fruits),
     places: kept(archive.places),
     ships: kept(archive.ships),
-    bookSections: shelvedIn(archive.bookSections, has),
+    // Reordered introductions can belong to a different arc in the manga.
+    bookSections:
+      source === 'manga' ?
+        chapterShelves(shelvedIn(archive.bookSections, has), kept(archive.arcs))
+      : shelvedIn(archive.bookSections, has),
     sagas: archive.sagas.map((saga) => ({
       ...saga,
       entries: kept(saga.entries),
@@ -121,4 +126,37 @@ function shelvedIn(
   }
 
   return shelves.filter((shelf) => shelf.characters.length > 0)
+}
+
+/** Keep established shelves, moving only names whose manga heading is still closed. */
+function chapterShelves(
+  sections: BookSection[],
+  arcs: Entity[],
+): BookSection[] {
+  const misplaced = new Set(
+    sections.flatMap(({ arc, characters }) =>
+      characters.filter(
+        (character) => character.revealedAtChapter < arc.revealedAtChapter,
+      ),
+    ),
+  )
+  if (misplaced.size === 0) {
+    return sections
+  }
+
+  const kept = sections.map(({ arc, characters }) => ({
+    arc,
+    characters: characters.filter((character) => !misplaced.has(character)),
+  }))
+  const replacements = shelvesOf(arcs, [...misplaced], 'chapter')
+  for (const replacement of replacements) {
+    const existing = kept.find(({ arc }) => arc.id === replacement.arc.id)
+    if (existing === undefined) {
+      kept.push(replacement)
+    } else {
+      existing.characters.push(...replacement.characters)
+    }
+  }
+
+  return kept.filter(({ characters }) => characters.length > 0)
 }

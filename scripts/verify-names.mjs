@@ -70,6 +70,7 @@ const ITALIAN_TITLES = {
   'terracotta': 'Terracotta',
   // Hunter x Hunter, on Italian Wikipedia.
   'killua': 'Killua Zoldick',
+  'kite': 'Associazione Hunter#Kaito',
   'hisoka': 'Hisoka Morou',
   'tonpa': 'Personaggi di Hunter × Hunter#Tonpa',
   'nicholas': 'Personaggi di Hunter × Hunter#Nicole',
@@ -115,6 +116,8 @@ const NAMES_KEPT = {
   // No Italian page names them: the English name stands.
   'katzo': 'Katzo',
   'kiriko': 'Kiriko',
+  // No Italian Wikipedia entry names the foxbear; retain the English name.
+  'kon': 'Kon',
 }
 
 /** An honorific the archive writes in front of a name the wiki files bare. */
