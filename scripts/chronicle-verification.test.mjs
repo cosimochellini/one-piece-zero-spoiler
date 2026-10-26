@@ -12,12 +12,31 @@ import { readFileSync } from 'node:fs'
 import { byString } from 'sort-es'
 import { describe, expect, it } from 'vitest'
 
+import { filedArchiveOf } from '../src/data/series/index.ts'
 import {
-  characters,
-  dossierOf,
+  characters as onePieceCharacters,
+  dossierOf as onePieceDossierOf,
 } from '../src/data/series/one-piece/characters.ts'
+import { HUNTER_X_HUNTER_SOURCES } from './chronicle-sources-hxh.mjs'
 import { CHRONICLE_SOURCES } from './chronicle-sources.mjs'
 import { DOC_PATH } from './chronicle-verification.mjs'
+
+const hunter = await filedArchiveOf('hunter-x-hunter')
+
+/** Every character of the log, One Piece's then Hunter x Hunter's. */
+const characters = [...onePieceCharacters, ...hunter.characters]
+
+/** What the log holds for each id, both series' sources side by side. */
+const SOURCES = { ...CHRONICLE_SOURCES, ...HUNTER_X_HUNTER_SOURCES }
+
+/**
+ * A character's dossier, from whichever series files it.
+ * @param {object} character The character record.
+ * @returns {object | undefined} Its dossier.
+ */
+function dossierOf(character) {
+  return onePieceDossierOf(character) ?? hunter.dossierOf(character)
+}
 
 /** Every story the archive holds, flattened, with its character beside it. */
 const STORIES = characters.flatMap((character) => {
@@ -171,7 +190,7 @@ describe('the chronicle verification log', () => {
   it('cites a wiki page and a note for every story', () => {
     for (const row of ROWS) {
       expect(row.source, asLine(row)).toMatch(
-        /^https:\/\/onepiece\.fandom\.com\/wiki\/\S+$/u,
+        /^https:\/\/(?:onepiece|hunterxhunter)\.fandom\.com\/wiki\/\S+$/u,
       )
       expect(row.note.length, asLine(row)).toBeGreaterThan(0)
     }
@@ -179,7 +198,7 @@ describe('the chronicle verification log', () => {
 
   it('keeps the sources beside the script in step with the document', () => {
     for (const row of ROWS) {
-      const source = CHRONICLE_SOURCES[row.id]?.[row.episode]
+      const source = SOURCES[row.id]?.[row.episode]
 
       expect(source?.source, asLine(row)).toBe(row.source)
       expect(source?.note, asLine(row)).toBe(row.note)

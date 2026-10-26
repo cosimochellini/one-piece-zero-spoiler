@@ -1,6 +1,7 @@
 import type { PlaceDossier } from '~/data/types'
 
 import type { HunterSaga, HunterVocabulary } from './saga'
+import { trickTowerChronicles } from './trick-tower.chronicle'
 
 const PRISONER = {
   it: 'Prigioniero della Torre di Lotta',
@@ -111,6 +112,7 @@ export const trickTower: HunterSaga = {
   ],
   dossiers: {
     lippo: {
+      chronicle: trickTowerChronicles.lippo,
       role: { it: 'Direttore della Torre di Lotta', en: 'Trick Tower warden' },
       log: {
         it: 'Segue gli aspiranti sui monitor e dà ordini ai prigionieri. Ha promesso di ridurre la loro pena di un anno per ogni ora con cui riescono a rallentare gli aspiranti.',
@@ -126,6 +128,7 @@ export const trickTower: HunterSaga = {
       ],
     },
     bendot: {
+      chronicle: trickTowerChronicles.bendot,
       role: PRISONER,
       log: {
         it: 'È il primo prigioniero a sfidare il gruppo di Gon. Propone un combattimento che finisce con la resa o la morte di uno dei due, ma Tonpa si arrende appena comincia.',
@@ -135,6 +138,7 @@ export const trickTower: HunterSaga = {
       affiliation: [{ episode: 8, chapter: 17, value: PRISONER }],
     },
     sedokan: {
+      chronicle: trickTowerChronicles.sedokan,
       role: PRISONER,
       log: {
         it: 'Si offre per il secondo incontro contro il gruppo di Gon. Non punta sulla forza fisica: vuole rallentare gli aspiranti e ottenere una riduzione della pena.',
@@ -144,6 +148,7 @@ export const trickTower: HunterSaga = {
       affiliation: [{ episode: 8, chapter: 17, value: PRISONER }],
     },
     majtani: {
+      chronicle: trickTowerChronicles.majtani,
       role: PRISONER,
       log: {
         it: 'Mostra a Kurapika un tatuaggio a forma di ragno e sostiene di appartenere alla Brigata Fantasma. Kurapika riconosce la menzogna e lo mette fuori combattimento con un pugno.',
@@ -153,6 +158,7 @@ export const trickTower: HunterSaga = {
       affiliation: [{ episode: 9, chapter: 18, value: PRISONER }],
     },
     leroute: {
+      chronicle: trickTowerChronicles.leroute,
       role: PRISONER,
       log: {
         it: 'Deve scontare centododici anni per traffico di animali rari e gioco d’azzardo. Propone a Leorio una serie di scommesse in cui chi perde cede parte del proprio tempo all’altro.',
@@ -162,6 +168,7 @@ export const trickTower: HunterSaga = {
       affiliation: [{ episode: 10, chapter: 20, value: PRISONER }],
     },
     johness: {
+      chronicle: trickTowerChronicles.johness,
       role: PRISONER,
       log: {
         it: 'Leorio lo riconosce e mette in guardia Killua: è un assassino capace di fare a pezzi le vittime a mani nude. Johnes vuole soltanto uccidere il suo avversario. Killua gli strappa il cuore e vince l’incontro.',
@@ -178,6 +185,7 @@ export const trickTower: HunterSaga = {
       affiliation: [{ episode: 11, chapter: 21, value: PRISONER }],
     },
     togari: {
+      chronicle: trickTowerChronicles.togari,
       role: { it: 'Ex esaminatore', en: 'Former examiner' },
       log: {
         it: 'Attribuisce a Hisoka le cicatrici che porta dall’esame precedente. Lo attacca con quattro coltelli ricurvi, ma Hisoka ne afferra due e lo uccide con le sue stesse armi.',

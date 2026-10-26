@@ -1,4 +1,5 @@
 import type { HunterSaga } from './saga'
+import { zevilChronicles } from './zevil.chronicle'
 
 /** Named scenes of the Fourth Phase and its final bracket; see the provenance matrix. */
 export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
@@ -126,6 +127,7 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
   ],
   dossiers: {
     khara: {
+      chronicle: zevilChronicles.khara,
       role: {
         it: 'Addetta dell’Associazione Hunter',
         en: 'Hunter Association official',
@@ -147,6 +149,7 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       status: [{ episode: 14, chapter: 23, value: 'alive' }],
     },
     gittarackur: {
+      chronicle: zevilChronicles.gittarackur,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
         it: 'Partecipa all’esame con il corpo coperto di aghi. Durante la quarta prova incontra Hisoka: i due si conoscono già. Raggiunge il tabellone dell’ultima prova.',
@@ -181,6 +184,7 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       status: [{ episode: 19, chapter: 33, value: 'alive' }],
     },
     amori: {
+      chronicle: zevilChronicles.amori,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
         it: 'Raggiunge i suoi fratelli nella foresta e rimprovera il più giovane, che non ha ancora preso la targhetta di Killua. Quando i tre lo circondano, Killua gli arriva alle spalle e lo usa per farsi consegnare la targhetta che cerca.',
@@ -207,6 +211,7 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       status: [{ episode: 17, chapter: 29, value: 'alive' }],
     },
     umori: {
+      chronicle: zevilChronicles.umori,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
         it: 'Aiuta i fratelli nella caccia alle targhette. Quando Killua immobilizza uno di loro, gli consegna la propria: è la numero 199, quella che Killua cercava.',
@@ -233,6 +238,7 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       status: [{ episode: 17, chapter: 29, value: 'alive' }],
     },
     imori: {
+      chronicle: zevilChronicles.imori,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
         it: 'Segue Killua nella foresta senza decidersi ad attaccarlo. All’arrivo dei fratelli prova a colpirlo, ma Killua gli sottrae la targhetta senza che se ne accorga.',
@@ -259,6 +265,7 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       status: [{ episode: 17, chapter: 29, value: 'alive' }],
     },
     ponzu: {
+      chronicle: zevilChronicles.ponzu,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
         it: 'È l’obiettivo di Leorio nella quarta prova. Gon ne segue l’odore fino a una grotta, dove lei è rimasta intrappolata: i serpenti attaccano chi cerca di uscire.',
@@ -285,6 +292,7 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       status: [{ episode: 17, chapter: 30, value: 'alive' }],
     },
     bourbon: {
+      chronicle: zevilChronicles.bourbon,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
         it: 'Nella quarta prova prepara una trappola: i serpenti attaccano chi tenta di uscire dalla grotta. Quando Gon e Kurapika vi entrano, lui è già morto, ma la trappola continua a funzionare.',
@@ -303,6 +311,7 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       status: [{ episode: 17, chapter: 30, value: 'deceased' }],
     },
     pokkle: {
+      chronicle: zevilChronicles.pokkle,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
         it: 'Supera la caccia alle targhette dell’isola e raggiunge gli altri finalisti. L’ultima prova consiste in duelli: per superarla bisogna convincere l’avversario ad arrendersi.',
@@ -329,6 +338,7 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       status: [{ episode: 19, chapter: 33, value: 'alive' }],
     },
     bodoro: {
+      chronicle: zevilChronicles.bodoro,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
         it: 'Raggiunge l’ultima prova, ma dice a Netero di non voler combattere contro i bambini. Il tabellone stabilisce gli incontri: basta una vittoria per superare l’esame, mentre è vietato uccidere.',

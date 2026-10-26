@@ -1,3 +1,4 @@
+import { chapterOneChronicles } from './chapter-one.chronicle'
 import type { HunterSaga } from './saga'
 
 /** Chapter 1's two characters the 2011 anime introduces much later (#760). */
@@ -33,6 +34,7 @@ export const chapterOne: Pick<HunterSaga, 'dossiers' | 'entries'> = {
   ],
   dossiers: {
     kite: {
+      chronicle: chapterOneChronicles.kite,
       role: { it: 'Hunter', en: 'Hunter' },
       log: {
         it: 'Arriva sull’Isola Balena in cerca di indizi su Ging, il suo maestro, che gli ha assegnato come ultima prova il compito di trovarlo. Salva Gon da un orso-volpe e lo rimprovera per essersi avvicinato al suo territorio. Quando scopre che è il figlio di Ging, gli racconta che suo padre è un Hunter ed è ancora vivo.',
@@ -51,10 +53,11 @@ export const chapterOne: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       ],
     },
     kon: {
+      chronicle: chapterOneChronicles.kon,
       role: { it: 'Orso-volpe', en: 'Foxbear' },
       log: {
-        it: 'È ancora un cucciolo quando Kaito uccide sua madre per salvare Gon. Kaito vuole abbattere anche lui, ma Gon lo prende in braccio e insiste per allevarlo, anche mentre il cucciolo gli graffia il braccio.',
-        en: 'He is still a cub when Kite kills his mother to save Gon. Kite intends to put him down too, but Gon holds him and insists on raising him, even as the cub scratches his arm.',
+        it: 'È ancora un cucciolo quando Kaito uccide sua madre per salvare Gon. Kaito vuole abbattere anche lui, ma Gon insiste per allevarlo.',
+        en: 'He is still a cub when Kite kills his mother to save Gon. Kite intends to put him down too, but Gon insists on raising him.',
       },
       status: [{ episode: 76, chapter: 1, value: 'alive' }],
       affiliation: [
