@@ -37,6 +37,7 @@
     "verify:filler": "node scripts/verify-filler.mjs",
     "verify:fruits": "node scripts/verify-fruit-showings.mjs",
     "verify:names": "node scripts/verify-names.mjs",
+    "verify:seo": "node scripts/verify-seo.mjs",
     "wiki:pairs": "node scripts/wiki.mjs"
   },
   "overrides": {

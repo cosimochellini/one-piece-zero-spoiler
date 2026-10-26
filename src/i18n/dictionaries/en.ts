@@ -155,6 +155,7 @@ export const enDictionary = {
     'Yes. On the other pages of the wiki, press “Show anyway” on it. The choice is not saved, and every other entry stays under fog.',
 
   'legal.title': 'Legal notice',
+  'legal.pageTitle': 'Legal notice | Zero Spoiler',
   'legal.description':
     'The unofficial project notice, rights contact, privacy and cookies, sources and licenses.',
   'legal.projectTitle': 'An unofficial project',
@@ -267,7 +268,7 @@ export const enDictionary = {
     'Their names are hidden, so search does not find them. Move your bookmark forward to see them.',
   'characters.foggedTitleOne': '1 under fog',
   'characters.allOpen': 'Nothing is under fog. You can see every character.',
-  'characters.pageTitle': 'Characters | Zero Spoiler',
+  'characters.pageTitle': 'Characters | {series} | Zero Spoiler',
   'characters.pageDescription':
     '{series} characters, each hidden until the episode where they first appear.',
   'characters.featuredTitle': 'Main characters',
@@ -286,14 +287,14 @@ export const enDictionary = {
   'character.opensAt.season': 'First appears in {threshold}',
   'character.opensAt.chapter': 'First appears in chapter {threshold}',
   'character.foggedName': 'A character under fog',
-  'character.foggedTitle': 'A character under fog | Zero Spoiler',
+  'character.foggedTitle': 'A character under fog | {series} | Zero Spoiler',
   'character.foggedDescription.episode':
     'A {series} character who first appears in episode {threshold}. Set your bookmark to read this page.',
   'character.foggedDescription.season':
     'A {series} character who first appears in {threshold}. Set your bookmark to read this page.',
   'character.foggedDescription.chapter':
     'A {series} character who first appears in chapter {threshold}. Set your bookmark to read this page.',
-  'character.pageTitle': '{name} | Zero Spoiler',
+  'character.pageTitle': '{name} | {series} | Zero Spoiler',
   'character.back': 'All characters',
   'character.relationshipHistoryFor': 'Relationship history with {name}',
   'character.relationshipHistory': 'Relationship history',
@@ -328,7 +329,7 @@ export const enDictionary = {
     'There is no character at this address. The characters page lists all of them.',
 
   'places.title': 'Places',
-  'places.pageTitle': 'Places | Zero Spoiler',
+  'places.pageTitle': 'Places | {series} | Zero Spoiler',
   'places.stage': 'Stop {index} of {total}',
   'places.foggedName': 'A place under fog',
   'places.foggedDescription.episode':
@@ -359,8 +360,8 @@ export const enDictionary = {
   'places.groupCount': '{count} places',
   'places.groupCountOne': '1 place',
 
-  'place.pageTitle': '{name} | Zero Spoiler',
-  'place.foggedTitle': 'A place under fog | Zero Spoiler',
+  'place.pageTitle': '{name} | {series} | Zero Spoiler',
+  'place.foggedTitle': 'A place under fog | {series} | Zero Spoiler',
   'place.back': 'All places',
   'place.mapTitle': 'On the map',
   'place.mapLede':

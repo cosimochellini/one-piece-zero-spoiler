@@ -54,7 +54,7 @@ export const onePieceIt: SeriesWords<'one-piece'> = {
   'character.bountyValue': '{amount} Berry',
 
   'ship.foggedName': 'Una nave nella nebbia',
-  'ship.foggedTitle': 'Una nave nella nebbia | Zero Spoiler',
+  'ship.foggedTitle': 'Una nave nella nebbia | {series} | Zero Spoiler',
   'ship.foggedDescription.episode':
     'Una nave di One Piece, nella nebbia fino all’episodio {threshold}. Imposta il segnalibro per leggerne la voce.',
   'ship.foggedDescription.season':
@@ -67,7 +67,7 @@ export const onePieceIt: SeriesWords<'one-piece'> = {
   'filler.title': 'Episodi filler',
   'filler.count':
     '{episodes} episodi filler in tutto o in parte, e {unnumbered} tra film e speciali. Ognuno è visibile dall’episodio in cui va in onda.',
-  'filler.pageTitle': 'Episodi filler | Zero Spoiler',
+  'filler.pageTitle': 'Episodi filler | {series} | Zero Spoiler',
   'filler.pageDescription':
     'Quali episodi di One Piece sono filler, misti o riassunti, i gruppi che puoi saltare e dove vanno i film e gli speciali.',
   'filler.noBookmark':
@@ -128,7 +128,7 @@ export const onePieceIt: SeriesWords<'one-piece'> = {
     '{count} frutti del diavolo, divisi per saga e nell’ordine in cui la storia li nomina. Quelli nella nebbia non compaiono nei risultati della ricerca.',
   'fruits.countFaction':
     '{count} frutti del diavolo, divisi per la fazione di chi li ha mangiati, al punto del tuo segnalibro. Un frutto sta sotto ognuna delle loro fazioni. Quelli nella nebbia non compaiono nei risultati della ricerca.',
-  'fruits.pageTitle': 'Frutti del diavolo | Zero Spoiler',
+  'fruits.pageTitle': 'Frutti del diavolo | {series} | Zero Spoiler',
   'fruits.pageDescription':
     'I frutti del diavolo di One Piece, ognuno nascosto fino all’episodio in cui viene nominato per la prima volta.',
   'fruits.searchLabel': 'Cerca un frutto',
@@ -186,14 +186,14 @@ export const onePieceIt: SeriesWords<'one-piece'> = {
   'fruit.opensAt.chapter':
     'Nominato per la prima volta nel capitolo {threshold}',
   'fruit.foggedName': 'Un frutto nella nebbia',
-  'fruit.foggedTitle': 'Un frutto nella nebbia | Zero Spoiler',
+  'fruit.foggedTitle': 'Un frutto nella nebbia | {series} | Zero Spoiler',
   'fruit.foggedDescription.episode':
     'Un frutto del diavolo di One Piece nominato per la prima volta nell’episodio {threshold}. Imposta il segnalibro per leggere la pagina.',
   'fruit.foggedDescription.season':
     'Un frutto del diavolo di One Piece nominato per la prima volta in {threshold}. Imposta il segnalibro per leggere la pagina.',
   'fruit.foggedDescription.chapter':
     'Un frutto del diavolo di One Piece nominato per la prima volta nel capitolo {threshold}. Imposta il segnalibro per leggere la pagina.',
-  'fruit.pageTitle': '{name} | Zero Spoiler',
+  'fruit.pageTitle': '{name} | {series} | Zero Spoiler',
   'fruit.back': 'Tutti i frutti del diavolo',
   'fruit.form': 'Tipo',
   'fruit.eatersTitle': 'Chi l’ha mangiato',

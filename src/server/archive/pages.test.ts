@@ -63,7 +63,7 @@ describe('the character page a bookmark sees', () => {
     const meta = robinHead(null)
 
     expect(meta).not.toContain('Robin')
-    expect(meta).toContain('A character under fog | Zero Spoiler')
+    expect(meta).toContain('A character under fog | One Piece | Zero Spoiler')
     expect(meta).toContain('episode 130')
   })
 
@@ -76,7 +76,9 @@ describe('the character page a bookmark sees', () => {
   })
 
   it('names the character once the reader has reached them', () => {
-    expect(robinHead(ep(130))).toContain('Nico Robin | Zero Spoiler')
+    expect(robinHead(ep(130))).toContain(
+      'Nico Robin | One Piece | Zero Spoiler',
+    )
   })
 
   it('opens the record exactly at its threshold and not before', () => {

@@ -146,6 +146,7 @@ export const itDictionary: Dictionary = {
     'Sì. Nelle altre pagine della wiki premi “Mostra comunque”. La scelta non viene salvata e le altre voci restano nella nebbia.',
 
   'legal.title': 'Note legali',
+  'legal.pageTitle': 'Note legali | Zero Spoiler',
   'legal.description':
     'Avviso sul progetto non ufficiale, contatti per i diritti, privacy e cookie, fonti e licenze.',
   'legal.projectTitle': 'Un progetto non ufficiale',
@@ -260,7 +261,7 @@ export const itDictionary: Dictionary = {
     'I loro nomi sono nascosti, quindi la ricerca non li trova. Sposta avanti il segnalibro per vederli.',
   'characters.foggedTitleOne': '1 nella nebbia',
   'characters.allOpen': 'Non c’è niente nella nebbia: vedi tutti i personaggi.',
-  'characters.pageTitle': 'Personaggi | Zero Spoiler',
+  'characters.pageTitle': 'Personaggi | {series} | Zero Spoiler',
   'characters.pageDescription':
     'I personaggi di {series}, ognuno nascosto fino all’episodio in cui compare per la prima volta.',
   'characters.featuredTitle': 'Personaggi principali',
@@ -281,14 +282,15 @@ export const itDictionary: Dictionary = {
   'character.opensAt.chapter':
     'Compare per la prima volta nel capitolo {threshold}',
   'character.foggedName': 'Un personaggio nella nebbia',
-  'character.foggedTitle': 'Un personaggio nella nebbia | Zero Spoiler',
+  'character.foggedTitle':
+    'Un personaggio nella nebbia | {series} | Zero Spoiler',
   'character.foggedDescription.episode':
     'Un personaggio di {series} che compare per la prima volta nell’episodio {threshold}. Imposta il segnalibro per leggere la pagina.',
   'character.foggedDescription.season':
     'Un personaggio di {series} che compare per la prima volta in {threshold}. Imposta il segnalibro per leggere la pagina.',
   'character.foggedDescription.chapter':
     'Un personaggio di {series} che compare per la prima volta nel capitolo {threshold}. Imposta il segnalibro per leggere la pagina.',
-  'character.pageTitle': '{name} | Zero Spoiler',
+  'character.pageTitle': '{name} | {series} | Zero Spoiler',
   'character.back': 'Tutti i personaggi',
   'character.relationshipHistoryFor': 'Storia del legame con {name}',
   'character.relationshipHistory': 'Storia del legame',
@@ -324,7 +326,7 @@ export const itDictionary: Dictionary = {
     'A questo indirizzo non c’è nessun personaggio. Li trovi tutti nella pagina Personaggi.',
 
   'places.title': 'Luoghi',
-  'places.pageTitle': 'Luoghi | Zero Spoiler',
+  'places.pageTitle': 'Luoghi | {series} | Zero Spoiler',
   'places.stage': 'Tappa {index} di {total}',
   'places.foggedName': 'Un luogo nella nebbia',
   'places.foggedDescription.episode':
@@ -357,8 +359,8 @@ export const itDictionary: Dictionary = {
   'places.groupCount': '{count} luoghi',
   'places.groupCountOne': '1 luogo',
 
-  'place.pageTitle': '{name} | Zero Spoiler',
-  'place.foggedTitle': 'Un luogo nella nebbia | Zero Spoiler',
+  'place.pageTitle': '{name} | {series} | Zero Spoiler',
+  'place.foggedTitle': 'Un luogo nella nebbia | {series} | Zero Spoiler',
   'place.back': 'Tutti i luoghi',
   'place.mapTitle': 'Sulla mappa',
   'place.mapLede':
