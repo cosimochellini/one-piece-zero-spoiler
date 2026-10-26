@@ -216,7 +216,8 @@ jobs:
 
       # The README health badge. It runs after the release so it scores the
       # commit that carries the version bump, and it never fails the job: the
-      # tag is already out, and a red run here would only block the next merge.
+      # tag is already out, and a red run here would only be noise. A failure
+      # leaves the previous badge in place, so check the job log if it looks stale.
       # `npm test` writes the coverage fallow reads for the CRAP score, so the
       # grade matches the one the pull request gate sees.
       - name: Install for badge
