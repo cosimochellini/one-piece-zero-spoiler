@@ -5,7 +5,8 @@ on:
     branches: [main]
   # No `edited`: a title or body edit would cancel the run in flight and pay
   # for the whole gate again. The title is checked by pr-title.yml instead.
-  # A body edit that adds a `client-budget:` line needs a manual re-run.
+  # A re-run reuses the old payload, so a body edit that adds a
+  # `client-budget:` line takes effect on the next push or a close and reopen.
   pull_request:
     types: [opened, synchronize, reopened]
 
@@ -97,9 +98,9 @@ jobs:
         run: npm run gate:archive
 
       # The base build is a pure function of the base commit, so it is cached
-      # by SHA: later pushes to the same PR, and PRs opened on a commit whose
-      # push run already built it, skip a second `npm ci` and build.
+      # by SHA: later pushes to the same PR skip a second `npm ci` and build.
       - name: Restore PR base build
+        if: github.event_name == 'pull_request'
         id: base-cache
         uses: actions/cache@v6
         with:
@@ -121,13 +122,6 @@ jobs:
           npm ci
           npm run build
           cp -r dist/client "$RUNNER_TEMP/client-base"
-
-      # Seeds the cache for the next pull request opened on this commit.
-      - name: Keep main build for PR base
-        if:
-          github.event_name == 'push' && steps.base-cache.outputs.cache-hit !=
-          'true'
-        run: cp -r dist/client "$RUNNER_TEMP/client-base"
 
       - name: Client growth budget
         if: github.event_name == 'pull_request'
