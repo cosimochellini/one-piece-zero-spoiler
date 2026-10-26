@@ -19,19 +19,25 @@ import { ZOLDYCK_DRAWINGS } from './zoldyck'
 
 /**
  * One of Kurapika's two wooden swords, grip down to the left and point up
- * to the right: the grip in the record's tint, its wrap, the blade and its
- * ridge. The second is the same sword mirrored across the box.
+ * to the right, seen a little from above: the grip in the record's tint
+ * with its wrap, the blade's lit top face, and the narrow under face
+ * turned away, hatched. The second is the same sword mirrored across the
+ * box.
  */
 const BOKKEN: Stroke[] = [
-  { d: 'M31.5 176.4 L56.3 137 L61.4 140.2 L36.5 179.6 Z', role: 'accent' },
+  { d: 'M36 176 L58 140.2 L65.7 144.9 L43.7 180.7 Z', role: 'accent' },
   {
-    d: 'M35.1 170.6 L43 169.4 M39.7 163.3 L47.6 162.1 M44.3 156 L52.2 154.8 M48.9 148.7 L56.8 147.5',
+    d: 'M38.6 171.7 L45.9 170.4 M43.9 163.2 L51.2 161.8 M49.1 154.7 L56.4 153.3 M54.3 146.2 L61.6 144.8',
     role: 'soft',
   },
   {
-    d: 'M56.3 137 L118.6 38.4 Q122 33 126 32 M61.4 140.2 L124 41 Q126 36 126 32',
+    d: 'M58 140.2 L116.6 44.8 Q120.8 38 126.5 39.1 Q128.5 42.7 123.2 51.2 L65.7 144.9',
   },
-  { d: 'M62.4 134.7 L118.9 43.8', role: 'soft' },
+  { d: 'M40.7 178.9 L122.3 46', role: 'soft' },
+  {
+    d: 'M70 131.2 L71.4 135.6 M76.8 120.1 L78.2 124.5 M83.6 109 L85 113.4 M90.4 97.9 L91.8 102.3 M97.2 86.9 L98.6 91.2 M104 75.8 L105.4 80.2 M110.8 64.7 L112.2 69.1',
+    role: 'ambient',
+  },
 ]
 
 /** The second wooden sword: the first, mirrored about x 80. */
@@ -214,71 +220,76 @@ export const DRAWINGS = {
     { d: 'M18 156 L84 150', role: 'ambient', dashed: true },
   ],
 
-  // Gon's fishing rod, held at the cork grip, the reel under it in the
-  // record's tint with its handle, the line run out from the tip to a float
-  // and a hook over rings of water: he sits in a tree over the swamp with it
-  // in episode 1 and chapter 1, and strikes the Kiriko with it in chapter 4.
+  // Gon's fishing rod, held at the cork grip, the reel under it a drum in
+  // three-quarter view, its face in the record's tint and its side
+  // hatched, the line run out from the tip to a float and a hook over
+  // rings of water: he sits in a tree over the swamp with it in episode 1
+  // and chapter 1, and strikes the Kiriko with it in chapter 4.
   'gon-freecss': [
     { d: 'M32 174 L38 178 L64 148 L58 144 Z' },
     { d: 'M38 166 l5 3.6 M44 159 l5 3.6 M50 152 l5 3.6', role: 'ambient' },
     { d: 'M58 144 L136 24 M64 148 L136 24' },
     { d: 'M86 106 l5 3 M106 76 l4.5 2.6 M124 47 l3.6 2', role: 'soft' },
-    { d: 'M66 151 L72 156', role: 'soft' },
-    { d: circle(76, 164, 12), role: 'accent' },
-    { d: circle(76, 164, 4.5), role: 'soft' },
-    { d: `M76 164 L92 172 ${dot(94, 173)}` },
+    { d: 'M66 151 L74 155', role: 'soft' },
+    { d: ellipse(86, 166, 7, 12), role: 'accent' },
+    { d: 'M86 154 H74 A7 12 0 0 0 74 178 H86' },
+    { d: 'M76 161 l7 -4.5 M76 168 l8 -5 M76 175 l8 -5', role: 'ambient' },
+    { d: ellipse(86, 166, 2.5, 4), role: 'soft' },
+    { d: `M86 166 L98 173 ${dot(100, 174)}` },
     { d: 'M136 24 C142 52 140 82 134 104' },
     { d: `${ellipse(133.5, 112, 4, 8)} M129.5 112 H137.5` },
     { d: 'M133.5 120 V128 q0 6 -5 6 q-4 0 -4 -4' },
     { d: 'M112 142 q10 -5 21 0 q11 5 21 0', role: 'ambient' },
     { d: 'M118 152 q7 -3.5 15 0 q8 3.5 15 0', role: 'ambient' },
-    shadow(66, 188, 36),
+    shadow(70, 190, 40),
   ],
 
-  // The form for the Hunter Exam on a table, a card with its blank
-  // fields and the line Mito signs on, and her pen across it in the
-  // record's tint, its nib at the line: catching the fish was the deal, and
-  // she signs in episode 1 and chapter 1. No writing on the card.
+  // The form for the Hunter Exam lying on a table, a stiff card seen from
+  // its corner with its blank fields and the line Mito signs on, and her
+  // pen across it in the record's tint, its nib on the line: catching the
+  // fish is the deal that opens episode 1 and chapter 1, and she signs.
+  // No writing on the card.
   'mito-freecss': [
-    { d: 'M24 124 L108 106 L136 140 L52 160 Z' },
-    { d: 'M24 124 V128 L52 164 L136 144 V140' },
-    { d: 'M30 129.6 l2 2.6 M38 139.8 l2 2.6 M46 150 l2 2.6', role: 'ambient' },
+    { d: 'M18 112 L112 92 L144 132 L48 156 Z' },
+    { d: 'M18 112 V117 L48 161 L144 137 V132' },
+    { d: 'M24 125 l2 3 M32 137 l2 3 M40 149 l2 3', role: 'ambient' },
     {
-      d: 'M40.8 133 L91.2 122.2 M46.4 140.2 L96.8 129.4 M52 147.4 L80 141.4',
+      d: 'M38.3 122.8 L85.3 112.8 M42.8 129.4 L89.8 119.4 M47.3 136 L78.3 129.4',
       role: 'soft',
     },
-    { d: 'M86 145.6 L120 138.4', role: 'soft' },
-    { d: 'M36 120 L52 116.6 L56 122 L40 125.4 Z', role: 'soft' },
+    { d: 'M94.3 137.1 L129.1 129.7', role: 'soft' },
     {
-      d: 'M64 92 L114 129.5 M61.6 95.2 L111.6 132.7 M64 92 L61.6 95.2',
+      d: 'M100 123 L55.2 63.6 M93.6 127.8 L48.8 68.4 M55.2 63.6 A4 2 -37 1 0 48.8 68.4 A4 2 -37 1 0 55.2 63.6',
       role: 'accent',
     },
-    { d: 'M114 129.5 L122 137.6 L111.6 132.7' },
-    { d: 'M70 95.5 L84 106 L82.6 108', role: 'soft' },
-    shadow(80, 174, 58),
+    { d: 'M100 123 L104 135 L93.6 127.8' },
+    { d: 'M95.2 116.6 L88.8 121.4 M91.5 111.8 L85.2 116.6', role: 'soft' },
+    { d: 'M57.6 66.8 L72.4 83.2', role: 'soft' },
+    { d: 'M98 134 L60 82', role: 'ambient', dashed: true },
+    shadow(80, 172, 62),
   ],
 
-  // Leorio's briefcase in three-quarter view, standing on its base: the
-  // front with its seam and two clasps, the lid's top, the far end hatched,
-  // and the handle in the record's tint. He carries it aboard the ship in
-  // episode 1 and chapter 2.
+  // Leorio's briefcase, a slim attaché case standing on its long edge in
+  // three-quarter view: the front with the lid's seam and two clasps, the
+  // narrow top, the far end hatched, and the handle in the record's tint.
+  // He carries it aboard the ship in episode 1 and chapter 2.
   'leorio-paradinight': [
-    { d: 'M28 118 H106 V178 H28 Z' },
-    { d: 'M28 118 L46 106 H124 L106 118' },
-    { d: 'M106 178 L124 166 V106' },
+    { d: 'M20 106 H120 V162 H20 Z' },
+    { d: 'M20 106 L32 99 H132 L120 106' },
+    { d: 'M120 162 L132 155 V99' },
     {
-      d: 'M110 128 l10 -6.7 M110 140 l10 -6.7 M110 152 l10 -6.7 M110 164 l10 -6.7',
+      d: 'M123 118 l6 -3.5 M123 130 l6 -3.5 M123 142 l6 -3.5 M123 154 l6 -3.5',
       role: 'ambient',
     },
     {
-      d: 'M64 113 C62 96 90 94 88 111 M68 113 C67 102 85 101 84 111',
+      d: 'M64 103 C62 84 94 84 92 101 M68 103 C67 90 89 90 88 101',
       role: 'accent',
     },
-    { d: 'M60 114 h8 M84 112 h8', role: 'soft' },
-    { d: 'M28 130 H106 L124 118', role: 'soft' },
-    { d: 'M40 125 h8 v10 h-8 Z M86 125 h8 v10 h-8 Z' },
-    { d: 'M28 172 H106', role: 'soft' },
-    shadow(78, 186, 54),
+    { d: 'M60 104 h10 M86 102 h10', role: 'soft' },
+    { d: 'M20 116 H120 L132 109', role: 'soft' },
+    { d: 'M34 111 h8 v10 h-8 Z M98 111 h8 v10 h-8 Z' },
+    { d: 'M20 156 H120', role: 'soft' },
+    shadow(78, 174, 58),
   ],
 
   // Kurapika's two wooden swords crossed, their grips in the record's tint:
@@ -287,57 +298,66 @@ export const DRAWINGS = {
   'kurapika': [
     ...BOKKEN,
     ...BOKKEN.map((stroke) => ({ ...stroke, transform: MIRRORED })),
-    shadow(80, 188, 54),
+    shadow(80, 190, 54),
   ],
 
-  // A coil of deck rope in the record's tint, its end run up to a belaying
-  // pin in the ship's rail: the crewman working the deck in the storm that
-  // throws him over the side, in episode 1 and chapter 2.
+  // A coil of the ship's rope lying on the deck in three-quarter view, the
+  // rope in the record's tint, the side of the coil hatched and the loose
+  // end run out over the boards: the crewman working the deck in the storm
+  // that throws him over the side, in episode 1 and chapter 2. In the
+  // chapter a yard snaps and strikes him, and the crew haul him back aboard
+  // with a rope.
   'katzo': [
-    { d: 'M14 70 H150' },
-    { d: 'M14 78 H150', role: 'soft' },
-    { d: 'M24 78 V126 M136 78 V126' },
-    { d: 'M4 126 H156', role: 'ambient' },
-    { d: 'M110 60 V90 M106 64 h8', role: 'soft' },
-    { d: 'M110 74 C120 70 120 82 110 78 C100 74 100 86 110 82', role: 'soft' },
-    { d: 'M110 88 C114 108 104 128 92 142' },
     {
-      d: `${ellipse(72, 172, 46, 12)} ${ellipse(72, 146, 30, 8)}`,
+      d: 'M118 148 A41.9 15.1 0 0 1 34.2 148 A37.6 13.5 0 0 1 109.5 148 A33.4 12 0 0 1 42.8 148 A29.1 10.5 0 0 1 101 148 A24.9 9 0 0 1 51.2 148 A20.6 7.4 0 0 1 92.5 148 A16.4 5.9 0 0 1 59.8 148 A12.1 4.4 0 0 1 84 148',
       role: 'accent',
     },
+    { d: 'M34.2 148 V156 A41.9 15.1 0 0 0 118 156 V148' },
     {
-      d: 'M28 166 C32 152 112 152 116 166 M34 158 C38 146 106 146 110 158',
+      d: 'M44 166 l2 -5 M60 170 l2 -5 M78 171 l2 -5 M96 169 l2 -5 M110 164 l2 -5',
+      role: 'ambient',
+    },
+    {
+      d: 'M110.4 154 l-2 -3.5 M95 159.5 l-2 -3.5 M74 161.5 l-2 -3.5 M53 159.5 l-2 -3.5 M38 154 l-2 -3.5',
       role: 'soft',
     },
-    { d: 'M54 146 l6 -4 M66 148 l8 -5 M80 148 l6 -4', role: 'ambient' },
-    shadow(72, 190, 50),
+    { d: 'M118 148 C130 150 138 160 136 170 C134 180 146 184 154 182' },
+    { d: 'M154 182 l4 -1 M154 182 l3 3 M154 182 l1 4', role: 'soft' },
+    { d: 'M126 151 l-2 3 M134 160 l-3 2 M136 172 l-3 0.5', role: 'soft' },
+    shadow(76, 182, 50),
   ],
 
-  // A Kiriko's arm raised under a full moon, the feathers of the wing it
-  // grows from the arm to fly hanging below it, its three long fingers
-  // ending in claws in the record's tint: the navigators fly Gon, Kurapika
-  // and Leorio to the exam by moonlight in episode 2 and chapter 4.
+  // A Kiriko's arm with the wing it grows from it to fly, folded and hanging
+  // below, the coverts in a row and the long feathers layered under them,
+  // its three long fingers ending in claws in the record's tint: the
+  // navigators fly Gon, Kurapika and Leorio to the exam in episode 2 and
+  // chapter 4.
   'kiriko': [
-    { d: circle(40, 40, 20), role: 'ambient' },
-    { d: 'M4 134 C30 116 62 94 90 72 M12 148 C38 130 70 106 100 82' },
+    { d: 'M4 110 C36 94 66 76 94 56' },
+    { d: 'M10 124 C42 108 72 90 102 70' },
     {
-      d: 'M20 124 l-2 -6 M38 112 l-2 -6 M56 100 l-2 -6 M74 88 l-2 -6',
-      role: 'soft',
+      d: 'M93 60 C98 47 104 37 110 28 C112 31 113 32 115 33 C109 41 103 50 98 62 M98 64 C109 53 121 46 133 42 L135 47 C123 51 112 57 101 67 M102 69 C115 66 129 68 141 73 L140 78 C128 75 115 73 103 73',
     },
     {
-      d: 'M90 72 C94 58 100 46 106 36 M96 76 C106 64 118 56 130 50 M100 82 C114 78 128 78 140 80',
-    },
-    {
-      d: 'M106 36 C110 26 106 18 98 16 M130 50 C138 42 136 32 128 30 M140 80 C150 74 150 64 142 60',
+      d: 'M112 30 C114 20 110 14 104 14 M134 44 C140 38 138 30 132 30 M140.5 75.5 C150 74 152 66 146 62',
       role: 'accent',
     },
     {
-      d: 'M20 142 C20 160 26 176 34 184 C38 172 36 154 30 136 M36 132 C38 152 46 168 56 176 C58 162 54 144 46 126 M52 122 C56 140 64 154 74 162 C74 148 70 132 62 116 M68 110 C74 126 82 138 92 144 C90 132 84 116 78 104',
+      d: 'M10 124 Q8 140 16 150 Q22 148 26 140 Q26 156 32 164 Q40 160 44 150 Q46 166 52 174 Q60 170 64 158 Q66 174 74 180 Q82 176 86 162 Q90 178 98 182 Q104 178 106 162 Q112 176 120 176 C124 150 116 100 102 70',
     },
     {
-      d: 'M24 148 l4 20 M40 140 l6 18 M56 130 l7 16 M72 118 l8 14',
+      d: 'M26 140 L29 124 M44 150 L47 114 M64 158 L66 104 M86 162 L84 93 M106 162 L98 84',
       role: 'soft',
     },
+    {
+      d: 'M14 132.7 Q26 139.4 32 122.1 Q44 128.8 50 111.5 Q62 118.2 68 101 Q80 107.7 86 90.4 Q98 97.1 104 79.8',
+      role: 'soft',
+    },
+    {
+      d: 'M20 122 l2 6 M36 113 l2 6 M52 103 l2 6 M68 93 l2 6 M84 83 l2 6',
+      role: 'ambient',
+    },
+    { d: 'M90 60 l-3 7 M84 64 l-3 7 M18 106 l-2 7', role: 'soft' },
   ],
 
   // The cassette Ging left in the box for Gon, in three-quarter view: its
@@ -436,25 +456,38 @@ export const DRAWINGS = {
     shadow(80, 182, 36),
   ],
 
-  // Hisoka's stacked wrist bands, the upper rim in the record's tint,
-  // seen as a hollow cloth cuff: the initial outfit in episode 3 and
-  // chapter 5. The 2011 cuff is checked against NTV's initial character
-  // design; the manga scene is not viewed. No card, face or suit symbol.
+  // Hisoka's right hand from the back, the fingers a little spread and
+  // the long pointed nails in the record's tint: the applicant who wounds a
+  // man for bumping into him without apologizing, in episode 3 and chapter
+  // 5. No card: his cards first come out in the Milsy Wetlands, in chapter
+  // 8. No suit symbol, no face paint.
   'hisoka': [
-    { d: ellipse(80, 87, 36, 14), role: 'accent' },
-    { d: ellipse(80, 87, 27, 9), role: 'soft' },
-    { d: 'M44 87 V137 C44 156 116 156 116 137 V87' },
-    { d: 'M44 103 C44 121 116 121 116 103' },
-    { d: 'M44 119 C44 137 116 137 116 119' },
-    { d: 'M44 135 C44 153 116 153 116 135', role: 'soft' },
-    { d: 'M53 94 C61 101 92 103 105 95', role: 'soft' },
-    { d: 'M49 105 l6 5 M49 121 l6 5 M50 137 l6 5', role: 'ambient' },
-    { d: 'M106 107 l6 -4 M106 123 l6 -4 M106 139 l6 -4', role: 'ambient' },
+    { d: 'M62 198 C62 178 58 162 54 146 M96 198 C96 180 100 164 106 146' },
+    { d: 'M54 146 C50 132 48 118 50 104 M106 146 C110 130 110 116 106 104' },
     {
-      d: 'M63 111 l-2 4 M84 115 l1 4 M69 131 l-1 4 M92 129 l2 4',
+      d: 'M50 104 L45 62 Q45 56 50.5 56 Q56 56 56.5 62 L62 100 M63 99 L62 50 Q62 44 68 44 Q74 44 74 50 L76 98 M77 98 L82 54 Q83 48 88.5 48.5 Q94 49 93.5 55 L90 99 M91 101 L100 68 Q102 62 107 63.5 Q111.5 65 110 71 L104 106',
+    },
+    {
+      d: 'M45.6 58 L46 38 L55.6 58 M62.4 46 L68 26 L73.6 46 M83 50 L92 32 L93.4 51 M101.6 64.4 L114 50 L110.4 67',
+      role: 'accent',
+    },
+    {
+      d: 'M54 146 C42 140 32 128 26 114 Q24 108 29.5 106.5 Q34 106 36.5 111 C40 120 46 124 51 125',
+    },
+    { d: 'M24.8 110 L18 96 L33.4 107.2', role: 'accent' },
+    { d: 'M52 106 Q78 94 104 106', role: 'soft' },
+    {
+      d: 'M47 80 q5 -2 10 0 M63 74 q5.5 -2 11 0 M82 76 q5.5 -2 11 0 M98 84 q5 -2 9.5 1',
       role: 'soft',
     },
-    shadow(80, 180, 44),
+    {
+      d: 'M100 116 l7 -5 M100 128 l8 -5 M100 140 l8 -5 M98 152 l8 -5',
+      role: 'ambient',
+    },
+    {
+      d: 'M64 138 C62 126 60 116 58 108 M84 136 C84 124 86 114 88 106',
+      role: 'soft',
+    },
   ],
 
   // Killua's skateboard, deck in the record's tint and the trucks beneath
@@ -483,54 +516,64 @@ export const DRAWINGS = {
     shadow(78, 186, 49),
   ],
 
-  // Satotz's tie over the collar of his dark coat, the knot and hanging
-  // silk in the record's tint: his exam clothes in episode 3 and chapter 6.
-  // Neither his face nor his moustache is part of the drawing.
+  // Satotz's red tie, knotted at the collar of his dark coat: what he wears
+  // through the whole exam from episode 3 and chapter 6. Neither his face
+  // nor his moustache is part of the drawing.
   'satotz': [
-    { d: 'M32 91 L61 67 L80 82 L99 67 L129 91 L119 154 H42 Z' },
-    { d: 'M61 67 L51 105 L74 90 M99 67 L109 105 L86 90', role: 'soft' },
-    { d: 'M72 85 L87 84 L91 95 L80 104 L70 95 Z', role: 'accent' },
-    { d: 'M77 103 L65 147 L78 163 L92 146 L84 103', role: 'accent' },
-    { d: 'M82 108 L84 145 L78 154', role: 'soft' },
+    { d: ellipse(80, 46, 16, 5) },
+    { d: 'M64 47 L70 70 L80 60 L90 70 L96 47', role: 'soft' },
     {
-      d: 'M56 109 L44 119 L60 123 L51 154 M104 109 L116 119 L100 123 L109 154',
+      d: 'M64 48 C48 52 34 58 29 70 L25 150 H135 L131 70 C126 58 112 52 96 48',
     },
+    { d: 'M65 52 L52 86 L64 90 L80 132 L96 90 L108 86 L95 52' },
     {
-      d: 'M38 99 l6 5 M36 112 l6 5 M36 125 l6 5 M38 138 l6 5',
+      d: 'M72 63 L88 63 L85 78 L75 78 Z M88 63 L92 67 L89 77 L85 78',
+      role: 'accent',
+    },
+    { d: 'M75 78 L68 116 L78 128 L90 114 L85 78', role: 'accent' },
+    { d: 'M85 78 L89 80 L94 110 L90 114', role: 'soft' },
+    { d: 'M38 68 L41 150 M122 68 L119 150', role: 'soft' },
+    {
+      d: 'M98 96 l5 -6 M101 106 l6 -7 M104 116 l6 -7 M108 125 l6 -6',
       role: 'ambient',
     },
     {
-      d: 'M116 100 l6 -5 M118 112 l6 -5 M116 126 l6 -5 M114 139 l6 -5',
+      d: 'M123 86 l6 -5 M122 102 l7 -5 M122 118 l7 -5 M121 134 l7 -5',
       role: 'ambient',
     },
-    { d: 'M93 140 L103 140', role: 'soft' },
-    shadow(80, 184, 50),
+    {
+      d: dots([
+        [80, 140],
+        [80, 147],
+      ]),
+      role: 'soft',
+    },
+    shadow(80, 158, 54),
   ],
 
-  // Hanzo's neck scarf, its loose tails in the record's tint, with the
-  // bandages he wears at his wrists: his exam clothes in episode 3 and
-  // chapter 6. No hidden blade, first shown much later, is drawn.
+  // Hanzo's red bandana, knotted into a loop as he wears it at his neck,
+  // seen from its knot in three-quarter view: the cloth band with its
+  // folds, the inside of the loop hatched, the knot and its two pointed
+  // tails in the record's tint. His exam clothes in episode 3 and
+  // chapter 6. His hidden blade is first shown in episode 19 and chapter
+  // 34, after his threshold, so it is not drawn.
   'hanzo': [
+    { d: 'M40.4 83.8 A42 22 -8 1 0 123.6 72.2 A42 22 -8 1 0 40.4 83.8' },
+    { d: 'M40.4 83.8 V92 A42 22 -8 0 0 123.6 80.4 V72.2' },
     {
-      d: 'M45 80 C45 64 101 58 113 75 C120 90 105 104 80 106 C59 108 43 97 45 80 Z',
+      d: 'M52.3 78.2 A30 13 -8 1 1 111.7 69.8 A30 13 -8 1 1 52.3 78.2',
+      role: 'soft',
     },
-    { d: 'M45 80 C55 91 92 93 113 75', role: 'soft' },
-    { d: 'M50 75 C63 68 94 68 106 75', role: 'soft' },
-    { d: 'M75 99 L91 94 L103 108 L90 119 L75 111 Z' },
+    { d: 'M60 67 l2 6 M72 63 l2 6 M86 62 l2 6 M100 63 l1 6', role: 'ambient' },
+    { d: 'M48 92 q4 -4 2 -10 M112 90 q-3 -4 0 -10', role: 'soft' },
+    { d: 'M74 98 L92 94 L98 106 L86 115 L74 109 Z', role: 'accent' },
     {
-      d: 'M91 116 C105 123 116 140 132 154 L114 157 L115 167 C97 155 85 136 83 119',
+      d: 'M76 109 C66 124 52 138 34 152 C52 150 68 138 84 115 M92 108 C104 124 116 140 134 156 C118 152 102 138 90 113',
       role: 'accent',
     },
-    {
-      d: 'M77 108 C61 116 54 134 35 144 L43 152 L35 158 C58 151 77 133 82 118',
-      role: 'accent',
-    },
-    { d: 'M96 125 L115 149 M73 119 L49 144', role: 'soft' },
-    { d: ellipse(51, 166, 16, 6) },
-    { d: 'M35 166 V178 C35 185 67 185 67 178 V166' },
-    { d: 'M36 172 L65 178 M39 180 L65 169', role: 'soft' },
-    { d: 'M48 94 l3 4 M57 98 l3 4 M105 91 l-3 5', role: 'ambient' },
-    shadow(82, 191, 52),
+    { d: 'M72 124 L52 144 M98 126 L118 148', role: 'soft' },
+    { d: 'M80 101 l8 8', role: 'soft' },
+    shadow(82, 178, 56),
   ],
 
   // Nicholas's notebook computer, open on its hinge, the empty screen in
@@ -553,87 +596,88 @@ export const DRAWINGS = {
     shadow(83, 177, 56),
   ],
 
-  // The pink rope ties around Menchi's five top knots, loose coils and
-  // their ends: her first exam appearance in episode 6 and chapter 10.
-  // No hair, face, knives shown in chapter 12 or later ability is drawn.
+  // The top knots on the crown of Menchi's head, seen from behind, each tied
+  // with pink rope, the middle one's loose end hanging: her look at the
+  // Second Phase gate in episode 6 and chapter 10. No face, and none of the
+  // knives she draws in chapter 12.
   'menchi': [
-    { d: 'M27 97 C16 81 37 64 51 79 C62 93 43 113 27 97 Z' },
-    { d: 'M31 94 C24 84 36 75 44 84 C51 94 40 102 31 94', role: 'soft' },
-    { d: 'M55 76 C49 57 75 49 84 66 C92 84 63 95 55 76 Z' },
-    { d: 'M61 74 C57 64 71 59 77 69 C82 79 67 85 61 74', role: 'soft' },
-    { d: 'M92 80 C85 62 109 51 120 68 C132 86 104 101 92 80 Z' },
-    { d: 'M98 78 C93 68 107 61 114 72 C121 83 105 91 98 78', role: 'soft' },
-    { d: 'M112 119 C101 103 120 88 134 102 C148 117 130 134 112 119 Z' },
+    { d: 'M8 168 C20 124 50 104 80 102 C112 104 142 124 152 168' },
     {
-      d: 'M117 117 C111 108 122 99 129 108 C136 116 127 125 117 117',
-      role: 'soft',
+      d: 'M70 96 C62 80 62 60 74 46 C80 38 92 34 102 36 C94 42 90 50 92 56 C102 50 114 50 122 56 C110 60 102 68 98 76 C102 82 96 92 90 96',
     },
+    { d: 'M76 94 C72 78 76 62 88 50 M86 94 C88 84 94 74 104 66', role: 'soft' },
     {
-      d: 'M40 123 C27 101 55 85 78 97 C104 111 88 143 62 140 C51 139 43 133 40 123 Z',
+      d: `${ellipse(80, 96, 11, 3.3)} ${ellipse(80, 102.6, 11.3, 3.5)} ${ellipse(80, 109.2, 11.7, 3.6)}`,
       role: 'accent',
     },
     {
-      d: 'M47 120 C40 105 56 96 73 105 C89 114 80 133 64 132 C56 131 49 127 47 120',
-      role: 'soft',
-    },
-    { d: 'M57 139 L66 130 L77 139 L67 147 Z M64 140 L69 138', role: 'accent' },
-    {
-      d: 'M63 146 C51 156 43 154 32 163 M67 149 C60 164 72 174 61 183 M76 140 C97 145 98 168 114 170',
+      d: 'M91 108 C100 112 104 122 100 132 M91 110 C96 118 95 126 90 134',
       role: 'accent',
     },
     {
-      d: 'M35 101 l4 -3 M61 86 l3 -4 M115 91 l4 -4 M137 121 l-4 -3',
-      role: 'ambient',
+      d: 'M24 130 C14 118 12 100 20 88 C26 96 30 102 30 110 C32 98 38 90 46 86 C46 98 42 110 36 120',
     },
-    shadow(80, 190, 56),
+    {
+      d: `${ellipse(31, 124, 8, 2.4)} ${ellipse(31, 129, 8.3, 2.5)}`,
+      role: 'accent',
+    },
+    {
+      d: 'M128 116 C130 102 138 92 148 86 C148 96 144 104 140 110 C148 104 154 104 158 106 C154 114 148 120 142 124',
+    },
+    {
+      d: `${ellipse(135, 121, 7, 2.2)} ${ellipse(135, 125.5, 7.3, 2.3)}`,
+      role: 'accent',
+    },
+    { d: 'M100 150 C98 136 94 124 90 116', role: 'soft' },
+    { d: 'M136 140 l7 -4 M140 152 l8 -4 M143 163 l7 -4', role: 'ambient' },
   ],
 
-  // Buhara's roast-pork dish, the meat raised above the platter, its rim
-  // in the record's tint: the meal he asks for in episode 6 and chapter 10.
-  // No animal face, lettering or later utensil is drawn.
+  // A whole roast pig lying on its platter, the crackled back in the
+  // record's tint: the dish Buhara asks the applicants to cook in episode 6
+  // and chapter 10. The head is a plain silhouette, with no face drawn.
   'buhara': [
-    { d: ellipse(80, 144, 61, 14), role: 'accent' },
-    { d: 'M19 144 L27 154 C40 168 120 168 133 154 L141 144' },
-    { d: 'M27 144 C37 155 123 155 133 144', role: 'soft' },
+    { d: ellipse(80, 142, 64, 14) },
+    { d: 'M16 142 V145 C20 158 140 158 144 145 V142', role: 'soft' },
+    { d: 'M30 96 C40 82 62 76 86 76 C110 76 128 84 134 100', role: 'accent' },
     {
-      d: 'M38 139 C29 121 36 94 57 85 C73 79 104 86 117 102 C128 116 123 136 112 144',
+      d: 'M30 96 C26 100 22 104 20 110 V122 C24 126 30 128 36 128 C38 134 44 138 52 140 H112 C126 138 136 128 136 114 C136 108 136 104 134 100',
     },
-    { d: 'M47 134 C41 119 48 101 62 95 C80 88 104 98 111 111', role: 'soft' },
-    { d: 'M56 89 L49 76 L55 71 L67 84 M105 91 L115 80 L122 85 L115 100' },
+    { d: 'M20 110 C22 114 22 118 20 122', role: 'soft' },
+    { d: 'M38 90 L34 74 L50 84', role: 'soft' },
+    { d: 'M66 79 L69 87 M88 77 L88 85 M110 80 L107 88', role: 'soft' },
+    { d: 'M136 104 c7 -4 11 2 7 6 c-4 3 -8 -1 -4 -4', role: 'soft' },
     {
-      d: 'M46 117 C51 125 52 132 49 139 M60 104 C68 115 70 129 65 141 M78 99 C88 111 91 128 87 143 M98 103 C108 114 111 128 106 140',
+      d: 'M44 104 C46 116 54 126 66 130 M102 132 C110 128 114 120 114 112',
       role: 'soft',
     },
     {
-      d: 'M42 128 l7 -3 M56 137 l7 -3 M77 143 l7 -3 M98 141 l7 -3',
+      d: 'M58 138 l5 -6 M76 139 l5 -6 M94 139 l5 -6 M120 134 l5 -5',
       role: 'ambient',
     },
-    {
-      d: 'M28 152 l6 3 M43 158 l6 2 M113 158 l6 -2 M127 153 l5 -3',
-      role: 'ambient',
-    },
-    shadow(80, 184, 59),
+    shadow(80, 162, 60),
   ],
 
-  // Netero's single-tooth geta, the thong in the record's tint and the
-  // raised wooden sole seen from above and the side: his footwear on his
-  // arrival in episode 6 and chapter 12. No ball from the next episode.
+  // One of Netero's single-tooth geta, the thong in the record's tint and
+  // the one tooth standing under the sole: his footwear when he drops in on
+  // the Second Phase in episode 6 and chapter 12. No ball from the next
+  // episode.
   'netero': [
+    { d: 'M28 100 L110 70 L136 92 L54 122 Z' },
+    { d: 'M28 100 V110 L54 132 L136 102 V92 M54 122 V132' },
+    { d: 'M62.4 128.9 V137.4 L88.4 159.4 V119.4' },
+    { d: 'M88.4 159.4 L101.6 154.6 V114.6', role: 'soft' },
+    { d: 'M66 136 l14 -10 M68 145 l18 -13 M76 150 l11 -8', role: 'ambient' },
     {
-      d: 'M34 117 L76 55 Q82 48 91 55 L124 77 Q131 83 125 91 L83 153 Q77 161 68 155 L36 133 Q28 127 34 117 Z',
+      d: 'M61.8 88.9 Q86.7 75 111.5 85.2 M85.8 109.1 Q98.7 85 111.5 85.2',
+      role: 'accent',
     },
-    { d: 'M34 117 V130 L68 169 Q77 175 84 165 L125 104 V91' },
-    { d: 'M68 155 V169 M83 153 L84 165', role: 'soft' },
-    { d: 'M51 108 L78 103 L94 127 M78 103 L89 78', role: 'accent' },
-    { d: 'M52 113 L78 108 L91 130 M80 103 L93 80', role: 'soft' },
-    { d: 'M76 158 L72 177 L94 188 L99 165 L108 148' },
-    { d: 'M72 177 L84 159 M94 188 L107 168 L108 148', role: 'soft' },
-    { d: 'M43 125 L66 144 M46 120 L69 139 M86 66 L116 86', role: 'soft' },
     {
-      d: 'M40 136 l3 -4 M48 145 l3 -4 M57 155 l3 -4 M112 111 l5 -7',
-      role: 'ambient',
+      d: 'M64 92.5 Q87 80 108.5 88 M90 108.5 Q100 90 109.5 88.2',
+      role: 'soft',
     },
-    shadow(78, 195, 49),
+    { d: `M41.2 106.2 L56 100.8 ${dot(111.5, 85.2)}`, role: 'soft' },
+    { d: 'M34 109 l6 4 M118 104 l8 -3', role: 'ambient' },
+    shadow(82, 163, 44),
   ],
 
   // Zaban's small exam-site restaurant beside the much taller building:
@@ -660,31 +704,37 @@ export const DRAWINGS = {
     shadow(80, 158, 62),
   ],
 
-  // Milsy's fog among wetland trees, the near trunk in the record's tint:
-  // the country outside the tunnel in episode 4 and chapter 7. No beast
-  // from the later pursuit is introduced by the drawing.
+  // The tunnel's exit cut in the rock and the wetland's trees in the fog
+  // beyond: what the applicants see when they climb out to daylight in
+  // episode 4 and chapter 7. None of the creatures met on the run is drawn.
   'milsy-wetlands': [
     {
-      d: 'M27 149 C33 126 27 101 35 76 C40 61 37 45 41 30 M42 149 C43 120 39 102 46 81 C52 64 46 47 50 28',
-      role: 'accent',
+      d: 'M4 150 V76 L12 62 L24 60 L32 48 L46 46 L56 56 L64 60 L66 78 L72 150',
     },
-    { d: 'M36 78 L19 59 L15 37 M44 89 L62 62 L68 40' },
-    { d: 'M31 149 L17 153 M42 149 L56 153', role: 'soft' },
-    { d: 'M103 150 L108 72 L104 41 M113 150 L117 72 L114 41' },
-    { d: 'M110 81 L91 62 L84 38 M115 66 L134 47 L141 29', role: 'soft' },
-    { d: 'M70 143 L72 98 L69 69 M78 143 L80 98 L84 64', role: 'ambient' },
-    { d: 'M8 102 C34 93 50 108 72 102 C94 96 117 90 150 99', role: 'ambient' },
+    { d: 'M20 150 V112 C20 100 46 100 46 112 V150', role: 'accent' },
+    { d: 'M46 112 C44 108 40 107 38 108 V150', role: 'soft' },
+    { d: 'M24 120 l8 -6 M24 134 l12 -10 M24 148 l14 -12', role: 'ambient' },
+    { d: 'M54 66 l7 7 M57 84 l8 8 M58 102 l9 9 M60 120 l8 8', role: 'ambient' },
     {
-      d: 'M7 123 C30 114 47 129 71 121 C97 112 122 125 151 117',
-      role: 'ambient',
+      d: 'M98 150 C102 128 94 110 100 90 C104 76 98 62 104 48 M110 150 C110 128 108 110 114 92 C118 78 114 64 118 50',
     },
     {
-      d: 'M15 141 C42 133 66 145 90 138 C112 132 133 137 153 133',
+      d: 'M100 90 C90 82 82 78 76 86 M114 92 L130 78 C136 72 142 74 144 82',
+      role: 'soft',
+    },
+    { d: 'M84 150 L85 120 L82 110 M142 150 L143 132', role: 'ambient' },
+    {
+      d: 'M118 106 C128 102 140 106 156 102 M120 126 C132 122 144 126 156 122 M70 108 C78 104 86 106 94 104 M72 128 C78 124 86 128 94 126',
       role: 'ambient',
     },
-    { d: 'M5 150 H155', role: 'ambient' },
-    { d: 'M14 164 Q33 158 52 164 M86 168 Q113 160 140 168', role: 'soft' },
-    shadow(78, 156, 58),
+    { d: 'M76 150 L74 138 M90 150 L91 136 M124 150 L127 140', role: 'soft' },
+    { d: 'M4 150 H156', role: 'ambient' },
+    {
+      d: 'M78 162 Q98 157 118 162 M112 171 Q130 166 150 171',
+      role: 'ambient',
+      dashed: true,
+    },
+    shadow(36, 154, 34),
   ],
 
   // The cooking mansion and forest at Visca, its open gate in the record's
@@ -713,33 +763,29 @@ export const DRAWINGS = {
     shadow(80, 158, 62),
   ],
 
-  // Split Mountain's two cliffs above the ravine, the spider-eagle eggs
-  // hanging on threads between them in the record's tint: the retest in
-  // episode 6 and chapter 12. No bird's head or face is drawn.
+  // Split Mountain's two halves with the ravine between them, the spider
+  // eagles' web strung across it and their eggs in the record's tint: the
+  // retest in episode 6 and chapter 12. No bird is drawn.
   'split-mountain': [
-    { d: 'M3 150 L17 81 L51 35 L65 39 L57 78 L62 113 L56 150' },
-    { d: 'M102 150 L98 113 L105 78 L97 39 L111 35 L145 81 L157 150' },
-    { d: 'M19 133 L33 88 L48 63 M119 68 L135 93 L144 132', role: 'soft' },
+    { d: 'M4 150 L30 84 L52 32 L58 66 L52 104 L56 150' },
+    { d: 'M108 30 L130 86 L156 150 M108 30 L104 70 L110 108 L104 150' },
+    { d: 'M52 32 L64 46 V150 M108 30 L96 46 V150', role: 'soft' },
     {
-      d: 'M43 97 L55 86 M35 117 L55 100 M29 137 L57 114 M108 91 L119 104 M106 107 L129 127 M105 125 L139 147',
+      d: 'M56 62 l7 7 M54 86 l9 9 M54 110 l9 9 M56 132 l8 8 M103 62 l-6 6 M106 88 l-9 9 M108 114 l-11 11 M104 134 l-7 7',
       role: 'ambient',
     },
-    { d: 'M58 75 Q80 100 103 75 M60 94 Q80 117 100 94', role: 'soft' },
-    { d: 'M64 82 L73 111 M94 84 L88 119 M79 91 L80 137', role: 'soft' },
+    { d: 'M18 130 l8 -4 M28 108 l10 -5 M128 112 l8 4', role: 'ambient' },
     {
-      d: 'M68 121 C65 114 69 106 73 106 C78 106 82 114 78 121 C76 125 70 125 68 121 Z',
+      d: 'M58 74 Q80 88 102 72 M56 100 Q80 114 104 98 M70 62 L74 108 M90 60 L86 108',
+      role: 'soft',
+    },
+    { d: 'M73 92 V96 M86 104 V114 M78 108 V122', role: 'soft' },
+    {
+      d: `${ellipse(73, 103, 6, 7.5)} ${ellipse(86, 122, 6, 7.5)} ${ellipse(78, 131, 6, 7.5)}`,
       role: 'accent',
     },
-    {
-      d: 'M84 131 C81 123 85 116 89 116 C94 117 97 124 93 131 C91 135 86 135 84 131 Z',
-      role: 'accent',
-    },
-    {
-      d: 'M75 149 C72 142 76 134 80 134 C85 134 89 142 85 149 C83 153 77 153 75 149 Z',
-      role: 'accent',
-    },
-    { d: 'M5 150 H54 M105 150 H155', role: 'ambient' },
-    shadow(80, 158, 59),
+    { d: 'M4 150 H56 M104 150 H156', role: 'ambient' },
+    shadow(80, 156, 64),
   ],
 } satisfies Drawings
 

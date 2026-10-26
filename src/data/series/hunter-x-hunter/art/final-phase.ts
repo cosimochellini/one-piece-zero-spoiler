@@ -1,5 +1,5 @@
 import type { Drawings } from '~/data/art/stroke'
-import { circle, shadow } from '~/lib/svg/primitives'
+import { circle, ellipse, shadow } from '~/lib/svg/primitives'
 
 export const FINAL_PHASE_DRAWINGS = {
   // Masta’s black sunglasses, seen with the referee’s suit in episode 19 /
@@ -18,21 +18,21 @@ export const FINAL_PHASE_DRAWINGS = {
     { d: 'M60 62 L63 66 M66 62 L69 66', role: 'soft' },
     shadow(80, 184, 46),
   ],
-  // Illumi’s round-headed needle and pinned collar after the disguise is
-  // removed, episode 20 / chapter 35. No face or later abilities.
+  // One round-headed needle, held point down: the pin Gittarackur draws out
+  // of his head to become Illumi again, episode 20 / chapter 35. A single
+  // pin upright, where the disguise's pins cross; no face, no later throw.
   illumi: [
-    { d: 'M42 98 L64 82 L80 100 L98 82 L120 100 L126 150 H34 Z' },
-    { d: 'M64 82 L60 108 L80 122 L102 108 L98 82', role: 'soft' },
-    { d: 'M44 108 L40 146 M112 108 L120 146', role: 'soft' },
-    { d: 'M112 42 L64 134 M116 44 L68 136', role: 'accent' },
-    { d: circle(118, 36, 10), role: 'accent' },
-    { d: 'M114 32 Q120 28 124 34', role: 'soft' },
-    { d: circle(54, 104, 4) },
-    { d: circle(108, 104, 4) },
+    { d: circle(88, 46, 17), role: 'accent' },
+    { d: 'M71 47 C73 57 103 57 105 47', role: 'soft' },
+    { d: 'M76 38 Q80 32 88 31', role: 'soft' },
+    { d: 'M86 62 L92 57 M92 61 L100 54 M98 58 L103 53', role: 'ambient' },
+    { d: ellipse(86.5, 65, 5, 2), role: 'soft' },
+    { d: 'M81.5 66 L70 170 L91.5 66' },
+    { d: 'M86.5 68 L70.5 165', role: 'soft' },
     {
-      d: 'M82 124 V148 M46 126 L50 130 M44 134 L48 138 M42 142 L46 146',
+      d: 'M89 80 L87.5 84 M87.3 100 L85.6 104 M85.4 120 L83.8 124',
       role: 'ambient',
     },
-    shadow(80, 184, 43),
+    shadow(80, 186, 30),
   ],
 } satisfies Drawings

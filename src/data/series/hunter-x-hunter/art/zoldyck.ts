@@ -3,76 +3,116 @@ import { circle, ellipse, shadow } from '~/lib/svg/primitives'
 
 /** Original objects; the cited episode/chapter references await direct viewing. */
 export const ZOLDYCK_DRAWINGS = {
-  // Coco Loo's small tour-guide cap: episode22 / chapter39. No lettering.
+  // Coco Loo's small tour-guide hat, worn tilted, its round crown and the
+  // band at its rim: she welcomes the bus tour in episode 22 / chapter 39.
+  // No badge, no lettering.
   'coco-loo': [
-    { d: 'M35 81 L43 53 Q80 39 116 54 L126 82' },
-    { d: 'M35 81 Q80 65 126 82 L122 108 Q80 91 39 108 Z' },
-    { d: 'M39 108 Q78 99 117 109 Q108 134 54 135 Z', role: 'accent' },
-    { d: 'M54 135 Q94 143 117 115 L117 109', role: 'soft' },
-    { d: 'M43 53 Q80 67 116 54', role: 'soft' },
-    { d: 'M43 87 Q80 77 117 88', role: 'soft' },
-    { d: 'M44 95 Q80 85 118 96', role: 'soft' },
-    { d: 'M109 60 L116 67 M111 72 L120 77', role: 'ambient' },
-    { d: 'M64 115 Q82 111 103 115', role: 'soft' },
-    shadow(80, 171, 43),
-  ],
-  // Zebro's service-door key and ring: episode22 / chapter39.
-  'zebro': [
-    { d: ellipse(65, 54, 24, 12) },
-    { d: 'M41 54 V59 C41 74 89 74 89 59 V54', role: 'soft' },
-    { d: circle(71, 84, 14), role: 'accent' },
-    { d: circle(71, 84, 6), role: 'soft' },
-    { d: 'M67 98 L61 147 L66 160 H82 V148 H91 V137 H79 L80 96' },
-    { d: 'M72 103 L67 145 L72 153', role: 'soft' },
-    { d: 'M82 148 L77 143 H86', role: 'soft' },
-    { d: 'M76 114 L80 117 M74 125 L78 128 M72 136 L76 139', role: 'ambient' },
-    { d: 'M55 62 L53 69 M62 65 V72', role: 'soft' },
-    shadow(78, 183, 34),
-  ],
-  // Mike's long clawed forepaw: episode22 / chapter40. No head or eyes.
-  'mike': [
-    { d: 'M55 35 L48 62 L51 67 L42 93 C35 111 35 134 46 145' },
-    { d: 'M97 34 L107 58 L104 66 L115 93 C125 111 123 134 112 143' },
-    { d: 'M55 35 Q75 42 97 34', role: 'soft' },
     {
-      d: 'M46 145 Q42 162 48 170 Q58 165 59 144 M63 147 Q61 170 69 177 Q78 168 78 147 M83 146 Q84 172 92 176 Q100 164 99 144 M105 142 Q113 163 121 162 Q123 151 112 135',
+      d: 'M40 108 C38 80 54 64 80 64 C106 64 122 80 120 108',
+      transform: 'rotate(-14 80 100)',
+    },
+    {
+      d: 'M40 108 V117 A40 13 0 0 0 120 117 V108 A40 13 0 0 1 40 108',
+      role: 'accent',
+      transform: 'rotate(-14 80 100)',
+    },
+    { d: 'M50 88 Q56 74 72 69', role: 'soft', transform: 'rotate(-14 80 100)' },
+    {
+      d: 'M106 78 L111 74 M108 86 L115 81 M110 94 L117 89 M111 101 L118 97',
+      role: 'ambient',
+      transform: 'rotate(-14 80 100)',
+    },
+    {
+      d: 'M46 113 Q80 122 114 113',
+      role: 'soft',
+      transform: 'rotate(-14 80 100)',
+    },
+    shadow(80, 180, 40),
+  ],
+  // Zebro's key to the service door, a heavy bar key seen from its corner:
+  // the guard hands it over at the gate in episode 22 / chapter 39.
+  'zebro': [
+    { d: ellipse(80, 50, 22, 15), role: 'accent' },
+    { d: 'M58 50 V55 A22 15 0 0 0 102 55 V50' },
+    { d: ellipse(80, 48, 10, 6) },
+    { d: 'M63 44 Q68 39 76 37.5', role: 'soft' },
+    { d: ellipse(80, 72, 7, 2.5), role: 'soft' },
+    { d: 'M76 73 V154 H82 V73' },
+    { d: 'M82 154 L86 151 V148 M86 123 V74' },
+    { d: 'M82 126 H100 V133 H94 V139 H100 V148 H82' },
+    { d: 'M82 126 L86 123 H104 L100 126 M104 123 V145 L100 148', role: 'soft' },
+    {
+      d: 'M82.5 92 L85.5 90 M82.5 106 L85.5 104 M101 132 L103.5 130 M101 141 L103.5 139',
+      role: 'ambient',
+    },
+    shadow(84, 184, 28),
+  ],
+  // Mike's long, hand-like forepaw curling round the service door from the
+  // dark: the hand that opens it and throws the intruders out in episode 22 /
+  // chapter 39. Fingers and claws only; no head.
+  'mike': [
+    { d: 'M26 162 V32 H130 V162' },
+    { d: 'M32 162 V38 H124 V162', role: 'soft' },
+    { d: 'M96 164 L32 160 V40 L96 36 V48 M96 64 V71 M96 87 V96 M96 110 V164' },
+    { d: 'M96 36 L102 38 V48 M102 64 V71 M102 87 V96 M102 110 V162 L96 164' },
+    { d: 'M42 122 L86 120 V150 L42 152 Z', role: 'soft' },
+    {
+      d: 'M106 44 L120 40 M106 128 L114 124 M106 140 L122 132 M106 152 L122 144',
+      role: 'ambient',
+    },
+    {
+      d: 'M124 52 C116 49 106 47 99 49 C93 51 89 56 85 61 M88 66 C92 62 96 61 101 62 C107 63 115 64 124 66',
+    },
+    {
+      d: 'M124 74 C116 71 106 70 99 72 C91 75 83 81 76 88 M80 92 C87 86 94 83 100 84 C108 85 116 87 124 89',
+    },
+    {
+      d: 'M124 98 C116 96 107 96 101 98 C96 100 92 104 89 108 M92 112 C96 108 100 107 104 108 C110 109 118 110 124 112',
+    },
+    {
+      d: 'M85 61 C78 65 76 73 79 80 C81 74 84 70 88 66 M76 88 C69 93 67 102 70 108 C72 102 75 96 80 92 M89 108 C84 112 83 119 85 124 C87 119 89 115 92 112',
       role: 'accent',
     },
+    { d: 'M91 54 Q93 57 91 61 M86 79 Q89 82 87 86', role: 'soft' },
     {
-      d: 'M49 111 Q55 105 62 110 M69 109 Q77 104 85 109 M93 108 Q103 104 109 111',
+      d: 'M118 46 L121 50 L119 52 L123 55 M117 116 L121 119 L119 122 L123 124',
       role: 'soft',
     },
-    { d: 'M56 80 L62 89 L57 97 M98 77 L92 89 L99 95', role: 'soft' },
-    { d: 'M47 96 L51 103 M44 109 L47 116 M111 99 L115 107', role: 'ambient' },
-    { d: 'M54 120 L56 135 M74 119 V138 M95 119 L96 134', role: 'soft' },
-    { d: 'M110 116 L115 124 M110 128 L113 134', role: 'ambient' },
-    shadow(82, 189, 48),
+    shadow(80, 167, 54),
   ],
-  // Seaquant's white headband, folded with its tied ends: episode23 / chapter40.
+  // Seaquant's white headband, off and still in its loop, the knot pulled
+  // tight and the two tails trailing: the groundskeeper at the servants'
+  // quarters in episode 23 / chapter 40.
   'seaquant': [
-    { d: 'M33 91 C33 60 125 58 128 87 L126 112 C123 139 35 141 32 112 Z' },
-    { d: 'M33 91 C38 111 124 112 128 87', role: 'accent' },
-    { d: 'M42 88 C48 69 113 68 119 85', role: 'soft' },
-    { d: 'M44 93 C64 103 102 104 120 93', role: 'soft' },
-    { d: 'M32 112 C41 128 118 129 126 112', role: 'soft' },
-    { d: 'M106 117 L118 113 L125 122 L115 132 Z' },
-    { d: 'M115 132 L109 153 L124 149 L119 130' },
-    { d: 'M122 124 L138 141 L143 130 L125 118', role: 'soft' },
-    { d: 'M40 114 L44 122 M49 118 L52 126 M59 121 L61 129', role: 'ambient' },
-    shadow(80, 180, 47),
+    { d: ellipse(76, 112, 46, 17) },
+    { d: 'M30 112 V119 A46 17 0 0 0 122 119 V112' },
+    { d: 'M34 117 A42 13 0 0 1 118 117', role: 'soft' },
+    { d: 'M50 105 L53 101 M62 103 L65 99 M76 102 L79 98', role: 'ambient' },
+    { d: 'M52 124 Q56 128 62 128 M88 129 Q96 128 100 125', role: 'soft' },
+    { d: 'M104 122 L112 116 L122 120 L118 130 L108 131 Z', role: 'accent' },
+    {
+      d: 'M118 128 C126 136 130 148 126 160 L134 158 C138 146 132 132 122 124',
+    },
+    { d: 'M110 131 C108 142 100 152 92 158 L99 162 C107 155 114 144 116 132' },
+    shadow(80, 178, 52),
   ],
-  // Canary's staff and its rounded end: named-scene gate episode24 / chapter42.
+  // Canary's staff, its foot on the line she draws across the path:
+  // she stops anyone who crosses it in episode 23 / chapter 41, ahead of
+  // her named scene in episode 24 / chapter 42.
   'canary': [
-    { d: 'M52 164 L93 42 Q98 34 103 39 Q108 42 104 49 L64 168 Z' },
-    { d: 'M93 42 Q98 48 104 46', role: 'accent' },
-    { d: 'M54 155 L66 159 L64 168 L52 164 Z', role: 'accent' },
-    { d: 'M58 151 L96 48', role: 'soft' },
-    { d: 'M86 61 L96 65 M83 69 L93 73 M80 78 L90 81', role: 'soft' },
-    { d: 'M75 95 L85 98 M72 103 L82 106', role: 'soft' },
-    { d: 'M65 124 L75 127 M62 132 L72 135', role: 'soft' },
-    { d: 'M56 161 L61 164 M97 40 L100 42', role: 'ambient' },
-    { d: 'M100 53 L102 49 M67 150 L69 144', role: 'ambient' },
-    shadow(81, 186, 36),
+    { d: 'M45.6 155.7 L107.6 37.6 M54.4 160.4 L116.4 42.4' },
+    { d: 'M45.6 155.7 A5 2.3 28 0 0 54.4 160.4', role: 'soft' },
+    { d: 'M49.7 153.2 L108.6 42.8', role: 'soft' },
+    { d: circle(116, 33, 8), role: 'accent' },
+    { d: 'M107.6 37.6 A5 2 28 0 0 116.4 42.4', role: 'soft' },
+    { d: 'M111 29 Q113 25.5 118 25.5', role: 'soft' },
+    { d: 'M119 38 L122 35 M116 40 L121 35', role: 'ambient' },
+    {
+      d: 'M60.5 140.5 l4 -2 M66.9 128.5 l4 -2 M73.3 116.5 l4 -2 M79.7 104.5 l4 -2',
+      role: 'ambient',
+    },
+    { d: 'M12 160 Q70 156 148 158', role: 'soft' },
+    shadow(86, 164, 44),
   ],
   // Gotoh's unlettered coins, turned edge on and resting in a small stack:
   // named-scene gate episode25 / chapter43; no later Nen attack.
@@ -91,73 +131,89 @@ export const ZOLDYCK_DRAWINGS = {
     { d: 'M107 61 L111 64 M108 71 L113 73 M106 83 L111 85', role: 'ambient' },
     shadow(78, 181, 48),
   ],
-  // Milluki's whip and wrapped handle: episode23 / chapter42.
+  // Milluki's whip, the wrapped handle seen from its end and the lash
+  // tapering to its tip: he whips the chained Killua in episode 23 /
+  // chapter 42.
   'milluki': [
-    { d: 'M37 157 L56 113 L66 118 L49 163 Z', role: 'accent' },
-    { d: 'M56 113 L58 105 L69 110 L66 118 Z' },
+    { d: 'M53.7 123.5 L29.7 165.5 M62.3 128.5 L38.3 170.5', role: 'accent' },
+    { d: 'M29.7 165.5 A5 2.5 30 1 0 38.3 170.5 A5 2.5 30 1 0 29.7 165.5' },
+    { d: 'M53.7 123.5 A5 2.5 30 0 0 62.3 128.5', role: 'soft' },
     {
-      d: 'M39 151 L51 155 M42 143 L54 147 M45 135 L57 139 M49 127 L60 131',
+      d: 'M36.7 153.3 L43.3 161.7 M42.7 142.8 L49.3 151.2 M48.7 132.3 L55.3 140.7',
       role: 'soft',
     },
+    { d: 'M54 122 C48 80 92 38 126 54 C150 66 140 108 114 114' },
+    { d: 'M62 126 C57 86 96 46 124 58 C144 67 136 104 114 114' },
     {
-      d: 'M58 106 C70 89 113 102 118 73 C124 37 69 30 61 58 C52 90 125 96 125 128 C125 153 93 158 82 145',
-    },
-    {
-      d: 'M62 108 C76 94 117 103 123 75 C131 33 67 25 56 57 C44 96 119 101 119 128 C119 147 96 153 85 141',
+      d: 'M114 114 C96 120 86 136 98 150 C110 162 132 158 146 166',
       role: 'soft',
     },
-    { d: 'M84 141 L77 149 L71 146 L79 138', role: 'soft' },
-    { d: 'M41 160 L35 172 L42 177 L48 164', role: 'soft' },
-    { d: 'M67 47 L69 52 M80 39 L81 44 M97 39 L96 44', role: 'ambient' },
-    { d: 'M117 117 L122 115 M118 129 L124 129', role: 'ambient' },
-    shadow(79, 188, 49),
+    { d: 'M146 166 L151 164 M146 166 L150 170', role: 'soft' },
+    { d: 'M60 100 L64 98 M66 82 L70 81 M78 66 L81 66', role: 'ambient' },
+    shadow(84, 186, 50),
   ],
-  // Zeno's hanging tabard panels, laid flat: episode24 / chapter42.
-  // The canonical lettering is deliberately omitted under the house rules.
+  // The long panel hanging down the front of Zeno's robe from under its
+  // standing collar, its back turned at the hem: Killua's grandfather in
+  // episode 24 / chapter 42. The words on it are left off.
   'zeno': [
+    { d: 'M66 40 Q80 46 94 40 V34 Q80 40 66 34 Z' },
     {
-      d: 'M45 42 L68 35 Q80 45 92 35 L115 42 L109 96 L114 162 H83 L80 112 L77 162 H46 L51 96 Z',
+      d: 'M66 40 Q50 44 34 54 L26 92 M94 40 Q110 44 126 54 L134 92',
+      role: 'soft',
     },
-    { d: 'M68 35 L70 54 L80 64 L90 54 L92 35', role: 'soft' },
-    { d: 'M53 47 L58 95 L54 153 M107 47 L102 95 L106 153', role: 'soft' },
-    { d: 'M57 68 L73 72 L72 105 L56 102 Z', role: 'accent' },
-    { d: 'M87 72 L103 68 L104 102 L88 105 Z', role: 'accent' },
-    { d: 'M59 108 L71 110 M89 110 L101 108', role: 'soft' },
-    { d: 'M60 125 L58 146 M99 125 L101 146', role: 'soft' },
-    { d: 'M49 54 L53 60 M48 65 L52 71 M109 113 L105 119', role: 'ambient' },
-    { d: 'M47 157 L77 157 M84 157 H113', role: 'soft' },
-    shadow(80, 186, 44),
-  ],
-  // Kalluto's broad obi and folded ends: named-scene gate episode24 / chapter42.
-  // No fan, paper power or later affiliation.
-  'kalluto': [
-    { d: 'M34 83 C51 70 105 70 124 82 L122 113 C104 128 52 128 34 114 Z' },
-    { d: 'M34 83 C51 97 106 98 124 82', role: 'soft' },
-    { d: 'M34 91 C55 106 103 106 123 92', role: 'accent' },
-    { d: 'M34 105 C55 119 102 119 123 104', role: 'soft' },
-    { d: 'M82 89 L100 75 L112 91 L96 105 Z' },
-    { d: 'M82 89 L66 73 L55 89 L70 104 Z' },
-    { d: 'M75 88 L91 88 L94 105 L76 108 Z', role: 'soft' },
-    { d: 'M77 108 L70 149 L84 142 L92 148 L92 107' },
-    { d: 'M59 90 L70 94 M96 91 L106 87 M80 117 L78 133', role: 'soft' },
-    shadow(81, 180, 48),
-  ],
-  // The visited country's mountain seen beyond the arrival train:
-  // episode22 / chapter39, with no invented map boundary or national symbol.
-  'republic-of-padokea': [
-    { d: 'M16 105 L61 46 L76 52 L90 43 L141 105' },
-    { d: 'M61 46 Q74 62 90 43', role: 'soft' },
-    { d: 'M54 67 L43 96 M99 68 L114 99', role: 'ambient' },
-    { d: 'M29 124 L37 105 H118 L129 124 V144 H29 Z' },
-    { d: 'M37 105 L43 99 H113 L118 105', role: 'soft' },
+    { d: 'M40 72 L44 168 M120 72 L116 168', role: 'soft' },
     {
-      d: 'M40 111 H57 V123 H35 M64 111 H82 V123 H64 Z M90 111 H111 L119 123 H90 Z',
+      d: 'M66 44 L96 44 C100 80 102 120 108 156 L68 162 C64 124 62 84 66 44 Z',
       role: 'accent',
     },
-    { d: 'M30 133 H128 M46 128 V140 M86 128 V140', role: 'soft' },
-    { d: `${circle(46, 146, 6)} ${circle(108, 146, 6)}` },
-    { d: 'M9 155 H151 M11 162 H149', role: 'ambient' },
-    shadow(80, 176, 54),
+    { d: 'M96 44 L100 46 C104 82 106 120 112 154 L108 156' },
+    { d: 'M68 162 C70 168 80 170 92 166 L110 160 L108 156' },
+    { d: 'M75 58 C76 90 76 124 79 154', role: 'soft' },
+    {
+      d: 'M101 66 L103 64 M102 88 L104 86 M103 110 L105 108 M105 132 L107 130 M78 164 L82 161 M88 165 L92 162',
+      role: 'ambient',
+    },
+    shadow(80, 184, 40),
+  ],
+  // Kalluto's furisode, the long sleeves hanging and the broad obi across
+  // it: he follows his mother to the gate in episode 24 / chapter 42.
+  // No fan, no paper.
+  'kalluto': [
+    {
+      d: 'M70 34 L46 42 L24 50 L22 128 Q22 136 32 136 L44 134 L48 80 M90 34 L114 42 L134 50 L136 126 Q136 132 128 132 L116 130 L112 80',
+    },
+    { d: 'M48 110 L50 170 Q80 175 110 170 L112 110' },
+    { d: 'M70 34 L86 72 M77 34 L90 64 M92 34 L82 52', role: 'soft' },
+    { d: 'M48 82 Q80 88 112 82 V108 Q80 114 48 108 Z', role: 'accent' },
+    { d: 'M84 112 L88 171', role: 'soft' },
+    { d: 'M48 80 L46 42 M112 80 L114 42', role: 'soft' },
+    {
+      d: 'M120 60 L130 54 M120 76 L132 69 M120 92 L132 85 M120 108 L132 101',
+      role: 'ambient',
+    },
+    { d: 'M30 70 Q34 100 30 126', role: 'soft' },
+    shadow(80, 186, 44),
+  ],
+  // The tour bus that takes the three from town towards Kukuroo Mountain,
+  // its summit over the roof: the arrival in Padokea in episode 22 /
+  // chapter 39. No route board, no company name.
+  'republic-of-padokea': [
+    { d: 'M64 81.6 L90 46 L100 51 L110 44 L160 98', role: 'soft' },
+    { d: 'M24 90 L50 80 V142 L24 138 Z' },
+    { d: 'M50 80 L138 90 V136 L50 142' },
+    { d: 'M28 94 L46 87 V110 L28 114 Z', role: 'soft' },
+    { d: 'M24 130 L50 134 M50 128 L138 124', role: 'soft' },
+    {
+      d: 'M58 88.9 L73 90.6 V112.6 L58 110.9 Z M77 91.1 L92 92.8 V114.8 L77 113.1 Z M96 93.2 L111 94.9 V116.9 L96 115.2 Z M115 95.4 L130 97.1 V119.1 L115 117.4 Z',
+      role: 'accent',
+    },
+    {
+      d: 'M58.5 140.8 A9.5 9.5 0 0 0 77.5 140.8 M111.5 137.6 A9 9 0 0 0 128.5 137.6',
+    },
+    { d: `${circle(68, 143, 3)} ${circle(120, 142, 2.6)}`, role: 'soft' },
+    { d: 'M27 120 L33 117.6 M27 127 L35 123.8', role: 'ambient' },
+    { d: 'M6 150 H154', role: 'ambient' },
+    shadow(84, 151, 58),
   ],
   // Kukuroo's dormant summit and the walls around the estate:
   // episode22 / chapter39. No lettering, faces or gate emblems.
