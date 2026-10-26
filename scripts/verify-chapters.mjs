@@ -62,6 +62,7 @@ const TITLES = {
   },
   'hunter-x-hunter': {
     'gittarackur': 'Illumi Zoldyck',
+    'illumi': 'Illumi Zoldyck',
     'killua': 'Killua Zoldyck',
     'hisoka': 'Hisoka Morow',
     'netero': 'Isaac Netero',

@@ -74,6 +74,7 @@ const ITALIAN_TITLES = {
   'tenguyama-hitetsu': 'Kozuki Sukiyaki',
   'terracotta': 'Terracotta',
   // Hunter x Hunter, on Italian Wikipedia.
+  'illumi': 'Famiglia Zoldick#Illumi',
   'killua': 'Killua Zoldick',
   'kite': 'Associazione Hunter#Kaito',
   'hisoka': 'Hisoka Morou',
@@ -129,6 +130,7 @@ const NAMES_KEPT = {
   'leroute': 'Leroute',
   'togari': 'Togari',
   // No Italian page names them: the English name stands.
+  'masta': 'Masta',
   'katzo': 'Katzo',
   'khara': 'Khara',
   // Italian Wikipedia's Fratelli Amori entry names all three in its body.

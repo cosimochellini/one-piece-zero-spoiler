@@ -300,7 +300,17 @@ const earlyExam: HunterSaga = {
         en: 'He has grown up on Whale Island with Mito, who has raised him since he was a baby. His father, Ging Freecss, is a Hunter he has never met. Mito will let him take the exam only if he catches the biggest fish in the swamp, sure that he cannot; he does it with his rod. He sails to become a Hunter and to learn about his father.',
       },
       status: [{ episode: 1, value: 'alive' }],
-      affiliation: [{ episode: 1, value: APPLICANT }],
+      affiliation: [
+        { episode: 1, value: APPLICANT },
+        {
+          episode: 21,
+          chapter: 37,
+          value: {
+            en: 'Hunter Association, Hunter',
+            it: 'Associazione Hunter, Hunter',
+          },
+        },
+      ],
       origin: [
         { episode: 1, chapter: 1, place: 'whale-island', value: WHALE_ISLAND },
       ],
@@ -332,7 +342,17 @@ const earlyExam: HunterSaga = {
         en: 'He will not tell the captain why he is taking the exam, then admits it is for money and what money buys. Kurapika’s manner gets under his skin, and when he insults Kurapika’s clan the two go up on deck in the storm to fight. The duel ends when Katzo is thrown overboard and Gon dives to catch him: Leorio and Kurapika grab Gon by the legs, and afterwards the two make up.',
       },
       status: [{ episode: 1, value: 'alive' }],
-      affiliation: [{ episode: 1, value: APPLICANT }],
+      affiliation: [
+        { episode: 1, value: APPLICANT },
+        {
+          episode: 21,
+          chapter: 37,
+          value: {
+            en: 'Hunter Association, Hunter',
+            it: 'Associazione Hunter, Hunter',
+          },
+        },
+      ],
     },
     'kurapika': {
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
@@ -341,7 +361,17 @@ const earlyExam: HunterSaga = {
         en: 'He keeps his reasons to himself until the captain threatens to put him off the ship: the Phantom Troupe killed the rest of his clan, and a Hunter can reach places and information closed to everyone else. He fights with two wooden swords. A quarrel with Leorio over manners nearly ends in a duel on deck, until together they pull back Gon and Katzo from the sea; afterwards the two make up.',
       },
       status: [{ episode: 1, value: 'alive' }],
-      affiliation: [{ episode: 1, value: APPLICANT }],
+      affiliation: [
+        { episode: 1, value: APPLICANT },
+        {
+          episode: 21,
+          chapter: 37,
+          value: {
+            en: 'Hunter Association, Hunter',
+            it: 'Associazione Hunter, Hunter',
+          },
+        },
+      ],
       origin: [
         {
           episode: 1,
@@ -441,6 +471,14 @@ const earlyExam: HunterSaga = {
             en: 'Hunter Exam, applicant',
           },
         },
+        {
+          episode: 21,
+          chapter: 37,
+          value: {
+            en: 'Hunter Association, Hunter',
+            it: 'Associazione Hunter, Hunter',
+          },
+        },
       ],
     },
     'hanzo': {
@@ -457,6 +495,14 @@ const earlyExam: HunterSaga = {
           value: {
             it: 'Esame Hunter, aspirante',
             en: 'Hunter Exam, applicant',
+          },
+        },
+        {
+          episode: 21,
+          chapter: 37,
+          value: {
+            en: 'Hunter Association, Hunter',
+            it: 'Associazione Hunter, Hunter',
           },
         },
       ],

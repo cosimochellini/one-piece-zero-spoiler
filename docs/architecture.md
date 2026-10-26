@@ -61,7 +61,7 @@ receive an end-of-anime bookmark; source filtering still applies. See
 ## Series and routing
 
 One Piece and Hunter x Hunter are open to readers. HxH currently files the road
-to the exam, its first four phases, named finalists and the manga’s chapter-one
+to the exam, its first four phases, the Final Phase and the manga’s chapter-one
 characters introduced later by the anime; remaining Hunter Exam content is
 tracked in #760. Opening the series does not expand its records.
 
@@ -131,11 +131,11 @@ checks this block.
 
 | Thing             | Count                                              |
 | ----------------- | -------------------------------------------------- |
-| Records           | 49                                                 |
-| Characters        | 34                                                 |
+| Records           | 51                                                 |
+| Characters        | 36                                                 |
 | Arcs, places      | 7 · 8                                              |
 | Saga modules      | 7                                                  |
-| Line drawings     | 49, one per record, plus 1 redrawings of 1 records |
+| Line drawings     | 51, one per record, plus 1 redrawings of 1 records |
 | Chronicle stories | 0, for 0 characters                                |
 
 <!-- End of the generated counts. -->
