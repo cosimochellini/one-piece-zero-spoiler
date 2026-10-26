@@ -327,7 +327,7 @@ export const DRAWINGS = {
     shadow(76, 182, 50),
   ],
 
-  // A Kiriko's arm with the wing it grows from it to fly, folded and hanging
+  // A Kiriko's arm and the wing it grows to fly, folded and hanging
   // below, the coverts in a row and the long feathers layered under them,
   // its three long fingers ending in claws in the record's tint: the
   // navigators fly Gon, Kurapika and Leorio to the exam in episode 2 and

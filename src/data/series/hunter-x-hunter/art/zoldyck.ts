@@ -30,8 +30,7 @@ export const ZOLDYCK_DRAWINGS = {
     shadow(80, 180, 40),
   ],
   // Zebro's key to the service door, seen from its corner: the guard keeps
-  // it at the gate for intruders, and refuses it to Gon, in episode 22 /
-  // chapter 39.
+  // it at the gate for intruders, in episode 22 / chapter 39.
   'zebro': [
     { d: ellipse(80, 50, 22, 15), role: 'accent' },
     { d: 'M58 50 V55 A22 15 0 0 0 102 55 V50' },
@@ -50,7 +49,7 @@ export const ZOLDYCK_DRAWINGS = {
   ],
   // Mike's long, hand-like forepaw curling round the service door from the
   // dark: the hand that opens it and throws the intruders out in episode 22 /
-  // chapter 39. Fingers and claws only; no head.
+  // chapter 40. Fingers and claws only; no head.
   'mike': [
     { d: 'M26 162 V32 H130 V162' },
     { d: 'M32 162 V38 H124 V162', role: 'soft' },
