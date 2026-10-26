@@ -2,26 +2,34 @@ import { byNumber, byValue } from 'sort-es'
 
 import { parseCookieHeader } from '~/lib/cookies'
 
+import { localeForCountry } from './countries'
 import { DEFAULT_LOCALE, isLocale, type Locale, LOCALE_COOKIE } from './locales'
 
 /**
  * Picks the locale for a request that did not name one in its path.
  *
  * The order is deliberate. A cookie is an explicit choice the reader made on
- * this site, so it outranks `Accept-Language`, which is a browser default the
- * reader has probably never seen. Only when neither says anything does the
- * site default apply.
+ * this site, so it outranks everything else. The visitor's country comes
+ * next, ahead of `Accept-Language`: most browsers send `en` or the operating
+ * system's language whatever the reader reads, so a header ranked first would
+ * leave the country nothing to decide (#831). Only when none of them says
+ * anything does the site default apply. The country is read, never stored.
  */
 export function negotiateLocale(
   cookieHeader: null | string | undefined,
   acceptLanguage: null | string | undefined,
+  country?: string,
 ): Locale {
   const fromCookie = parseCookieHeader(cookieHeader).get(LOCALE_COOKIE)
   if (isLocale(fromCookie)) {
     return fromCookie
   }
 
-  return parseAcceptLanguage(acceptLanguage) ?? DEFAULT_LOCALE
+  return (
+    localeForCountry(country)
+    ?? parseAcceptLanguage(acceptLanguage)
+    ?? DEFAULT_LOCALE
+  )
 }
 
 // Matched against an already-trimmed parameter, so the surrounding whitespace
