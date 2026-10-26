@@ -56,7 +56,7 @@ export const onePieceEn = {
   'character.bountyValue': '{amount} Berry',
 
   'ship.foggedName': 'A ship under fog',
-  'ship.foggedTitle': 'A ship under fog | Zero Spoiler',
+  'ship.foggedTitle': 'A ship under fog | {series} | Zero Spoiler',
   'ship.foggedDescription.episode':
     'A One Piece ship, under fog until episode {threshold}. Set your bookmark to read about it.',
   'ship.foggedDescription.season':
@@ -69,7 +69,7 @@ export const onePieceEn = {
   'filler.title': 'Filler episodes',
   'filler.count':
     '{episodes} episodes that are filler in whole or in part, and {unnumbered} films and specials. Each one opens at the episode where it airs.',
-  'filler.pageTitle': 'Filler episodes | Zero Spoiler',
+  'filler.pageTitle': 'Filler episodes | {series} | Zero Spoiler',
   'filler.pageDescription':
     'Which One Piece episodes are filler, mixed or recaps, the runs you can skip, and where the films and specials fit.',
   'filler.noBookmark':
@@ -130,7 +130,7 @@ export const onePieceEn = {
     '{count} devil fruits, grouped by saga and listed in the order the story names them. Fruits under fog do not show up in search.',
   'fruits.countFaction':
     '{count} devil fruits, grouped by the faction of the characters who ate them, as of your bookmark. A fruit appears under each of their factions. Fruits under fog do not show up in search.',
-  'fruits.pageTitle': 'Devil fruits | Zero Spoiler',
+  'fruits.pageTitle': 'Devil fruits | {series} | Zero Spoiler',
   'fruits.pageDescription':
     'One Piece devil fruits, each hidden until the episode where it is first named.',
   'fruits.searchLabel': 'Search devil fruits',
@@ -184,14 +184,14 @@ export const onePieceEn = {
   'fruit.opensAt.season': 'First named in {threshold}',
   'fruit.opensAt.chapter': 'First named in chapter {threshold}',
   'fruit.foggedName': 'A fruit under fog',
-  'fruit.foggedTitle': 'A fruit under fog | Zero Spoiler',
+  'fruit.foggedTitle': 'A fruit under fog | {series} | Zero Spoiler',
   'fruit.foggedDescription.episode':
     'A One Piece devil fruit first named in episode {threshold}. Set your bookmark to read this page.',
   'fruit.foggedDescription.season':
     'A One Piece devil fruit first named in {threshold}. Set your bookmark to read this page.',
   'fruit.foggedDescription.chapter':
     'A One Piece devil fruit first named in chapter {threshold}. Set your bookmark to read this page.',
-  'fruit.pageTitle': '{name} | Zero Spoiler',
+  'fruit.pageTitle': '{name} | {series} | Zero Spoiler',
   'fruit.back': 'All devil fruits',
   'fruit.form': 'Type',
   'fruit.eatersTitle': 'Who ate it',

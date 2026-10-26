@@ -169,7 +169,7 @@ describe('a place’s own page', () => {
     expect(detail.slot.open).toBe(false)
     expect(detail.chart).toBeNull()
     expect(detail.drawings).toStrictEqual([])
-    expect(head.title).toBe('A place under fog | Zero Spoiler')
+    expect(head.title).toBe('A place under fog | One Piece | Zero Spoiler')
   })
 })
 
@@ -180,7 +180,7 @@ describe('a ship’s own page', () => {
       const reached = new Map(
         placesPage(bookmark, 'en').ships.map((view) => [view.id, view]),
       )
-      const covered = 'A ship under fog | Zero Spoiler'
+      const covered = 'A ship under fog | One Piece | Zero Spoiler'
 
       // What each page sends, and what the places page's ship says of her:
       // the same record once reached, nothing and no drawing before.
@@ -199,7 +199,7 @@ describe('a ship’s own page', () => {
           : {
               slot: { open: true, record: sent },
               drawings: null,
-              title: `${entity.name.en} | Zero Spoiler`,
+              title: `${entity.name.en} | One Piece | Zero Spoiler`,
             }
       })
 
@@ -217,7 +217,7 @@ describe('a ship’s own page', () => {
       open: false,
       covered: { kind: 'ship', revealedAtEpisode: 324 },
     })
-    expect(head.title).toBe('A ship under fog | Zero Spoiler')
+    expect(head.title).toBe('A ship under fog | One Piece | Zero Spoiler')
   })
 
   it('covers the Merry before the crew receives her', () => {

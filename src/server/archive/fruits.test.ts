@@ -326,14 +326,16 @@ describe('a fruit’s own page', () => {
   it('keeps the name out of the head under fog', () => {
     const page = fruitPage('dark-dark-fruit', ep(100), 'en')
 
-    expect(page?.head.title).toBe('A fruit under fog | Zero Spoiler')
+    expect(page?.head.title).toBe(
+      'A fruit under fog | One Piece | Zero Spoiler',
+    )
     expect(page?.detail.slot.open).toBe(false)
   })
 
   it('names the fruit once the reader has reached it', () => {
     const page = fruitPage('gum-gum-fruit', ep(100), 'en')
 
-    expect(page?.head.title).toBe('Gum-Gum Fruit | Zero Spoiler')
+    expect(page?.head.title).toBe('Gum-Gum Fruit | One Piece | Zero Spoiler')
     expect(page?.detail.slot.open).toBe(true)
   })
 

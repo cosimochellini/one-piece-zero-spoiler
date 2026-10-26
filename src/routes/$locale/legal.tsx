@@ -31,7 +31,7 @@ export const Route = createFileRoute('/$locale/legal')({
         kind: 'index',
         locale: params.locale,
         pathname: match.pathname,
-        titleKey: 'legal.title',
+        titleKey: 'legal.pageTitle',
       })
     : {},
   headers: () => ({ 'Cache-Control': 'private, no-store' }),

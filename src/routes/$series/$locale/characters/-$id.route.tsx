@@ -21,6 +21,10 @@ import { styles } from './-$id.styles'
  *
  * Streamed: the strip is sixty-six marks that say nothing the dossier above
  * has not already said, and the two neighbours are a drawing each.
+ *
+ * Both bands carry `data-nosnippet`: their words ("Before: Character Episode
+ * 463") read badly alone, and Google took them as the result's snippet in
+ * place of the record's `<meta name="description">`.
  */
 export function RouteDiptych({
   position,
@@ -43,7 +47,10 @@ export function RouteDiptych({
 
   return (
     <>
-      <div {...stylex.props(styles.dossier)}>
+      <div
+        data-nosnippet
+        {...stylex.props(styles.dossier)}
+      >
         <h2
           id="route-position"
           {...stylex.props(styles.sectionTitle)}
@@ -86,7 +93,10 @@ export function RoutePending(): ReactElement {
   const t = useT()
 
   return (
-    <div {...stylex.props(styles.dossier)}>
+    <div
+      data-nosnippet
+      {...stylex.props(styles.dossier)}
+    >
       <h2
         id="route-position"
         {...stylex.props(styles.sectionTitle)}
