@@ -59,7 +59,7 @@ export const HUNTER_X_HUNTER_ARCHIVE: SeriesArchive = {
   // Both sides of the new named-scene gates in each unit, followed by the
   // first two season boundaries (the demo end and a boundary inside an arc).
   bookmarks: sweepOf(sagas, SERIES, [
-    ...[2, 3, 4, 5, 6].map((episode) => ({
+    ...[2, 3, 4, 5, 6, 75, 76].map((episode) => ({
       mode: 'episode' as const,
       episode,
     })),

@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest'
 
 import { vouches } from '~/data/chapterTable'
 import { toldIn } from '~/data/reveal'
+import { archiveIn } from '~/data/source'
 import type {
   Dated,
   Entity,
@@ -13,6 +14,7 @@ import type {
   Visit,
 } from '~/data/types'
 import { type Locale, LOCALES } from '~/i18n/locales'
+import { type Source, thresholdIn } from '~/lib/progress/spoiler'
 import { markedIds, tokenize } from '~/lib/prose/markers'
 import { expectedOf, type Least, LOADED_SERIES } from '~/test/series'
 
@@ -168,21 +170,6 @@ function linkedOrigins(
 /** Every saga's dossier ids, in filing order, repeats kept. */
 function dossierIds(archive: SeriesArchive): string[] {
   return archive.sagas.flatMap((saga) => Object.keys(saga.dossiers))
-}
-
-/** The arcs that open between a shelf's heading and a character on it. */
-function arcsBetween(
-  arcs: Entity[],
-  heading: Entity,
-  character: Entity,
-): string[] {
-  return arcs
-    .filter(
-      (arc) =>
-        arc.revealedAtEpisode > heading.revealedAtEpisode
-        && arc.revealedAtEpisode <= character.revealedAtEpisode,
-    )
-    .map((arc) => arc.id)
 }
 
 /** What each count of `Least` counts in an archive. */
@@ -578,7 +565,7 @@ describe.each(LOADED_SERIES)('the chronicles of $slug', ({ archive }) => {
 })
 
 describe.each(LOADED_SERIES)('the shelves of $slug', ({ archive }) => {
-  const { arcs, bookSections, characters, chart, featuredCharacters } = archive
+  const { bookSections, characters, chart, featuredCharacters } = archive
 
   it('files each arc’s leads as distinct characters of the same archive', () => {
     for (const [arc, ids] of Object.entries(archive.leads)) {
@@ -631,30 +618,39 @@ describe.each(LOADED_SERIES)('the shelves of $slug', ({ archive }) => {
     expect(opens).toStrictEqual(opens.toSorted(byNumber()))
   })
 
-  it('never puts a character under a heading that opens after them, in either unit', () => {
-    // Shelving goes by episode; a reader who counts in chapters gates the
-    // heading by chapter, so the chapter order has to agree or a tile could
-    // sit open under a veiled heading.
-    for (const section of bookSections) {
-      expect(section.arc.kind).toBe('arc')
+  it.each<Source>(['anime', 'manga'])(
+    'shelves every %s character once under a heading reached in its unit',
+    (source) => {
+      const mode = source === 'manga' ? 'chapter' : 'episode'
+      const copy = archiveIn(archive, source)
+      const shelved = copy.bookSections.flatMap((section) => section.characters)
 
-      for (const character of section.characters) {
-        expect(section.arc.revealedAtEpisode, character.id).toBeLessThanOrEqual(
-          character.revealedAtEpisode,
-        )
-        expect(section.arc.revealedAtChapter, character.id).toBeLessThanOrEqual(
-          character.revealedAtChapter,
-        )
+      expect(shelved.map(({ id }) => id).toSorted(byString())).toStrictEqual(
+        copy.characters.map(({ id }) => id).toSorted(byString()),
+      )
+
+      for (const section of copy.bookSections) {
+        for (const character of section.characters) {
+          expect(
+            thresholdIn(section.arc, mode),
+            character.id,
+          ).toBeLessThanOrEqual(thresholdIn(character, mode))
+        }
       }
-    }
-  })
+    },
+  )
 
-  it('shelves a character under the latest arc that opens no later than them', () => {
-    // No arc may open between a shelf's heading and a character on it.
+  it('keeps the original anime shelf under the latest episode heading', () => {
     for (const section of bookSections) {
       for (const character of section.characters) {
         expect(
-          arcsBetween(arcs, section.arc, character),
+          archive.arcs
+            .filter(
+              (arc) =>
+                arc.revealedAtEpisode > section.arc.revealedAtEpisode
+                && arc.revealedAtEpisode <= character.revealedAtEpisode,
+            )
+            .map(({ id }) => id),
           character.id,
         ).toStrictEqual([])
       }

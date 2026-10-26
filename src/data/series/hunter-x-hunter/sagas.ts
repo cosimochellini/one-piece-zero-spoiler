@@ -1,3 +1,4 @@
+import { chapterOne } from './records/chapter-one'
 import { chimeraAnt } from './records/chimera-ant'
 import { election } from './records/election'
 import { greedIsland } from './records/greed-island'
@@ -9,7 +10,11 @@ import { yorknewCity } from './records/yorknew-city'
 
 /** The arcs in the order the story reaches them, one module each. */
 export const sagas: HunterSaga[] = [
-  hunterExam,
+  {
+    ...hunterExam,
+    entries: [...hunterExam.entries, ...chapterOne.entries],
+    dossiers: { ...hunterExam.dossiers, ...chapterOne.dossiers },
+  },
   heavensArena,
   yorknewCity,
   greedIsland,

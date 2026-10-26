@@ -1,3 +1,5 @@
+import type { BookmarkMode } from '~/lib/progress/episode'
+import { thresholdIn } from '~/lib/progress/spoiler'
 import type { EntityKind } from '~/lib/view/records'
 
 import { orderByMode } from './order'
@@ -79,7 +81,7 @@ export function castOf<D extends { role: LocalizedText }>({
 
   return {
     arcs,
-    bookSections: shelvesOf(arcs, characters),
+    bookSections: shelvesOf(arcs, characters, 'episode'),
     characters,
     chart,
     // The chart with this record on it, in route order: the chart when the
@@ -108,21 +110,34 @@ export function castOf<D extends { role: LocalizedText }>({
  * than its own, so a shelf's heading is always open whenever any character
  * on it is — the heading never has to be veiled above an open name.
  */
-function shelvesOf(arcs: Entity[], characters: Entity[]): BookSection[] {
-  const shelfOf = (character: Entity): Entity | undefined => {
+export function shelvesOf(
+  arcs: Entity[],
+  characters: Entity[],
+  mode: BookmarkMode,
+): BookSection[] {
+  const orderedArcs = orderByMode(arcs, mode)
+  const orderedCharacters = orderByMode(characters, mode)
+  const shelfOf = (character: Entity): Entity => {
     let shelf: Entity | undefined
-    for (const arc of arcs) {
-      if (arc.revealedAtEpisode > character.revealedAtEpisode) {
+    for (const arc of orderedArcs) {
+      if (thresholdIn(arc, mode) > thresholdIn(character, mode)) {
         break
       }
       shelf = arc
     }
+    if (shelf === undefined) {
+      throw new Error(`${character.id} has no arc heading in ${mode}`)
+    }
     return shelf
   }
 
-  return arcs.flatMap((arc) => {
-    const shelved = characters.filter(
-      (character) => shelfOf(character)?.id === arc.id,
+  const byCharacter = new Map(
+    orderedCharacters.map((character) => [character.id, shelfOf(character)]),
+  )
+
+  return orderedArcs.flatMap((arc) => {
+    const shelved = orderedCharacters.filter(
+      (character) => byCharacter.get(character.id)?.id === arc.id,
     )
     return shelved.length === 0 ? [] : { arc, characters: shelved }
   })
