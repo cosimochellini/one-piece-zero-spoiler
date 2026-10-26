@@ -15,6 +15,7 @@ import { CHAPTER_ONE_DRAWINGS } from './chapter-one'
 import { FINAL_PHASE_DRAWINGS } from './final-phase'
 import { TRICK_TOWER_DRAWINGS } from './trick-tower'
 import { zevilArt, zevilRedrawn } from './zevil'
+import { ZOLDYCK_DRAWINGS } from './zoldyck'
 
 /**
  * One of Kurapika's two wooden swords, grip down to the left and point up
@@ -46,6 +47,7 @@ const MIRRORED = 'matrix(-1 0 0 1 160 0)'
  * ids and a record cannot name a drawing that is not here.
  */
 export const DRAWINGS = {
+  ...ZOLDYCK_DRAWINGS,
   ...CHAPTER_ONE_DRAWINGS,
   ...TRICK_TOWER_DRAWINGS,
   ...zevilArt,

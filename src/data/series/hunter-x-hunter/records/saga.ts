@@ -17,7 +17,14 @@ export interface HunterEntity extends Entity {
  */
 export interface HunterVocabulary extends Vocabulary {
   form:
-    'city' | 'forest' | 'island' | 'mountain' | 'port' | 'prison' | 'wetland'
+    | 'city'
+    | 'country'
+    | 'forest'
+    | 'island'
+    | 'mountain'
+    | 'port'
+    | 'prison'
+    | 'wetland'
   group: never
   region: 'islands' | 'mainland'
 }

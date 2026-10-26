@@ -2,6 +2,7 @@ import type { PlaceDossier } from '~/data/types'
 
 import type { HunterVocabulary } from './records/saga'
 import { TRICK_TOWER_PLACES } from './records/trick-tower'
+import { ZOLDYCK_PLACES } from './zoldyckPlaces'
 
 /**
  * The log entry of every Hunter x Hunter place, by the place's id, in its own
@@ -9,6 +10,7 @@ import { TRICK_TOWER_PLACES } from './records/trick-tower'
  */
 export const PLACE_DOSSIERS: Record<string, PlaceDossier<HunterVocabulary>> = {
   ...TRICK_TOWER_PLACES,
+  ...ZOLDYCK_PLACES,
   'zevil-island': {
     form: 'island',
     region: 'islands',

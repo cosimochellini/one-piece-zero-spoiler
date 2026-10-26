@@ -8,6 +8,7 @@ import { hunterExam } from './records/hunter-exam'
 import { kakin } from './records/kakin'
 import type { HunterSaga } from './records/saga'
 import { yorknewCity } from './records/yorknew-city'
+import { zoldyck } from './records/zoldyck'
 
 /** The arcs in the order the story reaches them, one module each. */
 export const sagas: HunterSaga[] = [
@@ -17,11 +18,13 @@ export const sagas: HunterSaga[] = [
       ...hunterExam.entries,
       ...chapterOne.entries,
       ...finalPhase.entries,
+      ...zoldyck.entries,
     ],
     dossiers: {
       ...hunterExam.dossiers,
       ...chapterOne.dossiers,
       ...finalPhase.dossiers,
+      ...zoldyck.dossiers,
     },
   },
   heavensArena,

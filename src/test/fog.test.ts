@@ -109,6 +109,12 @@ describe('the place words of a series that labels its own', () => {
   it.each([
     ['its id', { forms: { port: 'x' } }, ['dolle-harbor']],
     ['its label', { forms: { x: 'Port town' } }, ['dolle-harbor']],
+    ['its country label', { forms: { x: 'Country' } }, ['republic-of-padokea']],
+    [
+      'its Italian country label',
+      { forms: { x: 'Paese' } },
+      ['republic-of-padokea'],
+    ],
     [
       'its Italian label',
       { regions: { x: 'Terraferma' } },
@@ -119,6 +125,8 @@ describe('the place words of a series that labels its own', () => {
         'visca-forest-preserve',
         'split-mountain',
         'trick-tower',
+        'republic-of-padokea',
+        'kukuroo-mountain',
       ],
     ],
   ])(
