@@ -76,3 +76,13 @@ following #761’s drawing review policy.
 Beans, applicants and the later phases are reconciled by the other #760 parts;
 this phase adds none of their identities. The unnamed third examiner, flying
 beast species and anonymous rock climber do not receive proper-name records.
+
+## Shared sweep integration
+
+Togari is the first HxH anime-only record before later canonical ordinals. The
+lifted-record sweep now resolves its one-record exception with the same
+source-filtered handle table as the server. The previous full-archive table
+misidentified legitimately lifted records after a source-only record was
+removed. The sweep still rejects every other unreached record and every record
+excluded from the reader’s source. Exact place-word fixtures now include the
+prison form and Trick Tower among the places using the Mainland label.
