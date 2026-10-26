@@ -46,6 +46,22 @@ gates.
   drawings and lists are filtered server-side too; results belong to the
   bookmark they were fetched for.
 
+## Relationship selections
+
+`CharacterDossier.relationships` uses complete dated snapshots of at most five
+people in editorial order. The server chooses the latest reached snapshot in the
+reader’s source/unit and carries it forward without saga-based resets. Only its
+selected people are projected; each retains their earlier reached history,
+deduplicating unchanged consecutive wording. Removed people and future
+selections contribute no cards, counts or placeholders. A later re-selection
+restores the pair’s reached history. Both endpoints and each snapshot are gated
+before names or text reach the client; perspectives remain directed.
+
+The authoring contract and provenance requirements are in
+[Contributing](../CONTRIBUTING.md#authoring-relationship-selections). Selection
+and wording share the existing timeline; no separate client selection API
+exists.
+
 ## Security
 
 SSR security headers, including the per-request nonce CSP, are set in

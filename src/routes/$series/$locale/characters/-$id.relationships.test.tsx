@@ -1,4 +1,5 @@
 import { fireEvent, screen } from '@testing-library/react'
+import { type ReactElement, useState } from 'react'
 import { describe, expect, it } from 'vitest'
 
 import type { RelationshipView } from '~/lib/view/relationships'
@@ -37,6 +38,36 @@ function disclosures(): [HTMLElement, HTMLElement] {
     throw new Error('Both disclosures must render')
   }
   return [first, second]
+}
+
+/** Simulate a loader replacing its server-filtered selection on bookmark movement. */
+function SelectionDemo(): ReactElement {
+  const [later, setLater] = useState(false)
+  const retained = relationships[0]
+  if (retained === undefined) {
+    throw new Error('The retained person is absent')
+  }
+  const added: RelationshipView = {
+    ...retained,
+    person: { id: 'later-person', name: 'Later person' },
+    type: 'Rival',
+    summary: 'They compete.',
+  }
+  return (
+    <>
+      <button
+        onClick={() => {
+          setLater(!later)
+        }}
+        type="button"
+      >
+        Move bookmark
+      </button>
+      <RelationshipBand
+        relationships={later ? [added, retained] : relationships}
+      />
+    </>
+  )
 }
 
 describe('the character relationship band', () => {
@@ -122,6 +153,32 @@ describe('the character relationship band', () => {
 
     expect(first.closest('details')).toHaveAttribute('open')
     expect(second.closest('details')).toHaveAttribute('open')
+  })
+
+  it('replaces cards in server order and removes later cards on backwards movement', () => {
+    renderWithProviders(<SelectionDemo />, { bookmark: ep(10) })
+
+    expect(
+      screen.queryByRole('link', { name: 'Later person' }),
+    ).not.toBeInTheDocument()
+
+    fireEvent.click(screen.getByRole('button', { name: 'Move bookmark' }))
+
+    expect(
+      screen.getAllByRole('link').map((link) => link.textContent),
+    ).toStrictEqual(['Later person', 'A person'])
+    expect(
+      screen.getByLabelText('Relationship history with A person'),
+    ).toBeInTheDocument()
+
+    fireEvent.click(screen.getByRole('button', { name: 'Move bookmark' }))
+
+    expect(
+      screen.getAllByRole('link').map((link) => link.textContent),
+    ).toStrictEqual(['A person'])
+    expect(screen.queryByText('Later person')).not.toBeInTheDocument()
+    expect(screen.queryByText('Rival')).not.toBeInTheDocument()
+    expect(screen.queryByText('They compete.')).not.toBeInTheDocument()
   })
 
   it('has no heading, count or placeholder for an empty/covered relation set', () => {
