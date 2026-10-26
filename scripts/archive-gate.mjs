@@ -87,7 +87,10 @@ export const EXTRA = {
     ],
   },
   'hunter-x-hunter': {
-    prose: ['src/data/series/hunter-x-hunter/places.ts'],
+    prose: [
+      'src/data/series/hunter-x-hunter/places.ts',
+      'src/data/series/hunter-x-hunter/zoldyckPlaces.ts',
+    ],
     slugs: [],
   },
 }

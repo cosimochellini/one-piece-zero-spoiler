@@ -54,6 +54,17 @@ export const finalPhase: HunterSaga = {
         en: 'He faces Killua in the Final Phase. Removing a needle from his ear changes the appearance he used as Gittarackur. Killua recognizes him and calls him Illumi.',
         it: 'Affronta Killua nella prova finale. Togliendosi un ago dall’orecchio cambia l’aspetto usato come Ghitarakur. Killua lo riconosce e lo chiama Illumi.',
       },
+      origin: [
+        {
+          episode: 22,
+          chapter: 39,
+          place: 'kukuroo-mountain',
+          value: {
+            it: 'Monte Kukruu, dimora della famiglia',
+            en: 'Kukuroo Mountain, family home',
+          },
+        },
+      ],
       status: [{ episode: 20, chapter: 35, value: 'alive' }],
       affiliation: [
         {

@@ -564,6 +564,30 @@ const earlyExam: HunterSaga = {
             en: 'His family of assassins',
           },
         },
+        {
+          episode: 20,
+          chapter: 36,
+          value: {
+            it: 'Esame Hunter, squalificato',
+            en: 'Hunter Exam, disqualified',
+          },
+        },
+        {
+          episode: 25,
+          chapter: 43,
+          value: { it: 'In viaggio con Gon', en: 'Travelling with Gon' },
+        },
+      ],
+      origin: [
+        {
+          episode: 22,
+          chapter: 39,
+          place: 'kukuroo-mountain',
+          value: {
+            it: 'Monte Kukruu, dimora della famiglia',
+            en: 'Kukuroo Mountain, family home',
+          },
+        },
       ],
     },
     'menchi': {

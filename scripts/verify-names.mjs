@@ -76,6 +76,14 @@ const ITALIAN_TITLES = {
   // Hunter x Hunter, on Italian Wikipedia.
   'illumi': 'Famiglia Zoldick#Illumi',
   'killua': 'Killua Zoldick',
+  'zebro': 'Famiglia Zoldick#Zebro',
+  'mike': 'Famiglia Zoldick#Cane da guardia: Miche',
+  'seaquant': 'Famiglia Zoldick#Seaquant',
+  'canary': 'Famiglia Zoldick#Canaria',
+  'gotoh': 'Famiglia Zoldick#Goto',
+  'milluki': 'Famiglia Zoldick#Milki',
+  'zeno': 'Famiglia Zoldick#Zeno',
+  'kalluto': 'Famiglia Zoldick#Carte',
   'kite': 'Associazione Hunter#Kaito',
   'hisoka': 'Hisoka Morou',
   'tonpa': 'Personaggi di Hunter × Hunter#Tonpa',
@@ -138,6 +146,8 @@ const NAMES_KEPT = {
   'umori': 'Umori',
   'imori': 'Imori',
   'kiriko': 'Kiriko',
+  // No Italian Wikipedia page names the tour guide.
+  'coco-loo': 'Coco Loo',
   // No Italian Wikipedia entry names the foxbear; retain the English name.
   'kon': 'Kon',
 }
