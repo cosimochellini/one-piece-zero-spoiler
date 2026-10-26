@@ -63,8 +63,8 @@ receive an end-of-anime bookmark; source filtering still applies. See
 One Piece and Hunter x Hunter are open to readers. HxH files the verified Hunter
 Exam coverage through episode 26 / chapter 43, including the manga's chapter-one
 characters introduced later by the anime. Remaining candidate naming checks are
-tracked in #833 and #834; chronicle work and full drawing approval remain #762
-and #761. Records are not added from unnamed appearances or supplemental names.
+tracked in #833 and #834; chronicle work remains #762. Records are not added
+from unnamed appearances or supplemental names.
 
 Public metadata in `src/lib/progress/series.ts` holds cookies, ranges, seasons,
 demo bounds, features and themes, without archive records. Pass the series to

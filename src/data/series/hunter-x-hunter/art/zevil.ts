@@ -236,24 +236,24 @@ export const zevilArt = {
 } satisfies Drawings
 
 /**
- * The drawings that change with the story. Gittarackur's pins come out at
- * the final phase, and Bodoro's gi is left empty when he dies.
+ * The drawings that change with the story. A pin comes out of Gittarackur's
+ * disguise at the final phase, and Bodoro's gi is left empty when he dies.
  */
 export const zevilRedrawn: Redrawings = {
   gittarackur: [
-    // The same four pins pulled out and laid down side by side on the table,
-    // heads at alternate ends, the tinted one second: he draws them from his
-    // face and shows Killua his true appearance in episode 20 / chapter 35.
-    // No face, only the pins.
+    // The same pins, three still fanned as they bristle from the disguise
+    // and the one in tint drawn up and out of them: he takes a needle from
+    // his ear and shows Killua his true appearance in episode 20 / chapter
+    // 35. No face, only the pins.
     {
       episode: 20,
       chapter: 35,
       value: [
-        ...moved(PIN, 'translate(130 97) rotate(-100)'),
-        ...moved(TINTED_PIN, 'translate(30 131) rotate(80)'),
-        ...moved(PIN, 'translate(130 129) rotate(-100)'),
-        ...moved(PIN, 'translate(30 163) rotate(80)'),
-        shadow(80, 184, 60),
+        ...moved(PIN, 'translate(80 176) rotate(-34)'),
+        ...moved(PIN, 'translate(80 176) rotate(-14)'),
+        ...moved(TINTED_PIN, 'translate(87 112) rotate(6)'),
+        ...moved(PIN, 'translate(80 176) rotate(26)'),
+        shadow(80, 186, 40),
       ],
     },
   ],

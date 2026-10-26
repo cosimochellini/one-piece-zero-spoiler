@@ -29,8 +29,9 @@ export const ZOLDYCK_DRAWINGS = {
     },
     shadow(80, 180, 40),
   ],
-  // Zebro's key to the service door, a heavy bar key seen from its corner:
-  // the guard hands it over at the gate in episode 22 / chapter 39.
+  // Zebro's key to the service door, seen from its corner: the guard keeps
+  // it at the gate for intruders, and refuses it to Gon, in episode 22 /
+  // chapter 39.
   'zebro': [
     { d: ellipse(80, 50, 22, 15), role: 'accent' },
     { d: 'M58 50 V55 A22 15 0 0 0 102 55 V50' },
