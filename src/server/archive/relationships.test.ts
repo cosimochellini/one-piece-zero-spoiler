@@ -166,3 +166,79 @@ describe.each(LOADED_SERIES)(
     })
   },
 )
+
+describe.each(LOCALES)(
+  'Koby’s cross-saga editorial selections in %s',
+  (locale) => {
+    function at(bookmark: Bookmark): RelationshipView[] {
+      const page = characterPage('koby', bookmark, locale)
+      if (page === undefined) {
+        throw new Error('Koby is absent')
+      }
+      return page.detail.relationships
+    }
+
+    it.each([
+      [null, []],
+      [ch(1), []],
+      [ep(1), ['monkey-d-luffy', 'alvida']],
+      [ch(2), ['monkey-d-luffy', 'alvida']],
+      [ep(314), ['monkey-d-luffy', 'alvida']],
+      [ch(432), ['monkey-d-luffy', 'alvida']],
+      [ep(315), ['monkey-d-luffy']],
+      [ch(433), ['monkey-d-luffy']],
+      [ep(487), ['monkey-d-luffy']],
+      [ch(578), ['monkey-d-luffy']],
+      [ep(488), ['shanks', 'sakazuki', 'monkey-d-luffy']],
+      [ch(579), ['shanks', 'sakazuki', 'monkey-d-luffy']],
+    ])(
+      'selects only reached people in editorial order at %j',
+      (bookmark, expected) => {
+        expect(at(bookmark).map(({ person }) => person.id)).toStrictEqual(
+          expected,
+        )
+      },
+    )
+
+    it('retains history and localises the changed relationship state', () => {
+      const reunion = at(ep(315))
+      const war = at(ep(488))
+
+      expect(at(ep(1))[1]?.type).toBe(
+        locale === 'en' ? 'Forced service' : 'Servizio forzato',
+      )
+      expect(at(ch(2))).toStrictEqual(at(ep(1)))
+      expect(at(ch(433))).toStrictEqual(reunion)
+      expect(at(ch(579))).toStrictEqual(war)
+      expect(war[2]?.history).toStrictEqual(reunion[0]?.history)
+      expect(war[2]?.history).toHaveLength(2)
+      expect(reunion[0]?.type).toBe(
+        locale === 'en' ?
+          'Friend on the opposing side'
+        : 'Amico su un fronte opposto',
+      )
+    })
+
+    it('carries unchanged selections across later sagas and restores earlier bookmarks', () => {
+      const initial = at(ep(1))
+      const reunion = at(ep(315))
+      const war = at(ep(488))
+
+      expect(at(ep(1150))).toStrictEqual(war)
+      expect(at(ch(1100))).toStrictEqual(war)
+      expect(at(ep(1))).toStrictEqual(initial)
+      expect(at(ch(433))).toStrictEqual(reunion)
+      expect(pilotAt(ch(1100), locale)).toStrictEqual(pilotAt(ch(774), locale))
+    })
+
+    it('withholds future relationship facts even when their people are already known', () => {
+      const sent = JSON.stringify(at(ch(578)))
+
+      expect(sent).not.toContain('shanks')
+      expect(sent).not.toContain('sakazuki')
+      expect(sent).not.toContain('Hostility')
+      expect(sent).not.toContain('Ostilità')
+      expect(sent).not.toContain('579')
+    })
+  },
+)

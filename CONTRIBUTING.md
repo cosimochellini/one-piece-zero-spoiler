@@ -71,3 +71,28 @@ Codex: invoke `$issue-implementer` with the issue number. Claude: delegate to
 the `issue-implementer` subagent. Both use the
 [shared workflow](.agents/skills/issue-implementer/SKILL.md); referenced
 Markdown skills can be read directly in either tool.
+
+## Authoring relationship selections
+
+A dossier’s `relationships` timeline contains complete editorial selections of
+at most five distinct character ids, in the order the cards should appear. A
+reached entry replaces the whole list; it is not a patch or a ranking inferred
+from appearances. An empty list explicitly clears the selection. An absent field
+means no relationship content has been authored.
+
+Author a new selection only when a verified story event justifies changing the
+people, their order or their wording. Carry the latest selection forward across
+sagas indefinitely when nothing changes. Repeat unchanged entries when retaining
+a person in a new selection; their identical consecutive wording does not add a
+history stage. Earlier reached stages remain available for selected people,
+including someone removed and later selected again. Unselected people have no
+cards or history in the response.
+
+Pin each selection to verified episode/chapter thresholds, behind the owner,
+every selected person and the relationship fact itself. Use the existing source
+restriction for facts told in only one medium: each source resolves its own
+latest applicable selection. Keep directed perspectives independent, write
+original IT/EN type and explanation text, and record evidence in
+`docs/content-provenance/` and its source inventory. Four or five people is a
+target, never a quota. Self-links, duplicate ids, non-character targets and
+invalid dates fail the data checks.

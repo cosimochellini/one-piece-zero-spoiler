@@ -970,6 +970,82 @@ export const eastBlue: OnePieceSaga = {
         it: 'È salito a dieci anni sulla barca da pesca sbagliata e da allora lucida il ponte di Alvida, che lo picchia quando una risposta non le piace. Sa che potrebbe scappare e non lo fa. Poi un ragazzo di gomma esce da una botte nella stiva e gli chiede che cosa vorrebbe fare davvero: lui risponde che vorrebbe entrare nella Marina, e si sente dire quelle parole ad alta voce per la prima volta.',
         en: 'He climbed into the wrong fishing boat at ten and has been scrubbing Alvida’s deck ever since, beaten whenever an answer displeases her. He knows he could run, and he does not. Then a rubber boy climbs out of a barrel in the hold and asks what he actually wants: he says he wants to join the Marines, and hears himself say it out loud for the first time.',
       },
+      // Complete selections, carried forward until the next reached entry.
+      // Verified pairs and editorial choices: relationships-812.md.
+      relationships: [
+        {
+          episode: 1,
+          chapter: 2,
+          value: [
+            {
+              character: 'monkey-d-luffy',
+              type: { en: 'Rescuer', it: 'Soccorritore' },
+              summary: {
+                en: 'Luffy defeats Alvida and leaves with Koby, freeing him from her crew.',
+                it: 'Rufy sconfigge Alvida e parte con Kobi, liberandolo dalla sua ciurma.',
+              },
+            },
+            {
+              character: 'alvida',
+              type: { en: 'Forced service', it: 'Servizio forzato' },
+              summary: {
+                en: 'Alvida forces Koby to work on her ship until Luffy defeats her.',
+                it: 'Alvida costringe Kobi a lavorare sulla sua nave finché Rufy non la sconfigge.',
+              },
+            },
+          ],
+        },
+        {
+          episode: 315,
+          chapter: 433,
+          value: [
+            {
+              character: 'monkey-d-luffy',
+              type: {
+                en: 'Friend on the opposing side',
+                it: 'Amico su un fronte opposto',
+              },
+              summary: {
+                en: 'Koby meets Luffy again as a Marine. They part expecting to be stronger at their next meeting.',
+                it: 'Kobi ritrova Rufy da marine. Si salutano con l’intenzione di essere più forti al prossimo incontro.',
+              },
+            },
+          ],
+        },
+        {
+          episode: 488,
+          chapter: 579,
+          value: [
+            {
+              character: 'shanks',
+              type: { en: 'Rescuer', it: 'Soccorritore' },
+              summary: {
+                en: 'Shanks stops Sakazuki’s blow after Koby calls for the fighting to end.',
+                it: 'Shanks ferma il colpo di Sakazuki dopo che Kobi chiede di porre fine ai combattimenti.',
+              },
+            },
+            {
+              character: 'sakazuki',
+              type: { en: 'Hostility', it: 'Ostilità' },
+              summary: {
+                en: 'Sakazuki tries to kill Koby for interrupting the fighting.',
+                it: 'Sakazuki tenta di uccidere Kobi per aver interrotto i combattimenti.',
+              },
+            },
+            {
+              character: 'monkey-d-luffy',
+              type: {
+                en: 'Friend on the opposing side',
+                it: 'Amico su un fronte opposto',
+              },
+              summary: {
+                en: 'Koby meets Luffy again as a Marine. They part expecting to be stronger at their next meeting.',
+                it: 'Kobi ritrova Rufy da marine. Si salutano con l’intenzione di essere più forti al prossimo incontro.',
+              },
+            },
+          ],
+        },
+      ],
       status: [
         { episode: 1, value: 'alive' },
         // Episode 1088 adapts chapter 1059: the papers report him taken by
