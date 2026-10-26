@@ -179,7 +179,7 @@ function describeRecordPage(page: RecordPage): HeadTags {
     pathname: page.pathname,
     trail: [
       {
-        name: t(`${page.section}.pageTitle`),
+        name: t(`${page.section}.title`),
         url: absoluteUrl(
           `${localeRoot(page.pathname, page.locale)}/${page.section}`,
         ),

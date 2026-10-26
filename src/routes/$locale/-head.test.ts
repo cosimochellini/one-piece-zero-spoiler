@@ -184,6 +184,8 @@ describe('series-specific structured data and social addresses', () => {
     )
     const structured = head.scripts[0]?.children ?? ''
 
+    // The crumb is the index's name, not its page title.
+    expect(structured).toContain('"name":"Characters"')
     expect(head.links).toContainEqual({
       rel: 'canonical',
       href: absoluteUrl(pathname),

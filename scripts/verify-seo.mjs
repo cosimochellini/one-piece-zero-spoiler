@@ -142,6 +142,10 @@ export function sharedBy(pages, field) {
 async function readSite(base) {
   // fallow-ignore-next-line security-sink -- a developer tool: the base is the `--base` the developer typed, and it only reads pages.
   const sitemap = await fetch(`${base}/sitemap.xml`)
+  if (!sitemap.ok) {
+    throw new Error(`${base}/sitemap.xml answers ${sitemap.status}`)
+  }
+
   const text = await sitemap.text()
   const paths = text
     .matchAll(/<loc>(?<value>[^<]*)<\/loc>/gu)
