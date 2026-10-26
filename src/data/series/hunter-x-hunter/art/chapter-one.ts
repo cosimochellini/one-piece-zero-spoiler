@@ -1,48 +1,58 @@
 import type { Drawings } from '~/data/art/stroke'
-import { ellipse, shadow } from '~/lib/svg/primitives'
+import { shadow } from '~/lib/svg/primitives'
 
 /** First objects, with direct frame/page checks still required before merge. */
 export const CHAPTER_ONE_DRAWINGS = {
-  // Kite's peaked cap, described by Hunterpedia for the manga and 2011 anime:
-  // chapter 1 / episode 76. No weapon or later ability. Reference not viewed.
+  // Kite's peaked cap, the soft crown slouching over the band like a beret
+  // and the peak in the record's tint: what he wears when he saves Gon in
+  // chapter 1, which the 2011 anime first shows in episode 76's flashback.
+  // No sword, card or later ability. Reference not viewed.
   kite: [
-    { d: 'M31 104 C27 78 48 57 81 56 C112 55 132 72 128 96' },
-    { d: 'M31 104 C55 92 100 88 128 96 L128 108 C96 100 55 104 34 116 Z' },
     {
-      d: 'M34 116 C53 109 97 104 121 110 C115 124 76 137 40 132 L34 116 Z',
-      role: 'accent',
+      d: 'M50 116 C36 108 34 90 46 78 C60 62 96 56 118 66 C134 74 138 96 128 114',
     },
-    { d: 'M40 132 C75 142 111 128 121 115 L121 110', role: 'soft' },
-    { d: 'M45 94 C44 77 59 65 81 63', role: 'soft' },
-    { d: 'M81 63 C105 62 119 75 120 88', role: 'soft' },
-    { d: 'M81 63 L82 87', role: 'soft' },
-    { d: 'M38 104 C62 95 100 93 121 99', role: 'soft' },
-    { d: 'M112 78 L116 84 M115 72 L121 80 M119 91 L124 94', role: 'ambient' },
-    shadow(80, 151, 46),
-  ],
-  // Kon's furred forepaw with the claws that scratch Gon: chapter 1 /
-  // episode 76's flashback. No face. Reference not viewed directly.
-  kon: [
+    { d: 'M50 116 C74 122 104 120 128 114' },
     {
-      d: 'M54 46 L49 63 L51 67 L44 81 L47 84 L39 104 C30 122 39 142 57 147 L107 147 C125 139 129 119 116 103 L108 81 L110 77 L102 62 L103 56 L96 44',
-    },
-    { d: 'M54 46 C64 53 86 53 96 44', role: 'soft' },
-    { d: 'M52 70 L60 78 L56 86 M95 66 L89 77 L96 84', role: 'soft' },
-    { d: 'M46 103 C61 112 96 113 112 104', role: 'soft' },
-    {
-      d: 'M56 121 C52 126 52 137 57 144 M74 122 V146 M94 120 L96 145',
+      d: 'M50 116 L48 124 M128 114 V122 M48 124 C74 130 104 128 128 122',
       role: 'soft',
     },
     {
-      d: 'M42 137 L43 153 L51 143 M61 146 L64 160 L72 147 M82 147 L87 161 L93 147 M103 145 L111 156 L112 139',
+      d: 'M50 122 C34 120 16 124 10 134 C22 144 48 142 66 128',
       role: 'accent',
     },
-    { d: 'M47 89 L52 94 M42 98 L47 103 M108 89 L112 96', role: 'ambient' },
+    { d: 'M10 134 L11 138 C24 148 50 145 66 131', role: 'soft' },
+    { d: 'M84 60 C76 76 70 96 72 118', role: 'soft' },
+    { d: 'M46 78 C58 90 84 94 112 86', role: 'soft' },
+    { d: 'M124 84 l6 4 M126 96 l6 4 M122 106 l6 4', role: 'ambient' },
+    shadow(76, 150, 54),
+  ],
+  // The cub's furred forepaw, side on, its claws in the record's tint: the
+  // fox-bear cub that stands behind its mother when Kite stops her claw over
+  // Gon in chapter 1, which the 2011 anime first shows in episode 76's
+  // flashback. No face. Reference not viewed directly.
+  kon: [
     {
-      d: 'M113 114 L118 119 M115 124 L120 129 M113 134 L117 139',
+      d: 'M34 30 L40 46 L34 52 L44 66 L38 72 L48 88 L42 94 L50 110 C52 126 48 140 42 150 H130 C142 150 146 142 142 136 C148 130 146 120 140 118 C144 110 138 102 130 102 C120 92 104 86 88 84 C82 64 80 46 82 30',
+    },
+    { d: 'M88 84 C104 80 120 86 130 102', role: 'soft' },
+    {
+      d: 'M131 103 C138 94 148 94 152 100 M141 118 C149 112 157 114 158 121 M143 136 C151 132 158 136 157 144',
+      role: 'accent',
+    },
+    {
+      d: 'M130 102 C122 106 118 112 116 120 M140 118 C130 120 124 126 122 134',
+      role: 'soft',
+    },
+    { d: 'M76 40 l-6 4 M77 56 l-7 4 M80 72 l-7 4', role: 'ambient' },
+    { d: 'M50 110 C64 114 78 104 88 84', role: 'soft' },
+    {
+      d: 'M84 98 l-3 -6 M100 92 l-1 -7 M86 66 l6 -3 M84 48 l6 -3',
+      role: 'soft',
+    },
+    {
+      d: 'M60 146 l6 -5 M76 146 l6 -5 M92 146 l6 -5 M108 146 l6 -5',
       role: 'ambient',
     },
-    { d: ellipse(79, 103, 19, 4), role: 'soft' },
-    shadow(80, 181, 44),
+    shadow(92, 156, 56),
   ],
 } satisfies Drawings
