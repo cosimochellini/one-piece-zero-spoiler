@@ -11,7 +11,7 @@ export const finalPhaseChronicles = {
           en: 'The first match’s referee',
         },
         body: {
-          it: 'Alla prova finale i nove aspiranti rimasti hanno bisogno di una sola vittoria per passare, e chi perde sale nel tabellone finché uno solo non passa. Dopo che [[netero|Netero]] ha spiegato le regole, Masta arbitra il primo incontro, quello tra [[gon-freecss|Gon]] e [[hanzo|Hanzo]].',
+          it: 'Alla prova finale i nove aspiranti rimasti hanno bisogno di una sola vittoria per passare, e chi perde sale nel tabellone, finché a restare senza vittorie è un solo aspirante. Dopo che [[netero|Netero]] ha spiegato le regole, Masta arbitra il primo incontro, quello tra [[gon-freecss|Gon]] e [[hanzo|Hanzo]].',
           en: 'In the Final Phase the nine remaining applicants need only one win to pass, and the losers move up the bracket until a single one fails. After [[netero|Netero]] has explained the rules, Masta referees the first match, the one between [[gon-freecss|Gon]] and [[hanzo|Hanzo]].',
         },
       },

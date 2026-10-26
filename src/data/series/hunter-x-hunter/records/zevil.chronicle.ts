@@ -38,7 +38,7 @@ export const zevilChronicles = {
       value: {
         title: { it: 'La targhetta consegnata', en: 'The badge handed over' },
         body: {
-          it: 'Umori raggiunge [[imori|Imori]] insieme ad [[amori|Amori]] e insiste perché porti a termine il piano contro [[killua|Killua]]. Quando Killua prende [[amori|Amori]] in ostaggio, gli chiede la sua targhetta. Umori gliela dà. Killua lancia a centinaia di metri le altre targhette e se ne va.',
+          it: 'Umori raggiunge [[imori|Imori]] insieme ad [[amori|Amori]] e insiste perché porti a termine il piano contro [[killua|Killua]]. Quando Killua prende [[amori|Amori]] in ostaggio, gli chiede la sua targhetta. Umori gliela dà. Killua lancia a un centinaio di metri le altre targhette e se ne va.',
           en: 'Umori joins [[imori|Imori]] with [[amori|Amori]] and insists he carry out the plan against [[killua|Killua]]. When Killua takes [[amori|Amori]] hostage, he asks Umori for his badge. Umori hands it over. Killua throws the other badges hundreds of feet away and leaves.',
         },
       },
