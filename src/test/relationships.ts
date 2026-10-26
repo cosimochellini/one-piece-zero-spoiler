@@ -12,11 +12,13 @@ import { OP_ARCHIVE } from '~/test/archive'
 
 /** A tiny real dated-field archive, independent of the pilot's cast. */
 export function relationshipArchive({
+  extraCharacters = [],
   source,
   targetSource,
   targetOpens = 2,
   snapshots,
 }: {
+  extraCharacters?: string[]
   snapshots?: Timeline<Relationship[]>
   source?: Source
   targetOpens?: number
@@ -58,7 +60,12 @@ export function relationshipArchive({
       },
     ],
   }
-  const entities = [owner, target, { ...owner, id: 'other' }]
+  const entities = [
+    owner,
+    target,
+    { ...owner, id: 'other' },
+    ...extraCharacters.map((id) => ({ ...owner, id })),
+  ]
   const filed = filedTimelines({ [owner.id]: dossier })
   const { gateOf } = chapterTable({
     anchors: anchorsOf(entities, filed),

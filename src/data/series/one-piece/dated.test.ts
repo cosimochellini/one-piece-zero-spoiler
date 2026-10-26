@@ -62,7 +62,10 @@ type Row = (typeof ENTRIES)[number]
 /** Whether a reader at this bookmark reaches the row's entry. */
 function reaches(bookmark: Bookmark, { entry, field, owner }: Row): boolean {
   return reachedOf(reveal(bookmark, ONE_PIECE_BOOKMARK), owner, field).some(
-    (found) => found.episode === entry.episode,
+    (found) =>
+      found.episode === entry.episode
+      && found.chapter === entry.chapter
+      && found.source === entry.source,
   )
 }
 
@@ -89,9 +92,18 @@ describe('every dated entry in the archive', () => {
     }
   })
 
-  it('is its record’s latest fact from its own episode on', () => {
-    for (const { entry, episode, field, label, owner } of ENTRIES) {
-      const at = reveal(ep(episode), ONE_PIECE_BOOKMARK)
+  it('is its record’s latest fact at its gate in its applicable source', () => {
+    for (const {
+      chapter,
+      entry,
+      episode,
+      field,
+      label,
+      owner,
+      source,
+    } of ENTRIES) {
+      const bookmark = source === 'manga' ? ch(chapter) : ep(episode)
+      const at = reveal(bookmark, ONE_PIECE_BOOKMARK)
 
       expect(latestOf(at, owner, field), label).toBe(entry.value)
     }

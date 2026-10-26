@@ -1,4 +1,5 @@
 import { eastBlueChronicles } from './east-blue.chronicle'
+import { eastBlueRelationships } from './east-blue.relationships'
 import type { OnePieceSaga } from './saga'
 
 /**
@@ -890,6 +891,7 @@ export const eastBlue: OnePieceSaga = {
   dossiers: {
     'monkey-d-luffy': {
       chronicle: eastBlueChronicles['monkey-d-luffy'],
+      relationships: eastBlueRelationships['monkey-d-luffy'],
       role: { it: 'Capitano', en: 'Captain' },
       log: {
         it: 'Diciassette anni, un sorriso che non si spegne e nessuna nave: prende il mare da solo su una barchetta. Da bambino ha mangiato un frutto del diavolo e da allora è di gomma, il che vuol dire che il mare lo respinge e che non sa nuotare. Salpa lo stesso.',
@@ -965,6 +967,7 @@ export const eastBlue: OnePieceSaga = {
     },
     'koby': {
       chronicle: eastBlueChronicles.koby,
+      relationships: eastBlueRelationships.koby,
       role: { it: 'Mozzo', en: 'Cabin boy' },
       log: {
         it: 'È salito a dieci anni sulla barca da pesca sbagliata e da allora lucida il ponte di Alvida, che lo picchia quando una risposta non le piace. Sa che potrebbe scappare e non lo fa. Poi un ragazzo di gomma esce da una botte nella stiva e gli chiede che cosa vorrebbe fare davvero: lui risponde che vorrebbe entrare nella Marina, e si sente dire quelle parole ad alta voce per la prima volta.',
@@ -1025,6 +1028,7 @@ export const eastBlue: OnePieceSaga = {
       bounty: [{ episode: 1113, value: 500_000_000 }],
     },
     'alvida': {
+      relationships: eastBlueRelationships.alvida,
       role: {
         it: 'Capitano dei Pirati di Alvida',
         en: 'Captain of the Alvida Pirates',
@@ -1058,6 +1062,7 @@ export const eastBlue: OnePieceSaga = {
       devilFruit: [{ episode: 52, chapter: 98, value: ['slip-slip-fruit'] }],
     },
     'gold-roger': {
+      relationships: eastBlueRelationships['gold-roger'],
       role: { it: 'Re dei Pirati', en: 'King of the Pirates' },
       log: {
         it: 'Ha percorso tutti i mari e preso tutto quello che c’era da prendere, e il Governo Mondiale lo giustizia in piazza davanti a una folla enorme. Sul patibolo gli chiedono dove sia il suo tesoro, e lui sorride: è là fuori, e se lo prenda chi lo vuole. Quel giorno migliaia di uomini prendono il mare, e l’epoca che ne nasce porta il suo nome.',
@@ -1090,6 +1095,7 @@ export const eastBlue: OnePieceSaga = {
     },
     'roronoa-zoro': {
       chronicle: eastBlueChronicles['roronoa-zoro'],
+      relationships: eastBlueRelationships['roronoa-zoro'],
       role: {
         it: 'Spadaccino, cacciatore di pirati',
         en: 'Swordsman, pirate hunter',
@@ -1124,6 +1130,7 @@ export const eastBlue: OnePieceSaga = {
       ],
     },
     'helmeppo': {
+      relationships: eastBlueRelationships.helmeppo,
       role: {
         it: 'Figlio del capitano della base',
         en: 'The base captain’s son',
@@ -1169,6 +1176,7 @@ export const eastBlue: OnePieceSaga = {
       ],
     },
     'morgan': {
+      relationships: eastBlueRelationships.morgan,
       role: {
         it: 'Capitano della base di Shells Town',
         en: 'Captain of the Shells Town base',
@@ -1207,6 +1215,7 @@ export const eastBlue: OnePieceSaga = {
     },
     'rika': {
       chronicle: eastBlueChronicles.rika,
+      relationships: eastBlueRelationships.rika,
       role: { it: 'Bambina di Shells Town', en: 'Shells Town girl' },
       log: {
         it: 'È la bambina che Zoro ha salvato quando il lupo di Hermeppo l’ha aggredita nel locale, ed è per questo che lui è finito legato nel cortile. Dopo nove giorni senza cibo, gli prepara delle polpette di riso per la prima volta in vita sua, con lo zucchero perché pensava che fossero più buone, e scavalca il muro con una scala per portargliele. Piange quando gliele calpestano, ed esulta ad alta voce quando uno sconosciuto con un cappello di paglia prende a pugni chi l’ha fatto.',
@@ -1230,6 +1239,7 @@ export const eastBlue: OnePieceSaga = {
     },
     'shanks': {
       chronicle: eastBlueChronicles.shanks,
+      relationships: eastBlueRelationships.shanks,
       role: { it: 'Capitano pirata', en: 'Pirate captain' },
       log: {
         it: 'Beve, ride e lascia che un bandito gli versi il vino in testa senza reagire, perché una rissa non vale la pena. Poi lo stesso bandito tocca il bambino della taverna, e il mare intero viene a sapere di che cosa è capace. Riparte con un braccio in meno e senza il cappello, entrambi lasciati a Rufy insieme a una promessa.',
@@ -1259,6 +1269,7 @@ export const eastBlue: OnePieceSaga = {
       bounty: [{ episode: 958, value: 4_048_900_000 }],
     },
     'makino': {
+      relationships: eastBlueRelationships.makino,
       role: { it: 'Proprietaria del Partys Bar', en: 'Owner of Partys Bar' },
       log: {
         it: 'Il suo locale è l’unico del villaggio, e per un anno intero una ciurma di pirati ci ha bevuto dentro senza che lei alzasse mai la voce. Asciuga il bancone, ride alle battute e non giudica nessuno, nemmeno il bambino che urla di voler diventare un pirata. Quando i banditi di montagna entrano a rovinare tutto, è lei a finire per terra fra i cocci.',
@@ -1284,6 +1295,7 @@ export const eastBlue: OnePieceSaga = {
       ],
     },
     'benn-beckman': {
+      relationships: eastBlueRelationships['benn-beckman'],
       role: {
         it: 'Primo ufficiale dei Pirati del Rosso',
         en: 'First mate of the Red Hair Pirates',
@@ -1304,6 +1316,7 @@ export const eastBlue: OnePieceSaga = {
       ],
     },
     'lucky-roux': {
+      relationships: eastBlueRelationships['lucky-roux'],
       role: {
         it: 'Membro dei Pirati del Rosso',
         en: 'Red Hair Pirates crewman',
@@ -1321,6 +1334,7 @@ export const eastBlue: OnePieceSaga = {
       ],
     },
     'yasopp': {
+      relationships: eastBlueRelationships.yasopp,
       role: { it: 'Tiratore scelto', en: 'Sniper' },
       log: {
         it: 'Ha lasciato il villaggio e un figlio piccolo per salire su una nave pirata, e parla di quel bambino a Rufy finché Rufy non si annoia. Con la pistola non sbaglia: si vanta di poter staccare con un colpo le antenne a una formica senza toccarne il resto. Alla taverna beve con gli altri.',
@@ -1348,6 +1362,7 @@ export const eastBlue: OnePieceSaga = {
       ],
     },
     'higuma': {
+      relationships: eastBlueRelationships.higuma,
       role: { it: 'Capo dei banditi di montagna', en: 'Mountain bandit boss' },
       log: {
         it: 'Scende dalla montagna con i suoi uomini quando le provviste finiscono e prende quello che vuole, perché in paese nessuno ha armi. Ha ucciso più di cinquanta persone e lo dice come un altro direbbe il proprio mestiere. Alla taverna trova una ciurma di pirati che ride invece di reagire, e si convince di avere davanti dei codardi.',
@@ -1367,6 +1382,7 @@ export const eastBlue: OnePieceSaga = {
     },
     'buggy': {
       chronicle: eastBlueChronicles.buggy,
+      relationships: eastBlueRelationships.buggy,
       role: {
         it: 'Capitano dei Pirati di Bagy',
         en: 'Captain of the Buggy Pirates',
@@ -1442,6 +1458,7 @@ export const eastBlue: OnePieceSaga = {
     },
     'nami': {
       chronicle: eastBlueChronicles.nami,
+      relationships: eastBlueRelationships.nami,
       role: { it: 'Navigatrice e ladra', en: 'Navigator and thief' },
       log: {
         it: 'Disegna carte nautiche a mano e sente il tempo cambiare prima che cambi. Ha rubato una mappa della Rotta Maggiore a Bagy e si è aggregata a Rufy e Zoro solo per convenienza, come tiene a precisare. Odia i pirati, e non spiega perché.',
@@ -1474,6 +1491,7 @@ export const eastBlue: OnePieceSaga = {
       ],
     },
     'mohji': {
+      relationships: eastBlueRelationships.mohji,
       role: {
         it: 'Domatore dei Pirati di Bagy',
         en: 'Beast tamer of the Buggy Pirates',
@@ -1498,6 +1516,7 @@ export const eastBlue: OnePieceSaga = {
     },
     'chouchou': {
       chronicle: eastBlueChronicles.chouchou,
+      relationships: eastBlueRelationships.chouchou,
       role: {
         it: 'Guardiano del negozio del suo padrone',
         en: 'Guardian of his master’s shop',
@@ -1519,6 +1538,7 @@ export const eastBlue: OnePieceSaga = {
     },
     'richie': {
       chronicle: eastBlueChronicles.richie,
+      relationships: eastBlueRelationships.richie,
       role: { it: 'Leone di Moji', en: 'Mohji’s lion' },
       log: {
         it: 'Porta Moji in groppa per le vie svuotate di Orange Town e attacca chiunque il suo domatore gli indichi. Con un balzo spacca la gabbia di ferro in cui è chiuso un ragazzo, e con una zampata lo manda dentro il muro di una casa. Ma quello che vuole davvero è il cibo del negozio di animali, e ci si butta appena gli viene permesso.',
@@ -1543,6 +1563,7 @@ export const eastBlue: OnePieceSaga = {
       ],
     },
     'cabaji': {
+      relationships: eastBlueRelationships.cabaji,
       role: { it: 'Acrobata e spadaccino', en: 'Acrobat and swordsman' },
       log: {
         it: 'Non scende mai dal suo monociclo, nemmeno per duellare, e usa ogni trucco da circo che conosce: fumo, fuoco, sabbia negli occhi. L’unica cosa che trova disonorevole è perdere. Quando un avversario ferito si rifiuta di arrendersi, lui colpisce per prime le ferite e chiama strategia quello che tutti gli altri chiamano viltà.',
@@ -1562,6 +1583,7 @@ export const eastBlue: OnePieceSaga = {
     },
     'boodle': {
       chronicle: eastBlueChronicles.boodle,
+      relationships: eastBlueRelationships.boodle,
       role: { it: 'Sindaco di Orange Town', en: 'Mayor of Orange Town' },
       log: {
         it: 'È arrivato qui quarant’anni fa con gente la cui città era stata distrutta dai pirati, e con loro ha costruito questa, casa per casa. Quando sono arrivati i Pirati di Bagy è fuggito con tutti gli altri, e torna di nascosto solo per dare da mangiare al cane davanti al negozio di animali. Il giorno in cui un cane e uno sconosciuto combattono per la sua città mentre lui è scappato, una palla di cannone gli rade al suolo la casa, e lui prende una lancia e va a sfidare Bagy di persona.',
@@ -1577,6 +1599,7 @@ export const eastBlue: OnePieceSaga = {
     },
     'usopp': {
       chronicle: eastBlueChronicles.usopp,
+      relationships: eastBlueRelationships.usopp,
       role: { it: 'Tiratore', en: 'Marksman' },
       log: {
         it: 'Comanda una ciurma pirata di tre bambini con una bandiera. Quando avvistano dei pirati veri cerca una scusa per non andare, finché non sente che sono soltanto tre. Si vanta di un esercito di seguaci che non esiste, e si tradisce da solo. Agli stranieri consiglia di chiedere una nave alla villa sulla collina, dove vive una ragazza malata con il patrimonio lasciato dai genitori. Il coraggio è ancora in lavorazione.',
@@ -1623,6 +1646,7 @@ export const eastBlue: OnePieceSaga = {
       ],
     },
     'kaya': {
+      relationships: eastBlueRelationships.kaya,
       role: { it: 'Erede della villa', en: 'Heiress of the mansion' },
       log: {
         it: 'Ha ereditato una grande casa e il patrimonio dei genitori. Il maggiordomo tiene fuori il bugiardo del villaggio e mette due guardie al cancello: dice che proteggerla è il suo dovere verso il padre di lei, che non c’è più. L’unica cosa che aspetta davvero è la voce sotto la finestra di un ragazzo che le racconta mari che non ha mai visto.',
@@ -1648,6 +1672,7 @@ export const eastBlue: OnePieceSaga = {
       ],
     },
     'kuro': {
+      relationships: eastBlueRelationships.kuro,
       role: {
         it: 'Capitano dei Pirati del Gatto Nero',
         en: 'Captain of the Black Cat Pirates',
@@ -1679,6 +1704,7 @@ export const eastBlue: OnePieceSaga = {
       ],
     },
     'jango': {
+      relationships: eastBlueRelationships.jango,
       role: { it: 'Ipnotizzatore', en: 'Hypnotist' },
       log: {
         it: 'Conta fino a uno facendo dondolare un anello, e chi lo guarda fa esattamente quello che dice, compreso lui stesso. È arrivato al villaggio camminando all’indietro in mezzo alla strada. È venuto a incontrare il suo vecchio capitano, che ora vive lì da maggiordomo.',
@@ -1693,6 +1719,7 @@ export const eastBlue: OnePieceSaga = {
       ],
     },
     'merry': {
+      relationships: eastBlueRelationships.merry,
       role: { it: 'Maggiordomo della villa', en: 'Butler of the mansion' },
       log: {
         it: 'Consegna a Klahadore il regalo della sua giovane padrona per i suoi tre anni nella villa, e resta sconvolto da quello che Klahadore ne fa. Più tardi lei lo trova ferito. Le dice che è stato Klahadore, che in realtà è un pirata e che le si è avvicinato per il patrimonio di famiglia.',
@@ -1719,6 +1746,7 @@ export const eastBlue: OnePieceSaga = {
     },
     'ninjin-piiman-and-tamanegi': {
       chronicle: eastBlueChronicles['ninjin-piiman-and-tamanegi'],
+      relationships: eastBlueRelationships['ninjin-piiman-and-tamanegi'],
       role: { it: 'Pirati di Usop', en: 'Usopp Pirates' },
       log: {
         it: 'Sono tutti i Pirati di Usop: tre ragazzini che seguono il loro capitano ovunque. Quando uno di loro avvista una nave con il teschio sulla bandiera, corrono alla costa per respingere i pirati, e scappano appena i pirati li scoprono.',
@@ -1749,6 +1777,7 @@ export const eastBlue: OnePieceSaga = {
     },
     'buchi': {
       chronicle: eastBlueChronicles.buchi,
+      relationships: eastBlueRelationships.buchi,
       role: {
         it: 'Guardia della nave del Gatto Nero',
         en: 'Guard of the Black Cat ship',
@@ -1776,6 +1805,7 @@ export const eastBlue: OnePieceSaga = {
     },
     'sham': {
       chronicle: eastBlueChronicles.sham,
+      relationships: eastBlueRelationships.sham,
       role: {
         it: 'Guardia della nave del Gatto Nero',
         en: 'Guard of the Black Cat ship',
@@ -1802,6 +1832,7 @@ export const eastBlue: OnePieceSaga = {
       ],
     },
     'gaimon': {
+      relationships: eastBlueRelationships.gaimon,
       role: { it: 'Guardiano dell’isola', en: 'Keeper of the island' },
       log: {
         it: 'È arrivato sull’isola da giovane con una ciurma, è caduto in una fenditura ed è rimasto incastrato dentro un baule, e la nave è ripartita senza di lui. Da vent’anni aspetta di aprire i forzieri che vede sulla scogliera, convinto che dentro ci sia il tesoro per cui ha perso tutto. Nel frattempo ha fatto amicizia con ogni animale dell’isola.',
@@ -1819,6 +1850,7 @@ export const eastBlue: OnePieceSaga = {
       ],
     },
     'kuina': {
+      relationships: eastBlueRelationships.kuina,
       role: { it: 'Spadaccina del dojo', en: 'Swordsman of the dojo' },
       log: {
         it: 'Nel dojo di suo padre nessuno le tiene testa, men che meno il ragazzo che la sfida ogni giorno con due spade di legno e perde ogni volta. Vuole diventare la più grande spadaccina del mondo e teme che il corpo, crescendo, le tolga quello che adesso ha. Una sera, sulla scala del dojo, i due si promettono che uno dei due ci arriverà.',
@@ -1837,6 +1869,7 @@ export const eastBlue: OnePieceSaga = {
       origin: [{ episode: 19, value: EAST_BLUE }],
     },
     'johnny': {
+      relationships: eastBlueRelationships.johnny,
       role: { it: 'Cacciatore di taglie', en: 'Bounty hunter' },
       log: {
         it: 'Dice di aver ucciso più pirati di quanti ne possa contare, e piomba sulla nave della ciurma gridando che un pirata senza nome ha cercato di uccidere il suo socio. Poi riconosce lo spadaccino con tre spade e lo chiama fratellone. Lo spadaccino lo chiama per nome e gli chiede dove sia Yosaku.',
@@ -1854,6 +1887,7 @@ export const eastBlue: OnePieceSaga = {
       ],
     },
     'yosaku': {
+      relationships: eastBlueRelationships.yosaku,
       role: { it: 'Cacciatore di taglie', en: 'Bounty hunter' },
       log: {
         it: 'Caccia pirati insieme a Johnny, e un tempo lavorava con lo spadaccino con tre spade. Diventa pallido e perde i sensi, i denti gli cadono e le vecchie ferite sanguinano di nuovo, e nessuno dei due sa perché: è scorbuto, e basta il succo di lime. Rimesso in piedi, indica alla ciurma con il socio un ristorante galleggiante dove cercare un cuoco.',
@@ -1872,6 +1906,7 @@ export const eastBlue: OnePieceSaga = {
     },
     'sanji': {
       chronicle: eastBlueChronicles.sanji,
+      relationships: eastBlueRelationships.sanji,
       role: { it: 'Cuoco', en: 'Cook' },
       log: {
         it: 'Cucina al Baratie sotto un vecchio con una gamba di legno che lo chiama moccioso, e prende a calci chiunque sprechi il cibo. Non usa mai le mani in combattimento: le mani di un cuoco sono per la cucina. Sogna un mare leggendario dove si trovano tutti i pesci del mondo, e non lo dice a nessuno che possa riderne.',
@@ -1909,6 +1944,7 @@ export const eastBlue: OnePieceSaga = {
       ],
     },
     'zeff': {
+      relationships: eastBlueRelationships.zeff,
       role: { it: 'Proprietario del Baratie', en: 'Owner of the Baratie' },
       log: {
         it: 'Comanda il suo ristorante galleggiante come si comanda una nave, a urla e a calci, e nessun cuoco osa rispondergli. Ha una gamba di legno e non spiega a nessuno come l’ha persa. A bordo vale una regola sola, che nemmeno lui si permette di discutere: nessuno che abbia fame se ne va senza mangiare, pirata o marinaio che sia.',
@@ -1934,6 +1970,7 @@ export const eastBlue: OnePieceSaga = {
       epithet: [{ episode: 21, value: { it: 'Gamba Rossa', en: 'Red Leg' } }],
     },
     'gin': {
+      relationships: eastBlueRelationships.gin,
       role: { it: 'Naufrago armato', en: 'Armed castaway' },
       log: {
         it: 'Fugge dalla Marina, che lo tiene da tre giorni senza mangiare, e arriva al ristorante quasi morto di fame. Al cuoco che gli chiede se può pagare offre una pallottola. Il riso fritto che il vice-cuoco gli porta fuori lo fa piangere. Prima di andarsene consiglia al ragazzo con il cappello di paglia di non andare nella Rotta Maggiore, e promette al cuoco che non lo dimenticherà.',
@@ -1964,6 +2001,7 @@ export const eastBlue: OnePieceSaga = {
     },
     'fullbody': {
       chronicle: eastBlueChronicles.fullbody,
+      relationships: eastBlueRelationships.fullbody,
       role: { it: 'Tenente della Marina', en: 'Marine lieutenant' },
       log: {
         it: 'Si presenta come Fullbody Pugno di ferro, tenente della Marina, e porta un tirapugni di ferro per non smentirsi. Porta una donna a cena al ristorante galleggiante, e prima di entrare ordina ai suoi uomini di affondare la piccola nave pirata che si è accostata. A tavola infila una mosca nella zuppa per umiliare il cameriere, spacca il tavolo quando lo scherzo gli si ritorce contro, e il vice-cuoco lo pesta fino a farlo sanguinare.',
@@ -1990,6 +2028,7 @@ export const eastBlue: OnePieceSaga = {
     },
     'carne': {
       chronicle: eastBlueChronicles.carne,
+      relationships: eastBlueRelationships.carne,
       role: { it: 'Cuoco del Baratie', en: 'Baratie cook' },
       log: {
         it: 'Lavora in cucina accanto a Paty e litiga con lui su tutto, e di solito è quello che pensa prima di urlare. Quando Paty butta fuori dal ristorante un pirata affamato, è tra i cuochi che ricordano a tutti che quell’uomo appartiene a una flotta di cinquanta navi e cinquemila uomini. E ricorda a Paty che i camerieri se ne sono andati tutti per colpa sua.',
@@ -2002,6 +2041,7 @@ export const eastBlue: OnePieceSaga = {
     },
     'patty': {
       chronicle: eastBlueChronicles.patty,
+      relationships: eastBlueRelationships.patty,
       role: { it: 'Cuoco del Baratie', en: 'Baratie cook' },
       log: {
         it: 'Ripassa in cucina i suoi motti di servizio e si inchina a ogni cliente che entra, chiamandolo con insulti che crede complimenti. Chi non può pagare, per lui, non è un cliente, e per dimostrarlo ne schianta uno a terra spaccando una sedia. Non sopporta il vice-cuoco, che dà da mangiare a chiunque abbia fame, e i due si insultano da un capo all’altro della cucina.',
@@ -2013,6 +2053,7 @@ export const eastBlue: OnePieceSaga = {
       ],
     },
     'don-krieg': {
+      relationships: eastBlueRelationships['don-krieg'],
       role: {
         it: 'Ammiraglio della flotta di Creek',
         en: 'Admiral of the Krieg armada',
@@ -2045,6 +2086,7 @@ export const eastBlue: OnePieceSaga = {
       bounty: [{ episode: 45, value: 17_000_000 }],
     },
     'pearl': {
+      relationships: eastBlueRelationships.pearl,
       role: {
         it: 'Scudo dei Pirati di Creek',
         en: 'Shield of the Krieg Pirates',
@@ -2069,6 +2111,7 @@ export const eastBlue: OnePieceSaga = {
     },
     'dracule-mihawk': {
       chronicle: eastBlueChronicles['dracule-mihawk'],
+      relationships: eastBlueRelationships['dracule-mihawk'],
       role: {
         it: 'Lo spadaccino più forte del mondo',
         en: 'The strongest swordsman in the world',
@@ -2107,6 +2150,7 @@ export const eastBlue: OnePieceSaga = {
       bounty: [{ episode: 1086, value: 3_590_000_000 }],
     },
     'arlong': {
+      relationships: eastBlueRelationships.arlong,
       role: {
         it: 'Capitano dei Pirati di Arlong',
         en: 'Captain of the Arlong Pirates',
@@ -2156,6 +2200,7 @@ export const eastBlue: OnePieceSaga = {
       bounty: [{ episode: 31, value: 20_000_000 }],
     },
     'hatchan': {
+      relationships: eastBlueRelationships.hatchan,
       role: { it: 'Membro dei Pirati di Arlong', en: 'Arlong Pirates crewman' },
       log: {
         it: 'Arlong lo manda a riaccompagnare alla nave un capitano della Marina, e lui gli ride in faccia perché sembra un topo. Quando Arlong gli dice di tenere a freno la lingua, chiede subito scusa. Cucina per la bestia marina della ciurma e la chiama a mangiare con uno squillo di tromba che fa con la bocca.',
@@ -2192,6 +2237,7 @@ export const eastBlue: OnePieceSaga = {
       ],
     },
     'kuroobi': {
+      relationships: eastBlueRelationships.kuroobi,
       role: {
         it: 'Ufficiale dei Pirati di Arlong',
         en: 'Arlong Pirates officer',
@@ -2210,6 +2256,7 @@ export const eastBlue: OnePieceSaga = {
       affiliation: [{ episode: 36, chapter: 75, value: ARLONG_OFFICER }],
     },
     'chew': {
+      relationships: eastBlueRelationships.chew,
       role: { it: 'Membro dei Pirati di Arlong', en: 'Arlong Pirates crewman' },
       log: {
         it: 'Intercala quello che dice con lo schiocco di un bacio. Dopo che Usop ha attaccato Arlong, è lui a catturarlo e a portarlo ad Arlong Park davanti al suo capitano. Quando Usop sostiene di non sapere dove sia Zoro, gli dice di smetterla con le bugie: ha attaccato Arlong, e ormai nessuno può salvarlo.',
@@ -2232,6 +2279,7 @@ export const eastBlue: OnePieceSaga = {
       ],
     },
     'nojiko': {
+      relationships: eastBlueRelationships.nojiko,
       role: { it: 'Sorella di Nami', en: 'Nami’s sister' },
       log: {
         it: 'Coltiva mandarini nella casa dove lei e Nami sono cresciute, due orfane allevate da un genitore adottivo che ora non c’è più. Tra le rovine di Gosa stende Usop prima che si metta contro un uomo-pesce, perché chi li sfida viene ucciso. Poi gli racconta che Nami è sua sorella adottiva e una dei capi dei Pirati di Arlong, e che il villaggio compra la propria vita da Arlong pagando un tributo ogni mese.',
@@ -2250,6 +2298,7 @@ export const eastBlue: OnePieceSaga = {
       origin: [{ episode: 32, value: COCOYASI_VILLAGE }],
     },
     'genzo': {
+      relationships: eastBlueRelationships.genzo,
       role: { it: 'Poliziotto del villaggio', en: 'Village sheriff' },
       log: {
         it: 'Tiene l’ordine in un paese che non ha più niente da difendere, e il villaggio ha appena pagato il tributo quando arrivano gli uomini-pesce. Porta una girandola sul cappello e non spiega a nessuno perché. Otto anni fa il villaggio ha giurato di combattere con la pazienza, per sopravvivere, e lui tiene tutti a quel giuramento: nessuno deve combattere, qualunque cosa accada.',
@@ -2268,6 +2317,7 @@ export const eastBlue: OnePieceSaga = {
       origin: [{ episode: 32, value: COCOYASI_VILLAGE }],
     },
     'bell-mere': {
+      relationships: eastBlueRelationships['bell-mere'],
       role: {
         it: 'Madre adottiva di Nojiko e Nami',
         en: 'Nojiko’s and Nami’s foster mother',
@@ -2303,6 +2353,7 @@ export const eastBlue: OnePieceSaga = {
       origin: [{ episode: 34, value: COCOYASI_VILLAGE }],
     },
     'nezumi': {
+      relationships: eastBlueRelationships.nezumi,
       role: { it: 'Capitano della Marina', en: 'Marine captain' },
       log: {
         it: 'Comanda la sedicesima base e prende regolarmente denaro da Arlong, e la ciurma di Arlong lo chiama un ospite di riguardo. Si presenta nel frutteto di Nami con i soldati in divisa e chiama legge quello che è un saccheggio: per lui il denaro rubato ai pirati ora appartiene al governo.',
@@ -2321,6 +2372,7 @@ export const eastBlue: OnePieceSaga = {
     },
     'momoo': {
       chronicle: eastBlueChronicles.momoo,
+      relationships: eastBlueRelationships.momoo,
       role: {
         it: 'Bestia marina dei Pirati di Arlong',
         en: 'Sea beast of the Arlong Pirates',
@@ -2352,6 +2404,7 @@ export const eastBlue: OnePieceSaga = {
     },
     'smoker': {
       chronicle: eastBlueChronicles.smoker,
+      relationships: eastBlueRelationships.smoker,
       role: { it: 'Capitano della Marina', en: 'Marine captain' },
       log: {
         it: 'Comanda la base di Loguetown, la città dove il Re dei Pirati fu eseguito e da cui ogni pirata dell’East Blue parte per la Rotta Maggiore. Nessuno dei pirati che ha inseguito è arrivato al mare aperto. Non fa eccezioni per i ragazzi di gomma.',
@@ -2383,6 +2436,7 @@ export const eastBlue: OnePieceSaga = {
       devilFruit: [{ episode: 53, chapter: 100, value: ['smoke-smoke-fruit'] }],
     },
     'tashigi': {
+      relationships: eastBlueRelationships.tashigi,
       role: { it: 'Sergente della Marina', en: 'Marine sergeant' },
       log: {
         it: 'Serve a Loguetown agli ordini di un capitano che fuma due sigari alla volta, e lo segue con una katana al fianco. Riconosce una spada pregiata a colpo d’occhio e si è messa in testa di strapparle tutte alle mani sbagliate. Cade, perde gli occhiali e chiede scusa, e nessuno dei suoi uomini si permette di riderne.',
@@ -2411,6 +2465,7 @@ export const eastBlue: OnePieceSaga = {
     },
     'monkey-d-dragon': {
       chronicle: eastBlueChronicles['monkey-d-dragon'],
+      relationships: eastBlueRelationships['monkey-d-dragon'],
       role: {
         it: 'Capo dell’Armata Rivoluzionaria',
         en: 'Head of the Revolutionary Army',
@@ -2438,6 +2493,7 @@ export const eastBlue: OnePieceSaga = {
     },
     'lord-of-the-coast': {
       chronicle: eastBlueChronicles['lord-of-the-coast'],
+      relationships: eastBlueRelationships['lord-of-the-coast'],
       role: {
         it: 'Re del mare delle acque di Fuschia',
         en: 'Sea King of the Foosha coast',

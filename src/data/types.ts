@@ -247,7 +247,12 @@ export interface CharacterDossier<V extends Vocabulary = Vocabulary> {
   epithet?: Timeline<LocalizedText>
   log: LocalizedText
   origin?: Origin[]
-  /** Important people at this point in the story, in authored order. */
+  /**
+   * Complete selections of at most five distinct people, in authored order.
+   * The latest reached selection replaces the list and carries forward until
+   * another applies. Earlier reached entries retain each selected pair’s history.
+   * Entries are directed facts, not reciprocal links or saga-based rankings.
+   */
   relationships?: Timeline<Relationship[]>
   role: LocalizedText
   /**

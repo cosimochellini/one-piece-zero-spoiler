@@ -46,6 +46,22 @@ gates.
   drawings and lists are filtered server-side too; results belong to the
   bookmark they were fetched for.
 
+## Relationship selections
+
+`CharacterDossier.relationships` uses complete dated snapshots of at most five
+people in editorial order. The server chooses the latest reached snapshot in the
+reader’s source/unit and carries it forward without saga-based resets. Only its
+selected people are projected; each retains their earlier reached history,
+deduplicating unchanged consecutive wording. Removed people and future
+selections contribute no cards, counts or placeholders. A later re-selection
+restores the pair’s reached history. Both endpoints and each snapshot are gated
+before names or text reach the client; perspectives remain directed.
+
+The authoring contract and provenance requirements are in
+[Contributing](../CONTRIBUTING.md#authoring-relationship-selections). Selection
+and wording share the existing timeline; no separate client selection API
+exists.
+
 ## Security
 
 SSR security headers, including the per-request nonce CSP, are set in
@@ -63,8 +79,8 @@ receive an end-of-anime bookmark; source filtering still applies. See
 One Piece and Hunter x Hunter are open to readers. HxH files the verified Hunter
 Exam coverage through episode 26 / chapter 43, including the manga's chapter-one
 characters introduced later by the anime. Remaining candidate naming checks are
-tracked in #833 and #834; chronicle work and full drawing approval remain #762
-and #761. Records are not added from unnamed appearances or supplemental names.
+tracked in #833 and #834; every Hunter Exam character has a chronicle (#762).
+Records are not added from unnamed appearances or supplemental names.
 
 Public metadata in `src/lib/progress/series.ts` holds cookies, ranges, seasons,
 demo bounds, features and themes, without archive records. Pass the series to
@@ -137,7 +153,7 @@ checks this block.
 | Characters        | 45                                                 |
 | Arcs, places      | 7 · 10                                             |
 | Saga modules      | 7                                                  |
-| Line drawings     | 62, one per record, plus 1 redrawings of 1 records |
-| Chronicle stories | 0, for 0 characters                                |
+| Line drawings     | 62, one per record, plus 2 redrawings of 2 records |
+| Chronicle stories | 81, for 44 characters                              |
 
 <!-- End of the generated counts. -->

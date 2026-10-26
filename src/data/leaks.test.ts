@@ -375,8 +375,8 @@ function filedAfter(other: Entity, text: Text): boolean {
   return (
     other.id !== owner.id
     && (!toldIn(other, source ?? null)
-      || other.revealedAtEpisode > episode
-      || other.revealedAtChapter > chapter)
+      || (source !== 'manga' && other.revealedAtEpisode > episode)
+      || (source !== 'anime' && other.revealedAtChapter > chapter))
   )
 }
 
@@ -738,4 +738,38 @@ describe('a place word a series labels itself', () => {
       }).leaks(true),
     ).toStrictEqual([])
   })
+})
+
+describe('source-specific prose with reordered introductions', () => {
+  const other = {
+    ...lastScanned(lastFiled().archive.entities),
+    id: 'reordered-person',
+    revealedAtEpisode: 4,
+    revealedAtChapter: 7,
+  }
+  delete other.source
+
+  it.each([
+    ['anime', 4, 1, false],
+    ['anime', 3, 7, true],
+    ['manga', 1, 7, false],
+    ['manga', 4, 6, true],
+    [undefined, 4, 1, true],
+    [undefined, 1, 7, true],
+    [undefined, 4, 7, false],
+  ] as const)(
+    'checks only the applicable thresholds: %s/%i/%i',
+    (...[source, episode, chapter, expected]) => {
+      expect(
+        filedAfter(other, {
+          owner: { id: 'probe' },
+          label: 'probe',
+          text: everywhere('Probe'),
+          source,
+          episode,
+          chapter,
+        }),
+      ).toBe(expected)
+    },
+  )
 })

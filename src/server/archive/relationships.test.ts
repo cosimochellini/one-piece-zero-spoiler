@@ -115,8 +115,22 @@ describe('the pilot at independently verified relationship thresholds', () => {
       expect(initial[0]?.history).toHaveLength(1)
       expect(open[0]?.history).toHaveLength(2)
       expect(open[1]?.history).toHaveLength(1)
+    },
+  )
+
+  it.each(LOCALES)(
+    'sends no relationship for a character with no authored selection in %s',
+    (locale) => {
+      // Whoever is first without one as cohorts land: the page sends none.
+      const onePiece = LOADED_SERIES.find(({ slug }) => slug === 'one-piece')
+      const bare = onePiece?.archive.characters.find(
+        (owner) =>
+          onePiece.archive.datedOf(owner, 'relationships').length === 0,
+      )
+
+      expect(bare).toBeDefined()
       expect(
-        characterPage('nami', ep(1150), locale)?.detail.relationships,
+        characterPage(bare?.id ?? '', ep(1150), locale)?.detail.relationships,
       ).toStrictEqual([])
     },
   )
@@ -163,6 +177,90 @@ describe.each(LOADED_SERIES)(
           ),
         ).toBe(true)
       }
+    })
+  },
+)
+
+describe.each(LOCALES)(
+  'Koby’s cross-saga editorial selections in %s',
+  (locale) => {
+    function at(bookmark: Bookmark): RelationshipView[] {
+      const page = characterPage('koby', bookmark, locale)
+      if (page === undefined) {
+        throw new Error('Koby is absent')
+      }
+      return page.detail.relationships
+    }
+
+    it.each([
+      [null, []],
+      [ch(1), []],
+      [ep(1), ['monkey-d-luffy', 'alvida']],
+      [ch(2), ['monkey-d-luffy', 'alvida']],
+      [ep(314), ['monkey-d-garp', 'helmeppo', 'monkey-d-luffy']],
+      [ch(432), ['monkey-d-garp', 'helmeppo', 'monkey-d-luffy']],
+      [ep(315), ['monkey-d-luffy', 'monkey-d-garp', 'helmeppo']],
+      [ch(433), ['monkey-d-luffy', 'monkey-d-garp', 'helmeppo']],
+      [ep(487), ['monkey-d-luffy', 'monkey-d-garp', 'helmeppo']],
+      [ch(578), ['monkey-d-luffy', 'monkey-d-garp', 'helmeppo']],
+      [
+        ep(488),
+        ['shanks', 'sakazuki', 'monkey-d-luffy', 'monkey-d-garp', 'helmeppo'],
+      ],
+      [
+        ch(579),
+        ['shanks', 'sakazuki', 'monkey-d-luffy', 'monkey-d-garp', 'helmeppo'],
+      ],
+    ])(
+      'selects only reached people in editorial order at %j',
+      (bookmark, expected) => {
+        expect(at(bookmark).map(({ person }) => person.id)).toStrictEqual(
+          expected,
+        )
+      },
+    )
+
+    it('retains history and localises the changed relationship state', () => {
+      const reunion = at(ep(315))
+      const war = at(ep(488))
+
+      expect(at(ep(1))[1]?.type).toBe(
+        locale === 'en' ? 'Forced service' : 'Servizio forzato',
+      )
+      expect(at(ch(2))).toStrictEqual(at(ep(1)))
+      expect(at(ch(433))).toStrictEqual(reunion)
+      expect(at(ch(579))).toStrictEqual(war)
+      expect(war[2]?.history).toStrictEqual(reunion[0]?.history)
+      expect(war[2]?.history).toHaveLength(2)
+      expect(reunion[0]?.type).toBe(
+        locale === 'en' ?
+          'Friend on the opposing side'
+        : 'Amico su un fronte opposto',
+      )
+    })
+
+    it('carries unchanged selections across later sagas and restores earlier bookmarks', () => {
+      const initial = at(ep(1))
+      const reunion = at(ep(315))
+      const war = at(ep(488))
+
+      expect(at(ep(1121))).toStrictEqual(war)
+      expect(at(ep(1150))).toStrictEqual(at(ep(1122)))
+      expect(at(ch(1087))).toStrictEqual(war)
+      expect(at(ch(1100))).toStrictEqual(at(ch(1088)))
+      expect(at(ep(1))).toStrictEqual(initial)
+      expect(at(ch(433))).toStrictEqual(reunion)
+      expect(pilotAt(ch(1100), locale)).toStrictEqual(pilotAt(ch(774), locale))
+    })
+
+    it('withholds future relationship facts even when their people are already known', () => {
+      const sent = JSON.stringify(at(ch(578)))
+
+      expect(sent).not.toContain('shanks')
+      expect(sent).not.toContain('sakazuki')
+      expect(sent).not.toContain('Hostility')
+      expect(sent).not.toContain('Ostilità')
+      expect(sent).not.toContain('579')
     })
   },
 )
