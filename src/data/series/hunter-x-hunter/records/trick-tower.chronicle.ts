@@ -35,8 +35,8 @@ export const trickTowerChronicles = {
       value: {
         title: { it: 'Il secondo prigioniero', en: 'The second prisoner' },
         body: {
-          it: 'Dopo la resa di [[tonpa|Tonpa]] contro Bendot, il secondo prigioniero è Sedokan, condannato a centoquarantanove anni per una serie di attentati. [[gon-freecss|Gon]] si offre di affrontarlo. Il gruppo ha già perso il primo incontro e deve vincerne almeno tre. Dei quaranta aspiranti che hanno cominciato la terza prova ne restano trentanove.',
-          en: 'After [[tonpa|Tonpa]] gives up against Bendot, the second prisoner is Sedokan, sentenced to one hundred and forty-nine years for serial bombings. [[gon-freecss|Gon]] volunteers to face him. The group has already lost the first match and must win at least three. Of the forty applicants who began the Third Phase, thirty-nine remain.',
+          it: 'Dopo la resa di [[tonpa|Tonpa]] contro [[bendot|Bendot]], il secondo prigioniero è Sedokan, condannato a centoquarantanove anni per una serie di attentati. [[gon-freecss|Gon]] si offre di affrontarlo. Il gruppo ha già perso il primo incontro e deve vincerne almeno tre. Dei quaranta aspiranti che hanno cominciato la terza prova ne restano trentanove.',
+          en: 'After [[tonpa|Tonpa]] gives up against [[bendot|Bendot]], the second prisoner is Sedokan, sentenced to one hundred and forty-nine years for serial bombings. [[gon-freecss|Gon]] volunteers to face him. The group has already lost the first match and must win at least three. Of the forty applicants who began the Third Phase, thirty-nine remain.',
         },
       },
     },
@@ -59,8 +59,8 @@ export const trickTowerChronicles = {
       value: {
         title: { it: 'Il ragno sulla schiena', en: 'The spider on his back' },
         body: {
-          it: 'Majtani sfida [[kurapika|Kurapika]] a un combattimento senza armi in cui uno dei due deve morire o arrendersi. Si vanta degli uomini che ha ucciso e ha dei cuori tatuati, uno per ogni vittima. Kurapika nota il ragno tatuato sulla sua schiena e i suoi occhi diventano scarlatti. Lo mette fuori combattimento con un pugno, senza ucciderlo, e gli ordina di ricordare tre cose: un vero tatuaggio della Brigata Fantasma porta il numero del membro, i loro morti sono troppi per essere contati e il nome della Brigata non va più pronunciato.',
-          en: 'Majtani challenges [[kurapika|Kurapika]] to a fight without weapons in which one of them must die or surrender. He brags about the men he has killed and has hearts tattooed on his chest, one for each victim. Kurapika notices the spider tattooed on his back and his eyes turn scarlet. He knocks Majtani out with one punch, without killing him, and tells him to remember three things: a real Phantom Troupe tattoo carries the member’s number, their dead are too many to count, and the Troupe’s name must never be spoken again.',
+          it: 'Majtani sfida [[kurapika|Kurapika]] a un combattimento senza armi in cui uno dei due deve morire o arrendersi. Si vanta degli uomini che ha ucciso e tiene il conto con dei cuori tatuati. Kurapika nota il ragno tatuato sulla sua schiena e i suoi occhi diventano scarlatti. Lo mette fuori combattimento con un pugno, senza ucciderlo, e gli ordina di ricordare tre cose: un vero tatuaggio della Brigata Fantasma porta il numero del membro, i loro morti sono troppi per essere contati e il nome della Brigata non va più pronunciato.',
+          en: 'Majtani challenges [[kurapika|Kurapika]] to a fight without weapons in which one of them must die or surrender. He brags about the men he has killed and keeps count with tattooed hearts. Kurapika notices the spider tattooed on his back and his eyes turn scarlet. He knocks Majtani out with one punch, without killing him, and tells him to remember three things: a real Phantom Troupe tattoo carries the member’s number, their dead are too many to count, and the Troupe’s name must never be spoken again.',
         },
       },
     },
@@ -83,8 +83,8 @@ export const trickTowerChronicles = {
       value: {
         title: { it: 'Scommettere il tempo', en: 'Wagering time' },
         body: {
-          it: 'Leroute si oppone alla richiesta di [[leorio-paradinight|Leorio]] di portare via Majtani: il suo incontro non è finito. Il direttore [[lippo|Rippo]] ricorda che deve scontare centododici anni per traffico di animali rari e gioco d’azzardo. Propone a Leorio di scommettere le ore a disposizione del gruppo. La prima scommessa la perde lei. Alla seconda, sull’ipotetico svenimento di Majtani, porta la posta a quaranta ore e le incassa, ma Leorio guida comunque l’incontro per due a uno.',
-          en: 'Leroute objects to [[leorio-paradinight|Leorio]]’s demand to remove Majtani: his match is not over. The warden [[lippo|Lippo]] notes that she is serving one hundred and twelve years for trafficking rare animals and illegal gambling. She proposes that Leorio wager the hours his group has left. She loses the first bet. On the second, about whether Majtani is really unconscious, she raises the stake to forty hours and collects them, but Leorio still leads the match two to one.',
+          it: 'Leroute si oppone alla richiesta di [[leorio-paradinight|Leorio]] di portare via [[majtani|Majtani]]: il suo incontro non è finito. Il direttore [[lippo|Rippo]] ricorda che deve scontare centododici anni per traffico di animali rari e gioco d’azzardo. Propone a Leorio di scommettere le ore a disposizione del gruppo. La prima scommessa la perde lei. Alla seconda, sull’ipotetico svenimento di Majtani, porta la posta a quaranta ore e le incassa, ma Leorio guida comunque l’incontro per due a uno.',
+          en: 'Leroute objects to [[leorio-paradinight|Leorio]]’s demand to remove [[majtani|Majtani]]: his match is not over. The warden [[lippo|Lippo]] notes that she is serving one hundred and twelve years for trafficking rare animals and illegal gambling. She proposes that Leorio wager the hours his group has left. She loses the first bet. On the second, about whether Majtani is really unconscious, she raises the stake to forty hours and collects them, but Leorio still leads the match two to one.',
         },
       },
     },

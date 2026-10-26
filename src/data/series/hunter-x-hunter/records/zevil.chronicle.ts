@@ -38,8 +38,8 @@ export const zevilChronicles = {
       value: {
         title: { it: 'La targhetta consegnata', en: 'The badge handed over' },
         body: {
-          it: 'Umori raggiunge [[imori|Imori]] insieme ad [[amori|Amori]] e insiste perché porti a termine il piano contro [[killua|Killua]]. Quando Killua prende [[amori|Amori]] in ostaggio, gli chiede la sua targhetta. Umori gliela dà. Killua lancia a centinaia di metri le altre targhette che ha in mano e se ne va.',
-          en: 'Umori joins [[imori|Imori]] with [[amori|Amori]] and insists he carry out the plan against [[killua|Killua]]. When Killua takes [[amori|Amori]] hostage, he asks Umori for his badge. Umori hands it over. Killua throws the other badges he is holding hundreds of feet away and leaves.',
+          it: 'Umori raggiunge [[imori|Imori]] insieme ad [[amori|Amori]] e insiste perché porti a termine il piano contro [[killua|Killua]]. Quando Killua prende [[amori|Amori]] in ostaggio, gli chiede la sua targhetta. Umori gliela dà. Killua lancia a centinaia di metri le altre targhette e se ne va.',
+          en: 'Umori joins [[imori|Imori]] with [[amori|Amori]] and insists he carry out the plan against [[killua|Killua]]. When Killua takes [[amori|Amori]] hostage, he asks Umori for his badge. Umori hands it over. Killua throws the other badges hundreds of feet away and leaves.',
         },
       },
     },
@@ -71,7 +71,7 @@ export const zevilChronicles = {
     },
     {
       episode: 18,
-      chapter: 32,
+      chapter: 31,
       value: {
         title: { it: 'Il gas e il badge', en: 'The gas and the badge' },
         body: {
@@ -139,8 +139,8 @@ export const zevilChronicles = {
           en: 'Passing without a fight',
         },
         body: {
-          it: 'Nel terzo incontro [[hanzo|Hanzo]] usa con Pockul la stessa tattica che ha usato con [[gon-freecss|Gon]], e lui si arrende. Nel quinto incontro [[killua|Killua]] non vuole combattere con lui e si ritira. Pockul passa l’esame e diventa Hunter. A [[gon-freecss|Gon]] il racconto dei due incontri arriva da [[satotz|Satoshi]], dopo la fine della prova.',
-          en: 'In the third match, [[hanzo|Hanzo]] uses the same tactic on Pokkle that he used on [[gon-freecss|Gon]], and Pokkle surrenders. In the fifth match [[killua|Killua]] does not want to fight him and forfeits. Pokkle passes the exam and becomes a Hunter. [[gon-freecss|Gon]] hears about both matches from [[satotz|Satotz]] after the phase is over.',
+          it: 'Nel terzo incontro [[hanzo|Hanzo]] usa con Pockul la stessa tattica che ha usato con [[gon-freecss|Gon]], e lui si arrende. Nel quinto incontro [[killua|Killua]] non vuole combattere con lui e si ritira. Pockul supera l’esame. A [[gon-freecss|Gon]] il racconto dei due incontri arriva da [[satotz|Satoshi]], dopo la fine della prova.',
+          en: 'In the third match, [[hanzo|Hanzo]] uses the same tactic on Pokkle that he used on [[gon-freecss|Gon]], and Pokkle surrenders. In the fifth match [[killua|Killua]] does not want to fight him and forfeits. Pokkle passes the exam. [[gon-freecss|Gon]] hears about both matches from [[satotz|Satotz]] after the phase is over.',
         },
       },
     },
@@ -166,8 +166,8 @@ export const zevilChronicles = {
       value: {
         title: { it: 'Due incontri, una morte', en: 'Two matches, one death' },
         body: {
-          it: '[[hisoka|Hisoka]] batte Bodoro, che si rifiuta di arrendersi. Hisoka gli sussurra qualcosa all’orecchio e Bodoro cede. È troppo ferito per proseguire e il suo secondo incontro, con [[leorio-paradinight|Leorio]], viene rimandato. Quando comincia, [[killua|Killua]] compare alle sue spalle e lo uccide sul colpo. Bodoro è squalificato e fallisce l’esame.',
-          en: '[[hisoka|Hisoka]] beats Bodoro, who refuses to surrender. Hisoka whispers something in his ear and Bodoro yields. He is too hurt to go on, and his next match, against [[leorio-paradinight|Leorio]], is postponed. When it begins, [[killua|Killua]] appears behind him and kills him on the spot. Bodoro is disqualified and fails the exam.',
+          it: '[[hisoka|Hisoka]] batte Bodoro, che si rifiuta di arrendersi. Hisoka gli sussurra qualcosa all’orecchio e Bodoro cede. È troppo ferito per proseguire e il suo secondo incontro, con [[leorio-paradinight|Leorio]], viene rimandato. Quando comincia, [[killua|Killua]] compare alle sue spalle e lo uccide sul colpo. Per questo Killua viene squalificato e fallisce l’esame.',
+          en: '[[hisoka|Hisoka]] beats Bodoro, who refuses to surrender. Hisoka whispers something in his ear and Bodoro yields. He is too hurt to go on, and his next match, against [[leorio-paradinight|Leorio]], is postponed. When it begins, [[killua|Killua]] appears behind him and kills him on the spot. For this Killua is disqualified and fails the exam.',
         },
       },
     },

@@ -69,8 +69,8 @@ export const zoldyckChronicles = {
       value: {
         title: { it: 'La linea sul sentiero', en: 'The line on the path' },
         body: {
-          it: 'Sulla strada verso [[killua|Killua]], Canaria sbarra il passo a [[gon-freecss|Gon]], [[kurapika|Kurapika]] e [[leorio-paradinight|Leorio]] e traccia una linea: chi la supera se la vedrà con lei. Gon la oltrepassa e viene colpito col bastone, di nuovo e di nuovo, finché ha un occhio gonfio. Canaria ricorda quando Killua le offrì una mela e il suo aiuto, e lei rifiutò l’amicizia perché lo serviva. Quando Gon spezza un blocco di pietra con un pugno e le dice che ha un cuore, piange e chiede aiuto per Killua.',
-          en: 'On the way to [[killua|Killua]], Canary blocks [[gon-freecss|Gon]], [[kurapika|Kurapika]] and [[leorio-paradinight|Leorio]] and draws a line: whoever crosses it answers to her. Gon steps over and is struck with her staff, again and again, until one eye is swollen shut. Canary remembers when Killua offered her an apple and his friendship, and she refused because she served him. When Gon shatters a block of stone with his fist and tells her she has a heart, she cries and asks them to help Killua.',
+          it: 'Sulla strada verso [[killua|Killua]], Canaria sbarra il passo a [[gon-freecss|Gon]], [[kurapika|Kurapika]] e [[leorio-paradinight|Leorio]] e traccia una linea: chi la supera se la vedrà con lei. Gon la oltrepassa e viene colpito col bastone, di nuovo e di nuovo, finché ha un occhio gonfio. Canaria ricorda quando Killua le offrì una mela e la sua amicizia, e lei rifiutò. Quando Gon spezza un blocco di pietra con un pugno e le dice che ha un cuore, piange e chiede aiuto per Killua.',
+          en: 'On the way to [[killua|Killua]], Canary blocks [[gon-freecss|Gon]], [[kurapika|Kurapika]] and [[leorio-paradinight|Leorio]] and draws a line: whoever crosses it answers to her. Gon steps over and is struck with her staff, again and again, until one eye is swollen shut. Canary remembers when Killua offered her an apple and his friendship, and she refused. When Gon shatters a block of stone with his fist and tells her she has a heart, she cries and asks them to help Killua.',
         },
       },
     },
@@ -94,8 +94,8 @@ export const zoldyckChronicles = {
           en: 'The more talented brother',
         },
         body: {
-          it: 'Milki frusta ancora [[killua|Killua]], che si scusa soltanto per averlo accoltellato durante la fuga. La madre telefona per dire che gli amici sono vicini, e Killua minaccia di ucciderlo se li toccano. Quando entra [[zeno|Zeno]] e libera il nipote, Milki protesta e dice che il nonno lo vizia. Ammette che Killua è il più dotato della famiglia ma lo giudica debole di mente, e si mette a vantare l’ultima invenzione, una zanzara che trasporta una bomba.',
-          en: 'Milluki whips [[killua|Killua]] again, and Killua only apologises for stabbing him during his escape. Their mother phones to say his friends are near, and Killua threatens to kill Milluki if they are touched. When [[zeno|Zeno]] comes in and frees his grandson, Milluki protests that Zeno spoils him. He admits that Killua is the most talented in the family but calls him weak in the mind, then boasts about his latest invention, a mosquito that carries a bomb.',
+          it: 'Milki frusta ancora [[killua|Killua]], che si scusa soltanto per averlo accoltellato durante la fuga. La madre telefona per dire che gli amici sono vicini, e Killua minaccia di ucciderlo se li toccano. Quando entra [[zeno|Zeno]] e libera il nipote, Milki protesta e dice che il nonno vizia Killua. Ammette che Killua è il più dotato della famiglia ma lo giudica debole di mente, e si mette a vantare l’ultima invenzione, una zanzara che trasporta una bomba.',
+          en: 'Milluki whips [[killua|Killua]] again, and Killua only apologises for stabbing him during his escape. Their mother phones to say his friends are near, and Killua threatens to kill Milluki if they are touched. When [[zeno|Zeno]] comes in and frees his grandson, Milluki protests that Zeno spoils Killua. He admits that Killua is the most talented in the family but calls him weak in the mind, then boasts about his latest invention, a mosquito that carries a bomb.',
         },
       },
     },

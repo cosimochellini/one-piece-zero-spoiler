@@ -56,8 +56,8 @@ export const chapterOne: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       chronicle: chapterOneChronicles.kon,
       role: { it: 'Orso-volpe', en: 'Foxbear' },
       log: {
-        it: 'È ancora un cucciolo quando Kaito uccide sua madre per salvare Gon. Kaito vuole abbattere anche lui, ma Gon lo prende in braccio e insiste per allevarlo, anche mentre il cucciolo gli graffia il braccio.',
-        en: 'He is still a cub when Kite kills his mother to save Gon. Kite intends to put him down too, but Gon holds him and insists on raising him, even as the cub scratches his arm.',
+        it: 'È ancora un cucciolo quando Kaito uccide sua madre per salvare Gon. Kaito vuole abbattere anche lui, ma Gon insiste per allevarlo.',
+        en: 'He is still a cub when Kite kills his mother to save Gon. Kite intends to put him down too, but Gon insists on raising him.',
       },
       status: [{ episode: 76, chapter: 1, value: 'alive' }],
       affiliation: [

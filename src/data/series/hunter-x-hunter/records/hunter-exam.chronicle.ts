@@ -72,8 +72,8 @@ export const hunterExamChronicles = {
           en: 'An impossible condition',
         },
         body: {
-          it: 'Myto smista il pesce al porto mentre in paese si parla di Gon, suo nipote di dodici anni. Non vuole lasciarlo partire per l’Esame Hunter e gli pone una condizione che crede impossibile: pescare il pesce più grosso della palude. Quando Gon ci riesce, resta senza parole. La sera prima della partenza prova ancora a convincerlo a rinunciare, perché non vuole che diventi come suo padre. Gon risponde che vuole capire perché lui ha scelto di fare l’Hunter. Myto sa che è pericoloso, ma la mattina dopo lo saluta al porto con la nonna.',
-          en: 'Mito sorts fish at the harbor while the town talks about Gon, her twelve-year-old nephew. She does not want him to take the Hunter Exam and sets him a condition she thinks is impossible: catch the biggest fish in the swamp. When Gon does it, she is left speechless. The night before he leaves she tries once more to talk him out of it, because she does not want him to turn out like his father. Gon answers that he wants to know why his father chose to be a Hunter. Mito knows it is dangerous, but the next morning she sees him off at the harbor with her grandmother.',
+          it: 'Myto smista il pesce mentre in paese si parla di [[gon-freecss|Gon]], suo nipote di dodici anni. Non vuole lasciarlo partire per l’Esame Hunter e gli pone una condizione che crede impossibile: pescare il pesce più grosso della palude. Quando Gon ci riesce, lei è costernata. La sera prima della partenza prova ancora a convincerlo a rinunciare, perché non vuole che diventi come suo padre. Gon risponde che vuole capire perché lui ha scelto di fare l’Hunter. Myto sa che è pericoloso, ma la mattina dopo lo saluta al porto con la nonna.',
+          en: 'Mito sorts fish while the town talks about [[gon-freecss|Gon]], her twelve-year-old nephew. She does not want him to take the Hunter Exam and sets him a condition she thinks is impossible: catch the biggest fish in the swamp. When Gon does it, she is dismayed. The night before he leaves she tries once more to talk him out of it, because she does not want him to turn out like his father. Gon answers that he wants to know why his father chose to be a Hunter. Mito knows it is dangerous, but the next morning she sees him off at the harbor with her grandmother.',
         },
       },
     },
@@ -84,8 +84,8 @@ export const hunterExamChronicles = {
       value: {
         title: { it: 'La lettera di Gon', en: 'Gon’s letter' },
         body: {
-          it: 'Myto riceve una lettera di Gon mentre la nonna guarda. Lui scrive di aver superato l’esame, ma di non essere contento di come ha vinto il combattimento finale. Racconta di essere stato a Monte Kukruu con [[leorio-paradinight|Leorio]] e [[kurapika|Kurapika]] per riprendere [[killua|Killua]], e che prima di tornare a casa deve restituire un debito a [[hisoka|Hisoka]]. Aggiunge che non tornerà presto. Myto incornicia una foto dei quattro amici e la appende al muro.',
-          en: 'Mito receives a letter from Gon while her grandmother looks on. He writes that he has passed the exam but is unhappy about how he won the final match. He tells her he went to Kukuroo Mountain with [[leorio-paradinight|Leorio]] and [[kurapika|Kurapika]] to bring back [[killua|Killua]], and that before he comes home he has a debt to settle with [[hisoka|Hisoka]]. He adds that he will not be back soon. Mito frames a photo of the four friends and hangs it on the wall.',
+          it: 'Myto riceve una lettera di [[gon-freecss|Gon]] mentre la nonna guarda. Lui scrive di aver superato l’esame, ma di non essere contento di come ha vinto il combattimento finale. Racconta di essere stato a Monte Kukruu con [[leorio-paradinight|Leorio]] e [[kurapika|Kurapika]] per riprendere [[killua|Killua]], e che prima di tornare a casa deve restituire un debito a [[hisoka|Hisoka]]. Aggiunge che non tornerà presto. Myto incornicia una foto dei quattro amici e la appende al muro.',
+          en: 'Mito receives a letter from [[gon-freecss|Gon]] while her grandmother looks on. He writes that he has passed the exam but is unhappy about how he won the final match. He tells her he went to Kukuroo Mountain with [[leorio-paradinight|Leorio]] and [[kurapika|Kurapika]] to bring back [[killua|Killua]], and that before he comes home he has a debt to settle with [[hisoka|Hisoka]]. He adds that he will not be back soon. Mito frames a photo of the four friends and hangs it on the wall.',
         },
       },
     },
@@ -108,8 +108,8 @@ export const hunterExamChronicles = {
       value: {
         title: { it: 'Il vero motivo', en: 'The real reason' },
         body: {
-          it: 'Dopo ore di corsa Leorio è sfinito e sta per mollare, ma vede che [[gon-freecss|Gon]] lo aspetta e riparte, più veloce di tutti. Si toglie la giacca, e [[kurapika|Kurapika]], che gli ha appena raccontato perché vuole diventare Hunter, gli chiede il suo vero motivo. Leorio dice che i soldi comprano tutto, perfino la vita delle persone, poi ammette che un suo amico è morto per una malattia curabile che nessuno poteva pagare. Vuole diventare medico e curare gratis i bambini poveri, e per studiare gli servono molti soldi. Kurapika sorride.',
-          en: 'After hours of running Leorio is exhausted and about to quit, but he sees [[gon-freecss|Gon]] waiting for him and sets off again, faster than anyone. He takes off his jacket, and [[kurapika|Kurapika]], who has just told him why he wants to be a Hunter, asks for his real reason. Leorio says money buys everything, even people’s lives, then admits that a friend of his died of an illness that could have been treated if they had been able to pay. He wants to be a doctor and treat poor children for free, and studying takes a lot of money. Kurapika smiles.',
+          it: 'Dopo ore di corsa Leorio è sfinito e sta per mollare, ma vede che [[gon-freecss|Gon]] lo aspetta e riparte e supera [[gon-freecss|Gon]] e [[killua|Killua]]. Si toglie la giacca, e [[kurapika|Kurapika]], che gli ha appena raccontato perché vuole diventare Hunter, gli chiede il suo vero motivo. Leorio dice che i soldi comprano tutto, perfino la vita delle persone, poi ammette che un suo amico è morto per una malattia curabile che nessuno poteva pagare. Vuole diventare medico e curare gratis i bambini poveri, e per studiare gli servono molti soldi. Kurapika sorride.',
+          en: 'After hours of running Leorio is exhausted and about to quit, but he sees [[gon-freecss|Gon]] waiting for him and sets off again and runs past [[gon-freecss|Gon]] and [[killua|Killua]]. He takes off his jacket, and [[kurapika|Kurapika]], who has just told him why he wants to be a Hunter, asks for his real reason. Leorio says money buys everything, even people’s lives, then admits that a friend of his died of an illness that could have been treated if they had been able to pay. He wants to be a doctor and treat poor children for free, and studying takes a lot of money. Kurapika smiles.',
         },
       },
     },
@@ -187,8 +187,8 @@ export const hunterExamChronicles = {
       value: {
         title: { it: 'In difesa di Killua', en: 'Defending Killua' },
         body: {
-          it: 'Nella finale Kurapika vince contro [[hisoka|Hisoka]], che gli sussurra qualcosa e si ritira. Quando [[illumi|Illumi]] vuole andare a uccidere [[gon-freecss|Gon]], Kurapika, [[leorio-paradinight|Leorio]] e [[hanzo|Hanzo]] lo bloccano alla porta. Poi chiede al comitato di riesaminare la squalifica di [[killua|Killua]], perché pensa che Illumi lo abbia manipolato. [[pokkle|Pockul]] gli contesta la vittoria su Hisoka, e Kurapika si rifiuta di rivelare cosa gli abbia detto. Dopo l’esame parte con Gon e Leorio per riprendere Killua.',
-          en: 'In the final Kurapika wins against [[hisoka|Hisoka]], who whispers something to him and withdraws. When [[illumi|Illumi]] wants to go and kill [[gon-freecss|Gon]], Kurapika, [[leorio-paradinight|Leorio]] and [[hanzo|Hanzo]] block him at the door. Then he asks the committee to look again at [[killua|Killua]]’s disqualification, since he thinks Illumi manipulated him. [[pokkle|Pokkle]] questions his win over Hisoka, and Kurapika refuses to say what Hisoka told him. After the exam he sets out with Gon and Leorio to bring Killua back.',
+          it: 'Nella finale Kurapika vince contro [[hisoka|Hisoka]], che gli sussurra qualcosa e si ritira. Quando [[illumi|Illumi]] vuole andare a uccidere [[gon-freecss|Gon]], Kurapika, [[leorio-paradinight|Leorio]] e [[hanzo|Hanzo]] lo bloccano alla porta. Poi difende [[killua|Killua]] davanti al comitato: pensa che Illumi lo abbia manipolato durante il combattimento. [[pokkle|Pockul]] gli contesta la vittoria su Hisoka, e Kurapika si rifiuta di rivelare cosa gli abbia detto. Dopo l’esame parte con Gon e Leorio per riprendere Killua.',
+          en: 'In the final Kurapika wins against [[hisoka|Hisoka]], who whispers something to him and withdraws. When [[illumi|Illumi]] wants to go and kill [[gon-freecss|Gon]], Kurapika, [[leorio-paradinight|Leorio]] and [[hanzo|Hanzo]] block him at the door. Then he defends [[killua|Killua]] before the committee: he thinks Illumi manipulated him during his match. [[pokkle|Pokkle]] questions his win over Hisoka, and Kurapika refuses to say what Hisoka told him. After the exam he sets out with Gon and Leorio to bring Killua back.',
         },
       },
     },
@@ -203,8 +203,8 @@ export const hunterExamChronicles = {
           en: 'The crewman thrown overboard',
         },
         body: {
-          it: 'Katzo è il marinaio che i compagni prendono di mira sulla nave per l’esame. [[gon-freecss|Gon]] lo nota e lo aiuta, e il capitano lo richiama per fare in fretta. Quando la tempesta colpisce, un’ondata lo scaraventa fuori bordo. Gon si tuffa per afferrarlo, mentre [[leorio-paradinight|Leorio]] e [[kurapika|Kurapika]] lo trattengono per le gambe. Il giorno dopo Katzo ringrazia i tre.',
-          en: 'Katzo is the crewman his mates pick on aboard the ship to the exam. [[gon-freecss|Gon]] notices him and helps, and the captain calls him over to hurry up with his chore. When the storm hits, a wave throws him over the side. Gon dives to catch him, while [[leorio-paradinight|Leorio]] and [[kurapika|Kurapika]] hold Gon by the legs. The next day Katzo thanks the three of them.',
+          it: 'Katzo è il marinaio che i compagni prendono di mira sulla nave per l’esame. [[gon-freecss|Gon]] lo nota e lo aiuta, e il capitano lo richiama per fare in fretta. Quando la tempesta colpisce, la tempesta lo scaraventa fuori bordo. Gon si tuffa per afferrarlo, mentre [[leorio-paradinight|Leorio]] e [[kurapika|Kurapika]] lo trattengono per le gambe. Il giorno dopo Katzo ringrazia i tre.',
+          en: 'Katzo is the crewman his mates pick on aboard the ship to the exam. [[gon-freecss|Gon]] notices him and helps, and the captain calls him over to hurry up with his chore. When the storm hits, the storm throws him over the side. Gon dives to catch him, while [[leorio-paradinight|Leorio]] and [[kurapika|Kurapika]] hold Gon by the legs. The next day Katzo thanks the three of them.',
         },
       },
     },
@@ -216,8 +216,8 @@ export const hunterExamChronicles = {
       value: {
         title: { it: 'La prova dei navigatori', en: 'The navigators’ test' },
         body: {
-          it: 'Sotto il grande albero [[gon-freecss|Gon]], [[kurapika|Kurapika]] e [[leorio-paradinight|Leorio]] trovano una coppia aggredita da una creatura che cambia aspetto, un Kiriko. Leorio cura l’uomo ferito, Gon e Kurapika inseguono il Kiriko che ha rapito la donna. Kurapika nota un tatuaggio sul braccio di lei e sospetta che sia un inganno, poi colpisce un finto Leorio, un altro Kiriko, che lascia solo un ferito. Gon dice al Kiriko che sta inseguendo il bersaglio sbagliato. I due Kiriko si rivelano, e i figli passano i tre e li portano in volo all’esame.',
-          en: 'Under the great tree [[gon-freecss|Gon]], [[kurapika|Kurapika]] and [[leorio-paradinight|Leorio]] find a couple being attacked by a shape-shifting creature, a Kiriko. Leorio tends the wounded man, while Gon and Kurapika chase the Kiriko that carries off the woman. Kurapika notices a tattoo on her arm and suspects a trick, then hits a fake Leorio, another Kiriko, for leaving a wounded person alone. Gon tells the Kiriko it is chasing the wrong target. The two Kiriko reveal themselves, and their children pass the three and fly them to the exam.',
+          it: 'Sotto il grande albero [[gon-freecss|Gon]], [[kurapika|Kurapika]] e [[leorio-paradinight|Leorio]] trovano una coppia aggredita da una creatura che cambia aspetto, un Kiriko. Leorio cura l’uomo ferito, Gon e Kurapika inseguono il Kiriko che ha rapito la donna. Kurapika nota un tatuaggio sul braccio di lei e sospetta che sia un inganno, poi colpisce un finto Leorio, un altro Kiriko, che lascia solo un ferito. Gon dice al Kiriko che lo ha messo all’angolo che non è quello che stava inseguendo. Il Kiriko chiama il compagno e la coppia si rivela per i loro figli, che passano i tre e li portano in volo all’esame.',
+          en: 'Under the great tree [[gon-freecss|Gon]], [[kurapika|Kurapika]] and [[leorio-paradinight|Leorio]] find a couple being attacked by a shape-shifting creature, a Kiriko. Leorio tends the wounded man, while Gon and Kurapika chase the Kiriko that carries off the woman. Kurapika notices a tattoo on her arm and suspects a trick, then hits a fake Leorio, another Kiriko, for leaving a wounded person alone. Gon tells the Kiriko that has cornered him that it is not the one he was chasing. The Kiriko calls its partner and the couple reveal themselves as their offspring, who pass the three and fly them to the exam.',
         },
       },
     },
@@ -312,8 +312,8 @@ export const hunterExamChronicles = {
       value: {
         title: { it: 'L’avvertimento a Illumi', en: 'A warning for Illumi' },
         body: {
-          it: 'Dopo la cerimonia dei nuovi Hunter, Hisoka compare alle spalle di [[illumi|Illumi]]. Gli dice che indicare a [[gon-freecss|Gon]] dove abita la famiglia di Killua non fa danno, perché lo sanno tutti in zona. Illumi riconosce che Gon ha un talento enorme e pensa di ucciderlo, ma Hisoka lo avverte: se lo tocca, ne pagherà le conseguenze.',
-          en: 'After the ceremony for the new Hunters, Hisoka appears behind [[illumi|Illumi]]. He tells him that pointing [[gon-freecss|Gon]] to where Killua’s family lives does no harm, because everyone in the area knows it. Illumi recognizes that Gon has enormous potential and thinks of killing him, but Hisoka warns him: if he touches Gon, he will face the consequences.',
+          it: 'Dopo la cerimonia dei nuovi Hunter, Hisoka compare alle spalle di [[illumi|Illumi]]. Gli dice che indicare a [[gon-freecss|Gon]] dove abita la famiglia di [[killua|Killua]] non fa danno, perché lo sanno tutti in zona. Illumi riconosce che Gon ha un talento enorme e pensa di ucciderlo, ma Hisoka lo avverte: se lo tocca, ne pagherà le conseguenze.',
+          en: 'After the ceremony for the new Hunters, Hisoka appears behind [[illumi|Illumi]]. He tells him that pointing [[gon-freecss|Gon]] to where [[killua|Killua]]’s family lives does no harm, because everyone in the area knows it. Illumi recognizes that Gon has enormous potential and thinks of killing him, but Hisoka warns him: if he touches Gon, he will face the consequences.',
         },
       },
     },
@@ -406,8 +406,8 @@ export const hunterExamChronicles = {
           en: 'The boy with the skateboard',
         },
         body: {
-          it: 'Già nel tunnel Killua aveva bevuto senza effetti un succo avvelenato offerto da [[tonpa|Tonpa]]. Ora segue l’esaminatore sullo skateboard e si avvicina a [[gon-freecss|Gon]] quando scopre che hanno la stessa età. Prende la tavola in mano e corre al suo fianco. Quando Gon si ferma ad aspettare [[leorio-paradinight|Leorio]], gli dice di lasciarlo perdere, ma Gon non si muove. Dice di fare l’esame per divertimento, perché lo trova una sfida. Poi propone una gara fino all’uscita: arrivano insieme e [[satotz|Satoshi]] dichiara il pareggio.',
-          en: 'Back in the tunnel Killua had drunk a poisoned juice offered by [[tonpa|Tonpa]] without any effect. Now he follows the examiner on his skateboard and comes over to [[gon-freecss|Gon]] when he learns they are the same age. He picks the board up and runs at his side. When Gon stops to wait for [[leorio-paradinight|Leorio]], Killua tells him to forget him, but Gon does not move. He says he is taking the exam for fun, because he finds it a challenge. Then he proposes a race to the exit: they arrive together and [[satotz|Satotz]] calls it a tie.',
+          it: 'Già nel tunnel Killua aveva bevuto senza effetti un succo avvelenato offerto da [[tonpa|Tonpa]]. Ora segue l’esaminatore sullo skateboard e si avvicina a [[gon-freecss|Gon]] quando scopre che hanno la stessa età. Prende la tavola in mano e corre al suo fianco. Quando Gon si ferma ad aspettare [[leorio-paradinight|Leorio]], gli dice di lasciarlo perdere, ma Gon non si muove. Dice di fare l’esame per divertimento, perché lo trova una sfida. Poi concordano una gara fino all’uscita: arrivano insieme e [[satotz|Satoshi]] dichiara il pareggio.',
+          en: 'Back in the tunnel Killua had drunk a poisoned juice offered by [[tonpa|Tonpa]] without any effect. Now he follows the examiner on his skateboard and comes over to [[gon-freecss|Gon]] when he learns they are the same age. He picks the board up and runs at his side. When Gon stops to wait for [[leorio-paradinight|Leorio]], Killua tells him to forget him, but Gon does not move. He says he is taking the exam for fun, because he finds it a challenge. Then they agree to a race to the exit: they arrive together and [[satotz|Satotz]] calls it a tie.',
         },
       },
     },
@@ -439,8 +439,8 @@ export const hunterExamChronicles = {
       value: {
         title: { it: 'La squalifica', en: 'The disqualification' },
         body: {
-          it: 'Nella finale Killua rinuncia al combattimento contro [[pokkle|Pockul]] e poi affronta [[illumi|Illumi]]. Scopre che è suo fratello maggiore, che gli dice di vivere da assassino. Killua risponde che vuole solo essere amico di [[gon-freecss|Gon]], e quando Illumi minaccia di ucciderlo si arrende. Subito dopo uccide [[bodoro|Bodoro]], l’avversario di [[leorio-paradinight|Leorio]], e viene squalificato.',
-          en: 'In the final Killua gives up his match against [[pokkle|Pokkle]] and then faces [[illumi|Illumi]]. He finds out he is his older brother, who tells him to live as an assassin. Killua answers that he only wants to be friends with [[gon-freecss|Gon]], and when Illumi threatens to kill him he surrenders. Right after, he kills [[bodoro|Bodoro]], [[leorio-paradinight|Leorio]]’s opponent, and is disqualified.',
+          it: 'Nella finale Killua rinuncia al combattimento contro [[pokkle|Pockul]] e poi affronta [[illumi|Illumi]]. Scopre che è suo fratello maggiore, che gli dice di vivere da assassino. Killua risponde che vuole solo essere amico di [[gon-freecss|Gon]], e quando Illumi decide di uccidere [[gon-freecss|Gon]] si arrende. Subito dopo uccide [[bodoro|Bodoro]], l’avversario di [[leorio-paradinight|Leorio]], e viene squalificato.',
+          en: 'In the final Killua gives up his match against [[pokkle|Pokkle]] and then faces [[illumi|Illumi]]. He finds out he is his older brother, who tells him to live as an assassin. Killua answers that he only wants to be friends with [[gon-freecss|Gon]], and when Illumi decides to kill [[gon-freecss|Gon]] he surrenders. Right after, he kills [[bodoro|Bodoro]], [[leorio-paradinight|Leorio]]’s opponent, and is disqualified.',
         },
       },
     },
@@ -466,8 +466,8 @@ export const hunterExamChronicles = {
       value: {
         title: { it: 'La prova di cucina', en: 'The cooking test' },
         body: {
-          it: 'Menci e [[buhara|Buhara]] si presentano come Hunter buongustai e danno agli aspiranti una prova di cucina: preparare il maiale della riserva di Visca. Quando lei e Buhara sono sazi, boccia tutti, perché nessuno ha rischiato o provato qualcosa di nuovo. Arriva [[netero|Netero]], e Menci ammette di aver perso la calma dopo l’insulto al suo mestiere. Chiede di rifare la prova e porta gli aspiranti al Monte Spaccato, dove mostra come prendere le uova di aquila ragno saltando nel burrone e aspettando una corrente ascendente.',
-          en: 'Menchi and [[buhara|Buhara]] introduce themselves as Gourmet Hunters and set the applicants a cooking test: prepare pork from the Visca Forest Preserve. Once she and Buhara are full, she fails everyone, because nobody has taken a risk or tried something new. [[netero|Netero]] arrives, and Menchi admits she lost her temper after her profession was insulted. She asks for a retest and takes the applicants to Split Mountain, where she shows how to take Spider Eagle eggs by jumping into the ravine and waiting for an updraft.',
+          it: 'Menci e [[buhara|Buhara]] si presentano come Hunter buongustai e danno agli aspiranti una prova di cucina: preparare il maiale della riserva di Visca. Quando lei e Buhara sono sazi, boccia tutti, perché nessuno ha rischiato o provato qualcosa di nuovo. Arriva [[netero|Netero]], e Menci ammette di aver perso la calma dopo l’insulto al suo mestiere. Chiede di rifare la prova e domanda a [[netero|Netero]] di portare gli aspiranti al Monte Spaccato, dove mostra come prendere le uova di aquila ragno saltando nel burrone e aspettando una corrente ascendente.',
+          en: 'Menchi and [[buhara|Buhara]] introduce themselves as Gourmet Hunters and set the applicants a cooking test: prepare pork from the Visca Forest Preserve. Once she and Buhara are full, she fails everyone, because nobody has taken a risk or tried something new. [[netero|Netero]] arrives, and Menchi admits she lost her temper after her profession was insulted. She asks for a retest and requests that [[netero|Netero]] take the applicants to Split Mountain, where she shows how to take Spider Eagle eggs by jumping into the ravine and waiting for an updraft.',
         },
       },
     },
@@ -495,8 +495,8 @@ export const hunterExamChronicles = {
           en: 'The chairman drops in',
         },
         body: {
-          it: 'Dopo che [[satotz|Satoshi]] ha avvisato il comitato, un dirigibile si ferma sopra la tenuta e Netero salta giù da solo, atterrando in piedi in un cratere. Chiede a [[menchi|Menci]] se ha davvero bocciato tutti perché non volevano rischiare. Lei ammette di aver perso la calma e propone di rifare la prova. Netero accetta e le chiede di mostrare di persona come farla.',
-          en: 'After [[satotz|Satotz]] alerts the committee, an airship stops over the estate and Netero jumps down alone, landing on his feet in a crater. He asks [[menchi|Menchi]] whether she really failed everyone because they would not take risks. She admits she lost her temper and proposes redoing the test. Netero agrees and asks her to show in person how it is done.',
+          it: 'Dopo che [[satotz|Satoshi]] ha avvisato il comitato, un dirigibile si ferma sopra la tenuta e Netero salta giù, atterrando in piedi in un cratere. Chiede a [[menchi|Menci]] se ha davvero bocciato tutti perché non volevano rischiare. Lei ammette di aver perso la calma e propone di rifare la prova. Netero le chiede di pensare a un’altra prova e di mostrare di persona come farla.',
+          en: 'After [[satotz|Satotz]] alerts the committee, an airship stops over the estate and Netero jumps down, landing on his feet in a crater. He asks [[menchi|Menchi]] whether she really failed everyone because they would not take risks. She admits she lost her temper and proposes redoing the test. Netero tells her to think of another task and to show in person how it is done.',
         },
       },
     },
@@ -506,8 +506,8 @@ export const hunterExamChronicles = {
       value: {
         title: { it: 'La palla del presidente', en: 'The chairman’s ball' },
         body: {
-          it: 'Sul dirigibile Netero si presenta a tutti gli aspiranti. Poi incontra [[gon-freecss|Gon]] e [[killua|Killua]] in corridoio: li spaventa facendo credere che ci sia un altro, poi compare alle loro spalle. Li sfida a togliergli una palla, e se ci riescono diventeranno Hunter. Killua usa attacchi da assassino e Gon prova a collaborare con lui. Non ci riescono, ma Gon lo costringe a usare anche l’altro braccio.',
-          en: 'On the airship Netero introduces himself to all the applicants. Then he meets [[gon-freecss|Gon]] and [[killua|Killua]] in a corridor: he fools them into thinking someone else is watching, then appears behind them. He challenges them to take a ball from him, promising they will become Hunters if they succeed. Killua uses assassin’s attacks and Gon tries to team up with him. They fail, but Gon makes him use his other arm too.',
+          it: 'Sul dirigibile Netero si presenta a tutti gli aspiranti. Poi incontra [[gon-freecss|Gon]] e [[killua|Killua]] in corridoio: li spaventa facendo credere che ci sia un altro, poi compare dalla parte opposta. Li sfida a togliergli una palla, e se ci riescono diventeranno Hunter. Killua usa attacchi da assassino e Gon prova a collaborare con lui. Non ci riescono, ma Gon lo costringe a usare anche l’altro braccio.',
+          en: 'On the airship Netero introduces himself to all the applicants. Then he meets [[gon-freecss|Gon]] and [[killua|Killua]] in a corridor: he fools them into thinking someone else is watching, then appears from the opposite direction. He challenges them to take a ball from him, promising they will become Hunters if they succeed. Killua uses assassin’s attacks and Gon tries to team up with him. They fail, but Gon makes him use his other arm too.',
         },
       },
     },

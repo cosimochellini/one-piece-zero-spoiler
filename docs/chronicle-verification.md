@@ -1741,229 +1741,229 @@ held to: every story below has a row, and every row below has a story.
 
 ## Gon Freecss (`gon-freecss`, threshold ep 1)
 
-| Entry (en title)       | Episode | Fandom page that settles it                             | Note                                                                                                                                                                |
-| ---------------------- | ------: | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Leaving Whale Island   |       1 | https://hunterxhunter.fandom.com/wiki/Episode_1_(2011)  | Gon catches the swamp fish, Mito's night-before talk, the storm warning, and the dive for Katzo with Leorio and Kurapika holding his legs all fall in this episode. |
-| A friend in the tunnel |       4 | https://hunterxhunter.fandom.com/wiki/Episode_4_(2011)  | Gon waits for Leorio, meets Killua, they share reasons and tie the race to the exit, judged by Satotz.                                                              |
-| Hisoka’s badge         |      16 | https://hunterxhunter.fandom.com/wiki/Episode_16_(2011) | Gon hooks Hisoka's badge, is paralyzed by another applicant, Hisoka kills him and returns both badges, punches Gon and sets the condition.                          |
-| The fight with Hanzo   |      19 | https://hunterxhunter.fandom.com/wiki/Episode_19_(2011) | The Gon versus Hanzo match runs from the arm break through the threats to Hanzo conceding and then knocking Gon out; Gon is first to pass.                          |
-| Where Killua is        |      21 | https://hunterxhunter.fandom.com/wiki/Episode_21_(2011) | Gon breaks Illumi's arm, demands to know where Killua is, and on leaving gets the answer that Killua is at home; the three set off.                                 |
+| Entry (en title)       | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                                                                       |
+| ---------------------- | ------: | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Leaving Whale Island   |       1 | https://hunterxhunter.fandom.com/wiki/Episode_1_(2011)  | Checked on the episode page: the swamp fish, Mito's night-before talk, the storm warning by smell and birds, and the dive for Katzo with the two holding his legs all fall in this episode.                                                |
+| A friend in the tunnel |       4 | https://hunterxhunter.fandom.com/wiki/Episode_4_(2011)  | The episode page has Gon waiting for Leorio, the shared reasons, and the race to the exit where Satotz rules a tie.                                                                                                                        |
+| Hisoka’s badge         |      16 | https://hunterxhunter.fandom.com/wiki/Episode_16_(2011) | The page covers the badge hooked from Hisoka, the dart paralysis, Hisoka killing the thief and handing back both badges, and the punch with the condition. Gon's two days of rod practice come from episode 15, so the story is not early. |
+| The fight with Hanzo   |      19 | https://hunterxhunter.fandom.com/wiki/Episode_19_(2011) | The match runs from the arm break through the leg and death threats to Hanzo conceding, then knocking Gon out; Gon is the first to pass.                                                                                                   |
+| Where Killua is        |      21 | https://hunterxhunter.fandom.com/wiki/Episode_21_(2011) | Gon breaks Illumi's arm in front of the examinees, then outside gets the answer that Killua is at Kukuroo Mountain; he leaves with Kurapika and Leorio the same day.                                                                       |
 
 ## Leorio Paradinight (`leorio-paradinight`, threshold ep 1)
 
-| Entry (en title)      | Episode | Fandom page that settles it                             | Note                                                                                                                                                      |
-| --------------------- | ------: | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| The duel in the storm |       1 | https://hunterxhunter.fandom.com/wiki/Episode_1_(2011)  | Money reason, insult to Kurapika's clan, deck duel, Katzo rescue and reconciliation.                                                                      |
-| The real reason       |       4 | https://hunterxhunter.fandom.com/wiki/Episode_4_(2011)  | Gon waits for Leorio, he restarts; Kurapika asks his real reason and he tells of his friend's death and the plan to become a doctor.                      |
-| Against Hisoka        |       5 | https://hunterxhunter.fandom.com/wiki/Episode_5_(2011)  | Leorio turns back against Hisoka, is knocked out by an uppercut, and Hisoka carries him to the next site.                                                 |
-| The bet on Majtani    |      10 | https://hunterxhunter.fandom.com/wiki/Episode_10_(2011) | Leorio's bets with Leroute over Majtani: the heartbeat check, the edge-of-the-ring bluff, reading Majtani's eyes, and the 2-1 lead after losing 40 hours. |
-| Blocking Illumi’s way |      20 | https://hunterxhunter.fandom.com/wiki/Episode_20_(2011) | Leorio urges Killua on, then with Kurapika and Hanzo blocks Illumi; Killua kills Bodoro in Leorio's match and is disqualified, as Satotz recounts.        |
+| Entry (en title)      | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                                              |
+| --------------------- | ------: | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| The duel in the storm |       1 | https://hunterxhunter.fandom.com/wiki/Episode_1_(2011)  | The captain's question, Leorio's money answer, the clan insult, the duel on deck and the rescue of Katzo are all in this episode; they make up the next day.                                                      |
+| The real reason       |       4 | https://hunterxhunter.fandom.com/wiki/Episode_4_(2011)  | Corrected after review: 'faster than anyone' became running past Gon and Killua, as the page says. The jacket, friend's death from a treatable illness and the wish to treat poor children for free are all here. |
+| Against Hisoka        |       5 | https://hunterxhunter.fandom.com/wiki/Episode_5_(2011)  | Leorio and Kurapika watch Hisoka wipe out the applicants, split up, Leorio returns, is knocked out by an uppercut and carried off by Hisoka.                                                                      |
+| The bet on Majtani    |      10 | https://hunterxhunter.fandom.com/wiki/Episode_10_(2011) | The page has Leroute's bets, the heartbeat check, dragging Majtani to the edge, his eye movements read from medical study, the 40 hours lost and the 2-1 lead.                                                    |
+| Blocking Illumi’s way |      20 | https://hunterxhunter.fandom.com/wiki/Episode_20_(2011) | Satotz's account on the page covers Illumi's lecture, Leorio's shout at Killua, Leorio, Kurapika and Hanzo blocking the door, Killua's surrender and the killing of Bodoro.                                       |
 
 ## Kurapika (`kurapika`, threshold ep 1)
 
-| Entry (en title)       | Episode | Fandom page that settles it                             | Note                                                                                                                                                              |
-| ---------------------- | ------: | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Kurapika’s reason      |       1 | https://hunterxhunter.fandom.com/wiki/Episode_1_(2011)  | Kurapika explains to the captain why he wants the license, the duel with Leorio and the Katzo rescue.                                                             |
-| The Scarlet Eyes       |       4 | https://hunterxhunter.fandom.com/wiki/Episode_4_(2011)  | Kurapika tells Leorio about the Scarlet Eyes, the Phantom Troupe and his plan, and smiles at Leorio's reason.                                                     |
-| The spider on his back |       9 | https://hunterxhunter.fandom.com/wiki/Episode_9_(2011)  | Kurapika's deathmatch with Majtani: the spider tattoo, scarlet eyes, the punch and the three warnings.                                                            |
-| Defending Killua       |      21 | https://hunterxhunter.fandom.com/wiki/Episode_21_(2011) | Kurapika's win by Hisoka's forfeit, blocking Illumi, defending Killua, Pokkle's challenge and the decision to go for Killua; confirmed across episodes 20 and 21. |
+| Entry (en title)       | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                                                                                                                                             |
+| ---------------------- | ------: | ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Kurapika’s reason      |       1 | https://hunterxhunter.fandom.com/wiki/Episode_1_(2011)  | On the page Kurapika states his Phantom Troupe motive and the license's access, then the duel and Katzo rescue.                                                                                                                                                                                                  |
+| The Scarlet Eyes       |       4 | https://hunterxhunter.fandom.com/wiki/Episode_4_(2011)  | The Scarlet Eyes, the seven most beautiful colors, the black-market plan and the pride exchange with Leorio are all in this episode.                                                                                                                                                                             |
+| The spider on his back |       9 | https://hunterxhunter.fandom.com/wiki/Episode_9_(2011)  | The deathmatch with Majtani, the heart tattoos, the spider on his back, the scarlet eyes, the single punch and the three points are all here; he then sits alone.                                                                                                                                                |
+| Defending Killua       |      21 | https://hunterxhunter.fandom.com/wiki/Episode_21_(2011) | Corrected after review: he no longer 'asks the committee to review', the page only has him defending Killua as manipulated by Illumi. Pokkle's doubt about the Hisoka win, his refusal to answer and the departure for Kukuroo Mountain are here; the Hisoka forfeit and door block are recounted in episode 20. |
 
 ## Hisoka (`hisoka`, threshold ep 3)
 
-| Entry (en title)       | Episode | Fandom page that settles it                             | Note                                                                                                                                             |
-| ---------------------- | ------: | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| The applicant to avoid |       3 | https://hunterxhunter.fandom.com/wiki/Episode_3_(2011)  | Tonpa warns of Hisoka and an applicant who bumps into him loses his arms.                                                                        |
-| Hisoka plays examiner  |       5 | https://hunterxhunter.fandom.com/wiki/Episode_5_(2011)  | Hisoka plays examiner in the wetlands, then Gon and Leorio; he spares them and carries Leorio off.                                               |
-| First out of the tower |      10 | https://hunterxhunter.fandom.com/wiki/Episode_10_(2011) | Hisoka beats Togari with his own knives and is first through Trick Tower in 6h17m. Togari is an anime-only record, so the story is marked anime. |
-| The badge returned     |      16 | https://hunterxhunter.fandom.com/wiki/Episode_16_(2011) | Gon hooks Hisoka's badge while he fights another applicant; Hisoka kills Gon's attacker, returns both badges and punches Gon.                    |
-| A warning for Illumi   |      21 | https://hunterxhunter.fandom.com/wiki/Episode_21_(2011) | Hisoka appears behind Illumi after the ceremony and warns him not to touch Gon.                                                                  |
+| Entry (en title)       | Episode | Fandom page that settles it                             | Note                                                                                                                                                       |
+| ---------------------- | ------: | ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| The applicant to avoid |       3 | https://hunterxhunter.fandom.com/wiki/Episode_3_(2011)  | Tonpa's warning about the examiner Hisoka nearly killed, and the applicant whose arms disappear after bumping into him, are on the page.                   |
+| Hisoka plays examiner  |       5 | https://hunterxhunter.fandom.com/wiki/Episode_5_(2011)  | Hisoka plays examiner and sweeps the applicants, then Gon's rod hit, the neck hold, 'worthy of continuing' and carrying Leorio off.                        |
+| First out of the tower |      10 | https://hunterxhunter.fandom.com/wiki/Episode_10_(2011) | Togari waiting with a grudge, the curved knives, Hisoka catching two blades and decapitating him, and being first through in six hours seventeen minutes.  |
+| The badge returned     |      16 | https://hunterxhunter.fandom.com/wiki/Episode_16_(2011) | Gon's hook on the badge, Hisoka's smile, killing the thief, returning both badges, the punch and the condition are all in this episode.                    |
+| A warning for Illumi   |      21 | https://hunterxhunter.fandom.com/wiki/Episode_21_(2011) | Corrected after review: linked Killua. Hisoka appears behind Illumi, says the Zoldyck home is common knowledge and warns him off Gon, all in this episode. |
 
 ## Killua (`killua`, threshold ep 4)
 
-| Entry (en title)            | Episode | Fandom page that settles it                             | Note                                                                                                                                          |
-| --------------------------- | ------: | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| The boy with the skateboard |       4 | https://hunterxhunter.fandom.com/wiki/Episode_4_(2011)  | Killua with the skateboard, joins Gon, tells his reason, the race to the exit; episode 3 shows him drinking Tonpa's poisoned juice unharmed.  |
-| A family of assassins       |       7 | https://hunterxhunter.fandom.com/wiki/Episode_7_(2011)  | On the airship Killua tells Gon about his assassin family and fleeing it, the ball game against Netero, and the two applicants he kills.      |
-| Johness’s heart             |      11 | https://hunterxhunter.fandom.com/wiki/Episode_11_(2011) | Killua's match with Johness: Leorio's alarm, the rule that the loser dies, the heart ripped out.                                              |
-| The disqualification        |      20 | https://hunterxhunter.fandom.com/wiki/Episode_20_(2011) | Satotz recounts Killua's forfeit against Pokkle, the match with Illumi, the surrender, and the killing of Bodoro leading to disqualification. |
-| The promise to his father   |      25 | https://hunterxhunter.fandom.com/wiki/Episode_25_(2011) | Killua freed by Zeno (ep 24) and by his father's deal, then joins Gon, Kurapika and Leorio and leaves with them (ep 25).                      |
+| Entry (en title)            | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                                                 |
+| --------------------------- | ------: | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| The boy with the skateboard |       4 | https://hunterxhunter.fandom.com/wiki/Episode_4_(2011)  | Corrected after review: it was not stated who proposed the race, so it now says they agree on it. Skateboard, same age, waiting for Leorio, reasons, the tie called by Satotz and the juice from episode 3 are here. |
+| A family of assassins       |       7 | https://hunterxhunter.fandom.com/wiki/Episode_7_(2011)  | The page has the assassin family, the attack on his mother and brother, the ball game with Netero, hitting the leg and hurting himself, and killing the two examinees.                                               |
+| Johness’s heart             |      11 | https://hunterxhunter.fandom.com/wiki/Episode_11_(2011) | Johness removes his face cover, Leorio is alarmed, Killua tears out his heart, the score goes to 3-2 and a path opens.                                                                                               |
+| The disqualification        |      20 | https://hunterxhunter.fandom.com/wiki/Episode_20_(2011) | Corrected after review: it was ambiguous who Illumi threatens; the page says he decides to kill Gon and Killua surrenders. Pokkle forfeit, Illumi revealed as his brother and the Bodoro kill are all here.          |
+| The promise to his father   |      25 | https://hunterxhunter.fandom.com/wiki/Episode_25_(2011) | Episode 23 shows Killua chained and whipped by Milluki; episode 24 has Zeno freeing him and Silva's promise deal; episode 25 has him rejoining Gon, Kurapika and Leorio, so the story completes in 25 (chapter 43).  |
 
 ## Mito Freecss (`mito-freecss`, threshold ep 1)
 
-| Entry (en title)        | Episode | Fandom page that settles it                             | Note                                                                                                                                                                        |
-| ----------------------- | ------: | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| An impossible condition |       1 | https://hunterxhunter.fandom.com/wiki/Episode_1_(2011)  | Mito sets the swamp-fish condition, Gon meets it, she tries to dissuade him the night before, and sees him off the next morning.                                            |
-| Gon’s letter            |      26 | https://hunterxhunter.fandom.com/wiki/Episode_26_(2011) | Recap episode: Mito reads Gon's second letter, he says he is unhappy with how he won and must settle a debt with Hisoka; she hangs the photo of the four. Anime-only recap. |
+| Entry (en title)        | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                                                                 |
+| ----------------------- | ------: | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| An impossible condition |       1 | https://hunterxhunter.fandom.com/wiki/Episode_1_(2011)  | Corrected after review: 'speechless' was invented, the page says she is dismayed; also linked Gon. Fish condition, night talk and the morning farewell with her grandmother are all in this episode.                                 |
+| Gon’s letter            |      26 | https://hunterxhunter.fandom.com/wiki/Episode_26_(2011) | Corrected after review: linked Gon. The recap letter (passed, unhappy about the final match, Kukuroo Mountain trip, one more piece of business, the framed photo) is all in this episode; kept at chapter 43 as an anime-only recap. |
 
 ## Katzo (`katzo`, threshold ep 1)
 
-| Entry (en title)             | Episode | Fandom page that settles it                            | Note                                                                                                     |
-| ---------------------------- | ------: | ------------------------------------------------------ | -------------------------------------------------------------------------------------------------------- |
-| The crewman thrown overboard |       1 | https://hunterxhunter.fandom.com/wiki/Episode_1_(2011) | Katzo is bullied, helped by Gon, thrown overboard in the storm, saved and thanks the three the next day. |
+| Entry (en title)             | Episode | Fandom page that settles it                            | Note                                                                                                                                                                                              |
+| ---------------------------- | ------: | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| The crewman thrown overboard |       1 | https://hunterxhunter.fandom.com/wiki/Episode_1_(2011) | Corrected after review: 'a wave' was invented and became the storm. Bullied by the crew, helped by Gon, hurried by the captain, saved by Gon with the two holding his legs, thanks them next day. |
 
 ## Kiriko (`kiriko`, threshold ep 2)
 
-| Entry (en title)     | Episode | Fandom page that settles it                            | Note                                                                                                                                                         |
-| -------------------- | ------: | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| The navigators’ test |       2 | https://hunterxhunter.fandom.com/wiki/Episode_2_(2011) | The staged attack at the cedar tree, Kurapika's tattoo suspicion and the fake Leorio, Gon's remark, and the family passing and flying the three to the exam. |
+| Entry (en title)     | Episode | Fandom page that settles it                            | Note                                                                                                                                                                                                                                                                                           |
+| -------------------- | ------: | ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| The navigators’ test |       2 | https://hunterxhunter.fandom.com/wiki/Episode_2_(2011) | Corrected after review: Gon's line was reversed; the page has him telling the Kiriko cornering him it is not the one he was chasing, then the Kiriko calls its partner and the couple reveal themselves as the offspring. The tattoo, the fake Leorio and the flight to the site are all here. |
 
 ## Tonpa (`tonpa`, threshold ep 3)
 
-| Entry (en title)       | Episode | Fandom page that settles it                             | Note                                                                                                                                             |
-| ---------------------- | ------: | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Tonpa’s juice          |       3 | https://hunterxhunter.fandom.com/wiki/Episode_3_(2011)  | Tonpa's introduction, warning about Hisoka, the laxative juice and the applicants who did not take it (Hanzo, Nicholas).                         |
-| The fifth in the group |       9 | https://hunterxhunter.fandom.com/wiki/Episode_9_(2011)  | Tonpa joins as the fifth, votes against, gives up against Bendot before being hit, and tells Leorio his real aim of sabotaging rookies.          |
-| Tied to a rock         |      15 | https://hunterxhunter.fandom.com/wiki/Episode_15_(2011) | Tonpa and a partner steal badges in the Fourth Phase; Leorio and Kurapika catch him, tie him to a rock with a sign and Kurapika takes his badge. |
+| Entry (en title)       | Episode | Fandom page that settles it                             | Note                                                                                                                                                         |
+| ---------------------- | ------: | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Tonpa’s juice          |       3 | https://hunterxhunter.fandom.com/wiki/Episode_3_(2011)  | Tonpa's offer of help, the warning about Hisoka, the laxative juice, Kurapika pouring it out and his recalling Hanzo and Nicholas are all on the page.       |
+| The fifth in the group |       9 | https://hunterxhunter.fandom.com/wiki/Episode_9_(2011)  | Kept at episode 9, the later of the two: episode 8 covers the vote and the join, episode 9 the surrender before Bendot hits him and his admission to Leorio. |
+| Tied to a rock         |      15 | https://hunterxhunter.fandom.com/wiki/Episode_15_(2011) | Tonpa teams with Sommy, Leorio and Kurapika tie him to a rock with the sign, Kurapika takes his badge for six points and Leorio gets his own back.           |
 
 ## Hanzo (`hanzo`, threshold ep 3)
 
-| Entry (en title)                | Episode | Fandom page that settles it                             | Note                                                                                                                                     |
-| ------------------------------- | ------: | ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| The ninja who refuses the juice |       3 | https://hunterxhunter.fandom.com/wiki/Episode_3_(2011)  | Tonpa remembers Hanzo among those who refused the juice; the wiki's Hanzo page cites chapter 6 for his scroll and ninja talk with Tonpa. |
-| Against Gon in the final        |      19 | https://hunterxhunter.fandom.com/wiki/Episode_19_(2011) | The Hanzo versus Gon match: arm break, threats, Gon's answer about his father, Hanzo concedes, then knocks Gon out.                      |
+| Entry (en title)                | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                                |
+| ------------------------------- | ------: | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| The ninja who refuses the juice |       3 | https://hunterxhunter.fandom.com/wiki/Episode_3_(2011)  | Tonpa's flashback on the manga chapter 6 page cites Hanzo's ninja claim, scroll and refusal; the episode page itself only names him among those who refused, so the detail rests on the Hanzo page. |
+| Against Gon in the final        |      19 | https://hunterxhunter.fandom.com/wiki/Episode_19_(2011) | Hanzo's requests to give up, the broken arm, the leg and death threats, Gon's answer about his father, his concession and the knockout punch.                                                       |
 
 ## Nicholas (`nicholas`, threshold ep 3)
 
-| Entry (en title)  | Episode | Fandom page that settles it                            | Note                                                                                                                         |
-| ----------------- | ------: | ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------- |
-| Nicholas’s laptop |       3 | https://hunterxhunter.fandom.com/wiki/Episode_3_(2011) | Tonpa remembers Nicholas as one who did not take the bait; the laptop research on Tonpa is from the dossier already checked. |
+| Entry (en title)  | Episode | Fandom page that settles it                            | Note                                                                                                                                                                           |
+| ----------------- | ------: | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Nicholas’s laptop |       3 | https://hunterxhunter.fandom.com/wiki/Episode_3_(2011) | The episode page only names Nicholas among those who skipped the juice; the laptop detail comes from his character page (chapter 6), so it stays unconfirmed at episode level. |
 
 ## Satotz (`satotz`, threshold ep 3)
 
-| Entry (en title)    | Episode | Fandom page that settles it                             | Note                                                                                                                        |
-| ------------------- | ------: | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| Follow the examiner |       3 | https://hunterxhunter.fandom.com/wiki/Episode_3_(2011)  | Satotz introduces himself and leads the applicants into the tunnel.                                                         |
-| The false examiner  |       4 | https://hunterxhunter.fandom.com/wiki/Episode_4_(2011)  | Satotz introduces the wetlands, the false examiner appears with an ape, Hisoka's cards, Satotz catches them and warns him.  |
-| Gon’s license       |      20 | https://hunterxhunter.fandom.com/wiki/Episode_20_(2011) | Satotz at Gon's bed offers the license, explains the exam is over, says Killua alone failed and recounts the later matches. |
+| Entry (en title)    | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                                                                    |
+| ------------------- | ------: | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Follow the examiner |       3 | https://hunterxhunter.fandom.com/wiki/Episode_3_(2011)  | The episode page has him introducing himself and telling them to follow through the tunnel; closing registration, the life warning and the quickened pace are not on the page and rest on the existing dossier, flagged as unconfirmed. |
+| The false examiner  |       4 | https://hunterxhunter.fandom.com/wiki/Episode_4_(2011)  | At the swamp he is warned by the false examiner and a man dragging an ape, Hisoka's cards, Satotz catching them and the warning not to attack again.                                                                                    |
+| Gon’s license       |      20 | https://hunterxhunter.fandom.com/wiki/Episode_20_(2011) | Satotz beside Gon's bed offers the handshake and license, Gon declines then accepts, and Killua is the only failure, with the matches recounted up to the Bodoro killing.                                                               |
 
 ## Menchi (`menchi`, threshold ep 6)
 
-| Entry (en title) | Episode | Fandom page that settles it                            | Note                                                                                                           |
-| ---------------- | ------: | ------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------- |
-| The cooking test |       6 | https://hunterxhunter.fandom.com/wiki/Episode_6_(2011) | Menchi and Buhara's cooking test, her failing everyone, Netero's arrival and the egg retest at Split Mountain. |
+| Entry (en title) | Episode | Fandom page that settles it                            | Note                                                                                                                                                                                                                                            |
+| ---------------- | ------: | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| The cooking test |       6 | https://hunterxhunter.fandom.com/wiki/Episode_6_(2011) | Corrected after review: the page has Menchi asking Netero to take the applicants to Split Mountain, so the text no longer has her leading them. The roast pork test, failing everyone, admitting her temper and the egg demonstration are here. |
 
 ## Buhara (`buhara`, threshold ep 6)
 
-| Entry (en title) | Episode | Fandom page that settles it                            | Note                                                                                                         |
-| ---------------- | ------: | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| The roast pork   |       6 | https://hunterxhunter.fandom.com/wiki/Episode_6_(2011) | Buhara asks for roast pork, knocks away the applicant who attacks Menchi and says she would have killed him. |
+| Entry (en title) | Episode | Fandom page that settles it                            | Note                                                                                                                                                                |
+| ---------------- | ------: | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| The roast pork   |       6 | https://hunterxhunter.fandom.com/wiki/Episode_6_(2011) | The roast pork order, the Great Stamp hunt, knocking out the applicant who attacks Menchi and saying she would have killed him are in this episode and on his page. |
 
 ## Netero (`netero`, threshold ep 6)
 
-| Entry (en title)            | Episode | Fandom page that settles it                             | Note                                                                                                                    |
-| --------------------------- | ------: | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| The chairman drops in       |       6 | https://hunterxhunter.fandom.com/wiki/Episode_6_(2011)  | Netero drops from the airship, speaks to Menchi, agrees to a retest.                                                    |
-| The chairman’s ball         |       7 | https://hunterxhunter.fandom.com/wiki/Episode_7_(2011)  | Netero introduces himself on the airship and plays the ball game with Gon and Killua.                                   |
-| The disqualification stands |      21 | https://hunterxhunter.fandom.com/wiki/Episode_21_(2011) | Netero hears Kurapika and Leorio on Killua, keeps the disqualification, agrees with Gon and declares the seven Hunters. |
+| Entry (en title)            | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                        |
+| --------------------------- | ------: | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| The chairman drops in       |       6 | https://hunterxhunter.fandom.com/wiki/Episode_6_(2011)  | Corrected after review: 'alone' was invented and removed, and Netero now tells Menchi to design a new task rather than simply agreeing. Airship, crater landing and her admission are here. |
+| The chairman’s ball         |       7 | https://hunterxhunter.fandom.com/wiki/Episode_7_(2011)  | Corrected after review: he appears from the opposite direction in the corridor, not behind them. The introduction, the ball challenge, and Gon forcing the other arm are here.              |
+| The disqualification stands |      21 | https://hunterxhunter.fandom.com/wiki/Episode_21_(2011) | Both defences of Killua, Netero calling them guesses, his agreeing Killua would pass again and declaring the seven Hunters are all in this episode.                                         |
 
 ## Lippo (`lippo`, threshold ep 8)
 
-| Entry (en title)       | Episode | Fandom page that settles it                            | Note                                                                                                                                                                                                      |
-| ---------------------- | ------: | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| The rules of the tower |       8 | https://hunterxhunter.fandom.com/wiki/Episode_8_(2011) | The episode page has the warden explain majority rule and the need for a fifth member, tell the prisoners to take position, and lay out the three-win and one-year-per-hour rules before the first match. |
+| Entry (en title)       | Episode | Fandom page that settles it                            | Note                                                                                                                                                                                                                 |
+| ---------------------- | ------: | ------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| The rules of the tower |       8 | https://hunterxhunter.fandom.com/wiki/Episode_8_(2011) | Checked against the episode page: the warden explains majority rule and the fifth member, sends the prisoners to their positions, then states the three-win, no-draw and year-per-hour rules before the first match. |
 
 ## Bendot (`bendot`, threshold ep 8)
 
-| Entry (en title) | Episode | Fandom page that settles it                            | Note                                                                                                                                                                      |
-| ---------------- | ------: | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Tonpa gives up   |       8 | https://hunterxhunter.fandom.com/wiki/Episode_8_(2011) | The page names Bendot as the first prisoner, 199 years for robbery and murder; Tonpa volunteers, gives up at once and says he only wants to ruin others; Leorio is angry. |
+| Entry (en title) | Episode | Fandom page that settles it                            | Note                                                                                                                                                                    |
+| ---------------- | ------: | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Tonpa gives up   |       8 | https://hunterxhunter.fandom.com/wiki/Episode_8_(2011) | Checked: Bendot is the first prisoner (199 years, robbery and murder); Tonpa volunteers, gives up at once and says he only wants to screw people over; Leorio is upset. |
 
 ## Sedokan (`sedokan`, threshold ep 8)
 
-| Entry (en title)    | Episode | Fandom page that settles it                            | Note                                                                                                                                     |
-| ------------------- | ------: | ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| The second prisoner |       8 | https://hunterxhunter.fandom.com/wiki/Episode_8_(2011) | The page introduces Sedokan as the next prisoner (149 years, serial bombings), Gon volunteers, and 39 of 40 applicants remain.           |
-| The candle          |       9 | https://hunterxhunter.fandom.com/wiki/Episode_9_(2011) | The page shows the candle game: Gon takes the longer, oil-soaked candle, it burns fast, he sets it down, dashes and blows out Sedokan's. |
+| Entry (en title)    | Episode | Fandom page that settles it                            | Note                                                                                                                                                                                                                     |
+| ------------------- | ------: | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| The second prisoner |       8 | https://hunterxhunter.fandom.com/wiki/Episode_8_(2011) | Checked: Sedokan is introduced as the second prisoner (149 years, serial bombings), Gon volunteers, and 39 of 40 applicants remain. Corrected after review: Bendot is now linked, since he is filed at the same episode. |
+| The candle          |       9 | https://hunterxhunter.fandom.com/wiki/Episode_9_(2011) | Checked: candle match, Gon takes the longer oil-soaked candle, it burns fast, he sets it down, sprints and blows out Sedokan's.                                                                                          |
 
 ## Majtani (`majtani`, threshold ep 9)
 
-| Entry (en title)       | Episode | Fandom page that settles it                             | Note                                                                                                                                                                        |
-| ---------------------- | ------: | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| The spider on his back |       9 | https://hunterxhunter.fandom.com/wiki/Episode_9_(2011)  | The page shows the no-weapons deathmatch, heart tattoos, the spider on his back, Kurapika's scarlet eyes, the one-punch knockout and the three things Kurapika tells him.   |
-| Out cold, supposedly   |      10 | https://hunterxhunter.fandom.com/wiki/Episode_10_(2011) | The page shows Leroute saying the match is unfinished, Majtani faking unconsciousness on a note, Leorio dragging him to the edge, and his admission that he takes the loss. |
+| Entry (en title)       | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                                                                                                                                                   |
+| ---------------------- | ------: | ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| The spider on his back |       9 | https://hunterxhunter.fandom.com/wiki/Episode_9_(2011)  | Checked: no-weapons deathmatch, multiple heart tattoos counting his kills, spider on his back, Kurapika's scarlet eyes, one-punch knockout and the three things he tells him. Corrected after review: removed the invented 'on his chest' and 'one for each victim' (the wiki only says hearts that number his kills). |
+| Out cold, supposedly   |      10 | https://hunterxhunter.fandom.com/wiki/Episode_10_(2011) | Checked: the opponent says the match is not over, Majtani is faking on a note's orders, Leorio drags him to the platform edge, he bolts, admits the loss and says he is safer in prison. Chapter 20 is where the wager and the fall happen.                                                                            |
 
 ## Togari (`togari`, threshold ep 10)
 
-| Entry (en title)  | Episode | Fandom page that settles it                             | Note                                                                                                                                                             |
-| ----------------- | ------: | ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| A score to settle |      10 | https://hunterxhunter.fandom.com/wiki/Episode_10_(2011) | The page shows the former examiner waiting for Hisoka, his grudge over last year's scars, the four curved knives, Hisoka catching two and killing him with them. |
+| Entry (en title)  | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                              |
+| ----------------- | ------: | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| A score to settle |      10 | https://hunterxhunter.fandom.com/wiki/Episode_10_(2011) | Checked: ex-examiner waiting for Hisoka over the scars from last year, curved knives, Hisoka catches two and decapitates him, first through the Third Phase. Chapter 19 contains the whole fight. |
 
 ## Leroute (`leroute`, threshold ep 10)
 
-| Entry (en title)      | Episode | Fandom page that settles it                             | Note                                                                                                                                                           |
-| --------------------- | ------: | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Wagering time         |      10 | https://hunterxhunter.fandom.com/wiki/Episode_10_(2011) | The page shows her objection, Lippo naming her sentence (112 years, animal trafficking and gambling), the hour wagers and the 2-1 score after the 40-hour bet. |
-| Rock, paper, scissors |      11 | https://hunterxhunter.fandom.com/wiki/Episode_11_(2011) | The page shows the gender bet, the rock-paper-scissors game for 80 hours with Leorio panicking and throwing rock twice, and the resulting 50-hour penalty.     |
+| Entry (en title)      | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                                                          |
+| --------------------- | ------: | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Wagering time         |      10 | https://hunterxhunter.fandom.com/wiki/Episode_10_(2011) | Checked: she objects that the match is unfinished, Lippo gives her 112 years for animal trafficking and gambling, 10-hour bet lost, 20 then 40-hour bet won, Leorio leads 2-1. Corrected after review: Majtani is now linked. |
+| Rock, paper, scissors |      11 | https://hunterxhunter.fandom.com/wiki/Episode_11_(2011) | Checked: she bets on her own gender and lets Leorio check, stakes 80 hours on rock-paper-scissors, Leorio throws rock twice and loses; the wiki gives his group a 50-hour penalty.                                            |
 
 ## Johness (`johness`, threshold ep 11)
 
-| Entry (en title) | Episode | Fandom page that settles it                             | Note                                                                                                                                         |
-| ---------------- | ------: | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| The last match   |      11 | https://hunterxhunter.fandom.com/wiki/Episode_11_(2011) | The page shows the handcuffs removed, Leorio recognizing him, Killua tearing out his heart, Johness dying within seconds, and the 3-2 score. |
+| Entry (en title) | Episode | Fandom page that settles it                             | Note                                                                                                                                    |
+| ---------------- | ------: | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| The last match   |      11 | https://hunterxhunter.fandom.com/wiki/Episode_11_(2011) | Checked: Lippo removes his handcuffs, the other prisoners step back, Leorio recognises him, Killua takes his heart, he dies, score 3-2. |
 
 ## Khara (`khara`, threshold ep 14)
 
-| Entry (en title)      | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                             |
-| --------------------- | ------: | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| The guide on the boat |      14 | https://hunterxhunter.fandom.com/wiki/Episode_14_(2011) | The page shows Khara on the steamboat (two-hour trip, invitation to next year's exam, unanswered), then the island landing in Trick Tower exit order every two minutes, one week and six points. |
+| Entry (en title)      | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                   |
+| --------------------- | ------: | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| The guide on the boat |      14 | https://hunterxhunter.fandom.com/wiki/Episode_14_(2011) | Checked: steamboat to Zevil Island, 24 applicants, two-hour trip, invitation to next year's exam, silence, landing order two minutes apart starting with Hisoka, one week, six points. |
 
 ## Amori (`amori`, threshold ep 17)
 
-| Entry (en title)         | Episode | Fandom page that settles it                             | Note                                                                                                           |
-| ------------------------ | ------: | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| Three brothers and a boy |      17 | https://hunterxhunter.fandom.com/wiki/Episode_17_(2011) | The page shows Amori and Umori arriving, forcing Imori to attack, forming up, and Killua taking Amori hostage. |
+| Entry (en title)         | Episode | Fandom page that settles it                             | Note                                                                                                                                                          |
+| ------------------------ | ------: | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Three brothers and a boy |      17 | https://hunterxhunter.fandom.com/wiki/Episode_17_(2011) | Checked: Amori and Umori come to see if the youngest has taken the badge, scold him, form up, Killua appears behind Amori and holds him hostage (chapter 29). |
 
 ## Umori (`umori`, threshold ep 17)
 
-| Entry (en title)      | Episode | Fandom page that settles it                             | Note                                                                                                          |
-| --------------------- | ------: | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| The badge handed over |      17 | https://hunterxhunter.fandom.com/wiki/Episode_17_(2011) | The page shows Killua demanding Umori's tag after taking Amori hostage, and throwing the other tags far away. |
+| Entry (en title)      | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                          |
+| --------------------- | ------: | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| The badge handed over |      17 | https://hunterxhunter.fandom.com/wiki/Episode_17_(2011) | Checked: Umori hands over the badge when Amori is held hostage and Killua throws the other badges far away. Corrected after review: dropped the unsupported 'che ha in mano / he is holding'. |
 
 ## Imori (`imori`, threshold ep 17)
 
-| Entry (en title) | Episode | Fandom page that settles it                             | Note                                                                                                                                         |
-| ---------------- | ------: | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| The stalker      |      17 | https://hunterxhunter.fandom.com/wiki/Episode_17_(2011) | The page shows Imori stalking Killua, being frightened, kicking him when his brothers arrive, and Killua taking Imori's tag from his pocket. |
+| Entry (en title) | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                     |
+| ---------------- | ------: | ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| The stalker      |      17 | https://hunterxhunter.fandom.com/wiki/Episode_17_(2011) | Checked: Imori has stalked Killua planning to strike while he sleeps, is forced forward by his brothers, kicks him, and Killua pulls Imori's own badge from his pocket (not his target). |
 
 ## Ponzu (`ponzu`, threshold ep 17)
 
-| Entry (en title)      | Episode | Fandom page that settles it                             | Note                                                                                                                                                  |
-| --------------------- | ------: | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| The cave of snakes    |      17 | https://hunterxhunter.fandom.com/wiki/Episode_17_(2011) | The page shows Leorio's target #246, Gon tracking her scent to the cave, Leorio bitten, and Ponzu explaining the snake trap and that Bourbon is dead. |
-| The gas and the badge |      18 | https://hunterxhunter.fandom.com/wiki/Episode_18_(2011) | The page shows Ponzu's account of killing Bourbon, the gas-for-badge trade, Gon carrying everyone out, and him keeping her badge as a fee.            |
+| Entry (en title)      | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                                                                                                                 |
+| --------------------- | ------: | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| The cave of snakes    |      17 | https://hunterxhunter.fandom.com/wiki/Episode_17_(2011) | Checked: Leorio seeks #246 Ponzu, Gon tracks her chemicals to a cave, Leorio is bitten, Ponzu explains Bourbon's snake trap and says he is dead (chapter 30).                                                                                                                        |
+| The gas and the badge |      18 | https://hunterxhunter.fandom.com/wiki/Episode_18_(2011) | Checked: she explains the bee fight, waits for the tracker rescue, trades sleeping gas for Bourbon's badge, Gon holds his breath, returns it and keeps hers. Corrected after review: chapter 32 to 31, since the cave scene is complete in chapter 31 and chapter 32 is the airship. |
 
 ## Bourbon (`bourbon`, threshold ep 17)
 
-| Entry (en title) | Episode | Fandom page that settles it                             | Note                                                                                                       |
-| ---------------- | ------: | ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| The trap         |      17 | https://hunterxhunter.fandom.com/wiki/Episode_17_(2011) | The page shows the snake trap in the cave, Leorio bitten, and Ponzu saying she had already killed Bourbon. |
+| Entry (en title) | Episode | Fandom page that settles it                             | Note                                                                                                                                             |
+| ---------------- | ------: | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| The trap         |      17 | https://hunterxhunter.fandom.com/wiki/Episode_17_(2011) | Checked: the snake trap in the cave, Leorio bitten, Gon and Kurapika run in, Ponzu says Bourbon is already dead yet the trap holds (chapter 30). |
 
 ## Gittarackur (`gittarackur`, threshold ep 19)
 
-| Entry (en title)  | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                         |
-| ----------------- | ------: | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| A new face        |      19 | https://hunterxhunter.fandom.com/wiki/Episode_19_(2011) | Episode 15 shows him striking down the charging applicant, changing his face and handing Hisoka a badge; episode 19 shows him among the nine finalists.                                      |
-| The older brother |      20 | https://hunterxhunter.fandom.com/wiki/Episode_20_(2011) | The page shows his match with Killua: the reveal as Illumi, the speech about the assassin's life, the threat to Gon, the block at the door, Killua's surrender and the admission of the lie. |
+| Entry (en title)  | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                                                       |
+| ----------------- | ------: | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| A new face        |      19 | https://hunterxhunter.fandom.com/wiki/Episode_19_(2011) | Checked: needles kill Goz as he charges Hisoka, features change when he pulls the pins, hands Hisoka a badge, sleeps in a hole, reaches the nine finalists. Events are from episode 15 and are known by the end of 19.     |
+| The older brother |      20 | https://hunterxhunter.fandom.com/wiki/Episode_20_(2011) | Checked: Satotz recounts the match; Gittarackur is Illumi, Killua's older brother; says Killua should be an assassin; threatens Gon; blocked at the door by Hanzo, Kurapika and Leorio; Killua yields and he says he lied. |
 
 ## Pokkle (`pokkle`, threshold ep 19)
 
-| Entry (en title)        | Episode | Fandom page that settles it                             | Note                                                                                                                        |
-| ----------------------- | ------: | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| The archer              |      19 | https://hunterxhunter.fandom.com/wiki/Episode_19_(2011) | Episode 14 shows his tranquilizer-arrow ambush of another applicant; episode 19 shows him among the nine finalists.         |
-| Passing without a fight |      20 | https://hunterxhunter.fandom.com/wiki/Episode_20_(2011) | The page has Satotz recount Hanzo's third match against Pokkle, Pokkle surrendering, and Killua forfeiting the fifth match. |
+| Entry (en title)        | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                                  |
+| ----------------------- | ------: | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| The archer              |      19 | https://hunterxhunter.fandom.com/wiki/Episode_19_(2011) | Checked: episode 14 shows Pokkle's arrow with a tranquilizer, the badge taken and the water remark; episode 19 shows him among the nine finalists.                                                    |
+| Passing without a fight |      20 | https://hunterxhunter.fandom.com/wiki/Episode_20_(2011) | Checked: Satotz's account has Hanzo beat him with the same tactic and Killua forfeit the fifth match. Corrected after review: removed 'becomes a Hunter', since the dossier files that at episode 21. |
 
 ## Bodoro (`bodoro`, threshold ep 19)
 
-| Entry (en title)           | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                        |
-| -------------------------- | ------: | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| He will not fight children |      19 | https://hunterxhunter.fandom.com/wiki/Episode_19_(2011) | Episode 19 shows the bracket and the one-win rule with Bodoro among the finalists; his refusal to fight children is in Netero's interviews (episode 18, chapter 32 per his character page). |
-| Two matches, one death     |      20 | https://hunterxhunter.fandom.com/wiki/Episode_20_(2011) | The page has Hisoka beating him and whispering, the postponed match with Leorio, and Killua killing him from behind.                                                                        |
+| Entry (en title)           | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                             |
+| -------------------------- | ------: | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| He will not fight children |      19 | https://hunterxhunter.fandom.com/wiki/Episode_19_(2011) | Checked: Bodoro refuses to fight children in Netero's interview (episode 18), and the bracket rules are explained in episode 19.                                                                 |
+| Two matches, one death     |      20 | https://hunterxhunter.fandom.com/wiki/Episode_20_(2011) | Checked: Hisoka whispers and Bodoro yields, the Leorio match is postponed for his injuries, Killua kills him from behind. Corrected after review: it is Killua, not Bodoro, who is disqualified. |
 
 ## Masta (`masta`, threshold ep 19)
 
-| Entry (en title)          | Episode | Fandom page that settles it                             | Note                                                                                                                                                                    |
-| ------------------------- | ------: | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| The first match’s referee |      19 | https://hunterxhunter.fandom.com/wiki/Episode_19_(2011) | Masta referees Gon vs Hanzo; Hanzo's remark about the Fourth Phase and the rules are from the Masta page chapter 33 account; the ep 19 page only lists him as debuting. |
+| Entry (en title)          | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                                                                               |
+| ------------------------- | ------: | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| The first match’s referee |      19 | https://hunterxhunter.fandom.com/wiki/Episode_19_(2011) | Ep 19 page lists Masta only as debuting and does not narrate his lines; the referee role, Hanzo's remark about the Fourth Phase and the rules come from the Masta page (ch. 33), which ep 19 adapts. Not confirmable from the episode page itself. |
 
 ## Illumi (`illumi`, threshold ep 20)
 
@@ -1999,16 +1999,16 @@ held to: every story below has a row, and every row below has a story.
 
 ## Milluki (`milluki`, threshold ep 23)
 
-| Entry (en title)          | Episode | Fandom page that settles it                             | Note                                                                                 |
-| ------------------------- | ------: | ------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| The whip                  |      23 | https://hunterxhunter.fandom.com/wiki/Episode_23_(2011) | Whips the chained Killua, reports him unrepentant to the mother, is stopped by her.  |
-| The more talented brother |      24 | https://hunterxhunter.fandom.com/wiki/Episode_24_(2011) | Whips him again, phone call, Zeno frees Killua, Milluki's remarks and mosquito bomb. |
+| Entry (en title)          | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                                 |
+| ------------------------- | ------: | ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| The whip                  |      23 | https://hunterxhunter.fandom.com/wiki/Episode_23_(2011) | Whips the chained Killua, reports him unrepentant to the mother, is stopped by her.                                                                                                                  |
+| The more talented brother |      24 | https://hunterxhunter.fandom.com/wiki/Episode_24_(2011) | Whipping, apology for the stabbing, mother's phone call, Zeno freeing Killua, Milluki's talent remarks and the mosquito bomb. Corrected after review: made clear he accuses Zeno of spoiling Killua. |
 
 ## Canary (`canary`, threshold ep 24)
 
-| Entry (en title)     | Episode | Fandom page that settles it                             | Note                                                                                    |
-| -------------------- | ------: | ------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| The line on the path |      24 | https://hunterxhunter.fandom.com/wiki/Episode_24_(2011) | Her standoff with Gon, the apple flashback with Killua, and her plea after Gon's punch. |
+| Entry (en title)     | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                                                       |
+| -------------------- | ------: | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| The line on the path |      24 | https://hunterxhunter.fandom.com/wiki/Episode_24_(2011) | Ep 23 wiki page covers the line, the blows, the punched block and her tears; the apple and friendship flashback is on ep 24. Corrected after review: dropped the claim that she refused friendship because she served him. |
 
 ## Zeno (`zeno`, threshold ep 24)
 
@@ -2018,9 +2018,9 @@ held to: every story below has a row, and every row below has a story.
 
 ## Kalluto (`kalluto`, threshold ep 24)
 
-| Entry (en title)          | Episode | Fandom page that settles it                             | Note                                                                                                                                                     |
-| ------------------------- | ------: | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| The watcher in the bushes |      24 | https://hunterxhunter.fandom.com/wiki/Episode_24_(2011) | Enters with the mother, watches from the bushes, introduced, asks Gon who he is and leaves (the bushes scene is shown in ep 23, the introduction in 24). |
+| Entry (en title)          | Episode | Fandom page that settles it                             | Note                                                                                                                                                                             |
+| ------------------------- | ------: | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| The watcher in the bushes |      24 | https://hunterxhunter.fandom.com/wiki/Episode_24_(2011) | Ep 23 shows him entering the cell room and watching from the bushes; ep 24 has his mother introduce him and him asking Gon who he is before leaving. Filed at the later episode. |
 
 ## Gotoh (`gotoh`, threshold ep 25)
 
@@ -2030,12 +2030,12 @@ held to: every story below has a row, and every row below has a story.
 
 ## Kite (`kite`, threshold ep 76)
 
-| Entry (en title)        | Episode | Fandom page that settles it                             | Note                                                                                                                                    |
-| ----------------------- | ------: | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| The foxbear and the boy |      76 | https://hunterxhunter.fandom.com/wiki/Episode_76_(2011) | Episode 76 flashback: Whale Island, foxbear mother killed, Gon stops Kite killing the cub; Kite page chapter 1 account for the details. |
+| Entry (en title)        | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                                                                                                                |
+| ----------------------- | ------: | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| The foxbear and the boy |      76 | https://hunterxhunter.fandom.com/wiki/Episode_76_(2011) | Ep 76 flashback and the Kite page (ch. 1): Whale Island, foxbear mother killed, scolding, Gon stopping the cub's killing, Kite asking if Ging is his father. Corrected after review: removed the claim that he tells Gon his father is a living Hunter, which the wiki dates later. |
 
 ## Kon (`kon`, threshold ep 76)
 
-| Entry (en title) | Episode | Fandom page that settles it                             | Note                                                                                                                         |
-| ---------------- | ------: | ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| A cub to raise   |      76 | https://hunterxhunter.fandom.com/wiki/Episode_76_(2011) | Debut in the episode 76 flashback; Kon page chapter 1 account: mother killed, Kite intends to put the cub down, Gon insists. |
+| Entry (en title) | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                           |
+| ---------------- | ------: | ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| A cub to raise   |      76 | https://hunterxhunter.fandom.com/wiki/Episode_76_(2011) | Debut in the ep 76 flashback; Kon page (ch. 1): mother killed, Kite wants to put the cub down, Gon vows to raise it. Corrected after review: removed the invented arm scratch and the pick-up. |
