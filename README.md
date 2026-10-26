@@ -23,6 +23,7 @@
   <a href="https://github.com/cosimochellini/zero-spoiler/releases/latest"><img src="https://img.shields.io/github/v/release/cosimochellini/zero-spoiler?sort=semver&display_name=tag&label=release" alt="Latest release"></a>
   <a href="https://github.com/cosimochellini/zero-spoiler/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22"><img src="https://img.shields.io/github/issues/cosimochellini/zero-spoiler/good%20first%20issue?label=good%20first%20issues&color=7057ff" alt="Good first issues"></a>
   <a href="LICENSE-SCOPE.md"><img src="https://img.shields.io/badge/software_license-MIT-informational" alt="Software license: MIT"></a>
+  <a href="https://fallow.tools/docs/explanations/health/"><img src="https://raw.githubusercontent.com/cosimochellini/zero-spoiler/badges/badge.svg" alt="Fallow health score"></a>
 </p>
 
 ## Same page, two bookmarks
