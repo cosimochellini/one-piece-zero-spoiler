@@ -9,11 +9,11 @@ Every story in a character's chronicle (`chronicle` in the dossiers, filed in
 `src/data/series/<series>/records/<saga>.chronicle.ts`) was checked against the
 series' English wiki (onepiece.fandom.com, hunterxhunter.fandom.com) twice: once
 as it was written and once more by an independent pass that re-read every
-episode against the character's `/History` page (One Piece's cites each event as
-`{{Qref|…|ep=N}}`) and the episode page named in the table, whose summary
-settles whether the event is complete by the end of that episode. Where the
-second pass disagreed with the first, the story was moved or rewritten; the note
-says what changed.
+episode against the episode page named in the table, whose summary settles
+whether the event is complete by the end of that episode, and against the
+character's wiki page (One Piece's `/History` cites each event as
+`{{Qref|…|ep=N}}`). Where the second pass disagreed with the first, the story
+was moved or rewritten; the note says what changed.
 
 A note says in its own words what the wiki, the manga or the subtitles show. It
 quotes a source only where the exact words prove a name or a threshold, at most
@@ -1809,17 +1809,17 @@ held to: every story below has a row, and every row below has a story.
 
 ## Tonpa (`tonpa`, threshold ep 3)
 
-| Entry (en title)       | Episode | Fandom page that settles it                             | Note                                                                                                                                                         |
-| ---------------------- | ------: | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Tonpa’s juice          |       3 | https://hunterxhunter.fandom.com/wiki/Episode_3_(2011)  | Tonpa's offer of help, the warning about Hisoka, the laxative juice, Kurapika pouring it out and his recalling Hanzo and Nicholas are all on the page.       |
-| The fifth in the group |       9 | https://hunterxhunter.fandom.com/wiki/Episode_9_(2011)  | Kept at episode 9, the later of the two: episode 8 covers the vote and the join, episode 9 the surrender before Bendot hits him and his admission to Leorio. |
-| Tied to a rock         |      15 | https://hunterxhunter.fandom.com/wiki/Episode_15_(2011) | Tonpa teams with Sommy, Leorio and Kurapika tie him to a rock with the sign, Kurapika takes his badge for six points and Leorio gets his own back.           |
+| Entry (en title)       | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                              |
+| ---------------------- | ------: | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Tonpa’s juice          |       3 | https://hunterxhunter.fandom.com/wiki/Episode_3_(2011)  | Tonpa's offer of help, the warning about Hisoka, the laxative juice, Kurapika pouring it out and his recalling Hanzo and Nicholas are all on the page.                                            |
+| The fifth in the group |       8 | https://hunterxhunter.fandom.com/wiki/Episode_8_(2011)  | Corrected after the PR review: the join, the vote against opening the door, the surrender and his admission to Leorio are all in the episode 8 summary; episode 9 only repeats them at its start. |
+| Tied to a rock         |      15 | https://hunterxhunter.fandom.com/wiki/Episode_15_(2011) | Tonpa teams with Sommy, Leorio and Kurapika tie him to a rock with the sign, Kurapika takes his badge for six points and Leorio gets his own back.                                                |
 
 ## Hanzo (`hanzo`, threshold ep 3)
 
 | Entry (en title)          | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                                                                                                                            |
 | ------------------------- | ------: | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| He does not take the bait |       3 | https://hunterxhunter.fandom.com/wiki/Episode_3_(2011)  | The juice scene: Gon and Leorio sense something wrong, Kurapika pours it out, Tonpa apologises, leaves and remembers the applicants who did not take his bait, Hanzo and Nicholas. Corrected after the PR review: the ninja and scroll details, which the episode page does not show, were cut. |
+| He does not take the bait |       3 | https://hunterxhunter.fandom.com/wiki/Episode_3_(2011)  | The juice scene: Gon and Leorio sense something wrong, Kurapika pours it out, Tonpa apologizes, leaves and remembers the applicants who did not take his bait, Hanzo and Nicholas. Corrected after the PR review: the ninja and scroll details, which the episode page does not show, were cut. |
 | Against Gon in the final  |      19 | https://hunterxhunter.fandom.com/wiki/Episode_19_(2011) | Hanzo's requests to give up, the broken arm, the leg and death threats, Gon's answer about his father, his concession and the knockout punch.                                                                                                                                                   |
 
 ## Nicholas (`nicholas`, threshold ep 3)
@@ -1899,7 +1899,7 @@ held to: every story below has a row, and every row below has a story.
 
 | Entry (en title) | Episode | Fandom page that settles it                             | Note                                                                                                                                    |
 | ---------------- | ------: | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| The last match   |      11 | https://hunterxhunter.fandom.com/wiki/Episode_11_(2011) | Checked: Lippo removes his handcuffs, the other prisoners step back, Leorio recognises him, Killua takes his heart, he dies, score 3-2. |
+| The last match   |      11 | https://hunterxhunter.fandom.com/wiki/Episode_11_(2011) | Checked: Lippo removes his handcuffs, the other prisoners step back, Leorio recognizes him, Killua takes his heart, he dies, score 3-2. |
 
 ## Khara (`khara`, threshold ep 14)
 
@@ -1983,7 +1983,7 @@ held to: every story below has a row, and every row below has a story.
 | Entry (en title)      | Episode | Fandom page that settles it                             | Note                                                                                                                                                            |
 | --------------------- | ------: | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | The real entrance     |      22 | https://hunterxhunter.fandom.com/wiki/Episode_22_(2011) | Zebro refuses the key, is revealed as the cleaner, opens the first door, phones a butler, and escorts them in calling the dog.                                  |
-| Training with weights |      23 | https://hunterxhunter.fandom.com/wiki/Episode_23_(2011) | Zebro leads them to the quarters, sets the 50 kg vests, apologises for his colleague, and the three open the gate; he admits never having gone up the mountain. |
+| Training with weights |      23 | https://hunterxhunter.fandom.com/wiki/Episode_23_(2011) | Zebro leads them to the quarters, sets the 50 kg vests, apologizes for his colleague, and the three open the gate; he admits never having gone up the mountain. |
 
 ## Mike (`mike`, threshold ep 22)
 

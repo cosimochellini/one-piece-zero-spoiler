@@ -31,9 +31,10 @@ Every story in a character's chronicle (\`chronicle\` in the dossiers, filed in
 \`src/data/series/<series>/records/<saga>.chronicle.ts\`) was checked against the
 series' English wiki (onepiece.fandom.com, hunterxhunter.fandom.com) twice: once
 as it was written and once more by an independent pass that re-read every
-episode against the character's \`/History\` page (One Piece's cites each event
-as \`{{Qref|…|ep=N}}\`) and the episode page named in the table, whose summary
-settles whether the event is complete by the end of that episode. Where the
+episode against the episode page named in the table, whose summary settles
+whether the event is complete by the end of that episode, and against the
+character's wiki page (One Piece's \`/History\` cites each event as
+\`{{Qref|…|ep=N}}\`). Where the
 second pass disagreed with the first, the story was moved or rewritten; the
 note says what changed.
 

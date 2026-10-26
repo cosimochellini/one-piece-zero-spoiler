@@ -94,9 +94,9 @@ export const HUNTER_X_HUNTER_SOURCES = {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_3_(2011)',
       note: "Tonpa's offer of help, the warning about Hisoka, the laxative juice, Kurapika pouring it out and his recalling Hanzo and Nicholas are all on the page.",
     },
-    9: {
-      source: 'https://hunterxhunter.fandom.com/wiki/Episode_9_(2011)',
-      note: 'Kept at episode 9, the later of the two: episode 8 covers the vote and the join, episode 9 the surrender before Bendot hits him and his admission to Leorio.',
+    8: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_8_(2011)',
+      note: 'Corrected after the PR review: the join, the vote against opening the door, the surrender and his admission to Leorio are all in the episode 8 summary; episode 9 only repeats them at its start.',
     },
     15: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_15_(2011)',
@@ -128,7 +128,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
   'hanzo': {
     3: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_3_(2011)',
-      note: 'The juice scene: Gon and Leorio sense something wrong, Kurapika pours it out, Tonpa apologises, leaves and remembers the applicants who did not take his bait, Hanzo and Nicholas. Corrected after the PR review: the ninja and scroll details, which the episode page does not show, were cut.',
+      note: 'The juice scene: Gon and Leorio sense something wrong, Kurapika pours it out, Tonpa apologizes, leaves and remembers the applicants who did not take his bait, Hanzo and Nicholas. Corrected after the PR review: the ninja and scroll details, which the episode page does not show, were cut.',
     },
     19: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_19_(2011)',
@@ -248,7 +248,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
   'johness': {
     11: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_11_(2011)',
-      note: 'Checked: Lippo removes his handcuffs, the other prisoners step back, Leorio recognises him, Killua takes his heart, he dies, score 3-2.',
+      note: 'Checked: Lippo removes his handcuffs, the other prisoners step back, Leorio recognizes him, Killua takes his heart, he dies, score 3-2.',
     },
   },
   'togari': {
@@ -340,7 +340,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
     23: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_23_(2011)',
-      note: 'Zebro leads them to the quarters, sets the 50 kg vests, apologises for his colleague, and the three open the gate; he admits never having gone up the mountain.',
+      note: 'Zebro leads them to the quarters, sets the 50 kg vests, apologizes for his colleague, and the three open the gate; he admits never having gone up the mountain.',
     },
   },
   'mike': {

@@ -235,7 +235,7 @@ export const hunterExamChronicles = {
       },
     },
     {
-      episode: 9,
+      episode: 8,
       chapter: 17,
       value: {
         title: { it: 'Il quinto del gruppo', en: 'The fifth in the group' },
@@ -326,7 +326,7 @@ export const hunterExamChronicles = {
         title: { it: 'Non abbocca al succo', en: 'He does not take the bait' },
         body: {
           it: 'Dopo che [[gon-freecss|Gon]] e [[leorio-paradinight|Leorio]] hanno capito che nel succo c’è qualcosa che non va e [[kurapika|Kurapika]] l’ha versato via, [[tonpa|Tonpa]] si scusa e se ne va in fretta. Mentre si allontana ricorda gli altri aspiranti che non hanno abboccato alla sua esca, come Hanzo e [[nicholas|Nicole]]. Il succo era corretto con un lassativo.',
-          en: 'After [[gon-freecss|Gon]] and [[leorio-paradinight|Leorio]] realise something is wrong with the juice and [[kurapika|Kurapika]] pours it out, [[tonpa|Tonpa]] apologises and hurries off. As he goes he remembers the other applicants who did not take his bait, like Hanzo and [[nicholas|Nicholas]]. The juice was laced with laxatives.',
+          en: 'After [[gon-freecss|Gon]] and [[leorio-paradinight|Leorio]] realize something is wrong with the juice and [[kurapika|Kurapika]] pours it out, [[tonpa|Tonpa]] apologizes and hurries off. As he goes he remembers the other applicants who did not take his bait, like Hanzo and [[nicholas|Nicholas]]. The juice was laced with laxatives.',
         },
       },
     },
@@ -356,7 +356,7 @@ export const hunterExamChronicles = {
         },
         body: {
           it: 'Tra gli aspiranti che [[tonpa|Tonpa]] ricorda dopo che [[gon-freecss|Gon]], [[leorio-paradinight|Leorio]] e [[kurapika|Kurapika]] hanno rifiutato il suo succo c’è anche Nicole, che come [[hanzo|Hanzo]] non ha abboccato alla sua esca. Il succo era corretto con un lassativo, e [[gon-freecss|Gon]] e [[leorio-paradinight|Leorio]] lo trovavano già sospetto, forse scaduto. Tonpa si allontana in fretta dopo essersi scusato.',
-          en: 'Among the applicants [[tonpa|Tonpa]] remembers after [[gon-freecss|Gon]], [[leorio-paradinight|Leorio]] and [[kurapika|Kurapika]] turn down his juice is Nicholas, who like [[hanzo|Hanzo]] did not take his bait. The juice was laced with laxatives, and [[gon-freecss|Gon]] and [[leorio-paradinight|Leorio]] already found it suspicious, perhaps expired. Tonpa hurries off after apologising.',
+          en: 'Among the applicants [[tonpa|Tonpa]] remembers after [[gon-freecss|Gon]], [[leorio-paradinight|Leorio]] and [[kurapika|Kurapika]] turn down his juice is Nicholas, who like [[hanzo|Hanzo]] did not take his bait. The juice was laced with laxatives, and [[gon-freecss|Gon]] and [[leorio-paradinight|Leorio]] already found it suspicious, perhaps expired. Tonpa hurries off after apologizing.',
         },
       },
     },
