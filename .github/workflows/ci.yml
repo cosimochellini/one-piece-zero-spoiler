@@ -39,6 +39,9 @@ env:
 jobs:
   check:
     name: check
+    # Pull requests only: the gate already ran there, and repeating it on main
+    # just to bump the version cost the whole run for nothing.
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     timeout-minutes: 25
 
@@ -141,7 +144,8 @@ jobs:
           retention-days: 7
 
   # Cuts the release for every push to main, which in practice means every
-  # squashed pull request. Gated on `check` so a red build never tags.
+  # squashed pull request. It does not wait for `check`, which only runs on
+  # pull requests; a merge of two green PRs that break each other still tags.
   #
   # This job is also why `main` carries no branch protection. A ruleset that
   # requires a pull request would reject the `chore(release)` commit pushed
@@ -150,7 +154,6 @@ jobs:
   # held as a secret or dropping the package.json version bump.
   release:
     name: release
-    needs: check
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 15
