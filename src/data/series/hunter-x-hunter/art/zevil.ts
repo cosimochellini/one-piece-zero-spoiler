@@ -1,5 +1,43 @@
-import type { Drawings, Redrawings } from '~/data/art/stroke'
-import { circle, ellipse, shadow } from '~/lib/svg/primitives'
+import {
+  type Drawings,
+  moved,
+  type Redrawings,
+  type Stroke,
+} from '~/data/art/stroke'
+import { circle, ellipse, SEA, shadow } from '~/lib/svg/primitives'
+
+/**
+ * One of Gittarackur's round-headed pins, upright with its point at the
+ * origin: the shaft with both its edges, and the round head. Both his
+ * drawings are these same pins moved, so the only thing that changes at
+ * episode 20 is where the pins are.
+ */
+const SHAFT: Stroke = { d: 'M-1.6 -91 V-10 L0 0 L1.6 -10 V-91' }
+const PIN: Stroke[] = [SHAFT, { d: circle(0, -100, 9) }]
+
+/** The pin that wears the tint: the head, the light on it, the shade under it. */
+const TINTED_PIN: Stroke[] = [
+  SHAFT,
+  { d: circle(0, -100, 9), role: 'accent' },
+  { d: 'M-5 -102 Q-4 -106 0 -107', role: 'soft' },
+  { d: 'M-1.5 -92 L8 -98 M3 -92.6 L8.6 -96', role: 'ambient' },
+]
+
+/**
+ * Bodoro's gi in its two parts that never change: the crossed collar about
+ * the nape and the belt's square knot with its two ends. Both his drawings
+ * place these same two, so the only thing the death changes is the body of
+ * the robe around them.
+ */
+const BODORO_GI: { collar: Stroke[]; knot: Stroke[] } = {
+  collar: [
+    { d: 'M-24 -12 L0 18 L24 -12 M-15 -12 L0 7 L15 -12', role: 'accent' },
+  ],
+  knot: [
+    { d: 'M-7 -5 L6 -4 L5 5 L-6 4 Z' },
+    { d: 'M-4 4 L-10 22 M3 5 L10 21', role: 'soft' },
+  ],
+}
 
 /** Original objects from the Fourth Phase; references and viewing limits are in the provenance note. */
 export const zevilArt = {
@@ -19,21 +57,16 @@ export const zevilArt = {
     { d: 'M84 160 V166 M89 160 V166', role: 'soft' },
     shadow(80, 184, 57),
   ],
-  // The round-headed needles carried by Gittarackur, resting across one
-  // another: the disguised applicant's pins at the bracket in episode 19 / chapter 33.
+  // Four of Gittarackur's round-headed pins fanned upright, points together,
+  // the way they bristle from the disguise, the one in tint lit on top and
+  // shaded underneath: the applicant covered in needles at the Final Phase,
+  // episode 19 / chapter 33. No face under them.
   'gittarackur': [
-    { d: 'M40 158 L102 58 L107 61 L44 161 Z' },
-    { d: circle(109, 51, 12), role: 'accent' },
-    { d: 'M105 44 C112 42 117 48 115 53', role: 'soft' },
-    { d: 'M46 154 L100 68', role: 'soft' },
-    { d: 'M47 68 L112 167 L116 165 L51 65 Z' },
-    { d: circle(41, 57, 10) },
-    { d: 'M36 53 Q41 48 46 54', role: 'soft' },
-    { d: 'M38 133 L126 115 L127 119 L39 137 Z' },
-    { d: circle(28, 137, 9) },
-    { d: 'M22 135 Q25 130 30 132', role: 'soft' },
-    { d: 'M67 120 l3 -4 M70 126 l3 -4 M89 148 l3 -4', role: 'ambient' },
-    shadow(80, 185, 56),
+    ...moved(PIN, 'translate(80 176) rotate(-34)'),
+    ...moved(PIN, 'translate(80 176) rotate(-14)'),
+    ...moved(TINTED_PIN, 'translate(80 176) rotate(6)'),
+    ...moved(PIN, 'translate(80 176) rotate(26)'),
+    shadow(80, 186, 40),
   ],
   // Amori's vertically striped cap with its crown seen from above:
   // the eldest brother confronts Killua in episode 17 / chapter 29.
@@ -76,22 +109,25 @@ export const zevilArt = {
     { d: 'M34 147 Q78 155 116 145', role: 'soft' },
     shadow(80, 184, 61),
   ],
-  // Imori's cap with a separate front panel and short visor:
-  // the youngest brother stalks Killua in episode 17 / chapter 29.
+  // Imori's cap in 3/4, the crown's panels meeting at the button, the band in
+  // tint and the visor coming forward with its edge and underside: the
+  // youngest brother stalks Killua in episode 17 / chapter 29.
   'imori': [
-    { d: 'M27 126 C26 92 38 54 76 49 C111 44 133 76 132 120' },
-    { d: 'M76 49 C71 67 74 97 78 120', role: 'soft' },
-    { d: 'M31 105 C60 111 100 110 127 104' },
+    { d: 'M36 126 C33 88 56 60 86 60 C116 60 134 90 130 124' },
+    { d: circle(86, 62, 3.5), role: 'soft' },
     {
-      d: 'M27 126 C53 137 100 138 132 120 L132 130 C105 149 50 147 27 135 Z',
+      d: 'M83 65 C66 78 58 104 60 136 M90 65 C104 80 110 104 110 136',
+      role: 'soft',
+    },
+    {
+      d: 'M36 126 C52 142 114 140 130 124 M35 114 C50 128 114 126 131 112 M36 126 L35 114 M130 124 L131 112',
       role: 'accent',
     },
-    { d: 'M78 120 C102 115 125 120 143 135 C135 151 104 153 79 143' },
-    { d: 'M79 143 C103 160 138 153 143 135', role: 'soft' },
-    { d: 'M89 131 C104 125 125 130 132 136', role: 'soft' },
-    { d: 'M113 73 l7 -3 M117 87 l7 -3 M121 101 l7 -3', role: 'ambient' },
-    { d: 'M39 111 V122 M56 114 V127', role: 'soft' },
-    shadow(80, 183, 58),
+    { d: 'M40 132 C22 144 14 162 34 170 C58 178 96 170 108 137' },
+    { d: 'M17 161 C16 173 40 179 62 177', role: 'soft' },
+    { d: 'M42 140 C30 150 28 160 40 164 C60 170 90 162 98 142', role: 'soft' },
+    { d: 'M116 84 l7 -3 M120 97 l7 -3 M123 110 l6 -3', role: 'ambient' },
+    shadow(80, 186, 54),
   ],
   // Ponzu's wide hat and its closed side flaps: episode 17 / chapter 30.
   // The bees stay out until their later revelation.
@@ -112,21 +148,25 @@ export const zevilArt = {
     { d: 'M51 145 Q80 152 108 145', role: 'soft' },
     shadow(80, 184, 63),
   ],
-  // Bourbon's turban lying beside its loose end: his body is already dead
-  // when the name is established in episode 17 / chapter 30.
+  // Bourbon's turban in 3/4, the cloth wound on the slant round the crown,
+  // one turn in tint, the pleat gathered on top and the far side hatched:
+  // his body is already dead when the name is established in episode 17 /
+  // chapter 30.
   'bourbon': [
+    { d: 'M24 142 C16 106 40 70 82 68 C124 66 146 104 136 142' },
+    { d: 'M24 142 C42 162 118 162 136 142' },
     {
-      d: 'M27 130 C19 104 31 74 62 68 C87 61 116 70 127 91 C138 110 127 137 102 145 C73 154 38 149 27 130 Z',
+      d: 'M136 128 C120 110 100 94 80 80 M134 108 C120 94 106 82 94 70',
+      role: 'soft',
     },
-    { d: 'M28 111 C48 121 88 117 119 91', role: 'accent' },
-    { d: 'M27 126 C61 144 104 131 130 109', role: 'soft' },
-    { d: 'M39 82 C58 100 98 99 120 82', role: 'soft' },
-    { d: 'M58 69 C74 81 94 82 110 75', role: 'soft' },
-    { d: 'M34 100 C49 109 60 109 74 106', role: 'soft' },
-    { d: 'M104 141 C120 151 124 164 145 164 L140 177 C114 173 108 157 91 148' },
-    { d: 'M119 156 L113 160 M128 165 l-5 6 M137 166 l-5 7', role: 'ambient' },
-    { d: 'M32 131 l8 -3 M41 140 l8 -3 M53 144 l8 -3', role: 'ambient' },
-    shadow(80, 188, 61),
+    {
+      d: 'M26 126 C44 108 62 92 80 80 M32 146 C46 122 66 104 88 90',
+      role: 'accent',
+    },
+    { d: 'M22 112 C34 96 48 84 64 74', role: 'soft' },
+    { d: 'M64 72 C70 60 94 58 100 72 M80 64 L82 76', role: 'soft' },
+    { d: 'M124 114 l8 -3 M128 126 l7 -3 M122 140 l9 -3', role: 'ambient' },
+    shadow(80, 188, 60),
   ],
   // Pokkle's bow and quiver of ordinary arrows: the finalist's equipment
   // in episode 19 / chapter 33. No later Nen arrows.
@@ -147,61 +187,95 @@ export const zevilArt = {
     { d: 'M119 127 l-6 -3 M115 141 l-6 -3 M111 155 l-6 -3', role: 'ambient' },
     shadow(80, 188, 56),
   ],
-  // Bodoro's martial-arts robe, folded with the collar and waist tie visible:
-  // the elderly finalist in episode 19 / chapter 33.
+  // Bodoro's martial-artist gi standing in 3/4 as he wears it, the sleeves
+  // open at the cuffs, the collar crossed in tint, the belt knotted at the
+  // front and the side turning away hatched: the elderly finalist in episode
+  // 19 / chapter 33.
   'bodoro': [
-    { d: 'M32 85 L60 69 L80 84 L100 69 L128 85 L118 110 V164 H42 V110 Z' },
-    { d: 'M60 69 L80 99 L100 69 M60 76 L80 107 L101 76', role: 'accent' },
-    { d: 'M80 107 V162', role: 'soft' },
-    { d: 'M43 120 H117 V130 H43 Z' },
-    { d: 'M75 119 L83 123 L75 130 L68 125 Z', role: 'soft' },
-    { d: 'M75 130 L67 151 M80 129 L89 147', role: 'soft' },
-    { d: 'M33 86 L23 110 L41 119 M127 86 L137 110 L119 119', role: 'soft' },
     {
-      d: 'M48 141 l10 -3 M48 151 l10 -3 M105 142 l9 4 M105 152 l9 4',
-      role: 'ambient',
+      d: 'M56 58 L38 68 L20 114 L44 122 L48 100 V166 H110 V100 L114 122 L138 114 L120 64 L104 58',
     },
-    { d: 'M42 158 H118', role: 'soft' },
-    shadow(80, 184, 57),
+    { d: 'M56 58 C68 50 92 50 104 58', role: 'soft' },
+    { d: 'M20 114 C16 124 40 132 44 122 M114 122 C112 132 140 124 138 114' },
+    { d: 'M110 166 L122 158 V108 L120 64' },
+    { d: 'M48 120 H110 L122 114 M48 130 H110 L122 124' },
+    { d: 'M80 88 L96 120 M98 130 L102 166', role: 'soft' },
+    { d: 'M112 146 l8 -5 M112 158 l8 -5 M112 106 l8 -5', role: 'ambient' },
+    ...moved(BODORO_GI.collar, 'translate(80 70)'),
+    ...moved(BODORO_GI.knot, 'translate(76 125)'),
+    shadow(84, 184, 56),
   ],
-  // The forested island and its beach, seen from the arriving boat:
-  // episode 14 / chapter 23. No later cave scene is shown.
+  // Zevil Island seen from the arriving boat: two wooded hills joined by the
+  // low isthmus, the canopy in rows of crowns, the cliff under the right hill
+  // hatched, the landing beach in tint at the waterline: episode 14 /
+  // chapter 23. No later cave scene is shown.
   'zevil-island': [
-    { d: 'M10 140 C28 124 40 129 54 122 C70 112 99 114 120 127 L148 140' },
-    { d: 'M23 142 C58 130 102 130 137 142', role: 'accent' },
     {
-      d: 'M19 128 L30 103 L40 128 M37 123 L49 89 L63 123 M56 119 L70 81 L84 119',
+      d: 'M6 148 C8 118 16 96 30 90 C34 72 52 64 62 74 C72 64 88 70 88 88 C94 98 90 116 96 124',
     },
     {
-      d: 'M77 118 L90 86 L103 121 M98 123 L111 96 L125 128 M122 130 L133 110 L143 136',
+      d: 'M96 124 C100 108 108 96 118 98 C124 84 142 86 144 102 C152 110 150 124 144 132 L150 148',
     },
-    { d: 'M49 114 V125 M70 108 V123 M90 110 V125 M111 116 V130', role: 'soft' },
-    { d: 'M6 150 Q80 159 153 150', role: 'ambient' },
-    { d: 'M18 167 Q51 174 78 167 M93 164 Q120 171 147 164', role: 'ambient' },
-    { d: 'M33 181 Q80 189 127 181', role: 'ambient' },
-    { d: 'M57 128 L66 124 M95 125 L104 129', role: 'soft' },
+    {
+      d: 'M16 118 C20 106 34 104 38 114 C42 102 58 102 60 114 C64 106 78 106 80 118',
+      role: 'soft',
+    },
+    {
+      d: 'M22 136 C26 128 38 126 42 134 C46 126 60 126 62 136 C66 130 78 130 82 138',
+      role: 'soft',
+    },
+    {
+      d: 'M104 120 C108 112 120 112 122 120 C126 112 138 114 140 122',
+      role: 'soft',
+    },
+    { d: 'M140 112 l6 -6 M141 124 l6 -6 M142 136 l7 -7', role: 'ambient' },
+    { d: 'M50 148 C62 141 108 141 122 148 M66 144.5 H106', role: 'accent' },
+    { d: 'M4 148 H156', role: 'ambient' },
+    ...SEA,
   ],
 } satisfies Drawings
 
-/** The empty robe after Bodoro's death, reported in episode 20 / chapter 36. */
+/**
+ * The drawings that change with the story. Gittarackur's pins come out at
+ * the final phase, and Bodoro's gi is left empty when he dies.
+ */
 export const zevilRedrawn: Redrawings = {
+  gittarackur: [
+    // The same four pins pulled out and laid down side by side on the table,
+    // heads at alternate ends, the tinted one second: he draws them from his
+    // face and shows Killua his true appearance in episode 20 / chapter 35.
+    // No face, only the pins.
+    {
+      episode: 20,
+      chapter: 35,
+      value: [
+        ...moved(PIN, 'translate(130 97) rotate(-100)'),
+        ...moved(TINTED_PIN, 'translate(30 131) rotate(80)'),
+        ...moved(PIN, 'translate(130 129) rotate(-100)'),
+        ...moved(PIN, 'translate(30 163) rotate(80)'),
+        shadow(80, 184, 60),
+      ],
+    },
+  ],
   bodoro: [
+    // The same gi empty and folded square on the floor, the same collar on
+    // top and the same knot on its belt laid across it, the folds layered
+    // on the near face and the far face hatched: his death is reported in
+    // episode 20 / chapter 36.
     {
       episode: 20,
       chapter: 36,
       value: [
-        { d: 'M21 126 L47 112 L70 121 L95 110 L136 131 L121 151 L39 153 Z' },
+        { d: 'M32 88 H128 L140 134 H20 Z M20 134 V152 H140 V134' },
+        { d: 'M22 140 H96 M22 146 H96', role: 'soft' },
         {
-          d: 'M47 112 L70 137 L95 110 M51 117 L70 143 L91 117',
-          role: 'accent',
+          d: 'M106 150 l8 -14 M118 150 l8 -14 M130 150 l8 -14',
+          role: 'ambient',
         },
-        { d: 'M70 143 L81 152', role: 'soft' },
-        { d: 'M40 140 L118 136 L123 143 L45 149 Z' },
-        { d: 'M77 138 L86 141 L80 147 L72 143 Z', role: 'soft' },
-        { d: 'M80 147 L94 160 M78 148 L70 166', role: 'soft' },
-        { d: 'M27 128 L39 140 M120 124 L126 137', role: 'soft' },
-        { d: 'M44 151 l7 -5 M55 151 l7 -5 M104 146 l7 -5', role: 'ambient' },
-        shadow(80, 184, 63),
+        { d: 'M24.7 116 H135.3 M22.9 123 H137.1' },
+        ...moved(BODORO_GI.collar, 'translate(80 98) scale(1 0.6)'),
+        ...moved(BODORO_GI.knot, 'translate(80 119.5)'),
+        shadow(80, 184, 62),
       ],
     },
   ],
