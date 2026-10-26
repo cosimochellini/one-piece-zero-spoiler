@@ -12,9 +12,9 @@ import {
 import type { Stroke } from '~/lib/view/records'
 
 import { CHAPTER_ONE_DRAWINGS } from './chapter-one'
+import { FINAL_PHASE_DRAWINGS } from './final-phase'
 import { TRICK_TOWER_DRAWINGS } from './trick-tower'
 import { zevilArt, zevilRedrawn } from './zevil'
-import { FINAL_PHASE_DRAWINGS } from './final-phase'
 
 /**
  * One of Kurapika's two wooden swords, grip down to the left and point up
