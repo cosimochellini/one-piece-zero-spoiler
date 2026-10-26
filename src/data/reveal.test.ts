@@ -127,30 +127,30 @@ describe('reveal, at the edges', () => {
 })
 
 describe('reveal, for a record of one source only', () => {
-  const ANIME_ONLY: Gated = { ...ROBIN, source: 'anime' }
-  const MANGA_ONLY: Gated = { ...ROBIN, source: 'manga' }
+  const EPISODE_ONLY: Gated = { ...ROBIN, source: 'episode' }
+  const CHAPTER_ONLY: Gated = { ...ROBIN, source: 'chapter' }
 
-  it('counts an episode and a season in the anime, a chapter in the manga', () => {
-    expect(sourceOf(ep(130))).toBe('anime')
-    expect(sourceOf(se(4, 38))).toBe('anime')
-    expect(sourceOf(ch(218))).toBe('manga')
+  it('counts an episode and a season in episodes, a chapter in chapters', () => {
+    expect(sourceOf(ep(130))).toBe('episode')
+    expect(sourceOf(se(4, 38))).toBe('episode')
+    expect(sourceOf(ch(218))).toBe('chapter')
     expect(sourceOf(null)).toBeNull()
   })
 
   it('has it, and opens it at its threshold, only for a reader of that source', () => {
-    expect(reveal(ep(130), ONE_PIECE_BOOKMARK).sees(ANIME_ONLY)).toBe(true)
-    expect(reveal(se(4, 38), ONE_PIECE_BOOKMARK).sees(ANIME_ONLY)).toBe(true)
-    expect(reveal(ep(129), ONE_PIECE_BOOKMARK).has(ANIME_ONLY)).toBe(true)
-    expect(reveal(ch(218), ONE_PIECE_BOOKMARK).sees(MANGA_ONLY)).toBe(true)
-    expect(reveal(ch(1200), ONE_PIECE_BOOKMARK).has(ANIME_ONLY)).toBe(false)
-    expect(reveal(ch(1200), ONE_PIECE_BOOKMARK).sees(ANIME_ONLY)).toBe(false)
-    expect(reveal(ep(1200), ONE_PIECE_BOOKMARK).has(MANGA_ONLY)).toBe(false)
-    expect(reveal(se(4, 38), ONE_PIECE_BOOKMARK).has(MANGA_ONLY)).toBe(false)
+    expect(reveal(ep(130), ONE_PIECE_BOOKMARK).sees(EPISODE_ONLY)).toBe(true)
+    expect(reveal(se(4, 38), ONE_PIECE_BOOKMARK).sees(EPISODE_ONLY)).toBe(true)
+    expect(reveal(ep(129), ONE_PIECE_BOOKMARK).has(EPISODE_ONLY)).toBe(true)
+    expect(reveal(ch(218), ONE_PIECE_BOOKMARK).sees(CHAPTER_ONLY)).toBe(true)
+    expect(reveal(ch(1200), ONE_PIECE_BOOKMARK).has(EPISODE_ONLY)).toBe(false)
+    expect(reveal(ch(1200), ONE_PIECE_BOOKMARK).sees(EPISODE_ONLY)).toBe(false)
+    expect(reveal(ep(1200), ONE_PIECE_BOOKMARK).has(CHAPTER_ONLY)).toBe(false)
+    expect(reveal(se(4, 38), ONE_PIECE_BOOKMARK).has(CHAPTER_ONLY)).toBe(false)
   })
 
   it('has neither for a reader with no bookmark, and both sources for a record of both', () => {
-    expect(reveal(null, ONE_PIECE_BOOKMARK).has(ANIME_ONLY)).toBe(false)
-    expect(reveal(null, ONE_PIECE_BOOKMARK).has(MANGA_ONLY)).toBe(false)
+    expect(reveal(null, ONE_PIECE_BOOKMARK).has(EPISODE_ONLY)).toBe(false)
+    expect(reveal(null, ONE_PIECE_BOOKMARK).has(CHAPTER_ONLY)).toBe(false)
     expect(reveal(null, ONE_PIECE_BOOKMARK).has(ROBIN)).toBe(true)
     expect(reveal(ch(1), ONE_PIECE_BOOKMARK).has(ROBIN)).toBe(true)
   })

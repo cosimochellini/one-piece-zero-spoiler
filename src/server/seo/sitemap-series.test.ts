@@ -31,7 +31,7 @@ vi.mock(import('~/data/series'), async (original) => {
         .map((entity) => ({
           ...entity,
           id: 'anime-only',
-          source: 'anime' as const,
+          source: 'episode' as const,
         })),
     ],
     places: [],

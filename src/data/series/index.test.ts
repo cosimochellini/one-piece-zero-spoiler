@@ -133,7 +133,7 @@ function pastTheAnime(
   ceiling: number,
 ): string[] {
   return [
-    gate.source !== 'manga' && "past the anime, not the manga's",
+    gate.source !== 'chapter' && "past the anime, not the manga's",
     entry.episode !== ceiling && 'past the anime, not at its last episode',
   ].filter((breach) => breach !== false)
 }
@@ -145,7 +145,7 @@ function unpinned(
   ceiling: number,
 ): string[] {
   return [
-    gate.source === 'manga' && "the manga's, with no chapter",
+    gate.source === 'chapter' && "the manga's, with no chapter",
     entry.episode === ceiling
       && gate.source === undefined
       && 'at the last episode with no chapter',
@@ -181,7 +181,7 @@ function recordBreaches(records: Filed[], rules: RecordRules): string[] {
   return [
     ...past.flatMap(({ id, revealedAtEpisode, source }) =>
       [
-        source !== 'manga' && `${id}: past the anime, not the manga's`,
+        source !== 'chapter' && `${id}: past the anime, not the manga's`,
         revealedAtEpisode !== ceiling
           && `${id}: past the anime, not at its last episode`,
       ].filter((breach) => breach !== false),
@@ -201,7 +201,7 @@ function deadRule(
 
   return [
     last >= chapterCeiling && 'the last adapted chapter is not below the dial',
-    past.every(({ source }) => source !== 'manga')
+    past.every(({ source }) => source !== 'chapter')
       && 'no record of the manga alone past the last adapted chapter',
   ].filter((breach) => breach !== false)
 }
@@ -236,14 +236,14 @@ describe('the manga-only rules', () => {
         [
           told('visit', { episode: 10, chapter: 7 }),
           told('bare', { episode: 10 }),
-          told('early', { episode: 4, chapter: 7, source: 'manga' }),
-          told('unpinned', { episode: 10, source: 'manga' }),
-          told('clean', { episode: 10, chapter: 8, source: 'manga' }),
-          told('anime', { episode: 10, source: 'anime' }),
+          told('early', { episode: 4, chapter: 7, source: 'chapter' }),
+          told('unpinned', { episode: 10, source: 'chapter' }),
+          told('clean', { episode: 10, chapter: 8, source: 'chapter' }),
+          told('episode', { episode: 10, source: 'episode' }),
           told('adapted', { episode: 6, chapter: 3 }),
-          told('off', { episode: 4, source: 'manga' }),
+          told('off', { episode: 4, source: 'chapter' }),
           // The source is the record's, so the gate's, not the entry's.
-          told('owned', { episode: 6 }, { ...both, source: 'manga' }),
+          told('owned', { episode: 6 }, { ...both, source: 'chapter' }),
         ],
         rules,
       ),
@@ -274,13 +274,13 @@ describe('the manga-only rules', () => {
             id: 'early',
             revealedAtEpisode: 4,
             revealedAtChapter: 7,
-            source: 'manga',
+            source: 'chapter',
           },
           {
             id: 'clean',
             revealedAtEpisode: 10,
             revealedAtChapter: 7,
-            source: 'manga',
+            source: 'chapter',
           },
           { id: 'adapted', revealedAtEpisode: 6, revealedAtChapter: 3 },
         ],

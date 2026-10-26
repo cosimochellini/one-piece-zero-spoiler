@@ -164,16 +164,20 @@ export function anchorsOf(
  * alone. With no source on any entry it is the first entry's gate.
  */
 export function earliestOf(gates: Gated[]): Gated {
-  const anime = gates.find((gate) => toldIn(gate, 'anime'))
-  const manga = gates.find((gate) => toldIn(gate, 'manga'))
-  if (anime !== undefined && manga !== undefined && anime !== manga) {
+  const inEpisodes = gates.find((gate) => toldIn(gate, 'episode'))
+  const inChapters = gates.find((gate) => toldIn(gate, 'chapter'))
+  if (
+    inEpisodes !== undefined
+    && inChapters !== undefined
+    && inEpisodes !== inChapters
+  ) {
     return {
-      revealedAtEpisode: anime.revealedAtEpisode,
-      revealedAtChapter: manga.revealedAtChapter,
+      revealedAtEpisode: inEpisodes.revealedAtEpisode,
+      revealedAtChapter: inChapters.revealedAtChapter,
     }
   }
 
-  const first = anime ?? manga ?? gates[0]
+  const first = inEpisodes ?? inChapters ?? gates[0]
   if (first === undefined) {
     throw new Error('A link is told by at least one entry')
   }

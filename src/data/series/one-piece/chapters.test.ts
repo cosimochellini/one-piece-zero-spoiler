@@ -122,15 +122,15 @@ describe('a record or an entry of one source only', () => {
   it('vouches for no pair of the table, as an unanchored record does not', () => {
     expect(vouches({})).toBe(true)
     expect(vouches({ unanchored: true })).toBe(false)
-    expect(vouches({ source: 'anime' })).toBe(false)
-    expect(vouches({ source: 'manga' })).toBe(false)
+    expect(vouches({ source: 'episode' })).toBe(false)
+    expect(vouches({ source: 'chapter' })).toBe(false)
   })
 
   it('gives its gate the source of its record, or else its own', () => {
     const told = { episode: 5, value: null }
 
     expect(gateOf(told, FILED)).not.toHaveProperty('source')
-    expect(gateOf({ ...told, source: 'anime' }, FILED).source).toBe('anime')
-    expect(gateOf(told, { ...FILED, source: 'manga' }).source).toBe('manga')
+    expect(gateOf({ ...told, source: 'episode' }, FILED).source).toBe('episode')
+    expect(gateOf(told, { ...FILED, source: 'chapter' }).source).toBe('chapter')
   })
 })

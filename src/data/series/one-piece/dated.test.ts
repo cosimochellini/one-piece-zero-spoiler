@@ -82,9 +82,9 @@ describe('every dated entry in the archive', () => {
         ...(source !== undefined && { source }),
       })
       expect(reaches(ch(chapter - 1), row), label).toBe(false)
-      expect(reaches(ch(chapter), row), label).toBe(source !== 'anime')
+      expect(reaches(ch(chapter), row), label).toBe(source !== 'episode')
       expect(reaches(ep(episode - 1), row), label).toBe(false)
-      expect(reaches(ep(episode), row), label).toBe(source !== 'manga')
+      expect(reaches(ep(episode), row), label).toBe(source !== 'chapter')
       expect(reaches(null, row), label).toBe(false)
     }
   })

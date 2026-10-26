@@ -90,7 +90,7 @@ describe('a reordered character beside a source-only arc', () => {
     const unavailable = {
       ...first,
       id: 'anime-only-bridge',
-      source: 'anime' as const,
+      source: 'episode' as const,
     }
     const future = { ...first, id: 'future-heading', revealedAtChapter: 50 }
     const fixture = {

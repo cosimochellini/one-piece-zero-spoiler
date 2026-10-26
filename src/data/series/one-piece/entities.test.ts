@@ -14,19 +14,19 @@ describe('getEntity', () => {
 
 describe('openedBy', () => {
   const both = { revealedAtEpisode: 10, revealedAtChapter: 20 }
-  const anime = {
+  const episodeOnly = {
     revealedAtEpisode: 5,
     revealedAtChapter: 6,
-    source: 'anime' as const,
+    source: 'episode' as const,
   }
-  const manga = {
+  const chapterOnly = {
     revealedAtEpisode: 3,
     revealedAtChapter: 4,
-    source: 'manga' as const,
+    source: 'chapter' as const,
   }
 
   it('opens a fruit in each unit at the first naming its source tells', () => {
-    expect(openedBy([both, anime, manga])).toStrictEqual({
+    expect(openedBy([both, episodeOnly, chapterOnly])).toStrictEqual({
       revealedAtEpisode: 5,
       revealedAtChapter: 4,
     })
@@ -34,8 +34,8 @@ describe('openedBy', () => {
 
   it('keeps a fruit only one source names to that source', () => {
     // The other unit's threshold only orders it, and stays within the dial.
-    expect(openedBy([anime])).toStrictEqual(anime)
-    expect(openedBy([manga])).toStrictEqual(manga)
+    expect(openedBy([episodeOnly])).toStrictEqual(episodeOnly)
+    expect(openedBy([chapterOnly])).toStrictEqual(chapterOnly)
     expect(openedBy([both])).not.toHaveProperty('source')
   })
 })
