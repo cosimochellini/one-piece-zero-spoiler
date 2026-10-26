@@ -13,6 +13,7 @@ import {
   withMigratedCookies,
 } from '~/lib/progress/migrateBookmark'
 import { linkedSeries } from '~/lib/progress/series'
+import { rootRedirect } from '~/lib/rootRedirect'
 
 // Whether this instance has answered a request yet.
 const instance = { warm: false }
@@ -23,7 +24,8 @@ const instance = { warm: false }
  * It exists for its middlewares. One turns a shared link such as
  * `/en?ep=650` into the bookmark cookie and redirects to the same address
  * without it, before routing. Links on pages without a series set nothing.
- * The same middleware migrates legacy One Piece cookies before loaders run.
+ * The same middleware migrates legacy One Piece cookies before loaders run,
+ * and sends the bare root `/` to the hub in the reader's language (#831).
  *
  * Another is the CSRF check. Every record the reader has not reached now
  * lives on the server and is fetched by a server function, so those endpoints
@@ -67,6 +69,7 @@ export const startInstance = createStart(() => {
           const url = new URL(request.url)
           const linked =
             legacyRedirect(request)
+            ?? rootRedirect(request)
             ?? linkRedirect(request, linkedSeries(url.pathname, descriptionOf))
           if (linked !== undefined) {
             return withMigratedCookies(linked, cookies)

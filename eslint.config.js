@@ -62,6 +62,7 @@ const RECORDS = [
   // The wiki page and the note behind every chronicle story. Research rather
   // than code, and it grows by one entry per story written.
   'scripts/chronicle-sources.mjs',
+  'scripts/chronicle-sources-hxh.mjs',
 ]
 const TOKENS = ['src/**/*.stylex.ts']
 

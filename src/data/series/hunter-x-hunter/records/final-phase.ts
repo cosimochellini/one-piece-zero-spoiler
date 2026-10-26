@@ -1,3 +1,4 @@
+import { finalPhaseChronicles } from './final-phase.chronicle'
 import type { HunterSaga } from './saga'
 
 /** Named scenes of the Final Phase: see the checked provenance matrix. */
@@ -31,6 +32,7 @@ export const finalPhase: HunterSaga = {
   ],
   dossiers: {
     masta: {
+      chronicle: finalPhaseChronicles.masta,
       role: { en: 'Final Phase referee', it: 'Arbitro della prova finale' },
       log: {
         en: 'He introduces himself as the referee and witness for the first match. Hanzo recognizes him as the examiner who followed him during the Fourth Phase. He confirms that a candidate must make the opponent concede and that killing is forbidden.',
@@ -49,6 +51,7 @@ export const finalPhase: HunterSaga = {
       ],
     },
     illumi: {
+      chronicle: finalPhaseChronicles.illumi,
       role: { en: 'Killua’s older brother', it: 'Fratello maggiore di Killua' },
       log: {
         en: 'He faces Killua in the Final Phase. Removing a needle from his ear changes the appearance he used as Gittarackur. Killua recognizes him and calls him Illumi.',

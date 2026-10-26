@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
+import { localeForCountry } from './countries'
 import { negotiateLocale, parseAcceptLanguage } from './negotiate'
 
 describe('parseAcceptLanguage', () => {
@@ -50,5 +51,38 @@ describe('negotiateLocale', () => {
   it('falls back to Italian when neither says anything usable', () => {
     expect(negotiateLocale(null, null)).toBe('it')
     expect(negotiateLocale('', 'fr')).toBe('it')
+  })
+
+  it('prefers the cookie to the country', () => {
+    expect(negotiateLocale('opzs_lang=en', 'it', 'IT')).toBe('en')
+  })
+
+  it('prefers a mapped country to the header', () => {
+    expect(negotiateLocale(null, 'en-US,en;q=0.9', 'IT')).toBe('it')
+    expect(negotiateLocale(null, 'it', 'GB')).toBe('en')
+  })
+
+  it.each([undefined, 'FR', 'XX', 'T1', ''])(
+    'lets the header decide when the country is %s',
+    (country) => {
+      expect(negotiateLocale(null, 'en', country)).toBe('en')
+      expect(negotiateLocale(null, null, country)).toBe('it')
+    },
+  )
+})
+
+describe('localeForCountry', () => {
+  it.each([
+    ['IT', 'it'],
+    ['it', 'it'],
+    ['US', 'en'],
+    ['gb', 'en'],
+    ['IN', 'en'],
+    ['FR', undefined],
+    ['SM', undefined],
+    ['XX', undefined],
+    [undefined, undefined],
+  ])('maps %s to %s', (country, locale) => {
+    expect(localeForCountry(country)).toBe(locale)
   })
 })

@@ -63,8 +63,8 @@ receive an end-of-anime bookmark; source filtering still applies. See
 One Piece and Hunter x Hunter are open to readers. HxH files the verified Hunter
 Exam coverage through episode 26 / chapter 43, including the manga's chapter-one
 characters introduced later by the anime. Remaining candidate naming checks are
-tracked in #833 and #834; chronicle work remains #762. Records are not added
-from unnamed appearances or supplemental names.
+tracked in #833 and #834; every Hunter Exam character has a chronicle (#762).
+Records are not added from unnamed appearances or supplemental names.
 
 Public metadata in `src/lib/progress/series.ts` holds cookies, ranges, seasons,
 demo bounds, features and themes, without archive records. Pass the series to
@@ -80,8 +80,9 @@ importing a series directly. Optional slices are declared through features;
 Content routes are `/<series>/<locale>/…`; `/<locale>` is the hub and hosts
 legal/privacy pages. Unknown series and locales return 404. Legacy locale-first
 content routes redirect under `/one-piece` before bookmark parameters are read.
-`src/start.ts` handles shared-link bookmarks and legacy cookie migration before
-loaders. Use a content URL such as `/one-piece/en?ep=650` to set progress.
+`src/start.ts` handles shared-link bookmarks, legacy cookie migration and the
+`/` redirect (cookie, then country, then `Accept-Language`) before loaders. Use
+a content URL such as `/one-piece/en?ep=650` to set progress.
 
 ## Localization
 
@@ -137,6 +138,6 @@ checks this block.
 | Arcs, places      | 7 · 10                                             |
 | Saga modules      | 7                                                  |
 | Line drawings     | 62, one per record, plus 2 redrawings of 2 records |
-| Chronicle stories | 0, for 0 characters                                |
+| Chronicle stories | 81, for 44 characters                              |
 
 <!-- End of the generated counts. -->
