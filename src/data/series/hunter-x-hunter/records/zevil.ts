@@ -161,6 +161,22 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
             en: 'Hunter Exam, applicant',
           },
         },
+        {
+          episode: 20,
+          chapter: 35,
+          value: {
+            en: 'Hunter Exam, applicant; Illumi, Killua’s older brother',
+            it: 'Esame Hunter, aspirante; Illumi, fratello maggiore di Killua',
+          },
+        },
+        {
+          episode: 21,
+          chapter: 37,
+          value: {
+            en: 'Hunter Association, Hunter; Illumi, Killua’s older brother',
+            it: 'Associazione Hunter, Hunter; Illumi, fratello maggiore di Killua',
+          },
+        },
       ],
       status: [{ episode: 19, chapter: 33, value: 'alive' }],
     },
@@ -299,6 +315,14 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
           value: {
             it: 'Esame Hunter, aspirante',
             en: 'Hunter Exam, applicant',
+          },
+        },
+        {
+          episode: 21,
+          chapter: 37,
+          value: {
+            en: 'Hunter Association, Hunter',
+            it: 'Associazione Hunter, Hunter',
           },
         },
       ],
