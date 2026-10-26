@@ -3,11 +3,11 @@ name: CI
 on:
   push:
     branches: [main]
-  # `edited` is not a default activity type, and without it a title changed
-  # after the first green run would never be re-validated: the pr-title check
-  # would stay green for a title semantic-release cannot read.
+  # No `edited`: a title or body edit would cancel the run in flight and pay
+  # for the whole gate again. The title is checked by pr-title.yml instead.
+  # A body edit that adds a `client-budget:` line needs a manual re-run.
   pull_request:
-    types: [opened, synchronize, reopened, edited]
+    types: [opened, synchronize, reopened]
 
 concurrency:
   # On push the group collapses to a single constant, so releases on main are
@@ -36,41 +36,8 @@ env:
   LEFTHOOK: '0'
 
 jobs:
-  # The pull request title is the only input to the version bump: GitHub
-  # squashes the branch into one commit on main whose subject is that title,
-  # and semantic-release reads it to pick patch / minor / major. This job runs
-  # without `npm ci` because the validator has no dependencies.
-  pr-title:
-    name: pr-title
-    if: github.event_name == 'pull_request'
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v7
-
-      - name: Set up Node
-        uses: actions/setup-node@v7
-        with:
-          node-version-file: .nvmrc
-
-      # The title goes through `env`, never through `${{ }}` inside the shell
-      # script: a PR title is attacker-controlled and would be interpolated
-      # before the shell ever sees it as data.
-      - name: Validate PR title
-        env:
-          PR_TITLE: ${{ github.event.pull_request.title }}
-        run: node scripts/validate-pr-title.mjs
-
   check:
     name: check
-    # Deliberately not filtered to skip `edited`. An edit cancels the run
-    # already in flight for the same commit (cancel-in-progress), so a job
-    # that skips on `edited` leaves the commit with no gate result at all,
-    # and the pull request then reports `check` as skipped rather than as the
-    # pass it earned. Re-running the gate on a title edit is the cheaper
-    # mistake.
     runs-on: ubuntu-latest
     timeout-minutes: 25
 
@@ -129,10 +96,23 @@ jobs:
       - name: archive gate
         run: npm run gate:archive
 
+      # The base build is a pure function of the base commit, so it is cached
+      # by SHA: later pushes to the same PR, and PRs opened on a commit whose
+      # push run already built it, skip a second `npm ci` and build.
+      - name: Restore PR base build
+        id: base-cache
+        uses: actions/cache@v6
+        with:
+          path: ${{ runner.temp }}/client-base
+          key:
+            client-base-${{ github.event.pull_request.base.sha || github.sha }}
+
       # A separate worktree leaves the head build intact. Use the event's exact
       # base commit, not today's main, and install its own pinned dependencies.
       - name: Build PR base
-        if: github.event_name == 'pull_request'
+        if:
+          github.event_name == 'pull_request' &&
+          steps.base-cache.outputs.cache-hit != 'true'
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: |
@@ -140,6 +120,14 @@ jobs:
           cd "$RUNNER_TEMP/client-budget-base"
           npm ci
           npm run build
+          cp -r dist/client "$RUNNER_TEMP/client-base"
+
+      # Seeds the cache for the next pull request opened on this commit.
+      - name: Keep main build for PR base
+        if:
+          github.event_name == 'push' && steps.base-cache.outputs.cache-hit !=
+          'true'
+        run: cp -r dist/client "$RUNNER_TEMP/client-base"
 
       - name: Client growth budget
         if: github.event_name == 'pull_request'
@@ -147,8 +135,7 @@ jobs:
           # PR prose is data, never interpolated into the shell script.
           PR_BODY: ${{ github.event.pull_request.body }}
         run:
-          node scripts/client-budget.mjs
-          "$RUNNER_TEMP/client-budget-base/dist/client" dist/client
+          node scripts/client-budget.mjs "$RUNNER_TEMP/client-base" dist/client
 
       - name: Upload gate reports
         if: always()
