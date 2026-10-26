@@ -1,6 +1,6 @@
 // Reads the head of every page in the sitemap from a running copy of the site
 // and lists what search results would get wrong: a title that does not say
-// which series it belongs to, a missing, duplicated or over-long description,
+// which series it belongs to, a missing or duplicated description,
 // a canonical address that is not the page's own, a locale with no alternate.
 //
 // Run `npm run build && npm start` (Vite preview, port 4173), then `npm run
