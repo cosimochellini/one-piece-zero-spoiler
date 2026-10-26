@@ -20,7 +20,7 @@ export const FINAL_PHASE_DRAWINGS = {
   ],
   // One round-headed needle, held point down: the pin Gittarackur draws out
   // of his head to become Illumi again, episode 20 / chapter 35. A single
-  // pin upright, where the disguise's pins cross; no face, no later throw.
+  // pin upright, where the disguise's pins fan out; no face, no later throw.
   illumi: [
     { d: circle(88, 46, 17), role: 'accent' },
     { d: 'M71 47 C73 57 103 57 105 47', role: 'soft' },

@@ -10,9 +10,11 @@ are committed.
 
 ## Scope
 
-The 45 Hunter Exam characters, its 10 places and `hunter-exam-arc`, graded
-against the `line-drawings` skill. 39 drawings graded B or C were redrawn; the
-other 17 were graded A and kept. The later arcs are unchanged.
+The 45 characters filed with the Hunter Exam (Ging, Kite and Kon among them,
+though the 2011 anime first shows them later), its 10 places and
+`hunter-exam-arc`, graded against the `line-drawings` skill. 39 drawings graded
+B or C were redrawn; the other 17 were graded A and kept. The later arcs are
+unchanged.
 
 ## Objects swapped
 
@@ -37,7 +39,7 @@ and her knives chapter 12, after her chapter 10 threshold.
 | Gittarackur |      20 |      35 | Chapter 35: he removes a needle from his ear and Killua recognizes his true appearance; Episode 20 (2011) adapts chapters 35–36 | One pin drawn up out of the others |
 | Bodoro      |      20 |      36 | Episode 20 (2011): Killua kills Bodoro; it adapts chapters 35–36 (unchanged pin)                                                | The same gi, empty and folded      |
 
-A wiki sweep of every record found no other stage between episode 1 and 26,
+A wiki sweep of the 56 records found no other stage between episode 1 and 26,
 chapter 1 and 43: no other death after a record opens, no costume, lost object
 or damaged place. Johness, Togari and Bourbon die in the episode their record
 opens (the skill's exception). Hanzo's blade is a one-fight weapon. Injuries
