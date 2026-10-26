@@ -116,7 +116,7 @@ describe('the pilot at independently verified relationship thresholds', () => {
       expect(open[0]?.history).toHaveLength(2)
       expect(open[1]?.history).toHaveLength(1)
       expect(
-        characterPage('nami', ep(1150), locale)?.detail.relationships,
+        characterPage('crocus', ep(1150), locale)?.detail.relationships,
       ).toStrictEqual([])
     },
   )
@@ -183,14 +183,20 @@ describe.each(LOCALES)(
       [ch(1), []],
       [ep(1), ['monkey-d-luffy', 'alvida']],
       [ch(2), ['monkey-d-luffy', 'alvida']],
-      [ep(314), ['monkey-d-luffy', 'alvida']],
-      [ch(432), ['monkey-d-luffy', 'alvida']],
-      [ep(315), ['monkey-d-luffy']],
-      [ch(433), ['monkey-d-luffy']],
-      [ep(487), ['monkey-d-luffy']],
-      [ch(578), ['monkey-d-luffy']],
-      [ep(488), ['shanks', 'sakazuki', 'monkey-d-luffy']],
-      [ch(579), ['shanks', 'sakazuki', 'monkey-d-luffy']],
+      [ep(314), ['monkey-d-garp', 'helmeppo', 'monkey-d-luffy']],
+      [ch(432), ['monkey-d-garp', 'helmeppo', 'monkey-d-luffy']],
+      [ep(315), ['monkey-d-luffy', 'monkey-d-garp', 'helmeppo']],
+      [ch(433), ['monkey-d-luffy', 'monkey-d-garp', 'helmeppo']],
+      [ep(487), ['monkey-d-luffy', 'monkey-d-garp', 'helmeppo']],
+      [ch(578), ['monkey-d-luffy', 'monkey-d-garp', 'helmeppo']],
+      [
+        ep(488),
+        ['shanks', 'sakazuki', 'monkey-d-luffy', 'monkey-d-garp', 'helmeppo'],
+      ],
+      [
+        ch(579),
+        ['shanks', 'sakazuki', 'monkey-d-luffy', 'monkey-d-garp', 'helmeppo'],
+      ],
     ])(
       'selects only reached people in editorial order at %j',
       (bookmark, expected) => {
@@ -224,8 +230,10 @@ describe.each(LOCALES)(
       const reunion = at(ep(315))
       const war = at(ep(488))
 
-      expect(at(ep(1150))).toStrictEqual(war)
-      expect(at(ch(1100))).toStrictEqual(war)
+      expect(at(ep(1121))).toStrictEqual(war)
+      expect(at(ep(1150))).toStrictEqual(at(ep(1122)))
+      expect(at(ch(1087))).toStrictEqual(war)
+      expect(at(ch(1100))).toStrictEqual(at(ch(1088)))
       expect(at(ep(1))).toStrictEqual(initial)
       expect(at(ch(433))).toStrictEqual(reunion)
       expect(pilotAt(ch(1100), locale)).toStrictEqual(pilotAt(ch(774), locale))
