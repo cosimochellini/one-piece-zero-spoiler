@@ -6,6 +6,10 @@ import { readPreferredLocale } from '~/i18n/readLocale'
  * `/` holds no content. Every page lives under a locale prefix, so the bare
  * root works out the reader's language once and sends them to the real
  * address, which is the one they can bookmark and share.
+ *
+ * A document request for `/` never gets here: `rootRedirect` in `src/start.ts`
+ * answers it first, with the visitor's country as one more signal. This guard
+ * covers a client-side navigation to `/`.
  */
 export const Route = createFileRoute('/')({
   beforeLoad: () => {

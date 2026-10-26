@@ -80,8 +80,9 @@ importing a series directly. Optional slices are declared through features;
 Content routes are `/<series>/<locale>/…`; `/<locale>` is the hub and hosts
 legal/privacy pages. Unknown series and locales return 404. Legacy locale-first
 content routes redirect under `/one-piece` before bookmark parameters are read.
-`src/start.ts` handles shared-link bookmarks and legacy cookie migration before
-loaders. Use a content URL such as `/one-piece/en?ep=650` to set progress.
+`src/start.ts` handles shared-link bookmarks, legacy cookie migration and the
+`/` redirect (cookie, then country, then `Accept-Language`) before loaders. Use
+a content URL such as `/one-piece/en?ep=650` to set progress.
 
 ## Localization
 
