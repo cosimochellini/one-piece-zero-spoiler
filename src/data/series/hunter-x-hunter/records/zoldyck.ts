@@ -1,4 +1,5 @@
 import type { HunterSaga } from './saga'
+import { zoldyckChronicles } from './zoldyck.chronicle'
 
 /** The visit to Killua's home, within episodes 22–26 / chapters 39–43 (#760). */
 export const zoldyck: Pick<HunterSaga, 'dossiers' | 'entries'> = {
@@ -138,6 +139,7 @@ export const zoldyck: Pick<HunterSaga, 'dossiers' | 'entries'> = {
   ],
   dossiers: {
     'coco-loo': {
+      chronicle: zoldyckChronicles['coco-loo'],
       role: { it: 'Guida turistica', en: 'Tour guide' },
       log: {
         it: 'Durante il viaggio descrive il monte e la famiglia che lo abita. Al cancello avverte i turisti che nessuno di coloro che sono entrati dalla porta di servizio è tornato. Quando due uomini tentano di entrare e vengono uccisi, riparte con gli altri visitatori.',
@@ -153,6 +155,7 @@ export const zoldyck: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       ],
     },
     'zebro': {
+      chronicle: zoldyckChronicles.zebro,
       role: { it: 'Guardiano', en: 'Gatekeeper' },
       log: {
         it: 'Pulisce ciò che resta degli intrusi divorati dal cane di guardia. Spiega ai tre amici che la porta di servizio è una trappola: l’ingresso vero è il grande cancello, che non ha serratura. Si toglie la giacca e apre la prima coppia di porte per mostrare la forza necessaria.',
@@ -171,6 +174,7 @@ export const zoldyck: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       ],
     },
     'mike': {
+      chronicle: zoldyckChronicles.mike,
       role: { it: 'Cane da guardia', en: 'Guard dog' },
       log: {
         it: 'Obbedisce solo alla famiglia Zoldick. Ha l’ordine di uccidere gli intrusi che passano dalla porta di servizio e di lasciare in pace chi apre il cancello principale. Quando il guardiano lo chiama per mostrarlo a Gon, osserva i visitatori senza avvicinarsi.',
@@ -189,6 +193,7 @@ export const zoldyck: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       ],
     },
     'seaquant': {
+      chronicle: zoldyckChronicles.seaquant,
       role: { it: 'Guardiano', en: 'Groundskeeper' },
       log: {
         it: 'Accoglie Gon, Kurapika e Leorio negli alloggi dei guardiani. Dubita che possano raggiungere Killua e li avverte delle difficoltà che li aspettano.',
@@ -207,6 +212,7 @@ export const zoldyck: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       ],
     },
     'canary': {
+      chronicle: zoldyckChronicles.canary,
       role: { it: 'Apprendista maggiordoma', en: 'Apprentice butler' },
       log: {
         it: 'Si presenta a Killua come apprendista maggiordoma e rifiuta la sua proposta di diventare amici perché è una sua servitrice. Quando Gon arriva alla tenuta, lo respinge con il bastone ogni volta che attraversa la linea davanti a lei. Alla fine gli chiede di aiutare Killua.',
@@ -225,6 +231,7 @@ export const zoldyck: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       ],
     },
     'gotoh': {
+      chronicle: zoldyckChronicles.gotoh,
       role: { it: 'Maggiordomo', en: 'Butler' },
       log: {
         it: 'Accoglie i tre amici negli alloggi dei maggiordomi in attesa di Killua. Chiede loro di indovinare in quale mano tiene una moneta e aumenta la velocità fino a renderla difficile da seguire. Gon supera la prova. Quando Killua arriva, gli chiede di non seguirlo.',
@@ -243,6 +250,7 @@ export const zoldyck: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       ],
     },
     'milluki': {
+      chronicle: zoldyckChronicles.milluki,
       role: { it: 'Fratello di Killua', en: 'Killua’s brother' },
       log: {
         it: 'Colpisce Killua con una frusta mentre è incatenato. Si irrita perché il fratello non sembra pentito di averlo ferito prima della fuga.',
@@ -258,6 +266,7 @@ export const zoldyck: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       ],
     },
     'zeno': {
+      chronicle: zoldyckChronicles.zeno,
       role: { it: 'Nonno di Killua', en: 'Killua’s grandfather' },
       log: {
         it: 'Entra nella stanza dove Killua è incatenato e ordina che la punizione finisca. Dice a Killua che suo padre vuole parlargli. Quando il fratello del ragazzo protesta, riconosce il talento di Killua pur ammettendo che si comporta in modo imprevedibile.',
@@ -273,6 +282,7 @@ export const zoldyck: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       ],
     },
     'kalluto': {
+      chronicle: zoldyckChronicles.kalluto,
       role: { it: 'Fratello di Killua', en: 'Killua’s brother' },
       log: {
         it: 'La madre lo presenta ai tre visitatori della tenuta. Rimane in silenzio a osservarli anche quando lei si allontana, finché lo richiama perché la segua.',

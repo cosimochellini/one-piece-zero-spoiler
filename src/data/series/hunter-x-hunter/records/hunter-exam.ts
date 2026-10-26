@@ -1,3 +1,4 @@
+import { hunterExamChronicles } from './hunter-exam.chronicle'
 import type { HunterSaga } from './saga'
 import { trickTower } from './trick-tower'
 import { zevil } from './zevil'
@@ -294,6 +295,7 @@ const earlyExam: HunterSaga = {
   dossiers: {
     ...zevil.dossiers,
     'gon-freecss': {
+      chronicle: hunterExamChronicles['gon-freecss'],
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
         it: 'È cresciuto sull’Isola Balena con Myto, che lo cresce da quando era in fasce. Suo padre, Ging Freecss, è un Hunter che non ha mai conosciuto. Myto gli lascia sostenere l’esame solo se pesca il pesce più grosso della palude, sicura che non ci riuscirà; lui ce la fa con la sua canna. Parte con la nave per diventare Hunter e per sapere di più su suo padre.',
@@ -316,6 +318,7 @@ const earlyExam: HunterSaga = {
       ],
     },
     'mito-freecss': {
+      chronicle: hunterExamChronicles['mito-freecss'],
       role: { it: 'Zia di Gon', en: 'Gon’s aunt' },
       log: {
         it: 'Ha cresciuto Gon da quando il padre gliel’ha lasciato, e preferirebbe che non ne seguisse le orme. Gli promette di lasciarlo partire per l’Esame Hunter se pescherà il pesce più grosso della palude, convinta che non ci riuscirà. Quando ci riesce, mantiene la parola e lo saluta alla partenza.',
@@ -336,6 +339,7 @@ const earlyExam: HunterSaga = {
       ],
     },
     'leorio-paradinight': {
+      chronicle: hunterExamChronicles['leorio-paradinight'],
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
         it: 'Non vuole dire al capitano perché sostiene l’esame, poi ammette che è per i soldi e per quello che si possono comprare. I modi di Kurapika lo irritano, e quando insulta il suo clan i due salgono in coperta nella tempesta per battersi. Il duello finisce quando Katzo viene sbalzato fuori bordo e Gon si tuffa ad afferrarlo: Leorio e Kurapika prendono Gon per le gambe, e dopo fanno pace.',
@@ -355,6 +359,7 @@ const earlyExam: HunterSaga = {
       ],
     },
     'kurapika': {
+      chronicle: hunterExamChronicles.kurapika,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
         it: 'Tiene per sé i suoi motivi finché il capitano non minaccia di farlo scendere: la Brigata Fantasma ha ucciso tutto il suo clan, e un Hunter può arrivare in posti e a informazioni che agli altri sono chiusi. Combatte con due spade di legno. Uno scontro con Leorio per una questione di rispetto finisce quasi in duello sul ponte, finché insieme non riprendono Gon e Katzo, sbalzati in mare; dopo i due fanno pace.',
@@ -381,6 +386,7 @@ const earlyExam: HunterSaga = {
       ],
     },
     'katzo': {
+      chronicle: hunterExamChronicles.katzo,
       role: { it: 'Marinaio', en: 'Crewman' },
       log: {
         it: 'Lavora sulla nave che porta gli aspiranti verso l’esame. Durante la tempesta viene sbalzato oltre la murata: Gon si tuffa e lo afferra, mentre Leorio e Kurapika tengono Gon per le gambe. Il giorno dopo ringrazia i tre.',
@@ -395,6 +401,7 @@ const earlyExam: HunterSaga = {
       ],
     },
     'kiriko': {
+      chronicle: hunterExamChronicles.kiriko,
       role: { it: 'Navigatori', en: 'Navigators' },
       log: {
         it: 'Padre, madre, un figlio e una figlia. I navigatori sanno dove si tiene l’esame di ogni anno e ci portano solo chi li convince: inscenano un’aggressione in casa loro, uno ferito a terra e un’altra portata via da una bestia, e guardano come reagisce ognuno. Gon li distingue dal viso e dalla voce, Kurapika riconosce i tatuaggi sul braccio della figlia, Leorio cura il ferito. Di notte portano in volo i tre fino all’esame.',
@@ -423,6 +430,7 @@ const earlyExam: HunterSaga = {
       ],
     },
     'tonpa': {
+      chronicle: hunterExamChronicles.tonpa,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
         it: 'Dice di conoscere bene l’esame e presenta a Gon alcuni aspiranti abituali. Offre ai tre amici del succo con un lassativo per farli ritirare. Gon sente che c’è qualcosa che non va e sputa il primo sorso; anche Kurapika e Leorio rinunciano alla bevanda.',
@@ -456,6 +464,7 @@ const earlyExam: HunterSaga = {
       ],
     },
     'hisoka': {
+      chronicle: hunterExamChronicles.hisoka,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
         it: 'Tonpa lo indica a Gon come un aspirante da evitare: l’anno prima è stato squalificato per aver attaccato un esaminatore. Si presenta di nuovo all’esame e punisce un uomo che gli va addosso senza chiedere scusa.',
@@ -482,6 +491,7 @@ const earlyExam: HunterSaga = {
       ],
     },
     'hanzo': {
+      chronicle: hunterExamChronicles.hanzo,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
         it: 'Parla volentieri con Tonpa e gli racconta della pergamena che cerca. Quando Tonpa gli offre del succo, però, lo rifiuta: un ninja non accetta cibo o bevande da uno sconosciuto.',
@@ -508,6 +518,7 @@ const earlyExam: HunterSaga = {
       ],
     },
     'nicholas': {
+      chronicle: hunterExamChronicles.nicholas,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
         it: 'Ha già trovato sul portatile i precedenti tentativi di Tonpa e sa che cerca di far ritirare i nuovi arrivati. Rifiuta il succo che gli viene offerto.',
@@ -526,6 +537,7 @@ const earlyExam: HunterSaga = {
       ],
     },
     'satotz': {
+      chronicle: hunterExamChronicles.satotz,
       role: { it: 'Esaminatore della prima prova', en: 'First Phase examiner' },
       log: {
         it: 'Chiude le iscrizioni e avverte gli aspiranti che l’esame può costare loro la vita. Li guida nel tunnel, accelerando il passo senza dire quanto durerà la prova o dove li porterà. Per passare devono soltanto riuscire a seguirlo.',
@@ -541,6 +553,7 @@ const earlyExam: HunterSaga = {
       ],
     },
     'killua': {
+      chronicle: hunterExamChronicles.killua,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
         it: 'Segue l’esaminatore sullo skateboard. Gon lo raggiunge e scopre che hanno quasi la stessa età. Killua prende la tavola in mano e continua a corrergli accanto.',
@@ -591,6 +604,7 @@ const earlyExam: HunterSaga = {
       ],
     },
     'menchi': {
+      chronicle: hunterExamChronicles.menchi,
       role: {
         it: 'Esaminatrice della seconda prova',
         en: 'Second Phase examiner',
@@ -609,6 +623,7 @@ const earlyExam: HunterSaga = {
       ],
     },
     'buhara': {
+      chronicle: hunterExamChronicles.buhara,
       role: {
         it: 'Esaminatore della seconda prova',
         en: 'Second Phase examiner',
@@ -627,6 +642,7 @@ const earlyExam: HunterSaga = {
       ],
     },
     'netero': {
+      chronicle: hunterExamChronicles.netero,
       role: {
         it: 'Presidente dell’Associazione Hunter',
         en: 'Chairman of the Hunter Association',
