@@ -424,7 +424,7 @@ const retained = {
     type: { en: 'Mentor and rescuer', it: 'Mentore e soccorritore' },
     summary: {
       en: 'Zeff saves Sanji after a shipwreck and gives him the food while they wait for rescue.',
-      it: 'Zeff salva Sanji dopo un naufragio e gli lascia il cibo mentre aspettano i soccorsi.',
+      it: 'Zef salva Sanji dopo un naufragio e gli lascia il cibo mentre aspettano i soccorsi.',
     },
   },
   sanjiMonkeyDLuffyCaptain: {
@@ -496,7 +496,7 @@ const retained = {
     type: { en: 'Head chef', it: 'Capocuoco' },
     summary: {
       en: 'Zeff runs the Baratie where he works as a cook.',
-      it: 'Zeff dirige il Baratie dove lavora come cuoco.',
+      it: 'Zef dirige il Baratie dove lavora come cuoco.',
     },
   },
   carneSanjiFellowCook: {
@@ -560,7 +560,7 @@ const retained = {
     type: { en: 'Captain', it: 'Capitano' },
     summary: {
       en: 'Hatchan serves as one of Arlong’s officers.',
-      it: 'Hachi serve come ufficiale di Arlong.',
+      it: 'Octy serve come ufficiale di Arlong.',
     },
   },
   hatchanCamieFriendAndEmployee: {
@@ -568,7 +568,7 @@ const retained = {
     type: { en: 'Friend and employee', it: 'Amica e dipendente' },
     summary: {
       en: 'Camie sells Hatchan’s takoyaki and asks Luffy’s crew to rescue him.',
-      it: 'Kayme vende i takoyaki di Hachi e chiede alla ciurma di Rufy di salvarlo.',
+      it: 'Kayme vende i takoyaki di Octy e chiede alla ciurma di Rufy di salvarlo.',
     },
   },
   hatchanPappagFriend: {
@@ -576,7 +576,7 @@ const retained = {
     type: { en: 'Friend', it: 'Amico' },
     summary: {
       en: 'Pappag accompanies Camie when she asks for Hatchan’s rescue.',
-      it: 'Pappagu accompagna Kayme quando chiede di salvare Hachi.',
+      it: 'Pappagu accompagna Kayme quando chiede di salvare Octy.',
     },
   },
   hatchanMonkeyDLuffyRescuer: {
@@ -584,7 +584,7 @@ const retained = {
     type: { en: 'Rescuer', it: 'Soccorritore' },
     summary: {
       en: 'Luffy’s crew helps free Hatchan from the kidnappers.',
-      it: 'La ciurma di Rufy aiuta a liberare Hachi dai rapitori.',
+      it: 'La ciurma di Rufy aiuta a liberare Octy dai rapitori.',
     },
   },
   kuroobiArlongCaptain: {
@@ -1228,7 +1228,7 @@ export const eastBlueRelationships = {
           type: { en: 'Protector', it: 'Protettore' },
           summary: {
             en: 'Zoro protects Rika from Helmeppo’s wolf; she brings him rice balls while he is imprisoned.',
-            it: 'Zoro protegge Rika dal lupo di Hermeppo; lei gli porta delle polpette di riso mentre è prigioniero.',
+            it: 'Zoro protegge Rica dal lupo di Hermeppo; lei gli porta delle polpette di riso mentre è prigioniero.',
           },
         },
         {
@@ -1236,7 +1236,7 @@ export const eastBlueRelationships = {
           type: { en: 'Rescuer', it: 'Soccorritore' },
           summary: {
             en: 'Rika thanks Luffy after Morgan’s defeat.',
-            it: 'Rika ringrazia Rufy dopo la sconfitta di Morgan.',
+            it: 'Rica ringrazia Rufy dopo la sconfitta di Morgan.',
           },
         },
       ],
@@ -1691,7 +1691,7 @@ export const eastBlueRelationships = {
           type: { en: 'Animal partner', it: 'Compagno animale' },
           summary: {
             en: 'Mohji rides Richie and directs his attacks.',
-            it: 'Moji cavalca Richie e dirige i suoi attacchi.',
+            it: 'Moji cavalca Richi e dirige i suoi attacchi.',
           },
         },
       ],
@@ -1707,7 +1707,7 @@ export const eastBlueRelationships = {
           type: { en: 'Protector', it: 'Protettore' },
           summary: {
             en: 'Luffy defeats Mohji and Richie and brings Chouchou the food saved from his shop.',
-            it: 'Rufy sconfigge Moji e Richie e porta a Shushu il cibo salvato dal negozio.',
+            it: 'Rufy sconfigge Moji e Richi e porta a Shushu il cibo salvato dal negozio.',
           },
         },
         {
@@ -1731,7 +1731,7 @@ export const eastBlueRelationships = {
           type: { en: 'Trainer', it: 'Domatore' },
           summary: {
             en: 'Richie carries Mohji and follows his orders in Orange Town.',
-            it: 'Richie trasporta Moji e segue i suoi ordini a Orange Town.',
+            it: 'Richi trasporta Moji e segue i suoi ordini a Orange Town.',
           },
         },
         {
@@ -1739,7 +1739,7 @@ export const eastBlueRelationships = {
           type: { en: 'Opponent', it: 'Avversario' },
           summary: {
             en: 'Luffy defeats Richie after the lion destroys Chouchou’s shop.',
-            it: 'Rufy sconfigge Richie dopo che il leone ha distrutto il negozio di Shushu.',
+            it: 'Rufy sconfigge Richi dopo che il leone ha distrutto il negozio di Shushu.',
           },
         },
       ],
@@ -2244,7 +2244,7 @@ export const eastBlueRelationships = {
           type: { en: 'Apprentice', it: 'Allievo' },
           summary: {
             en: 'Zeff saves Sanji, raises him at the Baratie and encourages him to pursue the All Blue.',
-            it: 'Zeff salva Sanji, lo cresce al Baratie e lo incoraggia a cercare l’All Blue.',
+            it: 'Zef salva Sanji, lo cresce al Baratie e lo incoraggia a cercare l’All Blue.',
           },
         },
       ],
@@ -2557,7 +2557,7 @@ export const eastBlueRelationships = {
           type: { en: 'Opponent', it: 'Avversario' },
           summary: {
             en: 'Hatchan loses his six-sword duel against Zoro.',
-            it: 'Hachi perde contro Zoro il duello con le sei spade.',
+            it: 'Octy perde contro Zoro il duello con le sei spade.',
           },
         },
       ],
@@ -2583,7 +2583,7 @@ export const eastBlueRelationships = {
           type: { en: 'Former captain', it: 'Ex capitano' },
           summary: {
             en: 'Hatchan sailed under Fisher Tiger with Arlong and Jinbe.',
-            it: 'Hachi navigava sotto Fisher Tiger insieme ad Arlong e Jinbe.',
+            it: 'Octy navigava sotto Fisher Tiger insieme ad Arlong e Jinbe.',
           },
         },
         {
@@ -2591,7 +2591,7 @@ export const eastBlueRelationships = {
           type: { en: 'Former crewmate', it: 'Ex compagno di ciurma' },
           summary: {
             en: 'Hatchan and Jinbe served together under Fisher Tiger.',
-            it: 'Hachi e Jinbe servivano insieme sotto Fisher Tiger.',
+            it: 'Octy e Jinbe servivano insieme sotto Fisher Tiger.',
           },
         },
         retained.hatchanMonkeyDLuffyRescuer,
@@ -2744,7 +2744,7 @@ export const eastBlueRelationships = {
           type: { en: 'Handler', it: 'Persona che lo comanda' },
           summary: {
             en: 'Hatchan summons Momoo to fight the intruders at Arlong Park.',
-            it: 'Hachi chiama Momoo per affrontare gli intrusi ad Arlong Park.',
+            it: 'Octy chiama Momu per affrontare gli intrusi ad Arlong Park.',
           },
         },
         {
@@ -2752,7 +2752,7 @@ export const eastBlueRelationships = {
           type: { en: 'Opponent', it: 'Avversario' },
           summary: {
             en: 'Luffy swings Momoo into Arlong’s men and knocks him out.',
-            it: 'Rufy scaglia Momoo contro gli uomini di Arlong e lo mette fuori combattimento.',
+            it: 'Rufy scaglia Momu contro gli uomini di Arlong e lo mette fuori combattimento.',
           },
         },
       ],
@@ -2766,7 +2766,7 @@ export const eastBlueRelationships = {
           type: { en: 'Captor', it: 'Carceriere' },
           summary: {
             en: 'Caribou’s crew uses Momoo to tow their ship; he flees when he recognises Luffy and his companions.',
-            it: 'La ciurma di Caribou usa Momoo per trainare la nave; lui fugge quando riconosce Rufy e i suoi compagni.',
+            it: 'La ciurma di Caribou usa Momu per trainare la nave; lui fugge quando riconosce Rufy e i suoi compagni.',
           },
         },
         {
@@ -2774,7 +2774,7 @@ export const eastBlueRelationships = {
           type: { en: 'Feared opponent', it: 'Avversario temuto' },
           summary: {
             en: 'Momoo remembers his defeat at Luffy’s hands and flees from the crew.',
-            it: 'Momoo ricorda la sconfitta subita da Rufy e fugge dalla ciurma.',
+            it: 'Momu ricorda la sconfitta subita da Rufy e fugge dalla ciurma.',
           },
         },
       ],
@@ -3051,7 +3051,7 @@ export const eastBlueRelationships = {
           type: { en: 'Crewmate and reader', it: 'Compagno e interprete' },
           summary: {
             en: 'Roger asks Oden to join his final voyage because he can read the Poneglyphs.',
-            it: 'Roger chiede a Oden di unirsi all’ultimo viaggio perché sa leggere i Poignee Griffe.',
+            it: 'Roger chiede a Oden di unirsi all’ultimo viaggio perché sa leggere i Poneglyph.',
           },
         },
         {

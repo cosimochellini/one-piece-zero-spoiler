@@ -490,6 +490,15 @@ describe.each(LOADED_SERIES)(
         expect(episodes, label).toStrictEqual(episodes.toSorted(byNumber()))
         expect(distinct.size, label).toBe(episodes.length)
 
+        // The manga-only entries a chapter reader walks obey the same rule in
+        // chapters, where one names its chapter.
+        const chapters = timeline
+          .filter((entry) => entry.source === 'manga')
+          .flatMap((entry) => entry.chapter ?? [])
+
+        expect(chapters, label).toStrictEqual(chapters.toSorted(byNumber()))
+        expect(chapters, label).toStrictEqual([...new Set(chapters)])
+
         for (const { episode } of timeline) {
           expect(Number.isSafeInteger(episode), label).toBe(true)
           expect(episode, label).toBeGreaterThanOrEqual(owner.revealedAtEpisode)

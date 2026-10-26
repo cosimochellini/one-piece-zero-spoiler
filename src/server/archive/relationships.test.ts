@@ -115,8 +115,22 @@ describe('the pilot at independently verified relationship thresholds', () => {
       expect(initial[0]?.history).toHaveLength(1)
       expect(open[0]?.history).toHaveLength(2)
       expect(open[1]?.history).toHaveLength(1)
+    },
+  )
+
+  it.each(LOCALES)(
+    'sends no relationship for a character with no authored selection in %s',
+    (locale) => {
+      // Whoever is first without one as cohorts land: the page sends none.
+      const onePiece = LOADED_SERIES.find(({ slug }) => slug === 'one-piece')
+      const bare = onePiece?.archive.characters.find(
+        (owner) =>
+          onePiece.archive.datedOf(owner, 'relationships').length === 0,
+      )
+
+      expect(bare).toBeDefined()
       expect(
-        characterPage('crocus', ep(1150), locale)?.detail.relationships,
+        characterPage(bare?.id ?? '', ep(1150), locale)?.detail.relationships,
       ).toStrictEqual([])
     },
   )
