@@ -342,12 +342,7 @@ describe('the Hunter Exam’s first two phases', () => {
 
       expect(sent).not.toMatch(/Gittarackur|Illumi|Mamen|Beans|Zoldyck|Morow/iu)
 
-      for (const id of [
-        'gittarackur',
-        'illumi-zoldyck',
-        'beans',
-        'mamen-beans',
-      ]) {
+      for (const id of ['illumi-zoldyck', 'beans', 'mamen-beans']) {
         expect(archive.getEntity(id)).toBeUndefined()
       }
     },

@@ -86,7 +86,7 @@ const EXPECTED: Record<string, Expected> = {
     namesSaidEarly: true,
   },
   // What it files on 2026-10-26: the arcs, and the Hunter Exam's road to the
-  // exam and first three phases, plus chapter-one characters (#760).
+  // exam through the Fourth Phase, named finalists and chapter-one characters (#760).
   'hunter-x-hunter': {
     kinds: [
       'affiliation',
@@ -102,14 +102,14 @@ const EXPECTED: Record<string, Expected> = {
       'summary',
     ],
     least: {
-      affiliations: 26,
+      affiliations: 40,
       arcs: 7,
-      characters: 25,
+      characters: 34,
       chronicles: 0,
       linkedOrigins: 5,
-      places: 7,
-      statuses: 25,
-      timelines: 58,
+      places: 8,
+      statuses: 35,
+      timelines: 77,
       visits: 0,
     },
     namesSaidEarly: true,
