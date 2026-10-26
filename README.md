@@ -5,7 +5,7 @@
 <h1 align="center">Zero Spoiler</h1>
 
 <p align="center">
-  <strong>The wiki without spoilers for One Piece. Hunter x Hunter is next.</strong>
+  <strong>The wiki without spoilers for One Piece and Hunter x Hunter.</strong>
   <br>
   Set a bookmark at the last episode or chapter you reached. Everything after it stays on the server.
 </p>
@@ -36,8 +36,8 @@ fog.
 | <img src="docs/media/fog-before.png" alt="The character grid at episode 45: the crests after that point are blurred and unnamed" width="420"> | <img src="docs/media/fog-after.png" alt="The same crop at episode 650: the same crests are open, named and drawn" width="420"> |
 
 A link can set the bookmark too. Add `?ep=650` for an episode, `?s=2&ep=3` for
-an episode in a season, or `?ch=1044` for a chapter to a One Piece page. Links
-on the root, legal and privacy pages set no bookmark. The link replaces the
+an episode in a season, or `?ch=1044` for a chapter to a series page. Links on
+the root, legal and privacy pages set no bookmark. The link replaces the
 bookmark you had, so a link from someone further ahead can open entries you have
 not reached.
 
@@ -71,8 +71,8 @@ flowchart LR
 ```
 
 The one exception is the landing page for a visitor with no bookmark. It carries
-the first saga, East Blue, so its dial can open and cover those entries in the
-browser, and nothing past it.
+the series’ introduction, East Blue or the Hunter Exam, so its dial can open and
+cover those entries in the browser, and nothing past it.
 
 The archive is never compiled into the client bundle, and a build gate fails if
 any of it gets there. Search, drawings and links follow the same rule. The full
@@ -80,10 +80,12 @@ design is in [docs/architecture.md](docs/architecture.md).
 
 ## What's inside
 
-500+ characters, 120+ devil fruits and about 40 places, from the first episode
-to the latest arc, in Italian and English. Every entry has its own line drawing
-made for this project, and some are redrawn from the episode the story changes
-them. There is no official artwork.
+One Piece has 500+ characters, 120+ devil fruits and about 40 places, from the
+first episode to the latest arc. Hunter x Hunter currently covers the road to
+the exam and its first two phases, with 15+ characters and six places. Both
+series are available in Italian and English. Every entry has its own line
+drawing made for this project, and some are redrawn from the episode the story
+changes them. There is no official artwork.
 
 |                                                                                                                                                                                              |                                                                                                                                                                                                        |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -137,6 +139,6 @@ from either follows the same
 
 [MIT](LICENSE) © 2026 Cosimo Chellini, for the software and original technical
 documentation; [LICENSE-SCOPE.md](LICENSE-SCOPE.md) says what it leaves out.
-This is an unofficial fan project, not endorsed by the One Piece rights holders.
-Credits, the rights contact, privacy and sources are on the
-[legal page](https://zerospoiler.app/en/legal).
+This is an unofficial fan project, not endorsed by the rights holders of One
+Piece or Hunter x Hunter. Credits, the rights contact, privacy and sources are
+on the [legal page](https://zerospoiler.app/en/legal).

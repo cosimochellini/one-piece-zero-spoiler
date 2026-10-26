@@ -59,7 +59,7 @@ export const ONE_PIECE: ListedSeries = {
 }
 
 /**
- * Filed, not opened (#763 opens it). Its thresholds are checked on the
+ * Open to readers. Its thresholds are checked on the
  * English Hunter x Hunter Wiki. There is no Italian Hunter x Hunter wiki, so
  * the Italian names, which follow the 2011 dub, come from Italian Wikipedia
  * (owner, 2026-10-24).
@@ -68,7 +68,7 @@ const HUNTER_X_HUNTER: ListedSeries = {
   description: HUNTER_X_HUNTER_SERIES,
   slug: HUNTER_X_HUNTER_SERIES.slug,
   folder: 'hunter-x-hunter',
-  open: false,
+  open: true,
   // The 2011 anime ends with the Election arc, chapters 319-339 and episodes
   // 137-148 (English Hunter x Hunter Wiki, `13th Hunter Chairman Election
   // arc`, read 2026-10-24).

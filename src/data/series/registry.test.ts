@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { ONE_PIECE_SERIES } from '~/lib/progress/series'
+import { HUNTER_X_HUNTER_SERIES, ONE_PIECE_SERIES } from '~/lib/progress/series'
 
 import {
   archiveOf,
@@ -16,6 +16,17 @@ import {
 const CLOSED = SERIES.filter(({ open }) => !open)
 
 describe('the runtime series registry', () => {
+  it('opens Hunter x Hunter to readers and removes its coming announcement', async () => {
+    expect(descriptionOf('hunter-x-hunter')).toBe(HUNTER_X_HUNTER_SERIES)
+    await expect(archiveOf('hunter-x-hunter')).resolves.toMatchObject({
+      series: HUNTER_X_HUNTER_SERIES,
+    })
+    expect(OPEN_SERIES.map(({ slug }) => slug)).toContain('hunter-x-hunter')
+    expect(COMING_SERIES.map(({ slug }) => slug)).not.toContain(
+      'hunter-x-hunter',
+    )
+  })
+
   it('returns public metadata without falling back for an unknown series', () => {
     expect(descriptionOf('one-piece')).toBe(ONE_PIECE_SERIES)
     expect(descriptionOf('missing-series')).toBeNull()

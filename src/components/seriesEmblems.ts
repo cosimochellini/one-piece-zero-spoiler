@@ -27,4 +27,19 @@ export const EMBLEMS: Partial<Record<string, Stroke[]>> = {
     // The first wave would run under the brim: the hat sits on the second.
     ...SEA.slice(1),
   ],
+  // A compass on a folded, unlabelled map: exploration, with no story
+  // place, character, official mark or record drawing on the public hub.
+  'hunter-x-hunter': [
+    { d: 'M19 119 L58 108 L99 120 L141 107 V166 L99 180 L58 166 L19 179 Z' },
+    { d: 'M58 141 V166 M99 149 V180', role: 'soft' },
+    { d: 'M26 171 L52 163 M105 169 L134 160', role: 'soft' },
+    { d: 'M43 88 A37 37 0 1 0 117 88 A37 37 0 1 0 43 88' },
+    { d: 'M49 88 A31 31 0 1 0 111 88 A31 31 0 1 0 49 88', role: 'soft' },
+    { d: 'M75 51 V43 Q80 36 85 43 V51' },
+    { d: 'M80 63 L91 91 L80 87 L69 91 Z', role: 'accent' },
+    { d: 'M69 91 L80 113 L91 91', role: 'soft' },
+    { d: 'M52 88 H58 M102 88 H108 M80 60 V65 M80 111 V116', role: 'soft' },
+    { d: 'M53 111 L58 116 M60 117 L65 121 M104 112 L100 116', role: 'ambient' },
+    { d: 'M32 187 H128', role: 'ambient', dashed: true },
+  ],
 }

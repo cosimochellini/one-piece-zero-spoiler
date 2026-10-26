@@ -8,6 +8,7 @@ import type { RecordView, SearchableCharacter, Slot } from '~/lib/view/records'
 import { leaksOf } from '~/test/fog'
 import { LOADED_SERIES } from '~/test/series'
 
+import { onboardingPage } from './onboarding.server'
 import {
   characterPage,
   charactersPage,
@@ -148,6 +149,20 @@ function filedAt(id: string, r: Reader): Slot<RecordView>[] | undefined {
 }
 
 describe('the Hunter Exam’s first two phases', () => {
+  it('gives a new visitor the exam and its five leads without later records', () => {
+    const demo = onboardingPage(null, readerFor(archive, null, 'en'))
+
+    expect(demo.arcs.map(({ id }) => id)).toStrictEqual(['hunter-exam-arc'])
+    expect(demo.cast.map(({ id }) => id)).toStrictEqual([
+      'gon-freecss',
+      'kurapika',
+      'leorio-paradinight',
+      'hisoka',
+      'killua',
+    ])
+    expect(JSON.stringify(demo)).not.toContain('Ging Freecss')
+  })
+
   it.each(CASES)(
     'opens $id only at its named scene in $mode ($locale)',
     ({ id, episode, chapter, kind, mode, locale }) => {

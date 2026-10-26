@@ -26,6 +26,27 @@ function locations(): string[] {
 }
 
 describe('the sitemap', () => {
+  it('lists the opened Hunter x Hunter pages and hides unsupported features', () => {
+    for (const locale of ['en', 'it']) {
+      for (const path of [
+        '',
+        '/characters',
+        '/places',
+        '/characters/gon-freecss',
+        '/characters/ging-freecss',
+      ]) {
+        expect(locations()).toContain(
+          `${SITE_ORIGIN}/hunter-x-hunter/${locale}${path}`,
+        )
+      }
+      for (const path of ['fruits', 'filler']) {
+        expect(locations()).not.toContain(
+          `${SITE_ORIGIN}/hunter-x-hunter/${locale}/${path}`,
+        )
+      }
+    }
+  })
+
   it('is a sitemap document with the alternates namespace declared', () => {
     expect(document.startsWith('<?xml version="1.0" encoding="UTF-8"?>')).toBe(
       true,
@@ -45,15 +66,16 @@ describe('the sitemap', () => {
     },
   )
 
-  it('lists every page of the site in both languages', () => {
-    expect(locations()).toHaveLength(
+  it('lists every One Piece page in both languages', () => {
+    expect(
+      locations().filter((url) => url.includes('/one-piece/')),
+    ).toHaveLength(
       (SECTION_COUNT
         + characters.length
         + fruits.length
         + places.length
         + ships.length)
-        * LOCALE_COUNT
-        + LOCALE_COUNT * 2,
+        * LOCALE_COUNT,
     )
   })
 
