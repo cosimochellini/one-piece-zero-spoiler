@@ -156,7 +156,7 @@ jobs:
     name: release
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
 
     permissions:
       contents: write # push the version commit, create the tag
@@ -213,3 +213,43 @@ jobs:
             -p @semantic-release/git@11.0.1 \
             -p conventional-changelog-conventionalcommits@9.3.1 \
             semantic-release
+
+      # The README health badge. It runs after the release so it scores the
+      # commit that carries the version bump, and it never fails the job: the
+      # tag is already out, and a red run here would only be noise. A failure
+      # leaves the previous badge in place, so check the job log if it looks stale.
+      # `npm test` writes the coverage fallow reads for the CRAP score, so the
+      # grade matches the one the pull request gate sees.
+      - name: Install for badge
+        continue-on-error: true
+        run: npm ci
+
+      - name: Test for badge
+        continue-on-error: true
+        run: npm test
+
+      # fallow exits 1 when a health gate trips but still writes the badge, so
+      # only a missing or empty file counts as a failure. The SVG goes to an
+      # orphan `badges` branch holding a single commit, force-pushed each time,
+      # so the history never grows. The push uses GITHUB_TOKEN, which starts no
+      # workflow.
+      - name: Publish health badge
+        continue-on-error: true
+        env:
+          GIT_AUTHOR_NAME: github-actions[bot]
+          GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+          GIT_COMMITTER_NAME: github-actions[bot]
+          GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+        run: |
+          status=0
+          ./node_modules/.bin/fallow health --format badge > "$RUNNER_TEMP/badge.svg" || status=$?
+          if [ "$status" -gt 1 ] || [ ! -s "$RUNNER_TEMP/badge.svg" ]; then
+            echo "fallow health produced no badge (exit $status)" >&2
+            exit 1
+          fi
+          git worktree add --orphan -b badges "$RUNNER_TEMP/badges"
+          cp "$RUNNER_TEMP/badge.svg" "$RUNNER_TEMP/badges/badge.svg"
+          cd "$RUNNER_TEMP/badges"
+          git add badge.svg
+          git commit -m 'chore: update health badge'
+          git push --force origin badges
