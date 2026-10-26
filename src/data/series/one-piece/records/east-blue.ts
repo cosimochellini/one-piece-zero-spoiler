@@ -987,7 +987,7 @@ export const eastBlue: OnePieceSaga = {
             },
             {
               character: 'alvida',
-              type: { en: 'Former captor', it: 'Ex carceriera' },
+              type: { en: 'Forced service', it: 'Servizio forzato' },
               summary: {
                 en: 'Alvida forces Koby to work on her ship until Luffy defeats her.',
                 it: 'Alvida costringe Kobi a lavorare sulla sua nave finché Rufy non la sconfigge.',

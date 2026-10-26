@@ -204,6 +204,9 @@ describe.each(LOCALES)(
       const reunion = at(ep(315))
       const war = at(ep(488))
 
+      expect(at(ep(1))[1]?.type).toBe(
+        locale === 'en' ? 'Forced service' : 'Servizio forzato',
+      )
       expect(at(ch(2))).toStrictEqual(at(ep(1)))
       expect(at(ch(433))).toStrictEqual(reunion)
       expect(at(ch(579))).toStrictEqual(war)
