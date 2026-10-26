@@ -1,7 +1,7 @@
 # Hunter Exam completion ledger
 
-Delivery of #760 is split into five dependent PRs: source-aware shelves
-and chapter-one records; Airship/Trick Tower; Zevil and named finalists; Final
+Delivery of #760 is split into five dependent PRs: source-aware shelves and
+chapter-one records; Airship/Trick Tower; Zevil and named finalists; Final
 Phase; the visit to Killua's home. Merge in that order; the PRs track the
 current merge and review state.
 
