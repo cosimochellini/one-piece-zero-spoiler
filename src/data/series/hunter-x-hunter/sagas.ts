@@ -1,6 +1,7 @@
 import { chapterOne } from './records/chapter-one'
 import { chimeraAnt } from './records/chimera-ant'
 import { election } from './records/election'
+import { finalPhase } from './records/final-phase'
 import { greedIsland } from './records/greed-island'
 import { heavensArena } from './records/heavens-arena'
 import { hunterExam } from './records/hunter-exam'
@@ -12,8 +13,16 @@ import { yorknewCity } from './records/yorknew-city'
 export const sagas: HunterSaga[] = [
   {
     ...hunterExam,
-    entries: [...hunterExam.entries, ...chapterOne.entries],
-    dossiers: { ...hunterExam.dossiers, ...chapterOne.dossiers },
+    entries: [
+      ...hunterExam.entries,
+      ...chapterOne.entries,
+      ...finalPhase.entries,
+    ],
+    dossiers: {
+      ...hunterExam.dossiers,
+      ...chapterOne.dossiers,
+      ...finalPhase.dossiers,
+    },
   },
   heavensArena,
   yorknewCity,
