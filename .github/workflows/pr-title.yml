@@ -1,0 +1,40 @@
+name: PR title
+
+# The pull request title is the only input to the version bump: GitHub
+# squashes the branch into one commit on main whose subject is that title,
+# and semantic-release reads it to pick patch / minor / major. Kept apart from
+# CI so a title edit re-runs only this check, not the whole gate. This job runs
+# without `npm ci` because the validator has no dependencies.
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+
+concurrency:
+  group: pr-title-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  pr-title:
+    name: pr-title
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+
+      # The title goes through `env`, never through `${{ }}` inside the shell
+      # script: a PR title is attacker-controlled and would be interpolated
+      # before the shell ever sees it as data.
+      - name: Validate PR title
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: node scripts/validate-pr-title.mjs
