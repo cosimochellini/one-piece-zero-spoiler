@@ -102,7 +102,7 @@ describe('every dated entry in the archive', () => {
       owner,
       source,
     } of ENTRIES) {
-      const bookmark = source === 'manga' ? ch(chapter) : ep(episode)
+      const bookmark = source === 'chapter' ? ch(chapter) : ep(episode)
       const at = reveal(bookmark, ONE_PIECE_BOOKMARK)
 
       expect(latestOf(at, owner, field), label).toBe(entry.value)

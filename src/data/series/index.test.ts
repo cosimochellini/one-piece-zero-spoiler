@@ -480,7 +480,7 @@ describe.each(LOADED_SERIES)(
 
       for (const { label, owner, timeline } of timelines) {
         const episodes = timeline
-          .filter((entry) => toldIn(entry, 'anime'))
+          .filter((entry) => toldIn(entry, 'episode'))
           .map((entry) => entry.episode)
         const distinct = new Set(episodes)
 
@@ -493,7 +493,7 @@ describe.each(LOADED_SERIES)(
         // The manga-only entries a chapter reader walks obey the same rule in
         // chapters, where one names its chapter.
         const chapters = timeline
-          .filter((entry) => entry.source === 'manga')
+          .filter((entry) => entry.source === 'chapter')
           .flatMap((entry) => entry.chapter ?? [])
 
         expect(chapters, label).toStrictEqual(chapters.toSorted(byNumber()))
