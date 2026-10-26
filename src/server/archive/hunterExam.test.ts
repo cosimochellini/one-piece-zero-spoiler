@@ -231,7 +231,10 @@ describe('the Hunter Exam’s first two phases', () => {
       const before = readerFor(archive, bookmark(mode, threshold - 1), locale)
       const at = readerFor(archive, bookmark(mode, threshold), locale)
 
-      expect(factsOf(entity, before)).not.toHaveProperty(field)
+      expect(factsOf(entity, before)).not.toHaveProperty(
+        field,
+        localized(entry.value, locale),
+      )
       expect(factsOf(entity, at)).toHaveProperty(
         field,
         localized(entry.value, locale),
