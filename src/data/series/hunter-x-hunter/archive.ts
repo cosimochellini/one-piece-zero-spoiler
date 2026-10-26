@@ -86,8 +86,15 @@ export const HUNTER_X_HUNTER_ARCHIVE: SeriesArchive = {
     filed: FILED,
     gateOf,
   }),
-  // No arc leads filed yet.
-  leads: {},
+  leads: {
+    'hunter-exam-arc': [
+      'gon-freecss',
+      'kurapika',
+      'leorio-paradinight',
+      'killua',
+      'hisoka',
+    ],
+  },
   places: places.records,
   getPlace: places.get,
   placeDossierOf: places.dossierOf,

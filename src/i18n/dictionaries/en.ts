@@ -196,7 +196,7 @@ export const enDictionary = {
   'credits.noOpenLicense': 'No open-content permission established.',
 
   'privacy.title': 'Privacy and cookies',
-  'privacy.updated': 'Last checked: 24 October 2026.',
+  'privacy.updated': 'Last checked: 26 October 2026.',
   'privacy.controllerTitle': 'Who runs the site',
   'privacy.controller':
     'Zero Spoiler is a personal, nonprofit fan project. Its operator and data controller is a private individual based in Italy, reachable as @cosimochellini on GitHub. Use the GitHub contact link below for an initial request.',
@@ -207,13 +207,13 @@ export const enDictionary = {
   'privacy.cookiesIntro':
     'These first-party cookies support features you request. They are not used for advertising or tracking across sites. They do not require a consent banner under the Italian rules for necessary technical cookies.',
   'privacy.bookmark':
-    'zs_one-piece: your episode, chapter or live-action bookmark; kept for 365 days after saving it, or until you clear it. Opening a shared bookmark link also sets this cookie. The value is sent to the server to hide later events.',
+    'zs_one-piece and zs_hunter-x-hunter: your bookmark for each series, by episode, season, chapter or live action where supported; kept for 365 days after saving it, or until you clear it. Opening a shared bookmark link also sets this cookie. The value is sent to the server to hide later events.',
   'privacy.language':
     'opzs_lang: your selected language (it or en); kept for 365 days after choosing it. Sent to the server to remember the language on later visits.',
   'privacy.trial':
-    'zs_one-piece_try: a temporary bookmark set when you try the site; a session cookie with no fixed expiry, removed when you save or clear a bookmark or leave the trial. Browser session restore can preserve session cookies.',
+    'zs_one-piece_try and zs_hunter-x-hunter_try: a temporary bookmark for each series set when you try the site; a session cookie with no fixed expiry, removed when you save or clear a bookmark or leave the trial. Browser session restore can preserve session cookies.',
   'privacy.attributes':
-    'All three cookies use Path=/ and SameSite=Lax, with no Domain, Secure or HttpOnly attribute. The site is served over HTTPS. They can be read by this site’s JavaScript and sent on applicable same-site requests and top-level cross-site navigations.',
+    'All five cookies use Path=/ and SameSite=Lax, with no Domain, Secure or HttpOnly attribute. The site is served over HTTPS. They can be read by this site’s JavaScript and sent on applicable same-site requests and top-level cross-site navigations.',
   'privacy.storage':
     'opzs_welcome is a sessionStorage flag used to show a welcome once after saving a bookmark. It is removed when the home page reads it, or when the tab session ends; it is not sent to the server. The application does not use localStorage.',
   'privacy.controlTitle': 'Your choices',

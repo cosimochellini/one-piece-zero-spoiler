@@ -580,6 +580,20 @@ describe.each(LOADED_SERIES)('the chronicles of $slug', ({ archive }) => {
 describe.each(LOADED_SERIES)('the shelves of $slug', ({ archive }) => {
   const { arcs, bookSections, characters, chart, featuredCharacters } = archive
 
+  it('files each arc’s leads as distinct characters of the same archive', () => {
+    for (const [arc, ids] of Object.entries(archive.leads)) {
+      expect(archive.getEntity(arc)?.kind, arc).toBe('arc')
+
+      const distinct = new Set(ids)
+
+      expect(distinct.size, arc).toBe(ids.length)
+
+      for (const id of ids) {
+        expect(archive.getCharacter(id)?.kind, id).toBe('character')
+      }
+    }
+  })
+
   it('draws every arc, place and ship, the featured characters, and nothing else', () => {
     const charted = new Set(['arc', 'place', 'ship'])
     const expected = archive.entities.filter(

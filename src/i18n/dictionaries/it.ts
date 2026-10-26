@@ -187,7 +187,7 @@ export const itDictionary: Dictionary = {
   'credits.noOpenLicense': 'Nessuna autorizzazione aperta accertata.',
 
   'privacy.title': 'Privacy e cookie',
-  'privacy.updated': 'Ultima verifica: 24 ottobre 2026.',
+  'privacy.updated': 'Ultima verifica: 26 ottobre 2026.',
   'privacy.controllerTitle': 'Chi gestisce il sito',
   'privacy.controller':
     'Zero Spoiler è un progetto amatoriale personale e senza scopo di lucro. Il gestore e titolare del trattamento è una persona privata in Italia, contattabile su GitHub come @cosimochellini. Per una richiesta iniziale usa il link di contatto GitHub qui sotto.',
@@ -198,13 +198,13 @@ export const itDictionary: Dictionary = {
   'privacy.cookiesIntro':
     'Questi cookie di prima parte servono alle funzioni che richiedi. Non sono usati per pubblicità o tracciamento tra siti. Le regole italiane sui cookie tecnici necessari non richiedono un banner di consenso per questi usi.',
   'privacy.bookmark':
-    'zs_one-piece: il tuo segnalibro per episodio, capitolo o live action; dura 365 giorni dal salvataggio, oppure fino alla cancellazione. Anche aprire un link con un segnalibro imposta questo cookie. Il valore viene inviato al server per nascondere gli eventi successivi.',
+    'zs_one-piece e zs_hunter-x-hunter: il tuo segnalibro per ciascuna serie, per episodio, stagione, capitolo o live action dove disponibile; dura 365 giorni dal salvataggio, oppure fino alla cancellazione. Anche aprire un link con un segnalibro imposta questo cookie. Il valore viene inviato al server per nascondere gli eventi successivi.',
   'privacy.language':
     'opzs_lang: la lingua scelta (it o en); dura 365 giorni dalla scelta. Viene inviato al server per ricordare la lingua nelle visite successive.',
   'privacy.trial':
-    'zs_one-piece_try: un segnalibro temporaneo impostato quando provi il sito; è un cookie di sessione senza scadenza fissa, rimosso quando salvi o cancelli un segnalibro o esci dalla prova. Il ripristino della sessione del browser può conservarlo.',
+    'zs_one-piece_try e zs_hunter-x-hunter_try: un segnalibro temporaneo per ciascuna serie impostato quando provi il sito; è un cookie di sessione senza scadenza fissa, rimosso quando salvi o cancelli un segnalibro o esci dalla prova. Il ripristino della sessione del browser può conservarlo.',
   'privacy.attributes':
-    'Tutti e tre i cookie usano Path=/ e SameSite=Lax, senza attributi Domain, Secure o HttpOnly. Il sito è servito tramite HTTPS. Sono leggibili dal JavaScript del sito e vengono inviati nelle richieste pertinenti allo stesso sito e nelle navigazioni principali da altri siti.',
+    'Tutti e cinque i cookie usano Path=/ e SameSite=Lax, senza attributi Domain, Secure o HttpOnly. Il sito è servito tramite HTTPS. Sono leggibili dal JavaScript del sito e vengono inviati nelle richieste pertinenti allo stesso sito e nelle navigazioni principali da altri siti.',
   'privacy.storage':
     'opzs_welcome è un indicatore in sessionStorage che mostra un benvenuto una sola volta dopo il salvataggio del segnalibro. Viene rimosso quando la pagina iniziale lo legge o alla fine della sessione della scheda; non viene inviato al server. L’applicazione non usa localStorage.',
   'privacy.controlTitle': 'Le tue scelte',

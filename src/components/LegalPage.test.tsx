@@ -73,6 +73,8 @@ describe('LegalPage', () => {
         'zs_one-piece',
         'opzs_lang',
         'zs_one-piece_try',
+        'zs_hunter-x-hunter',
+        'zs_hunter-x-hunter_try',
         'opzs_welcome',
       ]) {
         expect(main).toHaveTextContent(name)

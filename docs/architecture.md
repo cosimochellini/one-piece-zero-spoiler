@@ -60,6 +60,10 @@ receive an end-of-anime bookmark; source filtering still applies. See
 
 ## Series and routing
 
+One Piece and Hunter x Hunter are open to readers. HxH currently files the road
+to the exam and its first two phases; the remaining Hunter Exam content is
+tracked in #760. Opening the series does not expand its records.
+
 Public metadata in `src/lib/progress/series.ts` holds cookies, ranges, seasons,
 demo bounds, features and themes, without archive records. Pass the series to
 bookmark conversions; shared code must not assume One Piece.
