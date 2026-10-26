@@ -128,7 +128,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
   'hanzo': {
     3: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_3_(2011)',
-      note: "Tonpa's flashback on the manga chapter 6 page cites Hanzo's ninja claim, scroll and refusal; the episode page itself only names him among those who refused, so the detail rests on the Hanzo page.",
+      note: 'The juice scene: Gon and Leorio sense something wrong, Kurapika pours it out, Tonpa apologises, leaves and remembers the applicants who did not take his bait, Hanzo and Nicholas. Corrected after the PR review: the ninja and scroll details, which the episode page does not show, were cut.',
     },
     19: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_19_(2011)',
@@ -138,13 +138,13 @@ export const HUNTER_X_HUNTER_SOURCES = {
   'nicholas': {
     3: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_3_(2011)',
-      note: 'The episode page only names Nicholas among those who skipped the juice; the laptop detail comes from his character page (chapter 6), so it stays unconfirmed at episode level.',
+      note: 'Same scene as Hanzo: the episode page names Nicholas among those who did not take the bait, after the laxative juice. Corrected after the PR review: the laptop detail, which only his character page gives, was cut.',
     },
   },
   'satotz': {
     3: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_3_(2011)',
-      note: 'The episode page has him introducing himself and telling them to follow through the tunnel; closing registration, the life warning and the quickened pace are not on the page and rest on the existing dossier, flagged as unconfirmed.',
+      note: 'The episode page has the numbers handed out, Tonpa offering the juice, then Satotz introducing himself as the first examiner and telling them to follow him through the tunnel. Corrected after the PR review: closing registration, the life warning and the quickened pace were cut.',
     },
     4: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_4_(2011)',
@@ -392,7 +392,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
   'masta': {
     19: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_19_(2011)',
-      note: "Ep 19 page lists Masta only as debuting and does not narrate his lines; the referee role, Hanzo's remark about the Fourth Phase and the rules come from the Masta page (ch. 33), which ep 19 adapts. Not confirmable from the episode page itself.",
+      note: "Ep 19 page: the nine remaining applicants, one win being enough, the losers moving up the bracket, Netero explaining and the first match being Gon against Hanzo; Masta's refereeing is from his page (ch. 33), which ep 19 adapts. Corrected after the PR review: his lines to Hanzo, which the episode page does not show, were cut.",
     },
   },
   'illumi': {

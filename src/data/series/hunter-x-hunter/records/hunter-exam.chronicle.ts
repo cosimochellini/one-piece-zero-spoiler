@@ -203,8 +203,8 @@ export const hunterExamChronicles = {
           en: 'The crewman thrown overboard',
         },
         body: {
-          it: 'Katzo è il marinaio che i compagni prendono di mira sulla nave per l’esame. [[gon-freecss|Gon]] lo nota e lo aiuta, e il capitano lo richiama per fare in fretta. Quando la tempesta colpisce, la tempesta lo scaraventa fuori bordo. Gon si tuffa per afferrarlo, mentre [[leorio-paradinight|Leorio]] e [[kurapika|Kurapika]] lo trattengono per le gambe. Il giorno dopo Katzo ringrazia i tre.',
-          en: 'Katzo is the crewman his mates pick on aboard the ship to the exam. [[gon-freecss|Gon]] notices him and helps, and the captain calls him over to hurry up with his chore. When the storm hits, the storm throws him over the side. Gon dives to catch him, while [[leorio-paradinight|Leorio]] and [[kurapika|Kurapika]] hold Gon by the legs. The next day Katzo thanks the three of them.',
+          it: 'Katzo è il marinaio che i compagni prendono di mira sulla nave per l’esame. [[gon-freecss|Gon]] lo nota e lo aiuta, e il capitano lo richiama per fare in fretta. Quando la tempesta colpisce, lo scaraventa fuori bordo. Gon si tuffa per afferrarlo, mentre [[leorio-paradinight|Leorio]] e [[kurapika|Kurapika]] lo trattengono per le gambe. Il giorno dopo Katzo ringrazia i tre.',
+          en: 'Katzo is the crewman his mates pick on aboard the ship to the exam. [[gon-freecss|Gon]] notices him and helps, and the captain calls him over to hurry up with his chore. When the storm hits, it throws him over the side. Gon dives to catch him, while [[leorio-paradinight|Leorio]] and [[kurapika|Kurapika]] hold Gon by the legs. The next day Katzo thanks the three of them.',
         },
       },
     },
@@ -323,13 +323,10 @@ export const hunterExamChronicles = {
       episode: 3,
       chapter: 6,
       value: {
-        title: {
-          it: 'Il ninja che rifiuta il succo',
-          en: 'The ninja who refuses the juice',
-        },
+        title: { it: 'Non abbocca al succo', en: 'He does not take the bait' },
         body: {
-          it: 'Quando [[tonpa|Tonpa]] ricorda gli aspiranti che non sono caduti nella sua trappola, tra loro c’è Hanzo. Gli aveva detto di essere un ninja in cerca di una pergamena introvabile, e che gli serve la licenza da Hunter per ritrovarla. Quando gli aveva offerto da bere, l’aveva rifiutato, perché un ninja non accetta doni da uno sconosciuto.',
-          en: 'When [[tonpa|Tonpa]] recalls the applicants who did not fall for his trap, Hanzo is among them. He had told Tonpa he is a ninja looking for an elusive scroll, and that he needs a Hunter license to find it. When Tonpa offered him a drink, he refused, because a ninja does not accept gifts from a stranger.',
+          it: 'Dopo che [[gon-freecss|Gon]] e [[leorio-paradinight|Leorio]] hanno capito che nel succo c’è qualcosa che non va e [[kurapika|Kurapika]] l’ha versato via, [[tonpa|Tonpa]] si scusa e se ne va in fretta. Mentre si allontana ricorda gli altri aspiranti che non hanno abboccato alla sua esca, come Hanzo e [[nicholas|Nicole]]. Il succo era corretto con un lassativo.',
+          en: 'After [[gon-freecss|Gon]] and [[leorio-paradinight|Leorio]] realise something is wrong with the juice and [[kurapika|Kurapika]] pours it out, [[tonpa|Tonpa]] apologises and hurries off. As he goes he remembers the other applicants who did not take his bait, like Hanzo and [[nicholas|Nicholas]]. The juice was laced with laxatives.',
         },
       },
     },
@@ -353,10 +350,13 @@ export const hunterExamChronicles = {
       episode: 3,
       chapter: 6,
       value: {
-        title: { it: 'Il portatile di Nicole', en: 'Nicholas’s laptop' },
+        title: {
+          it: 'Un altro che non abbocca',
+          en: 'Another who does not take the bait',
+        },
         body: {
-          it: 'Nicole raccoglie sul portatile informazioni sugli altri candidati dell’esame. Ha già trovato i precedenti tentativi di [[tonpa|Tonpa]] e sa che cerca di far ritirare i nuovi arrivati, per questo rifiuta il succo che gli viene offerto. Tonpa lo ricorda poi tra gli aspiranti che non hanno abboccato.',
-          en: 'Nicholas gathers information on the other exam candidates on his laptop. He has already found [[tonpa|Tonpa]]’s earlier attempts and knows he tries to make newcomers drop out, so he refuses the juice offered to him. Tonpa later remembers him among the applicants who did not take the bait.',
+          it: 'Tra gli aspiranti che [[tonpa|Tonpa]] ricorda dopo che [[gon-freecss|Gon]], [[leorio-paradinight|Leorio]] e [[kurapika|Kurapika]] hanno rifiutato il suo succo c’è anche Nicole, che come [[hanzo|Hanzo]] non ha abboccato alla sua esca. Il succo era corretto con un lassativo, e [[gon-freecss|Gon]] e [[leorio-paradinight|Leorio]] lo trovavano già sospetto, forse scaduto. Tonpa si allontana in fretta dopo essersi scusato.',
+          en: 'Among the applicants [[tonpa|Tonpa]] remembers after [[gon-freecss|Gon]], [[leorio-paradinight|Leorio]] and [[kurapika|Kurapika]] turn down his juice is Nicholas, who like [[hanzo|Hanzo]] did not take his bait. The juice was laced with laxatives, and [[gon-freecss|Gon]] and [[leorio-paradinight|Leorio]] already found it suspicious, perhaps expired. Tonpa hurries off after apologising.',
         },
       },
     },
@@ -368,8 +368,8 @@ export const hunterExamChronicles = {
       value: {
         title: { it: 'Seguire l’esaminatore', en: 'Follow the examiner' },
         body: {
-          it: 'Satoshi si presenta come il primo esaminatore, chiude le iscrizioni e avverte gli aspiranti che l’esame può costare la vita. Poi dice di seguirlo nel tunnel e accelera il passo senza dire quanto durerà la prova né dove porterà. Per passare devono solo riuscire a stargli dietro.',
-          en: 'Satotz introduces himself as the first examiner, closes registration and warns the applicants that the exam can cost them their lives. Then he tells them to follow him through the tunnel and quickens his pace without saying how long the test will last or where it leads. To pass, they only have to keep up with him.',
+          it: 'Nel tunnel, dopo che agli aspiranti sono stati consegnati i numeri e che [[tonpa|Tonpa]] ha offerto il suo succo a [[gon-freecss|Gon]], [[leorio-paradinight|Leorio]] e [[kurapika|Kurapika]], si presenta Satoshi. È il primo esaminatore e dice a tutti di seguirlo lungo il tunnel: comincia la prima fase dell’esame.',
+          en: 'In the tunnel, after the applicants have been handed their numbers and [[tonpa|Tonpa]] has offered his juice to [[gon-freecss|Gon]], [[leorio-paradinight|Leorio]] and [[kurapika|Kurapika]], Satotz steps forward. He introduces himself as the first examiner and tells everyone to follow him through the tunnel: the first phase of the exam begins.',
         },
       },
     },

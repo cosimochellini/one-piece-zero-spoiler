@@ -44,8 +44,8 @@ export const zoldyckChronicles = {
       value: {
         title: { it: 'Il cane della tenuta', en: 'The estate’s dog' },
         body: {
-          it: 'Nel cortile dietro il cancello [[zebro|Zebro]] chiama Miche. Il cane obbedisce solo alla famiglia Zoldick e uccide chi entra dalla porticina, mentre lascia stare chi passa dal portone principale. Nell’episodio i corpi di due intrusi sono già stati gettati fuori dal muro. Quando Miche compare, [[gon-freecss|Gon]], [[kurapika|Kurapika]] e [[leorio-paradinight|Leorio]] restano impietriti dalla paura. Gon però non cambia idea e chiede a Zebro di guidarli da [[killua|Killua]].',
-          en: 'Past the gate, [[zebro|Zebro]] calls Mike. The dog obeys only the Zoldyck family and kills anyone who enters through the small door, while leaving alone those who use the main gate. Earlier in the episode the bodies of two intruders were thrown out over the wall. When Mike appears, [[gon-freecss|Gon]], [[kurapika|Kurapika]] and [[leorio-paradinight|Leorio]] freeze with fear. Gon does not change his mind and asks Zebro to guide them to [[killua|Killua]].',
+          it: 'Nel cortile dietro il cancello [[zebro|Zebro]] chiama Miche. Il cane obbedisce solo alla famiglia Zoldick e uccide chi entra dalla porticina, mentre lascia stare chi passa dal portone principale. I corpi di due intrusi sono già stati gettati fuori dal muro. Quando Miche compare, [[gon-freecss|Gon]], [[kurapika|Kurapika]] e [[leorio-paradinight|Leorio]] restano impietriti dalla paura. Gon però non cambia idea e chiede a Zebro di guidarli da [[killua|Killua]].',
+          en: 'Past the gate, [[zebro|Zebro]] calls Mike. The dog obeys only the Zoldyck family and kills anyone who enters through the small door, while leaving alone those who use the main gate. The bodies of two intruders have already been thrown out over the wall. When Mike appears, [[gon-freecss|Gon]], [[kurapika|Kurapika]] and [[leorio-paradinight|Leorio]] freeze with fear. Gon does not change his mind and asks Zebro to guide them to [[killua|Killua]].',
         },
       },
     },

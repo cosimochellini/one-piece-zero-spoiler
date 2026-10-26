@@ -12,8 +12,8 @@ export const chapterOneChronicles = {
           en: 'The foxbear and the boy',
         },
         body: {
-          it: 'Tre anni prima dell’esame Kaito arriva sull’Isola Balena in cerca di tracce del suo maestro. Salva [[gon-freecss|Gon]] da un orso-volpe che difende il cucciolo e uccide la madre. Poi rimprovera Gon, perché l’animale aveva segnato il territorio ovunque. Vorrebbe abbattere anche il cucciolo, ma Gon lo ferma. Kaito vede la sua decisione e gli chiede se suo padre si chiama Ging.',
-          en: 'Three years before the exam, Kite arrives on Whale Island looking for traces of his teacher. He saves [[gon-freecss|Gon]] from a foxbear protecting its cub and kills the mother. He then scolds Gon, because the animal had marked the whole area as its territory. He wants to put down the cub too, but Gon stops him. Kite sees how set the boy is and asks whether his father is called Ging.',
+          it: 'Tre anni prima dell’esame Kaito arriva sull’Isola Balena in cerca di tracce del suo maestro. Salva [[gon-freecss|Gon]] da un orso-volpe che difende il cucciolo e uccide la madre. Poi rimprovera Gon, perché l’animale aveva segnato il territorio ovunque. Vorrebbe abbattere anche il cucciolo, ma Gon lo ferma. Poi chiede a Gon se suo padre si chiama Ging.',
+          en: 'Three years before the exam, Kite arrives on Whale Island looking for traces of his teacher. He saves [[gon-freecss|Gon]] from a foxbear protecting its cub and kills the mother. He then scolds Gon, because the animal had marked the whole area as its territory. He wants to put down the cub too, but Gon stops him. He then asks Gon whether his father is called Ging.',
         },
       },
     },

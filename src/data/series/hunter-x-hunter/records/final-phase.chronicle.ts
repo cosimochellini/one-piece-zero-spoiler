@@ -11,8 +11,8 @@ export const finalPhaseChronicles = {
           en: 'The first match’s referee',
         },
         body: {
-          it: 'Masta fa da arbitro all’incontro tra [[gon-freecss|Gon]] e [[hanzo|Hanzo]], il primo della prova finale. Appena parte lo scontro, Hanzo gli chiede se si è divertito a spiarlo durante la quarta prova. Masta, serio, conferma la regola: per vincere bisogna far arrendere l’avversario, e uccidere è vietato. Solo allora l’incontro comincia.',
-          en: 'Masta referees the match between [[gon-freecss|Gon]] and [[hanzo|Hanzo]], the first of the Final Phase. As the fight is about to begin, Hanzo asks whether he enjoyed spying on him during the Fourth Phase. Masta, stern, confirms the rule: to win, a candidate must make the opponent give up, and killing is forbidden. Only then does the match start.',
+          it: 'Alla prova finale i nove aspiranti rimasti hanno bisogno di una sola vittoria per passare, e chi perde sale nel tabellone finché uno solo non passa. Dopo che [[netero|Netero]] ha spiegato le regole, Masta arbitra il primo incontro, quello tra [[gon-freecss|Gon]] e [[hanzo|Hanzo]].',
+          en: 'In the Final Phase the nine remaining applicants need only one win to pass, and the losers move up the bracket until a single one fails. After [[netero|Netero]] has explained the rules, Masta referees the first match, the one between [[gon-freecss|Gon]] and [[hanzo|Hanzo]].',
         },
       },
     },
