@@ -40,6 +40,11 @@ import { italianPages, italianTitles, wikiOf } from './wiki.mjs'
  * @type {Record<string, string | string[]>}
  */
 const ITALIAN_TITLES = {
+  'gittarackur': 'Personaggi di Hunter × Hunter#Ghitarakur',
+  'ponzu': 'Personaggi di Hunter × Hunter#Ponzu',
+  'bourbon': 'Personaggi di Hunter × Hunter#Burbon',
+  'bodoro': 'Personaggi di Hunter × Hunter#Bodoro',
+  'pokkle': 'Associazione Hunter#Pockul',
   'buhichuck': 'Grunfchuck',
   'carne': 'Carne',
   'cerberus': 'Cerbero (spada)',
@@ -125,6 +130,11 @@ const NAMES_KEPT = {
   'togari': 'Togari',
   // No Italian page names them: the English name stands.
   'katzo': 'Katzo',
+  'khara': 'Khara',
+  // Italian Wikipedia's Fratelli Amori entry names all three in its body.
+  'amori': 'Amori',
+  'umori': 'Umori',
+  'imori': 'Imori',
   'kiriko': 'Kiriko',
   // No Italian Wikipedia entry names the foxbear; retain the English name.
   'kon': 'Kon',

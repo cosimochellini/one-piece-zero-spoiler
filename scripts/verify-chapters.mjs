@@ -61,6 +61,7 @@ const TITLES = {
     'water-seven-arc': 'Water 7 Arc',
   },
   'hunter-x-hunter': {
+    'gittarackur': 'Illumi Zoldyck',
     'killua': 'Killua Zoldyck',
     'hisoka': 'Hisoka Morow',
     'netero': 'Isaac Netero',

@@ -61,9 +61,9 @@ receive an end-of-anime bookmark; source filtering still applies. See
 ## Series and routing
 
 One Piece and Hunter x Hunter are open to readers. HxH currently files the road
-to the exam, its first three phases, and the manga’s chapter-one characters
-introduced later by the anime; the remaining Hunter Exam content is tracked in
-#760. Opening the series does not expand its records.
+to the exam, its first four phases, named finalists and the manga’s chapter-one
+characters introduced later by the anime; remaining Hunter Exam content is
+tracked in #760. Opening the series does not expand its records.
 
 Public metadata in `src/lib/progress/series.ts` holds cookies, ranges, seasons,
 demo bounds, features and themes, without archive records. Pass the series to
@@ -131,11 +131,11 @@ checks this block.
 
 | Thing             | Count                                              |
 | ----------------- | -------------------------------------------------- |
-| Records           | 39                                                 |
-| Characters        | 25                                                 |
-| Arcs, places      | 7 · 7                                              |
+| Records           | 49                                                 |
+| Characters        | 34                                                 |
+| Arcs, places      | 7 · 8                                              |
 | Saga modules      | 7                                                  |
-| Line drawings     | 39, one per record, plus 0 redrawings of 0 records |
+| Line drawings     | 49, one per record, plus 1 redrawings of 1 records |
 | Chronicle stories | 0, for 0 characters                                |
 
 <!-- End of the generated counts. -->

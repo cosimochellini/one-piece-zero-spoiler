@@ -1,5 +1,6 @@
 import type { HunterSaga } from './saga'
 import { trickTower } from './trick-tower'
+import { zevil } from './zevil'
 
 /**
  * The Hunter Exam, Zoldyck Family included: episodes 1–26 of the 2011 anime
@@ -24,6 +25,7 @@ const WHALE_ISLAND = { it: 'Isola Balena', en: 'Whale Island' }
 const earlyExam: HunterSaga = {
   name: { it: 'Esame Hunter', en: 'Hunter Exam' },
   entries: [
+    ...zevil.entries,
     {
       id: 'hunter-exam-arc',
       kind: 'arc',
@@ -290,6 +292,7 @@ const earlyExam: HunterSaga = {
     },
   ],
   dossiers: {
+    ...zevil.dossiers,
     'gon-freecss': {
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
@@ -410,6 +413,14 @@ const earlyExam: HunterSaga = {
           value: {
             it: 'Esame Hunter, aspirante',
             en: 'Hunter Exam, applicant',
+          },
+        },
+        {
+          episode: 18,
+          chapter: 32,
+          value: {
+            it: 'Esame Hunter, escluso nella quarta prova',
+            en: 'Hunter Exam, failed the Fourth Phase',
           },
         },
       ],

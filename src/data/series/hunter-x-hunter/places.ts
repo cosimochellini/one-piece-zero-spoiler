@@ -9,6 +9,20 @@ import { TRICK_TOWER_PLACES } from './records/trick-tower'
  */
 export const PLACE_DOSSIERS: Record<string, PlaceDossier<HunterVocabulary>> = {
   ...TRICK_TOWER_PLACES,
+  'zevil-island': {
+    form: 'island',
+    region: 'islands',
+    arc: 'hunter-exam-arc',
+    landmark: {
+      it: 'La foresta e le spiagge dell’isola',
+      en: 'The island’s forest and beaches',
+    },
+    log: {
+      it: 'La barca lascia gli aspiranti sull’isola a intervalli di due minuti. Hanno una settimana per raccogliere sei punti con le targhette e tornare al luogo dello sbarco.',
+      en: 'The boat leaves the applicants on the island at two-minute intervals. They have one week to collect six points in badges and return to the landing site.',
+    },
+    filedHere: ['khara'],
+  },
   'whale-island': {
     form: 'island',
     region: 'islands',

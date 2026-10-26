@@ -11,7 +11,7 @@ import { sweepOf } from '~/data/sweep'
 import type { Entity, SeriesArchive } from '~/data/types'
 import { HUNTER_X_HUNTER_SERIES as SERIES } from '~/lib/progress/series'
 
-import { DRAWINGS } from './art'
+import { DRAWINGS, REDRAWINGS } from './art'
 import { PLACE_DOSSIERS } from './places'
 import { sagas } from './sagas'
 
@@ -28,7 +28,7 @@ const BY_ID = new Map(entities.map((entity) => [entity.id, entity]))
 /** Every character's dossier, merged from the sagas. */
 const DOSSIERS = dossiersOf(sagas)
 
-const FILED = filedTimelines(DOSSIERS)
+const FILED = filedTimelines(DOSSIERS, { redrawing: (id) => REDRAWINGS[id] })
 
 const { chapterAtEpisode, gateOf } = chapterTable({
   anchors: anchorsOf(entities, FILED),
@@ -59,13 +59,14 @@ export const HUNTER_X_HUNTER_ARCHIVE: SeriesArchive = {
   // Both sides of the new named-scene gates in each unit, followed by the
   // first two season boundaries (the demo end and a boundary inside an arc).
   bookmarks: sweepOf(sagas, SERIES, [
-    ...[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 75, 76].map((episode) => ({
-      mode: 'episode' as const,
-      episode,
-    })),
-    ...[4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 17, 18, 19, 20, 21, 22].map(
-      (chapter) => ({ mode: 'chapter' as const, chapter }),
-    ),
+    ...[
+      2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 75,
+      76,
+    ].map((episode) => ({ mode: 'episode' as const, episode })),
+    ...[
+      4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 17, 18, 19, 20, 21, 22, 23, 24, 25, 28,
+      29, 30, 32, 33, 35, 36,
+    ].map((chapter) => ({ mode: 'chapter' as const, chapter })),
     { mode: 'season', season: 1, episode: 26 },
     { mode: 'season', season: 2, episode: 1 },
     { mode: 'season', season: 2, episode: 12 },
