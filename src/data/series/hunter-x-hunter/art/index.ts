@@ -12,6 +12,7 @@ import {
 import type { Stroke } from '~/lib/view/records'
 
 import { CHAPTER_ONE_DRAWINGS } from './chapter-one'
+import { TRICK_TOWER_DRAWINGS } from './trick-tower'
 
 /**
  * One of Kurapika's two wooden swords, grip down to the left and point up
@@ -44,6 +45,7 @@ const MIRRORED = 'matrix(-1 0 0 1 160 0)'
  */
 export const DRAWINGS = {
   ...CHAPTER_ONE_DRAWINGS,
+  ...TRICK_TOWER_DRAWINGS,
   // A small sailing ship side on in a storm, the bolt of lightning over her
   // in yellow: the ship that takes Gon away from his island to the exam,
   // through a storm, in episode 1 and chapter 1.

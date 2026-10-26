@@ -118,6 +118,7 @@ describe('the place words of a series that labels its own', () => {
         'milsy-wetlands',
         'visca-forest-preserve',
         'split-mountain',
+        'trick-tower',
       ],
     ],
   ])(

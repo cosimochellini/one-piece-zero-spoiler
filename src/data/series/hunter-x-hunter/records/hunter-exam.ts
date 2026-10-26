@@ -1,4 +1,5 @@
 import type { HunterSaga } from './saga'
+import { trickTower } from './trick-tower'
 
 /**
  * The Hunter Exam, Zoldyck Family included: episodes 1–26 of the 2011 anime
@@ -20,7 +21,7 @@ const APPLICANT = {
 
 const WHALE_ISLAND = { it: 'Isola Balena', en: 'Whale Island' }
 
-export const hunterExam: HunterSaga = {
+const earlyExam: HunterSaga = {
   name: { it: 'Esame Hunter', en: 'Hunter Exam' },
   entries: [
     {
@@ -498,6 +499,14 @@ export const hunterExam: HunterSaga = {
             en: 'Hunter Exam, applicant',
           },
         },
+        {
+          episode: 7,
+          chapter: 13,
+          value: {
+            it: 'La sua famiglia di assassini',
+            en: 'His family of assassins',
+          },
+        },
       ],
     },
     'menchi': {
@@ -555,4 +564,11 @@ export const hunterExam: HunterSaga = {
       ],
     },
   },
+}
+
+/** The exam’s early stages and the named characters of Trick Tower. */
+export const hunterExam: HunterSaga = {
+  name: earlyExam.name,
+  entries: [...earlyExam.entries, ...trickTower.entries],
+  dossiers: { ...earlyExam.dossiers, ...trickTower.dossiers },
 }

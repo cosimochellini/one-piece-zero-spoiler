@@ -160,6 +160,7 @@ describe('Hunter x Hunter’s place words', () => {
         wetland: 'Wetlands',
         forest: 'Forest preserve',
         mountain: 'Mountain',
+        prison: 'Prison',
       },
     })
     expect(placesPage(readerAt(base, 'it')).words).toStrictEqual({
@@ -173,6 +174,7 @@ describe('Hunter x Hunter’s place words', () => {
         wetland: 'Palude',
         forest: 'Riserva forestale',
         mountain: 'Montagna',
+        prison: 'Prigione',
       },
     })
   })

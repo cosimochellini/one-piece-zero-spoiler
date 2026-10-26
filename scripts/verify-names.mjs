@@ -79,6 +79,7 @@ const ITALIAN_TITLES = {
   'menchi': 'Associazione Hunter#Menci',
   'buhara': 'Associazione Hunter#Buhara',
   'netero': 'Associazione Hunter#Isaac Netero',
+  'lippo': 'Associazione Hunter#Rippo',
   'gon-freecss': 'Gon Freecss',
   'kurapika': 'Kurapika Kurata',
   'mito-freecss': 'Personaggi di Hunter × Hunter#Myto Freecss',
@@ -113,6 +114,15 @@ const NAMES_KEPT = {
   // note that the Italian anime says "Leorio" (`Personaggi di Hunter ×
   // Hunter`, section `Leolio Paladiknight`).
   'leorio-paradinight': 'Leorio',
+  // Associazione Hunter#Rippo calls him Johnes lo Smembratore.
+  'johness': 'Johnes',
+  // Italian Wikipedia has no entry for these Trick Tower prisoners or
+  // Togari; keep the English forms pending a 2011 dub check (#760).
+  'bendot': 'Bendot',
+  'sedokan': 'Sedokan',
+  'majtani': 'Majtani',
+  'leroute': 'Leroute',
+  'togari': 'Togari',
   // No Italian page names them: the English name stands.
   'katzo': 'Katzo',
   'kiriko': 'Kiriko',

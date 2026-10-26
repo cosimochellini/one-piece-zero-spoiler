@@ -1,12 +1,14 @@
 import type { PlaceDossier } from '~/data/types'
 
 import type { HunterVocabulary } from './records/saga'
+import { TRICK_TOWER_PLACES } from './records/trick-tower'
 
 /**
  * The log entry of every Hunter x Hunter place, by the place's id, in its own
- * words (`../placeWords`). The Hunter Exam through its second phase (#760).
+ * words (`../placeWords`). The Hunter Exam through Trick Tower (#760).
  */
 export const PLACE_DOSSIERS: Record<string, PlaceDossier<HunterVocabulary>> = {
+  ...TRICK_TOWER_PLACES,
   'whale-island': {
     form: 'island',
     region: 'islands',

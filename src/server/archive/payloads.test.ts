@@ -2,7 +2,9 @@ import { readFileSync } from 'node:fs'
 import path from 'node:path'
 import { describe, expect, it } from 'vitest'
 
+import { sourceOf } from '~/data/reveal'
 import { descriptionOf } from '~/data/series'
+import { archiveIn } from '~/data/source'
 import type { Entity } from '~/data/types'
 import { type Locale, LOCALES } from '~/i18n/locales'
 import { type Bookmark, serialiseBookmark } from '~/lib/progress/episode'
@@ -15,7 +17,7 @@ import {
   LOADED_SERIES as SERIES,
 } from '~/test/series'
 
-import { handleOf } from './handle.server'
+import { entityForHandle } from './handle.server'
 import { hubPageFor } from './hub.server'
 import { type Payload, payloadsFor } from './payloads.server'
 
@@ -35,8 +37,10 @@ function byDesignOf({
 }: ListedSeries): Partial<Record<string, Excuse>> {
   const { demoLastChapter, demoLastEpisode } = archive.series
   /** A peek is the reader lifting the fog on one record, and on that one only. */
-  const lifted: Excuse = (entity, handle) =>
-    handleOf(entity.id, archive) === handle
+  const lifted: Excuse = (entity, handle, bookmark) => {
+    const told = archiveIn(archive, sourceOf(bookmark))
+    return entityForHandle(handle, told)?.id === entity.id
+  }
 
   return {
     // A visitor with no bookmark lands on the demo under the dial (East Blue,
