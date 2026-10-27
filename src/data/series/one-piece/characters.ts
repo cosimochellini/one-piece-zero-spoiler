@@ -1,7 +1,7 @@
 import { castOf } from '~/data/shelves'
 
 import { entities } from './entities'
-import { CHARACTER_DOSSIERS } from './sagas'
+import { CHARACTER_DOSSIERS, sagas } from './sagas'
 
 /**
  * The character layer of the archive (`~/data/shelves`): which records are
@@ -82,4 +82,5 @@ export const {
   dossiers: CHARACTER_DOSSIERS,
   entities,
   featured: FEATURED_CHARACTER_IDS,
+  sagas,
 })

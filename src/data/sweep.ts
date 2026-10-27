@@ -1,23 +1,22 @@
 import type { Bookmark } from '~/lib/progress/episode'
 import type { BookmarkSeries } from '~/lib/progress/series'
 
+import { headingsOf } from './shelves'
 import type { Entity, Saga } from './types'
 
-/** Every saga's start, on both sides, in one unit. */
+/**
+ * Every saga's start, on both sides, in one unit: its earliest heading, an
+ * arc record or the saga's own (`headingsOf`).
+ */
 function aroundSagas(
   sagas: Saga[],
   threshold: (arc: Entity) => number,
 ): number[] {
-  return sagas.flatMap(({ entries }) => {
-    let start = Infinity
-    for (const entry of entries) {
-      if (entry.kind === 'arc') {
-        start = Math.min(start, threshold(entry))
-      }
-    }
-    return Number.isFinite(start) ?
-        [start - 1, start].filter((count) => count > 0)
-      : []
+  return sagas.flatMap((saga) => {
+    const start = Math.min(
+      ...headingsOf([saga]).map((heading) => threshold(heading)),
+    )
+    return [start - 1, start].filter((count) => count > 0)
   })
 }
 

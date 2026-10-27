@@ -20,12 +20,16 @@ const cached = new WeakMap<
 
 /**
  * Arcs and skip ranges belong to the loaded archive, never another series. A
- * unit's saga starts at the arcs its own source tells.
+ * unit's saga starts at the arcs its own source tells, or at the saga's own
+ * heading where it files no arc (`headingsOf`).
  */
 function startsIn(mode: 'chapter' | 'episode', r: Reader): SagaStart[] {
   return r.archive.sagas
     .map((saga) => {
       const ids = new Set(saga.entries.map((entry) => entry.id))
+      if (saga.heading !== undefined) {
+        ids.add(saga.heading.id)
+      }
       let from = Infinity
       for (const arc of r.archive.arcs) {
         if (ids.has(arc.id) && toldIn(arc, mode)) {

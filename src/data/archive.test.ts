@@ -569,7 +569,10 @@ describe.each(LOADED_SERIES)('the shelves of $slug', ({ archive }) => {
 
   it('files each arc’s leads as distinct characters of the same archive', () => {
     for (const [arc, ids] of Object.entries(archive.leads)) {
-      expect(archive.getEntity(arc)?.kind, arc).toBe('arc')
+      expect(
+        archive.arcs.map(({ id }) => id),
+        arc,
+      ).toContain(arc)
 
       const distinct = new Set(ids)
 
