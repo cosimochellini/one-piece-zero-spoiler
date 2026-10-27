@@ -110,14 +110,14 @@ Worker on `https://zerospoiler.app`. The Worker's configuration is
 `wrangler.jsonc`; `npm run build` writes the deployed form to
 `dist/server/wrangler.json`, and it was read there before `wrangler deploy`.
 
-| Setting                 | Value                                                              |
-| ----------------------- | ------------------------------------------------------------------ |
-| `observability.enabled` | `false`: Workers Logs stores no invocation or console logs         |
-| `workers_dev`           | `false`: no second address on `workers.dev`                        |
-| `preview_urls`          | `false`: no per-version preview addresses                          |
-| `routes`                | `zerospoiler.app` as a custom domain, nothing else                 |
-| Bindings                | none: no KV, R2, D1, Durable Objects, queues or Analytics Engine   |
-| `assets`                | the built client (`dist/client`), cache rules in `public/_headers` |
+| Setting         | Value                                                                             |
+| --------------- | --------------------------------------------------------------------------------- |
+| `observability` | Workers Logs on since #873: invocation and console logs, 100% sampled, traces off |
+| `workers_dev`   | `false`: no second address on `workers.dev`                                       |
+| `preview_urls`  | `false`: no per-version preview addresses                                         |
+| `routes`        | `zerospoiler.app` as a custom domain, nothing else                                |
+| Bindings        | none: no KV, R2, D1, Durable Objects, queues or Analytics Engine                  |
+| `assets`        | the built client (`dist/client`), cache rules in `public/_headers`                |
 
 A request to the production origin returned no injected script (Rocket Loader,
 email decoding, Web Analytics beacon or challenge page). `wrangler tail` streams
@@ -127,8 +127,14 @@ time; request headers arrive with cookies redacted.
 Cloudflare's sources:
 
 - [Workers Logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/):
-  when enabled, invocation logs hold the request, response and metadata, kept 3
-  days on Workers Free and 7 on Workers Paid. Disabled here.
+  invocation logs hold the request, response and metadata, kept 3 days on
+  Workers Free and 7 on Workers Paid. Enabled on 27 October 2026 (#873) to find
+  faults and abuse. Static files matched in `dist/client` (fonts, icons, built
+  scripts) are served without running the Worker, so they leave no Workers Logs
+  entry. Pages and server functions, including the drawings, do run it. The page
+  does not list which request fields are stored; the notice names IP address,
+  browser information, derived location and possibly cookies as the cautious
+  reading, not verified in a live log.
 - [Data Processing Addendum](https://www.cloudflare.com/cloudflare-customer-dpa/),
   version 6.4, effective 3 April 2026: forms part of the Self-Serve Subscription
   Agreement, names the customer controller and Cloudflare processor (2.3),
