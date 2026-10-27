@@ -129,8 +129,12 @@ Cloudflare's sources:
 - [Workers Logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/):
   invocation logs hold the request, response and metadata, kept 3 days on
   Workers Free and 7 on Workers Paid. Enabled on 27 October 2026 (#873) to find
-  faults and abuse. Static files matched in `dist/client` are served without
-  running the Worker, so they leave no Workers Logs entry.
+  faults and abuse. Static files matched in `dist/client` (fonts, icons, built
+  scripts) are served without running the Worker, so they leave no Workers Logs
+  entry. Pages and server functions, including the drawings, do run it. The page
+  does not list which request fields are stored; the notice names IP address,
+  browser information, derived location and possibly cookies as the cautious
+  reading, not verified in a live log.
 - [Data Processing Addendum](https://www.cloudflare.com/cloudflare-customer-dpa/),
   version 6.4, effective 3 April 2026: forms part of the Self-Serve Subscription
   Agreement, names the customer controller and Cloudflare processor (2.3),
