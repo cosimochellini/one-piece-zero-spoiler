@@ -13,12 +13,6 @@ import { useBookmarkDraft } from '~/lib/progress/useBookmarkDraft'
 export interface BookmarkFormProps {
   /** Closes the dialog. Called on every way out, including a successful save. */
   onDone: () => void
-  /**
-   * Leaves the focus where it is when the form arrives late. The intro holds
-   * the focus on the dialog itself, and a reader may have tabbed on to its
-   * controls while the form was still on its way (#864).
-   */
-  keepFocus?: boolean
 }
 
 /**
@@ -30,15 +24,9 @@ export interface BookmarkFormProps {
  * Nothing here reaches the cookie until Save, so a reader who opens the
  * dialog, tries a unit and leaves still has the bookmark they arrived with.
  */
-export function BookmarkForm({
-  onDone,
-  keepFocus = false,
-}: BookmarkFormProps): ReactElement {
+export function BookmarkForm({ onDone }: BookmarkFormProps): ReactElement {
   const { bookmark, setBookmark } = useBookmark()
-  const arrivalRef = useArrivalFocus()
-  // A form that keeps the focus is not handed to the arrival hook at all.
-  const plainRef = useRef<HTMLFormElement>(null)
-  const formRef = keepFocus ? plainRef : arrivalRef
+  const formRef = useArrivalFocus()
 
   const commit = (next: Bookmark): void => {
     // `setBookmark` writes the cookie and re-reads the pages, in that order.
@@ -81,8 +69,12 @@ export function BookmarkForm({
  * When the form arrives after the dialog has opened, the browser has already
  * given the focus to the close button, the only control there was. It moves
  * to the chosen unit, where it would have started had the form been here.
- * Arriving with the dialog, the form leaves the focus to the dialog. A form
- * told to keep the focus is never handed this ref.
+ * Arriving with the dialog, the form leaves the focus to the dialog.
+ *
+ * A dialog marked `data-keep-focus` holds the focus itself, as the intro does
+ * (#864): while the focus is anywhere inside it, a reader may have tabbed on
+ * while the form was on its way, so it stays put. Only focus that fell out of
+ * the dialog, as after a retry whose button went away, is brought back.
  */
 function useArrivalFocus(): React.RefObject<HTMLFormElement | null> {
   const formRef = useRef<HTMLFormElement>(null)
@@ -93,12 +85,21 @@ function useArrivalFocus(): React.RefObject<HTMLFormElement | null> {
     if (
       dialog?.open === true
       && form?.contains(document.activeElement) === false
+      && !keepsFocus(dialog)
     ) {
       form.querySelector<HTMLInputElement>('input:checked')?.focus()
     }
   }, [])
 
   return formRef
+}
+
+/** A dialog that holds the focus itself, with the focus still inside it. */
+function keepsFocus(dialog: HTMLDialogElement): boolean {
+  return (
+    dialog.dataset['keepFocus'] !== undefined
+    && dialog.contains(document.activeElement)
+  )
 }
 
 /**

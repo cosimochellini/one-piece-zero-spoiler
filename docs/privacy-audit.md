@@ -34,7 +34,7 @@ the bookmark in the request URL before the redirect removes its query parameter.
 They can therefore appear in infrastructure request logs.
 
 The necessary technical storage serves the reader’s requested spoiler boundary,
-language and trial/welcome features. The
+language and trial, welcome and intro features. The
 [Garante’s cookie guidance](https://www.garanteprivacy.it/home/docweb/-/docweb-display/docweb/9677876)
 permits necessary technical cookies without consent, while still requiring an
 accessible notice. No consent banner or tracking was introduced.

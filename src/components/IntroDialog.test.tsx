@@ -109,6 +109,29 @@ describe('FirstVisitIntro', () => {
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
   })
 
+  it('stays closed in a trial', () => {
+    renderWithProviders(<FirstVisitIntro />, {
+      path: '/one-piece/en/characters',
+      bookmark: ep(5),
+      trial: true,
+    })
+
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+  })
+
+  it('counts as seen when a navigation takes it off the page unclosed', () => {
+    const { unmount } = renderWithProviders(<FirstVisitIntro />, {
+      path: '/one-piece/en/characters',
+    })
+
+    expect(screen.getByRole('dialog')).toBeInTheDocument()
+
+    unmount()
+    renderWithProviders(<FirstVisitIntro />, { path: '/one-piece/en/places' })
+
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+  })
+
   it('stays closed when a reader forgets their bookmark mid-session', async () => {
     const user = userEvent.setup()
     renderWithProviders(
@@ -202,39 +225,56 @@ function noop(): void {
   // The harness has no way out to take.
 }
 
-/** A dialog whose form arrives late, after the focus has moved on. */
-function LateForm({ keepFocus }: { keepFocus: boolean }): React.ReactElement {
+/**
+ * A dialog whose form arrives late, after the focus has moved on: still on
+ * the button pressed, or dropped out of the dialog, as when a retry button
+ * goes away under it.
+ */
+function LateForm({
+  dropFocus,
+  keepFocus,
+}: {
+  dropFocus: boolean
+  keepFocus: boolean
+}): React.ReactElement {
   const [shown, setShown] = useState(false)
 
   return (
-    <dialog open>
+    <dialog
+      data-keep-focus={keepFocus || undefined}
+      open
+    >
       <button
-        onClick={() => {
+        onClick={(event) => {
+          if (dropFocus) {
+            event.currentTarget.blur()
+          }
           setShown(true)
         }}
         type="button"
       >
         Elsewhere
       </button>
-      {shown && (
-        <BookmarkForm
-          keepFocus={keepFocus}
-          onDone={noop}
-        />
-      )}
+      {shown && <BookmarkForm onDone={noop} />}
     </dialog>
   )
 }
 
 describe('the form arriving in the intro', () => {
   it.each([
-    { keepFocus: true, focused: 'Elsewhere' },
-    { keepFocus: false, focused: 'Episode' },
+    { keepFocus: true, dropFocus: false, focused: 'Elsewhere' },
+    { keepFocus: true, dropFocus: true, focused: 'Episode' },
+    { keepFocus: false, dropFocus: false, focused: 'Episode' },
   ])(
-    'leaves the focus where the reader put it only when told to (keepFocus $keepFocus)',
-    async ({ keepFocus, focused }) => {
+    'moves the focus to the unit unless a dialog that keeps it still has it (keep $keepFocus, dropped $dropFocus)',
+    async ({ dropFocus, focused, keepFocus }) => {
       const user = userEvent.setup()
-      renderWithProviders(<LateForm keepFocus={keepFocus} />)
+      renderWithProviders(
+        <LateForm
+          dropFocus={dropFocus}
+          keepFocus={keepFocus}
+        />,
+      )
 
       await user.click(screen.getByRole('button', { name: 'Elsewhere' }))
 

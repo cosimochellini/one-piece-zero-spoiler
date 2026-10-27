@@ -12,7 +12,7 @@ import { FormSlot } from '~/components/BookmarkDialog'
 import { styles as dialogStyles } from '~/components/BookmarkDialog.styles'
 import { introStyles as styles } from '~/components/IntroDialog.styles'
 import { Button } from '~/components/ui/Button'
-import { useModal } from '~/components/useModal'
+import { type Modal, useModal } from '~/components/useModal'
 import { useT } from '~/i18n/LocaleContext'
 import type { TranslationKey } from '~/i18n/types'
 import { useBookmark, useThreshold } from '~/lib/progress/BookmarkContext'
@@ -65,25 +65,11 @@ export function FirstVisitIntro(): ReactNode {
  */
 function IntroDialog(): ReactElement {
   const t = useT()
-  const { dialogRef, close } = useModal()
+  const { dialogRef, close } = useIntroModal()
   const titleId = useId()
   const contextId = useId()
   const stepsId = useId()
   const subject = useSyncExternalStore(subscribeIntro, introSubject, () => null)
-
-  // The dialog itself takes the focus rather than the first unit, as the
-  // bookmark dialog does: a reader who did not ask for it reads the title
-  // first, and on a phone the sheet opens at its top instead of scrolled
-  // down to the radio.
-  useEffect(() => {
-    const dialog = dialogRef.current
-    if (dialog === null) {
-      return
-    }
-    dialog.focus()
-    // The browser's own focus on opening has already scrolled the sheet.
-    dialog.scrollTop = 0
-  }, [dialogRef])
 
   return (
     <dialog
@@ -91,6 +77,8 @@ function IntroDialog(): ReactElement {
       // the reason the page is dark.
       aria-describedby={subject === null ? stepsId : `${contextId} ${stepsId}`}
       aria-labelledby={titleId}
+      // The form, arriving late, leaves a focus inside alone (see BookmarkForm).
+      data-keep-focus
       onClose={dismissIntro}
       ref={dialogRef}
       tabIndex={-1}
@@ -104,10 +92,7 @@ function IntroDialog(): ReactElement {
           titleId={titleId}
         />
         <div {...stylex.props(styles.form)}>
-          <FormSlot
-            keepFocus
-            onDone={close}
-          />
+          <FormSlot onDone={close} />
           <Button
             onClick={() => {
               requestLeadPeek()
@@ -129,6 +114,35 @@ function IntroDialog(): ReactElement {
       </div>
     </dialog>
   )
+}
+
+/**
+ * The modal lifecycle the intro shares with the bookmark dialog, and what it
+ * does on top on opening and on leaving the page.
+ */
+function useIntroModal(): Modal {
+  const modal = useModal()
+  const { dialogRef } = modal
+
+  // The dialog itself takes the focus rather than the first unit, as the
+  // bookmark dialog does: a reader who did not ask for it reads the title
+  // first, and on a phone the sheet opens at its top instead of scrolled
+  // down to the radio.
+  useEffect(() => {
+    const dialog = dialogRef.current
+    if (dialog === null) {
+      return
+    }
+    dialog.focus()
+    // The browser's own focus on opening has already scrolled the sheet.
+    dialog.scrollTop = 0
+  }, [dialogRef])
+
+  // A dialog taken off the page by a navigation (Back to the landing) fires
+  // no `close`, and it has still been seen.
+  useEffect(() => dismissIntro, [])
+
+  return modal
 }
 
 /**
