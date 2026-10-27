@@ -5,6 +5,7 @@ import {
   type ReactNode,
   useEffect,
   useId,
+  useState,
   useSyncExternalStore,
 } from 'react'
 
@@ -23,6 +24,7 @@ import {
   requestLeadPeek,
   subscribeIntro,
 } from '~/lib/progress/intro'
+import type { Gated } from '~/lib/progress/spoiler'
 
 const STEPS: TranslationKey[] = ['intro.step1', 'intro.step2', 'intro.step3']
 
@@ -30,17 +32,26 @@ const STEPS: TranslationKey[] = ['intro.step1', 'intro.step2', 'intro.step3']
  * The intro for a reader who opens a series page with no bookmark, most often
  * from a search result (#864). Not on the series landing, which is an intro of
  * its own; not during a trial; not to a crawler, whose bookmark is the
- * ceiling; and once per browser session.
+ * ceiling; not to a reader who drops a bookmark mid-session; and once per
+ * browser session.
  *
  * The server never renders it: the flag lives in `sessionStorage`, so the
  * server snapshot says no and the dialog opens once the browser has read it.
  */
 export function FirstVisitIntro(): ReactNode {
-  const { bookmark, trial } = useBookmark()
+  const { bookmark } = useBookmark()
+  // Once a bookmark has been seen, never again: a reader who forgets their
+  // bookmark or leaves a trial knows the site already. A trial always has a
+  // point, so a null bookmark here also means no trial. Set during render,
+  // not in an effect, so the dialog never flashes open first.
+  const [seenBookmark, setSeenBookmark] = useState(bookmark !== null)
+  if (bookmark !== null && !seenBookmark) {
+    setSeenBookmark(true)
+  }
   const onLanding = useMatch({ from: '/$series/$locale/', shouldThrow: false })
   const owed = useSyncExternalStore(subscribeIntro, introOwed, () => false)
 
-  if (bookmark !== null || trial || onLanding !== undefined || !owed) {
+  if (seenBookmark || bookmark !== null || onLanding !== undefined || !owed) {
     return null
   }
 
@@ -56,7 +67,9 @@ function IntroDialog(): ReactElement {
   const t = useT()
   const { dialogRef, close } = useModal()
   const titleId = useId()
-  const ledeId = useId()
+  const contextId = useId()
+  const stepsId = useId()
+  const subject = useSyncExternalStore(subscribeIntro, introSubject, () => null)
 
   // The dialog itself takes the focus rather than the first unit, as the
   // bookmark dialog does: a reader who did not ask for it reads the title
@@ -74,7 +87,9 @@ function IntroDialog(): ReactElement {
 
   return (
     <dialog
-      aria-describedby={ledeId}
+      // The context line first, when the page is about one record: it is
+      // the reason the page is dark.
+      aria-describedby={subject === null ? stepsId : `${contextId} ${stepsId}`}
       aria-labelledby={titleId}
       onClose={dismissIntro}
       ref={dialogRef}
@@ -83,7 +98,9 @@ function IntroDialog(): ReactElement {
     >
       <div {...stylex.props(dialogStyles.panel, styles.panel)}>
         <Explainer
-          ledeId={ledeId}
+          contextId={contextId}
+          stepsId={stepsId}
+          subject={subject}
           titleId={titleId}
         />
         <div {...stylex.props(styles.form)}>
@@ -113,18 +130,21 @@ function IntroDialog(): ReactElement {
 
 /**
  * The title, the page's threshold when the page is about one record, and the
- * three steps. The lede id sits on the steps, which say the most.
+ * three steps.
  */
 function Explainer({
-  ledeId,
+  contextId,
+  stepsId,
+  subject,
   titleId,
 }: {
-  ledeId: string
+  contextId: string
+  stepsId: string
+  subject: Gated | null
   titleId: string
 }): ReactElement {
   const t = useT()
   const threshold = useThreshold()
-  const subject = useSyncExternalStore(subscribeIntro, introSubject, () => null)
 
   return (
     <div {...stylex.props(styles.explainer)}>
@@ -135,13 +155,16 @@ function Explainer({
         {t('hero.headline')}
       </h2>
       {subject === null ? null : (
-        <p {...stylex.props(dialogStyles.lede)}>
+        <p
+          id={contextId}
+          {...stylex.props(dialogStyles.lede)}
+        >
           {threshold('intro.context', subject)}
         </p>
       )}
       <ol
         aria-label={t('intro.steps')}
-        id={ledeId}
+        id={stepsId}
         {...stylex.props(styles.steps)}
       >
         {STEPS.map((step, index) => {

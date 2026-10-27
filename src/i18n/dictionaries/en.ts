@@ -228,7 +228,7 @@ export const enDictionary = {
   'privacy.attributes':
     'All five cookies use Path=/ and SameSite=Lax, with no Domain, Secure or HttpOnly attribute. The site is served over HTTPS. They can be read by this site’s JavaScript and sent on applicable same-site requests and top-level cross-site navigations.',
   'privacy.storage':
-    'opzs_welcome is a sessionStorage flag used to show a welcome once after saving a bookmark. It is removed when the home page reads it, or when the tab session ends; it is not sent to the server. The application does not use localStorage.',
+    'opzs_welcome is a sessionStorage flag used to show a welcome once after saving a bookmark. It is removed when the home page reads it, or when the tab session ends; it is not sent to the server. opzs_intro is a sessionStorage flag, value 1, set when you close the introduction a page shows when you arrive with no bookmark, so it is not shown again in this tab session; it is not sent to the server. The application does not use localStorage.',
   'privacy.controlTitle': 'Your choices',
   'privacy.control':
     'You can clear the bookmark in its dialog and remove cookies and site storage in your browser settings. Blocking them prevents the site from remembering your preferences; without a bookmark you see the introductory view. There are no optional tracking cookies to accept or reject.',

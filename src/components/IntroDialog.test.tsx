@@ -2,6 +2,7 @@ import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { afterEach, describe, expect, it } from 'vitest'
 
+import { useBookmark } from '~/lib/progress/BookmarkContext'
 import type { CharacterView } from '~/lib/view/records'
 import { at, character, coveredSlot, spyPeek } from '~/test/fixtures'
 import {
@@ -44,6 +45,22 @@ function RecordPage({
   )
 }
 
+/** The bar's "forget" in miniature. */
+function Forget(): React.ReactElement {
+  const { setBookmark } = useBookmark()
+
+  return (
+    <button
+      onClick={() => {
+        setBookmark(null)
+      }}
+      type="button"
+    >
+      Forget
+    </button>
+  )
+}
+
 describe('FirstVisitIntro', () => {
   afterEach(() => {
     sessionStorage.clear()
@@ -65,14 +82,28 @@ describe('FirstVisitIntro', () => {
     expect(screen.queryByText(/first appears/u)).not.toBeInTheDocument()
   })
 
-  it.each([
-    { name: 'a saved bookmark', options: { bookmark: ep(100) } },
-    { name: 'a trial', options: { bookmark: ep(30), trial: true } },
-  ])('stays closed with $name', ({ options }) => {
+  // A trial always carries a point, so it is this same case.
+  it('stays closed with a bookmark', () => {
     renderWithProviders(<FirstVisitIntro />, {
       path: '/one-piece/en/characters',
-      ...options,
+      bookmark: ep(100),
     })
+
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+  })
+
+  it('stays closed when a reader forgets their bookmark mid-session', async () => {
+    const user = userEvent.setup()
+    renderWithProviders(
+      <>
+        <Forget />
+        <FirstVisitIntro />
+      </>,
+      { path: '/one-piece/en/characters', bookmark: ep(100) },
+    )
+
+    await user.click(screen.getByRole('button', { name: 'Forget' }))
+    await settle()
 
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
   })
@@ -114,11 +145,10 @@ describe('FirstVisitIntro', () => {
       { path: '/one-piece/en/characters/orlumbus' },
     )
 
-    expect(
-      screen.getByText(
-        'This entry first appears in episode 636. Your bookmark is empty, so the page is under fog.',
-      ),
-    ).toBeInTheDocument()
+    // Read out with the dialog: it is why the page is dark.
+    expect(screen.getByRole('dialog')).toHaveAccessibleDescription(
+      /^This entry first appears in episode 636\. Your bookmark is empty, so the page is under fog\. /u,
+    )
 
     await user.click(screen.getByRole('button', { name: 'Show anyway' }))
 

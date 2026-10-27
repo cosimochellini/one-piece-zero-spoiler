@@ -219,7 +219,7 @@ export const itDictionary: Dictionary = {
   'privacy.attributes':
     'Tutti e cinque i cookie usano Path=/ e SameSite=Lax, senza attributi Domain, Secure o HttpOnly. Il sito è servito tramite HTTPS. Sono leggibili dal JavaScript del sito e vengono inviati nelle richieste pertinenti allo stesso sito e nelle navigazioni principali da altri siti.',
   'privacy.storage':
-    'opzs_welcome è un indicatore in sessionStorage che mostra un benvenuto una sola volta dopo il salvataggio del segnalibro. Viene rimosso quando la pagina iniziale lo legge o alla fine della sessione della scheda; non viene inviato al server. L’applicazione non usa localStorage.',
+    'opzs_welcome è un indicatore in sessionStorage che mostra un benvenuto una sola volta dopo il salvataggio del segnalibro. Viene rimosso quando la pagina iniziale lo legge o alla fine della sessione della scheda; non viene inviato al server. opzs_intro è un indicatore in sessionStorage, valore 1, impostato quando chiudi l’introduzione che una pagina mostra se arrivi senza segnalibro, perché non torni nella stessa sessione della scheda; non viene inviato al server. L’applicazione non usa localStorage.',
   'privacy.controlTitle': 'Le tue scelte',
   'privacy.control':
     'Puoi cancellare il segnalibro dalla sua finestra e rimuovere cookie e memoria del sito dalle impostazioni del browser. Bloccarli impedisce di ricordare le preferenze; senza segnalibro vedi la vista introduttiva. Non ci sono cookie di tracciamento facoltativi da accettare o rifiutare.',
