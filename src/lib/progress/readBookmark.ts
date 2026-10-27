@@ -4,6 +4,7 @@ import { getRequestHeader } from '@tanstack/react-start/server'
 import { parseCookieHeader } from '~/lib/cookies'
 
 import type { Bookmark } from './episode'
+import { migratedCookies } from './migrateBookmark'
 import { bookmarkFromCookies, trialForRequest } from './requestBookmark'
 import type { BookmarkSeries } from './series'
 
@@ -11,7 +12,7 @@ import type { BookmarkSeries } from './series'
 function serverBookmark(series: BookmarkSeries | null): Bookmark {
   return series === null ? null : (
       bookmarkFromCookies(
-        parseCookieHeader(getRequestHeader('cookie')),
+        migratedCookies(getRequestHeader('cookie')),
         series,
         getRequestHeader('user-agent'),
       )
@@ -42,7 +43,7 @@ function trialFromCookies(
 
 export const readTrial = createIsomorphicFn()
   .server((series: BookmarkSeries | null): Bookmark =>
-    trialFromCookies(parseCookieHeader(getRequestHeader('cookie')), series),
+    trialFromCookies(migratedCookies(getRequestHeader('cookie')), series),
   )
   .client((series: BookmarkSeries | null): Bookmark =>
     trialFromCookies(parseCookieHeader(document.cookie), series),
