@@ -1,4 +1,5 @@
 import { alabastaChronicles } from './alabasta.chronicle'
+import { alabastaRelationships } from './alabasta.relationships'
 import type { OnePieceSaga } from './saga'
 
 /**
@@ -731,6 +732,7 @@ export const alabasta: OnePieceSaga = {
 
   dossiers: {
     'laboon': {
+      relationships: alabastaRelationships.laboon,
       role: {
         it: 'Balena della Montagna Inversa',
         en: 'Whale of Reverse Mountain',
@@ -752,6 +754,7 @@ export const alabasta: OnePieceSaga = {
       origin: [{ episode: 62, value: { it: 'West Blue', en: 'West Blue' } }],
     },
     'crocus': {
+      relationships: alabastaRelationships.crocus,
       role: { it: 'Guardiano del faro', en: 'Lighthouse keeper' },
       log: {
         it: 'Vive dentro la balena che sorveglia, in una casa costruita nel suo stomaco, e la cura da cinquant’anni perché non si uccida contro la roccia. Porta una camicia a fiori, un fiore in testa e l’aria di chi ha già visto tutto quello che c’era da vedere. Del proprio passato non racconta niente, e nessuno glielo chiede.',
@@ -776,6 +779,7 @@ export const alabasta: OnePieceSaga = {
       ],
     },
     'mr-9': {
+      relationships: alabastaRelationships['mr-9'],
       // Ep 63 never names Baroque Works: he says he is a king and that their
       // work is secret. Zoro names the organisation at the end of ep 64, in
       // the ch 107 scene where Mr. 9 stands with the agents. The role is
@@ -792,6 +796,7 @@ export const alabasta: OnePieceSaga = {
       ],
     },
     'igaram': {
+      relationships: alabastaRelationships.igaram,
       role: { it: 'Capo di Whisky Peak', en: 'Head of Whisky Peak' },
       log: {
         it: 'Accoglie ogni nave che arriva a Whisky Peak con un coro, un banchetto e tutto il liquore che i pirati riescono a bere, poi aspetta che crollino. Porta i bigodini anche di giorno e suona un sassofono che spara. Sotto il nome in codice di Mr. Eight comanda cento agenti travestiti da cittadini ospitali.',
@@ -823,6 +828,7 @@ export const alabasta: OnePieceSaga = {
       origin: [{ episode: 67, value: ALABASTA }],
     },
     'miss-monday': {
+      relationships: alabastaRelationships['miss-monday'],
       role: BW_AGENT_ROLE,
       log: {
         it: 'Serve da bere al banchetto vestita da suora e sorride finché l’ultimo pirata non cade addormentato sul tavolo. Poi si toglie il velo, e si vede che ha le spalle più larghe di chiunque altro in città. Combatte a mani nude con un paio di tirapugni, e solleva un uomo adulto come si solleva un boccale.',
@@ -835,6 +841,7 @@ export const alabasta: OnePieceSaga = {
       ],
     },
     'karoo': {
+      relationships: alabastaRelationships.karoo,
       role: { it: 'Anatra da corsa', en: 'Racing duck' },
       log: {
         it: 'È un’anatra grande quanto un uomo, con la sella sul dorso e la borraccia al collo, e corre più veloce di un cavallo quando la sua padrona glielo chiede. Capisce tutto quello che gli si dice e risponde a gesti, e beve dalla borraccia molto più di quanto dovrebbe. Quando lei è in pericolo si mette davanti senza pensarci.',
@@ -853,6 +860,7 @@ export const alabasta: OnePieceSaga = {
       origin: [{ episode: 65, value: ALABASTA }],
     },
     'mr-5': {
+      relationships: alabastaRelationships['mr-5'],
       role: BW_AGENT_ROLE,
       log: {
         it: 'Tutto quello che si stacca dal suo corpo diventa esplosivo: il fiato, le dita, una briciola tolta dal naso e lanciata come una pallottola. Lavora in coppia con una collega che ride di qualunque cosa e non si scompone mai. Ha ricevuto l’ordine di eliminare chiunque abbia scoperto il nome del capo.',
@@ -866,6 +874,7 @@ export const alabasta: OnePieceSaga = {
       devilFruit: [{ episode: 66, value: ['bomb-bomb-fruit'] }],
     },
     'miss-valentine': {
+      relationships: alabastaRelationships['miss-valentine'],
       role: BW_AGENT_ROLE,
       log: {
         it: 'Ride senza fermarsi mai, anche mentre lavora, e scende dal cielo appesa a un ombrello giallo limone. Può rendersi leggera come una piuma o pesante come una campana di bronzo, e si lascia cadere addosso a chi sta sotto. Viaggia sempre con un collega che fa saltare in aria tutto quello che tocca.',
@@ -879,6 +888,7 @@ export const alabasta: OnePieceSaga = {
       devilFruit: [{ episode: 66, value: ['kilo-kilo-fruit'] }],
     },
     'nefertari-vivi': {
+      relationships: alabastaRelationships['nefertari-vivi'],
       role: { it: 'Principessa di Alabasta', en: 'Princess of Alabasta' },
       log: {
         it: 'Per due anni è stata Miss Wednesday, un’agente dell’organizzazione di cui voleva scoprire il capo. Ora che lo conosce, quel nome la condanna a morte e l’unico modo per tornare a casa è una nave di pirati che ha appena incontrato. Ha un’anatra da corsa che risponde al nome di Karl.',
@@ -912,6 +922,7 @@ export const alabasta: OnePieceSaga = {
       chronicle: alabastaChronicles['nefertari-vivi'],
     },
     'mr-3': {
+      relationships: alabastaRelationships['mr-3'],
       role: BW_AGENT_ROLE,
       log: {
         it: 'Non vuole che il suo nome in codice venga detto in pubblico. Beve Earl Grey, dice di annoiarsi e chiama le sue giornate oziose un privilegio da agente ufficiale. Quando gli ordini del capo dicono che Mr. Five è stato sconfitto non si stupisce: secondo lui un criminale vince con l’intelligenza, non con i poteri di un frutto.',
@@ -956,6 +967,7 @@ export const alabasta: OnePieceSaga = {
       devilFruit: [{ episode: 73, chapter: 120, value: ['wax-wax-fruit'] }],
     },
     'miss-goldenweek': {
+      relationships: alabastaRelationships['miss-goldenweek'],
       role: BW_AGENT_ROLE,
       log: {
         it: 'È in vacanza su un’isola con il suo socio, che beve tè e le dice di godersi il riposo. Lei dice che si annoia. Da giorni fissa un foglio di carta, e solo quando lui glielo chiede si scopre che sono i loro nuovi ordini dal capo. Lui le chiede anche di smettere di chiamarlo in pubblico con il suo nome in codice.',
@@ -968,6 +980,7 @@ export const alabasta: OnePieceSaga = {
       ],
     },
     'dorry': {
+      relationships: alabastaRelationships.dorry,
       role: { it: 'Guerriero gigante di Elbaf', en: 'Giant warrior of Elbaph' },
       log: {
         it: 'È alto come una torre, porta uno scudo rotondo e una spada, e vive in una grotta di Little Garden dove arrostisce bestie preistoriche intere. Da cento anni, ogni volta che il vulcano erutta, duella con un altro gigante per una ragione che nessuno dei due ricorda più, e nessuno dei due ha ceduto un passo.',
@@ -1008,6 +1021,7 @@ export const alabasta: OnePieceSaga = {
       ],
     },
     'brogy': {
+      relationships: alabastaRelationships.brogy,
       role: { it: 'Guerriero gigante di Elbaf', en: 'Giant warrior of Elbaph' },
       log: {
         it: 'Ha una barba a forma di lama d’ascia e una risata che si sente dall’altra parte dell’isola, e porta un’ascia che nessun uomo riuscirebbe a sollevare. Ogni volta che il vulcano erutta scende nel campo di battaglia e affronta lo stesso avversario, come fa da cento anni.',
@@ -1040,6 +1054,7 @@ export const alabasta: OnePieceSaga = {
       ],
     },
     'wapol': {
+      relationships: alabastaRelationships.wapol,
       role: { it: 'Capitano del Bliking', en: 'Captain of the Bliking' },
       log: {
         it: 'La sua nave, il Bliking, emerge accanto alla Going Merry e i suoi uomini salgono a bordo, mentre lui chiede alla ciurma la rotta per il Regno di Drum. Uno dei suoi dice che ha mangiato un frutto del diavolo che gli permette di mangiare qualunque cosa: si mangia una spada insieme alla carne infilzata, poi comincia a mangiarsi la nave. Rufy lo fa volare via con un colpo, e la sua ciurma si ritira.',
@@ -1089,6 +1104,7 @@ export const alabasta: OnePieceSaga = {
       devilFruit: [{ episode: 79, value: ['munch-munch-fruit'] }],
     },
     'bon-clay': {
+      relationships: alabastaRelationships['bon-clay'],
       role: BW_AGENT_ROLE,
       log: {
         it: 'Viaggia su una nave a forma di cigno, indossa un cappotto di piume e scarpette da ballo a punta, e si presenta danzando. Il suo volto diventa quello di chiunque abbia toccato con la mano destra, e torna il suo quando si tocca con la sinistra. Ha passato una giornata intera a bordo con dei pirati senza dire chi fosse, e li ha trovati simpatici.',
@@ -1118,6 +1134,7 @@ export const alabasta: OnePieceSaga = {
       devilFruit: [{ episode: 92, chapter: 156, value: ['clone-clone-fruit'] }],
     },
     'dalton': {
+      relationships: alabastaRelationships.dalton,
       role: {
         it: 'Capitano della guardia dell’isola di Drum',
         en: 'Captain of Drum Island’s guard',
@@ -1154,6 +1171,7 @@ export const alabasta: OnePieceSaga = {
       ],
     },
     'mr-11': {
+      relationships: alabastaRelationships['mr-11'],
       role: BW_AGENT_ROLE,
       log: {
         it: 'La Marina lo ha catturato pochi giorni prima e lo tiene legato all’albero maestro della nave di Smoker. Giura di non aver mai sentito parlare di nessuna organizzazione né di nessun Mr. Zero. Smoker, che non gli crede, finge di avergli trovato degli ordini in tasca, e lui si tradisce da solo.',
@@ -1171,6 +1189,7 @@ export const alabasta: OnePieceSaga = {
       ],
     },
     'kureha': {
+      relationships: alabastaRelationships.kureha,
       role: { it: 'Dottoressa di Drum', en: 'Doctor of Drum' },
       log: {
         it: 'Ha centotrentanove anni, li dichiara a voce alta e ne va fiera. Vive nel castello in cima alla vetta, è l’unico medico rimasto sull’isola e scende in paese solo quando le va. Si fa pagare portando via ai ricchi quello che le serve, beve vino di prugne durante le visite e chiama vecchi quelli che hanno la metà dei suoi anni.',
@@ -1192,6 +1211,7 @@ export const alabasta: OnePieceSaga = {
       epithet: [{ episode: 82, value: { it: 'Dottorina', en: 'Doctorine' } }],
     },
     'tony-tony-chopper': {
+      relationships: alabastaRelationships['tony-tony-chopper'],
       chronicle: alabastaChronicles['tony-tony-chopper'],
       role: { it: 'Medico', en: 'Doctor' },
       log: {
@@ -1238,6 +1258,7 @@ export const alabasta: OnePieceSaga = {
       ],
     },
     'hiluluk': {
+      relationships: alabastaRelationships.hiluluk,
       role: { it: 'Ciarlatano', en: 'Quack doctor' },
       log: {
         it: 'Curava chiunque gratis con rimedi che quasi sempre peggioravano le cose. Aveva una bandiera pirata tutta sua, simbolo della sua lotta contro le malattie, e sognava di far fiorire i ciliegi su un’isola di neve. Ha raccolto una renna cacciata dal branco e l’ha chiamata Chopper.',
@@ -1261,6 +1282,7 @@ export const alabasta: OnePieceSaga = {
       ],
     },
     'chess': {
+      relationships: alabastaRelationships.chess,
       role: {
         it: 'Capo di stato maggiore di Wapol',
         en: 'Wapol’s chief of staff',
@@ -1289,6 +1311,7 @@ export const alabasta: OnePieceSaga = {
       ],
     },
     'kuromarimo': {
+      relationships: alabastaRelationships.kuromarimo,
       role: { it: 'Magistrato di Wapol', en: 'Wapol’s magistrate' },
       log: {
         it: 'È un pugile con una capigliatura afro in testa e altre sulle spalle e sui guantoni, e i ciuffi che lancia restano attaccati a chiunque colpiscano. Incendiati dalle frecce del suo collega, bruciano dove si sono attaccati. Quando loro due non bastano, Wapol li inghiotte entrambi e li risputa come un unico guerriero con quattro braccia.',
@@ -1314,6 +1337,7 @@ export const alabasta: OnePieceSaga = {
       ],
     },
     'mr-13': {
+      relationships: alabastaRelationships['mr-13'],
       role: UNLUCKIES_ROLE,
       log: {
         it: 'Lui e la sua compagna sono gli Unluckies, la coppia che porta gli ordini di Mr. Zero e si occupa degli agenti che falliscono. Accende le bombe che sganciano sui traditori con due conchiglie artigliate, e con le stesse conchiglie combatte. A Whisky Peak ha sentito pronunciare il nome del capo e ha disegnato i volti dei pirati che lo avevano sentito.',
@@ -1323,6 +1347,7 @@ export const alabasta: OnePieceSaga = {
       affiliation: [{ episode: 91, value: UNLUCKIES }],
     },
     'miss-friday': {
+      relationships: alabastaRelationships['miss-friday'],
       role: UNLUCKIES_ROLE,
       log: {
         it: 'È l’avvoltoio degli Unluckies e porta in volo il suo compagno lontra ovunque Mr. Zero li mandi. Dall’alto sganciano pacchi bomba sugli agenti che falliscono o scappano, e da vicino apre il fuoco con le mitragliatrici legate sulla schiena. Capisce ogni parola che si dice vicino a lei, e la riferisce.',
@@ -1332,6 +1357,7 @@ export const alabasta: OnePieceSaga = {
       affiliation: [{ episode: 91, value: UNLUCKIES }],
     },
     'crocodile': {
+      relationships: alabastaRelationships.crocodile,
       role: {
         it: 'Membro della Flotta dei Sette',
         en: 'One of the Seven Warlords',
@@ -1391,6 +1417,7 @@ export const alabasta: OnePieceSaga = {
       chronicle: alabastaChronicles.crocodile,
     },
     'nefertari-cobra': {
+      relationships: alabastaRelationships['nefertari-cobra'],
       role: { it: 'Re di Alabasta', en: 'King of Alabasta' },
       log: {
         it: 'Regna su un paese in cui non piove da anni e in cui metà del popolo lo accusa di aver rubato la pioggia. Riceve chiunque si presenti al palazzo, senza guardie fra sé e chi gli parla, e non ha mai alzato la voce contro i ribelli. Sa che sua figlia è partita da sola per scoprire chi sta distruggendo il regno.',
@@ -1424,6 +1451,7 @@ export const alabasta: OnePieceSaga = {
       ],
     },
     'kohza': {
+      relationships: alabastaRelationships.kohza,
       role: {
         it: 'Capo dell’esercito ribelle',
         en: 'Leader of the rebel army',
@@ -1461,6 +1489,7 @@ export const alabasta: OnePieceSaga = {
       ],
     },
     'pell': {
+      relationships: alabastaRelationships.pell,
       role: { it: 'Guardia reale di Alabasta', en: 'Royal guard of Alabasta' },
       log: {
         it: 'Indossa la lunga veste bianca della guardia reale, decorata a stelle, e porta la spada sul fianco destro. Quando i pirati assaltano una città di porto parte con un’altra guardia reale, ma arrivano a combattimento finito.',
@@ -1498,6 +1527,7 @@ export const alabasta: OnePieceSaga = {
       ],
     },
     'chaka': {
+      relationships: alabastaRelationships.chaka,
       role: { it: 'Guardia reale di Alabasta', en: 'Royal guard of Alabasta' },
       log: {
         it: 'Indossa una lunga tunica aperta sul petto e un mantello sulle spalle, e porta un’enorme spada al fianco. Con un’altra guardia reale accorre in una città di porto assaltata dai pirati, e la trova con il combattimento già finito.',
@@ -1529,6 +1559,7 @@ export const alabasta: OnePieceSaga = {
       ],
     },
     'portgas-d-ace': {
+      relationships: alabastaRelationships['portgas-d-ace'],
       chronicle: alabastaChronicles['portgas-d-ace'],
       role: { it: 'Comandante di divisione', en: 'Division commander' },
       log: {
@@ -1567,6 +1598,7 @@ export const alabasta: OnePieceSaga = {
       devilFruit: [{ episode: 95, value: ['flame-flame-fruit'] }],
     },
     'matsuge': {
+      relationships: alabastaRelationships.matsuge,
       role: { it: 'Cammello del deserto', en: 'Desert camel' },
       log: {
         it: 'La ciurma lo ha strappato alle fauci di una lucertola gigante nel deserto, e per ringraziare si è offerto di portarla. Intendeva solo le donne: lascia salire Nami e Bibi e degli uomini non si cura. Nami lo ha chiamato Ciglione, per via delle ciglia.',
@@ -1599,6 +1631,7 @@ export const alabasta: OnePieceSaga = {
       ],
     },
     'mr-1': {
+      relationships: alabastaRelationships['mr-1'],
       role: BW_OFFICER_ROLE,
       log: {
         it: 'È l’agente di grado più alto dell’organizzazione e non ha mai avuto bisogno di alzare la voce. Al caffè dove si riuniscono gli agenti si scontra con uno di loro, e una lama che gli esce dal corpo taglia il muro da parte a parte. La sua socia ferma la lite prima che vada oltre.',
@@ -1641,6 +1674,7 @@ export const alabasta: OnePieceSaga = {
       devilFruit: [{ episode: 116, chapter: 190, value: ['dice-dice-fruit'] }],
     },
     'miss-doublefinger': {
+      relationships: alabastaRelationships['miss-doublefinger'],
       role: BW_OFFICER_ROLE,
       log: {
         it: 'Allo Spiders Cafe si fa chiamare Paula, porta occhiali colorati e una bandana a rombi, e offre il tè agli agenti. Quando Mr. One entra sfondando il muro e il ballerino gli si scaglia contro, è lei a fermarli. Lavora accanto a lui, ed è lei a riferire l’ordine di partire per incontrare il capo.',
@@ -1660,6 +1694,7 @@ export const alabasta: OnePieceSaga = {
       ],
     },
     'mr-4': {
+      relationships: alabastaRelationships['mr-4'],
       role: BW_OFFICER_ROLE,
       log: {
         it: 'È lentissimo: gli serve molto tempo anche solo per dire poche parole. Porta con sé una mazza da baseball e un fucile a forma di cane, allo Spiders Cafe gli servono un tè alla mela, e ride dello spettacolo del ballerino. La collega con cui lavora parla per tutti e due, e dà a lui la colpa dei suoi dolori.',
@@ -1674,6 +1709,7 @@ export const alabasta: OnePieceSaga = {
       affiliation: [{ episode: 103, value: BW_OFFICER }],
     },
     'miss-merry-christmas': {
+      relationships: alabastaRelationships['miss-merry-christmas'],
       role: BW_OFFICER_ROLE,
       log: {
         it: 'È una donna bassa e robusta che entra allo Spiders Cafe lamentandosi della schiena e dei fianchi e dandone la colpa al suo compagno. Parla in fretta e si fa servire un tè orange pekoe. Lavora con un agente lentissimo e parla al posto suo.',
@@ -1695,6 +1731,7 @@ export const alabasta: OnePieceSaga = {
       devilFruit: [{ episode: 113, chapter: 184, value: ['mole-mole-fruit'] }],
     },
     'toto': {
+      relationships: alabastaRelationships.toto,
       role: { it: 'Abitante di Yuba', en: 'Resident of Yuba' },
       log: {
         it: 'Yuba era la base dei ribelli finché la sabbia non l’ha sepolta, e lui è l’unico rimasto. Scava ogni giorno in cerca dell’acqua sparita tre anni fa, e all’inizio ha scambiato i viaggiatori per ribelli e li ha aggrediti. È il padre di Kosa, e supplica Bibi di fermare suo figlio.',
@@ -1710,6 +1747,7 @@ export const alabasta: OnePieceSaga = {
       origin: [{ episode: 103, value: ALABASTA }],
     },
     'hasami': {
+      relationships: alabastaRelationships.hasami,
       role: { it: 'Granchio del deserto', en: 'Desert crab' },
       log: {
         it: 'È un granchio corridore grande come una casa, amico di Ciglione da quando erano a Rainbase. Corre di lato sulla sabbia con tutta la ciurma sul dorso. L’acqua è un’altra faccenda: quando Nami balla per spingerlo ad attraversare un fiume, affonda prima dell’altra riva.',
@@ -1724,6 +1762,7 @@ export const alabasta: OnePieceSaga = {
       ],
     },
     'lassoo': {
+      relationships: alabastaRelationships.lassoo,
       role: { it: 'Cane-fucile di Mr. Four', en: 'Mr. 4’s gun-dog' },
       log: {
         it: 'È un bazooka a cui è stato fatto mangiare un frutto del diavolo, e così è diventato un bassotto vivo, perennemente raffreddato. Quando starnutisce spara palle da baseball pesanti come palle di cannone, che esplodono qualche secondo dopo essere cadute. Mr. Four le rilancia con la mazza contro chiunque abbia davanti.',
@@ -1748,6 +1787,7 @@ export const alabasta: OnePieceSaga = {
       devilFruit: [{ episode: 113, value: ['dog-dog-fruit-model-dachshund'] }],
     },
     'tsumegeri-guards': {
+      relationships: alabastaRelationships['tsumegeri-guards'],
       role: { it: 'Guardie reali di Alabasta', en: 'Royal guards of Alabasta' },
       log: {
         it: 'Sono quattro delle migliori guardie reali, e irrompono per salvare il loro re da Crocodile contro i suoi stessi ordini. Prima di attaccare bevono l’acqua potente, che dà cinque minuti di forza enorme e poi uccide chi l’ha bevuta. Crocodile si limita a farsi di sabbia e ad aspettare che faccia effetto.',
@@ -1766,6 +1806,7 @@ export const alabasta: OnePieceSaga = {
       origin: [{ episode: 120, value: ALABASTA }],
     },
     'mr-7': {
+      relationships: alabastaRelationships['mr-7'],
       role: BW_FRONTIER_ROLE,
       log: {
         it: 'Lui e la sua compagna sono i cecchini che Crocodile ha piazzato nella torre dell’orologio, accanto a un cannone che deve sparare sulla piazza alle quattro e mezza. Si veste di sette, ride mentre aspetta di accendere la miccia e spara a chiunque provi ad avvicinarsi alla torre. I loro proiettili si uniscono in aria in qualcosa di peggio di ciascuno dei due.',
@@ -1775,6 +1816,7 @@ export const alabasta: OnePieceSaga = {
       affiliation: [{ episode: 125, value: BW_FRONTIER }],
     },
     'miss-fathers-day': {
+      relationships: alabastaRelationships['miss-fathers-day'],
       role: BW_FRONTIER_ROLE,
       log: {
         it: 'Veste da rana, ride come una rana e spara proiettili a forma di rana da un’arma intonata. Dalla torre dell’orologio ha abbattuto in volo una guardia reale. Lei e il suo compagno contano su quest’ultima missione per ottenere una promozione.',
@@ -1784,6 +1826,7 @@ export const alabasta: OnePieceSaga = {
       affiliation: [{ episode: 125, value: BW_FRONTIER }],
     },
     'hina': {
+      relationships: alabastaRelationships.hina,
       role: { it: 'Ufficiale della Marina', en: 'Marine officer' },
       log: {
         it: 'Comanda una flotta della Marina e parla di sé in terza persona, con la stessa calma con cui accende una sigaretta. Quando due dei suoi uomini tornano in ritardo con una nave catturata, dice che Hina è scontenta. Le sue trenta navi bloccano tutti i porti di Alabasta, e vuole che la nave di Cappello di Paglia sia cercata da una costa all’altra.',
@@ -1815,6 +1858,7 @@ export const alabasta: OnePieceSaga = {
       devilFruit: [{ episode: 130, chapter: 217, value: ['cage-cage-fruit'] }],
     },
     'terracotta': {
+      relationships: alabastaRelationships.terracotta,
       role: { it: 'Capocuoca del palazzo', en: 'Palace head chef' },
       log: {
         it: 'Dirige le cucine del palazzo di Alubarna ed è sposata con Igaram, al quale somiglia tanto da essere scambiata per lui travestito da donna. Quando Rufy si sveglia dopo tre giorni di sonno, entra con un vassoio di cibo prima ancora che lo chieda. A cena prende il suo appetito come una sfida e continua a far arrivare piatti.',
@@ -1832,6 +1876,7 @@ export const alabasta: OnePieceSaga = {
       ],
     },
     'nico-robin': {
+      relationships: alabastaRelationships['nico-robin'],
       chronicle: alabastaChronicles['nico-robin'],
       role: { it: 'Archeologa', en: 'Archaeologist' },
       log: {

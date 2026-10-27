@@ -226,3 +226,56 @@ describe.each(['en', 'it'] as const)(
     })
   },
 )
+
+describe.each(['en', 'it'] as const)(
+  'Alabasta authored cards in %s',
+  (locale) => {
+    it('withholds the future pair and renders its reached dated history', () => {
+      const earlier = characterPage('laboon', ep(352), locale)
+      const reached = characterPage('laboon', ep(353), locale)
+
+      expect(earlier).toBeDefined()
+      expect(reached).toBeDefined()
+
+      const { unmount } = renderWithProviders(
+        <RelationshipBand
+          relationships={earlier?.detail.relationships ?? []}
+        />,
+        { locale, bookmark: ep(352) },
+      )
+
+      expect(
+        screen.queryByRole('link', { name: 'Brook' }),
+      ).not.toBeInTheDocument()
+
+      unmount()
+      renderWithProviders(
+        <RelationshipBand
+          relationships={reached?.detail.relationships ?? []}
+        />,
+        { locale, bookmark: ep(353) },
+      )
+
+      expect(screen.getByRole('link', { name: 'Brook' })).toHaveAttribute(
+        'href',
+        `/one-piece/${locale}/characters/brook`,
+      )
+
+      fireEvent.click(
+        screen.getByLabelText(
+          locale === 'en' ?
+            'Relationship history with Brook'
+          : 'Storia del legame con Brook',
+        ),
+      )
+
+      expect(
+        screen.getByText(
+          locale === 'en' ?
+            'Available from episode 353'
+          : 'Visibile dall’episodio 353',
+        ),
+      ).toBeVisible()
+    })
+  },
+)
