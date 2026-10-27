@@ -16,8 +16,8 @@ export const chimeraAnt: HunterSaga = {
       revealedAtChapter: 186,
       name: { it: 'Formichimere', en: 'Chimera Ant' },
       summary: {
-        it: 'Gon e Killua lasciano Greed Island per raggiungere un giocatore che sperano sia Ging. Dove arrivano si muovono le formichimere, insetti aggressivi.',
-        en: 'Gon and Killua leave Greed Island to meet a player they hope is Ging. Where they land, chimera ants, an aggressive insect, are on the move.',
+        it: 'Gon e Killua lasciano Greed Island per raggiungere un giocatore che sperano sia Ging. Dove arrivano si muovono le formichimere.',
+        en: 'Gon and Killua leave Greed Island to meet a player they hope is Ging. Where they land, chimera ants are on the move.',
       },
       visual: { art: 'chimera-ant-arc', tint: 'vermilion' },
     },
