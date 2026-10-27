@@ -41,4 +41,15 @@ describe('ReportLink', () => {
 
     expect(reportFields().has('bookmark')).toBe(false)
   })
+
+  it('sends no bookmark for a trial point', () => {
+    renderWithProviders(<ReportLink />, {
+      locale: 'it',
+      path: PAGE,
+      bookmark: ep(3),
+      trial: true,
+    })
+
+    expect(reportFields().has('bookmark')).toBe(false)
+  })
 })
