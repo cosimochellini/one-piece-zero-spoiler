@@ -14,6 +14,18 @@ import { zevil } from './zevil'
  * chapters agreeing. The unnamed (the captain, the old woman of the quiz,
  * Gon's great-grandmother, the applicant who answers the quiz first) are not
  * records, and Noko is named only in chapter 64.
+ *
+ * Coverage ends at chapter 43: episode 25's chapter-44 departure plans are
+ * out, and the recap episodes (13, 26) add no records. Named animals
+ * qualify; species, unnamed extras, unvisited places and names known only
+ * from supplemental material do not. Beans is out: his name is chapter 319
+ * (Mamen is 1999 credits and a databook). The shared logs omit the
+ * manga-only sushi test and the anime-only updraft method.
+ *
+ * Open work: #833 (applicants Goz, Agon, Sommy, Siper, Ryu, Kyu, Shishito,
+ * Kenmi; Geretta, Cherry and the chapter-5 cook; earlier names of
+ * Bourbon, the Amori brothers, Pokkle, Bodoro), #834 (Kikyo, Silva, Hishita), #761 (art),
+ * #762 (stories).
  */
 
 const APPLICANT = {
@@ -243,6 +255,8 @@ const earlyExam: HunterSaga = {
       },
       visual: { art: 'netero', tint: 'sand' },
     },
+    // Mentioned at episode 2 / chapter 3; the record opens on arrival, so it
+    // needs no `nameSaidAt`.
     {
       id: 'zaban-city',
       kind: 'place',

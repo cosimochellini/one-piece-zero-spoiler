@@ -784,9 +784,12 @@ const retained = {
   },
 } satisfies Record<string, Relationship>
 
-/** Directed, dated selections; factual evidence and coverage: relationships-813.md. */
+/** Directed, dated selections; evidence in relationships.json and sources.json. */
 export const eastBlueRelationships = {
   'monkey-d-luffy': [
+    // Source-specific openings: chapter 1 introduces Shanks before Koby, while the
+    // anime places that flashback at episode 4. Not anchors for the shared chapter
+    // mapping.
     {
       episode: 4,
       chapter: 1,
@@ -901,6 +904,8 @@ export const eastBlueRelationships = {
         retained.monkeyDLuffyUsoppFormerCrewmate,
       ],
     },
+    // Garp's endpoint is 313/431; the training selection is filed at the 314/432
+    // reunion.
     {
       episode: 314,
       chapter: 432,
@@ -945,6 +950,7 @@ export const eastBlueRelationships = {
         retained.monkeyDLuffyMonkeyDDragonFather,
       ],
     },
+    // Same chapter as Zoro/Mihawk 515/597, but a different page.
     {
       episode: 516,
       chapter: 597,
@@ -1070,6 +1076,8 @@ export const eastBlueRelationships = {
       chapter: 7,
       value: [retained.roronoaZoroMonkeyDLuffyCaptain],
     },
+    // Kuina's chapter-53 endpoint gates her; the manga opens without her until
+    // 24/53. Source-specific, not an anchor for the shared chapter mapping.
     {
       episode: 19,
       chapter: 53,
@@ -1128,6 +1136,7 @@ export const eastBlueRelationships = {
         retained.roronoaZoroTashigiOpposingSwordswoman,
       ],
     },
+    // Same chapter as Luffy/Rayleigh 516/597, but a different page.
     {
       episode: 515,
       chapter: 597,
@@ -1337,6 +1346,7 @@ export const eastBlueRelationships = {
         },
       ],
     },
+    // The confrontation does not claim Bartolomeo died.
     {
       episode: 1156,
       chapter: 1126,
@@ -1362,6 +1372,8 @@ export const eastBlueRelationships = {
         },
       ],
     },
+    // Chapter 1137 establishes Shamrock's father, 1138 the twins; shared at
+    // 1168/1138.
     {
       episode: 1168,
       chapter: 1138,
@@ -1636,6 +1648,7 @@ export const eastBlueRelationships = {
         retained.namiUsoppCrewmateAndWeaponMaker,
       ],
     },
+    // Her own forgiveness of Jinbe; none of Hatchan is inferred.
     {
       episode: 547,
       chapter: 627,
@@ -1654,6 +1667,8 @@ export const eastBlueRelationships = {
         },
       ],
     },
+    // Zeus is first selected at the permanent partnership; no earlier servant
+    // state is authored.
     {
       episode: 1038,
       chapter: 1016,
@@ -1674,6 +1689,7 @@ export const eastBlueRelationships = {
     },
   ],
   'mohji': [
+    // Endpoint gate: chapter 21 (as for Richie and Cabaji).
     {
       episode: 6,
       chapter: 21,
@@ -1722,6 +1738,7 @@ export const eastBlueRelationships = {
     },
   ],
   'richie': [
+    // Endpoint gate: chapter 21 (as for Mohji and Cabaji).
     {
       episode: 7,
       chapter: 21,
@@ -1746,6 +1763,7 @@ export const eastBlueRelationships = {
     },
   ],
   'cabaji': [
+    // Endpoint gate: chapter 21 (as for Mohji and Richie).
     {
       episode: 7,
       chapter: 21,
@@ -1842,6 +1860,7 @@ export const eastBlueRelationships = {
         retained.usoppDorryInspiration,
       ],
     },
+    // Duel resolved at 236/333, apology at 323/438.
     {
       episode: 323,
       chapter: 438,
@@ -2075,6 +2094,7 @@ export const eastBlueRelationships = {
     },
   ],
   'kuina': [
+    // Endpoint gate: chapter 53.
     {
       episode: 19,
       chapter: 53,
@@ -2153,6 +2173,8 @@ export const eastBlueRelationships = {
         retained.sanjiCharlottePuddingArrangedFiancE,
       ],
     },
+    // Rejection, overheard murder plot, reconciliation, wedding turn and farewell
+    // are separate reached states.
     {
       episode: 808,
       chapter: 844,
@@ -2215,6 +2237,8 @@ export const eastBlueRelationships = {
         retained.sanjiCharlottePuddingAllyHePartsFrom,
       ],
     },
+    // Pudding's farewell reports her removing his memory; it does not imply he
+    // remembers it.
     {
       episode: 1057,
       chapter: 1031,
@@ -2447,6 +2471,7 @@ export const eastBlueRelationships = {
         retained.draculeMihawkShanksFormerRival,
       ],
     },
+    // Same chapter as Luffy/Rayleigh 516/597, but a different page.
     {
       episode: 515,
       chapter: 597,
@@ -2511,6 +2536,7 @@ export const eastBlueRelationships = {
         retained.arlongMonkeyDLuffyDefeatingOpponent,
       ],
     },
+    // Concerns Tiger's no-killing rule, not the later deathbed appeal.
     {
       episode: 541,
       chapter: 622,
@@ -2562,6 +2588,8 @@ export const eastBlueRelationships = {
         },
       ],
     },
+    // Hatchan's liberation needs episode 387, not 386; Camie and Pappag are
+    // gated to chapter 493.
     {
       episode: 387,
       chapter: 493,
@@ -2615,6 +2643,7 @@ export const eastBlueRelationships = {
     },
   ],
   'chew': [
+    // Chew's hammer defeat needs chapter 88, not 87.
     {
       episode: 40,
       chapter: 88,
@@ -2904,6 +2933,7 @@ export const eastBlueRelationships = {
     },
   ],
   'lord-of-the-coast': [
+    // Endpoint gate: episode 504, chapter 589.
     {
       episode: 504,
       chapter: 589,
@@ -2943,6 +2973,7 @@ export const eastBlueRelationships = {
         },
       ],
     },
+    // Alvida leaves the selection; this does not end her connection to Koby.
     {
       episode: 69,
       chapter: 119,
@@ -2960,6 +2991,7 @@ export const eastBlueRelationships = {
         retained.kobyMonkeyDLuffyRescuer,
       ],
     },
+    // Omits the anime's admiral conversation; only facts both sources tell.
     {
       episode: 315,
       chapter: 433,
@@ -2980,6 +3012,7 @@ export const eastBlueRelationships = {
         retained.kobyHelmeppoFellowRecruit,
       ],
     },
+    // Rescue at 1122/1088; Koby's and Helmeppo's lists carry no other change.
     {
       episode: 1122,
       chapter: 1088,

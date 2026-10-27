@@ -1,7 +1,14 @@
 import { finalPhaseChronicles } from './final-phase.chronicle'
 import type { HunterSaga } from './saga'
 
-/** Named scenes of the Final Phase: see the checked provenance matrix. */
+/**
+ * Named scenes of the Final Phase, episodes 19–21 and chapters 33–38.
+ * Gittarackur and Illumi are separate gated identities, as One Piece's
+ * disguises are, linked only once Illumi opens at 20 / 35; the disguise
+ * gets no early true-name alias. The briefing's affiliations (21 / 37) date
+ * the briefing, not each match; Killua gets none. Beans (manga name in
+ * chapter 319; Mamen is supplemental) and the unnamed hotel get no record.
+ */
 export const finalPhase: HunterSaga = {
   name: { en: 'Hunter Exam', it: 'Esame Hunter' },
   entries: [
@@ -17,6 +24,7 @@ export const finalPhase: HunterSaga = {
       },
       visual: { art: 'masta', tint: 'blue' },
     },
+    // Named by Killua once the disguise comes off; no surname is shown.
     {
       id: 'illumi',
       kind: 'character',

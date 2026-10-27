@@ -2,7 +2,9 @@ import type { HunterSaga } from './saga'
 
 /**
  * Heavens Arena: episodes 27–36 of the 2011 anime and chapters 44–63, as the
- * English Hunter x Hunter Wiki's arc page gives them.
+ * English Hunter x Hunter Wiki's arc page gives them. Owner's #796 check: the
+ * 251 floors are told in chapter 44, pages 15–16 (page references follow the
+ * owner's digital edition).
  */
 export const heavensArena: HunterSaga = {
   name: { it: 'Arena Celeste', en: 'Heavens Arena' },

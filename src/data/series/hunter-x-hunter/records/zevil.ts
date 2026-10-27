@@ -1,7 +1,16 @@
 import type { HunterSaga } from './saga'
 import { zevilChronicles } from './zevil.chronicle'
 
-/** Named scenes of the Fourth Phase and its final bracket; see the provenance matrix. */
+/**
+ * Named scenes of the Fourth Phase and its final bracket. Wiki debut floors
+ * and episode 14's roster do not prove a name, so each gate is a later named
+ * scene. Gittarackur's disguise withholds the true identity: the unmasked
+ * face is chapter 26 and the chapter-25 caller is anonymous, neither a
+ * naming gate. Tonpa, Ponzu and the brothers fail the phase at 18 / 32;
+ * Pokkle's pass belongs to the Final Phase update. Bourbon opens already
+ * dead, so he has no death redrawing; Bodoro's death (20 / 36) does.
+ * Unnamed species and the final-phase hotel get no record.
+ */
 export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
   entries: [
     {
@@ -28,6 +37,8 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       },
       visual: { art: 'gittarackur', tint: 'violet' },
     },
+    // Gate is the brothers addressing one another against Killua, not Tonpa's
+    // introduction (names there unchecked); same for Umori and Imori.
     {
       id: 'amori',
       kind: 'character',
@@ -64,6 +75,7 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       },
       visual: { art: 'imori', tint: 'blue' },
     },
+    // Named when Leorio asks Gon for help; the bees (chapter 31) stay out.
     {
       id: 'ponzu',
       kind: 'character',
@@ -88,6 +100,7 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       },
       visual: { art: 'bourbon', tint: 'orange' },
     },
+    // Gate is the Final Phase bracket; Bodoro too.
     {
       id: 'pokkle',
       kind: 'character',
@@ -112,6 +125,8 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       },
       visual: { art: 'bodoro', tint: 'azure' },
     },
+    // Named before the voyage; the record opens on the boat's arrival. The
+    // Italian title is an editorial translation, not a checked dub spelling.
     {
       id: 'zevil-island',
       kind: 'place',

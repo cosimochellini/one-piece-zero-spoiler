@@ -1,7 +1,15 @@
 import type { HunterSaga } from './saga'
 import { zoldyckChronicles } from './zoldyck.chronicle'
 
-/** The visit to Killua's home, within episodes 22–26 / chapters 39–43 (#760). */
+/**
+ * The visit to Killua's home, within episodes 22–26 / chapters 39–43 (#760).
+ * Each gate is the personal-name scene, not an earlier appearance floor.
+ * Kikyo, Silva and Hishita are #834. Maha, Alluka, the grandmother, the
+ * shopkeeper, the intruders, other butlers and the flashback attackers stay
+ * unnamed. Killua's disqualification is pinned at 20 / 36, the family home
+ * links at 22 / 39 and his departure with Gon at 25 / 43; nothing later is
+ * inferred. Affiliations stay prose.
+ */
 export const zoldyck: Pick<HunterSaga, 'dossiers' | 'entries'> = {
   entries: [
     {
@@ -28,6 +36,8 @@ export const zoldyck: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       },
       visual: { art: 'zebro', tint: 'sand' },
     },
+    // Chapter 39 names him and shows a paw; chapter 40 shows the animal, so
+    // the record opens on the full appearance.
     {
       id: 'mike',
       kind: 'character',
@@ -52,6 +62,7 @@ export const zoldyck: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       },
       visual: { art: 'seaquant', tint: 'orange' },
     },
+    // Gated at her self-introduction, after the unnamed blockade (23 / 41).
     {
       id: 'canary',
       kind: 'character',
@@ -64,6 +75,8 @@ export const zoldyck: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       },
       visual: { art: 'canary', tint: 'wine' },
     },
+    // Gated at the coin game and Killua's address, not the earlier telephone
+    // appearance (22 / 40).
     {
       id: 'gotoh',
       kind: 'character',
@@ -76,6 +89,8 @@ export const zoldyck: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       },
       visual: { art: 'gotoh', tint: 'ocher' },
     },
+    // The 2011 anime starts this scene in 23, before 24 finishes chapter 42.
+    // Bare first name.
     {
       id: 'milluki',
       kind: 'character',
@@ -100,6 +115,7 @@ export const zoldyck: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       },
       visual: { art: 'zeno', tint: 'ivory' },
     },
+    // Gated when his mother introduces him, after his unnamed 23 / 41 look.
     {
       id: 'kalluto',
       kind: 'character',
@@ -112,6 +128,8 @@ export const zoldyck: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       },
       visual: { art: 'kalluto', tint: 'vermilion' },
     },
+    // Opens at arrival, after its map mention (21 / 38); visited on the way,
+    // independently of the mountain.
     {
       id: 'republic-of-padokea',
       kind: 'place',
@@ -124,6 +142,8 @@ export const zoldyck: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       },
       visual: { art: 'republic-of-padokea', tint: 'blue' },
     },
+    // The gate, service door, quarters and family house are landmarks here;
+    // Dentora is the country's district, not a separate stop or region label.
     {
       id: 'kukuroo-mountain',
       kind: 'place',

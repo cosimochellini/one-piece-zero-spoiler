@@ -2163,9 +2163,11 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'mansherry': {
-      // Sourced intent at 647/717, held behind this character's 693/755 gate,
-      // then the rescue at 714/774. Evidence: relationships-810.md and
-      // relationships-811.md in docs/content-provenance. No romance inferred.
+      // Leo's intent is told at 647/717 but waits for her own 693/755 gate;
+      // the rescue and hostility states first appear at 714/774. Rescuer is a
+      // completed act, Hostility does not claim captivity after the rescue.
+      // The wiki says "Giolla", the archive keeps `jora`/Jora. Two cards, not
+      // padded to four. No romance inferred.
       relationships: [
         {
           // Rescue effort is told at 647/717; the wiki's character entry

@@ -3,7 +3,9 @@ import type { HunterSaga } from './saga'
 /**
  * Chimera Ant: episodes 76–136 of the 2011 anime and chapters 186–318, as the
  * English Hunter x Hunter Wiki's arc page gives them. Italian Wikipedia calls
- * the insects formichimere.
+ * the insects formichimere. The summary leaves out their aggression: the
+ * owner's #796 check puts it in chapter 187, pages 6–8, not at 186 (page
+ * references follow the owner's digital edition).
  */
 export const chimeraAnt: HunterSaga = {
   name: { it: 'Formichimere', en: 'Chimera Ant' },

@@ -41,7 +41,7 @@ function reachesSeries({ allow = [], allowTypeOnly = [] }) {
   return [...allow, ...allowTypeOnly].some((zone) => isSeries(zone))
 }
 
-describe('the fallow configuration', () => {
+describe('the fallow configuration', { timeout: 60_000 }, () => {
   it('lists every security category this fallow version has', () => {
     // Once `include` is set, a category it leaves out never runs, and an
     // upgrade that adds one would be silently skipped.

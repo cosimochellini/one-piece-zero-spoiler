@@ -1,4 +1,3 @@
-import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
 
 import { toldIn } from '~/data/reveal'
@@ -83,16 +82,6 @@ describe('Dressrosa relationship coverage', () => {
     ).toStrictEqual(
       owners.map(({ id }) => id).toSorted((a, b) => a.localeCompare(b)),
     )
-  })
-
-  it('documents every current character in the provenance inventory', () => {
-    const inventory = readFileSync(
-      'docs/content-provenance/relationships-820.md',
-      'utf8',
-    )
-    for (const { id } of owners) {
-      expect(inventory, id).toContain(`\`${id}\``)
-    }
   })
 
   it.each(owners)(

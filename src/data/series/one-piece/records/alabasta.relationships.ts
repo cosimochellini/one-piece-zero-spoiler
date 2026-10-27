@@ -1,6 +1,6 @@
 import type { Relationship, Timeline } from '~/data/types'
 
-/** Evidence, source-only selections and endpoint delays: relationships-814.md. */
+/** Revisions: docs/content-provenance/relationships.json and sources.json. */
 const retained = {
   laboonCrocus: {
     character: 'crocus',
@@ -1248,6 +1248,7 @@ const retained = {
       it: 'Rouge porta Ace in grembo per venti mesi per proteggerlo dalla ricerca del figlio di Roger.',
     },
   },
+  // Childhood oath only; Ace never learns Sabo survived.
   aceSabo: {
     character: 'sabo',
     type: { en: 'Sworn brother', it: 'Fratello per giuramento' },
@@ -1474,6 +1475,8 @@ const retained = {
 } satisfies Record<string, Relationship>
 
 export const alabastaRelationships = {
+  // Anime-only snapshot keeps the caretaker before the promise; the
+  // shared selection waits for chapter 105.
   'laboon': [
     {
       episode: 62,
@@ -1496,6 +1499,7 @@ export const alabastaRelationships = {
       ],
     },
   ],
+  // Waits for chapter 105 with Laboon.
   'crocus': [
     { episode: 62, chapter: 105, value: [retained.crocusLaboon] },
     {
@@ -1508,6 +1512,8 @@ export const alabastaRelationships = {
       ],
     },
   ],
+  // Anime-only snapshot lists Monday before Vivi opens at chapter 114.
+  // Chapter 632 family update is a cover, so manga only.
   'mr-9': [
     {
       episode: 64,
@@ -1527,6 +1533,7 @@ export const alabastaRelationships = {
       value: [retained.mr9Vivi, retained.mr9Wife],
     },
   ],
+  // Anime-only snapshot precedes Vivi, which opens at chapter 114.
   'igaram': [
     {
       episode: 64,
@@ -1550,6 +1557,7 @@ export const alabastaRelationships = {
       ],
     },
   ],
+  // Anime-only snapshot precedes Vivi, which opens at chapter 114.
   'miss-monday': [
     {
       episode: 64,
@@ -1577,6 +1585,9 @@ export const alabastaRelationships = {
     { episode: 67, chapter: 114, value: [retained.karooVivi] },
     { episode: 113, chapter: 183, value: [retained.karooProtectsVivi] },
   ],
+  // Rescue expedition starts at the chapter 365 cover, where Goldenweek,
+  // Mr. 5 and Valentine leave together; manga only, the episode is an
+  // ordering reference.
   'mr-5': [
     { episode: 66, chapter: 114, value: [retained.fiveValentine] },
     {
@@ -1643,6 +1654,7 @@ export const alabastaRelationships = {
       ],
     },
   ],
+  // Delayed to chapter 130.
   'mr-11': [{ episode: 79, chapter: 130, value: [retained.elevenSmoker] }],
   'kureha': [
     { episode: 83, chapter: 136, value: [retained.kurehaChopper] },
@@ -1722,6 +1734,8 @@ export const alabastaRelationships = {
       value: [retained.matsugeVivi, retained.matsugeHasami],
     },
   ],
+  // The 120/197 snapshot moves chapter 196 to episode 119, so earlier
+  // readers never reach the revelation.
   'kohza': [
     {
       episode: 100,
@@ -1754,6 +1768,7 @@ export const alabastaRelationships = {
       chapter: 169,
       value: [retained.pellVivi, retained.pellCobra, retained.pellOther],
     },
+    // After the explosion, not the sacrifice start.
     {
       episode: 126,
       chapter: 209,
@@ -1803,6 +1818,7 @@ export const alabastaRelationships = {
       value: [retained.totoKohza, retained.totoVivi, retained.totoLuffy],
     },
   ],
+  // Delayed to 111/179.
   'hasami': [
     {
       episode: 111,
@@ -1822,6 +1838,7 @@ export const alabastaRelationships = {
   'miss-fathers-day': [
     { episode: 125, chapter: 206, value: [retained.fatherSeven] },
   ],
+  // Delayed to chapter 217.
   'hina': [
     {
       episode: 128,
@@ -1912,6 +1929,7 @@ export const alabastaRelationships = {
         retained.viviMorgans,
       ],
     },
+    // Opens Vivi's escape; episode summary overrides a wiki cross-reference.
     {
       episode: 1119,
       chapter: 1085,
@@ -1931,6 +1949,7 @@ export const alabastaRelationships = {
       chapter: 166,
       value: [retained.threeGoldenweek, retained.threeCrocodile],
     },
+    // Prison partnership waits for the end of the adapted scene.
     {
       episode: 430,
       chapter: 529,
@@ -1940,6 +1959,7 @@ export const alabastaRelationships = {
         retained.threeCrocodile,
       ],
     },
+    // Wax defense opens here; episode summary overrides a wiki cross-reference.
     {
       episode: 449,
       chapter: 545,
@@ -2014,6 +2034,7 @@ export const alabastaRelationships = {
         retained.dorryShanks,
       ],
     },
+    // Forced control, as in the giants' redrawings.
     {
       episode: 1180,
       chapter: 1150,
@@ -2061,6 +2082,7 @@ export const alabastaRelationships = {
         retained.brogyShanks,
       ],
     },
+    // Forced control, as in the giants' redrawings.
     {
       episode: 1180,
       chapter: 1150,
@@ -2107,6 +2129,7 @@ export const alabastaRelationships = {
       chapter: 189,
       value: [retained.bonLuffy, retained.bonSanji],
     },
+    // Says Marine ships: naming Hina would precede her chapter 217.
     {
       episode: 129,
       chapter: 215,
@@ -2117,6 +2140,7 @@ export const alabastaRelationships = {
       chapter: 536,
       value: [retained.bonLuffyPrison, retained.bonSanji],
     },
+    // Healing card waits for Ivankov's endpoint (chapter 540).
     {
       episode: 443,
       chapter: 540,
@@ -2287,6 +2311,7 @@ export const alabastaRelationships = {
   ],
   'portgas-d-ace': [
     { episode: 95, chapter: 159, value: [retained.aceLuffy] },
+    // Captain card waits for Whitebeard's endpoint.
     {
       episode: 151,
       chapter: 234,
@@ -2327,6 +2352,7 @@ export const alabastaRelationships = {
         retained.aceRoger,
       ],
     },
+    // Rouge waits for her own endpoint.
     {
       episode: 493,
       chapter: 582,
@@ -2378,6 +2404,7 @@ export const alabastaRelationships = {
       chapter: 170,
       value: [retained.oneCrocodile, retained.oneDoublefinger],
     },
+    // Defeat follows Mr. 1's concession, not the fight.
     {
       episode: 120,
       chapter: 196,
@@ -2416,11 +2443,13 @@ export const alabastaRelationships = {
     },
   ],
   'nico-robin': [
+    // Her Crocodile card is already a former partnership at her endpoint.
     {
       episode: 130,
       chapter: 218,
       value: [retained.robinLuffy, retained.robinCrocodile],
     },
+    // Manga only: Clover precedes Saul, who opens at chapter 392.
     {
       episode: 275,
       chapter: 391,
@@ -2496,6 +2525,7 @@ export const alabastaRelationships = {
         retained.robinKoalaTraining,
       ],
     },
+    // Reunion follows the separate survival revelation (1097/1066).
     {
       episode: 1163,
       chapter: 1133,

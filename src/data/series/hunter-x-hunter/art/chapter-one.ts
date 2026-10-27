@@ -30,6 +30,7 @@ export const CHAPTER_ONE_DRAWINGS = {
   // fox-bear cub that stands behind its mother when Kite stops her claw over
   // Gon in chapter 1, which the 2011 anime first shows in episode 76's
   // flashback. No face. Reference not viewed directly.
+  // Graded B (owner ruling): true, spoiler-free and on style, not yet an A.
   kon: [
     {
       d: 'M34 30 L40 46 L34 52 L44 66 L38 72 L48 88 L42 94 L50 110 C52 126 48 140 42 150 H130 C142 150 146 142 142 136 C148 130 146 120 140 118 C144 110 138 102 130 102 C120 92 104 86 88 84 C82 64 80 46 82 30',

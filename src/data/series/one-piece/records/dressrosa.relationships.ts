@@ -1,6 +1,6 @@
 import type { Relationship, Timeline } from '~/data/types'
 
-/** Sources, endpoint delays and source-only facts: relationships-820.md. */
+/** Wiki revisions: docs/content-provenance/relationships.json, sources.json. */
 const retained = {
   koalaTiger: {
     character: 'fisher-tiger',
@@ -2397,6 +2397,8 @@ const retained = {
 
 /** Complete directed selections, carried forward until the next reached change. */
 export const dressrosaRelationships = {
+  // Childhood evidence is chapter 622 / episode 541, held behind her 626
+  // endpoint. No romance with Sabo; her mother is not a record.
   'koala': [
     {
       episode: 541,
@@ -2457,6 +2459,8 @@ export const dressrosaRelationships = {
       ],
     },
   ],
+  // Cover story is claimed parentage, replaced at 768/817 when the
+  // retainer bond is revealed. Oden's own endpoint delays his cards to 960.
   'kinemon': [
     { episode: 598, chapter: 672, value: [retained.kinSanji, retained.kinLaw] },
     {
@@ -2562,6 +2566,8 @@ export const dressrosaRelationships = {
       ],
     },
   ],
+  // NEO MADS with Judge is the chapter-1078 cover: manga-only, episode
+  // 1110 is just an ordering reference.
   'caesar-clown': [
     { episode: 589, chapter: 664, value: [retained.caesarMonet] },
     {
@@ -2638,6 +2644,8 @@ export const dressrosaRelationships = {
       ],
     },
   ],
+  // Sisters with Sugar comes from SBS volume 77, which ends at 775: that
+  // is the manga-only gate, episode 715 only orders. Crew alone implies no kin.
   'monet': [
     { episode: 589, chapter: 664, value: [retained.monetCaesar] },
     {
@@ -2717,6 +2725,8 @@ export const dressrosaRelationships = {
       ],
     },
   ],
+  // Cover story is claimed parentage, replaced at 768/817 when the
+  // retainer bond is revealed.
   'momonosuke': [
     { episode: 611, chapter: 685, value: [retained.momoLuffyRescue] },
     {
@@ -2789,6 +2799,8 @@ export const dressrosaRelationships = {
       ],
     },
   ],
+  // Wedding with Sai is the chapter-881 cover, not episode 853: manga-only,
+  // the anime keeps the engagement. The engagement is sourced.
   'baby-5': [
     { episode: 608, chapter: 682, value: [retained.babyDoffy] },
     {
@@ -2825,6 +2837,9 @@ export const dressrosaRelationships = {
       value: [retained.buffaloBaby, retained.buffaloDoffy],
     },
   ],
+  // Her mother is told at 651/721 but Scarlett's manga endpoint is 742:
+  // anime-only lists keep Scarlett, the manga 659/727 list omits her. Both
+  // converge at the family revelation 675/742.
   'rebecca': [
     { episode: 634, chapter: 706, value: [retained.rebeccaLuffy] },
     {
@@ -2920,6 +2935,7 @@ export const dressrosaRelationships = {
       ],
     },
   ],
+  // The 1156/1126 stage reports his refusal to betray Luffy, not a death.
   'bartolomeo': [
     {
       episode: 635,
@@ -3042,6 +3058,7 @@ export const dressrosaRelationships = {
       ],
     },
   ],
+  // Hakuba is his alter ego, not a card; his horse Farul is not a record.
   'cavendish': [
     { episode: 637, chapter: 708, value: [retained.cavLuffyEnemy] },
     {
@@ -3087,6 +3104,9 @@ export const dressrosaRelationships = {
       ],
     },
   ],
+  // Wedding with Baby 5 is manga-only (chapter-881 cover), the anime keeps the
+  // engagement, so 1118/1084 is authored per source. The ex-fiancee Uholisia
+  // is not a record.
   'sai': [
     {
       episode: 637,
@@ -3224,6 +3244,9 @@ export const dressrosaRelationships = {
       value: [retained.elizRiku, retained.elizDagama, retained.elizZoro],
     },
   ],
+  // Family and Road's friendship are checked against 1160/1130 and
+  // 1167/1137, resentment updated at 1173/1143. Later reconciliation is out of
+  // the archive.
   'hajrudin': [
     { episode: 644, chapter: 714, value: [retained.hajLuffyOpponent] },
     {
@@ -3322,6 +3345,7 @@ export const dressrosaRelationships = {
       ],
     },
   ],
+  // No romance with Sanji is inferred.
   'viola': [
     { episode: 642, chapter: 712, value: [retained.violaSanji] },
     {
@@ -3351,6 +3375,8 @@ export const dressrosaRelationships = {
       ],
     },
   ],
+  // Sisters with Monet comes from SBS volume 77 (gate 775, episode 715
+  // only orders). Her faint at 676/742 must not reveal the toys' restoration.
   'sugar': [
     {
       episode: 663,
@@ -3410,6 +3436,7 @@ export const dressrosaRelationships = {
       value: [retained.picaDoffy, retained.picaZoroDefeat, retained.picaRiku],
     },
   ],
+  // His wife Russian and son Gimlet are not records.
   'senor-pink': [
     { episode: 635, chapter: 711, value: [retained.pinkDoffy] },
     {
@@ -3418,6 +3445,8 @@ export const dressrosaRelationships = {
       value: [retained.pinkFranky, retained.pinkDoffy],
     },
   ],
+  // Jora raising him comes from SBS volume 76 (gate 763, episode 702
+  // only orders); lists stay split by source.
   'dellinger': [
     { episode: 635, chapter: 711, value: [retained.dellDoffy] },
     {
@@ -3481,6 +3510,9 @@ export const dressrosaRelationships = {
       value: [retained.machDoffy, retained.machHaj],
     },
   ],
+  // Raising Dellinger comes from SBS volume 76, which ends at 763: manga-only
+  // gate, episode 702 only orders. Later Jora/Dellinger lists stay split by
+  // source to keep this link.
   'jora': [
     { episode: 654, chapter: 723, value: [retained.joraBrook] },
     {
@@ -3534,6 +3566,7 @@ export const dressrosaRelationships = {
       value: [retained.glaDoffy, retained.glaViola, retained.glaBarto],
     },
   ],
+  // No romance with Mansherry is inferred.
   'leo': [
     { episode: 647, chapter: 717, value: [retained.leoUsoppBelief] },
     {
@@ -3579,6 +3612,8 @@ export const dressrosaRelationships = {
       ],
     },
   ],
+  // Family opens at 675/742: references to him as a known person wait for
+  // that endpoint, even though the toy soldier appears earlier unidentified.
   'kyros': [
     {
       episode: 675,
@@ -3624,6 +3659,8 @@ export const dressrosaRelationships = {
       ],
     },
   ],
+  // His final fire waits for 1055/1030, independent of the earlier apparent
+  // defeat.
   'kanjuro': [
     { episode: 691, chapter: 755, value: [retained.kanKin] },
     { episode: 768, chapter: 817, value: [retained.kanKin, retained.kanMomo] },
@@ -3676,6 +3713,8 @@ export const dressrosaRelationships = {
       ],
     },
   ],
+  // His 768 endpoint delays his earlier acts: Vergo's attack (705/766), the
+  // Barrels theft (704/765) and his murder (706/767) all wait until 768.
   'donquixote-rosinante': [
     {
       episode: 706,
@@ -3783,6 +3822,7 @@ export const dressrosaRelationships = {
       ],
     },
   ],
+  // Grouped record, kept as a single character endpoint.
   'rock-and-scotch': [
     {
       episode: 592,
@@ -3920,6 +3960,8 @@ export const dressrosaRelationships = {
       value: [retained.jeanLuffy, retained.jeanChinjao],
     },
   ],
+  // Her lists wait behind her endpoint and the anime's later flashback;
+  // anime chapter numbers are ordering references, not extra manga events.
   'scarlett': [
     {
       episode: 651,
