@@ -6,7 +6,7 @@ import type { HunterSaga } from './saga'
  * bookmark (`sagaLabels`), and the succession contest is first told in
  * chapter 349, nine chapters into the arc. The arc is named after Kakin, the
  * empire whose king opens it, which the story names from chapter 186. The
- * 2011 anime ends before it, so it is the manga's alone (`source: 'manga'`),
+ * 2011 anime ends before it, so it is the manga's alone (`source: 'chapter'`),
  * and its episode, the anime's last, only orders it.
  */
 export const kakin: HunterSaga = {
@@ -18,7 +18,7 @@ export const kakin: HunterSaga = {
       kind: 'arc',
       revealedAtEpisode: 148,
       revealedAtChapter: 340,
-      source: 'manga',
+      source: 'chapter',
       name: { it: 'Cakin', en: 'Kakin' },
       summary: {
         it: 'Il re di Cakin annuncia un viaggio verso il Continente Oscuro, una terra che nessuna mappa del mondo riporta.',

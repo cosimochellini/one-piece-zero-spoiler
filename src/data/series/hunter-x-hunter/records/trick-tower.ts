@@ -110,7 +110,7 @@ export const trickTower: HunterSaga = {
     {
       id: 'togari',
       kind: 'character',
-      source: 'anime',
+      source: 'episode',
       revealedAtEpisode: 10,
       revealedAtChapter: 19,
       name: { it: 'Togari', en: 'Togari' },
@@ -203,13 +203,13 @@ export const trickTower: HunterSaga = {
         en: 'He blames Hisoka for the scars he received at the previous exam. He attacks with four curved knives, but Hisoka catches two and kills him with his own weapons.',
       },
       status: [
-        { episode: 10, chapter: 19, source: 'anime', value: 'deceased' },
+        { episode: 10, chapter: 19, source: 'episode', value: 'deceased' },
       ],
       affiliation: [
         {
           episode: 10,
           chapter: 19,
-          source: 'anime',
+          source: 'episode',
           value: { it: 'Associazione Hunter', en: 'Hunter Association' },
         },
       ],

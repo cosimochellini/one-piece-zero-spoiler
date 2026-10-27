@@ -115,8 +115,8 @@ describe.each(LOCALES)('complete editorial selections in %s', (locale) => {
     const sources = relationshipArchive({
       snapshots: [
         { episode: 5, chapter: 7, value: [TARGET, OTHER] },
-        { episode: 6, chapter: 8, source: 'anime', value: [OTHER] },
-        { episode: 7, chapter: 9, source: 'manga', value: [TARGET] },
+        { episode: 6, chapter: 8, source: 'episode', value: [OTHER] },
+        { episode: 7, chapter: 9, source: 'chapter', value: [TARGET] },
       ],
     })
 

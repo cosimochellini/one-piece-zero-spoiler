@@ -42,8 +42,8 @@ describe('relationship provenance', () => {
     ({ relationships }) => {
       // A one-source entry's other number only orders it: nothing to cite.
       const pages = relationships.flatMap(({ episode, chapter, source }) => [
-        ...(source === 'manga' ? [] : [`Episode ${String(episode)}`]),
-        ...(source === 'anime' ? [] : [`Chapter ${String(chapter)}`]),
+        ...(source === 'chapter' ? [] : [`Episode ${String(episode)}`]),
+        ...(source === 'episode' ? [] : [`Chapter ${String(chapter)}`]),
       ])
 
       expect(pages.filter((page) => !titles.has(page))).toStrictEqual([])

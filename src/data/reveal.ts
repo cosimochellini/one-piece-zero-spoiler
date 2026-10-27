@@ -58,15 +58,16 @@ function isRevealed(
 }
 
 /**
- * The source a bookmark counts in: the manga for a chapter, the anime for an
- * episode or a season. `null` for no bookmark, which counts in neither.
+ * The source a bookmark counts in: chapters for a chapter bookmark, episodes
+ * for an episode or a season one. `null` for no bookmark, which counts in
+ * neither.
  */
 export function sourceOf(bookmark: Bookmark): null | Source {
   if (bookmark === null) {
     return null
   }
 
-  return bookmark.mode === 'chapter' ? 'manga' : 'anime'
+  return bookmark.mode === 'chapter' ? 'chapter' : 'episode'
 }
 
 /** Whether a reader of this source, or of none, has this record at all. */

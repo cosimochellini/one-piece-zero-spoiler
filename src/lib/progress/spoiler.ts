@@ -23,10 +23,10 @@ export interface Gated {
 }
 
 /**
- * Where a reader counts from: the anime, for an episode or a season
- * bookmark, or the manga, for a chapter one.
+ * The unit a reader counts in, and so the source they follow: `episode` for
+ * an episode or a season bookmark, `chapter` for a chapter one.
  */
-export type Source = 'anime' | 'manga'
+export type Source = 'chapter' | 'episode'
 
 /**
  * A record's threshold in the unit the reader counts in: the chapter for a

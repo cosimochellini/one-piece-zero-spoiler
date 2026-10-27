@@ -134,21 +134,21 @@ function revealOf(id: string): Gated {
  * alone (`Entity.source`).
  */
 export function openedBy(namings: Gated[]): Gated {
-  const anime = namings.filter((gate) => toldIn(gate, 'anime'))
-  const manga = namings.filter((gate) => toldIn(gate, 'manga'))
-  const source = aloneIn({ anime, manga })
+  const episode = namings.filter((gate) => toldIn(gate, 'episode'))
+  const chapter = namings.filter((gate) => toldIn(gate, 'chapter'))
+  const source = aloneIn({ episode, chapter })
 
   // A source with no naming takes every naming's, which only orders the
   // fruit: its reader never has it (`source`).
-  const inAnime = anime.length === 0 ? namings : anime
-  const inManga = manga.length === 0 ? namings : manga
+  const fromEpisodes = episode.length === 0 ? namings : episode
+  const fromChapters = chapter.length === 0 ? namings : chapter
 
   return {
     revealedAtEpisode: Math.min(
-      ...inAnime.map((gate) => gate.revealedAtEpisode),
+      ...fromEpisodes.map((gate) => gate.revealedAtEpisode),
     ),
     revealedAtChapter: Math.min(
-      ...inManga.map((gate) => gate.revealedAtChapter),
+      ...fromChapters.map((gate) => gate.revealedAtChapter),
     ),
     ...(source !== undefined && { source }),
   }
@@ -156,11 +156,11 @@ export function openedBy(namings: Gated[]): Gated {
 
 /** The one source that has namings when the other has none, if any. */
 function aloneIn(told: Record<Source, Gated[]>): Source | undefined {
-  if (told.anime.length === 0) {
-    return told.manga.length === 0 ? undefined : 'manga'
+  if (told.episode.length === 0) {
+    return told.chapter.length === 0 ? undefined : 'chapter'
   }
 
-  return told.manga.length === 0 ? 'anime' : undefined
+  return told.chapter.length === 0 ? 'episode' : undefined
 }
 
 /**

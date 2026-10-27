@@ -46,30 +46,30 @@ describe('relationship facts independent of endpoint visibility', () => {
     expect(links(archive, ch(9))).toHaveLength(1)
   })
 
-  it.each(['anime', 'manga'] as const)(
+  it.each(['episode', 'chapter'] as const)(
     'source-filters a %s relationship before projection',
     (source) => {
       const archive = relationshipArchive({ source })
 
-      expect(links(archive, source === 'anime' ? ep(10) : ch(10))).toHaveLength(
-        1,
-      )
       expect(
-        links(archive, source === 'anime' ? ch(10) : ep(10)),
+        links(archive, source === 'episode' ? ep(10) : ch(10)),
+      ).toHaveLength(1)
+      expect(
+        links(archive, source === 'episode' ? ch(10) : ep(10)),
       ).toStrictEqual([])
     },
   )
 
-  it.each(['anime', 'manga'] as const)(
+  it.each(['episode', 'chapter'] as const)(
     'cannot reintroduce a person of the %s alone',
     (source) => {
       const archive = relationshipArchive({ targetSource: source })
 
-      expect(links(archive, source === 'anime' ? ep(10) : ch(10))).toHaveLength(
-        1,
-      )
       expect(
-        links(archive, source === 'anime' ? ch(10) : ep(10)),
+        links(archive, source === 'episode' ? ep(10) : ch(10)),
+      ).toHaveLength(1)
+      expect(
+        links(archive, source === 'episode' ? ch(10) : ep(10)),
       ).toStrictEqual([])
     },
   )
