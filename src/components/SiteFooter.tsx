@@ -5,6 +5,8 @@ import type { ReactElement } from 'react'
 import { useLocale, useT } from '~/i18n/LocaleContext'
 import { color, font, leading, rule, space, text } from '~/styles/tokens.stylex'
 
+export const REPOSITORY = 'https://github.com/cosimochellini/zero-spoiler'
+
 /**
  * The footer (Hallmark Ft4, dense colophon).
  *
@@ -41,6 +43,16 @@ export function SiteFooter({
           {t('legal.title')}
         </Link>
       </p>
+      <p {...stylex.props(styles.colophon)}>
+        {t('footer.openSource')}{' '}
+        <a
+          href={REPOSITORY}
+          {...stylex.props(styles.link, styles.whole)}
+        >
+          {t('footer.star')}
+        </a>
+        .
+      </p>
     </footer>
   )
 }
@@ -73,5 +85,7 @@ const styles = stylex.create({
     textDecorationLine: 'underline',
     textUnderlineOffset: '3px',
   },
+  // A link that wraps reads as two links.
+  whole: { whiteSpace: 'nowrap' },
   lead: { color: color.ink2, fontWeight: 700 },
 })

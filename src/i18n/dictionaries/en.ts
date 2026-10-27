@@ -255,6 +255,11 @@ export const enDictionary = {
     'All the drawings are made for this site; no official artwork is used. Your bookmarks are saved in cookies on this device, one for each series.',
   'footer.sharedUnofficial':
     'Unofficial fan project, not endorsed by the rights holders of the series.',
+  'footer.openSource': 'Zero Spoiler is open source: if you find it useful,',
+  'footer.star': 'star it on GitHub',
+
+  'report.question': 'Something wrong on this page?',
+  'report.link': 'Report it on GitHub',
 
   'characters.title': 'Characters',
   'characters.count':
