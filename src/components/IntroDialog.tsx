@@ -5,7 +5,6 @@ import {
   type ReactNode,
   useEffect,
   useId,
-  useState,
   useSyncExternalStore,
 } from 'react'
 
@@ -32,7 +31,7 @@ const STEPS: TranslationKey[] = ['intro.step1', 'intro.step2', 'intro.step3']
  * The intro for a reader who opens a series page with no bookmark, most often
  * from a search result (#864). Not on the series landing, which is an intro of
  * its own; not during a trial; not to a crawler, whose bookmark is the
- * ceiling; not to a reader who drops a bookmark mid-session; and once per
+ * ceiling; once a bookmark has been seen in the session; and once per
  * browser session.
  *
  * The server never renders it: the flag lives in `sessionStorage`, so the
@@ -40,18 +39,19 @@ const STEPS: TranslationKey[] = ['intro.step1', 'intro.step2', 'intro.step3']
  */
 export function FirstVisitIntro(): ReactNode {
   const { bookmark } = useBookmark()
-  // Once a bookmark has been seen, never again: a reader who forgets their
-  // bookmark or leaves a trial knows the site already. A trial always has a
-  // point, so a null bookmark here also means no trial. Set during render,
-  // not in an effect, so the dialog never flashes open first.
-  const [seenBookmark, setSeenBookmark] = useState(bookmark !== null)
-  if (bookmark !== null && !seenBookmark) {
-    setSeenBookmark(true)
-  }
+  // Once a bookmark has been seen, never again in this session: a reader
+  // who forgets their bookmark or leaves a trial knows the site already, on
+  // this page and after a reload. A trial always has a point, so a null
+  // bookmark here also means no trial.
+  useEffect(() => {
+    if (bookmark !== null && introOwed()) {
+      dismissIntro()
+    }
+  }, [bookmark])
   const onLanding = useMatch({ from: '/$series/$locale/', shouldThrow: false })
   const owed = useSyncExternalStore(subscribeIntro, introOwed, () => false)
 
-  if (seenBookmark || bookmark !== null || onLanding !== undefined || !owed) {
+  if (bookmark !== null || onLanding !== undefined || !owed) {
     return null
   }
 
@@ -104,7 +104,10 @@ function IntroDialog(): ReactElement {
           titleId={titleId}
         />
         <div {...stylex.props(styles.form)}>
-          <FormSlot onDone={close} />
+          <FormSlot
+            keepFocus
+            onDone={close}
+          />
           <Button
             onClick={() => {
               requestLeadPeek()
@@ -163,7 +166,6 @@ function Explainer({
         </p>
       )}
       <ol
-        aria-label={t('intro.steps')}
         id={stepsId}
         {...stylex.props(styles.steps)}
       >

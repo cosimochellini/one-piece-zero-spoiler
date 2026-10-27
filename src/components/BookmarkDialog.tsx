@@ -62,7 +62,14 @@ type FormStatus = 'failed' | 'loading' | 'ready'
  * The form, or its skeleton while its code is on the way, or a way to ask
  * again when the fetch failed.
  */
-export function FormSlot({ onDone }: { onDone: () => void }): ReactElement {
+export function FormSlot({
+  onDone,
+  keepFocus = false,
+}: {
+  /** See `BookmarkFormProps['keepFocus']`. */
+  keepFocus?: boolean
+  onDone: () => void
+}): ReactElement {
   const t = useT()
   const [status, setStatus] = useState<FormStatus>(() =>
     formHasLanded() ? 'ready' : 'loading',
@@ -103,7 +110,10 @@ export function FormSlot({ onDone }: { onDone: () => void }): ReactElement {
 
   return (
     <Suspense fallback={<BookmarkSkeleton />}>
-      <LazyBookmarkForm onDone={onDone} />
+      <LazyBookmarkForm
+        keepFocus={keepFocus}
+        onDone={onDone}
+      />
     </Suspense>
   )
 }

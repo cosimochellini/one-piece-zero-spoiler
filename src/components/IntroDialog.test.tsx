@@ -1,5 +1,6 @@
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { useState } from 'react'
 import { afterEach, describe, expect, it } from 'vitest'
 
 import { useBookmark } from '~/lib/progress/BookmarkContext'
@@ -12,6 +13,7 @@ import {
   settle,
 } from '~/test/providers'
 
+import { BookmarkForm } from './BookmarkForm'
 import { FirstVisitIntro } from './IntroDialog'
 import { SpoilerVeil } from './SpoilerVeil'
 
@@ -87,6 +89,21 @@ describe('FirstVisitIntro', () => {
     renderWithProviders(<FirstVisitIntro />, {
       path: '/one-piece/en/characters',
       bookmark: ep(100),
+    })
+
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+  })
+
+  it('stays closed for the session once a bookmark has been seen, after a reload too', () => {
+    const { unmount } = renderWithProviders(<FirstVisitIntro />, {
+      path: '/one-piece/en/characters',
+      bookmark: ep(100),
+    })
+    unmount()
+
+    // The bookmark was forgotten, and the page is read again without it.
+    renderWithProviders(<FirstVisitIntro />, {
+      path: '/one-piece/en/characters',
     })
 
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
@@ -178,4 +195,50 @@ describe('FirstVisitIntro', () => {
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
     expect(lead.asked).toStrictEqual([])
   })
+})
+
+/** Nothing to close: the harness dialog stays open. */
+function noop(): void {
+  // The harness has no way out to take.
+}
+
+/** A dialog whose form arrives late, after the focus has moved on. */
+function LateForm({ keepFocus }: { keepFocus: boolean }): React.ReactElement {
+  const [shown, setShown] = useState(false)
+
+  return (
+    <dialog open>
+      <button
+        onClick={() => {
+          setShown(true)
+        }}
+        type="button"
+      >
+        Elsewhere
+      </button>
+      {shown && (
+        <BookmarkForm
+          keepFocus={keepFocus}
+          onDone={noop}
+        />
+      )}
+    </dialog>
+  )
+}
+
+describe('the form arriving in the intro', () => {
+  it.each([
+    { keepFocus: true, focused: 'Elsewhere' },
+    { keepFocus: false, focused: 'Episode' },
+  ])(
+    'leaves the focus where the reader put it only when told to (keepFocus $keepFocus)',
+    async ({ keepFocus, focused }) => {
+      const user = userEvent.setup()
+      renderWithProviders(<LateForm keepFocus={keepFocus} />)
+
+      await user.click(screen.getByRole('button', { name: 'Elsewhere' }))
+
+      expect(document.activeElement).toHaveAccessibleName(focused)
+    },
+  )
 })

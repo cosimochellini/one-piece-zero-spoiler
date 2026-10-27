@@ -5,7 +5,7 @@ import { afterEach, describe, expect, it } from 'vitest'
 
 import { FirstVisitIntro } from '~/components/IntroDialog'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
-import type { CharacterView, FruitView } from '~/lib/view/records'
+import type { CharacterView, FruitView, ShipView } from '~/lib/view/records'
 import {
   at,
   character,
@@ -14,12 +14,15 @@ import {
   facts,
   fruit,
   fruitDetail,
+  peekPending,
+  ship,
   spyPeek,
 } from '~/test/fixtures'
 import { renderWithProviders, settle } from '~/test/providers'
 
 import { DossierDiptych } from './characters/-$id.dossier'
 import { StageBand } from './fruits/-$id.stage'
+import { EntryDiptych, ShipBody } from './places/-$id.entry'
 
 /** A neighbour on the same page: a covered record the intro must not lift. */
 function Neighbour({
@@ -98,6 +101,36 @@ describe('the intro on a record page', () => {
         <FirstVisitIntro />
       </>,
       { path: '/one-piece/en/fruits/gum-gum' },
+    )
+
+    await user.click(screen.getByRole('button', { name: 'Show anyway' }))
+    await settle()
+
+    expect(lead.asked).toStrictEqual(['lead', 'lead'])
+    expect(neighbour.asked).toStrictEqual([])
+  })
+
+  it('lifts a ship or place entry, plate and words, and not the neighbour', async () => {
+    const user = userEvent.setup()
+    const lead = spyPeek<ShipView>(ship({ name: 'Going Merry', ...at(636) }))
+    const neighbour = spyPeek(character({ name: 'Next door', ...at(639) }))
+    renderWithProviders(
+      <>
+        <EntryDiptych
+          Body={ShipBody}
+          kind="ship"
+          peek={lead.peek}
+          peekRecord={peekPending()}
+          slot={coveredSlot<ShipView>({
+            handle: 'lead',
+            kind: 'ship',
+            ...at(636),
+          })}
+        />
+        <Neighbour peek={neighbour.peek} />
+        <FirstVisitIntro />
+      </>,
+      { path: '/one-piece/en/places/going-merry' },
     )
 
     await user.click(screen.getByRole('button', { name: 'Show anyway' }))

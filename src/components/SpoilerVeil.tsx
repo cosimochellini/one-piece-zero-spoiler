@@ -3,7 +3,7 @@ import type { ReactElement, ReactNode } from 'react'
 
 import {
   type PeekState,
-  usePeek,
+  useVeilPeek,
   type VeilSlot,
 } from '~/components/useVeilPeek'
 import { useT } from '~/i18n/LocaleContext'
@@ -113,7 +113,7 @@ export function SpoilerVeil<T extends Gated>({
   children,
 }: SpoilerVeilProps<T>): ReactElement {
   const threshold = useThreshold()
-  const { shown, state, uncover } = usePeek(slot, peek, lead)
+  const { shown, state, uncover } = useVeilPeek(slot, peek, lead)
   const visible = shown !== null
 
   return (

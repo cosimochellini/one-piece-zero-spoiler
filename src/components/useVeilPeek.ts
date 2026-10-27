@@ -27,7 +27,7 @@ export interface Peek<T> {
  * What the curtain shows and how it asks for the rest: an open slot's record,
  * or the one a peek brought back.
  */
-export function usePeek<T extends Gated>(
+export function useVeilPeek<T extends Gated>(
   slot: VeilSlot<T>,
   peek: (handle: string) => Promise<T>,
   lead: boolean | undefined,
