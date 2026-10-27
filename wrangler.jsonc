@@ -12,7 +12,13 @@
   "workers_dev": false,
   "preview_urls": false,
   "routes": [{ "pattern": "zerospoiler.app", "custom_domain": true }],
-  // No request logs are stored. The privacy notice says so; turning this on
-  // means rewriting it (src/i18n/dictionaries, `privacy.logs`).
-  "observability": { "enabled": false },
+  // Workers Logs keeps invocation and console logs for 3 days on Workers Free.
+  // The privacy notice says so; changing this means rewriting it
+  // (src/i18n/dictionaries, `privacy.logs`).
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1,
+    "logs": { "enabled": true, "invocation_logs": true, "persist": true },
+    "traces": { "enabled": false },
+  },
 }
