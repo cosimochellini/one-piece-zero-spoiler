@@ -127,6 +127,18 @@ export const enDictionary = {
   'veil.peekFailed': 'Could not load it. Try again.',
   'veil.placeholder': 'Spoiler',
 
+  'intro.context.episode':
+    'This entry first appears in episode {threshold}. Your bookmark is empty, so the page is under fog.',
+  'intro.context.season':
+    'This entry first appears in {threshold}. Your bookmark is empty, so the page is under fog.',
+  'intro.context.chapter':
+    'This entry first appears in chapter {threshold}. Your bookmark is empty, so the page is under fog.',
+  'intro.steps': 'How it works',
+  'intro.step1': 'Set your bookmark to the last episode or chapter you saw.',
+  'intro.step2': 'Entries up to that point are open.',
+  'intro.step3':
+    'Everything after it stays under fog, on every page of the wiki.',
+
   'chart.opensAt.episode': 'Episode {threshold}',
   'chart.opensAt.season': '{threshold}',
   'chart.opensAt.chapter': 'Chapter {threshold}',

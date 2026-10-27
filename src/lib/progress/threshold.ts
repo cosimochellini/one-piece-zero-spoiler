@@ -22,6 +22,7 @@ export type ThresholdSentence<S extends SeriesSlug = never> =
   | 'characters.sectionOpensAt'
   | 'chart.opensAt'
   | 'home.storyAt'
+  | 'intro.context'
   | 'places.firstSeen'
   | 'places.foggedDescription'
   | 'veil.locked'

@@ -1,13 +1,5 @@
 import * as stylex from '@stylexjs/stylex'
-import {
-  type ReactElement,
-  type RefObject,
-  Suspense,
-  useEffect,
-  useId,
-  useRef,
-  useState,
-} from 'react'
+import { type ReactElement, Suspense, useEffect, useId, useState } from 'react'
 
 import { styles } from '~/components/BookmarkDialog.styles'
 import {
@@ -17,6 +9,7 @@ import {
 } from '~/components/bookmarkFormLoader'
 import { BookmarkSkeleton, LoadFailed } from '~/components/BookmarkSkeleton'
 import { Button } from '~/components/ui/Button'
+import { useModal } from '~/components/useModal'
 import { useT } from '~/i18n/LocaleContext'
 
 /** The one thing the dialog owes whoever opened it. */
@@ -63,61 +56,13 @@ export function BookmarkDialog({ onClose }: BookmarkDialogProps): ReactElement {
   )
 }
 
-interface Modal {
-  close: () => void
-  dialogRef: RefObject<HTMLDialogElement | null>
-}
-
-/**
- * The whole native lifecycle of the dialog in one place: it is opened modally
- * for as long as the component is mounted, and a click that lands on the
- * dialog element itself rather than on the panel inside it closes it, which
- * is what a click on the backdrop is.
- *
- * That listener is native rather than a React `onClick` on purpose. The
- * backdrop is not an element of its own and a `<dialog>` is not a control, so
- * a handler in the JSX would be a mouse listener on a non-interactive element
- * — and it would be owed a keyboard equivalent, which Escape already is and
- * which the browser already handles.
- *
- * The browser focuses the first control on opening, which is the first unit
- * whichever one is chosen; the focus is moved to the chosen one.
- */
-function useModal(): Modal {
-  const dialogRef = useRef<HTMLDialogElement>(null)
-
-  useEffect(() => {
-    const dialog = dialogRef.current
-    const closeOnBackdrop = (event: MouseEvent): void => {
-      if (event.target === dialog) {
-        dialog?.close()
-      }
-    }
-
-    dialog?.showModal()
-    dialog?.querySelector<HTMLInputElement>('input:checked')?.focus()
-    dialog?.addEventListener('click', closeOnBackdrop)
-
-    return () => {
-      dialog?.removeEventListener('click', closeOnBackdrop)
-    }
-  }, [])
-
-  return {
-    dialogRef,
-    close: () => {
-      dialogRef.current?.close()
-    },
-  }
-}
-
 type FormStatus = 'failed' | 'loading' | 'ready'
 
 /**
  * The form, or its skeleton while its code is on the way, or a way to ask
  * again when the fetch failed.
  */
-function FormSlot({ onDone }: { onDone: () => void }): ReactElement {
+export function FormSlot({ onDone }: { onDone: () => void }): ReactElement {
   const t = useT()
   const [status, setStatus] = useState<FormStatus>(() =>
     formHasLanded() ? 'ready' : 'loading',

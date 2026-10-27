@@ -1,6 +1,7 @@
 import { createFileRoute, notFound, Outlet } from '@tanstack/react-router'
 import { type ReactElement, useCallback, useEffect } from 'react'
 
+import { FirstVisitIntro } from '~/components/IntroDialog'
 import { isLocale, type Locale } from '~/i18n/locales'
 import { translatorFor } from '~/i18n/translate'
 import { readPlain } from '~/lib/plain'
@@ -75,6 +76,7 @@ function SeriesLayout(): ReactElement {
           trial
         >
           <Outlet />
+          <FirstVisitIntro />
         </LocaleShell>
       </DrawingsContext>
     </SagaTableContext>

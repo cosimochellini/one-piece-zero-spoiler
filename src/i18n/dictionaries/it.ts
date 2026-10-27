@@ -117,6 +117,18 @@ export const itDictionary: Dictionary = {
   'veil.peekFailed': 'Caricamento non riuscito. Riprova.',
   'veil.placeholder': 'Spoiler',
 
+  'intro.context.episode':
+    'Questa voce compare per la prima volta nell’episodio {threshold}. Il segnalibro è vuoto, quindi la pagina è nella nebbia.',
+  'intro.context.season':
+    'Questa voce compare per la prima volta in {threshold}. Il segnalibro è vuoto, quindi la pagina è nella nebbia.',
+  'intro.context.chapter':
+    'Questa voce compare per la prima volta nel capitolo {threshold}. Il segnalibro è vuoto, quindi la pagina è nella nebbia.',
+  'intro.steps': 'Come funziona',
+  'intro.step1':
+    'Imposta il segnalibro all’ultimo episodio o capitolo che hai visto.',
+  'intro.step2': 'Le voci fino a quel punto sono visibili.',
+  'intro.step3': 'Quelle dopo restano nella nebbia, su ogni pagina della wiki.',
+
   'chart.opensAt.episode': 'Episodio {threshold}',
   'chart.opensAt.season': '{threshold}',
   'chart.opensAt.chapter': 'Capitolo {threshold}',
