@@ -70,6 +70,11 @@ export function BookmarkForm({ onDone }: BookmarkFormProps): ReactElement {
  * given the focus to the close button, the only control there was. It moves
  * to the chosen unit, where it would have started had the form been here.
  * Arriving with the dialog, the form leaves the focus to the dialog.
+ *
+ * A dialog marked `data-keep-focus` holds the focus itself, as the intro does
+ * (#864): while the focus is anywhere inside it, a reader may have tabbed on
+ * while the form was on its way, so it stays put. Only focus that fell out of
+ * the dialog, as after a retry whose button went away, is brought back.
  */
 function useArrivalFocus(): React.RefObject<HTMLFormElement | null> {
   const formRef = useRef<HTMLFormElement>(null)
@@ -80,12 +85,21 @@ function useArrivalFocus(): React.RefObject<HTMLFormElement | null> {
     if (
       dialog?.open === true
       && form?.contains(document.activeElement) === false
+      && !keepsFocus(dialog)
     ) {
       form.querySelector<HTMLInputElement>('input:checked')?.focus()
     }
   }, [])
 
   return formRef
+}
+
+/** A dialog that holds the focus itself, with the focus still inside it. */
+function keepsFocus(dialog: HTMLDialogElement): boolean {
+  return (
+    dialog.dataset['keepFocus'] !== undefined
+    && dialog.contains(document.activeElement)
+  )
 }
 
 /**

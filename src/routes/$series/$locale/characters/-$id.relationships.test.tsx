@@ -3,6 +3,7 @@ import { type ReactElement, useState } from 'react'
 import { describe, expect, it } from 'vitest'
 
 import type { RelationshipView } from '~/lib/view/relationships'
+import { opCharacterPage as characterPage } from '~/test/archive'
 import { ep, renderWithProviders } from '~/test/providers'
 
 import { RelationshipBand } from './-$id.relationships'
@@ -189,3 +190,92 @@ describe('the character relationship band', () => {
     expect(container).toBeEmptyDOMElement()
   })
 })
+
+describe.each(['en', 'it'] as const)(
+  'Dressrosa authored cards in %s',
+  (locale) => {
+    it('renders the reached family reveal and keeps it out of the earlier DOM', () => {
+      const before = characterPage('rebecca', ep(674), locale)
+      const family = characterPage('rebecca', ep(675), locale)
+
+      expect(before).toBeDefined()
+      expect(family).toBeDefined()
+
+      const { unmount } = renderWithProviders(
+        <RelationshipBand relationships={before?.detail.relationships ?? []} />,
+        { locale, bookmark: ep(674) },
+      )
+
+      expect(
+        screen.queryByRole('link', { name: 'Kyros' }),
+      ).not.toBeInTheDocument()
+
+      unmount()
+      renderWithProviders(
+        <RelationshipBand relationships={family?.detail.relationships ?? []} />,
+        { locale, bookmark: ep(675) },
+      )
+
+      expect(screen.getByRole('link', { name: 'Kyros' })).toHaveAttribute(
+        'href',
+        `/one-piece/${locale}/characters/kyros`,
+      )
+      expect(
+        screen.getAllByText(locale === 'en' ? 'Father' : 'Padre')[0],
+      ).toBeVisible()
+    })
+  },
+)
+
+describe.each(['en', 'it'] as const)(
+  'Alabasta authored cards in %s',
+  (locale) => {
+    it('withholds the future pair and renders its reached dated history', () => {
+      const earlier = characterPage('laboon', ep(352), locale)
+      const reached = characterPage('laboon', ep(353), locale)
+
+      expect(earlier).toBeDefined()
+      expect(reached).toBeDefined()
+
+      const { unmount } = renderWithProviders(
+        <RelationshipBand
+          relationships={earlier?.detail.relationships ?? []}
+        />,
+        { locale, bookmark: ep(352) },
+      )
+
+      expect(
+        screen.queryByRole('link', { name: 'Brook' }),
+      ).not.toBeInTheDocument()
+
+      unmount()
+      renderWithProviders(
+        <RelationshipBand
+          relationships={reached?.detail.relationships ?? []}
+        />,
+        { locale, bookmark: ep(353) },
+      )
+
+      expect(screen.getByRole('link', { name: 'Brook' })).toHaveAttribute(
+        'href',
+        `/one-piece/${locale}/characters/brook`,
+      )
+
+      fireEvent.click(
+        screen.getByLabelText(
+          locale === 'en' ?
+            'Relationship history with Brook'
+          : 'Storia del legame con Brook',
+        ),
+      )
+
+      expect(
+        screen.getByText(
+          locale === 'en' ?
+            'Available from episode 353'
+          : 'Visibile dall’episodio 353',
+        ),
+      ).toBeVisible()
+    })
+  },
+)

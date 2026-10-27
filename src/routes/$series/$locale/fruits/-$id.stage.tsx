@@ -50,6 +50,7 @@ export function StageBand({
       <div {...stylex.props(styles.drawing)}>
         <SpoilerVeil
           density="block"
+          lead
           peek={peek}
           placeholder={<FruitFrame />}
           slot={detail.slot}
@@ -103,6 +104,7 @@ function StageText({
       </p>
 
       <SpoilerVeil
+        lead
         peek={peek}
         placeholder={
           <>

@@ -22,13 +22,13 @@ describe('SiteFooter', () => {
       legal: 'Note legali',
     },
   ] as const)(
-    'closes with a colophon and one legal link in $locale',
+    'closes with a colophon, the legal link and the repository in $locale',
     ({ locale, lead, unofficial, legal }) => {
       renderWithProviders(<SiteFooter />, { locale })
 
       expect(screen.getByText(lead)).toBeInTheDocument()
       expect(screen.getByRole('contentinfo')).toHaveTextContent(unofficial)
-      expect(screen.getAllByRole('link')).toHaveLength(1)
+      expect(screen.getAllByRole('link')).toHaveLength(2)
       expect(screen.getByRole('link', { name: legal })).toHaveAttribute(
         'href',
         `/${locale}/legal`,

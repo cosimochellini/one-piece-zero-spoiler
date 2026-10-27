@@ -104,6 +104,7 @@ export function EntryDiptych<T extends Entry>(
   return (
     <section {...stylex.props(styles.diptych)}>
       <SpoilerVeil
+        lead
         peek={props.peek}
         // A bare plate under fog: the drawing and its colour stay out of the
         // served HTML along with the name.
@@ -152,6 +153,7 @@ function EntryColumn<T extends Entry>({
       </p>
 
       <SpoilerVeil
+        lead
         peek={peek}
         placeholder={
           <div {...stylex.props(styles.words)}>

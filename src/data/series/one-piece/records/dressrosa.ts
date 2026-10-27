@@ -1,6 +1,7 @@
 import type { CharacterDossier } from '~/data/types'
 
 import { dressrosaChronicles } from './dressrosa.chronicle'
+import { dressrosaRelationships } from './dressrosa.relationships'
 import type { OnePieceSaga } from './saga'
 
 /**
@@ -919,6 +920,7 @@ export const dressrosa: OnePieceSaga = {
 
   dossiers: {
     'koala': {
+      relationships: dressrosaRelationships.koala,
       role: {
         it: 'Bambina liberata dalla schiavitù',
         en: 'Child freed from slavery',
@@ -964,6 +966,7 @@ export const dressrosa: OnePieceSaga = {
     // holds fruit ids now. Naming one here would print a name the viewer has
     // not been given; the line comes back when the story gives it.
     'kinemon': {
+      relationships: dressrosaRelationships.kinemon,
       role: { it: 'Samurai di Wano', en: 'Samurai of Wano' },
       log: {
         it: 'È stato tagliato in tre, e la testa, il busto e le gambe finiscono in angoli diversi dell’isola. Non sopporta i pirati e glielo dice in faccia, poi si inginocchia per ringraziare chi gli riporta il busto. Con la spada taglia anche le fiamme, ed è venuto sull’isola per suo figlio, senza il quale non intende ripartire.',
@@ -989,6 +992,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'brownbeard': {
+      relationships: dressrosaRelationships.brownbeard,
       role: {
         it: 'Capo dei centauri di Punk Hazard',
         en: 'Boss of the Punk Hazard centaurs',
@@ -1023,6 +1027,7 @@ export const dressrosa: OnePieceSaga = {
       bounty: [{ episode: 584, value: 80_060_000 }],
     },
     'caesar-clown': {
+      relationships: dressrosaRelationships['caesar-clown'],
       role: { it: 'Scienziato di Punk Hazard', en: 'Scientist of Punk Hazard' },
       log: {
         it: 'I suoi uomini lo chiamano Maestro, e lui dà gli ordini dal laboratorio sotto forma di gas. Quando i marine della G-5 si fanno strada fino all’isola, fa nascondere le navi ormeggiate davanti e si rifiuta di farsi vedere. Smoker trova le lettere CC su una nave nascosta accanto al laboratorio e fa il suo nome: uno scienziato che un tempo lavorava con Vegapunk.',
@@ -1072,6 +1077,7 @@ export const dressrosa: OnePieceSaga = {
       bounty: [{ episode: 589, value: 300_000_000 }],
     },
     'monet': {
+      relationships: dressrosaRelationships.monet,
       role: { it: 'Assistente del laboratorio', en: 'Laboratory assistant' },
       log: {
         it: 'Torna in volo al laboratorio e fa rapporto al suo padrone: il drago che sorvegliava l’isola e i centauri sono stati battuti, e i pirati presi con la loro nave avevano dei compagni sul lato in fiamme, che arriveranno fra pochi minuti. Li ha riconosciuti: gli mostra il giornale con le foto dei Cappello di Paglia.',
@@ -1106,6 +1112,7 @@ export const dressrosa: OnePieceSaga = {
       devilFruit: [{ episode: 611, chapter: 685, value: ['snow-snow-fruit'] }],
     },
     'vergo': {
+      relationships: dressrosaRelationships.vergo,
       role: { it: 'Vecchia conoscenza di Law', en: 'Law’s old acquaintance' },
       log: {
         it: 'Arriva al laboratorio a bordo di una petroliera con un pezzo di cibo attaccato alla guancia, e Law lo riconosce subito. Lo mette a terra senza sforzo e pretende che lo chiami Vergo-san, non Vergo. Sa che Monet è stata mandata sull’isola per tenere d’occhio Caesar.',
@@ -1132,6 +1139,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'momonosuke': {
+      relationships: dressrosaRelationships.momonosuke,
       role: {
         it: 'Bambino trasformato in drago',
         en: 'Child turned into a dragon',
@@ -1171,6 +1179,7 @@ export const dressrosa: OnePieceSaga = {
       devilFruit: [{ episode: 611, value: ['artificial-dragon-dragon-fruit'] }],
     },
     'baby-5': {
+      relationships: dressrosaRelationships['baby-5'],
       role: { it: 'Sottoposta di Do Flamingo', en: 'Doflamingo’s subordinate' },
       log: {
         it: 'Piomba davanti a Do Flamingo con il braccio trasformato in un cannone e giura che questa volta non lo perdonerà. Le sparano, si rialza e lo attacca con un’ascia, e lui la schiva senza interrompere la telefonata. La chiama una testa calda e la manda sull’isola per i suoi affari.',
@@ -1198,6 +1207,7 @@ export const dressrosa: OnePieceSaga = {
       devilFruit: [{ episode: 620, chapter: 692, value: ['arms-arms-fruit'] }],
     },
     'buffalo': {
+      relationships: dressrosaRelationships.buffalo,
       role: {
         it: 'Combattente dei Pirati di Donquijote',
         en: 'Donquixote Pirates combatant',
@@ -1225,6 +1235,7 @@ export const dressrosa: OnePieceSaga = {
       devilFruit: [{ episode: 618, value: ['spin-spin-fruit'] }],
     },
     'rebecca': {
+      relationships: dressrosaRelationships.rebecca,
       role: { it: 'Gladiatrice del colosseo', en: 'Colosseum gladiator' },
       log: {
         it: 'Nel colosseo non ha mai perso un incontro, e altri due combattenti la prendono in giro dicendo che tutti aspettano di vederla battuta. Ringrazia il nuovo arrivato che ha messo al tappeto Spartan, un gladiatore che l’ha tormentata per anni, e gli racconta della statua di un campione che nel paese nessuno ricorda. Questo torneo sarà il suo ultimo, dice: vuole vincere il Frutto Foco Foco e uccidere Do Flamingo.',
@@ -1265,6 +1276,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'issho': {
+      relationships: dressrosaRelationships.issho,
       role: { it: 'Ammiraglio della Marina', en: 'Marine admiral' },
       log: {
         it: 'Al tavolo della roulette i croupier continuano a dire nero e lui continua a perdere, perché non può vedere la ruota. Quando i loro uomini gli si rivoltano contro chiede a un ragazzo di spostarsi, li schiaccia sotto un peso che lascia un buco nel pavimento, dice che certe brutture è meglio non vederle e si offre di pagare i danni. Più tardi un aiutante gli porge il mantello, e lui chiede navi e medici e vuole contare prima le persone da proteggere che i nemici.',
@@ -1282,6 +1294,7 @@ export const dressrosa: OnePieceSaga = {
       devilFruit: [{ episode: 634, value: ['press-press-fruit'] }],
     },
     'bartolomeo': {
+      relationships: dressrosaRelationships.bartolomeo,
       role: { it: 'Capitano pirata', en: 'Pirate captain' },
       log: {
         it: 'Nel colosseo un viceammiraglio sotto copertura mette fuori combattimento Gambia, uno dei suoi uomini, e Bartolomeo lo stende a sua volta. Quando entra nel ring per il blocco B, l’annunciatore racconta che ha infilzato dei pirati e ha diffuso il video, che ha attaccato dei civili innocenti e che è primo nella classifica dei pirati che la gente vorrebbe veder sparire. Lui alza le braccia e manda tutti all’inferno.',
@@ -1316,6 +1329,7 @@ export const dressrosa: OnePieceSaga = {
       bounty: [{ episode: 636, value: 150_000_000 }],
     },
     'riku-doldo-iii': {
+      relationships: dressrosaRelationships['riku-doldo-iii'],
       role: { it: 'Ex re di Dressrosa', en: 'Former king of Dressrosa' },
       log: {
         it: 'Regnava su un’isola tranquilla finché una notte il suo stesso esercito ha attaccato la sua gente e lui è stato costretto a lasciare il trono. Da allora in città nessuno pronuncia il suo nome senza sputare. Si iscrive al torneo del colosseo come un gladiatore qualunque, con la barba lunga e il nome di Ricky, e sugli spalti non lo riconosce nessuno.',
@@ -1355,6 +1369,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'trebol': {
+      relationships: dressrosaRelationships.trebol,
       role: DONQUIXOTE_MEMBER_ROLE,
       log: {
         it: 'Non si stacca mai dal fianco del suo capo e lo asseconda in tutto, con una risata che somiglia a un raschio. Il suo corpo produce un muco che invischia chiunque lo tocchi e che indurisce fino a diventare una gabbia. Agli altri della famiglia parla come un vecchio zio, e non è chiaro quanto di quella bonarietà sia recitato.',
@@ -1385,6 +1400,7 @@ export const dressrosa: OnePieceSaga = {
       devilFruit: [{ episode: 669, value: ['stick-stick-fruit'] }],
     },
     'cavendish': {
+      relationships: dressrosaRelationships.cavendish,
       role: {
         it: 'Pirata iscritto al torneo del colosseo',
         en: 'Pirate in the colosseum tournament',
@@ -1424,6 +1440,7 @@ export const dressrosa: OnePieceSaga = {
       bounty: [{ episode: 634, value: 280_000_000 }],
     },
     'sai': {
+      relationships: dressrosaRelationships.sai,
       role: {
         it: 'Giovane della famiglia Chinjao',
         en: 'Young man of the Chinjao family',
@@ -1463,6 +1480,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'don-chinjao': {
+      relationships: dressrosaRelationships['don-chinjao'],
       role: {
         it: 'Capo della famiglia Chinjao',
         en: 'Leader of the Chinjao family',
@@ -1510,6 +1528,7 @@ export const dressrosa: OnePieceSaga = {
       bounty: [{ episode: 645, value: 500_000_000 }],
     },
     'ideo': {
+      relationships: dressrosaRelationships.ideo,
       role: { it: 'Combattente del colosseo', en: 'Colosseum fighter' },
       log: {
         it: 'Gats lo nomina per primo fra i combattenti da tenere d’occhio nel blocco C: Cannone Distruttore, due volte campione del Torneo Centrale di Lotta del Nuovo Mondo.',
@@ -1544,6 +1563,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'blue-gilly': {
+      relationships: dressrosaRelationships['blue-gilly'],
       role: { it: 'Combattente del colosseo', en: 'Colosseum fighter' },
       log: {
         it: 'Ha gambe lunghe il doppio delle nostre e ha fatto dei calci una disciplina con un nome preciso. Nell’arena non usa mai le mani e si sposta a scatti, comparendo dove nessuno lo aspetta. Del premio in palio dice soltanto che gli serve, e non aggiunge altro.',
@@ -1583,6 +1603,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'elizabello-ii': {
+      relationships: dressrosaRelationships['elizabello-ii'],
       role: { it: 'Re di Prodence', en: 'King of Prodence' },
       log: {
         it: 'Regna su Prodence e scende nell’arena come un gladiatore qualunque, con la corona in testa. Il suo unico colpo richiede un’ora di preparazione e i suoi uomini gli fanno da scudo finché non è pronto. Quando finalmente parte, quel pugno butta giù un muro, e il pubblico del colosseo lo sa e conta i minuti.',
@@ -1617,6 +1638,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'hajrudin': {
+      relationships: dressrosaRelationships.hajrudin,
       role: { it: 'Mercenario gigante', en: 'Giant mercenary' },
       log: {
         it: 'Viene da Elbaf, il celebre paese dei giganti. Al Colosseo Corrida l’annunciatore lo presenta tra i combattenti del blocco C come il più temibile dei mercenari pirati.',
@@ -1665,6 +1687,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'bastille': {
+      relationships: dressrosaRelationships.bastille,
       role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
       log: {
         it: 'Aspetta fuori dal Colosseo Corrida con una folla di marine, pronto ad arrestare i criminali man mano che escono, ma centinaia di combattenti hanno perso nei blocchi A e B e nessuno è uscito. È furioso con il viceammiraglio Maynard, che si è infiltrato fra i combattenti di testa sua e da allora non si è più fatto sentire, e comincia a sospettare che dentro stia succedendo qualcosa.',
@@ -1687,6 +1710,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'maynard': {
+      relationships: dressrosaRelationships.maynard,
       role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
       log: {
         it: 'È un istruttore della Marina noto per aver messo in riga generazioni di reclute, e ha la fama di non perdere mai di vista una preda. Si mescola ai gladiatori e studia i favoriti del torneo uno per uno. Quello che vede nell’arena lo preoccupa più di quanto si aspettasse, e non riesce a farlo sapere a nessuno.',
@@ -1714,6 +1738,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'hack': {
+      relationships: dressrosaRelationships.hack,
       role: {
         it: 'Maestro di karate degli uomini-pesce',
         en: 'Fish-man karate master',
@@ -1746,6 +1771,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'viola': {
+      relationships: dressrosaRelationships.viola,
       role: { it: 'Ballerina e informatrice', en: 'Dancer and informant' },
       log: {
         it: 'Balla per la famiglia che comanda l’isola e riferisce tutto quello che i suoi occhi trovano. Con lo sguardo entra anche nei pensieri di chi ha davanti e ne legge le intenzioni. Obbedisce senza discutere, ma c’è qualcosa nel modo in cui parla del re che non somiglia alla fedeltà.',
@@ -1779,6 +1805,7 @@ export const dressrosa: OnePieceSaga = {
       devilFruit: [{ episode: 640, value: ['glare-glare-fruit'] }],
     },
     'sugar': {
+      relationships: dressrosaRelationships.sugar,
       role: DONQUIXOTE_MEMBER_ROLE,
       log: {
         it: 'Siede accanto a Do Flamingo fuori dal palazzo e mangia acini d’uva dalle dita mentre Baby 5 lo attacca. Quando lui lascia il palazzo, va a cercarlo e dice a Lao G che la sua stanza è vuota e la finestra spalancata.',
@@ -1808,6 +1835,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'diamante': {
+      relationships: dressrosaRelationships.diamante,
       role: DONQUIXOTE_MEMBER_ROLE,
       log: {
         it: 'Do Flamingo gli lascia in custodia il frutto del diavolo che è il premio del torneo del colosseo. Quando il torneo va in onda, l’annunciatore lo presenta per ultimo, dopo altri quattro membri della famiglia, come l’eroe del colosseo.',
@@ -1849,6 +1877,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'pica': {
+      relationships: dressrosaRelationships.pica,
       role: DONQUIXOTE_MEMBER_ROLE,
       log: {
         it: 'Siede a palazzo con Diamante e Trebol mentre Do Flamingo affida a Diamante il premio del colosseo. I seggi dei membri più vicini della famiglia sono segnati con i semi delle carte, e il suo è quello di picche. Resta nell’ombra e non dice niente.',
@@ -1876,6 +1905,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'senor-pink': {
+      relationships: dressrosaRelationships['senor-pink'],
       role: {
         it: 'Gangster della famiglia Donquijote',
         en: 'Gangster of the Donquixote family',
@@ -1906,6 +1936,7 @@ export const dressrosa: OnePieceSaga = {
       devilFruit: [{ episode: 667, chapter: 735, value: ['swim-swim-fruit'] }],
     },
     'dellinger': {
+      relationships: dressrosaRelationships.dellinger,
       role: DONQUIXOTE_MEMBER_ROLE,
       log: {
         it: 'Quando il colosseo apre il torneo, l’annunciatore lo presenta sullo schermo come uno dei quattro membri della famiglia Donquijote che affronteranno il vincitore di ogni blocco, dopo Senor Pink e prima di Lao G. Sullo schermo porta un berretto bianco con un corno per lato.',
@@ -1923,6 +1954,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'lao-g': {
+      relationships: dressrosaRelationships['lao-g'],
       role: DONQUIXOTE_MEMBER_ROLE,
       log: {
         it: 'A palazzo gioca a carte con altri della famiglia. Quando Do Flamingo non si trova, pensa alla stanza al quarto piano, poi dice che è uscito di nuovo da solo. Quando i giornali riportano che Do Flamingo ha lasciato la Flotta dei Sette, risponde che la famiglia farà ciò che decide il suo capo. Al colosseo lo schermo lo presenta tra i combattenti della famiglia nel torneo, dopo Dellinger e prima di Machvise.',
@@ -1940,6 +1972,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'machvise': {
+      relationships: dressrosaRelationships.machvise,
       role: DONQUIXOTE_MEMBER_ROLE,
       log: {
         it: 'È a palazzo alle spalle di Do Flamingo quando Baby 5 lo attacca, e le dice di calmarsi. Quando Do Flamingo annuncia di aver lasciato la Flotta dei Sette, dice che se la Marina viene ad attaccare vuole combattere anche lui. Al torneo del colosseo l’annunciatore lo presenta sullo schermo come uno dei quattro membri della famiglia che affronteranno il vincitore di ogni blocco.',
@@ -1967,6 +2000,7 @@ export const dressrosa: OnePieceSaga = {
       devilFruit: [{ episode: 682, chapter: 747, value: ['ton-ton-fruit'] }],
     },
     'jora': {
+      relationships: dressrosaRelationships.jora,
       role: DONQUIXOTE_MEMBER_ROLE,
       log: {
         it: 'Gioca a carte con Lao G a palazzo. Quando Trebol chiede per scherzo a Baby 5 di sposarlo e lei si domanda se lui abbia davvero bisogno di lei, lei e Lao G le dicono di lasciar perdere.',
@@ -1994,6 +2028,7 @@ export const dressrosa: OnePieceSaga = {
       devilFruit: [{ episode: 648, chapter: 718, value: ['art-art-fruit'] }],
     },
     'orlumbus': {
+      relationships: dressrosaRelationships.orlumbus,
       role: {
         it: 'Ammiraglio della Grande Flotta Yonta Maria',
         en: 'Yonta Maria Grand Fleet admiral',
@@ -2021,6 +2056,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'gladius': {
+      relationships: dressrosaRelationships.gladius,
       role: DONQUIXOTE_MEMBER_ROLE,
       log: {
         it: 'Porta un lungo cappotto nero con le borchie dorate, gli occhialoni e una maschera bianca sulla metà inferiore del viso. Quando Baby 5 attacca Do Flamingo fuori dal palazzo, le spara per calmarla.',
@@ -2051,6 +2087,7 @@ export const dressrosa: OnePieceSaga = {
       devilFruit: [{ episode: 673, chapter: 740, value: ['pop-pop-fruit'] }],
     },
     'leo': {
+      relationships: dressrosaRelationships.leo,
       role: {
         it: 'Voce nascosta di Green Bit',
         en: 'Hidden voice of Green Bit',
@@ -2099,6 +2136,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'kyros': {
+      relationships: dressrosaRelationships.kyros,
       role: {
         it: 'Soldatino di legno di Dressrosa',
         en: 'Wooden soldier of Dressrosa',
@@ -2208,6 +2246,7 @@ export const dressrosa: OnePieceSaga = {
       devilFruit: [{ episode: 714, chapter: 774, value: ['heal-heal-fruit'] }],
     },
     'kanjuro': {
+      relationships: dressrosaRelationships.kanjuro,
       role: { it: 'Samurai di Wano', en: 'Samurai of Wano' },
       log: {
         it: 'È il compagno che i soldati di Dressrosa hanno catturato mentre copriva la fuga di Kin’emon. Kin’emon lo ritrova nella discarica sotto la città, nascosto dentro un muro, dove si è sfamato con i cavoli che disegna e fa prendere vita. Porta sulle spalle un pennello grande quanto un remo. Per uscire disegna un uccello sul muro e lo fa prendere vita, ma è disegnato così male che sembra a malapena in grado di volare.',
@@ -2261,6 +2300,7 @@ export const dressrosa: OnePieceSaga = {
       devilFruit: [{ episode: 985, value: ['brush-brush-fruit'] }],
     },
     'donquixote-rosinante': {
+      relationships: dressrosaRelationships['donquixote-rosinante'],
       role: {
         it: 'Corazon dei Pirati di Donquijote',
         en: 'Corazon of the Donquixote Pirates',
@@ -2292,6 +2332,7 @@ export const dressrosa: OnePieceSaga = {
       devilFruit: [{ episode: 704, value: ['calm-calm-fruit'] }],
     },
     'kaido': {
+      relationships: dressrosaRelationships.kaido,
       chronicle: dressrosaChronicles.kaido,
       role: {
         it: 'Imperatore del Nuovo Mondo',
@@ -2335,6 +2376,7 @@ export const dressrosa: OnePieceSaga = {
       bounty: [{ episode: 958, value: 4_611_100_000 }],
     },
     'mocha': {
+      relationships: dressrosaRelationships.mocha,
       chronicle: dressrosaChronicles.mocha,
       role: {
         it: 'Bambina tenuta nel laboratorio di Punk Hazard',
@@ -2363,6 +2405,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'rock-and-scotch': {
+      relationships: dressrosaRelationships['rock-and-scotch'],
       chronicle: dressrosaChronicles['rock-and-scotch'],
       role: {
         it: 'Sicari al soldo di Caesar Clown',
@@ -2396,6 +2439,7 @@ export const dressrosa: OnePieceSaga = {
     // shape but never names the fruit that gives it one. The name is only in
     // a caption box of chapter 673 that episode 599 does not adapt.
     'smiley': {
+      relationships: dressrosaRelationships.smiley,
       chronicle: dressrosaChronicles.smiley,
       role: { it: 'Animale di Caesar Clown', en: 'Caesar Clown’s pet' },
       log: {
@@ -2418,6 +2462,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'spartan': {
+      relationships: dressrosaRelationships.spartan,
       chronicle: dressrosaChronicles.spartan,
       role: { it: 'Gladiatore del colosseo', en: 'Colosseum gladiator' },
       log: {
@@ -2436,6 +2481,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'gatz': {
+      relationships: dressrosaRelationships.gatz,
       chronicle: dressrosaChronicles.gatz,
       role: {
         it: 'Annunciatore del colosseo delle corride',
@@ -2457,6 +2503,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'ucy': {
+      relationships: dressrosaRelationships.ucy,
       chronicle: dressrosaChronicles.ucy,
       role: {
         it: 'Toro da combattimento del colosseo',
@@ -2481,6 +2528,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'kelly-funk': {
+      relationships: dressrosaRelationships['kelly-funk'],
       chronicle: dressrosaChronicles['kelly-funk'],
       role: {
         it: 'Assassino, il maggiore dei fratelli Funk',
@@ -2518,6 +2566,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'bobby-funk': {
+      relationships: dressrosaRelationships['bobby-funk'],
       chronicle: dressrosaChronicles['bobby-funk'],
       role: {
         it: 'Assassino, il minore dei fratelli Funk',
@@ -2541,6 +2590,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'dagama': {
+      relationships: dressrosaRelationships.dagama,
       chronicle: dressrosaChronicles.dagama,
       role: {
         it: 'Stratega del Regno di Prodence',
@@ -2568,6 +2618,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'suleiman': {
+      relationships: dressrosaRelationships.suleiman,
       chronicle: dressrosaChronicles.suleiman,
       role: { it: 'Criminale di guerra', en: 'War criminal' },
       log: {
@@ -2595,6 +2646,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'abdullah': {
+      relationships: dressrosaRelationships.abdullah,
       chronicle: dressrosaChronicles.abdullah,
       role: { it: 'Ex cacciatore di taglie', en: 'Former bounty hunter' },
       log: {
@@ -2618,6 +2670,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'jeet': {
+      relationships: dressrosaRelationships.jeet,
       chronicle: dressrosaChronicles.jeet,
       role: { it: 'Ex cacciatore di taglie', en: 'Former bounty hunter' },
       log: {
@@ -2641,6 +2694,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'boo': {
+      relationships: dressrosaRelationships.boo,
       chronicle: dressrosaChronicles.boo,
       role: {
         it: 'Gladiatore della famiglia Chinjao',
@@ -2681,6 +2735,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'gambia': {
+      relationships: dressrosaRelationships.gambia,
       chronicle: dressrosaChronicles.gambia,
       role: {
         it: 'Ufficiale di stato maggiore del Barto Club',
@@ -2713,6 +2768,7 @@ export const dressrosa: OnePieceSaga = {
       bounty: [{ episode: 634, value: 67_000_000 }],
     },
     'tank-lepanto': {
+      relationships: dressrosaRelationships['tank-lepanto'],
       chronicle: dressrosaChronicles['tank-lepanto'],
       role: {
         it: 'Comandante dell’Esercito di autodifesa di Dressrosa',
@@ -2752,6 +2808,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'wicca': {
+      relationships: dressrosaRelationships.wicca,
       chronicle: dressrosaChronicles.wicca,
       role: { it: 'Ricognitrice dei Tontatta', en: 'Tontatta scout' },
       log: {
@@ -2779,6 +2836,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'jean-ango': {
+      relationships: dressrosaRelationships['jean-ango'],
       chronicle: dressrosaChronicles['jean-ango'],
       role: { it: 'Cacciatore di taglie', en: 'Bounty hunter' },
       log: {
@@ -2800,6 +2858,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'kyuin': {
+      relationships: dressrosaRelationships.kyuin,
       chronicle: dressrosaChronicles.kyuin,
       role: {
         it: 'Direttrice della fabbrica di Smile',
@@ -2821,6 +2880,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'scarlett': {
+      relationships: dressrosaRelationships.scarlett,
       chronicle: dressrosaChronicles.scarlett,
       role: { it: 'Madre di Rebecca', en: 'Rebecca’s mother' },
       log: {
@@ -2859,6 +2919,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'trafalgar-lami': {
+      relationships: dressrosaRelationships['trafalgar-lami'],
       chronicle: dressrosaChronicles['trafalgar-lami'],
       role: { it: 'Sorella minore di Law', en: 'Law’s younger sister' },
       log: {
@@ -2878,6 +2939,7 @@ export const dressrosa: OnePieceSaga = {
       origin: [{ episode: 701, value: { it: 'Flevance', en: 'Flevance' } }],
     },
     'donquixote-homing': {
+      relationships: dressrosaRelationships['donquixote-homing'],
       chronicle: dressrosaChronicles['donquixote-homing'],
       role: { it: 'Ex Nobile Mondiale', en: 'Former World Noble' },
       log: {
@@ -2904,6 +2966,7 @@ export const dressrosa: OnePieceSaga = {
       ],
     },
     'diez-barrels': {
+      relationships: dressrosaRelationships['diez-barrels'],
       chronicle: dressrosaChronicles['diez-barrels'],
       role: {
         it: 'Capitano pirata, ex ufficiale della Marina',

@@ -72,6 +72,7 @@ function CrestPlate({
 }): ReactElement {
   return (
     <SpoilerVeil
+      lead
       peek={peek}
       // A bare seal under fog: the drawing and its colour stay out of the
       // served HTML along with the name.
@@ -129,6 +130,7 @@ function DossierColumn({
       </p>
 
       <SpoilerVeil
+        lead
         peek={peek}
         placeholder={
           <div {...stylex.props(styles.words)}>

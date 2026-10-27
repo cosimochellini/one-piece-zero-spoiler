@@ -24,9 +24,11 @@ const MIGRATIONS = [
   },
 ]
 
-/** Moves old One Piece cookies before loaders read this same request. */
-export function migrateBookmark(request: Request): string[] {
-  const jar = parseCookieHeader(request.headers.get('cookie'))
+/**
+ * Moves old One Piece cookies to their new names inside a parsed jar, and
+ * returns the `Set-Cookie` headers that make the move stick in the browser.
+ */
+function migrateJar(jar: Map<string, string>): string[] {
   const cookies: string[] = []
 
   for (const { old, name, parse, age } of MIGRATIONS) {
@@ -42,15 +44,25 @@ export function migrateBookmark(request: Request): string[] {
     jar.delete(old)
     cookies.push(serializeCookie(old, '', 0))
   }
-  if (cookies.length > 0) {
-    request.headers.set(
-      'cookie',
-      [...jar]
-        .map(([name, value]) => `${name}=${encodeURIComponent(value)}`)
-        .join('; '),
-    )
-  }
   return cookies
+}
+
+/**
+ * The `Set-Cookie` headers that move a request's old cookies. The request is
+ * left as it came: on Workers its headers are immutable and a write throws,
+ * so the server readers migrate their own copy through `migratedCookies`.
+ */
+export function migrateBookmark(request: Request): string[] {
+  return migrateJar(parseCookieHeader(request.headers.get('cookie')))
+}
+
+/** A request's cookies as the loaders read them, old names already moved. */
+export function migratedCookies(
+  header: null | string | undefined,
+): Map<string, string> {
+  const jar = parseCookieHeader(header)
+  migrateJar(jar)
+  return jar
 }
 
 /** Keeps an explicit link's cookie ahead of a migrated value. */

@@ -127,6 +127,17 @@ export const enDictionary = {
   'veil.peekFailed': 'Could not load it. Try again.',
   'veil.placeholder': 'Spoiler',
 
+  'intro.context.episode':
+    'This entry first appears in episode {threshold}. Your bookmark is empty, so the page is under fog.',
+  'intro.context.season':
+    'This entry first appears in {threshold}. Your bookmark is empty, so the page is under fog.',
+  'intro.context.chapter':
+    'This entry first appears in chapter {threshold}. Your bookmark is empty, so the page is under fog.',
+  'intro.step1': 'Set your bookmark to the last episode or chapter you saw.',
+  'intro.step2': 'Entries up to that point are open.',
+  'intro.step3':
+    'Everything after it stays under fog, on every page of the wiki.',
+
   'chart.opensAt.episode': 'Episode {threshold}',
   'chart.opensAt.season': '{threshold}',
   'chart.opensAt.chapter': 'Chapter {threshold}',
@@ -197,7 +208,7 @@ export const enDictionary = {
   'credits.noOpenLicense': 'No open-content permission established.',
 
   'privacy.title': 'Privacy and cookies',
-  'privacy.updated': 'Last checked: 26 October 2026.',
+  'privacy.updated': 'Last checked: 27 October 2026.',
   'privacy.controllerTitle': 'Who runs the site',
   'privacy.controller':
     'Zero Spoiler is a personal, nonprofit fan project. Its operator and data controller is a private individual based in Italy, reachable as @cosimochellini on GitHub. Use the GitHub contact link below for an initial request.',
@@ -216,7 +227,7 @@ export const enDictionary = {
   'privacy.attributes':
     'All five cookies use Path=/ and SameSite=Lax, with no Domain, Secure or HttpOnly attribute. The site is served over HTTPS. They can be read by this site’s JavaScript and sent on applicable same-site requests and top-level cross-site navigations.',
   'privacy.storage':
-    'opzs_welcome is a sessionStorage flag used to show a welcome once after saving a bookmark. It is removed when the home page reads it, or when the tab session ends; it is not sent to the server. The application does not use localStorage.',
+    'opzs_welcome is a sessionStorage flag used to show a welcome once after saving a bookmark. It is removed when the home page reads it, or when the tab session ends; it is not sent to the server. opzs_intro is a sessionStorage flag, value 1, set when you close the introduction a page shows when you arrive with no bookmark, or once a bookmark is in use, so the introduction is not shown in the rest of the tab session; it is not sent to the server. The application does not use localStorage.',
   'privacy.controlTitle': 'Your choices',
   'privacy.control':
     'You can clear the bookmark in its dialog and remove cookies and site storage in your browser settings. Blocking them prevents the site from remembering your preferences; without a bookmark you see the introductory view. There are no optional tracking cookies to accept or reject.',
@@ -255,6 +266,11 @@ export const enDictionary = {
     'All the drawings are made for this site; no official artwork is used. Your bookmarks are saved in cookies on this device, one for each series.',
   'footer.sharedUnofficial':
     'Unofficial fan project, not endorsed by the rights holders of the series.',
+  'footer.openSource': 'Zero Spoiler is open source: if you find it useful,',
+  'footer.star': 'star it on GitHub',
+
+  'report.question': 'Something wrong on this page?',
+  'report.link': 'Report it on GitHub',
 
   'characters.title': 'Characters',
   'characters.count':

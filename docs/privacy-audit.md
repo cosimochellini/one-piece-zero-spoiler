@@ -2,18 +2,20 @@
 
 Checked on 20 October 2026 for issue #722. This records technical evidence and
 remaining provider/controller facts; it is not a legal certification. The
-application inventory was updated on 26 October 2026 for HxH opening.
+application inventory was updated on 26 October 2026 for HxH opening, and on 27
+October 2026 for the `opzs_intro` flag (#864).
 
 ## Application inventory
 
-| Item                     | Value/purpose                                                  | Lifetime and destination                                                                                                      | Source                                                                   |
-| ------------------------ | -------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| `zs_one-piece`           | Episode, chapter or live-action bookmark for spoiler filtering | 31,536,000 seconds (365 days) after saving, or deletion; sent with applicable same-origin requests                            | `src/lib/progress/BookmarkProvider.tsx`, `episode.ts`, `linkBookmark.ts` |
-| `zs_hunter-x-hunter`     | Episode, season or chapter bookmark for Hunter x Hunter        | 365 days after saving, or deletion; sent with applicable same-origin requests                                                 | `src/lib/progress/series.ts`, `BookmarkProvider.tsx`, `linkBookmark.ts`  |
-| `opzs_lang`              | Chosen `it`/`en` locale                                        | 365 days after choosing; sent with applicable same-origin requests                                                            | `src/components/LocaleSwitch.tsx`, `src/i18n/locales.ts`                 |
-| `zs_one-piece_try`       | Temporary introductory bookmark                                | Session, no `Max-Age`; expired when saving/clearing a bookmark or leaving the trial; browser restore may preserve the session | `src/lib/progress/BookmarkProvider.tsx`, `src/lib/progress/series.ts`    |
-| `zs_hunter-x-hunter_try` | Temporary introductory HxH bookmark                            | Session, no `Max-Age`; expired when saving/clearing a bookmark or leaving the trial                                           | `src/lib/progress/series.ts`, `BookmarkProvider.tsx`                     |
-| `opzs_welcome`           | One-time welcome flag, value `1`                               | `sessionStorage`, consumed on the home page or removed with the tab session; not sent to the server                           | `src/lib/progress/welcome.ts`                                            |
+| Item                     | Value/purpose                                                  | Lifetime and destination                                                                                                                                         | Source                                                                   |
+| ------------------------ | -------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `zs_one-piece`           | Episode, chapter or live-action bookmark for spoiler filtering | 31,536,000 seconds (365 days) after saving, or deletion; sent with applicable same-origin requests                                                               | `src/lib/progress/BookmarkProvider.tsx`, `episode.ts`, `linkBookmark.ts` |
+| `zs_hunter-x-hunter`     | Episode, season or chapter bookmark for Hunter x Hunter        | 365 days after saving, or deletion; sent with applicable same-origin requests                                                                                    | `src/lib/progress/series.ts`, `BookmarkProvider.tsx`, `linkBookmark.ts`  |
+| `opzs_lang`              | Chosen `it`/`en` locale                                        | 365 days after choosing; sent with applicable same-origin requests                                                                                               | `src/components/LocaleSwitch.tsx`, `src/i18n/locales.ts`                 |
+| `zs_one-piece_try`       | Temporary introductory bookmark                                | Session, no `Max-Age`; expired when saving/clearing a bookmark or leaving the trial; browser restore may preserve the session                                    | `src/lib/progress/BookmarkProvider.tsx`, `src/lib/progress/series.ts`    |
+| `zs_hunter-x-hunter_try` | Temporary introductory HxH bookmark                            | Session, no `Max-Age`; expired when saving/clearing a bookmark or leaving the trial                                                                              | `src/lib/progress/series.ts`, `BookmarkProvider.tsx`                     |
+| `opzs_welcome`           | One-time welcome flag, value `1`                               | `sessionStorage`, consumed on the home page or removed with the tab session; not sent to the server                                                              | `src/lib/progress/welcome.ts`                                            |
+| `opzs_intro`             | Intro closed for this tab session, value `1`                   | `sessionStorage`, set when the intro for a reader with no bookmark is closed, or once a bookmark is in use; removed with the tab session; not sent to the server | `src/lib/progress/intro.ts`                                              |
 
 All five cookies are first party, host-only (no `Domain`) with `Path=/` and
 `SameSite=Lax`; neither `Secure` nor `HttpOnly` is currently written. Production
@@ -32,7 +34,7 @@ the bookmark in the request URL before the redirect removes its query parameter.
 They can therefore appear in infrastructure request logs.
 
 The necessary technical storage serves the reader’s requested spoiler boundary,
-language and trial/welcome features. The
+language and trial, welcome and intro features. The
 [Garante’s cookie guidance](https://www.garanteprivacy.it/home/docweb/-/docweb-display/docweb/9677876)
 permits necessary technical cookies without consent, while still requiring an
 accessible notice. No consent banner or tracking was introduced.
