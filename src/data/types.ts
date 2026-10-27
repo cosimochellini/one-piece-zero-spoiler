@@ -335,6 +335,12 @@ export interface Saga<V extends Vocabulary = Vocabulary> {
   dossiers: Record<string, CharacterDossier<V> & FeatureTimelines>
   entries: Entity[]
   /**
+   * What stands for the saga where it files no arc record: its id, which keys
+   * its leads, and the summary and drawing the home page shows. Required of
+   * such a saga (`headingsOf`); a saga with arcs is headed by them instead.
+   */
+  heading?: Pick<Entity, 'id' | 'summary' | 'visual'>
+  /**
    * The stretch's own name. Most of One Piece's sagas hold several arcs, so
    * no arc record names the whole of one. Not gated: saga names are not
    * spoilers (owner, 2026-10-17).
@@ -463,7 +469,10 @@ export interface CreditSample {
   replaced?: { episode: number; url: string }
 }
 
-/** One arc shelf and the characters first met in it. */
+/**
+ * One arc shelf and the characters first met in it. The arc is a saga's own
+ * heading (`Saga.heading`) where the saga files no arc record.
+ */
 export interface BookSection {
   arc: Entity
   characters: Entity[]

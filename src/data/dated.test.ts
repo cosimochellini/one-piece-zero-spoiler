@@ -65,7 +65,14 @@ const TABLE = chapterTable({
   records: ENTITIES,
 })
 
-const CAST = castOf({ dossiers: DOSSIERS, entities: ENTITIES, featured: [] })
+const SAGAS = [{ dossiers: DOSSIERS, entries: ENTITIES, name: text('First') }]
+
+const CAST = castOf({
+  dossiers: DOSSIERS,
+  entities: ENTITIES,
+  featured: [],
+  sagas: SAGAS,
+})
 
 const ARCHIVE = datedArchive({
   characters: CAST.characters,
@@ -212,7 +219,12 @@ describe('the engine refuses', () => {
 
   it('a featured id that files no character', () => {
     expect(() =>
-      castOf({ dossiers: DOSSIERS, entities: ENTITIES, featured: ['home'] }),
+      castOf({
+        dossiers: DOSSIERS,
+        entities: ENTITIES,
+        featured: ['home'],
+        sagas: SAGAS,
+      }),
     ).toThrow('home is featured but files no character')
   })
 })

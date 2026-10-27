@@ -1,9 +1,16 @@
 import type { BookmarkMode } from '~/lib/progress/episode'
-import { thresholdIn } from '~/lib/progress/spoiler'
+import { type Source, thresholdIn } from '~/lib/progress/spoiler'
 import type { EntityKind } from '~/lib/view/records'
 
 import { orderByMode } from './order'
-import type { BookSection, Entity, LocalizedText, SeriesArchive } from './types'
+import { toldIn } from './reveal'
+import type {
+  BookSection,
+  Entity,
+  LocalizedText,
+  Saga,
+  SeriesArchive,
+} from './types'
 
 /**
  * The shelves of an archive, derived from a series' own records the same way
@@ -34,6 +41,8 @@ export interface CastSource<D> {
    * in. An id that files no character throws.
    */
   featured: Iterable<string>
+  /** The sagas, whose arcs, or own headings, the cast is shelved under. */
+  sagas: Saga[]
 }
 
 /** The cast of an archive (`SeriesArchive`), its dossiers in the series' type. */
@@ -51,16 +60,18 @@ export type Cast<D> = Pick<
 
 /**
  * A series' characters and arcs, in the order the anime reaches them, the
- * chart, and the signal book shelved by arc.
+ * chart, and the signal book shelved by arc. The arcs are the sagas'
+ * headings (`headingsOf`), so a saga with no arc record is one arc here.
  */
 export function castOf<D extends { role: LocalizedText }>({
   dossiers,
   entities,
   featured,
+  sagas,
 }: CastSource<D>): Cast<D> {
   const route = orderByMode(entities, 'episode')
   const characters = route.filter((entity) => entity.kind === 'character')
-  const arcs = route.filter((entity) => entity.kind === 'arc')
+  const arcs = arcsOf(sagas, entities)
   const byId = new Map(characters.map((entity) => [entity.id, entity]))
   const isFeatured = new Set(featured)
   for (const id of isFeatured) {
@@ -105,6 +116,23 @@ export function castOf<D extends { role: LocalizedText }>({
 }
 
 /**
+ * The sagas' headings in route order. A saga's own heading shares the
+ * shelves' and the leads' keys with the records, so one that takes a record's
+ * id throws.
+ */
+function arcsOf(sagas: Saga[], entities: Entity[]): Entity[] {
+  const filed = new Map(entities.map((entity) => [entity.id, entity]))
+  const arcs = orderByMode(headingsOf(sagas), 'episode')
+  for (const arc of arcs) {
+    const record = filed.get(arc.id)
+    if (record !== undefined && record !== arc) {
+      throw new Error(`${arc.id} heads a saga but is filed as a record`)
+    }
+  }
+  return arcs
+}
+
+/**
  * The signal book shelved by arc, in route order, empty shelves left out. A
  * character is shelved under the arc with the greatest threshold no later
  * than its own, so a shelf's heading is always open whenever any character
@@ -141,6 +169,44 @@ export function shelvesOf(
     )
     return shelved.length === 0 ? [] : { arc, characters: shelved }
   })
+}
+
+/**
+ * What heads each saga, in saga order: its arc records, or, where it files
+ * none, one heading built from the saga itself (`Saga.heading`). A built
+ * heading opens in each unit at the earliest entry that unit's source tells,
+ * and is one source's alone when the other tells none of the saga.
+ */
+export function headingsOf(sagas: Saga[]): Entity[] {
+  return sagas.flatMap((saga) => {
+    const arcs = saga.entries.filter((entry) => entry.kind === 'arc')
+    return arcs.length > 0 ? arcs : headingOf(saga)
+  })
+}
+
+/** An arc-less saga's heading, as a record of kind `arc` no page links to. */
+function headingOf({ entries, heading, name }: Saga): Entity {
+  if (heading === undefined || entries.length === 0) {
+    throw new Error(`${name.en} files no arc record, so it needs a heading`)
+  }
+  const told = (unit: Source): Entity[] => {
+    const own = entries.filter((entry) => toldIn(entry, unit))
+    // A saga one source alone tells: the other unit's start only orders it.
+    return own.length > 0 ? own : entries
+  }
+  const startIn = (unit: Source): number =>
+    Math.min(...told(unit).map((entry) => thresholdIn(entry, unit)))
+  const sources = new Set(entries.map((entry) => entry.source))
+  const [source] = sources.size === 1 ? sources : []
+
+  return {
+    ...heading,
+    kind: 'arc',
+    name,
+    revealedAtEpisode: startIn('episode'),
+    revealedAtChapter: startIn('chapter'),
+    ...(source !== undefined && { source }),
+  }
 }
 
 /** The records of one kind, in route order, and the dossier filed for each. */

@@ -125,10 +125,18 @@ const INLINE_SHELVES = 1
  * arc's own drawing is never drawn on a shelf, so it is never sent.
  */
 function shelfViewOf(section: BookSection, r: Reader): ShelfView {
+  // A saga's own heading (`Saga.heading`) files no record, so it has no
+  // handle to cover it with; saga names are not spoilers (owner,
+  // 2026-10-17), so it is sent open.
+  const named = r.archive.getEntity(section.arc.id) === undefined
+  const open = (entity: Entity, reader: Reader): RecordView =>
+    deferredOf(recordOf(entity, reader))
+
   return {
-    arc: r.slot(section.arc, (entity, reader) =>
-      deferredOf(recordOf(entity, reader)),
-    ),
+    arc:
+      named ?
+        { open: true, record: open(section.arc, r) }
+      : r.slot(section.arc, open),
     ...r.split(section.characters, searchableOf),
   }
 }

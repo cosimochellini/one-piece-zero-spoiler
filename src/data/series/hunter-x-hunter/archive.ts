@@ -49,6 +49,7 @@ const cast = castOf({
     'killua',
     'hisoka',
   ],
+  sagas,
 })
 
 const places = keptOf(entities, 'place', PLACE_DOSSIERS)
