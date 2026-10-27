@@ -140,7 +140,7 @@ describe('each pair’s reached relationship history', () => {
     const sourceOnly = relationshipArchive({
       snapshots: [
         { episode: 5, chapter: 7, value: [FRIEND, OTHER] },
-        { episode: 7, chapter: 9, source: 'anime', value: [ENEMY] },
+        { episode: 7, chapter: 9, source: 'episode', value: [ENEMY] },
       ],
     })
 

@@ -79,7 +79,7 @@ function copyIn(archive: ReaderArchive, source: null | Source): ReaderArchive {
     ships: kept(archive.ships),
     // Reordered introductions can belong to a different arc in the manga.
     bookSections:
-      source === 'manga' ?
+      source === 'chapter' ?
         chapterShelves(shelvedIn(archive.bookSections, has), kept(archive.arcs))
       : shelvedIn(archive.bookSections, has),
     sagas: archive.sagas.map((saga) => ({

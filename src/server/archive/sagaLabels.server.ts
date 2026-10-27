@@ -3,15 +3,10 @@ import { orderByMode } from '~/data/order'
 import { toldIn } from '~/data/reveal'
 import type { LocalizedText } from '~/data/types'
 import type { SagaRow, SagaTable } from '~/lib/progress/sagaLabel'
-import { type Source, thresholdIn } from '~/lib/progress/spoiler'
+import { thresholdIn } from '~/lib/progress/spoiler'
 
 import { skipRangesOf } from './fillerRows.server'
 import type { Reader } from './reader.server'
-
-/** The source a unit counts in. */
-function sourceIn(mode: 'chapter' | 'episode'): Source {
-  return mode === 'chapter' ? 'manga' : 'anime'
-}
 
 /** One saga's opening in one unit. */
 export interface SagaStart {
@@ -33,7 +28,7 @@ function startsIn(mode: 'chapter' | 'episode', r: Reader): SagaStart[] {
       const ids = new Set(saga.entries.map((entry) => entry.id))
       let from = Infinity
       for (const arc of r.archive.arcs) {
-        if (ids.has(arc.id) && toldIn(arc, sourceIn(mode))) {
+        if (ids.has(arc.id) && toldIn(arc, mode)) {
           from = Math.min(from, thresholdIn(arc, mode))
         }
       }
@@ -62,7 +57,7 @@ function tableFor(r: Reader): NonNullable<ReturnType<typeof cached.get>> {
  * unit in the dialog is never shown an arc that unit does not have.
  */
 function rowsIn(mode: 'chapter' | 'episode', r: Reader): SagaRow[] {
-  const told = r.archive.arcs.filter((arc) => toldIn(arc, sourceIn(mode)))
+  const told = r.archive.arcs.filter((arc) => toldIn(arc, mode))
 
   return orderByMode(told, mode).map((arc) => ({
     from: thresholdIn(arc, mode),

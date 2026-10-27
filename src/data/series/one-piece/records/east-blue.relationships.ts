@@ -791,7 +791,7 @@ export const eastBlueRelationships = {
       episode: 4,
       chapter: 1,
       value: [retained.monkeyDLuffyShanksInspiration],
-      source: 'manga',
+      source: 'chapter',
     },
     {
       episode: 1,
@@ -800,7 +800,7 @@ export const eastBlueRelationships = {
         retained.monkeyDLuffyShanksInspiration,
         retained.monkeyDLuffyKobyFriend,
       ],
-      source: 'manga',
+      source: 'chapter',
     },
     {
       episode: 3,
@@ -810,13 +810,13 @@ export const eastBlueRelationships = {
         retained.monkeyDLuffyRoronoaZoroCrewmate,
         retained.monkeyDLuffyKobyFriend,
       ],
-      source: 'manga',
+      source: 'chapter',
     },
     {
       episode: 1,
       chapter: 2,
       value: [retained.monkeyDLuffyKobyFriend],
-      source: 'anime',
+      source: 'episode',
     },
     {
       episode: 3,
@@ -825,7 +825,7 @@ export const eastBlueRelationships = {
         retained.monkeyDLuffyRoronoaZoroCrewmate,
         retained.monkeyDLuffyKobyFriend,
       ],
-      source: 'anime',
+      source: 'episode',
     },
     {
       episode: 4,
@@ -835,7 +835,7 @@ export const eastBlueRelationships = {
         retained.monkeyDLuffyRoronoaZoroCrewmate,
         retained.monkeyDLuffyKobyFriend,
       ],
-      source: 'anime',
+      source: 'episode',
     },
     {
       episode: 8,
@@ -1077,7 +1077,7 @@ export const eastBlueRelationships = {
         retained.roronoaZoroMonkeyDLuffyCaptain,
         retained.roronoaZoroKuinaChildhoodRival,
       ],
-      source: 'anime',
+      source: 'episode',
     },
     {
       episode: 24,
@@ -1087,7 +1087,7 @@ export const eastBlueRelationships = {
         retained.roronoaZoroDraculeMihawkRivalToSurpass,
         retained.roronoaZoroKuinaChildhoodRival,
       ],
-      source: 'anime',
+      source: 'episode',
     },
     {
       episode: 24,
@@ -1096,7 +1096,7 @@ export const eastBlueRelationships = {
         retained.roronoaZoroMonkeyDLuffyCaptain,
         retained.roronoaZoroDraculeMihawkRivalToSurpass,
       ],
-      source: 'manga',
+      source: 'chapter',
     },
     {
       episode: 24,
@@ -1106,7 +1106,7 @@ export const eastBlueRelationships = {
         retained.roronoaZoroDraculeMihawkRivalToSurpass,
         retained.roronoaZoroKuinaChildhoodRival,
       ],
-      source: 'manga',
+      source: 'chapter',
     },
     {
       episode: 53,

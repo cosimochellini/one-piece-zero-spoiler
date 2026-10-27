@@ -79,7 +79,7 @@ export const hunterExamChronicles = {
     },
     {
       episode: 26,
-      source: 'anime',
+      source: 'episode',
       chapter: 43,
       value: {
         title: { it: 'La lettera di Gon', en: 'Gon’s letter' },
@@ -282,7 +282,7 @@ export const hunterExamChronicles = {
     },
     {
       episode: 10,
-      source: 'anime',
+      source: 'episode',
       chapter: 20,
       value: {
         title: {

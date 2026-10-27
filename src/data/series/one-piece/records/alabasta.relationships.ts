@@ -1478,7 +1478,7 @@ export const alabastaRelationships = {
     {
       episode: 62,
       chapter: 105,
-      source: 'anime',
+      source: 'episode',
       value: [retained.laboonCrocus],
     },
     {
@@ -1509,7 +1509,12 @@ export const alabastaRelationships = {
     },
   ],
   'mr-9': [
-    { episode: 64, chapter: 114, source: 'anime', value: [retained.mr9Monday] },
+    {
+      episode: 64,
+      chapter: 114,
+      source: 'episode',
+      value: [retained.mr9Monday],
+    },
     {
       episode: 67,
       chapter: 114,
@@ -1518,7 +1523,7 @@ export const alabastaRelationships = {
     {
       episode: 552,
       chapter: 632,
-      source: 'manga',
+      source: 'chapter',
       value: [retained.mr9Vivi, retained.mr9Wife],
     },
   ],
@@ -1526,7 +1531,7 @@ export const alabastaRelationships = {
     {
       episode: 64,
       chapter: 114,
-      source: 'anime',
+      source: 'episode',
       value: [retained.igaramMonday],
     },
     {
@@ -1549,7 +1554,7 @@ export const alabastaRelationships = {
     {
       episode: 64,
       chapter: 114,
-      source: 'anime',
+      source: 'episode',
       value: [retained.mondayIgaram, retained.mondayMr9],
     },
     {
@@ -1560,7 +1565,7 @@ export const alabastaRelationships = {
     {
       episode: 552,
       chapter: 632,
-      source: 'manga',
+      source: 'chapter',
       value: [
         retained.mondayHusband,
         retained.mondayVivi,
@@ -1582,7 +1587,7 @@ export const alabastaRelationships = {
     {
       episode: 253,
       chapter: 365,
-      source: 'manga',
+      source: 'chapter',
       value: [
         retained.fiveValentine,
         retained.fiveGoldenweek,
@@ -1600,7 +1605,7 @@ export const alabastaRelationships = {
     {
       episode: 253,
       chapter: 365,
-      source: 'manga',
+      source: 'chapter',
       value: [
         retained.valentineFive,
         retained.valentineGoldenweek,
@@ -1618,7 +1623,7 @@ export const alabastaRelationships = {
     {
       episode: 253,
       chapter: 365,
-      source: 'manga',
+      source: 'chapter',
       value: [
         retained.goldenweekThree,
         retained.goldenweekFive,
@@ -2419,7 +2424,7 @@ export const alabastaRelationships = {
     {
       episode: 275,
       chapter: 391,
-      source: 'manga',
+      source: 'chapter',
       value: [
         retained.robinLuffy,
         retained.robinCrocodile,

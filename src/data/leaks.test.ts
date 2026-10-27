@@ -375,8 +375,8 @@ function filedAfter(other: Entity, text: Text): boolean {
   return (
     other.id !== owner.id
     && (!toldIn(other, source ?? null)
-      || (source !== 'manga' && other.revealedAtEpisode > episode)
-      || (source !== 'anime' && other.revealedAtChapter > chapter))
+      || (source !== 'chapter' && other.revealedAtEpisode > episode)
+      || (source !== 'episode' && other.revealedAtChapter > chapter))
   )
 }
 
@@ -750,10 +750,10 @@ describe('source-specific prose with reordered introductions', () => {
   delete other.source
 
   it.each([
-    ['anime', 4, 1, false],
-    ['anime', 3, 7, true],
-    ['manga', 1, 7, false],
-    ['manga', 4, 6, true],
+    ['episode', 4, 1, false],
+    ['episode', 3, 7, true],
+    ['chapter', 1, 7, false],
+    ['chapter', 4, 6, true],
     [undefined, 4, 1, true],
     [undefined, 1, 7, true],
     [undefined, 4, 7, false],

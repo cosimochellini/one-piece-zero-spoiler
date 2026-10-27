@@ -16,7 +16,7 @@ export interface ListedSeries {
   /**
    * The last chapter its anime adapts, once the anime has ended and the
    * manga runs on. A record or a dated fact told above it is the manga's
-   * alone and must say so (`source: 'manga'`), or an anime viewer who has
+   * alone and must say so (`source: 'chapter'`), or an anime viewer who has
    * finished would be shown it at the last episode.
    */
   lastAdaptedChapter?: number

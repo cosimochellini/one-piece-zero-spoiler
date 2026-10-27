@@ -618,10 +618,10 @@ describe.each(LOADED_SERIES)('the shelves of $slug', ({ archive }) => {
     expect(opens).toStrictEqual(opens.toSorted(byNumber()))
   })
 
-  it.each<Source>(['anime', 'manga'])(
+  it.each<Source>(['episode', 'chapter'])(
     'shelves every %s character once under a heading reached in its unit',
     (source) => {
-      const mode = source === 'manga' ? 'chapter' : 'episode'
+      const mode = source === 'chapter' ? 'chapter' : 'episode'
       const copy = archiveIn(archive, source)
       const shelved = copy.bookSections.flatMap((section) => section.characters)
 

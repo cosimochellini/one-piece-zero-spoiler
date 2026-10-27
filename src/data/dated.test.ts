@@ -164,7 +164,7 @@ describe('a fixture origin told by one source first', () => {
       affiliation: [],
       log: text('A log.'),
       origin: [
-        { episode: 4, place: 'home', source: 'anime', value: text('Home') },
+        { episode: 4, place: 'home', source: 'episode', value: text('Home') },
         { episode: 6, place: 'home', value: text('Home, again') },
       ],
       role: text('The exile'),
@@ -219,21 +219,21 @@ describe('the engine refuses', () => {
 
 describe('earliestOf', () => {
   const both = { revealedAtEpisode: 100, revealedAtChapter: 90 }
-  const anime = {
+  const episodeOnly = {
     revealedAtEpisode: 50,
     revealedAtChapter: 40,
-    source: 'anime' as const,
+    source: 'episode' as const,
   }
 
   it('reaches a link in each unit at the first entry its source tells', () => {
-    expect(earliestOf([anime, both])).toStrictEqual({
+    expect(earliestOf([episodeOnly, both])).toStrictEqual({
       revealedAtEpisode: 50,
       revealedAtChapter: 90,
     })
-    expect(earliestOf([both, anime])).toBe(both)
+    expect(earliestOf([both, episodeOnly])).toBe(both)
   })
 
   it('keeps a link that one source alone tells to that source', () => {
-    expect(earliestOf([anime])).toBe(anime)
+    expect(earliestOf([episodeOnly])).toBe(episodeOnly)
   })
 })

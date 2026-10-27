@@ -265,15 +265,15 @@ arc|character|place`; `--saga` is One Piece's), on the series' own paper.
 - **Manga-only stages.** The 2011 anime ends at episode 148, and the last
   chapter it adapts is `lastAdaptedChapter` in `src/data/series/index.ts`
   (339 today). A stage the anime never shows is filed at episode 148 with
-  `source: 'manga'` and its true chapter, as the Kakin arc is filed, so an
+  `source: 'chapter'` and its true chapter, as the Kakin arc is filed, so an
   anime viewer who has finished never sees it.
   - **The test enforces:** a record or fact past `lastAdaptedChapter` is
-    `source: 'manga'` at episode 148; anything the manga alone tells
+    `source: 'chapter'` at episode 148; anything the manga alone tells
     declares its chapter wherever it is filed; at episode 148 only an
     anime-only fact goes without one.
   - **Review checks by hand:** at most one such stage per record; a record
     filed at episode 148 is not redrawn; anything the 2011 anime omits at
-    or below `lastAdaptedChapter` also takes `source: 'manga'`. A
+    or below `lastAdaptedChapter` also takes `source: 'chapter'`. A
     manga-only fact on an anime-only record, and anything else outside
     these rules, waits for an owner ruling.
 - **Filing the first redrawing.** The series has none yet, so the first one

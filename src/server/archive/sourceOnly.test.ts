@@ -23,7 +23,7 @@ import { sagaLabels } from './sagaLabels.server'
  * records planted for the test (`~/test/sourceOnly`), since none is filed.
  */
 
-const SOURCES: Source[] = ['anime', 'manga']
+const SOURCES: Source[] = ['episode', 'chapter']
 
 /**
  * Every key at every bookmark is most of the sweep's time, so a page asked
@@ -34,21 +34,21 @@ const STRIDE = 7
 
 /** A bookmark of this source at this count. */
 function at(source: Source, count: number): NonNullable<Bookmark> {
-  return source === 'anime' ?
+  return source === 'episode' ?
       { mode: 'episode', episode: count }
     : { mode: 'chapter', chapter: count }
 }
 
 /** The last count of a source: a reader there has reached everything. */
 function ceilingOf(source: Source): number {
-  return source === 'anime' ?
+  return source === 'episode' ?
       BASE.series.episodeCeiling
     : BASE.series.chapterCeiling
 }
 
 /** The source a reader of this one is not. */
 function otherThan(source: Source): Source {
-  return source === 'anime' ? 'manga' : 'anime'
+  return source === 'episode' ? 'chapter' : 'episode'
 }
 
 /** The names of a table of saga labels. */
@@ -121,7 +121,7 @@ describe.each(SOURCES)('a record of the %s alone', (source) => {
 
   it('opens for a reader of its own source at its threshold, and is covered and counted before it', () => {
     const threshold =
-      source === 'anime' ?
+      source === 'episode' ?
         twin.character.revealedAtEpisode
       : twin.character.revealedAtChapter
     const open = charactersPage(
@@ -185,7 +185,7 @@ describe.each(SOURCES)('a record of the %s alone', (source) => {
     )
     const { chapter, episode } = sagaLabels(reader)
     const [own, theirs] =
-      source === 'anime' ? [episode, chapter] : [chapter, episode]
+      source === 'episode' ? [episode, chapter] : [chapter, episode]
 
     expect(names(own)).toContain(twin.arc.name.en)
     expect(names(theirs)).not.toContain(twin.arc.name.en)
@@ -205,18 +205,18 @@ describe.each(SOURCES)('a record of the %s alone', (source) => {
 
 describe('the archive a reader is handed', () => {
   it('is built once per source and kept, not once per request', () => {
-    const anime = readerFor(BASE, at('anime', 1), 'en').archive
+    const episodes = readerFor(BASE, at('episode', 1), 'en').archive
 
     expect(
       readerFor(BASE, { mode: 'season', season: 1, episode: 1 }, 'it').archive,
-    ).toBe(anime)
-    expect(readerFor(BASE, at('manga', 1), 'en').archive).toBe(
-      readerFor(BASE, at('manga', 2), 'it').archive,
+    ).toBe(episodes)
+    expect(readerFor(BASE, at('chapter', 1), 'en').archive).toBe(
+      readerFor(BASE, at('chapter', 2), 'it').archive,
     )
     expect(readerFor(BASE, null, 'en').archive).toBe(
       readerFor(BASE, null, 'it').archive,
     )
-    expect(readerFor(BASE, null, 'en').archive).not.toBe(anime)
+    expect(readerFor(BASE, null, 'en').archive).not.toBe(episodes)
   })
 
   it('refuses to shelve the characters of a first arc it drops', () => {
@@ -224,13 +224,13 @@ describe('the archive a reader is handed', () => {
     const archive = {
       ...BASE,
       bookSections: [
-        { ...first, arc: { ...first.arc, source: 'anime' as const } },
+        { ...first, arc: { ...first.arc, source: 'episode' as const } },
         second,
         ...rest,
       ],
     }
 
-    expect(() => readerFor(archive, at('manga', 1), 'en')).toThrow(
+    expect(() => readerFor(archive, at('chapter', 1), 'en')).toThrow(
       /one source alone/u,
     )
   })

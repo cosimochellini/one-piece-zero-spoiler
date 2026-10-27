@@ -27,9 +27,8 @@ interface Card {
 
 /** Every source gets its own authored order, including the reordered flashbacks. */
 function casesOf(owner: Entity, mode: Mode): BoundaryCase[] {
-  const source = mode === 'episode' ? 'anime' : 'manga'
   const applicable = OP_ARCHIVE.datedOf(owner, 'relationships').filter(
-    (entry) => toldIn(entry, source),
+    (entry) => toldIn(entry, mode),
   )
   return applicable.map((entry, index) => ({
     owner: owner.id,

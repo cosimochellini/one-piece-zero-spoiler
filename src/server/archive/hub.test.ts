@@ -17,7 +17,7 @@ describe('hubSeries', () => {
       slug: 'one-piece',
       name: { en: 'One Piece', it: 'One Piece' },
       theme: 'one-piece',
-      count: archiveIn(archive, 'anime').entities.length,
+      count: archiveIn(archive, 'episode').entities.length,
       bookmark,
     })
   })
@@ -54,9 +54,9 @@ describe('hubFor', () => {
 
 describe('the count on the hub', () => {
   const { archive } = ONE_PIECE_LOADED
-  const anime = plant(archive, 'anime').archive
-  const manga = plant(archive, 'manga').archive
-  const planted = anime.entities.length - archive.entities.length
+  const episodeOnly = plant(archive, 'episode').archive
+  const chapterOnly = plant(archive, 'chapter').archive
+  const planted = episodeOnly.entities.length - archive.entities.length
   const countAt = (
     base: typeof archive,
     bookmark: Parameters<typeof hubSeries>[1],
@@ -70,23 +70,27 @@ describe('the count on the hub', () => {
     { reader: 'an episode', bookmark: { mode: 'episode', episode: 1 } },
     { reader: 'a season', bookmark: { mode: 'season', season: 1, episode: 1 } },
   ] as const)(
-    "counts the anime's own records for $reader reader",
+    'counts the episode-only records for $reader reader',
     ({ bookmark }) => {
-      expect(countAt(anime, bookmark)).toBe(archive.entities.length + planted)
-      expect(countAt(manga, bookmark)).toBe(archive.entities.length)
+      expect(countAt(episodeOnly, bookmark)).toBe(
+        archive.entities.length + planted,
+      )
+      expect(countAt(chapterOnly, bookmark)).toBe(archive.entities.length)
     },
   )
 
-  it("counts the manga's own records for a chapter reader", () => {
+  it('counts the chapter-only records for a chapter reader', () => {
     const bookmark = { mode: 'chapter', chapter: 1 } as const
 
-    expect(countAt(manga, bookmark)).toBe(archive.entities.length + planted)
-    expect(countAt(anime, bookmark)).toBe(archive.entities.length)
+    expect(countAt(chapterOnly, bookmark)).toBe(
+      archive.entities.length + planted,
+    )
+    expect(countAt(episodeOnly, bookmark)).toBe(archive.entities.length)
   })
 
   it('counts only what both sources tell for a reader with no bookmark', () => {
-    expect(countAt(anime, null)).toBe(archive.entities.length)
-    expect(countAt(manga, null)).toBe(archive.entities.length)
+    expect(countAt(episodeOnly, null)).toBe(archive.entities.length)
+    expect(countAt(chapterOnly, null)).toBe(archive.entities.length)
   })
 })
 

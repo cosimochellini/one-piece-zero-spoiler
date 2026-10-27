@@ -63,8 +63,8 @@ export interface Entity {
   revealedAtChapter: number
   revealedAtEpisode: number
   /**
-   * Set on a record one source alone tells: `anime` for an anime-original
-   * character, `manga` for one the anime never shows. Absent means both. A
+   * Set on a record one source alone tells: `episode` for an anime-original
+   * character, `chapter` for one the anime never shows. Absent means both. A
    * reader who counts in the other source never receives it: no open card,
    * no covered one, no count, no handle (`~/data/source`). Both thresholds
    * are still filed, the other one only to order and shelve the record.

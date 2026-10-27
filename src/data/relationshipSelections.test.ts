@@ -48,9 +48,11 @@ function endpointErrors(
       if (target?.kind !== 'character') {
         return 'target'
       }
-      const date = source === 'anime' ? entry.episode : entry.chapter
+      const date = source === 'episode' ? entry.episode : entry.chapter
       const opens =
-        source === 'anime' ? target.revealedAtEpisode : target.revealedAtChapter
+        source === 'episode' ?
+          target.revealedAtEpisode
+        : target.revealedAtChapter
       return !toldIn(target, source) || (date ?? 0) < opens ?
           'endpoint'
         : undefined
@@ -69,11 +71,11 @@ function sourceErrors(
   const applicable = timeline.filter((entry) => toldIn(entry, source))
   let previous = 0
   return applicable.flatMap((entry) => {
-    const date = source === 'anime' ? entry.episode : entry.chapter
+    const date = source === 'episode' ? entry.episode : entry.chapter
     const floor =
-      source === 'anime' ? owner.revealedAtEpisode : owner.revealedAtChapter
+      source === 'episode' ? owner.revealedAtEpisode : owner.revealedAtChapter
     const ceiling =
-      source === 'anime' ?
+      source === 'episode' ?
         archive.series.episodeCeiling
       : archive.series.chapterCeiling
     const valid = validDate(date, Math.max(floor, previous + 1), ceiling)
@@ -106,8 +108,8 @@ function errors(
     ...(incompatible ? ['source'] : []),
     ...(unpinned ? ['date'] : []),
     ...timeline.flatMap((entry) => entryErrors(owner, entry)),
-    ...sourceErrors(archive, { owner, timeline }, 'anime'),
-    ...sourceErrors(archive, { owner, timeline }, 'manga'),
+    ...sourceErrors(archive, { owner, timeline }, 'episode'),
+    ...sourceErrors(archive, { owner, timeline }, 'chapter'),
   ]
 }
 
@@ -169,7 +171,7 @@ describe('selection authoring rejection cases', () => {
   it('rejects a target hidden by its date or source and a non-character target', () => {
     for (const archive of [
       relationshipArchive({ targetOpens: 9 }),
-      relationshipArchive({ targetSource: 'anime' }),
+      relationshipArchive({ targetSource: 'episode' }),
     ]) {
       const owner = ownerOf(archive)
 
@@ -186,9 +188,9 @@ describe('selection authoring rejection cases', () => {
 
   it('rejects a source restriction incompatible with its owner', () => {
     const archive = relationshipArchive()
-    const owner = { ...ownerOf(archive), source: 'anime' as const }
+    const owner = { ...ownerOf(archive), source: 'episode' as const }
 
-    expect(errors(archive, owner, [{ ...ENTRY, source: 'manga' }])).toContain(
+    expect(errors(archive, owner, [{ ...ENTRY, source: 'chapter' }])).toContain(
       'source',
     )
   })
@@ -199,8 +201,8 @@ describe('selection authoring rejection cases', () => {
     expect(
       errors(archive, ownerOf(archive), [
         ENTRY,
-        { episode: 6, chapter: 9, source: 'anime', value: [] },
-        { episode: 6, chapter: 8, source: 'manga', value: [] },
+        { episode: 6, chapter: 9, source: 'episode', value: [] },
+        { episode: 6, chapter: 8, source: 'chapter', value: [] },
       ]),
     ).toStrictEqual([])
   })

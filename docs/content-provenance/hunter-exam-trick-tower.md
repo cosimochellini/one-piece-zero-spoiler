@@ -19,7 +19,7 @@ comment suggested. All prose and SVG geometry are original.
 | [Johness](https://hunterxhunter.fandom.com/wiki/Johness) / Johnes |      11 |                 21 | Leorio recognizes and identifies him before the final prisoner match                                     | Loose restraint and crushed stone    |
 | [Togari](https://hunterxhunter.fandom.com/wiki/Togari)            |      10 | 19 (ordering only) | **Anime-only named record.** Wiki explicitly says his name is never mentioned in the manga or 1999 anime | Four curved knives                   |
 
-Togari is `source: 'anime'`: his body and fight exist in the manga, but his
+Togari is `source: 'episode'`: his body and fight exist in the manga, but his
 proper name does not. Chapter readers receive no record, covered slot, count,
 place link, or drawing. The stored chapter only supplies ordering, never manga
 visibility. Johness and Togari die in their records’ opening episode/chapter, so
