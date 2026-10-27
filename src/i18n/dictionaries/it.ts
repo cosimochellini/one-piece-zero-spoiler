@@ -248,6 +248,11 @@ export const itDictionary: Dictionary = {
     'Tutti i disegni sono fatti per questo sito e non ci sono immagini ufficiali. I segnalibri vengono salvati in cookie su questo dispositivo, uno per ogni serie.',
   'footer.sharedUnofficial':
     'Progetto amatoriale non ufficiale, non approvato dai titolari dei diritti delle serie.',
+  'footer.openSource': 'Zero Spoiler è open source: se ti è utile,',
+  'footer.star': 'lascia una stella su GitHub',
+
+  'report.question': 'Qualcosa non torna in questa pagina?',
+  'report.link': 'Segnalalo su GitHub',
 
   'characters.title': 'Personaggi',
   'characters.count':
