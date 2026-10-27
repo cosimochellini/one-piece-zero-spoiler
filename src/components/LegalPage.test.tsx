@@ -76,6 +76,7 @@ describe('LegalPage', () => {
         'zs_hunter-x-hunter',
         'zs_hunter-x-hunter_try',
         'opzs_welcome',
+        'opzs_intro',
       ]) {
         expect(main).toHaveTextContent(name)
       }

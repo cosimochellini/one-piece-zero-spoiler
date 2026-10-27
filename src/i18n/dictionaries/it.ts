@@ -117,6 +117,17 @@ export const itDictionary: Dictionary = {
   'veil.peekFailed': 'Caricamento non riuscito. Riprova.',
   'veil.placeholder': 'Spoiler',
 
+  'intro.context.episode':
+    'Questa voce compare per la prima volta nell’episodio {threshold}. Il segnalibro è vuoto, quindi la pagina è nella nebbia.',
+  'intro.context.season':
+    'Questa voce compare per la prima volta in {threshold}. Il segnalibro è vuoto, quindi la pagina è nella nebbia.',
+  'intro.context.chapter':
+    'Questa voce compare per la prima volta nel capitolo {threshold}. Il segnalibro è vuoto, quindi la pagina è nella nebbia.',
+  'intro.step1':
+    'Imposta il segnalibro all’ultimo episodio o capitolo che hai visto.',
+  'intro.step2': 'Le voci fino a quel punto sono visibili.',
+  'intro.step3': 'Quelle dopo restano nella nebbia, su ogni pagina della wiki.',
+
   'chart.opensAt.episode': 'Episodio {threshold}',
   'chart.opensAt.season': '{threshold}',
   'chart.opensAt.chapter': 'Capitolo {threshold}',
@@ -188,7 +199,7 @@ export const itDictionary: Dictionary = {
   'credits.noOpenLicense': 'Nessuna autorizzazione aperta accertata.',
 
   'privacy.title': 'Privacy e cookie',
-  'privacy.updated': 'Ultima verifica: 26 ottobre 2026.',
+  'privacy.updated': 'Ultima verifica: 27 ottobre 2026.',
   'privacy.controllerTitle': 'Chi gestisce il sito',
   'privacy.controller':
     'Zero Spoiler è un progetto amatoriale personale e senza scopo di lucro. Il gestore e titolare del trattamento è una persona privata in Italia, contattabile su GitHub come @cosimochellini. Per una richiesta iniziale usa il link di contatto GitHub qui sotto.',
@@ -207,7 +218,7 @@ export const itDictionary: Dictionary = {
   'privacy.attributes':
     'Tutti e cinque i cookie usano Path=/ e SameSite=Lax, senza attributi Domain, Secure o HttpOnly. Il sito è servito tramite HTTPS. Sono leggibili dal JavaScript del sito e vengono inviati nelle richieste pertinenti allo stesso sito e nelle navigazioni principali da altri siti.',
   'privacy.storage':
-    'opzs_welcome è un indicatore in sessionStorage che mostra un benvenuto una sola volta dopo il salvataggio del segnalibro. Viene rimosso quando la pagina iniziale lo legge o alla fine della sessione della scheda; non viene inviato al server. L’applicazione non usa localStorage.',
+    'opzs_welcome è un indicatore in sessionStorage che mostra un benvenuto una sola volta dopo il salvataggio del segnalibro. Viene rimosso quando la pagina iniziale lo legge o alla fine della sessione della scheda; non viene inviato al server. opzs_intro è un indicatore in sessionStorage, valore 1, impostato quando chiudi l’introduzione che una pagina mostra se arrivi senza segnalibro, o quando un segnalibro è in uso, perché l’introduzione non compaia nel resto della sessione della scheda; non viene inviato al server. L’applicazione non usa localStorage.',
   'privacy.controlTitle': 'Le tue scelte',
   'privacy.control':
     'Puoi cancellare il segnalibro dalla sua finestra e rimuovere cookie e memoria del sito dalle impostazioni del browser. Bloccarli impedisce di ricordare le preferenze; senza segnalibro vedi la vista introduttiva. Non ci sono cookie di tracciamento facoltativi da accettare o rifiutare.',

@@ -1,6 +1,11 @@
 import * as stylex from '@stylexjs/stylex'
-import { type ReactElement, type ReactNode, useState } from 'react'
+import type { ReactElement, ReactNode } from 'react'
 
+import {
+  type PeekState,
+  useVeilPeek,
+  type VeilSlot,
+} from '~/components/useVeilPeek'
 import { useT } from '~/i18n/LocaleContext'
 import type { TranslationKey } from '~/i18n/types'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
@@ -30,9 +35,7 @@ export interface SpoilerVeilProps<T extends Gated> {
    * Any covered shape with a handle and the two thresholds will do: a record
    * slot from `~/lib/view/records` is one, a filler row is another.
    */
-  slot:
-    | { covered: Gated & { handle: string }; open: false }
-    | { open: true; record: T }
+  slot: VeilSlot<T>
   /**
    * Trades a covered record's handle for the record.
    *
@@ -55,6 +58,13 @@ export interface SpoilerVeilProps<T extends Gated> {
    * waypoint must not give its subject away.
    */
   strength?: 'media' | 'text'
+  /**
+   * The page's own record rather than a neighbour of it. A lead veil names
+   * its covered record to the intro a reader with no bookmark gets, and
+   * lifts when that intro's "Show anyway" is pressed (#864). Only the first
+   * band of a record page sets it: the neighbours stay under fog.
+   */
+  lead?: boolean
   /**
    * The uncovered content, built from the record once there is one.
    *
@@ -98,36 +108,13 @@ export function SpoilerVeil<T extends Gated>({
   peek,
   density = 'block',
   strength = 'text',
+  lead,
   placeholder,
   children,
 }: SpoilerVeilProps<T>): ReactElement {
   const threshold = useThreshold()
-  const [peeked, setPeeked] = useState<null | T>(null)
-  const [state, setState] = useState<PeekState>('resting')
-
-  const shown = slot.open ? slot.record : peeked
+  const { shown, state, uncover } = useVeilPeek(slot, peek, lead)
   const visible = shown !== null
-
-  // Not a transition: there is no older tree worth keeping here — the curtain
-  // is up either way — and the state has to survive the await, so the verb
-  // does not flicker back while the record is still on its way.
-  const ask = async (handle: string): Promise<void> => {
-    setState('asking')
-    try {
-      setPeeked(await peek(handle))
-      setState('resting')
-    } catch {
-      setState('failed')
-    }
-  }
-
-  const handleUncover = (): void => {
-    if (state === 'asking' || slot.open) {
-      return
-    }
-
-    void ask(slot.covered.handle)
-  }
 
   return (
     <div {...stylex.props(styles.frame)}>
@@ -144,7 +131,7 @@ export function SpoilerVeil<T extends Gated>({
           density={density}
           lifted={visible}
           notice={threshold('veil.locked', slot.covered)}
-          onUncover={handleUncover}
+          onUncover={uncover}
           state={state}
         />
       )}
@@ -241,9 +228,6 @@ function Curtain({
     </button>
   )
 }
-
-/** Resting, waiting on the server, or back with nothing. */
-type PeekState = 'asking' | 'failed' | 'resting'
 
 /**
  * What the curtain says. A verb-only curtain has the threshold beside it
