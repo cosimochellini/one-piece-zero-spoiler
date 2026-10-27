@@ -8,7 +8,13 @@ const PRISONER = {
   en: 'Trick Tower prisoner',
 }
 
-/** Named scenes, rather than the cloaked appearances, in episodes 7–12. */
+/**
+ * Named scenes, rather than the cloaked appearances, in episodes 7–12 and
+ * chapters 13–22, up to the Fourth Phase. The prison's rooms and routes are
+ * landmarks within the one tower record. Killua's family (episode 7 /
+ * chapter 13) stays unnamed here: no surname, members or place. The unnamed
+ * third examiner, the flying beast and the rock climber get no record.
+ */
 export const trickTower: HunterSaga = {
   name: { it: 'Esame Hunter', en: 'Hunter Exam' },
   entries: [
@@ -24,6 +30,7 @@ export const trickTower: HunterSaga = {
       },
       visual: { art: 'trick-tower', tint: 'sand' },
     },
+    // Gated at the naming scene (17), later than his cloaked chapter-14 debut.
     {
       id: 'lippo',
       kind: 'character',
@@ -84,6 +91,7 @@ export const trickTower: HunterSaga = {
       },
       visual: { art: 'leroute', tint: 'pink' },
     },
+    // Dies where his record opens, so no death redrawing.
     {
       id: 'johness',
       kind: 'character',
@@ -96,6 +104,9 @@ export const trickTower: HunterSaga = {
       },
       visual: { art: 'johness', tint: 'wine' },
     },
+    // Anime-only: his name is never said in the manga, so chapter readers get no
+    // record, slot, count or drawing; the chapter pin only orders him. He dies
+    // where his record opens: no death redrawing.
     {
       id: 'togari',
       kind: 'character',

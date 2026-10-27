@@ -6,6 +6,7 @@ export const ZOLDYCK_DRAWINGS = {
   // Coco Loo's small tour-guide hat, worn tilted, its round crown and the
   // band at its rim: she welcomes the bus tour in episode 22 / chapter 39.
   // No badge, no lettering.
+  // Graded B (owner ruling): true, spoiler-free and on style, not yet an A.
   'coco-loo': [
     {
       d: 'M40 108 C38 80 54 64 80 64 C106 64 122 80 120 108',
@@ -178,6 +179,7 @@ export const ZOLDYCK_DRAWINGS = {
   // Kalluto's furisode, the long sleeves hanging and the broad obi across
   // it: he follows his mother to the gate in episode 24 / chapter 42.
   // No fan, no paper.
+  // The wiki gives a dark furisode with a yellow obi, so the whole garment.
   'kalluto': [
     {
       d: 'M70 34 L46 42 L24 50 L22 128 Q22 136 32 136 L44 134 L48 80 M90 34 L114 42 L134 50 L136 126 Q136 132 128 132 L116 130 L112 80',
@@ -197,6 +199,8 @@ export const ZOLDYCK_DRAWINGS = {
   // The tour bus that takes the three from town towards Kukuroo Mountain,
   // its summit over the roof: the arrival in Padokea in episode 22 /
   // chapter 39. No route board, no company name.
+  // A bus, not a train: episode 22 and chapter 39 both have the bus tour,
+  // the train is in the chapter alone.
   'republic-of-padokea': [
     { d: 'M64 81.6 L90 46 L100 51 L110 44 L160 98', role: 'soft' },
     { d: 'M24 90 L50 80 V142 L24 138 Z' },

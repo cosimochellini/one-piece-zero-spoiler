@@ -72,6 +72,7 @@ export const TRICK_TOWER_DRAWINGS = {
   // fallen on its side, the hood's open rim in the record's tint: he takes
   // it off in episode 8 and chapter 17. His candles come in the next
   // episode and are not drawn.
+  // Graded B (owner ruling): true, spoiler-free and on style, not yet an A.
   'sedokan': [
     {
       d: 'M7.6 180 C10 165.6 22 156 36.4 158.4 M106 141.6 C122.8 139.2 139.6 148.8 146.8 163.2 C154 165.6 158.8 172.8 158.8 180',
@@ -107,6 +108,7 @@ export const TRICK_TOWER_DRAWINGS = {
   // Majtani's respirator, the cup worn in place of his right ear seen
   // from the side, its rim in the record's tint, the ribbed hose arching
   // to a small canister: episode 9 and chapter 18. No tattoos.
+  // Graded B (owner ruling): true, spoiler-free and on style, not yet an A.
   'majtani': [
     {
       d: 'M26.6 140 a15.6 31.2 0 1 0 31.2 0 a15.6 31.2 0 1 0 -31.2 0',
@@ -137,6 +139,8 @@ export const TRICK_TOWER_DRAWINGS = {
   // Leroute's hair ribbon, tied in the bow that holds her ponytail, seen
   // in three-quarter view with the near loop full and the far one turned
   // away, the knot in the record's tint: episode 10 and chapter 20.
+  // A ribbon, not a watch: the wiki ties her ponytail with ribbons, and the
+  // watch on the page is the examinees' (chapter 19).
   'leroute': [
     {
       d: 'M72 95.2 Q80 91.7 88.1 95.2 L89.2 113.6 Q80 117.1 70.8 113.6 Z',

@@ -307,6 +307,8 @@ export const DRAWINGS = {
   // that throws him over the side, in episode 1 and chapter 2. In the
   // chapter a yard snaps and strikes him, and the crew haul him back aboard
   // with a rope.
+  // Graded B (owner ruling): true, spoiler-free and on style, not yet an A.
+  // The rope is the chapter's rescue rope, which the episode summary omits.
   'katzo': [
     {
       d: 'M118 148 A41.9 15.1 0 0 1 34.2 148 A37.6 13.5 0 0 1 109.5 148 A33.4 12 0 0 1 42.8 148 A29.1 10.5 0 0 1 101 148 A24.9 9 0 0 1 51.2 148 A20.6 7.4 0 0 1 92.5 148 A16.4 5.9 0 0 1 59.8 148 A12.1 4.4 0 0 1 84 148',
@@ -332,6 +334,7 @@ export const DRAWINGS = {
   // its three long fingers ending in claws in the record's tint: the
   // navigators fly Gon, Kurapika and Leorio to the exam in episode 2 and
   // chapter 4.
+  // Graded B (owner ruling): true, spoiler-free and on style, not yet an A.
   'kiriko': [
     { d: 'M4 110 C36 94 66 76 94 56' },
     { d: 'M10 124 C42 108 72 90 102 70' },
@@ -461,6 +464,8 @@ export const DRAWINGS = {
   // man for bumping into him without apologizing, in episode 3 and chapter
   // 5. No card: his cards first come out in the Milsy Wetlands, in chapter
   // 8. No suit symbol, no face paint.
+  // Hands, not wrist bands: the wiki gives his long pointed nails and has no
+  // bands (owner: a hand may stand for him).
   'hisoka': [
     { d: 'M62 198 C62 178 58 162 54 146 M96 198 C96 180 100 164 106 146' },
     { d: 'M54 146 C50 132 48 118 50 104 M106 146 C110 130 110 116 106 104' },
@@ -661,6 +666,7 @@ export const DRAWINGS = {
   // the one tooth standing under the sole: his footwear when he drops in on
   // the Second Phase in episode 6 and chapter 12. No ball from the next
   // episode.
+  // Graded B (owner ruling): true, spoiler-free and on style, not yet an A.
   'netero': [
     { d: 'M28 100 L110 70 L136 92 L54 122 Z' },
     { d: 'M28 100 V110 L54 132 L136 102 V92 M54 122 V132' },

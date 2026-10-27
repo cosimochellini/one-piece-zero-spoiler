@@ -3,7 +3,9 @@ import type { HunterSaga } from './saga'
 /**
  * Yorknew City: episodes 37–58 of the 2011 anime and chapters 64–119, as the
  * English Hunter x Hunter Wiki's arc page gives them. Italian Wikipedia calls
- * the city York Shin City.
+ * the city York Shin City. Owner's #796 check: the 1 September meeting is told
+ * in chapter 44, pages 3–5 (page references follow the owner's digital
+ * edition).
  */
 export const yorknewCity: HunterSaga = {
   name: { it: 'York Shin City', en: 'Yorknew City' },

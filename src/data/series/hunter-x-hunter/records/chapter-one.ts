@@ -1,13 +1,19 @@
 import { chapterOneChronicles } from './chapter-one.chronicle'
 import type { HunterSaga } from './saga'
 
-/** Chapter 1's two characters the 2011 anime introduces much later (#760). */
+/**
+ * Chapter 1's two characters the 2011 anime introduces much later (#760).
+ * Both are unanchored with an explicit chapter pin on every fact, so the
+ * reordered pair never moves chapter-one readers into the later anime. No
+ * later abilities, deaths or looks are filed.
+ */
 export const chapterOne: Pick<HunterSaga, 'dossiers' | 'entries'> = {
   entries: [
     {
       id: 'kite',
       kind: 'character',
-      // Episode 75 only shows an unidentified figure; 76 names him.
+      // The wiki's appearance floor is episode 75, which only ends on an
+      // unidentified figure; the naming scene, and so the gate, is 76.
       revealedAtEpisode: 76,
       revealedAtChapter: 1,
       unanchored: true,
@@ -18,6 +24,7 @@ export const chapterOne: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       },
       visual: { art: 'kite', tint: 'azure' },
     },
+    // Italian Wikipedia has no entry for Kon: the English spelling stands.
     {
       id: 'kon',
       kind: 'character',

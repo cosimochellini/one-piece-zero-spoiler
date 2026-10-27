@@ -91,8 +91,27 @@ cards or history in the response.
 Pin each selection to verified episode/chapter thresholds, behind the owner,
 every selected person and the relationship fact itself. Use the existing source
 restriction for facts told in only one medium: each source resolves its own
-latest applicable selection. Keep directed perspectives independent, write
-original IT/EN type and explanation text, and record evidence in
-`docs/content-provenance/` and its source inventory. Four or five people is a
-target, never a quota. Self-links, duplicate ids, non-character targets and
-invalid dates fail the data checks.
+latest applicable selection. Keep directed perspectives independent and write
+original IT/EN type and explanation text. Four or five people is a target, never
+a quota. Self-links, duplicate ids, non-character targets and invalid dates fail
+the data checks.
+
+## Recording provenance
+
+Evidence is data, not prose files. `docs/content-provenance/sources.json` pins
+every wiki revision read: append entries, never rewrite earlier ones. Beside it:
+
+- `relationships.json` maps each character with a `relationships` timeline to
+  the `sources.json` key of their character revision, or `null`. A test fails
+  when a timeline has no key, a key is stale, or an entry's episode or chapter
+  page is not pinned. A one-source entry's other number only orders it and needs
+  no page.
+- `hunter-x-hunter.json` lists, per record id, the pages read (`sources`) and
+  the checks nobody has made yet (`unverified`). Episode and chapter pages
+  follow from the record's gates and are not listed.
+
+The wiki is read for facts only; no passages, dialogue, frames or scans enter
+the repository. A decision the data cannot show, such as a gate delayed behind
+an endpoint, a source-only entry or a deliberate omission, is a short comment
+beside the entry. A removed card does not claim the bond ended, and no romance
+or reciprocity is inferred.

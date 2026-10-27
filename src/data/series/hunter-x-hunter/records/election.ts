@@ -6,7 +6,9 @@ import type { HunterSaga } from './saga'
  * them (the 13th Hunter Chairman Election arc). An arc's name is shown at
  * every bookmark (`sagaLabels`), and that title says the chairman has gone,
  * which the Chimera Ant arc tells; "Election" alone says only that one is
- * coming (owner, 2026-10-24).
+ * coming (owner, 2026-10-24). Owner's #796 check: the Zodiacs' meeting opens
+ * chapter 319, from page 1 (page references follow the owner's digital
+ * edition).
  */
 export const election: HunterSaga = {
   name: { it: 'Elezione', en: 'Election' },
