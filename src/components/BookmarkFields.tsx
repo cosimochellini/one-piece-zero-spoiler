@@ -4,9 +4,11 @@ import { type ReactElement, useId } from 'react'
 import { SagaLine, StepperRow } from '~/components/BookmarkCounter'
 import { counterStyles as counter } from '~/components/BookmarkCounter.styles'
 import { styles } from '~/components/BookmarkDialog.styles'
+import { modeKey } from '~/components/modeKey'
 import { useT } from '~/i18n/LocaleContext'
 import type { Translate, TranslationKey } from '~/i18n/types'
 import { useBookmarkSeries } from '~/lib/progress/BookmarkContext'
+import { bookLength } from '~/lib/progress/books'
 import {
   type BookmarkMode,
   type Draft,
@@ -14,14 +16,9 @@ import {
   stepperOf,
 } from '~/lib/progress/episode'
 import type { Season } from '~/lib/progress/seasons'
+import type { Book } from '~/lib/progress/series'
 
 const MODES: BookmarkMode[] = ['episode', 'season', 'chapter']
-
-const MODE_KEY: Record<BookmarkMode, TranslationKey> = {
-  episode: 'dialog.modeEpisode',
-  season: 'dialog.modeSeason',
-  chapter: 'dialog.modeChapter',
-}
 
 const FIELD_KEY: Record<BookmarkMode, TranslationKey> = {
   episode: 'dialog.episodeLabel',
@@ -31,6 +28,7 @@ const FIELD_KEY: Record<BookmarkMode, TranslationKey> = {
 
 /** One message per way a draft can be unusable. */
 const ERROR_KEY: Record<DraftProblem, TranslationKey> = {
+  book: 'dialog.errorBook',
   empty: 'dialog.errorEmpty',
   range: 'dialog.errorRange',
   season: 'dialog.errorSeason',
@@ -49,29 +47,52 @@ export interface UnitFieldsProps {
 }
 
 /**
- * Which unit the reader counts in, and — when that unit is a season — which
- * season. The season control is absent rather than disabled in the other two
- * units, because there is nothing there to be asked about.
+ * Which unit the reader counts in, and — when that unit is a season, or a
+ * book on a series with books — which one. The picker is absent rather than
+ * disabled in the other units, because there is nothing there to be asked
+ * about.
  */
 export function UnitFields({
   draft,
   onRestart,
 }: UnitFieldsProps): ReactElement {
+  const t = useT()
+  const series = useBookmarkSeries()
+  const onChoose = (group: string): void => {
+    onRestart({ ...draft, group, number: '' })
+  }
+
   return (
     <>
       <ModeChooser
         mode={draft.mode}
         onChoose={(mode) => {
-          onRestart({ mode, season: '', number: '' })
+          onRestart({ mode, group: '', number: '' })
         }}
       />
 
       {draft.mode === 'season' && (
-        <SeasonPicker
-          onChoose={(season) => {
-            onRestart({ ...draft, season, number: '' })
-          }}
-          season={draft.season}
+        <GroupPicker
+          label="dialog.seasonLabel"
+          onChoose={onChoose}
+          options={series.seasons.map((season) => ({
+            number: season.number,
+            words: seasonOption(t, season),
+          }))}
+          placeholder="dialog.seasonPlaceholder"
+          value={draft.group}
+        />
+      )}
+      {draft.mode === 'chapter' && series.books !== undefined && (
+        <GroupPicker
+          label="dialog.bookLabel"
+          onChoose={onChoose}
+          options={series.books.map((book) => ({
+            number: book.number,
+            words: bookOption(t, book),
+          }))}
+          placeholder="dialog.bookPlaceholder"
+          value={draft.group}
         />
       )}
     </>
@@ -141,7 +162,7 @@ function ModeChooser({
                 {...stylex.props(styles.radio)}
               />
               <span {...stylex.props(styles.modeLabel)}>
-                {t(MODE_KEY[candidate])}
+                {t(modeKey(candidate, series))}
               </span>
             </label>
           )
@@ -151,17 +172,25 @@ function ModeChooser({
   )
 }
 
-/** The season, as a `<select>` with an empty first option: nothing is assumed. */
-function SeasonPicker({
-  season,
+/**
+ * The season or the book, as a `<select>` with an empty first option:
+ * nothing is assumed. Each option is its number and how it reads.
+ */
+function GroupPicker({
+  label,
   onChoose,
+  options,
+  placeholder,
+  value,
 }: {
-  onChoose: (season: string) => void
-  season: string
+  label: TranslationKey
+  onChoose: (group: string) => void
+  options: { number: number; words: string }[]
+  placeholder: TranslationKey
+  value: string
 }): ReactElement {
   const t = useT()
   const id = useId()
-  const series = useBookmarkSeries()
 
   return (
     <div {...stylex.props(styles.group)}>
@@ -169,24 +198,24 @@ function SeasonPicker({
         htmlFor={id}
         {...stylex.props(styles.label)}
       >
-        {t('dialog.seasonLabel')}
+        {t(label)}
       </label>
       <select
         id={id}
         onChange={(event) => {
           onChoose(event.target.value)
         }}
-        value={season}
+        value={value}
         {...stylex.props(styles.select)}
       >
-        <option value="">{t('dialog.seasonPlaceholder')}</option>
-        {series.seasons.map((candidate) => {
+        <option value="">{t(placeholder)}</option>
+        {options.map(({ number, words }) => {
           return (
             <option
-              key={candidate.number}
-              value={String(candidate.number)}
+              key={number}
+              value={String(number)}
             >
-              {seasonOption(t, candidate)}
+              {words}
             </option>
           )
         })}
@@ -211,6 +240,11 @@ function seasonOption(t: Translate, season: Season): string {
         first: season.first,
         last: season.last,
       })
+}
+
+/** How one book reads in the list: its number and how many chapters. */
+function bookOption(t: Translate, book: Book): string {
+  return t('dialog.bookOption', { book: book.number, count: bookLength(book) })
 }
 
 /** The number under edit, and the two ways the field reports back. */
@@ -239,7 +273,12 @@ export function NumberField({
   const id = useId()
   const sagaId = useId()
   const messageId = useId()
+  const series = useBookmarkSeries()
   const error = problem === null ? null : ERROR_KEY[problem]
+  const label =
+    draft.mode === 'chapter' && series.books !== undefined ?
+      'dialog.bookChapterLabel'
+    : FIELD_KEY[draft.mode]
 
   return (
     <div {...stylex.props(counter.counter)}>
@@ -247,7 +286,7 @@ export function NumberField({
         htmlFor={id}
         {...stylex.props(styles.label, counter.counterLabel)}
       >
-        {t(FIELD_KEY[draft.mode])}
+        {t(label)}
       </label>
       <StepperRow
         describedBy={`${sagaId} ${messageId}`}
@@ -287,6 +326,9 @@ function FieldMessage({
   const t = useT()
   const series = useBookmarkSeries()
   const { ceiling } = stepperOf(draft, series)
+  // With no season or book chosen yet, the hint is to choose one.
+  const group = draft.mode === 'season' ? 'season' : 'book'
+  const unchosen = ceiling === null ? ERROR_KEY[group] : null
 
   return (
     <p
@@ -294,23 +336,7 @@ function FieldMessage({
       role={error === null ? undefined : 'alert'}
       {...stylex.props(styles.message, error !== null && styles.messageError)}
     >
-      {messageFor(t, error, ceiling)}
+      {t(error ?? unchosen ?? 'dialog.hint', { max: ceiling ?? 0 })}
     </p>
   )
-}
-
-/** The hint when nothing is wrong, the error when something is. */
-function messageFor(
-  t: Translate,
-  error: null | TranslationKey,
-  ceiling: null | number,
-): string {
-  if (error !== null) {
-    return t(error, { max: ceiling ?? 0 })
-  }
-  if (ceiling === null) {
-    return t('dialog.errorSeason')
-  }
-
-  return t('dialog.hint', { max: ceiling })
 }

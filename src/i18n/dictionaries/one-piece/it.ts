@@ -61,6 +61,8 @@ export const onePieceIt: SeriesWords<'one-piece'> = {
     'Una nave di One Piece, nella nebbia fino a {threshold}. Imposta il segnalibro per leggerne la voce.',
   'ship.foggedDescription.chapter':
     'Una nave di One Piece, nella nebbia fino al capitolo {threshold}. Imposta il segnalibro per leggerne la voce.',
+  'ship.foggedDescription.book':
+    'Una nave di One Piece, nella nebbia fino al libro {book}, capitolo {chapter}. Imposta il segnalibro per leggerne la voce.',
   'ship.drawingsLede':
     'Ogni disegno di questa nave fino al tuo segnalibro, dal più vecchio.',
 
@@ -177,6 +179,8 @@ export const onePieceIt: SeriesWords<'one-piece'> = {
   'fruits.lastFruit.season': 'L’ultimo è stato il {name}, in {threshold}.',
   'fruits.lastFruit.chapter':
     'L’ultimo è stato il {name}, nel capitolo {threshold}.',
+  'fruits.lastFruit.book':
+    'L’ultimo è stato il {name}, nel libro {book}, capitolo {chapter}.',
   'fruits.moreEaters': 'e altri {count} personaggi che l’hanno mangiato',
   'fruits.moreEatersOne': 'e un altro personaggio che l’ha mangiato',
 
@@ -185,6 +189,8 @@ export const onePieceIt: SeriesWords<'one-piece'> = {
   'fruit.opensAt.season': 'Nominato per la prima volta in {threshold}',
   'fruit.opensAt.chapter':
     'Nominato per la prima volta nel capitolo {threshold}',
+  'fruit.opensAt.book':
+    'Nominato per la prima volta nel libro {book}, capitolo {chapter}',
   'fruit.foggedName': 'Un frutto nella nebbia',
   'fruit.foggedTitle': 'Un frutto nella nebbia | {series} | Zero Spoiler',
   'fruit.foggedDescription.episode':
@@ -193,6 +199,8 @@ export const onePieceIt: SeriesWords<'one-piece'> = {
     'Un frutto del diavolo di One Piece nominato per la prima volta in {threshold}. Imposta il segnalibro per leggere la pagina.',
   'fruit.foggedDescription.chapter':
     'Un frutto del diavolo di One Piece nominato per la prima volta nel capitolo {threshold}. Imposta il segnalibro per leggere la pagina.',
+  'fruit.foggedDescription.book':
+    'Un frutto del diavolo di One Piece nominato per la prima volta nel libro {book}, capitolo {chapter}. Imposta il segnalibro per leggere la pagina.',
   'fruit.pageTitle': '{name} | {series} | Zero Spoiler',
   'fruit.back': 'Tutti i frutti del diavolo',
   'fruit.form': 'Tipo',

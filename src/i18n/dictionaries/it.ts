@@ -37,6 +37,7 @@ export const itDictionary: Dictionary = {
   'onboarding.dial': 'Punto della storia',
   'onboarding.unitEpisode': 'Episodio',
   'onboarding.unitChapter': 'Capitolo',
+  'onboarding.unitBook': 'Libro {book}, capitolo',
   'onboarding.here': 'Sono qui',
   'onboarding.further': 'Sono più avanti',
   'onboarding.start': 'Inizio ora · EP 1',
@@ -51,6 +52,8 @@ export const itDictionary: Dictionary = {
     'Stai provando l’episodio {threshold}. Non viene salvato niente.',
   'trial.chapter':
     'Stai provando il capitolo {threshold}. Non viene salvato niente.',
+  'trial.book':
+    'Stai provando il libro {book}, capitolo {chapter}. Non viene salvato niente.',
   'trial.save': 'Salva questo punto',
   'trial.leave': 'Esci dalla prova',
 
@@ -62,12 +65,14 @@ export const itDictionary: Dictionary = {
   'home.point.episode': 'Episodio {threshold}',
   'home.point.season': 'Stagione {season} · episodio {episode}',
   'home.point.chapter': 'Capitolo {threshold}',
+  'home.point.book': 'Libro {book}, capitolo {chapter}',
   'home.recent': 'Appena successo',
   'home.before': 'Poco prima',
   'home.noStories': 'Ancora nessuna storia.',
   'home.storyAt.episode': 'Episodio {threshold}',
   'home.storyAt.season': '{threshold}',
   'home.storyAt.chapter': 'Circa capitolo {threshold}',
+  'home.storyAt.book': 'Circa libro {book}, capitolo {chapter}',
   'home.more': 'Altre storie',
   'home.cast': 'Chi conta adesso',
 
@@ -76,6 +81,7 @@ export const itDictionary: Dictionary = {
   'mark.episode': 'EP {threshold}',
   'mark.season': '{threshold}',
   'mark.chapter': 'CH {threshold}',
+  'mark.book': 'L{book} · CH {chapter}',
   'mark.change': 'Cambia segnalibro ({threshold})',
 
   'dialog.title': 'A che punto sei?',
@@ -84,6 +90,7 @@ export const itDictionary: Dictionary = {
   'dialog.modeEpisode': 'Episodio',
   'dialog.modeSeason': 'Stagione',
   'dialog.modeChapter': 'Capitolo',
+  'dialog.modeBook': 'Libro',
   'dialog.episodeLabel': 'Ultimo episodio che hai visto',
   'dialog.chapterLabel': 'Ultimo capitolo che hai letto',
   'dialog.seasonLabel': 'Stagione',
@@ -91,11 +98,16 @@ export const itDictionary: Dictionary = {
   'dialog.seasonOption': 'Stagione {season} · episodi {first}–{last}',
   'dialog.seasonOptionOpen': 'Stagione {season} · dall’episodio {first} in poi',
   'dialog.seasonEpisodeLabel': 'Episodio della stagione',
+  'dialog.bookLabel': 'Libro',
+  'dialog.bookPlaceholder': 'Scegli un libro',
+  'dialog.bookOption': 'Libro {book} · {count} capitoli',
+  'dialog.bookChapterLabel': 'Capitolo del libro',
   'dialog.saga': 'Saga · {name}',
   'dialog.hint': 'Da 1 a {max}.',
   'dialog.errorEmpty': 'Inserisci un numero.',
   'dialog.errorRange': 'Inserisci un numero da 1 a {max}.',
   'dialog.errorSeason': 'Scegli prima una stagione.',
+  'dialog.errorBook': 'Scegli prima un libro.',
   'dialog.decrease': 'Uno in meno',
   'dialog.increase': 'Uno in più',
   'dialog.save': 'Salva',
@@ -109,6 +121,7 @@ export const itDictionary: Dictionary = {
   'veil.locked.episode': 'Nella nebbia fino all’episodio {threshold}',
   'veil.locked.season': 'Nella nebbia fino a {threshold}',
   'veil.locked.chapter': 'Nella nebbia fino al capitolo {threshold}',
+  'veil.locked.book': 'Nella nebbia fino al libro {book}, capitolo {chapter}',
   'veil.reveal': 'Mostra comunque',
   'veil.revealShort': 'Mostra',
   'veil.ask': 'Mostrare comunque?',
@@ -123,6 +136,8 @@ export const itDictionary: Dictionary = {
     'Questa voce compare per la prima volta in {threshold}. Il segnalibro è vuoto, quindi la pagina è nella nebbia.',
   'intro.context.chapter':
     'Questa voce compare per la prima volta nel capitolo {threshold}. Il segnalibro è vuoto, quindi la pagina è nella nebbia.',
+  'intro.context.book':
+    'Questa voce compare per la prima volta nel libro {book}, capitolo {chapter}. Il segnalibro è vuoto, quindi la pagina è nella nebbia.',
   'intro.step1':
     'Imposta il segnalibro all’ultimo episodio o capitolo che hai visto.',
   'intro.step2': 'Le voci fino a quel punto sono visibili.',
@@ -131,9 +146,11 @@ export const itDictionary: Dictionary = {
   'chart.opensAt.episode': 'Episodio {threshold}',
   'chart.opensAt.season': '{threshold}',
   'chart.opensAt.chapter': 'Capitolo {threshold}',
+  'chart.opensAt.book': 'Libro {book}, capitolo {chapter}',
   'chart.hereSet.episode': 'Sei qui · episodio {threshold}',
   'chart.hereSet.season': 'Sei qui · {threshold}',
   'chart.hereSet.chapter': 'Sei qui · capitolo {threshold}',
+  'chart.hereSet.book': 'Sei qui · libro {book}, capitolo {chapter}',
   'chart.hereUnset': 'Nessun segnalibro · è tutto nella nebbia',
   'chart.title': 'Mappa dei luoghi',
   'chart.fog': '{count} tappe nella nebbia',
@@ -288,6 +305,7 @@ export const itDictionary: Dictionary = {
   'characters.sectionOpensAt.episode': 'Dall’episodio {threshold}',
   'characters.sectionOpensAt.season': 'Da {threshold}',
   'characters.sectionOpensAt.chapter': 'Dal capitolo {threshold}',
+  'characters.sectionOpensAt.book': 'Dal libro {book}, capitolo {chapter}',
   'characters.sectionCount': '{count} personaggi',
   'characters.sectionCountOne': '1 personaggio',
   'characters.sectionFogged': 'Saga nella nebbia',
@@ -297,6 +315,8 @@ export const itDictionary: Dictionary = {
   'character.opensAt.season': 'Compare per la prima volta in {threshold}',
   'character.opensAt.chapter':
     'Compare per la prima volta nel capitolo {threshold}',
+  'character.opensAt.book':
+    'Compare per la prima volta nel libro {book}, capitolo {chapter}',
   'character.foggedName': 'Un personaggio nella nebbia',
   'character.foggedTitle':
     'Un personaggio nella nebbia | {series} | Zero Spoiler',
@@ -306,12 +326,16 @@ export const itDictionary: Dictionary = {
     'Un personaggio di {series} che compare per la prima volta in {threshold}. Imposta il segnalibro per leggere la pagina.',
   'character.foggedDescription.chapter':
     'Un personaggio di {series} che compare per la prima volta nel capitolo {threshold}. Imposta il segnalibro per leggere la pagina.',
+  'character.foggedDescription.book':
+    'Un personaggio di {series} che compare per la prima volta nel libro {book}, capitolo {chapter}. Imposta il segnalibro per leggere la pagina.',
   'character.pageTitle': '{name} | {series} | Zero Spoiler',
   'character.back': 'Tutti i personaggi',
   'character.relationshipHistoryFor': 'Storia del legame con {name}',
   'character.relationshipHistory': 'Storia del legame',
   'character.relationshipAt.episode': 'Visibile dall’episodio {threshold}',
   'character.relationshipAt.chapter': 'Visibile dal capitolo {threshold}',
+  'character.relationshipAt.book':
+    'Visibile dal libro {book}, capitolo {chapter}',
   'character.relationshipAt.season': 'Visibile da {threshold}',
   'character.relationshipsTitle': 'Relazioni',
   'character.relationshipsLede':
@@ -351,11 +375,15 @@ export const itDictionary: Dictionary = {
     'Un luogo di {series} che compare per la prima volta in {threshold}. Imposta il segnalibro per leggerne la voce.',
   'places.foggedDescription.chapter':
     'Un luogo di {series} che compare per la prima volta nel capitolo {threshold}. Imposta il segnalibro per leggerne la voce.',
+  'places.foggedDescription.book':
+    'Un luogo di {series} che compare per la prima volta nel libro {book}, capitolo {chapter}. Imposta il segnalibro per leggerne la voce.',
   'places.firstSeen.episode':
     'Compare per la prima volta nell’episodio {threshold}',
   'places.firstSeen.season': 'Compare per la prima volta in {threshold}',
   'places.firstSeen.chapter':
     'Compare per la prima volta nel capitolo {threshold}',
+  'places.firstSeen.book':
+    'Compare per la prima volta nel libro {book}, capitolo {chapter}',
   'places.form': 'Tipo',
   'places.arc': 'Saga',
   'places.landmark': 'Punto di riferimento',

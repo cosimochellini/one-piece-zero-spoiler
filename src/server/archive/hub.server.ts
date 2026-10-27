@@ -24,6 +24,7 @@ export function hubSeries(
     theme: series.theme,
     count: archiveIn(archive, sourceOf(bookmark)).entities.length,
     bookmark,
+    ...(series.books !== undefined && { books: series.books }),
   }
 }
 

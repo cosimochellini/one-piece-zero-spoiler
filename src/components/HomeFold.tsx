@@ -6,6 +6,7 @@ import { tintOf } from '~/components/drawing'
 import { EpisodeMark } from '~/components/EpisodeMark'
 import { styles } from '~/components/HomeFold.styles'
 import { useT } from '~/i18n/LocaleContext'
+import { useBookmarkSeries } from '~/lib/progress/BookmarkContext'
 import type { Bookmark } from '~/lib/progress/episode'
 import { bookmarkPoint } from '~/lib/progress/threshold'
 import type { TintId, WaypointView } from '~/lib/view/records'
@@ -51,6 +52,7 @@ function haloOf(hue: TintId): string {
  */
 export function HomeFold({ band, point, saga }: HomeFoldProps): ReactElement {
   const t = useT()
+  const { books } = useBookmarkSeries()
 
   return (
     <section
@@ -79,7 +81,7 @@ export function HomeFold({ band, point, saga }: HomeFoldProps): ReactElement {
           settleStyles.at(band + STAGGER.copy),
         )}
       >
-        <p {...stylex.props(styles.point)}>{bookmarkPoint(t, point)}</p>
+        <p {...stylex.props(styles.point)}>{bookmarkPoint(t, point, books)}</p>
         <h1
           id="home-saga"
           {...stylex.props(styles.headline)}

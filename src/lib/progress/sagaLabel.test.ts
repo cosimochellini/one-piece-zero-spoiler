@@ -22,7 +22,7 @@ describe('sagaAt', () => {
     expect(
       sagaAt(
         TABLE,
-        { mode: 'episode', season: '', number: '650' },
+        { mode: 'episode', group: '', number: '650' },
         ONE_PIECE_BOOKMARK,
       ),
     ).toStrictEqual({ name: 'Dressrosa', filler: false })
@@ -32,7 +32,7 @@ describe('sagaAt', () => {
     expect(
       sagaAt(
         TABLE,
-        { mode: 'episode', season: '', number: '1' },
+        { mode: 'episode', group: '', number: '1' },
         ONE_PIECE_BOOKMARK,
       ),
     ).toStrictEqual({ name: 'Romance Dawn', filler: false })
@@ -43,7 +43,7 @@ describe('sagaAt', () => {
     expect(
       sagaAt(
         TABLE,
-        { mode: 'season', season: '2', number: '1' },
+        { mode: 'season', group: '2', number: '1' },
         ONE_PIECE_BOOKMARK,
       ),
     ).toStrictEqual({ name: 'Reverse Mountain', filler: false })
@@ -57,10 +57,10 @@ describe('sagaAt', () => {
     }
 
     expect(
-      sagaAt(TABLE, { mode: 'season', season: '2', number: '1' }, series),
+      sagaAt(TABLE, { mode: 'season', group: '2', number: '1' }, series),
     ).toStrictEqual({ name: 'Dressrosa', filler: false })
     expect(
-      sagaAt(TABLE, { mode: 'season', season: '2', number: '23' }, series),
+      sagaAt(TABLE, { mode: 'season', group: '2', number: '23' }, series),
     ).toBeNull()
   })
 
@@ -68,14 +68,14 @@ describe('sagaAt', () => {
     expect(
       sagaAt(
         TABLE,
-        { mode: 'chapter', season: '', number: '58' },
+        { mode: 'chapter', group: '', number: '58' },
         ONE_PIECE_BOOKMARK,
       ),
     ).toStrictEqual({ name: 'Romance Dawn', filler: false })
     expect(
       sagaAt(
         TABLE,
-        { mode: 'chapter', season: '', number: '700' },
+        { mode: 'chapter', group: '', number: '700' },
         ONE_PIECE_BOOKMARK,
       ),
     ).toStrictEqual({ name: 'Dressrosa', filler: false })
@@ -85,7 +85,7 @@ describe('sagaAt', () => {
     expect(
       sagaAt(
         TABLE,
-        { mode: 'episode', season: '', number: '55' },
+        { mode: 'episode', group: '', number: '55' },
         ONE_PIECE_BOOKMARK,
       ),
     ).toStrictEqual({ name: 'Romance Dawn', filler: true })
@@ -95,21 +95,21 @@ describe('sagaAt', () => {
     expect(
       sagaAt(
         TABLE,
-        { mode: 'episode', season: '', number: '' },
+        { mode: 'episode', group: '', number: '' },
         ONE_PIECE_BOOKMARK,
       ),
     ).toBeNull()
     expect(
       sagaAt(
         TABLE,
-        { mode: 'episode', season: '', number: '99999' },
+        { mode: 'episode', group: '', number: '99999' },
         ONE_PIECE_BOOKMARK,
       ),
     ).toBeNull()
     expect(
       sagaAt(
         TABLE,
-        { mode: 'season', season: '', number: '3' },
+        { mode: 'season', group: '', number: '3' },
         ONE_PIECE_BOOKMARK,
       ),
     ).toBeNull()

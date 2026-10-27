@@ -12,8 +12,25 @@ export interface Season {
   last: null | number
 }
 
+/**
+ * One book's inclusive absolute chapter range. A book is finished when it is
+ * filed, so its last chapter is always known.
+ */
+export interface Book {
+  first: number
+  last: number
+  number: number
+}
+
 /** Public bookmark metadata, without any archive records or drawings. */
 export interface BookmarkSeries {
+  /**
+   * The books its chapters are grouped in, for a series read as book and
+   * chapter. A chapter bookmark still holds the absolute chapter; the books
+   * only change how it is asked for and said. Absent, chapters are counted
+   * from the first.
+   */
+  books?: Book[]
   chapterCeiling: number
   cookie: string
   /**

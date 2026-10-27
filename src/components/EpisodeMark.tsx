@@ -7,7 +7,6 @@ import { Button } from '~/components/ui/Button'
 import { useT } from '~/i18n/LocaleContext'
 import type { Translate } from '~/i18n/types'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
-import type { Bookmark } from '~/lib/progress/episode'
 import { describeBookmark } from '~/lib/progress/threshold'
 import { color, font, space, text } from '~/styles/tokens.stylex'
 
@@ -27,22 +26,22 @@ interface MarkFace {
 }
 
 /**
- * Turns the bookmark into the two strings the control needs.
+ * Turns the bookmark, as the mark says it (`null` when there is none), into
+ * the two strings the control needs.
  *
  * In the bar the label is the numeral alone, so the sentence that explains
  * what pressing it does has to be the accessible name. In the fold the label
  * is already that sentence, and repeating it in an `aria-label` would only
  * make the button announce itself twice.
  */
-function faceOf(t: Translate, bookmark: Bookmark, inFold: boolean): MarkFace {
-  const mark =
-    bookmark === null ? t('mark.unset') : describeBookmark(t, 'mark', bookmark)
+function faceOf(t: Translate, said: null | string, inFold: boolean): MarkFace {
+  const mark = said ?? t('mark.unset')
 
   // Unset, the bar paints the empty slot (`EP ?`), which fits beside the
   // wordmark on the narrowest phone, and keeps the words as the accessible
   // name.
   if (!inFold) {
-    return bookmark === null ?
+    return said === null ?
         { hint: mark, label: t('mark.unsetShort') }
       : { hint: t('mark.change', { threshold: mark }), label: mark }
   }
@@ -50,7 +49,7 @@ function faceOf(t: Translate, bookmark: Bookmark, inFold: boolean): MarkFace {
   return {
     hint: undefined,
     label:
-      bookmark === null ?
+      said === null ?
         t('hero.setBookmark')
       : t('hero.changeBookmark', { threshold: mark }),
   }
@@ -79,11 +78,17 @@ export function EpisodeMark({
   placement = 'bar',
 }: EpisodeMarkProps): ReactElement {
   const t = useT()
-  const { bookmark, pending } = useBookmark()
+  const { bookmark, pending, series } = useBookmark()
   const [open, setOpen] = useState(false)
 
   const inFold = placement === 'fold'
-  const face = faceOf(t, bookmark, inFold)
+  const face = faceOf(
+    t,
+    bookmark === null ? null : (
+      describeBookmark(t, 'mark', { bookmark, books: series?.books })
+    ),
+    inFold,
+  )
 
   return (
     <>

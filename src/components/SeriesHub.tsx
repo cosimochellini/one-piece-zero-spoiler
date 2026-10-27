@@ -113,7 +113,7 @@ function Stage({ entry }: { entry: HubSeries }): ReactElement {
         >
           {entry.bookmark === null ?
             t('hub.noBookmark')
-          : bookmarkPoint(t, entry.bookmark)}
+          : bookmarkPoint(t, entry.bookmark, entry.books)}
         </span>
         <span {...stylex.props(styles.mono, styles.count)}>
           {t('hub.count', { count: entry.count })}

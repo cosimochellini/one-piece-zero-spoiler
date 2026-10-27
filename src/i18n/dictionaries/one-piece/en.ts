@@ -63,6 +63,8 @@ export const onePieceEn = {
     'A One Piece ship, under fog until {threshold}. Set your bookmark to read about it.',
   'ship.foggedDescription.chapter':
     'A One Piece ship, under fog until chapter {threshold}. Set your bookmark to read about it.',
+  'ship.foggedDescription.book':
+    'A One Piece ship, under fog until book {book}, chapter {chapter}. Set your bookmark to read about it.',
   'ship.drawingsLede':
     'Every drawing of this ship up to your bookmark, oldest first.',
 
@@ -177,12 +179,15 @@ export const onePieceEn = {
   'fruits.lastFruit.season': 'The last one was the {name}, {threshold}.',
   'fruits.lastFruit.chapter':
     'The last one was the {name}, chapter {threshold}.',
+  'fruits.lastFruit.book':
+    'The last one was the {name}, book {book}, chapter {chapter}.',
   'fruits.moreEaters': 'and {count} more characters who ate it',
   'fruits.moreEatersOne': 'and 1 more character who ate it',
 
   'fruit.opensAt.episode': 'First named in episode {threshold}',
   'fruit.opensAt.season': 'First named in {threshold}',
   'fruit.opensAt.chapter': 'First named in chapter {threshold}',
+  'fruit.opensAt.book': 'First named in book {book}, chapter {chapter}',
   'fruit.foggedName': 'A fruit under fog',
   'fruit.foggedTitle': 'A fruit under fog | {series} | Zero Spoiler',
   'fruit.foggedDescription.episode':
@@ -191,6 +196,8 @@ export const onePieceEn = {
     'A One Piece devil fruit first named in {threshold}. Set your bookmark to read this page.',
   'fruit.foggedDescription.chapter':
     'A One Piece devil fruit first named in chapter {threshold}. Set your bookmark to read this page.',
+  'fruit.foggedDescription.book':
+    'A One Piece devil fruit first named in book {book}, chapter {chapter}. Set your bookmark to read this page.',
   'fruit.pageTitle': '{name} | {series} | Zero Spoiler',
   'fruit.back': 'All devil fruits',
   'fruit.form': 'Type',

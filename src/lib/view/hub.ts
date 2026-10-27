@@ -1,5 +1,6 @@
 import type { Locale } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
+import type { Book } from '~/lib/progress/series'
 import type { SeriesTheme } from '~/styles/themes'
 
 /**
@@ -9,6 +10,8 @@ import type { SeriesTheme } from '~/styles/themes'
  */
 export interface HubSeries {
   bookmark: Bookmark
+  /** The series' books, so a chapter bookmark is said as book and chapter. */
+  books?: Book[]
   count: number
   name: Record<Locale, string>
   slug: string

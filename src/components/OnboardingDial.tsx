@@ -8,12 +8,15 @@ import {
   type DialPoint,
   switchUnit,
 } from '~/components/dial'
+import { modeKey } from '~/components/modeKey'
 import { styles } from '~/components/Onboarding.styles'
 import { Button } from '~/components/ui/Button'
 import { useT } from '~/i18n/LocaleContext'
 import type { Translate } from '~/i18n/types'
 import { useBookmark, useBookmarkSeries } from '~/lib/progress/BookmarkContext'
+import { locateChapter } from '~/lib/progress/books'
 import type { Bookmark } from '~/lib/progress/episode'
+import type { Book } from '~/lib/progress/series'
 import { useBookmarkDraft } from '~/lib/progress/useBookmarkDraft'
 import { markWelcome } from '~/lib/progress/welcome'
 
@@ -26,13 +29,33 @@ export interface OnboardingDialProps {
   point: DialPoint
 }
 
-/** The dial's unit as a word: "Episode" or "Chapter". */
-function unitOf(t: Translate, point: DialPoint): string {
-  return t(
-    point.mode === 'chapter' ?
-      'onboarding.unitChapter'
-    : 'onboarding.unitEpisode',
-  )
+/**
+ * The dial's unit in words and its point in that unit: "Episode" 12,
+ * "Chapter" 45, or on a series with books "Book 1, chapter" 45, counted
+ * within the book.
+ */
+function readingOf(
+  t: Translate,
+  point: DialPoint,
+  books: Book[] | undefined,
+): { unit: string; value: number } {
+  const book =
+    point.mode === 'chapter' ? locateChapter(point.value, books) : null
+  if (book !== null) {
+    return {
+      unit: t('onboarding.unitBook', { book: book.book }),
+      value: book.chapter,
+    }
+  }
+
+  return {
+    unit: t(
+      point.mode === 'chapter' ?
+        'onboarding.unitChapter'
+      : 'onboarding.unitEpisode',
+    ),
+    value: point.value,
+  }
 }
 
 /**
@@ -49,6 +72,7 @@ export function OnboardingDial({
   const id = useId()
   const series = useBookmarkSeries()
   const last = dialLast(point.mode, series)
+  const reading = readingOf(t, point, series.books)
 
   return (
     <div {...stylex.props(styles.dial)}>
@@ -64,7 +88,7 @@ export function OnboardingDial({
         {t('onboarding.dial')}
       </label>
       <input
-        aria-valuetext={`${unitOf(t, point)} ${String(point.value)}`}
+        aria-valuetext={`${reading.unit} ${String(reading.value)}`}
         id={id}
         max={last}
         min={1}
@@ -96,13 +120,14 @@ function Readout({
 }: Pick<OnboardingDialProps, 'arc' | 'point'>): ReactElement {
   const t = useT()
   const save = useSave()
-  const unit = unitOf(t, point)
+  const series = useBookmarkSeries()
+  const { unit, value } = readingOf(t, point, series.books)
 
   return (
     <div {...stylex.props(styles.readout)}>
       <div {...stylex.props(styles.point)}>
         <span {...stylex.props(styles.unitLabel)}>{unit}</span>
-        <span {...stylex.props(styles.numeral)}>{point.value}</span>
+        <span {...stylex.props(styles.numeral)}>{value}</span>
         {arc !== undefined && (
           <span
             aria-live="polite"
@@ -185,6 +210,7 @@ function UnitSwitch({
   point,
 }: Omit<OnboardingDialProps, 'arc'>): ReactElement {
   const t = useT()
+  const series = useBookmarkSeries()
 
   return (
     <div
@@ -204,9 +230,7 @@ function UnitSwitch({
             }}
             sx={point.mode === mode && styles.unitOn}
           >
-            {t(
-              mode === 'chapter' ? 'dialog.modeChapter' : 'dialog.modeEpisode',
-            )}
+            {t(modeKey(mode, series))}
           </Button>
         )
       })}

@@ -67,7 +67,7 @@ describe.each(CASES)(
     })
 
     it('ends season 2 where its own table does', () => {
-      const draft = { mode: 'season', season: '2', number: '' } as const
+      const draft = { mode: 'season', group: '2', number: '' } as const
       const past = String(seasonTwo + 1)
       const link = new URLSearchParams({ s: '2', ep: past })
 
@@ -97,7 +97,7 @@ describe.each(CASES)(
             chapter: [],
             filler: [],
           },
-          { mode: 'season', season: '2', number: '12' },
+          { mode: 'season', group: '2', number: '12' },
           series,
         )?.name,
       ).toBe('before')
@@ -121,7 +121,7 @@ describe.each(CASES)(
 // Each call below leaves the series out. `@ts-expect-error` makes
 // `npm run typecheck` fail the day any of them gets a default back, and the
 // call itself throws instead of quietly reading One Piece's table.
-const SEASON_DRAFT = { mode: 'season', season: '2', number: '12' } as const
+const SEASON_DRAFT = { mode: 'season', group: '2', number: '12' } as const
 const GREED_ISLAND = { revealedAtEpisode: 59, revealedAtChapter: 126 }
 const SEASON_TWO = { number: 2, first: 27, last: 38 }
 const NO_SAGAS = { episode: [], chapter: [], filler: [] }
