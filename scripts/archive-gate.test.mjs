@@ -362,7 +362,7 @@ describe('source attribution boundaries', () => {
 
   it('checks all pinned revisions', () => {
     const sources = sourceCanaries(repositoryRoot)
-    expect(sources).toHaveLength(198)
+    expect(sources).toHaveLength(483)
     expect(sources.every(({ phrase }) => typeof phrase === 'string')).toBe(true)
     const leaked = sources.map(({ phrase }, index) =>
       chunk(`source-${String(index)}.js`, phrase),
