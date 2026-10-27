@@ -2628,7 +2628,7 @@ export const dressrosaRelationships = {
     {
       episode: 1110,
       chapter: 1078,
-      source: 'manga',
+      source: 'chapter',
       value: [
         retained.caesarJudge,
         retained.caesarBegeFree,
@@ -2668,7 +2668,7 @@ export const dressrosaRelationships = {
     {
       episode: 715,
       chapter: 775,
-      source: 'manga',
+      source: 'chapter',
       value: [
         retained.monetSugar,
         retained.monetDoffySacrifice,
@@ -2809,7 +2809,7 @@ export const dressrosaRelationships = {
     {
       episode: 853,
       chapter: 881,
-      source: 'manga',
+      source: 'chapter',
       value: [
         retained.babySaiHusband,
         retained.babyBuffalo,
@@ -2830,7 +2830,7 @@ export const dressrosaRelationships = {
     {
       episode: 651,
       chapter: 721,
-      source: 'anime',
+      source: 'episode',
       value: [
         retained.rebeccaScarlett,
         retained.rebeccaLuffy,
@@ -2840,7 +2840,7 @@ export const dressrosaRelationships = {
     {
       episode: 659,
       chapter: 727,
-      source: 'anime',
+      source: 'episode',
       value: [
         retained.rebeccaScarlett,
         retained.rebeccaRiku,
@@ -2851,7 +2851,7 @@ export const dressrosaRelationships = {
     {
       episode: 659,
       chapter: 727,
-      source: 'manga',
+      source: 'chapter',
       value: [
         retained.rebeccaRiku,
         retained.rebeccaLuffy,
@@ -3117,7 +3117,7 @@ export const dressrosaRelationships = {
     {
       episode: 853,
       chapter: 881,
-      source: 'manga',
+      source: 'chapter',
       value: [
         retained.saiBabyWife,
         retained.saiChinjaoSuccessor,
@@ -3129,7 +3129,7 @@ export const dressrosaRelationships = {
     {
       episode: 1118,
       chapter: 1084,
-      source: 'anime',
+      source: 'episode',
       value: [
         retained.saiBaby,
         retained.saiChinjaoSuccessor,
@@ -3141,7 +3141,7 @@ export const dressrosaRelationships = {
     {
       episode: 1118,
       chapter: 1084,
-      source: 'manga',
+      source: 'chapter',
       value: [
         retained.saiBabyWife,
         retained.saiChinjaoSuccessor,
@@ -3365,7 +3365,7 @@ export const dressrosaRelationships = {
     {
       episode: 715,
       chapter: 775,
-      source: 'manga',
+      source: 'chapter',
       value: [
         retained.sugarDoffy,
         retained.sugarTrebol,
@@ -3428,7 +3428,7 @@ export const dressrosaRelationships = {
     {
       episode: 702,
       chapter: 763,
-      source: 'manga',
+      source: 'chapter',
       value: [
         retained.dellDoffy,
         retained.dellJora,
@@ -3439,7 +3439,7 @@ export const dressrosaRelationships = {
     {
       episode: 712,
       chapter: 772,
-      source: 'anime',
+      source: 'episode',
       value: [
         retained.dellDoffy,
         retained.dellBellamy,
@@ -3450,7 +3450,7 @@ export const dressrosaRelationships = {
     {
       episode: 712,
       chapter: 772,
-      source: 'manga',
+      source: 'chapter',
       value: [
         retained.dellDoffy,
         retained.dellJora,
@@ -3491,13 +3491,13 @@ export const dressrosaRelationships = {
     {
       episode: 702,
       chapter: 763,
-      source: 'manga',
+      source: 'chapter',
       value: [retained.joraDoffy, retained.joraDell, retained.joraBrook],
     },
     {
       episode: 714,
       chapter: 774,
-      source: 'anime',
+      source: 'episode',
       value: [
         retained.joraDoffy,
         retained.joraMansherry,
@@ -3508,7 +3508,7 @@ export const dressrosaRelationships = {
     {
       episode: 714,
       chapter: 774,
-      source: 'manga',
+      source: 'chapter',
       value: [
         retained.joraDoffy,
         retained.joraDell,
@@ -3924,13 +3924,13 @@ export const dressrosaRelationships = {
     {
       episode: 651,
       chapter: 742,
-      source: 'anime',
+      source: 'episode',
       value: [retained.scarRebecca],
     },
     {
       episode: 675,
       chapter: 742,
-      source: 'anime',
+      source: 'episode',
       value: [
         retained.scarRebecca,
         retained.scarKyros,
@@ -3941,7 +3941,7 @@ export const dressrosaRelationships = {
     {
       episode: 676,
       chapter: 743,
-      source: 'anime',
+      source: 'episode',
       value: [
         retained.scarRebecca,
         retained.scarKyros,
@@ -3953,7 +3953,7 @@ export const dressrosaRelationships = {
     {
       episode: 675,
       chapter: 742,
-      source: 'manga',
+      source: 'chapter',
       value: [
         retained.scarRebecca,
         retained.scarKyros,
