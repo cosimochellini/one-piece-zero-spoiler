@@ -3,6 +3,7 @@ import { useMatch } from '@tanstack/react-router'
 import {
   type ReactElement,
   type ReactNode,
+  useEffect,
   useId,
   useSyncExternalStore,
 } from 'react'
@@ -57,12 +58,27 @@ function IntroDialog(): ReactElement {
   const titleId = useId()
   const ledeId = useId()
 
+  // The dialog itself takes the focus rather than the first unit, as the
+  // bookmark dialog does: a reader who did not ask for it reads the title
+  // first, and on a phone the sheet opens at its top instead of scrolled
+  // down to the radio.
+  useEffect(() => {
+    const dialog = dialogRef.current
+    if (dialog === null) {
+      return
+    }
+    dialog.focus()
+    // The browser's own focus on opening has already scrolled the sheet.
+    dialog.scrollTop = 0
+  }, [dialogRef])
+
   return (
     <dialog
       aria-describedby={ledeId}
       aria-labelledby={titleId}
       onClose={dismissIntro}
       ref={dialogRef}
+      tabIndex={-1}
       {...stylex.props(dialogStyles.dialog, styles.dialog)}
     >
       <div {...stylex.props(dialogStyles.panel, styles.panel)}>

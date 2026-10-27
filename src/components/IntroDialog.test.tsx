@@ -54,11 +54,13 @@ describe('FirstVisitIntro', () => {
       path: '/one-piece/en/characters',
     })
 
+    // The dialog holds the focus itself, so its title is read first and a
+    // phone sheet opens at its top rather than scrolled to the first unit.
     expect(
       screen.getByRole('dialog', {
         name: 'The One Piece wiki without spoilers',
       }),
-    ).toBeInTheDocument()
+    ).toHaveFocus()
     expect(screen.getAllByRole('listitem')).toHaveLength(3)
     expect(screen.queryByText(/first appears/u)).not.toBeInTheDocument()
   })

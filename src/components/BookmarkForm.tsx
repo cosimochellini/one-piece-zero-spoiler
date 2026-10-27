@@ -69,7 +69,9 @@ export function BookmarkForm({ onDone }: BookmarkFormProps): ReactElement {
  * When the form arrives after the dialog has opened, the browser has already
  * given the focus to the close button, the only control there was. It moves
  * to the chosen unit, where it would have started had the form been here.
- * Arriving with the dialog, the form leaves the focus to the dialog.
+ * Arriving with the dialog, the form leaves the focus to the dialog, and so
+ * it does when the dialog holds the focus itself: the intro does, so its
+ * title is read first (#864).
  */
 function useArrivalFocus(): React.RefObject<HTMLFormElement | null> {
   const formRef = useRef<HTMLFormElement>(null)
@@ -79,6 +81,7 @@ function useArrivalFocus(): React.RefObject<HTMLFormElement | null> {
     const dialog = form?.closest('dialog')
     if (
       dialog?.open === true
+      && document.activeElement !== dialog
       && form?.contains(document.activeElement) === false
     ) {
       form.querySelector<HTMLInputElement>('input:checked')?.focus()

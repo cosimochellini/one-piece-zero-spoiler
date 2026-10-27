@@ -25,7 +25,10 @@ const WIDE = '@media (min-width: 48rem)'
  * display size and the step numbers in gold.
  */
 export const introStyles = stylex.create({
+  // Focused by hand on opening, as a container: it has no ring of its own,
+  // and the first Tab lands on a control that does.
   dialog: {
+    outlineStyle: 'none',
     width: { [SHEET]: '100%', default: 'min(calc(100% - 2rem), 56rem)' },
   },
 
@@ -87,6 +90,8 @@ export const introStyles = stylex.create({
     gap: space.md,
     backgroundColor: color.paper,
     display: 'grid',
+    // Clears the close button in the corner, which sits over this column.
+    marginBlockStart: { [WIDE]: space.lg, default: 0 },
     borderTopColor: color.accent,
     borderTopWidth: rule.fine,
     minWidth: 0,
