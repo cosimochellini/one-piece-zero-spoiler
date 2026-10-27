@@ -2,7 +2,7 @@ import { createServerFn } from '@tanstack/react-start'
 import { getRequestHeader } from '@tanstack/react-start/server'
 
 import { descriptionOf } from '~/data/series'
-import { parseCookieHeader } from '~/lib/cookies'
+import { migratedCookies } from '~/lib/progress/migrateBookmark'
 
 import {
   hubPageFor,
@@ -20,10 +20,7 @@ export const loadSeriesDescriptions = createServerFn().handler(() =>
  * but not open is still a name the hub announces as coming.
  */
 export const loadHub = createServerFn().handler(async () =>
-  hubPageFor(
-    parseCookieHeader(getRequestHeader('cookie')),
-    await openArchives(),
-  ),
+  hubPageFor(migratedCookies(getRequestHeader('cookie')), await openArchives()),
 )
 
 /** Unknown series return nothing so the route can answer with a 404. */

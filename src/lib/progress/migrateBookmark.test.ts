@@ -1,33 +1,52 @@
 import { describe, expect, it } from 'vitest'
 
-import { parseCookieHeader } from '~/lib/cookies'
-
 import { linkRedirect } from './linkBookmark'
-import { migrateBookmark, withMigratedCookies } from './migrateBookmark'
+import {
+  migrateBookmark,
+  migratedCookies,
+  withMigratedCookies,
+} from './migrateBookmark'
 import { bookmarkFromCookies } from './requestBookmark'
 import { ONE_PIECE_BOOKMARK } from './series'
 
+/** A request whose headers throw on write, as an incoming one does on Workers. */
 function request(cookie: string, path = '/en'): Request {
-  return new Request(`https://example.com${path}`, { headers: { cookie } })
+  const asked = new Request(`https://example.com${path}`, {
+    headers: { cookie },
+  })
+  for (const write of ['set', 'append', 'delete'] as const) {
+    Object.defineProperty(asked.headers, write, {
+      value: () => {
+        throw new TypeError("Can't modify immutable headers.")
+      },
+    })
+  }
+  return asked
+}
+
+/** What the loaders read for a request. */
+function readJar(asked: Request): Map<string, string> {
+  return migratedCookies(asked.headers.get('cookie'))
 }
 
 describe('legacy One Piece bookmark migration', () => {
-  it('migrates before this request is rendered and expires the old cookie', () => {
+  it('migrates for this request without writing to it, and expires the old cookie', () => {
     const asked = request('opzs_ep=650; opzs_lang=it')
     const cookies = migrateBookmark(asked)
-    const jar = parseCookieHeader(asked.headers.get('cookie'))
+    const jar = readJar(asked)
 
     expect(bookmarkFromCookies(jar, ONE_PIECE_BOOKMARK)).toStrictEqual({
       mode: 'episode',
       episode: 650,
     })
+    expect(asked.headers.get('cookie')).toBe('opzs_ep=650; opzs_lang=it')
     expect(jar.get('opzs_lang')).toBe('it')
     expect(jar.has('opzs_ep')).toBe(false)
     expect(cookies).toStrictEqual([
       'zs_one-piece=650; Path=/; SameSite=Lax; Max-Age=31536000',
       'opzs_ep=; Path=/; SameSite=Lax; Max-Age=0',
     ])
-    expect(migrateBookmark(asked)).toStrictEqual([])
+    expect(migrateBookmark(request('zs_one-piece=650'))).toStrictEqual([])
   })
 
   it('preserves seasons and chapters and keeps trials session-only', () => {
@@ -50,9 +69,7 @@ describe('legacy One Piece bookmark migration', () => {
       expect(migrateBookmark(asked)).toStrictEqual([
         'opzs_ep=; Path=/; SameSite=Lax; Max-Age=0',
       ])
-      expect(
-        parseCookieHeader(asked.headers.get('cookie')).get('zs_one-piece'),
-      ).toBe(value)
+      expect(readJar(asked).get('zs_one-piece')).toBe(value)
     }
   })
 
@@ -70,7 +87,7 @@ describe('legacy One Piece bookmark migration', () => {
 
     expect(migrateBookmark(asked)).toHaveLength(4)
 
-    const jar = parseCookieHeader(asked.headers.get('cookie'))
+    const jar = readJar(asked)
 
     expect(jar.get('zs_other')).toBe('3')
     expect(jar.get('zs_one-piece_try')).toBe('12')
