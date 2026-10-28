@@ -84,14 +84,16 @@ export const Route = createFileRoute('/$series/$locale/characters/$id')({
 /**
  * A character's page (Hallmark macrostructure 15, Split Studio).
  *
- * Four bands down the page. The first is the crest beside the dossier: kind
+ * Five bands down the page. The first is the crest beside the dossier: kind
  * and episode in mono, the name as the only display line, the role, the
  * summary, then the facts as the reader's bookmark knows them and the log
  * entry. The second is the chronicle: the stories the reader has reached,
  * one under the other, and nothing at all when they have reached none. The
  * third is the record's place on the route beside a strip of the whole route
  * with this waypoint ringed, and the two records filed either side of it. The
- * fourth is one row of the listed characters filed nearest on the route.
+ * fourth is the people they are connected to, streamed in and absent when
+ * the reader has reached none. The fifth is one row of the listed characters
+ * filed nearest on the route.
  *
  * Under fog the crest and the dossier are covered together and the title is
  * generic; the strip still shows where on the route the page sits, because
@@ -178,11 +180,10 @@ function RelationshipsBand({
   relationships: Promise<RelationshipView[]>
 }): ReactElement {
   return (
-    <div
-      {...stylex.props(settleStyles.band, settleStyles.at(BAND.relationships))}
-    >
-      <RelationshipBand relationships={use(relationships)} />
-    </div>
+    <RelationshipBand
+      band={BAND.relationships}
+      relationships={use(relationships)}
+    />
   )
 }
 

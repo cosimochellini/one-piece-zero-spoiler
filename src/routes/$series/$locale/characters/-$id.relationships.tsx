@@ -5,6 +5,7 @@ import type { ReactElement } from 'react'
 import { useT } from '~/i18n/LocaleContext'
 import { useSeriesParams, useThreshold } from '~/lib/progress/BookmarkContext'
 import type { RelationshipView } from '~/lib/view/relationships'
+import { settleStyles } from '~/styles/settle'
 import {
   color,
   font,
@@ -19,8 +20,11 @@ import { styles } from './-$id.styles'
 
 /** The people the server can name, with the connection rather than their role. */
 export function RelationshipBand({
+  band,
   relationships,
 }: {
+  /** Which band down the page this is, for the settle delay. */
+  band: number
   relationships: RelationshipView[]
 }): null | ReactElement {
   const t = useT()
@@ -31,7 +35,11 @@ export function RelationshipBand({
   return (
     <section
       aria-labelledby="relationships"
-      {...stylex.props(styles.chronicle)}
+      {...stylex.props(
+        styles.chronicle,
+        settleStyles.band,
+        settleStyles.at(band),
+      )}
     >
       <div {...stylex.props(styles.bandHead)}>
         <h2
