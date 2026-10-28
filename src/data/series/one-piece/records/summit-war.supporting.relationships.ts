@@ -110,19 +110,11 @@ const links = {
     character: 'silvers-rayleigh',
     type: { en: 'Man she loves', it: 'Uomo che ama' },
     summary: {
-      en: 'Shakky leaves the Kuja Pirates after falling in love with Rayleigh.',
-      it: 'Shakky lascia le Pirate Kuja dopo essersi innamorata di Rayleigh.',
-    },
-  },
-  shakkySilversRayleigh3: {
-    character: 'silvers-rayleigh',
-    type: { en: 'Man she loves', it: 'Uomo che ama' },
-    summary: {
       en: 'Shakky writes to Rayleigh asking him to come for her and is distressed when he stays on his ship.',
       it: 'Shakky scrive a Rayleigh chiedendogli di venire a prenderla e soffre quando lui resta sulla sua nave.',
     },
   },
-  shakkySilversRayleigh4: {
+  shakkySilversRayleigh3: {
     character: 'silvers-rayleigh',
     type: { en: 'Rescuer', it: 'Soccorritore' },
     summary: {
@@ -1871,7 +1863,7 @@ export const supportingRelationships = {
       chapter: 1157,
       source: 'chapter',
       value: [
-        links.shakkySilversRayleigh2,
+        links.shakkySilversRayleigh,
         links.shakkyBoaHancock2,
         links.shakkyHatchan,
         links.shakkyMonkeyDLuffy,
@@ -1882,7 +1874,7 @@ export const supportingRelationships = {
       chapter: 1158,
       source: 'chapter',
       value: [
-        links.shakkySilversRayleigh3,
+        links.shakkySilversRayleigh2,
         links.shakkyBoaHancock2,
         links.shakkyHatchan,
         links.shakkyMonkeyDLuffy,
@@ -1893,7 +1885,7 @@ export const supportingRelationships = {
       chapter: 1161,
       source: 'chapter',
       value: [
-        links.shakkySilversRayleigh4,
+        links.shakkySilversRayleigh3,
         links.shakkyBoaHancock2,
         links.shakkyHatchan,
         links.shakkyMonkeyDLuffy,
@@ -2498,7 +2490,7 @@ export const supportingRelationships = {
     },
     {
       episode: 703,
-      chapter: 764,
+      chapter: 766,
       value: [
         links.tsuruMonkeyDGarp,
         links.tsuruSengoku,
