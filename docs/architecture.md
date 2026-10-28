@@ -4,6 +4,10 @@ Zero Spoiler is a React / TanStack Start app with StyleX, built by Vite for
 Cloudflare Workers. The old Netlify address only redirects to the new domain
 (`netlify.toml`). Versions and commands live in `package.json`.
 
+The Worker runs on Workers Free, where Cloudflare kills a request over 10 ms of
+CPU. `.github/workflows/worker-cpu.yml` opens an issue on any day it does
+(#775).
+
 ## Code map
 
 | Path                                     | Responsibility                                                                       |
