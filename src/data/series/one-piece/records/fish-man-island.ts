@@ -1,4 +1,5 @@
 import { fishManIslandChronicles } from './fish-man-island.chronicle'
+import { fishManIslandRelationships } from './fish-man-island.relationships'
 import type { OnePieceSaga } from './saga'
 
 /**
@@ -474,6 +475,7 @@ export const fishManIsland: OnePieceSaga = {
 
   dossiers: {
     'caribou': {
+      relationships: fishManIslandRelationships.caribou,
       role: {
         it: 'Capitano dei Pirati di Caribou',
         en: 'Captain of the Caribou Pirates',
@@ -522,6 +524,7 @@ export const fishManIsland: OnePieceSaga = {
       bounty: [{ episode: 519, value: 210_000_000 }],
     },
     'coribou': {
+      relationships: fishManIslandRelationships.coribou,
       role: {
         it: 'Fratello di Caribou, anche lui capitano',
         en: 'Caribou’s brother, also a captain',
@@ -549,6 +552,7 @@ export const fishManIsland: OnePieceSaga = {
       bounty: [{ episode: 519, value: 190_000_000 }],
     },
     'demalo-black': {
+      relationships: fishManIslandRelationships['demalo-black'],
       chronicle: fishManIslandChronicles['demalo-black'],
       role: {
         it: 'Capitano dei Finti Pirati di Cappello di Paglia',
@@ -582,6 +586,7 @@ export const fishManIsland: OnePieceSaga = {
       bounty: [{ episode: 521, value: 26_000_000 }],
     },
     'hammond': {
+      relationships: fishManIslandRelationships.hammond,
       role: {
         it: 'Combattente dei Nuovi Pirati Uomini-Pesce',
         en: 'Combatant of the New Fish-Man Pirates',
@@ -615,6 +620,7 @@ export const fishManIsland: OnePieceSaga = {
       ],
     },
     'shyarly': {
+      relationships: fishManIslandRelationships.shyarly,
       role: {
         it: 'Proprietaria del Caffè delle Sirene',
         en: 'Owner of the Mermaid Café',
@@ -643,6 +649,7 @@ export const fishManIsland: OnePieceSaga = {
       ],
     },
     'ankoro': {
+      relationships: fishManIslandRelationships.ankoro,
       chronicle: fishManIslandChronicles.ankoro,
       role: {
         it: 'Rana pescatrice degli abissi',
@@ -671,6 +678,7 @@ export const fishManIsland: OnePieceSaga = {
       ],
     },
     'vander-decken-ix': {
+      relationships: fishManIslandRelationships['vander-decken-ix'],
       role: {
         it: 'Capitano dell’Olandese Volante',
         en: 'Captain of the Flying Dutchman',
@@ -698,6 +706,7 @@ export const fishManIsland: OnePieceSaga = {
       devilFruit: [{ episode: 532, value: ['mark-mark-fruit'] }],
     },
     'surume': {
+      relationships: fishManIslandRelationships.surume,
       chronicle: fishManIslandChronicles.surume,
       role: { it: 'Kraken addomesticato da Rufy', en: 'Kraken tamed by Luffy' },
       log: {
@@ -733,6 +742,7 @@ export const fishManIsland: OnePieceSaga = {
       ],
     },
     'wadatsumi': {
+      relationships: fishManIslandRelationships.wadatsumi,
       chronicle: fishManIslandChronicles.wadatsumi,
       role: { it: 'Il gigante di Van Der Decken', en: 'Vander Decken’s giant' },
       log: {
@@ -755,6 +765,7 @@ export const fishManIsland: OnePieceSaga = {
       ],
     },
     'hody-jones': {
+      relationships: fishManIslandRelationships['hody-jones'],
       role: {
         it: 'Capitano dei Nuovi Pirati Uomini-Pesce',
         en: 'Captain of the New Fish-Man Pirates',
@@ -797,6 +808,7 @@ export const fishManIsland: OnePieceSaga = {
       ],
     },
     'neptune': {
+      relationships: fishManIslandRelationships.neptune,
       role: { it: 'Re del Regno di Ryugu', en: 'King of the Ryugu Kingdom' },
       log: {
         it: 'Scende dal palazzo in groppa alla sua balena, senza guardie, e nella piazza la gente non lo ha mai visto di persona. Arrivando grida il proprio nome. È venuto per gli umani che lo squalo Megalo gli indica, e li invita al Palazzo di Ryugu.',
@@ -836,6 +848,7 @@ export const fishManIsland: OnePieceSaga = {
       ],
     },
     'fukaboshi': {
+      relationships: fishManIslandRelationships.fukaboshi,
       role: { it: 'Principe ereditario di Ryugu', en: 'Crown prince of Ryugu' },
       log: {
         it: 'Viene di persona alla Baia delle Sirene con i fratelli a cercare degli intrusi entrati illegalmente sull’isola. Quando le sirene dicono di non aver visto nessuno, si scusa per il disturbo e fa per andarsene. Dopo la fuga dei pirati spiega alle sirene che non c’era bisogno di nasconderli: l’armata sapeva già chi fossero, e i principi li cercavano per consegnare loro un messaggio di Jinbe.',
@@ -868,6 +881,7 @@ export const fishManIsland: OnePieceSaga = {
       ],
     },
     'ryuboshi': {
+      relationships: fishManIslandRelationships.ryuboshi,
       role: { it: 'Principe di Ryugu', en: 'Prince of Ryugu' },
       log: {
         it: 'Canta la fine di quasi ogni frase salendo o scendendo una scala. Alla Baia delle Sirene lui e i fratelli chiedono alle sirene notizie di un ingresso illegale, e quando Rufy mette al tappeto Hammond e i suoi uomini comincia a sguainare la spada. Dopo che Kayme è partita sulla gondola dei principi con i Cappello di Paglia a bordo, spiega alle sirene che i principi cercavano la ciurma per un altro motivo: dovevano consegnarle un messaggio di Jinbe.',
@@ -893,6 +907,7 @@ export const fishManIsland: OnePieceSaga = {
       ],
     },
     'manboshi': {
+      relationships: fishManIslandRelationships.manboshi,
       role: { it: 'Principe di Ryugu', en: 'Prince of Ryugu' },
       log: {
         it: 'Arriva alla Baia delle Sirene con i due fratelli sulla gondola reale, in cerca di chi è entrato illegalmente sull’isola. Mentre i fratelli interrogano le sirene non riesce a stare fermo: dice che vuole restare a giocare e chiama tutti a ballare. Quando Kayme parte con la gondola e i Cappello di Paglia a bordo, resta alla baia con i fratelli.',
@@ -918,6 +933,7 @@ export const fishManIsland: OnePieceSaga = {
       ],
     },
     'shirahoshi': {
+      relationships: fishManIslandRelationships.shirahoshi,
       role: {
         it: 'Principessa del Regno di Ryugu',
         en: 'Princess of the Ryugu Kingdom',
@@ -959,6 +975,7 @@ export const fishManIsland: OnePieceSaga = {
       ],
     },
     'hyouzou': {
+      relationships: fishManIslandRelationships.hyouzou,
       role: {
         it: 'Assassino dei Nuovi Pirati Uomini-Pesce',
         en: 'Assassin of the New Fish-Man Pirates',
@@ -987,6 +1004,7 @@ export const fishManIsland: OnePieceSaga = {
       // No origin: no source gives it before his threshold.
     },
     'zeo': {
+      relationships: fishManIslandRelationships.zeo,
       role: {
         it: 'Ufficiale dei Nuovi Pirati Uomini-Pesce',
         en: 'Officer of the New Fish-Man Pirates',
@@ -1014,6 +1032,7 @@ export const fishManIsland: OnePieceSaga = {
       ],
     },
     'daruma': {
+      relationships: fishManIslandRelationships.daruma,
       role: {
         it: 'Ufficiale dei Nuovi Pirati Uomini-Pesce',
         en: 'Officer of the New Fish-Man Pirates',
@@ -1041,6 +1060,7 @@ export const fishManIsland: OnePieceSaga = {
       ],
     },
     'ikaros-much': {
+      relationships: fishManIslandRelationships['ikaros-much'],
       role: {
         it: 'Membro dei Nuovi Pirati Uomini-Pesce',
         en: 'Member of the New Fish-Man Pirates',
@@ -1071,6 +1091,7 @@ export const fishManIsland: OnePieceSaga = {
       ],
     },
     'dosun': {
+      relationships: fishManIslandRelationships.dosun,
       role: {
         it: 'Membro dei Nuovi Pirati Uomini-Pesce',
         en: 'Member of the New Fish-Man Pirates',
@@ -1101,6 +1122,7 @@ export const fishManIsland: OnePieceSaga = {
       ],
     },
     'megalo': {
+      relationships: fishManIslandRelationships.megalo,
       chronicle: fishManIslandChronicles.megalo,
       role: {
         it: 'Squalo del Palazzo di Ryugu',
@@ -1130,6 +1152,7 @@ export const fishManIsland: OnePieceSaga = {
       ],
     },
     'den': {
+      relationships: fishManIslandRelationships.den,
       role: { it: 'Carpentiere dell’isola', en: 'Shipwright of the island' },
       log: {
         it: 'Studia la Foresta Marina, dove la corrente porta le navi che affondano intorno all’isola, ed è carpentiere come il fratello maggiore Tom. Dalle lettere di Kokoro sa che cosa è stato di Tom, e ha già sentito parlare di Franky e Iceburg. A Tom non somiglia per niente, e spiega che sull’Isola degli Uomini-Pesce i figli prendono spesso da un antenato lontano invece che dai genitori. Si offre di rivestire lui stesso la Thousand Sunny.',
@@ -1155,6 +1178,7 @@ export const fishManIsland: OnePieceSaga = {
       ],
     },
     'minister-of-the-right': {
+      relationships: fishManIslandRelationships['minister-of-the-right'],
       chronicle: fishManIslandChronicles['minister-of-the-right'],
       role: { it: 'Ministro di re Nettuno', en: 'Minister of King Neptune' },
       log: {
@@ -1180,6 +1204,7 @@ export const fishManIsland: OnePieceSaga = {
       ],
     },
     'otohime': {
+      relationships: fishManIslandRelationships.otohime,
       role: {
         it: 'Regina del Regno di Ryugu',
         en: 'Queen of the Ryugu Kingdom',
@@ -1205,6 +1230,7 @@ export const fishManIsland: OnePieceSaga = {
       ],
     },
     'fisher-tiger': {
+      relationships: fishManIslandRelationships['fisher-tiger'],
       role: {
         it: 'Capitano dei Pirati del Sole',
         en: 'Captain of the Sun Pirates',
@@ -1241,6 +1267,7 @@ export const fishManIsland: OnePieceSaga = {
       bounty: [{ episode: 541, value: 230_000_000 }],
     },
     'aladine': {
+      relationships: fishManIslandRelationships.aladine,
       role: { it: 'Medico di bordo', en: 'Ship’s doctor' },
       log: {
         it: 'Naviga con la ciurma di Fisher Tiger e ne è il medico. Quando Koala continua a pulire, dice a Octy di lasciarla in pace: ha bisogno di tempo, perché un trauma non guarisce così in fretta. Arlong osserva che Aladin, schiavo a sua volta, la capisce bene. Quando il capitano è ferito gravemente e rifiuta il sangue umano, Aladin cerca di convincerlo ad accettarlo.',
@@ -1272,6 +1299,7 @@ export const fishManIsland: OnePieceSaga = {
       ],
     },
     'minister-of-the-left': {
+      relationships: fishManIslandRelationships['minister-of-the-left'],
       chronicle: fishManIslandChronicles['minister-of-the-left'],
       role: { it: 'Ministro di re Nettuno', en: 'Minister of King Neptune' },
       log: {
@@ -1290,6 +1318,7 @@ export const fishManIsland: OnePieceSaga = {
       ],
     },
     'pekoms': {
+      relationships: fishManIslandRelationships.pekoms,
       role: {
         it: 'Combattente dei Pirati di Big Mom',
         en: 'Combatant of the Big Mom Pirates',
@@ -1343,6 +1372,7 @@ export const fishManIsland: OnePieceSaga = {
       bounty: [{ episode: 572, value: 330_000_000 }],
     },
     'baron-tamago': {
+      relationships: fishManIslandRelationships['baron-tamago'],
       role: {
         it: 'Combattente dei Pirati di Big Mom',
         en: 'Combatant of the Big Mom Pirates',
@@ -1366,6 +1396,7 @@ export const fishManIsland: OnePieceSaga = {
       bounty: [{ episode: 816, value: 429_000_000 }],
     },
     'bobbin': {
+      relationships: fishManIslandRelationships.bobbin,
       chronicle: fishManIslandChronicles.bobbin,
       role: {
         it: 'Combattente dei Pirati di Big Mom',
