@@ -3,7 +3,7 @@ import { type ReactElement, useState } from 'react'
 import { describe, expect, it } from 'vitest'
 
 import type { RelationshipView } from '~/lib/view/relationships'
-import { opCharacterPage as characterPage } from '~/test/archive'
+import { opRelationshipsPage as characterPage } from '~/test/archive'
 import { ep, renderWithProviders } from '~/test/providers'
 
 import { RelationshipBand } from './-$id.relationships'
@@ -202,7 +202,7 @@ describe.each(['en', 'it'] as const)(
       expect(family).toBeDefined()
 
       const { unmount } = renderWithProviders(
-        <RelationshipBand relationships={before?.detail.relationships ?? []} />,
+        <RelationshipBand relationships={before} />,
         { locale, bookmark: ep(674) },
       )
 
@@ -211,10 +211,10 @@ describe.each(['en', 'it'] as const)(
       ).not.toBeInTheDocument()
 
       unmount()
-      renderWithProviders(
-        <RelationshipBand relationships={family?.detail.relationships ?? []} />,
-        { locale, bookmark: ep(675) },
-      )
+      renderWithProviders(<RelationshipBand relationships={family} />, {
+        locale,
+        bookmark: ep(675),
+      })
 
       expect(screen.getByRole('link', { name: 'Kyros' })).toHaveAttribute(
         'href',
@@ -238,9 +238,7 @@ describe.each(['en', 'it'] as const)(
       expect(reached).toBeDefined()
 
       const { unmount } = renderWithProviders(
-        <RelationshipBand
-          relationships={earlier?.detail.relationships ?? []}
-        />,
+        <RelationshipBand relationships={earlier} />,
         { locale, bookmark: ep(352) },
       )
 
@@ -249,12 +247,10 @@ describe.each(['en', 'it'] as const)(
       ).not.toBeInTheDocument()
 
       unmount()
-      renderWithProviders(
-        <RelationshipBand
-          relationships={reached?.detail.relationships ?? []}
-        />,
-        { locale, bookmark: ep(353) },
-      )
+      renderWithProviders(<RelationshipBand relationships={reached} />, {
+        locale,
+        bookmark: ep(353),
+      })
 
       expect(screen.getByRole('link', { name: 'Brook' })).toHaveAttribute(
         'href',
@@ -296,9 +292,7 @@ describe.each(['en', 'it'] as const)(
       expect(reached).toBeDefined()
 
       const { unmount } = renderWithProviders(
-        <RelationshipBand
-          relationships={earlier?.detail.relationships ?? []}
-        />,
+        <RelationshipBand relationships={earlier} />,
         { locale, bookmark: ep(321) },
       )
 
@@ -306,12 +300,10 @@ describe.each(['en', 'it'] as const)(
       expect(screen.queryByText(joinedDate)).not.toBeInTheDocument()
 
       unmount()
-      renderWithProviders(
-        <RelationshipBand
-          relationships={reached?.detail.relationships ?? []}
-        />,
-        { locale, bookmark: ep(322) },
-      )
+      renderWithProviders(<RelationshipBand relationships={reached} />, {
+        locale,
+        bookmark: ep(322),
+      })
       const link = screen.getByRole('link', { name: /Luffy|Rufy/u })
 
       expect(link).toHaveAttribute(

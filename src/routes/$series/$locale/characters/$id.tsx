@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex'
 import { createFileRoute } from '@tanstack/react-router'
-import { type ReactElement, Suspense, use } from 'react'
+import { lazy, type ReactElement, Suspense, use } from 'react'
 
 import { ArchivePage } from '~/components/ArchivePage'
 import { CharacterCard } from '~/components/CharacterCard'
@@ -14,6 +14,7 @@ import { useT } from '~/i18n/LocaleContext'
  *   route position | strip · nearby crests as one row
  * · idea: "a page from the signal book, opened flat" */
 import type { CharacterView, Slot } from '~/lib/view/records'
+import type { RelationshipView } from '~/lib/view/relationships'
 import { recordHead } from '~/routes/$locale/-head'
 import { RecordBackLink } from '~/routes/$series/$locale/-back'
 import {
@@ -29,19 +30,32 @@ import {
   liftRecord,
   loadCharacter,
   loadNearby,
+  loadRelationships,
   loadRoutePosition,
 } from '~/server/api'
 import { settleStyles } from '~/styles/settle'
 
 import { ChronicleBand } from './-$id.chronicle'
 import { DossierDiptych } from './-$id.dossier'
-import { RelationshipBand } from './-$id.relationships'
 import { RouteDiptych, RoutePending } from './-$id.route'
 import { styles } from './-$id.styles'
 
-// The four bands in DOM order. Named rather than counted at the call, so a
+// The bands in DOM order. Named rather than counted at the call, so a
 // band inserted in the middle is one edit here and not three down the page.
-const BAND = { dossier: 0, chronicle: 1, route: 2, nearby: 3 } as const
+const BAND = {
+  dossier: 0,
+  chronicle: 1,
+  route: 2,
+  relationships: 3,
+  nearby: 4,
+} as const
+
+// Its own chunk: the band streams in after the page, so its code need not
+// ride in the first load.
+const RelationshipBand = lazy(async () => {
+  const { RelationshipBand: band } = await import('./-$id.relationships')
+  return { default: band }
+})
 
 export const Route = createFileRoute('/$series/$locale/characters/$id')({
   beforeLoad: ({ context }) => {
@@ -52,11 +66,13 @@ export const Route = createFileRoute('/$series/$locale/characters/$id')({
   // reader has not reached, and a title is set before any component runs.
   loader: async (match) => {
     const args = recordArgs(match)
-    // Below the dossier, so they stream: the strip is sixty-six marks and the
-    // nearby row is five drawings, and neither is what the reader came for.
+    // Below the dossier, so they stream: the strip is sixty-six marks, the
+    // relations a dossier's worth of history and the nearby row five
+    // drawings, and none is what the reader came for.
     return {
       ...orNotFound(await loadCharacter(args)),
       nearby: loadNearby(args),
+      relationships: loadRelationships(args),
       position: loadRoutePosition(args),
     }
   },
@@ -82,7 +98,7 @@ export const Route = createFileRoute('/$series/$locale/characters/$id')({
  * "waypoint 23 of 35" is the promise and not the spoiler.
  */
 function CharacterPage(): ReactElement {
-  const { detail, nearby, position } = Route.useLoaderData()
+  const { detail, nearby, position, relationships } = Route.useLoaderData()
   const peekDossier = usePeek(liftDossier)
   const peekCharacter = usePeek(liftCharacter)
   const peekRecord = usePeek(liftRecord)
@@ -112,31 +128,61 @@ function CharacterPage(): ReactElement {
         detail={detail}
       />
 
-      {detail.relationships.length > 0 ?
-        <RelationshipBand relationships={detail.relationships} />
-      : <section
-          aria-labelledby="route-position"
-          {...stylex.props(
-            styles.diptych,
-            styles.reversed,
-            settleStyles.band,
-            settleStyles.at(BAND.route),
-          )}
-        >
-          <Suspense fallback={<RoutePending />}>
-            <RouteDiptych
-              peek={peekRecord}
-              position={position}
-            />
-          </Suspense>
-        </section>
-      }
+      <section
+        aria-labelledby="route-position"
+        {...stylex.props(
+          styles.diptych,
+          styles.reversed,
+          settleStyles.band,
+          settleStyles.at(BAND.route),
+        )}
+      >
+        <Suspense fallback={<RoutePending />}>
+          <RouteDiptych
+            peek={peekRecord}
+            position={position}
+          />
+        </Suspense>
+      </section>
+
+      <Suspense fallback={<RelationshipsPending />}>
+        <RelationshipsBand relationships={relationships} />
+      </Suspense>
 
       <NearbyRow
         nearby={nearby}
         peek={peekCharacter}
       />
     </main>
+  )
+}
+
+/** What the page says while the relations are still on their way. */
+function RelationshipsPending(): ReactElement {
+  const t = useT()
+
+  return (
+    <p
+      aria-busy="true"
+      {...stylex.props(styles.lede)}
+    >
+      {t('character.relationshipsLoading')}
+    </p>
+  )
+}
+
+/** The relations once they arrive; nothing at all when there are none. */
+function RelationshipsBand({
+  relationships,
+}: {
+  relationships: Promise<RelationshipView[]>
+}): ReactElement {
+  return (
+    <div
+      {...stylex.props(settleStyles.band, settleStyles.at(BAND.relationships))}
+    >
+      <RelationshipBand relationships={use(relationships)} />
+    </div>
   )
 }
 
