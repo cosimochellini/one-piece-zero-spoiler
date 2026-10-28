@@ -11741,6 +11741,1126 @@
       "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2132118",
       "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2132118",
       "contentSha256": "ad446a4fb69598c22ac0a3e09d875a811d5edf15ac1cfb0c67459040c66f5bdb"
+    },
+    "en-Episode_339.json": {
+      "locale": "en",
+      "title": "Episode 339",
+      "revision": 2103481,
+      "revisionDate": "2026-02-22T20:26:57Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_339",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2103481",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2103481",
+      "contentSha256": "8c057626a735450950db590dd2c1f47f81582ed2d71ea00ec953f158d90a0370"
+    },
+    "en-Chapter_443.json": {
+      "locale": "en",
+      "title": "Chapter 443",
+      "revision": 2131684,
+      "revisionDate": "2026-09-05T16:57:05Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_443",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2131684",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2131684",
+      "contentSha256": "3ff170b71463d810fbf2dee52815690e8c8c308742fc54324c1edb303a820976"
+    },
+    "en-Episode_353.json": {
+      "locale": "en",
+      "title": "Episode 353",
+      "revision": 2056881,
+      "revisionDate": "2025-03-26T23:31:34Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_353",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2056881",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2056881",
+      "contentSha256": "71bfcc4588e9f8e024938efd2a2a0e81210d1273cf19edae0bd97d9636bd8ce9"
+    },
+    "en-Chapter_462.json": {
+      "locale": "en",
+      "title": "Chapter 462",
+      "revision": 2131706,
+      "revisionDate": "2026-09-05T18:38:01Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_462",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2131706",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2131706",
+      "contentSha256": "73948c1ed6641e9db0383cdcc97fb44240e9acce460412445e58b16180d9b1ed"
+    },
+    "en-Episode_362.json": {
+      "locale": "en",
+      "title": "Episode 362",
+      "revision": 2016289,
+      "revisionDate": "2024-08-04T20:52:36Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_362",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2016289",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2016289",
+      "contentSha256": "a62162ef74c4632a9e89e3a8620df0bd4332c682f22680f772ec55cb15887c30"
+    },
+    "en-Chapter_467.json": {
+      "locale": "en",
+      "title": "Chapter 467",
+      "revision": 2131711,
+      "revisionDate": "2026-09-05T18:38:59Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_467",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2131711",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2131711",
+      "contentSha256": "6babf8f8125fb053b84307acdf135e88f68a63e1575f5c358d9aa24bdf7e3311"
+    },
+    "en-Episode_378.json": {
+      "locale": "en",
+      "title": "Episode 378",
+      "revision": 2104139,
+      "revisionDate": "2026-03-01T15:36:57Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_378",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2104139",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2104139",
+      "contentSha256": "0dcb6daf6c694434f19ec9ab499f7eaf572d95cbcb74b182e4f4b74525f98633"
+    },
+    "en-Chapter_486.json": {
+      "locale": "en",
+      "title": "Chapter 486",
+      "revision": 2136402,
+      "revisionDate": "2026-10-24T22:28:58Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_486",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2136402",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2136402",
+      "contentSha256": "bc4e7c6701efd59737c77d7adceebf8320049f22a070c3620a5db7600df4a90c"
+    },
+    "en-Episode_380.json": {
+      "locale": "en",
+      "title": "Episode 380",
+      "revision": 2008976,
+      "revisionDate": "2024-06-23T03:12:01Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_380",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2008976",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2008976",
+      "contentSha256": "046c94e75989594a9742339dde63e002087cefd4649596cd307bcced0161543d"
+    },
+    "en-Chapter_489.json": {
+      "locale": "en",
+      "title": "Chapter 489",
+      "revision": 2136429,
+      "revisionDate": "2026-10-25T04:58:18Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_489",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2136429",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2136429",
+      "contentSha256": "03f644ff66f86181126152518acaecb5109d21e0204324f25c24c48edac3e240"
+    },
+    "en-Episode_381.json": {
+      "locale": "en",
+      "title": "Episode 381",
+      "revision": 2126345,
+      "revisionDate": "2026-07-19T16:25:19Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_381",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2126345",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2126345",
+      "contentSha256": "e2ce1453a1f0ff97e84139d5ea4aafb787d836952b5122af54d93d8476cd98a6"
+    },
+    "en-Episode_818.json": {
+      "locale": "en",
+      "title": "Episode 818",
+      "revision": 1983707,
+      "revisionDate": "2024-01-10T19:04:28Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_818",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=1983707",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=1983707",
+      "contentSha256": "37518064fbdd5fcacaeef47ce58af3df57ce70e4cfc45841e1b2e6e5ba57fd89"
+    },
+    "en-Episode_824.json": {
+      "locale": "en",
+      "title": "Episode 824",
+      "revision": 2021398,
+      "revisionDate": "2024-08-24T05:41:28Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_824",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2021398",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2021398",
+      "contentSha256": "238be4191b4dd13aae13db0b9bebd50bfca276c606bd9b2746e285a55e91f293"
+    },
+    "en-Chapter_855.json": {
+      "locale": "en",
+      "title": "Chapter 855",
+      "revision": 1947674,
+      "revisionDate": "2023-07-30T14:41:44Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_855",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=1947674",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=1947674",
+      "contentSha256": "299f06ade1fce8b97e665a482f73d08100a9db8d0eefba5849baa7a098b11f78"
+    },
+    "en-Episode_1043.json": {
+      "locale": "en",
+      "title": "Episode 1043",
+      "revision": 2026802,
+      "revisionDate": "2024-09-11T02:51:04Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_1043",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2026802",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2026802",
+      "contentSha256": "4692e028e874884d88521ccda9b9bc2bad14ad85eb457b3136337ff54a2437a6"
+    },
+    "en-Chapter_1020.json": {
+      "locale": "en",
+      "title": "Chapter 1020",
+      "revision": 2026804,
+      "revisionDate": "2024-09-11T02:53:12Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_1020",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2026804",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2026804",
+      "contentSha256": "dda2985c83bf09bb4e9d57ca3975103775e13fb8e7f6fe8ff50ca81b567a25d3"
+    },
+    "en-Episode_1044.json": {
+      "locale": "en",
+      "title": "Episode 1044",
+      "revision": 2028450,
+      "revisionDate": "2024-09-16T15:00:12Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_1044",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2028450",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2028450",
+      "contentSha256": "2912911bf7a55b3f51aed8ee10b9e3fd1900d192bf906d98f3ef1a41935bf184"
+    },
+    "en-Chapter_1021.json": {
+      "locale": "en",
+      "title": "Chapter 1021",
+      "revision": 2026801,
+      "revisionDate": "2024-09-11T02:51:03Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_1021",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2026801",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2026801",
+      "contentSha256": "c8347575004ec8a080bf089993486deeb94dc0294fc026e7ef281c06012b5ed3"
+    },
+    "en-Episode_1147.json": {
+      "locale": "en",
+      "title": "Episode 1147",
+      "revision": 2095084,
+      "revisionDate": "2026-01-03T19:15:05Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_1147",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2095084",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2095084",
+      "contentSha256": "9e406db0fc6b1458a02dbcc27536293eb7757091bb060711e9a2ffd07db1e4eb"
+    },
+    "en-Chapter_1113.json": {
+      "locale": "en",
+      "title": "Chapter 1113",
+      "revision": 2136155,
+      "revisionDate": "2026-10-21T02:54:42Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_1113",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2136155",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2136155",
+      "contentSha256": "46bf387f79cb799e2e6ef11833430f30aafe612a9a76e9805579f9bd4ffd5814"
+    },
+    "en-Episode_345.json": {
+      "locale": "en",
+      "title": "Episode 345",
+      "revision": 2055743,
+      "revisionDate": "2025-03-16T21:22:06Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_345",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2055743",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2055743",
+      "contentSha256": "cb665df2e85c3849a7f4b6e67a40acb50f2810b3b76441424b69d13740c37f54"
+    },
+    "en-Chapter_449.json": {
+      "locale": "en",
+      "title": "Chapter 449",
+      "revision": 2131691,
+      "revisionDate": "2026-09-05T18:08:37Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_449",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2131691",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2131691",
+      "contentSha256": "468a82e6f20b0ed713747c9148b8542628983f954b756b663ef36a68b34f332e"
+    },
+    "en-Episode_349.json": {
+      "locale": "en",
+      "title": "Episode 349",
+      "revision": 1958660,
+      "revisionDate": "2023-09-12T07:03:40Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_349",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=1958660",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=1958660",
+      "contentSha256": "7a2f3bd81cb0a09004da9d47c4172ab55172b006c657e0f979875c3fcd898527"
+    },
+    "en-Chapter_455.json": {
+      "locale": "en",
+      "title": "Chapter 455",
+      "revision": 2131698,
+      "revisionDate": "2026-09-05T18:15:42Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_455",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2131698",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2131698",
+      "contentSha256": "b1d9e139e0bcc21a957cd8debc86ed075ea70ba8afdd44a34e52e8623f6565c7"
+    },
+    "en-Episode_361.json": {
+      "locale": "en",
+      "title": "Episode 361",
+      "revision": 2016299,
+      "revisionDate": "2024-08-04T20:58:12Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_361",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2016299",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2016299",
+      "contentSha256": "cf7e23b0e9a1de82169f7fc35b81931acce3ae579cd764f84c7dbba62ec781b3"
+    },
+    "en-Chapter_466.json": {
+      "locale": "en",
+      "title": "Chapter 466",
+      "revision": 2131710,
+      "revisionDate": "2026-09-05T18:38:48Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_466",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2131710",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2131710",
+      "contentSha256": "e4a7a2651dd43ae24452148e9d40d35ba6af13fc3b3630388f9f4fc9de27c1fd"
+    },
+    "en-Episode_421.json": {
+      "locale": "en",
+      "title": "Episode 421",
+      "revision": 2081426,
+      "revisionDate": "2025-09-22T04:41:52Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_421",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2081426",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2081426",
+      "contentSha256": "66dc84e4b599c3a9914d6e13dfc5b408ebf99d029d5dca9f3608fb555e0d86b9"
+    },
+    "en-Chapter_524.json": {
+      "locale": "en",
+      "title": "Chapter 524",
+      "revision": 2120113,
+      "revisionDate": "2026-06-04T11:00:23Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_524",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2120113",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2120113",
+      "contentSha256": "edff67e0642654be03e6c9c75d935a3fc845b20346df4d7d9e67c3e2a3943ca2"
+    },
+    "en-Episode_509.json": {
+      "locale": "en",
+      "title": "Episode 509",
+      "revision": 2066098,
+      "revisionDate": "2025-05-31T02:53:53Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_509",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2066098",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2066098",
+      "contentSha256": "d46fa4dc28657ec2485112246d5464a7f0a2211d43728db8f8d75e01981d2304"
+    },
+    "en-Chapter_592.json": {
+      "locale": "en",
+      "title": "Chapter 592",
+      "revision": 1982316,
+      "revisionDate": "2024-01-04T20:06:21Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_592",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=1982316",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=1982316",
+      "contentSha256": "99103112930388471035ddfc057d69185dc53c6d19aaefcf67bf14710c9b23f6"
+    },
+    "en-Episode_522.json": {
+      "locale": "en",
+      "title": "Episode 522",
+      "revision": 2061197,
+      "revisionDate": "2025-04-20T21:07:11Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_522",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2061197",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2061197",
+      "contentSha256": "0e6af31ad69eaae7b93695295ae3a5b88b6a5a734895898d0dbe89d601671446"
+    },
+    "en-Chapter_602.json": {
+      "locale": "en",
+      "title": "Chapter 602",
+      "revision": 1947397,
+      "revisionDate": "2023-07-30T14:28:57Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_602",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=1947397",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=1947397",
+      "contentSha256": "d6ef5ef0917e8f458330fc98d537744b664c27837a2bc205130ac7ebf50dd03c"
+    },
+    "en-Episode_917.json": {
+      "locale": "en",
+      "title": "Episode 917",
+      "revision": 2096847,
+      "revisionDate": "2026-01-13T15:26:23Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_917",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2096847",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2096847",
+      "contentSha256": "7bd231eaddc69b6f66f72110589575c355fbe53013eece0789c79a5b9a865aa5"
+    },
+    "en-Chapter_925.json": {
+      "locale": "en",
+      "title": "Chapter 925",
+      "revision": 2121187,
+      "revisionDate": "2026-06-14T07:39:07Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_925",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2121187",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2121187",
+      "contentSha256": "5ade4d07b6a34396b3b95b9bb2cbb5f6e75768de0038aad18f3163e9a05cf939"
+    },
+    "en-Episode_1113.json": {
+      "locale": "en",
+      "title": "Episode 1113",
+      "revision": 2054233,
+      "revisionDate": "2025-03-08T18:55:40Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_1113",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2054233",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2054233",
+      "contentSha256": "462aa5dd6e309075a5cd8a8d293e5c87966544fe9c6533126a45851525b94195"
+    },
+    "en-Chapter_1080.json": {
+      "locale": "en",
+      "title": "Chapter 1080",
+      "revision": 2021937,
+      "revisionDate": "2024-08-24T06:06:57Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_1080",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2021937",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2021937",
+      "contentSha256": "dcaa24a0070fbb5b667c871be463cc412b78ec606547cbf562c728925fab9db4"
+    },
+    "en-Episode_348.json": {
+      "locale": "en",
+      "title": "Episode 348",
+      "revision": 2117689,
+      "revisionDate": "2026-05-21T10:00:18Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_348",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2117689",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2117689",
+      "contentSha256": "e45ce4637941f0e3a66a8ad7eb9b034acbdd3f274ec462971b58e6cdf123373f"
+    },
+    "en-Episode_366.json": {
+      "locale": "en",
+      "title": "Episode 366",
+      "revision": 2016300,
+      "revisionDate": "2024-08-04T20:58:21Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_366",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2016300",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2016300",
+      "contentSha256": "ce9425da1dc3f565b5206c1db5fe8f90925ec2e32bd0202b55baeb9fb221a2dd"
+    },
+    "en-Chapter_471.json": {
+      "locale": "en",
+      "title": "Chapter 471",
+      "revision": 2136400,
+      "revisionDate": "2026-10-24T22:23:42Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_471",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2136400",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2136400",
+      "contentSha256": "42d536b0851764b9d28b1c60af3540c36be763f1a4a407770a9157565eba91cf"
+    },
+    "en-Episode_797.json": {
+      "locale": "en",
+      "title": "Episode 797",
+      "revision": 1976238,
+      "revisionDate": "2023-12-02T02:31:32Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_797",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=1976238",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=1976238",
+      "contentSha256": "06157c0a313049af0557908fee66417ff9abd38f7732d30862f218314a817f70"
+    },
+    "en-Chapter_835.json": {
+      "locale": "en",
+      "title": "Chapter 835",
+      "revision": 1947652,
+      "revisionDate": "2023-07-30T14:40:42Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_835",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=1947652",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=1947652",
+      "contentSha256": "e8c540064648ab14e1c0f29f0e4c7be53dc702c371c8012aff3b453bf636cd52"
+    },
+    "en-Episode_813.json": {
+      "locale": "en",
+      "title": "Episode 813",
+      "revision": 1983706,
+      "revisionDate": "2024-01-10T19:04:27Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_813",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=1983706",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=1983706",
+      "contentSha256": "1bccd785a89536c379d2fa05f581c893a61aa24df0190d6bf702d11139108f1d"
+    },
+    "en-Chapter_847.json": {
+      "locale": "en",
+      "title": "Chapter 847",
+      "revision": 2099736,
+      "revisionDate": "2026-01-27T08:07:21Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_847",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2099736",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2099736",
+      "contentSha256": "62707fb1f453d5f92092421cc039756204d00d417fc1ea371e834ea964af0776"
+    },
+    "en-Episode_827.json": {
+      "locale": "en",
+      "title": "Episode 827",
+      "revision": 2034115,
+      "revisionDate": "2024-10-20T17:16:50Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_827",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2034115",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2034115",
+      "contentSha256": "c9e7b4fdf0af57e3a6e2cd9e18c821b8cc4d0840f6f65a9c9442703bb5b69918"
+    },
+    "en-Chapter_858.json": {
+      "locale": "en",
+      "title": "Chapter 858",
+      "revision": 2034098,
+      "revisionDate": "2024-10-20T17:16:05Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_858",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2034098",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2034098",
+      "contentSha256": "d475c849cf6c72cf05a20355b3e5589f24930cb989261f51959054c8a267e935"
+    },
+    "en-Chapter_974.json": {
+      "locale": "en",
+      "title": "Chapter 974",
+      "revision": 2018523,
+      "revisionDate": "2024-08-14T04:50:56Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_974",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2018523",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2018523",
+      "contentSha256": "260cde99490a2f5a92fde58f1e3e2be3aca4f5dbeb8a4403354996600b00af13"
+    },
+    "en-Chapter_977.json": {
+      "locale": "en",
+      "title": "Chapter 977",
+      "revision": 2112334,
+      "revisionDate": "2026-04-15T09:03:06Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_977",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2112334",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2112334",
+      "contentSha256": "317ef72e2524baffc24953ca32064fe27ecc47fe59dc4ace8e988fa001abf85e"
+    },
+    "en-Chapter_991.json": {
+      "locale": "en",
+      "title": "Chapter 991",
+      "revision": 2017805,
+      "revisionDate": "2024-08-13T07:18:22Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_991",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2017805",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2017805",
+      "contentSha256": "89f9a911dba664a45a38f3d63cd0a65d39ba2c0663b04c2c37b4ecd115a32642"
+    },
+    "en-Chapter_993.json": {
+      "locale": "en",
+      "title": "Chapter 993",
+      "revision": 2113463,
+      "revisionDate": "2026-04-23T02:48:18Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_993",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2113463",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2113463",
+      "contentSha256": "7669a239aa4b54e0df59abc3ba5fc812d7f7b879dc5a64c72ecbc9a4ba89b22e"
+    },
+    "en-Episode_358.json": {
+      "locale": "en",
+      "title": "Episode 358",
+      "revision": 1959224,
+      "revisionDate": "2023-09-15T07:14:26Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_358",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=1959224",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=1959224",
+      "contentSha256": "9a315b958477ca6033fa50e467d35b5f38bd7db59f65a86312d517b5a64a9fe9"
+    },
+    "en-Chapter_472.json": {
+      "locale": "en",
+      "title": "Chapter 472",
+      "revision": 2131716,
+      "revisionDate": "2026-09-05T18:41:44Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_472",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2131716",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2131716",
+      "contentSha256": "33fcbb5a946e36bd383c104d8af8da1872737693f2cb093b2fa6868f9d5e6397"
+    },
+    "en-Episode_374.json": {
+      "locale": "en",
+      "title": "Episode 374",
+      "revision": 1962279,
+      "revisionDate": "2023-09-28T05:58:16Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_374",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=1962279",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=1962279",
+      "contentSha256": "2ad31be5bb6a3360742adf6e42ae90eaf40aa92ef40e26dcac7e8cc0a299df15"
+    },
+    "en-Chapter_482.json": {
+      "locale": "en",
+      "title": "Chapter 482",
+      "revision": 2131726,
+      "revisionDate": "2026-09-05T18:54:37Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_482",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2131726",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2131726",
+      "contentSha256": "8213d42c22e0a899f1293091619d186dd73289ab99d3760b2c9147360ed66e66"
+    },
+    "en-Episode_490.json": {
+      "locale": "en",
+      "title": "Episode 490",
+      "revision": 2109601,
+      "revisionDate": "2026-03-29T05:19:02Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_490",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2109601",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2109601",
+      "contentSha256": "1e31aea2bd7d0883d47bdd81f6135bc200ad0d365f4af05eb1aca5730a1b41c6"
+    },
+    "en-Chapter_581.json": {
+      "locale": "en",
+      "title": "Chapter 581",
+      "revision": 2103970,
+      "revisionDate": "2026-02-27T09:07:44Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_581",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2103970",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2103970",
+      "contentSha256": "5464f24e3a602522fbc2e3d221ef60f0e8da576e01ba626ac149ee55deb687f1"
+    },
+    "en-Episode_739.json": {
+      "locale": "en",
+      "title": "Episode 739",
+      "revision": 2018676,
+      "revisionDate": "2024-08-14T04:55:53Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_739",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2018676",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2018676",
+      "contentSha256": "43397e45142ad490cb006dc263e648f4400ee2d5dff906288d71194645f7e53b"
+    },
+    "en-Chapter_795.json": {
+      "locale": "en",
+      "title": "Chapter 795",
+      "revision": 2116684,
+      "revisionDate": "2026-05-11T03:32:52Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_795",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2116684",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2116684",
+      "contentSha256": "5616736621252739a4bea373b516182d28c7eb55ed07baede74ff01bedfaf1eb"
+    },
+    "en-Chapter_463.json": {
+      "locale": "en",
+      "title": "Chapter 463",
+      "revision": 2131707,
+      "revisionDate": "2026-09-05T18:38:10Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_463",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2131707",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2131707",
+      "contentSha256": "293243f5be82915b5c12372753c5a13bdfca08aac0caab0a6c020de4dec8d575"
+    },
+    "en-Episode_359.json": {
+      "locale": "en",
+      "title": "Episode 359",
+      "revision": 2112646,
+      "revisionDate": "2026-04-18T11:33:16Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_359",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2112646",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2112646",
+      "contentSha256": "da388290939f563297690397479db916c0cb0a220c0f8682c15349f45170904e"
+    },
+    "en-Chapter_464.json": {
+      "locale": "en",
+      "title": "Chapter 464",
+      "revision": 2131708,
+      "revisionDate": "2026-09-05T18:38:21Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_464",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2131708",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2131708",
+      "contentSha256": "0974bfdad4b5487d99724f0dfecf73da4bf4ef316d3fd842383f73a9c6511841"
+    },
+    "en-Episode_342.json": {
+      "locale": "en",
+      "title": "Episode 342",
+      "revision": 2055727,
+      "revisionDate": "2025-03-16T20:14:01Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_342",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2055727",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2055727",
+      "contentSha256": "bbd377ecbadeb400fc5b4b65c9756710ba025283de2b8af0c23d2616cad4fcaf"
+    },
+    "en-Chapter_452.json": {
+      "locale": "en",
+      "title": "Chapter 452",
+      "revision": 2131695,
+      "revisionDate": "2026-09-05T18:12:43Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_452",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2131695",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2131695",
+      "contentSha256": "a2676d972d310dcb7c517712ac10b5c55ad6b852652c9bceabf68f9f1aab6f56"
+    },
+    "en-Episode_356.json": {
+      "locale": "en",
+      "title": "Episode 356",
+      "revision": 2117749,
+      "revisionDate": "2026-05-22T11:56:21Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_356",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2117749",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2117749",
+      "contentSha256": "be019d9370f4e0dcac2c3735fe4b8d8ca8a0aff5678b03569ebbc1485307c222"
+    },
+    "en-Chapter_461.json": {
+      "locale": "en",
+      "title": "Chapter 461",
+      "revision": 2133735,
+      "revisionDate": "2026-09-27T22:42:01Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_461",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2133735",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2133735",
+      "contentSha256": "426d73da6e8e84ac72351f396556752aadd638e9a2fa341d479abad91f906f95"
+    },
+    "en-Episode_363.json": {
+      "locale": "en",
+      "title": "Episode 363",
+      "revision": 2103988,
+      "revisionDate": "2026-02-27T19:14:00Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_363",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2103988",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2103988",
+      "contentSha256": "2e38f09c0958822fe8eb8b3e6e8214d3ebd8c431e427fb0d6c0b7e2269c23533"
+    },
+    "en-Chapter_468.json": {
+      "locale": "en",
+      "title": "Chapter 468",
+      "revision": 2131712,
+      "revisionDate": "2026-09-05T18:39:12Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_468",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2131712",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2131712",
+      "contentSha256": "b4af62e8ce51e95bc89e92a87db3874f2fa8344c0e5bddec1cfb630879954d02"
+    },
+    "en-Episode_364.json": {
+      "locale": "en",
+      "title": "Episode 364",
+      "revision": 1960253,
+      "revisionDate": "2023-09-19T06:41:15Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_364",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=1960253",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=1960253",
+      "contentSha256": "1576423b65a367e62f7f804798aaded3b447380537b48e03eeb2463d1b34bea3"
+    },
+    "en-Chapter_469.json": {
+      "locale": "en",
+      "title": "Chapter 469",
+      "revision": 2131713,
+      "revisionDate": "2026-09-05T18:39:39Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_469",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2131713",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2131713",
+      "contentSha256": "5e1d3023b64e92ccd65e6a708693daf75121328cdc363a05ec8f9b863b748ebb"
+    },
+    "en-Episode_1046.json": {
+      "locale": "en",
+      "title": "Episode 1046",
+      "revision": 2123909,
+      "revisionDate": "2026-07-02T15:27:28Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_1046",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2123909",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2123909",
+      "contentSha256": "2e24b2105cb413832bfa75bc33415b7633f2d2f16363e23e32642af1e3905dab"
+    },
+    "en-Chapter_1023.json": {
+      "locale": "en",
+      "title": "Chapter 1023",
+      "revision": 2123777,
+      "revisionDate": "2026-07-02T15:22:56Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_1023",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2123777",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2123777",
+      "contentSha256": "48a145670dffca6b9b284ef5fcbe9d7dab9dae01e4dc00d4f4662ae507ec7cdf"
+    },
+    "en-Episode_370.json": {
+      "locale": "en",
+      "title": "Episode 370",
+      "revision": 2104051,
+      "revisionDate": "2026-02-28T22:50:17Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_370",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2104051",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2104051",
+      "contentSha256": "e223afd90b9a0058c3c973e8662c2e2944b66b3c59d923239dbeb26db56f5d94"
+    },
+    "en-Chapter_476.json": {
+      "locale": "en",
+      "title": "Chapter 476",
+      "revision": 2131720,
+      "revisionDate": "2026-09-05T18:43:41Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_476",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2131720",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2131720",
+      "contentSha256": "bbfaef18799e18422f22425826304743462b93a096648ad5949e38d420766492"
+    },
+    "en-Episode_340.json": {
+      "locale": "en",
+      "title": "Episode 340",
+      "revision": 2055724,
+      "revisionDate": "2025-03-16T19:30:52Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_340",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2055724",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2055724",
+      "contentSha256": "c5d2db6d452681b0ba58a5c29bad9e66d5c11e7ab49c9aa87dcd44094eb1280d"
+    },
+    "en-Chapter_445.json": {
+      "locale": "en",
+      "title": "Chapter 445",
+      "revision": 2131686,
+      "revisionDate": "2026-09-05T18:05:15Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_445",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2131686",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2131686",
+      "contentSha256": "a474e40b5f24e23d711055aab5936eaacdc990006e33362bc35812522c72e8cf"
+    },
+    "en-Episode_350.json": {
+      "locale": "en",
+      "title": "Episode 350",
+      "revision": 2073245,
+      "revisionDate": "2025-07-20T17:51:07Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_350",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2073245",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2073245",
+      "contentSha256": "b7f7d6e01b24edbbeefdb533a200fe7c4e26d1e11b9f226cc5d8dfc3b545dee3"
+    },
+    "en-Chapter_456.json": {
+      "locale": "en",
+      "title": "Chapter 456",
+      "revision": 2131699,
+      "revisionDate": "2026-09-05T18:16:11Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_456",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2131699",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2131699",
+      "contentSha256": "1f82e7badfc7c04fee9f613464948024516591fd008694f560d3176c84214a6b"
+    },
+    "en-Episode_341.json": {
+      "locale": "en",
+      "title": "Episode 341",
+      "revision": 1957761,
+      "revisionDate": "2023-09-08T06:01:17Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_341",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=1957761",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=1957761",
+      "contentSha256": "c5e2a9e2c47e4fc9d208a8d3dbc92e3d003653bc8304fa3360bfb5a4602249f4"
+    },
+    "en-Chapter_447.json": {
+      "locale": "en",
+      "title": "Chapter 447",
+      "revision": 2131688,
+      "revisionDate": "2026-09-05T18:07:04Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_447",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2131688",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2131688",
+      "contentSha256": "1e8954e0f85dbabf651974fdbe04bd6683c367982665b3414d6f4ac02894521c"
+    },
+    "en-Episode_360.json": {
+      "locale": "en",
+      "title": "Episode 360",
+      "revision": 2006161,
+      "revisionDate": "2024-06-03T00:26:22Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_360",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2006161",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2006161",
+      "contentSha256": "05d3eab72cd2a66233f719293a75e9051f2524bce6ef02b40f2125da74b87ad0"
+    },
+    "en-Chapter_465.json": {
+      "locale": "en",
+      "title": "Chapter 465",
+      "revision": 2131709,
+      "revisionDate": "2026-09-05T18:38:32Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_465",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2131709",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2131709",
+      "contentSha256": "9de0202fdb0410b7945e24bde7ed8e6511a7e28699a6569eeb5b82bf23be90cb"
+    },
+    "en-Chapter_957.json": {
+      "locale": "en",
+      "title": "Chapter 957",
+      "revision": 2075183,
+      "revisionDate": "2025-08-05T02:18:50Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_957",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2075183",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2075183",
+      "contentSha256": "e203b91666f6d1a3c9c300c2859d47f14d0f3ef4cb49c12c212df87e80912091"
+    },
+    "en-Episode_375.json": {
+      "locale": "en",
+      "title": "Episode 375",
+      "revision": 2118782,
+      "revisionDate": "2026-05-27T10:50:39Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_375",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2118782",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2118782",
+      "contentSha256": "cb2ebd05d4c0bd0df82b3067278b7e433f7f05953f933597b8f9ca27698bceb1"
+    },
+    "en-Chapter_483.json": {
+      "locale": "en",
+      "title": "Chapter 483",
+      "revision": 2136355,
+      "revisionDate": "2026-10-24T16:38:41Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_483",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2136355",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2136355",
+      "contentSha256": "6856103578f1ea880d0559f896b9b4fec23661710e66e1f088a4d30a89cc566b"
+    },
+    "en-Brook.json": {
+      "locale": "en",
+      "title": "Brook",
+      "revision": 2130845,
+      "revisionDate": "2026-08-28T02:40:51Z",
+      "url": "https://onepiece.fandom.com/wiki/Brook",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2130845",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2130845",
+      "contentSha256": "c524005db14c04fcceb00d1ac1beddc0aa41b71ef92d9f3cc6f6b8c40aa7a05b"
+    },
+    "en-Perona.json": {
+      "locale": "en",
+      "title": "Perona",
+      "revision": 2136458,
+      "revisionDate": "2026-10-25T12:15:19Z",
+      "url": "https://onepiece.fandom.com/wiki/Perona",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2136458",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2136458",
+      "contentSha256": "2c3415f4578b232f9868a9c90d2ea2a0c15ca72e1a21c012a0c919fb9795a489"
+    },
+    "en-Lola_(Zombie).json": {
+      "locale": "en",
+      "title": "Lola (Zombie)",
+      "revision": 2113380,
+      "revisionDate": "2026-04-22T09:29:45Z",
+      "url": "https://onepiece.fandom.com/wiki/Lola_(Zombie)",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2113380",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2113380",
+      "contentSha256": "87429ce5221c91fa67b4577fb40233f732fcff75f10fa45cf2e908542da8c933"
+    },
+    "en-Gecko_Moria.json": {
+      "locale": "en",
+      "title": "Gecko Moria",
+      "revision": 2124733,
+      "revisionDate": "2026-07-08T03:21:19Z",
+      "url": "https://onepiece.fandom.com/wiki/Gecko_Moria",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2124733",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2124733",
+      "contentSha256": "0e602194543b9267f6a2c59cfaba1f66a6b802d9ca8d109e525e22db57480ad2"
+    },
+    "en-Absalom.json": {
+      "locale": "en",
+      "title": "Absalom",
+      "revision": 2134859,
+      "revisionDate": "2026-10-07T13:12:31Z",
+      "url": "https://onepiece.fandom.com/wiki/Absalom",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2134859",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2134859",
+      "contentSha256": "78e061c7d40520f3c51e98ca356817baed3bb1e4a21f87ca9c312fb5a9e874e1"
+    },
+    "en-Hogback.json": {
+      "locale": "en",
+      "title": "Hogback",
+      "revision": 2115567,
+      "revisionDate": "2026-05-04T23:58:12Z",
+      "url": "https://onepiece.fandom.com/wiki/Hogback",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2115567",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2115567",
+      "contentSha256": "2614172e94f6ae1d7bc048695ee37cda385514c9262a33501d6989df26e2c178"
+    },
+    "en-Victoria_Cindry.json": {
+      "locale": "en",
+      "title": "Victoria Cindry",
+      "revision": 2125777,
+      "revisionDate": "2026-07-16T02:47:40Z",
+      "url": "https://onepiece.fandom.com/wiki/Victoria_Cindry",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2125777",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2125777",
+      "contentSha256": "e2bdffe1eef46f9f4c0298a62cedf2f14dadfa4ddd999a6d477dee0977970d7b"
+    },
+    "en-Shimotsuki_Ryuma.json": {
+      "locale": "en",
+      "title": "Shimotsuki Ryuma",
+      "revision": 2125828,
+      "revisionDate": "2026-07-16T03:46:05Z",
+      "url": "https://onepiece.fandom.com/wiki/Shimotsuki_Ryuma",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2125828",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2125828",
+      "contentSha256": "48c8f05deaf0c556de27bccb929107993f0fdeeca38798e444a5a9b7998cba42"
+    },
+    "en-Oars.json": {
+      "locale": "en",
+      "title": "Oars",
+      "revision": 2126562,
+      "revisionDate": "2026-07-20T22:50:51Z",
+      "url": "https://onepiece.fandom.com/wiki/Oars",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2126562",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2126562",
+      "contentSha256": "468b3405f716bfd46cb4bd5ce62d710d4f5851f68db4d018040f9ce7346f2743"
+    },
+    "en-Yorki.json": {
+      "locale": "en",
+      "title": "Yorki",
+      "revision": 2116985,
+      "revisionDate": "2026-05-13T12:37:35Z",
+      "url": "https://onepiece.fandom.com/wiki/Yorki",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2116985",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2116985",
+      "contentSha256": "34d23921e7e71749299bb77a86d16b39eaa4ea8af972849683b380a0c3fad4a0"
+    },
+    "en-Hildon.json": {
+      "locale": "en",
+      "title": "Hildon",
+      "revision": 2086541,
+      "revisionDate": "2025-11-02T05:52:04Z",
+      "url": "https://onepiece.fandom.com/wiki/Hildon",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2086541",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2086541",
+      "contentSha256": "01cc3cb2ad99bad1cd0f119f4e5626304d014d3b0e72a716ef881dba1a240ac3"
+    },
+    "en-Cerberus.json": {
+      "locale": "en",
+      "title": "Cerberus",
+      "revision": 2086540,
+      "revisionDate": "2025-11-02T05:40:08Z",
+      "url": "https://onepiece.fandom.com/wiki/Cerberus",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2086540",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2086540",
+      "contentSha256": "5cbc1d1be9471beb9435b143f95d0447a41a63cd39a3058b7f7faa7b71c36070"
+    },
+    "en-Kumashi.json": {
+      "locale": "en",
+      "title": "Kumashi",
+      "revision": 2105504,
+      "revisionDate": "2026-03-08T02:27:20Z",
+      "url": "https://onepiece.fandom.com/wiki/Kumashi",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2105504",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2105504",
+      "contentSha256": "b104dc2f7fd4a1f234c014d5ddfb5a6cdc3213000fcedd9ca951a0ee58a536f5"
+    },
+    "en-John.json": {
+      "locale": "en",
+      "title": "John",
+      "revision": 2132176,
+      "revisionDate": "2026-09-09T08:04:08Z",
+      "url": "https://onepiece.fandom.com/wiki/John",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2132176",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2132176",
+      "contentSha256": "6794448ba39e8933d04f8a695a6ce010892d4237df8d0c1ca582f974a4415b44"
+    },
+    "en-Jigoro.json": {
+      "locale": "en",
+      "title": "Jigoro",
+      "revision": 2106392,
+      "revisionDate": "2026-03-11T15:10:53Z",
+      "url": "https://onepiece.fandom.com/wiki/Jigoro",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2106392",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2106392",
+      "contentSha256": "b0951cf42ebcd6b36d3d86f93f48d0a7031346b5f76e3b1ce735fbba9081323e"
+    },
+    "en-Tararan.json": {
+      "locale": "en",
+      "title": "Tararan",
+      "revision": 2116856,
+      "revisionDate": "2026-05-12T09:48:43Z",
+      "url": "https://onepiece.fandom.com/wiki/Tararan",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2116856",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2116856",
+      "contentSha256": "0c2f8772d4f52fc8321c15b79500a341e25537ac7a80b62609a3ddc872a27cc2"
+    },
+    "en-Gyoro,_Nin,_and_Bao.json": {
+      "locale": "en",
+      "title": "Gyoro, Nin, and Bao",
+      "revision": 2071724,
+      "revisionDate": "2025-07-10T15:14:20Z",
+      "url": "https://onepiece.fandom.com/wiki/Gyoro%2C_Nin%2C_and_Bao",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2071724",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2071724",
+      "contentSha256": "2a07ca17af3945c9a416bf8086d5b91908cd18f479c52e8121338b6e98b8f31a"
+    },
+    "en-Risky_Brothers.json": {
+      "locale": "en",
+      "title": "Risky Brothers",
+      "revision": 2131578,
+      "revisionDate": "2026-09-03T21:38:19Z",
+      "url": "https://onepiece.fandom.com/wiki/Risky_Brothers",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2131578",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2131578",
+      "contentSha256": "599ae3d259e624a546853349dff68841cc64097d5827bc965749fa12803962aa"
+    },
+    "en-Spoil.json": {
+      "locale": "en",
+      "title": "Spoil",
+      "revision": 2127974,
+      "revisionDate": "2026-08-01T06:37:46Z",
+      "url": "https://onepiece.fandom.com/wiki/Spoil",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2127974",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2127974",
+      "contentSha256": "73373ba1aa3ba2125a4fb2bcbef7303f3016a437678c98e218ca8a00c430e793"
+    },
+    "en-Charlotte_Lola.json": {
+      "locale": "en",
+      "title": "Charlotte Lola",
+      "revision": 2136161,
+      "revisionDate": "2026-10-21T18:10:46Z",
+      "url": "https://onepiece.fandom.com/wiki/Charlotte_Lola",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2136161",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2136161",
+      "contentSha256": "6c271d2fb5a1772ccf6320bea9c4942e4a8066e0d11cc5e222a907706c15708e"
+    },
+    "en-Buhichuck.json": {
+      "locale": "en",
+      "title": "Buhichuck",
+      "revision": 2086467,
+      "revisionDate": "2025-11-01T21:19:57Z",
+      "url": "https://onepiece.fandom.com/wiki/Buhichuck",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2086467",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2086467",
+      "contentSha256": "ddf844f0e59bc8986f9c79921c22a00fe20ef026711a20e1c69f65d4fa11bc1d"
+    },
+    "en-Chapter_459.json": {
+      "locale": "en",
+      "title": "Chapter 459",
+      "revision": 2131702,
+      "revisionDate": "2026-09-05T18:17:14Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_459",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2131702",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2131702",
+      "contentSha256": "7463eba2e95b7422b3685f058e19e1a86aff44b171ad4a82d44448ce24fee27c"
+    },
+    "en-Chapter_487.json": {
+      "locale": "en",
+      "title": "Chapter 487",
+      "revision": 2131730,
+      "revisionDate": "2026-09-05T18:56:58Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_487",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2131730",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2131730",
+      "contentSha256": "83dcac918f16899c3c451cf3b182d03760f1af6e29bc542a38f4df329a7d3f92"
+    },
+    "en-Chapter_488.json": {
+      "locale": "en",
+      "title": "Chapter 488",
+      "revision": 2136426,
+      "revisionDate": "2026-10-25T03:43:24Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_488",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2136426",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2136426",
+      "contentSha256": "b6ae7ddaebbd0825faa52426ed62be18f475e2f554c28b9c6fa4c30ec5aa566e"
+    },
+    "en-Chapter_446.json": {
+      "locale": "en",
+      "title": "Chapter 446",
+      "revision": 2131687,
+      "revisionDate": "2026-09-05T18:05:33Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_446",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2131687",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2131687",
+      "contentSha256": "f4a4a0051ade7ca50631085a7cce32c0b30179c28fd45c52e2d4b28672506060"
+    },
+    "en-Chapter_454.json": {
+      "locale": "en",
+      "title": "Chapter 454",
+      "revision": 2131697,
+      "revisionDate": "2026-09-05T18:15:09Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_454",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2131697",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2131697",
+      "contentSha256": "dd3690bec66a300c62846ddd242d107cc9bdf3c55d8e8fa4aa6c7808574c7d87"
+    },
+    "en-Chapter_481.json": {
+      "locale": "en",
+      "title": "Chapter 481",
+      "revision": 2131725,
+      "revisionDate": "2026-09-05T18:54:06Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_481",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2131725",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2131725",
+      "contentSha256": "6104c5c411b7f4aae27f14de0f1a8e879b51ea39ba3d3e72345b572677418809"
+    },
+    "en-Episode_958.json": {
+      "locale": "en",
+      "title": "Episode 958",
+      "revision": 2129156,
+      "revisionDate": "2026-08-10T21:42:44Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_958",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2129156",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2129156",
+      "contentSha256": "17f85b7f2a70f888306aa16214d6dcd76a57a492675e69f0955d334eeefbce41"
+    },
+    "issue817-en-Template_WC.json": {
+      "locale": "en",
+      "title": "Template:WC",
+      "revision": 2133640,
+      "revisionDate": "2026-09-27T16:36:52Z",
+      "url": "https://onepiece.fandom.com/wiki/Template:WC",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2133640",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2133640",
+      "contentSha256": "b36ec22b8a0783edaaa5f7b3013ab7ec9bf024d89c646c014e4c495c943bd05d"
     }
   }
 }

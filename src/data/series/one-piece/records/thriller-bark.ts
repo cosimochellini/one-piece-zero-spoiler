@@ -1,5 +1,6 @@
 import type { OnePieceSaga } from './saga'
 import { thrillerBarkChronicles } from './thriller-bark.chronicle'
+import { thrillerBarkRelationships } from './thriller-bark.relationships'
 
 /**
  * The Thriller Bark saga, episodes 326 to 384: a ghost ship, an island that
@@ -306,6 +307,7 @@ export const thrillerBark: OnePieceSaga = {
 
   dossiers: {
     'brook': {
+      relationships: thrillerBarkRelationships.brook,
       chronicle: thrillerBarkChronicles.brook,
       role: { it: 'Musicista', en: 'Musician' },
       log: {
@@ -334,6 +336,7 @@ export const thrillerBark: OnePieceSaga = {
       ],
     },
     'perona': {
+      relationships: thrillerBarkRelationships.perona,
       role: { it: 'Principessa fantasma', en: 'Ghost princess' },
       log: {
         it: 'I suoi fantasmi attraversano i muri e le persone, e chi ne viene attraversato si accascia a terra, dispiaciuto di essere al mondo. Uno di loro riferisce al dottore della villa che ognuno dei nuovi arrivati ha una taglia sulla testa. Quando tornano nelle sue stanze, il grosso orso rattoppato che la accoglie si sente dire di stare zitto: chi non è carino non è degno di lavorare per lei.',
@@ -358,6 +361,7 @@ export const thrillerBark: OnePieceSaga = {
       ],
     },
     'lola': {
+      relationships: thrillerBarkRelationships.lola,
       role: { it: 'Sposa zombie', en: 'Zombie bride' },
       log: {
         it: 'Si aggira per i corridoi della villa con l’abito da sposa addosso e il velo fermato tra le zanne, e chiede la mano a chiunque incontri, uomo o scheletro che sia. Il rifiuto la rattrista per qualche secondo soltanto, poi ricomincia con il primo che passa. Sotto il velo ha la forza di un cinghiale, e una proposta respinta sa diventare una carica.',
@@ -391,6 +395,7 @@ export const thrillerBark: OnePieceSaga = {
       ],
     },
     'gecko-moria': {
+      relationships: thrillerBarkRelationships['gecko-moria'],
       chronicle: thrillerBarkChronicles['gecko-moria'],
       role: { it: 'Padrone di Thriller Bark', en: 'Master of Thriller Bark' },
       log: {
@@ -441,6 +446,7 @@ export const thrillerBark: OnePieceSaga = {
       bounty: [{ episode: 917, value: 320_000_000 }],
     },
     'absalom': {
+      relationships: thrillerBarkRelationships.absalom,
       role: { it: 'Generale degli zombie', en: 'General of the zombies' },
       log: {
         it: 'Senza farsi vedere trattiene cinque pirati sulla loro nave, poi sorprende una ragazza nel bagno della villa e le annuncia che sarà la sua sposa. Al cimitero richiama i soldati zombie fuori dalle tombe, e si lascia vedere solo quando sono in piedi. Loro scandiscono il suo nome e, nello stesso fiato, gli danno del pervertito.',
@@ -470,6 +476,7 @@ export const thrillerBark: OnePieceSaga = {
       ],
     },
     'hogback': {
+      relationships: thrillerBarkRelationships.hogback,
       role: { it: 'Chirurgo', en: 'Surgeon' },
       log: {
         it: 'Era un medico famoso in tutto il mondo, capace di rimettere in piedi chi nessun altro sapeva salvare, poi è sparito senza spiegazioni. Lo si ritrova nella villa di Thriller Bark, con il camice addosso, a cucire pezzi di cadaveri diversi in un corpo solo e a firmarlo come un’opera d’arte. Serve il padrone dell’isola e sembra divertirsi molto.',
@@ -493,6 +500,7 @@ export const thrillerBark: OnePieceSaga = {
       ],
     },
     'victoria-cindry': {
+      relationships: thrillerBarkRelationships['victoria-cindry'],
       role: { it: 'Cameriera zombie', en: 'Zombie maid' },
       log: {
         it: 'Porta il vassoio per i corridoi della villa e risponde agli ordini del chirurgo con una voce piatta, mentre i piatti le scivolano dalle dita e si rompono sul pavimento. Le cuciture le attraversano il viso e le braccia, e non sembra importarle. Dicono che prima di finire qui calcasse i palcoscenici, e che fosse fra le più amate.',
@@ -510,6 +518,7 @@ export const thrillerBark: OnePieceSaga = {
       ],
     },
     'ryuma': {
+      relationships: thrillerBarkRelationships.ryuma,
       role: { it: 'Generale zombie', en: 'Zombie general' },
       log: {
         it: 'È il più forte dei cadaveri cuciti nella villa, un samurai rimesso in piedi con dentro l’ombra rubata a qualcun altro. Al fianco porta una lama nera e con quella taglia perfino il fuoco, come se le fiamme fossero corda. In vita veniva dal Paese di Wano, e di lui si racconta che abbia fatto a pezzi un drago sopra una città.',
@@ -536,6 +545,7 @@ export const thrillerBark: OnePieceSaga = {
       ],
     },
     'oars': {
+      relationships: thrillerBarkRelationships.oars,
       role: { it: 'Zombie speciale', en: 'Special zombie' },
       log: {
         it: 'È il pezzo più grosso della collezione del padrone dell’isola: un gigante morto da secoli, tenuto in una cella di ghiaccio finché non arriva l’ombra giusta da mettergli dentro. Quando si rialza ha la forza di sfondare un edificio con una spallata e la testa di un bambino che scopre il mondo. Le leggende dicono che in vita trascinasse i continenti.',
@@ -562,6 +572,7 @@ export const thrillerBark: OnePieceSaga = {
       ],
     },
     'yorki': {
+      relationships: thrillerBarkRelationships.yorki,
       role: {
         it: 'Capitano dei Pirati di Rumbar',
         en: 'Rumbar Pirates captain',
@@ -584,6 +595,7 @@ export const thrillerBark: OnePieceSaga = {
       epithet: [{ episode: 380, value: { it: 'Calico', en: 'Calico' } }],
     },
     'hildon': {
+      relationships: thrillerBarkRelationships.hildon,
       chronicle: thrillerBarkChronicles.hildon,
       role: { it: 'Guida per la villa', en: 'Guide to the mansion' },
       log: {
@@ -608,6 +620,7 @@ export const thrillerBark: OnePieceSaga = {
       ],
     },
     'cerberus-thriller-bark': {
+      relationships: thrillerBarkRelationships['cerberus-thriller-bark'],
       chronicle: thrillerBarkChronicles['cerberus-thriller-bark'],
       role: { it: 'Cane da guardia', en: 'Guard dog' },
       log: {
@@ -659,6 +672,7 @@ export const thrillerBark: OnePieceSaga = {
       ],
     },
     'kumashi': {
+      relationships: thrillerBarkRelationships.kumashi,
       chronicle: thrillerBarkChronicles.kumashi,
       role: { it: 'Servitore di Perona', en: 'Perona’s servant' },
       log: {
@@ -681,6 +695,7 @@ export const thrillerBark: OnePieceSaga = {
       ],
     },
     'john': {
+      relationships: thrillerBarkRelationships.john,
       chronicle: thrillerBarkChronicles.john,
       role: { it: 'Generale zombie', en: 'Zombie general' },
       log: {
@@ -702,6 +717,7 @@ export const thrillerBark: OnePieceSaga = {
       ],
     },
     'spoil': {
+      relationships: thrillerBarkRelationships.spoil,
       chronicle: thrillerBarkChronicles.spoil,
       role: {
         it: 'Presidente onorario dell’associazione delle vittime',
@@ -723,6 +739,7 @@ export const thrillerBark: OnePieceSaga = {
       ],
     },
     'gyoro-nin-and-bao': {
+      relationships: thrillerBarkRelationships['gyoro-nin-and-bao'],
       chronicle: thrillerBarkChronicles['gyoro-nin-and-bao'],
       role: { it: 'Servitori zombie di Moria', en: 'Moria’s zombie servants' },
       log: {
@@ -741,6 +758,7 @@ export const thrillerBark: OnePieceSaga = {
       ],
     },
     'jigoro': {
+      relationships: thrillerBarkRelationships.jigoro,
       chronicle: thrillerBarkChronicles.jigoro,
       role: { it: 'Generale zombie', en: 'Zombie general' },
       log: {
@@ -766,6 +784,7 @@ export const thrillerBark: OnePieceSaga = {
       ],
     },
     'tararan': {
+      relationships: thrillerBarkRelationships.tararan,
       chronicle: thrillerBarkChronicles.tararan,
       role: { it: 'Capitano dei topi-ragno', en: 'Captain of the spider mice' },
       log: {
@@ -784,6 +803,7 @@ export const thrillerBark: OnePieceSaga = {
       ],
     },
     'risky-brothers': {
+      relationships: thrillerBarkRelationships['risky-brothers'],
       chronicle: thrillerBarkChronicles['risky-brothers'],
       role: {
         it: 'Membri dei Pirati di Rolling',
