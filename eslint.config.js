@@ -188,7 +188,6 @@ const config = defineConfig(
     '.tanstack/**',
     '.output/**',
     '.nitro/**',
-    '.netlify/**',
     '.wrangler/**',
     '.gate/**',
     'src/routeTree.gen.ts',

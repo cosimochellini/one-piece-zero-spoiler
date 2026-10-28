@@ -78,10 +78,11 @@ export function bookmarkFromSearch(
  * undoing a bookmark the reader has moved since, and an invalid link is
  * dropped the same way, leaving the bookmark where it was.
  *
- * The hop is a meta refresh, not a 3xx. Netlify appends the request's query
- * string to any `Location` that has none of its own, whatever the status and
- * whether the URL is relative or absolute, so `/en?ch=1044` sent to `/en`
- * would come back as `/en?ch=1044` and loop (#492). The body is not rewritten.
+ * The hop is a 302 kept out of every cache, because the cookie it sets
+ * depends on the link, not on the address it sends the reader to. On Netlify
+ * it was a meta refresh, because Netlify appended the request's query to any
+ * `Location` without one of its own and `/en?ch=1044` looped (#492).
+ * Cloudflare passes `Location` through unchanged.
  */
 export function linkRedirect(
   request: Request,
@@ -105,27 +106,16 @@ export function linkRedirect(
   }
 
   // A path that opens with `//` would read as another host, so the leading
-  // slashes collapse to one and the reader stays here. The URL parser has
-  // already percent-encoded quotes and angle brackets, which leaves `&` as
-  // the one character the attribute needs escaped.
-  const target =
-    `${url.pathname.replace(/^\/+/u, '/')}${url.search}`.replaceAll(
-      '&',
-      '&amp;',
-    )
-
+  // slashes collapse to one and the reader stays here.
   const headers = new Headers({
+    'Location': `${url.pathname.replace(/^\/+/u, '/')}${url.search}`,
     'Cache-Control': 'no-store',
-    'Content-Type': 'text/html; charset=utf-8',
   })
   if (cookie !== null) {
     headers.set('Set-Cookie', cookie)
   }
 
-  return new Response(
-    `<!doctype html><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=${target}"><a href="${target}">Zero Spoiler</a>`,
-    { status: 200, headers },
-  )
+  return new Response(null, { status: 302, headers })
 }
 
 /** A link can write only the bookmark of a recognised series content path. */

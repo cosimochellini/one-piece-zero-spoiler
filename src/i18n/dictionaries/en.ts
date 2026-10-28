@@ -224,7 +224,7 @@ export const enDictionary = {
   'credits.noOpenLicense': 'No open-content permission established.',
 
   'privacy.title': 'Privacy and cookies',
-  'privacy.updated': 'Last checked: 27 October 2026.',
+  'privacy.updated': 'Last checked: 28 October 2026.',
   'privacy.controllerTitle': 'Who runs the site',
   'privacy.controller':
     'Zero Spoiler is a personal, nonprofit fan project. Its operator and data controller is a private individual based in Italy, reachable as @cosimochellini on GitHub. Use the GitHub contact link below for an initial request.',
@@ -249,9 +249,9 @@ export const enDictionary = {
     'You can clear the bookmark in its dialog and remove cookies and site storage in your browser settings. Blocking them prevents the site from remembering your preferences; without a bookmark you see the introductory view. There are no optional tracking cookies to accept or reject.',
   'privacy.hostingTitle': 'Hosting, logs and transfers',
   'privacy.hosting':
-    'Cloudflare, Inc. hosts and delivers the site through its network and Cloudflare Workers. A request is handled in a Cloudflare data centre, usually one near you, which can be outside the EEA. Cloudflare is a US company, so data can be transferred to the United States. The site uses no Cloudflare database, file storage, analytics or forms. Until it is switched off, the old address one-piece-zero-spoiler.netlify.app is still served by Netlify, Inc., whose functions run in Ohio, United States.',
+    'Cloudflare, Inc. hosts and delivers the site through its network and Cloudflare Workers. A request is handled in a Cloudflare data centre, usually one near you, which can be outside the EEA. Cloudflare is a US company, so data can be transferred to the United States. The site uses no Cloudflare database, file storage, analytics or forms. Netlify, Inc. still receives requests to the old address one-piece-zero-spoiler.netlify.app and only redirects them to zerospoiler.app.',
   'privacy.logs':
-    'Workers Logs is turned on to find faults and abuse. Each request the Worker handles is logged in the site’s Cloudflare account. That covers pages and the drawings loaded with them. A log entry holds the requested address with its query, the method, the response status and any error. It also holds the request headers, with your IP address, browser information and possibly cookies, and the location Cloudflare derives from the request. On the Workers Free plan the site uses, Cloudflare keeps these logs for 3 days. Fonts, icons and other static files are served without a log entry. Cloudflare also processes request data on its network for security and for aggregate traffic metrics; how long it keeps that data is not verified for this site. On the old address, Netlify retains function activity logs for at least 24 hours, longer on some plans. No analytics does not mean no personal data is processed.',
+    'Workers Logs is turned on to find faults and abuse. Each request the Worker handles is logged in the site’s Cloudflare account. That covers pages and the drawings loaded with them. A log entry holds the requested address with its query, the method, the response status and any error. It also holds the request headers, with your IP address, browser information and possibly cookies, and the location Cloudflare derives from the request. On the Workers Free plan the site uses, Cloudflare keeps these logs for 3 days. Fonts, icons and other static files are served without a log entry. Cloudflare also processes request data on its network for security and for aggregate traffic metrics; how long it keeps that data is not verified for this site. No function runs on the old address, so Netlify writes no function logs; how long its network keeps request data is not verified. No analytics does not mean no personal data is processed.',
   'privacy.terms':
     'Cloudflare’s published Data Processing Addendum forms part of its subscription terms. It describes Cloudflare as processor and its subprocessors, and relies on the EU–US Data Privacy Framework, with standard contractual clauses if that certification lapses. Netlify’s published terms work the same way for the old address. These are the providers’ published terms; site-specific contractual details and the full retention arrangements remain to be confirmed.',
   'privacy.basesTitle': 'Purposes and legal bases',
@@ -267,7 +267,6 @@ export const enDictionary = {
   'privacy.garante': 'Italian Garante: cookies and tracking guidance',
   'privacy.cloudflareLogs': 'Cloudflare: Workers Logs and retention',
   'privacy.cloudflareTerms': 'Cloudflare: Data Processing Addendum',
-  'privacy.netlifyLogs': 'Netlify: function logs and retention',
   'privacy.netlifyTerms': 'Netlify: DPA and subprocessors',
   'privacy.audit': 'Technical audit and outstanding checks',
 

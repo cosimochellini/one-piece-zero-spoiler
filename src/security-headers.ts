@@ -2,10 +2,10 @@
  * Security headers attached to every server-rendered HTML document.
  *
  * They live in the app rather than in `public/_headers` because that file
- * reaches static files only, on Cloudflare and on Netlify alike, and every
- * document here is rendered by the server. The root route returns this
- * from its `headers` option, and TanStack Start merges the result into the
- * response after the default `Content-Type`, so route headers win.
+ * reaches static files only, and every document here is rendered by the
+ * server. The root route returns this from its `headers` option, and
+ * TanStack Start merges the result into the response after the default
+ * `Content-Type`, so route headers win.
  *
  * `Content-Type` and `Cache-Control` are deliberately absent: the former is
  * owned by Start, and an SSR document must not be cached by the browser.

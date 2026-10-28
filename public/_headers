@@ -1,5 +1,5 @@
-# Read by both hosts: Cloudflare's static assets and Netlify's CDN. Neither
-# applies these rules to a server-rendered page; the security headers are set
+# Read by Cloudflare's static assets. It does not apply these rules to a
+# server-rendered page; the security headers are set
 # in src/security-headers.ts.
 
 # Vite content-hashes every client asset, so they are safe to cache forever.

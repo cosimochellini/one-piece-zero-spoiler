@@ -6,7 +6,6 @@
     "coverage",
     ".tanstack",
     ".output",
-    ".netlify",
     ".wrangler",
     ".gate"
   ],
