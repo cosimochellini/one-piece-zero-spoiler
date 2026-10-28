@@ -1,5 +1,6 @@
 import type { OnePieceSaga } from './saga'
 import { waterSevenChronicles } from './water-seven.chronicle'
+import { waterSevenRelationships } from './water-seven.relationships'
 
 /**
  * The Water Seven saga, episodes 207 to 325: a game on a long thin island,
@@ -684,6 +685,7 @@ export const waterSeven: OnePieceSaga = {
 
   dossiers: {
     'foxy': {
+      relationships: waterSevenRelationships.foxy,
       role: {
         it: 'Capitano dei Pirati di Foxy',
         en: 'Captain of the Foxy Pirates',
@@ -715,6 +717,7 @@ export const waterSeven: OnePieceSaga = {
       devilFruit: [{ episode: 210, chapter: 309, value: ['slow-slow-fruit'] }],
     },
     'porche': {
+      relationships: waterSevenRelationships.porche,
       role: { it: 'Idolo dei Pirati di Foxy', en: 'Idol of the Foxy Pirates' },
       log: {
         it: 'La ciurma la tratta da idolo, e tutti gli uomini la adorano. È al fianco di Foxy quando lui fa cadere il cavallo di Tonjit e sfida i Cappello di Paglia, e quando Foxy sostiene che Rufy ha già accettato, lei gli dà ragione: l’ha sentito anche lei.',
@@ -726,6 +729,7 @@ export const waterSeven: OnePieceSaga = {
       ],
     },
     'hamburg': {
+      relationships: waterSevenRelationships.hamburg,
       role: {
         it: 'Combattente dei Pirati di Foxy',
         en: 'Fighter of the Foxy Pirates',
@@ -740,6 +744,7 @@ export const waterSeven: OnePieceSaga = {
       ],
     },
     'tonjit': {
+      relationships: waterSevenRelationships.tonjit,
       chronicle: waterSevenChronicles.tonjit,
       role: {
         it: 'Abitante di Long Ring Long Land',
@@ -770,6 +775,7 @@ export const waterSeven: OnePieceSaga = {
       ],
     },
     'itomimizu': {
+      relationships: waterSevenRelationships.itomimizu,
       chronicle: waterSevenChronicles.itomimizu,
       role: {
         it: 'Telecronista del Davy Back Fight',
@@ -785,6 +791,7 @@ export const waterSeven: OnePieceSaga = {
       ],
     },
     'pickles': {
+      relationships: waterSevenRelationships.pickles,
       chronicle: waterSevenChronicles.pickles,
       role: {
         it: 'Groggy Monster dei Pirati di Foxy',
@@ -806,6 +813,7 @@ export const waterSeven: OnePieceSaga = {
       ],
     },
     'big-pan': {
+      relationships: waterSevenRelationships['big-pan'],
       chronicle: waterSevenChronicles['big-pan'],
       role: {
         it: 'Groggy Monster dei Pirati di Foxy',
@@ -827,6 +835,7 @@ export const waterSeven: OnePieceSaga = {
       ],
     },
     'kuzan': {
+      relationships: waterSevenRelationships.kuzan,
       chronicle: waterSevenChronicles.kuzan,
       role: { it: 'Ammiraglio della Marina', en: 'Marine admiral' },
       log: {
@@ -870,6 +879,7 @@ export const waterSeven: OnePieceSaga = {
       devilFruit: [{ episode: 227, value: ['ice-ice-fruit'] }],
     },
     'yokozuna': {
+      relationships: waterSevenRelationships.yokozuna,
       chronicle: waterSevenChronicles.yokozuna,
       role: { it: 'Rana gigante', en: 'Giant frog' },
       log: {
@@ -897,6 +907,7 @@ export const waterSeven: OnePieceSaga = {
       ],
     },
     'iceburg': {
+      relationships: waterSevenRelationships.iceburg,
       role: { it: 'Cittadino di Water Seven', en: 'Citizen of Water Seven' },
       // Frozen at episode 230, which adapts chapters 323 (p. 13-19), 324
       // (p. 9-18) and 325 (p. 6-9): who he is comes in 231.
@@ -927,6 +938,7 @@ export const waterSeven: OnePieceSaga = {
       ],
     },
     'paulie': {
+      relationships: waterSevenRelationships.paulie,
       chronicle: waterSevenChronicles.paulie,
       // The introduction box already calls him a foreman at chapter 326,
       // page 17 (Paulie wiki intro Qref). Gambling and clothing complaints
@@ -957,6 +969,7 @@ export const waterSeven: OnePieceSaga = {
       ],
     },
     'kokoro': {
+      relationships: waterSevenRelationships.kokoro,
       role: {
         it: 'Capostazione del treno del mare',
         en: 'Station master of the sea train',
@@ -977,6 +990,7 @@ export const waterSeven: OnePieceSaga = {
       ],
     },
     'chimney': {
+      relationships: waterSevenRelationships.chimney,
       role: {
         it: 'Nipote della capostazione',
         en: 'The station master’s granddaughter',
@@ -997,6 +1011,7 @@ export const waterSeven: OnePieceSaga = {
       ],
     },
     'kaku': {
+      relationships: waterSevenRelationships.kaku,
       role: DOCK_ONE,
       log: {
         it: 'Lavora al Dock 1 con gli altri caposquadra e si arrampica ovunque, con una calma che non lo abbandona nemmeno a venti metri d’altezza. Parla poco e con una cadenza tutta sua, e quando gli chiedono di valutare una nave dice quello che pensa senza girarci intorno. A Water Seven nessuno trova strano che un maestro d’ascia passi la giornata sui tetti.',
@@ -1011,6 +1026,7 @@ export const waterSeven: OnePieceSaga = {
       devilFruit: [{ episode: 286, value: ['ox-ox-fruit-model-giraffe'] }],
     },
     'rob-lucci': {
+      relationships: waterSevenRelationships['rob-lucci'],
       chronicle: waterSevenChronicles['rob-lucci'],
       role: { it: 'Carpentiere della Galley-La', en: 'Galley-La shipwright' },
       // Frozen at episode 230 and chapter 326. Episode 230 adapts chapters
@@ -1049,6 +1065,7 @@ export const waterSeven: OnePieceSaga = {
       devilFruit: [{ episode: 246, value: ['cat-cat-fruit-model-leopard'] }],
     },
     'kalifa': {
+      relationships: waterSevenRelationships.kalifa,
       role: { it: 'Cittadina di Water Seven', en: 'Citizen of Water Seven' },
       // Frozen at episode 230, which adapts chapters 323 (p. 13-19), 324
       // (p. 9-18) and 325 (p. 6-9): her job comes in 231.
@@ -1074,6 +1091,7 @@ export const waterSeven: OnePieceSaga = {
       devilFruit: [{ episode: 293, value: ['bubble-bubble-fruit'] }],
     },
     'blueno': {
+      relationships: waterSevenRelationships.blueno,
       role: { it: 'Barista', en: 'Barkeeper' },
       log: {
         it: 'Gestisce un bar nel centro di Water Seven e lucida i bicchieri dietro un lungo bancone, con le bottiglie sugli scaffali alle spalle e gli sgabelli davanti. Franky è un cliente fisso: entra chiedendo di riempirgli di cola le bottiglie, e Blueno gli domanda prima se ha i soldi. Kiwi e Mozu hanno ancora un milione di berry, così Franky offre da bere a tutto il locale. Anche Kokoro è nel locale e attacca discorso con Franky, e molte delle voci che girano in città partono dal suo bancone.',
@@ -1094,6 +1112,7 @@ export const waterSeven: OnePieceSaga = {
       devilFruit: [{ episode: 243, value: ['door-door-fruit'] }],
     },
     'hattori': {
+      relationships: waterSevenRelationships.hattori,
       chronicle: waterSevenChronicles.hattori,
       role: { it: 'Il piccione di Rob Lucci', en: 'Rob Lucci’s pigeon' },
       log: {
@@ -1124,6 +1143,7 @@ export const waterSeven: OnePieceSaga = {
       ],
     },
     'kiwi-and-mozu': {
+      relationships: waterSevenRelationships['kiwi-and-mozu'],
       role: {
         it: 'Sorelle della Franky Family',
         en: 'Sisters of the Franky Family',
@@ -1159,6 +1179,7 @@ export const waterSeven: OnePieceSaga = {
       ],
     },
     'zambai': {
+      relationships: waterSevenRelationships.zambai,
       role: {
         it: 'Vice della Franky Family',
         en: 'Franky Family second in command',
@@ -1197,6 +1218,7 @@ export const waterSeven: OnePieceSaga = {
       ],
     },
     'peepley-lulu': {
+      relationships: waterSevenRelationships['peepley-lulu'],
       chronicle: waterSevenChronicles['peepley-lulu'],
       role: DOCK_ONE,
       log: {
@@ -1216,6 +1238,7 @@ export const waterSeven: OnePieceSaga = {
       affiliation: [{ episode: 233, value: GALLEY_LA_DOCK_ONE }],
     },
     'corgi': {
+      relationships: waterSevenRelationships.corgi,
       chronicle: waterSevenChronicles.corgi,
       role: {
         it: 'Funzionario del Governo Mondiale',
@@ -1244,6 +1267,7 @@ export const waterSeven: OnePieceSaga = {
       ],
     },
     'franky': {
+      relationships: waterSevenRelationships.franky,
       chronicle: waterSevenChronicles.franky,
       role: { it: 'Smantellatore di navi', en: 'Ship dismantler' },
       log: {
@@ -1274,6 +1298,7 @@ export const waterSeven: OnePieceSaga = {
       ],
     },
     'tilestone': {
+      relationships: waterSevenRelationships.tilestone,
       chronicle: waterSevenChronicles.tilestone,
       role: DOCK_ONE,
       log: {
@@ -1293,6 +1318,7 @@ export const waterSeven: OnePieceSaga = {
       affiliation: [{ episode: 238, value: GALLEY_LA_DOCK_ONE }],
     },
     'tom': {
+      relationships: waterSevenRelationships.tom,
       role: { it: 'Maestro d’ascia', en: 'Master shipwright' },
       log: {
         it: 'Guidava Tom’s Workers, il cantiere dove crebbero i suoi due allievi, e diceva che un uomo deve essere fiero della nave che ha costruito. Per aver costruito la nave del Re dei Pirati una nave giudiziaria venne a condannarlo a morte. Ottenne invece dieci anni di libertà vigilata per costruire un treno che corre sul mare da un’isola all’altra, e il Puffing Tom fece la sua prima corsa.',
@@ -1327,6 +1353,7 @@ export const waterSeven: OnePieceSaga = {
       ],
     },
     'spandam': {
+      relationships: waterSevenRelationships.spandam,
       role: { it: 'Agente del Cipher Pol N. 5', en: 'Cipher Pol No. 5 agent' },
       log: {
         it: 'Arriva dal Cipher Pol N. 5 a cercare Tom, e il saluto di cannone di Franky lo colpisce prima che finisca di dire il suo nome. Vuole i progetti di un’arma antica perché il Governo possa respingere la grande era dei pirati, e quando Tom gli dice di non averli fa venire altri cinque agenti. Poi usa le navi da guerra di Franky per attaccare la nave giudiziaria, e la colpa ricade su Tom’s Workers.',
@@ -1353,6 +1380,7 @@ export const waterSeven: OnePieceSaga = {
       ],
     },
     'jerry': {
+      relationships: waterSevenRelationships.jerry,
       chronicle: waterSevenChronicles.jerry,
       role: { it: 'Agente del Cipher Pol 6', en: 'Cipher Pol 6 agent' },
       log: {
@@ -1371,6 +1399,7 @@ export const waterSeven: OnePieceSaga = {
       ],
     },
     'wanze': {
+      relationships: waterSevenRelationships.wanze,
       chronicle: waterSevenChronicles.wanze,
       role: {
         it: 'Agente del Cipher Pol 7 e cuoco',
@@ -1387,6 +1416,7 @@ export const waterSeven: OnePieceSaga = {
       epithet: [{ episode: 258, value: { it: 'Mad Wanze', en: 'Mad Wanze' } }],
     },
     'nero': {
+      relationships: waterSevenRelationships.nero,
       chronicle: waterSevenChronicles.nero,
       role: CP9_AGENT,
       log: {
@@ -1415,6 +1445,7 @@ export const waterSeven: OnePieceSaga = {
       ],
     },
     't-bone': {
+      relationships: waterSevenRelationships['t-bone'],
       chronicle: waterSevenChronicles['t-bone'],
       role: { it: 'Capitano della Marina', en: 'Marine captain' },
       log: {
@@ -1448,6 +1479,7 @@ export const waterSeven: OnePieceSaga = {
       ],
     },
     'jabra': {
+      relationships: waterSevenRelationships.jabra,
       role: CP9_AGENT,
       log: {
         it: 'Tornato a Enies Lobby con Kumadori e Fukuro, deve rendere conto di una missione in cui sono morte molte più persone delle tre che dovevano eliminare. Dice a Kumadori che un uomo non si scusa così facilmente, e si offre di spiegare lui stesso tutto al capo. Quando Fukuro ammette di aver parlato del piano in giro per la città, Jabura gli chiede a cosa serva la cerniera che ha sulla bocca, e quando il tentativo di harakiri di Kumadori si ferma contro il suo stesso Tekkai, gli dice di morire e basta. Porta una giacca nera aperta su una cravatta nera, una fascia rossa in vita e i capelli raccolti in una lunga treccia.',
@@ -1458,6 +1490,7 @@ export const waterSeven: OnePieceSaga = {
       devilFruit: [{ episode: 286, value: ['dog-dog-fruit-model-wolf'] }],
     },
     'kumadori': {
+      relationships: waterSevenRelationships.kumadori,
       role: CP9_AGENT,
       log: {
         it: 'Entra in scena declamando, chiama in causa la madre a ogni occasione e piange sul proprio destino davanti a chiunque. Combatte con un bastone e con i capelli, che manovra come due braccia in più. Quando ritiene di avere fallito tenta subito di togliersi la vita, senza mai riuscirci, e riprende a recitare.',
@@ -1467,6 +1500,7 @@ export const waterSeven: OnePieceSaga = {
       affiliation: [{ episode: 264, value: CIPHER_POL_9 }],
     },
     'fukurou': {
+      relationships: waterSevenRelationships.fukurou,
       role: CP9_AGENT,
       log: {
         it: 'Ha una cerniera sulla bocca che apre e chiude di continuo, e ogni volta che la apre racconta qualcosa che avrebbe dovuto tenere per sé. Ride con un verso tutto suo, ripetuto a ogni battuta, e nonostante la stazza si muove più in fretta di quanto chiunque si aspetti. Sa a memoria i numeri e i livelli di tutti gli agenti dell’unità.',
@@ -1476,6 +1510,7 @@ export const waterSeven: OnePieceSaga = {
       affiliation: [{ episode: 264, value: CIPHER_POL_9 }],
     },
     'sodom-and-gomorrah': {
+      relationships: waterSevenRelationships['sodom-and-gomorrah'],
       chronicle: waterSevenChronicles['sodom-and-gomorrah'],
       role: {
         it: 'Cavalcature della Franky Family',
@@ -1500,6 +1535,7 @@ export const waterSeven: OnePieceSaga = {
       ],
     },
     'oimo-and-kashi': {
+      relationships: waterSevenRelationships['oimo-and-kashi'],
       role: { it: 'Guardiani del cancello', en: 'Gatekeepers' },
       log: {
         it: 'Stanno davanti al cancello di Enies Lobby e fermano chiunque provi a entrare, uno con una clava e l’altro con una grande ascia. Lavorano per il Governo Mondiale da anni e non hanno mai discusso un ordine. Vengono da un’isola di guerrieri e si comportano ancora come tali.',
@@ -1542,6 +1578,7 @@ export const waterSeven: OnePieceSaga = {
       ],
     },
     'baskerville': {
+      relationships: waterSevenRelationships.baskerville,
       chronicle: waterSevenChronicles.baskerville,
       role: {
         it: 'Giudice supremo di Enies Lobby',
@@ -1572,6 +1609,7 @@ export const waterSeven: OnePieceSaga = {
       ],
     },
     'jaguar-d-saul': {
+      relationships: waterSevenRelationships['jaguar-d-saul'],
       role: { it: 'Gigante naufragato a Ohara', en: 'Giant castaway on Ohara' },
       log: {
         it: 'Vent’anni prima la marea lo lascia sulla spiaggia di Ohara, dove una bambina di otto anni, respinta dagli studiosi e evitata da tutti, si ferma a guardarlo. Lui le chiede come si chiama e le insegna a ridere a modo suo, «dereshishi», finché lei non ride davvero. In un’isola che la chiama mostro, è il primo a trattarla come una bambina qualunque.',
@@ -1603,6 +1641,7 @@ export const waterSeven: OnePieceSaga = {
       ],
     },
     'clover': {
+      relationships: waterSevenRelationships.clover,
       chronicle: waterSevenChronicles.clover,
       role: { it: 'Capo degli studiosi di Ohara', en: 'Head scholar of Ohara' },
       log: {
@@ -1632,6 +1671,7 @@ export const waterSeven: OnePieceSaga = {
       ],
     },
     'spandine': {
+      relationships: waterSevenRelationships.spandine,
       chronicle: waterSevenChronicles.spandine,
       role: {
         it: 'Capo del Cipher Pol 9, vent’anni prima',
@@ -1657,6 +1697,7 @@ export const waterSeven: OnePieceSaga = {
       ],
     },
     'nico-olvia': {
+      relationships: waterSevenRelationships['nico-olvia'],
       chronicle: waterSevenChronicles['nico-olvia'],
       role: {
         it: 'Archeologa di Ohara, madre di Robin',
@@ -1689,6 +1730,7 @@ export const waterSeven: OnePieceSaga = {
       ],
     },
     'funkfreed': {
+      relationships: waterSevenRelationships.funkfreed,
       chronicle: waterSevenChronicles.funkfreed,
       role: { it: 'Spada vivente di Spandam', en: 'Spandam’s living sword' },
       log: {
@@ -1709,6 +1751,7 @@ export const waterSeven: OnePieceSaga = {
       devilFruit: [{ episode: 285, value: ['elephant-elephant-fruit'] }],
     },
     'monkey-d-garp': {
+      relationships: waterSevenRelationships['monkey-d-garp'],
       chronicle: waterSevenChronicles['monkey-d-garp'],
       role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
       log: {
@@ -1763,6 +1806,7 @@ export const waterSeven: OnePieceSaga = {
       bounty: [{ episode: 1121, value: 3_000_000_000 }],
     },
     'thatch': {
+      relationships: waterSevenRelationships.thatch,
       chronicle: waterSevenChronicles.thatch,
       role: {
         it: 'Comandante della quarta divisione dei Pirati di Barbabianca',
