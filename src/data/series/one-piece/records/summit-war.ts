@@ -2,6 +2,7 @@ import type { Origin } from '~/data/types'
 
 import type { OnePieceSaga } from './saga'
 import { summitWarChronicles } from './summit-war.chronicle'
+import { summitWarRelationships } from './summit-war.relationships'
 
 /**
  * The Summit War saga, episodes 385 to 516: an archipelago of bubbles, an
@@ -1037,6 +1038,7 @@ export const summitWar: OnePieceSaga = {
 
   dossiers: {
     'trafalgar-law': {
+      relationships: summitWarRelationships['trafalgar-law'],
       chronicle: summitWarChronicles['trafalgar-law'],
       role: { it: 'Capitano e chirurgo', en: 'Captain and surgeon' },
       log: {
@@ -1090,6 +1092,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'eustass-kid': {
+      relationships: summitWarRelationships['eustass-kid'],
       role: {
         it: 'Capitano dei Pirati di Kidd',
         en: 'Captain of the Kid Pirates',
@@ -1137,6 +1140,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'boa-hancock': {
+      relationships: summitWarRelationships['boa-hancock'],
       role: { it: 'Imperatrice di Amazon Lily', en: 'Empress of Amazon Lily' },
       log: {
         it: 'Governa un’isola dove nessun uomo ha mai messo piede, e comanda le Pirate Kuja come membro della Flotta dei Sette. Sputa sui suoi sudditi e si china per farsi perdonare, e le viene perdonato. Ha un ragazzo di gomma rinchiuso in gabbia nell’arena, e non riesce a trasformarlo in pietra.',
@@ -1188,6 +1192,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'jinbe': {
+      relationships: summitWarRelationships.jinbe,
       chronicle: summitWarChronicles.jinbe,
       role: {
         it: 'Uomo-pesce della Flotta dei Sette',
@@ -1235,6 +1240,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'camie': {
+      relationships: summitWarRelationships.camie,
       role: { it: 'Sirena del Takoyaki 8', en: 'Mermaid of Takoyaki 8' },
       log: {
         it: 'Viene inseguita per mare da una banda a cavallo di pesci volanti e se la cava perché un ragazzo di gomma decide che non se ne parla nemmeno. Serve al banco dei takoyaki di Octy, che la tratta come una figlia, e si scusa in continuazione per il disturbo che crede di dare. Nei guai ci finisce con facilità, e qualcuno deve sempre andare a riprenderla.',
@@ -1277,6 +1283,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'pappag': {
+      relationships: summitWarRelationships.pappag,
       role: { it: 'Stella marina parlante', en: 'Talking starfish' },
       log: {
         it: 'Sta appollaiato sulla testa di Kayme e sostiene di esserne il padrone, anche se è lei a portarlo in giro e a dargli da mangiare. Parla senza fermarsi mai, distribuisce consigli che nessuno gli ha chiesto e si offende se qualcuno lo scambia per un cappello. Quando la sirena sparisce è il primo a correre da chiunque possa aiutarla.',
@@ -1301,6 +1308,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'duval': {
+      relationships: summitWarRelationships.duval,
       role: {
         it: 'Capo dei Cavalieri del Pesce Volante',
         en: 'Boss of the Flying Fish Riders',
@@ -1322,6 +1330,7 @@ export const summitWar: OnePieceSaga = {
       epithet: [{ episode: 391, value: { it: 'il Bello', en: 'Handsome' } }],
     },
     'shakky': {
+      relationships: summitWarRelationships.shakky,
       role: { it: 'Padrona del bar', en: 'Bar owner' },
       log: {
         it: 'Tiene un locale fra le mangrovie dove il conto è sempre più alto di quanto dovrebbe, e l’insegna lo ammette apertamente. Conosce per nome ogni pirata sbarcato sull’arcipelago e ne segue le taglie sui giornali come altri seguono il tempo. Sa dove si trova l’uomo capace di rivestire una nave, e non spiega a nessuno come faccia a saperlo.',
@@ -1339,6 +1348,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'silvers-rayleigh': {
+      relationships: summitWarRelationships['silvers-rayleigh'],
       chronicle: summitWarChronicles['silvers-rayleigh'],
       role: { it: 'Artigiano del rivestimento', en: 'Coating craftsman' },
       log: {
@@ -1360,6 +1370,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'killer': {
+      relationships: summitWarRelationships.killer,
       role: {
         it: 'Combattente dei Pirati di Kidd',
         en: 'Combatant of the Kid Pirates',
@@ -1403,6 +1414,7 @@ export const summitWar: OnePieceSaga = {
     },
     // Not "navigator": only the SBS (volume 71) says it, never the story.
     'bepo': {
+      relationships: summitWarRelationships.bepo,
       role: {
         it: 'Membro dei Pirati Heart',
         en: 'Member of the Heart Pirates',
@@ -1429,6 +1441,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'scratchmen-apoo': {
+      relationships: summitWarRelationships['scratchmen-apoo'],
       role: {
         it: 'Capitano dei Pirati On Air',
         en: 'Captain of the On Air Pirates',
@@ -1463,6 +1476,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'basil-hawkins': {
+      relationships: summitWarRelationships['basil-hawkins'],
       role: {
         it: 'Capitano dei Pirati di Hawkins',
         en: 'Captain of the Hawkins Pirates',
@@ -1500,6 +1514,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'x-drake': {
+      relationships: summitWarRelationships['x-drake'],
       role: {
         it: 'Capitano dei Pirati di Drake',
         en: 'Captain of the Drake Pirates',
@@ -1561,6 +1576,7 @@ export const summitWar: OnePieceSaga = {
       bounty: [{ episode: 392, value: 222_000_000 }],
     },
     'urouge': {
+      relationships: summitWarRelationships.urouge,
       role: {
         it: 'Capitano dei Pirati del Monaco Decaduto',
         en: 'Captain of the Fallen Monk Pirates',
@@ -1588,6 +1604,7 @@ export const summitWar: OnePieceSaga = {
       bounty: [{ episode: 392, value: 108_000_000 }],
     },
     'capone-bege': {
+      relationships: summitWarRelationships['capone-bege'],
       role: {
         it: 'Capitano dei Pirati Fire Tank',
         en: 'Captain of the Fire Tank Pirates',
@@ -1634,6 +1651,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'jewelry-bonney': {
+      relationships: summitWarRelationships['jewelry-bonney'],
       role: {
         it: 'Capitana dei Pirati di Bonney',
         en: 'Captain of the Bonney Pirates',
@@ -1680,6 +1698,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'saint-charloss': {
+      relationships: summitWarRelationships['saint-charloss'],
       role: { it: 'Nobile Mondiale', en: 'World Noble' },
       log: {
         it: 'Cammina sull’arcipelago dentro una bolla di vetro, perché l’aria che respirano gli altri non è degna di lui, e spara a chiunque gli passi troppo vicino. Alla casa d’aste compra persone come si comprano i mobili e pretende che la sala si inginocchi. Nessuno reagisce, perché alzare una mano su di lui significa chiamare un ammiraglio.',
@@ -1699,6 +1718,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'borsalino': {
+      relationships: summitWarRelationships.borsalino,
       chronicle: summitWarChronicles.borsalino,
       role: { it: 'Ammiraglio della Marina', en: 'Marine admiral' },
       log: {
@@ -1719,6 +1739,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'sentomaru': {
+      relationships: summitWarRelationships.sentomaru,
       role: { it: 'Guardia del corpo', en: 'Bodyguard' },
       log: {
         it: 'Si presenta come la guardia del corpo dello scienziato del Governo e si vanta di avere la difesa più solida del mondo. Porta un’ascia enorme sulla schiena e una cintura da lottatore, e risponde alle domande con una scortesia che sembra studiata. Comanda i giganti corazzati che camminano fra le mangrovie, e li chiama con un ordine secco.',
@@ -1751,6 +1772,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'boa-sandersonia': {
+      relationships: summitWarRelationships['boa-sandersonia'],
       role: { it: 'Sorella dell’imperatrice', en: 'Sister of the empress' },
       log: {
         it: 'È la più alta e la più magra delle tre sorelle, con i capelli verdi raccolti in cima, e sull’isola tutti la chiamano principessa. Nell’arena combatte insieme alla sorella minore e si trasforma in un serpente lungo quanto la gradinata. Sulla schiena porta qualcosa che non mostra a nessuno, e se il mantello scivola si copre di corsa.',
@@ -1776,6 +1798,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'boa-marigold': {
+      relationships: summitWarRelationships['boa-marigold'],
       role: { it: 'Sorella dell’imperatrice', en: 'Sister of the empress' },
       log: {
         it: 'È la più grossa delle tre sorelle e insieme a Sandersonia fa la guardia al bagno dell’imperatrice. Quando l’imperatrice ordina alle due di giustiziare l’intruso con le loro mani, nell’arena si trasformano in serpenti. Come le sorelle tiene la schiena coperta dal mantello: sull’isola si dice che lì le abbia segnate la maledizione di una Gorgone.',
@@ -1801,6 +1824,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'marguerite': {
+      relationships: summitWarRelationships.marguerite,
       role: KUJA_WARRIOR_ROLE,
       log: {
         it: 'Trova un uomo svenuto nella foresta, il primo che vede in vita sua, e invece di ucciderlo lo porta al villaggio e lo nasconde. Caccia con un arco più alto di lei e tira frecce che colpiscono molto più forte di quanto il legno lasci immaginare. Fa domande su tutto quello che sta fuori dall’isola, e non ha mai potuto farle a nessuno.',
@@ -1818,6 +1842,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'nyon': {
+      relationships: summitWarRelationships.nyon,
       role: { it: 'Anziana di Amazon Lily', en: 'Elder of Amazon Lily' },
       log: {
         it: 'Vive in una casa in cima al villaggio e legge i giornali che arrivano dal mondo, cosa che sull’isola non fa nessun altro. È stata imperatrice prima di quella attuale, e oggi le due si trattano male in pubblico e si cercano in privato. Da giovane ha lasciato l’isola ed è tornata, e di quegli anni parla poco e malvolentieri.',
@@ -1844,6 +1869,7 @@ export const summitWar: OnePieceSaga = {
       epithet: [{ episode: 412, value: { it: 'Gloriosa', en: 'Gloriosa' } }],
     },
     'magellan': {
+      relationships: summitWarRelationships.magellan,
       role: { it: 'Direttore di Impel Down', en: 'Chief warden of Impel Down' },
       log: {
         it: 'Dirige la prigione più profonda del mondo da un ufficio al quarto livello, l’unica stanza fresca di un piano in fiamme. È un uomo veleno: il veleno gli piace al punto da mangiarlo in zuppa a colazione, e il suo fiato è un gas che stende il vicedirettore. Lo stesso veleno lo tiene chiuso in bagno dieci ore al giorno, e in quelle ore la prigione va avanti da sola.',
@@ -1864,6 +1890,7 @@ export const summitWar: OnePieceSaga = {
       devilFruit: [{ episode: 425, value: ['venom-venom-fruit'] }],
     },
     'hannyabal': {
+      relationships: summitWarRelationships.hannyabal,
       role: {
         it: 'Vicedirettore di Impel Down',
         en: 'Vice chief warden of Impel Down',
@@ -1885,6 +1912,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'emporio-ivankov': {
+      relationships: summitWarRelationships['emporio-ivankov'],
       role: { it: 'Sovrano del livello 5.5', en: 'Ruler of level 5.5' },
       log: {
         it: 'Regna su un livello della prigione che sulle mappe non esiste, un giardino segreto dove i detenuti bevono, giocano e guardano lo spettacolo invece di scappare. Le guardie credono che i prigionieri scomparsi siano finiti all’inferno, e invece sono tutti lì. Bon Kure lo conosce di fama come uno capace di miracoli, e spera che uno basti a salvare Rufy avvelenato.',
@@ -1929,6 +1957,7 @@ export const summitWar: OnePieceSaga = {
       devilFruit: [{ episode: 440, value: ['horm-horm-fruit'] }],
     },
     'inazuma': {
+      relationships: summitWarRelationships.inazuma,
       role: { it: 'Braccio destro di Ivankov', en: 'Ivankov’s right hand' },
       log: {
         it: 'Trova Rufy e Bon Kure mezzi assiderati dentro la prigione e li porta al sicuro, dove Bon Kure si risveglia dieci ore dopo. Quando gli chiede dove si trova, non risponde e lo porta davanti al palco, perché sarà qualcun altro a spiegarglielo. Di sé dice soltanto il proprio nome.',
@@ -1961,6 +1990,7 @@ export const summitWar: OnePieceSaga = {
       devilFruit: [{ episode: 442, value: ['snip-snip-fruit'] }],
     },
     'shiryu': {
+      relationships: summitWarRelationships.shiryu,
       role: { it: 'Ex capo dei secondini', en: 'Former head jailer' },
       log: {
         it: 'Era il capo dei secondini di Impel Down e la prigione lo ha rinchiuso nei propri livelli bassi, perché uccideva i detenuti per il gusto di farlo. Quando Barbanera entra nella prigione, il direttore lo fa uscire dalla cella per fermarlo e gli rende la spada, e lui la usa subito sui secondini venuti a liberarlo.',
@@ -1998,6 +2028,7 @@ export const summitWar: OnePieceSaga = {
       devilFruit: [{ episode: 1120, value: ['clear-clear-fruit'] }],
     },
     'jesus-burgess': {
+      relationships: summitWarRelationships['jesus-burgess'],
       role: {
         it: 'Timoniere dei Pirati di Barbanera',
         en: 'Helmsman of the Blackbeard Pirates',
@@ -2023,6 +2054,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'van-augur': {
+      relationships: summitWarRelationships['van-augur'],
       role: {
         it: 'Tiratore dei Pirati di Barbanera',
         en: 'Gunman of the Blackbeard Pirates',
@@ -2050,6 +2082,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'doc-q': {
+      relationships: summitWarRelationships['doc-q'],
       role: {
         it: 'Medico dei Pirati di Barbanera',
         en: 'Doctor of the Blackbeard Pirates',
@@ -2077,6 +2110,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'laffitte': {
+      relationships: summitWarRelationships.laffitte,
       // Not "navigator": only the volume 46 character blurb says it.
       role: BLACKBEARD_ROLE,
       log: {
@@ -2104,6 +2138,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'catarina-devon': {
+      relationships: summitWarRelationships['catarina-devon'],
       role: BLACKBEARD_ROLE,
       log: {
         it: 'Ivankov la nomina fra i pirati del sesto livello di Impel Down e la chiama la donna più pericolosa del mondo, per crimini che i giornali si sono rifiutati di raccontare. A Marineford compare sul patibolo insieme a Barbanera, presentata come la Cacciatrice della Luna Crescente. Quello che ha fatto per finire laggiù non è scritto da nessuna parte.',
@@ -2138,6 +2173,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'vasco-shot': {
+      relationships: summitWarRelationships['vasco-shot'],
       role: BLACKBEARD_ROLE,
       log: {
         it: 'Il suo nome è fra quelli che Ivankov pronuncia parlando del sesto livello di Impel Down, dove finisce chi ha commesso crimini troppo crudeli per i giornali. A Marineford spunta sul patibolo accanto a Barbanera, presentato come il Beone. La sua esistenza era stata cancellata, e adesso è in mezzo alla guerra.',
@@ -2160,6 +2196,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'san-juan-wolf': {
+      relationships: summitWarRelationships['san-juan-wolf'],
       role: BLACKBEARD_ROLE,
       log: {
         it: 'Lo chiamano il più grande di tutti gli esseri viventi, e a Marineford lo si vede prima ancora di sapere chi è: qualcosa di enorme dietro il quartier generale della Marina. Ivankov lo aveva nominato fra i pirati del sesto livello di Impel Down, la Nave da Guerra Colossale. Adesso arriva insieme ai Pirati di Barbanera, e la Marina lo riconosce subito.',
@@ -2184,6 +2221,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'avalo-pizarro': {
+      relationships: summitWarRelationships['avalo-pizarro'],
       role: BLACKBEARD_ROLE,
       log: {
         it: 'A Marineford sale sul patibolo insieme a Barbanera, uno dei criminali più feroci, la cui esistenza è stata cancellata per la loro crudeltà. La Marina lo riconosce e lo chiama per nome: il Re Corrotto. Che cosa abbia fatto per meritarsi quel nome non viene detto.',
@@ -2206,6 +2244,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'sakazuki': {
+      relationships: summitWarRelationships.sakazuki,
       chronicle: summitWarChronicles.sakazuki,
       role: { it: 'Ammiraglio della Marina', en: 'Marine admiral' },
       log: {
@@ -2234,6 +2273,7 @@ export const summitWar: OnePieceSaga = {
       devilFruit: [{ episode: 463, value: ['magma-magma-fruit'] }],
     },
     'jozu': {
+      relationships: summitWarRelationships.jozu,
       role: {
         it: 'Comandante della terza divisione',
         en: 'Third division commander',
@@ -2267,6 +2307,7 @@ export const summitWar: OnePieceSaga = {
       devilFruit: [{ episode: 463, value: ['sparkle-sparkle-fruit'] }],
     },
     'vista': {
+      relationships: summitWarRelationships.vista,
       role: {
         it: 'Comandante della quinta divisione',
         en: 'Fifth division commander',
@@ -2290,6 +2331,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'squard': {
+      relationships: summitWarRelationships.squard,
       role: {
         it: 'Capitano alleato di Barbabianca',
         en: 'Captain allied to Whitebeard',
@@ -2326,6 +2368,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'little-oars-jr': {
+      relationships: summitWarRelationships['little-oars-jr'],
       role: {
         it: 'Capitano dei Pirati Little',
         en: 'Captain of the Little Pirates',
@@ -2351,6 +2394,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'tsuru': {
+      relationships: summitWarRelationships.tsuru,
       role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
       log: {
         it: 'Al quartier generale della Marina, prima dell’esecuzione, dice a Garp che non è colpa sua, e lui le risponde che in momenti così le donne sanno essere dolci. Quando la flotta alleata di Barbabianca esce dalla nebbia e di lui non c’è traccia, dice che forse hanno sbagliato schieramento.',
@@ -2379,6 +2423,7 @@ export const summitWar: OnePieceSaga = {
       devilFruit: [{ episode: 465, chapter: 556, value: ['wash-wash-fruit'] }],
     },
     'momonga': {
+      relationships: summitWarRelationships.momonga,
       role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
       log: {
         it: 'Sbarca su un’isola dove agli uomini è vietato mettere piede, con l’ordine di consegnare una convocazione all’imperatrice e nessuna voglia di discutere. Tiene gli occhi bassi per tutto il tempo, e quando lo sguardo di lei lo raggiunge si conficca una lama nella gamba per non cedere. Aspetta la risposta e riparte senza aggiungere altro.',
@@ -2393,6 +2438,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'curly-dadan': {
+      relationships: summitWarRelationships['curly-dadan'],
       role: {
         it: 'Capo dei briganti di montagna',
         en: 'Boss of the mountain bandits',
@@ -2422,6 +2468,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'sabo': {
+      relationships: summitWarRelationships.sabo,
       chronicle: summitWarChronicles.sabo,
       role: {
         it: 'Fratello giurato di Rufy e Ace',
@@ -2480,6 +2527,7 @@ export const summitWar: OnePieceSaga = {
       devilFruit: [{ episode: 678, value: ['flame-flame-fruit'] }],
     },
     'portgas-d-rouge': {
+      relationships: summitWarRelationships['portgas-d-rouge'],
       role: { it: 'Madre di Ace', en: 'Ace’s mother' },
       log: {
         it: 'Ha aspettato il figlio venti mesi invece di nove, trattenendolo dentro di sé perché la Marina cercava il bambino del Re dei Pirati e setacciava le isole. Ha tenuto duro finché non è nato, e poi ha avuto il tempo di dargli un nome e niente di più. Sull’isola dove è morta nessuno sapeva chi fosse il padre.',
@@ -2497,6 +2545,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'rosward': {
+      relationships: summitWarRelationships.rosward,
       role: { it: 'Nobile Mondiale', en: 'World Noble' },
       log: {
         it: 'Cammina per l’arcipelago con la figlia e un omone in catene che gli va dietro a quattro zampe, e la gente in strada si inginocchia al suo passaggio. Chiama i suoi schiavi la sua collezione di capitani, e si lamenta che la figlia non sappia educarli, consigliandole di cominciare da un bambino. Alla casa d’aste dice al portiere che non farà offerte, e che il figlio è in ritardo perché si fa portare da un umano invece che da un uomo-pesce.',
@@ -2516,6 +2565,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'shalria': {
+      relationships: summitWarRelationships.shalria,
       role: { it: 'Nobile Mondiale', en: 'World Noble' },
       log: {
         it: 'Il suo schiavo, un capitano pirata, scappa con il collare ancora al collo, e lei lo ritrova per strada dopo l’esplosione, incapace di muoversi. Lo prende a calci perché piange per la famiglia, gli spara e se ne va chiedendo un gigante, perché quelli deboli la annoiano. Alla casa d’aste entra accanto al padre e si lamenta che il fratello sia in ritardo.',
@@ -2535,6 +2585,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'disco': {
+      relationships: summitWarRelationships.disco,
       role: {
         it: 'Banditore della casa d’aste',
         en: 'Auctioneer of the auction house',
@@ -2555,6 +2606,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'jean-bart': {
+      relationships: summitWarRelationships['jean-bart'],
       role: {
         it: 'Nuova recluta dei Pirati Heart',
         en: 'New recruit of the Heart Pirates',
@@ -2576,6 +2628,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'sweet-pea': {
+      relationships: summitWarRelationships['sweet-pea'],
       role: KUJA_WARRIOR_ROLE,
       log: {
         it: 'Corre nella foresta con due compagne verso una colonna di fumo. Aiuta a staccare i funghi dal corpo che trovano e a bruciarne i gambi, ed è lei a scovare il fungo rimasto fra le gambe. Tira con tutte le sue forze, e quando quello si allunga senza staccarsi propone di passare il lavoro ad Aphelandra.',
@@ -2593,6 +2646,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'aphelandra': {
+      relationships: summitWarRelationships.aphelandra,
       role: KUJA_WARRIOR_ROLE,
       log: {
         it: 'È la più grande del suo gruppo di guerriere, e quando c’è da portare qualcosa di pesante le compagne si voltano verso di lei. Si carica il ragazzo trovato nella foresta e lo porta di corsa al villaggio, dove tutte le guerriere si accalcano per guardarlo. Quando un fungo si rifiuta di staccarsi le altre decidono che deve tirare lei, e lei chiede soltanto se tocca davvero a lei.',
@@ -2610,6 +2664,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'kikyo': {
+      relationships: summitWarRelationships.kikyo,
       role: KUJA_WARRIOR_ROLE,
       log: {
         it: 'È fra le guerriere che si accalcano a guardare lo straniero raccolto nella foresta, e non si scompone quando lui allunga un braccio per riprendersi il cappello. Appena l’intruso si sveglia e alza la voce ordina di tendere gli archi: le scuse non la interessano, e la legge dell’isola non ha mai avuto un’eccezione. Vuole finirlo prima che torni la loro sovrana, per risparmiare la punizione alle tre che lo hanno portato al villaggio, e quando lui fugge dal tetto guida l’inseguimento.',
@@ -2627,6 +2682,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'bacura': {
+      relationships: summitWarRelationships.bacura,
       role: { it: 'Boia dell’arena kuja', en: 'Executioner of the Kuja arena' },
       log: {
         it: 'È una pantera nera enorme con un berretto marrone che le scende lungo la schiena, e le Kuja la usano da anni per le esecuzioni. Si dice che delle sue vittime non restino nemmeno le ossa. Quando la liberano contro un prigioniero nell’arena, lui la stende con un pugno solo davanti a tutto il pubblico.',
@@ -2641,6 +2697,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'heracles': {
+      relationships: summitWarRelationships.heracles,
       role: {
         it: 'Guerriero dell’arcipelago di Boin',
         en: 'Warrior of the Boin Archipelago',
@@ -2668,6 +2725,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'domino': {
+      relationships: summitWarRelationships.domino,
       role: {
         it: 'Vicecapo dei secondini di Impel Down',
         en: 'Vice head jailer of Impel Down',
@@ -2688,6 +2746,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'saldeath': {
+      relationships: summitWarRelationships.saldeath,
       role: { it: 'Capo dei Blugori', en: 'Chief guard of the Blugori' },
       log: {
         it: 'È un ometto con le ali da pipistrello, un completo bianco e un cappello con due corna, e comanda i Blugori del terzo livello con un tridente in mano. Cattura tre intrusi in una rete che nemmeno i denti riescono a rompere, e li invita a essergli grati di non essere finiti nelle mani di chi sta più in basso. Si irrita quando uno di loro storpia il suo nome, e guarda la rete squarciarsi quando si sveglia la bestia che ci era caduta dentro insieme a loro.',
@@ -2705,6 +2764,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'sadi': {
+      relationships: summitWarRelationships.sadi,
       role: {
         it: 'Comandante dei guardiani demoniaci',
         en: 'Chief guard of the Jailer Beasts',
@@ -2725,6 +2785,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'minotaurus': {
+      relationships: summitWarRelationships.minotaurus,
       role: {
         it: 'Guardiano demoniaco di Impel Down',
         en: 'Jailer Beast of Impel Down',
@@ -2745,6 +2806,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'doma': {
+      relationships: summitWarRelationships.doma,
       role: {
         it: 'Capitano alleato di Barbabianca',
         en: 'Captain allied to Whitebeard',
@@ -2771,6 +2833,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'lacroix': {
+      relationships: summitWarRelationships.lacroix,
       role: {
         it: 'Viceammiraglio della squadra dei giganti',
         en: 'Giant Squad vice admiral',
@@ -2791,6 +2854,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'whitey-bay': {
+      relationships: summitWarRelationships['whitey-bay'],
       role: {
         it: 'Capitana alleata di Barbabianca',
         en: 'Captain allied to Whitebeard',
@@ -2814,6 +2878,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'blenheim': {
+      relationships: summitWarRelationships.blenheim,
       role: {
         it: 'Comandante dei Pirati di Barbabianca',
         en: 'Whitebeard Pirates commander',
@@ -2841,6 +2906,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'salome': {
+      relationships: summitWarRelationships.salome,
       role: { it: 'Serpente di Boa Hancock', en: 'Boa Hancock’s snake' },
       log: {
         it: 'È il serpente che accompagna l’imperatrice dalla nave fino al campo di battaglia, bianco a macchie rosa, con un teschio cornuto calato sulla testa come un elmo. Si arrotola sotto di lei per farle da trono, e non se ne allontana mai di molto. È a Salomè che l’imperatrice, in mezzo alla guerra, confida di non riuscire a smettere di preoccuparsi per Rufy.',
@@ -2858,6 +2924,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'bluejam': {
+      relationships: summitWarRelationships.bluejam,
       role: {
         it: 'Capitano dei Pirati di Bluejam',
         en: 'Captain of the Bluejam Pirates',
@@ -2883,6 +2950,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'porchemy': {
+      relationships: summitWarRelationships.porchemy,
       role: {
         it: 'Pirata della ciurma di Bluejam',
         en: 'Pirate of Bluejam’s crew',
@@ -2903,6 +2971,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'dogra': {
+      relationships: summitWarRelationships.dogra,
       role: {
         it: 'Brigante della famiglia Dadan',
         en: 'Bandit of the Dadan Family',
@@ -2923,6 +2992,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'haredas': {
+      relationships: summitWarRelationships.haredas,
       role: { it: 'Scienziato di Weatheria', en: 'Weatheria scientist' },
       log: {
         it: 'Vive su Weatheria, un’isola del cielo dove un gruppo di vecchi studia il tempo, e porta tunica e cappello a punta come un mago. Accoglie una ragazza precipitata davanti a casa sua, le cucina da mangiare e le mostra i nodi del vento, che liberano raffiche sempre più forti man mano che si sciolgono. Lei lo prende a pugni più di una volta, e alla fine se lo porta via sotto il braccio come ostaggio, mentre lui continua a sorridere.',
@@ -2944,6 +3014,7 @@ export const summitWar: OnePieceSaga = {
       ],
     },
     'kong': {
+      relationships: summitWarRelationships.kong,
       role: {
         it: 'Comandante in capo del Governo Mondiale',
         en: 'Commander-in-chief of the World Government',
@@ -2968,6 +3039,7 @@ export const summitWar: OnePieceSaga = {
     // so the chapter is rounded up to 962. No devil fruit: no canonical
     // episode up to 1158 says which one he ate.
     'shiki': {
+      relationships: summitWarRelationships.shiki,
       chronicle: summitWarChronicles.shiki,
       role: {
         it: 'Pirata evaso da Impel Down',
