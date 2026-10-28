@@ -18,32 +18,31 @@ const WITH_BOOKS: BookmarkSeries = { ...ONE_PIECE_BOOKMARK, books: BOOKS }
 const grade = (group: string, number: string): null | string =>
   gradeDraft({ mode: 'chapter', group, number }, WITH_BOOKS).problem ?? null
 
-describe('the book table', () => {
-  it('round-trips a book and a chapter at every book’s first and last chapter', () => {
-    // Through the dialog's own save and read-back, not a copy of its sum.
-    for (const book of BOOKS) {
-      for (const chapter of [1, bookLength(book)]) {
-        const draft = {
-          mode: 'chapter',
-          group: String(book.number),
-          number: String(chapter),
-        } as const
-        const { bookmark } = gradeDraft(draft, WITH_BOOKS)
+/** Every book's first and last chapter, as the book form and the absolute one. */
+const EDGES = BOOKS.flatMap((book) => [
+  { book: book.number, chapter: 1, absolute: book.first },
+  { book: book.number, chapter: bookLength(book), absolute: book.last },
+])
 
-        expect(bookmark).toStrictEqual({
-          mode: 'chapter',
-          chapter: chapter === 1 ? book.first : book.last,
-        })
-        expect(draftOf(bookmark ?? null, WITH_BOOKS)).toStrictEqual(draft)
-        expect(
-          locateChapter(
-            bookmark?.mode === 'chapter' ? bookmark.chapter : NaN,
-            BOOKS,
-          ),
-        ).toStrictEqual({ book: book.number, chapter })
-      }
-    }
-  })
+describe('the book table', () => {
+  // Through the dialog's own save and read-back, not a copy of its sum.
+  it.each(EDGES)(
+    'round-trips book $book, chapter $chapter',
+    ({ absolute, book, chapter }) => {
+      const draft = {
+        mode: 'chapter',
+        group: String(book),
+        number: String(chapter),
+      } as const
+      const { bookmark } = gradeDraft(draft, WITH_BOOKS)
+
+      expect(bookmark).toStrictEqual({ mode: 'chapter', chapter: absolute })
+      expect(
+        draftOf({ mode: 'chapter', chapter: absolute }, WITH_BOOKS),
+      ).toStrictEqual(draft)
+      expect(locateChapter(absolute, BOOKS)).toStrictEqual({ book, chapter })
+    },
+  )
 
   it('refuses a chapter or a book outside the table', () => {
     expect(grade('2', '0')).not.toBeNull()
