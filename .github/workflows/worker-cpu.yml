@@ -1,0 +1,44 @@
+name: Worker CPU
+
+# The site runs on Workers Free, where a request may use 10 ms of CPU and
+# Cloudflare kills it (error 1102) above that. The owner chose to stay on Free
+# until that happens (#775): every morning this reads yesterday's invocations
+# and opens an issue, or comments on the open one, when any was killed.
+# Secrets: CLOUDFLARE_API_TOKEN (a token with Account Analytics: Read) and
+# CLOUDFLARE_ACCOUNT_ID. A run without them fails, and GitHub emails the owner.
+on:
+  schedule:
+    - cron: '17 6 * * *'
+  workflow_dispatch:
+    inputs:
+      day:
+        description: 'UTC day to check, YYYY-MM-DD (default: yesterday)'
+        required: false
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  alert:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+
+      # No install: the script uses Node built-ins and gh only.
+      - name: Check the day's invocations
+        run:
+          node scripts/worker-cpu-alert.mjs "${DAY:-$(date -u -d yesterday
+          +%F)}"
+        env:
+          DAY: ${{ inputs.day }}
+          GH_TOKEN: ${{ github.token }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
