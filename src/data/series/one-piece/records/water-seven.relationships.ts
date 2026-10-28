@@ -589,8 +589,8 @@ const retained = {
     character: 'senor-pink',
     type: { en: 'Opponent he respects', it: 'Avversario che rispetta' },
     summary: {
-      en: 'Franky defeats Senor Pink and offers to hear the story of the woman named Russian over a drink.',
-      it: 'Franky sconfigge Señor Pink e gli propone di raccontargli davanti a un bicchiere la storia della donna chiamata Russian.',
+      en: 'Franky defeats Señor Pink and offers to hear the story of the woman named Russian over a drink.',
+      it: 'Franky sconfigge Senor Pink e gli propone di raccontargli davanti a un bicchiere la storia della donna chiamata Russian.',
     },
   },
   kakuIceburg: {
@@ -1224,10 +1224,10 @@ const retained = {
   },
   kuzanGarpDebt: {
     character: 'monkey-d-garp',
-    type: { en: 'Benefactor', it: 'Benefattore' },
+    type: { en: 'Old acquaintance', it: 'Vecchia conoscenza' },
     summary: {
-      en: 'Kuzan says that Luffy’s grandfather helped him in the past.',
-      it: 'Kuzan racconta che il nonno di Rufy lo ha aiutato in passato.',
+      en: 'Kuzan says he has known Luffy’s grandfather for a long time.',
+      it: 'Kuzan dice di conoscere da tempo il nonno di Rufy.',
     },
   },
   kuzanAkainu: {
@@ -1285,8 +1285,8 @@ const retained = {
     character: 'monkey-d-garp',
     type: { en: 'Former mentor held captive', it: 'Ex maestro prigioniero' },
     summary: {
-      en: 'Kuzan reports to Teach that Garp is alive and held captive after the battle on Hachinosu.',
-      it: 'Kuzan riferisce a Teach che Garp è vivo e prigioniero dopo la battaglia su Hachinosu.',
+      en: 'Kuzan has captured Garp, who is held alive on Hachinosu after the battle.',
+      it: 'Kuzan ha catturato Garp, che resta vivo e prigioniero su Hachinosu dopo la battaglia.',
     },
   },
   saulRobin: {
@@ -1599,8 +1599,8 @@ const retained = {
       it: 'Ex allievo tra i suoi carcerieri',
     },
     summary: {
-      en: 'Kuzan reports that Garp is alive and held captive by the Blackbeard Pirates.',
-      it: 'Kuzan riferisce che Garp è vivo e prigioniero dei Pirati di Barbanera.',
+      en: 'Garp is alive, held captive by Kuzan and the Blackbeard Pirates.',
+      it: 'Garp è vivo, prigioniero di Kuzan e dei Pirati di Barbanera.',
     },
   },
   thatchTeach: {

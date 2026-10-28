@@ -228,6 +228,13 @@ describe.each(LOCALES)(
       expect(relationAt('tonjit', 'kuzan', ep(1300))).toBeUndefined()
     })
 
+    it('waits for Kuzan’s rescue of Smoker, not his arrival', () => {
+      expect(relationAt('kuzan', 'smoker', ch(698))).toBeUndefined()
+      expect(relationAt('kuzan', 'smoker', ch(699))).toBeDefined()
+      expect(relationAt('kuzan', 'smoker', ep(624))).toBeUndefined()
+      expect(relationAt('kuzan', 'smoker', ep(625))).toBeDefined()
+    })
+
     it('distinguishes Saul’s survival from the later reunion with Robin', () => {
       for (const [before, survived, beforeReunion, reunited] of [
         [ep(1096), ep(1097), ep(1162), ep(1163)],
