@@ -28,18 +28,18 @@ const links = {
   },
   lawPatient: {
     character: 'monkey-d-luffy',
-    type: { en: 'Patient he saves', it: 'Paziente che salva' },
+    type: { en: 'Patient he takes aboard', it: 'Paziente che accoglie' },
     summary: {
-      en: 'Law takes the wounded Luffy aboard his submarine and operates on him after the war.',
-      it: 'Law accoglie Rufy ferito sul sommergibile e lo opera dopo la guerra.',
+      en: 'Law takes the wounded Luffy aboard his submarine.',
+      it: 'Law accoglie Rufy ferito sul sommergibile.',
     },
   },
   lawJinbe: {
     character: 'jinbe',
-    type: { en: 'Patient he treats', it: 'Paziente che cura' },
+    type: { en: 'Passenger he carries', it: 'Passeggero che porta' },
     summary: {
-      en: 'Law treats Jinbe’s injuries aboard his submarine after the escape from Marineford.',
-      it: 'Law cura le ferite di Jinbe sul sommergibile dopo la fuga da Marineford.',
+      en: 'Jinbe escapes Marineford with Luffy aboard Law’s submarine.',
+      it: 'Jinbe fugge da Marineford con Rufy sul sommergibile di Law.',
     },
   },
   lawAlly: {
@@ -266,8 +266,8 @@ const links = {
     character: 'nyon',
     type: { en: 'Adviser', it: 'Consigliera' },
     summary: {
-      en: 'Nyon recognises Hancock’s lovesickness and advises her to help Luffy.',
-      it: 'Nyon riconosce il mal d’amore di Hancock e le consiglia di aiutare Rufy.',
+      en: 'Nyon recognises Hancock’s lovesickness.',
+      it: 'Nyon riconosce il mal d’amore di Hancock.',
     },
   },
   hancockRayleigh: {
@@ -588,7 +588,7 @@ const links = {
   },
   hawkinsKidHostage: {
     character: 'eustass-kid',
-    type: { en: 'Life he uses as a hostage', it: 'Vita che usa come ostaggio' },
+    type: { en: 'Rival he holds hostage', it: 'Rivale che tiene in ostaggio' },
     summary: {
       en: 'Hawkins links a straw doll to Kid’s life to stop Killer from attacking him.',
       it: 'Hawkins lega una bambola di paglia alla vita di Kidd per impedire a Killer di attaccarlo.',
@@ -1051,7 +1051,7 @@ const links = {
   },
   ivaLuffy: {
     character: 'monkey-d-luffy',
-    type: { en: 'Patient he treats', it: 'Paziente che cura' },
+    type: { en: 'Passenger he carries', it: 'Passeggero che porta' },
     summary: {
       en: 'Ivankov treats Luffy’s poisoning after being moved by his concern for Bon Clay.',
       it: 'Ivankov cura l’avvelenamento di Rufy dopo essere stato colpito dalla sua preoccupazione per Bon Kure.',
