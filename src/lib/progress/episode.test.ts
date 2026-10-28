@@ -201,61 +201,46 @@ describe('clampIndex', () => {
 
 describe('draftOf', () => {
   it('opens empty in episode mode with no bookmark', () => {
-    expect(draftOf(null)).toStrictEqual({
+    expect(draftOf(null, ONE_PIECE_BOOKMARK)).toStrictEqual({
       mode: 'episode',
-      season: '',
+      group: '',
       number: '',
     })
   })
 
   it('spells the bookmark back into the fields', () => {
-    expect(draftOf({ mode: 'episode', episode: 650 })).toStrictEqual({
-      mode: 'episode',
-      season: '',
-      number: '650',
-    })
-    expect(draftOf({ mode: 'season', season: 2, episode: 3 })).toStrictEqual({
-      mode: 'season',
-      season: '2',
-      number: '3',
-    })
-    expect(draftOf({ mode: 'chapter', chapter: 1044 })).toStrictEqual({
-      mode: 'chapter',
-      season: '',
-      number: '1044',
-    })
+    expect(
+      draftOf({ mode: 'episode', episode: 650 }, ONE_PIECE_BOOKMARK),
+    ).toStrictEqual({ mode: 'episode', group: '', number: '650' })
+    expect(
+      draftOf({ mode: 'season', season: 2, episode: 3 }, ONE_PIECE_BOOKMARK),
+    ).toStrictEqual({ mode: 'season', group: '2', number: '3' })
+    expect(
+      draftOf({ mode: 'chapter', chapter: 1044 }, ONE_PIECE_BOOKMARK),
+    ).toStrictEqual({ mode: 'chapter', group: '', number: '1044' })
   })
 })
 
 describe('ceilingOf', () => {
   it('is the form range for episodes and chapters', () => {
     expect(
-      ceilingOf(
-        { mode: 'episode', season: '', number: '' },
-        ONE_PIECE_BOOKMARK,
-      ),
+      ceilingOf({ mode: 'episode', group: '', number: '' }, ONE_PIECE_BOOKMARK),
     ).toBe(ONE_PIECE_BOOKMARK.episodeCeiling)
     expect(
-      ceilingOf(
-        { mode: 'chapter', season: '', number: '' },
-        ONE_PIECE_BOOKMARK,
-      ),
+      ceilingOf({ mode: 'chapter', group: '', number: '' }, ONE_PIECE_BOOKMARK),
     ).toBe(ONE_PIECE_BOOKMARK.chapterCeiling)
   })
 
   it('is the season’s length once a season is chosen, and nothing before', () => {
     expect(
-      ceilingOf({ mode: 'season', season: '', number: '' }, ONE_PIECE_BOOKMARK),
+      ceilingOf({ mode: 'season', group: '', number: '' }, ONE_PIECE_BOOKMARK),
     ).toBeNull()
     expect(
-      ceilingOf(
-        { mode: 'season', season: '2', number: '' },
-        ONE_PIECE_BOOKMARK,
-      ),
+      ceilingOf({ mode: 'season', group: '2', number: '' }, ONE_PIECE_BOOKMARK),
     ).toBe(16)
     expect(
       ceilingOf(
-        { mode: 'season', season: '99', number: '' },
+        { mode: 'season', group: '99', number: '' },
         ONE_PIECE_BOOKMARK,
       ),
     ).toBeNull()
@@ -266,31 +251,31 @@ describe('gradeDraft', () => {
   it('reports an empty draft separately from an out-of-range one', () => {
     expect(
       gradeDraft(
-        { mode: 'episode', season: '', number: '' },
+        { mode: 'episode', group: '', number: '' },
         ONE_PIECE_BOOKMARK,
       ),
     ).toStrictEqual({ bookmark: null, problem: 'empty' })
     expect(
       gradeDraft(
-        { mode: 'episode', season: '', number: '  ' },
+        { mode: 'episode', group: '', number: '  ' },
         ONE_PIECE_BOOKMARK,
       ),
     ).toStrictEqual({ bookmark: null, problem: 'empty' })
     expect(
       gradeDraft(
-        { mode: 'episode', season: '', number: '9999' },
+        { mode: 'episode', group: '', number: '9999' },
         ONE_PIECE_BOOKMARK,
       ),
     ).toStrictEqual({ bookmark: null, problem: 'range' })
     expect(
       gradeDraft(
-        { mode: 'episode', season: '', number: 'abc' },
+        { mode: 'episode', group: '', number: 'abc' },
         ONE_PIECE_BOOKMARK,
       ),
     ).toStrictEqual({ bookmark: null, problem: 'range' })
     expect(
       gradeDraft(
-        { mode: 'chapter', season: '', number: '0' },
+        { mode: 'chapter', group: '', number: '0' },
         ONE_PIECE_BOOKMARK,
       ),
     ).toStrictEqual({ bookmark: null, problem: 'range' })
@@ -299,13 +284,13 @@ describe('gradeDraft', () => {
   it('asks for a season before anything else in season mode', () => {
     expect(
       gradeDraft(
-        { mode: 'season', season: '', number: '3' },
+        { mode: 'season', group: '', number: '3' },
         ONE_PIECE_BOOKMARK,
       ),
     ).toStrictEqual({ bookmark: null, problem: 'season' })
     expect(
       gradeDraft(
-        { mode: 'season', season: '2', number: '17' },
+        { mode: 'season', group: '2', number: '17' },
         ONE_PIECE_BOOKMARK,
       ),
     ).toStrictEqual({ bookmark: null, problem: 'range' })
@@ -314,7 +299,7 @@ describe('gradeDraft', () => {
   it('returns a bookmark for a usable draft', () => {
     expect(
       gradeDraft(
-        { mode: 'episode', season: '', number: '92' },
+        { mode: 'episode', group: '', number: '92' },
         ONE_PIECE_BOOKMARK,
       ),
     ).toStrictEqual({
@@ -323,7 +308,7 @@ describe('gradeDraft', () => {
     })
     expect(
       gradeDraft(
-        { mode: 'season', season: '2', number: '3' },
+        { mode: 'season', group: '2', number: '3' },
         ONE_PIECE_BOOKMARK,
       ),
     ).toStrictEqual({
@@ -332,7 +317,7 @@ describe('gradeDraft', () => {
     })
     expect(
       gradeDraft(
-        { mode: 'chapter', season: '', number: '1044' },
+        { mode: 'chapter', group: '', number: '1044' },
         ONE_PIECE_BOOKMARK,
       ),
     ).toStrictEqual({
@@ -347,7 +332,7 @@ describe('gradeDraft', () => {
  * ceiling are worth checking, since the range is fixed.
  */
 function episodeStepperAt(number: string): Stepper {
-  return stepperOf({ mode: 'episode', season: '', number }, ONE_PIECE_BOOKMARK)
+  return stepperOf({ mode: 'episode', group: '', number }, ONE_PIECE_BOOKMARK)
 }
 
 describe('stepperOf', () => {
@@ -367,25 +352,25 @@ describe('stepperOf', () => {
   it('steps from zero when the field is empty or unreadable', () => {
     expect(
       stepperOf(
-        { mode: 'chapter', season: '', number: '' },
+        { mode: 'chapter', group: '', number: '' },
         ONE_PIECE_BOOKMARK,
       ).stepped(1),
     ).toBe('1')
     expect(
       stepperOf(
-        { mode: 'chapter', season: '', number: 'abc' },
+        { mode: 'chapter', group: '', number: 'abc' },
         ONE_PIECE_BOOKMARK,
       ).stepped(1),
     ).toBe('1')
     expect(
-      stepperOf({ mode: 'chapter', season: '', number: '' }, ONE_PIECE_BOOKMARK)
+      stepperOf({ mode: 'chapter', group: '', number: '' }, ONE_PIECE_BOOKMARK)
         .atFloor,
     ).toBe(false)
   })
 
   it('has no range, and does not step, before a season is chosen', () => {
     const stepper = stepperOf(
-      { mode: 'season', season: '', number: '' },
+      { mode: 'season', group: '', number: '' },
       ONE_PIECE_BOOKMARK,
     )
 
@@ -393,7 +378,7 @@ describe('stepperOf', () => {
     expect(stepper.stepped(1)).toBe('')
     expect(
       stepperOf(
-        { mode: 'season', season: '2', number: '16' },
+        { mode: 'season', group: '2', number: '16' },
         ONE_PIECE_BOOKMARK,
       ).atCeiling,
     ).toBe(true)

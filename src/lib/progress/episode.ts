@@ -1,3 +1,4 @@
+import { bookLength, getBook, locateChapter } from './books'
 import { FIRST_CHAPTER, FIRST_EPISODE } from './bounds'
 import {
   formatSeasonCode,
@@ -228,17 +229,22 @@ export function clampIndex(value: number, ceiling: number): number {
 }
 
 /**
- * What the dialog holds while the reader is typing: a mode, the season as
- * the `<select>` value (empty until one is chosen), and the number as typed.
+ * What the dialog holds while the reader is typing: a mode, the group the
+ * number counts within as the `<select>` value (empty until one is chosen),
+ * and the number as typed. The group is the season of a season draft, and
+ * the book of a chapter draft on a series with books.
  */
 export interface Draft {
+  group: string
   mode: BookmarkMode
   number: string
-  season: string
 }
 
-/** Why a draft is not usable yet. `season` means no season has been chosen. */
-export type DraftProblem = 'empty' | 'range' | 'season'
+/**
+ * Why a draft is not usable yet. `season` and `book` mean that group has not
+ * been chosen.
+ */
+export type DraftProblem = 'book' | 'empty' | 'range' | 'season'
 
 /**
  * A graded draft carries both halves at once: the bookmark it would save and
@@ -250,40 +256,63 @@ export interface GradedDraft {
   problem: DraftProblem | null
 }
 
-/** The draft a dialog opens with: the current bookmark, spelled back out. */
-export function draftOf(bookmark: Bookmark): Draft {
+/**
+ * The draft a dialog opens with: the current bookmark, spelled back out. A
+ * chapter on a series with books is spelled as its book and the chapter in
+ * it; one past the last book leaves the draft empty, as the dialog could not
+ * save it.
+ */
+export function draftOf(bookmark: Bookmark, series: BookmarkSeries): Draft {
   if (bookmark === null) {
-    return { mode: 'episode', season: '', number: '' }
+    return { mode: 'episode', group: '', number: '' }
   }
 
   switch (bookmark.mode) {
     case 'chapter': {
-      return { mode: 'chapter', season: '', number: String(bookmark.chapter) }
+      return chapterDraft(bookmark.chapter, series)
     }
     case 'episode': {
-      return { mode: 'episode', season: '', number: String(bookmark.episode) }
+      return { mode: 'episode', group: '', number: String(bookmark.episode) }
     }
     case 'season': {
       return {
         mode: 'season',
-        season: String(bookmark.season),
+        group: String(bookmark.season),
         number: String(bookmark.episode),
       }
     }
   }
 }
 
-/** The largest number the draft's field accepts, given its mode and season. */
+function chapterDraft(chapter: number, series: BookmarkSeries): Draft {
+  if (series.books === undefined) {
+    return { mode: 'chapter', group: '', number: String(chapter) }
+  }
+
+  const at = locateChapter(chapter, series.books)
+  return at === null ?
+      { mode: 'chapter', group: '', number: '' }
+    : { mode: 'chapter', group: String(at.book), number: String(at.chapter) }
+}
+
+/**
+ * The largest number the draft's field accepts, given its mode and group, or
+ * `null` while the group it needs has not been chosen.
+ */
 export function ceilingOf(draft: Draft, series: BookmarkSeries): null | number {
   switch (draft.mode) {
     case 'chapter': {
-      return series.chapterCeiling
+      if (series.books === undefined) {
+        return series.chapterCeiling
+      }
+      const book = getBook(Number(draft.group), series.books)
+      return book === undefined ? null : bookLength(book)
     }
     case 'episode': {
       return series.episodeCeiling
     }
     case 'season': {
-      const season = getSeason(Number(draft.season), series)
+      const season = getSeason(Number(draft.group), series)
       return season === undefined ? null : seasonLength(season, series)
     }
   }
@@ -340,7 +369,10 @@ function parseWhole(raw: string): null | number {
 export function gradeDraft(draft: Draft, series: BookmarkSeries): GradedDraft {
   const ceiling = ceilingOf(draft, series)
   if (ceiling === null) {
-    return { bookmark: null, problem: 'season' }
+    return {
+      bookmark: null,
+      problem: draft.mode === 'season' ? 'season' : 'book',
+    }
   }
 
   if (draft.number.trim() === '') {
@@ -352,20 +384,32 @@ export function gradeDraft(draft: Draft, series: BookmarkSeries): GradedDraft {
     return { bookmark: null, problem: 'range' }
   }
 
-  return { bookmark: bookmarkAt(draft, value), problem: null }
+  return { bookmark: bookmarkAt(draft, value, series), problem: null }
 }
 
-/** The validated number in the unit chosen by the draft. */
-function bookmarkAt(draft: Draft, value: number): NonNullable<Bookmark> {
+/**
+ * The validated number in the unit chosen by the draft. A chapter within a
+ * book is stored as the absolute chapter, so the cookie keeps one grammar.
+ */
+function bookmarkAt(
+  draft: Draft,
+  value: number,
+  series: BookmarkSeries,
+): NonNullable<Bookmark> {
   switch (draft.mode) {
     case 'chapter': {
-      return { mode: 'chapter', chapter: value }
+      // Without books, chapters count from the first.
+      const book = getBook(Number(draft.group), series.books)
+      return {
+        mode: 'chapter',
+        chapter: (book?.first ?? FIRST_CHAPTER) + value - 1,
+      }
     }
     case 'episode': {
       return { mode: 'episode', episode: value }
     }
     case 'season': {
-      return { mode: 'season', season: Number(draft.season), episode: value }
+      return { mode: 'season', season: Number(draft.group), episode: value }
     }
   }
 }

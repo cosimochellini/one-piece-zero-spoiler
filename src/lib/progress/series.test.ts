@@ -5,6 +5,7 @@ import { reveal } from '~/data/reveal'
 import {
   absoluteEpisodeOf,
   ceilingOf,
+  draftOf,
   episodeValue,
   gradeDraft,
   parseBookmark,
@@ -45,7 +46,7 @@ const OTHER: BookmarkSeries = {
   ],
 }
 
-const SEASON_DRAFT = { mode: 'season', season: '2', number: '3' } as const
+const SEASON_DRAFT = { mode: 'season', group: '2', number: '3' } as const
 
 describe('the series candidate in a route', () => {
   it.each([
@@ -165,10 +166,10 @@ describe('bookmark rules from the series description', () => {
     expect(gradeDraft({ ...SEASON_DRAFT, number: '9' }, OTHER).problem).toBe(
       'range',
     )
-    expect(ceilingOf({ mode: 'episode', season: '', number: '' }, OTHER)).toBe(
+    expect(ceilingOf({ mode: 'episode', group: '', number: '' }, OTHER)).toBe(
       12,
     )
-    expect(ceilingOf({ mode: 'chapter', season: '', number: '' }, OTHER)).toBe(
+    expect(ceilingOf({ mode: 'chapter', group: '', number: '' }, OTHER)).toBe(
       20,
     )
   })
@@ -179,6 +180,40 @@ describe('bookmark rules from the series description', () => {
     expect(parseBookmark('s1e1', withoutSeasons)).toBeNull()
     expect(gradeDraft(SEASON_DRAFT, withoutSeasons).problem).toBe('season')
     expect(resolveEpisode(1, 1, withoutSeasons)).toBeNull()
+  })
+
+  it('asks a series with books for the book, and stores the absolute chapter', () => {
+    const withBooks: BookmarkSeries = {
+      ...OTHER,
+      books: [
+        { number: 1, first: 1, last: 8 },
+        { number: 2, first: 9, last: 20 },
+      ],
+    }
+    const draft = { mode: 'chapter', group: '2', number: '3' } as const
+
+    expect(gradeDraft(draft, withBooks).bookmark).toStrictEqual({
+      mode: 'chapter',
+      chapter: 11,
+    })
+    expect(ceilingOf(draft, withBooks)).toBe(12)
+    expect(gradeDraft({ ...draft, number: '13' }, withBooks).problem).toBe(
+      'range',
+    )
+    expect(gradeDraft({ ...draft, group: '' }, withBooks).problem).toBe('book')
+    expect(draftOf({ mode: 'chapter', chapter: 11 }, withBooks)).toStrictEqual(
+      draft,
+    )
+    expect(draftOf({ mode: 'chapter', chapter: 9 }, OTHER)).toStrictEqual({
+      mode: 'chapter',
+      group: '',
+      number: '9',
+    })
+    // The cookie keeps its one grammar.
+    expect(parseBookmark('c11', withBooks)).toStrictEqual({
+      mode: 'chapter',
+      chapter: 11,
+    })
   })
 })
 

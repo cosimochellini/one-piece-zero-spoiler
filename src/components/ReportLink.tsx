@@ -18,7 +18,7 @@ import { color, font, leading, rule, space, text } from '~/styles/tokens.stylex'
  */
 export function ReportLink(): null | ReactElement {
   const t = useT()
-  const { bookmark, trial } = useBookmark()
+  const { bookmark, series, trial } = useBookmark()
   const { pathname } = useLocation()
   const home = useMatch({ from: '/$series/$locale/', shouldThrow: false })
 
@@ -32,7 +32,10 @@ export function ReportLink(): null | ReactElement {
   })
   // A trial point is the demo's, not a place the reader set.
   if (bookmark !== null && !trial) {
-    fields.set('bookmark', describeBookmark(t, 'mark', bookmark))
+    fields.set(
+      'bookmark',
+      describeBookmark(t, 'mark', { bookmark, books: series?.books }),
+    )
   }
 
   return (

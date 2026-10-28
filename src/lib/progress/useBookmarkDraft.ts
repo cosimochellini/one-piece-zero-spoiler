@@ -38,9 +38,9 @@ export function useBookmarkDraft(
   from: Bookmark,
   save: (next: NonNullable<Bookmark>) => void,
 ): BookmarkDraft {
-  const [draft, setDraft] = useState<Draft>(() => draftOf(from))
-  const [touched, setTouched] = useState(false)
   const series = useBookmarkSeries()
+  const [draft, setDraft] = useState<Draft>(() => draftOf(from, series))
+  const [touched, setTouched] = useState(false)
   const graded = gradeDraft(draft, series)
 
   return {

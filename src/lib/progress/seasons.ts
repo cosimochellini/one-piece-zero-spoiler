@@ -1,4 +1,3 @@
-import { FIRST_EPISODE } from './bounds'
 import type { BookmarkSeries, Season } from './series'
 
 export type { Season } from './series'
@@ -35,16 +34,9 @@ export function resolveEpisode(
   series: BookmarkSeries,
 ): null | number {
   const season = getSeason(seasonNumber, series)
-  if (
-    season === undefined
-    || !Number.isSafeInteger(episode)
-    || episode < 1
-    || episode > seasonLength(season, series)
-  ) {
-    return null
-  }
-
-  return season.first + episode - 1
+  return season === undefined ? null : (
+      unitAt(season.first, seasonLength(season, series), episode)
+    )
 }
 
 /**
@@ -63,20 +55,48 @@ export function locateEpisode(
   absolute: number,
   series: BookmarkSeries,
 ): null | SeasonPosition {
-  if (!Number.isSafeInteger(absolute) || absolute < FIRST_EPISODE) {
-    return null
-  }
-
-  const season = series.seasons.find(
-    (candidate) =>
-      absolute >= candidate.first
-      && absolute <= lastEpisodeOf(candidate, series),
+  const at = runAt(series.seasons, absolute, (season) =>
+    lastEpisodeOf(season, series),
   )
-  if (season === undefined) {
+  return at === null ? null : { season: at.number, episode: at.position }
+}
+
+/**
+ * The absolute unit at a one-based position in a run (a season of episodes,
+ * a book of chapters) that starts at `first` and holds `length` units, or
+ * `null` when the position is outside it.
+ */
+function unitAt(
+  first: number,
+  length: number,
+  position: number,
+): null | number {
+  if (!Number.isSafeInteger(position) || position < 1 || position > length) {
     return null
   }
 
-  return { season: season.number, episode: absolute - season.first + 1 }
+  return first + position - 1
+}
+
+/**
+ * The run of `table` an absolute unit falls in, by each run's last unit, and
+ * the unit's one-based position within it; `null` outside every run.
+ */
+export function runAt<T extends { first: number; number: number }>(
+  table: T[],
+  absolute: number,
+  lastOf: (run: T) => number,
+): null | { number: number; position: number } {
+  if (!Number.isSafeInteger(absolute)) {
+    return null
+  }
+
+  const run = table.find(
+    (candidate) => absolute >= candidate.first && absolute <= lastOf(candidate),
+  )
+  return run === undefined ? null : (
+      { number: run.number, position: absolute - run.first + 1 }
+    )
 }
 
 // Two digits, so a season code is the same width whatever the numbers are.

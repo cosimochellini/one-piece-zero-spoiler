@@ -91,4 +91,42 @@ describe('the bookmark form for a series', () => {
 
     expect(screen.getByLabelText('Last chapter you read')).toBeEnabled()
   })
+
+  it('asks a series with books for the book and the chapter in it', async () => {
+    const user = userEvent.setup()
+    renderWithProviders(<BookmarkForm onDone={done} />, {
+      series: {
+        ...SERIES,
+        books: [
+          { number: 1, first: 1, last: 20 },
+          { number: 2, first: 21, last: 43 },
+        ],
+      },
+    })
+
+    expect(
+      screen.queryByRole('radio', { name: 'Chapter' }),
+    ).not.toBeInTheDocument()
+
+    await user.click(screen.getByRole('radio', { name: 'Book' }))
+    await user.selectOptions(
+      screen.getByRole('combobox', { name: 'Book' }),
+      'Book 2 · 23 chapters',
+    )
+    const chapter = screen.getByLabelText('Chapter in that book')
+    await user.type(chapter, '24')
+    await user.tab()
+
+    expect(screen.getByRole('alert')).toHaveTextContent('1 to 23')
+
+    await user.clear(chapter)
+    await user.type(chapter, '3')
+    await user.click(screen.getByRole('button', { name: 'Save' }))
+
+    // Stored as the absolute chapter: book 2 opens at chapter 21.
+    expect(document.cookie).toContain('zs_test-series=c23')
+
+    // eslint-disable-next-line unicorn/no-document-cookie -- jsdom has no CookieStore, and this is the only way to clear what the component wrote.
+    document.cookie = 'zs_test-series=; Max-Age=0; Path=/'
+  })
 })

@@ -50,6 +50,7 @@ export const enDictionary = {
   'onboarding.dial': 'Point in the story',
   'onboarding.unitEpisode': 'Episode',
   'onboarding.unitChapter': 'Chapter',
+  'onboarding.unitBook': 'Book {book}, chapter',
   'onboarding.here': 'I’m here',
   'onboarding.further': 'I’m further on',
   'onboarding.start': 'Starting now · EP 1',
@@ -62,6 +63,7 @@ export const enDictionary = {
 
   'trial.episode': 'Trying episode {threshold}. Nothing is saved.',
   'trial.chapter': 'Trying chapter {threshold}. Nothing is saved.',
+  'trial.book': 'Trying book {book}, chapter {chapter}. Nothing is saved.',
   'trial.save': 'Save this point',
   'trial.leave': 'Leave the trial',
 
@@ -73,12 +75,14 @@ export const enDictionary = {
   'home.point.episode': 'Episode {threshold}',
   'home.point.season': 'Season {season} · episode {episode}',
   'home.point.chapter': 'Chapter {threshold}',
+  'home.point.book': 'Book {book}, chapter {chapter}',
   'home.recent': 'Just happened',
   'home.before': 'Just before',
   'home.noStories': 'No stories yet.',
   'home.storyAt.episode': 'Episode {threshold}',
   'home.storyAt.season': '{threshold}',
   'home.storyAt.chapter': 'About chapter {threshold}',
+  'home.storyAt.book': 'About book {book}, chapter {chapter}',
   'home.more': 'More stories',
   'home.cast': 'Who matters now',
 
@@ -87,6 +91,7 @@ export const enDictionary = {
   'mark.episode': 'EP {threshold}',
   'mark.season': '{threshold}',
   'mark.chapter': 'CH {threshold}',
+  'mark.book': 'B{book} · CH {chapter}',
   'mark.change': 'Change bookmark ({threshold})',
 
   'dialog.title': 'Where are you up to?',
@@ -95,6 +100,7 @@ export const enDictionary = {
   'dialog.modeEpisode': 'Episode',
   'dialog.modeSeason': 'Season',
   'dialog.modeChapter': 'Chapter',
+  'dialog.modeBook': 'Book',
   'dialog.episodeLabel': 'Last episode you watched',
   'dialog.chapterLabel': 'Last chapter you read',
   'dialog.seasonLabel': 'Season',
@@ -102,11 +108,16 @@ export const enDictionary = {
   'dialog.seasonOption': 'Season {season} · episodes {first}–{last}',
   'dialog.seasonOptionOpen': 'Season {season} · episode {first} onwards',
   'dialog.seasonEpisodeLabel': 'Episode in that season',
+  'dialog.bookLabel': 'Book',
+  'dialog.bookPlaceholder': 'Choose a book',
+  'dialog.bookOption': 'Book {book} · {count} chapters',
+  'dialog.bookChapterLabel': 'Chapter in that book',
   'dialog.saga': 'Arc · {name}',
   'dialog.hint': 'From 1 to {max}.',
   'dialog.errorEmpty': 'Enter a number.',
   'dialog.errorRange': 'Enter a number from 1 to {max}.',
   'dialog.errorSeason': 'Choose a season first.',
+  'dialog.errorBook': 'Choose a book first.',
   'dialog.decrease': 'One less',
   'dialog.increase': 'One more',
   'dialog.save': 'Save',
@@ -119,6 +130,7 @@ export const enDictionary = {
   'veil.locked.episode': 'Under fog until episode {threshold}',
   'veil.locked.season': 'Under fog until {threshold}',
   'veil.locked.chapter': 'Under fog until chapter {threshold}',
+  'veil.locked.book': 'Under fog until book {book}, chapter {chapter}',
   'veil.reveal': 'Show anyway',
   'veil.revealShort': 'Show',
   'veil.ask': 'Show it anyway?',
@@ -133,6 +145,8 @@ export const enDictionary = {
     'This entry first appears in {threshold}. Your bookmark is empty, so the page is under fog.',
   'intro.context.chapter':
     'This entry first appears in chapter {threshold}. Your bookmark is empty, so the page is under fog.',
+  'intro.context.book':
+    'This entry first appears in book {book}, chapter {chapter}. Your bookmark is empty, so the page is under fog.',
   'intro.step1': 'Set your bookmark to the last episode or chapter you saw.',
   'intro.step2': 'Entries up to that point are open.',
   'intro.step3':
@@ -141,9 +155,11 @@ export const enDictionary = {
   'chart.opensAt.episode': 'Episode {threshold}',
   'chart.opensAt.season': '{threshold}',
   'chart.opensAt.chapter': 'Chapter {threshold}',
+  'chart.opensAt.book': 'Book {book}, chapter {chapter}',
   'chart.hereSet.episode': 'You are here · episode {threshold}',
   'chart.hereSet.season': 'You are here · {threshold}',
   'chart.hereSet.chapter': 'You are here · chapter {threshold}',
+  'chart.hereSet.book': 'You are here · book {book}, chapter {chapter}',
   'chart.hereUnset': 'No bookmark set · everything is under fog',
   'chart.title': 'Map of the places',
   'chart.fog': '{count} stops under fog',
@@ -295,6 +311,7 @@ export const enDictionary = {
   'characters.sectionOpensAt.episode': 'From episode {threshold}',
   'characters.sectionOpensAt.season': 'From {threshold}',
   'characters.sectionOpensAt.chapter': 'From chapter {threshold}',
+  'characters.sectionOpensAt.book': 'From book {book}, chapter {chapter}',
   'characters.sectionCount': '{count} characters',
   'characters.sectionCountOne': '1 character',
   'characters.sectionFogged': 'Arc under fog',
@@ -302,6 +319,7 @@ export const enDictionary = {
   'character.opensAt.episode': 'First appears in episode {threshold}',
   'character.opensAt.season': 'First appears in {threshold}',
   'character.opensAt.chapter': 'First appears in chapter {threshold}',
+  'character.opensAt.book': 'First appears in book {book}, chapter {chapter}',
   'character.foggedName': 'A character under fog',
   'character.foggedTitle': 'A character under fog | {series} | Zero Spoiler',
   'character.foggedDescription.episode':
@@ -310,12 +328,16 @@ export const enDictionary = {
     'A {series} character who first appears in {threshold}. Set your bookmark to read this page.',
   'character.foggedDescription.chapter':
     'A {series} character who first appears in chapter {threshold}. Set your bookmark to read this page.',
+  'character.foggedDescription.book':
+    'A {series} character who first appears in book {book}, chapter {chapter}. Set your bookmark to read this page.',
   'character.pageTitle': '{name} | {series} | Zero Spoiler',
   'character.back': 'All characters',
   'character.relationshipHistoryFor': 'Relationship history with {name}',
   'character.relationshipHistory': 'Relationship history',
   'character.relationshipAt.episode': 'Available from episode {threshold}',
   'character.relationshipAt.chapter': 'Available from chapter {threshold}',
+  'character.relationshipAt.book':
+    'Available from book {book}, chapter {chapter}',
   'character.relationshipAt.season': 'Available from {threshold}',
   'character.relationshipsTitle': 'Relationships',
   'character.relationshipsLede':
@@ -354,9 +376,12 @@ export const enDictionary = {
     'A {series} place that first appears in {threshold}. Set your bookmark to read about it.',
   'places.foggedDescription.chapter':
     'A {series} place that first appears in chapter {threshold}. Set your bookmark to read about it.',
+  'places.foggedDescription.book':
+    'A {series} place that first appears in book {book}, chapter {chapter}. Set your bookmark to read about it.',
   'places.firstSeen.episode': 'First seen in episode {threshold}',
   'places.firstSeen.season': 'First seen in {threshold}',
   'places.firstSeen.chapter': 'First seen in chapter {threshold}',
+  'places.firstSeen.book': 'First seen in book {book}, chapter {chapter}',
   'places.form': 'Type',
   'places.arc': 'Arc',
   'places.landmark': 'Landmark',

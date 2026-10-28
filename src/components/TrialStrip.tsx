@@ -3,8 +3,11 @@ import type { ReactElement } from 'react'
 
 import { Button } from '~/components/ui/Button'
 import { useT } from '~/i18n/LocaleContext'
+import type { Translate } from '~/i18n/types'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
-import { bookmarkValue } from '~/lib/progress/episode'
+import { type Bookmark, bookmarkValue } from '~/lib/progress/episode'
+import type { Book } from '~/lib/progress/series'
+import { bookmarkBook } from '~/lib/progress/threshold'
 import { markWelcome } from '~/lib/progress/welcome'
 import { color, font, leading, rule, space, text } from '~/styles/tokens.stylex'
 
@@ -14,7 +17,7 @@ import { color, font, leading, rule, space, text } from '~/styles/tokens.stylex'
  */
 export function TrialStrip(): null | ReactElement {
   const t = useT()
-  const { bookmark, leaveTrial, setBookmark, trial } = useBookmark()
+  const { bookmark, leaveTrial, series, setBookmark, trial } = useBookmark()
 
   if (!trial || bookmark === null || bookmark.mode === 'season') {
     return null
@@ -26,9 +29,7 @@ export function TrialStrip(): null | ReactElement {
       {...stylex.props(styles.strip)}
     >
       <p {...stylex.props(styles.words)}>
-        {t(bookmark.mode === 'chapter' ? 'trial.chapter' : 'trial.episode', {
-          threshold: bookmarkValue(bookmark),
-        })}
+        {trialWords(t, bookmark, series?.books)}
       </p>
       <div {...stylex.props(styles.actions)}>
         <Button
@@ -44,6 +45,22 @@ export function TrialStrip(): null | ReactElement {
       </div>
     </div>
   )
+}
+
+/** The trial point, and a chapter on a series with books as its book. */
+function trialWords(
+  t: Translate,
+  bookmark: NonNullable<Bookmark>,
+  books: Book[] | undefined,
+): string {
+  const book = bookmarkBook(bookmark, books)
+  if (book !== null) {
+    return t('trial.book', { ...book })
+  }
+
+  return t(bookmark.mode === 'chapter' ? 'trial.chapter' : 'trial.episode', {
+    threshold: bookmarkValue(bookmark),
+  })
 }
 
 const styles = stylex.create({
