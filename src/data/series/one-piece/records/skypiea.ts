@@ -1,5 +1,6 @@
 import type { OnePieceSaga } from './saga'
 import { skypieaChronicles } from './skypiea.chronicle'
+import { skypieaRelationships } from './skypiea.relationships'
 
 /**
  * The Sky Island saga, episodes 136 to 206: a fallen ship from the clouds,
@@ -566,6 +567,7 @@ export const skypiea: OnePieceSaga = {
 
   dossiers: {
     'masira': {
+      relationships: skypieaRelationships.masira,
       role: {
         it: 'Capitano e recuperatore di relitti',
         en: 'Captain and salvager',
@@ -592,6 +594,7 @@ export const skypiea: OnePieceSaga = {
       ],
     },
     'shoujou': {
+      relationships: skypieaRelationships.shoujou,
       role: { it: 'Capitano pirata', en: 'Pirate captain' },
       log: {
         it: 'Come Masira, dice che quel tratto di mare è suo, e chi vuole passare deve pagare. Spera di prendere il posto lasciato libero da Crocodile nella Flotta dei Sette. Quando sente che la ciurma ha battuto Masira attacca per vendicarlo, con onde sonore che sfasciano la loro nave e anche la sua.',
@@ -612,6 +615,7 @@ export const skypiea: OnePieceSaga = {
       ],
     },
     'bellamy': {
+      relationships: skypieaRelationships.bellamy,
       role: {
         it: 'Capitano dei Pirati di Bellamy',
         en: 'Captain of the Bellamy Pirates',
@@ -665,6 +669,7 @@ export const skypiea: OnePieceSaga = {
       ],
     },
     'roshio': {
+      relationships: skypieaRelationships.roshio,
       chronicle: skypieaChronicles.roshio,
       role: { it: 'Capitano pirata', en: 'Pirate captain' },
       log: {
@@ -692,6 +697,7 @@ export const skypiea: OnePieceSaga = {
       bounty: [{ episode: 146, value: 42_000_000 }],
     },
     'sarquiss': {
+      relationships: skypieaRelationships.sarquiss,
       chronicle: skypieaChronicles.sarquiss,
       role: {
         it: 'Vicecapitano dei Pirati di Bellamy',
@@ -713,6 +719,7 @@ export const skypiea: OnePieceSaga = {
       ],
     },
     'montblanc-cricket': {
+      relationships: skypieaRelationships['montblanc-cricket'],
       role: { it: 'Sub di Jaya', en: 'Diver of Jaya' },
       log: {
         it: 'È l’ultimo discendente di Noland, l’esploratore che quattrocento anni fa fu giustiziato per aver raccontato di una città d’oro che nessuno riuscì a trovare. Ha lasciato tutto per immergersi ogni giorno sulle secche di Jaya, e il male dei fondali gli ha rovinato il corpo. Giura di non credere a quella storia: vuole soltanto arrivare in fondo.',
@@ -730,6 +737,7 @@ export const skypiea: OnePieceSaga = {
       ],
     },
     'marshall-d-teach': {
+      relationships: skypieaRelationships['marshall-d-teach'],
       chronicle: skypieaChronicles['marshall-d-teach'],
       role: {
         it: 'Capitano dei Pirati di Barbanera',
@@ -789,6 +797,7 @@ export const skypiea: OnePieceSaga = {
       ],
     },
     'bartholomew-kuma': {
+      relationships: skypieaRelationships['bartholomew-kuma'],
       chronicle: skypieaChronicles['bartholomew-kuma'],
       role: {
         it: 'Membro della Flotta dei Sette',
@@ -870,6 +879,7 @@ export const skypiea: OnePieceSaga = {
       bounty: [{ episode: 151, value: 296_000_000 }],
     },
     'sengoku': {
+      relationships: skypieaRelationships.sengoku,
       chronicle: skypieaChronicles.sengoku,
       role: {
         it: 'Grand’ammiraglio della Marina',
@@ -920,6 +930,7 @@ export const skypiea: OnePieceSaga = {
       ],
     },
     'edward-newgate': {
+      relationships: skypieaRelationships['edward-newgate'],
       chronicle: skypieaChronicles['edward-newgate'],
       role: {
         it: 'Capitano dei Pirati di Barbabianca',
@@ -961,6 +972,7 @@ export const skypiea: OnePieceSaga = {
       bounty: [{ episode: 958, value: 5_046_000_000 }],
     },
     'donquixote-doflamingo': {
+      relationships: skypieaRelationships['donquixote-doflamingo'],
       chronicle: skypieaChronicles['donquixote-doflamingo'],
       role: {
         it: 'Membro della Flotta dei Sette',
@@ -1014,6 +1026,7 @@ export const skypiea: OnePieceSaga = {
       bounty: [{ episode: 151, value: 340_000_000 }],
     },
     'rockstar': {
+      relationships: skypieaRelationships.rockstar,
       chronicle: skypieaChronicles.rockstar,
       role: {
         it: 'Membro dei Pirati del Rosso',
@@ -1036,6 +1049,7 @@ export const skypiea: OnePieceSaga = {
       bounty: [{ episode: 151, value: 94_000_000 }],
     },
     'marco': {
+      relationships: skypieaRelationships.marco,
       role: {
         it: 'Comandante della prima divisione',
         en: 'First division commander',
@@ -1085,6 +1099,7 @@ export const skypiea: OnePieceSaga = {
       ],
     },
     'gan-fall': {
+      relationships: skypieaRelationships['gan-fall'],
       role: { it: 'Cavaliere del Cielo', en: 'Knight of the Sky' },
       log: {
         it: 'Si presenta come il Cavaliere del Cielo e arriva dove qualcuno è nei guai, senza chiedere chi sia. Vola in sella a un cavallo alato e conosce le regole di Skypiea meglio di chiunque altro: su quest’isola tutto appartiene a Dio, e chi non paga viene dichiarato criminale. Di quel Dio parla con una durezza che non spiega a nessuno.',
@@ -1114,6 +1129,7 @@ export const skypiea: OnePieceSaga = {
       ],
     },
     'pierre': {
+      relationships: skypieaRelationships.pierre,
       chronicle: skypieaChronicles.pierre,
       role: { it: 'Destriero di Gan Foll', en: 'Gan Fall’s steed' },
       log: {
@@ -1131,6 +1147,7 @@ export const skypiea: OnePieceSaga = {
       devilFruit: [{ episode: 153, value: ['horse-horse-fruit'] }],
     },
     'wyper': {
+      relationships: skypieaRelationships.wyper,
       role: {
         it: 'Capo dei guerrieri shandia',
         en: 'Leader of the Shandia warriors',
@@ -1174,6 +1191,7 @@ export const skypiea: OnePieceSaga = {
       ],
     },
     'kamakiri': {
+      relationships: skypieaRelationships.kamakiri,
       role: SHANDIA_WARRIOR,
       log: {
         it: 'È uno dei guerrieri che seguono Wiper, e porta un lungo coltello con l’elsa a croce. Rimprovera Aisa perché scappa di nascosto a Upper Yard, e perde la calma quando lei gli risponde che lui non è ancora riuscito a battere Dio.',
@@ -1184,6 +1202,7 @@ export const skypiea: OnePieceSaga = {
       origin: [{ episode: 163, value: SKY_ISLAND }],
     },
     'braham': {
+      relationships: skypieaRelationships.braham,
       role: SHANDIA_WARRIOR,
       log: {
         it: 'Porta un paio di piccole pistole a due canne, e ne pulisce una mentre Wiper parla alla riunione dei guerrieri. Quando i guerrieri si mettono in marcia, parte con loro all’attacco di Upper Yard.',
@@ -1194,6 +1213,7 @@ export const skypiea: OnePieceSaga = {
       origin: [{ episode: 164, value: SKY_ISLAND }],
     },
     'genbo': {
+      relationships: skypieaRelationships.genbo,
       role: SHANDIA_WARRIOR,
       log: {
         it: 'Porta da solo l’arma più pesante della banda e apre la strada agli altri fra le nuvole. Nell’assalto alla terra del cielo è la voce che chiama i compagni per nome e li tiene insieme. Della gente di Skypiea non vuole sapere niente: per lui quel suolo ha un solo proprietario, e non è chi ci abita adesso.',
@@ -1204,6 +1224,7 @@ export const skypiea: OnePieceSaga = {
       origin: [{ episode: 164, value: SKY_ISLAND }],
     },
     'laki': {
+      relationships: skypieaRelationships.laki,
       role: { it: 'Guerriera shandia', en: 'Shandia warrior' },
       log: {
         it: 'Alla riunione dei guerrieri sostiene che il nemico del loro nemico è un alleato, come Gan Foll, e Wiper le risponde che lei in battaglia non deve venire. Prende il sacchetto di Aisa per riempirlo di terra di Upper Yard. Nell’attacco alla foresta spara con il fucile su un enorme cane bianco che azzanna i suoi compagni.',
@@ -1214,6 +1235,7 @@ export const skypiea: OnePieceSaga = {
       origin: [{ episode: 165, value: SKY_ISLAND }],
     },
     'aisa': {
+      relationships: skypieaRelationships.aisa,
       role: { it: 'Bambina shandia', en: 'Shandia child' },
       log: {
         it: 'Vive al villaggio con gli altri bambini ma non sta ferma un momento: scappa verso la guerra ogni volta che può, perché dice di sentire quello che succede laggiù. Sente le vite accendersi e spegnersi una a una, e nessuno degli adulti sa come consolarla. Dei guerrieri parla come si parla dei fratelli maggiori.',
@@ -1232,6 +1254,7 @@ export const skypiea: OnePieceSaga = {
       origin: [{ episode: 163, value: SKY_ISLAND }],
     },
     'su': {
+      relationships: skypieaRelationships.su,
       chronicle: skypieaChronicles.su,
       role: { it: 'Volpe delle nuvole', en: 'Cloud fox' },
       log: {
@@ -1247,6 +1270,7 @@ export const skypiea: OnePieceSaga = {
       ],
     },
     'conis': {
+      relationships: skypieaRelationships.conis,
       role: { it: 'Abitante di Angel Beach', en: 'Resident of Angel Beach' },
       log: {
         it: 'Vive con il padre in una casetta sulla spiaggia degli angeli e porta a mangiare a casa gli stranieri saliti dal mare azzurro. Mostra loro come funzionano i dial, le conchiglie che conservano un suono o un soffio di vento. Quando Nami non si vede più si preoccupa: mettere piede su Upper Yard, spiega, va contro la volontà di Dio.',
@@ -1270,6 +1294,7 @@ export const skypiea: OnePieceSaga = {
       ],
     },
     'pagaya': {
+      relationships: skypieaRelationships.pagaya,
       role: { it: 'Artigiano di dial', en: 'Dial craftsman' },
       log: {
         it: 'Costruisce e ripara barche a dial, e arriva sulla spiaggia in waver per conoscere gli stranieri trovati dalla figlia. Lascia che lo provino, e resta stupito di quanto in fretta Nami impari a guidarlo. Li porta a casa, cucina per loro insieme a Sanji e dopo pranzo chiede di vedere il vecchio waver che hanno con sé.',
@@ -1304,6 +1329,7 @@ export const skypiea: OnePieceSaga = {
       ],
     },
     'mckinley': {
+      relationships: skypieaRelationships.mckinley,
       chronicle: skypieaChronicles.mckinley,
       role: {
         it: 'Capitano dei White Berets',
@@ -1322,6 +1348,7 @@ export const skypiea: OnePieceSaga = {
       ],
     },
     'enel': {
+      relationships: skypieaRelationships.enel,
       chronicle: skypieaChronicles.enel,
       role: { it: 'Dio di Skypiea', en: 'God of Skypiea' },
       log: {
@@ -1353,6 +1380,7 @@ export const skypiea: OnePieceSaga = {
       ],
     },
     'satori': {
+      relationships: skypieaRelationships.satori,
       role: ENEL_PRIEST,
       log: {
         it: 'Tiene la prova delle sfere, dove ogni nuvola può contenere un premio o una bestia, e ride mentre chi è entrato deve scegliere. Prevede i colpi prima che partano, come se leggesse le intenzioni nell’aria. Dice che nessuno degli stranieri arrivati fin lassù ha mai raggiunto l’altare.',
@@ -1368,6 +1396,7 @@ export const skypiea: OnePieceSaga = {
       origin: [{ episode: 160, value: SKY_ISLAND }],
     },
     'shura': {
+      relationships: skypieaRelationships.shura,
       role: ENEL_PRIEST,
       log: {
         it: 'Vola in groppa a un enorme uccello fino all’altare dove è stata portata la Going Merry, e si irrita di trovarci come offerta soltanto Chopper. Dà fuoco alla nave con la lancia e dice a Chopper che dovrà morire al posto di chi è scappato. Spiega che la foresta è divisa in quattro territori, uno per ogni sacerdote, e che l’altare non appartiene a nessuno di loro.',
@@ -1383,6 +1412,7 @@ export const skypiea: OnePieceSaga = {
       origin: [{ episode: 162, value: SKY_ISLAND }],
     },
     'gedatsu': {
+      relationships: skypieaRelationships.gedatsu,
       role: ENEL_PRIEST,
       log: {
         it: 'Dopo che i sacerdoti hanno inseguito un intruso per Upper Yard, avverte gli altri che sette persone venute dal mare azzurro sono entrate senza permesso. Quando gli shandia attaccano la foresta, li combatte insieme agli altri sacerdoti. Quando i guerrieri ripiegano, porta l’ordine di Ener: i sacerdoti devono presentarsi da lui.',
@@ -1398,6 +1428,7 @@ export const skypiea: OnePieceSaga = {
       origin: [{ episode: 166, chapter: 254, value: SKY_ISLAND }],
     },
     'ohm': {
+      relationships: skypieaRelationships.ohm,
       role: ENEL_PRIEST,
       log: {
         it: 'Insegue un intruso per Upper Yard insieme al suo cane, e gli altri sacerdoti si uniscono alla caccia finché un fulmine non abbatte l’uomo. Da lontano sente che Gan Foll è stato battuto da un sacerdote e che gli stranieri ne hanno battuto un altro, e dice che gli shandia che attaccano la foresta non vedranno l’alba. Nell’attacco il suo cane afferra i guerrieri fra le fauci mentre lui combatte con la spada. Quando gli shandia ripiegano fa per fermare Wiper, ma un altro sacerdote lo richiama: Ener li ha convocati.',
@@ -1413,6 +1444,7 @@ export const skypiea: OnePieceSaga = {
       origin: [{ episode: 166, chapter: 253, value: SKY_ISLAND }],
     },
     'fuza': {
+      relationships: skypieaRelationships.fuza,
       role: { it: 'Cavalcatura di Shura', en: 'Shura’s mount' },
       log: {
         it: 'Porta Shura ovunque il sacerdote voglia andare, sopra la foresta e sopra i fili della sua prova, dove nessuno a piedi può seguirlo. C’era quando la Going Merry ha preso fuoco all’altare, e ha tenuto in aria il suo padrone per un intero duello con il Cavaliere del Cielo. Quando Shura è caduto davvero, l’uccello non è rimasto a vedere cosa sarebbe successo.',
@@ -1431,6 +1463,7 @@ export const skypiea: OnePieceSaga = {
       chronicle: skypieaChronicles.fuza,
     },
     'yama': {
+      relationships: skypieaRelationships.yama,
       chronicle: skypieaChronicles.yama,
       role: {
         it: 'Comandante dei guerrieri sacri',
@@ -1456,6 +1489,7 @@ export const skypiea: OnePieceSaga = {
       ],
     },
     'holy': {
+      relationships: skypieaRelationships.holy,
       role: {
         it: 'Cane di un sacerdote di Ener',
         en: 'Dog of one of Enel’s priests',
@@ -1490,6 +1524,7 @@ export const skypiea: OnePieceSaga = {
       chronicle: skypieaChronicles.holy,
     },
     'shandia-chief': {
+      relationships: skypieaRelationships['shandia-chief'],
       role: { it: 'Capo degli Shandia', en: 'Chief of the Shandia' },
       log: {
         it: 'Anni fa radunò i bambini del villaggio, Wiper fra loro, e raccontò di una pietra antica che i loro antenati avevano difeso a costo di moltissimi uomini. Raccontò anche di come quattrocento anni fa la loro terra fu scagliata nel cielo e tolta al suo popolo, e con lei il fuoco di Shandora. Qualunque cosa i giovani guerrieri abbiano fatto da allora di quella storia, l’hanno imparata da lui.',
@@ -1502,6 +1537,7 @@ export const skypiea: OnePieceSaga = {
       chronicle: skypieaChronicles['shandia-chief'],
     },
     'montblanc-noland': {
+      relationships: skypieaRelationships['montblanc-noland'],
       role: {
         it: 'Esploratore e capitano di nave',
         en: 'Explorer and ship’s captain',
@@ -1532,6 +1568,7 @@ export const skypiea: OnePieceSaga = {
       epithet: [{ episode: 187, value: { it: 'Il Bugiardo', en: 'the Liar' } }],
     },
     'kalgara': {
+      relationships: skypieaRelationships.kalgara,
       role: {
         it: 'Grande guerriero shandia',
         en: 'Great warrior of the Shandia',
@@ -1562,6 +1599,7 @@ export const skypiea: OnePieceSaga = {
       ],
     },
     'seto': {
+      relationships: skypieaRelationships.seto,
       role: { it: 'Giovane shandia', en: 'Young Shandia' },
       log: {
         it: 'Quando le macchie verdi della febbre degli alberi gli comparvero sul braccio, corse sotto la pioggia e provò a raschiarle via con un sasso. Disse a Calgara che avrebbe voluto diventare come lui, un giorno, e che invece sarebbe morto così. Gli stranieri lo trovarono nella foresta e lo curarono, e una delle prime cose che fece da guarito fu chiedere a Calgara che cosa intendesse quell’uomo per progresso.',
@@ -1588,6 +1626,7 @@ export const skypiea: OnePieceSaga = {
       chronicle: skypieaChronicles.seto,
     },
     'mousse': {
+      relationships: skypieaRelationships.mousse,
       role: { it: 'Fanciulla shandia', en: 'Shandia maiden' },
       log: {
         it: 'Quando il sacerdote morente disse che il villaggio si sarebbe salvato solo offrendo una ragazza agli dèi, lei accettò di andare, e alla madre in lacrime disse che non vedeva l’ora di incontrare il dio. Legata sull’altare, era a un passo dall’essere divorata quando uno straniero si arrampicò fin lassù e tagliò la testa al grande serpente. Chiusa in una gabbia accanto al suo equipaggio, è lei a chiedere che razza di uomo sia il loro capitano.',
@@ -1614,6 +1653,7 @@ export const skypiea: OnePieceSaga = {
       chronicle: skypieaChronicles.mousse,
     },
     'nola': {
+      relationships: skypieaRelationships.nola,
       role: { it: 'Serpente dell’Upper Yard', en: 'Snake of Upper Yard' },
       log: {
         it: 'Ha dato la caccia agli intrusi per tutto l’Upper Yard e ne ha inghiottiti diversi interi, uno dei quali continuava a tempestargli lo stomaco di pugni, convinto di essersi perso in una caverna. Quando un fulmine l’ha fatto precipitare fra le rovine della città d’oro si è guardato attorno cercando qualcuno, non ha trovato nessuno e ha pianto finché Ener non l’ha abbattuto. Quattrocento anni fa era un giovane serpente che viveva fra quelle stesse rovine, e due Shandia lo salutavano ogni giorno andando a suonare la campana.',
