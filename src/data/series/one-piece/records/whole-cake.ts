@@ -1,5 +1,6 @@
 import type { OnePieceSaga } from './saga'
 import { wholeCakeChronicles } from './whole-cake.chronicle'
+import { wholeCakeRelationships } from './whole-cake.relationships'
 
 /**
  * The Whole Cake Island saga, episodes 747 to 889: an elephant that walks,
@@ -877,6 +878,7 @@ export const wholeCake: OnePieceSaga = {
   ],
   dossiers: {
     'jack': {
+      relationships: wholeCakeRelationships.jack,
       role: {
         it: 'All-Star dei Pirati delle Cento Bestie',
         en: 'Beasts Pirates All-Star',
@@ -908,6 +910,7 @@ export const wholeCake: OnePieceSaga = {
       bounty: [{ episode: 759, value: 1_000_000_000 }],
     },
     'wanda': {
+      relationships: wholeCakeRelationships.wanda,
       // Not a musketeer role: she is first shown as a musketeer at 758.
       role: {
         it: 'Mink del Ducato di Mokomo',
@@ -924,6 +927,7 @@ export const wholeCake: OnePieceSaga = {
       origin: [{ episode: 754, chapter: 806, place: 'zou', value: ZOU }],
     },
     'carrot': {
+      relationships: wholeCakeRelationships.carrot,
       // Not a musketeer role: the musketeers are first shown at 758.
       role: { it: 'Mink di Zou', en: 'Mink of Zou' },
       log: {
@@ -953,6 +957,7 @@ export const wholeCake: OnePieceSaga = {
       origin: [{ episode: 753, chapter: 807, place: 'zou', value: ZOU }],
     },
     'inuarashi': {
+      relationships: wholeCakeRelationships.inuarashi,
       role: {
         it: 'Sovrano del giorno di Mokomo',
         en: 'Ruler of the day of Mokomo',
@@ -982,6 +987,7 @@ export const wholeCake: OnePieceSaga = {
       origin: [{ episode: 758, chapter: 808, place: 'zou', value: ZOU }],
     },
     'pedro': {
+      relationships: wholeCakeRelationships.pedro,
       role: { it: 'Capitano dei Guardiani', en: 'Captain of the Guardians' },
       log: {
         it: 'I suoi Guardiani, che hanno il compito di cacciare gli intrusi dalla foresta, circondano Rufy. Quando arriva Wanda e garantisce per Rufy, lui dà l’ordine di ritirarsi e la squadra sparisce tra gli alberi. Rufy non si era accorto di nessuno di loro.',
@@ -1007,6 +1013,7 @@ export const wholeCake: OnePieceSaga = {
       bounty: [{ episode: 816, value: 382_000_000 }],
     },
     'nekomamushi': {
+      relationships: wholeCakeRelationships.nekomamushi,
       role: {
         it: 'Sovrano della notte di Mokomo',
         en: 'Ruler of the night of Mokomo',
@@ -1028,6 +1035,7 @@ export const wholeCake: OnePieceSaga = {
       origin: [{ episode: 761, chapter: 813, place: 'zou', value: ZOU }],
     },
     'raizo': {
+      relationships: wholeCakeRelationships.raizo,
       role: { it: 'Ninja del Paese di Wano', en: 'Ninja of Wano Country' },
       log: {
         it: 'I mink hanno lasciato distruggere la propria città piuttosto che dire dove fosse, e lui era in una grotta dentro l’Albero Balena, dietro una porta nascosta nella coda. Viene da Wano. Legato e in lacrime, grida a Gatto-vipera che avrebbe dovuto consegnarlo: chi gli portava da mangiare è stato ferito, e se gli hanno mentito sul paese lo odierà. La ciurma se lo immaginava tutto diverso.',
@@ -1063,6 +1071,7 @@ export const wholeCake: OnePieceSaga = {
       ],
     },
     'vinsmoke-reiju': {
+      relationships: wholeCakeRelationships['vinsmoke-reiju'],
       role: {
         it: 'Figlia della famiglia Vinsmoke',
         en: 'Daughter of the Vinsmoke family',
@@ -1097,6 +1106,7 @@ export const wholeCake: OnePieceSaga = {
       ],
     },
     'vito': {
+      relationships: wholeCakeRelationships.vito,
       role: { it: 'Pirata dei Fire Tank', en: 'Fire Tank Pirates crewman' },
       log: {
         it: 'Fa parte della ciurma di Capone Bege e accende il sigaro al capo senza che glielo chieda. Ha una lingua lunghissima che gli pende dalla bocca e mette a disagio chi gli parla. Sulla nave segue Sanji ovunque per parlargli di un fumetto del giornale in cui il Germa 66 combatte l’eroe, e lui tifa per i cattivi. Quando Sanji gli dice che con loro non ha niente a che fare e lo caccia, Gotti punta l’arma su Sanji e Vito cerca di calmarlo.',
@@ -1111,6 +1121,7 @@ export const wholeCake: OnePieceSaga = {
       ],
     },
     'praline': {
+      relationships: wholeCakeRelationships.praline,
       role: BIG_MOM_DAUGHTER,
       log: {
         it: 'È la ventinovesima figlia di Big Mom, una sirena squalo martello sposata con Aladin dei Pirati del Sole. Sorprende i pirati a parlare di lei e chiede se lo stanno facendo alle sue spalle. Se la madre si arrabbia, dice ad Aladin, lei sceglierà lui e partirà con lui. Ma avverte che chi ha voluto lasciare la ciurma della madre è morto, tutti quanti.',
@@ -1129,6 +1140,7 @@ export const wholeCake: OnePieceSaga = {
       // No `origin` line: the story never says where she was born.
     },
     'charlotte-pudding': {
+      relationships: wholeCakeRelationships['charlotte-pudding'],
       role: BIG_MOM_DAUGHTER,
       log: {
         it: 'È la trentacinquesima figlia della famiglia Charlotte, e la madre l’ha promessa in sposa a Sanji. Ha un caffè a Cacao Island, il Caramel, e il cioccolato che ci si mangia è una miscela inventata da lei. Quando Rufy e Chopper si mangiano il locale intero, dice alla polizia di averli assunti lei per smontarlo, mette loro in bocca marmellata, biscotti e cioccolato e prima di lasciarli andare offre a tutti una tazza di tè.',
@@ -1151,6 +1163,7 @@ export const wholeCake: OnePieceSaga = {
       devilFruit: [{ episode: 818, chapter: 851, value: ['memo-memo-fruit'] }],
     },
     'charlotte-linlin': {
+      relationships: wholeCakeRelationships['charlotte-linlin'],
       chronicle: wholeCakeChronicles['charlotte-linlin'],
       role: { it: 'Imperatore di Totto Land', en: 'Emperor of Totto Land' },
       log: {
@@ -1189,6 +1202,7 @@ export const wholeCake: OnePieceSaga = {
       ],
     },
     'charlotte-perospero': {
+      relationships: wholeCakeRelationships['charlotte-perospero'],
       role: { it: 'Ministro delle caramelle', en: 'Minister of candy' },
       log: {
         it: 'È il figlio più grande della famiglia e si comporta come tale, con il cilindro in testa e un modo di parlare che allunga l’ultima sillaba di ogni frase. Governa l’isola delle caramelle e trasforma in zucchero tutto quello che lecca, muri, scale e trappole comprese. Accoglie gli ospiti con una cortesia esagerata e li conta uno per uno.',
@@ -1210,6 +1224,7 @@ export const wholeCake: OnePieceSaga = {
       bounty: [{ episode: 849, value: 700_000_000 }],
     },
     'charlotte-cracker': {
+      relationships: wholeCakeRelationships['charlotte-cracker'],
       role: SWEET_COMMANDER_ROLE,
       log: {
         it: 'È il decimo figlio di Big Mom, uno dei tre Sweet Commander della sua ciurma e il suo ministro dei biscotti.',
@@ -1238,6 +1253,7 @@ export const wholeCake: OnePieceSaga = {
       bounty: [{ episode: 798, value: 860_000_000 }],
     },
     'charlotte-brulee': {
+      relationships: wholeCakeRelationships['charlotte-brulee'],
       role: BIG_MOM_DAUGHTER,
       log: {
         it: 'Aspetta nella Foresta della Seduzione, dove i sentieri girano in tondo e gli alberi si muovono e parlano. Cammina accanto agli sbarcati con la faccia di Rufy finché Carrot non si accorge dell’inganno, poi annuncia che non usciranno mai dalla foresta, non prima di morire. Mostra la cicatrice che ha sul viso e dice che davanti ai visi belli le viene voglia di graffiarli.',
@@ -1271,6 +1287,7 @@ export const wholeCake: OnePieceSaga = {
       ],
     },
     'stussy': {
+      relationships: wholeCakeRelationships.stussy,
       role: { it: 'Pezzo grosso della malavita', en: 'Underworld boss' },
       log: {
         it: 'Nella malavita la chiamano la regina del quartiere dei piaceri, e il titolo le vale un invito al Tea Party insieme agli altri pezzi grossi della malavita. Arriva con un abito color salmone e un cappello da sole con un fiore, una borsetta rosa al braccio. Quando due degli altri ospiti cominciano a insultarsi davanti al castello, li zittisce dando loro dei meschini, e nel salotto accetta un bicchiere del succo che Smoothie spreme da una giraffa.',
@@ -1310,6 +1327,7 @@ export const wholeCake: OnePieceSaga = {
       ],
     },
     'morgans': {
+      relationships: wholeCakeRelationships.morgans,
       role: {
         it: 'Presidente del World Economy News Paper',
         en: 'World Economy News Paper president',
@@ -1340,6 +1358,7 @@ export const wholeCake: OnePieceSaga = {
       ],
     },
     'vinsmoke-judge': {
+      relationships: wholeCakeRelationships['vinsmoke-judge'],
       role: { it: 'Re del Regno di Germa', en: 'King of the Germa Kingdom' },
       log: {
         it: 'Porta un elmo dorato e un grande mantello, e affronta con la lancia il figlio che si rifiuta di sposarsi. Il suo regno non ha più terra: è una flotta di navi, abitata soprattutto da soldati, che manda le sue truppe nei paesi in guerra per non restare mai senza soldi. Al figlio che se n’è andato di casa da bambino aveva detto che era una vergogna per la famiglia e che non valeva la pena di crescerlo.',
@@ -1361,6 +1380,7 @@ export const wholeCake: OnePieceSaga = {
       epithet: [{ episode: 794, value: { it: 'Garuda', en: 'Garuda' } }],
     },
     'vinsmoke-ichiji': {
+      relationships: wholeCakeRelationships['vinsmoke-ichiji'],
       role: GERMA_PRINCE,
       log: {
         it: 'È il figlio maggiore della famiglia Vinsmoke e torna nel Regno di Germa con Niji dopo aver chiuso la guerra sull’isola di Broc Coli, mentre i soldati li salutano per nome. Il padre li ringrazia per il lavoro fatto, e quando Niji si lamenta che Sanji non è venuto ad accoglierli lo ferma con una parola.',
@@ -1379,6 +1399,7 @@ export const wholeCake: OnePieceSaga = {
       ],
     },
     'vinsmoke-niji': {
+      relationships: wholeCakeRelationships['vinsmoke-niji'],
       role: GERMA_PRINCE,
       log: {
         it: 'È il secondo figlio della famiglia Vinsmoke e torna nel Regno di Germa con Ichiji dopo aver chiuso la guerra sull’isola di Broc Coli. A colazione racconta a Sanji che i fratelli si chiedevano dove e come sarebbe morto nel modo più buffo. Poi lascia il piatto perché la salsa gli fa schifo, e quando Sanji gli dice di mangiare fa chiamare la capocuoca Cosette per prendersela con lei.',
@@ -1400,6 +1421,7 @@ export const wholeCake: OnePieceSaga = {
       ],
     },
     'vinsmoke-yonji': {
+      relationships: wholeCakeRelationships['vinsmoke-yonji'],
       role: {
         it: 'Figlio della famiglia Vinsmoke',
         en: 'Son of the Vinsmoke family',
@@ -1428,6 +1450,7 @@ export const wholeCake: OnePieceSaga = {
       ],
     },
     'charlotte-katakuri': {
+      relationships: wholeCakeRelationships['charlotte-katakuri'],
       role: SWEET_COMMANDER_ROLE,
       log: {
         it: 'È il secondo figlio della famiglia Charlotte e uno degli Sweet Commander dei Pirati di Big Mom. Arriva al castello per il tea party della madre, altissimo, con una sciarpa di piume che gli copre la bocca e gli scende sulle spalle.',
@@ -1444,6 +1467,7 @@ export const wholeCake: OnePieceSaga = {
       bounty: [{ episode: 830, value: 1_057_000_000 }],
     },
     'vinsmoke-sora': {
+      relationships: wholeCakeRelationships['vinsmoke-sora'],
       role: {
         it: 'Regina del Regno di Germa',
         en: 'Queen of the Germa Kingdom',
@@ -1462,6 +1486,7 @@ export const wholeCake: OnePieceSaga = {
       origin: [{ episode: 819, value: GERMA_KINGDOM }],
     },
     'charlotte-chiffon': {
+      relationships: wholeCakeRelationships['charlotte-chiffon'],
       role: { it: 'Moglie di Capone Bege', en: 'Capone Bege’s wife' },
       log: {
         it: 'È la ventiduesima figlia della famiglia Charlotte e la moglie di Capone Bege, e ha un figlio piccolo che ride quando il padre gli fa le smorfie. Quando uno degli uomini del marito punta un’arma contro Sanji, lei lo trascina fuori per un orecchio: se lo sposo si fa male, Big Mom farà saltare la testa di Bege.',
@@ -1483,6 +1508,7 @@ export const wholeCake: OnePieceSaga = {
       origin: [{ episode: 795, chapter: 834, value: TOTTO_LAND }],
     },
     'charlotte-smoothie': {
+      relationships: wholeCakeRelationships['charlotte-smoothie'],
       role: SWEET_COMMANDER_ROLE,
       log: {
         it: 'È una delle tre Sweet Commander, ministra dei succhi e quattordicesima figlia della famiglia Charlotte. Un sottoposto la implora di avere pietà, e lei lo strizza finché non resta più niente. Fino al tea party non ha niente da fare, così si offre di sorvegliare lei i Poneglyph. Brook la descrive come una bella donna dalle gambe lunghe.',
@@ -1497,6 +1523,7 @@ export const wholeCake: OnePieceSaga = {
       bounty: [{ episode: 812, value: 932_000_000 }],
     },
     'charlotte-oven': {
+      relationships: wholeCakeRelationships['charlotte-oven'],
       role: { it: 'Ministro della doratura', en: 'Minister of browning' },
       log: {
         it: 'È il quarto figlio della famiglia Charlotte e il ministro della doratura di Totto Land. È enorme e porta un mantello arancione dal colletto alto, chiuso sul davanti da un grande fiocco giallo. Il calore viene dal suo corpo, e quello che tocca diventa rovente.',
@@ -1517,6 +1544,7 @@ export const wholeCake: OnePieceSaga = {
       devilFruit: [{ episode: 834, chapter: 864, value: ['heat-heat-fruit'] }],
     },
     'charlotte-daifuku': {
+      relationships: wholeCakeRelationships['charlotte-daifuku'],
       role: { it: 'Ministro dei fagioli', en: 'Minister of beans' },
       log: {
         it: 'È il terzo figlio della famiglia Charlotte e il ministro dei fagioli di Totto Land. È altissimo e massiccio, con la testa rasata, dei baffetti e una lampada da genio sulla fibbia della cintura. Dal suo corpo esce un genio gigantesco che fa le cose al posto suo.',
@@ -1537,6 +1565,7 @@ export const wholeCake: OnePieceSaga = {
       devilFruit: [{ episode: 834, chapter: 864, value: ['puff-puff-fruit'] }],
     },
     'charlotte-mont-dor': {
+      relationships: wholeCakeRelationships['charlotte-mont-dor'],
       role: { it: 'Ministro del formaggio', en: 'Minister of cheese' },
       log: {
         it: 'È il diciannovesimo figlio della famiglia Charlotte e porta un cilindro scuro con un nastro e una tuta disegnata come uno scheletro. Marcia con l’esercito dei fratelli contro Rufy, che ha sconfitto Cracker, e intorno a lui volano dei libri. Quando Rufy sta per colpire, apre un libro sopra di lui e lo trascina nel mondo delle sue pagine.',
@@ -1557,6 +1586,7 @@ export const wholeCake: OnePieceSaga = {
       devilFruit: [{ episode: 811, value: ['book-book-fruit'] }],
     },
     'streusen': {
+      relationships: wholeCakeRelationships.streusen,
       role: { it: 'Capocuoco di Totto Land', en: 'Head chef of Totto Land' },
       log: {
         it: 'Guida i cuochi che preparano la torta per il matrimonio di Sanji, e i cuochi lo chiamano capocuoco. Mentre si lavora canta che la vita è amara, fatta di tormenti e di lacrime, e che almeno il dolce dovrebbe essere una torta. Porta un cappello enorme con una grande piuma e un cronometro al fianco.',
@@ -1577,6 +1607,7 @@ export const wholeCake: OnePieceSaga = {
       devilFruit: [{ episode: 838, chapter: 868, value: ['cook-cook-fruit'] }],
     },
     'carmel': {
+      relationships: wholeCakeRelationships.carmel,
       role: {
         it: 'Madre della Casa delle Pecore',
         en: 'Mother of the Sheep’s House',
@@ -1611,6 +1642,7 @@ export const wholeCake: OnePieceSaga = {
       devilFruit: [{ episode: 838, chapter: 868, value: ['soul-soul-fruit'] }],
     },
     'gerd': {
+      relationships: wholeCakeRelationships.gerd,
       role: { it: 'Bambina gigante di Elbaf', en: 'Giant girl of Elbaph' },
       log: {
         it: 'Nel ricordo è una bambina gigante del villaggio di Elbaf, e la piccola Linlin le corre dietro come dietro a un’amica. È lei a spiegarle che sull’isola si digiuna dodici giorni prima della festa del solstizio d’inverno, e a descriverle la semla finché a tutte e due non viene l’acquolina. Il settimo giorno di digiuno corre in preda al panico da Mamma Carmel.',
@@ -1636,6 +1668,7 @@ export const wholeCake: OnePieceSaga = {
       ],
     },
     'jarul': {
+      relationships: wholeCakeRelationships.jarul,
       role: { it: 'Anziano di Elbaf', en: 'Elder of Elbaph' },
       log: {
         it: 'Nel ricordo è uno dei due vecchi capitani che i giganti di Elbaf trattano da eroi, alto il doppio di chiunque altro e con una barba che gli copre quasi tutto il corpo. Ai giovani ricorda che il commercio al posto del saccheggio, come predica Carmel, va benissimo, ma i giganti non devono mai dimenticare di essere guerrieri. Poi viene con il vecchio compagno a prendere gli orfani della Casa delle Pecore per mangiare la semla prima del digiuno.',
@@ -1661,6 +1694,7 @@ export const wholeCake: OnePieceSaga = {
       ],
     },
     'donquixote-mjosgard': {
+      relationships: wholeCakeRelationships['donquixote-mjosgard'],
       role: { it: 'Nobile Mondiale', en: 'World Noble' },
       log: {
         it: 'Appartiene ai Draghi Celesti, la stirpe che si crede al di sopra di chiunque e che non respira la stessa aria degli altri. Anni fa una regina uomo-pesce gli ha salvato la vita prendendosi un colpo destinato a lui, e lui dice che è stata lei a insegnargli a diventare una persona per bene. A Mary Geoise colpisce un altro Drago Celeste che ha afferrato la figlia di quella regina, poi chiede scusa alla sua famiglia, cosa che nessun altro della sua casta farebbe.',
@@ -1691,6 +1725,7 @@ export const wholeCake: OnePieceSaga = {
       ],
     },
     'belo-betty': {
+      relationships: wholeCakeRelationships['belo-betty'],
       role: {
         it: 'Comandante dell’armata dell’Est',
         en: 'Commander of the East Army',
@@ -1713,6 +1748,7 @@ export const wholeCake: OnePieceSaga = {
       devilFruit: [{ episode: 880, value: ['pump-pump-fruit'] }],
     },
     'morley': {
+      relationships: wholeCakeRelationships.morley,
       role: {
         it: 'Comandante dell’armata dell’Ovest',
         en: 'Commander of the West Army',
@@ -1735,6 +1771,7 @@ export const wholeCake: OnePieceSaga = {
       devilFruit: [{ episode: 880, value: ['push-push-fruit'] }],
     },
     'karasu': {
+      relationships: wholeCakeRelationships.karasu,
       role: {
         it: 'Comandante dell’armata del Nord',
         en: 'Commander of the North Army',
@@ -1759,6 +1796,7 @@ export const wholeCake: OnePieceSaga = {
       ],
     },
     'lindbergh': {
+      relationships: wholeCakeRelationships.lindbergh,
       role: {
         it: 'Comandante dell’armata del Sud',
         en: 'Commander of the South Army',
@@ -1779,6 +1817,7 @@ export const wholeCake: OnePieceSaga = {
       ],
     },
     'sterry': {
+      relationships: wholeCakeRelationships.sterry,
       role: { it: 'Re del Regno di Goa', en: 'King of the Goa Kingdom' },
       log: {
         it: 'Adottato da bambino dai genitori nobili di Sabo, ha sposato una principessa del Regno di Goa e ne è diventato re pochi mesi fa, dopo che il vecchio re e il principe sono morti in circostanze che nessuno spiega. Sulla strada per la Reverie ferma Garp, che gli dà del moccioso, e gli ricorda che è un suo suddito. Salendo lungo la Red Line ha il terrore dell’altezza, vede nel muro un gigante che nessun altro vede e ordina alla sua guardia di sparare ai corvi prima che buchino la bolla.',
@@ -1802,6 +1841,7 @@ export const wholeCake: OnePieceSaga = {
       ],
     },
     'im': {
+      relationships: wholeCakeRelationships.im,
       role: {
         it: 'Occupante del Trono Vuoto',
         en: 'Occupant of the Empty Throne',
@@ -1830,6 +1870,7 @@ export const wholeCake: OnePieceSaga = {
       ],
     },
     'ryokugyu': {
+      relationships: wholeCakeRelationships.ryokugyu,
       role: { it: 'Ammiraglio della Marina', en: 'Marine admiral' },
       log: {
         it: 'È uno degli ammiragli. Sakazuki lo ha mandato a cercare Fujitora e a cacciarlo da Mary Geoise, ma lui non ha voglia di combattere e gli fa compagnia mentre Fujitora mangia. Dice di non aver mangiato nulla da tre anni, per pigrizia, e che mangerebbe solo se lo imboccasse una signorina.',
@@ -1849,6 +1890,7 @@ export const wholeCake: OnePieceSaga = {
     // from 739, and says at 779 that the Gifters eat artificial fruits, but the
     // anime never names his; the Sheep SMILE is only in the Vivre Card.
     'sheepshead': {
+      relationships: wholeCakeRelationships.sheepshead,
       chronicle: wholeCakeChronicles.sheepshead,
       role: {
         it: 'Pirata a capo di una squadra di ricerca',
@@ -1877,6 +1919,7 @@ export const wholeCake: OnePieceSaga = {
       ],
     },
     'edward-weevil': {
+      relationships: wholeCakeRelationships['edward-weevil'],
       chronicle: wholeCakeChronicles['edward-weevil'],
       role: {
         it: 'Membro della Flotta dei Sette',
@@ -1916,6 +1959,7 @@ export const wholeCake: OnePieceSaga = {
       bounty: [{ episode: 752, value: 480_000_000 }],
     },
     'bakkin': {
+      relationships: wholeCakeRelationships.bakkin,
       chronicle: wholeCakeChronicles.bakkin,
       role: { it: 'Madre di Edward Weeble', en: 'Mother of Edward Weevil' },
       log: {
@@ -1941,6 +1985,7 @@ export const wholeCake: OnePieceSaga = {
       ],
     },
     'zunesha': {
+      relationships: wholeCakeRelationships.zunesha,
       chronicle: wholeCakeChronicles.zunesha,
       role: {
         it: 'L’elefante che porta Zou',
@@ -1954,6 +1999,7 @@ export const wholeCake: OnePieceSaga = {
       affiliation: [{ episode: 755, value: ZOU }],
     },
     'shishilian': {
+      relationships: wholeCakeRelationships.shishilian,
       chronicle: wholeCakeChronicles.shishilian,
       role: {
         it: 'Capitano dei Moschettieri',
@@ -1979,6 +2025,7 @@ export const wholeCake: OnePieceSaga = {
       ],
     },
     'gotti': {
+      relationships: wholeCakeRelationships.gotti,
       chronicle: wholeCakeChronicles.gotti,
       role: {
         it: 'Sicario dei Pirati Fire Tank',
@@ -2000,6 +2047,7 @@ export const wholeCake: OnePieceSaga = {
       ],
     },
     'pound': {
+      relationships: wholeCakeRelationships.pound,
       chronicle: wholeCakeChronicles.pound,
       role: { it: 'Ex marito di Big Mom', en: 'Big Mom’s ex-husband' },
       log: {
@@ -2029,6 +2077,7 @@ export const wholeCake: OnePieceSaga = {
       ],
     },
     'amande': {
+      relationships: wholeCakeRelationships.amande,
       chronicle: wholeCakeChronicles.amande,
       role: {
         it: 'Spadaccina dei Pirati di Big Mom',
@@ -2070,6 +2119,7 @@ export const wholeCake: OnePieceSaga = {
     // (810, 811) but never names the fruit that makes it; the name is only in
     // SBS volume 90. The line comes back when the story gives it.
     'charlotte-opera': {
+      relationships: wholeCakeRelationships['charlotte-opera'],
       chronicle: wholeCakeChronicles['charlotte-opera'],
       role: { it: 'Ministro della panna montata', en: 'Minister of cream' },
       log: {
@@ -2089,6 +2139,7 @@ export const wholeCake: OnePieceSaga = {
       origin: [{ episode: 806, value: TOTTO_LAND }],
     },
     'charlotte-compote': {
+      relationships: wholeCakeRelationships['charlotte-compote'],
       chronicle: wholeCakeChronicles['charlotte-compote'],
       role: { it: 'Ministra della frutta', en: 'Minister of fruit' },
       log: {
@@ -2108,6 +2159,7 @@ export const wholeCake: OnePieceSaga = {
       origin: [{ episode: 831, value: TOTTO_LAND }],
     },
     'charlotte-nusstorte': {
+      relationships: wholeCakeRelationships['charlotte-nusstorte'],
       chronicle: wholeCakeChronicles['charlotte-nusstorte'],
       role: { it: 'Figlio di Big Mom', en: 'A son of Big Mom' },
       log: {
@@ -2124,6 +2176,7 @@ export const wholeCake: OnePieceSaga = {
       origin: [{ episode: 855, value: TOTTO_LAND }],
     },
     'charlotte-flampe': {
+      relationships: wholeCakeRelationships['charlotte-flampe'],
       chronicle: wholeCakeChronicles['charlotte-flampe'],
       role: {
         it: 'Presidente del fan club di Katakuri',
@@ -2146,6 +2199,7 @@ export const wholeCake: OnePieceSaga = {
       origin: [{ episode: 867, value: TOTTO_LAND }],
     },
     'randolph': {
+      relationships: wholeCakeRelationships.randolph,
       chronicle: wholeCakeChronicles.randolph,
       role: {
         it: 'Lanciere dei Pirati di Big Mom, in sella a una gru',
@@ -2170,6 +2224,7 @@ export const wholeCake: OnePieceSaga = {
       ],
     },
     'zeus': {
+      relationships: wholeCakeRelationships.zeus,
       chronicle: wholeCakeChronicles.zeus,
       role: {
         it: 'Homie nuvola del tuono di Big Mom',
@@ -2217,6 +2272,7 @@ export const wholeCake: OnePieceSaga = {
       ],
     },
     'prometheus': {
+      relationships: wholeCakeRelationships.prometheus,
       chronicle: wholeCakeChronicles.prometheus,
       role: { it: 'Homie sole di Big Mom', en: 'Big Mom’s sun homie' },
       log: {
@@ -2239,6 +2295,7 @@ export const wholeCake: OnePieceSaga = {
       ],
     },
     'napoleon': {
+      relationships: wholeCakeRelationships.napoleon,
       chronicle: wholeCakeChronicles.napoleon,
       role: { it: 'Homie bicorno di Big Mom', en: 'Big Mom’s bicorne homie' },
       log: {
@@ -2261,6 +2318,7 @@ export const wholeCake: OnePieceSaga = {
       ],
     },
     'lu-feld': {
+      relationships: wholeCakeRelationships['lu-feld'],
       chronicle: wholeCakeChronicles['lu-feld'],
       role: {
         it: 'Re degli strozzini della malavita',
@@ -2288,6 +2346,7 @@ export const wholeCake: OnePieceSaga = {
       ],
     },
     'jorul': {
+      relationships: wholeCakeRelationships.jorul,
       chronicle: wholeCakeChronicles.jorul,
       role: { it: 'Eroe dei giganti', en: 'Hero of the giants' },
       log: {
@@ -2325,6 +2384,7 @@ export const wholeCake: OnePieceSaga = {
       ],
     },
     'gion': {
+      relationships: wholeCakeRelationships.gion,
       chronicle: wholeCakeChronicles.gion,
       role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
       log: {
@@ -2341,6 +2401,7 @@ export const wholeCake: OnePieceSaga = {
       epithet: [{ episode: 887, value: { it: 'Momousagi', en: 'Momousagi' } }],
     },
     'tokikake': {
+      relationships: wholeCakeRelationships.tokikake,
       chronicle: wholeCakeChronicles.tokikake,
       role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
       log: {
