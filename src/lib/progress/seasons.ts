@@ -66,7 +66,7 @@ export function locateEpisode(
  * a book of chapters) that starts at `first` and holds `length` units, or
  * `null` when the position is outside it.
  */
-export function unitAt(
+function unitAt(
   first: number,
   length: number,
   position: number,

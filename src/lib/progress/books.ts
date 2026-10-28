@@ -1,4 +1,4 @@
-import { runAt, unitAt } from './seasons'
+import { runAt } from './seasons'
 import type { Book } from './series'
 
 export type { Book } from './series'
@@ -14,22 +14,6 @@ export function getBook(
 /** How many chapters the book holds. */
 export function bookLength(book: Book): number {
   return book.last - book.first + 1
-}
-
-/**
- * Turns a book and a chapter within it into the absolute chapter, or `null`
- * when either is outside the table. With books of 73 and 70 chapters, book
- * 2, chapter 3 is chapter 76.
- */
-export function resolveChapter(
-  bookNumber: number,
-  chapter: number,
-  books: Book[] | undefined,
-): null | number {
-  const book = getBook(bookNumber, books)
-  return book === undefined ? null : (
-      unitAt(book.first, bookLength(book), chapter)
-    )
 }
 
 /** An absolute chapter said the way a book reader counts. */

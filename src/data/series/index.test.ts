@@ -536,6 +536,22 @@ describe.each(LOADED_SERIES)(
       expect(eaters.length > 0).toBe(features.fruits)
     })
 
+    it('groups its chapters into books without a gap, inside its ceiling', () => {
+      // The dialog counts a chapter within its book, so a gap would leave
+      // chapters nobody can enter, and a book past the ceiling would save a
+      // bookmark the cookie reader refuses.
+      const { books = [], chapterCeiling } = archive.series
+
+      for (const [index, book] of books.entries()) {
+        expect(book.number).toBe(index + 1)
+        expect(book.first).toBe(
+          (books[index - 1]?.last ?? FIRST_CHAPTER - 1) + 1,
+        )
+        expect(book.last).toBeGreaterThanOrEqual(book.first)
+        expect(book.last).toBeLessThanOrEqual(chapterCeiling)
+      }
+    })
+
     it('ends its demo the episode and the chapter before its second saga', () => {
       // The demo is the first saga: a visitor with no bookmark is sent all of
       // it and nothing of the next.

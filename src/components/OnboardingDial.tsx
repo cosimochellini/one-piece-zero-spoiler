@@ -73,6 +73,15 @@ export function OnboardingDial({
   const series = useBookmarkSeries()
   const last = dialLast(point.mode, series)
   const reading = readingOf(t, point, series.books)
+  // On a series with books the readout counts within the book, so the ends
+  // of the scale say the same, not the absolute chapter.
+  const edge = (value: number): string => {
+    if (point.mode !== 'chapter' || series.books === undefined) {
+      return String(value)
+    }
+    const at = readingOf(t, { ...point, value }, series.books)
+    return `${at.unit} ${String(at.value)}`
+  }
 
   return (
     <div {...stylex.props(styles.dial)}>
@@ -103,8 +112,8 @@ export function OnboardingDial({
         aria-hidden="true"
         {...stylex.props(styles.scale)}
       >
-        <span>1</span>
-        <span>{last}</span>
+        <span>{edge(1)}</span>
+        <span>{edge(last)}</span>
       </div>
     </div>
   )
