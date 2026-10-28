@@ -358,6 +358,28 @@ describe.each(LOCALES)(
       expect(pair(ep(1180))).toStrictEqual(pair(ep(195)))
     })
 
+    it.each([
+      ['wyper', 'gan-fall', 'Ruler he serves', 'Governante che serve'],
+      ['kamakiri', 'wyper', 'Captain', 'Capitano'],
+      ['braham', 'wyper', 'Captain', 'Capitano'],
+      ['genbo', 'wyper', 'Captain', 'Capitano'],
+    ])(
+      'keeps %s’s guard appointment manga-only after the later anime appearance',
+      (owner, target, en, it) => {
+        const pair = (bookmark: Bookmark): RelationshipView | undefined =>
+          projected(owner, bookmark, locale).find(
+            ({ person }) => person.id === target,
+          )
+        const guardType = { en, it }[locale]
+
+        expect(pair(ch(647))?.type).not.toBe(guardType)
+        expect(pair(ch(648))?.type).toBe(guardType)
+        expect(pair(ch(1121))).toStrictEqual(pair(ch(648)))
+        expect(pair(ep(1152))).toStrictEqual(pair(ep(1151)))
+        expect(pair(ep(1300))?.type).not.toBe(guardType)
+      },
+    )
+
     it('keeps Conis’s cafe partnership manga-only after later shared appearances', () => {
       expect(
         projected('conis', ch(646), locale).map(({ person }) => person.id),

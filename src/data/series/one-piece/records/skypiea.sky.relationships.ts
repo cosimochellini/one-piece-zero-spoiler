@@ -760,22 +760,11 @@ export const skyRelationships = {
         retained.wyperEnel,
       ],
     },
-    // Cover-only guard appointments; anime confirms the guards at 1152.
+    // The later anime appearance does not establish these cover-only guard roles.
     {
       episode: 564,
       chapter: 648,
       source: 'chapter',
-      value: [
-        retained.wyperKalgara,
-        retained.wyperLuffyAlly,
-        retained.wyperGanGuard,
-        retained.wyperAisa,
-        retained.wyperEnel,
-      ],
-    },
-    {
-      episode: 1152,
-      chapter: 1121,
       value: [
         retained.wyperKalgara,
         retained.wyperLuffyAlly,
@@ -818,20 +807,11 @@ export const skyRelationships = {
         retained.kamakiriEnel,
       ],
     },
-    // Cover-only guard appointments; anime confirms the guards at 1152.
+    // The later anime appearance does not establish these cover-only guard roles.
     {
       episode: 564,
       chapter: 648,
       source: 'chapter',
-      value: [
-        retained.kamakiriWyperGuard,
-        retained.kamakiriLaki,
-        retained.kamakiriEnel,
-      ],
-    },
-    {
-      episode: 1152,
-      chapter: 1121,
       value: [
         retained.kamakiriWyperGuard,
         retained.kamakiriLaki,
@@ -858,16 +838,11 @@ export const skyRelationships = {
       source: 'chapter',
       value: [retained.brahamWyper, retained.brahamZoro],
     },
-    // Cover-only guard appointments; anime confirms the guards at 1152.
+    // The later anime appearance does not establish these cover-only guard roles.
     {
       episode: 564,
       chapter: 648,
       source: 'chapter',
-      value: [retained.brahamWyperGuard, retained.brahamZoro],
-    },
-    {
-      episode: 1152,
-      chapter: 1121,
       value: [retained.brahamWyperGuard, retained.brahamZoro],
     },
   ],
@@ -890,16 +865,11 @@ export const skyRelationships = {
       source: 'chapter',
       value: [retained.genboWyper, retained.genboYama],
     },
-    // Cover-only guard appointments; anime confirms the guards at 1152.
+    // The later anime appearance does not establish these cover-only guard roles.
     {
       episode: 564,
       chapter: 648,
       source: 'chapter',
-      value: [retained.genboWyperGuard, retained.genboYama],
-    },
-    {
-      episode: 1152,
-      chapter: 1121,
       value: [retained.genboWyperGuard, retained.genboYama],
     },
   ],
