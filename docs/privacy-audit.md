@@ -39,7 +39,14 @@ language and trial, welcome and intro features. The
 permits necessary technical cookies without consent, while still requiring an
 accessible notice. No consent banner or tracking was introduced.
 
-## Deployed Netlify inventory
+## Netlify inventory (historical)
+
+Historical since 28 October 2026 (#773). This section describes the Netlify
+deployment that served the site before it moved to Cloudflare. The old
+`https://one-piece-zero-spoiler.netlify.app` address now only answers with a
+forced 301 to `https://zerospoiler.app` (`netlify.toml`): nothing is built there
+and no function runs, so the function region and function logs below no longer
+apply. Netlify's CDN still receives those requests.
 
 Read-only checks used the authenticated Netlify CLI, explicit site ID
 `51908d48-c22b-4c57-939d-6da57ea6982a`, and production URL
@@ -145,9 +152,7 @@ Cloudflare's sources:
   mechanisms above, restated.
 
 Still unverified: how long Cloudflare keeps the request data it processes for
-security and aggregate analytics outside Workers Logs. The Netlify inventory
-above still describes the old `one-piece-zero-spoiler.netlify.app` address until
-that site is switched off.
+security and aggregate analytics outside Workers Logs.
 
 ## Controller facts and remaining work
 
@@ -167,12 +172,13 @@ visitor contract is not inferred from using a free fan site. Final controller
 wording must reflect the actual purposes, processing and rights-request
 workflow.
 
-Still unverified: complete Netlify traffic/security/function log maximum
-retention and deletion arrangements, any account-specific contractual exception
-to the published standard DPA, and the complete hosting transfer/subprocessor
-chain. The CLI cannot prove “Netlify stores nothing”; observed logs disprove
-that claim. These limitations must remain visible rather than replaced by
-invented periods, claims of EEA residency or a certification of compliance.
+Still unverified: how long Netlify's CDN keeps the request data behind the old
+address's redirect and how it deletes it, any account-specific contractual
+exception to the published standard DPA, and the complete hosting
+transfer/subprocessor chain. The CLI cannot prove “Netlify stores nothing”;
+observed logs disprove that claim. These limitations must remain visible rather
+than replaced by invented periods, claims of EEA residency or a certification of
+compliance.
 
 [EDPB guidance on legal basis](https://www.edpb.europa.eu/topics/key-gdpr-concepts/legal-basis_en)
 and

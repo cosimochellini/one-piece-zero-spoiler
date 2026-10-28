@@ -1,8 +1,8 @@
 # Architecture
 
 Zero Spoiler is a React / TanStack Start app with StyleX, built by Vite for
-Cloudflare Workers. `vite.config.ts` also supports the legacy Netlify
-deployment. Versions and commands live in `package.json`.
+Cloudflare Workers. The old Netlify address only redirects to the new domain
+(`netlify.toml`). Versions and commands live in `package.json`.
 
 ## Code map
 

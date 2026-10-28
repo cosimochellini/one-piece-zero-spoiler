@@ -4,7 +4,6 @@ coverage
 .tanstack
 .output
 .nitro
-.netlify
 .wrangler
 .gate
 package-lock.json

@@ -17,7 +17,6 @@ const SOURCES = [
     'privacy.cloudflareTerms',
     'https://www.cloudflare.com/cloudflare-customer-dpa/',
   ],
-  ['privacy.netlifyLogs', 'https://docs.netlify.com/build/functions/logs/'],
   ['privacy.netlifyTerms', 'https://www.netlify.com/trust-center/'],
   [
     'privacy.audit',

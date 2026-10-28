@@ -1,11 +1,15 @@
-# Netlify serves the old one-piece-zero-spoiler.netlify.app address until it
-# is switched off. The site itself runs on Cloudflare (wrangler.jsonc). Cache
-# headers for static files are in public/_headers, which both hosts read.
+# The site runs on Cloudflare (wrangler.jsonc). Netlify keeps the old
+# one-piece-zero-spoiler.netlify.app address only to send every request to the
+# new domain, so old links and search results still land on the right page.
+# Nothing is built: the forced rule shadows every published file, and Netlify
+# appends the request's query, so a shared `?ch=1044` link still sets its
+# bookmark on arrival.
 [build]
-  command = "npm run build"
-  publish = "dist/client"
+  command = "echo 'Redirect only, nothing to build.'"
+  publish = "public"
 
-[build.environment]
-  # Mirrors .nvmrc, which Netlify also reads. Declared explicitly so the
-  # runtime is visible in the deploy config itself.
-  NODE_VERSION = "24.21.0"
+[[redirects]]
+  from = "/*"
+  to = "https://zerospoiler.app/:splat"
+  status = 301
+  force = true
