@@ -8,6 +8,8 @@ import type { OwnCopy } from '~/i18n/types'
  * shared key of `../en.ts`.
  */
 export const onePieceEn = {
+  'characters.count':
+    '{count} characters, in the order they appear in the anime. Characters under fog do not show up in search.',
   'characters.featuredLede':
     'The Straw Hat crew and the other key characters of the story.',
   'credits.coverage':
@@ -22,6 +24,9 @@ export const onePieceEn = {
   'credits.wikiIt': 'Italian One Piece Wiki',
   'credits.wikiTerms':
     'The English and Italian One Piece Wikis declare CC BY-SA 3.0 Unported for community text by default. Exceptions, imported material and images can have different terms. Fandom permits author attribution through links to the contributed articles.',
+  'faq.animeA':
+    'Both. You can count by anime episode, by season and episode, or by manga chapter. Every entry has an episode number and a chapter number. When the exact point is uncertain, the later one is used, so an entry is more likely to open late than early.',
+  'faq.animeQ': 'Anime or manga?',
   'faq.bookmarkA':
     'In a cookie on this device. The server reads it before it builds the page, so entries past your bookmark are not in the page you receive. Without a bookmark, this page carries East Blue for the dial and nothing past it. There is no account and no tracking.',
   'legal.credits':

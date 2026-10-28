@@ -165,9 +165,6 @@ export const itDictionary: Dictionary = {
   'chart.zoomHint':
     'Ctrl o ⌘ con la rotellina per ingrandire, trascina per spostarti.',
 
-  'faq.animeQ': 'Anime o manga?',
-  'faq.animeA':
-    'Tutti e due. Puoi contare per episodio dell’anime, per stagione ed episodio o per capitolo del manga. Ogni voce ha un numero di episodio e uno di capitolo. Quando il punto esatto è incerto si usa quello più avanti, così è più facile che una voce si apra tardi che presto.',
   'faq.bookmarkQ': 'Dove viene salvato il segnalibro?',
   'faq.peekQ': 'Posso vedere una voce nascosta?',
   'faq.peekA':
@@ -282,8 +279,6 @@ export const itDictionary: Dictionary = {
   'report.link': 'Segnalalo su GitHub',
 
   'characters.title': 'Personaggi',
-  'characters.count':
-    '{count} personaggi, nell’ordine in cui compaiono nell’anime. Quelli nella nebbia non compaiono nei risultati della ricerca.',
   'characters.searchLabel': 'Cerca un personaggio',
   'characters.searchClear': 'Cancella la ricerca',
   'characters.shown': 'Risultati: {count} su {total} personaggi visibili',

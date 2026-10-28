@@ -11,7 +11,7 @@ import { type ReactElement, useEffect } from 'react'
 
 import { ArchivePage } from '~/components/ArchivePage'
 import { CharacterGrid } from '~/components/CharacterGrid'
-import { useT } from '~/i18n/LocaleContext'
+import { useSeriesT } from '~/i18n/LocaleContext'
 import { seriesPageHead } from '~/routes/$locale/-head'
 import { requirePage } from '~/routes/$series/$locale/-found'
 import { usePeek } from '~/routes/$series/$locale/-peek'
@@ -63,7 +63,7 @@ export const Route = createFileRoute('/$series/$locale/characters/')({
  * where they were, which is the spoiler rule applied to a text field.
  */
 function CharactersPage(): ReactElement {
-  const t = useT()
+  const t = useSeriesT()
   const router = useRouter()
   const { page, shelves } = Route.useLoaderData()
   const source = useShelvesSource(page, shelves)

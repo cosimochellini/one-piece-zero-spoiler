@@ -7,6 +7,8 @@ import type { OwnCopy } from '~/i18n/types'
  * are the English Hunter x Hunter Wiki and Italian Wikipedia (#725).
  */
 export const hunterXHunterEn = {
+  'characters.count':
+    '{count} characters, in the order they appear in the anime. Characters under fog do not show up in search.',
   'characters.featuredLede': 'The key characters of the story.',
   'credits.coverage':
     'No Hunter x Hunter entry has a documented source review yet, so none is listed below. Hunter x Hunter’s episode and chapter numbers are checked against the English Hunter x Hunter Wiki, and its Italian names against Italian Wikipedia.',
@@ -20,6 +22,9 @@ export const hunterXHunterEn = {
   'credits.wikiTerms':
     'The English Hunter x Hunter Wiki declares CC BY-SA 3.0 Unported for community text by default, and Italian Wikipedia declares CC BY-SA 4.0. Exceptions, imported material and images can have different terms. Both permit author attribution through links to the contributed articles.',
   'credits.wikipediaTerms': 'Wikipedia terms of use',
+  'faq.animeA':
+    'Both. You can count by anime episode, by season and episode, or by manga chapter. Every entry has an episode number and a chapter number. When the exact point is uncertain, the later one is used, so an entry is more likely to open late than early.',
+  'faq.animeQ': 'Anime or manga?',
   'faq.bookmarkA':
     'In a cookie on this device. The server reads it before it builds the page, so entries past your bookmark are not in the page you receive. Without a bookmark, this page carries the Hunter Exam for the dial and nothing past it. There is no account and no tracking.',
   'legal.credits':

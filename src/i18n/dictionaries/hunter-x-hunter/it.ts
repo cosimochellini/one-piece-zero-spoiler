@@ -5,6 +5,8 @@ import type { SeriesWords } from '~/i18n/types'
  * follow the 2011 Italian dub, as Italian Wikipedia gives them.
  */
 export const hunterXHunterIt: SeriesWords<'hunter-x-hunter'> = {
+  'characters.count':
+    '{count} personaggi, nell’ordine in cui compaiono nell’anime. Quelli nella nebbia non compaiono nei risultati della ricerca.',
   'characters.featuredLede': 'I personaggi chiave della storia.',
   'credits.coverage':
     'Nessuna voce di Hunter x Hunter ha ancora una verifica documentata delle fonti, quindi qui sotto non ne compare nessuna. I numeri di episodio e di capitolo sono confrontati con la Hunter x Hunter Wiki inglese, i nomi italiani con Wikipedia in italiano.',
@@ -19,6 +21,9 @@ export const hunterXHunterIt: SeriesWords<'hunter-x-hunter'> = {
   'credits.wikiTerms':
     'La Hunter x Hunter Wiki inglese dichiara CC BY-SA 3.0 Unported come licenza predefinita dei testi della comunità, Wikipedia in italiano CC BY-SA 4.0. Eccezioni, materiali importati e immagini possono avere condizioni diverse. Entrambe consentono di attribuire gli autori tramite collegamenti agli articoli a cui hanno contribuito.',
   'credits.wikipediaTerms': 'Condizioni d’uso di Wikipedia',
+  'faq.animeA':
+    'Tutti e due. Puoi contare per episodio dell’anime, per stagione ed episodio o per capitolo del manga. Ogni voce ha un numero di episodio e uno di capitolo. Quando il punto esatto è incerto si usa quello più avanti, così è più facile che una voce si apra tardi che presto.',
+  'faq.animeQ': 'Anime o manga?',
   'faq.bookmarkA':
     'In un cookie su questo dispositivo. Il server lo legge prima di generare la pagina, quindi le voci dopo il segnalibro non sono nella pagina che ricevi. Senza segnalibro, questa pagina contiene l’Esame Hunter per il cursore e niente dopo. Non serve un account e non c’è nessun tracciamento.',
   'legal.credits':

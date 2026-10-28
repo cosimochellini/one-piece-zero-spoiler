@@ -5,6 +5,8 @@ import type { SeriesWords } from '~/i18n/types'
  * shared copy is against `../en.ts`.
  */
 export const onePieceIt: SeriesWords<'one-piece'> = {
+  'characters.count':
+    '{count} personaggi, nell’ordine in cui compaiono nell’anime. Quelli nella nebbia non compaiono nei risultati della ricerca.',
   'characters.featuredLede':
     'La ciurma di Cappello di Paglia e gli altri personaggi chiave della storia.',
   'credits.coverage':
@@ -19,6 +21,9 @@ export const onePieceIt: SeriesWords<'one-piece'> = {
   'credits.wikiIt': 'One Piece Wiki italiana',
   'credits.wikiTerms':
     'Le One Piece Wiki inglese e italiana dichiarano CC BY-SA 3.0 Unported come licenza predefinita dei testi della comunità. Eccezioni, materiali importati e immagini possono avere condizioni diverse. Fandom consente di attribuire gli autori tramite collegamenti agli articoli a cui hanno contribuito.',
+  'faq.animeA':
+    'Tutti e due. Puoi contare per episodio dell’anime, per stagione ed episodio o per capitolo del manga. Ogni voce ha un numero di episodio e uno di capitolo. Quando il punto esatto è incerto si usa quello più avanti, così è più facile che una voce si apra tardi che presto.',
+  'faq.animeQ': 'Anime o manga?',
   'faq.bookmarkA':
     'In un cookie su questo dispositivo. Il server lo legge prima di generare la pagina, quindi le voci dopo il segnalibro non sono nella pagina che ricevi. Senza segnalibro, questa pagina contiene East Blue per il cursore e niente dopo. Non serve un account e non c’è nessun tracciamento.',
   'legal.credits':

@@ -173,9 +173,6 @@ export const enDictionary = {
   'chart.seeSaga': 'Your saga',
   'chart.zoomHint': 'Ctrl or ⌘ with the wheel to zoom, drag to move.',
 
-  'faq.animeQ': 'Anime or manga?',
-  'faq.animeA':
-    'Both. You can count by anime episode, by season and episode, or by manga chapter. Every entry has an episode number and a chapter number. When the exact point is uncertain, the later one is used, so an entry is more likely to open late than early.',
   'faq.bookmarkQ': 'Where is my bookmark stored?',
   'faq.peekQ': 'Can I see a hidden entry?',
   'faq.peekA':
@@ -288,8 +285,6 @@ export const enDictionary = {
   'report.link': 'Report it on GitHub',
 
   'characters.title': 'Characters',
-  'characters.count':
-    '{count} characters, in the order they appear in the anime. Characters under fog do not show up in search.',
   'characters.searchLabel': 'Search characters',
   'characters.searchClear': 'Clear search',
   'characters.shown': 'Showing {count} of {total} open characters',
