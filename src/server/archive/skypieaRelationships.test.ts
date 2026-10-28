@@ -359,18 +359,22 @@ describe.each(LOCALES)(
     })
 
     it.each([
-      ['wyper', 'gan-fall', 'Ruler he serves', 'Governante che serve'],
-      ['kamakiri', 'wyper', 'Captain', 'Capitano'],
-      ['braham', 'wyper', 'Captain', 'Capitano'],
-      ['genbo', 'wyper', 'Captain', 'Capitano'],
+      [
+        'wyper',
+        'gan-fall',
+        { en: 'Ruler he serves', it: 'Governante che serve' },
+      ],
+      ['kamakiri', 'wyper', { en: 'Captain', it: 'Capitano' }],
+      ['braham', 'wyper', { en: 'Captain', it: 'Capitano' }],
+      ['genbo', 'wyper', { en: 'Captain', it: 'Capitano' }],
     ])(
       'keeps %s’s guard appointment manga-only after the later anime appearance',
-      (owner, target, en, it) => {
+      (owner, target, labels) => {
         const pair = (bookmark: Bookmark): RelationshipView | undefined =>
           projected(owner, bookmark, locale).find(
             ({ person }) => person.id === target,
           )
-        const guardType = { en, it }[locale]
+        const guardType = labels[locale]
 
         expect(pair(ch(647))?.type).not.toBe(guardType)
         expect(pair(ch(648))?.type).toBe(guardType)
