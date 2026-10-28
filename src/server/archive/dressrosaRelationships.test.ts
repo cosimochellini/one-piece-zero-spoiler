@@ -7,14 +7,17 @@ import type { Entity, Relationship } from '~/data/types'
 import { type Locale, LOCALES } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
 import type { RelationshipView } from '~/lib/view/relationships'
-import { opCharacterPage as characterPage, OP_ARCHIVE } from '~/test/archive'
+import {
+  OP_ARCHIVE,
+  opRelationshipsPage as relationshipsPage,
+} from '~/test/archive'
 import { leaksOf } from '~/test/fog'
 import { ONE_PIECE_LOADED } from '~/test/series'
 
 import { payloadsFor } from './payloads.server'
 
 const characterPayload = payloadsFor(OP_ARCHIVE).find(
-  ({ name }) => name === 'loadCharacter',
+  ({ name }) => name === 'loadRelationships',
 )
 const leaksIn = leaksOf(ONE_PIECE_LOADED)
 
@@ -61,7 +64,7 @@ function projected(
   bookmark: Bookmark,
   locale: Locale,
 ): RelationshipView[] {
-  return characterPage(id, bookmark, locale)?.detail.relationships ?? []
+  return relationshipsPage(id, bookmark, locale)
 }
 
 /** Compare only the current cards; separate assertions cover history gates. */
@@ -130,7 +133,7 @@ describe.each(LOCALES)('Dressrosa payload boundaries in %s', (locale) => {
         const payload = characterPayload?.run(bookmark, locale, owner)
 
         expect(payload).toStrictEqual(
-          characterPage(owner, bookmark, locale) ?? null,
+          relationshipsPage(owner, bookmark, locale),
         )
         expect(leaksIn(payload, bookmark)).toStrictEqual([])
 

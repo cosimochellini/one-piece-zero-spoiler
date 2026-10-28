@@ -3,7 +3,7 @@ import { type ReactElement, useState } from 'react'
 import { describe, expect, it } from 'vitest'
 
 import type { RelationshipView } from '~/lib/view/relationships'
-import { opCharacterPage as characterPage } from '~/test/archive'
+import { opRelationshipsPage } from '~/test/archive'
 import { ep, renderWithProviders } from '~/test/providers'
 
 import { RelationshipBand } from './-$id.relationships'
@@ -65,6 +65,7 @@ function SelectionDemo(): ReactElement {
         Move bookmark
       </button>
       <RelationshipBand
+        band={0}
         relationships={later ? [added, retained] : relationships}
       />
     </>
@@ -73,9 +74,13 @@ function SelectionDemo(): ReactElement {
 
 describe('the character relationship band', () => {
   it('keeps current words and the person link outside the closed history', () => {
-    renderWithProviders(<RelationshipBand relationships={relationships} />, {
-      bookmark: ep(10),
-    })
+    renderWithProviders(
+      <RelationshipBand
+        band={0}
+        relationships={relationships}
+      />,
+      { bookmark: ep(10) },
+    )
 
     expect(
       screen.getByRole('heading', { name: 'Relationships' }),
@@ -100,10 +105,13 @@ describe('the character relationship band', () => {
   })
 
   it('uses the locale in its heading and person link', () => {
-    renderWithProviders(<RelationshipBand relationships={relationships} />, {
-      locale: 'it',
-      bookmark: { mode: 'chapter', chapter: 12 },
-    })
+    renderWithProviders(
+      <RelationshipBand
+        band={0}
+        relationships={relationships}
+      />,
+      { locale: 'it', bookmark: { mode: 'chapter', chapter: 12 } },
+    )
 
     expect(
       screen.getByRole('heading', { name: 'Relazioni' }),
@@ -124,6 +132,7 @@ describe('the character relationship band', () => {
   it('expands each person independently', () => {
     renderWithProviders(
       <RelationshipBand
+        band={0}
         relationships={[
           ...relationships,
           {
@@ -184,7 +193,10 @@ describe('the character relationship band', () => {
 
   it('has no heading, count or placeholder for an empty/covered relation set', () => {
     const { container } = renderWithProviders(
-      <RelationshipBand relationships={[]} />,
+      <RelationshipBand
+        band={0}
+        relationships={[]}
+      />,
     )
 
     expect(container).toBeEmptyDOMElement()
@@ -195,14 +207,14 @@ describe.each(['en', 'it'] as const)(
   'Dressrosa authored cards in %s',
   (locale) => {
     it('renders the reached family reveal and keeps it out of the earlier DOM', () => {
-      const before = characterPage('rebecca', ep(674), locale)
-      const family = characterPage('rebecca', ep(675), locale)
-
-      expect(before).toBeDefined()
-      expect(family).toBeDefined()
+      const before = opRelationshipsPage('rebecca', ep(674), locale)
+      const family = opRelationshipsPage('rebecca', ep(675), locale)
 
       const { unmount } = renderWithProviders(
-        <RelationshipBand relationships={before?.detail.relationships ?? []} />,
+        <RelationshipBand
+          band={0}
+          relationships={before}
+        />,
         { locale, bookmark: ep(674) },
       )
 
@@ -212,7 +224,10 @@ describe.each(['en', 'it'] as const)(
 
       unmount()
       renderWithProviders(
-        <RelationshipBand relationships={family?.detail.relationships ?? []} />,
+        <RelationshipBand
+          band={0}
+          relationships={family}
+        />,
         { locale, bookmark: ep(675) },
       )
 
@@ -231,15 +246,13 @@ describe.each(['en', 'it'] as const)(
   'Alabasta authored cards in %s',
   (locale) => {
     it('withholds the future pair and renders its reached dated history', () => {
-      const earlier = characterPage('laboon', ep(352), locale)
-      const reached = characterPage('laboon', ep(353), locale)
-
-      expect(earlier).toBeDefined()
-      expect(reached).toBeDefined()
+      const earlier = opRelationshipsPage('laboon', ep(352), locale)
+      const reached = opRelationshipsPage('laboon', ep(353), locale)
 
       const { unmount } = renderWithProviders(
         <RelationshipBand
-          relationships={earlier?.detail.relationships ?? []}
+          band={0}
+          relationships={earlier}
         />,
         { locale, bookmark: ep(352) },
       )
@@ -251,7 +264,8 @@ describe.each(['en', 'it'] as const)(
       unmount()
       renderWithProviders(
         <RelationshipBand
-          relationships={reached?.detail.relationships ?? []}
+          band={0}
+          relationships={reached}
         />,
         { locale, bookmark: ep(353) },
       )
@@ -289,15 +303,13 @@ describe.each(['en', 'it'] as const)(
         locale === 'en' ?
           'Available from episode 322'
         : 'Visibile dall’episodio 322'
-      const earlier = characterPage('franky', ep(321), locale)
-      const reached = characterPage('franky', ep(322), locale)
-
-      expect(earlier).toBeDefined()
-      expect(reached).toBeDefined()
+      const earlier = opRelationshipsPage('franky', ep(321), locale)
+      const reached = opRelationshipsPage('franky', ep(322), locale)
 
       const { unmount } = renderWithProviders(
         <RelationshipBand
-          relationships={earlier?.detail.relationships ?? []}
+          band={0}
+          relationships={earlier}
         />,
         { locale, bookmark: ep(321) },
       )
@@ -308,7 +320,8 @@ describe.each(['en', 'it'] as const)(
       unmount()
       renderWithProviders(
         <RelationshipBand
-          relationships={reached?.detail.relationships ?? []}
+          band={0}
+          relationships={reached}
         />,
         { locale, bookmark: ep(322) },
       )

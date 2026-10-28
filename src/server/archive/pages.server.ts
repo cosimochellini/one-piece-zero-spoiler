@@ -11,6 +11,7 @@ import type {
   Slot,
   Stroke,
 } from '~/lib/view/records'
+import type { RelationshipView } from '~/lib/view/relationships'
 
 import { chronicleOf } from './chronicle.server'
 import { headFor, type HeadKeys } from './head.server'
@@ -172,7 +173,6 @@ export function characterPage(
       log: dossier !== undefined && r.sees(entity) ? dossier.log[locale] : null,
       facts: factsOf(entity, r),
       chronicle: chronicleOf(entity, r),
-      relationships: relationshipsOf(entity, r),
     },
   }
 }
@@ -226,6 +226,12 @@ export function nearbyPage(id: string, r: Reader): Slot<CharacterView>[] {
   return r
     .nearest(entity, r.archive.featuredCharacters, NEARBY_COUNT)
     .map((near) => r.slot(near, characterOf))
+}
+
+/** The people a character is connected to, which the page streams in. */
+export function relationshipsPage(id: string, r: Reader): RelationshipView[] {
+  const entity = r.archive.getCharacter(id)
+  return entity === undefined ? [] : relationshipsOf(entity, r)
 }
 
 /** What a character's page calls itself, open and under fog. */

@@ -21,6 +21,7 @@ import {
   charactersPage,
   drawingsFor,
   nearbyPage,
+  relationshipsPage,
   routePosition,
   shelvesPage,
 } from './pages.server'
@@ -97,6 +98,11 @@ function recordPayloads(archive: SeriesArchive): Payload[] {
       name: 'loadNearby',
       keys: characterIds,
       run: (b, l, id) => nearbyPage(id, readerFor(archive, b, l)),
+    },
+    {
+      name: 'loadRelationships',
+      keys: characterIds,
+      run: (b, l, id) => relationshipsPage(id, readerFor(archive, b, l)),
     },
     {
       name: 'loadDrawings',
@@ -188,6 +194,7 @@ export function payloadsFor(archive: SeriesArchive): Payload[] {
     'loadCharacter',
     'loadRoutePosition',
     'loadNearby',
+    'loadRelationships',
     'loadDrawings',
     'loadFruits',
     'loadFruitAlbum',

@@ -21,6 +21,7 @@ import {
   charactersPage,
   drawingsFor,
   nearbyPage,
+  relationshipsPage,
   routePosition,
   shelvesPage,
 } from './archive/pages.server'
@@ -194,6 +195,10 @@ export const loadRoutePosition = createServerFn()
 export const loadNearby = createServerFn()
   .validator(addressed)
   .handler(async ({ data }) => nearbyPage(data.id, await readerIn(data)))
+
+export const loadRelationships = createServerFn()
+  .validator(addressed)
+  .handler(async ({ data }) => relationshipsPage(data.id, await readerIn(data)))
 
 // Plain JSON, as the album below (#780).
 export const loadDrawings = createServerFn()

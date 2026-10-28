@@ -32,6 +32,7 @@ import {
   charactersPage as core_charactersPage,
   drawingsFor as core_drawingsFor,
   nearbyPage as core_nearbyPage,
+  relationshipsPage as core_relationshipsPage,
   routePosition as core_routePosition,
   shelvesPage as core_shelvesPage,
 } from '~/server/archive/pages.server'
@@ -106,6 +107,15 @@ export function opCharacterPage(
   l: Locale,
 ): ReturnType<typeof core_characterPage> {
   return core_characterPage(id, coreReader(OP_ARCHIVE, b, l))
+}
+
+/** One Piece-bound fixture for relationshipsPage. */
+export function opRelationshipsPage(
+  id: string,
+  b: Bookmark,
+  l: Locale,
+): ReturnType<typeof core_relationshipsPage> {
+  return core_relationshipsPage(id, coreReader(OP_ARCHIVE, b, l))
 }
 
 /** One Piece-bound fixture for routePosition. */

@@ -7,7 +7,10 @@ import type { Entity, Relationship } from '~/data/types'
 import { type Locale, LOCALES } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
 import type { RelationshipView } from '~/lib/view/relationships'
-import { opCharacterPage as characterPage, OP_ARCHIVE } from '~/test/archive'
+import {
+  OP_ARCHIVE,
+  opRelationshipsPage as relationshipsPage,
+} from '~/test/archive'
 
 const owners = eastBlue.entries.filter(({ kind }) => kind === 'character')
 type Mode = 'chapter' | 'episode'
@@ -49,7 +52,7 @@ function projected(
   bookmark: Bookmark,
   locale: Locale,
 ): RelationshipView[] {
-  return characterPage(id, bookmark, locale)?.detail.relationships ?? []
+  return relationshipsPage(id, bookmark, locale)
 }
 
 /** Compare only the current cards; separate assertions cover history gates. */

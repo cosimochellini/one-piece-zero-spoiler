@@ -358,6 +358,7 @@ export const itDictionary: Dictionary = {
     'Ancora niente, questa è l’ultima voce nell’ordine della storia.',
   'character.nearbyTitle': 'Compaiono nello stesso periodo',
   'character.nearbyLoading': 'Caricamento dei personaggi…',
+  'character.relationshipsLoading': 'Caricamento delle relazioni…',
   'character.nearbyLede':
     'Altri personaggi che compaiono per la prima volta vicino a questo.',
   'character.notFoundTitle': 'Personaggio non trovato',

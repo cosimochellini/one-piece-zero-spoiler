@@ -4,7 +4,7 @@ import type { SeriesArchive } from '~/data/types'
 import { type Locale, LOCALES } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
 import type { RelationshipView } from '~/lib/view/relationships'
-import { opCharacterPage as characterPage } from '~/test/archive'
+import { opRelationshipsPage as relationshipsPage } from '~/test/archive'
 import { relationshipArchive } from '~/test/relationships'
 import { LOADED_SERIES } from '~/test/series'
 
@@ -75,13 +75,9 @@ describe('relationship facts independent of endpoint visibility', () => {
   )
 })
 
-/** The requested pilot page, with a failed lookup treated as a broken fixture. */
+/** The pilot's relations at a bookmark. */
 function pilotAt(bookmark: Bookmark, locale: Locale): RelationshipView[] {
-  const page = characterPage('mansherry', bookmark, locale)
-  if (page === undefined) {
-    throw new Error('The pilot page is absent')
-  }
-  return page.detail.relationships
+  return relationshipsPage('mansherry', bookmark, locale)
 }
 
 describe('the pilot at independently verified relationship thresholds', () => {
@@ -129,9 +125,9 @@ describe('the pilot at independently verified relationship thresholds', () => {
       )
 
       expect(bare).toBeDefined()
-      expect(
-        characterPage(bare?.id ?? '', ep(1150), locale)?.detail.relationships,
-      ).toStrictEqual([])
+      expect(relationshipsPage(bare?.id ?? '', ep(1150), locale)).toStrictEqual(
+        [],
+      )
     },
   )
 })
@@ -185,11 +181,7 @@ describe.each(LOCALES)(
   'Koby’s cross-saga editorial selections in %s',
   (locale) => {
     function at(bookmark: Bookmark): RelationshipView[] {
-      const page = characterPage('koby', bookmark, locale)
-      if (page === undefined) {
-        throw new Error('Koby is absent')
-      }
-      return page.detail.relationships
+      return relationshipsPage('koby', bookmark, locale)
     }
 
     it.each([

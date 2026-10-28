@@ -359,6 +359,7 @@ export const enDictionary = {
   'character.routeEnd': 'Nothing yet. This is the last entry in story order.',
   'character.nearbyTitle': 'Appearing around the same time',
   'character.nearbyLoading': 'Loading characters…',
+  'character.relationshipsLoading': 'Loading relationships…',
   'character.nearbyLede':
     'Other characters who first appear close to this one.',
   'character.notFoundTitle': 'Character not found',

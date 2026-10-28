@@ -64,7 +64,6 @@ describe('the intro on a record page', () => {
             chronicle: chronicle(),
             facts: facts(),
             log: null,
-            relationships: [],
             slot: coveredSlot({ handle: 'lead', ...at(636) }),
           }}
           peek={lead.peek}
