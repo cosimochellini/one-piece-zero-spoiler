@@ -279,3 +279,60 @@ describe.each(['en', 'it'] as const)(
     })
   },
 )
+
+describe.each(['en', 'it'] as const)(
+  'Water Seven authored cards in %s',
+  (locale) => {
+    it('shows Franky’s new captain and dated history only after he joins', () => {
+      const captain = locale === 'en' ? 'Captain' : 'Capitano'
+      const joinedDate =
+        locale === 'en' ?
+          'Available from episode 322'
+        : 'Visibile dall’episodio 322'
+      const earlier = characterPage('franky', ep(321), locale)
+      const reached = characterPage('franky', ep(322), locale)
+
+      expect(earlier).toBeDefined()
+      expect(reached).toBeDefined()
+
+      const { unmount } = renderWithProviders(
+        <RelationshipBand
+          relationships={earlier?.detail.relationships ?? []}
+        />,
+        { locale, bookmark: ep(321) },
+      )
+
+      expect(screen.queryByText(captain)).not.toBeInTheDocument()
+      expect(screen.queryByText(joinedDate)).not.toBeInTheDocument()
+
+      unmount()
+      renderWithProviders(
+        <RelationshipBand
+          relationships={reached?.detail.relationships ?? []}
+        />,
+        { locale, bookmark: ep(322) },
+      )
+      const link = screen.getByRole('link', { name: /Luffy|Rufy/u })
+
+      expect(link).toHaveAttribute(
+        'href',
+        `/one-piece/${locale}/characters/monkey-d-luffy`,
+      )
+      expect(screen.getAllByText(captain)[0]).toBeVisible()
+
+      fireEvent.click(
+        screen.getByLabelText(
+          locale === 'en' ?
+            /Relationship history with .*Luffy/u
+          : /Storia del legame con .*Rufy/u,
+        ),
+      )
+
+      expect(
+        screen
+          .getAllByText(joinedDate)
+          .some((element) => element.closest('details')?.open === true),
+      ).toBe(true)
+    })
+  },
+)
