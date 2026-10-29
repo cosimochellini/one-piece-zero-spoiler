@@ -183,8 +183,8 @@ export const zevilChronicles = {
       value: {
         title: { it: 'L’arciere', en: 'The archer' },
         body: {
-          it: 'Nella quarta prova Pockul pedina un altro aspirante nell’erba alta. [[gon-freecss|Gon]] lo osserva. Pockul scocca una freccia che lo ferisce di striscio, ma la punta è coperta da un sedativo che lo paralizza. Poi gli prende la targhetta e gli dice che c’è acqua lì vicino, così non morirà. Supera la caccia e arriva fra i nove aspiranti dell’ultima prova.',
-          en: 'In the Fourth Phase, Pokkle stalks another applicant through tall grass. [[gon-freecss|Gon]] watches. Pokkle fires an arrow that only grazes him, but its tip is coated with a sedative that paralyzes him. He takes his badge and tells him there is water nearby, so he will not die. He passes the hunt and reaches the Final Phase among the nine applicants.',
+          it: 'Pockul supera la quarta prova ed è uno dei soli nove aspiranti rimasti. Dopo tre giorni di riposo in un albergo, [[netero|Netero]] spiega che l’ultima prova si svolge lì, con incontri uno contro uno in un tabellone. Basta una vittoria per passare: chi vince esce dal tabellone e chi perde passa al turno dopo, così solo uno di loro sarà bocciato.',
+          en: 'Pokkle passes the Fourth Phase and is one of only nine applicants left. After three days of rest at a hotel, [[netero|Netero]] explains that the Final Phase takes place there, as one-on-one matches in a bracket. One win is enough to pass: winners leave the bracket and losers move on to the next round, so only one of them will fail.',
         },
       },
     },

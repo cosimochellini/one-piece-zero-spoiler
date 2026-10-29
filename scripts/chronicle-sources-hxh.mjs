@@ -330,7 +330,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
     19: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_19_(2011)',
-      note: "Checked: episode 14 shows Pokkle's arrow with a tranquilizer, the badge taken and the water remark; episode 19 shows him among the nine finalists.",
+      note: 'Checked: the nine finalists, three days of rest, the hotel as the Final Phase venue, the one-on-one bracket where one win passes, winners leave and only one fails (chapter 33). Corrected after review (#833): the arrow scene moved to the 18 / 24 story.',
     },
     20: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_20_(2011)',
