@@ -65,7 +65,7 @@ export const HUNTER_X_HUNTER_ARCHIVE: SeriesArchive = {
     ].map((episode) => ({ mode: 'episode' as const, episode })),
     ...[
       4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26,
-      27, 28, 29, 30, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43,
+      27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43,
     ].map((chapter) => ({ mode: 'chapter' as const, chapter })),
     { mode: 'season', season: 1, episode: 26 },
     { mode: 'season', season: 2, episode: 1 },

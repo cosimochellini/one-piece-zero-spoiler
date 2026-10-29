@@ -541,8 +541,8 @@ export const hunterExamChronicles = {
       value: {
         title: { it: 'La protesta', en: 'The protest' },
         body: {
-          it: 'Quando [[menchi|Menci]] boccia tutti gli aspiranti della seconda prova, Todo spacca un tavolo per la rabbia e la contesta. Lei non cambia decisione e lui le si lancia contro. [[buhara|Buhara]] lo scaraventa via con un solo colpo e dice che altrimenti Menci l’avrebbe ucciso. Nella nuova prova voluta da [[netero|Netero]], Todo assaggia l’uovo sodo che [[gon-freecss|Gon]] divide con lui e dice che ci riproverà l’anno dopo.',
-          en: 'When [[menchi|Menchi]] fails every applicant in the Second Phase, Todo smashes a table in anger and protests. She will not change her verdict, and he charges at her. [[buhara|Buhara]] knocks him away with a single blow and says Menchi would have killed him otherwise. In the retest that [[netero|Netero]] sets up, Todo tastes the boiled egg [[gon-freecss|Gon]] shares with him and says he will try again next year.',
+          it: 'Quando [[menchi|Menci]] boccia tutti gli aspiranti della seconda prova, Todo si arrabbia e la contesta. Lei non cambia decisione e lui le si lancia contro. [[buhara|Buhara]] lo scaraventa via con un solo colpo e dice che altrimenti Menci l’avrebbe ucciso. Nella nuova prova voluta da [[netero|Netero]], Todo assaggia l’uovo sodo che [[gon-freecss|Gon]] divide con lui e dice che ci riproverà l’anno dopo.',
+          en: 'When [[menchi|Menchi]] fails every applicant in the Second Phase, Todo protests in anger. She will not change her verdict, and he charges at her. [[buhara|Buhara]] knocks him away with a single blow and says Menchi would have killed him otherwise. In the retest that [[netero|Netero]] sets up, Todo tastes the boiled egg [[gon-freecss|Gon]] shares with him and says he will try again next year.',
         },
       },
     },

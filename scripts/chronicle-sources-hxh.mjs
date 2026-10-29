@@ -448,7 +448,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
     6: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_6_(2011)',
-      note: "Checked: Menchi fails everyone, Todo smashes his table and berates her, she dismisses him, he charges, Buhara knocks him away and says Menchi would have killed him, Netero sets the egg retest, Todo tastes Gon's egg and vows to return next year. Also read: Chapter 12.",
+      note: "Checked: Menchi fails everyone, Todo berates her (the table he smashes is left out, since only the episode page gives it), she dismisses him, he charges, Buhara knocks him away and says Menchi would have killed him, Netero sets the egg retest, Todo tastes Gon's egg and vows to return next year. Also read: Chapter 12.",
     },
   },
   'geretta': {
