@@ -538,7 +538,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
     17: {
       source: 'https://hunterxhunter.fandom.com/wiki/Chapter_29',
-      note: 'Checked: while Imori stalks Killua, Amori and Umori hunt Shishito and Kenmi and take their badges, Hanzo trailing them without striking because #197 never leaves #199, then they find Imori still hiding. Manga only. Also read: the Kenmi and Amori pages.',
+      note: 'Checked: while Imori stalks Killua, Amori and Umori hunt Shishito and Kenmi and take their badges (chapter 29 per the Kenmi page), then they find Imori still hiding. Manga only. Also read: the Kenmi and Amori pages.',
     },
   },
   'sommy': {

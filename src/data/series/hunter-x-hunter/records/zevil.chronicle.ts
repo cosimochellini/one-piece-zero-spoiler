@@ -421,8 +421,8 @@ export const zevilChronicles = {
       value: {
         title: { it: 'Due fratelli a caccia', en: 'Two brothers on the hunt' },
         body: {
-          it: 'Mentre [[imori|Imori]] pedina [[killua|Killua]], i suoi fratelli [[amori|Amori]] e [[umori|Umori]] vanno a caccia per conto loro, seguiti da [[hanzo|Hanzo]], che non attacca perché i due non si separano mai. Kenmi è uno degli aspiranti che inseguono, e gli prendono la targhetta. Poi i due tornano da Imori, convinti che anche lui abbia finito, e lo trovano ancora nascosto. Kenmi ha perso la targhetta che per lui valeva tre punti.',
-          en: 'While [[imori|Imori]] stalks [[killua|Killua]], his brothers [[amori|Amori]] and [[umori|Umori]] hunt on their own, trailed by [[hanzo|Hanzo]], who does not strike because the two never split up. Kenmi is one of the applicants they go after, and they take his badge. Then the two return to Imori, sure that he has finished too, and find him still hiding. Kenmi has lost the badge that was worth three points to him.',
+          it: 'Mentre [[imori|Imori]] pedina [[killua|Killua]], i suoi fratelli [[amori|Amori]] e [[umori|Umori]] vanno a caccia per conto loro. Kenmi è uno degli aspiranti che inseguono, e gli prendono la targhetta. Poi i due tornano da Imori, convinti che anche lui abbia finito, e lo trovano ancora nascosto. Kenmi ha perso la targhetta che per lui valeva tre punti.',
+          en: 'While [[imori|Imori]] stalks [[killua|Killua]], his brothers [[amori|Amori]] and [[umori|Umori]] hunt on their own. Kenmi is one of the applicants they go after, and they take his badge. Then the two return to Imori, sure that he has finished too, and find him still hiding. Kenmi has lost the badge that was worth three points to him.',
         },
       },
     },

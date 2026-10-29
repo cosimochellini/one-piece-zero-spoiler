@@ -914,7 +914,8 @@ const hunterExamRedrawn: Redrawings = {
   cherry: [
     // The same pair of shoes upside down, hung from the branch of a tree in
     // the wetlands: his body is found hanging upside down there, Hisoka's
-    // cards in it, in chapter 10. Episode 5 shows him fall, unnamed.
+    // cards in it (not drawn), in chapter 10. Episode 5 shows him fall,
+    // unnamed.
     {
       episode: 5,
       chapter: 10,

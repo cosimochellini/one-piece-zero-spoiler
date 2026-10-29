@@ -2008,10 +2008,10 @@ held to: every story below has a row, and every row below has a story.
 
 ## Kenmi (`kenmi`, threshold ep 14)
 
-| Entry (en title)         | Episode | Fandom page that settles it                      | Note                                                                                                                                                                                                                                                         |
-| ------------------------ | ------: | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Invited back             |      14 | https://hunterxhunter.fandom.com/wiki/Chapter_23 | Checked: Khara's congratulations, two-hour trip, the invitation to next year, no reaction. The shaved head is on the Kenmi page. Manga only.                                                                                                                 |
-| Two brothers on the hunt |      17 | https://hunterxhunter.fandom.com/wiki/Chapter_29 | Checked: while Imori stalks Killua, Amori and Umori hunt Shishito and Kenmi and take their badges, Hanzo trailing them without striking because #197 never leaves #199, then they find Imori still hiding. Manga only. Also read: the Kenmi and Amori pages. |
+| Entry (en title)         | Episode | Fandom page that settles it                      | Note                                                                                                                                                                                                                    |
+| ------------------------ | ------: | ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Invited back             |      14 | https://hunterxhunter.fandom.com/wiki/Chapter_23 | Checked: Khara's congratulations, two-hour trip, the invitation to next year, no reaction. The shaved head is on the Kenmi page. Manga only.                                                                            |
+| Two brothers on the hunt |      17 | https://hunterxhunter.fandom.com/wiki/Chapter_29 | Checked: while Imori stalks Killua, Amori and Umori hunt Shishito and Kenmi and take their badges (chapter 29 per the Kenmi page), then they find Imori still hiding. Manga only. Also read: the Kenmi and Amori pages. |
 
 ## Sommy (`sommy`, threshold ep 14)
 
