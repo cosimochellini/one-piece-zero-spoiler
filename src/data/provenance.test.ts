@@ -20,8 +20,10 @@ const titles = new Set(
   Object.values(manifest.sources).map(({ title }) => title),
 )
 const characters: Partial<Record<string, null | string>> = relationshipEvidence
-const hunter: Record<string, { sources?: string[]; unverified?: string[] }> =
-  hunterEvidence
+const hunter: Record<
+  string,
+  { pending?: boolean; sources?: string[]; unverified?: string[] }
+> = hunterEvidence
 const hunterIds = LOADED_SERIES.find(
   ({ slug }) => slug === 'hunter-x-hunter',
 )?.archive.entities.map(({ id }) => id)
@@ -87,8 +89,22 @@ describe('Hunter x Hunter provenance', () => {
   it.each(Object.entries(hunter))(
     'records what was read or is still open for %s',
     (id, { sources: read = [], unverified = [] }) => {
+      expect(read.length + unverified.length, id).toBeGreaterThan(0)
+    },
+  )
+
+  it.each(Object.entries(hunter).filter(([, { pending }]) => pending !== true))(
+    'keeps filed research attached to the archive for %s',
+    (id) => {
       expect(hunterIds).toContain(id)
-      expect(read.length + unverified.length).toBeGreaterThan(0)
+    },
+  )
+
+  it.each(Object.entries(hunter).filter(([, { pending }]) => pending === true))(
+    'keeps pending research outside the archive with open checks for %s',
+    (id, { unverified = [] }) => {
+      expect(hunterIds).not.toContain(id)
+      expect(unverified.length).toBeGreaterThan(0)
     },
   )
 })
