@@ -1,17 +1,9 @@
-/**
- * The tile for a record filed beside another on the route.
- *
- * A sibling of the route module rather than a shared component because it is
- * only ever the two slots in the character page's route diptych; the leading
- * `-` keeps the file out of the generated route tree.
- */
 import * as stylex from '@stylexjs/stylex'
 import type { ReactElement } from 'react'
 
 import { RecordTile } from '~/components/RecordTile'
 import type { RecordView, Slot } from '~/lib/view/records'
-
-import { styles } from './-$id.styles'
+import { color, leading, space, text } from '~/styles/tokens.stylex'
 
 /** What one neighbour tile is given: the slot's name, and what fills it. */
 export interface NeighbourProps {
@@ -48,3 +40,25 @@ export function Neighbour({
     </div>
   )
 }
+
+const styles = stylex.create({
+  neighbour: { gap: space.xs, display: 'grid', minWidth: 0 },
+  neighbourLabel: {
+    color: color.ink2,
+    fontSize: text.base,
+    fontWeight: 600,
+    lineHeight: leading.body,
+  },
+  neighbourBody: {
+    gap: space.xs,
+    display: 'grid',
+    marginInlineStart: 0,
+    minWidth: 0,
+  },
+  lede: {
+    color: color.muted,
+    fontSize: text.base,
+    lineHeight: leading.body,
+    maxWidth: '52ch',
+  },
+})

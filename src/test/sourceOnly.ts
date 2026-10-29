@@ -179,8 +179,6 @@ export function plant(base: SeriesArchive, source: Source): Planted {
     roleOf: (entity) => base.roleOf(real(entity)),
     placeDossierOf: (entity) => metAt(real(entity)),
     chartPointOf: (id) => base.chartPointOf(copied.get(id)?.id ?? id),
-    chartWith: (entity) =>
-      chart.includes(entity) ? chart : filed(chart, entity),
     datedOf,
     reachedOf,
     latestOf: (at, owner, field) => reachedOf(at, owner, field).at(-1)?.value,

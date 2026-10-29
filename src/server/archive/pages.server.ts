@@ -5,10 +5,8 @@ import type {
   CoveredRecord,
   DocumentHead,
   RecordView,
-  RoutePositionView,
   SearchableCharacter,
   ShelfView,
-  Slot,
   Stroke,
 } from '~/lib/view/records'
 import type { RelationshipView } from '~/lib/view/relationships'
@@ -183,49 +181,6 @@ function pageRecordOf(
   r: Reader,
 ): CharacterView & { summary: string } {
   return { ...characterOf(entity, r), summary: entity.summary[r.locale] }
-}
-
-/** Where a character sits on the route, and the two records beside them. */
-export function routePosition(
-  id: string,
-  r: Reader,
-): RoutePositionView | undefined {
-  const entity = r.archive.getCharacter(id)
-  if (entity === undefined) {
-    return undefined
-  }
-
-  const ordered = r.order(r.archive.chartWith(entity))
-  const position = r.archive.routePositionOf(entity, ordered)
-  const beside = (near: Entity | undefined): null | Slot<RecordView> =>
-    near === undefined ? null : r.slot(near, recordOf)
-
-  return {
-    index: position.index,
-    total: position.total,
-    openCount: ordered.filter((record) => r.sees(record)).length,
-    // The ring takes the record's colour only once the reader has reached it,
-    // so a covered record's colour is not in the HTML.
-    tint: r.sees(entity) ? entity.visual.tint : null,
-    previous: beside(position.previous),
-    next: beside(position.next),
-  }
-}
-
-// One row of crests, which is what the card list holds on a wide screen
-// before it wraps.
-const NEARBY_COUNT = 5
-
-/** The featured characters filed nearest this one on the route. */
-export function nearbyPage(id: string, r: Reader): Slot<CharacterView>[] {
-  const entity = r.archive.getCharacter(id)
-  if (entity === undefined) {
-    return []
-  }
-
-  return r
-    .nearest(entity, r.archive.featuredCharacters, NEARBY_COUNT)
-    .map((near) => r.slot(near, characterOf))
 }
 
 /** The people a character is connected to, which the page streams in. */

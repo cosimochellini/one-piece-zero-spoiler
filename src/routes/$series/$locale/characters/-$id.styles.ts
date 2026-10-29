@@ -39,15 +39,6 @@ export const styles = stylex.create({
     },
     rowGap: space.lg,
   },
-  // The second diptych swaps sides on a wide page, so the two rows read as
-  // a pair rather than a template: words left, strip right. On a phone the
-  // words come first and the strip follows.
-  reversed: {
-    gridTemplateColumns: {
-      'default': ONE_COLUMN,
-      '@media (min-width: 60rem)': 'minmax(0, 7fr) minmax(0, 5fr)',
-    },
-  },
   plate: {
     padding: space.lg,
     borderColor: color.rule,
@@ -126,66 +117,14 @@ export const styles = stylex.create({
     overflowWrap: 'anywhere',
     minWidth: 0,
   },
-  position: {
-    color: color.accent,
-    fontFamily: font.mono,
-    fontSize: text.base,
-    fontVariantNumeric: 'tabular-nums',
-    fontWeight: 700,
-    letterSpacing: '0.1em',
-    lineHeight: leading.body,
-    textTransform: 'uppercase',
-  },
   lede: {
     color: color.muted,
     fontSize: text.base,
     lineHeight: leading.body,
     maxWidth: '52ch',
   },
-  stripBand: {
-    borderColor: color.rule,
-    borderRadius: radius.card,
-    borderStyle: 'solid',
-    borderWidth: rule.hair,
-    paddingBlock: space.lg,
-    paddingInline: space.md,
-    alignSelf: 'center',
-    backgroundColor: color.paper2,
-  },
-
-  neighbours: {
-    columnGap: space.lg,
-    display: 'grid',
-    gridTemplateColumns: {
-      'default': ONE_COLUMN,
-      '@media (min-width: 40rem)': 'repeat(2, minmax(0, 1fr))',
-    },
-    marginBlockStart: space.xs,
-    rowGap: space.md,
-  },
-  neighbour: { gap: space.xs, display: 'grid', minWidth: 0 },
-  neighbourLabel: {
-    color: color.ink2,
-    fontSize: text.base,
-    fontWeight: 600,
-    lineHeight: leading.body,
-  },
-  neighbourBody: {
-    gap: space.xs,
-    display: 'grid',
-    marginInlineStart: 0,
-    minWidth: 0,
-  },
   // The chronicle band: a heading, a lede and one ledger, full width.
   chronicle: { gap: space.lg, display: 'grid', minWidth: 0 },
-  nearby: {
-    gap: space.lg,
-    borderBlockStartColor: color.rule,
-    borderBlockStartStyle: 'solid',
-    borderBlockStartWidth: rule.hair,
-    display: 'grid',
-    paddingBlockStart: space.xl,
-  },
-  // A band's heading and its lede, stacked: the chronicle and the nearby row.
+  // A band's heading and its lede, stacked: the chronicle and relationships.
   bandHead: { gap: space.xs, display: 'grid' },
 })

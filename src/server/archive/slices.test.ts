@@ -19,7 +19,6 @@ import type {
   CharacterChronicle,
   ChronicleEntry,
   HomeView,
-  RoutePositionView,
   ShelfView,
   Stroke,
 } from '~/lib/view/records'
@@ -32,13 +31,11 @@ import {
   opHandleOf as handleOf,
   opHomePage as homePage,
   opLandingPage as landingPage,
-  opNearbyPage as nearbyPage,
   opOnboardingPage as onboardingPage,
   opPeekCharacter as peekCharacter,
   opPlacePage as placePage,
   opPlacesPage as placesPage,
   opReaderFor as readerFor,
-  opRoutePosition as routePosition,
   opShelvesPage as shelvesPage,
 } from '~/test/archive'
 import { saysNothing } from '~/test/fog'
@@ -151,16 +148,6 @@ function onFile(id: string): Entity {
   }
 
   return entity
-}
-
-/** Where a record sits on the route, or a failure if it is not on it. */
-function positionOf(id: string, bookmark: Bookmark): RoutePositionView {
-  const at = routePosition(id, bookmark, 'en')
-  if (at === undefined) {
-    throw new Error(`No position on the route for ${id}`)
-  }
-
-  return at
 }
 
 /** Five chronicled characters at four points of the route: twenty pages. */
@@ -590,29 +577,6 @@ describe('the slice of the archive a page is given', () => {
     expect(searchableOf(luffy, seenAt(1)).aliases).toContain(
       foldName(luffy.name.it),
     )
-  })
-
-  it('rings a record on the route only once the reader has reached it', () => {
-    expect(routePosition('nico-robin', ep(129), 'en')?.tint).toBeNull()
-    expect(routePosition('nico-robin', ep(130), 'en')?.tint).not.toBeNull()
-    expect(routePosition('nobody', ep(130), 'en')).toBeUndefined()
-  })
-
-  it('counts the route the way the page prints it', () => {
-    const at = positionOf('nico-robin', ep(500))
-
-    expect(at.index).toBeGreaterThanOrEqual(0)
-    expect(at.index).toBeLessThan(at.total)
-    expect(at.openCount).toBeLessThanOrEqual(at.total)
-  })
-
-  it('files the nearest featured characters, each behind its own fog', () => {
-    const near = nearbyPage('nico-robin', ep(130), 'en')
-
-    expect(near).toHaveLength(5)
-    expect(near.some((slot) => !slot.open)).toBe(true)
-
-    expect(nearbyPage('nobody', ep(130), 'en')).toStrictEqual([])
   })
 
   it('opens the ports the ship has put in at and no others', () => {

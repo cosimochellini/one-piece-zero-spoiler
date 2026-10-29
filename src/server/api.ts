@@ -20,9 +20,7 @@ import {
   characterPage,
   charactersPage,
   drawingsFor,
-  nearbyPage,
   relationshipsPage,
-  routePosition,
   shelvesPage,
 } from './archive/pages.server'
 import {
@@ -185,16 +183,6 @@ export const loadCharacter = createServerFn()
   .handler(
     async ({ data }) => characterPage(data.id, await readerIn(data)) ?? null,
   )
-
-export const loadRoutePosition = createServerFn()
-  .validator(addressed)
-  .handler(
-    async ({ data }) => routePosition(data.id, await readerIn(data)) ?? null,
-  )
-
-export const loadNearby = createServerFn()
-  .validator(addressed)
-  .handler(async ({ data }) => nearbyPage(data.id, await readerIn(data)))
 
 export const loadRelationships = createServerFn()
   .validator(addressed)

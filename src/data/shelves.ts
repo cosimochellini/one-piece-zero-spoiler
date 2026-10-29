@@ -52,7 +52,6 @@ export type Cast<D> = Pick<
   | 'bookSections'
   | 'characters'
   | 'chart'
-  | 'chartWith'
   | 'featuredCharacters'
   | 'getCharacter'
   | 'roleOf'
@@ -85,7 +84,6 @@ export function castOf<D extends { role: LocalizedText }>({
   const chart = route.filter(
     (entity) => CHARTED_KINDS.has(entity.kind) || isFeatured.has(entity.id),
   )
-  const onChart = new Set(chart.map((entity) => entity.id))
   // What the archive knows about a character beyond its name and sentence,
   // or `undefined` where nothing has been filed yet.
   const dossierOf = (entity: Entity): D | undefined => dossiers[entity.id]
@@ -95,13 +93,6 @@ export function castOf<D extends { role: LocalizedText }>({
     bookSections: shelvesOf(arcs, characters, 'episode'),
     characters,
     chart,
-    // The chart with this record on it, in route order: the chart when the
-    // record is already drawn, otherwise a copy with the record set in at
-    // its place, so an unlisted character still has a place on the chart.
-    chartWith: (entity) =>
-      onChart.has(entity.id) ? chart : (
-        orderByMode([...chart, entity], 'episode')
-      ),
     dossierOf,
     featuredCharacters: characters.filter((entity) =>
       isFeatured.has(entity.id),

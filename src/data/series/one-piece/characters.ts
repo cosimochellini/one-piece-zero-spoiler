@@ -73,7 +73,6 @@ export const {
   bookSections,
   characters,
   chart,
-  chartWith,
   dossierOf,
   featuredCharacters,
   getCharacter,

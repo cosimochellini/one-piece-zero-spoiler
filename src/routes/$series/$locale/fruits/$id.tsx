@@ -72,9 +72,6 @@ export const Route = createFileRoute('/$series/$locale/fruits/$id')({
  * (each character with its own fog, because knowing the fruit is not knowing
  * who carries it), and
  * two rails: the same kind, and the same saga.
- *
- * No route strip: a fruit is not a waypoint on the landing chart, so there is
- * no position on it to print.
  */
 function FruitPage(): ReactElement {
   const { detail, eaters, siblings } = Route.useLoaderData()

@@ -336,10 +336,6 @@ export const enDictionary = {
   'character.relationshipsTitle': 'Relationships',
   'character.relationshipsLede':
     'The important people connected to this character, up to your bookmark.',
-  'character.routeTitle': 'In story order',
-  'character.position': 'Entry {index} of {total}',
-  'character.positionLede':
-    'Where this character comes in the story, with the entries just before and after.',
   'character.status': 'Status',
   'character.epithet': 'Epithet',
   'character.affiliation': 'Affiliation',
@@ -348,15 +344,6 @@ export const enDictionary = {
   'character.chronicleTitle': 'Story so far',
   'character.chronicleLede':
     'What happens to them up to your bookmark, latest first. Each part starts at the episode where it takes place.',
-  'character.before': 'Before',
-  'character.after': 'After',
-  'character.routeStart': 'Nothing. This is the first entry.',
-  'character.routeEnd': 'Nothing yet. This is the last entry in story order.',
-  'character.nearbyTitle': 'Appearing around the same time',
-  'character.nearbyLoading': 'Loading characters…',
-  'character.relationshipsLoading': 'Loading relationships…',
-  'character.nearbyLede':
-    'Other characters who first appear close to this one.',
   'character.notFoundTitle': 'Character not found',
   'character.notFoundBody':
     'There is no character at this address. The characters page lists all of them.',

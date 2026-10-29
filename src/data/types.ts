@@ -315,17 +315,6 @@ export interface Native {
 }
 
 /**
- * Where a record sits on the chart, and what lies either side of it.
- * `index` is zero-based; the page prints it plus one.
- */
-export interface RoutePosition {
-  index: number
-  next: Entity | undefined
-  previous: Entity | undefined
-  total: number
-}
-
-/**
  * One stretch of the story as a module: the records filed along it, in the
  * order the anime reaches them, and the dossier of every character among
  * them. An archive is the concatenation of these, so a stretch's records and
@@ -408,7 +397,6 @@ export interface SeriesArchive<V extends Vocabulary = Vocabulary> {
   characters: Entity[]
   chart: Entity[]
   chartPointOf: (id: string) => ChartPoint | null
-  chartWith: (entity: Entity) => Entity[]
   /** The documented source review of the series, if it has had one. */
   credits?: CreditSample
   datedOf: <F extends Field>(owner: Entity, field: F) => Opened<Fields[F]>[]
@@ -439,7 +427,6 @@ export interface SeriesArchive<V extends Vocabulary = Vocabulary> {
   ) => Opened<Fields[F]>[]
   redrawn: (owner: Entity) => { gate: Gated; value: Stroke[] }[]
   roleOf: (entity: Entity) => LocalizedText | undefined
-  routePositionOf: (entity: Entity, drawn: Entity[]) => RoutePosition
   sagas: Saga<V>[]
   series: Series
   stories: FiledStory[]
