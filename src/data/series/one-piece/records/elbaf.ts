@@ -1,5 +1,6 @@
 import type { LocalizedText } from '~/data/types'
 
+import { elbafRelationships } from './elbaf.relationships'
 import type { OnePieceSaga } from './saga'
 
 /**
@@ -336,6 +337,7 @@ export const elbaf: OnePieceSaga = {
   ],
   dossiers: {
     'iscat': {
+      relationships: elbafRelationships.iscat,
       role: {
         it: 'Sovrano del Castello di Bigstein',
         en: 'Ruler of Bigstein Castle',
@@ -356,6 +358,7 @@ export const elbaf: OnePieceSaga = {
       ],
     },
     'road': {
+      relationships: elbafRelationships.road,
       role: {
         it: 'Navigatore dei Nuovi Pirati Guerrieri Giganti',
         en: 'New Giant Warrior Pirates navigator',
@@ -373,6 +376,7 @@ export const elbaf: OnePieceSaga = {
       ],
     },
     'loki': {
+      relationships: elbafRelationships.loki,
       role: { it: 'Principe di Elbaf', en: 'Prince of Elbaph' },
       log: {
         it: 'Da anni è incatenato ai piedi di un albero colossale, bendato, nel buio gelido sotto il villaggio. Lo chiamano il Principe Maledetto e la Vergogna di Elbaf, perché l’isola dice che ha ucciso il re suo padre per il frutto del diavolo della famiglia reale. A Rufy si presenta come il Dio del Sole che porterà la fine del mondo.',
@@ -400,6 +404,7 @@ export const elbaf: OnePieceSaga = {
       bounty: [{ episode: 1161, value: 2_600_000_000 }],
     },
     'goldberg': {
+      relationships: elbafRelationships.goldberg,
       role: {
         it: 'Cuoco dei Nuovi Pirati Guerrieri Giganti',
         en: 'New Giant Warrior Pirates cook',
@@ -415,6 +420,7 @@ export const elbaf: OnePieceSaga = {
       ],
     },
     'ange': {
+      relationships: elbafRelationships.ange,
       role: {
         it: 'Insegnante di lingue della Scuola Walrus',
         en: 'Walrus School language teacher',
@@ -435,6 +441,7 @@ export const elbaf: OnePieceSaga = {
       ],
     },
     'ripley': {
+      relationships: elbafRelationships.ripley,
       role: {
         it: 'Insegnante di biologia della Scuola Walrus',
         en: 'Walrus School biology teacher',
@@ -455,6 +462,7 @@ export const elbaf: OnePieceSaga = {
       ],
     },
     'stansen': {
+      relationships: elbafRelationships.stansen,
       role: {
         it: 'Membro dei Nuovi Pirati Guerrieri Giganti',
         en: 'New Giant Warrior Pirates member',
@@ -478,6 +486,7 @@ export const elbaf: OnePieceSaga = {
       ],
     },
     'colon': {
+      relationships: elbafRelationships.colon,
       role: { it: 'Alunno della Scuola Walrus', en: 'Walrus School pupil' },
       log: {
         it: 'È mezzo gigante, più rissoso di tutti i compagni, e alla Scuola Walrus lo conoscono come il teppista. Colpisce Rufy in testa con una spada di legno, che si spezza, ed è entusiasta quando Rufy risponde con un pugno nel terreno; sua madre Ripley lo sgrida ma loda il colpo, e suo padre è un ex pirata umano. Vuole diventare un guerriero di Elbaf, e non gli importa quanti pugni deve prendere per arrivarci.',
@@ -512,6 +521,7 @@ export const elbaf: OnePieceSaga = {
       devilFruit: [{ episode: 1165, value: ['grow-grow-fruit'] }],
     },
     'manmayer-gunko': {
+      relationships: elbafRelationships['manmayer-gunko'],
       role: KNIGHT_ROLE,
       log: {
         it: 'Arriva su Elbaf dentro un cerchio magico, avvolta in un mantello col cappuccio calato sul viso, e mette fuori combattimento due guardie giganti del castello. Con le bende dei suoi vestiti solleva per il collo perfino un lupo del Mondo Sotterraneo. Dice di essere un Cavaliere di Dio, e di essere venuta a cercare Loki.',
@@ -524,6 +534,7 @@ export const elbaf: OnePieceSaga = {
       devilFruit: [{ episode: 1167, value: ['arrow-arrow-fruit'] }],
     },
     'harald': {
+      relationships: elbafRelationships.harald,
       role: { it: 'Re di Elbaf', en: 'King of Elbaph' },
       log: {
         it: 'Era il re di Elbaf, e oggi di lui resta un grande ritratto che i giganti guardano ancora con rispetto. Nel dipinto ha il volto severo e due grandi cicatrici dove un tempo aveva le corna, strappate da lui stesso, e i giganti ne parlano abbassando la voce. Tutta Elbaf dice che a ucciderlo è stato suo figlio Loki.',
@@ -538,6 +549,7 @@ export const elbaf: OnePieceSaga = {
       ],
     },
     'figarland-shamrock': {
+      relationships: elbafRelationships['figarland-shamrock'],
       role: {
         it: 'Comandante dei Cavalieri di Dio',
         en: 'Commander of the Knights of God',
@@ -558,6 +570,7 @@ export const elbaf: OnePieceSaga = {
       ],
     },
     'cerberus': {
+      relationships: elbafRelationships.cerberus,
       role: {
         it: 'Spada di Figarland Shamrock',
         en: 'Figarland Shamrock’s sword',
@@ -578,6 +591,7 @@ export const elbaf: OnePieceSaga = {
       ],
     },
     'scopper-gaban': {
+      relationships: elbafRelationships['scopper-gaban'],
       role: { it: 'Ex membro dei Pirati di Roger', en: 'Former Roger Pirate' },
       log: {
         it: 'Su Elbaf viveva da anni come Mr. Ya, un vecchio umano con due asce, ex pirata, che i giganti chiamavano con rispetto Ya-san. Poi si rivela Scopper Gabin, il Mangiamontagne, la Mano Sinistra del Re dei Pirati, che navigò con Roger fino alla fine. È il marito di Ripley e il padre di Collon.',
@@ -604,6 +618,7 @@ export const elbaf: OnePieceSaga = {
       ],
     },
     'shepherd-sommers': {
+      relationships: elbafRelationships['shepherd-sommers'],
       role: KNIGHT_ROLE,
       log: {
         it: 'Il cerchio magico lo trascina su Elbaf mentre è ancora in mutande e si lamenta della carenza di cibo a Marijoa. Vestendosi chiede a Shamrock se è lì per visitare la tomba di Harald. Poi ascolta il piano del comandante per rapire i bambini dei giganti.',
@@ -619,6 +634,7 @@ export const elbaf: OnePieceSaga = {
       ],
     },
     'rimoshifu-killingham': {
+      relationships: elbafRelationships['rimoshifu-killingham'],
       role: KNIGHT_ROLE,
       log: {
         it: 'Il cerchio magico lo evoca su Elbaf quando meno se lo aspetta, e arriva non come un uomo ma come una bestia: un kirin cornuto, metà cervo e metà cavallo, già in ritardo. Porta a Shamrock l’ordine di tornare a Marijoa, dove dopo il Reverie tutto va a pezzi. Poi resta con gli altri per il gioco del comandante.',
@@ -638,6 +654,7 @@ export const elbaf: OnePieceSaga = {
       ],
     },
     'ragnir': {
+      relationships: elbafRelationships.ragnir,
       role: { it: 'Martello da guerra di Loki', en: 'Loki’s warhammer' },
       log: {
         it: 'È il martello da guerra di Loki, un maglio enorme che sta accanto al principe incatenato fin dalla prima volta che Rufy lo trova. Appena le catene si aprono, Loki si rimette in piedi con il martello in mano. Hajrudin, arrivato troppo tardi, lo supplica di lasciarlo andare.',
@@ -652,6 +669,7 @@ export const elbaf: OnePieceSaga = {
       ],
     },
     'kiba': {
+      relationships: elbafRelationships.kiba,
       role: {
         it: 'Preside della Scuola Walrus',
         en: 'Walrus School principal',
@@ -669,6 +687,7 @@ export const elbaf: OnePieceSaga = {
       ],
     },
     'wolf-elbaph': {
+      relationships: elbafRelationships['wolf-elbaph'],
       role: {
         it: 'Insegnante di ginnastica della Scuola Walrus',
         en: 'Walrus School gym teacher',
