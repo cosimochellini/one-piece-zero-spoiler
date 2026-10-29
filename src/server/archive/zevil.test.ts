@@ -5,7 +5,7 @@ import { LOCALES } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
 import { LOADED_SERIES } from '~/test/series'
 
-import { drawingsFor, shelvesPage } from './pages.server'
+import { characterPage, drawingsFor, shelvesPage } from './pages.server'
 import { placePage } from './placePage.server'
 import { readerFor } from './reader.server'
 
@@ -110,6 +110,33 @@ describe('the Fourth Phase and its final bracket', () => {
     expect(drawingsFor([row.id], before)).not.toHaveProperty(row.id)
     expect(drawingsFor([row.id], reached)).toHaveProperty(row.id)
   })
+
+  it.each(
+    [...RECORDS, ...DEATHS].flatMap(({ id, source }) =>
+      source === undefined ?
+        []
+      : LOCALES.map((locale) => ({ id, locale, source })),
+    ),
+  )(
+    'never gives $id to a reader of the other source ($locale)',
+    ({ id, locale, source }) => {
+      const other: Unit = source === 'chapter' ? 'episode' : 'chapter'
+      const r = readerFor(
+        archive,
+        at(
+          other,
+          other === 'episode' ?
+            archive.series.episodeCeiling
+          : archive.series.chapterCeiling,
+        ),
+        locale,
+      )
+      const pages = [shelvesPage(r), drawingsFor([id], r)]
+
+      expect(characterPage(id, r)).toBeUndefined()
+      expect(JSON.stringify(pages)).not.toContain(`"${id}"`)
+    },
+  )
 
   it.each(LOCALES)(
     'opens Zevil on arrival, with a safe dossier (%s)',

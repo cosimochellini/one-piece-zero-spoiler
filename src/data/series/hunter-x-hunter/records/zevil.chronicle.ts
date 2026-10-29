@@ -22,8 +22,8 @@ export const zevilChronicles = {
       value: {
         title: { it: 'I tre fratelli', en: 'The three brothers' },
         body: {
-          it: 'Fra i veterani che [[tonpa|Tonpa]] indica nel tunnel ci sono tre fratelli: Amori, [[umori|Umori]] e [[imori|Imori]]. Tonpa spiega a [[gon-freecss|Gon]], [[kurapika|Kurapika]] e [[leorio-paradinight|Leorio]] che i tre si presentano all’esame insieme e lavorano in squadra. Come gli altri della sua lista, ci hanno già provato senza passare. Poi Tonpa li avverte di stare alla larga da [[hisoka|Hisoka]].',
-          en: 'Among the regulars [[tonpa|Tonpa]] points out in the tunnel are three brothers, Amori, [[umori|Umori]] and [[imori|Imori]]. Tonpa tells [[gon-freecss|Gon]], [[kurapika|Kurapika]] and [[leorio-paradinight|Leorio]] that the three take the exam together and work as a team. Like the others on his list, they have tried before without passing. Then Tonpa warns the newcomers to keep away from [[hisoka|Hisoka]].',
+          it: 'Fra i veterani che [[tonpa|Tonpa]] indica nel tunnel ci sono i tre fratelli Amori. Tonpa spiega a [[gon-freecss|Gon]], [[kurapika|Kurapika]] e [[leorio-paradinight|Leorio]] che i tre si presentano all’esame insieme e lavorano in squadra. Come gli altri della sua lista, ci hanno già provato senza passare. Poi Tonpa li avverte di stare alla larga da [[hisoka|Hisoka]].',
+          en: 'Among the regulars [[tonpa|Tonpa]] points out in the tunnel are the three Amori brothers. Tonpa tells [[gon-freecss|Gon]], [[kurapika|Kurapika]] and [[leorio-paradinight|Leorio]] that the three take the exam together and work as a team. Like the others on his list, they have tried before without passing. Then Tonpa warns the newcomers to keep away from [[hisoka|Hisoka]].',
         },
       },
     },
@@ -49,8 +49,8 @@ export const zevilChronicles = {
       value: {
         title: { it: 'Un gioco di squadra', en: 'A team effort' },
         body: {
-          it: '[[tonpa|Tonpa]], che ha fallito l’esame trentaquattro volte, si offre di parlare a [[gon-freecss|Gon]] degli aspiranti che continuano a ripresentarsi. Fra quelli che indica ci sono tre fratelli che lavorano sempre in squadra: [[amori|Amori]], Umori e [[imori|Imori]]. Gon e i suoi due compagni hanno appena ricevuto le loro targhette.',
-          en: '[[tonpa|Tonpa]], who has failed the exam thirty-four times, offers to tell [[gon-freecss|Gon]] about the applicants who keep coming back. Among those he points out are three brothers who always work as a team: [[amori|Amori]], Umori and [[imori|Imori]]. Gon and his two companions have only just been given their badges.',
+          it: '[[tonpa|Tonpa]], che ha fallito l’esame trentaquattro volte, si offre di parlare a [[gon-freecss|Gon]] degli aspiranti che continuano a ripresentarsi. Fra quelli che indica ci sono i tre fratelli Amori, che lavorano sempre in squadra. Gon e i suoi due compagni hanno appena ricevuto le loro targhette.',
+          en: '[[tonpa|Tonpa]], who has failed the exam thirty-four times, offers to tell [[gon-freecss|Gon]] about the applicants who keep coming back. Among those he points out are the three Amori brothers, who always work as a team. Gon and his two companions have only just been given their badges.',
         },
       },
     },
@@ -76,8 +76,8 @@ export const zevilChronicles = {
           en: 'A family of applicants',
         },
         body: {
-          it: 'Il giorno dell’esame [[tonpa|Tonpa]] presenta a [[gon-freecss|Gon]], [[kurapika|Kurapika]] e [[leorio-paradinight|Leorio]] gli aspiranti che conosce dagli anni passati. Imori è uno dei tre fratelli della sua lista, con [[amori|Amori]] e [[umori|Umori]]. I tre tornano all’esame insieme e contano sul gioco di squadra. Tonpa avverte anche i nuovi arrivati di stare lontani da [[hisoka|Hisoka]].',
-          en: 'On the day of the exam, [[tonpa|Tonpa]] introduces [[gon-freecss|Gon]], [[kurapika|Kurapika]] and [[leorio-paradinight|Leorio]] to the applicants he knows from earlier years. Imori is one of three brothers on his list, with [[amori|Amori]] and [[umori|Umori]]. The three come back to the exam together and rely on teamwork. Tonpa also warns the newcomers to keep away from [[hisoka|Hisoka]].',
+          it: 'Il giorno dell’esame [[tonpa|Tonpa]] presenta a [[gon-freecss|Gon]], [[kurapika|Kurapika]] e [[leorio-paradinight|Leorio]] gli aspiranti che conosce dagli anni passati. Nella sua lista ci sono i tre fratelli Amori. I tre tornano all’esame insieme e contano sul gioco di squadra. Tonpa avverte anche i nuovi arrivati di stare lontani da [[hisoka|Hisoka]].',
+          en: 'On the day of the exam, [[tonpa|Tonpa]] introduces [[gon-freecss|Gon]], [[kurapika|Kurapika]] and [[leorio-paradinight|Leorio]] to the applicants he knows from earlier years. The three Amori brothers are on his list. The three come back to the exam together and rely on teamwork. Tonpa also warns the newcomers to keep away from [[hisoka|Hisoka]].',
         },
       },
     },
@@ -340,8 +340,8 @@ export const zevilChronicles = {
       value: {
         title: { it: 'Non fra i nove', en: 'Not among the nine' },
         body: {
-          it: 'La quarta prova finisce con un annuncio dalla barca: tutti devono tornare all’approdo entro un’ora, e chi scambia targhette lì viene squalificato. In riva al mare aspettano solo nove aspiranti, fra cui [[gon-freecss|Gon]], [[hisoka|Hisoka]] e [[pokkle|Pockul]]. Ryu non è fra loro. Sull’isola ha combattuto contro un anziano esperto di arti marziali, arrivato fino all’ultima prova, e ha perso. Ha fallito l’esame.',
-          en: 'The Fourth Phase ends with an announcement from the boat: everyone must return to the landing within an hour, and anyone who trades badges there is disqualified. Only nine applicants wait by the water, among them [[gon-freecss|Gon]], [[hisoka|Hisoka]] and [[pokkle|Pokkle]]. Ryu is not one of them. On the island he fought an elderly martial artist who has reached the final, and he lost. He has failed the exam.',
+          it: 'La quarta prova finisce con un annuncio dalla barca: tutti devono tornare all’approdo entro un’ora, e chi scambia targhette lì viene squalificato. In riva al mare aspettano solo nove aspiranti, fra cui [[gon-freecss|Gon]], [[hisoka|Hisoka]] e [[pokkle|Pockul]]. Ryu non è fra loro. Sull’isola ha combattuto contro un altro aspirante e ha perso. Ha fallito l’esame.',
+          en: 'The Fourth Phase ends with an announcement from the boat: everyone must return to the landing within an hour, and anyone who trades badges there is disqualified. Only nine applicants wait by the water, among them [[gon-freecss|Gon]], [[hisoka|Hisoka]] and [[pokkle|Pokkle]]. Ryu is not one of them. On the island he fought another applicant and lost. He has failed the exam.',
         },
       },
     },

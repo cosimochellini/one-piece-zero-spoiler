@@ -24,7 +24,7 @@ const ON_ROSTER = { episode: 14, chapter: 23, source: 'chapter' } as const
  * neither a naming gate. Tonpa, Ponzu, the brothers and the unnamed
  * eliminated fail the phase at 18 / 32; Pokkle's pass belongs to the Final
  * Phase update. Bourbon, Goz, Siper, Agon and Bodoro die after they open, so
- * each has a death redrawing. Unnamed species and the final-phase hotel get
+ * each has a death redrawing, as do Cherry and Geretta in `hunter-exam.ts`. Unnamed species and the final-phase hotel get
  * no record.
  */
 export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
@@ -130,8 +130,8 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       revealedAtChapter: 23,
       name: { it: 'Kenmi', en: 'Kenmi' },
       summary: {
-        it: 'Un giovane aspirante che arriva alla quarta prova dell’Esame Hunter.',
-        en: 'A young applicant who reaches the Fourth Phase of the Hunter Exam.',
+        it: 'Un aspirante con la testa rasata che arriva alla quarta prova dell’Esame Hunter.',
+        en: 'An applicant with a shaved head who reaches the Fourth Phase of the Hunter Exam.',
       },
       visual: { art: 'kenmi', tint: 'teal' },
     },

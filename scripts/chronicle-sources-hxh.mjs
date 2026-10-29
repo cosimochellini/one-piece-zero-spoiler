@@ -454,7 +454,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
   'geretta': {
     3: {
       source: 'https://hunterxhunter.fandom.com/wiki/Chapter_5',
-      note: 'Checked: Tonpa, on his 35th attempt, names Geretta among the regulars and warns the trio about Hisoka. The blowdart and club description is left out, since the gate table does not confirm it for Episode 3 (2011).',
+      note: 'Checked: Tonpa, on his 35th attempt, names Geretta among the regulars and warns the trio about Hisoka. The story leaves out the blowdart and club description, which the record’s summary gives from chapter 5.',
     },
     16: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_16_(2011)',
