@@ -499,5 +499,64 @@
       "Check the episode 6 cooking-test naming scene; synopsis uses of Todo are editorial, not proof of a spoken name",
       "Source-specific outcome and status dates remain unverified; check each medium separately and add a death drawing only if death occurs after the verified opening"
     ]
+  },
+  "kikyo": {
+    "pending": true,
+    "sources": [
+      "https://hunterxhunter.fandom.com/wiki/Kikyo_Zoldyck",
+      "https://hunterxhunter.fandom.com/wiki/Chapter_41",
+      "https://hunterxhunter.fandom.com/wiki/Chapter_42",
+      "https://hunterxhunter.fandom.com/wiki/Episode_23_(2011)",
+      "https://hunterxhunter.fandom.com/wiki/Episode_24_(2011)",
+      "https://it.wikipedia.org/wiki/Famiglia_Zoldick#Kikyo"
+    ],
+    "unverified": [
+      "Episode 23 / chapter 41 establish appearance as Killua’s mother, not a checked personal-name scene; exact licensed timestamp/page not viewed",
+      "Hunterpedia reports that her personal name is not mentioned in manga or anime and originates in the musical The Nightmare of Zaoldyeck, later the databook; verify this supplemental-only exclusion before treating it as resolved",
+      "Hunterpedia separately reports her name in 2011 credits and Netflix’s release; credits, catalog labels and supplemental names do not establish an in-story naming gate",
+      "Italian Wikipedia lists Kikyo Zoldick; the Italian 2011 personal-name form and any in-story use remain unverified",
+      "Retain the omission until a positive in-story scene or verified exclusion is established; do not infer a source-only record from missing evidence",
+      "Any eligible future record needs a threshold-safe original drawing checked against a licensed scene/page; references not viewed"
+    ]
+  },
+  "silva": {
+    "pending": true,
+    "sources": [
+      "https://hunterxhunter.fandom.com/wiki/Silva_Zoldyck",
+      "https://hunterxhunter.fandom.com/wiki/Chapter_42",
+      "https://hunterxhunter.fandom.com/wiki/Chapter_43",
+      "https://hunterxhunter.fandom.com/wiki/Episode_24_(2011)",
+      "https://hunterxhunter.fandom.com/wiki/Episode_25_(2011)",
+      "https://hunterxhunter.fandom.com/wiki/Chapter_95",
+      "https://hunterxhunter.fandom.com/wiki/Episode_51_(2011)",
+      "https://it.wikipedia.org/wiki/Famiglia_Zoldick#Silva"
+    ],
+    "unverified": [
+      "Episode 24 / chapter 42 establish appearance as Killua’s father, not a checked personal-name scene inside the episode 26 / chapter 43 launch span; exact licensed timestamp/page not viewed",
+      "Chapter 95 synopsis explicitly describes Silva and Zeno giving their names during the assassins’ code-name discussion; exact naming page not viewed and earliest manga naming not established",
+      "Episode 51 synopsis places the assassins’ meeting outside launch coverage; confirm the actual 2011 personal-name scene and timestamp independently rather than copying the manga gate",
+      "Italian Wikipedia lists Silva Zoldick; verify the Italian 2011 personal-name form in the relevant licensed scene",
+      "Keep later-scene leads separate from a confirmed out-of-coverage exclusion; absence of an earlier verified name does not establish that none exists",
+      "Any eligible future record needs bilingual threshold-safe copy, source-specific dated facts and an original drawing checked against a licensed scene/page; references not viewed"
+    ]
+  },
+  "hishita": {
+    "pending": true,
+    "sources": [
+      "https://hunterxhunter.fandom.com/wiki/Hishita",
+      "https://hunterxhunter.fandom.com/wiki/Chapter_43",
+      "https://hunterxhunter.fandom.com/wiki/Episode_25_(2011)",
+      "https://hunterxhunter.fandom.com/wiki/Chapter_329",
+      "https://hunterxhunter.fandom.com/wiki/Episode_143_(2011)",
+      "https://it.wikipedia.org/wiki/Famiglia_Zoldick"
+    ],
+    "unverified": [
+      "Episode 25 / chapter 43 establish the coin-game butler’s appearance; the chapter synopsis links an unnamed butler editorially and is not proof of a personal name",
+      "Chapter 329 synopsis describes Killua asking Canary to contact Hishita and addressing him as the driver; exact naming page not viewed and earliest manga naming not established",
+      "Episode 143 synopsis describes the corresponding phone call and driver scene; exact licensed naming timestamp not viewed and earliest 2011 naming not established",
+      "These later naming leads are outside episode 26 / chapter 43 coverage; confirm a positive scene and check earlier candidates before recording a resolved out-of-coverage exclusion",
+      "No Hishita entry was found in the inspected Italian Wikipedia family page; Italian 2011 name/spelling remains unverified",
+      "Retain the omission without inferring a supplemental-only or source-only record; any future dossier, original drawing and dated outcomes need source-specific licensed scene/page checks, not the wiki’s current-status infobox"
+    ]
   }
 }
