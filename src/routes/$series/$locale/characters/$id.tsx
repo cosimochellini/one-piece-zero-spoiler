@@ -11,7 +11,7 @@ import { useT } from '~/i18n/LocaleContext'
  *   Chart (locked) · enrichment: Tier B hand-built SVG (crest seal + route
  *   strip) · nav: N9 (shared) · footer: Ft4 (shared)
  * · structure: the crest | dossier diptych · the chronicle as one ledger ·
- *   route position | strip · nearby crests as one row
+ *   reached relationships; legacy navigation for other series
  * · idea: "a page from the signal book, opened flat" */
 import type { CharacterView, Slot } from '~/lib/view/records'
 import type { RelationshipView } from '~/lib/view/relationships'
@@ -66,14 +66,19 @@ export const Route = createFileRoute('/$series/$locale/characters/$id')({
   // reader has not reached, and a title is set before any component runs.
   loader: async (match) => {
     const args = recordArgs(match)
-    // Below the dossier, so they stream: the strip is sixty-six marks, the
-    // relations a dossier's worth of history and the nearby row five
-    // drawings, and none is what the reader came for.
+    // One Piece has completed the relationship rollout; other series keep
+    // their existing navigation until their own editorial migration.
     return {
       ...orNotFound(await loadCharacter(args)),
-      nearby: loadNearby(args),
-      relationships: loadRelationships(args),
-      position: loadRoutePosition(args),
+      ...(args.data.series === 'one-piece' ?
+        { relationships: loadRelationships(args), legacy: null }
+      : {
+          relationships: null,
+          legacy: {
+            nearby: loadNearby(args),
+            position: loadRoutePosition(args),
+          },
+        }),
     }
   },
   head: (match) => recordHead(match, 'characters') ?? {},
@@ -83,14 +88,11 @@ export const Route = createFileRoute('/$series/$locale/characters/$id')({
 
 /**
  * The dossier and chronicle precede the streamed relationship selection.
- * Reached cards replace legacy route adjacency; pages without reached links
- * retain it. The nearby row remains until the rollout cleanup.
+ * One Piece has no adjacency fallback; other series retain their navigation.
  */
 function CharacterPage(): ReactElement {
-  const { detail, nearby, position, relationships } = Route.useLoaderData()
+  const { detail, legacy, relationships } = Route.useLoaderData()
   const peekDossier = usePeek(liftDossier)
-  const peekCharacter = usePeek(liftCharacter)
-  const peekRecord = usePeek(liftRecord)
 
   return (
     <main
@@ -117,66 +119,63 @@ function CharacterPage(): ReactElement {
         detail={detail}
       />
 
-      <Suspense fallback={<RelationshipsPending />}>
-        <RelationshipsBand
-          fallback={
-            <section
-              aria-labelledby="route-position"
-              {...stylex.props(
-                styles.diptych,
-                styles.reversed,
-                settleStyles.band,
-                settleStyles.at(BAND.route),
-              )}
-            >
-              <Suspense fallback={<RoutePending />}>
-                <RouteDiptych
-                  peek={peekRecord}
-                  position={position}
-                />
-              </Suspense>
-            </section>
-          }
-          relationships={relationships}
-        />
-      </Suspense>
-
-      <NearbyRow
-        nearby={nearby}
-        peek={peekCharacter}
-      />
+      {relationships !== null && (
+        <Suspense fallback={null}>
+          <RelationshipsBand relationships={relationships} />
+        </Suspense>
+      )}
+      {legacy !== null && <LegacyNavigation {...legacy} />}
     </main>
   )
 }
 
-/** What the page says while the relations are still on their way. */
-function RelationshipsPending(): ReactElement {
-  const t = useT()
-
-  return (
-    <p
-      aria-busy="true"
-      {...stylex.props(styles.lede)}
-    >
-      {t('character.relationshipsLoading')}
-    </p>
-  )
-}
-
-/** Reached relations replace legacy adjacency once the streamed selection arrives. */
+/** The latest server-filtered selection, with no teaser while it streams. */
 function RelationshipsBand({
-  fallback,
   relationships,
 }: {
-  fallback: ReactElement
   relationships: Promise<RelationshipView[]>
 }): ReactElement {
   return (
     <RelationshipBand
       band={BAND.relationships}
-      fallback={fallback}
       relationships={use(relationships)}
     />
+  )
+}
+
+/** Series without a relationship rollout retain their existing navigation. */
+function LegacyNavigation({
+  nearby,
+  position,
+}: {
+  nearby: Promise<Slot<CharacterView>[]>
+  position: Parameters<typeof RouteDiptych>[0]['position']
+}): ReactElement {
+  const peekRecord = usePeek(liftRecord)
+  const peekCharacter = usePeek(liftCharacter)
+  return (
+    <>
+      <section
+        aria-labelledby="route-position"
+        {...stylex.props(
+          styles.diptych,
+          styles.reversed,
+          settleStyles.band,
+          settleStyles.at(BAND.route),
+        )}
+      >
+        <Suspense fallback={<RoutePending />}>
+          <RouteDiptych
+            peek={peekRecord}
+            position={position}
+          />
+        </Suspense>
+      </section>
+      <NearbyRow
+        nearby={nearby}
+        peek={peekCharacter}
+      />
+    </>
   )
 }
 

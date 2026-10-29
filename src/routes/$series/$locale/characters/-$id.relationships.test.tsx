@@ -72,7 +72,7 @@ function SelectionDemo(): ReactElement {
   )
 }
 
-/** Reached selections replace the legacy band and moving back restores it. */
+/** Moving back removes the section instead of restoring legacy navigation. */
 function MigrationDemo(): ReactElement {
   const [reached, setReached] = useState(false)
   return (
@@ -87,7 +87,6 @@ function MigrationDemo(): ReactElement {
       </button>
       <RelationshipBand
         band={0}
-        fallback={<p>Legacy route</p>}
         relationships={reached ? relationships : []}
       />
     </>
@@ -95,10 +94,10 @@ function MigrationDemo(): ReactElement {
 }
 
 describe('the character relationship band', () => {
-  it('replaces legacy adjacency only while reached relationships exist', () => {
+  it('shows only reached relationships when moving forwards and backwards', () => {
     renderWithProviders(<MigrationDemo />)
 
-    expect(screen.getByText('Legacy route')).toBeInTheDocument()
+    expect(screen.queryByText('Legacy route')).not.toBeInTheDocument()
 
     fireEvent.click(screen.getByRole('button', { name: 'Move bookmark' }))
 
@@ -109,7 +108,7 @@ describe('the character relationship band', () => {
 
     fireEvent.click(screen.getByRole('button', { name: 'Move bookmark' }))
 
-    expect(screen.getByText('Legacy route')).toBeInTheDocument()
+    expect(screen.queryByText('Legacy route')).not.toBeInTheDocument()
     expect(
       screen.queryByRole('heading', { name: 'Relationships' }),
     ).not.toBeInTheDocument()

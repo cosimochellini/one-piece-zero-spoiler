@@ -61,6 +61,14 @@ selections contribute no cards, counts or placeholders. A later re-selection
 restores the pair’s reached history. Both endpoints and each snapshot are gated
 before names or text reach the client; perspectives remain directed.
 
+One Piece character pages show reached relationships or omit the section
+entirely, including while it loads; they no longer request archive positions or
+nearby characters. The cohort inventory accounts for every character through
+authored selections or documented deliberate omissions. Hunter x Hunter retains
+its existing archive navigation and nearby recommendations until a separate
+content migration; no relationships are inferred for a series without authored
+content.
+
 The authoring contract and provenance requirements are in
 [Contributing](../CONTRIBUTING.md#authoring-relationship-selections). Selection
 and wording share the existing timeline; no separate client selection API

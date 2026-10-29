@@ -1,8 +1,12 @@
 import { describe, expect, it } from 'vitest'
 
-import { CHARACTER_DOSSIERS } from '~/data/series/one-piece/sagas'
+import { eggheadRelationshipOmissions } from '~/data/series/one-piece/records/egghead.relationships'
+import { thrillerBarkRelationshipOmissions } from '~/data/series/one-piece/records/thriller-bark.relationships'
+import { CHARACTER_DOSSIERS, sagas } from '~/data/series/one-piece/sagas'
 import { LOADED_SERIES } from '~/test/series'
 
+// eslint-disable-next-line no-restricted-imports -- The evidence lives in docs, beside the audit manifest.
+import elbafEvidence from '../../docs/content-provenance/elbaf-relationships.json' with { type: 'json' }
 // eslint-disable-next-line no-restricted-imports -- The evidence lives in docs, beside the audit manifest.
 import hunterEvidence from '../../docs/content-provenance/hunter-x-hunter.json' with { type: 'json' }
 // eslint-disable-next-line no-restricted-imports -- The evidence lives in docs, beside the audit manifest.
@@ -26,7 +30,35 @@ const owners = Object.entries(CHARACTER_DOSSIERS)
   .filter(([, { relationships }]) => relationships !== undefined)
   .map(([id, { relationships = [] }]) => ({ id, relationships }))
 
+const cohortIds = sagas.flatMap(({ entries }) =>
+  entries.filter(({ kind }) => kind === 'character').map(({ id }) => id),
+)
+
 describe('relationship provenance', () => {
+  it('accounts for every debut cohort with authored selections or explicit omissions', () => {
+    const authored = new Set(owners.map(({ id }) => id))
+    const omitted: Record<string, string> = {
+      ...elbafEvidence.omitted,
+      ...eggheadRelationshipOmissions,
+      ...thrillerBarkRelationshipOmissions,
+    }
+
+    expect([...authored, ...Object.keys(omitted)].toSorted(byId)).toStrictEqual(
+      cohortIds.toSorted(byId),
+    )
+
+    for (const [id, reason] of Object.entries(omitted)) {
+      expect(authored.has(id), id).toBe(false)
+      expect(reason.trim().length, id).toBeGreaterThan(0)
+    }
+    for (const { id, relationships } of owners) {
+      expect(
+        relationships.some(({ value }) => value.length > 0),
+        id,
+      ).toBe(true)
+    }
+  })
+
   it('lists exactly the characters that have relationships', () => {
     expect(Object.keys(characters).toSorted(byId)).toStrictEqual(
       owners.map(({ id }) => id).toSorted(byId),
