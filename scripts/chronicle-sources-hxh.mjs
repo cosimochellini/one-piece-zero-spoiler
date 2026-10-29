@@ -494,7 +494,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
   'siper': {
     14: {
       source: 'https://hunterxhunter.fandom.com/wiki/Chapter_23',
-      note: "Checked: Khara's congratulations and the invitation to next year, barely any reaction, badges hidden and eyes avoided. The sniper rifle is on the Siper page (chapter 22). Manga only.",
+      note: "Checked: Khara's congratulations and the invitation to next year, barely any reaction, badges hidden and eyes avoided. The square sunglasses follow her design on the Siper page; the rifle is held back to chapter 26. Manga only.",
     },
     15: {
       source: 'https://hunterxhunter.fandom.com/wiki/Chapter_26',

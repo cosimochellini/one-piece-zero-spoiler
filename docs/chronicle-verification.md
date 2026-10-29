@@ -1980,10 +1980,10 @@ held to: every story below has a row, and every row below has a story.
 
 ## Siper (`siper`, threshold ep 14)
 
-| Entry (en title) | Episode | Fandom page that settles it                      | Note                                                                                                                                                                                                                  |
-| ---------------- | ------: | ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| A rifle on board |      14 | https://hunterxhunter.fandom.com/wiki/Chapter_23 | Checked: Khara's congratulations and the invitation to next year, barely any reaction, badges hidden and eyes avoided. The sniper rifle is on the Siper page (chapter 22). Manga only.                                |
-| Badge number 80  |      15 | https://hunterxhunter.fandom.com/wiki/Chapter_26 | Checked: after killing Goz, the needle man offers Hisoka badge #80 from one of the snipers he killed over the use of a gun; Hisoka keeps it and still needs two points. The death is reported, not shown. Manga only. |
+| Entry (en title) | Episode | Fandom page that settles it                      | Note                                                                                                                                                                                                                                |
+| ---------------- | ------: | ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| A rifle on board |      14 | https://hunterxhunter.fandom.com/wiki/Chapter_23 | Checked: Khara's congratulations and the invitation to next year, barely any reaction, badges hidden and eyes avoided. The square sunglasses follow her design on the Siper page; the rifle is held back to chapter 26. Manga only. |
+| Badge number 80  |      15 | https://hunterxhunter.fandom.com/wiki/Chapter_26 | Checked: after killing Goz, the needle man offers Hisoka badge #80 from one of the snipers he killed over the use of a gun; Hisoka keeps it and still needs two points. The death is reported, not shown. Manga only.               |
 
 ## Ryu (`ryu`, threshold ep 14)
 

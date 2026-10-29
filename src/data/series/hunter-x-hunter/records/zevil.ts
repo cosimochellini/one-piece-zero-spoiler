@@ -65,8 +65,8 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       revealedAtChapter: 23,
       name: { it: 'Agon', en: 'Agon' },
       summary: {
-        it: 'Uno spadaccino che arriva alla quarta prova dell’Esame Hunter.',
-        en: 'A swordsman who reaches the Fourth Phase of the Hunter Exam.',
+        it: 'Un aspirante avvolto in un mantello che arriva alla quarta prova dell’Esame Hunter.',
+        en: 'A cloaked applicant who reaches the Fourth Phase of the Hunter Exam.',
       },
       visual: { art: 'agon', tint: 'violet' },
     },
@@ -78,8 +78,8 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       revealedAtChapter: 23,
       name: { it: 'Super', en: 'Siper' },
       summary: {
-        it: 'Un’aspirante armata di fucile di precisione che arriva alla quarta prova dell’Esame Hunter.',
-        en: 'An applicant armed with a sniper rifle who reaches the Fourth Phase of the Hunter Exam.',
+        it: 'Un’aspirante con occhiali da sole squadrati che arriva alla quarta prova dell’Esame Hunter.',
+        en: 'An applicant in square sunglasses who reaches the Fourth Phase of the Hunter Exam.',
       },
       visual: { art: 'siper', tint: 'wine' },
     },

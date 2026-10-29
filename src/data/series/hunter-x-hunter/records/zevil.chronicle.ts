@@ -302,8 +302,8 @@ export const zevilChronicles = {
       value: {
         title: { it: 'Un fucile a bordo', en: 'A rifle on board' },
         body: {
-          it: 'Super, un’aspirante armata di un fucile da cecchino, è fra i ventiquattro che lasciano la Torre di Lotta e pescano il numero di un bersaglio. Sulla barca per l’Isola di Zevil [[khara|Khara]] si congratula con tutti e annuncia che sono invitati all’esame dell’anno dopo, ma gli aspiranti quasi non reagiscono. Quasi tutti hanno già nascosto la targhetta e aspettano in silenzio, evitando di guardarsi, chiedendosi chi abbia pescato il proprio numero.',
-          en: 'Siper, an applicant with a sniper rifle, is among the twenty-four who leave Trick Tower and draw a target’s number. On the boat to Zevil Island [[khara|Khara]] congratulates everyone and says they are all invited to next year’s exam, but the applicants barely react. Most have already hidden their badges and wait in silence, avoiding each other’s eyes, each wondering who has drawn their number.',
+          it: 'Super, un’aspirante con occhiali da sole squadrati, è fra i ventiquattro che lasciano la Torre di Lotta e pescano il numero di un bersaglio. Sulla barca per l’Isola di Zevil [[khara|Khara]] si congratula con tutti e annuncia che sono invitati all’esame dell’anno dopo, ma gli aspiranti quasi non reagiscono. Quasi tutti hanno già nascosto la targhetta e aspettano in silenzio, evitando di guardarsi, chiedendosi chi abbia pescato il proprio numero.',
+          en: 'Siper, an applicant in square sunglasses, is among the twenty-four who leave Trick Tower and draw a target’s number. On the boat to Zevil Island [[khara|Khara]] congratulates everyone and says they are all invited to next year’s exam, but the applicants barely react. Most have already hidden their badges and wait in silence, avoiding each other’s eyes, each wondering who has drawn their number.',
         },
       },
     },

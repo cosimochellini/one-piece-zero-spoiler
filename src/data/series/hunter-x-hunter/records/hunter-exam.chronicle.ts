@@ -591,8 +591,8 @@ export const hunterExamChronicles = {
       value: {
         title: { it: 'Nella palude', en: 'In the swamp' },
         body: {
-          it: 'Nella palude della prima prova [[hisoka|Hisoka]] attacca un gruppo di aspiranti. Restano in piedi solo Cherry, [[kurapika|Kurapika]] e [[leorio-paradinight|Leorio]]. Sanno di non avere speranze e fuggono in tre direzioni diverse. La fuga non salva Cherry: più tardi il suo corpo pende a testa in giù da un albero, con alcune carte da gioco piantate nel collo e nella fronte, mentre degli uccelli si avvicinano.',
-          en: 'In the swamp of the First Phase, [[hisoka|Hisoka]] attacks a group of applicants. Only Cherry, [[kurapika|Kurapika]] and [[leorio-paradinight|Leorio]] are left standing. They know they are outmatched and run off in three different directions. Running does not save Cherry. Later his body hangs upside down from a tree, with playing cards stuck in his neck and forehead, while birds close in.',
+          it: 'Nella palude della prima prova [[hisoka|Hisoka]] attacca un gruppo di aspiranti. Restano in piedi solo Cherry, [[kurapika|Kurapika]] e [[leorio-paradinight|Leorio]]. Sanno di non avere speranze e fuggono in tre direzioni diverse. La fuga non salva Cherry: più tardi il suo corpo pende a testa in giù da un albero, con alcune carte da gioco piantate addosso, mentre degli uccelli si avvicinano.',
+          en: 'In the swamp of the First Phase, [[hisoka|Hisoka]] attacks a group of applicants. Only Cherry, [[kurapika|Kurapika]] and [[leorio-paradinight|Leorio]] are left standing. They know they are outmatched and run off in three different directions. Running does not save Cherry. Later his body hangs upside down from a tree, with playing cards stuck in him, while birds close in.',
         },
       },
     },
