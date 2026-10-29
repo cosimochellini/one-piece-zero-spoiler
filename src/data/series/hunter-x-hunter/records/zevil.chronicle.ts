@@ -340,8 +340,8 @@ export const zevilChronicles = {
       value: {
         title: { it: 'Non fra i nove', en: 'Not among the nine' },
         body: {
-          it: 'La quarta prova finisce con un annuncio dalla barca: tutti devono tornare all’approdo entro un’ora, e chi scambia targhette lì viene squalificato. In riva al mare aspettano solo nove aspiranti, fra cui [[gon-freecss|Gon]], [[hisoka|Hisoka]] e [[pokkle|Pockul]]. Ryu non è fra loro. Sull’isola ha combattuto contro un altro aspirante e ha perso. Ha fallito l’esame.',
-          en: 'The Fourth Phase ends with an announcement from the boat: everyone must return to the landing within an hour, and anyone who trades badges there is disqualified. Only nine applicants wait by the water, among them [[gon-freecss|Gon]], [[hisoka|Hisoka]] and [[pokkle|Pokkle]]. Ryu is not one of them. On the island he fought another applicant and lost. He has failed the exam.',
+          it: 'La quarta prova finisce con un annuncio dalla barca: tutti devono tornare all’approdo entro un’ora, e chi scambia targhette lì viene squalificato. In riva al mare aspettano solo nove aspiranti, e Ryu non è fra loro. Sull’isola ha combattuto contro un altro aspirante e ha perso. Ha fallito l’esame.',
+          en: 'The Fourth Phase ends with an announcement from the boat: everyone must return to the landing within an hour, and anyone who trades badges there is disqualified. Only nine applicants wait by the water, and Ryu is not one of them. On the island he fought another applicant and lost. He has failed the exam.',
         },
       },
     },

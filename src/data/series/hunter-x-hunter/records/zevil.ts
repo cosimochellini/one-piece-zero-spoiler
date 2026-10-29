@@ -24,8 +24,8 @@ const ON_ROSTER = { episode: 14, chapter: 23, source: 'chapter' } as const
  * neither a naming gate. Tonpa, Ponzu, the brothers and the unnamed
  * eliminated fail the phase at 18 / 32; Pokkle's pass belongs to the Final
  * Phase update. Bourbon, Goz, Siper, Agon and Bodoro die after they open, so
- * each has a death redrawing, as do Cherry and Geretta in `hunter-exam.ts`. Unnamed species and the final-phase hotel get
- * no record.
+ * each has a death redrawing, as do Cherry and Geretta in `hunter-exam.ts`.
+ * Unnamed species and the final-phase hotel get no record.
  */
 export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
   entries: [
@@ -253,8 +253,8 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       revealedAtChapter: 33,
       name: { it: 'Bodoro', en: 'Bodoro' },
       summary: {
-        it: 'Un anziano maestro di kung fu che partecipa all’Esame Hunter.',
-        en: 'An elderly kung fu master taking the Hunter Exam.',
+        it: 'Un anziano esperto di arti marziali che partecipa all’Esame Hunter.',
+        en: 'An elderly martial artist taking the Hunter Exam.',
       },
       visual: { art: 'bodoro', tint: 'azure' },
     },
@@ -596,8 +596,8 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       chronicle: zevilChronicles.bodoro,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
-        it: 'Un anziano maestro di kung fu tra gli aspiranti dell’Esame Hunter.',
-        en: 'An elderly kung fu master among the applicants of the Hunter Exam.',
+        it: 'Un anziano esperto di arti marziali tra gli aspiranti dell’Esame Hunter.',
+        en: 'An elderly martial artist among the applicants of the Hunter Exam.',
       },
       affiliation: [
         {
