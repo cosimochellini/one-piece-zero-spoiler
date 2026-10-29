@@ -1,6 +1,7 @@
 import type { Origin } from '~/data/types'
 
 import { eggheadChronicles } from './egghead.chronicle'
+import { eggheadRelationships } from './egghead.relationships'
 import type { OnePieceAffiliation, OnePieceSaga } from './saga'
 
 /**
@@ -535,6 +536,7 @@ export const egghead: OnePieceSaga = {
     // flashback at 610 shows nothing of him, and at 1090 it is Lilith who
     // calls herself Vegapunk.
     'vegapunk': {
+      relationships: eggheadRelationships.vegapunk,
       role: {
         it: 'Scienziato capo del Governo Mondiale',
         en: 'World Government chief scientist',
@@ -577,6 +579,7 @@ export const egghead: OnePieceSaga = {
       ],
     },
     'shaka': {
+      relationships: eggheadRelationships.shaka,
       role: {
         it: 'Il Vegapunk che rappresenta il bene',
         en: 'The Vegapunk that stands for good',
@@ -613,6 +616,7 @@ export const egghead: OnePieceSaga = {
       epithet: [{ episode: 1091, value: { it: 'Good', en: 'Good' } }],
     },
     'lilith': {
+      relationships: eggheadRelationships.lilith,
       role: {
         it: 'Il Vegapunk che rappresenta il male, Punk-02',
         en: 'The Vegapunk that stands for evil, Punk-02',
@@ -648,6 +652,7 @@ export const egghead: OnePieceSaga = {
     // drawings on the sheet and say nothing more. Each of the four points at
     // the fruit the archive files for the body it was copied from.
     's-snake': {
+      relationships: eggheadRelationships['s-snake'],
       role: SERAPHIM_ROLE,
       log: {
         it: 'È uno dei serafini custoditi su Egghead: bambini con le ali nere e una fiamma sulla schiena, costruiti per prendere il posto della Flotta dei Sette; due di loro sono usciti senza un graffio dallo scontro su Amazon Lily. Su Amazon Lily questa ha tolto di mezzo una guerriera Kuja con uno schiaffo, a una mano sola, e le Kuja che l’hanno vista da vicino l’hanno trovata identica alla loro Imperatrice da bambina.',
@@ -667,6 +672,7 @@ export const egghead: OnePieceSaga = {
       devilFruit: [{ episode: 1101, value: ['love-love-fruit'] }],
     },
     's-hawk': {
+      relationships: eggheadRelationships['s-hawk'],
       role: SERAPHIM_ROLE,
       log: {
         it: 'Uno dei quattro serafini su Egghead, con la faccia da bambino su un corpo più alto di un uomo, ali nere e una fiamma che gli arde sulla schiena. Su Amazon Lily un solo colpo della sua spada ha respinto un Imperatore e tagliato via parte della montagna dell’isola. Non parla e non esita.',
@@ -686,6 +692,7 @@ export const egghead: OnePieceSaga = {
       devilFruit: [{ episode: 1108, value: ['dice-dice-fruit'] }],
     },
     's-bear': {
+      relationships: eggheadRelationships['s-bear'],
       role: SERAPHIM_ROLE,
       log: {
         it: 'Ha la faccia di un bambino e la stazza di un gigante. Il Cipher Pol lo riporta a Egghead su una nave del Governo Mondiale, e dal laboratorio rispondono che da lì S-Bear sa tornare a casa da solo e che gli agenti possono andarsene. Sotto i capelli bianchi e le orecchie d’orso c’è la faccia di un uomo che la ciurma ha già incontrato, tornato giovane.',
@@ -705,6 +712,7 @@ export const egghead: OnePieceSaga = {
       devilFruit: [{ episode: 1099, value: ['paw-paw-fruit'] }],
     },
     's-shark': {
+      relationships: eggheadRelationships['s-shark'],
       role: SERAPHIM_ROLE,
       log: {
         it: 'Questo serafino è costruito sul modello di un uomo-pesce e combatte con il karate degli uomini-pesce. Si immerge nel terreno come si nuota in mare, e riemerge sotto chi ha davanti. Ha ali nere con il fuoco dietro e la faccia di un bambino, e si ferma solo quando glielo ordina Shaka.',
@@ -727,6 +735,7 @@ export const egghead: OnePieceSaga = {
     // seen: at 1092 they are only shadows in the picture of the six that CP0
     // is shown.
     'edison': {
+      relationships: eggheadRelationships.edison,
       role: {
         it: 'Satellite di Vegapunk, Punk-03',
         en: 'Vegapunk satellite, Punk-03',
@@ -769,6 +778,7 @@ export const egghead: OnePieceSaga = {
       epithet: [{ episode: 1095, value: { it: 'Thinker', en: 'Thinker' } }],
     },
     'pythagoras': {
+      relationships: eggheadRelationships.pythagoras,
       role: {
         it: 'Satellite di Vegapunk, Punk-04',
         en: 'Vegapunk satellite, Punk-04',
@@ -805,6 +815,7 @@ export const egghead: OnePieceSaga = {
       epithet: [{ episode: 1095, value: { it: 'Wisdom', en: 'Wisdom' } }],
     },
     'atlas': {
+      relationships: eggheadRelationships.atlas,
       role: {
         it: 'Il Vegapunk che rappresenta la violenza',
         en: 'The Vegapunk that stands for violence',
@@ -842,6 +853,7 @@ export const egghead: OnePieceSaga = {
       epithet: [{ episode: 1091, value: { it: 'Violence', en: 'Violence' } }],
     },
     'york': {
+      relationships: eggheadRelationships.york,
       role: {
         it: 'Satellite di Vegapunk, Punk-06',
         en: 'Vegapunk satellite, Punk-06',
@@ -893,6 +905,7 @@ export const egghead: OnePieceSaga = {
       epithet: [{ episode: 1095, value: { it: 'Greed', en: 'Greed' } }],
     },
     'jaygarcia-saturn': {
+      relationships: eggheadRelationships['jaygarcia-saturn'],
       role: ELDER_ROLE,
       log: {
         it: 'Finora i cinque che decidono per il mondo non si erano mai visti fuori da Mary Geoise. Questo naviga verso Egghead sulla nave dell’ammiraglio Kizaru, dove è l’ammiraglio in persona a servirgli il tè e i dolci vengono prima controllati per escludere il veleno. Ha una lunga barba bianca, una cicatrice sull’occhio sinistro, un piccolo cappello nero e un bastone. Dice di aver incontrato Vegapunk una volta sola, molto tempo fa, e che quello che è successo è un peccato.',
@@ -930,6 +943,7 @@ export const egghead: OnePieceSaga = {
     // from her Vivre Card alone, so there is no origin line. The anime
     // caption at 1131 makes her a captain, not a commander.
     'ginny': {
+      relationships: eggheadRelationships.ginny,
       role: { it: 'Schiava a God Valley', en: 'Slave at God Valley' },
       log: {
         it: 'È una degli schiavi portati a God Valley per la gara di caccia dei Draghi Celesti. Quando gli altri schiavi trascinano indietro il bambino bucaniere che ha cercato di scappare, lei e un giovane Ivankov, che chiama fratellone, li fermano. Dicono agli schiavi che hanno tutti l’aria infelice e chiedono se vogliono morire o vivere. Se gli altri li seguono, dicono, hanno un piano magnifico.',
@@ -968,6 +982,7 @@ export const egghead: OnePieceSaga = {
       ],
     },
     'marcus-mars': {
+      relationships: eggheadRelationships['marcus-mars'],
       role: ELDER_ROLE,
       log: {
         it: 'Siede con gli altri quattro nella loro stanza del castello di Pangaea, a Mary Geoise, quando Imu chiama per far provare la Fiamma Madre di Vegapunk sul Regno di Lulusia. È Mars a far notare che il popolo di Lulusia mostra segni di rivolta. Quando Sabo li ha attaccati per Cobra, si è trasformato con gli altri in un’enorme sagoma nel buio.',
@@ -993,6 +1008,7 @@ export const egghead: OnePieceSaga = {
       ],
     },
     'topman-warcury': {
+      relationships: eggheadRelationships['topman-warcury'],
       role: ELDER_ROLE,
       log: {
         it: 'Siede con gli altri quattro nella loro stanza di Mary Geoise quando Imu sceglie il Regno di Lulusia come luogo in cui provare la Fiamma Madre di Vegapunk, abitanti compresi. Il suo unico commento è che servirà da lezione per tutti. Porta il titolo di Dio Guerriero della Giustizia.',
@@ -1018,6 +1034,7 @@ export const egghead: OnePieceSaga = {
       ],
     },
     'ethanbaron-v-nusjuro': {
+      relationships: eggheadRelationships['ethanbaron-v-nusjuro'],
       role: ELDER_ROLE,
       log: {
         it: 'È l’unico dei cinque a non portare un completo, e tiene la spada in mano: quando gli altri hanno puntato le pistole su Cobra, lui l’ha sguainata. Quando Imu ordina di provare la Fiamma Madre di Vegapunk sul Regno di Lulusia, lui pensa già al giorno in cui quel potere sarà a loro disposizione.',
@@ -1043,6 +1060,7 @@ export const egghead: OnePieceSaga = {
       ],
     },
     'shepherd-ju-peter': {
+      relationships: eggheadRelationships['shepherd-ju-peter'],
       role: ELDER_ROLE,
       log: {
         it: 'Siede con gli altri quattro nella loro stanza di Mary Geoise quando Imu sceglie il Regno di Lulusia per provare la Fiamma Madre di Vegapunk. Ha il viso più giovane dei cinque e l’ultima parola: quando quel potere sarà loro, dice, la lunga battaglia finirà.',
@@ -1072,6 +1090,7 @@ export const egghead: OnePieceSaga = {
     // says the word SWORD at 1113. North Blue comes from her Vivre Card
     // alone, so there is no origin line.
     'hibari': {
+      relationships: eggheadRelationships.hibari,
       chronicle: eggheadChronicles.hibari,
       role: { it: 'Capitano di fregata della Marina', en: 'Marine commander' },
       log: {
@@ -1102,6 +1121,7 @@ export const egghead: OnePieceSaga = {
     // dated at 1114, his caption "PRINCE GRUS, NAVY HQ REAR ADMIRAL (SWORD)";
     // West Blue comes from his Vivre Card alone, so there is no origin line.
     'prince-grus': {
+      relationships: eggheadRelationships['prince-grus'],
       chronicle: eggheadChronicles['prince-grus'],
       role: { it: 'Contrammiraglio della Marina', en: 'Marine rear admiral' },
       log: {
@@ -1124,6 +1144,7 @@ export const egghead: OnePieceSaga = {
       ],
     },
     'doll': {
+      relationships: eggheadRelationships.doll,
       chronicle: eggheadChronicles.doll,
       role: {
         it: 'Viceammiraglio, comandante della base G-14',
@@ -1158,6 +1179,7 @@ export const egghead: OnePieceSaga = {
     // DISCIPLINE-WOMAN"). North Blue comes from her Vivre Card alone, so
     // there is no origin line.
     'kujaku': {
+      relationships: eggheadRelationships.kujaku,
       chronicle: eggheadChronicles.kujaku,
       role: { it: 'Contrammiraglio dello SWORD', en: 'SWORD rear admiral' },
       log: {
@@ -1184,6 +1206,7 @@ export const egghead: OnePieceSaga = {
     // only as a silhouette, which counts as on screen, as Hiyori's
     // silhouette at 910 does in wano.ts.
     'nefertari-lili': {
+      relationships: eggheadRelationships['nefertari-lili'],
       chronicle: eggheadChronicles['nefertari-lili'],
       role: {
         it: 'Regina di Alabasta, ottocento anni fa',
@@ -1217,6 +1240,7 @@ export const egghead: OnePieceSaga = {
     // (caption "ST. FIGARLAND GARLING / GODHEAD OF SCIENCE & DEFENSE, FIVE
     // ELDERS").
     'figarland-garling': {
+      relationships: eggheadRelationships['figarland-garling'],
       chronicle: eggheadChronicles['figarland-garling'],
       role: {
         it: 'Comandante supremo dei Cavalieri di Dio',
@@ -1253,6 +1277,7 @@ export const egghead: OnePieceSaga = {
       ],
     },
     'bluegrass': {
+      relationships: eggheadRelationships.bluegrass,
       chronicle: eggheadChronicles.bluegrass,
       role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
       log: {
@@ -1276,6 +1301,7 @@ export const egghead: OnePieceSaga = {
     // fruit (the Ott-Ott Fruit) is named only in SBS volume 110, never in an
     // episode.
     'pomsky': {
+      relationships: eggheadRelationships.pomsky,
       chronicle: eggheadChronicles.pomsky,
       role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
       log: {
@@ -1296,6 +1322,7 @@ export const egghead: OnePieceSaga = {
     // Kingdom, South Blue"; the origin waits for 1131, where the family's
     // church is shown there, which is later and so safe.
     'clapp': {
+      relationships: eggheadRelationships.clapp,
       chronicle: eggheadChronicles.clapp,
       role: { it: 'Padre di Kuma', en: 'Kuma’s father' },
       log: {
@@ -1325,6 +1352,7 @@ export const egghead: OnePieceSaga = {
     // `unknown` from 1133: he is last seen shouting from the Navy fleet that
     // Kuma sinks, and the anime does not say whether he came out of the sea.
     'bekori': {
+      relationships: eggheadRelationships.bekori,
       chronicle: eggheadChronicles.bekori,
       role: { it: 'Re del Regno di Sorbet', en: 'King of the Sorbet Kingdom' },
       log: {
@@ -1362,6 +1390,7 @@ export const egghead: OnePieceSaga = {
     // No origin line: the anime makes her the former queen dowager of Sorbet
     // but never says where she was born.
     'conney': {
+      relationships: eggheadRelationships.conney,
       chronicle: eggheadChronicles.conney,
       role: {
         it: 'Ex regina madre del Regno di Sorbet',
@@ -1383,6 +1412,7 @@ export const egghead: OnePieceSaga = {
       ],
     },
     'bulldog': {
+      relationships: eggheadRelationships.bulldog,
       chronicle: eggheadChronicles.bulldog,
       role: { it: 'Ex re del Regno di Sorbet', en: 'Former king of Sorbet' },
       log: {
@@ -1413,6 +1443,7 @@ export const egghead: OnePieceSaga = {
     // calls her a Cipher Pol No. 8 agent, but the affiliation waits for 1135,
     // where the story says what she and her people are; later is safe.
     'alpha': {
+      relationships: eggheadRelationships.alpha,
       chronicle: eggheadChronicles.alpha,
       role: { it: 'Infermiera di Bonney', en: 'Bonney’s nurse' },
       log: {
@@ -1435,6 +1466,7 @@ export const egghead: OnePieceSaga = {
       ],
     },
     'red-king': {
+      relationships: eggheadRelationships['red-king'],
       chronicle: eggheadChronicles['red-king'],
       role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
       log: {
@@ -1468,6 +1500,7 @@ export const egghead: OnePieceSaga = {
       ],
     },
     'guillotine': {
+      relationships: eggheadRelationships.guillotine,
       chronicle: eggheadChronicles.guillotine,
       role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
       log: {
@@ -1485,6 +1518,7 @@ export const egghead: OnePieceSaga = {
     // Status opens as `unknown`: episode 1142 ends with him smashed into the
     // ground and his line dead, and only 1155 shows him back on his feet.
     'tosa': {
+      relationships: eggheadRelationships.tosa,
       chronicle: eggheadChronicles.tosa,
       role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
       log: {
@@ -1507,6 +1541,7 @@ export const egghead: OnePieceSaga = {
     // No `devilFruit` line: the cannon is on screen from 1129, but the fruit
     // (the Barrel-Barrel Fruit) is named only in SBS volume 110.
     'urban': {
+      relationships: eggheadRelationships.urban,
       chronicle: eggheadChronicles.urban,
       role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
       log: {
@@ -1524,6 +1559,7 @@ export const egghead: OnePieceSaga = {
     // No devil fruit: by 1158 the anime says only that he fought "with an
     // elastic body... just like Nika" (1148), never which fruit he ate.
     'joy-boy': {
+      relationships: eggheadRelationships['joy-boy'],
       chronicle: eggheadChronicles['joy-boy'],
       role: { it: 'Il primo pirata', en: 'The first pirate' },
       log: {
@@ -1538,6 +1574,7 @@ export const egghead: OnePieceSaga = {
     // where this iron giant came from" (1098). The waking in the log and the
     // summary, through the fire and saying sorry to Joy Boy, is 1145 (ch 1111).
     'emet': {
+      relationships: eggheadRelationships.emet,
       chronicle: eggheadChronicles.emet,
       role: { it: 'Robot antico', en: 'Ancient robot' },
       log: {
