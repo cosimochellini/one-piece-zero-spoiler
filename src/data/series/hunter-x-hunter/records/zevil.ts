@@ -184,8 +184,8 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       revealedAtChapter: 29,
       name: { it: 'Umori', en: 'Umori' },
       summary: {
-        it: 'Un aspirante Hunter che affronta l’esame in squadra con i due fratelli.',
-        en: 'A Hunter Exam applicant taking the exam as a team with his two brothers.',
+        it: 'Un aspirante Hunter che affronta l’esame con i due fratelli.',
+        en: 'A Hunter Exam applicant taking the exam with his two brothers.',
       },
       visual: { art: 'umori', tint: 'sand' },
     },
@@ -197,8 +197,8 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       revealedAtChapter: 29,
       name: { it: 'Imori', en: 'Imori' },
       summary: {
-        it: 'Uno di tre fratelli che tornano ogni anno all’Esame Hunter.',
-        en: 'One of three brothers who return to the Hunter Exam every year.',
+        it: 'Uno di tre fratelli che tornano spesso all’Esame Hunter.',
+        en: 'One of three brothers who often return to the Hunter Exam.',
       },
       visual: { art: 'imori', tint: 'blue' },
     },
@@ -223,8 +223,8 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       revealedAtChapter: 5,
       name: { it: 'Burbon', en: 'Bourbon' },
       summary: {
-        it: 'Un incantatore di serpenti che torna spesso all’Esame Hunter e non si arrende mai.',
-        en: 'A snake charmer who often returns to the Hunter Exam and never gives up.',
+        it: 'Un incantatore di serpenti che torna spesso all’Esame Hunter.',
+        en: 'A snake charmer who often returns to the Hunter Exam.',
       },
       visual: { art: 'bourbon', tint: 'orange' },
     },
@@ -439,8 +439,8 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       chronicle: zevilChronicles.amori,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
-        it: 'Tonpa indica a Gon i tre fratelli tra gli aspiranti abituali: lavorano in squadra e migliorano ogni anno.',
-        en: 'Tonpa points out the three brothers to Gon among the regular applicants: they work as a team and improve every year.',
+        it: 'Tonpa indica a Gon i tre fratelli tra gli aspiranti abituali.',
+        en: 'Tonpa points out the three brothers to Gon among the regular applicants.',
       },
       affiliation: [
         {
@@ -466,8 +466,8 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       chronicle: zevilChronicles.umori,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
-        it: 'Si presenta all’esame con i due fratelli. Tonpa li descrive a Gon come aspiranti abituali, forti del gioco di squadra.',
-        en: 'He comes to the exam with his two brothers. Tonpa describes them to Gon as regular applicants whose strength is teamwork.',
+        it: 'Si presenta all’esame con i due fratelli. Tonpa li indica a Gon tra gli aspiranti abituali.',
+        en: 'He comes to the exam with his two brothers. Tonpa points them out to Gon among the regular applicants.',
       },
       affiliation: [
         {
@@ -493,8 +493,8 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       chronicle: zevilChronicles.imori,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
-        it: 'Insieme ai due fratelli è tra gli aspiranti abituali che Tonpa indica a Gon: i tre si muovono in squadra.',
-        en: 'With his two brothers he is among the regular applicants Tonpa points out to Gon: the three move as a team.',
+        it: 'Insieme ai due fratelli è tra gli aspiranti abituali che Tonpa indica a Gon.',
+        en: 'With his two brothers he is among the regular applicants Tonpa points out to Gon.',
       },
       affiliation: [
         {
@@ -547,8 +547,8 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       chronicle: zevilChronicles.bourbon,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
-        it: 'Tonpa lo indica a Gon tra gli aspiranti abituali: un incantatore di serpenti, un rivale che non molla.',
-        en: 'Tonpa points him out to Gon among the regular applicants: a snake charmer and a relentless rival.',
+        it: 'Tonpa lo indica a Gon tra gli aspiranti abituali: è un incantatore di serpenti.',
+        en: 'Tonpa points him out to Gon among the regular applicants: he is a snake charmer.',
       },
       affiliation: [
         {

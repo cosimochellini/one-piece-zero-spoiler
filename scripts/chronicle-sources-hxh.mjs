@@ -266,7 +266,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
   'amori': {
     3: {
       source: 'https://hunterxhunter.fandom.com/wiki/Amori',
-      note: 'Checked: Tonpa points out the brothers as regulars who work as a team (chapter 5 names them collectively as the Amori Brothers; the gate table has episode 3 name each). Dated 3 / 29: the names are told at chapter 29 in the manga. Warning about Hisoka from the Episode 3 (2011) page.',
+      note: 'Checked: Tonpa points out the brothers as regulars (chapter 5 names them collectively as the Amori Brothers; the gate table has episode 3 name each). Dated 3 / 29: the names are told at chapter 29 in the manga. Warning about Hisoka from the Episode 3 (2011) page.',
     },
     17: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_17_(2011)',
@@ -276,7 +276,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
   'umori': {
     3: {
       source: 'https://hunterxhunter.fandom.com/wiki/Amori',
-      note: 'Checked: Tonpa, on his 35th attempt (Chapter 5 page), points out the three brothers who specialize in teamwork; the trio has just received badges from Beans (Episode 3 (2011) page). Dated 3 / 29 for the manga naming.',
+      note: 'Checked: Tonpa, on his 35th attempt (Chapter 5 page), points out the three brothers (their teamwork is left out, being chapter 5’s alone); the trio has just received badges from Beans (Episode 3 (2011) page). Dated 3 / 29 for the manga naming.',
     },
     17: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_17_(2011)',
@@ -286,7 +286,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
   'imori': {
     3: {
       source: 'https://hunterxhunter.fandom.com/wiki/Amori',
-      note: 'Checked: Tonpa introduces the regulars he knows, the three brothers among them, who take the exam together and rely on teamwork; the Hisoka warning is on the Episode 3 (2011) page. Dated 3 / 29 for the manga naming.',
+      note: 'Checked: Tonpa introduces the regulars he knows, the three brothers among them, who take the exam together (teamwork left out, being chapter 5’s alone); the Hisoka warning is on the Episode 3 (2011) page. Dated 3 / 29 for the manga naming.',
     },
     17: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_17_(2011)',
@@ -306,7 +306,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
   'bourbon': {
     3: {
       source: 'https://hunterxhunter.fandom.com/wiki/Bourbon',
-      note: 'Checked: Tonpa introduces Bourbon as a snake charmer and veteran who has taken the exam many times and never gives up (chapter 5; the gate table has episode 3 name him as a snake charmer). The Hisoka warning is in both.',
+      note: 'Checked: Tonpa introduces Bourbon as a snake charmer and veteran who has taken the exam many times (chapter 5; “never gives up” left out, being chapter 5’s alone; the gate table has episode 3 name him as a snake charmer). The Hisoka warning is in both.',
     },
     17: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_17_(2011)',
@@ -454,7 +454,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
   'geretta': {
     3: {
       source: 'https://hunterxhunter.fandom.com/wiki/Chapter_5',
-      note: 'Checked: Tonpa, on his 35th attempt, names Geretta among the regulars and warns the trio about Hisoka. The story leaves out the blowdart and club description, which the record’s summary gives from chapter 5.',
+      note: 'Checked: Tonpa, on his 35th attempt, names Geretta among the regulars and warns the trio about Hisoka. The blowdart and club description is left out of the story and the dossier, being chapter 5’s alone.',
     },
     16: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_16_(2011)',

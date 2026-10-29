@@ -22,8 +22,8 @@ export const zevilChronicles = {
       value: {
         title: { it: 'I tre fratelli', en: 'The three brothers' },
         body: {
-          it: 'Fra i veterani che [[tonpa|Tonpa]] indica nel tunnel ci sono i tre fratelli Amori. Tonpa spiega a [[gon-freecss|Gon]], [[kurapika|Kurapika]] e [[leorio-paradinight|Leorio]] che i tre si presentano all’esame insieme e lavorano in squadra. Come gli altri della sua lista, ci hanno già provato senza passare. Poi Tonpa li avverte di stare alla larga da [[hisoka|Hisoka]].',
-          en: 'Among the regulars [[tonpa|Tonpa]] points out in the tunnel are the three Amori brothers. Tonpa tells [[gon-freecss|Gon]], [[kurapika|Kurapika]] and [[leorio-paradinight|Leorio]] that the three take the exam together and work as a team. Like the others on his list, they have tried before without passing. Then Tonpa warns the newcomers to keep away from [[hisoka|Hisoka]].',
+          it: 'Fra i veterani che [[tonpa|Tonpa]] indica nel tunnel ci sono i tre fratelli Amori. Tonpa spiega a [[gon-freecss|Gon]], [[kurapika|Kurapika]] e [[leorio-paradinight|Leorio]] che i tre si presentano all’esame insieme. Come gli altri della sua lista, ci hanno già provato senza passare. Poi Tonpa li avverte di stare alla larga da [[hisoka|Hisoka]].',
+          en: 'Among the regulars [[tonpa|Tonpa]] points out in the tunnel are the three Amori brothers. Tonpa tells [[gon-freecss|Gon]], [[kurapika|Kurapika]] and [[leorio-paradinight|Leorio]] that the three take the exam together. Like the others on his list, they have tried before without passing. Then Tonpa warns the newcomers to keep away from [[hisoka|Hisoka]].',
         },
       },
     },
@@ -49,8 +49,8 @@ export const zevilChronicles = {
       value: {
         title: { it: 'Un gioco di squadra', en: 'A team effort' },
         body: {
-          it: '[[tonpa|Tonpa]], che ha fallito l’esame trentaquattro volte, si offre di parlare a [[gon-freecss|Gon]] degli aspiranti che continuano a ripresentarsi. Fra quelli che indica ci sono i tre fratelli Amori, che lavorano sempre in squadra. Gon e i suoi due compagni hanno appena ricevuto le loro targhette.',
-          en: '[[tonpa|Tonpa]], who has failed the exam thirty-four times, offers to tell [[gon-freecss|Gon]] about the applicants who keep coming back. Among those he points out are the three Amori brothers, who always work as a team. Gon and his two companions have only just been given their badges.',
+          it: '[[tonpa|Tonpa]], che ha fallito l’esame trentaquattro volte, si offre di parlare a [[gon-freecss|Gon]] degli aspiranti che continuano a ripresentarsi. Fra quelli che indica ci sono i tre fratelli Amori. Gon e i suoi due compagni hanno appena ricevuto le loro targhette.',
+          en: '[[tonpa|Tonpa]], who has failed the exam thirty-four times, offers to tell [[gon-freecss|Gon]] about the applicants who keep coming back. Among those he points out are the three Amori brothers. Gon and his two companions have only just been given their badges.',
         },
       },
     },
@@ -76,8 +76,8 @@ export const zevilChronicles = {
           en: 'A family of applicants',
         },
         body: {
-          it: 'Il giorno dell’esame [[tonpa|Tonpa]] presenta a [[gon-freecss|Gon]], [[kurapika|Kurapika]] e [[leorio-paradinight|Leorio]] gli aspiranti che conosce dagli anni passati. Nella sua lista ci sono i tre fratelli Amori. I tre tornano all’esame insieme e contano sul gioco di squadra. Tonpa avverte anche i nuovi arrivati di stare lontani da [[hisoka|Hisoka]].',
-          en: 'On the day of the exam, [[tonpa|Tonpa]] introduces [[gon-freecss|Gon]], [[kurapika|Kurapika]] and [[leorio-paradinight|Leorio]] to the applicants he knows from earlier years. The three Amori brothers are on his list. The three come back to the exam together and rely on teamwork. Tonpa also warns the newcomers to keep away from [[hisoka|Hisoka]].',
+          it: 'Il giorno dell’esame [[tonpa|Tonpa]] presenta a [[gon-freecss|Gon]], [[kurapika|Kurapika]] e [[leorio-paradinight|Leorio]] gli aspiranti che conosce dagli anni passati. Nella sua lista ci sono i tre fratelli Amori. I tre tornano all’esame insieme. Tonpa avverte anche i nuovi arrivati di stare lontani da [[hisoka|Hisoka]].',
+          en: 'On the day of the exam, [[tonpa|Tonpa]] introduces [[gon-freecss|Gon]], [[kurapika|Kurapika]] and [[leorio-paradinight|Leorio]] to the applicants he knows from earlier years. The three Amori brothers are on his list. The three come back to the exam together. Tonpa also warns the newcomers to keep away from [[hisoka|Hisoka]].',
         },
       },
     },
@@ -124,8 +124,8 @@ export const zevilChronicles = {
       value: {
         title: { it: 'L’incantatore di serpenti', en: 'The snake charmer' },
         body: {
-          it: 'Nel tunnel prima della prima prova, [[tonpa|Tonpa]] indica a [[gon-freecss|Gon]], [[kurapika|Kurapika]] e [[leorio-paradinight|Leorio]] i veterani dell’esame. Burbon è uno di loro: un incantatore di serpenti che ha già tentato l’esame molte volte. Tonpa lo descrive come un concorrente che non molla mai. Poco dopo li avverte di tenersi alla larga da [[hisoka|Hisoka]].',
-          en: 'In the tunnel before the First Phase, [[tonpa|Tonpa]] points out the veterans of the exam to [[gon-freecss|Gon]], [[kurapika|Kurapika]] and [[leorio-paradinight|Leorio]]. Bourbon is one of them: a snake charmer who has taken the exam many times. Tonpa describes him as a competitor who never gives up. Soon after, he warns the three to keep away from [[hisoka|Hisoka]].',
+          it: 'Nel tunnel prima della prima prova, [[tonpa|Tonpa]] indica a [[gon-freecss|Gon]], [[kurapika|Kurapika]] e [[leorio-paradinight|Leorio]] i veterani dell’esame. Burbon è uno di loro: un incantatore di serpenti che ha già tentato l’esame molte volte. Poco dopo li avverte di tenersi alla larga da [[hisoka|Hisoka]].',
+          en: 'In the tunnel before the First Phase, [[tonpa|Tonpa]] points out the veterans of the exam to [[gon-freecss|Gon]], [[kurapika|Kurapika]] and [[leorio-paradinight|Leorio]]. Bourbon is one of them: a snake charmer who has taken the exam many times. Soon after, he warns the three to keep away from [[hisoka|Hisoka]].',
         },
       },
     },

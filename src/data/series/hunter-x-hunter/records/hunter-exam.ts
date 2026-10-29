@@ -177,8 +177,8 @@ const earlyExam: HunterSaga = {
       revealedAtChapter: 5,
       name: { it: 'Todo', en: 'Todo' },
       summary: {
-        it: 'Un lottatore che torna spesso all’Esame Hunter, più forte e più furbo di quanto sembri.',
-        en: 'A wrestler who often returns to the Hunter Exam, stronger and smarter than he looks.',
+        it: 'Un lottatore che torna spesso all’Esame Hunter.',
+        en: 'A wrestler who often returns to the Hunter Exam.',
       },
       visual: { art: 'todo', tint: 'ocher' },
     },
@@ -189,8 +189,8 @@ const earlyExam: HunterSaga = {
       revealedAtChapter: 5,
       name: { it: 'Ghereta', en: 'Geretta' },
       summary: {
-        it: 'Un cacciatore che torna spesso all’Esame Hunter, abile con la cerbottana e con la clava.',
-        en: 'A huntsman who often returns to the Hunter Exam, skilled with blowdarts and clubs.',
+        it: 'Un aspirante che torna spesso all’Esame Hunter.',
+        en: 'An applicant who often returns to the Hunter Exam.',
       },
       visual: { art: 'geretta', tint: 'teal' },
     },
@@ -544,8 +544,8 @@ const earlyExam: HunterSaga = {
       chronicle: hunterExamChronicles.todo,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
-        it: 'Tonpa lo indica a Gon tra gli aspiranti abituali: un lottatore forte, più furbo di quanto sembri.',
-        en: 'Tonpa points him out to Gon among the regular applicants: a strong wrestler, smarter than he looks.',
+        it: 'Tonpa lo indica a Gon tra gli aspiranti abituali: è un lottatore.',
+        en: 'Tonpa points him out to Gon among the regular applicants: he is a wrestler.',
       },
       status: [{ episode: 3, chapter: 5, value: 'alive' }],
       affiliation: [
@@ -564,8 +564,8 @@ const earlyExam: HunterSaga = {
       chronicle: hunterExamChronicles.geretta,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
-        it: 'Tonpa lo indica a Gon tra gli aspiranti abituali: un cacciatore che sa usare bene la cerbottana e la clava.',
-        en: 'Tonpa points him out to Gon among the regular applicants: a huntsman who handles blowdarts and clubs well.',
+        it: 'Tonpa lo indica a Gon tra gli aspiranti che si ripresentano all’esame.',
+        en: 'Tonpa points him out to Gon among the applicants who keep coming back to the exam.',
       },
       status: [
         { episode: 3, chapter: 5, value: 'alive' },
