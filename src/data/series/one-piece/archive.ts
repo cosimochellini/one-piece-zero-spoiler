@@ -1,4 +1,3 @@
-import { routePositionOf } from '~/data/order'
 import { sweepOf } from '~/data/sweep'
 import type { SeriesArchive } from '~/data/types'
 import { ONE_PIECE_SERIES } from '~/lib/progress/series'
@@ -35,8 +34,6 @@ export const ONE_PIECE_ARCHIVE: SeriesArchive = {
   getCharacter: Characters.getCharacter,
   dossierOf: Characters.dossierOf,
   roleOf: Characters.roleOf,
-  chartWith: Characters.chartWith,
-  routePositionOf,
   entities: Entities.entities,
   getEntity: Entities.getEntity,
   datedOf: DatedArchive.datedOf,

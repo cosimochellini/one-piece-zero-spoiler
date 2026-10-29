@@ -334,10 +334,6 @@ export const itDictionary: Dictionary = {
   'character.relationshipsTitle': 'Relazioni',
   'character.relationshipsLede':
     'I legami importanti del personaggio fino al tuo segnalibro.',
-  'character.routeTitle': 'Nell’ordine della storia',
-  'character.position': 'Voce {index} di {total}',
-  'character.positionLede':
-    'Dove si colloca questo personaggio nella storia, con le voci subito prima e subito dopo.',
   'character.status': 'Stato',
   'character.epithet': 'Epiteto',
   'character.affiliation': 'Affiliazione',
@@ -346,15 +342,6 @@ export const itDictionary: Dictionary = {
   'character.chronicleTitle': 'La storia finora',
   'character.chronicleLede':
     'Le sue vicende fino al tuo segnalibro, dalla più recente. Ogni parte inizia dall’episodio in cui avviene.',
-  'character.before': 'Prima',
-  'character.after': 'Dopo',
-  'character.routeStart': 'Niente, questa è la prima voce.',
-  'character.routeEnd':
-    'Ancora niente, questa è l’ultima voce nell’ordine della storia.',
-  'character.nearbyTitle': 'Compaiono nello stesso periodo',
-  'character.nearbyLoading': 'Caricamento dei personaggi…',
-  'character.nearbyLede':
-    'Altri personaggi che compaiono per la prima volta vicino a questo.',
   'character.notFoundTitle': 'Personaggio non trovato',
   'character.notFoundBody':
     'A questo indirizzo non c’è nessun personaggio. Li trovi tutti nella pagina Personaggi.',

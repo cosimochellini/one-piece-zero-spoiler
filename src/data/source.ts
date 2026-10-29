@@ -92,7 +92,6 @@ function copyIn(archive: ReaderArchive, source: null | Source): ReaderArchive {
     getPlace: (id) => found(archive.getPlace(id)),
     getShip: (id) => found(archive.getShip(id)),
     fruitsOfForm: (form) => kept(archive.fruitsOfForm(form)),
-    chartWith: (entity) => kept(archive.chartWith(entity)),
     eatersOf: (id) => archive.eatersOf(id).filter((eater) => has(eater.gate)),
   }
 }

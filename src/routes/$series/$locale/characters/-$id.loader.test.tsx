@@ -2,12 +2,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest'
 
 import type { Locale } from '~/i18n/locales'
 import type { RecordMatch } from '~/routes/$series/$locale/-found'
-import {
-  loadCharacter,
-  loadNearby,
-  loadRelationships,
-  loadRoutePosition,
-} from '~/server/api'
+import { loadCharacter, loadRelationships } from '~/server/api'
 import { opCharacterPage } from '~/test/archive'
 import { ep } from '~/test/providers'
 
@@ -18,21 +13,13 @@ vi.mock(import('~/server/api'), async (importOriginal) => {
   return {
     ...original,
     loadCharacter: vi.fn<typeof original.loadCharacter>(),
-    loadNearby: vi.fn<typeof original.loadNearby>(),
     loadRelationships: vi.fn<typeof original.loadRelationships>(),
-    loadRoutePosition: vi.fn<typeof original.loadRoutePosition>(),
   }
 })
 
 type Loader = (
   match: RecordMatch,
-) => Promise<{
-  legacy: null | {
-    nearby: ReturnType<typeof loadNearby>
-    position: ReturnType<typeof loadRoutePosition>
-  }
-  relationships: null | ReturnType<typeof loadRelationships>
-}>
+) => Promise<{ relationships: ReturnType<typeof loadRelationships> }>
 
 function isLoader(value: unknown): value is Loader {
   return typeof value === 'function'
@@ -56,41 +43,27 @@ describe.each(['en', 'it'] as const)(
       vi.resetAllMocks()
     })
 
-    it('never requests archive adjacency or nearby recommendations for One Piece', async () => {
-      vi.mocked(loadCharacter).mockResolvedValue(
-        opCharacterPage('mansherry', ep(800), locale) ?? null,
-      )
-      vi.mocked(loadRelationships).mockResolvedValue([])
+    it.each(['one-piece', 'hunter-x-hunter'])(
+      'loads only the character and reached relationships for %s',
+      async (series) => {
+        vi.mocked(loadCharacter).mockResolvedValue(
+          opCharacterPage('mansherry', ep(800), locale) ?? null,
+        )
+        vi.mocked(loadRelationships).mockResolvedValue([])
 
-      const page = await load('one-piece', locale)
+        const page = await load(series, locale)
 
-      expect(page.legacy).toBeNull()
-      await expect(page.relationships).resolves.toStrictEqual([])
-      expect(loadRelationships).toHaveBeenCalledExactlyOnceWith({
-        data: { id: 'mansherry', locale, series: 'one-piece' },
-      })
-      expect(loadNearby).not.toHaveBeenCalled()
-      expect(loadRoutePosition).not.toHaveBeenCalled()
-    })
+        expect(new Set(Object.keys(page))).toStrictEqual(
+          new Set(['detail', 'head', 'relationships']),
+        )
+        await expect(page.relationships).resolves.toStrictEqual([])
 
-    it('retains both legacy requests for a series without authored relationships', async () => {
-      vi.mocked(loadCharacter).mockResolvedValue(
-        opCharacterPage('mansherry', ep(800), locale) ?? null,
-      )
-      vi.mocked(loadNearby).mockResolvedValue([])
-      vi.mocked(loadRoutePosition).mockResolvedValue(null)
+        const args = { data: { id: 'mansherry', locale, series } }
 
-      const page = await load('hunter-x-hunter', locale)
-      const args = {
-        data: { id: 'mansherry', locale, series: 'hunter-x-hunter' },
-      }
-
-      expect(page.relationships).toBeNull()
-      expect(page.legacy).not.toBeNull()
-      expect(loadNearby).toHaveBeenCalledExactlyOnceWith(args)
-      expect(loadRoutePosition).toHaveBeenCalledExactlyOnceWith(args)
-      expect(loadRelationships).not.toHaveBeenCalled()
-    })
+        expect(loadCharacter).toHaveBeenCalledExactlyOnceWith(args)
+        expect(loadRelationships).toHaveBeenCalledExactlyOnceWith(args)
+      },
+    )
 
     it('does not request supplementary data for a missing character', async () => {
       vi.mocked(loadCharacter).mockResolvedValue(null)
@@ -99,8 +72,6 @@ describe.each(['en', 'it'] as const)(
         isNotFound: true,
       })
       expect(loadRelationships).not.toHaveBeenCalled()
-      expect(loadNearby).not.toHaveBeenCalled()
-      expect(loadRoutePosition).not.toHaveBeenCalled()
     })
   },
 )

@@ -5,7 +5,6 @@ import {
   dossiersOf,
   filedTimelines,
 } from '~/data/dated'
-import { routePositionOf } from '~/data/order'
 import { castOf, keptOf } from '~/data/shelves'
 import { sweepOf } from '~/data/sweep'
 import type { Entity, SeriesArchive } from '~/data/types'
@@ -38,7 +37,7 @@ const { chapterAtEpisode, gateOf } = chapterTable({
 })
 
 // The main characters of the Hunter Exam, as they are filed: the landing
-// chart, the featured row and a character page's nearest featured ones.
+// chart and the featured row.
 const cast = castOf({
   dossiers: DOSSIERS,
   entities,
@@ -76,7 +75,6 @@ export const HUNTER_X_HUNTER_ARCHIVE: SeriesArchive = {
   drawings: DRAWINGS,
   entities,
   getEntity: (id) => BY_ID.get(id),
-  routePositionOf,
   sagas,
   gateOf,
   chapterAtEpisode,

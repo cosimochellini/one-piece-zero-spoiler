@@ -18,9 +18,18 @@ import { onlyUnder, useSeriesT, useT } from '~/i18n/LocaleContext'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
 import type { PlaceDetail, PlaceDrawing, VisitView } from '~/lib/view/places'
 import type { RecordView, Slot } from '~/lib/view/records'
-import { Neighbour } from '~/routes/$series/$locale/characters/-$id.neighbour'
 import { styles as page } from '~/routes/$series/$locale/characters/-$id.styles'
-import { color, font, radius, rule, space, text } from '~/styles/tokens.stylex'
+import {
+  color,
+  font,
+  leading,
+  radius,
+  rule,
+  space,
+  text,
+} from '~/styles/tokens.stylex'
+
+import { Neighbour } from './-$id.neighbour'
 
 /**
  * Whether the series in the address draws the world map. With no description
@@ -63,7 +72,7 @@ export function MapBand({ detail }: { detail: PlaceDetail }): ReactElement {
   return (
     <section
       aria-labelledby={titleId}
-      {...stylex.props(page.diptych, page.reversed)}
+      {...stylex.props(page.diptych, styles.reversed)}
     >
       <div {...stylex.props(page.dossier)}>
         <h2
@@ -73,7 +82,7 @@ export function MapBand({ detail }: { detail: PlaceDetail }): ReactElement {
           {worldMap ? t('place.mapTitle') : stage}
         </h2>
         {worldMap ?
-          <p {...stylex.props(page.position)}>{stage}</p>
+          <p {...stylex.props(styles.position)}>{stage}</p>
         : null}
         {map === null ? null : (
           <p {...stylex.props(page.lede)}>{t('place.mapLede')}</p>
@@ -183,9 +192,8 @@ export function DrawingsBand({
 }
 
 /**
- * The stops before and after this one in the reader's order, as the
- * character page's neighbours: a small plate and a name that leads to its
- * page, or fog with the episode.
+ * The stops before and after this one in the reader's order: a small plate
+ * and a name that leads to its page, or fog with the episode.
  */
 export function TurnBand({
   detail,
@@ -200,7 +208,7 @@ export function TurnBand({
   return (
     <section
       aria-labelledby={titleId}
-      {...stylex.props(page.nearby)}
+      {...stylex.props(styles.nearby)}
     >
       <h2
         id={titleId}
@@ -208,7 +216,7 @@ export function TurnBand({
       >
         {t('place.turn')}
       </h2>
-      <dl {...stylex.props(page.neighbours)}>
+      <dl {...stylex.props(styles.neighbours)}>
         <Neighbour
           empty={t('place.routeStart')}
           label={t('place.previous')}
@@ -226,10 +234,47 @@ export function TurnBand({
   )
 }
 
+const ONE_COLUMN = 'minmax(0, 1fr)'
+
 const styles = stylex.create({
+  reversed: {
+    gridTemplateColumns: {
+      'default': ONE_COLUMN,
+      '@media (min-width: 60rem)': 'minmax(0, 7fr) minmax(0, 5fr)',
+    },
+  },
+  position: {
+    color: color.accent,
+    fontFamily: font.mono,
+    fontSize: text.base,
+    fontVariantNumeric: 'tabular-nums',
+    fontWeight: 700,
+    letterSpacing: '0.1em',
+    lineHeight: leading.body,
+    textTransform: 'uppercase',
+  },
+  nearby: {
+    gap: space.lg,
+    borderBlockStartColor: color.rule,
+    borderBlockStartStyle: 'solid',
+    borderBlockStartWidth: rule.hair,
+    display: 'grid',
+    paddingBlockStart: space.xl,
+  },
+  neighbours: {
+    columnGap: space.lg,
+    display: 'grid',
+    gridTemplateColumns: {
+      'default': ONE_COLUMN,
+      '@media (min-width: 40rem)': 'repeat(2, minmax(0, 1fr))',
+    },
+    marginBlockStart: space.xs,
+    rowGap: space.md,
+  },
+
   // One visit to a row: the map band's column is too narrow for the
   // ledger's two.
-  visits: { gridTemplateColumns: 'minmax(0, 1fr)' },
+  visits: { gridTemplateColumns: ONE_COLUMN },
   // The drawings side by side, wrapping on a phone: two to a row at 320 px.
   strip: {
     gap: space.md,

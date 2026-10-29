@@ -1,6 +1,6 @@
 import { screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { type ReactElement, Suspense } from 'react'
+import type { ReactElement } from 'react'
 import { beforeAll, describe, expect, it } from 'vitest'
 
 import { preloadBookmarkForm } from '~/components/bookmarkFormLoader'
@@ -16,7 +16,6 @@ import { landingPage } from '~/server/archive/home.server'
 import {
   characterPage,
   charactersPage,
-  routePosition,
   shelvesPage,
 } from '~/server/archive/pages.server'
 import { placePage } from '~/server/archive/placePage.server'
@@ -36,7 +35,6 @@ import { LandingPage } from './-landing'
 import { Route as CharacterRoute } from './characters/$id'
 import { ChronicleBand } from './characters/-$id.chronicle'
 import { DossierDiptych } from './characters/-$id.dossier'
-import { RouteDiptych } from './characters/-$id.route'
 import { Route as FruitRoute } from './fruits/$id'
 import { Route as PlaceRoute } from './places/$id'
 import { DrawingsBand, MapBand, TurnBand } from './places/-$id.bands'
@@ -133,12 +131,6 @@ function CharacterBands({
         detail={page.detail}
       />
       <CharacterFacts facts={page.detail.facts} />
-      <Suspense fallback={null}>
-        <RouteDiptych
-          peek={peekPending()}
-          position={Promise.resolve(routePosition(id, r) ?? null)}
-        />
-      </Suspense>
     </main>
   )
 }

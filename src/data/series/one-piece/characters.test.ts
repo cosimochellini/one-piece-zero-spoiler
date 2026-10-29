@@ -1,12 +1,9 @@
 import { describe, expect, it } from 'vitest'
 
-import { orderByMode, routePositionOf } from '~/data/order'
-import type { Entity, Timeline } from '~/data/types'
+import type { Timeline } from '~/data/types'
 
 import {
   characters,
-  chart,
-  chartWith,
   dossierOf,
   FEATURED_CHARACTER_IDS,
   featuredCharacters,
@@ -15,18 +12,10 @@ import {
 
 /**
  * One Piece's own rules about its characters: its featured list, its
- * bounties, and the chart and route around named records. The rules every
+ * bounties and chronicles. The rules every
  * series' characters follow (dossiers, statuses, chronicles, shelves) are
  * in `~/data/archive.test.ts`.
  */
-
-function must(id: string): Entity {
-  const entity = getCharacter(id)
-  if (entity === undefined) {
-    throw new Error(`no character ${id}`)
-  }
-  return entity
-}
 
 /** Every bounty timeline, named by the character it came from. */
 const BOUNTY_TIMELINES: { label: string; timeline: Timeline<number> }[] =
@@ -37,12 +26,6 @@ const BOUNTY_TIMELINES: { label: string; timeline: Timeline<number> }[] =
         []
       : { label: `${character.id}.bounty`, timeline }
   })
-
-/** The first record on the chart, which the route tests read either side of. */
-const FIRST_CHARTED = chart[0]
-if (FIRST_CHARTED === undefined) {
-  throw new Error('empty chart')
-}
 
 describe('the featured list', () => {
   it('lists exactly thirty-six distinct characters that all exist', () => {
@@ -98,70 +81,5 @@ describe('getCharacter', () => {
     // Exists in the archive, but `/characters/alabasta` is not a page.
     expect(getCharacter('alabasta')).toBeUndefined()
     expect(getCharacter('nobody')).toBeUndefined()
-  })
-})
-
-describe('the chart', () => {
-  it('is itself for a record already drawn', () => {
-    expect(chartWith(must('nami'))).toBe(chart)
-  })
-
-  it('sets an undrawn record in at its threshold, after its contemporaries', () => {
-    const perona = must('perona')
-
-    expect(chart.map((entity) => entity.id)).not.toContain('perona')
-
-    const drawn = chartWith(perona)
-    const index = drawn.findIndex((entity) => entity.id === 'perona')
-
-    expect(drawn).toHaveLength(chart.length + 1)
-    expect(drawn[index - 1]?.revealedAtEpisode).toBeLessThanOrEqual(343)
-    expect(drawn[index + 1]?.revealedAtEpisode).toBeGreaterThan(343)
-    // Thriller Bark is filed at 343 too, so the island comes first.
-    expect(drawn[index - 1]?.id).toBe('thriller-bark')
-  })
-})
-
-describe('routePositionOf', () => {
-  it('places the first record at the start with nothing before it', () => {
-    const position = routePositionOf(FIRST_CHARTED, chartWith(FIRST_CHARTED))
-
-    expect(position.index).toBe(0)
-    expect(position.total).toBe(chart.length)
-    expect(position.previous).toBeUndefined()
-    expect(position.next).toBe(chart[1])
-  })
-
-  it('names the records either side of a waypoint in route order', () => {
-    const position = routePositionOf(must('sanji'), chartWith(must('sanji')))
-
-    // The Baratie arc and the restaurant are filed at the same episode as
-    // Sanji, the arc just before him and the place right after.
-    expect(position.previous?.id).toBe('baratie-arc')
-    expect(position.next?.id).toBe('baratie')
-  })
-
-  it('counts an undrawn character among the chart it is set into', () => {
-    const position = routePositionOf(must('perona'), chartWith(must('perona')))
-
-    expect(position.total).toBe(chart.length + 1)
-    expect(position.previous?.id).toBe('thriller-bark')
-  })
-
-  it('counts along whatever order it is handed', () => {
-    const shanks = must('shanks')
-
-    // Fourth episode of the anime, first chapter of the manga: on the manga's
-    // route only records filed at chapter 1 come before or beside him.
-    const byChapter = orderByMode(chartWith(shanks), 'chapter')
-    const byEpisode = routePositionOf(shanks, chartWith(shanks)).index
-    const position = routePositionOf(shanks, byChapter)
-
-    expect(position.index).toBeLessThan(byEpisode)
-    expect(position.total).toBe(chart.length)
-
-    for (const before of byChapter.slice(0, position.index)) {
-      expect(before.revealedAtChapter).toBeLessThanOrEqual(1)
-    }
   })
 })

@@ -659,18 +659,6 @@ export interface DocumentHead {
   title: string
 }
 
-/** Where a record sits on the route, and what lies either side of it. */
-export interface RoutePositionView {
-  /** Zero-based; the page prints it plus one. */
-  index: number
-  openCount: number
-  total: number
-  /** The ring's colour, or `null` while this record is under fog. */
-  next: null | Slot<RecordView>
-  previous: null | Slot<RecordView>
-  tint: null | TintId
-}
-
 /** A character's own page. */
 export interface CharacterDetail {
   chronicle: CharacterChronicle

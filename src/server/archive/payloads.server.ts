@@ -20,9 +20,7 @@ import {
   characterPage,
   charactersPage,
   drawingsFor,
-  nearbyPage,
   relationshipsPage,
-  routePosition,
   shelvesPage,
 } from './pages.server'
 import {
@@ -88,16 +86,6 @@ function recordPayloads(archive: SeriesArchive): Payload[] {
       name: 'loadCharacter',
       keys: characterIds,
       run: (b, l, id) => characterPage(id, readerFor(archive, b, l)) ?? null,
-    },
-    {
-      name: 'loadRoutePosition',
-      keys: characterIds,
-      run: (b, l, id) => routePosition(id, readerFor(archive, b, l)) ?? null,
-    },
-    {
-      name: 'loadNearby',
-      keys: characterIds,
-      run: (b, l, id) => nearbyPage(id, readerFor(archive, b, l)),
     },
     {
       name: 'loadRelationships',
@@ -192,8 +180,6 @@ export function payloadsFor(archive: SeriesArchive): Payload[] {
     'loadCharacters',
     'loadShelves',
     'loadCharacter',
-    'loadRoutePosition',
-    'loadNearby',
     'loadRelationships',
     'loadDrawings',
     'loadFruits',
