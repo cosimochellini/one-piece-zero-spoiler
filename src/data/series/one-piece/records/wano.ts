@@ -1,5 +1,6 @@
 import type { OnePieceSaga } from './saga'
 import { wanoChronicles } from './wano.chronicle'
+import { wanoRelationships } from './wano.relationships'
 
 /**
  * The Wano Country saga, episodes 890 to 1085: a country closed to the
@@ -730,6 +731,7 @@ export const wano: OnePieceSaga = {
 
   dossiers: {
     'tama': {
+      relationships: wanoRelationships.tama,
       role: {
         it: 'Bambina del villaggio di Amigasa',
         en: 'Child of Amigasa Village',
@@ -769,6 +771,7 @@ export const wano: OnePieceSaga = {
       devilFruit: [{ episode: 894, value: ['millet-millet-fruit'] }],
     },
     'tenguyama-hitetsu': {
+      relationships: wanoRelationships['tenguyama-hitetsu'],
       role: { it: 'Fabbro di spade', en: 'Swordsmith' },
       log: {
         it: 'Tama lo chiama maestro: intreccia cappelli per vivere e il giorno del suo compleanno compra il riso al mercato. Lui rientra, trova uno sconosciuto accanto alla scodella vuota, sguaina la spada e lo scaraventa fuori di casa, finché Tama non dice di avergli dato lei il riso. Racconta a Rufy che circa un anno fa X Drake ha distrutto Amigasa, e che quattro anni fa, durante una carestia, Ace è approdato lì ed è rimasto qualche settimana: da allora Tama lo aspetta. Quando Rufy dice che Ace è morto, lo rimprovera per averglielo detto così bruscamente.',
@@ -794,6 +797,7 @@ export const wano: OnePieceSaga = {
       origin: [{ episode: 894, value: WANO }],
     },
     'kiku': {
+      relationships: wanoRelationships.kiku,
       role: { it: 'Cameriera della casa da tè', en: 'Tea house waitress' },
       log: {
         it: 'Serve in una casa da tè di Okobore. Un famoso yokozuna della capitale entra e insiste perché diventi sua moglie, promettendole che non dovrà più lavorare. Lei risponde che le loro condizioni sociali sono troppo diverse e gli chiede di ordinare qualcosa o di andarsene.',
@@ -823,6 +827,7 @@ export const wano: OnePieceSaga = {
       ],
     },
     'ashura-doji': {
+      relationships: wanoRelationships['ashura-doji'],
       role: {
         it: 'Capo dei furfanti di Kuri',
         en: 'Leader of the Kuri ruffians',
@@ -855,6 +860,7 @@ export const wano: OnePieceSaga = {
       ],
     },
     'page-one': {
+      relationships: wanoRelationships['page-one'],
       role: TOBIROPPO_ROLE,
       log: {
         it: 'È uno dei Tobiroppo, i sei headliner più forti dei Pirati delle Cento Bestie, e viene mandato in missione insieme a X Drake, un altro dei sei. Quando Drake chiede perché per questo lavoro servano proprio loro due, Page One risponde che serve a dare una lezione esemplare: tutta Wano deve vedere che cosa succede a chi si mette contro la ciurma.',
@@ -872,6 +878,7 @@ export const wano: OnePieceSaga = {
       ],
     },
     'kurozumi-orochi': {
+      relationships: wanoRelationships['kurozumi-orochi'],
       role: { it: 'Shogun del Paese di Wano', en: 'Shogun of Wano' },
       log: {
         it: 'Tiene il cibo pulito per la capitale mentre le campagne bevono da un fiume avvelenato, e i suoi funzionari danno la caccia a chiunque parli male di lui. Vent’anni fa si è alleato con l’Imperatore per abbattere la famiglia Kozuki, e ora che quei vent’anni sono passati teme che i loro samurai tornino a prenderlo. Nel suo castello aspetta l’oiran più famosa della capitale, e l’ombra dietro la porta scorrevole ha più di una testa.',
@@ -913,6 +920,7 @@ export const wano: OnePieceSaga = {
       ],
     },
     'shinobu': {
+      relationships: wanoRelationships.shinobu,
       role: {
         it: 'Kunoichi dell’alleanza Kozuki',
         en: 'Kozuki alliance kunoichi',
@@ -945,6 +953,7 @@ export const wano: OnePieceSaga = {
       devilFruit: [{ episode: 916, value: ['ripe-ripe-fruit'] }],
     },
     'hyogoro': {
+      relationships: wanoRelationships.hyogoro,
       role: { it: 'Vecchio capo della yakuza', en: 'Old yakuza boss' },
       log: {
         it: 'Nel campo di lavoro di Udon è solo un vecchio fragile che a stento trascina le sue pietre, finché un nuovo arrivato comincia a regalargli i suoi buoni pasto e lui si fa picchiare piuttosto che dire chi è stato. Vent’anni fa era lo yakuza più potente del paese, seguito dai capi di ogni regione, e si rifiutò di servire lo shogun.',
@@ -978,6 +987,7 @@ export const wano: OnePieceSaga = {
       ],
     },
     'queen': {
+      relationships: wanoRelationships.queen,
       role: {
         it: 'All-Star dei Pirati delle Cento Bestie',
         en: 'Beasts Pirates All-Star',
@@ -1017,6 +1027,7 @@ export const wano: OnePieceSaga = {
       bounty: [{ episode: 930, value: 1_320_000_000 }],
     },
     'king': {
+      relationships: wanoRelationships.king,
       // The anime drops chapter 925's caption: the rank waits for 985 and the epithet for 1046.
       role: {
         it: 'Ufficiale dei Pirati delle Cento Bestie',
@@ -1071,6 +1082,7 @@ export const wano: OnePieceSaga = {
       ],
     },
     'komurasaki': {
+      relationships: wanoRelationships.komurasaki,
       role: {
         it: 'Oiran della Capitale dei Fiori',
         en: 'Oiran of the Flower Capital',
@@ -1107,6 +1119,7 @@ export const wano: OnePieceSaga = {
       origin: [{ episode: 921, value: WANO }],
     },
     'toko': {
+      relationships: wanoRelationships.toko,
       role: { it: 'Kamuro di Komurasaki', en: 'Komurasaki’s kamuro' },
       log: {
         it: 'Fa da kamuro a Komurasaki, la cortigiana più famosa della capitale. Arriva tardi al lavoro perché voleva assaggiare la soba del banco di Sanji, e quando dei teppisti le fanno cadere la scodella continua a sorridere; Sanji le dà la soba che gli è rimasta. Scherza sul fatto che con una “O” davanti il suo nome vuol dire “uomo”, anche se lei è una bambina, poi corre a raggiungere il corteo.',
@@ -1129,6 +1142,7 @@ export const wano: OnePieceSaga = {
       origin: [{ episode: 921, value: WANO }],
     },
     'kyoshiro': {
+      relationships: wanoRelationships.kyoshiro,
       role: {
         it: 'Capo della famiglia Kyoshiro',
         en: 'Boss of the Kyoshiro Family',
@@ -1161,6 +1175,7 @@ export const wano: OnePieceSaga = {
       ],
     },
     'shimotsuki-yasuie': {
+      relationships: wanoRelationships['shimotsuki-yasuie'],
       role: { it: 'Ex daimyo di Hakumai', en: 'Former daimyo of Hakumai' },
       log: {
         it: 'Nel quartiere di Ebisu, la borgata povera alle porte della Capitale dei Fiori, tutti lo chiamano Tonoyasu. Per vivere fa il giullare, e il denaro che ha lo lascia ai malati e a chi ha fame, mentre lui mangia poco. Accompagna Zoro fino a Ebisu e più tardi lascia agli amici di Zoro una casa vuota del quartiere. Quando dichiara di essere un ladro ricercato, viene arrestato e legato a una croce per essere giustiziato nella capitale, e si scopre che Tonoyasu è un nome falso: è Shimotsuki Yasuie, un tempo daimyo di Hakumai.',
@@ -1189,6 +1204,7 @@ export const wano: OnePieceSaga = {
     // second record would announce the reveal by appearing. The name is a
     // dated epithet and affiliation here instead, like Denjiro's on kyoshiro.
     'gyukimaru': {
+      relationships: wanoRelationships.gyukimaru,
       role: { it: 'Ladro di spade', en: 'Sword thief' },
       log: {
         it: 'Sta in piedi sul ponte di Oihagi con una naginata e il cappuccio calato, e lascia passare soltanto chi gli consegna la spada. Alle sue spalle si è accumulata una montagna di lame prese a samurai, banditi e viandanti. Combatte bene, parla poco e non dice a nessuno che cosa se ne faccia di tutto quel ferro.',
@@ -1215,6 +1231,7 @@ export const wano: OnePieceSaga = {
       epithet: [{ episode: 954, value: { it: 'Onimaru', en: 'Onimaru' } }],
     },
     'fukurokuju': {
+      relationships: wanoRelationships.fukurokuju,
       role: { it: 'Capo dell’Oniwabanshu', en: 'Leader of the Oniwabanshu' },
       log: {
         it: 'Guida l’Oniwabanshu, i ninja al servizio dello shogun Orochi, e lo serve da quando Orochi ha preso il potere. Shinobu era una dei suoi ninja e se n’è andata. Quando i suoi uomini sorprendono Robin a frugare in una stanza del castello durante un banchetto, le concede una sola possibilità di dire chi è e perché si trova lì, e le promette una morte rapida se dice la verità. Lei dà un nome falso, e quando i ninja la colpiscono la donna che hanno preso si sfalda: era una copia. I ninja si sparpagliano a cercare quella vera senza disturbare il banchetto.',
@@ -1233,6 +1250,7 @@ export const wano: OnePieceSaga = {
       origin: [{ episode: 934, value: WANO }],
     },
     'kawamatsu': {
+      relationships: wanoRelationships.kawamatsu,
       role: { it: 'Prigioniero di Udon', en: 'Prisoner of Udon' },
       log: {
         it: 'È rinchiuso da anni in fondo alla prigione di Udon, in una gabbia troppo piccola per lui, e i carcerieri lo tengono d’occhio più di chiunque altro. Divide il poco cibo con i detenuti più deboli e sopporta le percosse ridendo, con la testa piatta che gli è valsa il soprannome di kappa. I carcerieri sanno che è più pericoloso di quanto sembri, e nessuno gli passa vicino.',
@@ -1263,6 +1281,7 @@ export const wano: OnePieceSaga = {
       ],
     },
     'rocks-d-xebec': {
+      relationships: wanoRelationships['rocks-d-xebec'],
       role: {
         it: 'Capitano dei Pirati di Rocks',
         en: 'Captain of the Rocks Pirates',
@@ -1284,6 +1303,7 @@ export const wano: OnePieceSaga = {
       origin: [{ episode: 958, value: { it: 'Hachinosu', en: 'Hachinosu' } }],
     },
     'kozuki-oden': {
+      relationships: wanoRelationships['kozuki-oden'],
       role: { it: 'Daimyo di Kuri', en: 'Daimyo of Kuri' },
       log: {
         it: 'A Wano lo ricordano come un disastro: rubava, si azzuffava e metteva in imbarazzo il castello di suo padre, e la gente di Kuri lo adorava lo stesso. Prese il mare con la ciurma di Barbabianca e poi con quella del Re dei Pirati, e tornò in un paese che non era più il suo. Vent’anni fa lo giustiziarono nella capitale, e da allora Wano è chiusa.',
@@ -1302,6 +1322,7 @@ export const wano: OnePieceSaga = {
       origin: [{ episode: 960, value: WANO }],
     },
     'kozuki-toki': {
+      relationships: wanoRelationships['kozuki-toki'],
       role: { it: 'Moglie di Oden', en: 'Oden’s wife' },
       log: {
         it: 'Arriva a Wano da sola, cercando un paese che dice di avere lasciato ottocento anni prima, e non spiega a nessuno come ci sia riuscita. Il suo frutto del diavolo manda le persone avanti nel tempo in una sola direzione: nessuno può tornare indietro. Sposa il daimyo di Kuri e resta con lui anche quando il paese gli si rivolta contro.',
@@ -1330,6 +1351,7 @@ export const wano: OnePieceSaga = {
       devilFruit: [{ episode: 963, value: ['time-time-fruit'] }],
     },
     'kurozumi-higurashi': {
+      relationships: wanoRelationships['kurozumi-higurashi'],
       role: { it: 'Anziana dei Kurozumi', en: 'Kurozumi elder' },
       log: {
         it: 'Porta il nome di una famiglia che a Wano tutti disprezzano, e sta accanto a Orochi quando Oden torna e pretende il trono. Con il frutto Clone Clone aveva preso l’aspetto di Sukiyaki, e i daimyo hanno creduto alle sue parole quando ha nominato Orochi reggente. Così nessuno può più sapere che cosa pensasse davvero il vecchio shogun.',
@@ -1354,6 +1376,7 @@ export const wano: OnePieceSaga = {
       devilFruit: [{ episode: 970, value: ['clone-clone-fruit'] }],
     },
     'kurozumi-semimaru': {
+      relationships: wanoRelationships['kurozumi-semimaru'],
       role: {
         it: 'Uomo della famiglia Kurozumi',
         en: 'Man of the Kurozumi family',
@@ -1374,6 +1397,7 @@ export const wano: OnePieceSaga = {
       devilFruit: [{ episode: 970, value: ['barrier-barrier-fruit'] }],
     },
     'izo': {
+      relationships: wanoRelationships.izo,
       role: {
         it: 'Pirata di Barbabianca nato a Wano',
         en: 'Whitebeard Pirate from Wano',
@@ -1399,6 +1423,7 @@ export const wano: OnePieceSaga = {
       origin: [{ episode: 970, value: WANO }],
     },
     'ulti': {
+      relationships: wanoRelationships.ulti,
       role: TOBIROPPO_ROLE,
       log: {
         it: 'È una dei sei ufficiali di punta dell’Imperatore, e Page One, che la chiama sorella maggiore, è un altro. Mentre i sei aspettano di essere chiamati, litiga con il fratello e dice a Sasaki di smetterla di scherzare quando lui lo punzecchia. Quando chiede se Kaido sia stupido, gli altri la rimproverano.',
@@ -1417,6 +1442,7 @@ export const wano: OnePieceSaga = {
       ],
     },
     'whos-who': {
+      relationships: wanoRelationships['whos-who'],
       role: TOBIROPPO_ROLE,
       log: {
         it: 'È uno dei sei ufficiali di punta dell’Imperatore. Porta una maschera rossa sulla metà superiore del viso, con due corna che coprono le sue, e tiene sempre una sigaretta in bocca. Mentre i sei aspettano di essere chiamati, dice a Ulti e a Page One di stare zitti.',
@@ -1443,6 +1469,7 @@ export const wano: OnePieceSaga = {
       ],
     },
     'black-maria': {
+      relationships: wanoRelationships['black-maria'],
       role: TOBIROPPO_ROLE,
       log: {
         it: 'È una dei sei ufficiali di punta dell’Imperatore, in kimono nero con una fascia a fiori, le corna in testa e due spade tra i capelli. Mentre i sei aspettano di essere chiamati, dice che Ulti le piace perché non si tira mai indietro.',
@@ -1461,6 +1488,7 @@ export const wano: OnePieceSaga = {
       ],
     },
     'sasaki': {
+      relationships: wanoRelationships.sasaki,
       role: TOBIROPPO_ROLE,
       log: {
         it: 'È uno dei sei ufficiali di punta dell’Imperatore, con un berretto militare con le corna, due lunghe zanne e un mantello sulle spalle. Mentre i sei aspettano di essere chiamati, punzecchia Page One, e Ulti gli dice di smetterla di scherzare.',
@@ -1479,6 +1507,7 @@ export const wano: OnePieceSaga = {
       ],
     },
     'yamato': {
+      relationships: wanoRelationships.yamato,
       role: { it: 'Figlio di Kaido', en: 'Kaido’s child' },
       log: {
         it: 'Kaido racconta ai suoi ufficiali che quel giorno suo figlio è sparito, e li manda a riportarglielo. Lui compare mascherato nel mezzo dello scontro di Rufy con Ulti e Page One, mette fuori combattimento Ulti con la stessa mossa con cui Kaido aveva abbattuto Rufy e porta via Rufy ai Pirati delle Cento Bestie che lo inseguono. Gli dice che lo stava aspettando, e si presenta: si chiama Yamato ed è il figlio di Kaido.',
@@ -1520,6 +1549,7 @@ export const wano: OnePieceSaga = {
       ],
     },
     'bao-huang': {
+      relationships: wanoRelationships['bao-huang'],
       role: {
         it: 'Headliner dei Pirati delle Cento Bestie',
         en: 'Beasts Pirates headliner',
@@ -1541,6 +1571,7 @@ export const wano: OnePieceSaga = {
       ],
     },
     'tsurujo': {
+      relationships: wanoRelationships.tsurujo,
       chronicle: wanoChronicles.tsurujo,
       role: {
         it: 'Proprietaria della casa da tè di Okobore',
@@ -1578,6 +1609,7 @@ export const wano: OnePieceSaga = {
       origin: [{ episode: 899, value: WANO }],
     },
     'urashima': {
+      relationships: wanoRelationships.urashima,
       chronicle: wanoChronicles.urashima,
       role: { it: 'Yokozuna della capitale', en: 'Yokozuna of the capital' },
       log: {
@@ -1599,6 +1631,7 @@ export const wano: OnePieceSaga = {
     // No `devilFruit` line: what he ate is a SMILE, an artificial fruit, and
     // the archive files no SMILE as a devil fruit. The lion is in the log.
     'holdem': {
+      relationships: wanoRelationships.holdem,
       chronicle: wanoChronicles.holdem,
       role: {
         it: 'Headliner dei Pirati delle Cento Bestie',
@@ -1622,6 +1655,7 @@ export const wano: OnePieceSaga = {
     // No `devilFruit` line: what she ate is a SMILE, an artificial fruit, and
     // the archive files no SMILE as a devil fruit. The horse is in the log.
     'speed': {
+      relationships: wanoRelationships.speed,
       chronicle: wanoChronicles.speed,
       role: {
         it: 'Headliner dei Pirati delle Cento Bestie',
@@ -1659,6 +1693,7 @@ export const wano: OnePieceSaga = {
     // No `devilFruit` line: the hippo he sits in is a SMILE, and the archive
     // files no SMILE as a devil fruit; the log describes the hippo instead.
     'dobon': {
+      relationships: wanoRelationships.dobon,
       chronicle: wanoChronicles.dobon,
       role: {
         it: 'Vicedirettore del campo di lavoro di Udon',
@@ -1682,6 +1717,7 @@ export const wano: OnePieceSaga = {
     // No `devilFruit` line: his alpaca head and neck are a SMILE, and the
     // archive files no SMILE as a devil fruit; the log describes them instead.
     'alpacaman': {
+      relationships: wanoRelationships.alpacaman,
       chronicle: wanoChronicles.alpacaman,
       role: {
         it: 'Guardia del campo di lavoro di Udon',
@@ -1705,6 +1741,7 @@ export const wano: OnePieceSaga = {
     // No `devilFruit` line: his scorpion's tail is a SMILE, and the archive
     // files no SMILE as a devil fruit; the log describes the tail instead.
     'daifugo': {
+      relationships: wanoRelationships.daifugo,
       chronicle: wanoChronicles.daifugo,
       role: {
         it: 'Vicedirettore del campo di lavoro di Udon',
@@ -1736,6 +1773,7 @@ export const wano: OnePieceSaga = {
     // No `devilFruit` line: the elephant on his chest is a SMILE, and the
     // archive files no SMILE as a devil fruit; the log describes it instead.
     'babanuki': {
+      relationships: wanoRelationships.babanuki,
       chronicle: wanoChronicles.babanuki,
       role: {
         it: 'Direttore del campo di lavoro di Udon',
@@ -1767,6 +1805,7 @@ export const wano: OnePieceSaga = {
     // No `devilFruit` line: her extra arms and her tail are a SMILE, and the
     // archive files no SMILE as a devil fruit; the log describes them instead.
     'solitaire': {
+      relationships: wanoRelationships.solitaire,
       chronicle: wanoChronicles.solitaire,
       role: {
         it: 'Vicedirettrice del campo di lavoro di Udon',
@@ -1788,6 +1827,7 @@ export const wano: OnePieceSaga = {
       ],
     },
     'daikoku': {
+      relationships: wanoRelationships.daikoku,
       chronicle: wanoChronicles.daikoku,
       role: {
         it: 'Ninja dell’Oniwabanshu di Orochi',
@@ -1818,6 +1858,7 @@ export const wano: OnePieceSaga = {
       origin: [{ episode: 928, value: WANO }],
     },
     'raijin': {
+      relationships: wanoRelationships.raijin,
       chronicle: wanoChronicles.raijin,
       role: {
         it: 'Ninja dell’Oniwabanshu di Orochi',
@@ -1848,6 +1889,7 @@ export const wano: OnePieceSaga = {
       origin: [{ episode: 928, value: WANO }],
     },
     'fujin': {
+      relationships: wanoRelationships.fujin,
       chronicle: wanoChronicles.fujin,
       role: {
         it: 'Ninja dell’Oniwabanshu di Orochi',
@@ -1878,6 +1920,7 @@ export const wano: OnePieceSaga = {
       origin: [{ episode: 928, value: WANO }],
     },
     'hotei': {
+      relationships: wanoRelationships.hotei,
       chronicle: wanoChronicles.hotei,
       role: {
         it: 'Capitano del Mimawarigumi',
@@ -1900,6 +1943,7 @@ export const wano: OnePieceSaga = {
       origin: [{ episode: 1023, value: WANO }],
     },
     'maha': {
+      relationships: wanoRelationships.maha,
       chronicle: wanoChronicles.maha,
       role: { it: 'Agente del CP0', en: 'CP0 agent' },
       log: {
@@ -1912,6 +1956,7 @@ export const wano: OnePieceSaga = {
       ],
     },
     'guernica': {
+      relationships: wanoRelationships.guernica,
       chronicle: wanoChronicles.guernica,
       role: { it: 'Agente del CP0', en: 'CP0 agent' },
       log: {
@@ -1924,6 +1969,7 @@ export const wano: OnePieceSaga = {
       ],
     },
     'kozuki-hiyori': {
+      relationships: wanoRelationships['kozuki-hiyori'],
       chronicle: wanoChronicles['kozuki-hiyori'],
       role: {
         it: 'Sorella minore di Momonosuke',
@@ -1960,6 +2006,7 @@ export const wano: OnePieceSaga = {
       ],
     },
     'denjiro': {
+      relationships: wanoRelationships.denjiro,
       chronicle: wanoChronicles.denjiro,
       role: {
         it: 'Samurai al servizio di Oden',
@@ -1997,6 +2044,7 @@ export const wano: OnePieceSaga = {
       ],
     },
     'kozuki-sukiyaki': {
+      relationships: wanoRelationships['kozuki-sukiyaki'],
       chronicle: wanoChronicles['kozuki-sukiyaki'],
       role: { it: 'Ex shogun del Paese di Wano', en: 'Former shogun of Wano' },
       log: {
@@ -2035,6 +2083,7 @@ export const wano: OnePieceSaga = {
       ],
     },
     'shimotsuki-ushimaru': {
+      relationships: wanoRelationships['shimotsuki-ushimaru'],
       chronicle: wanoChronicles['shimotsuki-ushimaru'],
       role: { it: 'Defunto daimyo di Ringo', en: 'Late daimyo of Ringo' },
       log: {
@@ -2061,6 +2110,7 @@ export const wano: OnePieceSaga = {
       origin: [{ episode: 954, value: WANO }],
     },
     'hatcha': {
+      relationships: wanoRelationships.hatcha,
       chronicle: wanoChronicles.hatcha,
       role: {
         it: 'Gigante dei Pirati delle Cento Bestie',
@@ -2099,6 +2149,7 @@ export const wano: OnePieceSaga = {
     // but never says what gave it to him (a SMILE only in SBS 103), and the
     // archive files no SMILE as a fruit.
     'fuga': {
+      relationships: wanoRelationships.fuga,
       chronicle: wanoChronicles.fuga,
       role: { it: 'Gigante di Onigashima', en: 'Giant of Onigashima' },
       log: {
@@ -2141,6 +2192,7 @@ export const wano: OnePieceSaga = {
       ],
     },
     'kazenbo': {
+      relationships: wanoRelationships.kazenbo,
       chronicle: wanoChronicles.kazenbo,
       role: {
         it: 'Spettro di fiamme disegnato da Kanjuro',
@@ -2162,6 +2214,7 @@ export const wano: OnePieceSaga = {
       ],
     },
     'shimotsuki-kozaburo': {
+      relationships: wanoRelationships['shimotsuki-kozaburo'],
       chronicle: wanoChronicles['shimotsuki-kozaburo'],
       role: { it: 'Forgiatore leggendario', en: 'Legendary swordsmith' },
       log: {

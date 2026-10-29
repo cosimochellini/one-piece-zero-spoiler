@@ -82,22 +82,9 @@ export const Route = createFileRoute('/$series/$locale/characters/$id')({
 })
 
 /**
- * A character's page (Hallmark macrostructure 15, Split Studio).
- *
- * Five bands down the page. The first is the crest beside the dossier: kind
- * and episode in mono, the name as the only display line, the role, the
- * summary, then the facts as the reader's bookmark knows them and the log
- * entry. The second is the chronicle: the stories the reader has reached,
- * one under the other, and nothing at all when they have reached none. The
- * third is the record's place on the route beside a strip of the whole route
- * with this waypoint ringed, and the two records filed either side of it. The
- * fourth is the people they are connected to, streamed in and absent when
- * the reader has reached none. The fifth is one row of the listed characters
- * filed nearest on the route.
- *
- * Under fog the crest and the dossier are covered together and the title is
- * generic; the strip still shows where on the route the page sits, because
- * "waypoint 23 of 35" is the promise and not the spoiler.
+ * The dossier and chronicle precede the streamed relationship selection.
+ * Reached cards replace legacy route adjacency; pages without reached links
+ * retain it. The nearby row remains until the rollout cleanup.
  */
 function CharacterPage(): ReactElement {
   const { detail, nearby, position, relationships } = Route.useLoaderData()
@@ -130,25 +117,28 @@ function CharacterPage(): ReactElement {
         detail={detail}
       />
 
-      <section
-        aria-labelledby="route-position"
-        {...stylex.props(
-          styles.diptych,
-          styles.reversed,
-          settleStyles.band,
-          settleStyles.at(BAND.route),
-        )}
-      >
-        <Suspense fallback={<RoutePending />}>
-          <RouteDiptych
-            peek={peekRecord}
-            position={position}
-          />
-        </Suspense>
-      </section>
-
       <Suspense fallback={<RelationshipsPending />}>
-        <RelationshipsBand relationships={relationships} />
+        <RelationshipsBand
+          fallback={
+            <section
+              aria-labelledby="route-position"
+              {...stylex.props(
+                styles.diptych,
+                styles.reversed,
+                settleStyles.band,
+                settleStyles.at(BAND.route),
+              )}
+            >
+              <Suspense fallback={<RoutePending />}>
+                <RouteDiptych
+                  peek={peekRecord}
+                  position={position}
+                />
+              </Suspense>
+            </section>
+          }
+          relationships={relationships}
+        />
       </Suspense>
 
       <NearbyRow
@@ -173,15 +163,18 @@ function RelationshipsPending(): ReactElement {
   )
 }
 
-/** The relations once they arrive; nothing at all when there are none. */
+/** Reached relations replace legacy adjacency once the streamed selection arrives. */
 function RelationshipsBand({
+  fallback,
   relationships,
 }: {
+  fallback: ReactElement
   relationships: Promise<RelationshipView[]>
 }): ReactElement {
   return (
     <RelationshipBand
       band={BAND.relationships}
+      fallback={fallback}
       relationships={use(relationships)}
     />
   )

@@ -21,15 +21,18 @@ import { styles } from './-$id.styles'
 /** The people the server can name, with the connection rather than their role. */
 export function RelationshipBand({
   band,
+  fallback = null,
   relationships,
 }: {
   /** Which band down the page this is, for the settle delay. */
   band: number
+  /** Legacy route content is used only when no relationship has been reached. */
+  fallback?: null | ReactElement
   relationships: RelationshipView[]
 }): null | ReactElement {
   const t = useT()
   if (relationships.length === 0) {
-    return null
+    return fallback
   }
 
   return (
