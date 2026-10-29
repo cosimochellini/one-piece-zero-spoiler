@@ -1873,10 +1873,10 @@ held to: every story below has a row, and every row below has a story.
 
 ## Umori (`umori`, threshold ep 3)
 
-| Entry (en title)      | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                                                                                |
-| --------------------- | ------: | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| A team effort         |       3 | https://hunterxhunter.fandom.com/wiki/Amori             | Checked: Tonpa, on his 35th attempt (Chapter 5 page), points out the three brothers (their teamwork is left out, being chapter 5’s alone); the trio has just received badges from Beans (Episode 3 (2011) page). Dated 3 / 29 for the manga naming. |
-| The badge handed over |      17 | https://hunterxhunter.fandom.com/wiki/Episode_17_(2011) | Checked: Umori hands over the badge when Amori is held hostage and Killua throws the other badges far away. Corrected after review: dropped the unsupported 'che ha in mano / he is holding'.                                                       |
+| Entry (en title)           | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                                                                                |
+| -------------------------- | ------: | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Three brothers at the exam |       3 | https://hunterxhunter.fandom.com/wiki/Amori             | Checked: Tonpa, on his 35th attempt (Chapter 5 page), points out the three brothers (their teamwork is left out, being chapter 5’s alone); the trio has just received badges from Beans (Episode 3 (2011) page). Dated 3 / 29 for the manga naming. |
+| The badge handed over      |      17 | https://hunterxhunter.fandom.com/wiki/Episode_17_(2011) | Checked: Umori hands over the badge when Amori is held hostage and Killua throws the other badges far away. Corrected after review: dropped the unsupported 'che ha in mano / he is holding'.                                                       |
 
 ## Imori (`imori`, threshold ep 3)
 

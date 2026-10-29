@@ -534,7 +534,8 @@ export const DRAWINGS = {
   ],
 
   // Geretta's hat, standing: Tonpa points out the huntsman in episode 3 and
-  // chapter 5. No blowgun: he is first seen using it at Trick Tower.
+  // chapter 5. No blowgun: only chapter 5’s introduction mentions it before
+  // he uses it at Trick Tower, so the death redrawing owns it.
   'geretta': [...GERETTA_HAT, shadow(80, 168, 56)],
 
   // Cherry's pair of martial-arts shoes side by side: Tonpa points out the

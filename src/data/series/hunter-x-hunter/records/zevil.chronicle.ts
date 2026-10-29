@@ -47,7 +47,10 @@ export const zevilChronicles = {
       episode: 3,
       chapter: 29,
       value: {
-        title: { it: 'Un gioco di squadra', en: 'A team effort' },
+        title: {
+          it: 'Tre fratelli all’esame',
+          en: 'Three brothers at the exam',
+        },
         body: {
           it: '[[tonpa|Tonpa]], che ha fallito l’esame trentaquattro volte, si offre di parlare a [[gon-freecss|Gon]] degli aspiranti che continuano a ripresentarsi. Fra quelli che indica ci sono i tre fratelli Amori. Gon e i suoi due compagni hanno appena ricevuto le loro targhette.',
           en: '[[tonpa|Tonpa]], who has failed the exam thirty-four times, offers to tell [[gon-freecss|Gon]] about the applicants who keep coming back. Among those he points out are the three Amori brothers. Gon and his two companions have only just been given their badges.',
