@@ -22,10 +22,7 @@ import { zevil } from './zevil'
  * (Mamen is 1999 credits and a databook). The shared logs omit the
  * manga-only sushi test and the anime-only updraft method.
  *
- * Open work: #833 (applicants Goz, Agon, Sommy, Siper, Ryu, Kyu, Shishito,
- * Kenmi; Geretta, Cherry and the chapter-5 cook; earlier names of
- * Bourbon, the Amori brothers, Pokkle, Bodoro), #834 (Kikyo, Silva, Hishita), #761 (art),
- * #762 (stories).
+ * Open work: #834 (Kikyo, Silva, Hishita).
  */
 
 const APPLICANT = {
@@ -170,6 +167,45 @@ const earlyExam: HunterSaga = {
         en: 'A Hunter Exam applicant who wounds a man after he bumps into him without apologizing.',
       },
       visual: { art: 'hisoka', tint: 'vermilion' },
+    },
+    // Tonpa names the next three among the regulars (chapter 5, episode 3;
+    // #833). The 2011 tour never names Cherry, so he is the manga's alone.
+    {
+      id: 'todo',
+      kind: 'character',
+      revealedAtEpisode: 3,
+      revealedAtChapter: 5,
+      name: { it: 'Todo', en: 'Todo' },
+      summary: {
+        it: 'Un lottatore che torna spesso all’Esame Hunter, più forte e più furbo di quanto sembri.',
+        en: 'A wrestler who often returns to the Hunter Exam, stronger and smarter than he looks.',
+      },
+      visual: { art: 'todo', tint: 'ocher' },
+    },
+    {
+      id: 'geretta',
+      kind: 'character',
+      revealedAtEpisode: 3,
+      revealedAtChapter: 5,
+      name: { it: 'Ghereta', en: 'Geretta' },
+      summary: {
+        it: 'Un cacciatore che torna spesso all’Esame Hunter, abile con la cerbottana e con la clava.',
+        en: 'A huntsman who often returns to the Hunter Exam, skilled with blowdarts and clubs.',
+      },
+      visual: { art: 'geretta', tint: 'teal' },
+    },
+    {
+      id: 'cherry',
+      kind: 'character',
+      source: 'chapter',
+      revealedAtEpisode: 3,
+      revealedAtChapter: 5,
+      name: { it: 'Cherry', en: 'Cherry' },
+      summary: {
+        it: 'Un esperto di arti marziali che torna spesso all’Esame Hunter, il migliore nel combattimento a mani nude.',
+        en: 'A martial artist who often returns to the Hunter Exam, the best of them at unarmed combat.',
+      },
+      visual: { art: 'cherry', tint: 'blue' },
     },
     {
       id: 'hanzo',
@@ -502,6 +538,54 @@ const earlyExam: HunterSaga = {
             it: 'Associazione Hunter, Hunter',
           },
         },
+      ],
+    },
+    'todo': {
+      chronicle: hunterExamChronicles.todo,
+      role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
+      log: {
+        it: 'Tonpa lo indica a Gon tra gli aspiranti abituali: un lottatore forte, più furbo di quanto sembri.',
+        en: 'Tonpa points him out to Gon among the regular applicants: a strong wrestler, smarter than he looks.',
+      },
+      status: [{ episode: 3, chapter: 5, value: 'alive' }],
+      affiliation: [
+        { episode: 3, chapter: 5, value: APPLICANT },
+        {
+          episode: 6,
+          chapter: 12,
+          value: {
+            it: 'Esame Hunter, escluso nella seconda prova',
+            en: 'Hunter Exam, failed the Second Phase',
+          },
+        },
+      ],
+    },
+    'geretta': {
+      chronicle: hunterExamChronicles.geretta,
+      role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
+      log: {
+        it: 'Tonpa lo indica a Gon tra gli aspiranti abituali: un cacciatore che sa usare bene la cerbottana e la clava.',
+        en: 'Tonpa points him out to Gon among the regular applicants: a huntsman who handles blowdarts and clubs well.',
+      },
+      status: [
+        { episode: 3, chapter: 5, value: 'alive' },
+        { episode: 16, chapter: 28, value: 'deceased' },
+      ],
+      affiliation: [{ episode: 3, chapter: 5, value: APPLICANT }],
+    },
+    'cherry': {
+      chronicle: hunterExamChronicles.cherry,
+      role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
+      log: {
+        it: 'Tonpa lo indica a Gon tra gli aspiranti abituali: un esperto di arti marziali che eccelle nel combattimento a mani nude.',
+        en: 'Tonpa points him out to Gon among the regular applicants: a martial artist who excels at fighting bare-handed.',
+      },
+      status: [
+        { episode: 3, chapter: 5, source: 'chapter', value: 'alive' },
+        { episode: 5, chapter: 10, source: 'chapter', value: 'deceased' },
+      ],
+      affiliation: [
+        { episode: 3, chapter: 5, source: 'chapter', value: APPLICANT },
       ],
     },
     'hanzo': {

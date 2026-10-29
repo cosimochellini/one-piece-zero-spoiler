@@ -1,4 +1,4 @@
-import type { Drawings, Redrawings } from '~/data/art/stroke'
+import { type Drawings, moved, type Redrawings } from '~/data/art/stroke'
 import {
   circle,
   dot,
@@ -42,6 +42,50 @@ const BOKKEN: Stroke[] = [
 
 /** The second wooden sword: the first, mirrored about x 80. */
 const MIRRORED = 'matrix(-1 0 0 1 160 0)'
+
+/**
+ * Geretta's heavy short-brimmed hat in 3/4: the brim, the rounded crown with
+ * its far side hatched, and the lacing down the centre of the crown in tint.
+ * His death tips this same hat over.
+ */
+const GERETTA_HAT: Stroke[] = [
+  { d: ellipse(80, 132, 54, 14) },
+  { d: 'M26 132 V136 C38 152 122 152 134 136 V132', role: 'soft' },
+  { d: 'M42 130 C38 96 48 62 80 60 C112 62 122 96 118 130' },
+  { d: 'M42 130 C54 141 106 141 118 130' },
+  {
+    d: 'M70 62 C65 92 65 118 67 139 M81 61 C79 92 79 118 80 140',
+    role: 'soft',
+  },
+  {
+    d: 'M68 72 L80 80 M80 72 L68 80 M67 90 L79 98 M79 90 L67 98 M66 108 L79 116 M79 108 L66 116 M67 125 L80 132 M80 125 L67 132',
+    role: 'accent',
+  },
+  {
+    d: 'M106 82 l7 -4 M110 96 l7 -4 M112 110 l7 -4 M113 124 l6 -3',
+    role: 'ambient',
+  },
+]
+
+/**
+ * One of Cherry's cloth martial-arts shoes side on, toe to the left: the
+ * flat sole, the low upper with its toe seam, the opening in tint and the
+ * heel hatched. The pair is this shoe twice.
+ */
+const CHERRY_SHOE: Stroke[] = [
+  {
+    d: 'M28 142 H114 C119 142 122 144 122 147 C122 150 119 152 114 152 H28 C20 152 15 150 15 147 C15 144 20 142 28 142 Z',
+  },
+  {
+    d: 'M17 143 C17 134 26 128 42 124 L72 116 M119 142 C122 132 122 122 119 112',
+  },
+  {
+    d: 'M72 116 C78 106 112 104 119 112 C112 120 80 124 72 116 Z',
+    role: 'accent',
+  },
+  { d: 'M24 137 C34 131 50 126 68 121', role: 'soft' },
+  { d: 'M106 128 l7 -5 M108 137 l8 -6', role: 'ambient' },
+]
 
 /**
  * Every Hunter x Hunter line drawing, one per record, keyed by the record's
@@ -459,6 +503,48 @@ export const DRAWINGS = {
     shadow(80, 182, 36),
   ],
 
+  // One of the wrestler's tall laced boots side on, the far side hatched,
+  // and one of his knee pads standing beside it, its padded cap in tint:
+  // Tonpa points him out in episode 3 and chapter 5. No face.
+  'todo': [
+    { d: ellipse(62, 40, 18, 5) },
+    {
+      d: 'M44 40 V116 C32 118 18 124 13 134 C10 142 12 150 20 150 H82 C84 138 82 124 80 110 V40',
+    },
+    { d: 'M12 144 H83', role: 'soft' },
+    {
+      d: 'M45 50 L52 58 M52 50 L45 58 M45 66 L52 74 M52 66 L45 74 M45 82 L52 90 M52 82 L45 90 M45 98 L52 106 M52 98 L45 106',
+      role: 'soft',
+    },
+    {
+      d: 'M72 60 l6 -3 M72 76 l6 -3 M72 92 l6 -3 M73 108 l6 -3',
+      role: 'ambient',
+    },
+    {
+      d: 'M98 100 C110 96 134 96 146 100 C142 118 142 148 146 166 C134 170 110 170 98 166 C102 148 102 118 98 100 Z',
+    },
+    {
+      d: 'M100 110 C112 106 132 106 144 110 M100 156 C112 160 132 160 144 156',
+      role: 'soft',
+    },
+    { d: ellipse(122, 133, 14, 16), role: 'accent' },
+    { d: 'M113 128 C114 123 118 120 122 120', role: 'soft' },
+    { d: 'M140 118 l4 -2 M139 132 l4 -2 M140 146 l4 -2', role: 'ambient' },
+    shadow(84, 172, 66),
+  ],
+
+  // Geretta's hat, standing: Tonpa points out the huntsman in episode 3 and
+  // chapter 5. No blowgun: he is first seen using it at Trick Tower.
+  'geretta': [...GERETTA_HAT, shadow(80, 168, 56)],
+
+  // Cherry's pair of martial-arts shoes side by side: Tonpa points out the
+  // martial artist in chapter 5. No cards from chapter 10.
+  'cherry': [
+    ...moved(CHERRY_SHOE, 'translate(18 -40)'),
+    ...CHERRY_SHOE,
+    shadow(72, 164, 54),
+  ],
+
   // Hisoka's right hand from the back, the fingers a little spread and
   // the long pointed nails in the record's tint: the applicant who wounds a
   // man for bumping into him without apologizing, in episode 3 and chapter
@@ -801,4 +887,50 @@ export const DRAWINGS = {
  */
 export type ArtId = keyof typeof DRAWINGS
 
-export const REDRAWINGS: Redrawings = zevilRedrawn
+/**
+ * The early-exam drawings that change with the story: the applicants Tonpa
+ * points out who die later in the exam.
+ */
+const hunterExamRedrawn: Redrawings = {
+  geretta: [
+    // The same hat tipped over on its side, and his blowgun dropped on the
+    // ground with a dart beside it: Hisoka kills him off the page, just
+    // after his ambush on Gon, in episode 16 / chapter 28.
+    {
+      episode: 16,
+      chapter: 28,
+      value: [
+        ...moved(
+          GERETTA_HAT,
+          'translate(82 120) rotate(-72) scale(0.72) translate(-80 -100)',
+        ),
+        { d: 'M10 166 L146 152 M11 171 L147 157' },
+        { d: 'M10 166 Q7 169 11 171 M146 152 Q150 154 147 157', role: 'soft' },
+        { d: 'M112 176 L136 174 M136 174 l6 -4 M136 174 l6 3', role: 'soft' },
+        { d: 'M4 160 H156', role: 'ambient', dashed: true },
+      ],
+    },
+  ],
+  cherry: [
+    // The same pair of shoes upside down, hung from the branch of a tree in
+    // the wetlands: his body is found hanging upside down there, Hisoka's
+    // cards in it, in chapter 10. Episode 5 shows him fall, unnamed.
+    {
+      episode: 5,
+      chapter: 10,
+      source: 'chapter',
+      value: [
+        {
+          d: 'M14 152 C18 116 18 70 18 28 M32 152 C30 120 30 98 34 80 C70 74 110 74 158 70 M34 28 C32 42 32 56 32 66 C70 62 110 62 158 58',
+        },
+        { d: 'M98 62 C104 52 114 46 126 44', role: 'soft' },
+        { d: 'M20 96 l8 -4 M20 112 l8 -4 M21 128 l8 -4', role: 'ambient' },
+        ...moved(CHERRY_SHOE, 'translate(36 153) scale(0.52 -0.52)'),
+        ...moved(CHERRY_SHOE, 'translate(94 150) scale(0.52 -0.52)'),
+        { d: 'M4 152 H156', role: 'ambient', dashed: true },
+      ],
+    },
+  ],
+}
+
+export const REDRAWINGS: Redrawings = { ...hunterExamRedrawn, ...zevilRedrawn }

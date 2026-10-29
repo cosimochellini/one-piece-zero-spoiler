@@ -523,4 +523,78 @@ export const hunterExamChronicles = {
       },
     },
   ],
+  'todo': [
+    {
+      episode: 3,
+      chapter: 5,
+      value: {
+        title: { it: 'Il lottatore', en: 'The wrestler' },
+        body: {
+          it: 'Nel tunnel dove gli aspiranti aspettano l’inizio dell’esame, [[tonpa|Tonpa]] si offre di presentare a [[gon-freecss|Gon]], [[kurapika|Kurapika]] e [[leorio-paradinight|Leorio]] gli altri concorrenti. Indica i veterani che conosce dagli anni passati. Uno di loro è Todo, un lottatore molto forte. Come gli altri della lista, ha già tentato l’esame senza superarlo e ci riprova.',
+          en: 'In the tunnel where the applicants wait for the exam to begin, [[tonpa|Tonpa]] offers to introduce [[gon-freecss|Gon]], [[kurapika|Kurapika]] and [[leorio-paradinight|Leorio]] to the competition. He points out the veterans he knows from earlier years. One of them is Todo, a very strong wrestler. Like the others on the list, he has taken the exam before without passing and is trying again.',
+        },
+      },
+    },
+    {
+      episode: 6,
+      chapter: 12,
+      value: {
+        title: { it: 'La protesta', en: 'The protest' },
+        body: {
+          it: 'Quando [[menchi|Menci]] boccia tutti gli aspiranti della seconda prova, Todo spacca un tavolo per la rabbia e la contesta. Lei non cambia decisione e lui le si lancia contro. [[buhara|Buhara]] lo scaraventa via con un solo colpo e dice che altrimenti Menci l’avrebbe ucciso. Nella nuova prova voluta da [[netero|Netero]], Todo assaggia l’uovo sodo che [[gon-freecss|Gon]] divide con lui e dice che ci riproverà l’anno dopo.',
+          en: 'When [[menchi|Menchi]] fails every applicant in the Second Phase, Todo smashes a table in anger and protests. She will not change her verdict, and he charges at her. [[buhara|Buhara]] knocks him away with a single blow and says Menchi would have killed him otherwise. In the retest that [[netero|Netero]] sets up, Todo tastes the boiled egg [[gon-freecss|Gon]] shares with him and says he will try again next year.',
+        },
+      },
+    },
+  ],
+  'geretta': [
+    {
+      episode: 3,
+      chapter: 5,
+      value: {
+        title: { it: 'Uno dei veterani', en: 'One of the regulars' },
+        body: {
+          it: '[[tonpa|Tonpa]], al suo trentacinquesimo tentativo, si offre di parlare a [[gon-freecss|Gon]] degli altri aspiranti. Gli indica quelli che si ripresentano ogni volta, e Ghereta è uno di loro. I tre nuovi arrivati ascoltano mentre Tonpa passa da un veterano all’altro. Poi li avverte di stare lontani da [[hisoka|Hisoka]], l’aspirante più pericoloso di tutti.',
+          en: '[[tonpa|Tonpa]], on his thirty-fifth attempt at the exam, offers to tell [[gon-freecss|Gon]] about the other applicants. He points out the ones who keep coming back, and Geretta is one of them. The three newcomers listen as Tonpa goes from one veteran to the next. Then he warns them to keep away from [[hisoka|Hisoka]], the most dangerous applicant of all.',
+        },
+      },
+    },
+    {
+      episode: 16,
+      chapter: 28,
+      value: {
+        title: { it: 'Il dardo', en: 'The dart' },
+        body: {
+          it: 'Nella quarta prova Ghereta pedina [[gon-freecss|Gon]] da giorni. Aspetta che Gon agganci la targhetta di [[hisoka|Hisoka]], poi lo paralizza con un dardo nel collo. Gli dice quante volte avrebbe potuto colpirlo prima e loda il suo allenamento, ma gli fa notare che si è lasciato scoperto. Prende la targhetta di Hisoka e quella di Gon e se ne va. Poco dopo Hisoka torna: ha ucciso Ghereta, che era il suo bersaglio.',
+          en: 'In the Fourth Phase Geretta has been stalking [[gon-freecss|Gon]] for days. He waits until Gon hooks [[hisoka|Hisoka]]’s badge, then paralyzes him with a dart in the neck. He tells Gon how many chances he had to strike him earlier, and praises his training while pointing out that Gon left himself open. He takes Hisoka’s badge and Gon’s own and leaves. Moments later Hisoka returns. He has killed Geretta, who was his target.',
+        },
+      },
+    },
+  ],
+  'cherry': [
+    {
+      episode: 3,
+      chapter: 5,
+      source: 'chapter',
+      value: {
+        title: { it: 'L’esperto di arti marziali', en: 'The martial artist' },
+        body: {
+          it: 'Mentre aspettano l’inizio dell’esame, [[tonpa|Tonpa]] elenca a [[gon-freecss|Gon]], [[kurapika|Kurapika]] e [[leorio-paradinight|Leorio]] i veterani che si ripresentano ogni anno. Cherry, numero 76, pratica le arti marziali, e secondo Tonpa nessuno è più forte di lui nel combattimento a mani nude. Come gli altri della lista ha già tentato l’esame senza passarlo.',
+          en: 'While they wait for the exam to begin, [[tonpa|Tonpa]] lists for [[gon-freecss|Gon]], [[kurapika|Kurapika]] and [[leorio-paradinight|Leorio]] the veterans who come back every year. Cherry, number 76, is a martial artist, and according to Tonpa nobody is better at fighting bare-handed. Like the others on the list, he has taken the exam before and failed.',
+        },
+      },
+    },
+    {
+      episode: 5,
+      chapter: 10,
+      source: 'chapter',
+      value: {
+        title: { it: 'Nella palude', en: 'In the swamp' },
+        body: {
+          it: 'Nella palude della prima prova [[hisoka|Hisoka]] attacca un gruppo di aspiranti. Restano in piedi solo Cherry, [[kurapika|Kurapika]] e [[leorio-paradinight|Leorio]]. Sanno di non avere speranze e fuggono in tre direzioni diverse. La fuga non salva Cherry: più tardi il suo corpo pende a testa in giù da un albero, con alcune carte da gioco piantate nel collo e nella fronte, mentre degli uccelli si avvicinano.',
+          en: 'In the swamp of the First Phase, [[hisoka|Hisoka]] attacks a group of applicants. Only Cherry, [[kurapika|Kurapika]] and [[leorio-paradinight|Leorio]] are left standing. They know they are outmatched and run off in three different directions. Running does not save Cherry. Later his body hangs upside down from a tree, with playing cards stuck in his neck and forehead, while birds close in.',
+        },
+      },
+    },
+  ],
 } satisfies Record<string, Timeline<Story>>

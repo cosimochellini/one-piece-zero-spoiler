@@ -14,20 +14,64 @@ if (loaded === undefined) {
   throw new Error('Zevil requires the Hunter x Hunter archive')
 }
 const { archive } = loaded
-const RECORDS = [
+const UNITS = ['episode', 'chapter'] as const
+type Unit = (typeof UNITS)[number]
+
+// A record one source alone names is read in that unit only (#833).
+interface Row {
+  chapter: number
+  episode: number
+  id: string
+  source?: Unit
+}
+
+const RECORDS: Row[] = [
   { id: 'khara', episode: 14, chapter: 23 },
+  { id: 'goz', episode: 14, chapter: 23, source: 'chapter' },
+  { id: 'agon', episode: 14, chapter: 23, source: 'chapter' },
+  { id: 'siper', episode: 14, chapter: 23, source: 'chapter' },
+  { id: 'ryu', episode: 14, chapter: 23, source: 'chapter' },
+  { id: 'kyu', episode: 14, chapter: 23, source: 'chapter' },
+  { id: 'shishito', episode: 14, chapter: 23, source: 'chapter' },
+  { id: 'kenmi', episode: 14, chapter: 23, source: 'chapter' },
+  { id: 'sommy', episode: 14, chapter: 23, source: 'chapter' },
   { id: 'gittarackur', episode: 19, chapter: 33 },
-  { id: 'amori', episode: 17, chapter: 29 },
-  { id: 'umori', episode: 17, chapter: 29 },
-  { id: 'imori', episode: 17, chapter: 29 },
+  { id: 'amori', episode: 3, chapter: 29 },
+  { id: 'umori', episode: 3, chapter: 29 },
+  { id: 'imori', episode: 3, chapter: 29 },
   { id: 'ponzu', episode: 17, chapter: 30 },
-  { id: 'bourbon', episode: 17, chapter: 30 },
-  { id: 'pokkle', episode: 19, chapter: 33 },
-  { id: 'bodoro', episode: 19, chapter: 33 },
-] as const
+  { id: 'bourbon', episode: 3, chapter: 5 },
+  { id: 'pokkle', episode: 18, chapter: 23 },
+  { id: 'bodoro', episode: 3, chapter: 33 },
+]
 const CASES = RECORDS.flatMap((row) =>
   LOCALES.flatMap((locale) =>
-    (['episode', 'chapter'] as const).map((mode) => ({ ...row, locale, mode })),
+    UNITS.filter((mode) => (row.source ?? mode) === mode).map((mode) => ({
+      ...row,
+      locale,
+      mode,
+    })),
+  ),
+)
+
+// Every applicant who dies after his record opens, and the pair the death
+// is told at; the manga's own records die in chapters only.
+const DEATHS: Row[] = [
+  { id: 'cherry', episode: 5, chapter: 10, source: 'chapter' },
+  { id: 'goz', episode: 15, chapter: 26, source: 'chapter' },
+  { id: 'siper', episode: 15, chapter: 26, source: 'chapter' },
+  { id: 'agon', episode: 16, chapter: 28, source: 'chapter' },
+  { id: 'geretta', episode: 16, chapter: 28 },
+  { id: 'bourbon', episode: 17, chapter: 30 },
+  { id: 'bodoro', episode: 20, chapter: 36 },
+]
+const DEATH_CASES = DEATHS.flatMap((row) =>
+  LOCALES.flatMap((locale) =>
+    UNITS.filter((mode) => (row.source ?? mode) === mode).map((mode) => ({
+      ...row,
+      locale,
+      mode,
+    })),
   ),
 )
 
@@ -39,7 +83,7 @@ function characterOf(id: string): Entity {
   return entity
 }
 
-function at(mode: 'chapter' | 'episode', count: number): Bookmark {
+function at(mode: Unit, count: number): Bookmark {
   return mode === 'episode' ?
       { mode, episode: count }
     : { mode, chapter: count }
@@ -102,24 +146,19 @@ describe('the Fourth Phase and its final bracket', () => {
     expect(JSON.stringify(record)).not.toMatch(/illumi|zoldyck/iu)
   })
 
-  it.each(LOCALES)(
-    'gates Bodoro’s death and drawing together (%s)',
-    (locale) => {
-      const entity = characterOf('bodoro')
+  it.each(DEATH_CASES)(
+    'gates $id’s death and drawing together in $mode ($locale)',
+    (row) => {
+      const entity = characterOf(row.id)
+      const threshold = row[row.mode]
+      const before = readerFor(archive, at(row.mode, threshold - 1), row.locale)
+      const reached = readerFor(archive, at(row.mode, threshold), row.locale)
 
-      expect(entity).toBeDefined()
-
-      for (const mode of ['episode', 'chapter'] as const) {
-        const threshold = mode === 'episode' ? 20 : 36
-        const before = readerFor(archive, at(mode, threshold - 1), locale)
-        const reached = readerFor(archive, at(mode, threshold), locale)
-
-        expect(archive.latestOf(before, entity, 'status')).toBe('alive')
-        expect(archive.latestOf(reached, entity, 'status')).toBe('deceased')
-        expect(drawingsFor(['bodoro'], reached)).not.toStrictEqual(
-          drawingsFor(['bodoro'], before),
-        )
-      }
+      expect(archive.latestOf(before, entity, 'status')).toBe('alive')
+      expect(archive.latestOf(reached, entity, 'status')).toBe('deceased')
+      expect(drawingsFor([row.id], reached)).not.toStrictEqual(
+        drawingsFor([row.id], before),
+      )
     },
   )
 })

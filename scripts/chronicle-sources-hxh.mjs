@@ -264,18 +264,30 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
   },
   'amori': {
+    3: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Amori',
+      note: 'Checked: Tonpa points out the brothers as regulars who work as a team (chapter 5 names them collectively as the Amori Brothers; the gate table has episode 3 name each). Dated 3 / 29: the names are told at chapter 29 in the manga. Warning about Hisoka from the Episode 3 (2011) page.',
+    },
     17: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_17_(2011)',
       note: 'Checked: Amori and Umori come to see if the youngest has taken the badge, scold him, form up, Killua appears behind Amori and holds him hostage (chapter 29).',
     },
   },
   'umori': {
+    3: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Amori',
+      note: 'Checked: Tonpa, on his 35th attempt (Chapter 5 page), points out the three brothers who specialize in teamwork; the trio has just received badges from Beans (Episode 3 (2011) page). Dated 3 / 29 for the manga naming.',
+    },
     17: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_17_(2011)',
       note: "Checked: Umori hands over the badge when Amori is held hostage and Killua throws the other badges far away. Corrected after review: dropped the unsupported 'che ha in mano / he is holding'.",
     },
   },
   'imori': {
+    3: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Amori',
+      note: 'Checked: Tonpa introduces the regulars he knows, the three brothers among them, who take the exam together and rely on teamwork; the Hisoka warning is on the Episode 3 (2011) page. Dated 3 / 29 for the manga naming.',
+    },
     17: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_17_(2011)',
       note: "Checked: Imori has stalked Killua planning to strike while he sleeps, is forced forward by his brothers, kicks him, and Killua pulls Imori's own badge from his pocket (not his target).",
@@ -292,6 +304,10 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
   },
   'bourbon': {
+    3: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Bourbon',
+      note: 'Checked: Tonpa introduces Bourbon as a snake charmer and veteran who has taken the exam many times and never gives up (chapter 5; the gate table has episode 3 name him as a snake charmer). The Hisoka warning is in both.',
+    },
     17: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_17_(2011)',
       note: 'Checked: the snake trap in the cave, Leorio bitten, Gon and Kurapika run in, Ponzu says Bourbon is already dead yet the trap holds (chapter 30).',
@@ -308,6 +324,10 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
   },
   'pokkle': {
+    18: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_14_(2011)',
+      note: 'Checked: Pokkle stalks an applicant in tall grass with Gon watching, the arrow only cuts him, the tranquilizer drops him, the water remark and the badge taken (episode 14, chapter 24); Gon resolves to stalk Hisoka the same way. Dated 18 / 24: his name is first said in the episode 18 roll call.',
+    },
     19: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_19_(2011)',
       note: "Checked: episode 14 shows Pokkle's arrow with a tranquilizer, the badge taken and the water remark; episode 19 shows him among the nine finalists.",
@@ -318,6 +338,10 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
   },
   'bodoro': {
+    3: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Bodoro',
+      note: 'Checked: anime only (source episode). The Bodoro page has Tonpa introduce him as the kung fu master in Episode 3 (2011); chapter 5 does not name him, so the story is not told to manga readers.',
+    },
     19: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_19_(2011)',
       note: "Checked: Bodoro refuses to fight children in Netero's interview (episode 18), and the bracket rules are explained in episode 19.",
@@ -415,6 +439,116 @@ export const HUNTER_X_HUNTER_SOURCES = {
     76: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_76_(2011)',
       note: 'Debut in the ep 76 flashback; Kon page (ch. 1): mother killed, Kite wants to put the cub down, Gon vows to raise it. Corrected after review: removed the invented arm scratch and the pick-up.',
+    },
+  },
+  'todo': {
+    3: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Chapter_5',
+      note: "Checked: Tonpa points out the regulars to the trio, Todo among them as a strong wrestler (chapter 5; Episode 3 (2011) per the gate table). Tonpa's remark on his wits is left out, being manga-only.",
+    },
+    6: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_6_(2011)',
+      note: "Checked: Menchi fails everyone, Todo smashes his table and berates her, she dismisses him, he charges, Buhara knocks him away and says Menchi would have killed him, Netero sets the egg retest, Todo tastes Gon's egg and vows to return next year. Also read: Chapter 12.",
+    },
+  },
+  'geretta': {
+    3: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Chapter_5',
+      note: 'Checked: Tonpa, on his 35th attempt, names Geretta among the regulars and warns the trio about Hisoka. The blowdart and club description is left out, since the gate table does not confirm it for Episode 3 (2011).',
+    },
+    16: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_16_(2011)',
+      note: "Checked: Geretta paralyzes Gon with a dart after Gon hooks Hisoka's badge, says how often he could have struck, praises his training, takes both badges; Hisoka comes back having killed him, his target. The severed head (manga) and the body (anime) are not described. Also read: Chapter 28.",
+    },
+  },
+  'cherry': {
+    3: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Chapter_5',
+      note: 'Checked: manga only. Tonpa lists Cherry (#76) as a martial artist and the best at unarmed combat among the regulars.',
+    },
+    5: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Chapter_10',
+      note: 'Checked: Hisoka attacks the group, Cherry, Kurapika and Leorio flee in three directions; chapter 10 opens on his body hanging upside down from a tree with cards in neck and forehead as birds approach. Manga only. Also read: the Cherry page (chapter 9).',
+    },
+  },
+  'goz': {
+    14: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Chapter_23',
+      note: "Checked: Lippo's lottery in finishing order, cards with target badge numbers, badges hidden and silence on the boat, one week and six points. Goz's spear is on the Goz page (chapter 23). Manga only.",
+    },
+    15: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Chapter_26',
+      note: 'Checked: the wounded Goz challenges Hisoka, cuts trees, Hisoka dodges and says the dead do not interest him, needles kill Goz, the needle man says he let him escape and takes badge #371 while Gon hides. Manga only.',
+    },
+  },
+  'agon': {
+    14: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Chapter_23',
+      note: 'Checked: lottery outside the tower, landing in finishing order two minutes apart starting with Hisoka, Agon seventh ashore, one week and six points, the target worth three. Manga only.',
+    },
+    16: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Chapter_28',
+      note: "Checked: bloodlust Hisoka picks Agon, card in hand; Agon draws his sword; Gon hooks the badge as they pass; the wound opens on Agon's shoulder (death per the Agon page). Manga only. Also read: Chapter 27.",
+    },
+  },
+  'siper': {
+    14: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Chapter_23',
+      note: "Checked: Khara's congratulations and the invitation to next year, barely any reaction, badges hidden and eyes avoided. The sniper rifle is on the Siper page (chapter 22). Manga only.",
+    },
+    15: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Chapter_26',
+      note: 'Checked: after killing Goz, the needle man offers Hisoka badge #80 from one of the snipers he killed over the use of a gun; Hisoka keeps it and still needs two points. The death is reported, not shown. Manga only.',
+    },
+  },
+  'ryu': {
+    14: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Chapter_23',
+      note: 'Checked: the lottery and the scoring (target 3, own badge 3, others 1, six to pass). The broadsword is on the Ryu page (chapter 23). Manga only.',
+    },
+    18: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Chapter_32',
+      note: "Checked: the end announcement, one hour to return, no trading at the landing, nine finalists by the water. Ryu's lost fight with Bodoro (not named before chapter 33) is on the Ryu page, cited to chapter 32. Manga only.",
+    },
+  },
+  'kyu': {
+    14: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Chapter_24',
+      note: "Checked: Kyu senses a follower, Pokkle's arrow grazes his arm, he drops his sword and collapses, weak for days, water nearby, badge #105 taken, Gon watching from a tree. Dated 14 / 24 because chapter 23 shares episode 14. Manga only. Also read: the Kyu and Pokkle pages.",
+    },
+    15: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Chapter_25',
+      note: 'Checked: Gon follows two butterflies on a line toward the wounded Hisoka, finds Kyu still drugged, helps him sit up against a tree and wishes him luck next year. Manga only.',
+    },
+  },
+  'shishito': {
+    14: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Chapter_23',
+      note: 'Checked: on the boat he wonders who has his number; cards with target numbers, badges hidden, silence. Manga only. Also read: the Shishito page.',
+    },
+    18: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Chapter_32',
+      note: "Checked: Amori and Umori took his badge (chapter 29), Hanzo takes the brothers' two remaining badges (chapter 32), nine finalists at the landing. Manga only. Also read: the Shishito and Amori pages.",
+    },
+  },
+  'kenmi': {
+    14: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Chapter_23',
+      note: "Checked: Khara's congratulations, two-hour trip, the invitation to next year, no reaction. The shaved head is on the Kenmi page. Manga only.",
+    },
+    17: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Chapter_29',
+      note: 'Checked: while Imori stalks Killua, Amori and Umori hunt Shishito and Kenmi and take their badges, Hanzo trailing them without striking because #197 never leaves #199, then they find Imori still hiding. Manga only. Also read: the Kenmi and Amori pages.',
+    },
+  },
+  'sommy': {
+    14: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Chapter_23',
+      note: 'Checked: lottery in finishing order starting with Hisoka, cards may be thrown away once recorded, badges hidden on the boat. Manga only.',
+    },
+    15: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Chapter_25',
+      note: "Checked: Tonpa shows card #191 and trades the information for medicine, Sommy strikes with a branch, his monkey grabs Leorio's badge, the cards were swapped, Sommy escapes up a tree; Kurapika and Leorio tie him up and recover the badge plus Sommy's. Manga only. Also read: Chapter 26.",
     },
   },
 }
