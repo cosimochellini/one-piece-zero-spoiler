@@ -63,20 +63,6 @@ describe.each(CASES)('$id in $locale by $unit', (row) => {
   })
 })
 
-describe('the fighters seen before they are named', () => {
-  // Gido, Sadaso and Riehlvelt watch Gon and Killua from chapter 48 and
-  // episode 29; each stays closed until his own name is said.
-  it.each([
-    { unit: 'episode', seen: 29 },
-    { unit: 'chapter', seen: 48 },
-  ])('keeps Sadaso and Riehlvelt closed at $unit $seen', ({ unit, seen }) => {
-    const reader = readerFor(archive, at(unit, seen), 'en')
-
-    expect(opened('sadaso', false, reader)).toBe(false)
-    expect(opened('riehlvelt', false, reader)).toBe(false)
-  })
-})
-
 describe('Kastro’s death', () => {
   const kastro = character('kastro')
 

@@ -91,10 +91,10 @@ receive an end-of-anime bookmark; source filtering still applies. See
 One Piece and Hunter x Hunter are open to readers. HxH files the verified Hunter
 Exam coverage through episode 26 / chapter 43, including the manga's chapter-one
 characters introduced later by the anime, and the Heavens Arena characters and
-place through episode 36 / chapter 63 (#896). Remaining candidate naming checks
-are tracked in #834; every Hunter Exam character has a chronicle (#762), the
-Heavens Arena ones are #898. Records are not added from unnamed appearances or
-supplemental names.
+place up to episode 34 / chapter 59 (#896). Remaining candidate naming checks
+are tracked in #834. Every Hunter Exam character has a chronicle (#762); the
+Heavens Arena characters get theirs in #898. Records are not added from unnamed
+appearances or supplemental names.
 
 Public metadata in `src/lib/progress/series.ts` holds cookies, ranges, seasons,
 demo bounds, features and themes, without archive records. Pass the series to
