@@ -14,7 +14,7 @@
   "routes": [{ "pattern": "zerospoiler.app", "custom_domain": true }],
   // Workers Logs keeps invocation and console logs for 3 days on Workers Free.
   // The privacy notice says so; changing this means rewriting it
-  // (src/i18n/dictionaries, `privacy.logs`).
+  // (src/i18n/dictionaries/privacy.ts, `privacy.logs`).
   "observability": {
     "enabled": true,
     "head_sampling_rate": 1,
