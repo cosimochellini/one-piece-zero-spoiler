@@ -24,6 +24,7 @@ export interface HunterVocabulary extends Vocabulary {
     | 'mountain'
     | 'port'
     | 'prison'
+    | 'tower'
     | 'wetland'
   group: never
   region: 'islands' | 'mainland'

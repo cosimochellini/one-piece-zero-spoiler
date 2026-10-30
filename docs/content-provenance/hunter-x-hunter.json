@@ -25,9 +25,16 @@
   "hisoka": {
     "sources": [
       "https://hunterxhunter.fandom.com/wiki/Hisoka_Morow",
-      "https://www.ntv.co.jp/hunterhunter/character/hisoka.html"
+      "https://www.ntv.co.jp/hunterhunter/character/hisoka.html",
+      "https://hunterxhunter.fandom.com/wiki/Chapter_47",
+      "https://hunterxhunter.fandom.com/wiki/Chapter_55",
+      "https://hunterxhunter.fandom.com/wiki/Episode_28_(2011)",
+      "https://hunterxhunter.fandom.com/wiki/Episode_32_(2011)"
     ],
-    "unverified": ["Manga chapter 5 cuff not viewed"]
+    "unverified": [
+      "Manga chapter 5 cuff not viewed",
+      "Heavens Arena steps (#896): 200th floor at chapter 47 / episode 28; the fake spider tattoo peeled off at chapter 55 / episode 32, from the synopses"
+    ]
   },
   "hanzo": {
     "sources": [
@@ -56,7 +63,16 @@
     ]
   },
   "killua": {
-    "sources": ["https://hunterxhunter.fandom.com/wiki/Killua_Zoldyck"]
+    "sources": [
+      "https://hunterxhunter.fandom.com/wiki/Killua_Zoldyck",
+      "https://hunterxhunter.fandom.com/wiki/Chapter_47",
+      "https://hunterxhunter.fandom.com/wiki/Chapter_48",
+      "https://hunterxhunter.fandom.com/wiki/Episode_28_(2011)",
+      "https://hunterxhunter.fandom.com/wiki/Episode_29_(2011)"
+    ],
+    "unverified": [
+      "Heavens Arena pupil step pinned at chapter 48 / episode 29, where Wing opens their aura; his offer in chapter 47 / episode 28 is left below the pin (#896)"
+    ]
   },
   "menchi": {
     "sources": [
@@ -520,6 +536,108 @@
       "These later naming leads are outside episode 26 / chapter 43 coverage; confirm a positive scene and check earlier candidates before recording a resolved out-of-coverage exclusion",
       "No Hishita entry was found in the inspected Italian Wikipedia family page; Italian 2011 name/spelling remains unverified",
       "Retain the omission without inferring a supplemental-only or source-only record; any future dossier, original drawing and dated outcomes need source-specific licensed scene/page checks, not the wiki’s current-status infobox"
+    ]
+  },
+  "heavens-arena": {
+    "sources": [
+      "https://hunterxhunter.fandom.com/wiki/Heavens_Arena",
+      "https://hunterxhunter.fandom.com/wiki/Chapter_44",
+      "https://hunterxhunter.fandom.com/wiki/Episode_27_(2011)"
+    ],
+    "unverified": [
+      "Drawing motif against the threshold page/frame (first pass; graded in #897)"
+    ]
+  },
+  "zushi": {
+    "sources": [
+      "https://hunterxhunter.fandom.com/wiki/Zushi",
+      "https://hunterxhunter.fandom.com/wiki/Chapter_45",
+      "https://hunterxhunter.fandom.com/wiki/Episode_27_(2011)",
+      "https://it.wikipedia.org/wiki/Personaggi_di_Hunter_%C3%97_Hunter"
+    ],
+    "unverified": [
+      "Self-introduction page in chapter 45 and timestamp in episode 27 not viewed; chapter 44 shows him unnamed",
+      "Italian name from Italian Wikipedia; the 2011 Italian dub form is not viewed",
+      "Drawing motif against the threshold page/frame (first pass; graded in #897)"
+    ]
+  },
+  "wing": {
+    "sources": [
+      "https://hunterxhunter.fandom.com/wiki/Wing",
+      "https://hunterxhunter.fandom.com/wiki/Chapter_45",
+      "https://hunterxhunter.fandom.com/wiki/Episode_27_(2011)",
+      "https://it.wikipedia.org/wiki/Associazione_Hunter"
+    ],
+    "unverified": [
+      "Self-introduction page in chapter 45 and timestamp in episode 27 not viewed",
+      "Drawing motif against the threshold page/frame (first pass; graded in #897)"
+    ]
+  },
+  "gido": {
+    "sources": [
+      "https://hunterxhunter.fandom.com/wiki/Gido",
+      "https://hunterxhunter.fandom.com/wiki/Chapter_48",
+      "https://hunterxhunter.fandom.com/wiki/Chapter_49",
+      "https://hunterxhunter.fandom.com/wiki/Episode_29_(2011)",
+      "https://it.wikipedia.org/wiki/Personaggi_di_Hunter_%C3%97_Hunter"
+    ],
+    "unverified": [
+      "Announcer naming page in chapter 49 and timestamp in episode 29 not viewed; chapter 48 shows him unnamed",
+      "Italian name from Italian Wikipedia; the 2011 Italian dub form is not viewed",
+      "Drawing motif against the threshold page/frame (first pass; graded in #897)"
+    ]
+  },
+  "sadaso": {
+    "sources": [
+      "https://hunterxhunter.fandom.com/wiki/Sadaso",
+      "https://hunterxhunter.fandom.com/wiki/Chapter_57",
+      "https://hunterxhunter.fandom.com/wiki/Episode_33_(2011)",
+      "https://it.wikipedia.org/wiki/Personaggi_di_Hunter_%C3%97_Hunter"
+    ],
+    "unverified": [
+      "Chapter 57 synopsis has a ticket seller name him; episode 33 adapts the same scenes, but its exact naming line is not viewed, so the gate is the episode of his forfeited match (owner, #896)",
+      "Italian name from Italian Wikipedia; the 2011 Italian dub form is not viewed",
+      "Drawing motif against the threshold page/frame (first pass; graded in #897)"
+    ]
+  },
+  "riehlvelt": {
+    "sources": [
+      "https://hunterxhunter.fandom.com/wiki/Riehlvelt",
+      "https://hunterxhunter.fandom.com/wiki/Chapter_58",
+      "https://hunterxhunter.fandom.com/wiki/Chapter_59",
+      "https://hunterxhunter.fandom.com/wiki/Episode_34_(2011)",
+      "https://it.wikipedia.org/wiki/Personaggi_di_Hunter_%C3%97_Hunter"
+    ],
+    "unverified": [
+      "Chapter 59 synopsis has the announcer call his match; chapter 58’s phone call does not print the name. Episode 34 is the episode of the match; its exact naming line is not viewed (owner, #896)",
+      "Italian name from Italian Wikipedia; the 2011 Italian dub form is not viewed",
+      "Drawing motif against the threshold page/frame (first pass; graded in #897)"
+    ]
+  },
+  "kastro": {
+    "sources": [
+      "https://hunterxhunter.fandom.com/wiki/Kastro",
+      "https://hunterxhunter.fandom.com/wiki/Chapter_52",
+      "https://hunterxhunter.fandom.com/wiki/Chapter_54",
+      "https://hunterxhunter.fandom.com/wiki/Episode_31_(2011)",
+      "https://hunterxhunter.fandom.com/wiki/Episode_32_(2011)",
+      "https://it.wikipedia.org/wiki/Personaggi_di_Hunter_%C3%97_Hunter"
+    ],
+    "unverified": [
+      "Naming page in chapter 52 and timestamp in episode 31 not viewed",
+      "Death at the end of the match: chapter 54 and episode 32 synopses",
+      "Drawing motif against the threshold page/frame (first pass; graded in #897)"
+    ]
+  },
+  "gon-freecss": {
+    "sources": [
+      "https://hunterxhunter.fandom.com/wiki/Chapter_47",
+      "https://hunterxhunter.fandom.com/wiki/Chapter_48",
+      "https://hunterxhunter.fandom.com/wiki/Episode_28_(2011)",
+      "https://hunterxhunter.fandom.com/wiki/Episode_29_(2011)"
+    ],
+    "unverified": [
+      "Heavens Arena pupil step pinned at chapter 48 / episode 29, where Wing opens their aura; his offer in chapter 47 / episode 28 is left below the pin (#896)"
     ]
   }
 }

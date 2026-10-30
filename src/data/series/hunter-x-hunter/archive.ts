@@ -16,7 +16,7 @@ import { sagas } from './sagas'
 
 /**
  * Hunter x Hunter's archive: its arcs, and the characters and places of the
- * Hunter Exam filed so far (#760). The engine derives their lists, shelves
+ * Hunter Exam (#760) and Heavens Arena (#896) filed so far. The engine derives their lists, shelves
  * and dated facts from the records and dossiers the sagas file, as it does
  * One Piece's.
  */
@@ -61,11 +61,12 @@ export const HUNTER_X_HUNTER_ARCHIVE: SeriesArchive = {
   bookmarks: sweepOf(sagas, SERIES, [
     ...[
       2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
-      22, 23, 24, 25, 75, 76,
+      22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 75, 76,
     ].map((episode) => ({ mode: 'episode' as const, episode })),
     ...[
       4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26,
-      27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43,
+      27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44,
+      45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59,
     ].map((chapter) => ({ mode: 'chapter' as const, chapter })),
     { mode: 'season', season: 1, episode: 26 },
     { mode: 'season', season: 2, episode: 1 },
@@ -93,6 +94,7 @@ export const HUNTER_X_HUNTER_ARCHIVE: SeriesArchive = {
       'killua',
       'hisoka',
     ],
+    'heavens-arena-arc': ['gon-freecss', 'killua', 'wing', 'zushi', 'hisoka'],
   },
   places: places.records,
   getPlace: places.get,

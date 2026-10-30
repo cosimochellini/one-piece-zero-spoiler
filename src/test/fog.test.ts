@@ -110,6 +110,8 @@ describe('the place words of a series that labels its own', () => {
     ['its id', { forms: { port: 'x' } }, ['dolle-harbor']],
     ['its label', { forms: { x: 'Port town' } }, ['dolle-harbor']],
     ['its country label', { forms: { x: 'Country' } }, ['republic-of-padokea']],
+    ['its tower label', { forms: { x: 'Tower' } }, ['heavens-arena']],
+    ['its Italian tower label', { forms: { x: 'Torre' } }, ['heavens-arena']],
     [
       'its Italian country label',
       { forms: { x: 'Paese' } },
@@ -127,6 +129,7 @@ describe('the place words of a series that labels its own', () => {
         'trick-tower',
         'republic-of-padokea',
         'kukuroo-mountain',
+        'heavens-arena',
       ],
     ],
   ])(
