@@ -259,14 +259,21 @@ describe.each(LOADED_SERIES)(
     it('files at least what the series is known to file', () => {
       // The rules below pass on nothing, so a series that files content must
       // be seen filing it: a reader that lost its characters or its timelines
-      // would otherwise leave every rule here green.
+      // would otherwise leave every rule here green. A floor below nine
+      // tenths of its count, rounded down, is stale: it no longer guards.
+      // The message prints every count, ready to copy into the floors.
       const { least } = expectedOf(slug)
       const counts = countsOf(archive)
 
       const keys = Object.keys(least).filter(isLeastKey)
-      for (const key of keys) {
-        expect(counts[key], key).toBeGreaterThanOrEqual(least[key])
-      }
+      const short = keys.filter((key) => counts[key] < least[key])
+      const stale = keys.filter(
+        (key) => least[key] < Math.floor(counts[key] * 0.9),
+      )
+
+      expect({ short, stale }, `files ${JSON.stringify(counts)}`).toStrictEqual(
+        { short: [], stale: [] },
+      )
     })
 
     it('holds every kind of text it prints to a floor above zero', () => {
