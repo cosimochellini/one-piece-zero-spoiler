@@ -55,25 +55,16 @@ function registerArchiveResolution() {
   registerHooks({ resolve: resolveArchive })
 }
 
-const NO_CHUNK_URL = 'data:text/javascript,export const url = ""'
-
 /**
- * The resolve hook: an empty stand-in for a `?chunk-url` import, then the
- * alias, then the `.ts` file a specifier with no extension names, or the
- * `index.ts` of the directory it names, when the plain resolution fails and
- * that file exists.
+ * The resolve hook: the alias first, then the `.ts` file a specifier with no
+ * extension names, or the `index.ts` of the directory it names, when the
+ * plain resolution fails and that file exists.
  * @param {string} specifier The specifier as written.
  * @param {{ parentURL?: string }} context The importing module.
  * @param {(specifier: string, context: { parentURL?: string }) => unknown} nextResolve The next hook in the chain.
  * @returns {unknown} What the next hook resolves.
  */
 export function resolveArchive(specifier, context, nextResolve) {
-  // A built chunk's address (`chunkUrl` in vite.config.ts), which a script has
-  // no build to take it from.
-  if (specifier.endsWith('?chunk-url')) {
-    return { url: NO_CHUNK_URL, shortCircuit: true }
-  }
-
   const aliased =
     specifier.startsWith('~/') ?
       // fallow-ignore-next-line security-sink -- the specifier is an import written in this repository's own source, never outside input

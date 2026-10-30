@@ -4,8 +4,6 @@ import path from 'node:path'
 import type { Plugin } from 'vite'
 import { defineConfig } from 'vitest/config'
 
-import { chunkUrl } from './vite.config.ts'
-
 // NOTE: this config intentionally does NOT include tanstackStart().
 // That plugin unconditionally sets `optimizeDeps.include` for react and
 // react-dom on the client environment, which prebundles a second copy of React
@@ -57,7 +55,6 @@ const config = defineConfig({
       configureServer: undefined,
     },
     viteReact(),
-    chunkUrl(),
   ],
   test: {
     globals: true,

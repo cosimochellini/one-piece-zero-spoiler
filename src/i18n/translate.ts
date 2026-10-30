@@ -1,7 +1,3 @@
-import type * as EnModule from './dictionaries/en'
-import { url as enChunk } from './dictionaries/en?chunk-url'
-import type * as ItModule from './dictionaries/it'
-import { url as itChunk } from './dictionaries/it?chunk-url'
 import type { Locale } from './locales'
 import type {
   Dictionary,
@@ -12,39 +8,20 @@ import type {
 } from './types'
 
 /**
- * A chunk asked for again, under a query of its own: Safari, every iOS
- * browser and Chromium before 156 remember a failed `import()` by its URL and
- * fail the same URL again without asking the network. The chunk only exports
- * a constant, so a second copy of it is harmless.
- */
-async function importAgain<T>(url: string, attempt: number): Promise<T> {
-  const specifier = `${url}?retry=${String(attempt)}`
-  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions -- the specifier is one of our own two dictionary chunks (`?chunk-url`), and its type is the module the first attempt imported by name.
-  return (await import(/* @vite-ignore */ specifier)) as T
-}
-
-/**
  * Each locale's shared copy, as a chunk of its own: a page downloads the
- * language it is read in and not the other one (#930). The first attempt is
- * the plain import; a retry asks for the same chunk at a new URL.
+ * language it is read in and not the other one (#930).
  *
  * A total record rather than a lookup with a fallback: it is keyed by
  * `Locale`, so a language added to `LOCALES` without a dictionary is a
  * typecheck failure rather than a page that quietly renders in Italian.
  */
-const DICTIONARIES: Record<Locale, (attempt: number) => Promise<Dictionary>> = {
-  it: async (attempt) => {
-    const { itDictionary } =
-      attempt === 0 ?
-        await import('./dictionaries/it')
-      : await importAgain<typeof ItModule>(itChunk, attempt)
+const DICTIONARIES: Record<Locale, () => Promise<Dictionary>> = {
+  it: async () => {
+    const { itDictionary } = await import('./dictionaries/it')
     return itDictionary
   },
-  en: async (attempt) => {
-    const { enDictionary } =
-      attempt === 0 ?
-        await import('./dictionaries/en')
-      : await importAgain<typeof EnModule>(enChunk, attempt)
+  en: async () => {
+    const { enDictionary } = await import('./dictionaries/en')
     return enDictionary
   },
 }
@@ -52,42 +29,75 @@ const DICTIONARIES: Record<Locale, (attempt: number) => Promise<Dictionary>> = {
 const loaded = new Map<Locale, Dictionary>()
 
 /**
- * How long to wait before each retry of a chunk that failed to arrive: a
- * dropped request or a moment offline often comes through on a later try,
- * and the reader waits 1.3 s at most before the page gives up.
+ * Fetches one locale's shared copy, once. The locale routes await it before
+ * they render, and the router before it hydrates (`src/router.tsx`), so a
+ * language switch paints in the new language with no flash of the old one.
  */
-const FIRST_RETRY_MS = 300
-const SECOND_RETRY_MS = 1000
-const RETRY_DELAYS_MS = [FIRST_RETRY_MS, SECOND_RETRY_MS]
+export async function loadDictionary(locale: Locale): Promise<void> {
+  if (!loaded.has(locale)) {
+    loaded.set(locale, await DICTIONARIES[locale]())
+  }
+}
 
-async function importDictionary(
-  locale: Locale,
-  attempt = 0,
-): Promise<Dictionary> {
+const RELOADED = 'zs-copy-reloaded:'
+
+/**
+ * Marks `href` as reloaded for this tab. False when it already was, or when
+ * storage is out of reach (private mode, blocked storage, the server): then
+ * nothing reloads, so a reload can never loop.
+ */
+function firstReload(href: string): boolean {
   try {
-    return await DICTIONARIES[locale](attempt)
-  } catch (error) {
-    const delay = RETRY_DELAYS_MS[attempt]
-    if (delay === undefined) {
-      throw error
-    }
-    await new Promise((resolve) => {
-      setTimeout(resolve, delay)
-    })
-    return importDictionary(locale, attempt + 1)
+    const fresh = sessionStorage.getItem(RELOADED + href) === null
+    sessionStorage.setItem(RELOADED + href, '1')
+    return fresh
+  } catch {
+    return false
+  }
+}
+
+function forgetReload(href: string): void {
+  try {
+    sessionStorage.removeItem(RELOADED + href)
+  } catch {
+    // Nothing was stored.
   }
 }
 
 /**
- * Fetches one locale's shared copy, once. The locale routes await it before
- * they render, and the router before it hydrates (`src/router.tsx`), so a
- * language switch paints in the new language with no flash of the old one.
- * Rejects when the chunk still fails after its retries.
+ * `loadDictionary` for the page at `href` (path, search and hash), which the
+ * reader is opening. When the copy cannot be fetched, the browser loads
+ * `href` from the server, once per tab: the fresh document names the chunks
+ * the current deploy serves, and its fresh module map lets Safari ask again
+ * for a chunk whose import failed (#930). No retry here first: the reload is
+ * the retry that works in every browser and after a deploy. When the reload
+ * did not help either, the cause is logged and thrown.
  */
-export async function loadDictionary(locale: Locale): Promise<void> {
-  if (!loaded.has(locale)) {
-    loaded.set(locale, await importDictionary(locale))
+export async function loadDictionaryOrReload(
+  locale: Locale,
+  href: string,
+): Promise<void> {
+  try {
+    await loadDictionary(locale)
+  } catch (error) {
+    if (!firstReload(href)) {
+      // eslint-disable-next-line no-console -- a broken chunk after a deploy would otherwise leave every page static without a word.
+      console.error(error)
+      throw error
+    }
+    const { pathname, search, hash } = location
+    if (href === pathname + search + hash) {
+      location.reload()
+    } else {
+      // fallow-ignore-next-line security-sink -- `href` is the router's own location for the route being opened: a same-origin path, search and hash, never outside input
+      location.assign(href)
+    }
+    // The page is on its way out: nothing renders in the meantime.
+    return new Promise<never>(() => {
+      // Never settles, on purpose.
+    })
   }
+  forgetReload(href)
 }
 
 /**

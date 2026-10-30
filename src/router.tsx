@@ -1,7 +1,7 @@
 import { createRouter } from '@tanstack/react-router'
 
 import { DEFAULT_LOCALE, isLocale, type Locale } from '~/i18n/locales'
-import { loadDictionary } from '~/i18n/translate'
+import { loadDictionaryOrReload } from '~/i18n/translate'
 
 import { routeTree } from './routeTree.gen'
 
@@ -30,18 +30,21 @@ export function getRouter(): ReturnType<typeof createRouter<typeof routeTree>> {
     // the page hydrates: the locale routes' `beforeLoad`, which loads it on
     // a navigation, does not run on hydration (#930).
     //
-    // When the copy cannot be fetched (the network keeps failing, or a
-    // deploy has replaced the chunk the page was built with), the page is
-    // never hydrated: a hook that rejected would make the router throw and
-    // React blank the whole document. A promise that never settles keeps
-    // the hydration suspended instead, so the page stays as the server
-    // rendered it, readable, its links ordinary page loads.
+    // When the copy cannot be fetched (a flaky network, or a deploy that
+    // replaced the chunk this page was built with), the page reloads once
+    // (`loadDictionaryOrReload`). If that fails too, the page is never
+    // hydrated: a hook that rejected would make the router throw and React
+    // blank the whole document. A promise that never settles keeps the
+    // hydration suspended instead, so the page stays as the server rendered
+    // it, readable, its links ordinary page loads.
     hydrate: async () => {
+      const { pathname, search, hash } = location
       try {
-        await loadDictionary(localeOfPath(location.pathname))
-      } catch (error) {
-        // eslint-disable-next-line no-console -- a broken chunk after a deploy would otherwise leave every page static without a word.
-        console.error(error)
+        await loadDictionaryOrReload(
+          localeOfPath(pathname),
+          pathname + search + hash,
+        )
+      } catch {
         await new Promise<never>(() => {
           // Never settles, on purpose.
         })
