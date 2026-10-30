@@ -1,4 +1,5 @@
 import { finalPhaseChronicles } from './final-phase.chronicle'
+import { finalPhaseRelationships } from './final-phase.relationships'
 import type { HunterSaga } from './saga'
 
 /**
@@ -40,6 +41,7 @@ export const finalPhase: HunterSaga = {
   ],
   dossiers: {
     masta: {
+      relationships: finalPhaseRelationships.masta,
       chronicle: finalPhaseChronicles.masta,
       role: { en: 'Final Phase referee', it: 'Arbitro della prova finale' },
       log: {
@@ -59,6 +61,7 @@ export const finalPhase: HunterSaga = {
       ],
     },
     illumi: {
+      relationships: finalPhaseRelationships.illumi,
       chronicle: finalPhaseChronicles.illumi,
       role: { en: 'Killua’s older brother', it: 'Fratello maggiore di Killua' },
       log: {

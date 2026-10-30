@@ -2,6 +2,7 @@ import type { PlaceDossier } from '~/data/types'
 
 import type { HunterSaga, HunterVocabulary } from './saga'
 import { trickTowerChronicles } from './trick-tower.chronicle'
+import { trickTowerRelationships } from './trick-tower.relationships'
 
 const PRISONER = {
   it: 'Prigioniero della Torre di Lotta',
@@ -123,6 +124,7 @@ export const trickTower: HunterSaga = {
   ],
   dossiers: {
     lippo: {
+      relationships: trickTowerRelationships.lippo,
       chronicle: trickTowerChronicles.lippo,
       role: { it: 'Direttore della Torre di Lotta', en: 'Trick Tower warden' },
       log: {
@@ -139,6 +141,7 @@ export const trickTower: HunterSaga = {
       ],
     },
     bendot: {
+      relationships: trickTowerRelationships.bendot,
       chronicle: trickTowerChronicles.bendot,
       role: PRISONER,
       log: {
@@ -149,6 +152,7 @@ export const trickTower: HunterSaga = {
       affiliation: [{ episode: 8, chapter: 17, value: PRISONER }],
     },
     sedokan: {
+      relationships: trickTowerRelationships.sedokan,
       chronicle: trickTowerChronicles.sedokan,
       role: PRISONER,
       log: {
@@ -159,6 +163,7 @@ export const trickTower: HunterSaga = {
       affiliation: [{ episode: 8, chapter: 17, value: PRISONER }],
     },
     majtani: {
+      relationships: trickTowerRelationships.majtani,
       chronicle: trickTowerChronicles.majtani,
       role: PRISONER,
       log: {
@@ -169,6 +174,7 @@ export const trickTower: HunterSaga = {
       affiliation: [{ episode: 9, chapter: 18, value: PRISONER }],
     },
     leroute: {
+      relationships: trickTowerRelationships.leroute,
       chronicle: trickTowerChronicles.leroute,
       role: PRISONER,
       log: {
@@ -179,6 +185,7 @@ export const trickTower: HunterSaga = {
       affiliation: [{ episode: 10, chapter: 20, value: PRISONER }],
     },
     johness: {
+      relationships: trickTowerRelationships.johness,
       chronicle: trickTowerChronicles.johness,
       role: PRISONER,
       log: {
@@ -196,6 +203,7 @@ export const trickTower: HunterSaga = {
       affiliation: [{ episode: 11, chapter: 21, value: PRISONER }],
     },
     togari: {
+      relationships: trickTowerRelationships.togari,
       chronicle: trickTowerChronicles.togari,
       role: { it: 'Ex esaminatore', en: 'Former examiner' },
       log: {

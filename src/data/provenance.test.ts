@@ -8,6 +8,8 @@ import { LOADED_SERIES } from '~/test/series'
 // eslint-disable-next-line no-restricted-imports -- The evidence lives in docs, beside the audit manifest.
 import elbafEvidence from '../../docs/content-provenance/elbaf-relationships.json' with { type: 'json' }
 // eslint-disable-next-line no-restricted-imports -- The evidence lives in docs, beside the audit manifest.
+import hunterRelationshipEvidence from '../../docs/content-provenance/hunter-x-hunter-relationships.json' with { type: 'json' }
+// eslint-disable-next-line no-restricted-imports -- The evidence lives in docs, beside the audit manifest.
 import hunterEvidence from '../../docs/content-provenance/hunter-x-hunter.json' with { type: 'json' }
 // eslint-disable-next-line no-restricted-imports -- The evidence lives in docs, beside the audit manifest.
 import relationshipEvidence from '../../docs/content-provenance/relationships.json' with { type: 'json' }
@@ -16,17 +18,44 @@ import manifest from '../../docs/content-provenance/sources.json' with { type: '
 
 const byId = (a: string, b: string): number => a.localeCompare(b)
 
-const titles = new Set(
-  Object.values(manifest.sources).map(({ title }) => title),
-)
+function hostOf(url: string): string {
+  const parsed = new URL(url)
+  return parsed.host
+}
+
+/** The page titles pinned from one series' wiki: a same-titled page elsewhere is no evidence. */
+function titlesOn(host: string): Set<string> {
+  return new Set(
+    Object.values(manifest.sources)
+      .filter(({ url }) => hostOf(url) === host)
+      .map(({ title }) => title),
+  )
+}
+
+const titles = titlesOn('onepiece.fandom.com')
+const hunterTitles = titlesOn('hunterxhunter.fandom.com')
 const characters: Partial<Record<string, null | string>> = relationshipEvidence
 const hunter: Record<
   string,
   { pending?: boolean; sources?: string[]; unverified?: string[] }
 > = hunterEvidence
-const hunterIds = LOADED_SERIES.find(
+const hunterArchive = LOADED_SERIES.find(
   ({ slug }) => slug === 'hunter-x-hunter',
-)?.archive.entities.map(({ id }) => id)
+)?.archive
+const hunterIds = hunterArchive?.entities.map(({ id }) => id)
+const hunterRelationships: {
+  authored: Record<string, string[]>
+  omitted: Record<string, string>
+  pending: Record<string, string>
+} = hunterRelationshipEvidence
+const hunterCharacters =
+  hunterArchive?.entities.filter(({ kind }) => kind === 'character') ?? []
+const hunterOwners = hunterCharacters
+  .map((entity) => ({
+    id: entity.id,
+    relationships: hunterArchive?.datedOf(entity, 'relationships') ?? [],
+  }))
+  .filter(({ relationships }) => relationships.length > 0)
 
 const owners = Object.entries(CHARACTER_DOSSIERS)
   .filter(([, { relationships }]) => relationships !== undefined)
@@ -105,6 +134,79 @@ describe('Hunter x Hunter provenance', () => {
     (id, { unverified = [] }) => {
       expect(hunterIds).not.toContain(id)
       expect(unverified.length).toBeGreaterThan(0)
+    },
+  )
+})
+
+describe('Hunter x Hunter relationship provenance', () => {
+  const { authored, omitted, pending } = hunterRelationships
+
+  it('accounts for every archived character exactly once', () => {
+    expect(
+      [
+        ...Object.keys(authored),
+        ...Object.keys(omitted),
+        ...Object.keys(pending),
+      ].toSorted(byId),
+    ).toStrictEqual(hunterCharacters.map(({ id }) => id).toSorted(byId))
+  })
+
+  // Filed after this cohort: not authored yet, which is no deliberate omission.
+  it.each(Object.entries(pending))(
+    'names the issue that will author %s',
+    (id, issue) => {
+      expect(hunterOwners.map((owner) => owner.id)).not.toContain(id)
+      expect(issue).toMatch(/^#\d+$/u)
+    },
+  )
+
+  it('lists as authored exactly the characters that have relationships', () => {
+    expect(Object.keys(authored).toSorted(byId)).toStrictEqual(
+      hunterOwners.map(({ id }) => id).toSorted(byId),
+    )
+
+    for (const { id, relationships } of hunterOwners) {
+      expect(
+        relationships.some(({ value }) => value.length > 0),
+        id,
+      ).toBe(true)
+    }
+  })
+
+  it.each(Object.entries(omitted))(
+    'gives a reason to omit %s',
+    (id, reason) => {
+      expect(hunterOwners.map((owner) => owner.id)).not.toContain(id)
+      expect(reason.trim().length).toBeGreaterThan(0)
+    },
+  )
+
+  it.each(Object.entries(authored))(
+    'pins the wiki revisions read for %s on the series wiki',
+    (id, keys) => {
+      const sources: Partial<Record<string, { url: string }>> = manifest.sources
+
+      expect(keys.length, id).toBeGreaterThan(0)
+
+      for (const key of keys) {
+        expect(key, id).toMatch(/^hxh-/u)
+        expect(hostOf(sources[key]?.url ?? 'missing:'), key).toBe(
+          'hunterxhunter.fandom.com',
+        )
+      }
+    },
+  )
+
+  it.each(hunterOwners)(
+    'pins every episode and chapter gate of $id on the series wiki',
+    ({ relationships }) => {
+      // A one-source entry's other number only orders it: nothing to cite.
+      const pages = relationships.flatMap(({ episode, chapter, source }) => [
+        ...(source === 'chapter' ? [] : [`Episode ${String(episode)} (2011)`]),
+        ...(source === 'episode' ? [] : [`Chapter ${String(chapter)}`]),
+      ])
+
+      expect(pages.filter((page) => !hunterTitles.has(page))).toStrictEqual([])
     },
   )
 })

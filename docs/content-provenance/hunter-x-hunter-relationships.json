@@ -1,0 +1,107 @@
+{
+  "authored": {
+    "gon-freecss": [
+      "hxh-en-Gon_Freecss-425671.json",
+      "hxh-en-Kite-425278.json",
+      "hxh-en-Kon-424580.json",
+      "hxh-en-Ging_Freecss-425761.json"
+    ],
+    "killua": [
+      "hxh-en-Killua_Zoldyck-425628.json",
+      "hxh-en-Illumi_Zoldyck-424681.json",
+      "hxh-en-Milluki_Zoldyck-424323.json",
+      "hxh-en-Zeno_Zoldyck-425610.json",
+      "hxh-en-Kalluto_Zoldyck-425082.json"
+    ],
+    "ging-freecss": [
+      "hxh-en-Ging_Freecss-425761.json",
+      "hxh-en-Kite-425278.json"
+    ],
+    "kite": ["hxh-en-Kite-425278.json", "hxh-en-Episode_1_(2011)-417858.json"],
+    "kon": ["hxh-en-Kon-424580.json"],
+    "mito-freecss": [
+      "hxh-en-Mito_Freecss-424311.json",
+      "hxh-en-Ging_Freecss-425761.json"
+    ],
+    "leorio-paradinight": ["hxh-en-Leorio_Paradinight-424443.json"],
+    "kurapika": ["hxh-en-Kurapika-425292.json"],
+    "katzo": ["hxh-en-Katzo-424617.json"],
+    "kiriko": ["hxh-en-Kiriko-425753.json"],
+    "hisoka": ["hxh-en-Hisoka_Morow-425756.json"],
+    "tonpa": ["hxh-en-Tonpa-423953.json"],
+    "todo": ["hxh-en-Todo-423960.json"],
+    "geretta": ["hxh-en-Geretta-424791.json"],
+    "cherry": ["hxh-en-Cherry-424937.json"],
+    "hanzo": ["hxh-en-Hanzo-424719.json"],
+    "nicholas": ["hxh-en-Nicholas-424245.json"],
+    "satotz": ["hxh-en-Satotz-424054.json"],
+    "menchi": ["hxh-en-Menchi-424332.json"],
+    "buhara": ["hxh-en-Buhara-424954.json"],
+    "netero": ["hxh-en-Isaac_Netero-424748.json"],
+    "masta": ["hxh-en-Masta-424338.json"],
+    "lippo": [
+      "hxh-en-Lippo-424436.json",
+      "hxh-en-Leroute-424442.json",
+      "hxh-en-Majtani-424367.json",
+      "hxh-en-Johness-425736.json"
+    ],
+    "bendot": ["hxh-en-Bendot-425003.json"],
+    "sedokan": ["hxh-en-Sedokan-424057.json"],
+    "majtani": ["hxh-en-Majtani-424367.json"],
+    "leroute": ["hxh-en-Leroute-424442.json"],
+    "johness": ["hxh-en-Johness-425736.json", "hxh-en-Lippo-424436.json"],
+    "togari": ["hxh-en-Togari-423959.json"],
+    "coco-loo": ["hxh-en-Coco_Loo-425598.json"],
+    "zebro": ["hxh-en-Zebro-423888.json"],
+    "mike": ["hxh-en-Mike-424325.json"],
+    "seaquant": ["hxh-en-Seaquant-424058.json"],
+    "canary": ["hxh-en-Canary-424946.json"],
+    "gotoh": ["hxh-en-Gotoh-424767.json"],
+    "milluki": ["hxh-en-Milluki_Zoldyck-424323.json"],
+    "zeno": ["hxh-en-Zeno_Zoldyck-425610.json"],
+    "kalluto": [
+      "hxh-en-Kalluto_Zoldyck-425082.json",
+      "hxh-en-Canary-424946.json"
+    ],
+    "goz": ["hxh-en-Goz-424763.json", "hxh-en-Illumi_Zoldyck-424681.json"],
+    "agon": ["hxh-en-Agon-425063.json"],
+    "siper": ["hxh-en-Siper-424030.json", "hxh-en-Illumi_Zoldyck-424681.json"],
+    "ryu": ["hxh-en-Ryu-424098.json", "hxh-en-Bodoro-424967.json"],
+    "kyu": ["hxh-en-Kyu-424561.json", "hxh-en-Pokkle-424162.json"],
+    "shishito": [
+      "hxh-en-Shishito-424035.json",
+      "hxh-en-Amori-425056.json",
+      "hxh-en-Umori-423935.json"
+    ],
+    "kenmi": [
+      "hxh-en-Kenmi-424605.json",
+      "hxh-en-Amori-425056.json",
+      "hxh-en-Umori-423935.json"
+    ],
+    "sommy": ["hxh-en-Sommy-424025.json"],
+    "amori": ["hxh-en-Amori-425056.json"],
+    "umori": ["hxh-en-Umori-423935.json"],
+    "imori": ["hxh-en-Imori-424678.json"],
+    "ponzu": ["hxh-en-Ponzu-424158.json"],
+    "bourbon": ["hxh-en-Bourbon-424958.json", "hxh-en-Ponzu-424158.json"],
+    "pokkle": ["hxh-en-Pokkle-424162.json", "hxh-en-Kyu-424561.json"],
+    "bodoro": ["hxh-en-Bodoro-424967.json", "hxh-en-Ryu-424098.json"],
+    "gittarackur": [
+      "hxh-en-Illumi_Zoldyck-424681.json",
+      "hxh-en-Goz-424763.json",
+      "hxh-en-Siper-424030.json"
+    ],
+    "illumi": ["hxh-en-Illumi_Zoldyck-424681.json"]
+  },
+  "omitted": {
+    "khara": "Through episode 26 / chapter 43 she addresses the twenty-four applicants as a group on the boat to Zevil Island, sends them ashore in order and announces the end of the Fourth Phase; she has no individual exchange with an archived character. The anime's frightened look at Gittarackur (episode 14) comes before his 19/33 gate. Judged from hxh-en-Khara-424601.json."
+  },
+  "pending": {
+    "zushi": "#947",
+    "wing": "#947",
+    "gido": "#947",
+    "sadaso": "#947",
+    "riehlvelt": "#947",
+    "kastro": "#947"
+  }
+}

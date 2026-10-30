@@ -1,5 +1,6 @@
 import type { HunterSaga } from './saga'
 import { zevilChronicles } from './zevil.chronicle'
+import { zevilRelationships } from './zevil.relationships'
 
 const APPLICANT = {
   it: 'Esame Hunter, aspirante',
@@ -297,6 +298,7 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       status: [{ episode: 14, chapter: 23, value: 'alive' }],
     },
     goz: {
+      relationships: zevilRelationships.goz,
       chronicle: zevilChronicles.goz,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
@@ -310,6 +312,7 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       affiliation: [{ ...ON_ROSTER, value: APPLICANT }],
     },
     agon: {
+      relationships: zevilRelationships.agon,
       chronicle: zevilChronicles.agon,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
@@ -323,6 +326,7 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       affiliation: [{ ...ON_ROSTER, value: APPLICANT }],
     },
     siper: {
+      relationships: zevilRelationships.siper,
       chronicle: zevilChronicles.siper,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
@@ -336,6 +340,7 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       affiliation: [{ ...ON_ROSTER, value: APPLICANT }],
     },
     ryu: {
+      relationships: zevilRelationships.ryu,
       chronicle: zevilChronicles.ryu,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
@@ -349,6 +354,7 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       ],
     },
     kyu: {
+      relationships: zevilRelationships.kyu,
       chronicle: zevilChronicles.kyu,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
@@ -362,6 +368,7 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       ],
     },
     shishito: {
+      relationships: zevilRelationships.shishito,
       chronicle: zevilChronicles.shishito,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
@@ -375,6 +382,7 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       ],
     },
     kenmi: {
+      relationships: zevilRelationships.kenmi,
       chronicle: zevilChronicles.kenmi,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
@@ -388,6 +396,7 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       ],
     },
     sommy: {
+      relationships: zevilRelationships.sommy,
       chronicle: zevilChronicles.sommy,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
@@ -401,6 +410,7 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       ],
     },
     gittarackur: {
+      relationships: zevilRelationships.gittarackur,
       chronicle: zevilChronicles.gittarackur,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
@@ -436,6 +446,7 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       status: [{ episode: 19, chapter: 33, value: 'alive' }],
     },
     amori: {
+      relationships: zevilRelationships.amori,
       chronicle: zevilChronicles.amori,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
@@ -463,6 +474,7 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       status: [{ episode: 3, chapter: 29, value: 'alive' }],
     },
     umori: {
+      relationships: zevilRelationships.umori,
       chronicle: zevilChronicles.umori,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
@@ -490,6 +502,7 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       status: [{ episode: 3, chapter: 29, value: 'alive' }],
     },
     imori: {
+      relationships: zevilRelationships.imori,
       chronicle: zevilChronicles.imori,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
@@ -517,6 +530,7 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       status: [{ episode: 3, chapter: 29, value: 'alive' }],
     },
     ponzu: {
+      relationships: zevilRelationships.ponzu,
       chronicle: zevilChronicles.ponzu,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
@@ -544,6 +558,7 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       status: [{ episode: 17, chapter: 30, value: 'alive' }],
     },
     bourbon: {
+      relationships: zevilRelationships.bourbon,
       chronicle: zevilChronicles.bourbon,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
@@ -566,6 +581,7 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       ],
     },
     pokkle: {
+      relationships: zevilRelationships.pokkle,
       chronicle: zevilChronicles.pokkle,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
@@ -593,6 +609,7 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       status: [{ episode: 18, chapter: 23, value: 'alive' }],
     },
     bodoro: {
+      relationships: zevilRelationships.bodoro,
       chronicle: zevilChronicles.bodoro,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {

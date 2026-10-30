@@ -1,4 +1,5 @@
 import { chapterOneChronicles } from './chapter-one.chronicle'
+import { chapterOneRelationships } from './chapter-one.relationships'
 import type { HunterSaga } from './saga'
 
 /**
@@ -41,6 +42,7 @@ export const chapterOne: Pick<HunterSaga, 'dossiers' | 'entries'> = {
   ],
   dossiers: {
     kite: {
+      relationships: chapterOneRelationships.kite,
       chronicle: chapterOneChronicles.kite,
       role: { it: 'Hunter', en: 'Hunter' },
       log: {
@@ -60,6 +62,7 @@ export const chapterOne: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       ],
     },
     kon: {
+      relationships: chapterOneRelationships.kon,
       chronicle: chapterOneChronicles.kon,
       role: { it: 'Orso-volpe', en: 'Foxbear' },
       log: {
