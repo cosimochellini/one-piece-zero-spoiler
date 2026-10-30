@@ -99,7 +99,19 @@ the data checks.
 ## Recording provenance
 
 Evidence is data, not prose files. `docs/content-provenance/sources.json` pins
-every wiki revision read: append entries, never rewrite earlier ones. Beside it:
+every wiki revision read: append entries, never rewrite earlier ones.
+
+`npm run provenance:pin -- --series <slug> "Title" ["Title" …]` does the
+appending. A title already pinned from that series' English wiki, or one that
+redirects to a pinned page, keeps its key and revision; any other title is read
+at its latest revision and appended. Each title prints its key and the cached
+wikitext under `.gate/wiki/<slug>/revisions/` to read; `--dry-run` writes
+nothing to `sources.json`. New keys are `en-<Title>.json` for One Piece (with
+`-<revision>` when another title already holds that key) and
+`hxh-en-<Title>-<revision>.json` for Hunter x Hunter. The latest revision a
+title was read at is cached under `.gate/wiki/<slug>/latest/`; delete that file
+to read it afresh. The archive gate test counts the sources from the file, so
+nothing else needs bumping. Beside it:
 
 - `relationships.json` maps each One Piece character with a `relationships`
   timeline to the `sources.json` key of their character revision, or `null`. A
