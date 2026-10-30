@@ -19,14 +19,16 @@ export function getRouter(): ReturnType<typeof createRouter<typeof routeTree>> {
     // (BookmarkProvider) or a retry. Re-read on every entry, Back to the
     // characters re-rendered its few thousand nodes a second time
     // mid-crossfade when the identical answer landed (#939). A bookmark
-    // moved in another tab is not followed (owner, #940).
+    // moved in another tab is not followed (owner, #940). The page the
+    // server rendered is aged by the server's clock.
     defaultStaleTime: PAGE_KEPT_MS,
     // A hover or touch on a link to a page already read reuses it as well. A
     // preload that read it again would hand its call to the click, and the
     // click would wait on the network for a page it already has.
     defaultPreloadStaleTime: PAGE_KEPT_MS,
-    // Kept in memory as long as it is kept as read, so a page past its half
-    // hour is read again on the next visit rather than shown as it was.
+    // Kept in memory as long as it is kept as read, and no longer (the
+    // default would drop it after five minutes). The re-read past the half
+    // hour comes from the stale times above, not from this.
     defaultGcTime: PAGE_KEPT_MS,
     defaultPreloadGcTime: PAGE_KEPT_MS,
     // A page read again waits for its new records instead of showing the old

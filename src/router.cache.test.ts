@@ -169,14 +169,28 @@ describe('the router keeps a page as read', { timeout: 15_000 }, () => {
     expect(shownAt(router)).toStrictEqual({ cookie: 'zs_one-piece=10' })
   })
 
-  it('until a bookmark move, even when the reader leaves before the re-read lands', async () => {
+  it('until a bookmark move, which re-reads the page on screen before it settles', async () => {
     const { reads, router } = await pages()
-    document.cookie = 'zs_one-piece=10; path=/'
-    void router.invalidate()
-    await router.navigate({ href: '/b' })
-    await router.navigate({ href: '/a' })
+    await moveTheBookmark(router)
 
     expect(reads.a).toBe(2)
+    expect(shownAt(router)).toStrictEqual({ cookie: 'zs_one-piece=10' })
+  })
+
+  it('until a bookmark move, even when the reader leaves before the re-read lands', async () => {
+    const { hold, reads, release, router } = await pages()
+    hold()
+    document.cookie = 'zs_one-piece=10; path=/'
+    void router.invalidate()
+    // The re-read is out, held, when the reader leaves.
+    await vi.waitFor(() => {
+      expect(reads.a).toBe(2)
+    })
+    await router.navigate({ href: '/b' })
+    release()
+    await router.navigate({ href: '/a' })
+
+    expect(reads.a).toBe(3)
     expect(shownAt(router)).toStrictEqual({ cookie: 'zs_one-piece=10' })
   })
 
