@@ -1,5 +1,8 @@
 import { createRouter } from '@tanstack/react-router'
 
+import { DEFAULT_LOCALE, isLocale } from '~/i18n/locales'
+import { loadDictionary } from '~/i18n/translate'
+
 import { routeTree } from './routeTree.gen'
 
 // Required entry point: the Start plugin resolves src/router.{ts,tsx} and the
@@ -23,5 +26,13 @@ export function getRouter(): ReturnType<typeof createRouter<typeof routeTree>> {
     // nonce attribute from the DOM, and Start marks script tags with
     // suppressHydrationWarning.
     ssr: { nonce: crypto.randomUUID() },
+    // The shared copy of the language the server rendered, fetched before
+    // the page hydrates: the locale routes' `beforeLoad`, which loads it on
+    // a navigation, does not run on hydration (#930). `<html lang>` is that
+    // language, or the default on a page outside any locale.
+    hydrate: async () => {
+      const { lang } = document.documentElement
+      await loadDictionary(isLocale(lang) ? lang : DEFAULT_LOCALE)
+    },
   })
 }

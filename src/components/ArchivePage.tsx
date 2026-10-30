@@ -19,7 +19,8 @@ export interface ArchivePageProps {
 
 /**
  * The shell both archive listings sit in: the brand line, the count under it,
- * and the listing itself, settling in DOM order.
+ * and the listing itself. The heading is there from the first frame and the
+ * listing settles under it.
  *
  * The signal book and the ship's log are different macrostructures – a
  * catalogue and a narrative workflow – but they open the same way, and when
@@ -36,16 +37,14 @@ export function ArchivePage({
       id="content"
       {...stylex.props(styles.page)}
     >
-      <header
-        {...stylex.props(styles.head, settleStyles.band, settleStyles.at(0))}
-      >
+      <header {...stylex.props(styles.head)}>
         <h1 {...stylex.props(styles.title)}>{title}</h1>
         {count === undefined ? null : (
           <p {...stylex.props(styles.count)}>{count}</p>
         )}
       </header>
 
-      <div {...stylex.props(settleStyles.band, settleStyles.at(1))}>
+      <div {...stylex.props(settleStyles.band, settleStyles.at(0))}>
         {children}
       </div>
     </main>

@@ -21,10 +21,10 @@ import type { HomeView, LandingView } from '~/lib/view/records'
 import { settleStyles } from '~/styles/settle'
 import { color, rule, space } from '~/styles/tokens.stylex'
 
-// The bands in DOM order. The fold settles in three steps of its own, so the
-// next band starts after them rather than landing on top of one. The filler
-// warning, when there is one, takes the stories' step and moves the rest on.
-const BAND = { fold: 0, stories: 3, cast: 4, more: 5 } as const
+// The bands in DOM order. The fold is there from the first frame but for its
+// control, which takes the first step. The filler warning, when there is one,
+// takes the stories' step and moves the rest on.
+const BAND = { fold: 0, stories: 1, cast: 2, more: 3 } as const
 
 /** What the loader sent. */
 export interface LandingPageProps {

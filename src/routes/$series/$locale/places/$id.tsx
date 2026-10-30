@@ -33,9 +33,11 @@ import { settleStyles } from '~/styles/settle'
 import { DrawingsBand, MapBand, TurnBand } from './-$id.bands'
 import { EntryDiptych, PlaceEntry, ShipBody } from './-$id.entry'
 
-// The bands in DOM order. Named rather than counted at the call, so a band
-// inserted in the middle is one edit here and not three down the page.
-const BAND = { entry: 0, map: 1, drawings: 2, turn: 3 } as const
+// The bands under the first in DOM order. The back link and the first band
+// are the page's header, there from the first frame. Named rather than
+// counted at the call, so a band inserted in the middle is one edit here and
+// not three down the page.
+const BAND = { map: 0, drawings: 1, turn: 2 } as const
 
 export const Route = createFileRoute('/$series/$locale/places/$id')({
   beforeLoad: ({ context }) => {
@@ -87,17 +89,11 @@ function PlacePage(): ReactElement {
       id="content"
       {...stylex.props(recordStyles.page)}
     >
-      <p
-        {...stylex.props(
-          recordStyles.back,
-          settleStyles.band,
-          settleStyles.at(BAND.entry),
-        )}
-      >
+      <p {...stylex.props(recordStyles.back)}>
         <RecordBackLink section="places" />
       </p>
 
-      <Band at={BAND.entry}>
+      <div>
         {'ship' in page ?
           <EntryDiptych
             Body={ShipBody}
@@ -112,7 +108,7 @@ function PlacePage(): ReactElement {
             peekRecord={peekRecord}
           />
         }
-      </Band>
+      </div>
 
       {place === null ? null : (
         <Band at={BAND.map}>

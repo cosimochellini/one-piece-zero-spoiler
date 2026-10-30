@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest'
 
 import type { ComingSeries, HubSeries } from '~/lib/view/hub'
 import { ep, renderWithProviders } from '~/test/providers'
+import { settleDelay } from '~/test/settle'
 
 import { SeriesHub } from './SeriesHub'
 
@@ -20,6 +21,24 @@ const onePiece = (bookmark: HubSeries['bookmark']): HubSeries => ({
 })
 
 describe('SeriesHub', () => {
+  it('shows its header at once and settles the cards in order', () => {
+    renderWithProviders(
+      <SeriesHub
+        coming={[HUNTER_X_HUNTER]}
+        series={[onePiece(null)]}
+      />,
+    )
+
+    const header = screen.getByRole('banner')
+    const cards = screen.getAllByRole('listitem')
+
+    expect(settleDelay(header)).toBeNull()
+    expect(cards.map((card) => settleDelay(card))).toStrictEqual([
+      '0ms',
+      '70ms',
+    ])
+  })
+
   it('links a series to its own home, with its count and the bookmark', () => {
     renderWithProviders(
       <SeriesHub

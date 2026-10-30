@@ -21,14 +21,15 @@ import {
 import { usePeek } from '~/routes/$series/$locale/-peek'
 import { recordStyles } from '~/routes/$series/$locale/-record.styles'
 import { liftDossier, loadCharacter, loadRelationships } from '~/server/api'
-import { settleStyles } from '~/styles/settle'
 
 import { ChronicleBand } from './-$id.chronicle'
 import { DossierDiptych } from './-$id.dossier'
 
-// The bands in DOM order. Named rather than counted at the call, so a
-// band inserted in the middle is one edit here and not three down the page.
-const BAND = { dossier: 0, chronicle: 1, relationships: 2 } as const
+// The bands under the first in DOM order. The back link and the first band
+// are the page's header, there from the first frame. Named rather than
+// counted at the call, so a band inserted in the middle is one edit here and
+// not three down the page.
+const BAND = { chronicle: 0, relationships: 1 } as const
 
 // Its own chunk: the band streams in after the page, so its code need not
 // ride in the first load.
@@ -69,13 +70,7 @@ function CharacterPage(): ReactElement {
       id="content"
       {...stylex.props(recordStyles.page)}
     >
-      <p
-        {...stylex.props(
-          recordStyles.back,
-          settleStyles.band,
-          settleStyles.at(BAND.dossier),
-        )}
-      >
+      <p {...stylex.props(recordStyles.back)}>
         <RecordBackLink section="characters" />
       </p>
 

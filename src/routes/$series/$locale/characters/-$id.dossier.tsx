@@ -17,12 +17,8 @@ import { useT } from '~/i18n/LocaleContext'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
 import type { CharacterDetail, Slot } from '~/lib/view/records'
 import { morphPart } from '~/styles/morph'
-import { settleStyles } from '~/styles/settle'
 
 import { styles } from './-$id.styles'
-
-// The four bands in DOM order, as the page counts them.
-const DOSSIER_BAND = 0
 
 /** The open half of the dossier: the record, with its summary. */
 export type DossierRecord =
@@ -43,13 +39,7 @@ export function DossierDiptych({
   peek: (handle: string) => Promise<DossierRecord>
 }): ReactElement {
   return (
-    <section
-      {...stylex.props(
-        styles.diptych,
-        settleStyles.band,
-        settleStyles.at(DOSSIER_BAND),
-      )}
-    >
+    <section {...stylex.props(styles.diptych)}>
       <CrestPlate
         peek={peek}
         slot={detail.slot}
