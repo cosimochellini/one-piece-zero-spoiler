@@ -56,11 +56,13 @@ export function sweepOf(
 
 /**
  * Both sides of every gate in each unit that tells it (`toldIn`), merged with
- * the numbers named by hand: episodes, then chapters, each ascending and once.
+ * the numbers named by hand: episodes, then chapters, each ascending and once,
+ * and none past the series' ceiling in that unit.
  */
 export function aroundGates(
   gates: Gated[],
   named: Record<Source, number[]>,
+  series: BookmarkSeries,
 ): Bookmark[] {
   const around = (source: Source): number[] => {
     const counts = new Set(named[source])
@@ -71,7 +73,11 @@ export function aroundGates(
       const at = thresholdIn(gate, source)
       counts.add(at - 1).add(at)
     }
-    return [...counts].filter((count) => count > 0).sort(byNumber())
+    const ceiling =
+      source === 'episode' ? series.episodeCeiling : series.chapterCeiling
+    return [...counts]
+      .filter((count) => count > 0 && count <= ceiling)
+      .sort(byNumber())
   }
 
   return [

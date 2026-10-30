@@ -63,7 +63,7 @@ const RELATIONSHIP_GATES = entities.flatMap((owner) =>
   ),
 )
 
-/** The named scenes the sweep asks on both sides of, in each unit. */
+/** The named scenes the sweep asks at, listed by hand in each unit. */
 const NAMED_SCENES = {
   episode: [
     2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
@@ -81,11 +81,11 @@ const places = keptOf(entities, 'place', PLACE_DOSSIERS)
 /** One dynamically loaded archive; its public description contains no records. */
 export const HUNTER_X_HUNTER_ARCHIVE: SeriesArchive = {
   series: SERIES,
-  // Both sides of every relationship gate and of the named scenes listed by
+  // Both sides of every relationship gate and the named scenes listed by
   // hand, followed by the first two season boundaries (the demo end and a
   // boundary inside an arc).
   bookmarks: sweepOf(sagas, SERIES, [
-    ...aroundGates(RELATIONSHIP_GATES, NAMED_SCENES),
+    ...aroundGates(RELATIONSHIP_GATES, NAMED_SCENES, SERIES),
     { mode: 'season', season: 1, episode: 26 },
     { mode: 'season', season: 2, episode: 1 },
     { mode: 'season', season: 2, episode: 12 },
