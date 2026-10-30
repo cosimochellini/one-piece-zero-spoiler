@@ -65,7 +65,7 @@ Add one key per new record to `docs/content-provenance/hunter-x-hunter.json`: `s
 
 Add every new character to `docs/content-provenance/hunter-x-hunter-relationships.json` under `pending`, keyed to the issue that will author its relationships (`"zushi": "#947"`), or under `omitted` with a reason when it has none to author. `CONTRIBUTING.md`, "Recording provenance", has the rules.
 
-Done when `src/data/provenance.test.ts` and `hunterRelationships.test.ts` pass and every new character is in both files.
+Done when `src/data/provenance.test.ts` and `src/server/archive/hunterRelationships.test.ts` pass and every new character is in both files.
 
 ## 7. The arc's server test
 
