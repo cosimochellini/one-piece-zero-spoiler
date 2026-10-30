@@ -106,8 +106,11 @@ export const EXTRA = {
 // matches, and an archive module is a long file.
 const SLUG_PATTERN = /^ {2}'(?<slug>[a-z\d-]{12,})':/gmu
 
-/** A saga module that files no entry yet: `entries: []`. */
-const NO_ENTRIES = /^ {2}entries: \[\],$/mu
+/**
+ * A saga module that files nothing yet: no dossier and no entry, so its
+ * name is all it holds.
+ */
+const NO_ENTRIES = /^ {2}dossiers: \{\},\n {2}entries: \[\],$/mu
 
 /** A slug earns its place by being hyphenated: a bare word is a word. */
 const HYPHENATED = /-/u
@@ -252,7 +255,7 @@ export function proseCanaries(repositoryRoot, folder) {
     const phrase = canaryFrom(source)
 
     // `saga.ts` is the shape of a saga, not a saga, and a saga that files no
-    // entry yet holds only its name: no prose, nothing to say.
+    // dossier and no entry yet holds only its name: no prose, nothing to say.
     if (
       phrase === null
       && (file.endsWith('saga.ts') || NO_ENTRIES.test(source))
