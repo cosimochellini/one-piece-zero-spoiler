@@ -11,6 +11,7 @@
     "src/routes/**/*.tsx",
     "src/router.tsx",
     "src/start.ts",
+    "src/server.ts",
     "doctor.config.ts",
     "commitlint.config.mjs",
   ],
@@ -29,11 +30,13 @@
   // like any other unused export.
   "includeEntryExports": true,
   // Exports a tool loads by name, so nothing imports them: react-doctor's
-  // config, and the router and Start instance TanStack Start looks up.
+  // config, the router and Start instance TanStack Start looks up, and the
+  // Worker entry wrangler.jsonc names.
   "ignoreExports": [
     { "file": "doctor.config.ts", "exports": ["default"] },
     { "file": "src/router.tsx", "exports": ["getRouter"] },
     { "file": "src/start.ts", "exports": ["startInstance"] },
+    { "file": "src/server.ts", "exports": ["default"] },
   ],
   // A file fallow cannot parse cleanly would drop out of every analysis
   // silently, so it fails the run instead.
@@ -104,7 +107,10 @@
         "patterns": ["src/test/**", "src/**/*.test.ts", "src/**/*.test.tsx"],
       },
       { "name": "routes", "patterns": ["src/routes/**", "src/router.tsx"] },
-      { "name": "server", "patterns": ["src/server/**", "src/start.ts"] },
+      {
+        "name": "server",
+        "patterns": ["src/server/**", "src/start.ts", "src/server.ts"],
+      },
       { "name": "ui", "patterns": ["src/components/ui/**"] },
       { "name": "components", "patterns": ["src/components/**"] },
       { "name": "lib", "patterns": ["src/lib/**", "src/security-headers.ts"] },
