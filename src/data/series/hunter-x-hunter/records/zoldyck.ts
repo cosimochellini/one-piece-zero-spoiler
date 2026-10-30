@@ -56,7 +56,7 @@ export const zoldyck: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       kind: 'character',
       revealedAtEpisode: 23,
       revealedAtChapter: 40,
-      name: { it: 'Seaquant', en: 'Seaquant' },
+      name: { it: 'Shikant', en: 'Seaquant' },
       summary: {
         it: 'Un collega di Zebro che vive negli alloggi dei guardiani della tenuta Zoldick.',
         en: 'A colleague of Zebro living in the groundskeepers’ quarters at the Zoldyck estate.',

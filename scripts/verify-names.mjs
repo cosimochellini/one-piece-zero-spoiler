@@ -86,7 +86,7 @@ const ITALIAN_TITLES = {
   'killua': 'Killua Zoldick',
   'zebro': 'Famiglia Zoldick#Zebro',
   'mike': 'Famiglia Zoldick#Cane da guardia: Miche',
-  'seaquant': 'Famiglia Zoldick#Seaquant',
+  'seaquant': 'Famiglia Zoldick#Shikant',
   'canary': 'Famiglia Zoldick#Canaria',
   'gotoh': 'Famiglia Zoldick#Goto',
   'milluki': 'Famiglia Zoldick#Milki',
