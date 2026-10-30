@@ -100,13 +100,14 @@ async function dumpOf(args) {
 }
 
 /**
- * Writes one dump to stdout: the table lines, then the payload lines.
+ * The lines of one dump: the table lines, then the payload lines.
  * @param {Dump} dump What to dump.
+ * @yields {string} One JSON line, newline included.
  */
-function write({ archive, payloads, bookmarks, locales }) {
+export function* dumpLines({ archive, payloads, bookmarks, locales }) {
   for (let episode = 1; episode <= archive.series.episodeCeiling; episode++) {
     const chapter = archive.chapterAtEpisode(episode)
-    process.stdout.write(`${JSON.stringify({ table: episode, chapter })}\n`)
+    yield `${JSON.stringify({ table: episode, chapter })}\n`
   }
 
   const asks = bookmarks.flatMap((bookmark) =>
@@ -117,9 +118,7 @@ function write({ archive, payloads, bookmarks, locales }) {
     for (const key of all) {
       for (const { bookmark, locale } of asks) {
         const payload = run(bookmark, locale, key)
-        process.stdout.write(
-          `${JSON.stringify({ name, key, bookmark, locale, payload })}\n`,
-        )
+        yield `${JSON.stringify({ name, key, bookmark, locale, payload })}\n`
       }
     }
   }
@@ -134,5 +133,7 @@ if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
     console.error(error.message)
     process.exit(2)
   }
-  write(run)
+  for (const line of dumpLines(run)) {
+    process.stdout.write(line)
+  }
 }

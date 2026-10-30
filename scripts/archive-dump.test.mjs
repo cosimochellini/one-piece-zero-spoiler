@@ -5,7 +5,7 @@
 // `no-undef` has no TypeScript program to learn the Vitest globals from.
 import { describe, expect, it } from 'vitest'
 
-import { dumpArgs, keptPayloads } from './archive-dump.mjs'
+import { dumpArgs, dumpLines, keptPayloads } from './archive-dump.mjs'
 
 describe('the dump flags', () => {
   it('dump One Piece, every payload and its own bookmarks with none', () => {
@@ -53,5 +53,43 @@ describe('the dumped payloads', () => {
     expect(() => keptPayloads(payloads, ['loadRelationship'])).toThrow(
       /--skip loadRelationship is not a payload/u,
     )
+  })
+})
+
+describe('the dump lines', () => {
+  it('open with the episode table, then every key, bookmark and locale', () => {
+    const lines = dumpLines({
+      archive: {
+        series: { episodeCeiling: 2 },
+        chapterAtEpisode: (episode) => episode * 3,
+      },
+      payloads: [
+        { name: 'loadHome', run: (bookmark, locale) => `${bookmark}${locale}` },
+        { name: 'loadCharacter', keys: () => ['gon'], run: () => null },
+      ],
+      bookmarks: [1],
+      locales: ['en', 'it'],
+    })
+
+    expect([...lines].map((line) => JSON.parse(line))).toStrictEqual([
+      { table: 1, chapter: 3 },
+      { table: 2, chapter: 6 },
+      { name: 'loadHome', key: '', bookmark: 1, locale: 'en', payload: '1en' },
+      { name: 'loadHome', key: '', bookmark: 1, locale: 'it', payload: '1it' },
+      {
+        name: 'loadCharacter',
+        key: 'gon',
+        bookmark: 1,
+        locale: 'en',
+        payload: null,
+      },
+      {
+        name: 'loadCharacter',
+        key: 'gon',
+        bookmark: 1,
+        locale: 'it',
+        payload: null,
+      },
+    ])
   })
 })
