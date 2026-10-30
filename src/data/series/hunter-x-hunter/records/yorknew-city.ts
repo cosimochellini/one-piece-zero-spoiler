@@ -37,8 +37,8 @@ export const yorknewCity: HunterSaga = {
       nameSaidAt: 1,
       name: { it: 'Ging Freecss', en: 'Ging Freecss' },
       summary: {
-        it: 'Il padre di Gon, un Hunter che ha lasciato l’Isola Balena alla sua età ed è tornato dieci anni dopo con un figlio in fasce, che ha lasciato lì.',
-        en: 'Gon’s father, a Hunter who left Whale Island at Gon’s age and came back ten years later with a baby son, whom he left there.',
+        it: 'Il padre di Gon, un Hunter che ha lasciato l’Isola Balena alla sua età ed è tornato dieci anni dopo con il figlio in braccio, che ha lasciato lì.',
+        en: 'Gon’s father, a Hunter who left Whale Island at Gon’s age and came back ten years later carrying his son, whom he left there.',
       },
       visual: { art: 'ging-freecss', tint: 'sand' },
     },
@@ -49,8 +49,8 @@ export const yorknewCity: HunterSaga = {
       chronicle: yorknewCityChronicles['ging-freecss'],
       role: { it: 'Hunter, padre di Gon', en: 'Hunter, Gon’s father' },
       log: {
-        it: 'Cugino di Myto. Ha sostenuto l’Esame Hunter prima dei dodici anni ed è partito dall’isola senza dire che cosa cercava. Dieci anni dopo è tornato con un bambino in braccio, ha chiesto alla nonna di tenerlo e della madre ha detto solo che si erano lasciati; Myto si è presa il bambino. L’unica cosa che ha lasciato a Gon è una scatola da dargli quando fosse diventato Hunter, con dentro un anello, una scheda di memoria e una cassetta: sul nastro chiede a Gon se vuole incontrarlo.',
-        en: 'Mito’s cousin. He took the Hunter Exam before he was twelve and left the island without saying what he was after. Ten years later he came back with a baby, asked his grandmother to keep him and said only that the mother and he had split up; Mito took the boy. The one thing he left Gon is a box to be given him once he became a Hunter, holding a ring, a memory card and a cassette: on the tape he asks Gon whether he wants to see him.',
+        it: 'Da ragazzo è partito dall’Isola Balena. Dieci anni dopo è tornato con Gon in braccio e ha chiesto alla nonna di occuparsene, dicendo che lui e la madre si erano lasciati. A Gon ha lasciato una scatola con dentro un anello, una scheda di memoria e una cassetta: sul nastro chiede a Gon se vuole incontrarlo.',
+        en: 'He left Whale Island as a boy. Ten years later he came back carrying Gon and asked his grandmother to look after him, saying that he and the mother had separated. He left Gon a box holding a ring, a memory card and a cassette: on the tape he asks Gon whether he wants to see him.',
       },
       status: [{ episode: 37, value: 'alive' }],
       affiliation: [
