@@ -599,8 +599,8 @@ export interface Step<T> {
 
 /**
  * One East Blue record as the onboarding's dial wakes it: its thresholds,
- * and every dated fact about it up to the end of East Blue, so the browser
- * can show it at any point the dial reaches without asking again.
+ * and every dated fact about it up to the end of East Blue. Drawing steps
+ * retain their gates, with deferred strokes fetched once on viewport entry.
  */
 export interface DemoEntry {
   /** Who the character is in the story's own words, on every step. */

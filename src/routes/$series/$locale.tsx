@@ -10,7 +10,13 @@ import {
 } from '~/i18n/translate'
 import { readPlain } from '~/lib/plain'
 import { type SagaTable, SagaTableContext } from '~/lib/progress/sagaLabel'
-import { DrawingsContext } from '~/lib/view/drawings'
+import {
+  DemoDrawingsContext,
+  type DemoLoad,
+  DrawingsContext,
+  type Load,
+} from '~/lib/view/drawings'
+import type { Drawing, Step, Stroke } from '~/lib/view/records'
 import { LocaleShell } from '~/routes/-LocaleShell'
 import { keepSeriesCopy, remembered, seriesCopy } from '~/routes/-series'
 import { loadDrawings, loadSagaLabels } from '~/server/api'
@@ -66,27 +72,54 @@ function SeriesLayout(): ReactElement {
     async (language: Locale) => sagaTableIn(series.slug, language),
     [series.slug],
   )
-  const loadStrokes = useCallback(
-    async (ids: string[], language: Locale) =>
-      readPlain(
-        await loadDrawings({
-          data: { series: series.slug, ids, locale: language },
-        }),
+  const loadStrokes = useCallback<Load>(
+    async (ids, language) =>
+      drawingPayload(
+        { series: series.slug, ids, locale: language },
+        (stroke): stroke is Stroke => 'd' in stroke,
+      ),
+    [series.slug],
+  )
+  const loadDemo = useCallback<DemoLoad>(
+    async (ids, language) =>
+      drawingPayload(
+        { series: series.slug, ids, locale: language, demo: true },
+        (step): step is Step<Drawing> => 'value' in step,
       ),
     [series.slug],
   )
   return (
     <SagaTableContext value={loadSagas}>
       <DrawingsContext value={loadStrokes}>
-        <LocaleShell
-          copy={copy}
-          locale={locale}
-          trial
-        >
-          <Outlet />
-          <FirstVisitIntro />
-        </LocaleShell>
+        <DemoDrawingsContext value={loadDemo}>
+          <LocaleShell
+            copy={copy}
+            locale={locale}
+            trial
+          >
+            <Outlet />
+            <FirstVisitIntro />
+          </LocaleShell>
+        </DemoDrawingsContext>
       </DrawingsContext>
     </SagaTableContext>
+  )
+}
+
+/** Narrow the plain response to the drawing mode the route requested. */
+async function drawingPayload<T extends Step<Drawing> | Stroke>(
+  data: { demo?: true; ids: string[]; locale: Locale; series: string },
+  expected: (value: Step<Drawing> | Stroke) => value is T,
+): Promise<Record<string, T[]>> {
+  const got: Record<string, Step<Drawing>[] | Stroke[]> = await readPlain(
+    await loadDrawings({ data }),
+  )
+  return Object.fromEntries(
+    Object.entries(got).map(([id, rows]) => {
+      if (rows.every(expected)) {
+        return [id, rows]
+      }
+      throw new Error('Unexpected drawing payload')
+    }),
   )
 }

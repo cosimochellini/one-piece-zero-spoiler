@@ -10,163 +10,209 @@ import { useLocale } from '~/i18n/LocaleContext'
 import type { Locale } from '~/i18n/locales'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
 import { serialiseBookmark } from '~/lib/progress/episode'
+import { thresholdIn } from '~/lib/progress/spoiler'
 
-import type { Drawing, Stroke } from './records'
+import type { DemoEntry, Drawing, Step, Stroke } from './records'
 
-/** Fetches the strokes of `ids` in `locale`, keyed by id. */
+/** Fetches drawings left out of a page, keyed by record id. */
+type Loader<T> = (ids: string[], locale: Locale) => Promise<Record<string, T>>
+/** Loads a listing’s current drawing at its saved bookmark. */
 export type Load = (
   ids: string[],
   locale: Locale,
 ) => Promise<Record<string, Stroke[]>>
+/** Loads every drawing step inside the series’ bounded demo. */
+export type DemoLoad = (
+  ids: string[],
+  locale: Locale,
+) => Promise<Record<string, Step<Drawing>[]>>
 
-/**
- * How a page asks for the strokes a list left behind (`Drawing.deferred`).
- * Only a route may call a server function; outside one (a unit test, say)
- * there is none, and a deferred drawing stays an empty frame.
- */
+/** Only routes call server functions; elsewhere a deferred frame stays empty. */
 export const DrawingsContext = createContext<Load | null>(null)
+export const DemoDrawingsContext = createContext<DemoLoad | null>(null)
 
-/** One drawing to ask for: which, in what locale, at what bookmark. */
-interface Ask {
+interface Ask<T> {
   id: string
-  load: Load
+  load: Loader<T>
   locale: Locale
   scope: string
 }
 
-// How far off the screen a drawing is asked for: one screen ahead, so it is
-// there by the time the reader scrolls to it.
+// Listings preload one screen ahead; demo cards wait for viewport entry.
 const AHEAD = '100% 0px'
-// The most ids one request carries; the server refuses more.
 const BATCH = 64
 
-// The strokes already here, and the ids already asked for, per bookmark and
-// locale: a drawing follows the bookmark (a redrawing), so a moved bookmark
-// starts afresh. Kept for the tab's life, so Back draws at once.
-const fetched = new Map<string, Map<string, Stroke[]>>()
-const asked = new Map<string, Set<string>>()
-const queued = new Map<string, Ask[]>()
-const listeners = new Set<() => void>()
+/** A tab's cache and request queue for one drawing payload kind. */
+class DrawingStore<T> {
+  private empty: T
+  private fetched = new Map<string, Map<string, T>>()
+  private asked = new Map<string, Set<string>>()
+  private queued = new Map<string, Ask<T>[]>()
+  private listeners = new Set<() => void>()
 
-function subscribe(listener: () => void): () => void {
-  listeners.add(listener)
-  return () => {
-    listeners.delete(listener)
-  }
-}
-
-/** Files what came back; an id the server left out stays empty. */
-function store(
-  scope: string,
-  ids: string[],
-  got: Record<string, Stroke[]>,
-): void {
-  const into = fetched.get(scope) ?? new Map<string, Stroke[]>()
-  fetched.set(scope, into)
-  for (const id of ids) {
-    into.set(id, Object.hasOwn(got, id) ? (got[id] ?? []) : [])
-  }
-  for (const listener of listeners) {
-    listener()
-  }
-}
-
-/** One batch of one scope. A failed one is asked again when next near. */
-async function send(batch: Ask[]): Promise<void> {
-  const [first] = batch
-  if (first === undefined) {
-    return
+  subscribe = (listener: () => void): (() => void) => {
+    this.listeners.add(listener)
+    return () => {
+      this.listeners.delete(listener)
+    }
   }
 
-  const ids = batch.map((one) => one.id)
-  let got: Record<string, Stroke[]>
-  try {
-    got = await first.load(ids, first.locale)
-  } catch {
+  constructor(empty: T) {
+    this.empty = empty
+  }
+
+  private store(scope: string, ids: string[], got: Record<string, T>): void {
+    const into = this.fetched.get(scope) ?? new Map<string, T>()
+    this.fetched.set(scope, into)
     for (const id of ids) {
-      asked.get(first.scope)?.delete(id)
+      into.set(
+        id,
+        Object.hasOwn(got, id) ? (got[id] ?? this.empty) : this.empty,
+      )
     }
-    return
-  }
-  store(first.scope, ids, got)
-}
-
-/** Sends every drawing asked for since the last task, a batch at a time. */
-function flush(): void {
-  for (const asks of queued.values()) {
-    for (let from = 0; from < asks.length; from += BATCH) {
-      void send(asks.slice(from, from + BATCH))
+    for (const listener of this.listeners) {
+      listener()
     }
   }
-  queued.clear()
-}
 
-function enqueue(next: Ask): void {
-  const sent = asked.get(next.scope) ?? new Set<string>()
-  asked.set(next.scope, sent)
-  if (sent.has(next.id)) {
-    return
+  private async send(batch: Ask<T>[]): Promise<void> {
+    const [first] = batch
+    if (first === undefined) {
+      return
+    }
+    const ids = batch.map((one) => one.id)
+    let got: Record<string, T>
+    try {
+      got = await first.load(ids, first.locale)
+    } catch {
+      // Keep observing: a failed batch is retried when its box next enters.
+      for (const id of ids) {
+        this.asked.get(first.scope)?.delete(id)
+      }
+      return
+    }
+    this.store(first.scope, ids, got)
   }
 
-  sent.add(next.id)
-  if (queued.size === 0) {
-    setTimeout(flush, 0)
+  private flush(): void {
+    for (const asks of this.queued.values()) {
+      for (let from = 0; from < asks.length; from += BATCH) {
+        void this.send(asks.slice(from, from + BATCH))
+      }
+    }
+    this.queued.clear()
   }
-  queued.set(next.scope, [...(queued.get(next.scope) ?? []), next])
+
+  get(scope: string, id: string): T | undefined {
+    return this.fetched.get(scope)?.get(id)
+  }
+
+  enqueue(next: Ask<T>): void {
+    const sent = this.asked.get(next.scope) ?? new Set<string>()
+    this.asked.set(next.scope, sent)
+    if (sent.has(next.id)) {
+      return
+    }
+    sent.add(next.id)
+    if (this.queued.size === 0) {
+      setTimeout(() => {
+        this.flush()
+      }, 0)
+    }
+    this.queued.set(next.scope, [...(this.queued.get(next.scope) ?? []), next])
+  }
 }
 
-/**
- * A record's strokes, and the ref to put on the box they are drawn in. A
- * drawing sent whole is returned as is; a deferred one is empty until its box
- * comes within a screen of the viewport, then asked for in one batch with
- * its neighbours. The box keeps its size either way, so nothing moves.
- */
-export function useDrawing(
-  id: string,
-  visual: Drawing,
-): { ref: RefCallback<Element>; strokes: Stroke[] } {
-  const load = use(DrawingsContext)
+const drawings = new DrawingStore<Stroke[]>([])
+const demos = new DrawingStore<Step<Drawing>[]>([])
+
+/** Watches a fixed-size frame until its deferred payload arrives. */
+function useDeferred<T>(
+  store: DrawingStore<T>,
+  load: Loader<T> | null,
+  {
+    id,
+    scope,
+    inline,
+    rootMargin,
+  }: { id: string; inline: T | undefined; rootMargin: string; scope: string },
+): { ref: RefCallback<Element>; value: T | undefined } {
   const { locale } = useLocale()
-  const { bookmark } = useBookmark()
-  const scope = `${locale} ${bookmark === null ? '' : serialiseBookmark(bookmark)}`
-  const deferred = visual.deferred === true
-
-  const here = useSyncExternalStore(
-    subscribe,
-    () => (deferred ? fetched.get(scope)?.get(id) : visual.strokes),
-    () => (deferred ? undefined : visual.strokes),
+  const deferred = inline === undefined
+  const value = useSyncExternalStore(
+    store.subscribe,
+    () => (deferred ? store.get(scope, id) : inline),
+    () => inline,
   )
-
-  // Watched until the strokes are here, not only until the first ask: a
-  // batch that failed is asked again the next time the box comes near.
-  const waiting = deferred && here === undefined
+  const waiting = deferred && value === undefined
   const ref = useCallback<RefCallback<Element>>(
     (box) => {
       if (!waiting || load === null || box === null) {
         return
       }
-
       const next = { id, load, locale, scope }
       if (typeof IntersectionObserver === 'undefined') {
-        enqueue(next)
+        store.enqueue(next)
         return
       }
-
       const observer = new IntersectionObserver(
         (entries) => {
           if (entries.some((entry) => entry.isIntersecting)) {
-            enqueue(next)
+            store.enqueue(next)
           }
         },
-        { rootMargin: AHEAD },
+        { rootMargin },
       )
       observer.observe(box)
       return () => {
         observer.disconnect()
       }
     },
-    [id, load, locale, scope, waiting],
+    [id, load, locale, rootMargin, scope, store, waiting],
   )
+  return { ref, value }
+}
 
-  return { ref, strokes: here ?? [] }
+/** A listing drawing, resolved at the saved bookmark and preloaded one screen ahead. */
+export function useDrawing(
+  id: string,
+  visual: Drawing,
+): { ref: RefCallback<Element>; strokes: Stroke[] } {
+  const load = use(DrawingsContext)
+  const { locale } = useLocale()
+  const { bookmark, series } = useBookmark()
+  const scope = `${series?.slug ?? ''} ${locale} ${bookmark === null ? '' : serialiseBookmark(bookmark)}`
+  const { ref, value } = useDeferred(drawings, load, {
+    id,
+    scope,
+    inline: visual.deferred === true ? undefined : visual.strokes,
+    rootMargin: AHEAD,
+  })
+  return { ref, strokes: value ?? [] }
+}
+
+/** All demo-safe redrawings load together; the dial selects their current step locally. */
+export function useDemoDrawing(
+  entry: DemoEntry,
+  point: { mode: 'chapter' | 'episode'; value: number },
+): { drawing: Drawing | undefined; ref: RefCallback<Element> } {
+  const load = use(DemoDrawingsContext)
+  const { locale } = useLocale()
+  const { series } = useBookmark()
+  const scope = `${series?.slug ?? ''} ${locale} demo`
+  const { ref, value } = useDeferred(demos, load, {
+    id: entry.id,
+    scope,
+    inline:
+      entry.drawings.some((step) => step.value.deferred === true) ?
+        undefined
+      : entry.drawings,
+    rootMargin: '0px',
+  })
+  return {
+    ref,
+    drawing: (value ?? entry.drawings).findLast(
+      (step) => point.value >= thresholdIn(step, point.mode),
+    )?.value,
+  }
 }

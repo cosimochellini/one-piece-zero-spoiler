@@ -16,6 +16,7 @@ import {
   fruitSiblings,
 } from './archive/fruits.server'
 import { landingPage } from './archive/home.server'
+import { demoDrawingsFor } from './archive/onboarding.server'
 import {
   characterPage,
   charactersPage,
@@ -131,6 +132,17 @@ function listed(input: unknown): Located & { ids: string[] } {
   }
 }
 
+/** Demo requests use the same bounded id list, with an explicit drawing mode. */
+function drawingList(
+  input: unknown,
+): Located & { demo: boolean; ids: string[] } {
+  const demo = field(input, 'demo')
+  if (demo !== undefined && typeof demo !== 'boolean') {
+    throw new Error('A boolean demo mode is required')
+  }
+  return { ...listed(input), demo: demo === true }
+}
+
 /** A record still under fog, which the reader can only name by its handle. */
 function handled(input: unknown): Handled {
   return { ...located(input), handle: text(input, 'handle') }
@@ -190,10 +202,13 @@ export const loadRelationships = createServerFn()
 
 // Plain JSON, as the album below (#780).
 export const loadDrawings = createServerFn()
-  .validator(listed)
-  .handler(async ({ data }) =>
-    plain(drawingsFor(data.ids, await readerIn(data))),
-  )
+  .validator(drawingList)
+  .handler(async ({ data }) => {
+    const r = await readerIn(data)
+    return plain(
+      data.demo ? demoDrawingsFor(data.ids, r) : drawingsFor(data.ids, r),
+    )
+  })
 
 export const loadFruits = createServerFn()
   .validator(located)

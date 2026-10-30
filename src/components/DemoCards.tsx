@@ -15,6 +15,7 @@ import {
   useSeriesParams,
 } from '~/lib/progress/BookmarkContext'
 import { describeThreshold } from '~/lib/progress/threshold'
+import { useDemoDrawing } from '~/lib/view/drawings'
 import type { CoveredRecord, DemoEntry } from '~/lib/view/records'
 import { settleStyles } from '~/styles/settle'
 
@@ -136,6 +137,7 @@ function CardBody({
   point: DialPoint
 }): ReactElement {
   const { locale } = useLocale()
+  const { ref, drawing } = useDemoDrawing(entry, point)
   const onePiece = useSeriesT('one-piece')
   const facts = [
     { slot: 'epithet', text: latestStep(entry.epithet, point), loud: true },
@@ -159,10 +161,11 @@ function CardBody({
   return (
     <>
       <div
+        ref={ref}
         {...stylex.props(entry.kind === 'arc' ? styles.arcFrame : styles.frame)}
       >
         <Drawn
-          drawing={latestStep(entry.drawings, point)}
+          drawing={drawing}
           kind={entry.kind}
         />
       </div>
@@ -205,7 +208,7 @@ function Drawn({
 /**
  * A record under fog: the bare seal or the bare plate, the word "Spoiler",
  * and where it opens. The name and the drawing are not drawn, though for an
- * East Blue record they are in the page's data for the dial.
+ * East Blue record its name and drawing gates are in the dial's data.
  */
 export function FogCard({
   entry,
