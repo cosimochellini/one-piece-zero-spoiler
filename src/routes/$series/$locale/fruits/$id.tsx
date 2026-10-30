@@ -36,9 +36,11 @@ import { EatersBand, KinBand, SagaBand } from './-$id.bands'
 import { HistoryBand } from './-$id.history'
 import { StageBand } from './-$id.stage'
 
-// The bands in DOM order. Named rather than counted at the call, so a band
-// inserted in the middle is one edit here and not three down the page.
-const BAND = { stage: 0, history: 1, eaters: 2, kin: 3, saga: 4 } as const
+// The bands under the first in DOM order. The back link and the first band
+// are the page's header, there from the first frame. Named rather than
+// counted at the call, so a band inserted in the middle is one edit here and
+// not three down the page.
+const BAND = { history: 0, eaters: 1, kin: 2, saga: 3 } as const
 
 export const Route = createFileRoute('/$series/$locale/fruits/$id')({
   beforeLoad: ({ context }) => {
@@ -83,17 +85,11 @@ function FruitPage(): ReactElement {
       id="content"
       {...stylex.props(recordStyles.page)}
     >
-      <p
-        {...stylex.props(
-          recordStyles.back,
-          settleStyles.band,
-          settleStyles.at(BAND.stage),
-        )}
-      >
+      <p {...stylex.props(recordStyles.back)}>
         <RecordBackLink section="fruits" />
       </p>
 
-      <div {...stylex.props(settleStyles.band, settleStyles.at(BAND.stage))}>
+      <div>
         <StageBand
           detail={detail}
           peek={peekFruit}

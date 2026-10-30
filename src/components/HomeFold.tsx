@@ -12,15 +12,12 @@ import { bookmarkPoint } from '~/lib/progress/threshold'
 import type { TintId, WaypointView } from '~/lib/view/records'
 import { settleStyles } from '~/styles/settle'
 
-/**
- * The fold settles in three steps of its own: the drawing, then the words,
- * then the control, so it reads in the order it is meant to be used.
- */
-const STAGGER = { copy: 1, actions: 2 } as const
-
 /** What the fold shows, all of it already reached. */
 export interface HomeFoldProps {
-  /** Which step of the page's settle order the fold starts on. */
+  /**
+   * Which step of the page's settle order the control takes. The drawing and
+   * the words are there from the first frame: they are the page's header.
+   */
   band: number
   /** The reader's bookmark, from the loader, so it moves with the arc. */
   point: NonNullable<Bookmark>
@@ -57,7 +54,7 @@ export function HomeFold({ band, point, saga }: HomeFoldProps): ReactElement {
   return (
     <section
       aria-labelledby="home-saga"
-      {...stylex.props(styles.fold, settleStyles.band, settleStyles.at(band))}
+      {...stylex.props(styles.fold)}
     >
       <div
         aria-hidden="true"
@@ -74,13 +71,7 @@ export function HomeFold({ band, point, saga }: HomeFoldProps): ReactElement {
         </div>
       </div>
 
-      <div
-        {...stylex.props(
-          styles.copy,
-          settleStyles.band,
-          settleStyles.at(band + STAGGER.copy),
-        )}
-      >
+      <div {...stylex.props(styles.copy)}>
         <p {...stylex.props(styles.point)}>{bookmarkPoint(t, point, books)}</p>
         <h1
           id="home-saga"
@@ -94,7 +85,7 @@ export function HomeFold({ band, point, saga }: HomeFoldProps): ReactElement {
           {...stylex.props(
             styles.actions,
             settleStyles.band,
-            settleStyles.at(band + STAGGER.actions),
+            settleStyles.at(band),
           )}
         >
           <EpisodeMark placement="fold" />

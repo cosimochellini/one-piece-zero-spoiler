@@ -2,6 +2,7 @@ import { screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 
 import { renderWithProviders } from '~/test/providers'
+import { settleDelay } from '~/test/settle'
 
 import { ArchivePage } from './ArchivePage'
 
@@ -21,6 +22,22 @@ describe('ArchivePage', () => {
     ).toBeVisible()
     expect(screen.getByText('4 of 326 open to you')).toBeVisible()
     expect(screen.getByText('the listing')).toBeVisible()
+  })
+
+  it('shows its heading at once and settles the listing under it', () => {
+    renderWithProviders(
+      <ArchivePage
+        count="5 ports"
+        title="Ship's log"
+      >
+        <p>the log</p>
+      </ArchivePage>,
+    )
+
+    const head = screen.getByRole('heading', { level: 1 }).parentElement
+
+    expect(settleDelay(head)).toBeNull()
+    expect(settleDelay(screen.getByText('the log').parentElement)).toBe('0ms')
   })
 
   it('is the skip link target', () => {
