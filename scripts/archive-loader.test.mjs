@@ -69,6 +69,16 @@ describe('the archive resolve hook', () => {
     ).toBe(href)
   })
 
+  it('stands in an empty address for a built chunk', async () => {
+    const { url } = resolveArchive(
+      './dictionaries/en?chunk-url',
+      { parentURL },
+      resolving([]),
+    )
+
+    await expect(import(url)).resolves.toMatchObject({ url: '' })
+  })
+
   it('passes the failure on for a package or a file that does not exist', () => {
     expect(() =>
       resolveArchive('some-package', { parentURL }, resolving([])),

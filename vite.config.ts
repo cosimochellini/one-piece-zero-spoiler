@@ -11,6 +11,63 @@ import { defineConfig, type Plugin } from 'vite'
 // here keeps the rest of the file, and the array, checked.
 const stylexVite: (options?: Partial<UserOptions>) => Plugin = stylex.vite
 
+const CHUNK_URL = '?chunk-url'
+const CHUNK_URL_TOKEN = /__chunk_url_\d+__/gu
+
+/**
+ * `import { url } from './module?chunk-url'` is the address of the chunk the
+ * client build makes for that module, the same one `import('./module')`
+ * loads, so a failed load can be retried under a query of its own (#930):
+ * Safari and older browsers remember a failed `import()` by its URL and fail
+ * the same URL again without asking the network. Outside a build (dev,
+ * Vitest) it is the module's own root-relative path. Shared with
+ * vitest.config.ts.
+ *
+ * The build writes a token and swaps in the chunk's file name once the chunks
+ * are named. Not `emitFile`: an emitted chunk is an entry, and Start allows
+ * one. The importing chunk's hash already covers the name, since it imports
+ * that chunk by name too. The server build, where the module is no chunk of
+ * its own, keeps the token, and never reads it.
+ */
+export function chunkUrl(): Plugin {
+  let root = ''
+  let base = '/'
+  let build = false
+  const tokens = new Map<string, string>()
+  return {
+    name: 'zero-spoiler:chunk-url',
+    configResolved(resolved) {
+      root = resolved.root
+      base = resolved.base
+      build = resolved.command === 'build'
+    },
+    load(id) {
+      if (!id.endsWith(CHUNK_URL)) {
+        return null
+      }
+      const file = id.slice(0, -CHUNK_URL.length)
+      const token = `__chunk_url_${String(tokens.size)}__`
+      tokens.set(token, file)
+      const url = build ? token : `/${path.relative(root, file)}`
+      return `export const url = ${JSON.stringify(url)}`
+    },
+    generateBundle(_options, bundle) {
+      const chunks = Object.values(bundle).filter(
+        (output) => output.type === 'chunk',
+      )
+      const urls = new Map(
+        chunks.map((chunk) => [chunk.facadeModuleId, base + chunk.fileName]),
+      )
+      for (const chunk of chunks) {
+        chunk.code = chunk.code.replaceAll(
+          CHUNK_URL_TOKEN,
+          (token) => urls.get(tokens.get(token) ?? null) ?? token,
+        )
+      }
+    },
+  }
+}
+
 const config = defineConfig(({ command }) => ({
   server: { port: 3000 },
   build: { manifest: true },
@@ -53,6 +110,7 @@ const config = defineConfig(({ command }) => ({
       // "Could not resolve the path to the imported file".
       aliases: { '~/*': [path.join(import.meta.dirname, 'src', '*')] },
     }),
+    chunkUrl(),
     tanstackStart(),
     // React's Vite plugin MUST come after Start's Vite plugin. Start no longer
     // auto-configures the React plugin, and the old `customViteReactPlugin`

@@ -15,6 +15,12 @@
 // one project variable declared below; the rest come from `vite/client` too.
 declare module 'virtual:stylex:css-only' {}
 
+// The address of a module's built chunk, from the `chunkUrl` plugin in
+// vite.config.ts.
+declare module '*?chunk-url' {
+  export const url: string
+}
+
 // The one project-defined Vite variable: the site's own origin, inlined at
 // build time by `src/lib/seo/site.ts`. Declared so it is typed as a string
 // rather than reaching `strictTypeChecked` through `ImportMetaEnv`'s index

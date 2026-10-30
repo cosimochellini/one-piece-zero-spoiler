@@ -39,7 +39,9 @@ export function getRouter(): ReturnType<typeof createRouter<typeof routeTree>> {
     hydrate: async () => {
       try {
         await loadDictionary(localeOfPath(location.pathname))
-      } catch {
+      } catch (error) {
+        // eslint-disable-next-line no-console -- a broken chunk after a deploy would otherwise leave every page static without a word.
+        console.error(error)
         await new Promise<never>(() => {
           // Never settles, on purpose.
         })

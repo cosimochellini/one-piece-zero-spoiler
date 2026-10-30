@@ -1,3 +1,7 @@
+import type * as EnModule from './dictionaries/en'
+import { url as enChunk } from './dictionaries/en?chunk-url'
+import type * as ItModule from './dictionaries/it'
+import { url as itChunk } from './dictionaries/it?chunk-url'
 import type { Locale } from './locales'
 import type {
   Dictionary,
@@ -8,20 +12,39 @@ import type {
 } from './types'
 
 /**
+ * A chunk asked for again, under a query of its own: Safari, every iOS
+ * browser and Chromium before 156 remember a failed `import()` by its URL and
+ * fail the same URL again without asking the network. The chunk only exports
+ * a constant, so a second copy of it is harmless.
+ */
+async function importAgain<T>(url: string, attempt: number): Promise<T> {
+  const specifier = `${url}?retry=${String(attempt)}`
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions -- the specifier is one of our own two dictionary chunks (`?chunk-url`), and its type is the module the first attempt imported by name.
+  return (await import(/* @vite-ignore */ specifier)) as T
+}
+
+/**
  * Each locale's shared copy, as a chunk of its own: a page downloads the
- * language it is read in and not the other one (#930).
+ * language it is read in and not the other one (#930). The first attempt is
+ * the plain import; a retry asks for the same chunk at a new URL.
  *
  * A total record rather than a lookup with a fallback: it is keyed by
  * `Locale`, so a language added to `LOCALES` without a dictionary is a
  * typecheck failure rather than a page that quietly renders in Italian.
  */
-const DICTIONARIES: Record<Locale, () => Promise<Dictionary>> = {
-  it: async () => {
-    const { itDictionary } = await import('./dictionaries/it')
+const DICTIONARIES: Record<Locale, (attempt: number) => Promise<Dictionary>> = {
+  it: async (attempt) => {
+    const { itDictionary } =
+      attempt === 0 ?
+        await import('./dictionaries/it')
+      : await importAgain<typeof ItModule>(itChunk, attempt)
     return itDictionary
   },
-  en: async () => {
-    const { enDictionary } = await import('./dictionaries/en')
+  en: async (attempt) => {
+    const { enDictionary } =
+      attempt === 0 ?
+        await import('./dictionaries/en')
+      : await importAgain<typeof EnModule>(enChunk, attempt)
     return enDictionary
   },
 }
@@ -29,22 +52,29 @@ const DICTIONARIES: Record<Locale, () => Promise<Dictionary>> = {
 const loaded = new Map<Locale, Dictionary>()
 
 /**
- * A chunk that failed to arrive is asked for again this many times: a
- * dropped request on a flaky network often comes through on the next try.
+ * How long to wait before each retry of a chunk that failed to arrive: a
+ * dropped request or a moment offline often comes through on a later try,
+ * and the reader waits 1.3 s at most before the page gives up.
  */
-const RETRIES = 2
+const FIRST_RETRY_MS = 300
+const SECOND_RETRY_MS = 1000
+const RETRY_DELAYS_MS = [FIRST_RETRY_MS, SECOND_RETRY_MS]
 
 async function importDictionary(
   locale: Locale,
-  retries = RETRIES,
+  attempt = 0,
 ): Promise<Dictionary> {
   try {
-    return await DICTIONARIES[locale]()
+    return await DICTIONARIES[locale](attempt)
   } catch (error) {
-    if (retries === 0) {
+    const delay = RETRY_DELAYS_MS[attempt]
+    if (delay === undefined) {
       throw error
     }
-    return importDictionary(locale, retries - 1)
+    await new Promise((resolve) => {
+      setTimeout(resolve, delay)
+    })
+    return importDictionary(locale, attempt + 1)
   }
 }
 
