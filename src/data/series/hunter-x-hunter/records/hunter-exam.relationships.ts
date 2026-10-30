@@ -812,8 +812,8 @@ const links = {
       it: 'Matricola che lo anticipa',
     },
     summary: {
-      en: 'On Zevil Island Killua takes two of the Amori brothers’ badges and throws them far away. Hanzo chases one down, and it is not the one he needs.',
-      it: 'Sull’Isola di Zevil Killua prende due targhette dei fratelli Amori e le lancia lontano. Hanzo ne insegue una, e non è quella che gli serve.',
+      en: 'On Zevil Island Killua keeps one of the Amori brothers’ badges and throws the other two far away. Hanzo chases one down, and it is not the one he needs.',
+      it: 'Sull’Isola di Zevil Killua tiene una delle targhette dei fratelli Amori e lancia lontano le altre due. Hanzo ne insegue una, e non è quella che gli serve.',
     },
   },
   hanzoGon: {
