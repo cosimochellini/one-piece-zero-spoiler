@@ -4,7 +4,8 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "zero-spoiler",
-  "main": "@tanstack/react-start/server-entry",
+  // Start's default entry plus the Early Hints `Link` header (#932).
+  "main": "src/server.ts",
   "compatibility_date": "2026-10-19",
   "compatibility_flags": ["nodejs_compat"],
   // One address only. The workers.dev subdomain and per-version preview URLs

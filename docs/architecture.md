@@ -112,7 +112,9 @@ legal/privacy pages. Unknown series and locales return 404. Legacy locale-first
 content routes redirect under `/one-piece` before bookmark parameters are read.
 `src/start.ts` handles shared-link bookmarks, legacy cookie migration and the
 `/` redirect (cookie, then country, then `Accept-Language`) before loaders. Use
-a content URL such as `/one-piece/en?ep=650` to set progress.
+a content URL such as `/one-piece/en?ep=650` to set progress. `src/server.ts` is
+the Worker entry: it adds a `Link` header for the stylesheet and the fonts the
+root route preloads, which Cloudflare replays as a `103 Early Hints`.
 
 ## Localization
 
