@@ -1,11 +1,12 @@
 import { createFileRoute } from '@tanstack/react-router'
-import type { ReactElement } from 'react'
+import { type ReactElement, useCallback } from 'react'
 
 import { isLocale } from '~/i18n/locales'
 import type { SeriesSlug } from '~/i18n/types'
+import { readPlain } from '~/lib/plain'
 import { describeNamedPage } from '~/routes/$locale/-head'
 import { LandingPage } from '~/routes/$series/$locale/-landing'
-import { loadHome } from '~/server/api'
+import { loadDemoDrawings, loadHome } from '~/server/api'
 
 export const Route = createFileRoute('/$series/$locale/')({
   component: Landing,
@@ -31,5 +32,18 @@ export const Route = createFileRoute('/$series/$locale/')({
 
 /** The landing page, with the loader's data. */
 function Landing(): ReactElement {
-  return <LandingPage landing={Route.useLoaderData()} />
+  const { series, locale } = Route.useRouteContext()
+  const loadDrawings = useCallback(
+    async () =>
+      readPlain(
+        await loadDemoDrawings({ data: { series: series.slug, locale } }),
+      ),
+    [series.slug, locale],
+  )
+  return (
+    <LandingPage
+      landing={Route.useLoaderData()}
+      loadDrawings={loadDrawings}
+    />
+  )
 }

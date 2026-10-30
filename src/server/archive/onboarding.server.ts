@@ -3,6 +3,7 @@ import type { Entity } from '~/data/types'
 import type { Bookmark } from '~/lib/progress/episode'
 import type { Gated } from '~/lib/progress/spoiler'
 import type {
+  DemoDrawings,
   DemoEntry,
   Drawing,
   OnboardingView,
@@ -93,12 +94,6 @@ function demoOf(entity: Entity, r: Reader): DemoEntry {
     name: entity.name[locale],
     ...gateOf(entity),
     ...(role !== undefined && { role: role[locale] }),
-    // The first card is below 900px at 1440px wide in both locales/series;
-    // all demo artwork waits for viewport entry (also at 390×844).
-    drawings: demoDrawings(entity, r).map((step) => ({
-      ...step,
-      value: { strokes: [], tint: step.value.tint, deferred: true },
-    })),
     affiliation: stepsOf(
       r.archive.datedOf(entity, 'affiliation'),
       (v) => v[locale],
@@ -142,22 +137,13 @@ function demoPlaces(r: Reader): Entity[] {
  * Deferred demo drawings, bounded by the same membership and two-unit limits
  * as onboarding itself. A bookmark never expands this public demonstration.
  */
-export function demoDrawingsFor(
-  ids: string[],
-  r: Reader,
-): Record<string, Step<Drawing>[]> {
+export function demoDrawingsPage(r: Reader): DemoDrawings {
   const arcs = demoArcs(r)
-  const allowed = new Map(
+  return Object.fromEntries(
     [...arcs, ...demoCast(arcs, r), ...demoPlaces(r)].map((entity) => [
       entity.id,
-      entity,
+      demoDrawings(entity, r),
     ]),
-  )
-  return Object.fromEntries(
-    ids.flatMap((id) => {
-      const entity = allowed.get(id)
-      return entity === undefined ? [] : [[id, demoDrawings(entity, r)]]
-    }),
   )
 }
 

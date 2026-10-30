@@ -17,7 +17,7 @@ import { HomeMoreStories, HomeStories } from '~/components/HomeStories'
 import { HomeWelcome } from '~/components/HomeWelcome'
 import { OnboardingLanding } from '~/components/OnboardingLanding'
 import { modeOf } from '~/lib/progress/episode'
-import type { HomeView, LandingView } from '~/lib/view/records'
+import type { DemoDrawings, HomeView, LandingView } from '~/lib/view/records'
 import { settleStyles } from '~/styles/settle'
 import { color, rule, space } from '~/styles/tokens.stylex'
 
@@ -29,18 +29,23 @@ const BAND = { fold: 0, stories: 1, cast: 2, more: 3 } as const
 /** What the loader sent. */
 export interface LandingPageProps {
   landing: LandingView
+  loadDrawings?: (() => Promise<DemoDrawings>) | undefined
 }
 
 /**
  * The branch is the loader's, so it moves in the same transition as the data
  * when the bookmark is saved or cleared.
  */
-export function LandingPage({ landing }: LandingPageProps): ReactElement {
+export function LandingPage({
+  landing,
+  loadDrawings,
+}: LandingPageProps): ReactElement {
   return 'onboarding' in landing ?
       <OnboardingLanding
         // A new start, as when a trial ends, sets the dial again.
         key={JSON.stringify(landing.onboarding.start)}
         {...landing.onboarding}
+        loadDrawings={loadDrawings}
       />
     : <Home {...landing.home} />
 }

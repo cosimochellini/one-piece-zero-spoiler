@@ -9,7 +9,7 @@ import {
   welcomeOwed,
 } from '~/lib/progress/welcome'
 import type { DemoEntry, HomeView, OnboardingView } from '~/lib/view/records'
-import { coveredRecord, drawing, waypoint } from '~/test/fixtures'
+import { coveredRecord, waypoint } from '~/test/fixtures'
 import { renderWithProviders } from '~/test/providers'
 import { settleDelay } from '~/test/settle'
 
@@ -31,7 +31,6 @@ function entry(over: Partial<DemoEntry>): DemoEntry {
     kind: 'character',
     name: 'Entry',
     ...at(1),
-    drawings: [{ ...at(1), value: drawing() }],
     affiliation: [],
     epithet: [],
     bounty: [],
@@ -43,7 +42,6 @@ const zoro = entry({
   id: 'roronoa-zoro',
   name: 'Roronoa Zoro',
   ...at(2),
-  drawings: [{ ...at(2), value: drawing('green') }],
   affiliation: [
     { ...at(2), value: 'Pirate hunter on his own account' },
     { ...at(3), value: 'Straw Hat Pirates' },

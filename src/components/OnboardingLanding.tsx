@@ -7,7 +7,8 @@ import { OnboardingControls, OnboardingDial } from '~/components/OnboardingDial'
 import { OnboardingWake } from '~/components/OnboardingWake'
 import { Questions } from '~/components/Questions'
 import { useSeriesT } from '~/i18n/LocaleContext'
-import type { OnboardingView } from '~/lib/view/records'
+import { useBookmarkSeries } from '~/lib/progress/BookmarkContext'
+import type { DemoDrawings, OnboardingView } from '~/lib/view/records'
 import { settleStyles } from '~/styles/settle'
 
 // The bands under the intro in DOM order, settling one step apart. The intro
@@ -26,8 +27,14 @@ const BAND = { controls: 0, wake: 1, faq: 2 } as const
  * be saved as the bookmark from the dial, or an open card can be followed to
  * its page on a trial that ends with the session.
  */
-export function OnboardingLanding(view: OnboardingView): ReactElement {
+export function OnboardingLanding({
+  loadDrawings,
+  ...view
+}: OnboardingView & {
+  loadDrawings?: (() => Promise<DemoDrawings>) | undefined
+}): ReactElement {
   const t = useSeriesT()
+  const { slug } = useBookmarkSeries()
   const [point, setPoint] = useState(() => dialStart(view.start))
   const arc = view.arcs.findLast((entry) => dialSees(point, entry))?.name
 
@@ -57,6 +64,8 @@ export function OnboardingLanding(view: OnboardingView): ReactElement {
 
       <div {...stylex.props(settleStyles.band, settleStyles.at(BAND.wake))}>
         <OnboardingWake
+          key={slug}
+          loadDrawings={loadDrawings}
           point={point}
           view={view}
         />
