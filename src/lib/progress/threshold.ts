@@ -35,6 +35,7 @@ export type ThresholdSentence<S extends SeriesSlug = never> =
   | 'veil.locked'
   // The sentences of a series' own features, by series.
   | {
+      'game-of-thrones': never
       'hunter-x-hunter': never
       'one-piece':
         | 'fruit.foggedDescription'

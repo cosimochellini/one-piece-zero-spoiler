@@ -17,6 +17,7 @@ import { BookmarkProvider } from '~/lib/progress/BookmarkProvider'
 import type { Bookmark } from '~/lib/progress/episode'
 import {
   type BookmarkSeries,
+  GAME_OF_THRONES_SERIES,
   HUNTER_X_HUNTER_SERIES,
   ONE_PIECE_BOOKMARK,
   ONE_PIECE_SERIES,
@@ -45,9 +46,11 @@ function copyAt(
 ): SeriesCopy | undefined {
   const slug =
     series?.slug === OTHER_SLUG ? HUNTER_X_HUNTER_SERIES.slug : series?.slug
-  const description = [ONE_PIECE_SERIES, HUNTER_X_HUNTER_SERIES].find(
-    (candidate) => candidate.slug === slug,
-  )
+  const description = [
+    ONE_PIECE_SERIES,
+    HUNTER_X_HUNTER_SERIES,
+    GAME_OF_THRONES_SERIES,
+  ].find((candidate) => candidate.slug === slug)
   return description === undefined ? undefined : copyOf(description, locale)
 }
 

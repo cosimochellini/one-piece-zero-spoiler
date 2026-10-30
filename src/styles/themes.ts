@@ -105,10 +105,51 @@ const HUNTER_X_HUNTER: Palette = {
 
 const hunterXHunter = stylex.createTheme(color, HUNTER_X_HUNTER)
 
+/**
+ * Game of Thrones, provisional (#849): a red accent on neutrals tinted toward
+ * a dark ember (hue 20), held until #850 picks the palette and the crown
+ * emblem. It reaches no reader while the series is closed: the hub's coming
+ * card is unlit. No `#000`, no `#fff`.
+ *
+ * Contrast against `paper`, computed from the OKLCH values (WCAG 2.1):
+ *
+ *   ink   17.4:1   ink2  12.3:1   muted  8.1:1   accent  6.9:1   focus  10.4:1
+ *   rule2  3.6:1 (control boundaries)   rule  1.5:1 (decorative hairlines only)
+ *
+ * On `paper3`, the lightest surface, the same values read 15.0 / 10.6 / 7.0 /
+ * 6.0 / 9.0 / 3.1, so a control boundary clears 3:1 on every surface.
+ * `accentInk` on `accent` is 6.7:1.
+ */
+const GAME_OF_THRONES: Palette = {
+  paper: 'oklch(13% 0.022 20)',
+  paper2: 'oklch(17% 0.025 20)',
+  paper3: 'oklch(22% 0.028 20)',
+  // Decorative hairlines only. A control boundary needs 3:1 and must use
+  // `rule2` or `ink` instead.
+  rule: 'oklch(30% 0.022 20)',
+  rule2: 'oklch(52% 0.026 20)',
+  muted: 'oklch(72% 0.018 20)',
+  ink2: 'oklch(84% 0.013 20)',
+  ink: 'oklch(95% 0.009 20)',
+  // The same jobs as One Piece's gold. Never another large fill.
+  accent: 'oklch(70% 0.19 25)',
+  // A hard contract. Any surface painted `accent` that carries text sets its
+  // colour to this, never to a hardcoded dark.
+  accentInk: 'oklch(16% 0.03 20)',
+  focus: 'oklch(80% 0.09 30)',
+  // The three overlays, as in One Piece's.
+  glow: 'oklch(62% 0.17 25 / 0.2)',
+  scrim: 'oklch(13% 0.022 20 / 0.72)',
+  veil: 'oklch(13% 0.022 20 / 0.88)',
+}
+
+const gameOfThrones = stylex.createTheme(color, GAME_OF_THRONES)
+
 /** Each series theme's values, by the name its description carries. */
 export const PALETTES = {
   'one-piece': ONE_PIECE,
   'hunter-x-hunter': HUNTER_X_HUNTER,
+  'game-of-thrones': GAME_OF_THRONES,
 }
 
 /** The name a series description gives its theme. */
@@ -121,6 +162,7 @@ export type SeriesTheme = keyof typeof PALETTES
 export const THEMES: Record<SeriesTheme, typeof onePiece> = {
   'one-piece': onePiece,
   'hunter-x-hunter': hunterXHunter,
+  'game-of-thrones': gameOfThrones,
 }
 
 /**

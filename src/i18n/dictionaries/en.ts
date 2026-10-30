@@ -204,6 +204,7 @@ export const enDictionary = {
     'External pages may contain later story information, including in their titles. Opening a source leaves this wiki’s spoiler protection.',
   'credits.fandomTerms': 'Fandom licensing and attribution',
   'credits.fandomTermsIt': 'Fandom licensing in Italian',
+  'credits.wikipediaTerms': 'Wikipedia terms of use',
   'credits.referencesTitle': 'Documented references',
   'credits.bookmark':
     'Only references to material open at your bookmark are listed. The license beside a source refers to its text, not to the whole archive.',

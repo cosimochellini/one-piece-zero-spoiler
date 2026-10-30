@@ -97,6 +97,13 @@ are tracked in #834. Every Hunter Exam character has a chronicle (#762); the
 Heavens Arena characters get theirs in #898. Records are not added from unnamed
 appearances or supplemental names.
 
+Game of Thrones is filed closed (#849): its description (the show's seasons, the
+five books, the season 1 / first-book demo), its eight empty season modules, its
+copy and a provisional theme (#850 picks the palette). It files no arcs: a
+season with no record is left out of the engine's sagas until its records land
+(#852, #853), and the shared rules that need a record skip a series that files
+none.
+
 Public metadata in `src/lib/progress/series.ts` holds cookies, ranges, seasons,
 demo bounds, features and themes, without archive records. Pass the series to
 bookmark conversions; shared code must not assume One Piece.
@@ -179,5 +186,16 @@ checks this block.
 | Saga modules      | 7                                                  |
 | Line drawings     | 80, one per record, plus 9 redrawings of 9 records |
 | Chronicle stories | 110, for 56 characters                             |
+
+### `game-of-thrones`
+
+| Thing             | Count                                             |
+| ----------------- | ------------------------------------------------- |
+| Records           | 0                                                 |
+| Characters        | 0                                                 |
+| Places            | 0                                                 |
+| Saga modules      | 0                                                 |
+| Line drawings     | 0, one per record, plus 0 redrawings of 0 records |
+| Chronicle stories | 0, for 0 characters                               |
 
 <!-- End of the generated counts. -->

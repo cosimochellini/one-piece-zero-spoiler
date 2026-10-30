@@ -20,7 +20,6 @@ export const hunterXHunterIt: SeriesWords<'hunter-x-hunter'> = {
   'credits.wikiIt': 'Wikipedia in italiano',
   'credits.wikiTerms':
     'La Hunter x Hunter Wiki inglese dichiara CC BY-SA 3.0 Unported come licenza predefinita dei testi della comunità, Wikipedia in italiano CC BY-SA 4.0. Eccezioni, materiali importati e immagini possono avere condizioni diverse. Entrambe consentono di attribuire gli autori tramite collegamenti agli articoli a cui hanno contribuito.',
-  'credits.wikipediaTerms': 'Condizioni d’uso di Wikipedia',
   'faq.animeA':
     'Tutti e due. Puoi contare per episodio dell’anime, per stagione ed episodio o per capitolo del manga. Ogni voce ha un numero di episodio e uno di capitolo. Quando il punto esatto è incerto si usa quello più avanti, così è più facile che una voce si apra tardi che presto.',
   'faq.animeQ': 'Anime o manga?',

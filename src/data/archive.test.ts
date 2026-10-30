@@ -276,16 +276,21 @@ describe.each(LOADED_SERIES)(
       )
     })
 
-    it('holds every kind of text it prints to a floor above zero', () => {
-      // A kind the leak scan expects next to a floor of 0 would let the
-      // records behind it vanish with every rule here still green.
-      const { kinds, least } = expectedOf(slug)
-      const floored = kinds.flatMap((kind) => KIND_FLOORS[kind] ?? [])
+    // A series with no record yet (Game of Thrones, #849) prints only its
+    // place words' headers, and has no floor to hold them to.
+    it.skipIf(archive.entities.length === 0)(
+      'holds every kind of text it prints to a floor above zero',
+      () => {
+        // A kind the leak scan expects next to a floor of 0 would let the
+        // records behind it vanish with every rule here still green.
+        const { kinds, least } = expectedOf(slug)
+        const floored = kinds.flatMap((kind) => KIND_FLOORS[kind] ?? [])
 
-      for (const key of floored) {
-        expect(least[key], key).toBeGreaterThan(0)
-      }
-    })
+        for (const key of floored) {
+          expect(least[key], key).toBeGreaterThan(0)
+        }
+      },
+    )
 
     it('files only the fields of the core and of its features', () => {
       const allowed = allowedFields(archive)

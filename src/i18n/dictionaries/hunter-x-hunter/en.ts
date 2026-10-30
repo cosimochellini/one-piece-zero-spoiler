@@ -21,7 +21,6 @@ export const hunterXHunterEn = {
   'credits.wikiIt': 'Italian Wikipedia',
   'credits.wikiTerms':
     'The English Hunter x Hunter Wiki declares CC BY-SA 3.0 Unported for community text by default, and Italian Wikipedia declares CC BY-SA 4.0. Exceptions, imported material and images can have different terms. Both permit author attribution through links to the contributed articles.',
-  'credits.wikipediaTerms': 'Wikipedia terms of use',
   'faq.animeA':
     'Both. You can count by anime episode, by season and episode, or by manga chapter. Every entry has an episode number and a chapter number. When the exact point is uncertain, the later one is used, so an entry is more likely to open late than early.',
   'faq.animeQ': 'Anime or manga?',
