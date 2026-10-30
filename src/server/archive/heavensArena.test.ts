@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
+import type { Entity } from '~/data/types'
 import { LOCALES } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
 import { LOADED_SERIES } from '~/test/series'
@@ -40,7 +41,7 @@ function opened(id: string, place: boolean, reader: Reader): boolean {
   return page !== undefined && 'detail' in page && page.detail.slot.open
 }
 
-function character(id: string) {
+function character(id: string): Entity {
   const record = archive.getCharacter(id)
   if (record === undefined) {
     throw new Error(`Missing ${id} fixture`)
