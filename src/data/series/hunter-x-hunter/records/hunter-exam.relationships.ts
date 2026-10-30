@@ -584,8 +584,8 @@ const links = {
     character: 'kurapika',
     type: { en: 'Rookie who stops him', it: 'Matricola che lo ferma' },
     summary: {
-      en: 'On Zevil Island Kurapika stops Tonpa as he runs from Leorio and takes his badge.',
-      it: 'Sull’Isola di Zevil Kurapika ferma Tonpa mentre scappa da Leorio e gli prende la targhetta.',
+      en: 'On Zevil Island Kurapika stops Tonpa and takes his badge.',
+      it: 'Sull’Isola di Zevil Kurapika ferma Tonpa e gli prende la targhetta.',
     },
   },
   tonpaSommy: {

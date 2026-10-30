@@ -49,8 +49,8 @@ const links = {
       it: 'Dopo la morte della madre di Kon, Gon impedisce a Kaito di abbatterlo e promette di allevarlo.',
     },
   },
-  // Anime wording: the episode 76 page has the foxbear rescue but not the
-  // cub, so anime readers get only what Kon's record says.
+  // Anime wording: the cub scene is cited to chapter 1 only (Kon and Kite
+  // pages), so anime readers get only what Kon's record says.
   konGonEpisode: {
     character: 'gon-freecss',
     type: { en: 'Boy who raises him', it: 'Ragazzino che lo alleva' },
