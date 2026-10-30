@@ -66,16 +66,28 @@ describe.each(CASES)('$id in $locale by $unit', (row) => {
 describe('Kastro’s death', () => {
   const kastro = character('kastro')
 
-  it.each([
-    { unit: 'episode', death: 32 },
-    { unit: 'chapter', death: 54 },
-  ])('pins it in $unit units', ({ unit, death }) => {
-    const before = readerFor(archive, at(unit, death - 1), 'en')
-    const reached = readerFor(archive, at(unit, death), 'en')
+  it.each(
+    LOCALES.flatMap((locale) => [
+      { unit: 'episode', opens: 31, death: 32, locale },
+      { unit: 'chapter', opens: 52, death: 54, locale },
+    ]),
+  )(
+    'pins it and its drawing together in $unit units ($locale)',
+    ({ unit, opens, death, locale }) => {
+      const alive = readerFor(archive, at(unit, opens), locale)
+      const before = readerFor(archive, at(unit, death - 1), locale)
+      const reached = readerFor(archive, at(unit, death), locale)
 
-    expect(archive.latestOf(before, kastro, 'status')).toBe('alive')
-    expect(archive.latestOf(reached, kastro, 'status')).toBe('deceased')
-  })
+      expect(archive.latestOf(before, kastro, 'status')).toBe('alive')
+      expect(archive.latestOf(reached, kastro, 'status')).toBe('deceased')
+      expect(drawingsFor(['kastro'], before)).toStrictEqual(
+        drawingsFor(['kastro'], alive),
+      )
+      expect(drawingsFor(['kastro'], reached)).not.toStrictEqual(
+        drawingsFor(['kastro'], before),
+      )
+    },
+  )
 })
 
 describe('the returning characters at Heavens Arena', () => {

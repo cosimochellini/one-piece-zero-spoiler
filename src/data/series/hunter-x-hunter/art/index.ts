@@ -13,7 +13,7 @@ import type { Stroke } from '~/lib/view/records'
 
 import { CHAPTER_ONE_DRAWINGS } from './chapter-one'
 import { FINAL_PHASE_DRAWINGS } from './final-phase'
-import { HEAVENS_ARENA_DRAWINGS } from './heavens-arena'
+import { HEAVENS_ARENA_DRAWINGS, heavensArenaRedrawn } from './heavens-arena'
 import { TRICK_TOWER_DRAWINGS } from './trick-tower'
 import { zevilArt, zevilRedrawn } from './zevil'
 import { ZOLDYCK_DRAWINGS } from './zoldyck'
@@ -937,4 +937,8 @@ const hunterExamRedrawn: Redrawings = {
   ],
 }
 
-export const REDRAWINGS: Redrawings = { ...hunterExamRedrawn, ...zevilRedrawn }
+export const REDRAWINGS: Redrawings = {
+  ...hunterExamRedrawn,
+  ...zevilRedrawn,
+  ...heavensArenaRedrawn,
+}

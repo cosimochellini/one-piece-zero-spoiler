@@ -176,7 +176,7 @@ checks this block.
 | Characters        | 62                                                 |
 | Arcs, places      | 7 · 11                                             |
 | Saga modules      | 7                                                  |
-| Line drawings     | 80, one per record, plus 8 redrawings of 8 records |
+| Line drawings     | 80, one per record, plus 9 redrawings of 9 records |
 | Chronicle stories | 109, for 55 characters                             |
 
 <!-- End of the generated counts. -->
