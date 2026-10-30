@@ -33,6 +33,9 @@ const leaksIn = leaksOf(series)
 const RECORDS = [
   { id: 'tonpa', episode: 3, chapter: 5, kind: 'character' },
   { id: 'hisoka', episode: 3, chapter: 5, kind: 'character' },
+  { id: 'todo', episode: 3, chapter: 5, kind: 'character' },
+  { id: 'geretta', episode: 3, chapter: 5, kind: 'character' },
+  { id: 'cherry', episode: 3, chapter: 5, kind: 'character', unit: 'chapter' },
   { id: 'hanzo', episode: 3, chapter: 6, kind: 'character' },
   { id: 'nicholas', episode: 3, chapter: 6, kind: 'character' },
   { id: 'satotz', episode: 3, chapter: 6, kind: 'character' },
@@ -83,9 +86,10 @@ function localized(value: LocalizedText | string, locale: Locale): string {
   return typeof value === 'string' ? value : value[locale]
 }
 
+// A record one source alone names is read in that unit only (#833).
 const CASES = RECORDS.flatMap((record) =>
-  UNITS.flatMap((mode) =>
-    LOCALES.map((locale) => ({ ...record, mode, locale })),
+  UNITS.filter((mode) => !('unit' in record) || record.unit === mode).flatMap(
+    (mode) => LOCALES.map((locale) => ({ ...record, mode, locale })),
   ),
 )
 const CHARACTERS = CASES.filter(({ kind }) => kind === 'character')

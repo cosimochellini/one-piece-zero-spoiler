@@ -17,6 +17,17 @@ export const zevilChronicles = {
   ],
   amori: [
     {
+      episode: 3,
+      chapter: 29,
+      value: {
+        title: { it: 'I tre fratelli', en: 'The three brothers' },
+        body: {
+          it: 'Fra i veterani che [[tonpa|Tonpa]] indica nel tunnel ci sono i tre fratelli Amori. Tonpa spiega a [[gon-freecss|Gon]], [[kurapika|Kurapika]] e [[leorio-paradinight|Leorio]] che i tre si presentano all’esame insieme. Come gli altri della sua lista, ci hanno già provato senza passare. Poi Tonpa li avverte di stare alla larga da [[hisoka|Hisoka]].',
+          en: 'Among the regulars [[tonpa|Tonpa]] points out in the tunnel are the three Amori brothers. Tonpa tells [[gon-freecss|Gon]], [[kurapika|Kurapika]] and [[leorio-paradinight|Leorio]] that the three take the exam together. Like the others on his list, they have tried before without passing. Then Tonpa warns the newcomers to keep away from [[hisoka|Hisoka]].',
+        },
+      },
+    },
+    {
       episode: 17,
       chapter: 29,
       value: {
@@ -33,6 +44,20 @@ export const zevilChronicles = {
   ],
   umori: [
     {
+      episode: 3,
+      chapter: 29,
+      value: {
+        title: {
+          it: 'Tre fratelli all’esame',
+          en: 'Three brothers at the exam',
+        },
+        body: {
+          it: '[[tonpa|Tonpa]], che ha fallito l’esame trentaquattro volte, si offre di parlare a [[gon-freecss|Gon]] degli aspiranti che continuano a ripresentarsi. Fra quelli che indica ci sono i tre fratelli Amori. Gon e i suoi due compagni hanno appena ricevuto le loro targhette.',
+          en: '[[tonpa|Tonpa]], who has failed the exam thirty-four times, offers to tell [[gon-freecss|Gon]] about the applicants who keep coming back. Among those he points out are the three Amori brothers. Gon and his two companions have only just been given their badges.',
+        },
+      },
+    },
+    {
       episode: 17,
       chapter: 29,
       value: {
@@ -45,6 +70,20 @@ export const zevilChronicles = {
     },
   ],
   imori: [
+    {
+      episode: 3,
+      chapter: 29,
+      value: {
+        title: {
+          it: 'Una famiglia di aspiranti',
+          en: 'A family of applicants',
+        },
+        body: {
+          it: 'Il giorno dell’esame [[tonpa|Tonpa]] presenta a [[gon-freecss|Gon]], [[kurapika|Kurapika]] e [[leorio-paradinight|Leorio]] gli aspiranti che conosce dagli anni passati. Nella sua lista ci sono i tre fratelli Amori. I tre tornano all’esame insieme. Tonpa avverte anche i nuovi arrivati di stare lontani da [[hisoka|Hisoka]].',
+          en: 'On the day of the exam, [[tonpa|Tonpa]] introduces [[gon-freecss|Gon]], [[kurapika|Kurapika]] and [[leorio-paradinight|Leorio]] to the applicants he knows from earlier years. The three Amori brothers are on his list. The three come back to the exam together. Tonpa also warns the newcomers to keep away from [[hisoka|Hisoka]].',
+        },
+      },
+    },
     {
       episode: 17,
       chapter: 29,
@@ -83,6 +122,17 @@ export const zevilChronicles = {
   ],
   bourbon: [
     {
+      episode: 3,
+      chapter: 5,
+      value: {
+        title: { it: 'L’incantatore di serpenti', en: 'The snake charmer' },
+        body: {
+          it: 'Nel tunnel prima della prima prova, [[tonpa|Tonpa]] indica a [[gon-freecss|Gon]], [[kurapika|Kurapika]] e [[leorio-paradinight|Leorio]] i veterani dell’esame. Burbon è uno di loro: un incantatore di serpenti che ha già tentato l’esame molte volte. Poco dopo li avverte di tenersi alla larga da [[hisoka|Hisoka]].',
+          en: 'In the tunnel before the First Phase, [[tonpa|Tonpa]] points out the veterans of the exam to [[gon-freecss|Gon]], [[kurapika|Kurapika]] and [[leorio-paradinight|Leorio]]. Bourbon is one of them: a snake charmer who has taken the exam many times. Soon after, he warns the three to keep away from [[hisoka|Hisoka]].',
+        },
+      },
+    },
+    {
       episode: 17,
       chapter: 30,
       value: {
@@ -120,13 +170,24 @@ export const zevilChronicles = {
   ],
   pokkle: [
     {
+      episode: 18,
+      chapter: 24,
+      value: {
+        title: { it: 'La freccia nell’erba', en: 'The arrow in the grass' },
+        body: {
+          it: 'Sull’Isola di Zevil Pockul pedina un altro aspirante nell’erba alta, mentre [[gon-freecss|Gon]] guarda da un albero. La freccia ferisce l’uomo solo di striscio, ma la punta è drogata e poco dopo lui crolla a terra. Pockul gli dice che la droga lo terrà a terra per giorni e che c’è acqua lì vicino, così non morirà. Poi prende la sua targhetta e se ne va. Gon decide di avvicinarsi al suo bersaglio nello stesso modo.',
+          en: 'On Zevil Island, Pokkle stalks another applicant through tall grass while [[gon-freecss|Gon]] watches from a tree. The arrow only grazes the man, but its tip is drugged, and he soon collapses. Pokkle tells him the drug will keep him down for days and that there is water nearby, so he will not die. Then he takes his badge and walks off. Gon decides to approach his own target the same way.',
+        },
+      },
+    },
+    {
       episode: 19,
       chapter: 33,
       value: {
         title: { it: 'L’arciere', en: 'The archer' },
         body: {
-          it: 'Nella quarta prova Pockul pedina un altro aspirante nell’erba alta. [[gon-freecss|Gon]] lo osserva. Pockul scocca una freccia che lo ferisce di striscio, ma la punta è coperta da un sedativo che lo paralizza. Poi gli prende la targhetta e gli dice che c’è acqua lì vicino, così non morirà. Supera la caccia e arriva fra i nove aspiranti dell’ultima prova.',
-          en: 'In the Fourth Phase, Pokkle stalks another applicant through tall grass. [[gon-freecss|Gon]] watches. Pokkle fires an arrow that only grazes him, but its tip is coated with a sedative that paralyzes him. He takes his badge and tells him there is water nearby, so he will not die. He passes the hunt and reaches the Final Phase among the nine applicants.',
+          it: 'Pockul supera la quarta prova ed è uno dei soli nove aspiranti rimasti. Dopo tre giorni di riposo in un albergo, [[netero|Netero]] spiega che l’ultima prova si svolge lì, con incontri uno contro uno in un tabellone. Basta una vittoria per passare: chi vince esce dal tabellone e chi perde passa al turno dopo, così solo uno di loro sarà bocciato.',
+          en: 'Pokkle passes the Fourth Phase and is one of only nine applicants left. After three days of rest at a hotel, [[netero|Netero]] explains that the Final Phase takes place there, as one-on-one matches in a bracket. One win is enough to pass: winners leave the bracket and losers move on to the next round, so only one of them will fail.',
         },
       },
     },
@@ -146,6 +207,18 @@ export const zevilChronicles = {
     },
   ],
   bodoro: [
+    {
+      episode: 3,
+      chapter: 33,
+      source: 'episode',
+      value: {
+        title: { it: 'Il maestro di kung fu', en: 'The kung fu master' },
+        body: {
+          it: 'Nel tunnel dove gli aspiranti aspettano la prima prova, [[tonpa|Tonpa]] indica a [[gon-freecss|Gon]], [[kurapika|Kurapika]] e [[leorio-paradinight|Leorio]] alcuni dei concorrenti che conosce. Uno di loro è Bodoro, un anziano maestro di kung fu. Tonpa è al suo trentacinquesimo tentativo e ha già incontrato molti di loro agli esami precedenti. Avverte anche i tre di stare lontani da [[hisoka|Hisoka]].',
+          en: 'In the tunnel where the applicants wait for the First Phase, [[tonpa|Tonpa]] points out some of the competitors he knows to [[gon-freecss|Gon]], [[kurapika|Kurapika]] and [[leorio-paradinight|Leorio]]. One of them is Bodoro, an elderly kung fu master. Tonpa is on his thirty-fifth attempt and has met many of them at earlier exams. He also warns the three to keep away from [[hisoka|Hisoka]].',
+        },
+      },
+    },
     {
       episode: 19,
       chapter: 33,
@@ -168,6 +241,217 @@ export const zevilChronicles = {
         body: {
           it: '[[hisoka|Hisoka]] batte Bodoro, che si rifiuta di arrendersi. Hisoka gli sussurra qualcosa all’orecchio e Bodoro cede. È troppo ferito per proseguire e il suo secondo incontro, con [[leorio-paradinight|Leorio]], viene rimandato. Quando comincia, [[killua|Killua]] compare alle sue spalle e lo uccide sul colpo. Per questo Killua viene squalificato e fallisce l’esame.',
           en: '[[hisoka|Hisoka]] beats Bodoro, who refuses to surrender. Hisoka whispers something in his ear and Bodoro yields. He is too hurt to go on, and his next match, against [[leorio-paradinight|Leorio]], is postponed. When it begins, [[killua|Killua]] appears behind him and kills him on the spot. For this Killua is disqualified and fails the exam.',
+        },
+      },
+    },
+  ],
+  goz: [
+    {
+      episode: 14,
+      chapter: 23,
+      source: 'chapter',
+      value: {
+        title: { it: 'Una lancia sulla barca', en: 'A spear on the boat' },
+        body: {
+          it: 'Fuori dalla Torre di Lotta, [[lippo|Rippo]] fa estrarre a sorte i ventiquattro aspiranti promossi, nell’ordine in cui hanno finito la prova. Ogni carta porta il numero della targhetta di un bersaglio. Fra loro c’è Gozu, che porta una grossa lancia. Sulla barca per l’Isola di Zevil quasi tutti si sono già tolti la targhetta e l’hanno nascosta, e nessuno guarda gli altri negli occhi. Sull’isola la caccia dura una settimana e a ognuno servono sei punti.',
+          en: 'Outside Trick Tower, [[lippo|Lippo]] has the twenty-four applicants who passed draw lots in the order they finished. Each card bears the badge number of a target. Goz, who carries a large spear, is one of them. On the boat to Zevil Island most applicants have already taken off their badges and hidden them, and nobody looks anyone in the eye. On the island the hunt lasts a week, and each of them needs six points.',
+        },
+      },
+    },
+    {
+      episode: 15,
+      chapter: 26,
+      source: 'chapter',
+      value: {
+        title: { it: 'L’ultimo duello', en: 'A last duel' },
+        body: {
+          it: 'Gozu, già ferito gravemente, sbuca dai cespugli vicino a [[hisoka|Hisoka]] e lo sfida. La sua lancia taglia di netto gli alberi, ma Hisoka si limita a schivare. Gli dice che sta già morendo e che i morti non gli interessano. Quando Gozu lo carica di nuovo, alcuni aghi lo colpiscono in faccia e lo uccidono. Li ha lanciati un aspirante coperto di aghi, che se l’era lasciato sfuggire e ora prende la sua targhetta, la 371. [[gon-freecss|Gon]] guarda tutto di nascosto.',
+          en: 'Goz, already badly wounded, jumps out of the bushes near [[hisoka|Hisoka]] and demands a fight. His spear cuts clean through trees, but Hisoka only dodges. He tells Goz he is already dying and that the dead do not interest him. When Goz charges again, needles strike him in the face and kill him. They come from an applicant covered in needles, who had let him get away and now takes his badge, number 371. [[gon-freecss|Gon]] watches it all from hiding.',
+        },
+      },
+    },
+  ],
+  agon: [
+    {
+      episode: 14,
+      chapter: 23,
+      source: 'chapter',
+      value: {
+        title: { it: 'Settimo a sbarcare', en: 'Seventh ashore' },
+        body: {
+          it: 'Agon è uno dei ventiquattro aspiranti che fuori dalla Torre di Lotta pescano il numero di un bersaglio. Sulla barca [[khara|Khara]] spiega che sbarcheranno nell’ordine in cui hanno finito la terza prova, a due minuti l’uno dall’altro, a partire da [[hisoka|Hisoka]]. Agon è il settimo a scendere sull’Isola di Zevil. Sull’isola ognuno ha una settimana per raccogliere sei punti, e la targhetta del bersaglio da sola ne vale tre.',
+          en: 'Agon is one of the twenty-four applicants who draw a target’s number outside Trick Tower. On the boat [[khara|Khara]] explains that they will land in the order they finished the Third Phase, two minutes apart, starting with [[hisoka|Hisoka]]. Agon is the seventh to go ashore on Zevil Island. Each applicant has a week there to collect six points, and the target’s badge alone is worth three.',
+        },
+      },
+    },
+    {
+      episode: 16,
+      chapter: 28,
+      source: 'chapter',
+      value: {
+        title: { it: 'La carta', en: 'The card' },
+        body: {
+          it: 'Sull’isola [[hisoka|Hisoka]], in preda alla sete di sangue, sceglie Agon come prossima preda e gli corre incontro con una carta da gioco in mano. Agon sfodera la spada per difendersi. [[gon-freecss|Gon]], nascosto lì vicino, aspettava proprio questo momento e con la canna da pesca aggancia la targhetta di Hisoka mentre i due si incrociano. Sulla spalla di Agon si apre una ferita e lui cade a terra morto.',
+          en: 'On the island [[hisoka|Hisoka]], in the grip of his bloodlust, picks Agon as his next prey and runs at him with a playing card in his hand. Agon draws his sword to defend himself. [[gon-freecss|Gon]], hidden nearby, has been waiting for this moment and hooks Hisoka’s badge with his fishing rod as the two pass each other. A wound opens on Agon’s shoulder and he falls dead.',
+        },
+      },
+    },
+  ],
+  siper: [
+    {
+      episode: 14,
+      chapter: 23,
+      source: 'chapter',
+      value: {
+        title: { it: 'Occhiali scuri a bordo', en: 'Dark glasses on board' },
+        body: {
+          it: 'Super, un’aspirante con occhiali da sole squadrati, è fra i ventiquattro che lasciano la Torre di Lotta e pescano il numero di un bersaglio. Sulla barca per l’Isola di Zevil [[khara|Khara]] si congratula con tutti e annuncia che sono invitati all’esame dell’anno dopo, ma gli aspiranti quasi non reagiscono. Quasi tutti hanno già nascosto la targhetta e aspettano in silenzio, evitando di guardarsi, chiedendosi chi abbia pescato il proprio numero.',
+          en: 'Siper, an applicant in square sunglasses, is among the twenty-four who leave Trick Tower and draw a target’s number. On the boat to Zevil Island [[khara|Khara]] congratulates everyone and says they are all invited to next year’s exam, but the applicants barely react. Most have already hidden their badges and wait in silence, avoiding each other’s eyes, each wondering who has drawn their number.',
+        },
+      },
+    },
+    {
+      episode: 15,
+      chapter: 26,
+      source: 'chapter',
+      value: {
+        title: { it: 'La targhetta numero 80', en: 'Badge number 80' },
+        body: {
+          it: 'Sull’isola un aspirante coperto di aghi uccide un altro esaminato davanti a [[hisoka|Hisoka]], poi gli mostra la targhetta numero 80 e gliela offre. Dice che apparteneva a uno dei cecchini, ucciso perché usava un fucile. Quella targhetta è di Super. Hisoka la tiene e riprende la caccia, perché gli mancano ancora due punti.',
+          en: 'On the island an applicant covered in needles kills another examinee in front of [[hisoka|Hisoka]], then shows him badge number 80 and offers it to him. He says it belonged to one of the snipers, whom he killed over the use of a gun. That badge is Siper’s. Hisoka keeps it and goes back to hunting, because he still needs two more points.',
+        },
+      },
+    },
+  ],
+  ryu: [
+    {
+      episode: 14,
+      chapter: 23,
+      source: 'chapter',
+      value: {
+        title: { it: 'Lo spadone', en: 'The broadsword' },
+        body: {
+          it: 'Ryu, un aspirante con uno spadone alla cintura, è uno dei ventiquattro che superano la terza prova. [[lippo|Rippo]] li fa estrarre a sorte: ogni carta porta il numero della targhetta di un bersaglio. La targhetta del bersaglio vale tre punti, la propria altri tre se si riesce a tenerla, ogni altra targhetta uno. Per arrivare all’ultima prova ne servono sei, e Ryu parte con gli altri per l’Isola di Zevil.',
+          en: 'Ryu, an applicant with a broadsword at his belt, is one of the twenty-four who pass the Third Phase. [[lippo|Lippo]] has them draw lots: each card bears the badge number of a target. A target’s badge is worth three points, an applicant’s own badge three more if he keeps it, and any other badge one. Six points are needed to reach the last phase, so Ryu sails to Zevil Island with the others.',
+        },
+      },
+    },
+    {
+      episode: 18,
+      chapter: 32,
+      source: 'chapter',
+      value: {
+        title: { it: 'Non fra i nove', en: 'Not among the nine' },
+        body: {
+          it: 'La quarta prova finisce con un annuncio dalla barca: tutti devono tornare all’approdo entro un’ora, e chi scambia targhette lì viene squalificato. In riva al mare aspettano solo nove aspiranti, e Ryu non è fra loro. Sull’isola ha combattuto contro un altro aspirante e ha perso. Ha fallito l’esame.',
+          en: 'The Fourth Phase ends with an announcement from the boat: everyone must return to the landing within an hour, and anyone who trades badges there is disqualified. Only nine applicants wait by the water, and Ryu is not one of them. On the island he fought another applicant and lost. He has failed the exam.',
+        },
+      },
+    },
+  ],
+  kyu: [
+    {
+      episode: 14,
+      chapter: 24,
+      source: 'chapter',
+      value: {
+        title: { it: 'La freccia drogata', en: 'The drugged arrow' },
+        body: {
+          it: 'Kyu, armato di spada, è uno dei ventiquattro aspiranti che pescano il numero di un bersaglio e sbarcano sull’Isola di Zevil. Nell’erba alta sente di essere seguito e si guarda intorno, ma non vede nessuno. Lo sta pedinando Pockul. La freccia gli sfiora appena il braccio, eppure poco dopo Kyu trema, lascia cadere la spada e crolla. Pockul gli spiega che la droga lo terrà debole per giorni, gli dice che c’è acqua lì vicino e prende la sua targhetta, la 105. [[gon-freecss|Gon]] guarda da un albero.',
+          en: 'Kyu, who carries a sword, is one of the twenty-four applicants who draw a target’s number and land on Zevil Island. In the tall grass he senses he is being followed and looks around, but sees nobody. Pokkle is stalking him. The arrow only grazes his arm, yet soon Kyu trembles, drops his sword and collapses. Pokkle explains that the drug will leave him weak for days, tells him there is water nearby and takes his badge, number 105. [[gon-freecss|Gon]] watches from a tree.',
+        },
+      },
+    },
+    {
+      episode: 15,
+      chapter: 25,
+      source: 'chapter',
+      value: {
+        title: { it: 'L’aiuto di Gon', en: 'Gon’s help' },
+        body: {
+          it: 'Kyu è ancora a terra nella foresta, indebolito dalla droga della freccia di Pockul. [[gon-freecss|Gon]] passa di lì seguendo due farfalle legate a un filo da pesca, che spera lo portino da [[hisoka|Hisoka]], ferito. Sente un rumore e trova Kyu. Lo aiuta a mettersi seduto contro un albero e gli augura più fortuna l’anno dopo, poi torna a seguire le farfalle.',
+          en: 'Kyu is still lying in the forest, weakened by the drug on Pokkle’s arrow. [[gon-freecss|Gon]] is passing by, following two butterflies tied to a fishing line, which he hopes will lead him to the wounded [[hisoka|Hisoka]]. He hears a noise and finds Kyu. He helps him sit up against a tree and wishes him better luck next year, then goes back to following the butterflies.',
+        },
+      },
+    },
+  ],
+  shishito: [
+    {
+      episode: 14,
+      chapter: 23,
+      source: 'chapter',
+      value: {
+        title: { it: 'Chi ha il mio numero', en: 'Who has my number' },
+        body: {
+          it: 'Shishito è uno dei ventiquattro aspiranti che superano la terza prova. Ognuno pesca una carta con il numero della targhetta di un bersaglio, e nessuno sa chi ha pescato il suo. Sulla barca per l’Isola di Zevil Shishito resta in silenzio come gli altri e si chiede chi gli stia dando la caccia. Quasi tutti si sono già tolti la targhetta e l’hanno nascosta, quindi nessuno sa da chi guardarsi.',
+          en: 'Shishito is one of the twenty-four applicants who pass the Third Phase. Each draws a card with a target’s badge number, and none of them knows who has drawn his own. On the boat to Zevil Island Shishito sits in silence like the others and wonders who is hunting him. Most applicants have already taken off their badges and hidden them, so nobody can tell whom to watch out for.',
+        },
+      },
+    },
+    {
+      episode: 18,
+      chapter: 32,
+      source: 'chapter',
+      value: {
+        title: {
+          it: 'Una targhetta di mano in mano',
+          en: 'A badge changing hands',
+        },
+        body: {
+          it: 'Shishito non arriva all’ultima prova. Durante la caccia [[amori|Amori]] e [[umori|Umori]] gli hanno preso la targhetta. Prima della fine [[hanzo|Hanzo]] torna dai fratelli e si prende le due targhette che restano loro, così quella di Shishito finisce a lui. Quando dalla barca annunciano la fine della quarta prova, all’approdo aspettano solo nove aspiranti, e Shishito non è fra loro. Ha fallito l’esame.',
+          en: 'Shishito does not reach the Final Phase. During the hunt [[amori|Amori]] and [[umori|Umori]] took his badge. Before the end, [[hanzo|Hanzo]] goes back to the brothers and takes the two badges they have left, so Shishito’s ends up with him. When the boat announces the end of the Fourth Phase, only nine applicants wait at the landing, and Shishito is not among them. He has failed the exam.',
+        },
+      },
+    },
+  ],
+  kenmi: [
+    {
+      episode: 14,
+      chapter: 23,
+      source: 'chapter',
+      value: {
+        title: { it: 'Un invito per l’anno dopo', en: 'Invited back' },
+        body: {
+          it: 'Kenmi, un aspirante con la testa rasata, è fra i ventiquattro che pescano il numero di un bersaglio e salgono sulla barca per l’Isola di Zevil. La guida, [[khara|Khara]], si congratula con loro e dice che il viaggio dura due ore. Aggiunge che, se falliscono, sono già tutti invitati all’esame dell’anno dopo. Nessuno reagisce: ognuno pensa a chi abbia pescato il suo numero.',
+          en: 'Kenmi, an applicant with a shaved head, is among the twenty-four who draw a target’s number and board the boat to Zevil Island. The guide, [[khara|Khara]], congratulates them and says the trip takes two hours. She adds that if they fail, they are all already invited to next year’s exam. Nobody reacts: each of them is thinking about who has drawn their number.',
+        },
+      },
+    },
+    {
+      episode: 17,
+      chapter: 29,
+      source: 'chapter',
+      value: {
+        title: { it: 'Due fratelli a caccia', en: 'Two brothers on the hunt' },
+        body: {
+          it: 'Mentre [[imori|Imori]] pedina [[killua|Killua]], i suoi fratelli [[amori|Amori]] e [[umori|Umori]] vanno a caccia per conto loro. Kenmi è uno degli aspiranti che inseguono, e gli prendono la targhetta. Poi i due tornano da Imori, convinti che anche lui abbia finito, e lo trovano ancora nascosto. Kenmi ha perso la targhetta che per lui valeva tre punti.',
+          en: 'While [[imori|Imori]] stalks [[killua|Killua]], his brothers [[amori|Amori]] and [[umori|Umori]] hunt on their own. Kenmi is one of the applicants they go after, and they take his badge. Then the two return to Imori, sure that he has finished too, and find him still hiding. Kenmi has lost the badge that was worth three points to him.',
+        },
+      },
+    },
+  ],
+  sommy: [
+    {
+      episode: 14,
+      chapter: 23,
+      source: 'chapter',
+      value: {
+        title: { it: 'Silenzio sulla barca', en: 'Silence on the boat' },
+        body: {
+          it: 'Somy è uno dei ventiquattro aspiranti che escono dalla Torre di Lotta. [[lippo|Rippo]] li fa estrarre a sorte nell’ordine in cui hanno finito, a partire da [[hisoka|Hisoka]], e ogni carta porta il numero della targhetta di un bersaglio. Una volta registrato il numero, possono anche buttare la carta. Sulla barca per l’Isola di Zevil Somy aspetta in silenzio con gli altri, che in gran parte hanno già nascosto la targhetta.',
+          en: 'Sommy is one of the twenty-four applicants who come out of Trick Tower. [[lippo|Lippo]] has them draw lots in the order they finished, starting with [[hisoka|Hisoka]], and each card bears a target’s badge number. Once the number is recorded, they may throw the card away. On the boat to Zevil Island Sommy waits in silence with the others, most of whom have already hidden their badges.',
+        },
+      },
+    },
+    {
+      episode: 15,
+      chapter: 26,
+      source: 'chapter',
+      value: {
+        title: { it: 'Le carte scambiate', en: 'The swapped cards' },
+        body: {
+          it: '[[tonpa|Tonpa]] mostra a [[leorio-paradinight|Leorio]] la carta con il numero 191 e gli offre informazioni sul suo bersaglio in cambio di una medicina. Quando Leorio apre la valigetta, Somy lo attacca alle spalle con un ramo e la sua scimmia afferra la targhetta di Leorio. La carta era di Somy: lui e Tonpa se le erano scambiate, e il bersaglio di Tonpa era Leorio. Somy scappa su un albero. Più tardi [[kurapika|Kurapika]] e Leorio lo raggiungono, lo legano e si riprendono la targhetta, insieme a quella di Somy.',
+          en: '[[tonpa|Tonpa]] shows [[leorio-paradinight|Leorio]] the card with number 191 and trades him information about his target for medicine. When Leorio opens his briefcase, Sommy jumps him from behind with a branch, and his monkey snatches Leorio’s badge. The card was Sommy’s: he and Tonpa had swapped cards, and Leorio was Tonpa’s target. Sommy escapes up a tree. Later [[kurapika|Kurapika]] and Leorio catch him, tie him up and take back the badge, along with Sommy’s own.',
         },
       },
     },

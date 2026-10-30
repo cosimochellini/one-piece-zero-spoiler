@@ -258,7 +258,14 @@ describe.each(LOADED)('every record page of $series.slug', (archive) => {
 
   it.each(LOCALES)('draws each character’s page in %s', async (locale) => {
     const ids = sample(archive.characters.map((entity) => entity.id))
-    const pages = pagesOf(archive, ids)
+    // A record of one source only has no page for a reader of the other or
+    // with no bookmark; in its own unit, and for every other record, the
+    // page must still draw.
+    const pages = pagesOf(archive, ids).filter(({ bookmark, id }) => {
+      const source = archive.getCharacter(id)?.source
+      const unit = bookmark?.mode === 'chapter' ? 'chapter' : 'episode'
+      return source === undefined || (bookmark !== null && source === unit)
+    })
     for (const { bookmark, id } of pages) {
       const { unmount } = renderWithProviders(
         <CharacterBands

@@ -1807,6 +1807,13 @@ held to: every story below has a row, and every row below has a story.
 | -------------------- | ------: | ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | The navigators’ test |       2 | https://hunterxhunter.fandom.com/wiki/Episode_2_(2011) | Corrected after review: Gon's line was reversed; the page has him telling the Kiriko cornering him it is not the one he was chasing, then the Kiriko calls its partner and the couple reveal themselves as the offspring. The tattoo, the fake Leorio and the flight to the site are all here. |
 
+## Bourbon (`bourbon`, threshold ep 3)
+
+| Entry (en title)  | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                                                                                         |
+| ----------------- | ------: | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| The snake charmer |       3 | https://hunterxhunter.fandom.com/wiki/Bourbon           | Checked: Tonpa introduces Bourbon as a snake charmer and veteran who has taken the exam many times (chapter 5; “never gives up” left out, being chapter 5’s alone; the gate table has episode 3 name him as a snake charmer). The Hisoka warning is in both. |
+| The trap          |      17 | https://hunterxhunter.fandom.com/wiki/Episode_17_(2011) | Checked: the snake trap in the cave, Leorio bitten, Gon and Kurapika run in, Ponzu says Bourbon is already dead yet the trap holds (chapter 30).                                                                                                             |
+
 ## Tonpa (`tonpa`, threshold ep 3)
 
 | Entry (en title)       | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                              |
@@ -1814,6 +1821,27 @@ held to: every story below has a row, and every row below has a story.
 | Tonpa’s juice          |       3 | https://hunterxhunter.fandom.com/wiki/Episode_3_(2011)  | Tonpa's offer of help, the warning about Hisoka, the laxative juice, Kurapika pouring it out and his recalling Hanzo and Nicholas are all on the page.                                            |
 | The fifth in the group |       8 | https://hunterxhunter.fandom.com/wiki/Episode_8_(2011)  | Corrected after the PR review: the join, the vote against opening the door, the surrender and his admission to Leorio are all in the episode 8 summary; episode 9 only repeats them at its start. |
 | Tied to a rock         |      15 | https://hunterxhunter.fandom.com/wiki/Episode_15_(2011) | Tonpa teams with Sommy, Leorio and Kurapika tie him to a rock with the sign, Kurapika takes his badge for six points and Leorio gets his own back.                                                |
+
+## Todo (`todo`, threshold ep 3)
+
+| Entry (en title) | Episode | Fandom page that settles it                            | Note                                                                                                                                                                                                                                                                                                                           |
+| ---------------- | ------: | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| The wrestler     |       3 | https://hunterxhunter.fandom.com/wiki/Chapter_5        | Checked: Tonpa points out the regulars to the trio, Todo among them as a strong wrestler (chapter 5; Episode 3 (2011) per the gate table). Tonpa's remark on his wits is left out, being manga-only.                                                                                                                           |
+| The protest      |       6 | https://hunterxhunter.fandom.com/wiki/Episode_6_(2011) | Checked: Menchi fails everyone, Todo berates her (the table he smashes is left out, since only the episode page gives it), she dismisses him, he charges, Buhara knocks him away and says Menchi would have killed him, Netero sets the egg retest, Todo tastes Gon's egg and vows to return next year. Also read: Chapter 12. |
+
+## Geretta (`geretta`, threshold ep 3)
+
+| Entry (en title)    | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                                                                                                                              |
+| ------------------- | ------: | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| One of the regulars |       3 | https://hunterxhunter.fandom.com/wiki/Chapter_5         | Checked: Tonpa, on his 35th attempt, names Geretta among the regulars and warns the trio about Hisoka. The blowdart and club description is left out of the story and the dossier, being chapter 5’s alone.                                                                                       |
+| The dart            |      16 | https://hunterxhunter.fandom.com/wiki/Episode_16_(2011) | Checked: Geretta paralyzes Gon with a dart after Gon hooks Hisoka's badge, says how often he could have struck, praises his training, takes both badges; Hisoka comes back having killed him, his target. The severed head (manga) and the body (anime) are not described. Also read: Chapter 28. |
+
+## Cherry (`cherry`, threshold ep 3)
+
+| Entry (en title)   | Episode | Fandom page that settles it                      | Note                                                                                                                                                                                                                                                         |
+| ------------------ | ------: | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| The martial artist |       3 | https://hunterxhunter.fandom.com/wiki/Chapter_5  | Checked: manga only. Tonpa lists Cherry (#76) as a martial artist and the best at unarmed combat among the regulars.                                                                                                                                         |
+| In the swamp       |       5 | https://hunterxhunter.fandom.com/wiki/Chapter_10 | Checked: Hisoka attacks the group, Cherry, Kurapika and Leorio flee in three directions; chapter 10 opens on his body hanging upside down from a tree with cards in neck and forehead as birds approach. Manga only. Also read: the Cherry page (chapter 9). |
 
 ## Hanzo (`hanzo`, threshold ep 3)
 
@@ -1835,6 +1863,35 @@ held to: every story below has a row, and every row below has a story.
 | Follow the examiner |       3 | https://hunterxhunter.fandom.com/wiki/Episode_3_(2011)  | The episode page has the numbers handed out, Tonpa offering the juice, then Satotz introducing himself as the first examiner and telling them to follow him through the tunnel. Corrected after the PR review: closing registration, the life warning and the quickened pace were cut. |
 | The false examiner  |       4 | https://hunterxhunter.fandom.com/wiki/Episode_4_(2011)  | At the swamp he is warned by the false examiner and a man dragging an ape, Hisoka's cards, Satotz catching them and the warning not to attack again.                                                                                                                                   |
 | Gon’s license       |      20 | https://hunterxhunter.fandom.com/wiki/Episode_20_(2011) | Satotz beside Gon's bed offers the handshake and license, Gon declines then accepts, and Killua is the only failure, with the matches recounted up to the Bodoro killing.                                                                                                              |
+
+## Amori (`amori`, threshold ep 3)
+
+| Entry (en title)         | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                                                                                                    |
+| ------------------------ | ------: | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| The three brothers       |       3 | https://hunterxhunter.fandom.com/wiki/Amori             | Checked: Tonpa points out the brothers as regulars (chapter 5 names them collectively as the Amori Brothers; the gate table has episode 3 name each). Dated 3 / 29: the names are told at chapter 29 in the manga. Warning about Hisoka from the Episode 3 (2011) page. |
+| Three brothers and a boy |      17 | https://hunterxhunter.fandom.com/wiki/Episode_17_(2011) | Checked: Amori and Umori come to see if the youngest has taken the badge, scold him, form up, Killua appears behind Amori and holds him hostage (chapter 29).                                                                                                           |
+
+## Umori (`umori`, threshold ep 3)
+
+| Entry (en title)           | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                                                                                |
+| -------------------------- | ------: | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Three brothers at the exam |       3 | https://hunterxhunter.fandom.com/wiki/Amori             | Checked: Tonpa, on his 35th attempt (Chapter 5 page), points out the three brothers (their teamwork is left out, being chapter 5’s alone); the trio has just received badges from Beans (Episode 3 (2011) page). Dated 3 / 29 for the manga naming. |
+| The badge handed over      |      17 | https://hunterxhunter.fandom.com/wiki/Episode_17_(2011) | Checked: Umori hands over the badge when Amori is held hostage and Killua throws the other badges far away. Corrected after review: dropped the unsupported 'che ha in mano / he is holding'.                                                       |
+
+## Imori (`imori`, threshold ep 3)
+
+| Entry (en title)       | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                                                                            |
+| ---------------------- | ------: | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| A family of applicants |       3 | https://hunterxhunter.fandom.com/wiki/Amori             | Checked: Tonpa introduces the regulars he knows, the three brothers among them, who take the exam together (teamwork left out, being chapter 5’s alone); the Hisoka warning is on the Episode 3 (2011) page. Dated 3 / 29 for the manga naming. |
+| The stalker            |      17 | https://hunterxhunter.fandom.com/wiki/Episode_17_(2011) | Checked: Imori has stalked Killua planning to strike while he sleeps, is forced forward by his brothers, kicks him, and Killua pulls Imori's own badge from his pocket (not his target).                                                        |
+
+## Bodoro (`bodoro`, threshold ep 3)
+
+| Entry (en title)           | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                             |
+| -------------------------- | ------: | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| The kung fu master         |       3 | https://hunterxhunter.fandom.com/wiki/Bodoro            | Checked: anime only (source episode). The Bodoro page has Tonpa introduce him as the kung fu master in Episode 3 (2011); chapter 5 does not name him, so the story is not told to manga readers. |
+| He will not fight children |      19 | https://hunterxhunter.fandom.com/wiki/Episode_19_(2011) | Checked: Bodoro refuses to fight children in Netero's interview (episode 18), and the bracket rules are explained in episode 19.                                                                 |
+| Two matches, one death     |      20 | https://hunterxhunter.fandom.com/wiki/Episode_20_(2011) | Checked: Hisoka whispers and Bodoro yields, the Leorio match is postponed for his injuries, Killua kills him from behind. Corrected after review: it is Killua, not Bodoro, who is disqualified. |
 
 ## Menchi (`menchi`, threshold ep 6)
 
@@ -1907,23 +1964,61 @@ held to: every story below has a row, and every row below has a story.
 | --------------------- | ------: | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | The guide on the boat |      14 | https://hunterxhunter.fandom.com/wiki/Episode_14_(2011) | Checked: steamboat to Zevil Island, 24 applicants, two-hour trip, invitation to next year's exam, silence, landing order two minutes apart starting with Hisoka, one week, six points. |
 
-## Amori (`amori`, threshold ep 17)
+## Goz (`goz`, threshold ep 14)
 
-| Entry (en title)         | Episode | Fandom page that settles it                             | Note                                                                                                                                                          |
-| ------------------------ | ------: | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Three brothers and a boy |      17 | https://hunterxhunter.fandom.com/wiki/Episode_17_(2011) | Checked: Amori and Umori come to see if the youngest has taken the badge, scold him, form up, Killua appears behind Amori and holds him hostage (chapter 29). |
+| Entry (en title)    | Episode | Fandom page that settles it                      | Note                                                                                                                                                                                                                   |
+| ------------------- | ------: | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| A spear on the boat |      14 | https://hunterxhunter.fandom.com/wiki/Chapter_23 | Checked: Lippo's lottery in finishing order, cards with target badge numbers, badges hidden and silence on the boat, one week and six points. Goz's spear is on the Goz page (chapter 23). Manga only.                 |
+| A last duel         |      15 | https://hunterxhunter.fandom.com/wiki/Chapter_26 | Checked: the wounded Goz challenges Hisoka, cuts trees, Hisoka dodges and says the dead do not interest him, needles kill Goz, the needle man says he let him escape and takes badge #371 while Gon hides. Manga only. |
 
-## Umori (`umori`, threshold ep 17)
+## Agon (`agon`, threshold ep 14)
 
-| Entry (en title)      | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                          |
-| --------------------- | ------: | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| The badge handed over |      17 | https://hunterxhunter.fandom.com/wiki/Episode_17_(2011) | Checked: Umori hands over the badge when Amori is held hostage and Killua throws the other badges far away. Corrected after review: dropped the unsupported 'che ha in mano / he is holding'. |
+| Entry (en title) | Episode | Fandom page that settles it                      | Note                                                                                                                                                                                                         |
+| ---------------- | ------: | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Seventh ashore   |      14 | https://hunterxhunter.fandom.com/wiki/Chapter_23 | Checked: lottery outside the tower, landing in finishing order two minutes apart starting with Hisoka, Agon seventh ashore, one week and six points, the target worth three. Manga only.                     |
+| The card         |      16 | https://hunterxhunter.fandom.com/wiki/Chapter_28 | Checked: bloodlust Hisoka picks Agon, card in hand; Agon draws his sword; Gon hooks the badge as they pass; the wound opens on Agon's shoulder (death per the Agon page). Manga only. Also read: Chapter 27. |
 
-## Imori (`imori`, threshold ep 17)
+## Siper (`siper`, threshold ep 14)
 
-| Entry (en title) | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                     |
-| ---------------- | ------: | ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| The stalker      |      17 | https://hunterxhunter.fandom.com/wiki/Episode_17_(2011) | Checked: Imori has stalked Killua planning to strike while he sleeps, is forced forward by his brothers, kicks him, and Killua pulls Imori's own badge from his pocket (not his target). |
+| Entry (en title)      | Episode | Fandom page that settles it                      | Note                                                                                                                                                                                                                                |
+| --------------------- | ------: | ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Dark glasses on board |      14 | https://hunterxhunter.fandom.com/wiki/Chapter_23 | Checked: Khara's congratulations and the invitation to next year, barely any reaction, badges hidden and eyes avoided. The square sunglasses follow her design on the Siper page; the rifle is held back to chapter 26. Manga only. |
+| Badge number 80       |      15 | https://hunterxhunter.fandom.com/wiki/Chapter_26 | Checked: after killing Goz, the needle man offers Hisoka badge #80 from one of the snipers he killed over the use of a gun; Hisoka keeps it and still needs two points. The death is reported, not shown. Manga only.               |
+
+## Ryu (`ryu`, threshold ep 14)
+
+| Entry (en title)   | Episode | Fandom page that settles it                      | Note                                                                                                                                                                                                                       |
+| ------------------ | ------: | ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| The broadsword     |      14 | https://hunterxhunter.fandom.com/wiki/Chapter_23 | Checked: the lottery and the scoring (target 3, own badge 3, others 1, six to pass). The broadsword is on the Ryu page (chapter 23). Manga only.                                                                           |
+| Not among the nine |      18 | https://hunterxhunter.fandom.com/wiki/Chapter_32 | Checked: the end announcement, one hour to return, no trading at the landing, nine finalists by the water. Ryu's lost fight with Bodoro (not named before chapter 33) is on the Ryu page, cited to chapter 32. Manga only. |
+
+## Kyu (`kyu`, threshold ep 14)
+
+| Entry (en title)  | Episode | Fandom page that settles it                      | Note                                                                                                                                                                                                                                                                           |
+| ----------------- | ------: | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| The drugged arrow |      14 | https://hunterxhunter.fandom.com/wiki/Chapter_24 | Checked: Kyu senses a follower, Pokkle's arrow grazes his arm, he drops his sword and collapses, weak for days, water nearby, badge #105 taken, Gon watching from a tree. Dated 14 / 24 because chapter 23 shares episode 14. Manga only. Also read: the Kyu and Pokkle pages. |
+| Gon’s help        |      15 | https://hunterxhunter.fandom.com/wiki/Chapter_25 | Checked: Gon follows two butterflies on a line toward the wounded Hisoka, finds Kyu still drugged, helps him sit up against a tree and wishes him luck next year. Manga only.                                                                                                  |
+
+## Shishito (`shishito`, threshold ep 14)
+
+| Entry (en title)       | Episode | Fandom page that settles it                      | Note                                                                                                                                                                                                   |
+| ---------------------- | ------: | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Who has my number      |      14 | https://hunterxhunter.fandom.com/wiki/Chapter_23 | Checked: on the boat he wonders who has his number; cards with target numbers, badges hidden, silence. Manga only. Also read: the Shishito page.                                                       |
+| A badge changing hands |      18 | https://hunterxhunter.fandom.com/wiki/Chapter_32 | Checked: Amori and Umori took his badge (chapter 29), Hanzo takes the brothers' two remaining badges (chapter 32), nine finalists at the landing. Manga only. Also read: the Shishito and Amori pages. |
+
+## Kenmi (`kenmi`, threshold ep 14)
+
+| Entry (en title)         | Episode | Fandom page that settles it                      | Note                                                                                                                                                                                                                    |
+| ------------------------ | ------: | ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Invited back             |      14 | https://hunterxhunter.fandom.com/wiki/Chapter_23 | Checked: Khara's congratulations, two-hour trip, the invitation to next year, no reaction. The shaved head is on the Kenmi page. Manga only.                                                                            |
+| Two brothers on the hunt |      17 | https://hunterxhunter.fandom.com/wiki/Chapter_29 | Checked: while Imori stalks Killua, Amori and Umori hunt Shishito and Kenmi and take their badges (chapter 29 per the Kenmi page), then they find Imori still hiding. Manga only. Also read: the Kenmi and Amori pages. |
+
+## Sommy (`sommy`, threshold ep 14)
+
+| Entry (en title)    | Episode | Fandom page that settles it                      | Note                                                                                                                                                                                                                                                                                         |
+| ------------------- | ------: | ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Silence on the boat |      14 | https://hunterxhunter.fandom.com/wiki/Chapter_23 | Checked: lottery in finishing order starting with Hisoka, cards may be thrown away once recorded, badges hidden on the boat. Manga only.                                                                                                                                                     |
+| The swapped cards   |      15 | https://hunterxhunter.fandom.com/wiki/Chapter_25 | Checked: Tonpa shows card #191 and trades the information for medicine, Sommy strikes with a branch, his monkey grabs Leorio's badge, the cards were swapped, Sommy escapes up a tree; Kurapika and Leorio tie him up and recover the badge plus Sommy's. Manga only. Also read: Chapter 26. |
 
 ## Ponzu (`ponzu`, threshold ep 17)
 
@@ -1932,11 +2027,13 @@ held to: every story below has a row, and every row below has a story.
 | The cave of snakes    |      17 | https://hunterxhunter.fandom.com/wiki/Episode_17_(2011) | Checked: Leorio seeks #246 Ponzu, Gon tracks her chemicals to a cave, Leorio is bitten, Ponzu explains Bourbon's snake trap and says he is dead (chapter 30).                                                                                                                        |
 | The gas and the badge |      18 | https://hunterxhunter.fandom.com/wiki/Episode_18_(2011) | Checked: she explains the bee fight, waits for the tracker rescue, trades sleeping gas for Bourbon's badge, Gon holds his breath, returns it and keeps hers. Corrected after review: chapter 32 to 31, since the cave scene is complete in chapter 31 and chapter 32 is the airship. |
 
-## Bourbon (`bourbon`, threshold ep 17)
+## Pokkle (`pokkle`, threshold ep 18)
 
-| Entry (en title) | Episode | Fandom page that settles it                             | Note                                                                                                                                             |
-| ---------------- | ------: | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| The trap         |      17 | https://hunterxhunter.fandom.com/wiki/Episode_17_(2011) | Checked: the snake trap in the cave, Leorio bitten, Gon and Kurapika run in, Ponzu says Bourbon is already dead yet the trap holds (chapter 30). |
+| Entry (en title)        | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                                                                                                                                   |
+| ----------------------- | ------: | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| The arrow in the grass  |      18 | https://hunterxhunter.fandom.com/wiki/Episode_14_(2011) | Checked: Pokkle stalks an applicant in tall grass with Gon watching, the arrow only cuts him, the tranquilizer drops him, the water remark and the badge taken (episode 14, chapter 24); Gon resolves to stalk Hisoka the same way. Dated 18 / 24: his name is first said in the episode 18 roll call. |
+| The archer              |      19 | https://hunterxhunter.fandom.com/wiki/Episode_19_(2011) | Checked: the nine finalists, three days of rest, the hotel as the Final Phase venue, the one-on-one bracket where one win passes, winners leave and only one fails (chapter 33). Corrected after review (#833): the arrow scene moved to the 18 / 24 story.                                            |
+| Passing without a fight |      20 | https://hunterxhunter.fandom.com/wiki/Episode_20_(2011) | Checked: Satotz's account has Hanzo beat him with the same tactic and Killua forfeit the fifth match. Corrected after review: removed 'becomes a Hunter', since the dossier files that at episode 21.                                                                                                  |
 
 ## Gittarackur (`gittarackur`, threshold ep 19)
 
@@ -1944,20 +2041,6 @@ held to: every story below has a row, and every row below has a story.
 | ----------------- | ------: | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | A new face        |      19 | https://hunterxhunter.fandom.com/wiki/Episode_19_(2011) | Checked: needles kill Goz as he charges Hisoka, features change when he pulls the pins, hands Hisoka a badge, sleeps in a hole, reaches the nine finalists. Events are from episode 15 and are known by the end of 19.     |
 | The older brother |      20 | https://hunterxhunter.fandom.com/wiki/Episode_20_(2011) | Checked: Satotz recounts the match; Gittarackur is Illumi, Killua's older brother; says Killua should be an assassin; threatens Gon; blocked at the door by Hanzo, Kurapika and Leorio; Killua yields and he says he lied. |
-
-## Pokkle (`pokkle`, threshold ep 19)
-
-| Entry (en title)        | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                                  |
-| ----------------------- | ------: | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| The archer              |      19 | https://hunterxhunter.fandom.com/wiki/Episode_19_(2011) | Checked: episode 14 shows Pokkle's arrow with a tranquilizer, the badge taken and the water remark; episode 19 shows him among the nine finalists.                                                    |
-| Passing without a fight |      20 | https://hunterxhunter.fandom.com/wiki/Episode_20_(2011) | Checked: Satotz's account has Hanzo beat him with the same tactic and Killua forfeit the fifth match. Corrected after review: removed 'becomes a Hunter', since the dossier files that at episode 21. |
-
-## Bodoro (`bodoro`, threshold ep 19)
-
-| Entry (en title)           | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                             |
-| -------------------------- | ------: | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| He will not fight children |      19 | https://hunterxhunter.fandom.com/wiki/Episode_19_(2011) | Checked: Bodoro refuses to fight children in Netero's interview (episode 18), and the bracket rules are explained in episode 19.                                                                 |
-| Two matches, one death     |      20 | https://hunterxhunter.fandom.com/wiki/Episode_20_(2011) | Checked: Hisoka whispers and Bodoro yields, the Leorio match is postponed for his injuries, Killua kills him from behind. Corrected after review: it is Killua, not Bodoro, who is disqualified. |
 
 ## Masta (`masta`, threshold ep 19)
 

@@ -91,8 +91,8 @@ receive an end-of-anime bookmark; source filtering still applies. See
 One Piece and Hunter x Hunter are open to readers. HxH files the verified Hunter
 Exam coverage through episode 26 / chapter 43, including the manga's chapter-one
 characters introduced later by the anime. Remaining candidate naming checks are
-tracked in #833 and #834; every Hunter Exam character has a chronicle (#762).
-Records are not added from unnamed appearances or supplemental names.
+tracked in #834; every Hunter Exam character has a chronicle (#762). Records are
+not added from unnamed appearances or supplemental names.
 
 Public metadata in `src/lib/progress/series.ts` holds cookies, ranges, seasons,
 demo bounds, features and themes, without archive records. Pass the series to
@@ -161,11 +161,11 @@ checks this block.
 
 | Thing             | Count                                              |
 | ----------------- | -------------------------------------------------- |
-| Records           | 62                                                 |
-| Characters        | 45                                                 |
+| Records           | 73                                                 |
+| Characters        | 56                                                 |
 | Arcs, places      | 7 · 10                                             |
 | Saga modules      | 7                                                  |
-| Line drawings     | 62, one per record, plus 2 redrawings of 2 records |
-| Chronicle stories | 81, for 44 characters                              |
+| Line drawings     | 73, one per record, plus 8 redrawings of 8 records |
+| Chronicle stories | 109, for 55 characters                             |
 
 <!-- End of the generated counts. -->
