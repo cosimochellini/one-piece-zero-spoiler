@@ -1,10 +1,11 @@
 import { byString } from 'sort-es'
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 
 import { COPIES } from '~/server/copy.server'
 
 import { enDictionary } from './dictionaries/en'
 import { itDictionary } from './dictionaries/it'
+import { PRIVACY } from './dictionaries/privacy'
 import { type Locale, LOCALES } from './locales'
 import { translate, translatorFor } from './translate'
 import type { CommonKey } from './types'
@@ -16,6 +17,7 @@ import type { CommonKey } from './types'
  */
 const ALL: [string, Record<Locale, Record<string, string>>][] = [
   ['shared', { en: enDictionary, it: itDictionary }],
+  ['privacy', PRIVACY],
   ...Object.entries(COPIES),
 ]
 
@@ -213,6 +215,22 @@ describe('translate', () => {
     expect(() => translate(enDictionary, 'fruits.title')).toThrow(
       'fruits.title',
     )
+  })
+})
+
+describe('loadDictionary', () => {
+  it('loads only the locale it is asked for, and getDictionary waits on it', async () => {
+    // A fresh module: the test setup has already loaded every locale.
+    vi.resetModules()
+    const fresh = await import('./translate')
+
+    expect(() => fresh.getDictionary('en')).toThrow('en copy is not loaded')
+
+    await fresh.loadDictionary('en')
+
+    expect(fresh.getDictionary('en')).toStrictEqual(enDictionary)
+    expect(() => fresh.getDictionary('it')).toThrow('it copy is not loaded')
+    expect(() => fresh.translatorFor('it')).toThrow('it copy is not loaded')
   })
 })
 

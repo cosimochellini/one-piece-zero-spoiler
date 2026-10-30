@@ -408,6 +408,20 @@ export function copyCanaries(copies, shared) {
 }
 
 /**
+ * The copy the client ships, in every locale: the shared dictionaries and the
+ * privacy notice the legal page carries.
+ * @returns {Promise<Record<string, string>[]>} Each dictionary.
+ */
+async function shippedCopy() {
+  const [{ enDictionary }, { itDictionary }, { PRIVACY }] = await Promise.all([
+    importArchive('i18n/dictionaries/en.ts'),
+    importArchive('i18n/dictionaries/it.ts'),
+    importArchive('i18n/dictionaries/privacy.ts'),
+  ])
+  return [enDictionary, itDictionary, ...Object.values(PRIVACY)]
+}
+
+/**
  * The copy canaries of every series; one unreadable canary when the copy
  * does not load, so the gate refuses to vouch for it.
  * @returns {Promise<{file: string, phrase: null | string}[]>} What to look for.
@@ -415,9 +429,7 @@ export function copyCanaries(copies, shared) {
 async function copyCanariesOf() {
   try {
     const { COPIES } = await importArchive('server/copy.server.ts')
-    const { enDictionary } = await importArchive('i18n/dictionaries/en.ts')
-    const { itDictionary } = await importArchive('i18n/dictionaries/it.ts')
-    return copyCanaries(COPIES, [enDictionary, itDictionary])
+    return copyCanaries(COPIES, await shippedCopy())
   } catch (error) {
     console.error(`archive-gate: the series copy did not load: ${error}`)
     return [{ file: 'src/server/copy.server.ts', phrase: null }]
@@ -467,9 +479,8 @@ export async function placeWordCanariesOf() {
   }
 
   try {
-    const { enDictionary } = await importArchive('i18n/dictionaries/en.ts')
-    const { itDictionary } = await importArchive('i18n/dictionaries/it.ts')
-    const shipped = [enDictionary, itDictionary].flatMap((dictionary) =>
+    const copy = await shippedCopy()
+    const shipped = copy.flatMap((dictionary) =>
       Object.entries(dictionary).flat(),
     )
 

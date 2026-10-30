@@ -1,5 +1,3 @@
-import { enDictionary } from './dictionaries/en'
-import { itDictionary } from './dictionaries/it'
 import type { Locale } from './locales'
 import type {
   Dictionary,
@@ -9,20 +7,48 @@ import type {
   TranslationParams,
 } from './types'
 
-const DICTIONARIES: Record<Locale, Dictionary> = {
-  it: itDictionary,
-  en: enDictionary,
+/**
+ * Each locale's shared copy, as a chunk of its own: a page downloads the
+ * language it is read in and not the other one (#930).
+ *
+ * A total record rather than a lookup with a fallback: it is keyed by
+ * `Locale`, so a language added to `LOCALES` without a dictionary is a
+ * typecheck failure rather than a page that quietly renders in Italian.
+ */
+const DICTIONARIES: Record<Locale, () => Promise<Dictionary>> = {
+  it: async () => {
+    const { itDictionary } = await import('./dictionaries/it')
+    return itDictionary
+  },
+  en: async () => {
+    const { enDictionary } = await import('./dictionaries/en')
+    return enDictionary
+  },
+}
+
+const loaded = new Map<Locale, Dictionary>()
+
+/**
+ * Fetches one locale's shared copy, once. The locale routes await it before
+ * they render, and the router before it hydrates (`src/router.tsx`), so a
+ * language switch paints in the new language with no flash of the old one.
+ */
+export async function loadDictionary(locale: Locale): Promise<void> {
+  if (!loaded.has(locale)) {
+    loaded.set(locale, await DICTIONARIES[locale]())
+  }
 }
 
 /**
- * The shared strings for one locale.
- *
- * A total record rather than a lookup with a fallback: `Dictionary` is keyed
- * by `Locale`, so a language added to `LOCALES` without a dictionary is a
- * typecheck failure rather than a page that quietly renders in Italian.
+ * The shared strings for one locale, loaded by `loadDictionary`. Throws when
+ * they are not: a page rendered before its copy arrived is a routing bug.
  */
 export function getDictionary(locale: Locale): Dictionary {
-  return DICTIONARIES[locale]
+  const dictionary = loaded.get(locale)
+  if (dictionary === undefined) {
+    throw new Error(`The ${locale} copy is not loaded yet`)
+  }
+  return dictionary
 }
 
 /**
@@ -73,11 +99,21 @@ export function translatorFor<S extends SeriesSlug = never>(
   locale: Locale,
   copy?: SeriesCopy<S>,
 ): Translate<S> {
+  return translatorOver(getDictionary(locale), copy)
+}
+
+/**
+ * `translatorFor` over a shared copy already at hand: the server's, which
+ * holds every locale and loads nothing (`src/server/copy.server.ts`).
+ */
+export function translatorOver<S extends SeriesSlug = never>(
+  shared: Dictionary,
+  copy?: SeriesCopy<S>,
+): Translate<S> {
   if (copy === undefined) {
-    const dictionary = getDictionary(locale)
-    return (key, params) => translate(dictionary, key, params)
+    return (key, params) => translate(shared, key, params)
   }
-  const dictionary = { ...getDictionary(locale), ...copy.words }
+  const dictionary = { ...shared, ...copy.words }
   return (key, params) =>
     translate(dictionary, key, { series: copy.name, ...params })
 }

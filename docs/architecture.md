@@ -119,8 +119,11 @@ keys. Feature-specific keys use `useSeriesT('<series>')`, guarded against
 `undefined`, or `useSeriesOnlyT('<series>')` in components exclusive to that
 series. Shared dictionaries contain no series-specific prose. Series
 dictionaries stay server-side and reach only the relevant pages; Italian keys
-are typed against English. Copy rules live in the
-[tone-of-voice skill](../.claude/skills/tone-of-voice/SKILL.md).
+are typed against English. The shared dictionary is one chunk per locale: the
+locale routes await `loadDictionary` in `beforeLoad` and the router awaits it
+before hydrating, so a page downloads its own language only. The privacy notice
+(`src/i18n/dictionaries/privacy.ts`) ships with the legal page alone. Copy rules
+live in the [tone-of-voice skill](../.claude/skills/tone-of-voice/SKILL.md).
 
 ## Extending the archive boundary
 
