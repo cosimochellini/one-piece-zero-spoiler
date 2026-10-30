@@ -145,7 +145,7 @@ export const finalPhaseRelationships = {
   masta: [
     // Masta's exchanges are on his page and the chapter pages; the episode 19
     // and 20 pages never name him in the summary, so only manga readers get
-    // them. Illumi is linked from 35 on, after the unmask.
+    // them. Illumi is linked from chapter 36, the door scene.
     {
       episode: 19,
       chapter: 34,

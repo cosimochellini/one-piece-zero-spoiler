@@ -49,6 +49,16 @@ const links = {
       it: 'Dopo la morte della madre di Kon, Gon impedisce a Kaito di abbatterlo e promette di allevarlo.',
     },
   },
+  // Anime wording: the episode 76 page has the foxbear rescue but not the
+  // cub, so anime readers get only what Kon's record says.
+  konGonEpisode: {
+    character: 'gon-freecss',
+    type: { en: 'Boy who raises him', it: 'Ragazzino che lo alleva' },
+    summary: {
+      en: 'After Kon’s mother is killed, Gon decides to raise him.',
+      it: 'Dopo la morte della madre di Kon, Gon decide di allevarlo.',
+    },
+  },
   konKite: {
     character: 'kite',
     type: {
@@ -79,13 +89,28 @@ export const chapterOneRelationships = {
       source: 'chapter',
       value: [links.kiteGing, links.kiteGon, links.kiteKon],
     },
-    // Anime-only: Ging (episode 37) is already open at episode 76.
+    // Anime-only: Ging (episode 37) is already open at episode 76; the cub
+    // scene is not on the episode page, so Kon waits for the manga.
     {
       episode: 76,
       chapter: 1,
       source: 'episode',
-      value: [links.kiteGing, links.kiteGonEpisode, links.kiteKon],
+      value: [links.kiteGing, links.kiteGonEpisode],
     },
   ],
-  kon: [{ episode: 76, chapter: 1, value: [links.konGon, links.konKite] }],
+  kon: [
+    // Manga-only: the cub scene is chapter 1's.
+    {
+      episode: 76,
+      chapter: 1,
+      source: 'chapter',
+      value: [links.konGon, links.konKite],
+    },
+    {
+      episode: 76,
+      chapter: 1,
+      source: 'episode',
+      value: [links.konGonEpisode],
+    },
+  ],
 } satisfies Record<string, Timeline<Relationship[]>>
