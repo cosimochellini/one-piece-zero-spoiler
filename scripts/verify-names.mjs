@@ -105,6 +105,12 @@ const ITALIAN_TITLES = {
   'gon-freecss': 'Gon Freecss',
   'kurapika': 'Kurapika Kurata',
   'mito-freecss': 'Personaggi di Hunter × Hunter#Myto Freecss',
+  'zushi': 'Personaggi di Hunter × Hunter#Zooci',
+  'wing': 'Associazione Hunter#Wing',
+  'gido': 'Personaggi di Hunter × Hunter#Ghido',
+  'sadaso': 'Personaggi di Hunter × Hunter#Sadaso',
+  'riehlvelt': 'Personaggi di Hunter × Hunter#Liroubert',
+  'kastro': 'Personaggi di Hunter × Hunter#Kastro',
 }
 
 /**
