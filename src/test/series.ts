@@ -28,9 +28,9 @@ export const ONE_PIECE_LOADED = onePiece()
  * What a filed series is known to hold: the kinds of text its leak scan
  * reads (`~/data/leaks.test.ts`), whether a record says its name before it
  * opens, and the least it files of what the shared data rules read
- * (`~/data/archive.test.ts`), near the real counts, so a rule over a series
- * that files content cannot pass on nothing or on a reader that lost most of
- * it. A new series needs a row here.
+ * (`~/data/archive.test.ts`), within nine tenths of the real counts, so a
+ * rule over a series that files content cannot pass on nothing or on a
+ * reader that lost some of it. A new series needs a row here.
  */
 export interface Expected {
   kinds: string[]
@@ -52,7 +52,7 @@ export interface Least {
 }
 
 const EXPECTED: Record<string, Expected> = {
-  // About nine tenths of what it files on 2026-10-25.
+  // What it files on 2026-10-30.
   'one-piece': {
     kinds: [
       'affiliation',
@@ -73,15 +73,15 @@ const EXPECTED: Record<string, Expected> = {
       'visit',
     ],
     least: {
-      affiliations: 720,
-      arcs: 30,
-      characters: 480,
-      chronicles: 680,
-      linkedOrigins: 100,
-      places: 35,
-      statuses: 720,
-      timelines: 1850,
-      visits: 12,
+      affiliations: 808,
+      arcs: 34,
+      characters: 534,
+      chronicles: 757,
+      linkedOrigins: 118,
+      places: 39,
+      statuses: 799,
+      timelines: 2591,
+      visits: 13,
     },
     namesSaidEarly: true,
   },
@@ -113,7 +113,7 @@ const EXPECTED: Record<string, Expected> = {
       linkedOrigins: 7,
       places: 11,
       statuses: 70,
-      timelines: 197,
+      timelines: 253,
       visits: 0,
     },
     namesSaidEarly: true,
