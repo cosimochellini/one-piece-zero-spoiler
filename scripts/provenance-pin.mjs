@@ -4,7 +4,7 @@
 // is read at its latest revision and appended, never rewriting an entry. Each
 // title prints its key and the cached wikitext to read.
 import { createHash } from 'node:crypto'
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { parseArgs } from 'node:util'
@@ -35,15 +35,16 @@ const PREFIX = { 'one-piece': '', 'hunter-x-hunter': 'hxh-' }
 
 /**
  * A title in a page URL: underscores for spaces, URI-encoded, with the
- * parentheses MediaWiki leaves bare encoded too.
+ * parentheses MediaWiki leaves bare encoded too, and the subpage slash and
+ * namespace colon left bare, as every pinned entry has them.
  * @param {string} title The page title.
  * @returns {string} The URL path segment.
  */
 export function urlTitle(title) {
-  return encodeURIComponent(title.replaceAll(' ', '_')).replaceAll(
-    /[()]/gu,
-    (bracket) => (bracket === '(' ? '%28' : '%29'),
-  )
+  return encodeURIComponent(title.replaceAll(' ', '_'))
+    .replaceAll(/[()]/gu, (bracket) => (bracket === '(' ? '%28' : '%29'))
+    .replaceAll('%2F', '/')
+    .replaceAll('%3A', ':')
 }
 
 /**
@@ -56,13 +57,72 @@ export function urlTitle(title) {
  * @returns {string} The key.
  */
 export function keyOf(slug, title, revision, sources) {
-  const prefix = PREFIX[slug] ?? `${slug}-`
-  const name = `${prefix}en-${title.replaceAll(' ', '_')}`
+  const name = `${prefixOf(slug)}en-${title.replaceAll(' ', '_')}`
   const bare = `${name}.json`
+  if (slug === 'one-piece' && sources[bare] === undefined) {
+    return bare
+  }
 
-  return slug === 'one-piece' && sources[bare] === undefined ?
-      bare
-    : `${name}-${String(revision)}.json`
+  const key = `${name}-${String(revision)}.json`
+  if (sources[key] !== undefined) {
+    throw new Error(`${key} already pins another page`)
+  }
+
+  return key
+}
+
+/**
+ * What a series' keys start with, before `en-`.
+ * @param {string} slug The series.
+ * @returns {string} The prefix.
+ */
+function prefixOf(slug) {
+  return PREFIX[slug] ?? `${slug}-`
+}
+
+/**
+ * How plainly a key names its title: the series' bare form first, then any
+ * key of the series' form, then the rest (such as an issue-scoped
+ * `issue815-en-…` copy of the same revision).
+ * @param {string} key The key.
+ * @param {string} title Its page title.
+ * @param {string} slug The series.
+ * @returns {number} Lower is plainer.
+ */
+function plainness(key, title, slug) {
+  const name = `${prefixOf(slug)}en-${title.replaceAll(' ', '_')}`
+  if (key === `${name}.json`) {
+    return 0
+  }
+
+  return key.startsWith(name) ? 1 : 2
+}
+
+/**
+ * Each title pinned from a series' English wiki, under its plainest key;
+ * between equally plain keys, the first in the file.
+ * @param {Record<string, Source>} sources The pinned sources.
+ * @param {string} api The wiki's English `api.php`.
+ * @param {string} slug The series.
+ * @returns {Map<string, string>} Title to key.
+ */
+export function pinnedTitles(sources, api, slug) {
+  // The English wiki's pages: One Piece's Italian wiki shares its host.
+  const pages = `${api.replace(/api\.php$/u, '')}wiki/`
+  /** @type {Map<string, string>} */
+  const pinned = new Map()
+  for (const [key, { title, url }] of Object.entries(sources)) {
+    const held = pinned.get(title)
+    if (
+      url.startsWith(pages)
+      && (held === undefined
+        || plainness(key, title, slug) < plainness(held, title, slug))
+    ) {
+      pinned.set(title, key)
+    }
+  }
+
+  return pinned
 }
 
 /**
@@ -121,18 +181,11 @@ async function revisionPage(wiki, title, revision) {
  * series' English wiki has it pinned under that title or the one it
  * redirects to; otherwise the page at its latest revision, with no key.
  * @param {string} title The page title.
- * @param {import('./wiki.mjs').Wiki} wiki The series' wiki.
- * @param {Record<string, Source>} sources The pinned sources.
+ * @param {{ slug: string, wiki: import('./wiki.mjs').Wiki, sources: Record<string, Source> }} pin The series, its wiki and the pinned sources.
  * @returns {Promise<{ key?: string, page: RevisionPage }>} The key and page.
  */
-async function pinnedPage(title, wiki, sources) {
-  // The English wiki's pages: One Piece's Italian wiki shares its host.
-  const pages = `${wiki.en.replace(/api\.php$/u, '')}wiki/`
-  const pinned = new Map(
-    Object.entries(sources)
-      .filter(([, { url }]) => url.startsWith(pages))
-      .map(([key, { title: pinnedTitle }]) => [pinnedTitle, key]),
-  )
+async function pinnedPage(title, { slug, wiki, sources }) {
+  const pinned = pinnedTitles(sources, wiki.en, slug)
   const asked = pinned.get(title)
   if (asked !== undefined) {
     return {
@@ -160,11 +213,11 @@ async function pinnedPage(title, wiki, sources) {
  * @returns {Promise<Pin>} The key, the wikitext file and the entry when it is new.
  */
 export async function pinTitle(asked, { slug, wiki, sources }) {
-  const { key, page } = await pinnedPage(
-    asked.replaceAll('_', ' '),
+  const { key, page } = await pinnedPage(asked.replaceAll('_', ' '), {
+    slug,
     wiki,
     sources,
-  )
+  })
   const [revision] = page.revisions ?? []
   if (revision === undefined) {
     throw new Error(`MISSING\t${asked}`)
@@ -248,19 +301,68 @@ export function manifestText(manifest, sources) {
  * Appends the new sources to the manifest file unless this is a dry run,
  * and says how many there were.
  * @param {string} file The manifest file.
- * @param {{ sources: Record<string, Source> }} manifest The manifest as read.
- * @param {Record<string, Source>} sources Its sources, with the new entries.
+ * @param {Record<string, Source>} pinned The sources as first read.
+ * @param {Record<string, Source>} sources The sources with the new entries.
  * @param {boolean} dryRun Whether to write nothing.
  */
-export function save(file, manifest, sources, dryRun) {
-  const added =
-    Object.keys(sources).length - Object.keys(manifest.sources).length
-  if (!dryRun && added > 0) {
-    writeFileSync(file, manifestText(manifest, sources))
+export function save(file, pinned, sources, dryRun) {
+  const added = Object.entries(sources).filter(
+    ([key]) => !Object.hasOwn(pinned, key),
+  )
+  if (!dryRun && added.length > 0) {
+    append(file, added)
   }
   const done =
     dryRun ? 'dry run: nothing written' : `appended to ${path.basename(file)}`
-  console.error(`${String(added)} new, ${done}`)
+  console.error(`${String(added.length)} new, ${done}`)
+}
+
+/**
+ * Appends entries to the manifest as it is now, not as it was read before a
+ * long run of requests: another session may have appended meanwhile. A key
+ * it already holds for another entry stops the write. The new text replaces
+ * the file in one rename, so a reader never sees half of it.
+ * @param {string} file The manifest file.
+ * @param {[string, Source][]} added The new entries.
+ */
+function append(file, added) {
+  const manifest = JSON.parse(readFileSync(file, 'utf8'))
+  for (const [key, source] of added) {
+    const held = manifest.sources[key]
+    if (held !== undefined && JSON.stringify(held) !== JSON.stringify(source)) {
+      throw new Error(`${key} already pins another entry; nothing written`)
+    }
+  }
+
+  const temporary = `${file}.${String(process.pid)}.tmp`
+  writeFileSync(
+    temporary,
+    manifestText(manifest, {
+      ...manifest.sources,
+      ...Object.fromEntries(added),
+    }),
+  )
+  renameSync(temporary, file)
+}
+
+/**
+ * The command line, or nothing once its fault is printed.
+ * @param {string[]} args The arguments after the script.
+ * @returns {{ values: { series: string, 'dry-run': boolean }, positionals: string[] } | undefined} The parsed arguments.
+ */
+export function argsOf(args) {
+  try {
+    return parseArgs({
+      args,
+      allowPositionals: true,
+      options: {
+        'series': { type: 'string', default: 'one-piece' },
+        'dry-run': { type: 'boolean', default: false },
+      },
+    })
+  } catch (error) {
+    console.error(error.message)
+  }
 }
 
 /**
@@ -268,28 +370,23 @@ export function save(file, manifest, sources, dryRun) {
  * @returns {Promise<number>} Zero, one when a title failed, two on bad usage.
  */
 async function main() {
-  const { values, positionals } = parseArgs({
-    allowPositionals: true,
-    options: {
-      'series': { type: 'string', default: 'one-piece' },
-      'dry-run': { type: 'boolean', default: false },
-    },
-  })
-  if (positionals.length === 0) {
+  const parsed = argsOf(process.argv.slice(2))
+  if (parsed === undefined || parsed.positionals.length === 0) {
     console.error(
       'Usage: npm run provenance:pin -- --series <slug> "Title" ["Title" …] [--dry-run]',
     )
     return 2
   }
 
+  const { values, positionals } = parsed
   const series = await seriesOrExit(['--series', values.series])
-  const manifest = JSON.parse(readFileSync(MANIFEST, 'utf8'))
+  const { sources: pinned } = JSON.parse(readFileSync(MANIFEST, 'utf8'))
   const { sources, failed } = await pinAll(
     positionals,
     { slug: series.slug, wiki: wikiOf(series) },
-    manifest.sources,
+    pinned,
   )
-  save(MANIFEST, manifest, sources, values['dry-run'])
+  save(MANIFEST, pinned, sources, values['dry-run'])
 
   return failed ? 1 : 0
 }

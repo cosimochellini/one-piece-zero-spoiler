@@ -3,15 +3,23 @@
 // The suite-wide environment is jsdom for the React components. This module is
 // plain Node, so a DOM here would only cost startup time.
 import { createHash } from 'node:crypto'
-import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import {
+  mkdtempSync,
+  readdirSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from 'node:fs'
 import { tmpdir } from 'node:os'
 import path from 'node:path'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import {
+  argsOf,
   keyOf,
   manifestText,
   pinAll,
+  pinnedTitles,
   pinTitle,
   save,
   sourceOf,
@@ -73,6 +81,12 @@ describe('key and URL forms', () => {
     expect(urlTitle('Gyoro, Nin, and Bao')).toBe('Gyoro%2C_Nin%2C_and_Bao')
   })
 
+  it('leaves subpage slashes and namespace colons bare', () => {
+    expect(urlTitle('Vegapunk/Atlas')).toBe('Vegapunk/Atlas')
+    expect(urlTitle('Template:WC')).toBe('Template:WC')
+    expect(urlTitle('One Piece Film: Red')).toBe('One_Piece_Film:_Red')
+  })
+
   it('keys One Piece by title and Hunter x Hunter by title and revision', () => {
     expect(keyOf('one-piece', 'Lola (Zombie)', 9, {})).toBe(
       'en-Lola_(Zombie).json',
@@ -86,6 +100,47 @@ describe('key and URL forms', () => {
     expect(keyOf('one-piece', 'Tama', 7, { 'en-Tama.json': {} })).toBe(
       'en-Tama-7.json',
     )
+  })
+
+  it('refuses a revision key another page already holds', () => {
+    expect(() =>
+      keyOf('hunter-x-hunter', 'Gon', 7, { 'hxh-en-Gon-7.json': {} }),
+    ).toThrow('hxh-en-Gon-7.json already pins another page')
+    expect(() =>
+      keyOf('one-piece', 'Tama', 7, {
+        'en-Tama.json': {},
+        'en-Tama-7.json': {},
+      }),
+    ).toThrow('en-Tama-7.json')
+  })
+
+  it('reuses the plainest key of a title pinned under several', () => {
+    const chapter = sourceOf(OP, page('Chapter 433', 1))
+    const gon = sourceOf(HXH, page('Gon Freecss', 2))
+    const italian = { ...chapter, url: 'https://onepiece.fandom.com/it/wiki/X' }
+    const sources = {
+      'issue815-en-Chapter_433.json': chapter,
+      'en-Chapter_433.json': chapter,
+      'issue816-en-Chapter_433.json': chapter,
+      'it-Chapter_433.json': italian,
+      'issue900-hxh-en-Gon_Freecss-2.json': gon,
+      'hxh-en-Gon_Freecss-2.json': gon,
+      'hxh-en-Gon_Freecss-3.json': gon,
+    }
+
+    expect(pinnedTitles(sources, OP, 'one-piece').get('Chapter 433')).toBe(
+      'en-Chapter_433.json',
+    )
+    expect(
+      pinnedTitles(
+        { 'issue815-en-Chapter_433.json': chapter, 'it-X.json': italian },
+        OP,
+        'one-piece',
+      ).get('Chapter 433'),
+    ).toBe('issue815-en-Chapter_433.json')
+    expect(
+      pinnedTitles(sources, HXH, 'hunter-x-hunter').get('Gon Freecss'),
+    ).toBe('hxh-en-Gon_Freecss-2.json')
   })
 
   it('builds an entry whose hash is over the wikitext', () => {
@@ -221,15 +276,58 @@ describe('pinning a title', () => {
     const sources = { 'en-Gem.json': sourceOf(OP, page('Gem', 2)) }
     writeFileSync(file, text)
 
-    save(file, manifest, sources, true)
-    save(file, manifest, manifest.sources, false)
+    save(file, manifest.sources, sources, true)
+    save(file, manifest.sources, manifest.sources, false)
     expect(readFileSync(file, 'utf8')).toBe(text)
 
-    save(file, manifest, sources, false)
+    save(file, manifest.sources, sources, false)
     expect(JSON.parse(readFileSync(file, 'utf8'))).toStrictEqual({
       ...manifest,
       sources,
     })
+    expect(readdirSync(directory)).toStrictEqual(['sources.json'])
+  })
+
+  it('keeps what another session appended while this one ran', () => {
+    vi.spyOn(console, 'error').mockReturnValue()
+    const file = path.join(directory, 'sources.json')
+    const gem = sourceOf(OP, page('Gem', 2))
+    const theirs = { 'en-Laboon.json': sourceOf(OP, page('Laboon', 3)) }
+    writeFileSync(file, manifestText({ accessed: 'x' }, theirs))
+
+    save(file, {}, { 'en-Gem.json': gem }, false)
+
+    expect(JSON.parse(readFileSync(file, 'utf8')).sources).toStrictEqual({
+      ...theirs,
+      'en-Gem.json': gem,
+    })
+  })
+
+  it('writes nothing when another session took the key for another entry', () => {
+    const file = path.join(directory, 'sources.json')
+    const text = manifestText(
+      { accessed: 'x' },
+      { 'en-Gem.json': sourceOf(OP, page('Gem', 1)) },
+    )
+    writeFileSync(file, text)
+
+    expect(() =>
+      save(file, {}, { 'en-Gem.json': sourceOf(OP, page('Gem', 2)) }, false),
+    ).toThrow('en-Gem.json already pins another entry')
+    expect(readFileSync(file, 'utf8')).toBe(text)
+  })
+
+  it('reads the command line, or prints why it cannot', () => {
+    const error = vi.spyOn(console, 'error').mockReturnValue()
+
+    expect(argsOf(['--series', 'hunter-x-hunter', 'Gon', '--dry-run'])).toEqual(
+      {
+        values: { 'series': 'hunter-x-hunter', 'dry-run': true },
+        positionals: ['Gon'],
+      },
+    )
+    expect(argsOf(['--seires', 'x'])).toBeUndefined()
+    expect(error).toHaveBeenCalledOnce()
   })
 })
 
