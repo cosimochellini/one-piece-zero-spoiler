@@ -1,4 +1,5 @@
 import type { HunterSaga } from './saga'
+import { yorknewCityChronicles } from './yorknew-city.chronicle'
 import { yorknewCityRelationships } from './yorknew-city.relationships'
 
 /**
@@ -45,6 +46,7 @@ export const yorknewCity: HunterSaga = {
   dossiers: {
     'ging-freecss': {
       relationships: yorknewCityRelationships['ging-freecss'],
+      chronicle: yorknewCityChronicles['ging-freecss'],
       role: { it: 'Hunter, padre di Gon', en: 'Hunter, Gon’s father' },
       log: {
         it: 'Cugino di Myto. Ha sostenuto l’Esame Hunter prima dei dodici anni ed è partito dall’isola senza dire che cosa cercava. Dieci anni dopo è tornato con un bambino in braccio, ha chiesto alla nonna di tenerlo e della madre ha detto solo che si erano lasciati; Myto si è presa il bambino. L’unica cosa che ha lasciato a Gon è una scatola da dargli quando fosse diventato Hunter, con dentro un anello, una scheda di memoria e una cassetta: sul nastro chiede a Gon se vuole incontrarlo.',

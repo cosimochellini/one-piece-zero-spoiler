@@ -441,6 +441,12 @@ export const HUNTER_X_HUNTER_SOURCES = {
       note: 'Debut in the ep 76 flashback; Kon page (ch. 1): mother killed, Kite wants to put the cub down, Gon vows to raise it. Corrected after review: removed the invented arm scratch and the pick-up.',
     },
   },
+  'ging-freecss': {
+    37: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_37_(2011)',
+      note: "Checked against the episode page and chapters 64-65: the only children on the island, the village searching for Mito and Ging finding her, leaving at Gon's age, the return ten years later carrying Gon, the grandmother and the separation, the Nen and license boxes, the ring, memory card and cassette, and the tape's question. Corrected after review: 'cousin', 'baby', 'only' and the box's hand-over condition are not on the episode page; 'breaks' became neutral 'comes off'. Manga-only lines left out: Mito taking the boy, the steel sticks, the ring warning. Also read: Chapter 64, Chapter 65, Chapter 66.",
+    },
+  },
   'todo': {
     3: {
       source: 'https://hunterxhunter.fandom.com/wiki/Chapter_5',

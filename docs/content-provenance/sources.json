@@ -23161,6 +23161,26 @@
       "revisionUrl": "https://hunterxhunter.fandom.com/index.php?oldid=322241",
       "apiUrl": "https://hunterxhunter.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=322241",
       "contentSha256": "8db5526dd9ca4d9e6bdbb67d3ee08315a8d0d409c1d576f57e01cdb9966f7d8e"
+    },
+    "hxh-en-Chapter_64-400712.json": {
+      "locale": "en",
+      "title": "Chapter 64",
+      "revision": 400712,
+      "revisionDate": "2024-07-03T22:27:06Z",
+      "url": "https://hunterxhunter.fandom.com/wiki/Chapter_64",
+      "revisionUrl": "https://hunterxhunter.fandom.com/index.php?oldid=400712",
+      "apiUrl": "https://hunterxhunter.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=400712",
+      "contentSha256": "4e146a7796ea575a4993d1518fe70eeff0e64879f932d7e5a78e5a5fb3b2d97a"
+    },
+    "hxh-en-Chapter_65-417613.json": {
+      "locale": "en",
+      "title": "Chapter 65",
+      "revision": 417613,
+      "revisionDate": "2025-11-10T01:11:50Z",
+      "url": "https://hunterxhunter.fandom.com/wiki/Chapter_65",
+      "revisionUrl": "https://hunterxhunter.fandom.com/index.php?oldid=417613",
+      "apiUrl": "https://hunterxhunter.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=417613",
+      "contentSha256": "3620e8c68c7c65b6ebd71919a49c3daab83348eed830148d166b13f0442c3b9c"
     }
   }
 }
