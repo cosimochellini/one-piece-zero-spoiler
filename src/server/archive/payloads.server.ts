@@ -16,6 +16,7 @@ import {
 } from './fruits.server'
 import { handleOf, indexHandle } from './handle.server'
 import { landingPage } from './home.server'
+import { demoDrawingsPage } from './onboarding.server'
 import {
   characterPage,
   charactersPage,
@@ -48,6 +49,10 @@ function listPayloads(archive: SeriesArchive): Payload[] {
     {
       name: 'loadCredits',
       run: (b, l) => creditsPage(readerFor(archive, b, l)),
+    },
+    {
+      name: 'loadDemoDrawings',
+      run: (_, l) => demoDrawingsPage(readerFor(archive, null, l)),
     },
     {
       name: 'loadHome',
@@ -200,6 +205,7 @@ export function payloadsFor(archive: SeriesArchive): Payload[] {
     'liftShip',
     'loadSeriesCopy',
     'loadSeriesLegal',
+    'loadDemoDrawings',
   ]
   return order.flatMap((name) => all.filter((payload) => payload.name === name))
 }

@@ -24,7 +24,12 @@ import { type Payload, payloadsFor } from './payloads.server'
 const PAYLOADS = payloadsFor(ONE_PIECE_LOADED.archive)
 
 /** The server functions that answer with `plain` rather than seroval. */
-const PLAIN = new Set(['loadDrawings', 'loadFruitAlbum', 'loadShelves'])
+const PLAIN = new Set([
+  'loadDemoDrawings',
+  'loadDrawings',
+  'loadFruitAlbum',
+  'loadShelves',
+])
 
 /** A record a page names past the bookmark on purpose. */
 type Excuse = (entity: Entity, key: string, bookmark: Bookmark) => boolean
@@ -47,6 +52,11 @@ function byDesignOf({
     // the Hunter Exam), and on nothing past it in either unit.
     loadHome: (entity, _, bookmark) =>
       bookmark === null
+      && entity.revealedAtEpisode <= demoLastEpisode
+      && entity.revealedAtChapter <= demoLastChapter,
+    // The same bounded public demo is available even with a saved bookmark.
+    loadDemoDrawings: (entity) =>
+      entity.source === undefined
       && entity.revealedAtEpisode <= demoLastEpisode
       && entity.revealedAtChapter <= demoLastChapter,
     // The saga names are always shown, so a reader can find their way by them

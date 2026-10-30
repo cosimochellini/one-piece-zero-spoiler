@@ -15,7 +15,12 @@ import {
   useSeriesParams,
 } from '~/lib/progress/BookmarkContext'
 import { describeThreshold } from '~/lib/progress/threshold'
-import type { CoveredRecord, DemoEntry } from '~/lib/view/records'
+import type {
+  CoveredRecord,
+  DemoEntry,
+  Drawing,
+  Step,
+} from '~/lib/view/records'
 import { settleStyles } from '~/styles/settle'
 
 /**
@@ -36,7 +41,9 @@ export function OpenCard({
   entry,
   here,
   point,
+  drawings,
 }: {
+  drawings: Step<Drawing>[]
   entry: DemoEntry
   here: boolean
   point: DialPoint
@@ -49,6 +56,7 @@ export function OpenCard({
   ]
   const body = (
     <CardBody
+      drawings={drawings}
       entry={entry}
       point={point}
     />
@@ -131,7 +139,9 @@ function TrialLink({
 function CardBody({
   entry,
   point,
+  drawings,
 }: {
+  drawings: Step<Drawing>[]
   entry: DemoEntry
   point: DialPoint
 }): ReactElement {
@@ -162,7 +172,7 @@ function CardBody({
         {...stylex.props(entry.kind === 'arc' ? styles.arcFrame : styles.frame)}
       >
         <Drawn
-          drawing={latestStep(entry.drawings, point)}
+          drawing={latestStep(drawings, point)}
           kind={entry.kind}
         />
       </div>
@@ -186,7 +196,7 @@ function Drawn({
   drawing,
   kind,
 }: {
-  drawing: DemoEntry['drawings'][number]['value'] | undefined
+  drawing: Drawing | undefined
   kind: DemoEntry['kind']
 }): null | ReactElement {
   if (drawing === undefined) {
@@ -205,7 +215,7 @@ function Drawn({
 /**
  * A record under fog: the bare seal or the bare plate, the word "Spoiler",
  * and where it opens. The name and the drawing are not drawn, though for an
- * East Blue record they are in the page's data for the dial.
+ * East Blue record its name is in the dial's data.
  */
 export function FogCard({
   entry,

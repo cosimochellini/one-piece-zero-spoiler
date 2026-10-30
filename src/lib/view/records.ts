@@ -599,15 +599,13 @@ export interface Step<T> {
 
 /**
  * One East Blue record as the onboarding's dial wakes it: its thresholds,
- * and every dated fact about it up to the end of East Blue, so the browser
- * can show it at any point the dial reaches without asking again.
+ * and every dated fact about it up to the end of East Blue. Its artwork
+ * arrives separately when the preview enters the viewport.
  */
 export interface DemoEntry {
   /** Who the character is in the story's own words, on every step. */
   affiliation: Step<string>[]
   bounty: Step<number>[]
-  /** The record's own drawing first, then any redrawing, each from its step. */
-  drawings: Step<Drawing>[]
   epithet: Step<string>[]
   id: string
   kind: EntityKind
@@ -616,6 +614,9 @@ export interface DemoEntry {
   revealedAtEpisode: number
   role?: string
 }
+
+/** Each demo record's drawing and redrawings, bounded in both story units. */
+export type DemoDrawings = Record<string, Step<Drawing>[]>
 
 /**
  * The landing page for a visitor with no bookmark: East Blue, which the dial

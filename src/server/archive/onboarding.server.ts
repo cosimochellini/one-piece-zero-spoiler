@@ -3,6 +3,7 @@ import type { Entity } from '~/data/types'
 import type { Bookmark } from '~/lib/progress/episode'
 import type { Gated } from '~/lib/progress/spoiler'
 import type {
+  DemoDrawings,
   DemoEntry,
   Drawing,
   OnboardingView,
@@ -67,29 +68,32 @@ function drawn(strokes: Drawing['strokes'], tint: Drawing['tint']): Drawing {
   return { strokes, tint }
 }
 
-/** One East Blue record, with every fact the dial can reach about it. */
+/** Every drawing the demo dial can reach, independent of the saved bookmark. */
+function demoDrawings(entity: Entity, r: Reader): Step<Drawing>[] {
+  const tint = entity.visual.tint
+  return [
+    {
+      ...gateOf(entity),
+      value: { strokes: r.archive.drawings[entity.visual.art] ?? [], tint },
+    },
+    ...stepsOf(
+      r.archive.datedOf(entity, 'redrawing'),
+      (s) => drawn(s, tint),
+      r,
+    ),
+  ]
+}
+
+/** One demo record, with every fact the dial can reach about it. */
 function demoOf(entity: Entity, r: Reader): DemoEntry {
   const { locale } = r
   const role = r.archive.roleOf(entity)
-  const tint = entity.visual.tint
-
   return {
     id: entity.id,
     kind: entity.kind,
     name: entity.name[locale],
     ...gateOf(entity),
     ...(role !== undefined && { role: role[locale] }),
-    drawings: [
-      {
-        ...gateOf(entity),
-        value: { strokes: r.archive.drawings[entity.visual.art] ?? [], tint },
-      },
-      ...stepsOf(
-        r.archive.datedOf(entity, 'redrawing'),
-        (s) => drawn(s, tint),
-        r,
-      ),
-    ],
     affiliation: stepsOf(
       r.archive.datedOf(entity, 'affiliation'),
       (v) => v[locale],
@@ -121,6 +125,28 @@ function demoCast(arcsHere: Entity[], r: Reader): Entity[] {
   )
 }
 
+/** The demo's places and ships, in the order the dial opens them. */
+function demoPlaces(r: Reader): Entity[] {
+  return orderByMode(
+    [...r.archive.places, ...r.archive.ships],
+    'episode',
+  ).filter((entity) => inDemo(entity, r))
+}
+
+/**
+ * Deferred demo drawings, bounded by the same membership and two-unit limits
+ * as onboarding itself. A bookmark never expands this public demonstration.
+ */
+export function demoDrawingsPage(r: Reader): DemoDrawings {
+  const arcs = demoArcs(r)
+  return Object.fromEntries(
+    [...arcs, ...demoCast(arcs, r), ...demoPlaces(r)].map((entity) => [
+      entity.id,
+      demoDrawings(entity, r),
+    ]),
+  )
+}
+
 /** The page for a visitor with no bookmark, starting the dial at `start`. */
 export function onboardingPage(start: Bookmark, r: Reader): OnboardingView {
   const arcsHere = demoArcs(r)
@@ -131,10 +157,7 @@ export function onboardingPage(start: Bookmark, r: Reader): OnboardingView {
   return {
     arcs: arcsHere.map((arc) => demoOf(arc, r)),
     cast: demoCast(arcsHere, r).map((entity) => demoOf(entity, r)),
-    places: orderByMode(
-      [...r.archive.places, ...r.archive.ships],
-      'episode',
-    ).flatMap((entity) => (inDemo(entity, r) ? [demoOf(entity, r)] : [])),
+    places: demoPlaces(r).map((entity) => demoOf(entity, r)),
     chapterAt: Array.from(
       { length: r.archive.series.demoLastEpisode },
       (_, index) =>

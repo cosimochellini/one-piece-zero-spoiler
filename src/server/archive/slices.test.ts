@@ -232,12 +232,7 @@ describe('the slice of the archive a page is given', () => {
     const page = onboardingPage(null, 'en')
     const entries = [page.arcs, page.cast, page.places].flat()
     const steps = entries.flatMap((entry) => {
-      return [
-        entry.drawings,
-        entry.affiliation,
-        entry.epithet,
-        entry.bounty,
-      ].flat()
+      return [entry.affiliation, entry.epithet, entry.bounty].flat()
     })
 
     expect(page.arcs.map((arc) => arc.id)).toContain('romance-dawn')

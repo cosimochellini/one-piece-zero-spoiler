@@ -16,6 +16,7 @@ import {
   fruitSiblings,
 } from './archive/fruits.server'
 import { landingPage } from './archive/home.server'
+import { demoDrawingsPage } from './archive/onboarding.server'
 import {
   characterPage,
   charactersPage,
@@ -41,9 +42,9 @@ import { legalOf } from './sources.server'
 /**
  * The archive's only door.
  *
- * Every function here reads the bookmark from the request itself, and none of
- * them accepts one as an argument. That is the invariant the whole design
- * rests on: a bookmark that arrived in a request body would make the fog a
+ * Bookmark-dependent functions read it from the request itself; none accepts
+ * one as an argument. Public demo drawings always use a null bookmark. This
+ * is the invariant the whole design rests on: a bookmark that arrived in a request body would make the fog a
  * suggestion, and it would also mean a stale one in the router's context
  * could hand a reader records they have not reached.
  *
@@ -194,6 +195,14 @@ export const loadDrawings = createServerFn()
   .handler(async ({ data }) =>
     plain(drawingsFor(data.ids, await readerIn(data))),
   )
+
+// Public demo only: neither cookies nor request-supplied bookmarks expand it.
+export const loadDemoDrawings = createServerFn()
+  .validator(located)
+  .handler(async ({ data }) => {
+    const archive = await archiveOf(data.series)
+    return plain(demoDrawingsPage(readerFor(archive, null, data.locale)))
+  })
 
 export const loadFruits = createServerFn()
   .validator(located)
