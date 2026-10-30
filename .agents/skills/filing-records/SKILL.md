@@ -11,7 +11,7 @@ Every record has a **gate**: the episode and chapter at which it opens.
 
 ## 1. Records and dossiers
 
-- File the records in the arc's module, `<hxh>/records/<arc>.ts`: `entries` for the records, `dossiers` for the characters' facts.
+- File the records in the arc's module, `<hxh>/records/<arc>.ts`: `entries` for the records, `dossiers` for the characters' facts. A new module loads only once `<hxh>/sagas.ts` lists it, as an arc of its own or merged into its arc's entry, as `zoldyck` is into the Hunter Exam.
 - A returning character gets new dated steps in the dossier that already holds him, in the module that first filed him. The test `files each dossier once, and only for a character` in `src/data/archive.test.ts` fails on a second dossier.
 - Export the arc's places from the same module as `<ARC>_PLACES` and spread them in `<hxh>/places.ts`, as `trick-tower.ts` and `heavens-arena.ts` do. Prose under `records/` is in the archive gate's prose check; a place file anywhere else needs its own line in `EXTRA` in `scripts/archive-gate.mjs`.
 - A new place type goes in the `form` union in `<hxh>/records/saga.ts` and in `forms` in `<hxh>/placeWords.ts`, with both labels.
@@ -34,7 +34,7 @@ Done when every gate has its naming chapter and episode, and `src/data/leaks.tes
 - `src/test/fog.test.ts`, `the place words of a series that labels its own`:
   - the `Terraferma` row lists every mainland place by id; add each new one;
   - add an English and an Italian row for each new form label, as `its tower label` does.
-- `src/test/series.ts`: raise each `least` floor of `'hunter-x-hunter'` to the new count and update the dated comment above it. `files at least what the series is known to file` in `src/data/archive.test.ts` prints a count when its floor is set too high.
+- `src/test/series.ts`: raise each `least` floor of `'hunter-x-hunter'` to the new count and update the dated comment above it. `files at least what the series is known to file` in `src/data/archive.test.ts` fails a floor above its count or below nine tenths of it, and prints every count to copy in.
 - `scripts/archive-gate.test.mjs`, `reads the shipped dictionaries, keeping only the words they do not hold`: the exact list of HxH place-word canaries. A new region or form id or label goes in, in table order, when it holds a space or a hyphen or has 8+ characters (`DISTINCT_WORD` in `scripts/archive-gate.mjs`) and no shipped dictionary contains it.
 
 Done when `./node_modules/.bin/vitest run src/test scripts/archive-gate.test.mjs` passes.
@@ -61,9 +61,9 @@ Done when the leads list and both sides of every new gate are in the file.
 
 ## 6. Provenance
 
-Add one key per new record to `docs/content-provenance/hunter-x-hunter.json`: `sources` for the pages read, `unverified` for every page, timestamp or Italian dub form not viewed. A returning character's key gains the pages of each new step.
+Add one key per new record to `docs/content-provenance/hunter-x-hunter.json`: `sources` for the pages read, `unverified` for every page, timestamp or Italian dub form not viewed. A record already there with `pending: true` (researched but unfiled) loses the flag when it is filed. A returning character's key gains the pages of each new step.
 
-Add every new character to `docs/content-provenance/hunter-x-hunter-relationships.json` under `pending`, keyed to the issue that will author its relationships (`"zushi": "#947"`), or under `omitted` with a reason when it has none to author. Each archived character sits in exactly one of `authored`, `omitted` and `pending`; `src/data/provenance.test.ts` (`accounts for every archived character exactly once`) and `src/server/archive/hunterRelationships.test.ts` enforce it. `CONTRIBUTING.md`, "Recording provenance", has the rules.
+Add every new character to `docs/content-provenance/hunter-x-hunter-relationships.json` under `pending`, keyed to the issue that will author its relationships (`"zushi": "#947"`), or under `omitted` with a reason when it has none to author. `CONTRIBUTING.md`, "Recording provenance", has the rules.
 
 Done when `src/data/provenance.test.ts` and `hunterRelationships.test.ts` pass and every new character is in both files.
 
