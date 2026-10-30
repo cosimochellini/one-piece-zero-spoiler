@@ -89,12 +89,17 @@ including someone removed and later selected again. Unselected people have no
 cards or history in the response.
 
 Pin each selection to verified episode/chapter thresholds, behind the owner,
-every selected person and the relationship fact itself. Use the existing source
-restriction for facts told in only one medium: each source resolves its own
-latest applicable selection. Keep directed perspectives independent and write
-original IT/EN type and explanation text. Four or five people is a target, never
-a quota. Self-links, duplicate ids, non-character targets and invalid dates fail
-the data checks.
+every selected person and the relationship fact itself. An entry without
+`source` reaches both media, so both the episode and the chapter must show its
+wording; a `source: 'episode'` or `source: 'chapter'` entry needs only its own
+medium. For each medium the entry reaches, the evidence is its episode or
+chapter page, or a character page citing it. When the media tell a bond
+differently, give each medium its own link inside its own `source` entry
+(`kiteGon` in the chapter entry, `kiteGonEpisode` in the episode one). Each
+source resolves its own latest applicable selection. Keep directed perspectives
+independent and write original IT/EN type and explanation text. Four or five
+people is a target, never a quota. Self-links, duplicate ids, non-character
+targets and invalid dates fail the data checks.
 
 ## Recording provenance
 
