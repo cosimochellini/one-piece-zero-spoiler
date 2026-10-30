@@ -71,7 +71,7 @@ const links = {
     type: { en: 'Fellow groundskeeper', it: 'Collega guardiano' },
     summary: {
       en: 'Zebro shares the groundskeepers’ quarters with Seaquant, and the two see the visitors off together.',
-      it: 'Zebro divide gli alloggi dei guardiani con Seaquant, e i due salutano insieme i visitatori alla partenza.',
+      it: 'Zebro divide gli alloggi dei guardiani con Shikant, e i due salutano insieme i visitatori alla partenza.',
     },
   },
   // Mike
@@ -96,7 +96,7 @@ const links = {
     type: { en: 'Intruder who surrenders', it: 'Intruso che si arrende' },
     summary: {
       en: 'In a past attack on the estate, Seaquant surrenders as soon as Mike appears before him.',
-      it: 'Durante un vecchio attacco alla tenuta, Seaquant si arrende appena Miche gli compare davanti.',
+      it: 'Durante un vecchio attacco alla tenuta, Shikant si arrende appena Miche gli compare davanti.',
     },
   },
   // Seaquant
@@ -105,7 +105,7 @@ const links = {
     type: { en: 'Fellow groundskeeper', it: 'Collega guardiano' },
     summary: {
       en: 'Seaquant works with Zebro at the groundskeepers’ quarters, where Zebro brings his guests.',
-      it: 'Seaquant lavora con Zebro negli alloggi dei guardiani, dove Zebro porta i suoi ospiti.',
+      it: 'Shikant lavora con Zebro negli alloggi dei guardiani, dove Zebro porta i suoi ospiti.',
     },
   },
   seaquantGon: {
@@ -113,7 +113,7 @@ const links = {
     type: { en: 'Guest', it: 'Ospite' },
     summary: {
       en: 'Seaquant welcomes Gon and his friends to the quarters with a warning.',
-      it: 'Seaquant accoglie Gon e i suoi amici negli alloggi con un avvertimento.',
+      it: 'Shikant accoglie Gon e i suoi amici negli alloggi con un avvertimento.',
     },
   },
   seaquantZebroDoubt: {
@@ -124,7 +124,7 @@ const links = {
     },
     summary: {
       en: 'Seaquant doubts Zebro’s hope that the visitors will reach the mansion, recalling an attack once stopped by a single apprentice butler.',
-      it: 'Seaquant dubita della speranza di Zebro che i visitatori raggiungano la villa e ricorda un attacco fermato da una sola apprendista maggiordoma.',
+      it: 'Shikant dubita della speranza di Zebro che i visitatori raggiungano la villa e ricorda un attacco fermato da una sola apprendista maggiordoma.',
     },
   },
   // Canary
