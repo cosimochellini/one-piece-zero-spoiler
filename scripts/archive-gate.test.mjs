@@ -148,7 +148,11 @@ describe('the slugs the gate looks for', () => {
   })
 })
 
-describe('the prose the gate looks for', () => {
+// `canariesOf` and `officialCanaries` load every series' whole archive, which
+// Vite transforms module by module: under a full parallel coverage run that
+// can take longer than the default 5 s. `vi.resetModules()` below makes the
+// later tests load it again.
+describe('the prose the gate looks for', { timeout: 30_000 }, () => {
   it('covers every prose module outside the records and drawings', () => {
     // Of every series: a series' `records/` and `art/` are read whole, and
     // anything else with prose must be among its extras.
@@ -348,7 +352,8 @@ describe('a series copy with nothing to look for', () => {
   })
 })
 
-describe('source attribution boundaries', () => {
+// `officialCanaries` loads every series' archive; see the note above.
+describe('source attribution boundaries', { timeout: 30_000 }, () => {
   it('checks the official source every series’ review cites', async () => {
     const { SERIES } = await importArchive('data/series/index.ts')
 
