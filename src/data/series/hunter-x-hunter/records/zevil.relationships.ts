@@ -662,7 +662,7 @@ export const zevilRelationships = {
     },
   ],
   gittarackur: [
-    // Anime only: Goz and Siper are never named in the 2011 anime. The
+    // Anime only: the Goz and Siper records are manga-only (#833). The
     // chapter only orders it.
     {
       episode: 19,
@@ -788,7 +788,7 @@ export const zevilRelationships = {
     { episode: 18, chapter: 31, value: [links.bourbonPonzu] },
   ],
   pokkle: [
-    // Manga only: Kyu is never named in the 2011 anime. The episode only
+    // Manga only: the Kyu record is manga-only (#833). The episode only
     // orders it and sits at Pokkle's anime gate.
     { episode: 18, chapter: 24, source: 'chapter', value: [links.pokkleKyu] },
     // Manga only: the interview (chapter 32), keeping Kyu. The episode 18
@@ -846,7 +846,7 @@ export const zevilRelationships = {
   ],
   bodoro: [
     // Manga only: the interview (chapter 32) at Bodoro's chapter-33 gate,
-    // with Ryu, whom the anime never names. The episode 18 page never says
+    // with Ryu, a manga-only record (#833). The episode 18 page never says
     // who answered what, so the anime gets no interview.
     {
       episode: 19,

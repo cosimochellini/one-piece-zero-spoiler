@@ -52,16 +52,32 @@ describe.each(CASES)('$id in $locale', ({ id, locale }) => {
   })
 })
 
+/**
+ * Kite's manga selection waits for Ging's record (chapter 66); being
+ * unanchored, it vouches for no pair either. Anime readers have Ging already.
+ */
+function waitsForGing(
+  field: string,
+  { source, value }: { source?: string; value: unknown },
+): boolean {
+  return (
+    field === 'relationships'
+    && source === 'chapter'
+    && Array.isArray(value)
+    && value.some(
+      (relation: { character?: string }) =>
+        relation.character === 'ging-freecss',
+    )
+  )
+}
+
 describe('chapter-one pins', () => {
   it.each(IDS)(
     'pins every %s fact and excludes the reordered conversion anchor',
     (id) => {
       const record = archive.getCharacter(id)
-      // A relationship selection may wait for a later endpoint (Ging's
-      // chapter 66); being unanchored, it vouches for no pair either.
       const timelines = archive.timelines.filter(
-        (timeline) =>
-          timeline.owner.id === id && timeline.field !== 'relationships',
+        (timeline) => timeline.owner.id === id,
       )
 
       expect(record?.unanchored).toBe(true)
@@ -69,9 +85,9 @@ describe('chapter-one pins', () => {
       expect(record?.revealedAtEpisode).toBe(76)
       expect(timelines.length).toBeGreaterThan(0)
 
-      for (const { timeline } of timelines) {
+      for (const { field, timeline } of timelines) {
         for (const entry of timeline) {
-          expect(entry.chapter).toBe(1)
+          expect(entry.chapter).toBe(waitsForGing(field, entry) ? 66 : 1)
         }
       }
     },

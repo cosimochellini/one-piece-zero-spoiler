@@ -147,6 +147,16 @@ const links = {
       it: 'Quando suo cugino Ging è tornato sull’Isola Balena con un figlio in fasce, Myto ha preso il bambino con sé.',
     },
   },
+  // Anime wording: episode 37 has Ging ask his grandmother to look after the
+  // baby; Mito taking the boy in is chapter 65's.
+  mitoGingEpisode: {
+    character: 'ging-freecss',
+    type: { en: 'Cousin', it: 'Cugino' },
+    summary: {
+      en: 'Her cousin Ging came back to Whale Island with a baby son and asked his grandmother to take care of him.',
+      it: 'Suo cugino Ging è tornato sull’Isola Balena con un figlio in fasce e ha chiesto a sua nonna di occuparsene.',
+    },
+  },
   leorioKurapika: {
     character: 'kurapika',
     type: {
@@ -1460,7 +1470,7 @@ export const hunterExamRelationships = {
       episode: 37,
       chapter: 66,
       source: 'episode',
-      value: [links.mitoGon, links.mitoGing],
+      value: [links.mitoGon, links.mitoGingEpisode],
     },
     {
       episode: 37,

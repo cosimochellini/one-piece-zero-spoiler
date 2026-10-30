@@ -289,6 +289,13 @@ describe.each(LOCALES)(
         expect(people('hisoka', at)).not.toContain('gittarackur')
       }
 
+      // The manga-only roster he wounded or killed swaps with the same chapter.
+      for (const id of ['goz', 'siper']) {
+        expect(people(id, ch(34))).toContain('gittarackur')
+        expect(people(id, ch(35))).toContain('illumi')
+        expect(people(id, ch(35))).not.toContain('gittarackur')
+      }
+
       expect(people('killua', ep(19))).not.toContain('illumi')
       expect(people('killua', ep(20))).toContain('illumi')
       expect(people('killua', ch(35))).not.toContain('illumi')

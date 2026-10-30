@@ -19,6 +19,16 @@ const links = {
       it: 'Quando Ging ha riportato il figlio piccolo sull’Isola Balena, sua cugina Myto ha preso con sé il bambino e lo ha cresciuto.',
     },
   },
+  // Anime wording: episode 37 has the grandmother asked, not Mito taking
+  // the boy in (chapter 65).
+  gingMitoEpisode: {
+    character: 'mito-freecss',
+    type: { en: 'Cousin', it: 'Cugina' },
+    summary: {
+      en: 'Ging, Mito’s cousin, came back to Whale Island with his baby son and asked his grandmother to look after the boy.',
+      it: 'Ging, cugino di Myto, è tornato sull’Isola Balena con il figlio in fasce e ha chiesto a sua nonna di occuparsi del bambino.',
+    },
+  },
   gingKite: {
     character: 'kite',
     type: { en: 'Student', it: 'Allievo' },
@@ -39,14 +49,14 @@ export const yorknewCityRelationships = {
       episode: 37,
       chapter: 66,
       source: 'episode',
-      value: [links.gingGon, links.gingMito],
+      value: [links.gingGon, links.gingMitoEpisode],
     },
     // Anime-only, delayed to Kite's record (episode 76).
     {
       episode: 76,
       chapter: 185,
       source: 'episode',
-      value: [links.gingGon, links.gingKite, links.gingMito],
+      value: [links.gingGon, links.gingKite, links.gingMitoEpisode],
     },
     // Manga-only: Kite is a chapter-1 record, so he is open at Ging's chapter.
     {
