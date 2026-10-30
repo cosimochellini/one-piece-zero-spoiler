@@ -229,13 +229,11 @@ export const heavensArenaRedrawn: Redrawings = {
         ),
         ...moved(
           KASTRO_COLLAR,
-          'translate(80 136) rotate(-6) scale(0.95 0.4) translate(-80 -100)',
+          'translate(80 142) rotate(-6) scale(0.95 0.4) translate(-80 -100)',
         ),
-        {
-          d: 'M4 176 L24 160 M44 176 L56 160 M86 176 L88 160 M126 176 L120 160 M156 172 L150 160',
-          role: 'ambient',
-        },
-        { d: 'M4 160 H156', role: 'ambient', dashed: true },
+        { d: 'M4 140 L20 112 M140 112 L156 140', role: 'ambient' },
+        { d: 'M4 112 H156', role: 'ambient', dashed: true },
+        shadow(80, 182, 64),
       ],
     },
   ],
