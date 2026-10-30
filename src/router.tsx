@@ -1,6 +1,6 @@
 import { createRouter } from '@tanstack/react-router'
 
-import { DEFAULT_LOCALE, isLocale } from '~/i18n/locales'
+import { DEFAULT_LOCALE, isLocale, type Locale } from '~/i18n/locales'
 import { loadDictionary } from '~/i18n/translate'
 
 import { routeTree } from './routeTree.gen'
@@ -28,11 +28,36 @@ export function getRouter(): ReturnType<typeof createRouter<typeof routeTree>> {
     ssr: { nonce: crypto.randomUUID() },
     // The shared copy of the language the server rendered, fetched before
     // the page hydrates: the locale routes' `beforeLoad`, which loads it on
-    // a navigation, does not run on hydration (#930). `<html lang>` is that
-    // language, or the default on a page outside any locale.
+    // a navigation, does not run on hydration (#930).
+    //
+    // When the copy cannot be fetched (the network keeps failing, or a
+    // deploy has replaced the chunk the page was built with), the page is
+    // never hydrated: a hook that rejected would make the router throw and
+    // React blank the whole document. A promise that never settles keeps
+    // the hydration suspended instead, so the page stays as the server
+    // rendered it, readable, its links ordinary page loads.
     hydrate: async () => {
-      const { lang } = document.documentElement
-      await loadDictionary(isLocale(lang) ? lang : DEFAULT_LOCALE)
+      try {
+        await loadDictionary(localeOfPath(location.pathname))
+      } catch {
+        await new Promise<never>(() => {
+          // Never settles, on purpose.
+        })
+      }
     },
   })
+}
+
+/**
+ * The locale a page is in, read from its address as the routes match it:
+ * `/$locale/…` or `/$series/$locale/…` (a series slug is never a locale), or
+ * the default on a page outside any locale. Not `<html lang>`, which browser
+ * translation and extensions rewrite.
+ */
+function localeOfPath(pathname: string): Locale {
+  const [first, second] = pathname.split('/').slice(1)
+  if (isLocale(first)) {
+    return first
+  }
+  return isLocale(second) ? second : DEFAULT_LOCALE
 }

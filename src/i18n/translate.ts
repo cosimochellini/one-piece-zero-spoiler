@@ -29,13 +29,34 @@ const DICTIONARIES: Record<Locale, () => Promise<Dictionary>> = {
 const loaded = new Map<Locale, Dictionary>()
 
 /**
+ * A chunk that failed to arrive is asked for again this many times: a
+ * dropped request on a flaky network often comes through on the next try.
+ */
+const RETRIES = 2
+
+async function importDictionary(
+  locale: Locale,
+  retries = RETRIES,
+): Promise<Dictionary> {
+  try {
+    return await DICTIONARIES[locale]()
+  } catch (error) {
+    if (retries === 0) {
+      throw error
+    }
+    return importDictionary(locale, retries - 1)
+  }
+}
+
+/**
  * Fetches one locale's shared copy, once. The locale routes await it before
  * they render, and the router before it hydrates (`src/router.tsx`), so a
  * language switch paints in the new language with no flash of the old one.
+ * Rejects when the chunk still fails after its retries.
  */
 export async function loadDictionary(locale: Locale): Promise<void> {
   if (!loaded.has(locale)) {
-    loaded.set(locale, await DICTIONARIES[locale]())
+    loaded.set(locale, await importDictionary(locale))
   }
 }
 
