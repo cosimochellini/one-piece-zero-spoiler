@@ -79,10 +79,10 @@ const config = defineConfig({
         'src/test/**',
         // The Start instance, the Worker entry and the server-function
         // wrappers. Vitest runs without the Start plugin on purpose (see the
-        // note at the top), so
-        // `createServerFn` is unplugged and calling one throws out of
-        // `getStartContext()` rather than running. The decisions those
-        // wrappers wrap live in `src/server/archive/*` and are covered there.
+        // note at the top), so `createServerFn` is unplugged and calling one
+        // throws out of `getStartContext()` rather than running. The decisions
+        // those wrappers wrap live in `src/server/archive/*` and are covered
+        // there.
         'src/start.ts',
         'src/server.ts',
         'src/server/*.ts',
