@@ -38,7 +38,9 @@ checks remain blocking.
 - **Behavior-preserving archive/server refactors:** run
   `npm run --silent archive:dump` in head and an isolated worktree at the exact
   base SHA, with dependencies installed; save outside the checkout and `cmp`.
-  Both dump scripts cover One Piece only; use series-specific tests elsewhere.
+  Pass `-- --series <slug>` for another series, `--skip <payload>` to leave out
+  a payload the change alters and `--bookmarks <file.json>` to hold both to the
+  base's bookmarks. `archive:table` covers One Piece only.
 - **Site changes:** build, `npm start` on a free port, then check the affected
   flow in Chrome with local `puppeteer-core`, running inside the worktree. Set
   the series cookie; check before/at changed episode and chapter gates. Capture
@@ -95,6 +97,10 @@ latest applicable selection. Keep directed perspectives independent and write
 original IT/EN type and explanation text. Four or five people is a target, never
 a quota. Self-links, duplicate ids, non-character targets and invalid dates fail
 the data checks.
+
+Entries without `source` become episode↔chapter anchors: compare
+`archive:dump -- --series <slug> --skip loadRelationships` between base and
+head.
 
 ## Recording provenance
 
