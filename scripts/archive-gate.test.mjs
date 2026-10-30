@@ -367,7 +367,9 @@ describe('source attribution boundaries', { timeout: 30_000 }, () => {
 
   it('checks all pinned revisions', () => {
     const sources = sourceCanaries(repositoryRoot)
-    expect(sources).toHaveLength(2316)
+    // A floor, not a count: sources.json is only appended to, so a new pin
+    // raises it and needs no bump here, while a lost entry still fails.
+    expect(sources.length).toBeGreaterThanOrEqual(2316)
     expect(sources.every(({ phrase }) => typeof phrase === 'string')).toBe(true)
     const leaked = sources.map(({ phrase }, index) =>
       chunk(`source-${String(index)}.js`, phrase),

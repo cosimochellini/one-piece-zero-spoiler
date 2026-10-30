@@ -29,6 +29,7 @@
     "lint": "eslint . --max-warnings=0",
     "lint:fix": "eslint . --fix",
     "prepare": "lefthook install",
+    "provenance:pin": "node scripts/provenance-pin.mjs",
     "start": "vite preview",
     "test": "vitest run --coverage",
     "test:watch": "vitest",
