@@ -89,12 +89,17 @@ including someone removed and later selected again. Unselected people have no
 cards or history in the response.
 
 Pin each selection to verified episode/chapter thresholds, behind the owner,
-every selected person and the relationship fact itself. Use the existing source
-restriction for facts told in only one medium: each source resolves its own
-latest applicable selection. Keep directed perspectives independent and write
-original IT/EN type and explanation text. Four or five people is a target, never
-a quota. Self-links, duplicate ids, non-character targets and invalid dates fail
-the data checks.
+every selected person and the relationship fact itself. Each entry states only
+what its readers’ medium shows: for anime readers (no `source`, or
+`source: 'episode'`) the evidence is the episode page or a character page that
+cites the episode; for manga readers (no `source`, or `source: 'chapter'`) it is
+the chapter page or a character page that cites the chapter. A line held by one
+medium alone goes into that medium’s `source` entry, or into a separate link
+(such as `kiteGonEpisode`) worded to what both media show. Each source resolves
+its own latest applicable selection. Keep directed perspectives independent and
+write original IT/EN type and explanation text. Four or five people is a target,
+never a quota. Self-links, duplicate ids, non-character targets and invalid
+dates fail the data checks.
 
 ## Recording provenance
 
