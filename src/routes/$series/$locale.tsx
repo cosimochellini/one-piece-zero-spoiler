@@ -3,7 +3,11 @@ import { type ReactElement, useCallback, useEffect } from 'react'
 
 import { FirstVisitIntro } from '~/components/IntroDialog'
 import { isLocale, type Locale } from '~/i18n/locales'
-import { loadDictionary, translatorFor } from '~/i18n/translate'
+import {
+  loadDictionary,
+  loadDictionaryOrReload,
+  translatorFor,
+} from '~/i18n/translate'
 import { readPlain } from '~/lib/plain'
 import { type SagaTable, SagaTableContext } from '~/lib/progress/sagaLabel'
 import { DrawingsContext } from '~/lib/view/drawings'
@@ -14,13 +18,16 @@ import { loadDrawings, loadSagaLabels } from '~/server/api'
 /** The archive shell, after the series and language have both been validated. */
 export const Route = createFileRoute('/$series/$locale')({
   params: { parse: ({ locale }) => (isLocale(locale) ? { locale } : false) },
-  beforeLoad: async ({ params, context }) => {
+  beforeLoad: async ({ params, context, preload, abortController }) => {
     if (!isLocale(params.locale)) {
       throw notFound()
     }
     const [copy] = await Promise.all([
       seriesCopy(context.series.slug, params.locale),
-      loadDictionary(params.locale),
+      // A hovered link's preload must not reload the page into it.
+      preload ?
+        loadDictionary(params.locale)
+      : loadDictionaryOrReload(params.locale, abortController.signal),
     ])
     return { locale: params.locale, copy }
   },

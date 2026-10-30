@@ -39,6 +39,74 @@ export async function loadDictionary(locale: Locale): Promise<void> {
   }
 }
 
+const RELOADED = 'zs-copy-reloaded:'
+
+/** The flag for the page in the address bar. Throws off the browser. */
+function reloadFlag(): string {
+  return RELOADED + location.pathname + location.search
+}
+
+/**
+ * Marks the page as reloaded for this tab. False when it already was, or
+ * when storage is out of reach (private mode, blocked storage, the server):
+ * then nothing reloads, so a reload can never loop.
+ */
+function firstReload(): boolean {
+  try {
+    const fresh = sessionStorage.getItem(reloadFlag()) === null
+    sessionStorage.setItem(reloadFlag(), '1')
+    return fresh
+  } catch {
+    return false
+  }
+}
+
+function forgetReload(): void {
+  try {
+    sessionStorage.removeItem(reloadFlag())
+  } catch {
+    // Nothing was stored.
+  }
+}
+
+/**
+ * `loadDictionary` for the page in the address bar: the one served, or the
+ * one a navigation has just pushed (the router writes history before it
+ * loads). When the copy cannot be fetched, the page reloads, once per tab:
+ * the fresh document names the chunks the current deploy serves, and its
+ * fresh module map lets Safari ask again for a chunk whose import failed
+ * (#930). No retry here first: the reload is the retry that works in every
+ * browser and after a deploy. When the reload did not help either, the cause
+ * is logged and thrown.
+ *
+ * `signal` is the navigation's own: once a newer navigation has superseded
+ * it, the address bar shows another page, so a failure only rethrows, for
+ * the router to drop with the rest of the abandoned navigation.
+ */
+export async function loadDictionaryOrReload(
+  locale: Locale,
+  signal?: AbortSignal,
+): Promise<void> {
+  try {
+    await loadDictionary(locale)
+  } catch (error) {
+    if (signal?.aborted === true) {
+      throw error
+    }
+    if (!firstReload()) {
+      // eslint-disable-next-line no-console -- a broken chunk after a deploy would otherwise leave every page static without a word.
+      console.error(error)
+      throw error
+    }
+    location.reload()
+    // The page is on its way out: nothing renders in the meantime.
+    return new Promise<never>(() => {
+      // Never settles, on purpose.
+    })
+  }
+  forgetReload()
+}
+
 /**
  * The shared strings for one locale, loaded by `loadDictionary`. Throws when
  * they are not: a page rendered before its copy arrived is a routing bug.

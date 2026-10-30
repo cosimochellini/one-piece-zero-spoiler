@@ -89,7 +89,7 @@ The owner chose on 2026-10-28 to stay on Workers Free until this happens (#775).
 
 - Upgrade the account in the Cloudflare dashboard (owner).
 - Cap a request at 1000 ms in \`wrangler.jsonc\`: \`"limits": { "cpu_ms": 1000 }\` (owner, 2026-10-28).
-- Workers Logs then keeps logs for 7 days instead of 3: rewrite \`privacy.logs\` and \`privacy.updated\` in \`src/i18n/dictionaries/{en,it}.ts\`, the Workers Logs entry in \`docs/privacy-audit.md\` and the comment in \`wrangler.jsonc\`.
+- Workers Logs then keeps logs for 7 days instead of 3: rewrite \`privacy.logs\` and \`privacy.updated\` in \`src/i18n/dictionaries/privacy.ts\`, the Workers Logs entry in \`docs/privacy-audit.md\` and the comment in \`wrangler.jsonc\`.
 
 ## Why
 Every killed request is a page a reader did not get. Cloudflare enforces the limit when requests come in a burst: 19 were killed in one minute on 2026-10-24.
