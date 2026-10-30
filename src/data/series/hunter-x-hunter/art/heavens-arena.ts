@@ -183,18 +183,13 @@ export const HEAVENS_ARENA_DRAWINGS = {
     ...KASTRO_CLOAK,
     shadow(80, 182, 60),
   ],
-  // One of the square stone rings in the arena's great hall, seen from a
-  // corner: its top in tint with the flagstones laid on it, the far side
-  // hatched, two more rings behind and the stands curving round: where Gon
-  // and Killua fight their first matches, episode 27 / chapter 44. Not the
-  // tower, which is the arc.
+  // One of the square rings in the arena's great hall, seen from a corner:
+  // its top in tint, the far side hatched and two more rings behind, of the
+  // sixteen small platforms Gon and Killua find there for their first
+  // matches, episode 27 / chapter 44. Not the tower, which is the arc.
   'heavens-arena': [
     { d: 'M16 112 L80 92 L144 112 L80 132 Z', role: 'accent' },
     { d: 'M16 112 V122 L80 142 L144 122 V112 M80 132 V142' },
-    {
-      d: 'M37.3 105.3 L101.3 125.3 M58.7 98.7 L122.7 118.7 M37.3 118.7 L101.3 98.7 M58.7 125.3 L122.7 105.3',
-      role: 'soft',
-    },
     {
       d: 'M90 138 l5 -6 M106 133 l5 -6 M122 128 l5 -6 M136 124 l5 -6',
       role: 'ambient',
@@ -207,7 +202,6 @@ export const HEAVENS_ARENA_DRAWINGS = {
       d: 'M96 80 L122 72 L148 80 L122 88 Z M96 80 V84 L122 92 L148 84 V80',
       role: 'soft',
     },
-    { d: 'M4 60 Q80 36 156 60 M4 48 Q80 24 156 48', role: 'ambient' },
     { d: 'M4 150 H156', role: 'ambient' },
     shadow(80, 158, 64),
   ],
@@ -216,7 +210,7 @@ export const HEAVENS_ARENA_DRAWINGS = {
 /** The Heavens Arena drawings that change with the story: Kastro's death. */
 export const heavensArenaRedrawn: Redrawings = {
   kastro: [
-    // The same cloak and collar laid open on the flagstones of the ring,
+    // The same cloak and collar laid open on the floor of the ring,
     // empty: Hisoka's cards kill him at the end of their match, episode 32 /
     // chapter 54. No cards and no body are drawn.
     {
