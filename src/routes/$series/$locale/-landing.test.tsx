@@ -11,6 +11,7 @@ import {
 import type { DemoEntry, HomeView, OnboardingView } from '~/lib/view/records'
 import { coveredRecord, drawing, waypoint } from '~/test/fixtures'
 import { renderWithProviders } from '~/test/providers'
+import { settleDelay } from '~/test/settle'
 
 import { LandingPage } from './-landing'
 
@@ -80,6 +81,16 @@ describe('LandingPage', () => {
     expireCookie(ONE_PIECE_BOOKMARK.cookie)
     expireCookie(ONE_PIECE_BOOKMARK.trialCookie)
     dismissWelcome()
+  })
+
+  it('shows the intro at once and settles the bands under it in order', () => {
+    renderWithProviders(<LandingPage landing={{ onboarding: onboarding() }} />)
+
+    const bands = [...screen.getByRole('main').children].map((band) =>
+      settleDelay(band),
+    )
+
+    expect(bands).toStrictEqual([null, null, '0ms', '70ms', '140ms'])
   })
 
   it('opens a card on a trial at the dial’s point, saving nothing', () => {

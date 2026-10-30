@@ -10,8 +10,9 @@ import { useSeriesT } from '~/i18n/LocaleContext'
 import type { OnboardingView } from '~/lib/view/records'
 import { settleStyles } from '~/styles/settle'
 
-// The bands in DOM order, settling one step apart.
-const BAND = { intro: 0, controls: 1, wake: 2, faq: 3 } as const
+// The bands under the intro in DOM order, settling one step apart. The intro
+// is there from the first frame.
+const BAND = { controls: 0, wake: 1, faq: 2 } as const
 
 /**
  * The landing page for a visitor with no bookmark (Hallmark macrostructure
@@ -35,13 +36,7 @@ export function OnboardingLanding(view: OnboardingView): ReactElement {
       id="content"
       {...stylex.props(styles.page)}
     >
-      <div
-        {...stylex.props(
-          styles.intro,
-          settleStyles.band,
-          settleStyles.at(BAND.intro),
-        )}
-      >
+      <div {...stylex.props(styles.intro)}>
         <h1 {...stylex.props(styles.headline)}>{t('hero.headline')}</h1>
         <p {...stylex.props(styles.lede)}>{t('onboarding.lede')}</p>
       </div>

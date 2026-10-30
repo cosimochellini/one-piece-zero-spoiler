@@ -47,7 +47,7 @@ export function SeriesHub({
       id="content"
       {...stylex.props(styles.page)}
     >
-      <header {...stylex.props(styles.head, settleStyles.band)}>
+      <header {...stylex.props(styles.head)}>
         <h1 {...stylex.props(styles.headline)}>{t('hub.headline')}</h1>
         <p {...stylex.props(styles.lede)}>{t('hub.lede')}</p>
       </header>
@@ -58,7 +58,7 @@ export function SeriesHub({
             {...stylex.props(
               styles.item,
               settleStyles.band,
-              settleStyles.at(index + 1),
+              settleStyles.at(index),
             )}
           >
             <Stage entry={entry} />
@@ -70,7 +70,7 @@ export function SeriesHub({
             {...stylex.props(
               styles.item,
               settleStyles.band,
-              settleStyles.at(series.length + index + 1),
+              settleStyles.at(series.length + index),
             )}
           >
             <DarkStage name={announced.name[locale]} />

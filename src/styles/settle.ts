@@ -11,6 +11,10 @@ import { dur, ease } from '~/styles/tokens.stylex'
  * so with reduced motion requested the bands are simply present and nothing
  * depends on an animation having run. Only `opacity` and `transform` move, so
  * it composites.
+ *
+ * A page's header – its title and the sentence under it – never settles: it
+ * is the page's largest text, and text at zero opacity is not painted for
+ * Largest Contentful Paint (#929). The bands under it count from step 0.
  */
 const settle = stylex.keyframes({
   from: { opacity: 0, transform: 'translateY(10px)' },
