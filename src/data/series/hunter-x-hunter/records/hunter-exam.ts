@@ -364,6 +364,16 @@ const earlyExam: HunterSaga = {
             it: 'Associazione Hunter, Hunter',
           },
         },
+        // Wing takes them on as pupils and opens their aura in chapter 48 and
+        // episode 29; his offer comes the episode before.
+        {
+          episode: 29,
+          chapter: 48,
+          value: {
+            it: 'Associazione Hunter, Hunter; allievo di Wing',
+            en: 'Hunter Association, Hunter; Wing’s pupil',
+          },
+        },
       ],
       origin: [
         { episode: 1, chapter: 1, place: 'whale-island', value: WHALE_ISLAND },
@@ -547,6 +557,24 @@ const earlyExam: HunterSaga = {
             it: 'Associazione Hunter, Hunter',
           },
         },
+        {
+          episode: 28,
+          chapter: 47,
+          value: {
+            it: 'Associazione Hunter, Hunter; lottatore del 200º piano dell’Arena Celeste',
+            en: 'Hunter Association, Hunter; 200th-floor fighter at Heavens Arena',
+          },
+        },
+        // The spider tattoo on his back comes off in the mirror, and he means
+        // to hunt the Troupe: chapter 55 and episode 32.
+        {
+          episode: 32,
+          chapter: 55,
+          value: {
+            it: 'Associazione Hunter, Hunter; finto membro della Brigata Fantasma',
+            en: 'Hunter Association, Hunter; fake member of the Phantom Troupe',
+          },
+        },
       ],
     },
     'todo': {
@@ -703,6 +731,15 @@ const earlyExam: HunterSaga = {
           episode: 25,
           chapter: 43,
           value: { it: 'In viaggio con Gon', en: 'Travelling with Gon' },
+        },
+        // Wing's pupil from the same scene as Gon.
+        {
+          episode: 29,
+          chapter: 48,
+          value: {
+            it: 'In viaggio con Gon; allievo di Wing',
+            en: 'Travelling with Gon; Wing’s pupil',
+          },
         },
       ],
       origin: [

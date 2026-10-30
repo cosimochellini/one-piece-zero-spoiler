@@ -26,5 +26,6 @@ export const HUNTER_X_HUNTER_PLACE_WORDS: PlaceWords<HunterVocabulary> = {
     wetland: { en: 'Wetlands', it: 'Palude' },
     island: { en: 'Island', it: 'Isola' },
     port: { en: 'Port town', it: 'Città portuale' },
+    tower: { en: 'Tower', it: 'Torre' },
   },
 }

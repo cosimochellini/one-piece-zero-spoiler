@@ -46,6 +46,7 @@ const hunterIds = hunterArchive?.entities.map(({ id }) => id)
 const hunterRelationships: {
   authored: Record<string, string[]>
   omitted: Record<string, string>
+  pending: Record<string, string>
 } = hunterRelationshipEvidence
 const hunterCharacters =
   hunterArchive?.entities.filter(({ kind }) => kind === 'character') ?? []
@@ -138,13 +139,26 @@ describe('Hunter x Hunter provenance', () => {
 })
 
 describe('Hunter x Hunter relationship provenance', () => {
-  const { authored, omitted } = hunterRelationships
+  const { authored, omitted, pending } = hunterRelationships
 
   it('accounts for every archived character exactly once', () => {
     expect(
-      [...Object.keys(authored), ...Object.keys(omitted)].toSorted(byId),
+      [
+        ...Object.keys(authored),
+        ...Object.keys(omitted),
+        ...Object.keys(pending),
+      ].toSorted(byId),
     ).toStrictEqual(hunterCharacters.map(({ id }) => id).toSorted(byId))
   })
+
+  // Filed after this cohort: not authored yet, which is no deliberate omission.
+  it.each(Object.entries(pending))(
+    'names the issue that will author %s',
+    (id, issue) => {
+      expect(hunterOwners.map((owner) => owner.id)).not.toContain(id)
+      expect(issue).toMatch(/^#\d+$/u)
+    },
+  )
 
   it('lists as authored exactly the characters that have relationships', () => {
     expect(Object.keys(authored).toSorted(byId)).toStrictEqual(

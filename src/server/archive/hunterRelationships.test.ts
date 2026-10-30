@@ -121,19 +121,24 @@ function hasCurrentHistory({
 
 describe('Hunter x Hunter relationship coverage', () => {
   it('authors or omits every archived character', () => {
-    expect(owners.length + Object.keys(coverage.omitted).length).toBe(
-      characters.length,
-    )
+    expect(
+      owners.length
+        + Object.keys(coverage.omitted).length
+        + Object.keys(coverage.pending).length,
+    ).toBe(characters.length)
   })
 
-  it.each(Object.keys(coverage.omitted))('omits relationships for %s', (id) => {
-    for (const bookmark of [
-      ep(archive.series.episodeCeiling),
-      ch(archive.series.chapterCeiling),
-    ]) {
-      expect(projected(id, bookmark, 'en')).toStrictEqual([])
-    }
-  })
+  it.each([...Object.keys(coverage.omitted), ...Object.keys(coverage.pending)])(
+    'shows no relationships for %s',
+    (id) => {
+      for (const bookmark of [
+        ep(archive.series.episodeCeiling),
+        ch(archive.series.chapterCeiling),
+      ]) {
+        expect(projected(id, bookmark, 'en')).toStrictEqual([])
+      }
+    },
+  )
 
   it.each(LOCALES)(
     'has nonempty localized types and explanations in %s',

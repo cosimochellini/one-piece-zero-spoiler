@@ -85,8 +85,9 @@ const EXPECTED: Record<string, Expected> = {
     },
     namesSaidEarly: true,
   },
-  // What it files on 2026-10-26: the arcs, and the Hunter Exam's road to the
-  // exam through the visit to Killua's home, and chapter-one characters (#760).
+  // What it files on 2026-10-30: the arcs, the Hunter Exam's road to the
+  // exam through the visit to Killua's home, chapter-one characters (#760),
+  // and the Heavens Arena characters and place (#896).
   'hunter-x-hunter': {
     kinds: [
       'affiliation',
@@ -105,14 +106,14 @@ const EXPECTED: Record<string, Expected> = {
       'summary',
     ],
     least: {
-      affiliations: 62,
+      affiliations: 89,
       arcs: 7,
-      characters: 45,
-      chronicles: 81,
+      characters: 62,
+      chronicles: 109,
       linkedOrigins: 7,
-      places: 10,
-      statuses: 46,
-      timelines: 101,
+      places: 11,
+      statuses: 70,
+      timelines: 197,
       visits: 0,
     },
     namesSaidEarly: true,

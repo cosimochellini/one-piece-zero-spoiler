@@ -111,9 +111,11 @@ every wiki revision read: append entries, never rewrite earlier ones. Beside it:
   follow from the record's gates and are not listed.
 - `hunter-x-hunter-relationships.json` lists every archived Hunter x Hunter
   character once: under `authored`, with the `hxh-` keys of the wiki revisions
-  read, or under `omitted`, with the reason. Each entry's `Episode N (2011)` and
-  `Chapter N` page must be pinned from the Hunter x Hunter wiki; a One Piece
-  page of the same title is no evidence, and the reverse holds too.
+  read, under `omitted`, with the reason, or under `pending`, with the issue
+  that will author it (filed later, not deliberately omitted). Each entry's
+  `Episode N (2011)` and `Chapter N` page must be pinned from the Hunter x
+  Hunter wiki; a One Piece page of the same title is no evidence, and the
+  reverse holds too.
 
 The wiki is read for facts only; no passages, dialogue, frames or scans enter
 the repository. A decision the data cannot show, such as a gate delayed behind

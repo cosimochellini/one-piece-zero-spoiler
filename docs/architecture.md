@@ -64,11 +64,11 @@ before names or text reach the client; perspectives remain directed.
 Character pages in every series show reached relationships or omit the section
 entirely, including while it loads. The cohort inventories account for every One
 Piece and every archived Hunter x Hunter character through authored selections
-or documented deliberate omissions
-(`docs/content-provenance/hunter-x-hunter-relationships.json` for Hunter x
-Hunter); no relationships are inferred. Character archive-order navigation and
-nearby recommendations have been retired; independent place and fruit navigation
-remains.
+or documented deliberate omissions; Hunter x Hunter characters filed later wait
+under `pending` with the issue that will author them
+(`docs/content-provenance/hunter-x-hunter-relationships.json`). No relationships
+are inferred. Character archive-order navigation and nearby recommendations have
+been retired; independent place and fruit navigation remains.
 
 The authoring contract and provenance requirements are in
 [Contributing](../CONTRIBUTING.md#authoring-relationship-selections). Selection
@@ -91,9 +91,11 @@ receive an end-of-anime bookmark; source filtering still applies. See
 
 One Piece and Hunter x Hunter are open to readers. HxH files the verified Hunter
 Exam coverage through episode 26 / chapter 43, including the manga's chapter-one
-characters introduced later by the anime. Remaining candidate naming checks are
-tracked in #834; every Hunter Exam character has a chronicle (#762). Records are
-not added from unnamed appearances or supplemental names.
+characters introduced later by the anime, and the Heavens Arena characters and
+place up to episode 34 / chapter 59 (#896). Remaining candidate naming checks
+are tracked in #834. Every Hunter Exam character has a chronicle (#762); the
+Heavens Arena characters get theirs in #898. Records are not added from unnamed
+appearances or supplemental names.
 
 Public metadata in `src/lib/progress/series.ts` holds cookies, ranges, seasons,
 demo bounds, features and themes, without archive records. Pass the series to
@@ -111,7 +113,9 @@ legal/privacy pages. Unknown series and locales return 404. Legacy locale-first
 content routes redirect under `/one-piece` before bookmark parameters are read.
 `src/start.ts` handles shared-link bookmarks, legacy cookie migration and the
 `/` redirect (cookie, then country, then `Accept-Language`) before loaders. Use
-a content URL such as `/one-piece/en?ep=650` to set progress.
+a content URL such as `/one-piece/en?ep=650` to set progress. `src/server.ts` is
+the Worker entry: it adds a `Link` header for the stylesheet and the fonts the
+root route preloads, which Cloudflare replays as a `103 Early Hints`.
 
 ## Localization
 
@@ -169,11 +173,11 @@ checks this block.
 
 | Thing             | Count                                              |
 | ----------------- | -------------------------------------------------- |
-| Records           | 73                                                 |
-| Characters        | 56                                                 |
-| Arcs, places      | 7 · 10                                             |
+| Records           | 80                                                 |
+| Characters        | 62                                                 |
+| Arcs, places      | 7 · 11                                             |
 | Saga modules      | 7                                                  |
-| Line drawings     | 73, one per record, plus 8 redrawings of 8 records |
+| Line drawings     | 80, one per record, plus 8 redrawings of 8 records |
 | Chronicle stories | 109, for 55 characters                             |
 
 <!-- End of the generated counts. -->
