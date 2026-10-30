@@ -98,9 +98,8 @@ original IT/EN type and explanation text. Four or five people is a target, never
 a quota. Self-links, duplicate ids, non-character targets and invalid dates fail
 the data checks.
 
-Entries without `source` become episode↔chapter anchors: compare
-`archive:dump -- --series <slug> --skip loadRelationships` between base and
-head.
+Entries without `source` are episode↔chapter anchors: `cmp` base and head
+`archive:dump -- --series <slug> --skip loadRelationships --bookmarks base.json`.
 
 ## Recording provenance
 
