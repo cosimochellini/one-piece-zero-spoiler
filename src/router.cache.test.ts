@@ -7,13 +7,31 @@ import {
 } from '@tanstack/react-router'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 
-import { dropCacheOnCookieMove, getRouter } from './router'
+import { getRouter } from './router'
 
-/** Two pages that count their reads, on a router that keeps what it read. */
-function pages(path = '/a'): {
+/** The cache options under test, read from the app's own router. */
+function cacheOptions(): object {
+  const {
+    defaultGcTime,
+    defaultPreloadGcTime,
+    defaultPreloadStaleTime,
+    defaultStaleReloadMode,
+    defaultStaleTime,
+  } = getRouter().options
+  return {
+    defaultGcTime,
+    defaultPreloadGcTime,
+    defaultPreloadStaleTime,
+    defaultStaleReloadMode,
+    defaultStaleTime,
+  }
+}
+
+/** Two pages that count their reads and keep the cookie they were read at. */
+async function pages(): Promise<{
   reads: { a: number; b: number }
   router: AnyRouter
-} {
+}> {
   const reads = { a: 0, b: 0 }
   const root = createRootRoute()
   const read = (page: 'a' | 'b') => (): { cookie: string } => {
@@ -32,108 +50,80 @@ function pages(path = '/a'): {
   })
   const router = createRouter({
     routeTree: root.addChildren([a, b]),
-    history: createMemoryHistory({ initialEntries: [path] }),
-    defaultStaleTime: Infinity,
-    defaultPreloadStaleTime: Infinity,
-    defaultStaleReloadMode: 'blocking',
+    history: createMemoryHistory({ initialEntries: ['/a'] }),
+    ...cacheOptions(),
   })
-  dropCacheOnCookieMove(router)
+  await router.load()
   return { reads, router }
 }
 
-/** The cookie the page on screen was read with. */
-function shownWith(router: AnyRouter): unknown {
+/** The cookie the page on screen was read at. */
+function shownAt(router: AnyRouter): unknown {
   const shown: unknown = router.state.matches.at(-1)?.loaderData
   return shown
 }
 
-function moveTheBookmark(): void {
+/** What `BookmarkProvider.setBookmark` does: the cookie, then `invalidate`. */
+async function moveTheBookmark(router: AnyRouter): Promise<void> {
   document.cookie = 'zs_one-piece=10; path=/'
+  await router.invalidate()
 }
 
 // The route tree imports every page, which under a full parallel run can take
 // longer than the default 5 s.
 describe('the router keeps a page as read', { timeout: 15_000 }, () => {
-  it('until something invalidates it, waiting for the re-read', () => {
-    const { options } = getRouter()
-
-    expect(options.defaultStaleTime).toBe(Infinity)
-    expect(options.defaultPreloadStaleTime).toBe(Infinity)
-    expect(options.defaultStaleReloadMode).toBe('blocking')
-  })
-})
-
-describe('dropCacheOnCookieMove', () => {
   afterEach(() => {
     document.cookie = 'zs_one-piece=; path=/; max-age=0'
+    vi.useRealTimers()
   })
 
-  it('keeps a page as read while the cookies stay', async () => {
-    const { reads, router } = pages()
-    await router.load()
+  it('across a return to it', async () => {
+    const { reads, router } = await pages()
     await router.navigate({ href: '/b' })
     await router.navigate({ href: '/a' })
 
     expect(reads).toStrictEqual({ a: 1, b: 1 })
   })
 
-  it('reads the page that was on screen again after the cookies moved', async () => {
-    const { reads, router } = pages()
-    await router.load()
+  it('across a hover long after it was read', async () => {
+    vi.useFakeTimers({ toFake: ['Date'] })
+    const { reads, router } = await pages()
     await router.navigate({ href: '/b' })
-    moveTheBookmark()
+    vi.setSystemTime(Date.now() + 60_000)
+    await router.preloadRoute({ to: '/a' })
     await router.navigate({ href: '/a' })
+
+    expect(reads).toStrictEqual({ a: 1, b: 1 })
+  })
+
+  it('until a bookmark move, after which a return waits for the new read', async () => {
+    const { reads, router } = await pages()
     await router.navigate({ href: '/b' })
+    await moveTheBookmark(router)
+    await router.navigate({ href: '/a' })
 
     expect(reads).toStrictEqual({ a: 2, b: 2 })
-    expect(shownWith(router)).toStrictEqual({ cookie: document.cookie })
+    expect(shownAt(router)).toStrictEqual({ cookie: 'zs_one-piece=10' })
   })
 
-  it('reads a page kept on screen through the move once more, and only once', async () => {
-    const { reads, router } = pages('/a?x=1')
-    await router.load()
-    moveTheBookmark()
-    await router.navigate({ href: '/a?x=2' })
-    await vi.waitFor(() => {
-      expect(reads.a).toBe(2)
-    })
-    await vi.waitFor(() => {
-      expect(router.state.status).toBe('idle')
-    })
-
-    expect(shownWith(router)).toStrictEqual({ cookie: document.cookie })
-    expect(router.state.resolvedLocation?.href).toBe('/a?x=2')
-
-    await router.navigate({ href: '/b' })
-    await router.navigate({ href: '/a?x=2' })
-
-    expect(reads).toStrictEqual({ a: 2, b: 1 })
-  })
-
-  it('lets a link reuse a page read long ago instead of waiting on a preload', async () => {
-    vi.useFakeTimers({ toFake: ['Date'] })
-    try {
-      const { reads, router } = pages()
-      await router.load()
-      await router.navigate({ href: '/b' })
-      vi.setSystemTime(Date.now() + 60_000)
-      await router.preloadRoute({ to: '/a' })
-      await router.navigate({ href: '/a' })
-
-      expect(reads).toStrictEqual({ a: 1, b: 1 })
-    } finally {
-      vi.useRealTimers()
-    }
-  })
-
-  it('re-reads nothing twice when invalidate follows the move', async () => {
-    const { reads, router } = pages()
-    await router.load()
-    moveTheBookmark()
-    await router.invalidate()
+  it('until a bookmark move, even when the reader leaves before the re-read lands', async () => {
+    const { reads, router } = await pages()
+    document.cookie = 'zs_one-piece=10; path=/'
+    void router.invalidate()
     await router.navigate({ href: '/b' })
     await router.navigate({ href: '/a' })
 
-    expect(reads).toStrictEqual({ a: 2, b: 1 })
+    expect(reads.a).toBe(2)
+    expect(shownAt(router)).toStrictEqual({ cookie: 'zs_one-piece=10' })
+  })
+
+  it('with the options the app runs', () => {
+    expect(cacheOptions()).toStrictEqual({
+      defaultGcTime: 1_800_000,
+      defaultPreloadGcTime: 1_800_000,
+      defaultPreloadStaleTime: Infinity,
+      defaultStaleReloadMode: 'blocking',
+      defaultStaleTime: Infinity,
+    })
   })
 })

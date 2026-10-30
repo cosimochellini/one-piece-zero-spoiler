@@ -1,36 +1,37 @@
-import {
-  type AnyRouteMatch,
-  type AnyRouter,
-  createRouter,
-} from '@tanstack/react-router'
+import { createRouter } from '@tanstack/react-router'
 
 import { DEFAULT_LOCALE, isLocale, type Locale } from '~/i18n/locales'
 import { loadDictionaryOrReload } from '~/i18n/translate'
 
 import { routeTree } from './routeTree.gen'
 
+// Half an hour, in milliseconds (see `defaultGcTime`).
+const PAGE_KEPT_MS = 1_800_000
+
 // Required entry point: the Start plugin resolves src/router.{ts,tsx} and the
 // server handler calls getRouter(). Keep exactly one router module.
 export function getRouter(): ReturnType<typeof createRouter<typeof routeTree>> {
-  const router = createRouter({
+  return createRouter({
     routeTree,
     defaultPreload: 'intent',
-    // A page read once is kept as read: Back to the characters re-rendered
-    // its few thousand nodes a second time when an identical background
-    // re-read landed, mid-crossfade (#939). What a page shows is its URL,
-    // the build and the cookies, so a cookie change clears the cache
-    // (below), and a bookmark move's `invalidate` still re-reads what is on
-    // screen. (The places loader also measures the screen's orientation, but
-    // only as a first guess the page measures again.)
+    // A page read once is kept as read, and read again only when something
+    // invalidates it: a bookmark move (BookmarkProvider) or a retry. Re-read
+    // on every entry, Back to the characters re-rendered its few thousand
+    // nodes a second time mid-crossfade when the identical answer landed
+    // (#939). A bookmark moved in another tab is not followed (owner, #940).
     defaultStaleTime: Infinity,
-    // A hover or touch on a link to a page read earlier reuses it as well. A
+    // A hover or touch on a link to a page already read reuses it as well. A
     // preload that read it again would hand its call to the click, and the
-    // click would wait on the network for the page it already has.
+    // click would wait on the network for a page it already has.
     defaultPreloadStaleTime: Infinity,
-    // With nothing stale on its own, only `invalidate` reloads a page that
-    // has been read. It waits for the new records, so a bookmark move keeps
-    // the old page until they land, never marks it read in the meantime.
+    // An invalidated page waits for its new records instead of showing the
+    // old ones meanwhile: after a bookmark move, a page read at the old
+    // bookmark is never on screen, not even for the length of a re-read.
     defaultStaleReloadMode: 'blocking',
+    // Counted from when a page was read, not from when it was last shown:
+    // past it, the next visit waits for a fresh read.
+    defaultGcTime: PAGE_KEPT_MS,
+    defaultPreloadGcTime: PAGE_KEPT_MS,
     scrollRestoration: true,
     // A new page crossfades in rather than cutting (the timing is on <html>,
     // in the root route). Only a new path counts: a hash jump stays a jump,
@@ -66,70 +67,6 @@ export function getRouter(): ReturnType<typeof createRouter<typeof routeTree>> {
         })
       }
     },
-  })
-
-  if (typeof document !== 'undefined') {
-    dropCacheOnCookieMove(router)
-  }
-
-  return router
-}
-
-/**
- * Drops the pages read under the old cookies once they have moved, by this
- * tab's bookmark or another tab's. Kept, a page read at a later bookmark
- * would come back without a re-read, and that is a spoiler (#939).
- *
- * Before the load picks pages from the cache, the cache goes. Once the load
- * has committed, it goes again, since committing files the page that was on
- * screen into it. Once it has finished, a page it kept on screen without
- * reading it (a filter on the same page, after another tab moved the
- * bookmark) is read again. A load that stops short leaves the rest to the
- * next one.
- *
- * It reads the cookies when a load starts, not when each answer was asked
- * for, so a move in another tab that races a call in flight, or lands
- * before this page hydrates, is not caught here.
- */
-export function dropCacheOnCookieMove(router: AnyRouter): void {
-  let cookies = document.cookie
-  // What the pages on screen had read when the cookies moved; a page still
-  // holding it after the load commits was kept without a re-read.
-  let readBefore: null | Set<unknown> = null
-
-  router.subscribe('onBeforeLoad', () => {
-    if (document.cookie !== cookies) {
-      cookies = document.cookie
-      readBefore ??= new Set(router.state.matches.map((m) => m.loaderData))
-      // A layout route reads nothing.
-      readBefore.delete(undefined)
-      readBefore.delete(null)
-    }
-    if (readBefore !== null) {
-      router.clearCache()
-    }
-  })
-  // The re-read waits for the load to finish: started inside its commit, it
-  // would cut the commit's own last steps short.
-  let reread: null | Set<unknown> = null
-  router.subscribe('onLoad', () => {
-    if (readBefore === null) {
-      return
-    }
-    reread = readBefore
-    readBefore = null
-    router.clearCache()
-  })
-  router.subscribe('onResolved', () => {
-    if (reread === null) {
-      return
-    }
-    const old = reread
-    reread = null
-    const kept = (match: AnyRouteMatch): boolean => old.has(match.loaderData)
-    if (router.state.matches.some((match) => kept(match))) {
-      void router.invalidate({ filter: kept })
-    }
   })
 }
 
