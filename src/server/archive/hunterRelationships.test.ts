@@ -158,6 +158,23 @@ describe('Hunter x Hunter relationship coverage', () => {
   )
 })
 
+// The bookmarks the payload sweep asks at, saga borders included.
+const swept = archive.bookmarks.map((bookmark) => JSON.stringify(bookmark))
+
+describe('Hunter x Hunter relationship sweep', () => {
+  it.each(cases)(
+    'sweeps $owner at $mode $date and the bookmark before',
+    ({ mode, date }) => {
+      // Before a gate at 1 there is no bookmark but none (`null`).
+      for (const count of [Math.max(date - 1, 1), date]) {
+        const bookmark = mode === 'episode' ? ep(count) : ch(count)
+
+        expect(swept).toContain(JSON.stringify(bookmark))
+      }
+    },
+  )
+})
+
 describe.each(LOCALES)('Hunter x Hunter payload boundaries in %s', (locale) => {
   it.each(cases)(
     '$owner at $mode $date restores exact current words on backwards movement',
