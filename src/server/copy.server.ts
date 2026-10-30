@@ -1,10 +1,13 @@
+import { enDictionary } from '~/i18n/dictionaries/en'
 import { hunterXHunterEn } from '~/i18n/dictionaries/hunter-x-hunter/en'
 import { hunterXHunterIt } from '~/i18n/dictionaries/hunter-x-hunter/it'
+import { itDictionary } from '~/i18n/dictionaries/it'
 import { onePieceEn } from '~/i18n/dictionaries/one-piece/en'
 import { onePieceIt } from '~/i18n/dictionaries/one-piece/it'
 import type { Locale } from '~/i18n/locales'
-import { translatorFor } from '~/i18n/translate'
+import { translatorOver } from '~/i18n/translate'
 import type {
+  Dictionary,
   SeriesCopy,
   SeriesSlug,
   SeriesWords,
@@ -38,6 +41,15 @@ export function copyOf(series: Series, locale: Locale): SeriesCopy {
   return { slug, name: series.name[locale], words: COPIES[slug][locale] }
 }
 
+/**
+ * The shared copy in every locale, for the server functions: one may be the
+ * first request an instance answers, before any page has loaded a locale.
+ */
+const SHARED: Record<Locale, Dictionary> = {
+  en: enDictionary,
+  it: itDictionary,
+}
+
 const translators = new Map<string, Translate<SeriesSlug>>()
 
 /**
@@ -55,7 +67,7 @@ export function translatorOf(
   if (cached !== undefined) {
     return cached
   }
-  const t = translatorFor(locale, copyOf(series, locale))
+  const t = translatorOver(SHARED[locale], copyOf(series, locale))
   translators.set(key, t)
   return t
 }

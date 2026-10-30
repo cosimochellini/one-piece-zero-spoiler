@@ -3,7 +3,7 @@ import { type ReactElement, useCallback, useEffect } from 'react'
 
 import { FirstVisitIntro } from '~/components/IntroDialog'
 import { isLocale, type Locale } from '~/i18n/locales'
-import { translatorFor } from '~/i18n/translate'
+import { loadDictionary, translatorFor } from '~/i18n/translate'
 import { readPlain } from '~/lib/plain'
 import { type SagaTable, SagaTableContext } from '~/lib/progress/sagaLabel'
 import { DrawingsContext } from '~/lib/view/drawings'
@@ -18,10 +18,11 @@ export const Route = createFileRoute('/$series/$locale')({
     if (!isLocale(params.locale)) {
       throw notFound()
     }
-    return {
-      locale: params.locale,
-      copy: await seriesCopy(context.series.slug, params.locale),
-    }
+    const [copy] = await Promise.all([
+      seriesCopy(context.series.slug, params.locale),
+      loadDictionary(params.locale),
+    ])
+    return { locale: params.locale, copy }
   },
   head: ({ match, params }) => {
     if (!isLocale(params.locale)) {

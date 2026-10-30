@@ -220,53 +220,6 @@ export const enDictionary = {
     'Both summaries were replaced with brief accounts of facts checked against the official synopsis. The synopsis was not translated in full. No new content license is assigned.',
   'credits.noOpenLicense': 'No open-content permission established.',
 
-  'privacy.title': 'Privacy and cookies',
-  'privacy.updated': 'Last checked: 28 October 2026.',
-  'privacy.controllerTitle': 'Who runs the site',
-  'privacy.controller':
-    'Zero Spoiler is a personal, nonprofit fan project. Its operator and data controller is a private individual based in Italy, reachable as @cosimochellini on GitHub. Use the GitHub contact link below for an initial request.',
-  'privacy.serviceTitle': 'What a visit sends',
-  'privacy.service':
-    'Your browser sends Cloudflare the requested address, IP address, browser information and applicable cookies to deliver pages and apply your spoiler boundary. Requests stay on this site; fonts and drawings are hosted here. There are no user accounts, advertising, analytics or profiling in the application.',
-  'privacy.cookiesTitle': 'Technical cookies and browser storage',
-  'privacy.cookiesIntro':
-    'These first-party cookies support features you request. They are not used for advertising or tracking across sites. They do not require a consent banner under the Italian rules for necessary technical cookies.',
-  'privacy.bookmark':
-    'zs_one-piece and zs_hunter-x-hunter: your bookmark for each series, by episode, season, chapter or live action where supported; kept for 365 days after saving it, or until you clear it. Opening a shared bookmark link also sets this cookie. The value is sent to the server to hide later events.',
-  'privacy.language':
-    'opzs_lang: your selected language (it or en); kept for 365 days after choosing it. Sent to the server to remember the language on later visits.',
-  'privacy.trial':
-    'zs_one-piece_try and zs_hunter-x-hunter_try: a temporary bookmark for each series set when you try the site; a session cookie with no fixed expiry, removed when you save or clear a bookmark or leave the trial. Browser session restore can preserve session cookies.',
-  'privacy.attributes':
-    'All five cookies use Path=/ and SameSite=Lax, with no Domain, Secure or HttpOnly attribute. The site is served over HTTPS. They can be read by this site’s JavaScript and sent on applicable same-site requests and top-level cross-site navigations.',
-  'privacy.storage':
-    'opzs_welcome is a sessionStorage flag used to show a welcome once after saving a bookmark. It is removed when the home page reads it, or when the tab session ends; it is not sent to the server. opzs_intro is a sessionStorage flag, value 1, set when you close the introduction a page shows when you arrive with no bookmark, or once a bookmark is in use, so the introduction is not shown in the rest of the tab session; it is not sent to the server. The application does not use localStorage.',
-  'privacy.controlTitle': 'Your choices',
-  'privacy.control':
-    'You can clear the bookmark in its dialog and remove cookies and site storage in your browser settings. Blocking them prevents the site from remembering your preferences; without a bookmark you see the introductory view. There are no optional tracking cookies to accept or reject.',
-  'privacy.hostingTitle': 'Hosting, logs and transfers',
-  'privacy.hosting':
-    'Cloudflare, Inc. hosts and delivers the site through its network and Cloudflare Workers. A request is handled in a Cloudflare data centre, usually one near you, which can be outside the EEA. Cloudflare is a US company, so data can be transferred to the United States. The site uses no Cloudflare database, file storage, analytics or forms. Netlify, Inc. still receives requests to the old address one-piece-zero-spoiler.netlify.app and only redirects them to zerospoiler.app.',
-  'privacy.logs':
-    'Workers Logs is turned on to find faults and abuse. Each request the Worker handles is logged in the site’s Cloudflare account. That covers pages and the drawings loaded with them. A log entry holds the requested address with its query, the method, the response status and any error. It also holds the request headers, with your IP address, browser information and possibly cookies, and the location Cloudflare derives from the request. On the Workers Free plan the site uses, Cloudflare keeps these logs for 3 days. Fonts, icons and other static files are served without a log entry. Cloudflare also processes request data on its network for security and for aggregate traffic metrics; how long it keeps that data is not verified for this site. No function runs on the old address, so Netlify writes no function logs; how long its network keeps request data is not verified. No analytics does not mean no personal data is processed.',
-  'privacy.terms':
-    'Cloudflare’s published Data Processing Addendum forms part of its subscription terms. It describes Cloudflare as processor and its subprocessors, and relies on the EU–US Data Privacy Framework, with standard contractual clauses if that certification lapses. Netlify’s published terms work the same way for the old address. These are the providers’ published terms; site-specific contractual details and the full retention arrangements remain to be confirmed.',
-  'privacy.basesTitle': 'Purposes and legal bases',
-  'privacy.bases':
-    'The purposes are delivering the pages you request, applying your spoiler boundary, remembering your choices and keeping the site operational and secure. The basis is the legitimate interest in providing this limited service (GDPR Article 6(1)(f)); apart from those 3-day Workers Logs, the application adds no visitor history or profiling for these purposes. Applicable data-rights requests are handled to meet legal obligations (Article 6(1)(c)). The technical-cookie consent exemption is separate from these GDPR bases. You may object as described below.',
-  'privacy.rightsTitle': 'Questions and your rights',
-  'privacy.rights':
-    'Where applicable, you may request access, correction, erasure, restriction or portability of personal data, object to processing, and complain to the Italian Garante or your local supervisory authority. Requests concern data actually held; a cookie value alone does not identify a named account.',
-  'privacy.contact': 'Contact on GitHub',
-  'privacy.contactHelp':
-    'For an initial privacy contact request, open a GitHub issue without personal or confidential details. Issues are public and require an account. Do not include IP addresses, cookie values or identity documents. We will agree a private channel before discussing any personal details. GitHub processes information you submit there under its own privacy policy.',
-  'privacy.sourcesTitle': 'Sources and verification',
-  'privacy.garante': 'Italian Garante: cookies and tracking guidance',
-  'privacy.cloudflareLogs': 'Cloudflare: Workers Logs and retention',
-  'privacy.cloudflareTerms': 'Cloudflare: Data Processing Addendum',
-  'privacy.netlifyTerms': 'Netlify: DPA and subprocessors',
-  'privacy.audit': 'Technical audit and outstanding checks',
-
   'footer.lead': 'A {series} wiki that hides what comes after your bookmark.',
   'footer.colophon':
     'All the drawings are made for this site; no official artwork is used. Your bookmark is saved in a cookie on this device.',

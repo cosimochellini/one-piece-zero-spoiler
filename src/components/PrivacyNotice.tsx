@@ -2,7 +2,9 @@ import * as stylex from '@stylexjs/stylex'
 import type { ReactElement } from 'react'
 
 import { styles } from '~/components/LegalNotice.styles'
-import { useT } from '~/i18n/LocaleContext'
+import { PRIVACY, type PrivacyKey } from '~/i18n/dictionaries/privacy'
+import { useLocale } from '~/i18n/LocaleContext'
+import { translate } from '~/i18n/translate'
 
 const SOURCES = [
   [
@@ -26,7 +28,8 @@ const SOURCES = [
 
 /** A public notice that never depends on the reader’s bookmark. */
 export function PrivacyNotice(): ReactElement {
-  const t = useT()
+  const notice = PRIVACY[useLocale().locale]
+  const t = (key: PrivacyKey): string => translate(notice, key)
 
   return (
     <section id="privacy">

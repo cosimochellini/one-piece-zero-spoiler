@@ -3,6 +3,13 @@ import '@testing-library/jest-dom/vitest'
 // matcher types via `declare module 'vitest'`.
 import { vi } from 'vitest'
 
+import { LOCALES } from '~/i18n/locales'
+import { loadDictionary } from '~/i18n/translate'
+
+// The shared copy of every locale, which a page has loaded by the time it
+// renders: its locale route awaits it (`src/routes/$locale.tsx`).
+await Promise.all(LOCALES.map(async (locale) => loadDictionary(locale)))
+
 // No explicit `afterEach(cleanup)` here on purpose. Vitest runs with
 // `globals: true`, so Testing Library registers its own auto-cleanup, and a
 // second manual one would only be a duplicate of it.
