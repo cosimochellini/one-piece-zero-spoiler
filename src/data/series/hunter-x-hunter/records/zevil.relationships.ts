@@ -228,7 +228,7 @@ const links = {
   },
   amoriNicholas: {
     character: 'nicholas',
-    type: { en: 'Rookie they taunt', it: 'Esordiente che deridono' },
+    type: { en: 'Rookie they taunt', it: 'Matricola che deridono' },
     summary: {
       en: 'During the First Phase run, Amori and his brothers taunt the exhausted Nicholas.',
       it: 'Durante la corsa della prima prova, Amori e i suoi fratelli deridono Nicole, ormai esausto.',
@@ -238,8 +238,8 @@ const links = {
     character: 'umori',
     type: { en: 'Younger brother', it: 'Fratello minore' },
     summary: {
-      en: 'Umori hunts alongside Amori on Zevil Island and gives up his badge to Killua when Amori is taken hostage.',
-      it: 'Umori caccia insieme ad Amori sull’Isola di Zevil e cede la sua targhetta a Killua quando Amori viene preso in ostaggio.',
+      en: 'On Zevil Island Umori gives up his badge to Killua when Killua takes Amori hostage.',
+      it: 'Sull’Isola di Zevil Umori cede la sua targhetta a Killua quando Killua prende Amori in ostaggio.',
     },
   },
   amoriImoriZevil: {
@@ -287,7 +287,7 @@ const links = {
   },
   umoriNicholas: {
     character: 'nicholas',
-    type: { en: 'Rookie they taunt', it: 'Esordiente che deridono' },
+    type: { en: 'Rookie they taunt', it: 'Matricola che deridono' },
     summary: {
       en: 'During the First Phase run, Umori and his brothers taunt the exhausted Nicholas.',
       it: 'Durante la corsa della prima prova, Umori e i suoi fratelli deridono Nicole, ormai esausto.',
@@ -305,8 +305,8 @@ const links = {
     character: 'imori',
     type: { en: 'Younger brother', it: 'Fratello minore' },
     summary: {
-      en: 'Umori and Amori find Imori still hiding from Killua and push him to attack.',
-      it: 'Umori e Amori trovano Imori ancora nascosto davanti a Killua e lo spingono ad attaccare.',
+      en: 'Umori and Amori scold Imori for not having taken Killua’s badge yet and push him to attack.',
+      it: 'Umori e Amori rimproverano Imori perché non ha ancora preso la targhetta di Killua e lo spingono ad attaccare.',
     },
   },
   umoriKillua: {
@@ -346,7 +346,7 @@ const links = {
   },
   imoriNicholas: {
     character: 'nicholas',
-    type: { en: 'Rookie they taunt', it: 'Esordiente che deridono' },
+    type: { en: 'Rookie they taunt', it: 'Matricola che deridono' },
     summary: {
       en: 'During the First Phase run, Imori and his brothers taunt the exhausted Nicholas.',
       it: 'Durante la corsa della prima prova, Imori e i suoi fratelli deridono Nicole, ormai esausto.',
@@ -356,8 +356,8 @@ const links = {
     character: 'amori',
     type: { en: 'Older brother', it: 'Fratello maggiore' },
     summary: {
-      en: 'Amori finds Imori still hiding from Killua, scolds him and forces him to attack.',
-      it: 'Amori trova Imori ancora nascosto davanti a Killua, lo rimprovera e lo costringe ad attaccare.',
+      en: 'Amori finds that Imori has not taken Killua’s badge yet, scolds him and forces him to attack.',
+      it: 'Amori scopre che Imori non ha ancora preso la targhetta di Killua, lo rimprovera e lo costringe ad attaccare.',
     },
   },
   imoriUmoriZevil: {
@@ -383,8 +383,8 @@ const links = {
       it: 'Aspirante la cui trappola la blocca',
     },
     summary: {
-      en: 'Bourbon’s snakes attack anyone who tries to leave his cave, so Ponzu is trapped there even though he is already dead.',
-      it: 'I serpenti di Burbon attaccano chiunque cerchi di uscire dalla sua grotta, così Ponzu resta intrappolata anche se lui è già morto.',
+      en: 'Bourbon’s snakes attack anyone who tries to leave the cave, so Ponzu is trapped there even though he is already dead.',
+      it: 'I serpenti di Burbon attaccano chiunque cerchi di uscire dalla grotta, così Ponzu resta intrappolata anche se lui è già morto.',
     },
   },
   ponzuLeorio: {
@@ -437,7 +437,7 @@ const links = {
     character: 'ponzu',
     type: { en: 'Applicant who kills him', it: 'Aspirante che lo uccide' },
     summary: {
-      en: 'Ponzu has Bourbon as her target and kills him by accident with her bees in his cave.',
+      en: 'Ponzu has Bourbon as her target and kills him by accident with her bees in the cave.',
       it: 'Ponzu ha Burbon come bersaglio e lo uccide per sbaglio con le sue api nella grotta.',
     },
   },
@@ -791,15 +791,8 @@ export const zevilRelationships = {
     // Manga only: Kyu is never named in the 2011 anime. The episode only
     // orders it and sits at Pokkle's anime gate.
     { episode: 18, chapter: 24, source: 'chapter', value: [links.pokkleKyu] },
-    // Anime only: the interview; Kyu is named only in the manga, so the
-    // manga keeps its own selections. The chapter only orders it.
-    {
-      episode: 18,
-      chapter: 32,
-      source: 'episode',
-      value: [links.pokkleKurapika, links.pokkleHisoka],
-    },
-    // Manga only: the interview, keeping Kyu.
+    // Manga only: the interview (chapter 32), keeping Kyu. The episode 18
+    // page never says who answered what, so the anime gets no interview.
     {
       episode: 18,
       chapter: 32,
@@ -811,14 +804,9 @@ export const zevilRelationships = {
       episode: 20,
       chapter: 35,
       source: 'episode',
-      value: [
-        links.pokkleHanzo,
-        links.pokkleKillua,
-        links.pokkleKurapika,
-        links.pokkleHisoka,
-      ],
+      value: [links.pokkleHanzo, links.pokkleKillua],
     },
-    // Manga only: the same matches, keeping Kyu.
+    // Manga only: the same matches, keeping the interview and Kyu.
     {
       episode: 20,
       chapter: 35,
@@ -840,7 +828,6 @@ export const zevilRelationships = {
         links.pokkleKurapikaQuestioned,
         links.pokkleKillua,
         links.pokkleHanzo,
-        links.pokkleHisoka,
       ],
     },
     // Manga only: the apology is chapter 38, keeping Kyu.
@@ -858,16 +845,9 @@ export const zevilRelationships = {
     },
   ],
   bodoro: [
-    // Anime only: the interview is episode 18, but the manga names Bodoro at
-    // chapter 33; the chapter only orders it.
-    {
-      episode: 18,
-      chapter: 33,
-      source: 'episode',
-      value: [links.bodoroHisoka, links.bodoroKillua, links.bodoroGon],
-    },
-    // Manga only: the interview at Bodoro's chapter-33 gate, with Ryu, whom
-    // the anime never names.
+    // Manga only: the interview (chapter 32) at Bodoro's chapter-33 gate,
+    // with Ryu, whom the anime never names. The episode 18 page never says
+    // who answered what, so the anime gets no interview.
     {
       episode: 19,
       chapter: 33,
@@ -888,10 +868,9 @@ export const zevilRelationships = {
         links.bodoroKilluaKills,
         links.bodoroHisokaBeats,
         links.bodoroLeorio,
-        links.bodoroGon,
       ],
     },
-    // Manga only: the same, keeping Ryu.
+    // Manga only: the same, keeping the interview and Ryu.
     {
       episode: 20,
       chapter: 36,

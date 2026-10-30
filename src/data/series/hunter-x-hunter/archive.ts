@@ -56,16 +56,18 @@ const places = keptOf(entities, 'place', PLACE_DOSSIERS)
 /** One dynamically loaded archive; its public description contains no records. */
 export const HUNTER_X_HUNTER_ARCHIVE: SeriesArchive = {
   series: SERIES,
-  // Both sides of the new named-scene gates in each unit, followed by the
-  // first two season boundaries (the demo end and a boundary inside an arc).
+  // Both sides of the new named-scene and relationship gates in each unit,
+  // followed by the first two season boundaries (the demo end and a boundary
+  // inside an arc).
   bookmarks: sweepOf(sagas, SERIES, [
     ...[
       2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
       22, 23, 24, 25, 75, 76,
     ].map((episode) => ({ mode: 'episode' as const, episode })),
     ...[
-      4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26,
-      27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43,
+      2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22,
+      23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
+      41, 42, 43, 65, 66,
     ].map((chapter) => ({ mode: 'chapter' as const, chapter })),
     { mode: 'season', season: 1, episode: 26 },
     { mode: 'season', season: 2, episode: 1 },

@@ -15,8 +15,18 @@ const links = {
     character: 'kite',
     type: { en: 'Hunter who saved him', it: 'Hunter che lo ha salvato' },
     summary: {
-      en: 'Kite saves Gon from a foxbear on Whale Island and tells him that his father is a Hunter and still alive.',
-      it: 'Kaito salva Gon da un orso-volpe sull’Isola Balena e gli dice che suo padre è un Hunter ed è ancora vivo.',
+      en: 'Kite saves Gon from a foxbear on Whale Island and tells him that his father is still alive.',
+      it: 'Kaito salva Gon da un orso-volpe sull’Isola Balena e gli dice che suo padre è ancora vivo.',
+    },
+  },
+  // The 2011 anime has no word about Ging from Kite: he learns only later
+  // whose son he saved.
+  gonKiteEpisode: {
+    character: 'kite',
+    type: { en: 'Hunter who saved him', it: 'Hunter che lo ha salvato' },
+    summary: {
+      en: 'Kite saves Gon from a foxbear on Whale Island when Gon is a boy.',
+      it: 'Kaito salva Gon da un orso-volpe sull’Isola Balena quando Gon è un bambino.',
     },
   },
   gonKon: {
@@ -24,7 +34,7 @@ const links = {
     type: { en: 'Foxbear he raised', it: 'Orso-volpe che ha allevato' },
     summary: {
       en: 'Gon stops Kite from putting Kon down after his mother is killed, raises him and says goodbye to him before leaving for the exam.',
-      it: 'Gon impedisce a Kaito di abbattere Kon dopo la morte della madre, lo alleva e lo saluta prima di partire per l’esame.',
+      it: 'Gon impedisce a Kaito di abbattere Kon dopo la morte di sua madre, lo alleva e lo saluta prima di partire per l’esame.',
     },
   },
   gonKurapika: {
@@ -160,8 +170,8 @@ const links = {
     character: 'katzo',
     type: { en: 'Crewman he helps save', it: 'Marinaio che aiuta a salvare' },
     summary: {
-      en: 'The storm throws Katzo over the side, and Leorio helps pull him back by holding on to Gon, who has caught him.',
-      it: 'La tempesta sbalza Katzo oltre la murata, e Leorio aiuta a recuperarlo tenendo Gon, che lo ha afferrato.',
+      en: 'Katzo goes over the side in the storm, and Leorio helps pull him back by holding on to Gon, who has caught him.',
+      it: 'Durante la tempesta Katzo cade oltre la murata, e Leorio aiuta a recuperarlo tenendo Gon, che lo ha afferrato.',
     },
   },
   leorioKiriko: {
@@ -198,8 +208,8 @@ const links = {
       it: 'Veterano che gli offre un succo drogato',
     },
     summary: {
-      en: 'Tonpa offers Leorio juice laced with a laxative, and Leorio does not drink it.',
-      it: 'Tonpa offre a Leorio un succo con un lassativo, e Leorio non lo beve.',
+      en: 'Tonpa offers Leorio juice laced with a laxative, and Leorio does not fall for it.',
+      it: 'Tonpa offre a Leorio un succo con un lassativo, e Leorio non ci casca.',
     },
   },
   leorioHisoka: {
@@ -304,8 +314,8 @@ const links = {
     character: 'katzo',
     type: { en: 'Crewman he helps save', it: 'Marinaio che aiuta a salvare' },
     summary: {
-      en: 'The storm throws Katzo over the side, and Kurapika helps hold Gon, who has caught him.',
-      it: 'La tempesta sbalza Katzo oltre la murata, e Kurapika aiuta a trattenere Gon, che lo ha afferrato.',
+      en: 'Katzo goes over the side in the storm, and Kurapika helps hold Gon, who has caught him.',
+      it: 'Durante la tempesta Katzo cade oltre la murata, e Kurapika aiuta a trattenere Gon, che lo ha afferrato.',
     },
   },
   kurapikaGonTree: {
@@ -410,16 +420,16 @@ const links = {
     character: 'killua',
     type: { en: 'Boy he defends', it: 'Ragazzo che difende' },
     summary: {
-      en: 'Kurapika argues that Illumi may have hypnotized Killua into killing Bodoro, then leaves with Gon and Leorio to bring him back.',
-      it: 'Kurapika sostiene che Illumi potrebbe aver ipnotizzato Killua per fargli uccidere Bodoro, poi parte con Gon e Leorio per riportarlo indietro.',
+      en: 'Kurapika argues that Killua may have been hypnotized into killing Bodoro, then leaves with Gon and Leorio to bring him back.',
+      it: 'Kurapika sostiene che Killua potrebbe essere stato ipnotizzato per uccidere Bodoro, poi parte con Gon e Leorio per riportarlo indietro.',
     },
   },
   katzoGon: {
     character: 'gon-freecss',
     type: { en: 'Boy who saves him', it: 'Ragazzo che lo salva' },
     summary: {
-      en: 'When the storm sends Katzo over the side, Gon dives after him and catches him.',
-      it: 'Quando la tempesta sbalza Katzo fuori bordo, Gon si tuffa e lo afferra.',
+      en: 'When Katzo goes over the side in the storm, Gon dives after him and catches him.',
+      it: 'Quando Katzo cade fuori bordo durante la tempesta, Gon si tuffa e lo afferra.',
     },
   },
   katzoLeorio: {
@@ -496,8 +506,8 @@ const links = {
       it: 'Matricola che cerca di ingannare',
     },
     summary: {
-      en: 'Tonpa offers Leorio juice laced with a laxative, but Leorio does not drink it.',
-      it: 'Tonpa offre a Leorio un succo con un lassativo, ma Leorio non lo beve.',
+      en: 'Tonpa offers Leorio juice laced with a laxative, but Leorio does not fall for it.',
+      it: 'Tonpa offre a Leorio un succo con un lassativo, ma Leorio non ci casca.',
     },
   },
   tonpaKurapika: {
@@ -629,7 +639,7 @@ const links = {
       it: 'Aspirante che tratta con lui',
     },
     summary: {
-      en: 'On Zevil Island Kurapika offers Hisoka a one-point badge to be left alone with Leorio, and Hisoka accepts.',
+      en: 'On Zevil Island Kurapika offers Hisoka a one-point badge to leave him and Leorio alone, and Hisoka accepts.',
       it: 'Sull’Isola di Zevil Kurapika offre a Hisoka una targhetta da un punto perché lasci andare lui e Leorio, e Hisoka accetta.',
     },
   },
@@ -787,10 +797,13 @@ const links = {
   },
   hanzoKillua: {
     character: 'killua',
-    type: { en: 'Rookie who outwits him', it: 'Matricola che lo beffa' },
+    type: {
+      en: 'Rookie who gets there first',
+      it: 'Matricola che lo anticipa',
+    },
     summary: {
-      en: 'On Zevil Island Killua takes the Amori brothers’ badges and throws them away. Hanzo chases one down, and it is not the one he needs.',
-      it: 'Sull’Isola di Zevil Killua prende le targhette dei fratelli Amori e le lancia lontano. Hanzo ne insegue una, e non è quella che gli serve.',
+      en: 'On Zevil Island Killua takes two of the Amori brothers’ badges and throws them far away. Hanzo chases one down, and it is not the one he needs.',
+      it: 'Sull’Isola di Zevil Killua prende due targhette dei fratelli Amori e le lancia lontano. Hanzo ne insegue una, e non è quella che gli serve.',
     },
   },
   hanzoGon: {
@@ -945,8 +958,8 @@ const links = {
       it: 'Nuovo Hunter con cui si congratula',
     },
     summary: {
-      en: 'Satotz waits by Gon’s bed after the final match and persuades him to accept his Hunter License.',
-      it: 'Satoshi aspetta accanto al letto di Gon dopo l’incontro finale e lo convince ad accettare la licenza da Hunter.',
+      en: 'Satotz waits by Gon’s bed after his match with Hanzo and persuades him to accept his Hunter License.',
+      it: 'Satoshi aspetta accanto al letto di Gon dopo l’incontro con Hanzo e lo convince ad accettare la licenza da Hunter.',
     },
   },
   satotzGonFather: {
@@ -993,7 +1006,7 @@ const links = {
   },
   killuaNetero: {
     character: 'netero',
-    type: { en: 'Chairman he challenges', it: 'Presidente che sfida' },
+    type: { en: 'Chairman who challenges him', it: 'Presidente che lo sfida' },
     summary: {
       en: 'On the airship Killua tries with Gon to take a ball from Netero and gives up when he sees that Netero has not even needed all his limbs.',
       it: 'Sul dirigibile Killua prova con Gon a prendere la palla a Netero e rinuncia quando capisce che a Netero non sono serviti nemmeno tutti gli arti.',
@@ -1168,7 +1181,7 @@ const links = {
   },
   neteroGon: {
     character: 'gon-freecss',
-    type: { en: 'Rookie who challenges him', it: 'Matricola che lo sfida' },
+    type: { en: 'Rookie he challenges', it: 'Matricola che mette alla prova' },
     summary: {
       en: 'Netero dares Gon to take a ball from him. Gon fails, but makes him use his other hand.',
       it: 'Netero sfida Gon a prendergli una palla. Gon non ci riesce, ma lo costringe a usare l’altra mano.',
@@ -1176,7 +1189,7 @@ const links = {
   },
   neteroKillua: {
     character: 'killua',
-    type: { en: 'Rookie who challenges him', it: 'Matricola che lo sfida' },
+    type: { en: 'Rookie he challenges', it: 'Matricola che mette alla prova' },
     summary: {
       en: 'Killua tries Netero’s ball game, cannot take the ball and gives up.',
       it: 'Killua prova il gioco della palla di Netero, non riesce a prenderla e rinuncia.',
@@ -1212,7 +1225,7 @@ const links = {
     },
     summary: {
       en: 'Kurapika argues that Killua acted under someone else’s control. Netero calls it guesswork.',
-      it: 'Kurapika sostiene che Killua ha agito sotto il controllo di qualcun altro. Netero le considera solo supposizioni.',
+      it: 'Kurapika sostiene che Killua ha agito sotto il controllo di qualcun altro. Per Netero sono solo supposizioni.',
     },
   },
   neteroLeorio: {
@@ -1424,8 +1437,8 @@ export const hunterExamRelationships = {
         links.gonLeorioFriend,
       ],
     },
-    // Anime-only, delayed to Kite's record (episode 76): Kite joins, Mito
-    // makes room, and both media now hold the same selection.
+    // Anime-only, delayed to Kite's record (episode 76): Kite joins and Mito
+    // makes room, as in the manga's selection.
     {
       episode: 76,
       chapter: 185,
@@ -1433,7 +1446,7 @@ export const hunterExamRelationships = {
       value: [
         links.gonKilluaTogether,
         links.gonGing,
-        links.gonKite,
+        links.gonKiteEpisode,
         links.gonKurapikaFriend,
         links.gonLeorioFriend,
       ],
@@ -1530,9 +1543,10 @@ export const hunterExamRelationships = {
         links.leorioHisoka,
       ],
     },
+    // They set off for Killua's home in chapter 38; episode 21 adapts 37-38.
     {
       episode: 21,
-      chapter: 37,
+      chapter: 38,
       value: [
         links.leorioKurapikaTeam,
         links.leorioGonRun,
@@ -1615,9 +1629,10 @@ export const hunterExamRelationships = {
         links.kurapikaMajtani,
       ],
     },
+    // They set off for Killua's home in chapter 38; episode 21 adapts 37-38.
     {
       episode: 21,
-      chapter: 37,
+      chapter: 38,
       value: [
         links.kurapikaLeorioTeam,
         links.kurapikaGonTree,
@@ -1671,7 +1686,7 @@ export const hunterExamRelationships = {
         links.tonpaBendot,
       ],
     },
-    // Sommy is named only in the manga, so the Zevil Island selection splits.
+    // Sommy's record is the manga's alone, so the Zevil Island selection splits.
     {
       episode: 15,
       chapter: 26,
@@ -1833,8 +1848,8 @@ export const hunterExamRelationships = {
   ],
   'nicholas': [
     { episode: 3, chapter: 6, value: [links.nicholasTonpa] },
-    // The Amori brothers are named in episode 3 but only in chapter 29: the
-    // anime gets the taunting where it happens, the manga once they are named.
+    // The Amori brothers' records open at episode 3 but chapter 29: the anime
+    // gets the taunting where it happens, the manga once the records open.
     // The anime-only entry orders its chapter at theirs, so nothing names them
     // below chapter 29.
     {

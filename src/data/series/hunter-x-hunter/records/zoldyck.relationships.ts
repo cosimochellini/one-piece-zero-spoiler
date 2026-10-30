@@ -15,8 +15,8 @@ const links = {
     character: 'leorio-paradinight',
     type: { en: 'Passenger who complains', it: 'Passeggero che protesta' },
     summary: {
-      en: 'Leorio complains that the tour stops far from the mountain, and Coco Loo explains that the whole mountain belongs to the family.',
-      it: 'Leorio protesta perché il giro si ferma lontano dal monte, e Coco Loo spiega che tutto il monte appartiene alla famiglia.',
+      en: 'Leorio complains that the tour stops far from the mountain, and Coco Loo explains that the whole mountain belongs to the Zoldyck family.',
+      it: 'Leorio protesta perché il giro si ferma lontano dal monte, e Coco Loo spiega che tutto il monte appartiene alla famiglia Zoldick.',
     },
   },
   // Zebro
@@ -27,15 +27,15 @@ const links = {
       it: 'Visitatore che vuole la chiave',
     },
     summary: {
-      en: 'Gon refuses to be tested by the gate and asks Zebro for the key to the service door.',
-      it: 'Gon non vuole farsi mettere alla prova dal cancello e chiede a Zebro la chiave della porta di servizio.',
+      en: 'Gon insists that Zebro lend him the key to the service door.',
+      it: 'Gon insiste perché Zebro gli presti la chiave della porta di servizio.',
     },
   },
   zebroKurapika: {
     character: 'kurapika',
     type: {
       en: 'Visitor who sees through him',
-      it: 'Visitatore che lo capisce',
+      it: 'Visitatore che lo smaschera',
     },
     summary: {
       en: 'Kurapika works out that Zebro only cleans up after the guard dog and that the real gate has no lock.',
@@ -140,8 +140,8 @@ const links = {
     character: 'killua',
     type: { en: 'Young master', it: 'Giovane padrone' },
     summary: {
-      en: 'Canary turned down Killua’s offer of friendship because she is his servant.',
-      it: 'Canaria ha rifiutato l’amicizia che Killua le offriva, perché è al suo servizio.',
+      en: 'Canary serves Killua as an apprentice butler and turned down his offer of friendship.',
+      it: 'Canaria è al servizio di Killua come apprendista maggiordoma e ha rifiutato l’amicizia che lui le offriva.',
     },
   },
   canaryKurapika: {
@@ -240,8 +240,8 @@ const links = {
     character: 'killua',
     type: { en: 'Grandson he releases', it: 'Nipote che libera' },
     summary: {
-      en: 'Zeno tells Killua he may leave his cell because his father wants to see him.',
-      it: 'Zeno dice a Killua che può lasciare la cella perché suo padre vuole vederlo.',
+      en: 'Zeno tells Killua that he may leave his cell and that his father wants to see him.',
+      it: 'Zeno dice a Killua che può lasciare la cella e che suo padre vuole vederlo.',
     },
   },
   zenoMilluki: {

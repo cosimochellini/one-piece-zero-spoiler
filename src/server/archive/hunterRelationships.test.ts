@@ -226,3 +226,89 @@ describe.each(LOCALES)(
     )
   },
 )
+
+describe.each(LOCALES)(
+  'Hunter x Hunter verified revelations in %s',
+  (locale) => {
+    const people = (owner: string, bookmark: Bookmark): string[] =>
+      projected(owner, bookmark, locale).map(({ person }) => person.id)
+
+    it('keeps a pair hidden until its event, although both people are known', () => {
+      for (const [before, at] of [
+        [ep(6), ep(7)],
+        [ch(13), ch(14)],
+      ] as const) {
+        expect(projected('gon-freecss', before, locale)).not.toStrictEqual([])
+        expect(people('netero', before)).toStrictEqual(['menchi'])
+        expect(people('netero', at)).toContain('gon-freecss')
+      }
+    })
+
+    it('opens Gon’s father only with Ging’s record, although he is named from the start', () => {
+      for (const [before, at] of [
+        [ep(36), ep(37)],
+        [ch(65), ch(66)],
+      ] as const) {
+        expect(people('gon-freecss', before)).not.toContain('ging-freecss')
+        expect(people('gon-freecss', at)).toContain('ging-freecss')
+        expect(people('mito-freecss', before)).not.toContain('ging-freecss')
+        expect(people('mito-freecss', at)).toContain('ging-freecss')
+      }
+    })
+
+    it('gives Kite to manga readers from chapter 1 and to anime readers from episode 76', () => {
+      expect(people('gon-freecss', ch(1))).toContain('kite')
+      expect(people('gon-freecss', ep(75))).not.toContain('kite')
+      expect(people('gon-freecss', ep(76))).toContain('kite')
+      expect(projected('kite', ep(75), locale)).toStrictEqual([])
+      expect(people('kite', ep(76))).toContain('gon-freecss')
+    })
+
+    it('keeps the manga-only roster out of anime pages', () => {
+      for (const id of ['goz', 'agon', 'siper', 'sommy', 'cherry']) {
+        expect(
+          projected(id, ep(archive.series.episodeCeiling), locale),
+        ).toStrictEqual([])
+        expect(projected(id, ch(43), locale)).not.toStrictEqual([])
+      }
+
+      expect(people('tonpa', ep(archive.series.episodeCeiling))).not.toContain(
+        'sommy',
+      )
+      expect(people('tonpa', ch(43))).toContain('sommy')
+    })
+
+    it('swaps the disguise for Illumi only at the unmasking', () => {
+      for (const [before, at] of [
+        [ep(19), ep(20)],
+        [ch(34), ch(35)],
+      ] as const) {
+        expect(people('hisoka', before)).toContain('gittarackur')
+        expect(people('hisoka', before)).not.toContain('illumi')
+        expect(people('hisoka', at)).toContain('illumi')
+        expect(people('hisoka', at)).not.toContain('gittarackur')
+      }
+
+      expect(people('killua', ep(19))).not.toContain('illumi')
+      expect(people('killua', ep(20))).toContain('illumi')
+      expect(people('killua', ch(35))).not.toContain('illumi')
+      expect(people('killua', ch(36))).toContain('illumi')
+    })
+
+    it('never ties Gittarackur’s own page to Illumi or his family', () => {
+      for (const bookmark of [
+        ep(19),
+        ep(archive.series.episodeCeiling),
+        ch(33),
+        ch(archive.series.chapterCeiling),
+      ]) {
+        const sent = projected('gittarackur', bookmark, locale)
+
+        expect(sent).not.toStrictEqual([])
+        expect(JSON.stringify(sent)).not.toMatch(
+          /illumi|zoldyck|zoldick|killua/iu,
+        )
+      }
+    })
+  },
+)

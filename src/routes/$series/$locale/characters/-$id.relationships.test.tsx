@@ -2,9 +2,14 @@ import { fireEvent, screen } from '@testing-library/react'
 import { type ReactElement, useState } from 'react'
 import { describe, expect, it } from 'vitest'
 
+import type { Bookmark } from '~/lib/progress/episode'
+import { HUNTER_X_HUNTER_SERIES } from '~/lib/progress/series'
 import type { RelationshipView } from '~/lib/view/relationships'
+import { relationshipsPage } from '~/server/archive/pages.server'
+import { readerFor } from '~/server/archive/reader.server'
 import { opRelationshipsPage } from '~/test/archive'
 import { ep, renderWithProviders } from '~/test/providers'
+import { LOADED_SERIES } from '~/test/series'
 
 import { RelationshipBand } from './-$id.relationships'
 
@@ -385,6 +390,72 @@ describe.each(['en', 'it'] as const)(
       expect(
         screen
           .getAllByText(joinedDate)
+          .some((element) => element.closest('details')?.open === true),
+      ).toBe(true)
+    })
+  },
+)
+
+describe.each(['en', 'it'] as const)(
+  'Hunter x Hunter authored cards in %s',
+  (locale) => {
+    const hunter = LOADED_SERIES.find(({ slug }) => slug === 'hunter-x-hunter')
+    const page = (bookmark: Bookmark): RelationshipView[] =>
+      hunter === undefined ?
+        []
+      : relationshipsPage(
+          'gon-freecss',
+          readerFor(hunter.archive, bookmark, locale),
+        )
+
+    it('opens Gon’s father only with his record and dates its history', () => {
+      const path = `/hunter-x-hunter/${locale}`
+      const father = locale === 'en' ? 'Father' : 'Padre'
+      const { unmount } = renderWithProviders(
+        <RelationshipBand
+          band={0}
+          relationships={page(ep(36))}
+        />,
+        { locale, bookmark: ep(36), path, series: HUNTER_X_HUNTER_SERIES },
+      )
+
+      expect(
+        screen.queryByRole('link', { name: 'Ging Freecss' }),
+      ).not.toBeInTheDocument()
+      expect(screen.queryByText(father)).not.toBeInTheDocument()
+
+      unmount()
+      renderWithProviders(
+        <RelationshipBand
+          band={0}
+          relationships={page(ep(37))}
+        />,
+        { locale, bookmark: ep(37), path, series: HUNTER_X_HUNTER_SERIES },
+      )
+
+      expect(
+        screen.getByRole('link', { name: 'Ging Freecss' }),
+      ).toHaveAttribute(
+        'href',
+        `/hunter-x-hunter/${locale}/characters/ging-freecss`,
+      )
+      expect(screen.getAllByText(father)[0]).toBeVisible()
+
+      fireEvent.click(
+        screen.getByLabelText(
+          locale === 'en' ?
+            'Relationship history with Ging Freecss'
+          : 'Storia del legame con Ging Freecss',
+        ),
+      )
+
+      expect(
+        screen
+          .getAllByText(
+            locale === 'en' ?
+              'Available from episode 37'
+            : 'Visibile dall’episodio 37',
+          )
           .some((element) => element.closest('details')?.open === true),
       ).toBe(true)
     })

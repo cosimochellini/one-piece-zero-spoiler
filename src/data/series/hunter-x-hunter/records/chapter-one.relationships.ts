@@ -10,6 +10,16 @@ const links = {
       it: 'Kaito salva Gon da un orso-volpe, lo rimprovera per essere entrato nel suo territorio e gli dice che suo padre è un Hunter ed è ancora vivo.',
     },
   },
+  // Anime-only wording: in the 2011 anime Kite tells Gon nothing about his
+  // father on Whale Island and learns from Ging later that the boy was his son.
+  kiteGonEpisode: {
+    character: 'gon-freecss',
+    type: { en: 'Teacher’s son he saves', it: 'Figlio del maestro che salva' },
+    summary: {
+      en: 'Kite saves Gon from a foxbear and hits him for going near it, and only later learns from Ging that the boy is his son.',
+      it: 'Kaito salva Gon da un orso-volpe e lo colpisce per essersi avvicinato, e solo più tardi scopre da Ging che quel bambino è suo figlio.',
+    },
+  },
   kiteKon: {
     character: 'kon',
     type: {
@@ -26,8 +36,8 @@ const links = {
     character: 'ging-freecss',
     type: { en: 'Teacher', it: 'Maestro' },
     summary: {
-      en: 'Kite’s final test from his teacher Ging is to find him, and the search brings him to Whale Island.',
-      it: 'L’ultima prova che Ging, il suo maestro, ha dato a Kaito è trovarlo, e la ricerca lo porta sull’Isola Balena.',
+      en: 'Kite’s teacher Ging set him the task of finding him, and the search brings Kite to Whale Island.',
+      it: 'Ging, il maestro di Kaito, gli ha dato il compito di trovarlo, e la ricerca porta Kaito sull’Isola Balena.',
     },
   },
   // Kon
@@ -74,7 +84,7 @@ export const chapterOneRelationships = {
       episode: 76,
       chapter: 1,
       source: 'episode',
-      value: [links.kiteGing, links.kiteGon, links.kiteKon],
+      value: [links.kiteGing, links.kiteGonEpisode, links.kiteKon],
     },
   ],
   kon: [{ episode: 76, chapter: 1, value: [links.konGon, links.konKite] }],

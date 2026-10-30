@@ -15,16 +15,16 @@ const links = {
     character: 'mito-freecss',
     type: { en: 'Cousin', it: 'Cugina' },
     summary: {
-      en: 'When Ging came back with his baby son, Mito took the boy and shouted at him never to come back.',
-      it: 'Quando Ging è tornato con il figlio in fasce, Myto si è presa il bambino e gli ha gridato di non tornare più.',
+      en: 'When Ging brought his baby son back to Whale Island, his cousin Mito took the boy in and raised him.',
+      it: 'Quando Ging ha riportato il figlio piccolo sull’Isola Balena, sua cugina Myto ha preso con sé il bambino e lo ha cresciuto.',
     },
   },
   gingKite: {
     character: 'kite',
     type: { en: 'Student', it: 'Allievo' },
     summary: {
-      en: 'Ging trained Kite and set him a final test: to find him.',
-      it: 'Ging ha addestrato Kaito e gli ha dato come ultima prova il compito di trovarlo.',
+      en: 'Ging trained Kite and then challenged him to track him down.',
+      it: 'Ging ha addestrato Kaito e poi lo ha sfidato a trovarlo.',
     },
   },
 } satisfies Record<string, Relationship>

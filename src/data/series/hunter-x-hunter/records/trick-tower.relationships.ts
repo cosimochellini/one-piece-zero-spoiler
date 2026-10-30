@@ -37,7 +37,10 @@ const links = {
   },
   lippoJohness: {
     character: 'johness',
-    type: { en: 'Prisoner he releases', it: 'Prigioniero che libera' },
+    type: {
+      en: 'Prisoner he unshackles',
+      it: 'Prigioniero a cui toglie le manette',
+    },
     summary: {
       en: 'Lippo removes Johness’s handcuffs for the last match against Gon’s group.',
       it: 'Rippo toglie le manette a Johnes per l’ultimo incontro contro il gruppo di Gon.',
