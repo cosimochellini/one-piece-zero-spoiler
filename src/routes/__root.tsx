@@ -65,24 +65,31 @@ export const Route = createRootRoute({
       { rel: 'icon', href: '/favicon.ico', sizes: '32x32' },
       { rel: 'icon', href: '/icon.svg', type: 'image/svg+xml' },
       { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
-      // The display and body faces are needed by the wordmark and the first
-      // paragraph, so they are fetched in parallel with the stylesheet rather
-      // than after it. The mono face is not preloaded: it sets episode
-      // numerals and the horizon label, and arriving a moment late costs
-      // nothing. Firefox logs these two as "preloaded but not used" even when
-      // its network panel shows one request per font, served from the
-      // preload; Chromium does not. The attributes below are the ones the
-      // spec asks for, so the warning is noise, not a mismatch.
+      // The display face at 800 and the body face are needed by the wordmark
+      // and the first paragraph, so they are fetched in parallel with the
+      // stylesheet rather than after it. Only the Latin subsets: no first
+      // view in either locale sets Latin Extended text. Not preloaded: the
+      // lighter display weights, which paint a few words on a few pages (a
+      // wide bar's slash, the sea chart, the legal page) and would compete
+      // with the two faces every page needs; and the mono face, which sets
+      // episode numerals and the horizon label, never the largest paint, and
+      // whose metric-matched fallback keeps the swap from moving anything.
+      // `type` and `crossOrigin` match the `@font-face` rules (woff2, and a
+      // font is always fetched with CORS), so the browser reuses the preload
+      // instead of fetching the file twice. Firefox logs these two as
+      // "preloaded but not used" even when its network panel shows one
+      // request per font, served from the preload; Chromium does not, so the
+      // warning is noise, not a mismatch.
       {
         rel: 'preload',
-        href: '/fonts/bricolage-grotesque-var-latin.woff2',
+        href: '/fonts/bricolage-grotesque-800-latin.woff2',
         as: 'font',
         type: 'font/woff2',
         crossOrigin: 'anonymous',
       },
       {
         rel: 'preload',
-        href: '/fonts/instrument-sans-var-latin.woff2',
+        href: '/fonts/instrument-sans-latin.woff2',
         as: 'font',
         type: 'font/woff2',
         crossOrigin: 'anonymous',
