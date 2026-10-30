@@ -38,6 +38,7 @@ gh issue create --title "…" --body-file body.md \
 - **Starting a loop**: run `npm run issues:unblock` first. It moves each blocked issue whose conditions all hold to `status:ready` and comments with the episode that unblocked it.
 - **Picking**: take the first match of `gh issue list --label status:ready --json number,title,labels`, ordered by `priority:` (p0 first) and then by `size:` (s first). Skip any `size:l` issue; split it instead.
 - **Taking it**: `gh issue edit N --remove-label status:ready --add-label status:in-progress`, then `Closes #N` in the pull request body.
+- **Filing records**: a `type:content` / `area:records` issue that files characters or places starts from the `filing-records` skill (`.agents/skills/filing-records/SKILL.md`).
 - **Stopping halfway**: put it back to `status:ready` with a comment on what is done and what is left.
 - **A ruling only the owner can give**: `status:needs-decision`, with the question and your recommendation in a comment.
 - **Triage**: an issue with `status:triage` came from the web, from Codex or from a template. Set the other four groups from its body, then move it to `ready`, `blocked` (and add the `Unblocks at:` line) or `needs-decision`.
