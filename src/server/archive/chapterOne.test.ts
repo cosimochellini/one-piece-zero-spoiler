@@ -57,8 +57,11 @@ describe('chapter-one pins', () => {
     'pins every %s fact and excludes the reordered conversion anchor',
     (id) => {
       const record = archive.getCharacter(id)
+      // A relationship selection may wait for a later endpoint (Ging's
+      // chapter 66); being unanchored, it vouches for no pair either.
       const timelines = archive.timelines.filter(
-        (timeline) => timeline.owner.id === id,
+        (timeline) =>
+          timeline.owner.id === id && timeline.field !== 'relationships',
       )
 
       expect(record?.unanchored).toBe(true)
