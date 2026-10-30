@@ -44,7 +44,8 @@ export const Route = createFileRoute('/$series/$locale/characters/')({
       return { page, shelves }
     }
 
-    // Back, or a re-read after the bookmark moved: keep the old shelves
+    // Back after half an hour, a retry, or a re-read after the bookmark
+    // moved: keep the old shelves
     // until the replacement is ready, so the restored position cannot be
     // clamped by the shorter loading placeholders.
     return { page, shelves: await shelves }
