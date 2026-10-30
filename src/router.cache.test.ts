@@ -27,16 +27,34 @@ function cacheOptions(): object {
   }
 }
 
-/** Two pages that count their reads and keep the cookie they were read at. */
-async function pages(): Promise<{
+/**
+ * Two pages that count their reads and keep the cookie each read was asked
+ * with. With `hold`, a read of `/a` waits for `release` before it answers.
+ */
+async function pages(
+  start = '/a',
+): Promise<{
+  hold: () => void
   reads: { a: number; b: number }
+  release: () => void
   router: AnyRouter
 }> {
   const reads = { a: 0, b: 0 }
+  // A held read of `/a` waits on this line for `release`.
+  const line = new EventTarget()
+  let held = false
   const root = createRootRoute()
-  const read = (page: 'a' | 'b') => (): { cookie: string } => {
+  const read = (page: 'a' | 'b') => async (): Promise<{ cookie: string }> => {
     reads[page] += 1
-    return { cookie: document.cookie }
+    const cookie = document.cookie
+    if (page === 'a' && held) {
+      await new Promise<void>((resolve) => {
+        line.addEventListener('release', () => {
+          resolve()
+        })
+      })
+    }
+    return { cookie }
   }
   const a = createRoute({
     getParentRoute: () => root,
@@ -50,11 +68,21 @@ async function pages(): Promise<{
   })
   const router = createRouter({
     routeTree: root.addChildren([a, b]),
-    history: createMemoryHistory({ initialEntries: ['/a'] }),
+    history: createMemoryHistory({ initialEntries: [start] }),
     ...cacheOptions(),
   })
   await router.load()
-  return { reads, router }
+  return {
+    hold: () => {
+      held = true
+    },
+    reads,
+    release: () => {
+      held = false
+      line.dispatchEvent(new Event('release'))
+    },
+    router,
+  }
 }
 
 /** The cookie the page on screen was read at. */
@@ -96,6 +124,41 @@ describe('the router keeps a page as read', { timeout: 15_000 }, () => {
     expect(reads).toStrictEqual({ a: 1, b: 1 })
   })
 
+  it('across a return ten minutes later', async () => {
+    vi.useFakeTimers({ toFake: ['Date'] })
+    const { reads, router } = await pages()
+    await router.navigate({ href: '/b' })
+    vi.setSystemTime(Date.now() + 600_000)
+    await router.navigate({ href: '/a' })
+    await router.navigate({ href: '/b' })
+    await router.navigate({ href: '/a' })
+
+    expect(reads).toStrictEqual({ a: 1, b: 1 })
+  })
+
+  it('for half an hour, after which a return reads it again', async () => {
+    vi.useFakeTimers({ toFake: ['Date'] })
+    const { reads, router } = await pages()
+    await router.navigate({ href: '/b' })
+    vi.setSystemTime(Date.now() + 1_800_000)
+    await router.navigate({ href: '/a' })
+
+    expect(reads.a).toBe(2)
+  })
+
+  it('never from a hover read that a bookmark move overtook', async () => {
+    const { hold, reads, release, router } = await pages('/b')
+    hold()
+    const hovered = router.preloadRoute({ to: '/a' })
+    await moveTheBookmark(router)
+    release()
+    await hovered
+    await router.navigate({ href: '/a' })
+
+    expect(reads.a).toBe(2)
+    expect(shownAt(router)).toStrictEqual({ cookie: 'zs_one-piece=10' })
+  })
+
   it('until a bookmark move, after which a return waits for the new read', async () => {
     const { reads, router } = await pages()
     await router.navigate({ href: '/b' })
@@ -121,9 +184,9 @@ describe('the router keeps a page as read', { timeout: 15_000 }, () => {
     expect(cacheOptions()).toStrictEqual({
       defaultGcTime: 1_800_000,
       defaultPreloadGcTime: 1_800_000,
-      defaultPreloadStaleTime: Infinity,
+      defaultPreloadStaleTime: 1_800_000,
       defaultStaleReloadMode: 'blocking',
-      defaultStaleTime: Infinity,
+      defaultStaleTime: 1_800_000,
     })
   })
 })
