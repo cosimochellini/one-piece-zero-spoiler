@@ -36,8 +36,8 @@ export const yorknewCity: HunterSaga = {
       nameSaidAt: 1,
       name: { it: 'Ging Freecss', en: 'Ging Freecss' },
       summary: {
-        it: 'Il padre di Gon, un Hunter che ha lasciato l’Isola Balena alla sua età ed è tornato dieci anni dopo con un figlio in fasce, che ha lasciato lì.',
-        en: 'Gon’s father, a Hunter who left Whale Island at Gon’s age and came back ten years later with a baby son, whom he left there.',
+        it: 'Il padre di Gon, un Hunter che ha lasciato l’Isola Balena alla sua età ed è tornato dieci anni dopo con il figlio in braccio, che ha lasciato lì.',
+        en: 'Gon’s father, a Hunter who left Whale Island at Gon’s age and came back ten years later carrying his son, whom he left there.',
       },
       visual: { art: 'ging-freecss', tint: 'sand' },
     },
@@ -47,8 +47,8 @@ export const yorknewCity: HunterSaga = {
       relationships: yorknewCityRelationships['ging-freecss'],
       role: { it: 'Hunter, padre di Gon', en: 'Hunter, Gon’s father' },
       log: {
-        it: 'Da ragazzo è partito dall’isola. Dieci anni dopo è tornato portando Gon con sé e ha chiesto alla nonna di occuparsene, dicendo che lui e la madre si erano lasciati. L’unica cosa che ha lasciato a Gon è una scatola con dentro un anello, una scheda di memoria e una cassetta: sul nastro chiede a Gon se vuole incontrarlo.',
-        en: 'He left Whale Island as a boy. Ten years later he came back carrying Gon and asked his grandmother to look after him, saying that he and the mother had separated. The one thing he left Gon is a box holding a ring, a memory card and a cassette: on the tape he asks Gon whether he wants to see him.',
+        it: 'Da ragazzo è partito dall’Isola Balena. Dieci anni dopo è tornato con Gon in braccio e ha chiesto alla nonna di occuparsene, dicendo che lui e la madre si erano lasciati. A Gon ha lasciato una scatola con dentro un anello, una scheda di memoria e una cassetta: sul nastro chiede a Gon se vuole incontrarlo.',
+        en: 'He left Whale Island as a boy. Ten years later he came back carrying Gon and asked his grandmother to look after him, saying that he and the mother had separated. He left Gon a box holding a ring, a memory card and a cassette: on the tape he asks Gon whether he wants to see him.',
       },
       status: [{ episode: 37, value: 'alive' }],
       affiliation: [
