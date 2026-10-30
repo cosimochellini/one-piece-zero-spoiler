@@ -181,6 +181,58 @@ export const HUNTER_X_HUNTER_SERIES: Series = {
   },
 }
 
+/**
+ * Game of Thrones' form ranges: the HBO show (8 seasons, 73 episodes) and
+ * the five books in publication order, prologues and epilogues counted as
+ * chapters (73, 70, 82, 46 and 73; 344 in all). The demo is season 1 and *A
+ * Game of Thrones*, the first stage (owner, 2026-10-26).
+ */
+const GAME_OF_THRONES_BOOKMARK: BookmarkSeries = {
+  slug: 'game-of-thrones',
+  cookie: 'zs_game-of-thrones',
+  trialCookie: 'zs_game-of-thrones_try',
+  episodeCeiling: 73,
+  chapterCeiling: 344,
+  demoLastEpisode: 10,
+  demoLastChapter: 73,
+  seasons: [
+    { number: 1, first: 1, last: 10 },
+    { number: 2, first: 11, last: 20 },
+    { number: 3, first: 21, last: 30 },
+    { number: 4, first: 31, last: 40 },
+    { number: 5, first: 41, last: 50 },
+    { number: 6, first: 51, last: 60 },
+    { number: 7, first: 61, last: 67 },
+    { number: 8, first: 68, last: 73 },
+  ],
+  books: [
+    { number: 1, first: 1, last: 73 },
+    { number: 2, first: 74, last: 143 },
+    { number: 3, first: 144, last: 225 },
+    { number: 4, first: 226, last: 271 },
+    { number: 5, first: 272, last: 344 },
+  ],
+}
+
+/**
+ * Game of Thrones' public description, filed closed (#849). It files
+ * characters and places and no arcs; none of One Piece's features.
+ */
+export const GAME_OF_THRONES_SERIES: Series = {
+  ...GAME_OF_THRONES_BOOKMARK,
+  name: { en: 'Game of Thrones', it: 'Il Trono di Spade' },
+  theme: 'game-of-thrones',
+  units: ['episode', 'season', 'chapter'],
+  kinds: ['character', 'place'],
+  features: {
+    bounty: false,
+    factions: false,
+    filler: false,
+    fruits: false,
+    worldMap: false,
+  },
+}
+
 /** A page under `/{series}/{locale}/` that only some series have. */
 export type SeriesPage = 'characters' | 'filler' | 'fruits' | 'places'
 

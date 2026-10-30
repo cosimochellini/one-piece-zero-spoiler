@@ -7,7 +7,15 @@
 // `test.globals`: this file is linted as plain JavaScript, where ESLint's
 // `no-undef` has no TypeScript program to learn the Vitest globals from.
 import console from 'node:console'
-import { readdirSync, readFileSync } from 'node:fs'
+import {
+  mkdirSync,
+  mkdtempSync,
+  readdirSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from 'node:fs'
+import { tmpdir } from 'node:os'
 import path from 'node:path'
 import { describe, expect, it, vi } from 'vitest'
 
@@ -226,6 +234,30 @@ describe('the prose the gate looks for', { timeout: 30_000 }, () => {
     expect(slugCanaries(repositoryRoot, 'no-such-series')).toStrictEqual([
       { file: 'src/data/series/no-such-series/art', phrase: null },
     ])
+  })
+
+  it('passes over a saga that files no entry yet, and no other module without prose', () => {
+    // Game of Thrones' seasons hold only their names until their records are
+    // filed (#849); a saga with entries the pattern cannot read still refuses.
+    const root = mkdtempSync(path.join(tmpdir(), 'archive-gate-'))
+    const dir = path.join(root, 'src/data/series/empty/records')
+    mkdirSync(dir, { recursive: true })
+    writeFileSync(
+      path.join(dir, 'season-1.ts'),
+      "export const season1 = {\n  name: { en: 'Season 1' },\n  entries: [],\n}\n",
+    )
+    writeFileSync(
+      path.join(dir, 'season-2.ts'),
+      "export const season2 = {\n  name: { en: 'Season 2' },\n  entries: [{ id: 'unread' }],\n}\n",
+    )
+
+    try {
+      expect(proseCanaries(root, 'empty')).toStrictEqual([
+        { file: 'src/data/series/empty/records/season-2.ts', phrase: null },
+      ])
+    } finally {
+      rmSync(root, { recursive: true })
+    }
   })
 
   it('reads a canary from every module of One Piece it names', () => {

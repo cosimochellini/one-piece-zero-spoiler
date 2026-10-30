@@ -392,13 +392,18 @@ describe.each(LOADED_SERIES)(
       }
     })
 
-    it('draws every record with at least four strokes and one in its colour', () => {
-      expect.hasAssertions()
+    // A series filed with no record yet (Game of Thrones, #849) has nothing
+    // to draw and no demo to end: these two rules wait for its first records.
+    it.skipIf(entities.length === 0)(
+      'draws every record with at least four strokes and one in its colour',
+      () => {
+        expect.hasAssertions()
 
-      for (const [id, strokes] of Object.entries(drawings)) {
-        isADrawing(id, strokes)
-      }
-    })
+        for (const [id, strokes] of Object.entries(drawings)) {
+          isADrawing(id, strokes)
+        }
+      },
+    )
 
     it('redraws a record as the pages read it: pinned, later, ascending, in the house style', () => {
       // Read the way every page does (`datedOf`, behind `latestOf`,
@@ -552,20 +557,24 @@ describe.each(LOADED_SERIES)(
       }
     })
 
-    it('ends its demo the episode and the chapter before its second saga', () => {
-      // The demo is the first saga: a visitor with no bookmark is sent all of
-      // it and nothing of the next.
-      const second =
-        archive.sagas[1]?.entries.filter((entry) => isArc(entry)) ?? []
-      const opens = (unit: 'revealedAtChapter' | 'revealedAtEpisode'): number =>
-        Math.min(...second.map((arc) => arc[unit]))
+    it.skipIf(entities.length === 0)(
+      'ends its demo the episode and the chapter before its second saga',
+      () => {
+        // The demo is the first saga: a visitor with no bookmark is sent all of
+        // it and nothing of the next.
+        const second =
+          archive.sagas[1]?.entries.filter((entry) => isArc(entry)) ?? []
+        const opens = (
+          unit: 'revealedAtChapter' | 'revealedAtEpisode',
+        ): number => Math.min(...second.map((arc) => arc[unit]))
 
-      expect(opens('revealedAtEpisode')).toBe(
-        archive.series.demoLastEpisode + 1,
-      )
-      expect(opens('revealedAtChapter')).toBe(
-        archive.series.demoLastChapter + 1,
-      )
-    })
+        expect(opens('revealedAtEpisode')).toBe(
+          archive.series.demoLastEpisode + 1,
+        )
+        expect(opens('revealedAtChapter')).toBe(
+          archive.series.demoLastChapter + 1,
+        )
+      },
+    )
   },
 )

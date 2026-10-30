@@ -34,6 +34,13 @@ checked; they do not establish provenance for every historical entry.
   default **CC BY-SA 3.0 Unported**, subject to page-specific exceptions and
   separately owned imported material. It is not a license for every image,
   quotation or underlying One Piece element on a wiki page.
+- Game of Thrones is filed but not yet open and holds no archive text (#849).
+  Its sources are [A Wiki of Ice and Fire](https://awoiaf.westeros.org/) and the
+  [Game of Thrones Wiki](https://gameofthrones.fandom.com/), both declaring **CC
+  BY-SA 3.0 Unported** by default, and
+  [Italian Wikipedia](https://it.wikipedia.org/), **CC BY-SA 4.0**. Game of
+  Thrones is an HBO series based on George R. R. Martin's A Song of Ice and
+  Fire; MIT grants no rights in either.
 - For verified wording or adaptations retained under that license, identify the
   affected local fields, article title, source/revision URL and authors through
   the permitted attribution/history links. Preserve supplied copyright,
@@ -99,6 +106,14 @@ le verifiche svolte, senza stabilire la provenienza di ogni voce storica.
   **CC BY-SA 3.0 Unported** come licenza predefinita, soggetta alle eccezioni
   delle singole pagine e ai diritti sui materiali importati. Non è una licenza
   per ogni immagine, citazione o elemento di One Piece presente nelle wiki.
+- Il Trono di Spade è registrato ma non ancora aperto e non contiene testi
+  dell’archivio (#849). Le sue fonti sono
+  [A Wiki of Ice and Fire](https://awoiaf.westeros.org/) e la
+  [Game of Thrones Wiki](https://gameofthrones.fandom.com/), che dichiarano
+  entrambe la **CC BY-SA 3.0 Unported** come licenza predefinita, e
+  [Wikipedia in italiano](https://it.wikipedia.org/), **CC BY-SA 4.0**. Il Trono
+  di Spade è una serie HBO tratta dalle Cronache del ghiaccio e del fuoco di
+  George R. R. Martin; la MIT non concede diritti su nessuna delle due.
 - Per testi o adattamenti verificati mantenuti sotto questa licenza, occorre
   indicare i campi locali interessati, il titolo dell’articolo, l’URL della
   fonte e della revisione e gli autori tramite i collegamenti consentiti per

@@ -96,7 +96,7 @@ describe('the series of a verify run', () => {
 
   it('refuses a series the list does not hold, and an unknown argument', async () => {
     await expect(seriesFrom(['--series', 'naruto'])).rejects.toThrow(
-      '--series naruto is not in src/data/series/index.ts (one-piece, hunter-x-hunter)',
+      '--series naruto is not in src/data/series/index.ts (one-piece, hunter-x-hunter, game-of-thrones)',
     )
     await expect(seriesFrom(['--serie', 'one-piece'])).rejects.toThrow(
       /--serie/u,

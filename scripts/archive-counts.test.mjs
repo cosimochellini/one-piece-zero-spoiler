@@ -73,4 +73,18 @@ describe('the table of one series', () => {
     expect(table).toContain('| Arcs, places | 1 · 0 |')
     expect(table).toContain('| Saga modules | 1 |')
   })
+
+  it('capitalises the row of a series that files no arcs', () => {
+    const table = countTable({
+      archive: {
+        drawings: {},
+        entities: [],
+        sagas: [],
+        series: { features: { fruits: false }, kinds: ['character', 'place'] },
+        timelines: [],
+      },
+    })
+
+    expect(table).toContain('| Places | 0 |')
+  })
 })

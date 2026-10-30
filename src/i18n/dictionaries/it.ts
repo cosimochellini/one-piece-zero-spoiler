@@ -196,6 +196,7 @@ export const itDictionary: Dictionary = {
     'Le pagine esterne possono anticipare fatti successivi, anche nei titoli. Aprendo una fonte esci dalla protezione dagli spoiler di questa wiki.',
   'credits.fandomTerms': 'Licenze e attribuzioni Fandom',
   'credits.fandomTermsIt': 'Licenze Fandom in italiano',
+  'credits.wikipediaTerms': 'Condizioni d’uso di Wikipedia',
   'credits.referencesTitle': 'Riferimenti documentati',
   'credits.bookmark':
     'Sono elencati solo i riferimenti a materiali visibili al tuo segnalibro. La licenza accanto a una fonte riguarda il suo testo, non l’intero archivio.',

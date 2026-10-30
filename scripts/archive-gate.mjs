@@ -93,6 +93,7 @@ export const EXTRA = {
     ],
     slugs: [],
   },
+  'game-of-thrones': { prose: [], slugs: [] },
 }
 
 /**
@@ -104,6 +105,9 @@ export const EXTRA = {
 // regular expression comes to take exponential time on a line that nearly
 // matches, and an archive module is a long file.
 const SLUG_PATTERN = /^ {2}'(?<slug>[a-z\d-]{12,})':/gmu
+
+/** A saga module that files no entry yet: `entries: []`. */
+const NO_ENTRIES = /^ {2}entries: \[\],$/mu
 
 /** A slug earns its place by being hyphenated: a bare word is a word. */
 const HYPHENATED = /-/u
@@ -243,12 +247,16 @@ export function proseCanaries(repositoryRoot, folder) {
   }
 
   return [...sagas, ...(EXTRA[folder]?.prose ?? [])].flatMap((file) => {
-    const phrase = canaryFrom(
-      readFileSync(path.join(repositoryRoot, file), 'utf8'),
-    )
+    // fallow-ignore-next-line security-sink -- The root is this script’s directory or a test fixture; file is a module of a series folder named in the repository's own series list, or one of its listed extras.
+    const source = readFileSync(path.join(repositoryRoot, file), 'utf8')
+    const phrase = canaryFrom(source)
 
-    // `saga.ts` is the shape of a saga, not a saga: no prose, nothing to say.
-    if (phrase === null && file.endsWith('saga.ts')) {
+    // `saga.ts` is the shape of a saga, not a saga, and a saga that files no
+    // entry yet holds only its name: no prose, nothing to say.
+    if (
+      phrase === null
+      && (file.endsWith('saga.ts') || NO_ENTRIES.test(source))
+    ) {
       return []
     }
 

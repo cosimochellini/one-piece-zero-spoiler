@@ -1,4 +1,5 @@
 import type { enDictionary } from './dictionaries/en'
+import type { gameOfThronesEn } from './dictionaries/game-of-thrones/en'
 import type { hunterXHunterEn } from './dictionaries/hunter-x-hunter/en'
 import type { onePieceEn } from './dictionaries/one-piece/en'
 
@@ -37,6 +38,7 @@ export type CommonKey =
  * own, and no other series' (`TranslationKey`).
  */
 export interface SeriesCopies {
+  'game-of-thrones': typeof gameOfThronesEn
   'hunter-x-hunter': typeof hunterXHunterEn
   'one-piece': typeof onePieceEn
 }

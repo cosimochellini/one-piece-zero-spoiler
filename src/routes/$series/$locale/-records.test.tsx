@@ -240,21 +240,26 @@ describe.each(LOADED)('every index of $series.slug', (archive) => {
 })
 
 describe.each(LOADED)('every record page of $series.slug', (archive) => {
-  it.each(LOCALES)('draws the landing page in %s', async (locale) => {
-    const bookmarks = [null, ...bookmarksOf(archive)]
-    for (const bookmark of bookmarks) {
-      const r = readerFor(archive, bookmark, locale)
-      const { unmount } = renderWithProviders(
-        <LandingPage landing={landingPage(r, null)} />,
-        optionsFor(archive, locale, { path: '', bookmark }),
-      )
-      await settle()
+  // The landing page tells the arc the reader is in: a series with no record
+  // yet (Game of Thrones, #849) has none, and no reader reaches it closed.
+  it.skipIf(archive.entities.length === 0).each(LOCALES)(
+    'draws the landing page in %s',
+    async (locale) => {
+      const bookmarks = [null, ...bookmarksOf(archive)]
+      for (const bookmark of bookmarks) {
+        const r = readerFor(archive, bookmark, locale)
+        const { unmount } = renderWithProviders(
+          <LandingPage landing={landingPage(r, null)} />,
+          optionsFor(archive, locale, { path: '', bookmark }),
+        )
+        await settle()
 
-      expect(screen.getByRole('main')).toBeInTheDocument()
+        expect(screen.getByRole('main')).toBeInTheDocument()
 
-      unmount()
-    }
-  })
+        unmount()
+      }
+    },
+  )
 
   it.each(LOCALES)('draws each character’s page in %s', async (locale) => {
     const ids = sample(archive.characters.map((entity) => entity.id))

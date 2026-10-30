@@ -1,5 +1,10 @@
 import type { Locale } from '~/i18n/locales'
-import type { SeriesSlug, TranslationKey } from '~/i18n/types'
+import type {
+  CommonKey,
+  SeriesSlug,
+  SharedKey,
+  TranslationKey,
+} from '~/i18n/types'
 import type { Series } from '~/lib/progress/series'
 import type { SeriesLegal, SeriesSources } from '~/lib/view/credits'
 import { copyOf, translatorOf } from '~/server/copy.server'
@@ -8,7 +13,24 @@ const BY_SA_3: [string, string] = [
   'CC BY-SA 3.0 Unported',
   'https://creativecommons.org/licenses/by-sa/3.0/',
 ]
-const FANDOM_TERMS = 'https://www.fandom.com/licensing'
+const BY_SA_4: [string, string] = [
+  'CC BY-SA 4.0',
+  'https://creativecommons.org/licenses/by-sa/4.0/',
+]
+
+/** A source link every series may label: a common key or a shared one. */
+type Link = [CommonKey | SharedKey, string]
+
+const wikiEn = (url: string): Link => ['credits.wikiEn', url]
+const FANDOM_TERMS: Link = [
+  'credits.fandomTerms',
+  'https://www.fandom.com/licensing',
+]
+const WIKIPEDIA_IT: Link = ['credits.wikiIt', 'https://it.wikipedia.org/']
+const WIKIPEDIA_TERMS: Link = [
+  'credits.wikipediaTerms',
+  'https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use',
+]
 
 /**
  * Where each series' rights line is published, the license of the text of
@@ -25,30 +47,34 @@ const SOURCES: {
     rights: 'https://www.toei-animation.com/copyrights/',
     licenses: { 'wiki-en': BY_SA_3, 'wiki-it': BY_SA_3 },
     links: [
-      ['credits.wikiEn', 'https://onepiece.fandom.com/'],
+      wikiEn('https://onepiece.fandom.com/'),
       ['credits.wikiIt', 'https://onepiece.fandom.com/it/'],
-      ['credits.fandomTerms', FANDOM_TERMS],
+      FANDOM_TERMS,
       ['credits.fandomTermsIt', 'https://www.fandom.com/it/licensing-it'],
       ['credits.fillerList', 'https://www.animefillerlist.com/shows/one-piece'],
     ],
   },
   'hunter-x-hunter': {
     rights: 'https://www.viz.com/copyrights',
-    licenses: {
-      'wiki-en': BY_SA_3,
-      'wiki-it': [
-        'CC BY-SA 4.0',
-        'https://creativecommons.org/licenses/by-sa/4.0/',
-      ],
-    },
+    licenses: { 'wiki-en': BY_SA_3, 'wiki-it': BY_SA_4 },
     links: [
-      ['credits.wikiEn', 'https://hunterxhunter.fandom.com/'],
-      ['credits.wikiIt', 'https://it.wikipedia.org/'],
-      ['credits.fandomTerms', FANDOM_TERMS],
-      [
-        'credits.wikipediaTerms',
-        'https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use',
-      ],
+      wikiEn('https://hunterxhunter.fandom.com/'),
+      WIKIPEDIA_IT,
+      FANDOM_TERMS,
+      WIKIPEDIA_TERMS,
+    ],
+  },
+  // A Wiki of Ice and Fire for the books, the Game of Thrones Wiki on Fandom
+  // for the show, Italian Wikipedia for the dub's names (owner, 2026-10-26).
+  'game-of-thrones': {
+    rights: 'https://www.hbo.com/terms-and-conditions',
+    licenses: { 'wiki-en': BY_SA_3, 'wiki-it': BY_SA_4 },
+    links: [
+      wikiEn('https://awoiaf.westeros.org/'),
+      ['credits.wikiShow', 'https://gameofthrones.fandom.com/'],
+      WIKIPEDIA_IT,
+      FANDOM_TERMS,
+      WIKIPEDIA_TERMS,
     ],
   },
 }

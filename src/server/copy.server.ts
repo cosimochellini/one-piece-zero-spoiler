@@ -1,4 +1,6 @@
 import { enDictionary } from '~/i18n/dictionaries/en'
+import { gameOfThronesEn } from '~/i18n/dictionaries/game-of-thrones/en'
+import { gameOfThronesIt } from '~/i18n/dictionaries/game-of-thrones/it'
 import { hunterXHunterEn } from '~/i18n/dictionaries/hunter-x-hunter/en'
 import { hunterXHunterIt } from '~/i18n/dictionaries/hunter-x-hunter/it'
 import { itDictionary } from '~/i18n/dictionaries/it'
@@ -26,6 +28,7 @@ import type { Series } from '~/lib/progress/series'
 export const COPIES: { [S in SeriesSlug]: Record<Locale, SeriesWords<S>> } = {
   'one-piece': { en: onePieceEn, it: onePieceIt },
   'hunter-x-hunter': { en: hunterXHunterEn, it: hunterXHunterIt },
+  'game-of-thrones': { en: gameOfThronesEn, it: gameOfThronesIt },
 }
 
 function isSeriesSlug(slug: string): slug is SeriesSlug {

@@ -80,7 +80,12 @@ interface Sweep {
 
 /** The sweep of one series: every page, with its own archive's excuses. */
 function sweepOf(series: ListedSeries): Sweep {
-  return { byDesign: byDesignOf(series), payloads: payloadsFor(series.archive) }
+  // The home page tells the arc the reader is in: a series with no record
+  // yet (Game of Thrones, #849) has none, and no reader reaches it closed.
+  const payloads = payloadsFor(series.archive).filter(
+    ({ name }) => series.archive.entities.length > 0 || name !== 'loadHome',
+  )
+  return { byDesign: byDesignOf(series), payloads }
 }
 
 /**
@@ -89,7 +94,7 @@ function sweepOf(series: ListedSeries): Sweep {
  * unswept; its bookmarks are its own, in the list.
  */
 const SWEEPS: Partial<Record<string, Sweep>> = Object.fromEntries(
-  ['one-piece', 'hunter-x-hunter'].flatMap((slug) => {
+  ['one-piece', 'hunter-x-hunter', 'game-of-thrones'].flatMap((slug) => {
     const series = SERIES.find((entry) => entry.slug === slug)
     return series === undefined ? [] : [[slug, sweepOf(series)]]
   }),

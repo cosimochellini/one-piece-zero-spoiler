@@ -118,6 +118,24 @@ const EXPECTED: Record<string, Expected> = {
     },
     namesSaidEarly: true,
   },
+  // Filed closed with no record yet (#849): only its place words' headers,
+  // and no floor. The first season's characters and places (#852, #853)
+  // raise it.
+  'game-of-thrones': {
+    kinds: ['allRegions', 'copy', 'region'],
+    least: {
+      affiliations: 0,
+      arcs: 0,
+      characters: 0,
+      chronicles: 0,
+      linkedOrigins: 0,
+      places: 0,
+      statuses: 0,
+      timelines: 0,
+      visits: 0,
+    },
+    namesSaidEarly: false,
+  },
 }
 
 /** A series' row, or the test is wrong: a series filed needs one. */

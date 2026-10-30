@@ -560,32 +560,36 @@ describe.each(LOADED_SERIES)(
       expect(scan.leaks(true)).toStrictEqual([])
     })
 
-    it('would catch a text at the first episode that names the last record', () => {
-      const last = lastScanned(entities)
+    // A series with no record yet (Game of Thrones, #849) has none to probe.
+    it.skipIf(entities.length === 0)(
+      'would catch a text at the first episode that names the last record',
+      () => {
+        const last = lastScanned(entities)
 
-      // The probe is only a probe if the record it names opens later.
-      expect(
-        last.revealedAtEpisode,
-        `${last.id} opens at the first episode`,
-      ).toBeGreaterThan(FIRST_EPISODE)
-      expect(
-        last.revealedAtChapter,
-        `${last.id} opens at the first chapter`,
-      ).toBeGreaterThan(FIRST_CHAPTER)
+        // The probe is only a probe if the record it names opens later.
+        expect(
+          last.revealedAtEpisode,
+          `${last.id} opens at the first episode`,
+        ).toBeGreaterThan(FIRST_EPISODE)
+        expect(
+          last.revealedAtChapter,
+          `${last.id} opens at the first chapter`,
+        ).toBeGreaterThan(FIRST_CHAPTER)
 
-      const probe: Text = {
-        chapter: FIRST_CHAPTER,
-        episode: FIRST_EPISODE,
-        label: 'probe',
-        owner: { id: 'probe' },
-        source: undefined,
-        text: { en: `On to ${last.name.en}.`, it: `Verso ${last.name.it}.` },
-      }
+        const probe: Text = {
+          chapter: FIRST_CHAPTER,
+          episode: FIRST_EPISODE,
+          label: 'probe',
+          owner: { id: 'probe' },
+          source: undefined,
+          text: { en: `On to ${last.name.en}.`, it: `Verso ${last.name.it}.` },
+        }
 
-      for (const locale of LOCALES) {
-        expect(scan.leaked(probe, locale, true), locale).toContain(last)
-      }
-    })
+        for (const locale of LOCALES) {
+          expect(scan.leaked(probe, locale, true), locale).toContain(last)
+        }
+      },
+    )
 
     it('say a name early only before its own record opens', () => {
       // A `nameSaidAt` at or after the threshold would change nothing, and is
@@ -653,9 +657,14 @@ function everywhere(en: string): LocalizedText {
   return { en, it: en }
 }
 
-/** The last series filed, the smallest archive to build a fixture on. */
+/**
+ * The last series filed that files records, the smallest archive to build a
+ * fixture on.
+ */
 function lastFiled(): (typeof LOADED_SERIES)[number] {
-  const filed = LOADED_SERIES.at(-1)
+  const filed = LOADED_SERIES.findLast(
+    ({ archive }) => archive.entities.length > 0,
+  )
   if (filed === undefined) {
     throw new Error('no series filed')
   }

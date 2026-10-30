@@ -8,7 +8,11 @@ import { readerFor } from './reader.server'
 
 describe('public demo drawings', () => {
   it('returns exactly each series’ demo drawings and bounded redrawings regardless of bookmark', () => {
-    for (const { archive } of LOADED_SERIES) {
+    // A series with no record yet (Game of Thrones, #849) has no demo.
+    const filing = LOADED_SERIES.filter(
+      ({ archive }) => archive.entities.length > 0,
+    )
+    for (const { archive } of filing) {
       const { demoLastChapter, demoLastEpisode } = archive.series
       const bookmarks: Bookmark[] = [
         null,

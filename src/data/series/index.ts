@@ -1,11 +1,13 @@
 import type { PlaceWords, SeriesArchive } from '~/data/types'
 import {
+  GAME_OF_THRONES_SERIES,
   HUNTER_X_HUNTER_SERIES,
   ONE_PIECE_SERIES,
   type Series,
 } from '~/lib/progress/series'
 import type { ComingSeries } from '~/lib/view/hub'
 
+import { GAME_OF_THRONES_PLACE_WORDS } from './game-of-thrones/placeWords'
 import { HUNTER_X_HUNTER_PLACE_WORDS } from './hunter-x-hunter/placeWords'
 import { ONE_PIECE_PLACE_WORDS } from './one-piece/placeWords'
 
@@ -86,10 +88,38 @@ const HUNTER_X_HUNTER: ListedSeries = {
 }
 
 /**
+ * Filed closed until its first stage, season 1 and *A Game of Thrones*, is
+ * ready (#844). Its book thresholds are checked on A Wiki of Ice and Fire,
+ * its episodes on the Game of Thrones Wiki, and its Italian names, which
+ * follow the Italian dub, on Italian Wikipedia (owner, 2026-10-26). The show
+ * ran past the books, so no chapter is its last adapted one.
+ */
+const GAME_OF_THRONES: ListedSeries = {
+  description: GAME_OF_THRONES_SERIES,
+  slug: GAME_OF_THRONES_SERIES.slug,
+  folder: 'game-of-thrones',
+  open: false,
+  placeWords: GAME_OF_THRONES_PLACE_WORDS,
+  wiki: {
+    en: 'https://awoiaf.westeros.org/api.php',
+    it: 'https://it.wikipedia.org/w/api.php',
+  },
+  load: async () => {
+    const { GAME_OF_THRONES_ARCHIVE } =
+      await import('./game-of-thrones/archive')
+    return GAME_OF_THRONES_ARCHIVE
+  },
+}
+
+/**
  * Every series filed: what the gates, the tests and the scripts go through.
  * Nothing a reader reaches imports it (ESLint `no-restricted-imports`).
  */
-export const SERIES: ListedSeries[] = [ONE_PIECE, HUNTER_X_HUNTER]
+export const SERIES: ListedSeries[] = [
+  ONE_PIECE,
+  HUNTER_X_HUNTER,
+  GAME_OF_THRONES,
+]
 
 /** The series readers can reach: what every page and the sitemap go through. */
 export const OPEN_SERIES: ListedSeries[] = SERIES.filter(({ open }) => open)

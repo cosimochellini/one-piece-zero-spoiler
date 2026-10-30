@@ -14,6 +14,7 @@ import { pathToFileURL } from 'node:url'
 const SITE = 'Zero Spoiler'
 /** Series slug → the name its titles carry. */
 const SERIES = new Map([
+  ['game-of-thrones', 'Game of Thrones'],
   ['hunter-x-hunter', 'Hunter x Hunter'],
   ['one-piece', 'One Piece'],
 ])
