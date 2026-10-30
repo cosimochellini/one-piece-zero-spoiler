@@ -1,7 +1,8 @@
 // Every payload the server sends, for every key, at every bookmark of the
 // spoiler sweep and in both locales, one JSON line each (about 1 GB for One
 // Piece). Dump the base and the head of a refactor that should change
-// nothing, and `cmp` the two:
+// nothing, and `cmp` the two. Redirect it to a file, not a pipe: stdout is
+// written without backpressure, and a pipe can fail with ENOBUFS:
 //   npm run --silent archive:dump > head.jsonl
 // The list is the sweep's own (`src/server/archive/payloads.server.ts`), so
 // a page added to the server is in the dump too, and so are the bookmarks
@@ -64,6 +65,44 @@ export function keptPayloads(payloads, skip) {
   return payloads.filter(({ name }) => !skip.includes(name))
 }
 
+/** The number fields of each bookmark mode (`src/lib/progress/episode.ts`). */
+const BOOKMARK_FIELDS = new Map([
+  ['chapter', ['chapter']],
+  ['episode', ['episode']],
+  ['season', ['episode', 'season']],
+])
+
+/**
+ * The bookmarks of a `--bookmarks` file. Anything but an array of bookmarks
+ * throws here, before the first line: a payload would throw on it halfway
+ * through, and two dumps cut at the same line would still `cmp` equal.
+ * @param {string} file The JSON file.
+ * @returns {import('../src/lib/progress/episode.ts').Bookmark[]} The bookmarks.
+ */
+export function bookmarksFrom(file) {
+  const bookmarks = JSON.parse(readFileSync(file, 'utf8'))
+  const bad =
+    Array.isArray(bookmarks) ?
+      bookmarks.find((entry) => {
+        if (entry === null) {
+          return false
+        }
+        const fields = BOOKMARK_FIELDS.get(entry?.mode)
+        return (
+          fields === undefined
+          || fields.some((field) => !Number.isSafeInteger(entry[field]))
+        )
+      })
+    : bookmarks
+  if (bad !== undefined) {
+    throw new Error(
+      `--bookmarks ${file} is not an array of bookmarks: ${JSON.stringify(bad)}`,
+    )
+  }
+
+  return bookmarks
+}
+
 /**
  * One run's dump: what it reads and the payloads it writes.
  * @typedef {{ archive: import('../src/data/types.ts').SeriesArchive, payloads: import('../src/server/archive/payloads.server.ts').Payload[], bookmarks: import('../src/lib/progress/episode.ts').Bookmark[], locales: import('../src/i18n/locales.ts').Locale[] }} Dump
@@ -94,7 +133,7 @@ async function dumpOf(args) {
   const bookmarks =
     flags.bookmarks === undefined ?
       archive.bookmarks
-    : JSON.parse(readFileSync(flags.bookmarks, 'utf8'))
+    : bookmarksFrom(flags.bookmarks)
 
   return { archive, payloads, bookmarks, locales: LOCALES }
 }
