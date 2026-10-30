@@ -1,5 +1,5 @@
 import type { Drawings } from '~/data/art/stroke'
-import { circle, ellipse, shadow } from '~/lib/svg/primitives'
+import { circle, shadow } from '~/lib/svg/primitives'
 
 /**
  * First drawings of the Heavens Arena records (#896), each at its named
@@ -94,15 +94,16 @@ export const HEAVENS_ARENA_DRAWINGS = {
     shadow(80, 176, 46),
   ],
   // One of the square fighting platforms in the arena's great hall, seen
-  // from a corner with its rim in tint and the next platform behind: where
+  // from a corner with its rim in tint and the next one behind it: where
   // Gon and Killua fight their first matches, episode 27 / chapter 44.
   'heavens-arena': [
     { d: 'M14 120 L80 98 L146 120 L80 142 Z', role: 'accent' },
     { d: 'M14 120 V128 L80 150 L146 128 V120' },
     { d: 'M80 142 V150', role: 'soft' },
     { d: 'M88 140 l6 -2 M104 135 l6 -2 M120 130 l6 -2', role: 'ambient' },
-    { d: 'M44 76 L80 64 L116 76 M44 76 V80 M116 76 V80', role: 'soft' },
-    { d: ellipse(80, 40, 30, 8), role: 'ambient' },
+    { d: 'M48 86 L80 76 L112 86 L80 96 Z', role: 'soft' },
+    { d: 'M48 86 V90 L80 100 L112 90 V86 M80 96 V100', role: 'soft' },
+    { d: 'M14 104 L36 98 M124 98 L146 104', role: 'ambient', dashed: true },
     { d: 'M4 150 H156', role: 'ambient' },
     shadow(80, 158, 64),
   ],
