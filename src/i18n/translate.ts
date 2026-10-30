@@ -41,63 +41,70 @@ export async function loadDictionary(locale: Locale): Promise<void> {
 
 const RELOADED = 'zs-copy-reloaded:'
 
+/** The flag for the page in the address bar. Throws off the browser. */
+function reloadFlag(): string {
+  return RELOADED + location.pathname + location.search
+}
+
 /**
- * Marks `href` as reloaded for this tab. False when it already was, or when
- * storage is out of reach (private mode, blocked storage, the server): then
- * nothing reloads, so a reload can never loop.
+ * Marks the page as reloaded for this tab. False when it already was, or
+ * when storage is out of reach (private mode, blocked storage, the server):
+ * then nothing reloads, so a reload can never loop.
  */
-function firstReload(href: string): boolean {
+function firstReload(): boolean {
   try {
-    const fresh = sessionStorage.getItem(RELOADED + href) === null
-    sessionStorage.setItem(RELOADED + href, '1')
+    const fresh = sessionStorage.getItem(reloadFlag()) === null
+    sessionStorage.setItem(reloadFlag(), '1')
     return fresh
   } catch {
     return false
   }
 }
 
-function forgetReload(href: string): void {
+function forgetReload(): void {
   try {
-    sessionStorage.removeItem(RELOADED + href)
+    sessionStorage.removeItem(reloadFlag())
   } catch {
     // Nothing was stored.
   }
 }
 
 /**
- * `loadDictionary` for the page at `href` (path, search and hash), which the
- * reader is opening. When the copy cannot be fetched, the browser loads
- * `href` from the server, once per tab: the fresh document names the chunks
- * the current deploy serves, and its fresh module map lets Safari ask again
- * for a chunk whose import failed (#930). No retry here first: the reload is
- * the retry that works in every browser and after a deploy. When the reload
- * did not help either, the cause is logged and thrown.
+ * `loadDictionary` for the page in the address bar: the one served, or the
+ * one a navigation has just pushed (the router writes history before it
+ * loads). When the copy cannot be fetched, the page reloads, once per tab:
+ * the fresh document names the chunks the current deploy serves, and its
+ * fresh module map lets Safari ask again for a chunk whose import failed
+ * (#930). No retry here first: the reload is the retry that works in every
+ * browser and after a deploy. When the reload did not help either, the cause
+ * is logged and thrown.
+ *
+ * `signal` is the navigation's own: once a newer navigation has superseded
+ * it, the address bar shows another page, so a failure only rethrows, for
+ * the router to drop with the rest of the abandoned navigation.
  */
 export async function loadDictionaryOrReload(
   locale: Locale,
-  href: string,
+  signal?: AbortSignal,
 ): Promise<void> {
   try {
     await loadDictionary(locale)
   } catch (error) {
-    if (!firstReload(href)) {
+    if (signal?.aborted === true) {
+      throw error
+    }
+    if (!firstReload()) {
       // eslint-disable-next-line no-console -- a broken chunk after a deploy would otherwise leave every page static without a word.
       console.error(error)
       throw error
     }
-    const { pathname, search, hash } = location
-    if (href === pathname + search + hash) {
-      location.reload()
-    } else {
-      // fallow-ignore-next-line security-sink -- `href` is the router's own location for the route being opened: a same-origin path, search and hash, never outside input
-      location.assign(href)
-    }
+    location.reload()
     // The page is on its way out: nothing renders in the meantime.
     return new Promise<never>(() => {
       // Never settles, on purpose.
     })
   }
-  forgetReload(href)
+  forgetReload()
 }
 
 /**

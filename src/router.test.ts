@@ -26,6 +26,7 @@ async function fresh(
   failedImports: () => number
   hydrate: () => Promise<void>
   loaded: (locale: Locale) => boolean
+  routes: { locale: Guarded; seriesLocale: Guarded }
   translate: typeof Translate
 }> {
   let failedImports = 0
@@ -33,6 +34,11 @@ async function fresh(
   globalThis.history.replaceState(null, '', path)
   const { getRouter } = await import('./router')
   const translate = await import('./i18n/translate')
+  const { Route: localeRoute } = await import('./routes/$locale')
+  const { Route: seriesLocale } = await import('./routes/$series/$locale')
+  // The series' own copy, as the page it came from keeps it.
+  const { keepSeriesCopy } = await import('./routes/-series')
+  keepSeriesCopy({ slug: 'one-piece', name: 'One Piece', words: {} }, 'en')
   // After the router: the server half of the route tree imports the English
   // copy too, and only the hook's own import should meet the mock.
   if (failing) {
@@ -51,21 +57,41 @@ async function fresh(
         return false
       }
     },
+    routes: { locale: localeRoute, seriesLocale },
     translate,
   }
 }
 
-/** A stand-in for `location`, whose own methods jsdom will not let a spy on. */
-function stubLocation(pathname: string): {
-  assign: Mock<(href: string) => void>
-  reload: Mock<() => void>
-} {
-  const page = {
-    assign: vi.fn<(href: string) => void>(),
-    reload: vi.fn<() => void>(),
+interface Guarded {
+  options: { beforeLoad?: unknown }
+}
+
+/** Runs a route's real `beforeLoad` on a client navigation to `/…/en`. */
+async function enter(
+  route: Guarded,
+  navigation: { abortController?: AbortController; preload?: boolean },
+): Promise<unknown> {
+  const guard: unknown = route.options.beforeLoad
+  if (typeof guard !== 'function') {
+    throw new TypeError('A locale route needs its guard')
   }
-  vi.stubGlobal('location', { ...page, pathname, search: '', hash: '' })
-  return page
+  const result: unknown = await Reflect.apply(guard, undefined, [
+    {
+      abortController: new AbortController(),
+      context: { series: { slug: 'one-piece' } },
+      params: { locale: 'en' },
+      preload: false,
+      ...navigation,
+    },
+  ])
+  return result
+}
+
+/** A stand-in for `location`, whose own methods jsdom will not let a spy on. */
+function stubLocation(pathname: string): Mock<() => void> {
+  const reload = vi.fn<() => void>()
+  vi.stubGlobal('location', { reload, pathname, search: '' })
+  return reload
 }
 
 /** Whether a promise has not settled; it fails the test if it rejected. */
@@ -121,17 +147,16 @@ describe('getRouter', { timeout: 15_000 }, () => {
 
   it('reloads the page once when the copy does not arrive', async () => {
     const { hydrate, failedImports } = await fresh('/en', true)
-    const page = stubLocation('/en')
+    const reload = stubLocation('/en')
     const error = silenceErrors()
 
     const hydrating = hydrate()
     await vi.waitFor(() => {
-      expect(page.reload).toHaveBeenCalledTimes(1)
+      expect(reload).toHaveBeenCalledTimes(1)
     })
 
     await expect(stillPending(hydrating)).resolves.toBe(true)
     expect(failedImports()).toBe(1)
-    expect(page.assign).not.toHaveBeenCalled()
     expect(sessionStorage.getItem(`${FLAG}/en`)).toBe('1')
     expect(error).not.toHaveBeenCalled()
   })
@@ -139,7 +164,7 @@ describe('getRouter', { timeout: 15_000 }, () => {
   it('after a reload that did not help, leaves the page unhydrated and says why', async () => {
     sessionStorage.setItem(`${FLAG}/en`, '1')
     const { hydrate } = await fresh('/en', true)
-    const page = stubLocation('/en')
+    const reload = stubLocation('/en')
     const error = silenceErrors()
 
     const hydrating = hydrate()
@@ -148,7 +173,7 @@ describe('getRouter', { timeout: 15_000 }, () => {
     })
 
     await expect(stillPending(hydrating)).resolves.toBe(true)
-    expect(page.reload).not.toHaveBeenCalled()
+    expect(reload).not.toHaveBeenCalled()
   })
 
   it('does not reload where storage is out of reach, so it cannot loop', async () => {
@@ -156,7 +181,7 @@ describe('getRouter', { timeout: 15_000 }, () => {
       throw new DOMException('The operation is insecure.', 'SecurityError')
     })
     const { hydrate } = await fresh('/en', true)
-    const page = stubLocation('/en')
+    const reload = stubLocation('/en')
     const error = silenceErrors()
 
     const hydrating = hydrate()
@@ -165,39 +190,72 @@ describe('getRouter', { timeout: 15_000 }, () => {
     })
 
     await expect(stillPending(hydrating)).resolves.toBe(true)
-    expect(page.reload).not.toHaveBeenCalled()
+    expect(reload).not.toHaveBeenCalled()
   })
 })
 
-describe('loadDictionaryOrReload on a navigation', () => {
-  afterEach(() => {
-    vi.doUnmock('./i18n/dictionaries/en')
-    vi.unstubAllGlobals()
-    sessionStorage.clear()
-  })
-
-  it('opens the page it was going to, from the server, once', async () => {
-    const { translate } = await fresh('/it', true)
-    const page = stubLocation('/it')
-
-    const loading = translate.loadDictionaryOrReload('en', '/en/legal')
-    await vi.waitFor(() => {
-      expect(page.assign).toHaveBeenCalledExactlyOnceWith('/en/legal')
+// A navigation has pushed its address before the routes' `beforeLoad` runs,
+// so the stubbed address bar shows the page being opened.
+describe(
+  'the locale routes on a client navigation',
+  { timeout: 15_000 },
+  () => {
+    afterEach(() => {
+      vi.doUnmock('./i18n/dictionaries/en')
+      vi.unstubAllGlobals()
+      sessionStorage.clear()
     })
 
-    await expect(stillPending(loading)).resolves.toBe(true)
-    expect(page.reload).not.toHaveBeenCalled()
-  })
+    it.each(['locale', 'seriesLocale'] as const)(
+      '%s: a preload never reloads, the navigation itself reloads once',
+      async (name) => {
+        const { routes } = await fresh('/it', true)
+        const reload = stubLocation('/one-piece/en')
 
-  it('throws for the route to show its error when that did not help', async () => {
-    sessionStorage.setItem(`${FLAG}/en/legal`, '1')
-    const { translate } = await fresh('/it', true)
-    const page = stubLocation('/it')
-    silenceErrors()
+        await expect(enter(routes[name], { preload: true })).rejects.toThrow(
+          Error,
+        )
+        expect(reload).not.toHaveBeenCalled()
+        expect(sessionStorage).toHaveLength(0)
 
-    await expect(
-      translate.loadDictionaryOrReload('en', '/en/legal'),
-    ).rejects.toThrow(Error)
-    expect(page.assign).not.toHaveBeenCalled()
-  })
-})
+        const entering = enter(routes[name], {})
+        await vi.waitFor(() => {
+          expect(reload).toHaveBeenCalledTimes(1)
+        })
+
+        await expect(stillPending(entering)).resolves.toBe(true)
+        expect(sessionStorage.getItem(`${FLAG}/one-piece/en`)).toBe('1')
+      },
+    )
+
+    it('throws for the route to show its error when the reload did not help', async () => {
+      sessionStorage.setItem(`${FLAG}/one-piece/en`, '1')
+      const { routes } = await fresh('/it', true)
+      const reload = stubLocation('/one-piece/en')
+      const error = silenceErrors()
+
+      await expect(enter(routes.seriesLocale, {})).rejects.toThrow(Error)
+      expect(reload).not.toHaveBeenCalled()
+      expect(error).toHaveBeenCalledTimes(1)
+    })
+
+    it.each(['locale', 'seriesLocale'] as const)(
+      '%s: leaves the page alone when a newer navigation superseded this one',
+      async (name) => {
+        const { routes } = await fresh('/it', true)
+        // Back to the page the reader came from, before the import failed.
+        const reload = stubLocation('/it')
+        const error = silenceErrors()
+        const abortController = new AbortController()
+        abortController.abort()
+
+        await expect(enter(routes[name], { abortController })).rejects.toThrow(
+          Error,
+        )
+        expect(reload).not.toHaveBeenCalled()
+        expect(sessionStorage).toHaveLength(0)
+        expect(error).not.toHaveBeenCalled()
+      },
+    )
+  },
+)

@@ -38,12 +38,8 @@ export function getRouter(): ReturnType<typeof createRouter<typeof routeTree>> {
     // hydration suspended instead, so the page stays as the server rendered
     // it, readable, its links ordinary page loads.
     hydrate: async () => {
-      const { pathname, search, hash } = location
       try {
-        await loadDictionaryOrReload(
-          localeOfPath(pathname),
-          pathname + search + hash,
-        )
+        await loadDictionaryOrReload(localeOfPath(location.pathname))
       } catch {
         await new Promise<never>(() => {
           // Never settles, on purpose.

@@ -18,7 +18,7 @@ import { loadDrawings, loadSagaLabels } from '~/server/api'
 /** The archive shell, after the series and language have both been validated. */
 export const Route = createFileRoute('/$series/$locale')({
   params: { parse: ({ locale }) => (isLocale(locale) ? { locale } : false) },
-  beforeLoad: async ({ params, context, location, preload }) => {
+  beforeLoad: async ({ params, context, preload, abortController }) => {
     if (!isLocale(params.locale)) {
       throw notFound()
     }
@@ -27,7 +27,7 @@ export const Route = createFileRoute('/$series/$locale')({
       // A hovered link's preload must not reload the page into it.
       preload ?
         loadDictionary(params.locale)
-      : loadDictionaryOrReload(params.locale, location.href),
+      : loadDictionaryOrReload(params.locale, abortController.signal),
     ])
     return { locale: params.locale, copy }
   },
