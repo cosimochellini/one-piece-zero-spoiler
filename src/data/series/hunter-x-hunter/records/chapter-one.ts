@@ -20,8 +20,8 @@ export const chapterOne: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       unanchored: true,
       name: { it: 'Kaito', en: 'Kite' },
       summary: {
-        it: 'Un Hunter allievo di Ging che salva Gon da un orso-volpe sull’Isola Balena e gli dice che suo padre è ancora vivo.',
-        en: 'A Hunter trained by Ging who saves Gon from a foxbear on Whale Island and tells him that his father is still alive.',
+        it: 'Un Hunter allievo di Ging che salva Gon da un orso-volpe sull’Isola Balena.',
+        en: 'A Hunter trained by Ging who saves Gon from a foxbear on Whale Island.',
       },
       visual: { art: 'kite', tint: 'azure' },
     },
@@ -46,8 +46,8 @@ export const chapterOne: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       chronicle: chapterOneChronicles.kite,
       role: { it: 'Hunter', en: 'Hunter' },
       log: {
-        it: 'Arriva sull’Isola Balena in cerca di indizi su Ging, il suo maestro, che gli ha assegnato come ultima prova il compito di trovarlo. Salva Gon da un orso-volpe e lo rimprovera per essersi avvicinato al suo territorio. Quando scopre che è il figlio di Ging, gli racconta che suo padre è un Hunter ed è ancora vivo.',
-        en: 'He comes to Whale Island looking for clues about Ging, his teacher, whose final test is to find him. He saves Gon from a foxbear and rebukes him for entering its territory. When he learns that Gon is Ging’s son, he tells him that his father is a Hunter and is still alive.',
+        it: 'Arriva sull’Isola Balena in cerca di indizi su Ging, il suo maestro, che gli ha assegnato come ultima prova il compito di trovarlo. Salva Gon da un orso-volpe e lo rimprovera per essersi avvicinato al suo territorio.',
+        en: 'He comes to Whale Island looking for clues about Ging, his teacher, whose final test is to find him. He saves Gon from a foxbear and rebukes him for entering its territory.',
       },
       status: [{ episode: 76, chapter: 1, value: 'alive' }],
       affiliation: [
