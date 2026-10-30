@@ -17,10 +17,16 @@ export function getRouter(): ReturnType<typeof createRouter<typeof routeTree>> {
     defaultPreload: 'intent',
     // A page read once is kept as read: Back to the characters re-rendered
     // its few thousand nodes a second time when an identical background
-    // re-read landed, mid-crossfade (#939). A page's data is its URL, the
-    // build and the cookies, so a cookie change clears the cache (below),
-    // and a bookmark move's `invalidate` still re-reads what is on screen.
+    // re-read landed, mid-crossfade (#939). What a page shows is its URL,
+    // the build and the cookies, so a cookie change clears the cache
+    // (below), and a bookmark move's `invalidate` still re-reads what is on
+    // screen. (The places loader also measures the screen's orientation, but
+    // only as a first guess the page measures again.)
     defaultStaleTime: Infinity,
+    // A hover or touch on a link to a page read earlier reuses it as well. A
+    // preload that read it again would hand its call to the click, and the
+    // click would wait on the network for the page it already has.
+    defaultPreloadStaleTime: Infinity,
     // With nothing stale on its own, only `invalidate` reloads a page that
     // has been read. It waits for the new records, so a bookmark move keeps
     // the old page until they land, never marks it read in the meantime.
@@ -76,9 +82,14 @@ export function getRouter(): ReturnType<typeof createRouter<typeof routeTree>> {
  *
  * Before the load picks pages from the cache, the cache goes. Once the load
  * has committed, it goes again, since committing files the page that was on
- * screen into it; and a page the load kept on screen without reading it (a
- * filter on the same page, after another tab moved the bookmark) is read
- * again. A load that never commits leaves the move for the next one.
+ * screen into it. Once it has finished, a page it kept on screen without
+ * reading it (a filter on the same page, after another tab moved the
+ * bookmark) is read again. A load that stops short leaves the rest to the
+ * next one.
+ *
+ * It reads the cookies when a load starts, not when each answer was asked
+ * for, so a move in another tab that races a call in flight, or lands
+ * before this page hydrates, is not caught here.
  */
 export function dropCacheOnCookieMove(router: AnyRouter): void {
   let cookies = document.cookie
@@ -98,13 +109,23 @@ export function dropCacheOnCookieMove(router: AnyRouter): void {
       router.clearCache()
     }
   })
+  // The re-read waits for the load to finish: started inside its commit, it
+  // would cut the commit's own last steps short.
+  let reread: null | Set<unknown> = null
   router.subscribe('onLoad', () => {
     if (readBefore === null) {
       return
     }
-    const old = readBefore
+    reread = readBefore
     readBefore = null
     router.clearCache()
+  })
+  router.subscribe('onResolved', () => {
+    if (reread === null) {
+      return
+    }
+    const old = reread
+    reread = null
     const kept = (match: AnyRouteMatch): boolean => old.has(match.loaderData)
     if (router.state.matches.some((match) => kept(match))) {
       void router.invalidate({ filter: kept })

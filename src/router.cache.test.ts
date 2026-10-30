@@ -34,10 +34,17 @@ function pages(path = '/a'): {
     routeTree: root.addChildren([a, b]),
     history: createMemoryHistory({ initialEntries: [path] }),
     defaultStaleTime: Infinity,
+    defaultPreloadStaleTime: Infinity,
     defaultStaleReloadMode: 'blocking',
   })
   dropCacheOnCookieMove(router)
   return { reads, router }
+}
+
+/** The cookie the page on screen was read with. */
+function shownWith(router: AnyRouter): unknown {
+  const shown: unknown = router.state.matches.at(-1)?.loaderData
+  return shown
 }
 
 function moveTheBookmark(): void {
@@ -51,6 +58,7 @@ describe('the router keeps a page as read', { timeout: 15_000 }, () => {
     const { options } = getRouter()
 
     expect(options.defaultStaleTime).toBe(Infinity)
+    expect(options.defaultPreloadStaleTime).toBe(Infinity)
     expect(options.defaultStaleReloadMode).toBe('blocking')
   })
 })
@@ -78,6 +86,7 @@ describe('dropCacheOnCookieMove', () => {
     await router.navigate({ href: '/b' })
 
     expect(reads).toStrictEqual({ a: 2, b: 2 })
+    expect(shownWith(router)).toStrictEqual({ cookie: document.cookie })
   })
 
   it('reads a page kept on screen through the move once more, and only once', async () => {
@@ -88,10 +97,33 @@ describe('dropCacheOnCookieMove', () => {
     await vi.waitFor(() => {
       expect(reads.a).toBe(2)
     })
+    await vi.waitFor(() => {
+      expect(router.state.status).toBe('idle')
+    })
+
+    expect(shownWith(router)).toStrictEqual({ cookie: document.cookie })
+    expect(router.state.resolvedLocation?.href).toBe('/a?x=2')
+
     await router.navigate({ href: '/b' })
     await router.navigate({ href: '/a?x=2' })
 
     expect(reads).toStrictEqual({ a: 2, b: 1 })
+  })
+
+  it('lets a link reuse a page read long ago instead of waiting on a preload', async () => {
+    vi.useFakeTimers({ toFake: ['Date'] })
+    try {
+      const { reads, router } = pages()
+      await router.load()
+      await router.navigate({ href: '/b' })
+      vi.setSystemTime(Date.now() + 60_000)
+      await router.preloadRoute({ to: '/a' })
+      await router.navigate({ href: '/a' })
+
+      expect(reads).toStrictEqual({ a: 1, b: 1 })
+    } finally {
+      vi.useRealTimers()
+    }
   })
 
   it('re-reads nothing twice when invalidate follows the move', async () => {
