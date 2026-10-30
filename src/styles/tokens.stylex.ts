@@ -167,17 +167,19 @@ export const space = stylex.defineVars({
  * is confined to two slots: episode numerals wherever they appear, and the
  * horizon label on the route.
  *
- * `Bricolage Grotesque` is a variable display grotesque (weight 200-800, width
- * 75-100, optical size 12-96). It is only ever set at 800 and only on the
- * headline, the wordmark, waypoint names and legend figures. Body copy is
- * `Instrument Sans`, a variable text sans (weight 400-700). All three are
- * self-hosted from `public/fonts`, which keeps the CSP at `default-src 'self'`.
+ * `Bricolage Grotesque` is a display grotesque with an optical-size axis. It
+ * is set at 800 on the headline, the wordmark, waypoint names and legend
+ * figures, at normal or semi-condensed width; the three lighter weights it
+ * ships at are listed beside their `@font-face` rules in `global.css`. Body
+ * copy is `Instrument Sans`, a variable text sans (weight 400-700). All three
+ * are self-hosted from `public/fonts`, which keeps the CSP at
+ * `default-src 'self'`.
  */
 export const font = stylex.defineVars({
   display:
     "'Bricolage Grotesque', 'Bricolage Grotesque Fallback', Arial, sans-serif",
   body: "'Instrument Sans', 'Instrument Sans Fallback', Arial, sans-serif",
-  mono: "'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace",
+  mono: "'JetBrains Mono', 'JetBrains Mono Fallback', ui-monospace, SFMono-Regular, Menlo, monospace",
 })
 
 /**
