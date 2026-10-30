@@ -62,12 +62,13 @@ restores the pair’s reached history. Both endpoints and each snapshot are gate
 before names or text reach the client; perspectives remain directed.
 
 Character pages in every series show reached relationships or omit the section
-entirely, including while it loads. The cohort inventory accounts for every One
-Piece character through authored selections or documented deliberate omissions.
-A series without authored relationships, including Hunter x Hunter, shows no
-recommendation section; no relationships are inferred. Character archive-order
-navigation and nearby recommendations have been retired; independent place and
-fruit navigation remains.
+entirely, including while it loads. The cohort inventories account for every One
+Piece and every archived Hunter x Hunter character through authored selections
+or documented deliberate omissions
+(`docs/content-provenance/hunter-x-hunter-relationships.json` for Hunter x
+Hunter); no relationships are inferred. Character archive-order navigation and
+nearby recommendations have been retired; independent place and fruit navigation
+remains.
 
 The authoring contract and provenance requirements are in
 [Contributing](../CONTRIBUTING.md#authoring-relationship-selections). Selection

@@ -1,4 +1,5 @@
 import { hunterExamChronicles } from './hunter-exam.chronicle'
+import { hunterExamRelationships } from './hunter-exam.relationships'
 import type { HunterSaga } from './saga'
 import { trickTower } from './trick-tower'
 import { zevil } from './zevil'
@@ -345,6 +346,7 @@ const earlyExam: HunterSaga = {
   dossiers: {
     ...zevil.dossiers,
     'gon-freecss': {
+      relationships: hunterExamRelationships['gon-freecss'],
       chronicle: hunterExamChronicles['gon-freecss'],
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
@@ -368,6 +370,7 @@ const earlyExam: HunterSaga = {
       ],
     },
     'mito-freecss': {
+      relationships: hunterExamRelationships['mito-freecss'],
       chronicle: hunterExamChronicles['mito-freecss'],
       role: { it: 'Zia di Gon', en: 'Gon’s aunt' },
       log: {
@@ -389,6 +392,7 @@ const earlyExam: HunterSaga = {
       ],
     },
     'leorio-paradinight': {
+      relationships: hunterExamRelationships['leorio-paradinight'],
       chronicle: hunterExamChronicles['leorio-paradinight'],
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
@@ -409,6 +413,7 @@ const earlyExam: HunterSaga = {
       ],
     },
     'kurapika': {
+      relationships: hunterExamRelationships.kurapika,
       chronicle: hunterExamChronicles.kurapika,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
@@ -436,6 +441,7 @@ const earlyExam: HunterSaga = {
       ],
     },
     'katzo': {
+      relationships: hunterExamRelationships.katzo,
       chronicle: hunterExamChronicles.katzo,
       role: { it: 'Marinaio', en: 'Crewman' },
       log: {
@@ -451,6 +457,7 @@ const earlyExam: HunterSaga = {
       ],
     },
     'kiriko': {
+      relationships: hunterExamRelationships.kiriko,
       chronicle: hunterExamChronicles.kiriko,
       role: { it: 'Navigatori', en: 'Navigators' },
       log: {
@@ -480,6 +487,7 @@ const earlyExam: HunterSaga = {
       ],
     },
     'tonpa': {
+      relationships: hunterExamRelationships.tonpa,
       chronicle: hunterExamChronicles.tonpa,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
@@ -514,6 +522,7 @@ const earlyExam: HunterSaga = {
       ],
     },
     'hisoka': {
+      relationships: hunterExamRelationships.hisoka,
       chronicle: hunterExamChronicles.hisoka,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
@@ -541,6 +550,7 @@ const earlyExam: HunterSaga = {
       ],
     },
     'todo': {
+      relationships: hunterExamRelationships.todo,
       chronicle: hunterExamChronicles.todo,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
@@ -561,6 +571,7 @@ const earlyExam: HunterSaga = {
       ],
     },
     'geretta': {
+      relationships: hunterExamRelationships.geretta,
       chronicle: hunterExamChronicles.geretta,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
@@ -574,6 +585,7 @@ const earlyExam: HunterSaga = {
       affiliation: [{ episode: 3, chapter: 5, value: APPLICANT }],
     },
     'cherry': {
+      relationships: hunterExamRelationships.cherry,
       chronicle: hunterExamChronicles.cherry,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
@@ -589,6 +601,7 @@ const earlyExam: HunterSaga = {
       ],
     },
     'hanzo': {
+      relationships: hunterExamRelationships.hanzo,
       chronicle: hunterExamChronicles.hanzo,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
@@ -616,6 +629,7 @@ const earlyExam: HunterSaga = {
       ],
     },
     'nicholas': {
+      relationships: hunterExamRelationships.nicholas,
       chronicle: hunterExamChronicles.nicholas,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
@@ -635,6 +649,7 @@ const earlyExam: HunterSaga = {
       ],
     },
     'satotz': {
+      relationships: hunterExamRelationships.satotz,
       chronicle: hunterExamChronicles.satotz,
       role: { it: 'Esaminatore della prima prova', en: 'First Phase examiner' },
       log: {
@@ -651,6 +666,7 @@ const earlyExam: HunterSaga = {
       ],
     },
     'killua': {
+      relationships: hunterExamRelationships.killua,
       chronicle: hunterExamChronicles.killua,
       role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
       log: {
@@ -702,6 +718,7 @@ const earlyExam: HunterSaga = {
       ],
     },
     'menchi': {
+      relationships: hunterExamRelationships.menchi,
       chronicle: hunterExamChronicles.menchi,
       role: {
         it: 'Esaminatrice della seconda prova',
@@ -721,6 +738,7 @@ const earlyExam: HunterSaga = {
       ],
     },
     'buhara': {
+      relationships: hunterExamRelationships.buhara,
       chronicle: hunterExamChronicles.buhara,
       role: {
         it: 'Esaminatore della seconda prova',
@@ -740,6 +758,7 @@ const earlyExam: HunterSaga = {
       ],
     },
     'netero': {
+      relationships: hunterExamRelationships.netero,
       chronicle: hunterExamChronicles.netero,
       role: {
         it: 'Presidente dell’Associazione Hunter',

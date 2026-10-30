@@ -1,5 +1,6 @@
 import type { HunterSaga } from './saga'
 import { zoldyckChronicles } from './zoldyck.chronicle'
+import { zoldyckRelationships } from './zoldyck.relationships'
 
 /**
  * The visit to Killua's home, within episodes 22–26 / chapters 39–43 (#760).
@@ -159,6 +160,7 @@ export const zoldyck: Pick<HunterSaga, 'dossiers' | 'entries'> = {
   ],
   dossiers: {
     'coco-loo': {
+      relationships: zoldyckRelationships['coco-loo'],
       chronicle: zoldyckChronicles['coco-loo'],
       role: { it: 'Guida turistica', en: 'Tour guide' },
       log: {
@@ -175,6 +177,7 @@ export const zoldyck: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       ],
     },
     'zebro': {
+      relationships: zoldyckRelationships.zebro,
       chronicle: zoldyckChronicles.zebro,
       role: { it: 'Guardiano', en: 'Gatekeeper' },
       log: {
@@ -194,6 +197,7 @@ export const zoldyck: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       ],
     },
     'mike': {
+      relationships: zoldyckRelationships.mike,
       chronicle: zoldyckChronicles.mike,
       role: { it: 'Cane da guardia', en: 'Guard dog' },
       log: {
@@ -213,6 +217,7 @@ export const zoldyck: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       ],
     },
     'seaquant': {
+      relationships: zoldyckRelationships.seaquant,
       chronicle: zoldyckChronicles.seaquant,
       role: { it: 'Guardiano', en: 'Groundskeeper' },
       log: {
@@ -232,6 +237,7 @@ export const zoldyck: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       ],
     },
     'canary': {
+      relationships: zoldyckRelationships.canary,
       chronicle: zoldyckChronicles.canary,
       role: { it: 'Apprendista maggiordoma', en: 'Apprentice butler' },
       log: {
@@ -251,6 +257,7 @@ export const zoldyck: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       ],
     },
     'gotoh': {
+      relationships: zoldyckRelationships.gotoh,
       chronicle: zoldyckChronicles.gotoh,
       role: { it: 'Maggiordomo', en: 'Butler' },
       log: {
@@ -270,6 +277,7 @@ export const zoldyck: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       ],
     },
     'milluki': {
+      relationships: zoldyckRelationships.milluki,
       chronicle: zoldyckChronicles.milluki,
       role: { it: 'Fratello di Killua', en: 'Killua’s brother' },
       log: {
@@ -286,6 +294,7 @@ export const zoldyck: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       ],
     },
     'zeno': {
+      relationships: zoldyckRelationships.zeno,
       chronicle: zoldyckChronicles.zeno,
       role: { it: 'Nonno di Killua', en: 'Killua’s grandfather' },
       log: {
@@ -302,6 +311,7 @@ export const zoldyck: Pick<HunterSaga, 'dossiers' | 'entries'> = {
       ],
     },
     'kalluto': {
+      relationships: zoldyckRelationships.kalluto,
       chronicle: zoldyckChronicles.kalluto,
       role: { it: 'Fratello di Killua', en: 'Killua’s brother' },
       log: {

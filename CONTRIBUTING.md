@@ -101,14 +101,19 @@ the data checks.
 Evidence is data, not prose files. `docs/content-provenance/sources.json` pins
 every wiki revision read: append entries, never rewrite earlier ones. Beside it:
 
-- `relationships.json` maps each character with a `relationships` timeline to
-  the `sources.json` key of their character revision, or `null`. A test fails
-  when a timeline has no key, a key is stale, or an entry's episode or chapter
-  page is not pinned. A one-source entry's other number only orders it and needs
-  no page.
+- `relationships.json` maps each One Piece character with a `relationships`
+  timeline to the `sources.json` key of their character revision, or `null`. A
+  test fails when a timeline has no key, a key is stale, or an entry's episode
+  or chapter page is not pinned. A one-source entry's other number only orders
+  it and needs no page.
 - `hunter-x-hunter.json` lists, per record id, the pages read (`sources`) and
   the checks nobody has made yet (`unverified`). Episode and chapter pages
   follow from the record's gates and are not listed.
+- `hunter-x-hunter-relationships.json` lists every archived Hunter x Hunter
+  character once: under `authored`, with the `hxh-` keys of the wiki revisions
+  read, or under `omitted`, with the reason. Each entry's `Episode N (2011)` and
+  `Chapter N` page must be pinned from the Hunter x Hunter wiki; a One Piece
+  page of the same title is no evidence, and the reverse holds too.
 
 The wiki is read for facts only; no passages, dialogue, frames or scans enter
 the repository. A decision the data cannot show, such as a gate delayed behind
