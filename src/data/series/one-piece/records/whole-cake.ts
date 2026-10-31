@@ -1045,10 +1045,25 @@ export const wholeCake: OnePieceSaga = {
     },
     'nekomamushi': {
       relationships: wholeCakeRelationships.nekomamushi,
-      role: {
-        it: 'Sovrano della notte di Mokomo',
-        en: 'Ruler of the night of Mokomo',
-      },
+      role: [
+        {
+          episode: 761,
+          chapter: 813,
+          value: {
+            it: 'Sovrano della notte di Mokomo',
+            en: 'Ruler of the night of Mokomo',
+          },
+        },
+        // He hands the dukedom to Carrot in chapter 1056, episode 1083.
+        {
+          episode: 1083,
+          chapter: 1056,
+          value: {
+            it: 'Ex sovrano della notte di Mokomo',
+            en: 'Former ruler of the night of Mokomo',
+          },
+        },
+      ],
       log: {
         it: 'Dorme tutto il giorno in una stanza piena di cuscini e prende il ducato quando il sole se n’è andato, perché a Zou il comando si divide in due. È grosso, rumoroso e affettuoso con i suoi, e passa dalla risata alla rabbia in un istante. Con il duca del giorno non si parla da anni, e nessuno dei due dice davvero il perché.',
         en: 'He sleeps through the day in a room full of cushions and takes the dukedom once the sun is gone, because on Zou command is split in two. He is huge, loud and fond of his own people, and goes from laughter to fury in a heartbeat. He has not spoken to the duke of the day in years, and neither of them will say quite why.',

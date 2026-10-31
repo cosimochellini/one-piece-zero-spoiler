@@ -914,6 +914,23 @@ const ROLES: { changes: Change[]; id: string }[] = [
     ],
   },
   {
+    id: 'nekomamushi',
+    changes: [
+      {
+        episode: 1083,
+        chapter: 1056,
+        from: role(
+          'Sovrano della notte di Mokomo',
+          'Ruler of the night of Mokomo',
+        ),
+        to: role(
+          'Ex sovrano della notte di Mokomo',
+          'Former ruler of the night of Mokomo',
+        ),
+      },
+    ],
+  },
+  {
     id: 'charlotte-linlin',
     changes: [
       {
