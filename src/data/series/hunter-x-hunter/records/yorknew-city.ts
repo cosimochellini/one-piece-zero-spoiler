@@ -636,8 +636,8 @@ export const yorknewCity: HunterSaga = {
       chronicle: yorknewCityChronicles.baise,
       role: HIRED,
       log: {
-        it: 'Si candida come guardia del corpo con Kurapika. Quando l’infiltrato scoperto si rifiuta di dire quali ordini ha dato, lo bacia: lui diventa il suo servitore e le dice tutto.',
-        en: 'She applies for a bodyguard job with Kurapika. When the plant who has been caught refuses to say what orders he has given, she kisses him: he becomes her servant and tells her everything.',
+        it: 'Si candida come guardia del corpo con Kurapika. Quando l’infiltrato scoperto si rifiuta di dire quali ordini ha dato, lo bacia: lui diventa il suo servitore e parla.',
+        en: 'She applies for a bodyguard job with Kurapika. When the plant who has been caught refuses to say what orders he has given, she kisses him: he becomes her servant and talks.',
       },
       status: [
         { episode: 40, chapter: 68, value: 'alive' },

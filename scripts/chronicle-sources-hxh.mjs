@@ -114,7 +114,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
     40: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_40_(2011)',
-      note: 'Episode 40 and chapter 68: the chandelier, the dagger and the count to three, Tocino’s test and the four who can leave, the Dowsing Chain reacting at Squala, Melody, Basho’s haiku and Baise’s kiss. Italian: Catena della Pressione (Italian Wikipedia, Kurapika). Also read: Chapter 68.',
+      note: 'Corrected after review: “reveals the plan” is episode 40 only; chapter 68 has him reveal how he used his Nen, so he only talks, as Squala’s record log says. Episode 40 and chapter 68: the chandelier, the dagger and the count to three, Tocino’s test and the four who can leave, the Dowsing Chain reacting at Squala, Melody, Basho’s haiku and Baise’s kiss. Italian: Catena della Pressione (Italian Wikipedia, Kurapika). Also read: Chapter 68.',
     },
   },
   'katzo': {
@@ -722,13 +722,13 @@ export const HUNTER_X_HUNTER_SOURCES = {
   'baise': {
     40: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_40_(2011)',
-      note: 'Episode 40 and chapter 68: Squala refusing to give his orders even under torture, the kiss that makes him her servant, and the plan he then reveals. Also read: Chapter 68.',
+      note: 'Corrected after review: “reveals the plan” is episode 40 only; chapter 68 has him reveal how he used his Nen, so he only talks, as Squala’s record log says. Episode 40 and chapter 68: Squala refusing to give his orders even under torture, and the kiss that makes him her servant. Also read: Chapter 68.',
     },
   },
   'squala': {
     40: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_40_(2011)',
-      note: 'Episode 40 and chapter 68: the chain, Melody hearing his heart, his denial and distrust, Basho’s haiku, his confession and introduction, the refusal under torture and Baise’s kiss. Also read: Chapter 68.',
+      note: 'Corrected after review: “reveals the plan” is episode 40 only; chapter 68 has him reveal how he used his Nen, so he only talks, as Squala’s record log says. Episode 40 and chapter 68: the chain, Melody hearing his heart, his denial and distrust, Basho’s haiku, his confession and introduction, the refusal under torture and Baise’s kiss. Also read: Chapter 68.',
     },
   },
   'shachmono-tocino': {
@@ -746,7 +746,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
   'neon-nostrade': {
     41: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_41_(2011)',
-      note: 'The escort and the fortunes for her father’s friends are episode 41 and chapter 71; the fortunes that keep her from the Underground Auction are chapter 72, pages 4-6, in episode 41. Also read: Chapter 71, Chapter 72.',
+      note: 'Corrected after review: “the auction is too dangerous for her” is episode 41 only; both media show her father having her kept away from it. The escort and the fortunes for her father’s friends are episode 41 and chapter 71; Dalzollene’s call to her father and the order to keep her away are chapter 72, pages 4-6, in episode 41. Also read: Chapter 71, Chapter 72.',
     },
   },
   'machi': {
@@ -758,13 +758,13 @@ export const HUNTER_X_HUNTER_SOURCES = {
   'ivlenkov': {
     42: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_42_(2011)',
-      note: 'The escort is episode 41 and chapter 71; the posts (three inside, two at the back, Kurapika and Melody at the front) are episode 42 and chapter 72. Also read: Episode 41 (2011), Chapter 71, Chapter 72.',
+      note: 'Corrected after review: “the auction is too dangerous for her” is episode 41 only; both media show her father having her kept away from it. The escort is episode 41 and chapter 71; the posts (three inside, two at the back, Kurapika and Melody at the front) are episode 42 and chapter 72. Who goes where is named only in chapter 72; the episode 42 appearance list orders the bodyguards the same way, as the #900 records do. Also read: Episode 41 (2011), Chapter 71, Chapter 72.',
     },
   },
   'linssen': {
     42: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_42_(2011)',
-      note: 'The escort is episode 41 and chapter 71; the posts are episode 42 and chapter 72. The other bodyguard at the back (Basho) is named only in the chapter and is left out. Also read: Episode 41 (2011), Chapter 71, Chapter 72.',
+      note: 'Corrected after review: “the auction is too dangerous for her” is episode 41 only; both media show her father having her kept away from it. The escort is episode 41 and chapter 71; the posts are episode 42 and chapter 72. Who goes where is named only in chapter 72; the episode 42 appearance list orders the bodyguards the same way, as the #900 records do. The other bodyguard at the back (Basho) is named only in the chapter and is left out. Also read: Episode 41 (2011), Chapter 71, Chapter 72.',
     },
   },
   'shizuku': {

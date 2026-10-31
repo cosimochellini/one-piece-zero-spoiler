@@ -66,8 +66,8 @@ export const yorknewCityChronicles = {
       value: {
         title: { it: 'Il bacio', en: 'The kiss' },
         body: {
-          it: 'Versé è tra i candidati chiusi nella stanza con [[kurapika|Kurapika]]. Quando [[squala|Squala]] ammette di essere un infiltrato, dice di aver già dato i suoi ordini e che non li rivelerà, nemmeno sotto tortura. Versé gli si avvicina e lo bacia. Il suo Nen rende suo servitore chiunque lei baci, e Squala le racconta tutto il piano.',
-          en: 'Baise is one of the applicants locked in the room with [[kurapika|Kurapika]]. When [[squala|Squala]] admits to being a plant, he says he has already given his orders and will not reveal them, even under torture. Baise walks up to him and kisses him. Her Nen makes anyone she kisses her servant, and Squala tells her his whole plan.',
+          it: 'Versé è tra i candidati chiusi nella stanza con [[kurapika|Kurapika]]. Quando [[squala|Squala]] ammette di essere un infiltrato, dice di aver già dato i suoi ordini e che non li rivelerà, nemmeno sotto tortura. Versé gli si avvicina e lo bacia. Il suo Nen rende suo servitore chiunque lei baci, e Squala parla.',
+          en: 'Baise is one of the applicants locked in the room with [[kurapika|Kurapika]]. When [[squala|Squala]] admits to being a plant, he says he has already given his orders and will not reveal them, even under torture. Baise walks up to him and kisses him. Her Nen makes anyone she kisses her servant, and Squala talks.',
         },
       },
     },
@@ -80,8 +80,8 @@ export const yorknewCityChronicles = {
       value: {
         title: { it: 'Scoperto', en: 'Found out' },
         body: {
-          it: 'Squala è uno dei candidati, e il secondo infiltrato tra loro. La catena di [[kurapika|Kurapika]] reagisce davanti a lui e [[melody|Melody]] sente il suo cuore accelerare, ma lui nega e dice di non potersi fidare di loro. Quando [[basho|Basho]] scrive un haiku che brucerà chi mente alla sua domanda, Squala cede e si presenta. Dice di aver già dato i suoi ordini e che non li rivelerà, nemmeno sotto tortura. Poi [[baise|Versé]] lo bacia, e lui le racconta tutto il piano.',
-          en: 'Squala is one of the applicants, and the second plant among them. [[kurapika|Kurapika]]’s chain reacts in front of him and [[melody|Melody]] hears his heart speed up, but he denies it and says he cannot trust them. When [[basho|Basho]] writes a haiku that will burn whoever lies to his question, Squala gives in and introduces himself. He says he has already given his orders and will not reveal them, even under torture. Then [[baise|Baise]] kisses him, and he tells her his whole plan.',
+          it: 'Squala è uno dei candidati, e il secondo infiltrato tra loro. La catena di [[kurapika|Kurapika]] reagisce davanti a lui e [[melody|Melody]] sente il suo cuore accelerare, ma lui nega e dice di non potersi fidare di loro. Quando [[basho|Basho]] scrive un haiku che brucerà chi mente alla sua domanda, Squala cede e si presenta. Dice di aver già dato i suoi ordini e che non li rivelerà, nemmeno sotto tortura. Poi [[baise|Versé]] lo bacia, e lui parla.',
+          en: 'Squala is one of the applicants, and the second plant among them. [[kurapika|Kurapika]]’s chain reacts in front of him and [[melody|Melody]] hears his heart speed up, but he denies it and says he cannot trust them. When [[basho|Basho]] writes a haiku that will burn whoever lies to his question, Squala gives in and introduces himself. He says he has already given his orders and will not reveal them, even under torture. Then [[baise|Baise]] kisses him, and he talks.',
         },
       },
     },
@@ -125,8 +125,8 @@ export const yorknewCityChronicles = {
           en: 'Fortunes for her father’s friends',
         },
         body: {
-          it: 'Neon è la ragazza che [[dalzollene|Dalzorne]] e le nuove guardie del corpo, tra cui [[kurapika|Kurapika]], scortano fino a un albergo di York Shin City. Durante il viaggio Dalzorne le chiede di usare il suo potere per scrivere le profezie di alcuni uomini che conoscono suo padre. Dalle profezie, Dalzorne e il padre di Neon capiscono che l’asta sotterranea è troppo pericolosa per lei, e decidono che deve starne lontana.',
-          en: 'Neon is the girl whom [[dalzollene|Dalzollene]] and the new bodyguards, [[kurapika|Kurapika]] among them, escort to a hotel in Yorknew City. On the way, Dalzollene asks her to use her power to write fortunes for some men who know her father. From the fortunes, Dalzollene and Neon’s father work out that the Underground Auction is too dangerous for her, and they decide she must stay away from it.',
+          it: 'Neon è la ragazza che [[dalzollene|Dalzorne]] e le nuove guardie del corpo, tra cui [[kurapika|Kurapika]], scortano fino a un albergo di York Shin City. Durante il viaggio Dalzorne le chiede di usare il suo potere per scrivere le profezie di alcuni uomini che conoscono suo padre. Dalzorne riferisce le profezie al padre di Neon al telefono, e il padre la fa tenere lontana dall’asta sotterranea.',
+          en: 'Neon is the girl whom [[dalzollene|Dalzollene]] and the new bodyguards, [[kurapika|Kurapika]] among them, escort to a hotel in Yorknew City. On the way, Dalzollene asks her to use her power to write fortunes for some men who know her father. Dalzollene reports the fortunes to her father on the phone, and her father has her kept away from the Underground Auction.',
         },
       },
     },
@@ -153,8 +153,8 @@ export const yorknewCityChronicles = {
       value: {
         title: { it: 'Dentro l’asta', en: 'Sent inside' },
         body: {
-          it: 'Ivlenkov è una delle guardie del corpo della famiglia Nostrad che scortano [[neon-nostrade|Neon]] fino al suo albergo a York Shin City. Dopo le sue profezie Neon deve stare lontana dall’asta sotterranea, ma [[dalzollene|Dalzorne]] assegna lo stesso i posti per la notte: tre guardie entreranno all’asta, due sorveglieranno l’ingresso posteriore, [[kurapika|Kurapika]] e [[melody|Melody]] quello principale. Ivlenkov è uno dei tre che entrano.',
-          en: 'Ivlenkov is one of the Nostrade family’s bodyguards who escort [[neon-nostrade|Neon]] to her hotel in Yorknew City. After her fortunes Neon must stay away from the Underground Auction, but [[dalzollene|Dalzollene]] still assigns the posts for the night: three bodyguards will go into the auction, two will guard the back entrance, and [[kurapika|Kurapika]] and [[melody|Melody]] the front. Ivlenkov is one of the three who go in.',
+          it: 'Ivlenkov è una delle guardie del corpo della famiglia Nostrad che scortano [[neon-nostrade|Neon]] fino al suo albergo a York Shin City. Il padre di Neon la fa tenere lontana dall’asta sotterranea, ma [[dalzollene|Dalzorne]] assegna lo stesso i posti per la notte: tre guardie entreranno all’asta, due sorveglieranno l’ingresso posteriore, [[kurapika|Kurapika]] e [[melody|Melody]] quello principale. Ivlenkov è uno dei tre che entrano.',
+          en: 'Ivlenkov is one of the Nostrade family’s bodyguards who escort [[neon-nostrade|Neon]] to her hotel in Yorknew City. Neon’s father has her kept away from the Underground Auction, but [[dalzollene|Dalzollene]] still assigns the posts for the night: three bodyguards will go into the auction, two will guard the back entrance, and [[kurapika|Kurapika]] and [[melody|Melody]] the front. Ivlenkov is one of the three who go in.',
         },
       },
     },
@@ -167,8 +167,8 @@ export const yorknewCityChronicles = {
       value: {
         title: { it: 'L’ingresso posteriore', en: 'The back entrance' },
         body: {
-          it: 'Linssen è una delle guardie del corpo della famiglia Nostrad che scortano [[neon-nostrade|Neon]] fino al suo albergo a York Shin City. La sera dell’asta sotterranea [[dalzollene|Dalzorne]] assegna i posti: tre guardie entreranno all’asta, [[kurapika|Kurapika]] e [[melody|Melody]] sorveglieranno l’ingresso principale, e Linssen è uno dei due all’ingresso posteriore. Neon, per cui le sue profezie hanno reso l’asta troppo pericolosa, resta lontana.',
-          en: 'Linssen is one of the Nostrade family’s bodyguards who escort [[neon-nostrade|Neon]] to her hotel in Yorknew City. On the night of the Underground Auction, [[dalzollene|Dalzollene]] assigns the posts: three bodyguards will go into the auction, [[kurapika|Kurapika]] and [[melody|Melody]] will guard the front entrance, and Linssen is one of the two at the back entrance. Neon, whose fortunes have made the auction too dangerous for her, stays away.',
+          it: 'Linssen è una delle guardie del corpo della famiglia Nostrad che scortano [[neon-nostrade|Neon]] fino al suo albergo a York Shin City. La sera dell’asta sotterranea [[dalzollene|Dalzorne]] assegna i posti: tre guardie entreranno all’asta, [[kurapika|Kurapika]] e [[melody|Melody]] sorveglieranno l’ingresso principale, e Linssen è uno dei due all’ingresso posteriore. Il padre di Neon la fa tenere lontana dall’asta.',
+          en: 'Linssen is one of the Nostrade family’s bodyguards who escort [[neon-nostrade|Neon]] to her hotel in Yorknew City. On the night of the Underground Auction, [[dalzollene|Dalzollene]] assigns the posts: three bodyguards will go into the auction, [[kurapika|Kurapika]] and [[melody|Melody]] will guard the front entrance, and Linssen is one of the two at the back entrance. Neon’s father has her kept away from the auction.',
         },
       },
     },
