@@ -33,7 +33,7 @@ export const ONE_PIECE_ARCHIVE: SeriesArchive = {
   bookSections: Characters.bookSections,
   getCharacter: Characters.getCharacter,
   dossierOf: Characters.dossierOf,
-  roleOf: Characters.roleOf,
+  roleOf: DatedArchive.roleOf,
   entities: Entities.entities,
   getEntity: Entities.getEntity,
   datedOf: DatedArchive.datedOf,

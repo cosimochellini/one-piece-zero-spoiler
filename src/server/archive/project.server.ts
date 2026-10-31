@@ -68,7 +68,7 @@ export function recordOf(entity: Entity, r: Reader): RecordView {
 
 /** A character, with the role their dossier gives them. */
 export function characterOf(entity: Entity, r: Reader): CharacterView {
-  const role = r.archive.roleOf(entity)
+  const role = r.archive.roleOf(r, entity)
 
   return {
     ...recordOf(entity, r),

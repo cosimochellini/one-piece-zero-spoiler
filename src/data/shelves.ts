@@ -4,13 +4,7 @@ import type { EntityKind } from '~/lib/view/records'
 
 import { orderByMode } from './order'
 import { toldIn } from './reveal'
-import type {
-  BookSection,
-  Entity,
-  LocalizedText,
-  Saga,
-  SeriesArchive,
-} from './types'
+import type { BookSection, Entity, Saga, SeriesArchive } from './types'
 
 /**
  * The shelves of an archive, derived from a series' own records the same way
@@ -54,7 +48,6 @@ export type Cast<D> = Pick<
   | 'chart'
   | 'featuredCharacters'
   | 'getCharacter'
-  | 'roleOf'
 > & { dossierOf: (entity: Entity) => D | undefined }
 
 /**
@@ -62,7 +55,7 @@ export type Cast<D> = Pick<
  * chart, and the signal book shelved by arc. The arcs are the sagas'
  * headings (`headingsOf`), so a saga with no arc record is one arc here.
  */
-export function castOf<D extends { role: LocalizedText }>({
+export function castOf<D>({
   dossiers,
   entities,
   featured,
@@ -100,9 +93,6 @@ export function castOf<D extends { role: LocalizedText }>({
     // A record that exists but is not a character is `undefined` here too:
     // `/characters/<an arc>` is not a page.
     getCharacter: (id) => byId.get(id),
-    // The line under the name on a card, read off the dossier: an editorial
-    // sentence frozen at the threshold, not a property of the record.
-    roleOf: (entity) => dossierOf(entity)?.role,
   }
 }
 

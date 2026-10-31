@@ -89,6 +89,12 @@ function dossierReaders(
     epithet: (id) => dossiers[id]?.epithet,
     origin: (id) => dossiers[id]?.origin,
     relationships: (id) => dossiers[id]?.relationships,
+    // A single role is frozen at the threshold, so no timeline at all.
+    role: (id) => {
+      const role = dossiers[id]?.role
+
+      return Array.isArray(role) ? role : undefined
+    },
     status: (id) => dossiers[id]?.status,
   }
 }
@@ -103,6 +109,8 @@ export interface Filed {
    * own shape (`Origin`).
    */
   originOf: (owner: Pick<Entity, 'id'>) => Origin[] | undefined
+  /** A character's role as filed: a single one, or dated steps. */
+  roleOf: (owner: Pick<Entity, 'id'>) => CharacterDossier['role'] | undefined
   /**
    * One of a record's timelines as it is filed. Every page reads it through
    * `datedArchive` instead, which holds each entry behind its record; this is
@@ -132,6 +140,7 @@ export function filedTimelines(
       Object.hasOwn(all, key),
     ),
     originOf: (owner) => dossiers[owner.id]?.origin,
+    roleOf: (owner) => dossiers[owner.id]?.role,
     timelineOf: (owner, field) => all[field]?.(owner.id),
   }
 }
@@ -203,6 +212,7 @@ export type DatedArchive = Pick<
   | 'nativesOf'
   | 'reachedOf'
   | 'redrawn'
+  | 'roleOf'
   | 'stories'
   | 'timelines'
 >
@@ -248,10 +258,24 @@ export function datedArchive({
     })),
   )
 
+  const latestOf: DatedArchive['latestOf'] = (at, owner, field) =>
+    reachedOf(at, owner, field).at(-1)?.value
+
   return {
     datedOf,
     reachedOf,
-    latestOf: (at, owner, field) => reachedOf(at, owner, field).at(-1)?.value,
+    latestOf,
+    // The line under the name: a single role as filed, or the latest step
+    // reached, gated like every other entry. A record lifted by hand before
+    // the reader reaches it reads its first step, which opens on the record
+    // itself: what a single role would have said.
+    roleOf: (at, owner) => {
+      const role = filed.roleOf(owner)
+
+      return Array.isArray(role) ?
+          (latestOf(at, owner, 'role') ?? role[0]?.value)
+        : role
+    },
     nativesOf: (id) => natives.get(id) ?? [],
     redrawn: (owner) => datedOf(owner, 'redrawing'),
     // Every story, ascending by the episode it concludes at; ties keep route

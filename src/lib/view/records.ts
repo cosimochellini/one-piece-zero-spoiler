@@ -617,7 +617,8 @@ export interface DemoEntry {
   name: string
   revealedAtChapter: number
   revealedAtEpisode: number
-  role?: string
+  /** A single role, or the steps of one the story changes. */
+  role?: Step<string>[] | string
 }
 
 /** Each demo record's drawing and redrawings, bounded in both story units. */

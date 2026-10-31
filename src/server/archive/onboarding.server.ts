@@ -84,16 +84,31 @@ function demoDrawings(entity: Entity, r: Reader): Step<Drawing>[] {
   ]
 }
 
+/**
+ * A record's role on the dial: a single role as the string it always was, so
+ * a series that files no dated role sends what it did, or the steps of a
+ * dated one inside the demo.
+ */
+function roleStepsOf(entity: Entity, r: Reader): Pick<DemoEntry, 'role'> {
+  const role = r.archive.dossierOf(entity)?.role
+  if (Array.isArray(role)) {
+    return {
+      role: stepsOf(r.archive.datedOf(entity, 'role'), (v) => v[r.locale], r),
+    }
+  }
+
+  return role === undefined ? {} : { role: role[r.locale] }
+}
+
 /** One demo record, with every fact the dial can reach about it. */
 function demoOf(entity: Entity, r: Reader): DemoEntry {
   const { locale } = r
-  const role = r.archive.roleOf(entity)
   return {
     id: entity.id,
     kind: entity.kind,
     name: entity.name[locale],
     ...gateOf(entity),
-    ...(role !== undefined && { role: role[locale] }),
+    ...roleStepsOf(entity, r),
     affiliation: stepsOf(
       r.archive.datedOf(entity, 'affiliation'),
       (v) => v[locale],

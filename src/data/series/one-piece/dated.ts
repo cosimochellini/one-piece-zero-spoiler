@@ -22,6 +22,7 @@ export const {
   nativesOf,
   reachedOf,
   redrawn,
+  roleOf,
   stories,
   timelines,
 } = datedArchive({ characters, entities, filed: FILED, gateOf })

@@ -206,13 +206,17 @@ function frozenTexts(
   ]
 
   return dossiers.flatMap((dossier) => {
-    return Object.entries(dossier ?? {})
-      .filter(([field]) => !gated.has(field))
-      .flatMap(([field, value]) =>
-        textsIn(value, field).map(({ path, text }) =>
-          frozen(owner, path, text),
-        ),
-      )
+    return (
+      Object.entries(dossier ?? {})
+        // A gated field filed as a single value (a role no story changes) is
+        // frozen like any other.
+        .filter(([field, value]) => !gated.has(field) || !Array.isArray(value))
+        .flatMap(([field, value]) =>
+          textsIn(value, field).map(({ path, text }) =>
+            frozen(owner, path, text),
+          ),
+        )
+    )
   })
 }
 

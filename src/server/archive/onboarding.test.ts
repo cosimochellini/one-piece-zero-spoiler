@@ -1,5 +1,12 @@
 import { describe, expect, it } from 'vitest'
 
+import { sagaArchive } from '~/data/sagaArchive'
+import { HUNTER_X_HUNTER_ARCHIVE } from '~/data/series/hunter-x-hunter/archive'
+import { REDRAWINGS } from '~/data/series/hunter-x-hunter/art'
+import { PLACE_DOSSIERS } from '~/data/series/hunter-x-hunter/places'
+import { passedExam } from '~/data/series/hunter-x-hunter/records/saga'
+import { sagas } from '~/data/series/hunter-x-hunter/sagas'
+import type { SeriesArchive } from '~/data/types'
 import type { Bookmark } from '~/lib/progress/episode'
 import { LOADED_SERIES } from '~/test/series'
 
@@ -65,5 +72,57 @@ describe('public demo drawings', () => {
         }
       }
     }
+  })
+})
+
+/**
+ * Hunter x Hunter filed through the engine again, with Gon's dated role given
+ * a third step inside the demo that the anime alone tells.
+ */
+function withAnimeOnlyRole(): SeriesArchive {
+  const told = {
+    episode: 23,
+    source: 'episode' as const,
+    value: { en: 'Anime-only role', it: 'Ruolo solo anime' },
+  }
+  const { core } = sagaArchive({
+    featured: HUNTER_X_HUNTER_ARCHIVE.featuredCharacters.map(({ id }) => id),
+    placeDossiers: PLACE_DOSSIERS,
+    redrawings: REDRAWINGS,
+    sagas: sagas.map((saga) => {
+      const gon = saga.dossiers['gon-freecss']
+
+      return gon === undefined ? saga : (
+          {
+            ...saga,
+            dossiers: {
+              ...saga.dossiers,
+              'gon-freecss': { ...gon, role: [...passedExam(1, 1), told] },
+            },
+          }
+        )
+    }),
+    series: HUNTER_X_HUNTER_ARCHIVE.series,
+  })
+
+  return { ...HUNTER_X_HUNTER_ARCHIVE, ...core }
+}
+
+describe('a dated role on the demo dial', () => {
+  it('drops a step one source alone tells, and keeps the others', () => {
+    const page = onboardingPage(
+      null,
+      readerFor(withAnimeOnlyRole(), null, 'en'),
+    )
+    const gon = page.cast.find(({ id }) => id === 'gon-freecss')
+
+    expect(gon?.role).toStrictEqual([
+      {
+        revealedAtEpisode: 1,
+        revealedAtChapter: 1,
+        value: 'Hunter Exam applicant',
+      },
+      { revealedAtEpisode: 21, revealedAtChapter: 37, value: 'Hunter' },
+    ])
   })
 })

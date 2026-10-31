@@ -224,9 +224,10 @@ export interface Relationship {
 /**
  * What the archive knows about a character beyond the name and the sentence.
  *
- * `role` and `log` are frozen at the threshold, like the summary: they say
- * what a viewer who has just met the character could say. The timelines are
- * not frozen. Each entry is a fact from the episode it is learned in, and the
+ * `log` is frozen at the threshold, like the summary: it says what a viewer
+ * who has just met the character could say. A single `role` is frozen too;
+ * one the story changes is filed as dated steps. The timelines are not
+ * frozen. Each entry is a fact from the episode it is learned in, and the
  * page shows the latest one the reader has reached, so Robin's affiliation
  * changes when she changes it and a bounty rises when the poster is printed.
  * A fact with no entry yet is simply not on the page.
@@ -254,7 +255,13 @@ export interface CharacterDossier<V extends Vocabulary = Vocabulary> {
    * Entries are directed facts, not reciprocal links or saga-based rankings.
    */
   relationships?: Timeline<Relationship[]>
-  role: LocalizedText
+  /**
+   * The line under the name: one role frozen at the threshold, or dated steps
+   * when the story changes it (an applicant who becomes a Hunter). Steps open
+   * at the record's own threshold, so a card never goes without a role, and
+   * the page prints the latest one the reader has reached.
+   */
+  role: LocalizedText | Timeline<LocalizedText>
   /**
    * Where the character stands, and from which episode. A vocabulary rather
    * than prose so the page can say it in the reader's language: the labels
@@ -270,8 +277,9 @@ export interface CharacterDossier<V extends Vocabulary = Vocabulary> {
 /**
  * Every dated field of a record, by what an entry of it holds: the character
  * dossiers' timelines, the features' ones included, derived from the dossier
- * so that a new one does not compile until a series reads it, a ship's fate
- * and a redrawing. A series reads the fields it does not file as empty.
+ * so that a new one does not compile until a series reads it, a ship's fate,
+ * a redrawing and a dated role (a single role is no timeline). A series reads
+ * the fields it does not file as empty.
  */
 export type Fields = {
   [
@@ -285,7 +293,7 @@ export type Fields = {
   ) ?
     T
   : never
-} & { fate: LocalizedText; redrawing: Stroke[] }
+} & { fate: LocalizedText; redrawing: Stroke[]; role: LocalizedText }
 
 /** The name of a dated field. */
 export type Field = keyof Fields
@@ -426,7 +434,11 @@ export interface SeriesArchive<V extends Vocabulary = Vocabulary> {
     field: F,
   ) => Opened<Fields[F]>[]
   redrawn: (owner: Entity) => { gate: Gated; value: Stroke[] }[]
-  roleOf: (entity: Entity) => LocalizedText | undefined
+  /**
+   * A character's role as the reader has reached it, the first step of a
+   * dated one before they have; `undefined` with no dossier.
+   */
+  roleOf: (at: Reveal, entity: Entity) => LocalizedText | undefined
   sagas: Saga<V>[]
   series: Series
   stories: FiledStory[]
