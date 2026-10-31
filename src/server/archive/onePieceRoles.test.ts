@@ -586,7 +586,7 @@ const ROLES: { changes: Change[]; id: string }[] = [
         episode: 1164,
         chapter: 1133,
         from: role('Gigante naufragato a Ohara', 'Giant castaway on Ohara'),
-        to: role('Insegnante di storia a Elbaph', 'History teacher on Elbaph'),
+        to: role('Insegnante di storia a Elbaf', 'History teacher on Elbaph'),
       },
     ],
   },
@@ -608,7 +608,7 @@ const ROLES: { changes: Change[]; id: string }[] = [
     id: 'jinbe',
     changes: [
       {
-        episode: 486,
+        episode: 466,
         chapter: 557,
         from: role(
           'Uomo-pesce della Flotta dei Sette',
@@ -634,7 +634,7 @@ const ROLES: { changes: Change[]; id: string }[] = [
     id: 'camie',
     changes: [
       {
-        episode: 527,
+        episode: 529,
         chapter: 608,
         from: role('Sirena del Takoyaki 8', 'Mermaid of Takoyaki 8'),
         to: role('Cameriera del Caffè delle Sirene', 'Mermaid Café waitress'),

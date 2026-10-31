@@ -1203,10 +1203,10 @@ export const summitWar: OnePieceSaga = {
             en: 'Fish-man of the Seven Warlords',
           },
         },
-        // He tells Sengoku he resigns in chapter 557; the episode is his
-        // affiliation’s, 486.
+        // He tells Sengoku he resigns in chapter 557, which episode 466
+        // adapts. His affiliation's step at 486 is later; #980.
         {
-          episode: 486,
+          episode: 466,
           chapter: 557,
           value: {
             it: 'Uomo-pesce, ex membro della Flotta dei Sette',
@@ -1269,9 +1269,10 @@ export const summitWar: OnePieceSaga = {
           chapter: 493,
           value: { it: 'Sirena del Takoyaki 8', en: 'Mermaid of Takoyaki 8' },
         },
-        // A waitress at the Mermaid Café, she says in chapter 608, episode 527.
+        // A waitress at the Mermaid Café: chapter 608 says so; the anime first
+        // does in episode 529, at the café with her boss (as #983).
         {
-          episode: 527,
+          episode: 529,
           chapter: 608,
           value: {
             it: 'Cameriera del Caffè delle Sirene',
@@ -1971,7 +1972,9 @@ export const summitWar: OnePieceSaga = {
           chapter: 540,
           value: { it: 'Sovrano del livello 5.5', en: 'Ruler of level 5.5' },
         },
-        // Out of Impel Down at 451 (chapter 548), the pair of his status.
+        // A leader of the Revolutionary Army since chapter 539 (episode 441);
+        // ruler of level 5.5 until he leaves Impel Down at 451 (chapter 548),
+        // the pair of his status.
         {
           episode: 451,
           chapter: 548,

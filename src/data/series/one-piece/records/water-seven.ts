@@ -1774,7 +1774,7 @@ export const waterSeven: OnePieceSaga = {
           episode: 1164,
           chapter: 1133,
           value: {
-            it: 'Insegnante di storia a Elbaph',
+            it: 'Insegnante di storia a Elbaf',
             en: 'History teacher on Elbaph',
           },
         },
