@@ -358,13 +358,29 @@ const FACTION_OF: Record<Locale, Map<string, string>> = {
   it: factionsByLabel('it'),
 }
 
+/**
+ * The payloads that send an affiliation's own prose, which can read the same
+ * as a label ("Seven Warlords of the Sea" on Mihawk's page): the character
+ * page's facts (`latestOf` in `wordFactsOf`, `./project.server`) and the
+ * demo's steps (`inDemo` in `stepsOf`, `./onboarding.server`). Both send
+ * only the entries the reader has reached, and the leak scan reads each at
+ * its own gate (`dated` in `~/data/leaks.test.ts`), so here their
+ * `affiliation` values are not read; every other key of theirs is.
+ */
+const AFFILIATION_PROSE = new Set(['loadCharacter', 'loadHome'])
+
 /** The factions a payload labels whose group the album has not sent. */
 function earlyLabels(
   payload: unknown,
-  locale: Locale,
-  groups: Set<null | string>,
+  {
+    groups,
+    locale,
+    name,
+  }: { groups: Set<null | string>; locale: Locale; name: string },
 ): string[] {
-  return stringsIn(payload, 'affiliation')
+  const skip = AFFILIATION_PROSE.has(name) ? 'affiliation' : undefined
+
+  return stringsIn(payload, skip)
     .map((word) => FACTION_OF[locale].get(word))
     .filter(
       (faction): faction is string =>
@@ -373,13 +389,16 @@ function earlyLabels(
 }
 
 /** Every One Piece ask, with the faction groups its fruit album sends. */
-const GROUPED = asksOf(ONE_PIECE_LOADED).map(({ bookmark, locale }) => ({
-  bookmark,
-  groups: new Set<null | string>(
-    fruitAlbum(bookmark, locale).factions.map(({ faction }) => faction),
-  ),
-  locale,
-}))
+const GROUPED = asksOf(ONE_PIECE_LOADED).map(({ bookmark, locale }) => {
+  const { factions } = fruitAlbum(bookmark, locale)
+
+  return {
+    bookmark,
+    factions,
+    groups: new Set<null | string>(factions.map(({ faction }) => faction)),
+    locale,
+  }
+})
 
 /** Every label a page sends early at the asks it is sampled at. */
 function earlyLabelsOf({ keys, name, run }: Payload): string[] {
@@ -387,7 +406,7 @@ function earlyLabelsOf({ keys, name, run }: Payload): string[] {
 
   return GROUPED.flatMap(({ bookmark, groups, locale }, at) =>
     sampled(all, at).flatMap((key) =>
-      earlyLabels(run(bookmark, locale, key), locale, groups).map(
+      earlyLabels(run(bookmark, locale, key), { groups, locale, name }).map(
         (faction) =>
           `${faction} via ${name} '${key}' @ ${JSON.stringify(bookmark)} ${locale}`,
       ),
@@ -395,12 +414,42 @@ function earlyLabelsOf({ keys, name, run }: Payload): string[] {
   )
 }
 
+/** The unit a bookmark counts in. */
+const unitOf = (bookmark: Bookmark): string =>
+  bookmark?.mode === 'chapter' ? 'chapter' : 'episode'
+
+/**
+ * Each faction's group where the sweep first meets it, in each unit and
+ * locale, as `faction unit locale` → the label it came with.
+ */
+function firstGroups(): Map<string, null | string> {
+  const first = new Map<string, null | string>()
+  for (const { bookmark, factions, locale } of GROUPED) {
+    for (const { faction, label } of factions) {
+      const at = `${String(faction)} ${unitOf(bookmark)} ${locale}`
+      if (faction !== null && !first.has(at)) {
+        first.set(at, label)
+      }
+    }
+  }
+
+  return first
+}
+
+/** Every faction's label in every unit and locale, keyed as `firstGroups`. */
+const EVERY_LABEL = LOCALES.flatMap((locale) =>
+  Object.entries(FACTION_LABELS[locale]).flatMap(([faction, label]) =>
+    ['chapter', 'episode'].map((unit) => ({
+      at: `${faction} ${unit} ${locale}`,
+      faction,
+      label,
+    })),
+  ),
+)
+
 // Some faction labels name a group the reader meets late ("Kozuki family"),
 // so a label is sent with the fruit album's group and nowhere else (#988):
 // a page holds it only once an eater the reader has reached stands in it.
-// An affiliation's own prose can read the same ("Seven Warlords of the Sea"
-// on Mihawk's page): it is the record's, under the record's gate, which the
-// sweep above holds, so it is not read here.
 describe('a faction label', () => {
   it.each(PAYLOADS)(
     'is not in $name before the fruit album has its group',
@@ -409,25 +458,19 @@ describe('a faction label', () => {
     },
   )
 
-  it('comes with its group once the bookmark reaches it', () => {
-    const ceilings = asksOf({
-      ...ONE_PIECE_LOADED,
-      bookmarks: ONE_PIECE_LOADED.bookmarks.slice(-2),
-    })
+  it('comes with its group from the first bookmark that has it', () => {
+    const first = firstGroups()
+    const met = EVERY_LABEL.filter(({ at }) => first.has(at))
+    const missed = EVERY_LABEL.filter(({ at }) => !first.has(at))
 
-    for (const { bookmark, locale } of ceilings) {
-      const groups = fruitAlbum(bookmark, locale).factions
-      const labels = FACTION_LABELS[locale]
-
-      expect(
-        groups.map(({ label }) => label),
-        JSON.stringify(bookmark),
-      ).toContain(labels['kozuki-family'])
-      expect(groups.map(({ label }) => label)).toStrictEqual(
-        groups.map(({ faction }) =>
-          faction === null ? null : labels[faction],
-        ),
-      )
-    }
+    expect(met.map(({ at }) => first.get(at))).toStrictEqual(
+      met.map(({ label }) => label),
+    )
+    // The sweep's bookmarks fall outside the short stretch these groups
+    // hold an open eater, in both units: their eaters' next entries tag
+    // them otherwise. A faction added to this list needs a reason.
+    expect(new Set(missed.map(({ faction }) => faction))).toStrictEqual(
+      new Set(['galley-la', 'punk-hazard']),
+    )
   })
 })
