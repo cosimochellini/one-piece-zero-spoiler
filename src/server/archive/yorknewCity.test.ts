@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest'
 import type { Entity } from '~/data/types'
 import { LOCALES } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
+import type { RecordView, Slot } from '~/lib/view/records'
 import { LOADED_SERIES } from '~/test/series'
 
 import { characterPage, drawingsFor } from './pages.server'
@@ -119,6 +120,93 @@ describe('the bodyguards’ dated steps', () => {
     )
     expect(affiliation('kurapika', named)).toMatch(/Neon’s bodyguard/u)
   })
+})
+
+function shelfOf(id: string, reader: Reader): Slot<RecordView>[] {
+  const page = placePage(id, reader)
+  if (page === undefined || !('detail' in page) || !page.detail.slot.open) {
+    throw new Error(`Expected open place: ${id}`)
+  }
+  return page.detail.slot.record.dossier?.filedHere ?? []
+}
+
+describe('the shelves of the arc’s places', () => {
+  const SHELVES = [
+    {
+      place: 'yorknew-city',
+      ids: ['shizuku'],
+      episodes: [41],
+      chapters: [70, 71],
+    },
+    {
+      place: 'lingon-airport',
+      ids: ['ivlenkov', 'linssen'],
+      episodes: [41],
+      chapters: [71],
+    },
+  ]
+
+  it.each(
+    SHELVES.flatMap((shelf) =>
+      LOCALES.flatMap((locale) => [
+        {
+          ...shelf,
+          locale,
+          unit: 'episode',
+          covered: shelf.episodes,
+          open: 42,
+        },
+        {
+          ...shelf,
+          locale,
+          unit: 'chapter',
+          covered: shelf.chapters,
+          open: 72,
+        },
+      ]),
+    ),
+  )(
+    'covers $place’s tiles until 42 / 72 by $unit ($locale)',
+    ({ place, ids, locale, unit, covered, open }) => {
+      for (const count of covered) {
+        const shelf = shelfOf(
+          place,
+          readerFor(archive, at(unit, count), locale),
+        )
+
+        expect(shelf).toHaveLength(ids.length)
+
+        // Exactly the handle, the kind and the thresholds: no name, no id.
+        for (const slot of shelf) {
+          const tile = slot.open ? undefined : slot.covered
+
+          expect(tile?.handle).toBeTypeOf('string')
+          expect({ ...tile, handle: 'opaque' }).toStrictEqual({
+            handle: 'opaque',
+            kind: 'character',
+            revealedAtChapter: 72,
+            revealedAtEpisode: 42,
+          })
+        }
+
+        const text = JSON.stringify(shelf)
+
+        for (const id of ids) {
+          const record = character(id)
+
+          expect(text).not.toContain(id)
+          expect(text).not.toContain(record.name.en)
+          expect(text).not.toContain(record.name.it)
+        }
+      }
+
+      const reached = shelfOf(place, readerFor(archive, at(unit, open), locale))
+
+      expect(
+        reached.map((slot) => (slot.open ? slot.record.id : undefined)),
+      ).toStrictEqual(ids)
+    },
+  )
 })
 
 describe('the arc’s leads', () => {

@@ -161,8 +161,8 @@ export const yorknewCity: HunterSaga = {
       revealedAtChapter: 68,
       name: { it: 'Shachmono Tocino', en: 'Shachmono Tocino' },
       summary: {
-        it: 'Un uomo che lavora per il capo e mette alla prova i candidati con figure vestite di nero fatte della sua aura.',
-        en: 'A man working for the boss who tests the applicants with figures in black made of his aura.',
+        it: 'Un uomo che mette alla prova i candidati con figure vestite di nero fatte della sua aura.',
+        en: 'A man who tests the applicants with figures in black made of his aura.',
       },
       visual: { art: 'shachmono-tocino', tint: 'ice' },
     },
@@ -327,8 +327,8 @@ export const yorknewCity: HunterSaga = {
     'basho': {
       role: HIRED,
       log: {
-        it: 'Si candida come guardia del corpo con Kurapika. Abbatte a mani nude una delle figure vestite di nero e capisce che sono fatte di aura. Scrive haiku che si avverano: il primo dà fuoco a una sedia, il secondo promette una morte rapida nel fuoco a chi mente dicendo di non essere un infiltrato.',
-        en: 'He applies for a bodyguard job with Kurapika. He knocks down one of the figures in black bare-handed and realizes they are made of aura. He writes haiku that come true: the first sets a chair on fire, the second promises a swift death by fire to anyone who lies about not being a plant.',
+        it: 'Si candida come guardia del corpo con Kurapika. Abbatte a mani nude una delle figure vestite di nero e capisce che sono fatte di aura. Scrive haiku che si avverano: il primo dà fuoco a una sedia, il secondo dice che chi mente alla sua domanda brucerà.',
+        en: 'He applies for a bodyguard job with Kurapika. He knocks down one of the figures in black bare-handed and realizes they are made of aura. He writes haiku that come true: the first sets a chair on fire, the second says that whoever lies to his question will burn.',
       },
       status: [{ episode: 40, chapter: 68, value: 'alive' }],
       affiliation: [NEON_GUARD],
@@ -345,8 +345,8 @@ export const yorknewCity: HunterSaga = {
     'squala': {
       role: PLANT,
       log: {
-        it: 'La catena di Kurapika oscilla davanti a lui, e Melody sente il suo cuore accelerare. Nega di essere un infiltrato finché l’haiku di Basho non lo costringe a confessare. Dopo il bacio di Versé rivela il suo piano.',
-        en: 'Kurapika’s chain swings in front of him, and Melody hears his heart speed up. He denies being a plant until Basho’s haiku makes him confess. After Baise kisses him he reveals his plan.',
+        it: 'La catena di Kurapika oscilla davanti a lui, e Melody sente il suo cuore accelerare. Nega di essere un infiltrato finché l’haiku di Basho non lo costringe a confessare. Dopo il bacio di Versé parla.',
+        en: 'Kurapika’s chain swings in front of him, and Melody hears his heart speed up. He denies being a plant until Basho’s haiku makes him confess. He talks after Baise kisses him.',
       },
       status: [{ episode: 40, chapter: 68, value: 'alive' }],
       affiliation: [NEON_GUARD],
@@ -354,8 +354,8 @@ export const yorknewCity: HunterSaga = {
     'shachmono-tocino': {
       role: PLANT,
       log: {
-        it: 'Lavora per il capo e mette alla prova i candidati con figure vestite di nero fatte della sua aura. Kurapika lo scopre notando che è l’unico che le figure non attaccano.',
-        en: 'He works for the boss, and he tests the applicants with figures in black made of his aura. Kurapika finds him out by noticing that he is the only one the figures never attack.',
+        it: 'Mette alla prova i candidati con figure vestite di nero fatte della sua aura. Kurapika lo scopre notando che è l’unico che le figure non attaccano.',
+        en: 'He tests the applicants with figures in black made of his aura. Kurapika finds him out by noticing that he is the only one the figures never attack.',
       },
       status: [{ episode: 40, chapter: 68, value: 'alive' }],
       affiliation: [NEON_GUARD],
@@ -490,10 +490,7 @@ export const YORKNEW_CITY_PLACES: Record<
     form: 'building',
     region: 'mainland',
     arc: 'yorknew-city-arc',
-    landmark: {
-      it: 'Il grande ingresso sorvegliato',
-      en: 'The large guarded entrance',
-    },
+    landmark: { it: 'L’ingresso sorvegliato', en: 'The guarded entrance' },
     log: {
       it: 'Qui si tiene l’asta sotterranea. Dalzorne manda tre guardie del corpo all’asta e ne mette due all’ingresso principale e due a quello posteriore.',
       en: 'The Underground Auction is held here. Dalzollene sends three bodyguards in to attend it and posts two at the front entrance and two at the back.',
