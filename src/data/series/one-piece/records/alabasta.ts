@@ -20,6 +20,11 @@ const BW_AGENT_ROLE = {
 
 const BW = { it: 'Baroque Works', en: 'Baroque Works' }
 
+const CROSS_GUILD_ROLE = {
+  it: 'Membro della Cross Guild',
+  en: 'Cross Guild member',
+}
+
 const BW_OFFICER_ROLE = {
   it: 'Agente ufficiale di Baroque Works',
   en: 'Baroque Works officer agent',
@@ -782,9 +787,16 @@ export const alabasta: OnePieceSaga = {
       relationships: alabastaRelationships['mr-9'],
       // Ep 63 never names Baroque Works: he says he is a king and that their
       // work is secret. Zoro names the organisation at the end of ep 64, in
-      // the ch 107 scene where Mr. 9 stands with the agents. The role is
-      // frozen at the threshold, so it stays his cover, as Igaram's does.
-      role: { it: 'Sedicente re', en: 'Self-styled king' },
+      // the ch 107 scene where Mr. 9 stands with the agents. The role keeps
+      // his cover until then, the pair of his affiliation.
+      role: [
+        {
+          episode: 63,
+          chapter: 107,
+          value: { it: 'Sedicente re', en: 'Self-styled king' },
+        },
+        { episode: 64, chapter: 107, value: BW_AGENT_ROLE },
+      ],
       log: {
         it: 'Porta una corona e dice di essere un re, e per tutta risposta si sente dare del bugiardo. Con la sua socia entra nello stomaco di una balena gigante per ucciderla, perché la sua carne servirebbe alla loro città, e dall’interno prova ad aprirle un buco a colpi di bazooka. Messi fuori combattimento e buttati in mare, i due chiedono un passaggio fino a casa, e sul loro lavoro dicono solo che è segreto.',
         en: 'He wears a crown and says he is a king, and is called a liar for it. With his partner he gets inside the stomach of a giant whale to kill it, because its meat would serve their town, and tries to blast a hole in it from inside with a bazooka. Knocked out and thrown overboard, the two of them beg a ride home, and say only that their work is secret.',
@@ -797,7 +809,23 @@ export const alabasta: OnePieceSaga = {
     },
     'igaram': {
       relationships: alabastaRelationships.igaram,
-      role: { it: 'Capo di Whisky Peak', en: 'Head of Whisky Peak' },
+      role: [
+        {
+          episode: 64,
+          chapter: 114,
+          value: { it: 'Capo di Whisky Peak', en: 'Head of Whisky Peak' },
+        },
+        // Revealed as captain of the royal guard in chapter 110 (p. 14), below
+        // his record’s chapter, so at 114, on his affiliation’s episode, 67.
+        {
+          episode: 67,
+          chapter: 114,
+          value: {
+            it: 'Capitano della guardia reale di Alabasta',
+            en: 'Captain of Alabasta’s royal guard',
+          },
+        },
+      ],
       log: {
         it: 'Accoglie ogni nave che arriva a Whisky Peak con un coro, un banchetto e tutto il liquore che i pirati riescono a bere, poi aspetta che crollino. Porta i bigodini anche di giorno e suona un sassofono che spara. Sotto il nome in codice di Mr. Eight comanda cento agenti travestiti da cittadini ospitali.',
         en: 'He greets every ship that reaches Whisky Peak with a choir, a banquet and all the liquor the pirates can drink, then waits for them to fall over. He wears curlers by daylight and plays a saxophone that fires bullets. Under the code name Mr. 8 he commands a hundred agents dressed as hospitable townsfolk.',
@@ -923,7 +951,19 @@ export const alabasta: OnePieceSaga = {
     },
     'mr-3': {
       relationships: alabastaRelationships['mr-3'],
-      role: BW_AGENT_ROLE,
+      role: [
+        { episode: 70, chapter: 120, value: BW_AGENT_ROLE },
+        // One of Buggy’s escapees in chapter 593 (p. 19); the episode is his
+        // affiliation’s, 517.
+        {
+          episode: 517,
+          chapter: 593,
+          value: {
+            it: 'Membro della ciurma di Bagy',
+            en: 'Member of Buggy’s crew',
+          },
+        },
+      ],
       log: {
         it: 'Non vuole che il suo nome in codice venga detto in pubblico. Beve Earl Grey, dice di annoiarsi e chiama le sue giornate oziose un privilegio da agente ufficiale. Quando gli ordini del capo dicono che Mr. Five è stato sconfitto non si stupisce: secondo lui un criminale vince con l’intelligenza, non con i poteri di un frutto.',
         en: 'He does not want his code name said in public. He drinks Earl Grey, says he is bored, and calls his idle days a privilege of an officer agent. When the boss’s orders say that Mr. 5 has been beaten he is not surprised: a criminal, he says, wins with his head, not with a devil fruit’s powers.',
@@ -1055,7 +1095,34 @@ export const alabasta: OnePieceSaga = {
     },
     'wapol': {
       relationships: alabastaRelationships.wapol,
-      role: { it: 'Capitano del Bliking', en: 'Captain of the Bliking' },
+      role: [
+        {
+          episode: 79,
+          chapter: 133,
+          value: { it: 'Capitano del Bliking', en: 'Captain of the Bliking' },
+        },
+        {
+          episode: 80,
+          chapter: 133,
+          value: { it: 'Re di Drum, in esilio', en: 'Exiled king of Drum' },
+        },
+        // Episode 91 adapts chapter 154: Wapol gone, Dalton is to lead Drum.
+        {
+          episode: 91,
+          chapter: 154,
+          value: { it: 'Ex re di Drum', en: 'Former king of Drum' },
+        },
+        // King of another country at the Reverie, chapter 906 (p. 11–14),
+        // episode 885, the first pair that tells it and keeps the table.
+        {
+          episode: 885,
+          chapter: 906,
+          value: {
+            it: 'Re del Regno di Black Drum',
+            en: 'King of the Black Drum Kingdom',
+          },
+        },
+      ],
       log: {
         it: 'La sua nave, il Bliking, emerge accanto alla Going Merry e i suoi uomini salgono a bordo, mentre lui chiede alla ciurma la rotta per il Regno di Drum. Uno dei suoi dice che ha mangiato un frutto del diavolo che gli permette di mangiare qualunque cosa: si mangia una spada insieme alla carne infilzata, poi comincia a mangiarsi la nave. Rufy lo fa volare via con un colpo, e la sua ciurma si ritira.',
         en: 'His ship, the Bliking, comes up beside the Going Merry and his men board her, while he asks the crew for the way to Drum Kingdom. One of his men says he ate a devil fruit that lets him eat anything: he eats a sword along with the meat on it, then starts eating the ship. Luffy sends him flying with a punch, and his crew retreats.',
@@ -1135,10 +1202,21 @@ export const alabasta: OnePieceSaga = {
     },
     'dalton': {
       relationships: alabastaRelationships.dalton,
-      role: {
-        it: 'Capitano della guardia dell’isola di Drum',
-        en: 'Captain of Drum Island’s guard',
-      },
+      role: [
+        {
+          episode: 80,
+          chapter: 135,
+          value: {
+            it: 'Capitano della guardia dell’isola di Drum',
+            en: 'Captain of Drum Island’s guard',
+          },
+        },
+        {
+          episode: 324,
+          chapter: 440,
+          value: { it: 'Re dell’isola di Drum', en: 'King of Drum Island' },
+        },
+      ],
       log: {
         it: 'È un uomo enorme con una lunga tunica bordata di pelliccia e una grossa vanga nel fodero sulla schiena, e gli abitanti fanno quello che dice. Prima ordina ai pirati di lasciare l’isola, poi li porta a casa sua a Bighorn quando chinano la testa e chiedono un medico. Racconta loro della strega che vive nel castello sulla montagna, dei cinque pirati che hanno devastato il paese e del re che è fuggito davanti a loro, il cui ritorno è ciò che l’isola teme di più.',
         en: 'He is a huge man in a long fur-lined tunic, with an outsized spade in a sheath on his back, and the villagers do as he says. He first orders the pirates off the island, then takes them to his own house in Bighorn once they bow their heads and ask for a doctor. He tells them about the witch who lives in the castle on the mountain, about the five pirates who ravaged the country, and about the king who fled from them, whose return the island fears most of all.',
@@ -1358,10 +1436,27 @@ export const alabasta: OnePieceSaga = {
     },
     'crocodile': {
       relationships: alabastaRelationships.crocodile,
-      role: {
-        it: 'Membro della Flotta dei Sette',
-        en: 'One of the Seven Warlords',
-      },
+      role: [
+        {
+          episode: 92,
+          chapter: 155,
+          value: {
+            it: 'Membro della Flotta dei Sette',
+            en: 'One of the Seven Warlords',
+          },
+        },
+        // Tashigi arrests him and his title is revoked in chapter 211, the pair
+        // of his status.
+        {
+          episode: 127,
+          chapter: 211,
+          value: {
+            it: 'Ex membro della Flotta dei Sette',
+            en: 'Former Warlord',
+          },
+        },
+        { episode: 1083, chapter: 1056, value: CROSS_GUILD_ROLE },
+      ],
       log: {
         it: 'Ad Alabasta gli hanno intitolato piazze: ha fermato i pirati che assalivano le coste e il popolo lo adora. Da una base nascosta dirige Baroque Works, una rete di agenti con nomi in codice che non lo hanno mai visto in faccia. Fuma sigari, non alza la voce e non considera nessuno un avversario.',
         en: 'Alabasta has named squares after him: he stopped the pirates raiding its coast and the people adore him. From a hidden base he runs Baroque Works, a network of code-named agents who have never seen his face. He smokes cigars, never raises his voice, and does not consider anyone an opponent.',
@@ -1452,10 +1547,26 @@ export const alabasta: OnePieceSaga = {
     },
     'kohza': {
       relationships: alabastaRelationships.kohza,
-      role: {
-        it: 'Capo dell’esercito ribelle',
-        en: 'Leader of the rebel army',
-      },
+      role: [
+        {
+          episode: 100,
+          chapter: 164,
+          value: {
+            it: 'Capo dell’esercito ribelle',
+            en: 'Leader of the rebel army',
+          },
+        },
+        // The war is over and he is home with his father in chapter 217 (p. 6),
+        // episode 130.
+        {
+          episode: 130,
+          chapter: 217,
+          value: {
+            it: 'Ex capo dell’esercito ribelle',
+            en: 'Former leader of the rebel army',
+          },
+        },
+      ],
       log: {
         it: 'Guida i ribelli, convinti che il re rubi la pioggia alle loro città. Da bambino era a capo di una banda di ragazzini che combattevano con mazze di legno, e quando dei banditi hanno provato a rapire la figlia del re ne ha steso uno con la sua mazza, prendendosi un taglio sopra l’occhio sinistro.',
         en: 'He leads the rebels, who believe the king has been stealing the rain from their towns. As a boy he led a gang of children who fought with wooden clubs, and when bandits tried to carry off the king’s daughter he knocked one of them down with his club and took a cut over his left eye.',
@@ -1632,7 +1743,10 @@ export const alabasta: OnePieceSaga = {
     },
     'mr-1': {
       relationships: alabastaRelationships['mr-1'],
-      role: BW_OFFICER_ROLE,
+      role: [
+        { episode: 103, chapter: 170, value: BW_OFFICER_ROLE },
+        { episode: 1086, chapter: 1058, value: CROSS_GUILD_ROLE },
+      ],
       log: {
         it: 'È l’agente di grado più alto dell’organizzazione e non ha mai avuto bisogno di alzare la voce. Al caffè dove si riuniscono gli agenti si scontra con uno di loro, e una lama che gli esce dal corpo taglia il muro da parte a parte. La sua socia ferma la lite prima che vada oltre.',
         en: 'He is the highest-ranked agent in the organisation and has never needed to raise his voice. At the cafe where the agents meet he gets into a fight with another of them, and a blade that comes out of his body cuts the wall clean through. His partner stops the fight before it goes further.',
