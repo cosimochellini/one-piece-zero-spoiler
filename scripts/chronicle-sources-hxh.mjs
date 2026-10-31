@@ -26,6 +26,18 @@ export const HUNTER_X_HUNTER_SOURCES = {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_21_(2011)',
       note: "Gon breaks Illumi's arm in front of the examinees, then outside gets the answer that Killua is at Kukuroo Mountain; he leaves with Kurapika and Leorio the same day.",
     },
+    29: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_29_(2011)',
+      note: 'Arrival, the one-push first match and the rooms at the 100th floor are in episode 27 and chapters 44 and 46; the barrier is in episode 28 and chapter 47; the opened nodes, Ten, the walk through the barrier and Hisoka’s one-win condition close episode 29 and chapter 48.',
+    },
+    30: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_30_(2011)',
+      note: 'Corrected after review: the ban is not until he heals: it outlasts his healing in Chapter 52 and Episode 31. The next-day booking and Wing’s advice to wait are in episode 29 and chapter 49; the tops hitting anything in their path, Tornado Top, Zetsu without knowing it, the broken arm, and the ban on Nen with the thread on his finger are in episode 30 and chapters 50 and 51. Chapter 51 sets the ban at two months, so the story gives it no length.',
+    },
+    36: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_36_(2011)',
+      note: 'Corrected after review: the rock tied to Hisoka’s aura and the blow to the head are Chapter 63 only, reworded. Water Divination and the July 10 booking are in episode 35 and chapter 60; the unmoving dodges and the punch behind the shattered tile in chapter 61; the returned badge, Gyo and Bungee Gum in chapter 62; the rock, the loss and the promise of a fight to the death in chapter 63, all through episode 36.',
+    },
   },
   'mito-freecss': {
     1: {
@@ -124,6 +136,18 @@ export const HUNTER_X_HUNTER_SOURCES = {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_21_(2011)',
       note: 'Corrected after review: linked Killua. Hisoka appears behind Illumi, says the Zoldyck home is common knowledge and warns him off Gon, all in this episode.',
     },
+    29: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_29_(2011)',
+      note: 'The aura that stops them and the warning that they are not ready are in episode 28 and chapter 47; the walk through his aura with Ten, the welcome, the guess about Gon’s training, the shapes of aura between his fingers and the one-win condition are in episode 29 and chapter 48.',
+    },
+    32: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_32_(2011)',
+      note: 'Corrected after review: he peels the tattoo off while drying himself after the shower; the meeting reminder was cut for length. Kastro’s hits, the severed right arm and the double are in episode 31 and chapters 52 and 53; the card trick, the reattached right arm, the flying arm and Kastro’s death in episode 32 and chapter 54; the woman’s stitches, Bungee Gum, Texture Surprise, the August 30 meeting and the fake spider tattoo in episode 32 and chapter 55.',
+    },
+    36: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_36_(2011)',
+      note: 'Corrected after review: the rock tied to his aura and the blow to the head are Chapter 63 only, reworded. The punch from behind the tile is in episode 35 and chapter 61; the badge, the Enhancer guess and the personality talk in episode 36 and chapter 62; the Bungee Gum quiz, his thrill, the rock and the farewell about a fight to the death in episode 36 and chapter 63.',
+    },
   },
   'hanzo': {
     3: {
@@ -175,6 +199,18 @@ export const HUNTER_X_HUNTER_SOURCES = {
     25: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_25_(2011)',
       note: "Episode 23 shows Killua chained and whipped by Milluki; episode 24 has Zeno freeing him and Silva's promise deal; episode 25 has him rejoining Gon, Kurapika and Leorio, so the story completes in 25 (chapter 43).",
+    },
+    27: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_27_(2011)',
+      note: 'Episode 27 and chapters 44 and 45 have the empty wallet, his father leaving him there at six, the two years, the 180th-floor offer, the two neck strikes, the stance that makes him leap back, the win without a knockout, the brother comparison, the name Ren and the new goal of the top floor.',
+    },
+    29: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_29_(2011)',
+      note: 'Wing’s Ren and Killua’s claim that he lied are in episode 28 and chapter 46; the barrier and the clerk’s midnight rule for his second chance in episode 28 and chapter 47; the opened nodes, the comparison with Illumi’s Nen, Ten and the walk through the barrier in episode 29 and chapter 48.',
+    },
+    34: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_34_(2011)',
+      note: 'Corrected after review: Zushi knocked out, Killua behind Sadaso in the locker room and Riehlvelt fainting are chapter-only, reworded. The aura hand on Zushi, the free wins, the shoe at Gon’s door, the warning to Sadaso and the default win are in episode 33 and chapter 57; the warning to Gido and Riehlvelt and the main event (whips caught, the shock he is trained for, Riehlvelt thrown from the chair and caught) are in episode 34 and chapters 58 and 59.',
     },
   },
   'menchi': {
@@ -555,6 +591,70 @@ export const HUNTER_X_HUNTER_SOURCES = {
     15: {
       source: 'https://hunterxhunter.fandom.com/wiki/Chapter_25',
       note: "Checked: Tonpa shows card #191 and trades the information for medicine, Sommy strikes with a branch, his monkey grabs Leorio's badge, the cards were swapped, Sommy escapes up a tree; Kurapika and Leorio tie him up and recover the badge plus Sommy's. Manga only. Also read: Chapter 26.",
+    },
+  },
+  'zushi': {
+    27: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_27_(2011)',
+      note: 'The episode page and Chapter 45 both have the elevator talk about Shingen-ryu, the 57th-floor match with the crowd favoring Zushi, the two neck strikes, the stance that sends Killua back, Wing’s shout, Killua winning without a knockout and the flashback apology over Ren. The bow to the floor is the manga’s prostration and the anime’s hands and knees.',
+    },
+    28: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_28_(2011)',
+      note: 'Zushi lists the four principles at the end of Episode 27; the unsteady Ten, his question about the lie, the real Nen only for pupils and the page that cuts the can are in Episode 28 and Chapter 46. Zushi’s complaint about his book and juice is manga-only and left out.',
+    },
+    33: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_33_(2011)',
+      note: 'Episode 33 and Chapters 56–57 have the start of the joint training two months after the Gido match, Zushi’s tiring Gyo, Sadaso’s aura arm, Killua’s promise of free wins and his overnight Gyo the next day. Who left the shoe differs between the pages, so the shoe is left out.',
+    },
+  },
+  'wing': {
+    27: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_27_(2011)',
+      note: 'Corrected after review: the reason for the praise differs between the pages, so it is left out. Episode 27 and Chapter 45 both have Wing praising Zushi, introducing himself surprised to see other boys, the advice to be careful and the shout from the stands; the four principles, Killua linking Ren to his brother and the invitation close Episode 27 and open Chapter 46.',
+    },
+    29: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_29_(2011)',
+      note: 'The false lesson, Hisoka’s barrier, the offer and the damaged wall are Episode 28 and Chapters 46–47; the reason about the 200th-floor initiation, the forced opening, the instant Ten, the hostile-aura test and the walk through the barrier are Episode 29 and Chapter 48.',
+    },
+    35: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_35_(2011)',
+      note: 'Episode 35 and Chapter 60 both have the six types with Hisoka, Gido and Kastro as examples, Water Divination with the three results, the secret Hunter Exam, Netero heading Shingen-ryu and the advice to Killua. Wing’s own type and Gon’s cracked glass are only on the chapter page and are left out.',
+    },
+  },
+  'gido': {
+    29: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_29_(2011)',
+      note: 'The three fighters asking the newcomers for a match are Chapter 48 and Episode 29; the next-day booking, the four-and-one record, the tops on the cane, Battle Waltz, the clean hit in the back and the tops spinning for hours beyond his own control are Chapter 49 and the end of Episode 29.',
+    },
+    30: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_30_(2011)',
+      note: 'Corrected after review: Tornado Top throwing Gon out of the ring is Chapter 50 only, reworded; Gon falls into Zetsu without knowing it. Battle Waltz opens the match in Episode 29 and Chapter 49; the hits, the top outside the ring, Tornado Top, Gon’s Zetsu, Killua’s warning and the broken arm are Episode 30 and Chapters 50–51. The hour of dodging and the fifty tops are only in Chapter 51 and are left out.',
+    },
+  },
+  'kastro': {
+    31: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_31_(2011)',
+      note: "Episode 31 and chapter 52 both have the loss two years earlier, the nine wins one short of the Floor Masters, Killua's Zetsu visit with Kastro appearing behind him and keeping his trick secret, the thanks before the match and the first hit Hisoka seems to dodge. The three-of-four points and the agreed date are chapter-only, so the story says only that he scored the most.",
+    },
+    32: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_32_(2011)',
+      note: 'The knockdown, the Tiger Bite Fist on the right arm and the Double reveal are in episode 31 and chapter 53; the card trick, the left arm, the reattached right arm, the spotless double, the flying arm and the cards that kill him are in episode 32 and chapter 54. Machi and the explanation of the trick (chapter 55) are left out.',
+    },
+  },
+  'sadaso': {
+    33: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_33_(2011)',
+      note: "Episode 33 covers chapters 56–57: the trio pressing Gon and Killua two months after the Gido match, the aura-hand ambush on Zushi, Killua's offer of default wins and warning, and Gido's threatening call to Gon. The trio's habit of picking on newcomers is in episode 29 and chapters 48–49 and in chapter 56.",
+    },
+    34: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_34_(2011)',
+      note: "The ticket seller and Killua's threat are in episode 33 and chapter 57; the call warning his companions closes episode 33 and opens chapter 58; his withdrawal and Gon's default win are in episode 34 and chapter 58. The knife and the mirror are chapter-only and left out.",
+    },
+  },
+  'riehlvelt': {
+    34: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_34_(2011)',
+      note: "Corrected after review: linked Killua. Episode 34 covers chapters 58–59: Sadaso's call, Killua's warning in the room, the match with Killua (Aura Burst, whips caught, electricity endured, the catch) and the match with Gon (flagstone, Aura Burst, whips around the neck, fainting from fear). Both matches end in chapter 59.",
     },
   },
 }
