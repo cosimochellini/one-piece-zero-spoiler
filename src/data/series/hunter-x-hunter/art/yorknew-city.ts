@@ -332,6 +332,136 @@ export const YORKNEW_CITY_DRAWINGS = {
     { d: 'M40 126 l4 -6 M56 116 l4 -6', role: 'ambient' },
     shadow(78, 168, 56),
   ],
+  // A round-bellied vase with a narrow neck, the band round its shoulder in
+  // tint: the vase Zepile outbids Gon and Killua for, episode 48 /
+  // chapter 86.
+  'zepile': [
+    {
+      d: 'M64 40 H96 M66 40 C66 60 60 66 48 80 C30 100 30 140 52 160 H108 C130 140 130 100 112 80 C100 66 94 60 94 40',
+    },
+    {
+      d: 'M48 82 C68 92 92 92 112 82 M44 92 C66 102 94 102 116 92',
+      role: 'accent',
+    },
+    { d: 'M52 160 C70 166 90 166 108 160', role: 'soft' },
+    { d: 'M104 106 l8 -6 M108 124 l8 -6 M104 142 l8 -6', role: 'ambient' },
+    shadow(80, 176, 44),
+  ],
+  // A long dark suit jacket from the front, the lapels in tint: Pakunoda,
+  // who traps Gon and Killua with Phinks, episode 49 / chapter 90.
+  'pakunoda': [
+    {
+      d: 'M64 36 L40 46 L30 128 M44 132 L50 84 L50 172 H110 L110 84 L116 132 M130 128 L120 46 L96 36',
+    },
+    {
+      d: 'M64 36 L80 96 L96 36 M64 36 L72 74 L80 96 M96 36 L88 74 L80 96',
+      role: 'accent',
+    },
+    { d: 'M30 128 A7 3 12 1 0 44 132 A7 3 12 1 0 30 128', role: 'soft' },
+    { d: 'M130 128 A7 3 -12 1 1 116 132 A7 3 -12 1 1 130 128', role: 'soft' },
+    { d: 'M80 96 V172 M76 120 h0.01 M76 140 h0.01', role: 'soft' },
+    { d: 'M96 110 l8 -6 M96 132 l8 -6 M96 154 l8 -6', role: 'ambient' },
+    shadow(80, 186, 48),
+  ],
+  // A small pair of sunglasses folded on a table, the lenses in tint:
+  // Zenji wears them at the assassins' meeting, episode 51 / chapter 95.
+  'zenji': [
+    {
+      d: 'M38 146 C40 136 62 132 66 140 C68 150 42 154 38 146 Z M84 136 C86 126 108 122 112 130 C114 140 88 144 84 136 Z',
+      role: 'accent',
+    },
+    { d: 'M66 140 Q74 132 84 136' },
+    { d: 'M40 142 L70 116 L120 104 M112 128 L126 116 L132 102' },
+    {
+      d: 'M46 144 l8 -6 M90 134 l8 -6 M50 148 l8 -6 M94 138 l8 -6',
+      role: 'ambient',
+    },
+    { d: 'M14 168 L146 140', role: 'ambient', dashed: true },
+  ],
+  // Two identical small statues side by side, the second an exact copy, the
+  // bands round their middles in tint: Kortopi copies the auction items,
+  // episode 53 / chapter 100.
+  'kortopi': [
+    { d: 'M30 150 V90 C30 70 66 70 66 90 V150 Z' },
+    { d: 'M94 150 V90 C94 70 130 70 130 90 V150 Z' },
+    { d: 'M30 112 H66 M30 120 H66 M94 112 H130 M94 120 H130', role: 'accent' },
+    {
+      d: 'M56 96 l6 -4 M56 136 l6 -4 M120 96 l6 -4 M120 136 l6 -4',
+      role: 'ambient',
+    },
+    { d: 'M4 150 H156', role: 'ambient' },
+    shadow(80, 158, 66),
+  ],
+  // A roll of bandage partly unwound, the loose end in tint: Bonolenov,
+  // named when the Troupe splits into groups, episode 55 / chapter 108.
+  'bonolenov': [
+    { d: ellipse(62, 110, 26, 30) },
+    { d: ellipse(62, 110, 10, 12), role: 'soft' },
+    {
+      d: 'M88 110 C110 110 130 120 140 150 L118 158 C112 136 100 126 84 124',
+      role: 'accent',
+    },
+    {
+      d: 'M44 96 C50 90 56 88 62 88 M40 120 C46 128 54 132 62 132',
+      role: 'soft',
+    },
+    { d: 'M74 92 l6 -4 M80 108 l6 -4 M76 126 l6 -4', role: 'ambient' },
+    shadow(80, 172, 56),
+  ],
+  // A shopping bag with rope handles, the handles in tint: Eliza is out
+  // shopping with Neon when Squala dies, episode 56 / chapter 112.
+  'eliza': [
+    { d: 'M44 80 H116 L124 164 H36 Z' },
+    {
+      d: 'M64 80 C64 56 96 56 96 80 M70 80 C70 64 90 64 90 80',
+      role: 'accent',
+    },
+    { d: 'M116 80 L130 90 L136 158 L124 164', role: 'soft' },
+    { d: 'M126 100 l6 -4 M128 120 l6 -4 M130 140 l6 -4', role: 'ambient' },
+    shadow(84, 178, 52),
+  ],
+  // A long open coat from the front, its fur collar and cuffs in tint: the
+  // leader of the Troupe at its gathering, episode 54 / chapter 71. No mark
+  // on its back.
+  'chrollo': [
+    {
+      d: 'M58 40 L36 52 L26 132 M42 136 L48 84 L46 176 H74 L78 60 M102 40 L124 52 L134 132 M118 136 L112 84 L114 176 H86 L82 60',
+    },
+    {
+      d: 'M58 40 C62 52 72 58 78 60 C74 46 66 38 58 40 Z M102 40 C98 52 88 58 82 60 C86 46 94 38 102 40 Z M26 132 C30 140 40 140 42 136 M134 132 C130 140 120 140 118 136',
+      role: 'accent',
+    },
+    { d: 'M60 60 L62 170 M100 60 L98 170', role: 'soft' },
+    { d: 'M90 90 l8 -6 M92 116 l8 -6 M94 142 l8 -6', role: 'ambient' },
+    shadow(80, 188, 52),
+  ],
+  // A columned auction house front with steps, the doors in tint: Gon,
+  // Killua and Leorio buy the catalog there, episode 48 / chapter 85.
+  'southernpiece-auction-house': [
+    { d: 'M24 60 H136 L80 30 Z' },
+    {
+      d: 'M30 60 V130 M50 60 V130 M70 60 V130 M90 60 V130 M110 60 V130 M130 60 V130',
+      role: 'soft',
+    },
+    { d: 'M20 130 H140 V138 H20 Z M14 138 H146 V146 H14 Z' },
+    { d: 'M72 130 V96 H88 V130', role: 'accent' },
+    { d: 'M4 150 H156', role: 'ambient' },
+    shadow(80, 158, 64),
+  ],
+  // A hotel tower with a canopy over its entrance, the canopy in tint: the
+  // Troupe waits in its lobby, episode 57 / chapter 112.
+  'hotel-beitacle': [
+    { d: 'M46 150 V30 H114 V150' },
+    {
+      d: 'M54 44 H106 M54 60 H106 M54 76 H106 M54 92 H106 M54 108 H106',
+      role: 'ambient',
+    },
+    { d: 'M60 124 H100 L108 132 H52 Z', role: 'accent' },
+    { d: 'M58 132 V150 M102 132 V150', role: 'soft' },
+    { d: 'M114 150 L128 142 V36 L114 30', role: 'soft' },
+    { d: 'M4 150 H156', role: 'ambient' },
+    shadow(80, 158, 60),
+  ],
   // A round pincushion stuck with needles, the cushion in tint, a needle
   // and its thread lying beside it: the woman who sewed Hisoka's arms back
   // on, named on the way to the Troupe's gathering, episode 41 /

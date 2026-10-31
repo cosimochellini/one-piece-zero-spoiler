@@ -75,6 +75,8 @@ const TITLES = {
     'franklin': 'Franklin Bordeau',
     'nobunaga': 'Nobunaga Hazama',
     'phinks': 'Phinks Magcub',
+    'bonolenov': 'Bonolenov Ndongo',
+    'chrollo': 'Chrollo Lucilfer',
     // The wiki's arc titles say more than an arc's name may, since the name
     // is shown at every bookmark (#758): the archive's names are neutral.
     'election-arc': '13th Hunter Chairman Election arc',

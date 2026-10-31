@@ -118,11 +118,15 @@ describe('the place words of a series that labels its own', () => {
       { forms: { x: 'Aeroporto' } },
       ['lingon-airport'],
     ],
-    ['its building label', { forms: { x: 'Building' } }, ['cemetery-building']],
+    [
+      'its building label',
+      { forms: { x: 'Building' } },
+      ['cemetery-building', 'southernpiece-auction-house', 'hotel-beitacle'],
+    ],
     [
       'its Italian building label',
       { forms: { x: 'Edificio' } },
-      ['cemetery-building'],
+      ['cemetery-building', 'southernpiece-auction-house', 'hotel-beitacle'],
     ],
     [
       'its Italian country label',
@@ -145,6 +149,8 @@ describe('the place words of a series that labels its own', () => {
         'yorknew-city',
         'lingon-airport',
         'cemetery-building',
+        'southernpiece-auction-house',
+        'hotel-beitacle',
       ],
     ],
   ])(
