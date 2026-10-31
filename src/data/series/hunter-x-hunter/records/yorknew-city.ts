@@ -35,8 +35,8 @@ const TROUPE = { it: 'Brigata Fantasma', en: 'Phantom Troupe' }
 
 /**
  * The two employees who test the applicants at their gate, chapter 68 and
- * episode 40, then ride with Neon's bodyguards into the city, chapter 71 and
- * episode 41.
+ * episode 40, then ride with Neon's bodyguards into the city: chapter 71
+ * and episode 41 both list them in the escort.
  */
 const EMPLOYEE = [
   {
@@ -185,8 +185,8 @@ export const yorknewCity: HunterSaga = {
       revealedAtChapter: 71,
       name: { it: 'Neon Nostrad', en: 'Neon Nostrade' },
       summary: {
-        it: 'La ragazza che Kurapika e le altre guardie del corpo devono proteggere. Scrive le profezie per gli amici mafiosi di suo padre.',
-        en: 'The girl Kurapika and the other bodyguards are hired to protect. She writes fortunes for her father’s friends in the Mafia.',
+        it: 'La ragazza che Kurapika e le altre guardie del corpo devono proteggere. Scrive le profezie per gli amici di suo padre.',
+        en: 'The girl Kurapika and the other bodyguards are hired to protect. She writes fortunes for her father’s friends.',
       },
       visual: { art: 'neon-nostrade', tint: 'pink' },
     },
@@ -279,8 +279,8 @@ export const yorknewCity: HunterSaga = {
       revealedAtChapter: 72,
       name: { it: 'Cemetery Building', en: 'Cemetery Building' },
       summary: {
-        it: 'L’edificio di York Shin City dove la mafia tiene la sua asta sotterranea.',
-        en: 'The building in Yorknew City where the Mafia holds its Underground Auction.',
+        it: 'L’edificio di York Shin City dove si tiene l’asta sotterranea.',
+        en: 'The building in Yorknew City where the Underground Auction is held.',
       },
       visual: { art: 'cemetery-building', tint: 'ivory' },
     },
@@ -380,8 +380,8 @@ export const yorknewCity: HunterSaga = {
     'neon-nostrade': {
       role: { it: 'Indovina', en: 'Fortune-teller' },
       log: {
-        it: 'Arriva a York Shin City con le sue guardie del corpo. Con il suo potere scrive le profezie per gli amici mafiosi di suo padre.',
-        en: 'She arrives in Yorknew City with her bodyguards. With her power she writes fortunes for her father’s friends in the Mafia.',
+        it: 'Arriva a York Shin City con le sue guardie del corpo. Con il suo potere scrive le profezie per gli amici di suo padre.',
+        en: 'She arrives in Yorknew City with her bodyguards. With her power she writes fortunes for her father’s friends.',
       },
       status: [{ episode: 41, chapter: 71, value: 'alive' }],
       affiliation: [
@@ -491,8 +491,8 @@ export const YORKNEW_CITY_PLACES: Record<
       en: 'The large guarded entrance',
     },
     log: {
-      it: 'La mafia tiene qui la sua asta sotterranea. Dalzorne manda tre guardie del corpo a fare offerte e mette le altre a sorvegliare gli ingressi.',
-      en: 'The Mafia holds its Underground Auction here. Dalzollene sends three bodyguards in to bid and posts the others at the entrances.',
+      it: 'Qui si tiene l’asta sotterranea. Dalzorne manda tre guardie del corpo a fare offerte e ne mette due all’ingresso principale e due a quello posteriore.',
+      en: 'The Underground Auction is held here. Dalzollene sends three bodyguards in to bid and posts two at the front entrance and two at the back.',
     },
     filedHere: [],
   },

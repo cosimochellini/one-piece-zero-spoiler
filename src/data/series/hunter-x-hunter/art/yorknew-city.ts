@@ -153,7 +153,9 @@ export const YORKNEW_CITY_DRAWINGS = {
   // A round pincushion stuck with needles, the cushion in tint, a needle
   // and its thread lying beside it: the woman who sewed Hisoka's arms back
   // on, named on the way to the Troupe's gathering, episode 41 /
-  // chapter 71. No Nen thread.
+  // chapter 71. No Nen thread. For #901: the pincushion, needle and thread
+  // are her Heavens Arena look (chapter 55 / episode 32); check them
+  // against the chapter 71 / episode 41 frame.
   'machi': [
     { d: 'M36 120 C36 92 124 92 124 120', role: 'accent' },
     { d: ellipse(80, 120, 44, 12) },
