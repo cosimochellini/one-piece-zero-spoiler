@@ -298,7 +298,7 @@ export const itDictionary: Dictionary = {
     'Le sue vicende fino al tuo segnalibro, dalla più recente. Ogni parte inizia dall’episodio in cui avviene.',
   'character.chronicleMore': 'Mostra altre storie',
   'character.chronicleMoreError':
-    'Non riesco a caricare le altre storie. Riprova.',
+    'Caricamento delle altre storie non riuscito. Riprova.',
   'character.notFoundTitle': 'Personaggio non trovato',
   'character.notFoundBody':
     'A questo indirizzo non c’è nessun personaggio. Li trovi tutti nella pagina Personaggi.',
