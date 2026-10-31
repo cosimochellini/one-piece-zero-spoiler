@@ -9,9 +9,9 @@ import { zoldyckRelationships } from './zoldyck.relationships'
  * in chapter 95. Kikyo is named only in credits and supplements, never in
  * the story, and Hishita only in chapter 329 / episode 143 (#912). Maha,
  * Alluka, the grandmother, the shopkeeper, the intruders, other butlers and
- * the flashback attackers stay unnamed. Killua's disqualification is pinned at 20 / 36, the family home
- * links at 22 / 39 and his departure with Gon at 25 / 43; nothing later is
- * inferred. Affiliations stay prose.
+ * the flashback attackers stay unnamed. Killua's disqualification is pinned
+ * at 20 / 36, the family home links at 22 / 39 and his departure with Gon at
+ * 25 / 43; nothing later is inferred. Affiliations stay prose.
  */
 export const zoldyck: Pick<HunterSaga, 'dossiers' | 'entries'> = {
   entries: [
