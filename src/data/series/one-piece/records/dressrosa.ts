@@ -1166,8 +1166,12 @@ export const dressrosa: OnePieceSaga = {
             en: 'Kin’emon’s son, so he says',
           },
         },
+        // Kin'emon tells whose son he is in chapter 817 (p. 4-7), adapted in
+        // episode 768. Episode 726 does not show him and chapter 816 names
+        // only the Kozuki family (#986).
         {
-          episode: 726,
+          episode: 768,
+          chapter: 817,
           factions: ['kozuki-family'],
           value: {
             it: 'Kozuki Momonosuke, erede di Wano',
