@@ -4,7 +4,7 @@ import type { HunterSaga, HunterVocabulary } from './saga'
 import { yorknewCityChronicles } from './yorknew-city.chronicle'
 import { yorknewCityRelationships } from './yorknew-city.relationships'
 
-/** A bodyguard hired by Dalzollene in chapter 70 and episode 41. */
+/** One of the family's bodyguards: the role a hire or an assignment dates. */
 const BODYGUARD = { it: 'Guardia del corpo', en: 'Bodyguard' }
 
 /** The applicants' role until they are hired. */
@@ -32,6 +32,20 @@ const TROUPE_MEMBER = {
   en: 'Phantom Troupe member',
 }
 const TROUPE = { it: 'Brigata Fantasma', en: 'Phantom Troupe' }
+
+/**
+ * The two employees who test the applicants at their gate, chapter 68 and
+ * episode 40, then ride with Neon's bodyguards into the city, chapter 71 and
+ * episode 41.
+ */
+const EMPLOYEE = [
+  {
+    episode: 40,
+    chapter: 68,
+    value: { it: 'Dipendente della famiglia', en: 'Employee of the family' },
+  },
+  { episode: 41, chapter: 71, value: BODYGUARD },
+]
 
 /** The role of the applicants hired in chapter 70 and episode 41. */
 const HIRED = [
@@ -94,8 +108,8 @@ export const yorknewCity: HunterSaga = {
       revealedAtChapter: 68,
       name: { it: 'Melody', en: 'Melody' },
       summary: {
-        it: 'Una donna che si candida con Kurapika come guardia del corpo per una famiglia di collezionisti. Sente il battito del cuore delle persone e capisce quando mentono.',
-        en: 'A woman applying with Kurapika for a bodyguard job with a family of collectors. She can hear people’s heartbeats and tell when they lie.',
+        it: 'Una donna che si candida con Kurapika come guardia del corpo per un collezionista. Sente il battito del cuore delle persone e capisce quando mentono.',
+        en: 'A woman applying with Kurapika for a bodyguard job with a collector. She can hear people’s heartbeats and tell when they lie.',
       },
       visual: { art: 'melody', tint: 'sand' },
     },
@@ -143,8 +157,8 @@ export const yorknewCity: HunterSaga = {
       revealedAtChapter: 68,
       name: { it: 'Shachmono Tocino', en: 'Shachmono Tocino' },
       summary: {
-        it: 'Un Hunter che lavora già per la famiglia e mette alla prova i candidati con figure incappucciate fatte della sua aura.',
-        en: 'A Hunter already working for the family who tests the applicants with hooded figures made of his aura.',
+        it: 'Un uomo che lavora già per la famiglia e mette alla prova i candidati con figure vestite di nero fatte della sua aura.',
+        en: 'A man already working for the family who tests the applicants with figures in black made of his aura.',
       },
       visual: { art: 'shachmono-tocino', tint: 'ice' },
     },
@@ -190,6 +204,20 @@ export const yorknewCity: HunterSaga = {
       },
       visual: { art: 'ivlenkov', tint: 'lavender' },
     },
+    // Named in the same assignment, chapter 72 and episode 42, which posts
+    // him at the back entrance.
+    {
+      id: 'linssen',
+      kind: 'character',
+      revealedAtEpisode: 42,
+      revealedAtChapter: 72,
+      name: { it: 'Linssen', en: 'Linssen' },
+      summary: {
+        it: 'Una guardia del corpo della famiglia Nostrad, messa a sorvegliare l’ingresso posteriore durante l’asta sotterranea.',
+        en: 'A bodyguard of the Nostrade family, posted at the back entrance during the Underground Auction.',
+      },
+      visual: { art: 'linssen', tint: 'ocher' },
+    },
     // The woman who sews Hisoka's arms back on, unnamed, in chapter 55 and
     // episode 32; the Troupe walking to the city names her in chapter 71.
     {
@@ -225,8 +253,8 @@ export const yorknewCity: HunterSaga = {
       revealedAtChapter: 70,
       name: { it: 'York Shin City', en: 'Yorknew City' },
       summary: {
-        it: 'La città dell’asta più grande del mondo, dove Gon e Killua arrivano un mese prima dell’appuntamento con gli amici.',
-        en: 'The city of the largest auction in the world, where Gon and Killua arrive a month before meeting their friends.',
+        it: 'La città dell’asta di settembre, dove Gon e Killua vanno a cercare una copia del gioco della scheda di memoria di Ging.',
+        en: 'The city of the September auction, where Gon and Killua come for a copy of the game on Ging’s memory card.',
       },
       visual: { art: 'yorknew-city', tint: 'azure' },
     },
@@ -286,8 +314,8 @@ export const yorknewCity: HunterSaga = {
     'melody': {
       role: HIRED,
       log: {
-        it: 'Si candida con Kurapika come guardia del corpo per una famiglia di collezionisti. Quando uno dei candidati viene accusato di essere un infiltrato, dice di aver sentito il suo cuore accelerare: ha il ritmo tipico di chi mente. Con Kurapika, Basho e Versé esce viva dalla villa.',
-        en: 'She applies with Kurapika for a bodyguard job with a family of collectors. When one of the applicants is accused of being a plant, she says she heard his heart speed up: it has the typical rhythm of a liar. With Kurapika, Basho and Baise she gets out of the mansion alive.',
+        it: 'Si candida con Kurapika come guardia del corpo per un collezionista. Quando uno dei candidati viene accusato di essere un infiltrato, dice di aver sentito il suo cuore accelerare: ha il ritmo tipico di chi mente.',
+        en: 'She applies with Kurapika for a bodyguard job with a collector. When one of the applicants is accused of being a plant, she says she heard his heart speed up: it has the typical rhythm of a liar.',
       },
       status: [{ episode: 40, chapter: 68, value: 'alive' }],
       affiliation: [NEON_GUARD],
@@ -295,8 +323,8 @@ export const yorknewCity: HunterSaga = {
     'basho': {
       role: HIRED,
       log: {
-        it: 'Si candida come guardia del corpo con Kurapika. Abbatte a mani nude una delle figure incappucciate e capisce che sono fatte di aura. Scrive haiku che si avverano: il primo dà fuoco a una sedia, il secondo promette una morte rapida nel fuoco a chi mente dicendo di non essere un infiltrato.',
-        en: 'He applies for a bodyguard job with Kurapika. He knocks down one of the hooded figures bare-handed and realizes they are made of aura. He writes haiku that come true: the first sets a chair on fire, the second promises a swift death by fire to anyone who lies about not being a plant.',
+        it: 'Si candida come guardia del corpo con Kurapika. Abbatte a mani nude una delle figure vestite di nero e capisce che sono fatte di aura. Scrive haiku che si avverano: il primo dà fuoco a una sedia, il secondo promette una morte rapida nel fuoco a chi mente dicendo di non essere un infiltrato.',
+        en: 'He applies for a bodyguard job with Kurapika. He knocks down one of the figures in black bare-handed and realizes they are made of aura. He writes haiku that come true: the first sets a chair on fire, the second promises a swift death by fire to anyone who lies about not being a plant.',
       },
       status: [{ episode: 40, chapter: 68, value: 'alive' }],
       affiliation: [NEON_GUARD],
@@ -311,7 +339,7 @@ export const yorknewCity: HunterSaga = {
       affiliation: [NEON_GUARD],
     },
     'squala': {
-      role: BODYGUARD,
+      role: EMPLOYEE,
       log: {
         it: 'Lavora già per la famiglia e si mescola ai candidati per metterli alla prova. La catena di Kurapika oscilla davanti a lui; nega finché l’haiku di Basho non lo costringe a confessare. Comanda i cani che ha messo intorno alla villa.',
         en: 'He already works for the family and mixes with the applicants to test them. Kurapika’s chain swings in front of him; he denies it until Basho’s haiku makes him confess. He commands the dogs he has placed around the mansion.',
@@ -320,10 +348,10 @@ export const yorknewCity: HunterSaga = {
       affiliation: [NEON_GUARD],
     },
     'shachmono-tocino': {
-      role: { it: 'Hunter, guardia del corpo', en: 'Hunter, bodyguard' },
+      role: EMPLOYEE,
       log: {
-        it: 'È un Hunter che lavora già per la famiglia e mette alla prova i candidati con figure incappucciate fatte della sua aura. Kurapika lo scopre notando che è l’unico che le figure non attaccano.',
-        en: 'He is a Hunter already working for the family, and he tests the applicants with hooded figures made of his aura. Kurapika finds him out by noticing that he is the only one the figures never attack.',
+        it: 'Lavora già per la famiglia e mette alla prova i candidati con figure vestite di nero fatte della sua aura. Kurapika lo scopre notando che è l’unico che le figure non attaccano.',
+        en: 'He already works for the family, and he tests the applicants with figures in black made of his aura. Kurapika finds him out by noticing that he is the only one the figures never attack.',
       },
       status: [{ episode: 40, chapter: 68, value: 'alive' }],
       affiliation: [NEON_GUARD],
@@ -334,8 +362,8 @@ export const yorknewCity: HunterSaga = {
         en: 'Head of the bodyguards',
       },
       log: {
-        it: 'Da uno schermo assegna la prova ai candidati: portare un oggetto da una lista e uscire vivi dalla villa. Assume i quattro che tornano con l’oggetto. In un corridoio mostra un ex collega trasformato in una figura incorniciata: è l’uomo che vanno a sostituire.',
-        en: 'From a screen he sets the applicants their test: bring back one item from a list, and get out of the mansion alive. He hires the four who return with their items. In a hallway he shows them a former colleague turned into a framed figure: the man they are replacing.',
+        it: 'Da uno schermo assegna la prova ai candidati: portare un oggetto da una lista. Poi la porta resta chiusa e figure vestite di nero li attaccano. Assume i quattro che tornano con l’oggetto. Andando dalla loro protetta passano davanti a un uomo trasformato in una figura appesa al muro.',
+        en: 'From a screen he sets the applicants their test: bring back one item from a list. Then the door stays locked and figures in black attack them. He hires the four who return with their items. On the way to the boss they pass a man turned into a figure hanging on the wall.',
       },
       status: [{ episode: 41, chapter: 70, value: 'alive' }],
       affiliation: [
@@ -352,8 +380,8 @@ export const yorknewCity: HunterSaga = {
     'neon-nostrade': {
       role: { it: 'Indovina', en: 'Fortune-teller' },
       log: {
-        it: 'Arriva a York Shin City con le sue guardie del corpo. Con il suo potere scrive le profezie per gli amici mafiosi di suo padre: la mano scrive da sola, guidata da una creatura fatta della sua aura.',
-        en: 'She arrives in Yorknew City with her bodyguards. With her power she writes fortunes for her father’s friends in the Mafia: her hand writes on its own, guided by a creature made of her aura.',
+        it: 'Arriva a York Shin City con le sue guardie del corpo. Con il suo potere scrive le profezie per gli amici mafiosi di suo padre.',
+        en: 'She arrives in Yorknew City with her bodyguards. With her power she writes fortunes for her father’s friends in the Mafia.',
       },
       status: [{ episode: 41, chapter: 71, value: 'alive' }],
       affiliation: [
@@ -382,11 +410,29 @@ export const yorknewCity: HunterSaga = {
         },
       ],
     },
+    'linssen': {
+      role: BODYGUARD,
+      log: {
+        it: 'Guardia del corpo della famiglia, Dalzorne lo mette con un altro a sorvegliare l’ingresso posteriore dell’edificio dove si tiene l’asta sotterranea.',
+        en: 'A bodyguard of the family, Dalzollene posts him with another at the back entrance of the building where the Underground Auction is held.',
+      },
+      status: [{ episode: 42, chapter: 72, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 42,
+          chapter: 72,
+          value: {
+            it: 'Famiglia Nostrad, guardia del corpo',
+            en: 'Nostrade family, bodyguard',
+          },
+        },
+      ],
+    },
     'machi': {
       role: TROUPE_MEMBER,
       log: {
-        it: 'I membri della Brigata si riuniscono tutti a York Shin City per la prima volta da più di tre anni, e lei ci va a piedi con altri tre. È la donna che all’Arena Celeste ha ricucito le braccia a Hisoka.',
-        en: 'The Troupe’s members are all gathering in Yorknew City for the first time in over three years, and she walks there with three others. She is the woman who sewed Hisoka’s arms back on at Heavens Arena.',
+        it: 'I membri della Brigata si riuniscono tutti a York Shin City per la prima volta da più di tre anni, e lei ci va a piedi con altri tre.',
+        en: 'The Troupe’s members are all gathering in Yorknew City for the first time in over three years, and she walks there with three others.',
       },
       status: [{ episode: 41, chapter: 71, value: 'alive' }],
       affiliation: [{ episode: 41, chapter: 71, value: TROUPE }],
@@ -394,8 +440,8 @@ export const yorknewCity: HunterSaga = {
     'shizuku': {
       role: TROUPE_MEMBER,
       log: {
-        it: 'Sfida Gon a braccio di ferro per il premio, un anello con diamante, e perde dopo averlo costretto a usare tutta la sua forza.',
-        en: 'She challenges Gon at arm wrestling for the prize, a diamond ring, and loses after making him use all his strength.',
+        it: 'Sfida Gon a braccio di ferro per il premio, un diamante, e perde dopo averlo costretto a usare tutta la sua forza.',
+        en: 'She challenges Gon at arm wrestling for the prize, a diamond, and loses after making him use all his strength.',
       },
       status: [{ episode: 42, chapter: 72, value: 'alive' }],
       affiliation: [{ episode: 42, chapter: 72, value: TROUPE }],
@@ -417,22 +463,22 @@ export const YORKNEW_CITY_PLACES: Record<
       en: 'The fountain in a crowded square',
     },
     log: {
-      it: 'Dal primo al dieci settembre la città ospita l’asta più grande del mondo. Gon e Killua arrivano prima dell’asta e, in un internet café, cercano sul sito degli Hunter il gioco della scheda di memoria di Ging: ne sono in vendita alcune copie, con un’offerta minima di 8,9 miliardi di Jenny. Per raccogliere i soldi provano a comprare e rivendere su internet.',
-      en: 'From the first to the tenth of September the city hosts the largest auction in the world. Gon and Killua arrive before it begins and, in an internet café, look up the game on Ging’s memory card on the Hunter website: copies of it are for sale, with a minimum bid of 8.9 billion Jenny. To raise the money they try buying and reselling online.',
+      it: 'Gon e Killua arrivano in città e, in un internet café, cercano sul sito degli Hunter il gioco della scheda di memoria di Ging: alcune copie saranno all’asta di York Shin City, con un’offerta minima di 8,9 miliardi di Jenny. Per raccogliere i soldi provano a comprare e rivendere su internet.',
+      en: 'Gon and Killua arrive in the city and, in an internet café, look up the game on Ging’s memory card on the Hunter website: copies of it will be at the Yorknew auction, with a minimum bid of 8.9 billion Jenny. To raise the money they try buying and reselling online.',
     },
-    filedHere: ['machi', 'ivlenkov', 'shizuku'],
+    filedHere: ['machi', 'ivlenkov', 'linssen', 'shizuku'],
   },
   'lingon-airport': {
     form: 'airport',
     region: 'mainland',
     arc: 'yorknew-city-arc',
     landmark: {
-      it: 'La pista dove atterra il dirigibile privato',
-      en: 'The runway where the private airship lands',
+      it: 'La pista dove atterra il dirigibile',
+      en: 'The runway where the airship lands',
     },
     log: {
-      it: 'Il dirigibile privato della famiglia Nostrad atterra qui. Le guardie del corpo accompagnano Neon in auto fino all’albergo in città.',
-      en: 'The Nostrade family’s private airship lands here. The bodyguards drive Neon to her hotel in the city.',
+      it: 'Il dirigibile della famiglia Nostrad atterra qui. Le guardie del corpo accompagnano Neon in auto fino all’albergo in città.',
+      en: 'The Nostrade family’s airship lands here. The bodyguards drive Neon to her hotel in the city.',
     },
     filedHere: [],
   },

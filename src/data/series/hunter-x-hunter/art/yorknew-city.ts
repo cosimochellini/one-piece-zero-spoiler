@@ -73,9 +73,10 @@ export const YORKNEW_CITY_DRAWINGS = {
     { d: 'M40 136 l4 6 M52 140 l4 6', role: 'ambient' },
     shadow(78, 178, 52),
   ],
-  // An empty hooded cloak in a heap on the floor with a sword across it,
-  // the guard in tint: Tocino's hooded figures, made of his aura, fall
-  // empty when he calls them off, episode 40 / chapter 68.
+  // An empty black cloak in a heap on the floor with a sword across it,
+  // the guard in tint: Tocino's figures in black, made of his aura, fall
+  // empty when he is found out, episode 40 / chapter 68. The hood follows
+  // the manga; the episode 40 frame is not viewed (#901).
   'shachmono-tocino': [
     { d: 'M24 152 C30 128 52 114 70 118 C90 106 120 114 136 152' },
     { d: 'M58 122 C56 102 72 94 84 100 C94 106 92 120 86 124' },
@@ -130,6 +131,24 @@ export const YORKNEW_CITY_DRAWINGS = {
     { d: 'M73 140 H87 M72 152 H88', role: 'soft' },
     { d: 'M84 118 l3 -3 M84 128 l3 -3 M84 160 l3 -3', role: 'ambient' },
     shadow(80, 184, 40),
+  ],
+  // Linssen's high-collared Chinese jacket from the front, the frog
+  // fastenings down the side in tint: the bodyguard Dalzollene posts at the
+  // back entrance, episode 42 / chapter 72. No face.
+  'linssen': [
+    { d: `${ellipse(80, 30, 12, 4)} M68 30 V40 M92 30 V40` },
+    {
+      d: 'M68 38 L42 48 L30 126 M44 130 L50 80 L50 172 H110 L110 80 L116 130 M130 126 L118 48 L92 38',
+    },
+    { d: 'M30 126 A7 3 12 1 0 44 130 A7 3 12 1 0 30 126', role: 'soft' },
+    { d: 'M130 126 A7 3 -12 1 1 116 130 A7 3 -12 1 1 130 126', role: 'soft' },
+    { d: 'M68 40 C72 52 84 56 96 52 L96 172', role: 'soft' },
+    { d: 'M90 64 H102 M90 82 H102 M90 100 H102 M90 118 H102', role: 'accent' },
+    {
+      d: 'M54 96 l6 -5 M54 116 l6 -5 M54 136 l6 -5 M54 156 l6 -5',
+      role: 'ambient',
+    },
+    shadow(80, 184, 46),
   ],
   // A round pincushion stuck with needles, the cushion in tint, a needle
   // and its thread lying beside it: the woman who sewed Hisoka's arms back

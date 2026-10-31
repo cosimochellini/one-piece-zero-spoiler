@@ -120,6 +120,7 @@ export const NAMES_KEPT = {
   'squala': 'Squala',
   'shachmono-tocino': 'Shachmono Tocino',
   'ivlenkov': 'Ivlenkov',
+  'linssen': 'Linssen',
   // Italian Wikipedia's entry is the manga's "Leolio Paladiknight", with a
   // note that the Italian anime says "Leorio" (`Personaggi di Hunter ×
   // Hunter`, section `Leolio Paladiknight`).

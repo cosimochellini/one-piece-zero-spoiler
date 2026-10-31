@@ -25,6 +25,7 @@ const RECORDS = [
   { id: 'neon-nostrade', episode: 41, chapter: 71, place: false },
   { id: 'machi', episode: 41, chapter: 71, place: false },
   { id: 'ivlenkov', episode: 42, chapter: 72, place: false },
+  { id: 'linssen', episode: 42, chapter: 72, place: false },
   { id: 'shizuku', episode: 42, chapter: 72, place: false },
   { id: 'yorknew-city', episode: 41, chapter: 70, place: true },
   { id: 'lingon-airport', episode: 41, chapter: 71, place: true },
@@ -69,34 +70,55 @@ describe.each(CASES)('$id in $locale by $unit', (row) => {
   })
 })
 
-describe('the applicants hired as bodyguards', () => {
+const NEON_GUARD = 'Nostrade family, Neon’s bodyguard'
+
+describe('the bodyguards’ dated steps', () => {
   it.each([
     { unit: 'episode', hired: 41, named: 41 },
     { unit: 'chapter', hired: 70, named: 71 },
-  ])(
-    'dates the hire and the family in $unit units',
-    ({ unit, hired, named }) => {
-      const read = (count: number): Reader =>
-        readerFor(archive, at(unit, count), 'en')
-      const melody = character('melody')
-      const kurapika = character('kurapika')
+  ])('dates each step in $unit units', ({ unit, hired, named }) => {
+    const read = (count: number): Reader =>
+      readerFor(archive, at(unit, count), 'en')
+    const role = (id: string, count: number): string | undefined =>
+      archive.roleOf(read(count), character(id))?.en
+    const affiliation = (id: string, count: number): string | undefined =>
+      factsOf(character(id), read(count)).affiliation
 
-      const role = (entity: Entity, count: number): string | undefined =>
-        archive.roleOf(read(count), entity)?.en
+    // The three applicants Dalzollene hires.
+    for (const id of ['melody', 'basho', 'baise']) {
+      expect(role(id, hired - 1), id).toBe('Bodyguard applicant')
+      expect(role(id, hired), id).toBe('Bodyguard')
+    }
+    // The two employees who test them, bodyguards once they ride with Neon.
+    for (const id of ['squala', 'shachmono-tocino']) {
+      expect(role(id, named - 1), id).toBe('Employee of the family')
+      expect(role(id, named), id).toBe('Bodyguard')
+    }
 
-      expect(role(melody, hired - 1)).toBe('Bodyguard applicant')
-      expect(role(melody, hired)).toBe('Bodyguard')
-      expect(role(kurapika, hired - 1)).toBe('Hunter')
-      expect(role(kurapika, hired)).toBe('Hunter, bodyguard')
+    expect(role('kurapika', hired - 1)).toBe('Hunter')
+    expect(role('kurapika', hired)).toBe('Hunter, bodyguard')
 
-      expect(factsOf(kurapika, read(named - 1)).affiliation).toBe(
-        'Hunter Association, Hunter',
-      )
-      expect(factsOf(kurapika, read(named)).affiliation).toMatch(
-        /Nostrade family, Neon’s bodyguard/u,
-      )
-    },
-  )
+    // The family is named with Neon, so every Nostrade affiliation waits.
+    for (const id of [
+      'melody',
+      'basho',
+      'baise',
+      'squala',
+      'shachmono-tocino',
+    ]) {
+      expect(affiliation(id, named - 1), id).toBeUndefined()
+      expect(affiliation(id, named), id).toBe(NEON_GUARD)
+    }
+
+    expect(affiliation('dalzollene', named - 1)).toBeUndefined()
+    expect(affiliation('dalzollene', named)).toBe(
+      'Nostrade family, head of Neon’s bodyguards',
+    )
+    expect(affiliation('kurapika', named - 1)).toBe(
+      'Hunter Association, Hunter',
+    )
+    expect(affiliation('kurapika', named)).toMatch(/Neon’s bodyguard/u)
+  })
 })
 
 describe('the arc’s leads', () => {
