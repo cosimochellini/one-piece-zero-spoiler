@@ -296,6 +296,9 @@ export const itDictionary: Dictionary = {
   'character.chronicleTitle': 'La storia finora',
   'character.chronicleLede':
     'Le sue vicende fino al tuo segnalibro, dalla più recente. Ogni parte inizia dall’episodio in cui avviene.',
+  'character.chronicleMore': 'Mostra altre storie',
+  'character.chronicleMoreError':
+    'Caricamento delle altre storie non riuscito. Riprova.',
   'character.notFoundTitle': 'Personaggio non trovato',
   'character.notFoundBody':
     'A questo indirizzo non c’è nessun personaggio. Li trovi tutti nella pagina Personaggi.',

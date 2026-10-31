@@ -1,6 +1,8 @@
 import { screen } from '@testing-library/react'
-import { describe, expect, it } from 'vitest'
+import userEvent from '@testing-library/user-event'
+import { describe, expect, it, vi } from 'vitest'
 
+import type { ChronicleEntry } from '~/lib/view/records'
 import { chronicle, story } from '~/test/fixtures'
 import { renderWithProviders } from '~/test/providers'
 
@@ -87,5 +89,60 @@ describe('CharacterChronicle', () => {
 
     expect(screen.getByText('Chapter 218')).toBeInTheDocument()
     expect(screen.queryByText(/Episode/u)).not.toBeInTheDocument()
+  })
+
+  it('has no button when nothing waits', () => {
+    renderWithProviders(
+      <CharacterChronicle
+        chronicle={chronicle([story({ title: 'One' })])}
+        loadRest={vi.fn<() => Promise<ChronicleEntry[]>>()}
+      />,
+    )
+
+    expect(screen.queryByRole('button')).not.toBeInTheDocument()
+  })
+
+  it('loads the older stories on the click, after the others', async () => {
+    const loadRest = vi
+      .fn<() => Promise<ChronicleEntry[]>>()
+      .mockResolvedValue([story({ revealedAtEpisode: 1, title: 'Older' })])
+    const user = userEvent.setup()
+    renderWithProviders(
+      <CharacterChronicle
+        chronicle={chronicle(
+          [story({ revealedAtEpisode: 45, title: 'Newer' })],
+          1,
+        )}
+        loadRest={loadRest}
+      />,
+    )
+
+    await user.click(screen.getByRole('button', { name: 'Show more' }))
+
+    await screen.findByText('Older')
+
+    expect(
+      screen.getAllByRole('heading', { level: 3 }).map((h) => h.textContent),
+    ).toStrictEqual(['Newer', 'Older'])
+
+    expect(screen.queryByRole('button')).not.toBeInTheDocument()
+  })
+
+  it('says so and keeps the button when the stories do not come', async () => {
+    const user = userEvent.setup()
+    renderWithProviders(
+      <CharacterChronicle
+        chronicle={chronicle([story({ title: 'Newer' })], 2)}
+        loadRest={vi
+          .fn<() => Promise<ChronicleEntry[]>>()
+          .mockRejectedValue(new Error('offline'))}
+      />,
+    )
+
+    await user.click(screen.getByRole('button', { name: 'Show more' }))
+
+    await screen.findByRole('alert')
+
+    expect(screen.getByRole('button', { name: 'Show more' })).toBeEnabled()
   })
 })

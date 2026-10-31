@@ -19,6 +19,9 @@ import type { Reader } from './reader.server'
  * reader's episode is not in the payload at all.
  */
 
+/** How many stories a page opens with; the rest wait for the reader's button. */
+export const CHRONICLE_OPEN = 5
+
 /** What a marker's id stands for: a character's name in one locale, or nothing. */
 export type ResolveName = (id: string) => string | undefined
 
@@ -60,21 +63,40 @@ function characterName(r: Reader): ResolveName {
  * character is met sooner than they are.
  */
 export function chronicleOf(entity: Entity, r: Reader): CharacterChronicle {
-  const resolve = characterName(r)
+  const all = storiesOf(entity, r)
 
   return {
     mode: 'chronicle',
-    entries: r.archive
-      .reachedOf(r, entity, 'chronicle')
-      .toSorted(
-        byValue((entry) => r.threshold(entry.gate), byNumber({ desc: true })),
-      )
-      .map((entry): ChronicleEntry => {
-        return {
-          ...entry.gate,
-          title: entry.value.title[r.locale],
-          body: segmentsOf(entry.value.body[r.locale], resolve),
-        }
-      }),
+    entries: all.slice(0, CHRONICLE_OPEN),
+    rest: Math.max(0, all.length - CHRONICLE_OPEN),
   }
+}
+
+/**
+ * The reached stories `chronicleOf` left behind, for the reader's button.
+ * Cut at the same bookmark as the page, so it can never hold a story the page
+ * could not have shown; an id the archive does not file as a character has
+ * none.
+ */
+export function chronicleRestOf(id: string, r: Reader): ChronicleEntry[] {
+  const entity = r.archive.getCharacter(id)
+
+  return entity === undefined ? [] : storiesOf(entity, r).slice(CHRONICLE_OPEN)
+}
+
+function storiesOf(entity: Entity, r: Reader): ChronicleEntry[] {
+  const resolve = characterName(r)
+
+  return r.archive
+    .reachedOf(r, entity, 'chronicle')
+    .toSorted(
+      byValue((entry) => r.threshold(entry.gate), byNumber({ desc: true })),
+    )
+    .map((entry): ChronicleEntry => {
+      return {
+        ...entry.gate,
+        title: entry.value.title[r.locale],
+        body: segmentsOf(entry.value.body[r.locale], resolve),
+      }
+    })
 }

@@ -6,6 +6,7 @@ import { plain } from '~/lib/plain'
 import { readBookmark, readTrial } from '~/lib/progress/readBookmark'
 import type { Series } from '~/lib/progress/series'
 
+import { chronicleRestOf } from './archive/chronicle.server'
 import { creditsPage } from './archive/credits.server'
 import { fillerPage, peekFiller } from './archive/filler.server'
 import { fruitPage } from './archive/fruitPage.server'
@@ -183,6 +184,13 @@ export const loadCharacter = createServerFn()
   .validator(addressed)
   .handler(
     async ({ data }) => characterPage(data.id, await readerIn(data)) ?? null,
+  )
+
+// Plain JSON: the browser asks for the older stories on the reader's click.
+export const loadChronicleRest = createServerFn()
+  .validator(addressed)
+  .handler(async ({ data }) =>
+    plain(chronicleRestOf(data.id, await readerIn(data))),
   )
 
 export const loadRelationships = createServerFn()

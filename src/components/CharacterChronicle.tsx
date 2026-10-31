@@ -1,7 +1,9 @@
 import * as stylex from '@stylexjs/stylex'
 import { Link } from '@tanstack/react-router'
-import type { ReactElement } from 'react'
+import { type ReactElement, useState } from 'react'
 
+import { Button } from '~/components/ui/Button'
+import { useT } from '~/i18n/LocaleContext'
 import { useSeriesParams, useThreshold } from '~/lib/progress/BookmarkContext'
 import type {
   CharacterChronicle as Chronicle,
@@ -22,6 +24,11 @@ import {
 /** The chronicle as it stands at the reader's bookmark. */
 export interface CharacterChronicleProps {
   chronicle: Chronicle
+  /**
+   * Asks the server for the reached stories the page left out. A prop, not an
+   * import: a component may not call a server function.
+   */
+  loadRest?: (() => Promise<ChronicleEntry[]>) | undefined
 }
 
 /**
@@ -35,22 +42,109 @@ export interface CharacterChronicleProps {
  */
 export function CharacterChronicle({
   chronicle,
+  loadRest,
 }: CharacterChronicleProps): null | ReactElement {
+  const { older, failed, loading, more } = useOlder(chronicle, loadRest)
+
   if (chronicle.entries.length === 0) {
     return null
   }
 
   return (
-    <ol {...stylex.props(styles.ledger)}>
-      {chronicle.entries.map((entry) => {
-        return (
-          <StoryRow
-            key={entry.revealedAtEpisode}
-            entry={entry}
-          />
-        )
-      })}
-    </ol>
+    <>
+      <ol {...stylex.props(styles.ledger)}>
+        {[...chronicle.entries, ...older].map((entry) => {
+          return (
+            <StoryRow
+              // Two stories can share an episode, never an episode and a title.
+              key={`${String(entry.revealedAtEpisode)}-${entry.title}`}
+              entry={entry}
+            />
+          )
+        })}
+      </ol>
+      {more !== undefined && (
+        <ShowMore
+          failed={failed}
+          loading={loading}
+          onClick={more}
+        />
+      )}
+    </>
+  )
+}
+
+/**
+ * The older stories the reader asked for, and the button's state. They belong
+ * to the chronicle they were asked for: a moved bookmark brings a new one, and
+ * these are dropped with it. `more` is `undefined` when there is nothing to ask.
+ */
+function useOlder(
+  chronicle: Chronicle,
+  loadRest: CharacterChronicleProps['loadRest'],
+): {
+  failed: boolean
+  loading: boolean
+  more: (() => void) | undefined
+  older: ChronicleEntry[]
+} {
+  const [loaded, setLoaded] = useState<null | {
+    entries: ChronicleEntry[]
+    of: Chronicle
+  }>(null)
+  const [state, setState] = useState<'failed' | 'idle' | 'loading'>('idle')
+  const older = loaded?.of === chronicle ? loaded.entries : []
+  const waiting = chronicle.rest > 0 && older.length === 0
+
+  const ask = async (load: () => Promise<ChronicleEntry[]>): Promise<void> => {
+    setState('loading')
+    try {
+      setLoaded({ of: chronicle, entries: await load() })
+      setState('idle')
+    } catch {
+      setState('failed')
+    }
+  }
+
+  return {
+    older,
+    failed: state === 'failed',
+    loading: state === 'loading',
+    more:
+      waiting && loadRest !== undefined ? () => void ask(loadRest) : undefined,
+  }
+}
+
+/** The button under the ledger, and what went wrong if it did. */
+function ShowMore({
+  failed,
+  loading,
+  onClick,
+}: {
+  failed: boolean
+  loading: boolean
+  onClick: () => void
+}): ReactElement {
+  const t = useT()
+
+  return (
+    <div {...stylex.props(styles.more)}>
+      <Button
+        aria-busy={loading}
+        disabled={loading}
+        onClick={onClick}
+      >
+        {t('character.chronicleMore')}
+      </Button>
+      {failed && (
+        <p
+          role="alert"
+          {...stylex.props(styles.body)}
+        >
+          {t('character.chronicleMoreError')}
+        </p>
+      )}
+    </div>
   )
 }
 
@@ -134,6 +228,12 @@ const styles = stylex.create({
     borderBlockStartWidth: rule.hair,
     display: 'grid',
     minWidth: 0,
+  },
+  more: {
+    gap: space.sm,
+    display: 'grid',
+    justifyItems: 'start',
+    paddingBlockStart: space.lg,
   },
   story: {
     paddingBlock: space.lg,

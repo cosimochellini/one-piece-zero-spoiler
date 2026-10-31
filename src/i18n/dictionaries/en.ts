@@ -298,6 +298,9 @@ export const enDictionary = {
   'character.chronicleTitle': 'Story so far',
   'character.chronicleLede':
     'What happens to them up to your bookmark, latest first. Each part starts at the episode where it takes place.',
+  'character.chronicleMore': 'Show more',
+  'character.chronicleMoreError':
+    'Could not load the other stories. Try again.',
   'character.notFoundTitle': 'Character not found',
   'character.notFoundBody':
     'There is no character at this address. The characters page lists all of them.',
