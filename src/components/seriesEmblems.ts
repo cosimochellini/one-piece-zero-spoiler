@@ -42,4 +42,32 @@ export const EMBLEMS: Partial<Record<string, Stroke[]>> = {
     { d: 'M53 111 L58 116 M60 117 L65 121 M104 112 L100 116', role: 'ambient' },
     { d: 'M32 187 H128', role: 'ambient', dashed: true },
   ],
+  // A plain crown standing on the ground, seen from a little above, drawn by
+  // eye (owner, 2026-10-26): no house sigil, no stone, nothing traced from
+  // the show. The band is the accent, and the far rim shows only between the
+  // four points.
+  'game-of-thrones': [
+    { d: 'M34 114 V150 A46 11 0 0 0 126 150 V114' },
+    {
+      d: 'M34 114 L45 78 L57 123.5 L68.5 72 L80 125 L91.5 72 L103 123.5 L115 78 L126 114',
+    },
+    // A ball on each tip.
+    {
+      d: 'M41.5 74.5 a3.5 3.5 0 1 0 7 0 a3.5 3.5 0 1 0 -7 0 M65 68.5 a3.5 3.5 0 1 0 7 0 a3.5 3.5 0 1 0 -7 0 M88 68.5 a3.5 3.5 0 1 0 7 0 a3.5 3.5 0 1 0 -7 0 M111.5 74.5 a3.5 3.5 0 1 0 7 0 a3.5 3.5 0 1 0 -7 0',
+    },
+    {
+      d: 'M51.9 105.3 A46 11 0 0 1 61.4 103.9 M75.2 103.1 A46 11 0 0 1 84.8 103.1 M98.6 103.9 A46 11 0 0 1 108.1 105.3',
+      role: 'soft',
+    },
+    {
+      d: 'M45 84 L47.5 112 M68.5 78 L70 116 M91.5 78 L91 116 M115 84 L113 112',
+      role: 'soft',
+    },
+    {
+      d: 'M34 131 A46 11 0 0 0 126 131 M34 139 A46 11 0 0 0 126 139',
+      role: 'accent',
+    },
+    { d: 'M113 129 V156 M118 127 V154 M122 123 V151', role: 'ambient' },
+    { d: 'M28 168 q52 6 104 0', role: 'ambient', dashed: true },
+  ],
 }

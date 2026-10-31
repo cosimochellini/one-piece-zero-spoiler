@@ -99,10 +99,9 @@ appearances or supplemental names.
 
 Game of Thrones is filed closed (#849): its description (the show's seasons, the
 five books, the season 1 / first-book demo), its eight empty season modules, its
-copy and a provisional theme (#850 picks the palette). It files no arcs: a
-season with no record is left out of the engine's sagas until its records land
-(#852, #853), and the shared rules that need a record skip a series that files
-none.
+copy, its red theme and its hub crown (#850). It files no arcs: a season with no
+record is left out of the engine's sagas until its records land (#852, #853),
+and the shared rules that need a record skip a series that files none.
 
 Public metadata in `src/lib/progress/series.ts` holds cookies, ranges, seasons,
 demo bounds, features and themes, without archive records. Pass the series to
