@@ -216,7 +216,10 @@ export const yorknewCityChronicles = {
         },
       },
     },
-    // The needle and the cloth are chapter 77 (pages 12-19), the Shadow Beasts’ deaths and the rescue chapter 78, all in episode 45. Owl’s torture is left out.
+    // The needle, the cloth and the other Shadow Beasts’ arrival are
+    // chapter 77 (pages 12-19), the rescue chapter 78, both in episode 45.
+    // Who kills the Shadow Beasts is not told before chapter 79, and Owl’s
+    // torture is left out.
     {
       episode: 45,
       chapter: 78,
@@ -392,7 +395,7 @@ export const yorknewCityChronicles = {
         title: { it: 'Dopo l’esplosione', en: 'After the blast' },
         body: {
           it: 'Lombrico colpisce [[uvogin|Uborghin]] al viso e riceve in cambio un pugno più forte. Gli afferra il braccio e glielo trascina sotto terra, ma Uborghin risponde con il Colpo del Big Bang, che apre un cratere e lascia Lombrico gravemente ferito. Lombrico chiama aiuto al telefono e dice di portare tutti contro la Brigata. Arrivano altre Bestie dell’Ombra, e Lombrico è tra quelle date per morte.',
-          en: 'Worm punches [[uvogin|Uvogin]] in the face and gets a harder punch back. He grabs Uvogin’s arm and pulls it under the ground, but Uvogin answers with his Big Bang Impact, which blasts a crater and leaves Worm badly hurt. From under the ground Worm phones for help and says to bring everyone against the Troupe. Other Shadow Beasts arrive, and Worm is among the Shadow Beasts reported dead.',
+          en: 'Worm punches [[uvogin|Uvogin]] in the face and gets a harder punch back. He grabs Uvogin’s arm and pulls it under the ground, but Uvogin answers with his Big Bang Impact, which blasts a crater and leaves Worm badly hurt. Worm phones for help and says to bring everyone against the Troupe. Other Shadow Beasts arrive, and Worm is among the Shadow Beasts reported dead.',
         },
       },
     },
@@ -522,8 +525,8 @@ export const yorknewCityChronicles = {
           en: 'A new head for the bodyguards',
         },
         body: {
-          it: 'Light Nostrad è il padre di [[neon-nostrade|Neon]] e chi ha assunto le sue guardie del corpo, a cui dava gli ordini tramite [[dalzollene|Dalzorne]]. Dopo l’attacco all’asta, le guardie scelgono [[kurapika|Kurapika]] per chiamarlo. Kurapika gli dice che Dalzorne è probabilmente morto e che dietro l’attacco c’è la Brigata Fantasma. Light lo mette a capo delle guardie del corpo.',
-          en: 'Light Nostrade is [[neon-nostrade|Neon]]’s father and the one who hired her bodyguards, giving them his orders through [[dalzollene|Dalzollene]]. After the attack on the auction, the bodyguards choose [[kurapika|Kurapika]] to call him. Kurapika tells him that Dalzollene is probably dead and that the Phantom Troupe was behind the attack. Light puts Kurapika in charge of the bodyguards.',
+          it: 'Light Nostrad è il padre di [[neon-nostrade|Neon]] e chi ha assunto le sue guardie del corpo. Dopo l’attacco all’asta, le guardie scelgono [[kurapika|Kurapika]] per chiamarlo. Kurapika gli dice che [[dalzollene|Dalzorne]] è probabilmente morto e che dietro l’attacco c’è la Brigata Fantasma. Light lo mette a capo delle guardie del corpo.',
+          en: 'Light Nostrade is [[neon-nostrade|Neon]]’s father and the one who hired her bodyguards. After the attack on the auction, the bodyguards choose [[kurapika|Kurapika]] to call him. Kurapika tells him that [[dalzollene|Dalzollene]] is probably dead and that the Phantom Troupe was behind the attack. Light puts Kurapika in charge of the bodyguards.',
         },
       },
     },

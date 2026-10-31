@@ -126,7 +126,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
     47: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_47_(2011)',
-      note: 'Corrected after review: “truthfully” dropped; episode 47 says only that the rule is to answer his questions. The teacher and Water Divination are chapter 83 and episodes 39 and 47; the fight is chapters 81-84 and episode 47. Italian: Materializzazione, Specializzazione, Test dell’Acqua (Italian Wikipedia). Checked on the episode page and the chapter pages.',
+      note: 'Corrected after review: “before the auction” dropped from the teacher’s lesson. “truthfully” dropped; episode 47 says only that the rule is to answer his questions. The teacher and Water Divination are chapter 83 and episodes 39 and 47; the fight is chapters 81-84 and episode 47. Italian: Materializzazione, Specializzazione, Test dell’Acqua (Italian Wikipedia). Checked on the episode page and the chapter pages.',
     },
   },
   'katzo': {
@@ -912,7 +912,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
   'light-nostrade': {
     46: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_46_(2011)',
-      note: 'Chapter 79 and episode 46. Checked on the episode page and the chapter pages.',
+      note: 'Corrected after review: the relay of his orders through Dalzollene is chapter 79 only and is dropped; episode 46 says only that he hired them. Chapter 79 and episode 46. Checked on the episode page and the chapter pages.',
     },
   },
   'shalnark': {
