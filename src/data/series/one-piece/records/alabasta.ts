@@ -1106,10 +1106,13 @@ export const alabasta: OnePieceSaga = {
           chapter: 133,
           value: { it: 'Re di Drum, in esilio', en: 'Exiled king of Drum' },
         },
-        // Episode 91 adapts chapter 154: Wapol gone, Dalton is to lead Drum.
+        // Luffy sends him flying out of the kingdom in chapter 151, and the
+        // villagers celebrate the end of his rule; episode 89 adapts it ("When
+        // the Kingdom's Rule Is Over"). His "Deposed" affiliation step at 91
+        // is later; #980 moves it.
         {
-          episode: 91,
-          chapter: 154,
+          episode: 89,
+          chapter: 151,
           value: { it: 'Ex re di Drum', en: 'Former king of Drum' },
         },
         // King of another country at the Reverie, chapter 906 (p. 11–14),

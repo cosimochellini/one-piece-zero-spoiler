@@ -19,13 +19,16 @@ type Unit = (typeof UNITS)[number]
 
 /**
  * One change of role: the role before it, the role from it, and its gate in
- * each unit. A change one source alone tells names that unit.
+ * each unit. A change one source alone tells names that unit. A change on
+ * the record's own chapter opens it for a chapter reader, who never sees the
+ * role before it: the first step is the anime's alone.
  */
 interface Change {
   chapter: number
   episode: number
   from: LocalizedText
   only?: Unit
+  onRecordChapter?: true
   to: LocalizedText
 }
 
@@ -144,8 +147,8 @@ const ROLES: { changes: Change[]; id: string }[] = [
     id: 'smoker',
     changes: [
       {
-        episode: 130,
-        chapter: 212,
+        episode: 324,
+        chapter: 439,
         from: role('Capitano della Marina', 'Marine captain'),
         to: role('Commodoro della Marina', 'Marine commodore'),
       },
@@ -161,8 +164,8 @@ const ROLES: { changes: Change[]; id: string }[] = [
     id: 'tashigi',
     changes: [
       {
-        episode: 130,
-        chapter: 212,
+        episode: 324,
+        chapter: 439,
         from: role('Sergente della Marina', 'Marine sergeant'),
         to: role('Guardiamarina della Marina', 'Marine ensign'),
       },
@@ -180,6 +183,7 @@ const ROLES: { changes: Change[]; id: string }[] = [
       {
         episode: 64,
         chapter: 107,
+        onRecordChapter: true,
         from: role('Sedicente re', 'Self-styled king'),
         to: role('Agente di Baroque Works', 'Baroque Works agent'),
       },
@@ -191,6 +195,7 @@ const ROLES: { changes: Change[]; id: string }[] = [
       {
         episode: 67,
         chapter: 114,
+        onRecordChapter: true,
         from: role('Capo di Whisky Peak', 'Head of Whisky Peak'),
         to: role(
           'Capitano della guardia reale di Alabasta',
@@ -205,12 +210,13 @@ const ROLES: { changes: Change[]; id: string }[] = [
       {
         episode: 80,
         chapter: 133,
+        onRecordChapter: true,
         from: role('Capitano del Bliking', 'Captain of the Bliking'),
         to: role('Re di Drum, in esilio', 'Exiled king of Drum'),
       },
       {
-        episode: 91,
-        chapter: 154,
+        episode: 89,
+        chapter: 151,
         from: role('Re di Drum, in esilio', 'Exiled king of Drum'),
         to: role('Ex re di Drum', 'Former king of Drum'),
       },
@@ -433,7 +439,7 @@ function roleAt(id: string, at: Bookmark, locale: Locale): unknown {
 }
 
 interface Case {
-  from: string
+  from?: string
   gate: number
   id: string
   locale: Locale
@@ -446,7 +452,9 @@ function casesOf(id: string, change: Change): Case[] {
   return UNITS.filter((unit) => (change.only ?? unit) === unit).flatMap(
     (unit) =>
       LOCALES.map((locale) => ({
-        from: change.from[locale],
+        ...((unit === 'episode' || change.onRecordChapter === undefined) && {
+          from: change.from[locale],
+        }),
         gate: unit === 'episode' ? change.episode : change.chapter,
         id,
         locale,
@@ -461,11 +469,18 @@ const CASES = ROLES.flatMap(({ changes, id }) =>
 )
 
 describe('the One Piece roles a later arc changes', () => {
-  it.each(CASES)(
+  it.each(CASES.filter(({ from }) => from !== undefined))(
     'dates $id’s role at $unit $gate ($locale)',
     ({ from, gate, id, locale, to, unit }) => {
       expect(roleAt(id, bookmark(unit, gate - 1), locale)).toBe(from)
       expect(roleAt(id, bookmark(unit, gate), locale)).toBe(to)
+    },
+  )
+
+  it.each(CASES.filter(({ from }) => from === undefined))(
+    'opens $id on the later role at chapter $gate ($locale)',
+    ({ gate, id, locale, to }) => {
+      expect(roleAt(id, bookmark('chapter', gate), locale)).toBe(to)
     },
   )
 

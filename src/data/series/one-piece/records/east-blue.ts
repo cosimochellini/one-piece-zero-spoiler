@@ -2514,11 +2514,12 @@ export const eastBlue: OnePieceSaga = {
           chapter: 97,
           value: { it: 'Capitano della Marina', en: 'Marine captain' },
         },
-        // The World Government promotes him one rank in chapter 212 (p. 18);
-        // the episode is his affiliation’s, 130.
+        // He refuses the promotion offered in chapter 212. The rank is first
+        // shown in chapter 439 (p. 16), adapted in episode 324. His
+        // affiliation still steps at 130, which shows no promotion; #980.
         {
-          episode: 130,
-          chapter: 212,
+          episode: 324,
+          chapter: 439,
           value: { it: 'Commodoro della Marina', en: 'Marine commodore' },
         },
         {
@@ -2567,11 +2568,13 @@ export const eastBlue: OnePieceSaga = {
           chapter: 99,
           value: { it: 'Sergente della Marina', en: 'Marine sergeant' },
         },
-        // Promoted one rank with Smoker in chapter 212 (p. 18); the episode is
-        // her affiliation’s, 130.
+        // Smoker refuses their promotion in chapter 212. A subordinate first
+        // addresses her by her new rank, ensign, in chapter 439 (p. 16),
+        // adapted in episode 324. Her affiliation still steps at 130, which
+        // shows no promotion; #980.
         {
-          episode: 130,
-          chapter: 212,
+          episode: 324,
+          chapter: 439,
           value: { it: 'Guardiamarina della Marina', en: 'Marine ensign' },
         },
         {
