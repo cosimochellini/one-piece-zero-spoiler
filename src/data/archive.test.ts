@@ -137,6 +137,34 @@ function openedCases(
   })
 }
 
+/**
+ * Where a medium's reader first meets a status timeline, and the record's
+ * gate in that medium's unit; `undefined` when the record is not told in it.
+ * An entry with no chapter of its own opens with its record for a chapter
+ * reader.
+ */
+function openingOf(
+  character: Entity,
+  timeline: Timeline<unknown>,
+  source: Source,
+): undefined | { gate: number; opens: number | undefined } {
+  if (!toldIn(character, source)) {
+    return undefined
+  }
+
+  const first = timeline.find((entry) => toldIn(entry, source))
+
+  return source === 'episode' ?
+      { gate: character.revealedAtEpisode, opens: first?.episode }
+    : {
+        gate: character.revealedAtChapter,
+        opens:
+          first === undefined ? undefined : (
+            (first.chapter ?? character.revealedAtChapter)
+          ),
+      }
+}
+
 /** Every dated entry that names an unanchored record before its chapter. */
 function unanchoredLeaks(archive: SeriesArchive): string[] {
   const unanchored = archive.entities.filter(
@@ -359,8 +387,14 @@ describe.each(LOADED_SERIES)(
       // at the episode of the death, the mere appearance of the Status row
       // would announce that something had happened; every timeline instead
       // opens at the threshold, in the state the character is introduced in.
+      // Read as each reader reads it: the first entry a medium tells sits
+      // at the record's gate in that medium's unit.
       for (const { character, label, timeline } of STATUSES) {
-        expect(timeline[0]?.episode, label).toBe(character.revealedAtEpisode)
+        for (const source of ['episode', 'chapter'] as const) {
+          const opening = openingOf(character, timeline, source)
+
+          expect(opening?.opens, label).toBe(opening?.gate)
+        }
       }
     })
 
@@ -383,11 +417,19 @@ describe.each(LOADED_SERIES)(
     })
 
     it('files a status only where it changes', () => {
+      // Read as each reader reads it: an entry one medium alone tells sits
+      // between entries of the other without a change of its own.
       for (const { label, timeline } of STATUSES) {
-        const values = timeline.map((entry) => entry.value)
-        const restated = values.filter((value, at) => value === values[at - 1])
+        for (const source of ['episode', 'chapter'] as const) {
+          const values = timeline
+            .filter((entry) => toldIn(entry, source))
+            .map((entry) => entry.value)
+          const restated = values.filter(
+            (value, at) => value === values[at - 1],
+          )
 
-        expect(restated, label).toStrictEqual([])
+          expect(restated, label).toStrictEqual([])
+        }
       }
     })
 
@@ -408,10 +450,15 @@ describe.each(LOADED_SERIES)(
     it('brings nobody back from a confirmed death', () => {
       // What `presumed-dead` is for: a character the story drops and picks up
       // again is filed under the doubt, never under the certainty.
+      // Read as each reader reads it: a record the two media kill at
+      // different points dies once in each.
       for (const { label, timeline } of STATUSES) {
-        const died = timeline.findIndex((entry) => entry.value === 'deceased')
+        for (const source of ['episode', 'chapter'] as const) {
+          const read = timeline.filter((entry) => toldIn(entry, source))
+          const died = read.findIndex((entry) => entry.value === 'deceased')
 
-        expect(died === -1 || died === timeline.length - 1, label).toBe(true)
+          expect(died === -1 || died === read.length - 1, label).toBe(true)
+        }
       }
     })
 

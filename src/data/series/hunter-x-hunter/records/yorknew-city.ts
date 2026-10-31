@@ -34,6 +34,10 @@ const TROUPE_MEMBER = {
 }
 const TROUPE = { it: 'Brigata Fantasma', en: 'Phantom Troupe' }
 
+/** One of the Shadow Beasts, as the role line and the affiliation. */
+const SHADOW_BEAST = { it: 'Bestia dell’Ombra', en: 'Shadow Beast' }
+const SHADOW_BEASTS = { it: 'Bestie dell’Ombra', en: 'Shadow Beasts' }
+
 /**
  * The two plants among the applicants at their gate, chapter 68 and episode
  * 40, who then ride with Neon's bodyguards into the city: chapter 71 and
@@ -64,11 +68,13 @@ const HIRED = [
  * in chapter 44, pages 3–5 (page references follow the owner's digital
  * edition).
  *
- * Each character opens where the name is said (#900), in three phases: this
- * one files episodes 37–42 / chapters 64–72. Where the wiki gives no naming
- * line, the gate is the chapter where its synopsis stops describing the
- * character and uses the name, and the episode that adapts that scene, the
- * latest safe point (owner, #900). Surnames from the databook stay out.
+ * Each character opens where the name is said (#900), filed in three
+ * phases: episodes 37–42 / chapters 64–72, then 43–47 / 73–84, then 48–58 /
+ * 85–119. Where the wiki gives no naming line, the gate is the chapter where
+ * its synopsis stops describing the character and uses the name, and the
+ * episode that adapts that scene, the latest safe point (owner, #900). A
+ * text says only what both the chapter and the episode pages show by its
+ * gate. Surnames from the databook stay out.
  */
 export const yorknewCity: HunterSaga = {
   name: { it: 'York Shin City', en: 'Yorknew City' },
@@ -250,6 +256,168 @@ export const yorknewCity: HunterSaga = {
       },
       visual: { art: 'shizuku', tint: 'violet' },
     },
+    // Named by the leader on the phone as the Troupe flees the auction,
+    // chapter 74 and episode 43; disguised and unnamed in chapter 73.
+    {
+      id: 'uvogin',
+      kind: 'character',
+      revealedAtEpisode: 43,
+      revealedAtChapter: 74,
+      name: { it: 'Uborghin', en: 'Uvogin' },
+      summary: {
+        it: 'Un membro della Brigata Fantasma che trova già vuoto il caveau dell’asta e sospetta un traditore.',
+        en: 'A member of the Phantom Troupe who finds the auction vault already empty and suspects a traitor.',
+      },
+      visual: { art: 'uvogin', tint: 'ocher' },
+    },
+    // On the auction stage, unnamed, in chapter 73; named in chapter 74 and
+    // in episode 43.
+    {
+      id: 'feitan',
+      kind: 'character',
+      revealedAtEpisode: 43,
+      revealedAtChapter: 74,
+      name: { it: 'Feitan', en: 'Feitan' },
+      summary: {
+        it: 'Un membro della Brigata Fantasma che prende parte all’attacco all’asta sotterranea.',
+        en: 'A member of the Phantom Troupe who takes part in the attack on the Underground Auction.',
+      },
+      visual: { art: 'feitan', tint: 'ice' },
+    },
+    // "The larger one" in chapter 73; named in chapter 76, and in episode
+    // 43, so the gate is the episode of chapter 76's scenes.
+    {
+      id: 'franklin',
+      kind: 'character',
+      revealedAtEpisode: 44,
+      revealedAtChapter: 76,
+      name: { it: 'Franklin', en: 'Franklin' },
+      summary: {
+        it: 'Un membro della Brigata Fantasma che spara proiettili di aura.',
+        en: 'A member of the Phantom Troupe who fires bullets of aura.',
+      },
+      visual: { art: 'franklin', tint: 'sand' },
+    },
+    // Named in chapter 77 and episode 45, when a Shadow Beast's cloth traps
+    // him alone.
+    {
+      id: 'nobunaga',
+      kind: 'character',
+      revealedAtEpisode: 45,
+      revealedAtChapter: 77,
+      name: { it: 'Nobunaga', en: 'Nobunaga' },
+      summary: {
+        it: 'Un membro della Brigata Fantasma che resta intrappolato nel telo di una Bestia dell’Ombra.',
+        en: 'A member of the Phantom Troupe who is caught in a Shadow Beast’s cloth.',
+      },
+      visual: { art: 'nobunaga', tint: 'violet' },
+    },
+    {
+      id: 'phinks',
+      kind: 'character',
+      revealedAtEpisode: 45,
+      revealedAtChapter: 78,
+      name: { it: 'Phinks', en: 'Phinks' },
+      summary: {
+        it: 'Un membro della Brigata Fantasma che libera Uborghin.',
+        en: 'A member of the Phantom Troupe who frees Uvogin.',
+      },
+      visual: { art: 'phinks', tint: 'orange' },
+    },
+    // Named in chapter 75; the episodes use his name only from 46, which
+    // adapts chapter 79, where he searches for the chain user.
+    {
+      id: 'shalnark',
+      kind: 'character',
+      revealedAtEpisode: 46,
+      revealedAtChapter: 79,
+      name: { it: 'Shalnark', en: 'Shalnark' },
+      summary: {
+        it: 'Un membro della Brigata Fantasma che cerca la famiglia Nostrad sul sito degli Hunter.',
+        en: 'A member of the Phantom Troupe who searches the Hunter website for the Nostrade family.',
+      },
+      visual: { art: 'shalnark', tint: 'lavender' },
+    },
+    // Neon's father on the phone, unnamed, from chapter 71 and episode 41;
+    // Squala names him in chapter 79 and episode 46.
+    {
+      id: 'light-nostrade',
+      kind: 'character',
+      revealedAtEpisode: 46,
+      revealedAtChapter: 79,
+      name: { it: 'Light Nostrad', en: 'Light Nostrade' },
+      summary: {
+        it: 'Il padre di Neon, che ha assunto le sue guardie del corpo.',
+        en: 'Neon’s father, who hired her bodyguards.',
+      },
+      visual: { art: 'light-nostrade', tint: 'cyan' },
+    },
+    // Named by Uvogin in chapter 74, but in the episodes only from 45: the
+    // gate is the car chase of chapter 77 and episode 45.
+    {
+      id: 'owl',
+      kind: 'character',
+      revealedAtEpisode: 45,
+      revealedAtChapter: 77,
+      name: { it: 'Civetta', en: 'Owl' },
+      summary: {
+        it: 'Una Bestia dell’Ombra che intrappola in un telo l’auto di alcuni membri della Brigata Fantasma.',
+        en: 'A Shadow Beast who traps a car of Phantom Troupe members in a cloth.',
+      },
+      visual: { art: 'owl', tint: 'azure' },
+    },
+    // Introduces himself, chapter 75 and episode 43.
+    {
+      id: 'worm',
+      kind: 'character',
+      revealedAtEpisode: 43,
+      revealedAtChapter: 75,
+      name: { it: 'Lombrico', en: 'Worm' },
+      summary: {
+        it: 'Una Bestia dell’Ombra che si muove sotto terra.',
+        en: 'A Shadow Beast who moves under the ground.',
+      },
+      visual: { art: 'worm', tint: 'vermilion' },
+    },
+    {
+      id: 'rabid-dog',
+      kind: 'character',
+      revealedAtEpisode: 43,
+      revealedAtChapter: 75,
+      name: { it: 'Cane selvatico', en: 'Rabid Dog' },
+      summary: {
+        it: 'Una delle Bestie dell’Ombra mandate contro la Brigata Fantasma.',
+        en: 'One of the Shadow Beasts sent after the Phantom Troupe.',
+      },
+      visual: { art: 'rabid-dog', tint: 'wine' },
+    },
+    // Named in chapter 76, where Uvogin's scream kills him; the record opens
+    // with his death in the manga (owner, #900) and with his fate unknown in
+    // the episodes.
+    {
+      id: 'porcupine',
+      kind: 'character',
+      revealedAtEpisode: 44,
+      revealedAtChapter: 76,
+      name: { it: 'Porcospino', en: 'Porcupine' },
+      summary: {
+        it: 'Una Bestia dell’Ombra i cui peli diventano aghi.',
+        en: 'A Shadow Beast whose body hair turns into needles.',
+      },
+      visual: { art: 'porcupine', tint: 'lavender' },
+    },
+    {
+      id: 'leech',
+      kind: 'character',
+      revealedAtEpisode: 44,
+      revealedAtChapter: 76,
+      name: { it: 'Sanguisuga', en: 'Leech' },
+      summary: {
+        it: 'Una Bestia dell’Ombra che mette sanguisughe nel corpo delle sue vittime.',
+        en: 'A Shadow Beast who puts leeches into his victims’ bodies.',
+      },
+      visual: { art: 'leech', tint: 'pink' },
+    },
     {
       id: 'yorknew-city',
       kind: 'place',
@@ -339,7 +507,12 @@ export const yorknewCity: HunterSaga = {
         it: 'Si candida come guardia del corpo con Kurapika. Quando l’infiltrato scoperto si rifiuta di dire quali ordini ha dato, lo bacia: lui diventa il suo servitore e le dice tutto.',
         en: 'She applies for a bodyguard job with Kurapika. When the plant who has been caught refuses to say what orders he has given, she kisses him: he becomes her servant and tells her everything.',
       },
-      status: [{ episode: 40, chapter: 68, value: 'alive' }],
+      status: [
+        { episode: 40, chapter: 68, value: 'alive' },
+        // Killed in the attack on the Underground Auction, chapter 73 and
+        // episode 43.
+        { episode: 43, chapter: 73, value: 'deceased' },
+      ],
       affiliation: [NEON_GUARD],
     },
     'squala': {
@@ -357,7 +530,12 @@ export const yorknewCity: HunterSaga = {
         it: 'Mette alla prova i candidati con figure vestite di nero fatte della sua aura. Kurapika lo scopre notando che è l’unico che le figure non attaccano.',
         en: 'He tests the applicants with figures in black made of his aura. Kurapika finds him out by noticing that he is the only one the figures never attack.',
       },
-      status: [{ episode: 40, chapter: 68, value: 'alive' }],
+      status: [
+        { episode: 40, chapter: 68, value: 'alive' },
+        // Killed in the attack on the Underground Auction, chapter 73 and
+        // episode 43.
+        { episode: 43, chapter: 73, value: 'deceased' },
+      ],
       affiliation: [NEON_GUARD],
     },
     'dalzollene': {
@@ -369,7 +547,11 @@ export const yorknewCity: HunterSaga = {
         it: 'Da uno schermo assegna la prova ai candidati: portare un oggetto da una lista. Poi la porta resta chiusa e figure vestite di nero li attaccano. Assume i quattro che tornano con l’oggetto. Andando dalla loro protetta passano davanti a un uomo trasformato in una figura appesa al muro.',
         en: 'From a screen he sets the applicants their test: bring back one item from a list. Then the door stays locked and figures in black attack them. He hires the four who return with their items. On the way to the boss they pass a man turned into a figure hanging on the wall.',
       },
-      status: [{ episode: 41, chapter: 70, value: 'alive' }],
+      status: [
+        { episode: 41, chapter: 70, value: 'alive' },
+        // Killed when the Troupe frees Uvogin, chapter 78 and episode 45.
+        { episode: 45, chapter: 78, value: 'deceased' },
+      ],
       affiliation: [
         {
           episode: 41,
@@ -402,7 +584,12 @@ export const yorknewCity: HunterSaga = {
         it: 'Guardia del corpo della famiglia, è uno dei tre che Dalzorne manda all’asta sotterranea.',
         en: 'A bodyguard of the family, he is one of the three Dalzollene sends to attend the Underground Auction.',
       },
-      status: [{ episode: 42, chapter: 72, value: 'alive' }],
+      status: [
+        { episode: 42, chapter: 72, value: 'alive' },
+        // Killed in the attack on the Underground Auction, chapter 73 and
+        // episode 43.
+        { episode: 43, chapter: 73, value: 'deceased' },
+      ],
       affiliation: [
         {
           episode: 42,
@@ -440,6 +627,164 @@ export const yorknewCity: HunterSaga = {
       },
       status: [{ episode: 41, chapter: 71, value: 'alive' }],
       affiliation: [{ episode: 41, chapter: 71, value: TROUPE }],
+    },
+    'uvogin': {
+      role: TROUPE_MEMBER,
+      log: {
+        it: 'Fugge dall’asta in mongolfiera con altri membri della Brigata. Al telefono dice al capo che il caveau era già vuoto e che tra loro potrebbe esserci un traditore; il capo lo convince che non c’è. Il capo vuole che attirino le Bestie dell’Ombra.',
+        en: 'He flees the auction in a hot-air balloon with other Troupe members. On the phone he tells the leader that the vault was already empty and that there may be a traitor among them; the leader convinces him there is none. The leader wants them to draw out the Shadow Beasts.',
+      },
+      status: [
+        { episode: 43, chapter: 74, value: 'alive' },
+        // Kurapika's chain binds him and the bodyguards drive him away,
+        // chapter 77 and episode 44.
+        { episode: 44, chapter: 77, value: 'captured' },
+        // The Troupe frees him, chapter 78 and episode 45.
+        { episode: 45, chapter: 78, value: 'alive' },
+        // Bound by the chain again in the fight with Kurapika, chapter 82,
+        // and killed by it in chapter 84. Episode 47 tells both, so only a
+        // chapter reader can stand between them: the capture is theirs.
+        { episode: 47, chapter: 82, value: 'captured', source: 'chapter' },
+        { episode: 47, chapter: 84, value: 'deceased' },
+      ],
+      affiliation: [{ episode: 43, chapter: 74, value: TROUPE }],
+    },
+    'feitan': {
+      role: TROUPE_MEMBER,
+      log: {
+        it: 'Sale sul palco dell’asta sotterranea con un altro membro della Brigata e dà il benvenuto agli ospiti; subito dopo vengono uccisi quasi tutti i presenti.',
+        en: 'He walks onto the stage of the Underground Auction with another Troupe member and welcomes the guests; straight after, nearly everyone in the hall is killed.',
+      },
+      status: [{ episode: 43, chapter: 74, value: 'alive' }],
+      affiliation: [{ episode: 43, chapter: 74, value: TROUPE }],
+    },
+    'franklin': {
+      role: TROUPE_MEMBER,
+      log: {
+        it: 'All’asta sotterranea, sul palco con Feitan, uccide quasi tutti gli ospiti con proiettili fatti di aura. Poi gioca a carte con gli altri membri mentre Uborghin affronta da solo le Bestie dell’Ombra.',
+        en: 'At the Underground Auction, on the stage with Feitan, he kills nearly all the guests with bullets made of aura. Later he and the other members play cards while Uvogin takes on the Shadow Beasts alone.',
+      },
+      status: [{ episode: 44, chapter: 76, value: 'alive' }],
+      affiliation: [{ episode: 44, chapter: 76, value: TROUPE }],
+    },
+    'nobunaga': {
+      role: TROUPE_MEMBER,
+      log: {
+        it: 'Con altri membri della Brigata insegue l’auto che porta via Uborghin. Civetta atterra sulla loro auto e la avvolge in un telo: gli altri riescono a uscire, lui, per il posto in cui è seduto, resta intrappolato.',
+        en: 'With other Troupe members he chases the car taking Uvogin away. Owl lands on their car and wraps it in a cloth: the others get out, but he, because of where he sits, is trapped inside.',
+      },
+      // Trapped in chapter 77 and free again among the members who come for
+      // Uvogin in chapter 78. Episode 45 tells both, so only a chapter reader
+      // can stand between them: the trap is theirs.
+      status: [
+        { episode: 45, chapter: 77, value: 'captured', source: 'chapter' },
+        { episode: 45, chapter: 78, value: 'alive' },
+      ],
+      affiliation: [{ episode: 45, chapter: 77, value: TROUPE }],
+    },
+    'phinks': {
+      role: TROUPE_MEMBER,
+      log: {
+        it: 'Con altri membri della Brigata, travestiti da mafiosi, raggiunge il posto dove le guardie del corpo tengono Uborghin, uccide Dalzorne e libera il compagno.',
+        en: 'With other Troupe members, disguised as Mafia men, he reaches the place where the bodyguards hold Uvogin, kills Dalzollene and frees his comrade.',
+      },
+      status: [{ episode: 45, chapter: 78, value: 'alive' }],
+      affiliation: [{ episode: 45, chapter: 78, value: TROUPE }],
+    },
+    'shalnark': {
+      role: TROUPE_MEMBER,
+      log: {
+        it: 'Mentre Uborghin beve birra, cerca la famiglia Nostrad sul sito degli Hunter, così che Uborghin possa scovare l’utilizzatore di catene.',
+        en: 'While Uvogin drinks beer, he searches the Hunter website for the Nostrade family, so that Uvogin can track down the chain user.',
+      },
+      status: [{ episode: 46, chapter: 79, value: 'alive' }],
+      affiliation: [{ episode: 46, chapter: 79, value: TROUPE }],
+    },
+    'light-nostrade': {
+      role: { it: 'Padre di Neon', en: 'Neon’s father' },
+      log: {
+        it: 'Le guardie del corpo scoprono da Squala che è lui ad averle assunte. Al telefono Kurapika gli dice che Dalzorne è probabilmente morto, e lui lo mette a capo delle guardie.',
+        en: 'The bodyguards learn from Squala that he is the one who hired them. On the phone Kurapika tells him that Dalzollene is probably dead, and he puts Kurapika in charge of the bodyguards.',
+      },
+      status: [{ episode: 46, chapter: 79, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 46,
+          chapter: 79,
+          value: { it: 'Famiglia Nostrad', en: 'Nostrade family' },
+        },
+      ],
+    },
+    'owl': {
+      role: SHADOW_BEAST,
+      log: {
+        it: 'Atterra sull’auto dei membri della Brigata che inseguono Uborghin e la avvolge nel suo telo: tutti riescono a uscire tranne Nobunaga, che resta intrappolato. Poi arrivano le altre Bestie dell’Ombra.',
+        en: 'He lands on the car of the Troupe members chasing Uvogin and wraps it in his cloth: all get out but Nobunaga, who is trapped inside. Then the other Shadow Beasts arrive.',
+      },
+      // Episode 45 shows the Troupe holding and torturing him; the manga
+      // first shows him held at the hideout in chapter 84 (episode 47). An
+      // anime reader meets him captured, a manga reader free until then.
+      status: [
+        { episode: 45, chapter: 77, value: 'alive', source: 'chapter' },
+        { episode: 45, chapter: 77, value: 'captured', source: 'episode' },
+        { episode: 47, chapter: 84, value: 'captured', source: 'chapter' },
+      ],
+      affiliation: [{ episode: 45, chapter: 77, value: SHADOW_BEASTS }],
+    },
+    'worm': {
+      role: SHADOW_BEAST,
+      log: {
+        it: 'Sbuca da sotto terra vicino alle guardie del corpo dei Nostrad e si presenta. Con altre tre Bestie dell’Ombra va ad affrontare Uborghin.',
+        en: 'He comes up out of the ground near the Nostrade bodyguards and introduces himself. With three other Shadow Beasts he goes to take on Uvogin.',
+      },
+      status: [
+        { episode: 43, chapter: 75, value: 'alive' },
+        // Badly wounded by Uvogin's blast, he crawls out of the ground and
+        // calls for the other Shadow Beasts (chapter 76, episode 44). The
+        // death of every Shadow Beast but Owl is told in chapter 78 and
+        // episode 45.
+        { episode: 45, chapter: 78, value: 'deceased' },
+      ],
+      affiliation: [{ episode: 43, chapter: 75, value: SHADOW_BEASTS }],
+    },
+    'rabid-dog': {
+      role: SHADOW_BEAST,
+      log: {
+        it: 'Arriva con altre due Bestie dell’Ombra per affrontare Uborghin.',
+        en: 'He arrives with two other Shadow Beasts to take on Uvogin.',
+      },
+      status: [
+        { episode: 43, chapter: 75, value: 'alive' },
+        // Uvogin spits a piece of Leech's skull through his head, chapter 76
+        // and episode 44.
+        { episode: 44, chapter: 76, value: 'deceased' },
+      ],
+      affiliation: [{ episode: 43, chapter: 75, value: SHADOW_BEASTS }],
+    },
+    'porcupine': {
+      role: SHADOW_BEAST,
+      log: {
+        it: 'I suoi peli trattengono il pugno di Uborghin e non lo lasciano andare. Uborghin se ne libera con un urlo.',
+        en: 'His hairs catch Uvogin’s fist and hold it. Uvogin frees himself with a scream.',
+      },
+      // Chapter 76 kills him with Uvogin's scream; episode 44 only knocks him
+      // out, "perhaps killing him", and episode 45 kills every Shadow Beast
+      // but Owl. An anime reader sees his fate as unknown until then.
+      status: [
+        { episode: 44, chapter: 76, value: 'unknown', source: 'episode' },
+        { episode: 44, chapter: 76, value: 'deceased', source: 'chapter' },
+        { episode: 45, chapter: 78, value: 'deceased', source: 'episode' },
+      ],
+      affiliation: [{ episode: 44, chapter: 76, value: SHADOW_BEASTS }],
+    },
+    'leech': {
+      role: SHADOW_BEAST,
+      log: {
+        it: 'Riempie di sanguisughe il corpo di Uborghin, paralizzato dal veleno. Uborghin gli affonda i denti nella testa.',
+        en: 'He fills Uvogin’s body with leeches while Uvogin is paralyzed by poison. Uvogin bites into his head.',
+      },
+      status: [{ episode: 44, chapter: 76, value: 'deceased' }],
+      affiliation: [{ episode: 44, chapter: 76, value: SHADOW_BEASTS }],
     },
     'shizuku': {
       role: TROUPE_MEMBER,

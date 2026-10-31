@@ -435,6 +435,16 @@ const earlyExam: HunterSaga = {
           chapter: 70,
           value: { it: 'Hunter, guardia del corpo', en: 'Hunter, bodyguard' },
         },
+        // Neon's father puts him in charge after Dalzollene's death,
+        // chapter 79 and episode 46.
+        {
+          episode: 46,
+          chapter: 79,
+          value: {
+            it: 'Hunter, capo delle guardie del corpo',
+            en: 'Hunter, head of the bodyguards',
+          },
+        },
       ],
       log: {
         it: 'Tiene per sé i suoi motivi finché il capitano non minaccia di farlo scendere: la Brigata Fantasma ha ucciso tutto il suo clan, e un Hunter può arrivare in posti e a informazioni che agli altri sono chiusi. Combatte con due spade di legno. Uno scontro con Leorio per una questione di rispetto finisce quasi in duello sul ponte, finché insieme non riprendono Gon e Katzo, sbalzati in mare; dopo i due fanno pace.',
@@ -459,6 +469,14 @@ const earlyExam: HunterSaga = {
           value: {
             en: 'Hunter Association, Hunter; Nostrade family, Neon’s bodyguard',
             it: 'Associazione Hunter, Hunter; famiglia Nostrad, guardia del corpo di Neon',
+          },
+        },
+        {
+          episode: 46,
+          chapter: 79,
+          value: {
+            en: 'Hunter Association, Hunter; Nostrade family, head of Neon’s bodyguards',
+            it: 'Associazione Hunter, Hunter; famiglia Nostrad, capo delle guardie del corpo di Neon',
           },
         },
       ],

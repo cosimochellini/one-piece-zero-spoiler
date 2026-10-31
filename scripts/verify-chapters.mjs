@@ -71,6 +71,10 @@ const TITLES = {
     'kalluto': 'Kalluto Zoldyck',
     'machi': 'Machi Komacine',
     'shizuku': 'Shizuku Murasaki',
+    'feitan': 'Feitan Portor',
+    'franklin': 'Franklin Bordeau',
+    'nobunaga': 'Nobunaga Hazama',
+    'phinks': 'Phinks Magcub',
     // The wiki's arc titles say more than an arc's name may, since the name
     // is shown at every bookmark (#758): the archive's names are neutral.
     'election-arc': '13th Hunter Chairman Election arc',

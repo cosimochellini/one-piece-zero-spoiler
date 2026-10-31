@@ -88,6 +88,18 @@ export const ITALIAN_TITLES = {
   'neon-nostrade': 'Personaggi di Hunter × Hunter#Neon Nostrad',
   'machi': 'Brigata Fantasma#Machi Komachine',
   'shizuku': 'Brigata Fantasma#Shizuku Murasaki',
+  'uvogin': 'Brigata Fantasma#Uborghin',
+  'feitan': 'Brigata Fantasma#Feitan Pohtoh',
+  'franklin': 'Brigata Fantasma#Franklin Bordeaux',
+  'nobunaga': 'Brigata Fantasma#Nobunaga Hazama',
+  'phinks': 'Brigata Fantasma#Phinks Magkav',
+  'shalnark': 'Brigata Fantasma#Shalnark',
+  'light-nostrade': 'Personaggi di Hunter × Hunter#Light Nostrad',
+  'owl': 'Personaggi di Hunter × Hunter#Civetta',
+  'worm': 'Personaggi di Hunter × Hunter#Lombrico',
+  'rabid-dog': 'Personaggi di Hunter × Hunter#Cane selvatico',
+  'porcupine': 'Personaggi di Hunter × Hunter#Porcospino',
+  'leech': 'Personaggi di Hunter × Hunter#Sanguisuga',
 }
 
 /**

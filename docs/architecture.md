@@ -92,14 +92,14 @@ receive an end-of-anime bookmark; source filtering still applies. See
 One Piece and Hunter x Hunter are open to readers. HxH files the verified Hunter
 Exam coverage through episode 26 / chapter 43, including the manga's chapter-one
 characters introduced later by the anime, the Heavens Arena characters and place
-up to episode 34 / chapter 59 (#896), and the first phase of Yorknew City
-through episode 42 / chapter 72 (#900): the Nostrade bodyguards, Neon, two
-Phantom Troupe members and three places. Silva, Killua's father, is named in
-episode 24 but in chapter 95 in the manga, so his record is unanchored at 24 /
-95 (#834); Kikyo is named only in credits and supplements, and Hishita only in
-chapter 329 (#912). Every Hunter Exam character has a chronicle (#762); the
-Heavens Arena characters get theirs in #898. Records are not added from unnamed
-appearances or supplemental names.
+up to episode 34 / chapter 59 (#896), and the first two phases of Yorknew City
+through episode 47 / chapter 84 (#900): the Nostrade bodyguards and Neon's
+father, Neon, eight Phantom Troupe members, five Shadow Beasts and three places.
+Silva, Killua's father, is named in episode 24 but in chapter 95 in the manga,
+so his record is unanchored at 24 / 95 (#834); Kikyo is named only in credits
+and supplements, and Hishita only in chapter 329 (#912). Every Hunter Exam
+character has a chronicle (#762); the Heavens Arena characters get theirs in
+#898. Records are not added from unnamed appearances or supplemental names.
 
 Game of Thrones is filed closed (#849): its description (the show's seasons, the
 five books, the season 1 / first-book demo), its eight empty season modules, its
@@ -181,14 +181,14 @@ checks this block.
 
 ### `hunter-x-hunter`
 
-| Thing             | Count                                              |
-| ----------------- | -------------------------------------------------- |
-| Records           | 95                                                 |
-| Characters        | 74                                                 |
-| Arcs, places      | 7 · 14                                             |
-| Saga modules      | 7                                                  |
-| Line drawings     | 95, one per record, plus 9 redrawings of 9 records |
-| Chronicle stories | 133, for 63 characters                             |
+| Thing             | Count                                               |
+| ----------------- | --------------------------------------------------- |
+| Records           | 107                                                 |
+| Characters        | 86                                                  |
+| Arcs, places      | 7 · 14                                              |
+| Saga modules      | 7                                                   |
+| Line drawings     | 107, one per record, plus 9 redrawings of 9 records |
+| Chronicle stories | 133, for 63 characters                              |
 
 ### `game-of-thrones`
 
