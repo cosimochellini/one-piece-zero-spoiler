@@ -921,13 +921,13 @@ export const yorknewCity: HunterSaga = {
       affiliation: [{ episode: 44, chapter: 76, value: SHADOW_BEASTS }],
     },
     'zepile': {
-      role: { it: 'Antiquario', en: 'Antiques dealer' },
+      role: { it: 'Offerente rivale', en: 'Rival bidder' },
       log: {
         it: 'A un mercato di York Shin City il suo nome è sulle offerte che superano quelle di Gon e Killua, quattro volte più alte. Si aggiudica il vaso che volevano.',
         en: 'At a Yorknew City market his name is on the bids that beat Gon’s and Killua’s, four times higher. He wins the vase they wanted.',
       },
       status: [{ episode: 48, chapter: 86, value: 'alive' }],
-      // He takes their items to sell for a share, chapter 87 and episode 48.
+      // He takes their items to sell them, chapter 87 and episode 48.
       affiliation: [
         {
           episode: 48,
@@ -942,8 +942,8 @@ export const yorknewCity: HunterSaga = {
     'pakunoda': {
       role: TROUPE_MEMBER,
       log: {
-        it: 'Con Phinks segue di nascosto Gon e Killua mentre loro pedinano Machi e Nobunaga. Quando i ragazzi cercano di scappare, lei blocca l’uscita.',
-        en: 'With Phinks she secretly follows Gon and Killua while they tail Machi and Nobunaga. When the boys try to escape, she blocks the way out.',
+        it: 'Con Phinks mette alle strette Gon e Killua, che stavano pedinando Machi e Nobunaga. Quando i ragazzi cercano di scappare, lei sbarra la strada a Gon.',
+        en: 'With Phinks she corners Gon and Killua, who were tailing Machi and Nobunaga. When the boys try to escape, she blocks Gon’s way out.',
       },
       status: [
         { episode: 49, chapter: 90, value: 'alive' },
@@ -995,7 +995,10 @@ export const yorknewCity: HunterSaga = {
         {
           episode: 56,
           chapter: 112,
-          value: { it: 'Famiglia Nostrad', en: 'Nostrade family' },
+          value: {
+            it: 'Assistente di Neon Nostrad',
+            en: 'Neon Nostrade’s attendant',
+          },
         },
       ],
     },
@@ -1090,8 +1093,8 @@ export const YORKNEW_CITY_PLACES: Record<
       en: 'The auction house’s entrance',
     },
     log: {
-      it: 'Gon, Killua e Leorio vengono qui a comprare il catalogo dell’asta, che vale anche come biglietto d’ingresso, con i soldi che Gon ha avuto in prestito impegnando la sua licenza Hunter.',
-      en: 'Gon, Killua and Leorio come here to buy the auction catalog, which is also the entry ticket, with money Gon borrowed by pawning his Hunter license.',
+      it: 'Qui verrà messo all’asta il gioco della scheda di memoria di Ging. Per raccogliere i soldi, Gon impegna la sua licenza Hunter.',
+      en: 'The game on Ging’s memory card is to be auctioned here. To raise the money, Gon pawns his Hunter license.',
     },
     filedHere: [],
   },
