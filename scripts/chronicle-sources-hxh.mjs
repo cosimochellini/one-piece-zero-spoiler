@@ -32,7 +32,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
     30: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_30_(2011)',
-      note: 'Corrected after review: the ban is not until he heals: it outlasts his healing in Chapter 52 and Episode 31. The next-day booking and Wing’s advice to wait are in episode 29 and chapter 49; the tops hitting anything in their path, Tornado Top, Zetsu without knowing it, the broken arm, and the ban on Nen with the thread on his finger are in episode 30 and chapters 50 and 51. Chapter 51 sets the ban at two months and it outlasts his healing (chapter 52, episode 31), so the story does not tie it to healing.',
+      note: 'Corrected after review: the ban is not until he heals: it outlasts his healing in Chapter 52 and Episode 31. The next-day booking and Wing’s advice to wait are in episode 29 and chapter 49; the tops hitting anything in their path, Tornado Top, Zetsu without knowing it, the broken arm, and the ban on Nen with the thread on his finger are in episode 30 and chapters 50 and 51. Chapter 51 sets the ban at two months, so the story gives it no length.',
     },
     36: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_36_(2011)',
