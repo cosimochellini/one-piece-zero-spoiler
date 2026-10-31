@@ -321,6 +321,42 @@ export const hunterExamChronicles = {
         },
       },
     },
+    // Chapter 77 (pages 1-11) and episode 44. Italian: Catena della Prigionia (Italian Wikipedia, Kurapika Kurata).
+    {
+      episode: 44,
+      chapter: 77,
+      value: {
+        title: { it: 'La Catena della Prigionia', en: 'Chain Jail' },
+        body: {
+          it: 'Mentre guarda [[uvogin|Uborghin]] affrontare le Bestie dell’Ombra, Kurapika vuole andargli subito contro, e [[dalzollene|Dalzorne]] cerca di trattenerlo. Il flauto di [[melody|Melody]] li calma, ma Kurapika vuole ancora catturare Uborghin. Con la Catena della Prigionia lo lega e lo trascina via dagli altri membri della Brigata, poi parte in auto con lui. Quando Uborghin prova a parlare, Kurapika lo zittisce. Mentre guida, ripensa ai limiti che ha imposto al proprio potere.',
+          en: 'Watching [[uvogin|Uvogin]] take on the Shadow Beasts, Kurapika wants to go after him at once, and [[dalzollene|Dalzollene]] tries to hold him back. [[melody|Melody]]’s flute calms them down, but Kurapika still means to capture Uvogin. With his Chain Jail he binds Uvogin and pulls him away from the other members of the Troupe, then drives off with him. When Uvogin tries to talk in the car, Kurapika silences him. As he drives, he goes over the limits he has set himself on his power.',
+        },
+      },
+    },
+    // Hisoka is chapters 78-79, the call to Light and the Hunter website chapter 79, Uvogin at the door chapter 80, all by the end of episode 46.
+    {
+      episode: 46,
+      chapter: 80,
+      value: {
+        title: { it: 'Ad aspettare Uborghin', en: 'Waiting for Uvogin' },
+        body: {
+          it: 'Kurapika incontra [[hisoka|Hisoka]], che gli offre informazioni sulla Brigata Fantasma se lavoreranno insieme, e rimanda la risposta al giorno dopo. Tornato dalle altre guardie del corpo, viene scelto per chiamare [[light-nostrade|Light Nostrad]], gli dice che [[dalzollene|Dalzorne]] è probabilmente morto e prende il comando delle guardie. Sul sito degli Hunter vede che la Brigata può risalire facilmente alle stanze della famiglia Nostrad, così manda gli altri in un’altra stanza e resta lì da solo. [[uvogin|Uborghin]] lo trova.',
+          en: 'Kurapika meets [[hisoka|Hisoka]], who offers him information on the Phantom Troupe if they work together, and puts off his answer until the next day. Back with the bodyguards, he is chosen to call [[light-nostrade|Light Nostrade]], tells him that [[dalzollene|Dalzollene]] is probably dead and takes charge of the bodyguards. On the Hunter website he sees that the Troupe can easily trace the Nostrade family’s rooms, so he sends the others to another room and stays behind alone. [[uvogin|Uvogin]] finds him there.',
+        },
+      },
+    },
+    // The teacher and Water Divination are chapter 83 and episodes 39 and 47; the fight is chapters 81-84 and episode 47. Italian: Materializzazione, Specializzazione, Test dell’Acqua (Italian Wikipedia).
+    {
+      episode: 47,
+      chapter: 84,
+      value: {
+        title: { it: 'Uborghin', en: 'Uvogin' },
+        body: {
+          it: 'Prima dell’asta, un maestro di Nen gli aveva fatto fare il Test dell’Acqua: Kurapika appartiene alla Materializzazione. Ha scelto le catene, ha posto loro una condizione legata alla Brigata Fantasma e ci ha scommesso la vita. Quando i suoi occhi diventano scarlatti, passa alla Specializzazione e può usare appieno ogni tipo di Nen. Ora affronta da solo [[uvogin|Uborghin]] in un luogo deserto. Uborghin gli spezza il braccio sinistro, ma Kurapika lo cattura con una catena nascosta con l’In, si guarisce il braccio e, visto che la catena costringe Uborghin nello Zetsu, lo colpisce a pugni. Uborghin non gli dice dove sono gli altri membri. Kurapika gli stringe la Catena del Giudizio attorno al cuore con una regola, rispondere sinceramente; Uborghin si rifiuta e muore. Kurapika lo seppellisce.',
+          en: 'Before the auction, a Nen teacher had Kurapika take Water Divination: he is a Conjurer. He chose chains, set them a condition tied to the Phantom Troupe and staked his life on it. When his eyes turn scarlet, he becomes a Specialist and can use every type of Nen fully. Now he faces [[uvogin|Uvogin]] alone in a deserted place. Uvogin breaks his left arm, but Kurapika catches him in a chain hidden with In, heals the arm and, since the chain forces Uvogin into Zetsu, beats him with his fists. Uvogin will not tell him where the other members are. Kurapika winds his Judgment Chain around Uvogin’s heart with one rule, to answer truthfully; Uvogin refuses and dies. Kurapika buries him.',
+        },
+      },
+    },
   ],
   'katzo': [
     {
@@ -497,6 +533,18 @@ export const hunterExamChronicles = {
         body: {
           it: 'Hisoka porta un falso tatuaggio della Brigata Fantasma e intende darle la caccia. [[machi|Machi]] gli ha detto di trovarsi a York Shin City entro mezzogiorno del 30 agosto, per il raduno di tutti i membri. Per strada, quattro membri diretti in città, riuniti tutti per la prima volta in più di tre anni, parlano di lui e dei membri cambiati da allora. Quando il capo dà l’ordine, Hisoka c’è: la Brigata ruberà tutto all’asta sotterranea, e i suoi membri possono uccidere chiunque si metta in mezzo.',
           en: 'Hisoka wears a fake Phantom Troupe tattoo and means to hunt the Troupe down. [[machi|Machi]] has told him to be in Yorknew City by noon on August 30, when all the members are to gather. On the road, four members walking to the city, all gathering for the first time in over three years, talk about him and the members who have changed since then. When the leader gives the order, Hisoka is there: the Troupe will steal everything at the Underground Auction, and its members may kill anyone who gets in the way.',
+        },
+      },
+    },
+    // The leave to go is chapter 76 and episode 45; the meeting is chapter 78 and episode 45, the call and the Scarlet Eyes chapter 79 and episode 46. The leader is not named before episode 54.
+    {
+      episode: 46,
+      chapter: 79,
+      value: {
+        title: { it: 'Un’offerta a Kurapika', en: 'An offer to Kurapika' },
+        body: {
+          it: 'Con il permesso del capo, Hisoka va a incontrare [[kurapika|Kurapika]]. Gli racconta quello che sa della Brigata Fantasma e si offre di rivelargli le abilità di sette membri se lavoreranno insieme, perché lui punta al capo della Brigata. Quando [[melody|Melody]] chiama per dire che [[uvogin|Uborghin]] è fuggito, Kurapika chiede a Hisoka degli occhi scarlatti. Hisoka risponde che il capo si gode quello che ruba e poi lo vende. Kurapika gli darà la sua risposta il giorno dopo.',
+          en: 'With the leader’s leave, Hisoka goes to meet [[kurapika|Kurapika]]. He tells him what he knows about the Phantom Troupe and offers to reveal the abilities of seven members if they work together, because he is after the Troupe’s leader. When [[melody|Melody]] calls to say that [[uvogin|Uvogin]] has escaped, Kurapika asks Hisoka about the Scarlet Eyes. Hisoka answers that the leader enjoys what he steals and then sells it. Kurapika will give his answer the next day.',
         },
       },
     },
