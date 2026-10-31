@@ -106,10 +106,11 @@ const HUNTER_X_HUNTER: Palette = {
 const hunterXHunter = stylex.createTheme(color, HUNTER_X_HUNTER)
 
 /**
- * Game of Thrones, provisional (#849): a red accent on neutrals tinted toward
- * a dark ember (hue 20), held until #850 picks the palette and the crown
- * emblem. It reaches no reader while the series is closed: the hub's coming
- * card is unlit. No `#000`, no `#fff`.
+ * Game of Thrones, "Ember" (owner, 2026-10-26: a red accent, #850). Every
+ * colour is OKLCH. The neutrals are tinted toward a dark ember (hue 20), and
+ * the one accent is a true red from the same side of the wheel, as Hunter x
+ * Hunter's green is. No `#000`, no `#fff`. Like every palette on the site it
+ * is dark: the site has no light scheme.
  *
  * Contrast against `paper`, computed from the OKLCH values (WCAG 2.1):
  *
@@ -131,7 +132,13 @@ const GAME_OF_THRONES: Palette = {
   muted: 'oklch(72% 0.018 20)',
   ink2: 'oklch(84% 0.013 20)',
   ink: 'oklch(95% 0.009 20)',
-  // The same jobs as One Piece's gold. Never another large fill.
+  // Ember red. The same jobs as One Piece's gold: the sailed part of the
+  // route, the active locale, focus rings, one verb per veil and the Save
+  // button of the bookmark dialog. Never another large fill.
+  //
+  // Picked from three reds measured on these papers (#850): ember 70% 0.19
+  // 25 (accent 6.9:1, this one), scarlet 72% 0.17 35 (7.6:1) and garnet 66%
+  // 0.19 15 (5.9:1). Scarlet drifts toward orange and garnet toward rose.
   accent: 'oklch(70% 0.19 25)',
   // A hard contract. Any surface painted `accent` that carries text sets its
   // colour to this, never to a hardcoded dark.
