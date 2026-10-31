@@ -29,6 +29,13 @@ const FISH_MAN_ISLAND = {
   en: 'Fish-Man Island',
 }
 
+const MARINE_ROLE = { it: 'Soldato della Marina', en: 'Marine' }
+
+const FORMER_LIEUTENANT_ROLE = {
+  it: 'Ex tenente della Marina',
+  en: 'Former Marine lieutenant',
+}
+
 const ARLONG_OFFICER = {
   it: 'Pirati di Arlong, ufficiale',
   en: 'Arlong Pirates, officer',
@@ -968,7 +975,12 @@ export const eastBlue: OnePieceSaga = {
     'koby': {
       chronicle: eastBlueChronicles.koby,
       relationships: eastBlueRelationships.koby,
-      role: { it: 'Mozzo', en: 'Cabin boy' },
+      role: [
+        { episode: 1, chapter: 2, value: { it: 'Mozzo', en: 'Cabin boy' } },
+        // The Marines take him in on the last pages of chapter 7 (episode 3), as
+        // his affiliation says. The role names no rank, so promotions leave it.
+        { episode: 3, chapter: 7, value: MARINE_ROLE },
+      ],
       log: {
         it: 'È salito a dieci anni sulla barca da pesca sbagliata e da allora lucida il ponte di Alvida, che lo picchia quando una risposta non le piace. Sa che potrebbe scappare e non lo fa. Poi un ragazzo di gomma esce da una botte nella stiva e gli chiede che cosa vorrebbe fare davvero: lui risponde che vorrebbe entrare nella Marina, e si sente dire quelle parole ad alta voce per la prima volta.',
         en: 'He climbed into the wrong fishing boat at ten and has been scrubbing Alvida’s deck ever since, beaten whenever an answer displeases her. He knows he could run, and he does not. Then a rubber boy climbs out of a barrel in the hold and asks what he actually wants: he says he wants to join the Marines, and hears himself say it out loud for the first time.',
@@ -1096,10 +1108,23 @@ export const eastBlue: OnePieceSaga = {
     'roronoa-zoro': {
       chronicle: eastBlueChronicles['roronoa-zoro'],
       relationships: eastBlueRelationships['roronoa-zoro'],
-      role: {
-        it: 'Spadaccino, cacciatore di pirati',
-        en: 'Swordsman, pirate hunter',
-      },
+      role: [
+        {
+          episode: 2,
+          chapter: 3,
+          value: {
+            it: 'Spadaccino, cacciatore di pirati',
+            en: 'Swordsman, pirate hunter',
+          },
+        },
+        // He tells Luffy he will join him in chapter 6, adapted in episode 3:
+        // no longer a pirate hunter.
+        {
+          episode: 3,
+          chapter: 6,
+          value: { it: 'Spadaccino', en: 'Swordsman' },
+        },
+      ],
       log: {
         it: 'In città la gente trasale a sentire il suo nome. Da nove giorni è legato a un palo nel cortile della base senza mangiare: ha fermato il lupo di Hermeppo che aggrediva una bambina, e Hermeppo lo ha fatto legare promettendogli di lasciarlo andare se resiste un mese. Quando uno sconosciuto con un cappello di paglia gli chiede di entrare nella sua ciurma, rifiuta: non diventerà un pirata, perché ha qualcosa di suo da fare.',
         en: 'People in the town flinch at his name. For nine days he has been tied to a post in the yard of the base without food: he stopped Helmeppo’s wolf from attacking a little girl, and Helmeppo had him tied up with a promise to let him go if he lasted a month. When a stranger in a straw hat asks him to join his crew, he refuses: he will not become a pirate, because he has something of his own to do.',
@@ -1131,10 +1156,19 @@ export const eastBlue: OnePieceSaga = {
     },
     'helmeppo': {
       relationships: eastBlueRelationships.helmeppo,
-      role: {
-        it: 'Figlio del capitano della base',
-        en: 'The base captain’s son',
-      },
+      role: [
+        {
+          episode: 2,
+          chapter: 3,
+          value: {
+            it: 'Figlio del capitano della base',
+            en: 'The base captain’s son',
+          },
+        },
+        // A chore boy beside Koby from the cover of chapter 83, adapted in
+        // episode 68, as his affiliation says.
+        { episode: 68, chapter: 83, value: MARINE_ROLE },
+      ],
       log: {
         it: 'Non ha alcun grado e nessuno glielo chiede: basta il nome di suo padre perché i marinai della base chiudano gli occhi su tutto. Ha promesso a un prigioniero legato nel cortile di liberarlo dopo un mese di digiuno, e si diverte a raccontare in giro che non ha nessuna intenzione di mantenere la parola. Chi lo contraddice finisce davanti a una condanna a morte firmata da suo padre.',
         en: 'He holds no rank and nobody asks him to: his father’s name is enough for the Marines of the base to look the other way. He promised the prisoner tied up in the yard his freedom after a month without food, and enjoys telling people he has no intention of keeping his word. Anyone who argues ends up in front of an execution notice signed by his father.',
@@ -1177,10 +1211,26 @@ export const eastBlue: OnePieceSaga = {
     },
     'morgan': {
       relationships: eastBlueRelationships.morgan,
-      role: {
-        it: 'Capitano della base di Shells Town',
-        en: 'Captain of the Shells Town base',
-      },
+      role: [
+        {
+          episode: 2,
+          chapter: 4,
+          value: {
+            it: 'Capitano della base di Shells Town',
+            en: 'Captain of the Shells Town base',
+          },
+        },
+        // Arrested by his own men and dismissed in chapter 7 (episode 3), the
+        // pair of his status.
+        {
+          episode: 3,
+          chapter: 7,
+          value: {
+            it: 'Ex capitano della base di Shells Town',
+            en: 'Former captain of the Shells Town base',
+          },
+        },
+      ],
       log: {
         it: 'Ha fatto scolpire una statua di sé stesso e costringe i suoi uomini a issarla sul tetto della base, perché il grado e la gloria per lui sono la stessa cosa. Chi discute un suo ordine viene giustiziato, e chi lo esegue male anche. La città lo mantiene con tributi che non ha mai chiesto a nessuno il permesso di riscuotere.',
         en: 'He has had a statue of himself carved and makes his men haul it onto the roof of the base, because rank and glory are the same thing to him. Anyone who questions an order is executed, and so is anyone who carries it out badly. The town keeps him fed with tribute he never asked anyone’s permission to collect.',
@@ -1971,7 +2021,22 @@ export const eastBlue: OnePieceSaga = {
     },
     'gin': {
       relationships: eastBlueRelationships.gin,
-      role: { it: 'Naufrago armato', en: 'Armed castaway' },
+      role: [
+        {
+          episode: 21,
+          chapter: 47,
+          value: { it: 'Naufrago armato', en: 'Armed castaway' },
+        },
+        // Krieg names him his battle commander in chapter 59, episode 27.
+        {
+          episode: 27,
+          chapter: 59,
+          value: {
+            it: 'Comandante in battaglia dei Pirati di Creek',
+            en: 'Battle commander of the Krieg Pirates',
+          },
+        },
+      ],
       log: {
         it: 'Fugge dalla Marina, che lo tiene da tre giorni senza mangiare, e arriva al ristorante quasi morto di fame. Al cuoco che gli chiede se può pagare offre una pallottola. Il riso fritto che il vice-cuoco gli porta fuori lo fa piangere. Prima di andarsene consiglia al ragazzo con il cappello di paglia di non andare nella Rotta Maggiore, e promette al cuoco che non lo dimenticherà.',
         en: 'He escapes the Marines, who have held him three days without food, and reaches the restaurant half dead of hunger. When a cook asks whether he can pay, he offers a bullet. The fried rice the sous-chef brings out to him makes him cry. Before he leaves he warns the boy in the straw hat to stay out of the Grand Line, and promises the cook he will not forget this.',
@@ -2002,7 +2067,29 @@ export const eastBlue: OnePieceSaga = {
     'fullbody': {
       chronicle: eastBlueChronicles.fullbody,
       relationships: eastBlueRelationships.fullbody,
-      role: { it: 'Tenente della Marina', en: 'Marine lieutenant' },
+      role: [
+        {
+          episode: 20,
+          chapter: 43,
+          value: { it: 'Tenente della Marina', en: 'Marine lieutenant' },
+        },
+        // The two sources demote him apart. The anime does it in episode 45, as
+        // his affiliation says (its chapter only orders the entry); the manga in
+        // the cover of chapter 168, which no episode adapts (its episode only
+        // orders it). One pair would hold chapters up to 167 below episode 45.
+        {
+          episode: 45,
+          chapter: 96,
+          source: 'episode',
+          value: FORMER_LIEUTENANT_ROLE,
+        },
+        {
+          episode: 45,
+          chapter: 168,
+          source: 'chapter',
+          value: FORMER_LIEUTENANT_ROLE,
+        },
+      ],
       log: {
         it: 'Si presenta come Fullbody Pugno di ferro, tenente della Marina, e porta un tirapugni di ferro per non smentirsi. Porta una donna a cena al ristorante galleggiante, e prima di entrare ordina ai suoi uomini di affondare la piccola nave pirata che si è accostata. A tavola infila una mosca nella zuppa per umiliare il cameriere, spacca il tavolo quando lo scherzo gli si ritorce contro, e il vice-cuoco lo pesta fino a farlo sanguinare.',
         en: 'He introduces himself as Ironfist Fullbody, a Marine lieutenant, and wears an iron knuckle on his fist to match. He brings a woman to dinner at the floating restaurant, and on the way in orders his men to sink the small pirate ship that has pulled up alongside. At the table he slips a fly into his soup to shame the waiter, smashes the table when the trick turns on him, and is beaten bloody by the sous-chef.',
@@ -2201,7 +2288,23 @@ export const eastBlue: OnePieceSaga = {
     },
     'hatchan': {
       relationships: eastBlueRelationships.hatchan,
-      role: { it: 'Membro dei Pirati di Arlong', en: 'Arlong Pirates crewman' },
+      role: [
+        {
+          episode: 31,
+          chapter: 74,
+          value: {
+            it: 'Membro dei Pirati di Arlong',
+            en: 'Arlong Pirates crewman',
+          },
+        },
+        // Camie’s friend who makes takoyaki at Sabaody, chapter 491 (p. 6–8,
+        // 14), episode 386, as his affiliation says.
+        {
+          episode: 386,
+          chapter: 491,
+          value: { it: 'Venditore di takoyaki', en: 'Takoyaki seller' },
+        },
+      ],
       log: {
         it: 'Arlong lo manda a riaccompagnare alla nave un capitano della Marina, e lui gli ride in faccia perché sembra un topo. Quando Arlong gli dice di tenere a freno la lingua, chiede subito scusa. Cucina per la bestia marina della ciurma e la chiama a mangiare con uno squillo di tromba che fa con la bocca.',
         en: 'Arlong sends him to see a Marine captain back to his ship, and he laughs that the captain’s face looks like a mouse’s. When Arlong tells him to watch his tongue, he apologises at once. He cooks for the crew’s sea beast and calls it to its meal with a trumpet blast he makes with his mouth.',
@@ -2405,7 +2508,29 @@ export const eastBlue: OnePieceSaga = {
     'smoker': {
       chronicle: eastBlueChronicles.smoker,
       relationships: eastBlueRelationships.smoker,
-      role: { it: 'Capitano della Marina', en: 'Marine captain' },
+      role: [
+        {
+          episode: 49,
+          chapter: 97,
+          value: { it: 'Capitano della Marina', en: 'Marine captain' },
+        },
+        // He refuses the promotion offered in chapter 212. The rank is first
+        // shown in chapter 439 (p. 16), adapted in episode 324. His
+        // affiliation still steps at 130, which shows no promotion; #980.
+        {
+          episode: 324,
+          chapter: 439,
+          value: { it: 'Commodoro della Marina', en: 'Marine commodore' },
+        },
+        {
+          episode: 572,
+          chapter: 652,
+          value: {
+            it: 'Viceammiraglio della Marina',
+            en: 'Marine vice admiral',
+          },
+        },
+      ],
       log: {
         it: 'Comanda la base di Loguetown, la città dove il Re dei Pirati fu eseguito e da cui ogni pirata dell’East Blue parte per la Rotta Maggiore. Nessuno dei pirati che ha inseguito è arrivato al mare aperto. Non fa eccezioni per i ragazzi di gomma.',
         en: 'He commands the base at Loguetown, the town where the Pirate King was executed and from which every East Blue pirate sets out for the Grand Line. None of the pirates he has chased has reached open water. He makes no exceptions for rubber boys.',
@@ -2437,7 +2562,27 @@ export const eastBlue: OnePieceSaga = {
     },
     'tashigi': {
       relationships: eastBlueRelationships.tashigi,
-      role: { it: 'Sergente della Marina', en: 'Marine sergeant' },
+      role: [
+        {
+          episode: 49,
+          chapter: 99,
+          value: { it: 'Sergente della Marina', en: 'Marine sergeant' },
+        },
+        // Smoker refuses their promotion in chapter 212. A subordinate first
+        // addresses her by her new rank, ensign, in chapter 439 (p. 16),
+        // adapted in episode 324. Her affiliation still steps at 130, which
+        // shows no promotion; #980.
+        {
+          episode: 324,
+          chapter: 439,
+          value: { it: 'Guardiamarina della Marina', en: 'Marine ensign' },
+        },
+        {
+          episode: 572,
+          chapter: 652,
+          value: { it: 'Capitano della Marina', en: 'Marine captain' },
+        },
+      ],
       log: {
         it: 'Serve a Loguetown agli ordini di un capitano che fuma due sigari alla volta, e lo segue con una katana al fianco. Riconosce una spada pregiata a colpo d’occhio e si è messa in testa di strapparle tutte alle mani sbagliate. Cade, perde gli occhiali e chiede scusa, e nessuno dei suoi uomini si permette di riderne.',
         en: 'She serves at Loguetown under a captain who smokes two cigars at once, and follows him with a katana at her side. She knows a fine sword at a glance and has decided to take every one of them out of the wrong hands. She trips, loses her glasses and apologises, and none of her men would dare laugh.',

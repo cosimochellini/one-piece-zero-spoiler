@@ -12,6 +12,10 @@ const SHANDIA_WARRIOR = { it: 'Guerriero shandia', en: 'Shandia warrior' }
 const SKY_ISLAND = { it: 'Skypiea', en: 'Skypiea' }
 const ENEL_PRIESTS = { it: 'Sacerdoti di Ener', en: 'Enel’s priests' }
 const ENEL_PRIEST = { it: 'Sacerdote di Ener', en: 'One of Enel’s priests' }
+const FORMER_WARLORD_ROLE = {
+  it: 'Ex membro della Flotta dei Sette',
+  en: 'Former Warlord',
+}
 
 export const skypiea: OnePieceSaga = {
   name: { it: 'Saga di Skypiea', en: 'Skypiea Saga' },
@@ -616,10 +620,25 @@ export const skypiea: OnePieceSaga = {
     },
     'bellamy': {
       relationships: skypieaRelationships.bellamy,
-      role: {
-        it: 'Capitano dei Pirati di Bellamy',
-        en: 'Captain of the Bellamy Pirates',
-      },
+      role: [
+        {
+          episode: 146,
+          chapter: 224,
+          value: {
+            it: 'Capitano dei Pirati di Bellamy',
+            en: 'Captain of the Bellamy Pirates',
+          },
+        },
+        // Back at Dressrosa without his crew, chapter 706, episode 635.
+        {
+          episode: 635,
+          chapter: 706,
+          value: {
+            it: 'Ex capitano dei Pirati di Bellamy',
+            en: 'Former captain of the Bellamy Pirates',
+          },
+        },
+      ],
       log: {
         it: 'A Mock Town nessuno osa contraddire lui o la sua ciurma. Chiama nuova era quella in cui i pirati non sognano più. Offre da bere a Rufy, gli sbatte la testa sul bancone e poi dice che è solo una prova, e Rufy dice a Zoro di non reagire.',
         en: 'Nobody in Mock Town dares contradict him or his crew. He calls it the new age, the one where pirates no longer dream. He buys Luffy a drink, smashes his head into the counter and then says it is only a test, and Luffy tells Zoro not to fight back.',
@@ -799,10 +818,17 @@ export const skypiea: OnePieceSaga = {
     'bartholomew-kuma': {
       relationships: skypieaRelationships['bartholomew-kuma'],
       chronicle: skypieaChronicles['bartholomew-kuma'],
-      role: {
-        it: 'Membro della Flotta dei Sette',
-        en: 'One of the Seven Warlords',
-      },
+      role: [
+        {
+          episode: 151,
+          chapter: 233,
+          value: {
+            it: 'Membro della Flotta dei Sette',
+            en: 'One of the Seven Warlords',
+          },
+        },
+        { episode: 957, chapter: 956, value: FORMER_WARLORD_ROLE },
+      ],
       log: {
         it: 'Alla convocazione del Governo Mondiale è l’unico a non alzare mai la voce: resta seduto con un libro aperto in mano mentre gli altri si punzecchiano su una poltrona rimasta vuota. In piedi supera di una testa abbondante chiunque altro nella stanza. Della sua vita prima dell’accordo con il Governo non si dice una parola.',
         en: 'At the World Government’s summons he is the only one who never raises his voice: he sits with a book open in his hands while the others trade jabs about a chair left empty. Standing, he is a full head and more above anyone else in the room. Of his life before the deal with the Government, not a word is said.',
@@ -881,10 +907,32 @@ export const skypiea: OnePieceSaga = {
     'sengoku': {
       relationships: skypieaRelationships.sengoku,
       chronicle: skypieaChronicles.sengoku,
-      role: {
-        it: 'Grand’ammiraglio della Marina',
-        en: 'Fleet admiral of the Marines',
-      },
+      role: [
+        {
+          episode: 151,
+          chapter: 234,
+          value: {
+            it: 'Grand’ammiraglio della Marina',
+            en: 'Fleet admiral of the Marines',
+          },
+        },
+        {
+          episode: 511,
+          chapter: 594,
+          value: {
+            it: 'Ex grand’ammiraglio della Marina',
+            en: 'Former fleet admiral of the Marines',
+          },
+        },
+        {
+          episode: 740,
+          chapter: 796,
+          value: {
+            it: 'Ispettore generale della Marina',
+            en: 'Inspector general of the Marines',
+          },
+        },
+      ],
       log: {
         it: 'Convoca i Sette a nome del Governo Mondiale e li tiene a bada senza perdere la calma nemmeno quando la riunione degenera. Uno dei posti al tavolo è vuoto, e quel posto vuoto lo preoccupa più di tutti quelli occupati. Si porta dietro una capra che si mangia le carte, e nessuno dei presenti se ne stupisce.',
         en: 'He calls the Warlords together for the World Government and keeps them in order without once losing his temper, even when the meeting turns ugly. One seat at the table is empty, and that empty seat worries him more than all the occupied ones. He brings a goat with him that eats the paperwork, and nobody in the room finds it odd.',
@@ -974,10 +1022,19 @@ export const skypiea: OnePieceSaga = {
     'donquixote-doflamingo': {
       relationships: skypieaRelationships['donquixote-doflamingo'],
       chronicle: skypieaChronicles['donquixote-doflamingo'],
-      role: {
-        it: 'Membro della Flotta dei Sette',
-        en: 'One of the Seven Warlords',
-      },
+      role: [
+        {
+          episode: 151,
+          chapter: 233,
+          value: {
+            it: 'Membro della Flotta dei Sette',
+            en: 'One of the Seven Warlords',
+          },
+        },
+        // A prisoner on his way to Impel Down in chapter 801, episode 746, as
+        // his affiliation says.
+        { episode: 746, chapter: 801, value: FORMER_WARLORD_ROLE },
+      ],
       log: {
         it: 'Alla riunione dei Sette ride di tutto e di tutti, e nel frattempo due marinai nella stanza sguainano le spade l’uno contro l’altro senza volerlo. Nessuno dei presenti lo prende alla leggera, nemmeno quelli che non lo sopportano. Il cappotto rosa è l’unica cosa di lui che non fa paura.',
         en: 'At the Warlords’ meeting he laughs at everything and everyone, and meanwhile two Marines in the room draw their swords on each other without meaning to. Nobody present takes him lightly, not even the ones who cannot stand him. The pink coat is the only thing about him that is not frightening.',
@@ -1050,10 +1107,35 @@ export const skypiea: OnePieceSaga = {
     },
     'marco': {
       relationships: skypieaRelationships.marco,
-      role: {
-        it: 'Comandante della prima divisione',
-        en: 'First division commander',
-      },
+      role: [
+        {
+          episode: 316,
+          chapter: 434,
+          value: {
+            it: 'Comandante della prima divisione',
+            en: 'First division commander',
+          },
+        },
+        // Chapter 820 tells the remnants he led only as beaten and scattered.
+        {
+          episode: 773,
+          chapter: 820,
+          value: {
+            it: 'Ex capo dei superstiti dei Pirati di Barbabianca',
+            en: 'Former leader of the Whitebeard Pirates’ remnants',
+          },
+        },
+        // A doctor on Sphinx in chapter 909 (p. 4); the episode is his
+        // affiliation’s, 958.
+        {
+          episode: 958,
+          chapter: 909,
+          value: {
+            it: 'Medico dell’isola di Sphinx',
+            en: 'Doctor of Sphinx Island',
+          },
+        },
+      ],
       log: {
         it: 'Quando Shanks sale sulla nave di Barbabianca, l’Haki che si porta dietro fa svenire metà dell’equipaggio. Lui resta in piedi e gli grida di smetterla. Shanks lo riconosce come Marco della prima divisione e gli chiede di passare con lui. Marco gli dice di stare zitto e chiede al vecchio che cosa devono fare; Barbabianca risponde che non ci sarà battaglia e che li lascino soli.',
         en: 'When Shanks boards Whitebeard’s ship, the Haki he brings with him knocks out half the crew. He stays on his feet and shouts at him to stop. Shanks recognises him as Marco of the first division and asks him to join his crew. Marco tells him to shut up and asks the old man what they should do; Whitebeard says there will be no battle and tells them to leave the two of them alone.',
@@ -1100,7 +1182,18 @@ export const skypiea: OnePieceSaga = {
     },
     'gan-fall': {
       relationships: skypieaRelationships['gan-fall'],
-      role: { it: 'Cavaliere del Cielo', en: 'Knight of the Sky' },
+      role: [
+        {
+          episode: 153,
+          chapter: 241,
+          value: { it: 'Cavaliere del Cielo', en: 'Knight of the Sky' },
+        },
+        {
+          episode: 195,
+          chapter: 302,
+          value: { it: 'Dio di Skypiea', en: 'God of Skypiea' },
+        },
+      ],
       log: {
         it: 'Si presenta come il Cavaliere del Cielo e arriva dove qualcuno è nei guai, senza chiedere chi sia. Vola in sella a un cavallo alato e conosce le regole di Skypiea meglio di chiunque altro: su quest’isola tutto appartiene a Dio, e chi non paga viene dichiarato criminale. Di quel Dio parla con una durezza che non spiega a nessuno.',
         en: 'He introduces himself as the Knight of the Sky and turns up wherever somebody is in trouble, without asking who they are. He flies a winged horse and knows the rules of Skypiea better than anyone: on this island everything belongs to God, and whoever does not pay is declared a criminal. He speaks of that God with a hardness he explains to nobody.',
@@ -1350,7 +1443,20 @@ export const skypiea: OnePieceSaga = {
     'enel': {
       relationships: skypieaRelationships.enel,
       chronicle: skypieaChronicles.enel,
-      role: { it: 'Dio di Skypiea', en: 'God of Skypiea' },
+      role: [
+        {
+          episode: 167,
+          chapter: 256,
+          value: { it: 'Dio di Skypiea', en: 'God of Skypiea' },
+        },
+        // Beaten and gone in chapter 300, episode 193, the pair of his priests’
+        // status.
+        {
+          episode: 193,
+          chapter: 300,
+          value: { it: 'Ex dio di Skypiea', en: 'Former god of Skypiea' },
+        },
+      ],
       log: {
         it: 'Regna sulle nuvole come un dio e ne ha i modi: parla piano, non alza mai la testa e decide chi vive senza spiegare perché. Sente ogni voce dell’isola ovunque si trovi, e chi lo nomina male se ne accorge troppo tardi. I sacerdoti che lo servono tengono le prove che quasi nessuno riesce a superare.',
         en: 'He rules the clouds as a god and has the manner of one: he speaks softly, never lifts his head and decides who lives without explaining himself. He hears every voice on the island wherever it is, and anyone who speaks his name badly finds out too late. The priests who serve him keep the ordeals that almost nobody gets past.',
