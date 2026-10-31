@@ -6,10 +6,10 @@ import { eatersOf } from '~/data/series/one-piece/dated'
 import { fruits } from '~/data/series/one-piece/fruits'
 import { CHARACTER_DOSSIERS } from '~/data/series/one-piece/sagas'
 import type { Entity } from '~/data/types'
+import { FACTION_LABELS } from '~/i18n/dictionaries/one-piece/factions'
 import type { Bookmark } from '~/lib/progress/episode'
 import { ONE_PIECE_BOOKMARK } from '~/lib/progress/series'
 import type { Faction, FruitFactionView } from '~/lib/view/records'
-import { COPIES } from '~/server/copy.server'
 import { opFruitAlbum as fruitAlbum } from '~/test/archive'
 import { ONE_PIECE_LOADED as ONE_PIECE } from '~/test/series'
 
@@ -108,7 +108,6 @@ function readsInOrder(at: Reveal, group: FruitFactionView): boolean {
 
 /** Whether the groups come most fruits first, then by name, no faction last. */
 function inOrder(groups: FruitFactionView[], locale: 'en' | 'it'): boolean {
-  const dictionary = COPIES['one-piece'][locale]
   const named = groups.filter(({ faction }) => faction !== null)
   const none = groups.findIndex(({ faction }) => faction === null)
 
@@ -123,8 +122,8 @@ function inOrder(groups: FruitFactionView[], locale: 'en' | 'it'): boolean {
         return false
       }
       const size = group.open.length - next.open.length
-      const name = dictionary[`faction.${group.faction}`].localeCompare(
-        dictionary[`faction.${next.faction}`],
+      const name = FACTION_LABELS[locale][group.faction].localeCompare(
+        FACTION_LABELS[locale][next.faction],
         locale,
       )
 

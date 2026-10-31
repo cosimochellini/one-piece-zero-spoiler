@@ -86,8 +86,9 @@ export type CharacterStatus =
 /**
  * Who a character stands with, as a group the pages can sort by: the closed
  * vocabulary behind the prose of an affiliation entry, which says the same
- * thing in its own words. Like `CharacterStatus`, the labels live in the
- * dictionaries.
+ * thing in its own words. The labels live on the server
+ * (`~/i18n/dictionaries/one-piece/factions`) and reach a page with the fruit
+ * album's groups only.
  *
  * A group has an id when at least two fruit eaters stand in it; a crew or a
  * kingdom of one, a former member, a prisoner and a vague line are
@@ -389,12 +390,14 @@ export interface FruitFactionRef extends FruitRef {
 
 /**
  * One faction as the faction view groups it: the faction (`null` for the
- * open eaters with no affiliation reached yet) and its open fruits, in the
- * reader's order. Only open eaters and the entries the reader has reached
- * count, so a group no open eater fills is not sent at all.
+ * open eaters with no affiliation reached yet), its label in the reader's
+ * language (`null` with it) and its open fruits, in the reader's order. Only
+ * open eaters and the entries the reader has reached count, so a group no
+ * open eater fills is not sent at all, and nor is its label.
  */
 export interface FruitFactionView {
   faction: Faction | null
+  label: null | string
   open: FruitFactionRef[]
 }
 

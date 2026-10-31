@@ -87,7 +87,7 @@ function sagaGrouping(sagas: FruitSagaView[], later: string[]): AlbumGrouping {
 }
 
 /**
- * The faction view: the server's groups, named here from the dictionary, then
+ * The faction view: the server's groups under the labels they came with, then
  * every covered fruit in one band. The saga view already holds each covered
  * fruit once, in the reader's order, its sagas in route order and the later
  * ones after, so the band reads them from there in that order.
@@ -97,11 +97,11 @@ function factionGrouping(
   { factions = [], fieldId, later, sagas }: GroupedData,
 ): AlbumGrouping {
   return {
-    groups: factions.map(({ faction, open }, at) => ({
+    groups: factions.map(({ label, open }, at) => ({
       anchor: `${fieldId}-faction-${String(at + 1)}`,
       covered: [],
       open,
-      title: t(faction === null ? 'fruits.noFaction' : `faction.${faction}`),
+      title: label ?? t('fruits.noFaction'),
     })),
     later: [...sagas.flatMap(({ covered }) => covered), ...later],
     words: COVERED_FOG,

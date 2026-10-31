@@ -33,11 +33,12 @@
  *      The server holds the tables statically, so these are client canaries
  *      only.
  *   5. Series copy canaries. Every series' own words (its description, its
- *      demo, its sources, One Piece's factions and seas) stay on the server
- *      and reach a page with its series only (`loadSeriesCopy`), so a reader
- *      of one series never downloads another's (#791). Each word distinct
- *      enough to look for, and not also a word of the shared copy, is looked
- *      for in the chunks.
+ *      demo, its sources, One Piece's seas) stay on the server and reach a
+ *      page with its series only (`loadSeriesCopy`), so a reader of one
+ *      series never downloads another's (#791); One Piece's faction labels
+ *      reach the fruit album's groups only (#988). Each word distinct enough
+ *      to look for, and not also a word of the shared copy, is looked for in
+ *      the chunks.
  * The SSR manifest also proves that every series archive enters through a
  * dynamic import, with no canary-bearing data in another runtime entry's
  * static dependency closure.
@@ -433,14 +434,26 @@ async function shippedCopy() {
 }
 
 /**
+ * The words that stay on the server, under the folder or file that holds
+ * them: every series' own copy, and One Piece's faction labels.
+ * @returns {Promise<Record<string, Record<string, Record<string, string>>>>} Each one's words, by locale.
+ */
+export async function serverCopies() {
+  const [{ COPIES }, { FACTION_LABELS }] = await Promise.all([
+    importArchive('server/copy.server.ts'),
+    importArchive('i18n/dictionaries/one-piece/factions.ts'),
+  ])
+  return { ...COPIES, 'one-piece/factions': FACTION_LABELS }
+}
+
+/**
  * The copy canaries of every series; one unreadable canary when the copy
  * does not load, so the gate refuses to vouch for it.
  * @returns {Promise<{file: string, phrase: null | string}[]>} What to look for.
  */
 async function copyCanariesOf() {
   try {
-    const { COPIES } = await importArchive('server/copy.server.ts')
-    return copyCanaries(COPIES, await shippedCopy())
+    return copyCanaries(await serverCopies(), await shippedCopy())
   } catch (error) {
     console.error(`archive-gate: the series copy did not load: ${error}`)
     return [{ file: 'src/server/copy.server.ts', phrase: null }]
