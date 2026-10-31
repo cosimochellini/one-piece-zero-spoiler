@@ -65,8 +65,9 @@ jargon for the data model, not a word a reader uses.
 ## Each series
 
 Each series' own copy lives in `src/i18n/dictionaries/<series>/`, and its
-records in `src/data/series/<series>/records`. In Italian, every series
-takes its names from the Italian dub.
+records in `src/data/series/<series>/records`. In Italian, every series'
+names follow the Italian dub; Game of Thrones' book-only names are the
+exception below.
 
 ### One Piece
 

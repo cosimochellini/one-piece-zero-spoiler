@@ -335,8 +335,9 @@ render until a season files one.
   - Ned's greatsword, Ice: shown at his threshold in both media, in episode
     1 and in Bran I (chapter 2), where he beheads a deserter with it.
   - Arya's sword, Needle, is the trap: Jon gives it to her in episode 2 and
-    in Jon II (chapter 11), after her threshold in both media, so it is a
-    stage, never her first drawing.
+    in Jon II (chapter 11), after her threshold in both media, so it is
+    never her first drawing, and a stage only if it becomes her object (a
+    weapon held beside the object keeps the drawing).
   - Daenerys's dragon eggs: a split threshold (below). The show gives them
     at the wedding in episode 1, her threshold; the book in Daenerys II
     (chapter 12), after her first chapter, Daenerys I (chapter 4).
@@ -355,9 +356,12 @@ render until a season files one.
   characters often, and the two media do it at different points, so the
   threshold check bites in both: no later wound, lost limb, title, costume
   or weapon in a first drawing. The rulings in "Each kind of record" hold
-  as written (owner, #851):
-  - a death is a stage in both media, with a pin in each, or with `source`
-    when only one medium kills the character;
+  as written (owner, #851), except those marked One Piece's (the Zoan, the
+  zombie, the cover stories): each medium is canon for itself here, and a
+  look only the show has takes `source: 'episode'`.
+  - a death is a stage, almost always, with the death ruling's two
+    exceptions, with a pin in each medium, or with `source` when only one
+    medium kills the character;
   - a wound or a lost limb keeps the drawing as it is, unless the lost part
     is the object itself: a sword hand that becomes a golden hand is a new
     object, so it is a stage;
@@ -369,7 +373,13 @@ render until a season files one.
   'episode'` (the show alone), and its other number is the point where the
   other medium reaches the same moment in the story: it only orders the
   stage, as a record's other threshold does (`Entity.source`), and never
-  opens it (owner, #851). The series has no `lastAdaptedChapter` (the show
+  opens it (owner, #851). When the other medium never reaches that moment
+  (the show runs past the books, and each leaves out scenes of the other),
+  the other number is the next point it does reach, or else its last
+  (`chapterCeiling` 344, `episodeCeiling` 73), as Hunter x Hunter files at
+  its last episode: at most one such stage per record, since its episodes
+  must stay distinct, and anything else waits for an owner ruling under
+  `status:needs-decision`. The series has no `lastAdaptedChapter` (the show
   ran past the books), so nothing is filed at its last episode the way
   Hunter x Hunter's manga-only stages are. `src/data/series/index.test.ts`
   holds every stage to a `chapter:`, an episode after the threshold,
@@ -422,6 +432,8 @@ render until a season files one.
    drawing. A distinctive design (a costume ensemble, a ship, a landmark, a
    real fruit) waits for the owner's ruling under `status:needs-decision`, as
    [CONTRIBUTING.md](../../../CONTRIBUTING.md#sources-and-rights) sets out.
+   For Game of Thrones, the wikis and the chapter and episode arithmetic
+   are in the Research bullet of its section.
 2. **Render the before.** `npm run art:sheet -- <id>` writes every stage of
    the record to `.gate/art/<id>.png` (`--out` to move it; `--series <slug>`
    for a series other than One Piece). Read the PNG.
