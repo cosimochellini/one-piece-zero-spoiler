@@ -74,8 +74,12 @@ stop_on_conflict() {
   cur=$(pr_head) || exit 5
   [ "$cur" = "$H" ] || { echo "head is no longer $H"; exit 4; }
   fetch
-  files=$(git merge-tree --write-tree --name-only --no-messages origin/main "$H" | tail -n +2)
-  if [ -n "$files" ]; then
+  # merge-tree exits 1 on a conflict and above 1 when it cannot tell.
+  out=$(git merge-tree --write-tree --name-only --no-messages origin/main "$H")
+  rc=$?
+  [ "$rc" -gt 1 ] && { echo "git merge-tree failed ($rc)"; exit 5; }
+  files=$(echo "$out" | tail -n +2)
+  if [ "$rc" = 1 ]; then
     echo "conflict with main, merge main into the branch by hand. Conflicting files:"
     echo "$files"
     exit 2

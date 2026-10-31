@@ -36,6 +36,6 @@ Merge only when the owner, or the orchestrator running your loop, told you to la
    - 5, refused or a bad PR state: read the output before you run anything again.
 5. Check that the issue closed, then remove the worktree.
 
-During a GitHub Actions incident (runs cancelled before any step), a green local `npm run check` on the branch stands in for CI, and the merge is `gh pr merge <pr> --squash --match-head-commit <head-sha>`. The same conflict rule applies.
+During a GitHub Actions incident (runs cancelled before any step), a green local `npm run check` on the branch stands in for CI, and the merge is `gh pr merge <pr> --squash --match-head-commit <head-sha>`. The same conflict rule applies: `gh pr view <pr> --json mergeable` reads CONFLICTING when the branch needs main merged in.
 
 Done when `gh pr view <pr>` reads MERGED and the issue is closed.

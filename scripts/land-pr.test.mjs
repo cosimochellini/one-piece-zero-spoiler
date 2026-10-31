@@ -83,8 +83,9 @@ const pr = (state, mergeable = 'MERGEABLE') => ({
  * @param {string} [refusedThen] - When set, `gh pr merge` is refused and the PR state reads this after.
  * @param {string} [mergeable] - What GitHub reports about merging the PR.
  * @param {string} [later] - What GitHub reports on every later read.
+ * @param {boolean} [clean] - Whether a merge with main is free of conflicts.
  */
-function prepare(bin, runs, refusedThen, mergeable, later) {
+function prepare(bin, runs, refusedThen, mergeable, later, clean) {
   /**
    * Writes an executable fake into the bin directory.
    * @param {string} name - The command it stands in for.
@@ -95,14 +96,16 @@ function prepare(bin, runs, refusedThen, mergeable, later) {
     chmodSync(path.join(bin, name), 0o755)
   }
   fake('gh', fakeGh)
-  // Git logs its calls beside gh's. A merge with main conflicts on one file,
-  // which the script reads only when GitHub does not say MERGEABLE.
+  // Git logs its calls beside gh's. A merge with main conflicts on one file
+  // unless clean is set; the script asks only when GitHub does not say
+  // MERGEABLE.
   fake(
     'git',
     `#!/bin/sh
 echo "git $*" >>"$(dirname "$0")/calls.log"
-[ "$1" = merge-tree ] && { echo tree; echo src/a.ts; }
-exit 0
+[ "$1" = merge-tree ] || exit 0
+echo tree
+${clean ? 'exit 0' : 'echo src/a.ts; exit 1'}
 `,
   )
   fake('sleep', '#!/bin/sh\nexit 0\n')
@@ -135,12 +138,13 @@ exit 0
  * @param {string} [refusedThen] - When set, `gh pr merge` is refused and the PR state reads this after.
  * @param {string} [mergeable] - What GitHub reports about merging the PR.
  * @param {string} [later] - What GitHub reports on every later read.
+ * @param {boolean} [clean] - Whether a merge with main is free of conflicts.
  * @returns {{ status: number | null, stdout: string, calls: string }} The exit status, output and the `gh` calls made.
  */
-function land(runs, refusedThen, mergeable, later) {
+function land(runs, refusedThen, mergeable, later, clean) {
   const bin = mkdtempSync(path.join(tmpdir(), 'land-pr-'))
   try {
-    prepare(bin, runs, refusedThen, mergeable, later)
+    prepare(bin, runs, refusedThen, mergeable, later, clean)
     const child = spawnSync('bash', [script, '42', head], {
       encoding: 'utf8',
       env: {
@@ -203,8 +207,43 @@ describe('land-pr.sh', () => {
 
     expect(stdout).toContain('merge main into the branch')
     expect(stdout).toContain('src/a.ts')
+    expect(calls).not.toContain('check-runs')
     expect(calls).not.toContain('pr merge')
     expect(status).toBe(2)
+  })
+
+  it('settles an UNKNOWN answer with git: a conflict exits 2', () => {
+    const { status, stdout } = land(
+      [[run(1, 'completed', 'success')]],
+      undefined,
+      'UNKNOWN',
+    )
+
+    expect(stdout).toContain('src/a.ts')
+    expect(status).toBe(2)
+  })
+
+  it('settles an UNKNOWN answer with git: a clean tree merges', () => {
+    const ok = [[run(1, 'completed', 'success')]]
+    const { status, stdout } = land(ok, undefined, 'UNKNOWN', undefined, true)
+
+    expect(stdout).toContain(`merged ${head}`)
+    expect(status).toBe(0)
+  })
+
+  it('exits 5 when GitHub reports a conflict that git does not find', () => {
+    const ok = [[run(1, 'completed', 'success')]]
+    const { status, stdout, calls } = land(
+      ok,
+      undefined,
+      'CONFLICTING',
+      undefined,
+      true,
+    )
+
+    expect(stdout).toContain('no file conflicts with main')
+    expect(calls).not.toContain('pr merge')
+    expect(status).toBe(5)
   })
 
   it('exits 2 when main moves into a conflict while CI runs', () => {
