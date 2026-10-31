@@ -212,12 +212,18 @@ const ROLES: { changes: Change[]; id: string }[] = [
         chapter: 133,
         onRecordChapter: true,
         from: role('Capitano del Bliking', 'Captain of the Bliking'),
-        to: role('Re di Drum, in esilio', 'Exiled king of Drum'),
+        to: role(
+          'Re di Drum che ha abbandonato il regno',
+          'King of Drum who abandoned his country',
+        ),
       },
       {
         episode: 89,
         chapter: 151,
-        from: role('Re di Drum, in esilio', 'Exiled king of Drum'),
+        from: role(
+          'Re di Drum che ha abbandonato il regno',
+          'King of Drum who abandoned his country',
+        ),
         to: role('Ex re di Drum', 'Former king of Drum'),
       },
       {
@@ -264,8 +270,8 @@ const ROLES: { changes: Change[]; id: string }[] = [
     id: 'kohza',
     changes: [
       {
-        episode: 130,
-        chapter: 217,
+        episode: 127,
+        chapter: 211,
         from: role('Capo dell’esercito ribelle', 'Leader of the rebel army'),
         to: role(
           'Ex capo dell’esercito ribelle',
@@ -384,16 +390,16 @@ const ROLES: { changes: Change[]; id: string }[] = [
           'First division commander',
         ),
         to: role(
-          'Capitano ad interim dei Pirati di Barbabianca',
-          'Acting captain of the Whitebeard Pirates',
+          'Ex capo dei superstiti dei Pirati di Barbabianca',
+          'Former leader of the Whitebeard Pirates’ remnants',
         ),
       },
       {
         episode: 958,
         chapter: 909,
         from: role(
-          'Capitano ad interim dei Pirati di Barbabianca',
-          'Acting captain of the Whitebeard Pirates',
+          'Ex capo dei superstiti dei Pirati di Barbabianca',
+          'Former leader of the Whitebeard Pirates’ remnants',
         ),
         to: role('Medico dell’isola di Sphinx', 'Doctor of Sphinx Island'),
       },

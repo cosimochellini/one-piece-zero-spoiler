@@ -1104,7 +1104,11 @@ export const alabasta: OnePieceSaga = {
         {
           episode: 80,
           chapter: 133,
-          value: { it: 'Re di Drum, in esilio', en: 'Exiled king of Drum' },
+          // He fled his country; it holds while he retakes the castle.
+          value: {
+            it: 'Re di Drum che ha abbandonato il regno',
+            en: 'King of Drum who abandoned his country',
+          },
         },
         // Luffy sends him flying out of the kingdom in chapter 151, and the
         // villagers celebrate the end of his rule; episode 89 adapts it ("When
@@ -1559,11 +1563,12 @@ export const alabasta: OnePieceSaga = {
             en: 'Leader of the rebel army',
           },
         },
-        // The war is over and he is home with his father in chapter 217 (p. 6),
-        // episode 130.
+        // The truth comes out, both armies lay down their weapons and the
+        // rebellion ends in chapter 211, episode 127: the pair of Crocodile's
+        // arrest.
         {
-          episode: 130,
-          chapter: 217,
+          episode: 127,
+          chapter: 211,
           value: {
             it: 'Ex capo dell’esercito ribelle',
             en: 'Former leader of the rebel army',

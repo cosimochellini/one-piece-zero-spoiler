@@ -1116,12 +1116,13 @@ export const skypiea: OnePieceSaga = {
             en: 'First division commander',
           },
         },
+        // Chapter 820 tells the remnants he led only as beaten and scattered.
         {
           episode: 773,
           chapter: 820,
           value: {
-            it: 'Capitano ad interim dei Pirati di Barbabianca',
-            en: 'Acting captain of the Whitebeard Pirates',
+            it: 'Ex capo dei superstiti dei Pirati di Barbabianca',
+            en: 'Former leader of the Whitebeard Pirates’ remnants',
           },
         },
         // A doctor on Sphinx in chapter 909 (p. 4); the episode is his
