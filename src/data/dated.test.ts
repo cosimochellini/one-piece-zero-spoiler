@@ -167,7 +167,8 @@ describe('a fixture series filed through the engine', () => {
 })
 
 describe('a fixture role the story changes', () => {
-  // A squire from his threshold (3 / 3), a knight from 5 / 9.
+  // A squire from his threshold (3 / 3), a knight from 5 / 9, and an exile
+  // from episode 7, which the anime alone tells.
   const squire = record('squire', 'character', [3, 3])
   const dossiers: Record<string, CharacterDossier> = {
     squire: {
@@ -176,6 +177,7 @@ describe('a fixture role the story changes', () => {
       role: [
         { chapter: 3, episode: 3, value: text('Squire') },
         { chapter: 9, episode: 5, value: text('Knight') },
+        { episode: 7, source: 'episode', value: text('Exile') },
       ],
     },
   }
@@ -207,6 +209,13 @@ describe('a fixture role the story changes', () => {
       text('Squire'),
     )
     expect(roleAt({ mode: 'chapter', chapter: 9 })).toStrictEqual(
+      text('Knight'),
+    )
+  })
+
+  it('keeps a step one source tells from the other source’s readers', () => {
+    expect(roleAt({ mode: 'episode', episode: 7 })).toStrictEqual(text('Exile'))
+    expect(roleAt({ mode: 'chapter', chapter: 20 })).toStrictEqual(
       text('Knight'),
     )
   })

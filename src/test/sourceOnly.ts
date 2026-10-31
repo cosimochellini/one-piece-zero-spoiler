@@ -17,8 +17,7 @@ import type { EntityKind, Stroke } from '~/lib/view/records'
  * id and name, filed in every list the real one is in. The twin character
  * also ate the real fruit the twin fruit copies, is met at the real place
  * the twin place copies, and is shelved alone under a real arc. On the first featured character, an epithet inside
- * the demo, a role step inside the demo and a redrawing at the ceiling that
- * only the same source tells.
+ * the demo and a redrawing at the ceiling that only the same source tells.
  *
  * Planted beside the archive rather than in it, so a test can hold that a
  * reader of the other source is sent the very bytes they were sent before.
@@ -28,8 +27,6 @@ export interface Planted {
   /** The epithet planted on `host`, in English. */
   epithet: string
   host: Entity
-  /** The role step planted on `host`, in English. */
-  role: string
   /** The redrawing planted on `host`. */
   strokes: Stroke[]
   /** The planted record of each kind. */
@@ -61,32 +58,27 @@ function originalOf(kind: EntityKind, archive: SeriesArchive): Entity {
   return found
 }
 
-/** What a test looks for of the facts planted on the host. */
-type Told = Pick<Planted, 'epithet' | 'role' | 'strokes'>
-
-/** The facts planted on the host, by field, and what a test looks for. */
+/** The facts planted on the host, by field. */
 function factsOf(
   source: Source,
   { series }: SeriesArchive,
-): { facts: { [F in Field]?: Dated<Fields[F]>[] }; told: Told } {
-  const epithet = { en: `Planted ${source} epithet`, it: `Epiteto ${source}` }
-  const role = { en: `Planted ${source} role`, it: `Ruolo ${source}` }
-  const strokes = [{ d: 'M0 0L7 7', transform: `${source}-redrawing` }]
-
+): { [F in Field]?: Dated<Fields[F]>[] } {
   return {
-    facts: {
-      epithet: [{ episode: series.demoLastEpisode, source, value: epithet }],
-      role: [{ episode: series.demoLastEpisode, source, value: role }],
-      redrawing: [
-        {
-          episode: series.episodeCeiling,
-          chapter: series.chapterCeiling,
-          source,
-          value: strokes,
-        },
-      ],
-    },
-    told: { epithet: epithet.en, role: role.en, strokes },
+    epithet: [
+      {
+        episode: series.demoLastEpisode,
+        source,
+        value: { en: `Planted ${source} epithet`, it: `Epiteto ${source}` },
+      },
+    ],
+    redrawing: [
+      {
+        episode: series.episodeCeiling,
+        chapter: series.chapterCeiling,
+        source,
+        value: [{ d: 'M0 0L7 7', transform: `${source}-redrawing` }],
+      },
+    ],
   }
 }
 
@@ -141,7 +133,7 @@ export function plant(base: SeriesArchive, source: Source): Planted {
   if (host === undefined) {
     throw new Error('No character to plant facts on')
   }
-  const { facts, told } = factsOf(source, base)
+  const facts = factsOf(source, base)
 
   const datedOf: SeriesArchive['datedOf'] = (owner, field) => [
     ...base.datedOf(owner, field),
@@ -163,8 +155,6 @@ export function plant(base: SeriesArchive, source: Source): Planted {
   }
   const reachedOf: SeriesArchive['reachedOf'] = (at, owner, field) =>
     datedOf(owner, field).filter((entry) => at.sees(entry.gate))
-  const latestOf: SeriesArchive['latestOf'] = (at, owner, field) =>
-    reachedOf(at, owner, field).at(-1)?.value
 
   const archive: SeriesArchive = {
     ...base,
@@ -186,14 +176,12 @@ export function plant(base: SeriesArchive, source: Source): Planted {
     getCharacter: lookup('character', base.getCharacter),
     getPlace: lookup('place', base.getPlace),
     dossierOf: (entity) => base.dossierOf(real(entity)),
-    // A planted step, once reached, over the role the base files.
-    roleOf: (at, entity) =>
-      latestOf(at, entity, 'role') ?? base.roleOf(at, real(entity)),
+    roleOf: (at, entity) => base.roleOf(at, real(entity)),
     placeDossierOf: (entity) => metAt(real(entity)),
     chartPointOf: (id) => base.chartPointOf(copied.get(id)?.id ?? id),
     datedOf,
     reachedOf,
-    latestOf,
+    latestOf: (at, owner, field) => reachedOf(at, owner, field).at(-1)?.value,
     redrawn: (owner) => datedOf(owner, 'redrawing'),
     features: {
       ...base.features,
@@ -221,7 +209,13 @@ export function plant(base: SeriesArchive, source: Source): Planted {
     },
   }
 
-  return { archive, host, twin, ...told }
+  return {
+    archive,
+    epithet: facts.epithet?.[0]?.value.en ?? '',
+    host,
+    strokes: facts.redrawing?.[0]?.value ?? [],
+    twin,
+  }
 }
 
 /** A character as the eater of a fruit, from its own threshold. */
