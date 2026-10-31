@@ -26,6 +26,7 @@ Done when every new character has an entry and a dossier, every place an entry a
 - A record whose name is an ordinary word gets `commonWord: true`; one whose name is said before its record opens gets `nameSaidAt`. Records that share a name, such as a place named like its arc, share both facts. A fact no text needs fails too. Both rules are tests in `src/data/leaks.test.ts`: `give records that share a name the same name facts` and `need every name fact for some text to pass`.
 - Write the summary, role, log and first facts for the gate: what a reader knows there. Anything later is a dated step.
 - A status timeline opens at the record's gate. Every later change is its own entry with its `chapter:` pinned (`pins every change of status to the chapter that tells it` in `src/data/archive.test.ts`).
+- A role the story changes (an applicant who becomes a Hunter) is filed as dated steps instead of one text: `role: [{ episode, chapter, value }, …]`, the first step at the record's gate, every later one with its `chapter:` pinned (`opens a dated role on its record and pins every change to a chapter`). `passedExam` in `<hxh>/records/saga.ts` builds an exam passer's two steps.
 
 Done when every gate has its naming chapter and episode, and `src/data/leaks.test.ts` and `src/data/archive.test.ts` pass.
 
@@ -72,7 +73,7 @@ Done when `src/data/provenance.test.ts` and `src/server/archive/hunterRelationsh
 Write `src/server/archive/<arc>.test.ts` on the model of `heavensArena.test.ts` and `zoldyck.test.ts` in the same folder:
 
 - each record closed, with no drawing, at gate−1 and open at the gate, for both units and both locales;
-- each dated step, status or affiliation, before and at its pin;
+- each dated step, status, affiliation or role, before and at its pin;
 - the arc's leads.
 
 Done when the test passes, and moving one gate or pin down by one makes it fail.

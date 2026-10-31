@@ -1,4 +1,4 @@
-import type { HunterSaga } from './saga'
+import { type HunterSaga, passedExam } from './saga'
 import { zevilChronicles } from './zevil.chronicle'
 import { zevilRelationships } from './zevil.relationships'
 
@@ -412,7 +412,7 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
     gittarackur: {
       relationships: zevilRelationships.gittarackur,
       chronicle: zevilChronicles.gittarackur,
-      role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
+      role: passedExam(19, 33),
       log: {
         it: 'Partecipa all’esame con il corpo coperto di aghi. Durante la quarta prova incontra Hisoka: i due si conoscono già. Raggiunge il tabellone dell’ultima prova.',
         en: 'He takes the exam with his body covered in needles. During the Fourth Phase he meets Hisoka: the two already know each other. He reaches the Final Phase bracket.',
@@ -583,7 +583,7 @@ export const zevil: Pick<HunterSaga, 'dossiers' | 'entries'> = {
     pokkle: {
       relationships: zevilRelationships.pokkle,
       chronicle: zevilChronicles.pokkle,
-      role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
+      role: passedExam(18, 23),
       log: {
         it: 'È tra gli aspiranti che superano la Torre di Lotta e affrontano la quarta prova sull’Isola di Zevil, armato di arco e frecce.',
         en: 'He is among the applicants who clear Trick Tower and face the Fourth Phase on Zevil Island, armed with a bow and arrows.',

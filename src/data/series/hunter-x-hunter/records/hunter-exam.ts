@@ -1,6 +1,6 @@
 import { hunterExamChronicles } from './hunter-exam.chronicle'
 import { hunterExamRelationships } from './hunter-exam.relationships'
-import type { HunterSaga } from './saga'
+import { type HunterSaga, passedExam } from './saga'
 import { trickTower } from './trick-tower'
 import { zevil } from './zevil'
 
@@ -348,7 +348,7 @@ const earlyExam: HunterSaga = {
     'gon-freecss': {
       relationships: hunterExamRelationships['gon-freecss'],
       chronicle: hunterExamChronicles['gon-freecss'],
-      role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
+      role: passedExam(1, 1),
       log: {
         it: 'È cresciuto sull’Isola Balena con Myto, che lo cresce da quando era in fasce. Suo padre, Ging Freecss, è un Hunter che non ha mai conosciuto. Myto gli lascia sostenere l’esame solo se pesca il pesce più grosso della palude, sicura che non ci riuscirà; lui ce la fa con la sua canna. Parte con la nave per diventare Hunter e per sapere di più su suo padre.',
         en: 'He has grown up on Whale Island with Mito, who has raised him since he was a baby. His father, Ging Freecss, is a Hunter he has never met. Mito will let him take the exam only if he catches the biggest fish in the swamp, sure that he cannot; he does it with his rod. He sails to become a Hunter and to learn about his father.',
@@ -404,7 +404,7 @@ const earlyExam: HunterSaga = {
     'leorio-paradinight': {
       relationships: hunterExamRelationships['leorio-paradinight'],
       chronicle: hunterExamChronicles['leorio-paradinight'],
-      role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
+      role: passedExam(1, 2),
       log: {
         it: 'Non vuole dire al capitano perché sostiene l’esame, poi ammette che è per i soldi e per quello che si possono comprare. I modi di Kurapika lo irritano, e quando insulta il suo clan i due salgono in coperta nella tempesta per battersi. Il duello finisce quando Katzo viene sbalzato fuori bordo e Gon si tuffa ad afferrarlo: Leorio e Kurapika prendono Gon per le gambe, e dopo fanno pace.',
         en: 'He will not tell the captain why he is taking the exam, then admits it is for money and what money buys. Kurapika’s manner gets under his skin, and when he insults Kurapika’s clan the two go up on deck in the storm to fight. The duel ends when Katzo is thrown overboard and Gon dives to catch him: Leorio and Kurapika grab Gon by the legs, and afterwards the two make up.',
@@ -425,7 +425,7 @@ const earlyExam: HunterSaga = {
     'kurapika': {
       relationships: hunterExamRelationships.kurapika,
       chronicle: hunterExamChronicles.kurapika,
-      role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
+      role: passedExam(1, 2),
       log: {
         it: 'Tiene per sé i suoi motivi finché il capitano non minaccia di farlo scendere: la Brigata Fantasma ha ucciso tutto il suo clan, e un Hunter può arrivare in posti e a informazioni che agli altri sono chiusi. Combatte con due spade di legno. Uno scontro con Leorio per una questione di rispetto finisce quasi in duello sul ponte, finché insieme non riprendono Gon e Katzo, sbalzati in mare; dopo i due fanno pace.',
         en: 'He keeps his reasons to himself until the captain threatens to put him off the ship: the Phantom Troupe killed the rest of his clan, and a Hunter can reach places and information closed to everyone else. He fights with two wooden swords. A quarrel with Leorio over manners nearly ends in a duel on deck, until together they pull back Gon and Katzo from the sea; afterwards the two make up.',
@@ -534,7 +534,7 @@ const earlyExam: HunterSaga = {
     'hisoka': {
       relationships: hunterExamRelationships.hisoka,
       chronicle: hunterExamChronicles.hisoka,
-      role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
+      role: passedExam(3, 5),
       log: {
         it: 'Tonpa lo indica a Gon come un aspirante da evitare: l’anno prima è stato squalificato per aver attaccato un esaminatore. Si presenta di nuovo all’esame e punisce un uomo che gli va addosso senza chiedere scusa.',
         en: 'Tonpa points him out to Gon as an applicant to avoid: the previous year he was disqualified for attacking an examiner. He returns to the exam and punishes a man who bumps into him without apologizing.',
@@ -631,7 +631,7 @@ const earlyExam: HunterSaga = {
     'hanzo': {
       relationships: hunterExamRelationships.hanzo,
       chronicle: hunterExamChronicles.hanzo,
-      role: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
+      role: passedExam(3, 6),
       log: {
         it: 'Parla volentieri con Tonpa e gli racconta della pergamena che cerca. Quando Tonpa gli offre del succo, però, lo rifiuta: un ninja non accetta cibo o bevande da uno sconosciuto.',
         en: 'He readily talks to Tonpa and tells him about the scroll he is looking for. When Tonpa offers him juice, though, he refuses: a ninja does not accept food or drink from a stranger.',

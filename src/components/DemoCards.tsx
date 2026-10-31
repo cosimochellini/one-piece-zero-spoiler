@@ -149,7 +149,14 @@ function CardBody({
   const onePiece = useSeriesT('one-piece')
   const facts = [
     { slot: 'epithet', text: latestStep(entry.epithet, point), loud: true },
-    { slot: 'role', text: entry.role, loud: false },
+    {
+      slot: 'role',
+      text:
+        typeof entry.role === 'string' ?
+          entry.role
+        : latestStep(entry.role ?? [], point),
+      loud: false,
+    },
     {
       slot: 'affiliation',
       text: latestStep(entry.affiliation, point),

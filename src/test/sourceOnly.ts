@@ -176,7 +176,7 @@ export function plant(base: SeriesArchive, source: Source): Planted {
     getCharacter: lookup('character', base.getCharacter),
     getPlace: lookup('place', base.getPlace),
     dossierOf: (entity) => base.dossierOf(real(entity)),
-    roleOf: (entity) => base.roleOf(real(entity)),
+    roleOf: (at, entity) => base.roleOf(at, real(entity)),
     placeDossierOf: (entity) => metAt(real(entity)),
     chartPointOf: (id) => base.chartPointOf(copied.get(id)?.id ?? id),
     datedOf,

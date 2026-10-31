@@ -1,5 +1,12 @@
 import type { ArtId } from '~/data/series/hunter-x-hunter/art'
-import type { Entity, Saga, Visual, Vocabulary } from '~/data/types'
+import type {
+  Entity,
+  LocalizedText,
+  Saga,
+  Timeline,
+  Visual,
+  Vocabulary,
+} from '~/data/types'
 
 /**
  * A Hunter x Hunter record, drawn by one of its own drawings: `art` is the id
@@ -37,4 +44,23 @@ export interface HunterVocabulary extends Vocabulary {
  */
 export interface HunterSaga extends Saga<HunterVocabulary> {
   entries: HunterEntity[]
+}
+
+/**
+ * The role of an applicant who passes the 287th Hunter Exam: an applicant
+ * from their own threshold, given here, and a Hunter from the briefing that
+ * licenses the seven who pass, in episode 21 and chapter 37 (#920).
+ */
+export function passedExam(
+  episode: number,
+  chapter: number,
+): Timeline<LocalizedText> {
+  return [
+    {
+      episode,
+      chapter,
+      value: { it: 'Aspirante Hunter', en: 'Hunter Exam applicant' },
+    },
+    { episode: 21, chapter: 37, value: { it: 'Hunter', en: 'Hunter' } },
+  ]
 }

@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
+import type { Bookmark } from '~/lib/progress/episode'
 import { OTHER_BOOKMARK } from '~/test/otherSeries'
 
 import { chapterTable } from './chapterTable'
@@ -156,7 +157,69 @@ describe('a fixture series filed through the engine', () => {
   it('shelves the character under the arc it is met in', () => {
     expect(CAST.bookSections).toStrictEqual([{ arc: ARC, characters: [HERO] }])
     expect(CAST.chart).toStrictEqual([ARC, HOME])
-    expect(CAST.roleOf(HERO)).toStrictEqual(text('The hero'))
+    expect(
+      ARCHIVE.roleOf(
+        reveal({ mode: 'episode', episode: 9 }, OTHER_BOOKMARK),
+        HERO,
+      ),
+    ).toStrictEqual(text('The hero'))
+  })
+})
+
+describe('a fixture role the story changes', () => {
+  // A squire from his threshold (3 / 3), a knight from 5 / 9.
+  const squire = record('squire', 'character', [3, 3])
+  const dossiers: Record<string, CharacterDossier> = {
+    squire: {
+      affiliation: [],
+      log: text('A log.'),
+      role: [
+        { chapter: 3, episode: 3, value: text('Squire') },
+        { chapter: 9, episode: 5, value: text('Knight') },
+      ],
+    },
+  }
+  const entities = [ARC, squire]
+  const filed = filedTimelines(dossiers)
+  const table = chapterTable({
+    anchors: anchorsOf(entities, filed),
+    chapterCeiling: 20,
+    episodeCeiling: 20,
+    records: entities,
+  })
+  const archive = datedArchive({
+    characters: [squire],
+    entities,
+    filed,
+    gateOf: table.gateOf,
+  })
+  const roleAt = (at: Bookmark): unknown =>
+    archive.roleOf(reveal(at, OTHER_BOOKMARK), squire)
+
+  it('serves each step from its own gate, in both units', () => {
+    expect(roleAt({ mode: 'episode', episode: 4 })).toStrictEqual(
+      text('Squire'),
+    )
+    expect(roleAt({ mode: 'episode', episode: 5 })).toStrictEqual(
+      text('Knight'),
+    )
+    expect(roleAt({ mode: 'chapter', chapter: 8 })).toStrictEqual(
+      text('Squire'),
+    )
+    expect(roleAt({ mode: 'chapter', chapter: 9 })).toStrictEqual(
+      text('Knight'),
+    )
+  })
+
+  it('lists the steps as a timeline, and opens on the first', () => {
+    expect(archive.timelines.map(({ label }) => label)).toStrictEqual([
+      'squire.affiliation',
+      'squire.role',
+    ])
+    // A record lifted by hand before its threshold reads the first step.
+    expect(roleAt({ mode: 'episode', episode: 2 })).toStrictEqual(
+      text('Squire'),
+    )
   })
 })
 

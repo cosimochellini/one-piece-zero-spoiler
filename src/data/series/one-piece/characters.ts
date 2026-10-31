@@ -64,7 +64,7 @@ export const FEATURED_CHARACTER_IDS = [
 
 /**
  * Every character and arc in route order, the chart (every arc, place and
- * ship, and the featured characters), each character's dossier and role,
+ * ship, and the featured characters), each character's dossier,
  * and the signal book shelved by arc. Every character keeps a page of its
  * own whether or not it is featured.
  */
@@ -76,7 +76,6 @@ export const {
   dossierOf,
   featuredCharacters,
   getCharacter,
-  roleOf,
 } = castOf({
   dossiers: CHARACTER_DOSSIERS,
   entities,

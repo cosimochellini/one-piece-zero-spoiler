@@ -17,7 +17,7 @@ import {
 } from './pages.server'
 import { placePage } from './placePage.server'
 import { placesPage } from './places.server'
-import { factsOf } from './project.server'
+import { characterOf, factsOf } from './project.server'
 import { type Reader, readerFor } from './reader.server'
 
 const series = LOADED_SERIES.find(({ slug }) => slug === 'hunter-x-hunter')
@@ -351,4 +351,67 @@ describe('the Hunter Exam’s first two phases', () => {
       }
     },
   )
+})
+
+// The seven who pass are Hunters from the briefing that licenses them,
+// episode 21 and chapter 37 (#920); Killua, disqualified, stays an applicant.
+const PASSED = [
+  'gon-freecss',
+  'kurapika',
+  'leorio-paradinight',
+  'hisoka',
+  'hanzo',
+  'pokkle',
+  'gittarackur',
+].flatMap((id) =>
+  UNITS.flatMap((mode) => LOCALES.map((locale) => ({ id, mode, locale }))),
+)
+const APPLICANT = { en: 'Hunter Exam applicant', it: 'Aspirante Hunter' }
+// Netflix S03E09, inside Yorknew City: the issue's own probe.
+const IN_YORKNEW: Bookmark = { mode: 'season', season: 3, episode: 9 }
+
+function roleAt(id: string, at: Bookmark, locale: Locale): string | undefined {
+  return characterOf(entityOf(id), readerFor(archive, at, locale)).role
+}
+
+describe('the roles the Hunter Exam changes', () => {
+  it.each(PASSED)(
+    'makes $id a Hunter at the briefing in $mode ($locale)',
+    (row) => {
+      const licensed = row.mode === 'episode' ? 21 : 37
+
+      expect(roleAt(row.id, bookmark(row.mode, licensed - 1), row.locale)).toBe(
+        APPLICANT[row.locale],
+      )
+      expect(roleAt(row.id, bookmark(row.mode, licensed), row.locale)).toBe(
+        'Hunter',
+      )
+    },
+  )
+
+  it.each(LOCALES)('reads Gon and Killua as the issue asks (%s)', (locale) => {
+    expect(roleAt('gon-freecss', bookmark('episode', 20), locale)).toBe(
+      APPLICANT[locale],
+    )
+    expect(roleAt('gon-freecss', bookmark('episode', 22), locale)).toBe(
+      'Hunter',
+    )
+    expect(roleAt('gon-freecss', IN_YORKNEW, locale)).toBe('Hunter')
+    expect(roleAt('killua', bookmark('episode', 22), locale)).toBe(
+      APPLICANT[locale],
+    )
+    expect(roleAt('killua', IN_YORKNEW, locale)).toBe(APPLICANT[locale])
+  })
+
+  it('steps the onboarding dial from applicant to Hunter', () => {
+    const r = readerFor(archive, null, 'en')
+    const gon = onboardingPage(null, r).cast.find(
+      ({ id }) => id === 'gon-freecss',
+    )
+
+    expect(gon?.role).toStrictEqual([
+      { revealedAtEpisode: 1, revealedAtChapter: 1, value: APPLICANT.en },
+      { revealedAtEpisode: 21, revealedAtChapter: 37, value: 'Hunter' },
+    ])
+  })
 })

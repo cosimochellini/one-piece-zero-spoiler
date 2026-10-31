@@ -33,6 +33,7 @@ const CORE_FIELDS = new Set<Field>([
   'origin',
   'redrawing',
   'relationships',
+  'role',
   'status',
 ])
 
@@ -255,6 +256,11 @@ describe.each(LOADED_SERIES)(
       'status',
       (c) => archive.dossierOf(c)?.status,
     )
+    const ROLES = casesOf(archive, 'role', (c) => {
+      const role = archive.dossierOf(c)?.role
+
+      return Array.isArray(role) ? role : undefined
+    })
 
     it('files at least what the series is known to file', () => {
       // The rules below pass on nothing, so a series that files content must
@@ -307,8 +313,14 @@ describe.each(LOADED_SERIES)(
 
         expect(dossier, character.id).toBeDefined()
 
+        const role = dossier?.role
+        const roles =
+          Array.isArray(role) ? role.map((step) => step.value) : [role]
         for (const locale of LOCALES) {
-          expect(dossier?.role[locale].length, character.id).toBeGreaterThan(0)
+          for (const text of roles) {
+            expect(text?.[locale].length, character.id).toBeGreaterThan(0)
+          }
+
           expect(dossier?.log[locale].length, character.id).toBeGreaterThan(0)
         }
       }
@@ -349,6 +361,24 @@ describe.each(LOADED_SERIES)(
       // opens at the threshold, in the state the character is introduced in.
       for (const { character, label, timeline } of STATUSES) {
         expect(timeline[0]?.episode, label).toBe(character.revealedAtEpisode)
+      }
+    })
+
+    it('opens a dated role on its record and pins every change to a chapter', () => {
+      // A card always prints a role, so the first step is the record's own
+      // threshold; a later one waits on its true chapter, not the table.
+      for (const { character, label } of ROLES) {
+        const [first, ...changes] = archive.datedOf(character, 'role')
+
+        expect(first?.gate, label).toStrictEqual({
+          revealedAtEpisode: character.revealedAtEpisode,
+          revealedAtChapter: character.revealedAtChapter,
+          ...(character.source !== undefined && { source: character.source }),
+        })
+        expect(
+          changes.filter((step) => step.chapter === undefined),
+          label,
+        ).toStrictEqual([])
       }
     })
 
