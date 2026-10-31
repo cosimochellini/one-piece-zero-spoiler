@@ -97,6 +97,15 @@ export const finalPhase: HunterSaga = {
             it: 'Associazione Hunter, Hunter',
           },
         },
+        // Chrollo hires him to kill the Ten Dons, chapter 100 and episode 53.
+        {
+          episode: 53,
+          chapter: 100,
+          value: {
+            en: 'Hunter Association, Hunter; hired by Chrollo',
+            it: 'Associazione Hunter, Hunter; ingaggiato da Quoll',
+          },
+        },
       ],
     },
   },

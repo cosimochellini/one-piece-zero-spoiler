@@ -40,6 +40,15 @@ const RECORDS = [
   { id: 'phinks', episode: 45, chapter: 78, place: false },
   { id: 'shalnark', episode: 46, chapter: 79, place: false },
   { id: 'light-nostrade', episode: 46, chapter: 79, place: false },
+  { id: 'zepile', episode: 48, chapter: 86, place: false },
+  { id: 'pakunoda', episode: 49, chapter: 90, place: false },
+  { id: 'zenji', episode: 51, chapter: 95, place: false },
+  { id: 'kortopi', episode: 53, chapter: 100, place: false },
+  { id: 'chrollo', episode: 54, chapter: 71, place: false },
+  { id: 'bonolenov', episode: 55, chapter: 108, place: false },
+  { id: 'eliza', episode: 56, chapter: 112, place: false },
+  { id: 'southernpiece-auction-house', episode: 48, chapter: 85, place: true },
+  { id: 'hotel-beitacle', episode: 57, chapter: 112, place: true },
   { id: 'yorknew-city', episode: 41, chapter: 70, place: true },
   { id: 'lingon-airport', episode: 41, chapter: 71, place: true },
   { id: 'cemetery-building', episode: 42, chapter: 72, place: true },
@@ -395,19 +404,180 @@ const STATUS_STEPS = [
   { id: 'owl', unit: 'chapter', count: 84, before: 'alive', after: 'captured' },
 ]
 
+/** A character's status for an English reader at a bookmark. */
+function statusAt(id: string, unit: string, count: number): string | undefined {
+  return archive.latestOf(
+    readerFor(archive, at(unit, count), 'en'),
+    character(id),
+    'status',
+  )
+}
+
 describe('the deaths and captures of the auction nights', () => {
   it.each(STATUS_STEPS)(
     'pins $id’s status at $unit $count',
     ({ id, unit, count, before, after }) => {
-      const status = (n: number): string | undefined =>
+      expect(statusAt(id, unit, count - 1)).toBe(before)
+      expect(statusAt(id, unit, count)).toBe(after)
+    },
+  )
+})
+
+/** The third phase's status steps, in the shape of `STATUS_STEPS`. */
+const LATE_STATUS_STEPS = [
+  {
+    id: 'squala',
+    unit: 'episode',
+    count: 56,
+    before: 'alive',
+    after: 'deceased',
+  },
+  {
+    id: 'squala',
+    unit: 'chapter',
+    count: 112,
+    before: 'alive',
+    after: 'deceased',
+  },
+  {
+    id: 'pakunoda',
+    unit: 'episode',
+    count: 58,
+    before: 'alive',
+    after: 'deceased',
+  },
+  {
+    id: 'pakunoda',
+    unit: 'chapter',
+    count: 119,
+    before: 'alive',
+    after: 'deceased',
+  },
+  ...['gon-freecss', 'killua'].flatMap((id) => [
+    { id, unit: 'episode', count: 49, before: 'alive', after: 'captured' },
+    { id, unit: 'chapter', count: 91, before: 'alive', after: 'captured' },
+    { id, unit: 'episode', count: 50, before: 'captured', after: 'alive' },
+    { id, unit: 'chapter', count: 94, before: 'captured', after: 'alive' },
+    { id, unit: 'episode', count: 56, before: 'alive', after: 'captured' },
+    { id, unit: 'chapter', count: 111, before: 'alive', after: 'captured' },
+    { id, unit: 'episode', count: 58, before: 'captured', after: 'alive' },
+    { id, unit: 'chapter', count: 118, before: 'captured', after: 'alive' },
+  ]),
+  {
+    id: 'chrollo',
+    unit: 'episode',
+    count: 57,
+    before: 'alive',
+    after: 'captured',
+  },
+  {
+    id: 'chrollo',
+    unit: 'chapter',
+    count: 114,
+    before: 'alive',
+    after: 'captured',
+  },
+  {
+    id: 'chrollo',
+    unit: 'episode',
+    count: 58,
+    before: 'captured',
+    after: 'alive',
+  },
+  {
+    id: 'chrollo',
+    unit: 'chapter',
+    count: 118,
+    before: 'captured',
+    after: 'alive',
+  },
+]
+
+describe('the deaths and captures of the last nights', () => {
+  it.each(LATE_STATUS_STEPS)(
+    'pins $id’s status at $unit $count',
+    ({ id, unit, count, before, after }) => {
+      expect(statusAt(id, unit, count - 1)).toBe(before)
+      expect(statusAt(id, unit, count)).toBe(after)
+    },
+  )
+})
+
+const HIRED_BY_DONS = 'Zoldyck family; hired by the Ten Dons'
+
+/** Each affiliation step of the third phase, read on each side. */
+const AFFILIATION_STEPS = [
+  ...['silva', 'zeno'].flatMap((id) => [
+    {
+      id,
+      unit: 'episode',
+      count: 51,
+      before: 'Zoldyck family',
+      after: HIRED_BY_DONS,
+    },
+    {
+      id,
+      unit: 'episode',
+      count: 53,
+      before: HIRED_BY_DONS,
+      after: 'Zoldyck family',
+    },
+    {
+      id,
+      unit: 'chapter',
+      count: 100,
+      before: HIRED_BY_DONS,
+      after: 'Zoldyck family',
+    },
+  ]),
+  // Zeno is open from chapter 42; Silva only from 95, the step's own chapter.
+  {
+    id: 'zeno',
+    unit: 'chapter',
+    count: 95,
+    before: 'Zoldyck family',
+    after: HIRED_BY_DONS,
+  },
+  {
+    id: 'silva',
+    unit: 'chapter',
+    count: 95,
+    before: undefined,
+    after: HIRED_BY_DONS,
+  },
+  ...[
+    { unit: 'episode', count: 53 },
+    { unit: 'chapter', count: 100 },
+  ].map((row) => ({
+    id: 'illumi',
+    ...row,
+    before: 'Hunter Association, Hunter',
+    after: 'Hunter Association, Hunter; hired by Chrollo',
+  })),
+  ...[
+    { unit: 'episode', count: 58 },
+    { unit: 'chapter', count: 119 },
+  ].map((row) => ({
+    id: 'hisoka',
+    ...row,
+    before: 'Hunter Association, Hunter; fake member of the Phantom Troupe',
+    after: 'Hunter Association, Hunter',
+  })),
+]
+
+describe('the returning characters’ last steps', () => {
+  it.each(AFFILIATION_STEPS)(
+    'pins $id’s affiliation at $unit $count',
+    ({ id, unit, count, before, after }) => {
+      const affiliation = (n: number): string | undefined =>
         archive.latestOf(
           readerFor(archive, at(unit, n), 'en'),
           character(id),
-          'status',
-        )
+          'affiliation',
+        )?.en
 
-      expect(status(count - 1)).toBe(before)
-      expect(status(count)).toBe(after)
+      expect(affiliation(count - 1)).toBe(before)
+      expect(affiliation(count)).toBe(after)
     },
   )
 })

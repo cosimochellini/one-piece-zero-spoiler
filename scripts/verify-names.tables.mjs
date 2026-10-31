@@ -100,6 +100,11 @@ export const ITALIAN_TITLES = {
   'rabid-dog': 'Personaggi di Hunter × Hunter#Cane selvatico',
   'porcupine': 'Personaggi di Hunter × Hunter#Porcospino',
   'leech': 'Personaggi di Hunter × Hunter#Sanguisuga',
+  'zepile': 'Personaggi di Hunter × Hunter#Sepail',
+  'pakunoda': 'Brigata Fantasma#Pakunoda',
+  'kortopi': 'Brigata Fantasma#Kortopi',
+  'bonolenov': 'Brigata Fantasma#Bonolenov Ndongo',
+  'chrollo': 'Brigata Fantasma#Quoll Lucifer',
 }
 
 /**
@@ -133,6 +138,8 @@ export const NAMES_KEPT = {
   'shachmono-tocino': 'Shachmono Tocino',
   'ivlenkov': 'Ivlenkov',
   'linssen': 'Linssen',
+  'zenji': 'Zenji',
+  'eliza': 'Eliza',
   // Italian Wikipedia's entry is the manga's "Leolio Paladiknight", with a
   // note that the Italian anime says "Leorio" (`Personaggi di Hunter ×
   // Hunter`, section `Leolio Paladiknight`).

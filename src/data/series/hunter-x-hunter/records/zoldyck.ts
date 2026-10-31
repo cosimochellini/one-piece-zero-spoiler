@@ -325,6 +325,21 @@ export const zoldyck: Pick<HunterSaga, 'dossiers' | 'entries'> = {
           chapter: 42,
           value: { it: 'Famiglia Zoldick', en: 'Zoldyck family' },
         },
+        // Hired by the Ten Dons to kill the Troupe, chapter 95 and episode 51;
+        // the contract ends with the Dons' deaths, chapter 100 and episode 53.
+        {
+          episode: 51,
+          chapter: 95,
+          value: {
+            it: 'Famiglia Zoldick; ingaggiato dai Dieci Anziani',
+            en: 'Zoldyck family; hired by the Ten Dons',
+          },
+        },
+        {
+          episode: 53,
+          chapter: 100,
+          value: { it: 'Famiglia Zoldick', en: 'Zoldyck family' },
+        },
       ],
     },
     'silva': {
@@ -340,6 +355,21 @@ export const zoldyck: Pick<HunterSaga, 'dossiers' | 'entries'> = {
         {
           episode: 24,
           chapter: 95,
+          value: { it: 'Famiglia Zoldick', en: 'Zoldyck family' },
+        },
+        // Hired by the Ten Dons to kill the Troupe, chapter 95 and episode 51;
+        // the contract ends with the Dons' deaths, chapter 100 and episode 53.
+        {
+          episode: 51,
+          chapter: 95,
+          value: {
+            it: 'Famiglia Zoldick; ingaggiato dai Dieci Anziani',
+            en: 'Zoldyck family; hired by the Ten Dons',
+          },
+        },
+        {
+          episode: 53,
+          chapter: 100,
           value: { it: 'Famiglia Zoldick', en: 'Zoldyck family' },
         },
       ],

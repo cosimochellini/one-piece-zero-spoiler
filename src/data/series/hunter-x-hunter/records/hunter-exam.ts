@@ -354,7 +354,18 @@ const earlyExam: HunterSaga = {
         it: 'È cresciuto sull’Isola Balena con Myto, che lo cresce da quando era in fasce. Suo padre, Ging Freecss, è un Hunter che non ha mai conosciuto. Myto gli lascia sostenere l’esame solo se pesca il pesce più grosso della palude, sicura che non ci riuscirà; lui ce la fa con la sua canna. Parte con la nave per diventare Hunter e per sapere di più su suo padre.',
         en: 'He has grown up on Whale Island with Mito, who has raised him since he was a baby. His father, Ging Freecss, is a Hunter he has never met. Mito will let him take the exam only if he catches the biggest fish in the swamp, sure that he cannot; he does it with his rod. He sails to become a Hunter and to learn about his father.',
       },
-      status: [{ episode: 1, value: 'alive' }],
+      status: [
+        { episode: 1, value: 'alive' },
+        // The Troupe takes him and Killua to its hideout, chapter 91 and
+        // episode 49; they break out through the walls, chapter 94 and
+        // episode 50.
+        { episode: 49, chapter: 91, value: 'captured' },
+        { episode: 50, chapter: 94, value: 'alive' },
+        // Caught again on the way to the hotel, chapter 111 and episode 56,
+        // and handed back at the exchange, chapter 118 and episode 58.
+        { episode: 56, chapter: 111, value: 'captured' },
+        { episode: 58, chapter: 118, value: 'alive' },
+      ],
       affiliation: [
         { episode: 1, value: APPLICANT },
         {
@@ -613,6 +624,16 @@ const earlyExam: HunterSaga = {
             en: 'Hunter Association, Hunter; fake member of the Phantom Troupe',
           },
         },
+        // After the exchange he challenges Chrollo openly and leaves the
+        // Troupe behind, chapter 119 and episode 58.
+        {
+          episode: 58,
+          chapter: 119,
+          value: {
+            en: 'Hunter Association, Hunter',
+            it: 'Associazione Hunter, Hunter',
+          },
+        },
       ],
     },
     'todo': {
@@ -739,7 +760,18 @@ const earlyExam: HunterSaga = {
         it: 'Segue l’esaminatore sullo skateboard. Gon lo raggiunge e scopre che hanno quasi la stessa età. Killua prende la tavola in mano e continua a corrergli accanto.',
         en: 'He follows the examiner on his skateboard. Gon catches up with him and learns that they are nearly the same age. Killua picks up his board and keeps running beside him.',
       },
-      status: [{ episode: 4, chapter: 6, value: 'alive' }],
+      status: [
+        { episode: 4, chapter: 6, value: 'alive' },
+        // The Troupe takes him and Killua to its hideout, chapter 91 and
+        // episode 49; they break out through the walls, chapter 94 and
+        // episode 50.
+        { episode: 49, chapter: 91, value: 'captured' },
+        { episode: 50, chapter: 94, value: 'alive' },
+        // Caught again on the way to the hotel, chapter 111 and episode 56,
+        // and handed back at the exchange, chapter 118 and episode 58.
+        { episode: 56, chapter: 111, value: 'captured' },
+        { episode: 58, chapter: 118, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 4,

@@ -418,6 +418,135 @@ export const yorknewCity: HunterSaga = {
       },
       visual: { art: 'leech', tint: 'pink' },
     },
+    // Named on the bids that beat Gon's and Killua's, chapter 86 and
+    // episode 48.
+    {
+      id: 'zepile',
+      kind: 'character',
+      revealedAtEpisode: 48,
+      revealedAtChapter: 86,
+      name: { it: 'Sepail', en: 'Zepile' },
+      summary: {
+        it: 'Un uomo che batte le offerte di Gon e Killua su alcuni oggetti a un mercato di York Shin City.',
+        en: 'A man who outbids Gon and Killua on some items at a Yorknew City market.',
+      },
+      visual: { art: 'zepile', tint: 'ocher' },
+    },
+    // Phinks and Pakunoda close the trap on Gon and Killua, chapter 90 and
+    // episode 49.
+    {
+      id: 'pakunoda',
+      kind: 'character',
+      revealedAtEpisode: 49,
+      revealedAtChapter: 90,
+      name: { it: 'Pakunoda', en: 'Pakunoda' },
+      summary: {
+        it: 'Un membro della Brigata Fantasma che con Phinks intrappola Gon e Killua.',
+        en: 'A member of the Phantom Troupe who traps Gon and Killua with Phinks.',
+      },
+      visual: { art: 'pakunoda', tint: 'violet' },
+    },
+    // Named at the assassins' meeting, chapter 95 and episode 51.
+    {
+      id: 'zenji',
+      kind: 'character',
+      revealedAtEpisode: 51,
+      revealedAtChapter: 95,
+      name: { it: 'Zenji', en: 'Zenji' },
+      summary: {
+        it: 'Un uomo che riunisce gli assassini ingaggiati per uccidere la Brigata Fantasma e deride Light Nostrad.',
+        en: 'A man who briefs the assassins hired to kill the Phantom Troupe and mocks Light Nostrade.',
+      },
+      visual: { art: 'zenji', tint: 'wine' },
+    },
+    // Named when he copies the auction items, chapter 100 and episode 53.
+    {
+      id: 'kortopi',
+      kind: 'character',
+      revealedAtEpisode: 53,
+      revealedAtChapter: 100,
+      name: { it: 'Kortopi', en: 'Kortopi' },
+      summary: {
+        it: 'Un membro della Brigata Fantasma che fa copie esatte degli oggetti.',
+        en: 'A member of the Phantom Troupe who makes exact copies of objects.',
+      },
+      visual: { art: 'kortopi', tint: 'cyan' },
+    },
+    // The leader names him when he splits the Troupe into groups, chapter
+    // 108 and episode 55; "the member covered in bandages" in chapter 104.
+    {
+      id: 'bonolenov',
+      kind: 'character',
+      revealedAtEpisode: 55,
+      revealedAtChapter: 108,
+      name: { it: 'Bonolenov', en: 'Bonolenov' },
+      summary: {
+        it: 'Un membro della Brigata Fantasma.',
+        en: 'A member of the Phantom Troupe.',
+      },
+      visual: { art: 'bonolenov', tint: 'sand' },
+    },
+    // Pakunoda reads her name in Squala's memories, chapter 112 and episode
+    // 56; the episodes name her earlier, the chapters not before.
+    {
+      id: 'eliza',
+      kind: 'character',
+      revealedAtEpisode: 56,
+      revealedAtChapter: 112,
+      name: { it: 'Eliza', en: 'Eliza' },
+      summary: {
+        it: 'La donna amata da Squala, al seguito di Neon.',
+        en: 'The woman Squala loves, who attends Neon.',
+      },
+      visual: { art: 'eliza', tint: 'pink' },
+    },
+    // The manga names him from chapter 55 and shows him from chapter 71; the
+    // episodes call him "the boss" until Illumi names him in episode 53 and
+    // Nobunaga in episode 54 (owner, #900). Too far out of step to anchor
+    // the chapter table.
+    {
+      id: 'chrollo',
+      kind: 'character',
+      unanchored: true,
+      revealedAtEpisode: 54,
+      revealedAtChapter: 71,
+      nameSaidAt: 53,
+      name: { it: 'Quoll', en: 'Chrollo' },
+      summary: {
+        it: 'Il capo della Brigata Fantasma, che le ordina di rubare tutto all’asta sotterranea.',
+        en: 'The leader of the Phantom Troupe, who orders it to steal everything at the Underground Auction.',
+      },
+      visual: { art: 'chrollo', tint: 'lavender' },
+    },
+    // Visited from chapter 85 and episode 48; named earlier in Leorio's plans
+    // (chapter 72) and a rumor (episode 38), but no text before needs the
+    // name.
+    {
+      id: 'southernpiece-auction-house',
+      kind: 'place',
+      revealedAtEpisode: 48,
+      revealedAtChapter: 85,
+      name: { it: 'Sazan Piece', en: 'Southernpiece Auction House' },
+      summary: {
+        it: 'La casa d’aste di York Shin City dove Gon e Killua sperano di comprare il gioco della scheda di memoria di Ging.',
+        en: 'The Yorknew City auction house where Gon and Killua hope to buy the game on Ging’s memory card.',
+      },
+      visual: { art: 'southernpiece-auction-house', tint: 'ivory' },
+    },
+    // The chapters name it from 79; the episodes first in 57, which adapts
+    // chapter 112, where the Troupe waits in its lobby.
+    {
+      id: 'hotel-beitacle',
+      kind: 'place',
+      revealedAtEpisode: 57,
+      revealedAtChapter: 112,
+      name: { it: 'Hotel Beitacle', en: 'Hotel Beitacle' },
+      summary: {
+        it: 'L’albergo di York Shin City dove alloggiano Neon e le sue guardie del corpo.',
+        en: 'The Yorknew City hotel where Neon and her bodyguards stay.',
+      },
+      visual: { art: 'hotel-beitacle', tint: 'cyan' },
+    },
     {
       id: 'yorknew-city',
       kind: 'place',
@@ -521,7 +650,12 @@ export const yorknewCity: HunterSaga = {
         it: 'La catena di Kurapika oscilla davanti a lui, e Melody sente il suo cuore accelerare. Nega di essere un infiltrato finché l’haiku di Basho non lo costringe a confessare. Dopo il bacio di Versé parla.',
         en: 'Kurapika’s chain swings in front of him, and Melody hears his heart speed up. He denies being a plant until Basho’s haiku makes him confess. He talks after Baise kisses him.',
       },
-      status: [{ episode: 40, chapter: 68, value: 'alive' }],
+      status: [
+        { episode: 40, chapter: 68, value: 'alive' },
+        // Nobunaga kills him after Pakunoda questions him, chapter 112 and
+        // episode 56.
+        { episode: 56, chapter: 112, value: 'deceased' },
+      ],
       affiliation: [NEON_GUARD],
     },
     'shachmono-tocino': {
@@ -786,6 +920,111 @@ export const yorknewCity: HunterSaga = {
       status: [{ episode: 44, chapter: 76, value: 'deceased' }],
       affiliation: [{ episode: 44, chapter: 76, value: SHADOW_BEASTS }],
     },
+    'zepile': {
+      role: { it: 'Antiquario', en: 'Antiques dealer' },
+      log: {
+        it: 'A un mercato di York Shin City il suo nome è sulle offerte che superano quelle di Gon e Killua, quattro volte più alte. Si aggiudica il vaso che volevano.',
+        en: 'At a Yorknew City market his name is on the bids that beat Gon’s and Killua’s, four times higher. He wins the vase they wanted.',
+      },
+      status: [{ episode: 48, chapter: 86, value: 'alive' }],
+      // He takes their items to sell for a share, chapter 87 and episode 48.
+      affiliation: [
+        {
+          episode: 48,
+          chapter: 87,
+          value: {
+            it: 'Vende gli oggetti di Gon e Killua',
+            en: 'Selling Gon and Killua’s items',
+          },
+        },
+      ],
+    },
+    'pakunoda': {
+      role: TROUPE_MEMBER,
+      log: {
+        it: 'Con Phinks segue di nascosto Gon e Killua mentre loro pedinano Machi e Nobunaga. Quando i ragazzi cercano di scappare, lei blocca l’uscita.',
+        en: 'With Phinks she secretly follows Gon and Killua while they tail Machi and Nobunaga. When the boys try to escape, she blocks the way out.',
+      },
+      status: [
+        { episode: 49, chapter: 90, value: 'alive' },
+        // Kurapika's chain kills her when she shares her memories with the
+        // other members, chapter 119 and episode 58.
+        { episode: 58, chapter: 119, value: 'deceased' },
+      ],
+      affiliation: [{ episode: 49, chapter: 90, value: TROUPE }],
+    },
+    'zenji': {
+      role: { it: 'Rivale di Light Nostrad', en: 'Light Nostrade’s rival' },
+      log: {
+        it: 'Spiega agli assassini riuniti che il loro compito è uccidere la Brigata Fantasma. Deride Light Nostrad finché Kurapika non lo ferma.',
+        en: 'He tells the gathered assassins that their job is to kill the Phantom Troupe. He mocks Light Nostrade until Kurapika stops him.',
+      },
+      status: [{ episode: 51, chapter: 95, value: 'alive' }],
+      // The episodes call him a Mafia boss from 53, when he bids against
+      // Kurapika for the Scarlet Eyes (chapter 101).
+      affiliation: [
+        { episode: 53, chapter: 101, value: { it: 'Mafia', en: 'Mafia' } },
+      ],
+    },
+    'kortopi': {
+      role: TROUPE_MEMBER,
+      log: {
+        it: 'All’asta sotterranea, che la Brigata manda avanti di nascosto, copia gli oggetti e sono le copie a essere vendute.',
+        en: 'At the Underground Auction, which the Troupe runs from backstage, he copies the items, and the copies are what gets sold.',
+      },
+      status: [{ episode: 53, chapter: 100, value: 'alive' }],
+      affiliation: [{ episode: 53, chapter: 100, value: TROUPE }],
+    },
+    'bonolenov': {
+      role: TROUPE_MEMBER,
+      log: {
+        it: 'Quando Quoll divide la Brigata in gruppi, lui finisce con Franklin e Hisoka.',
+        en: 'When Chrollo splits the Troupe into groups, he is put with Franklin and Hisoka.',
+      },
+      status: [{ episode: 55, chapter: 108, value: 'alive' }],
+      affiliation: [{ episode: 55, chapter: 108, value: TROUPE }],
+    },
+    'eliza': {
+      role: { it: 'Al seguito di Neon', en: 'Neon’s attendant' },
+      log: {
+        it: 'Pakunoda legge il suo nome nei ricordi di Squala poco prima che lui venga ucciso.',
+        en: 'Pakunoda reads her name in Squala’s memories shortly before he is killed.',
+      },
+      status: [{ episode: 56, chapter: 112, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 56,
+          chapter: 112,
+          value: { it: 'Famiglia Nostrad', en: 'Nostrade family' },
+        },
+      ],
+    },
+    'chrollo': {
+      role: {
+        it: 'Capo della Brigata Fantasma',
+        en: 'Leader of the Phantom Troupe',
+      },
+      log: {
+        it: 'Riunisce i membri della Brigata a York Shin City e ordina di rubare tutto all’asta sotterranea, dando il permesso di uccidere chiunque si metta in mezzo.',
+        en: 'He gathers the Troupe’s members in Yorknew City and orders them to steal everything at the Underground Auction, giving them leave to kill anyone in the way.',
+      },
+      status: [
+        { episode: 54, chapter: 71, value: 'alive' },
+        // Kurapika takes him in the blackout at the hotel and holds him in
+        // chains, chapter 114 and episode 57.
+        { episode: 57, chapter: 114, value: 'captured' },
+        // Released at the exchange for Gon and Killua, chapter 118 and
+        // episode 58.
+        { episode: 58, chapter: 118, value: 'alive' },
+      ],
+      affiliation: [
+        {
+          episode: 54,
+          chapter: 71,
+          value: { it: 'Brigata Fantasma, capo', en: 'Phantom Troupe, leader' },
+        },
+      ],
+    },
     'shizuku': {
       role: TROUPE_MEMBER,
       log: {
@@ -839,6 +1078,31 @@ export const YORKNEW_CITY_PLACES: Record<
     log: {
       it: 'Qui si tiene l’asta sotterranea. Dalzorne manda tre guardie del corpo all’asta e ne mette due all’ingresso principale e due a quello posteriore.',
       en: 'The Underground Auction is held here. Dalzollene sends three bodyguards in to attend it and posts two at the front entrance and two at the back.',
+    },
+    filedHere: [],
+  },
+  'southernpiece-auction-house': {
+    form: 'building',
+    region: 'mainland',
+    arc: 'yorknew-city-arc',
+    landmark: {
+      it: 'L’ingresso della casa d’aste',
+      en: 'The auction house’s entrance',
+    },
+    log: {
+      it: 'Gon, Killua e Leorio vengono qui a comprare il catalogo dell’asta, che vale anche come biglietto d’ingresso, con i soldi che Gon ha avuto in prestito impegnando la sua licenza Hunter.',
+      en: 'Gon, Killua and Leorio come here to buy the auction catalog, which is also the entry ticket, with money Gon borrowed by pawning his Hunter license.',
+    },
+    filedHere: [],
+  },
+  'hotel-beitacle': {
+    form: 'building',
+    region: 'mainland',
+    arc: 'yorknew-city-arc',
+    landmark: { it: 'L’atrio dell’albergo', en: 'The hotel lobby' },
+    log: {
+      it: 'Qui alloggiano Neon e le sue guardie del corpo. Membri della Brigata Fantasma, con Gon e Killua prigionieri, aspettano nell’atrio gli altri che sono andati dietro a Squala.',
+      en: 'Neon and her bodyguards stay here. Phantom Troupe members, holding Gon and Killua, wait in its lobby for the others, who went after Squala.',
     },
     filedHere: [],
   },
