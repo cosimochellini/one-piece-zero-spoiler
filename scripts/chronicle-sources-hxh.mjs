@@ -796,7 +796,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
     45: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_45_(2011)',
-      note: 'Corrected after review: the Shadow Beasts’ deaths no longer name Owl as the one who lives: chapter 78 reports them all dead and shows Owl held only in chapter 84, so the line said too early, for chapter readers, that he survives. The needle and the cloth are chapter 77 (pages 12-19), the Shadow Beasts’ deaths and the rescue chapter 78, all in episode 45. Owl’s torture is left out. Checked on the episode page and the chapter pages.',
+      note: 'Corrected after review: Owl is no longer said to survive, and no killers named: chapter 78 only reports the Shadow Beasts all dead, from a caller, and the Troupe is first named as the killer in chapter 79, page 1. The story says only that other Shadow Beasts arrive. The needle and the cloth are chapter 77 (pages 12-19), the rescue chapter 78, both in episode 45. Owl’s torture is left out.',
     },
   },
   'ivlenkov': {
@@ -834,7 +834,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
   'uvogin': {
     43: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_43_(2011)',
-      note: 'Corrected after review: the leader convinces him because a traitor would gain nothing; the Shadow Beast who emptied the vault is what Uvogin reports, not the leader’s reason (chapter 74, episode 43). The call is chapter 74, the fight with the Mafia chapter 75 (pages 1-16), both in episode 43. The leader is not named before episode 54. Checked on the episode page and the chapter pages.',
+      note: 'Corrected after review: the leader convinces him because a traitor would gain nothing; the Shadow Beast who emptied the vault is what Uvogin reports, not the leader’s reason (chapter 74, episode 43). “The Mafia’s best fighters” became “the Mafia’s elite”, true in both. The call is chapter 74, the fight with the Mafia chapter 75 (pages 1-16), both in episode 43. The leader is not named before episode 54. Checked on the episode page and the chapter pages.',
     },
     44: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_44_(2011)',
@@ -850,23 +850,23 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
     47: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_47_(2011)',
-      note: 'Corrected after review: “truthfully” dropped; episode 47 says only that the rule is to answer his questions. Chapters 81-84 and episode 47. Italian: Catena del Giudizio (Italian Wikipedia, Kurapika Kurata). Checked on the episode page and the chapter pages.',
+      note: 'Corrected after review: “truthfully” dropped; episode 47 says only that the rule is to answer his questions. Zetsu leaves him no aura, so only his bare strength is left, and it is not enough: the sentence now says so. Chapters 81-84 and episode 47. Italian: Catena del Giudizio (Italian Wikipedia, Kurapika Kurata). Checked on the episode page and the chapter pages.',
     },
   },
   'worm': {
     43: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_43_(2011)',
-      note: 'Chapter 75 (pages 1-16) and episode 43. Leech and Porcupine are named only from chapter 76. Checked on the episode page and the chapter pages.',
+      note: 'Corrected after review: “they will deal with the Troupe themselves” is episode 43 wording; both media have them tell the bodyguards to stay out of the fight. Chapter 75 (pages 1-16) and episode 43. Leech and Porcupine are named only from chapter 76. Checked on the episode page and the chapter pages.',
     },
     45: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_45_(2011)',
-      note: 'Corrected after review: his call asks for everyone against the Troupe, without naming the Shadow Beasts as the ones called; the Italian arm is “glielo”; and the Shadow Beasts’ deaths no longer name Owl as the one who lives: chapter 78 reports them all dead and shows Owl held only in chapter 84, so the line said too early, for chapter readers, that he survives. Worm now dies with the others. The punches and the blast are chapters 75-76 and episode 44; his call to the others closes chapter 76 (page 19) and opens episode 45; the deaths are chapter 78 and episode 45. Checked on the episode page and the chapter pages. His call to the other Shadow Beasts is chapter 76, page 19, which episode 45 adapts; the episode page summary does not describe it.',
+      note: 'Corrected after review: his call asks for everyone against the Troupe; the Italian arm is “glielo”; Owl is no longer said to survive, and no killers named: chapter 78 only reports the Shadow Beasts all dead, from a caller, and the Troupe is first named as the killer in chapter 79, page 1. Worm is among the Shadow Beasts reported dead. Episode 45 shows them killed, so his status is deceased there; for chapter readers it is presumed dead at chapter 78 and deceased at chapter 89, where Light counts nine bodies. The punches and the blast are chapters 75-76 and episode 44; his call closes chapter 76 (page 19) and opens episode 45 (the episode 44 page’s image shows it too).',
     },
   },
   'rabid-dog': {
     43: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_43_(2011)',
-      note: 'Corrected after review: the four first speak to the Nostrade bodyguards, then go to face Uvogin. The Shadow Beasts are explained in chapter 74 and episode 43; the four arrive in chapter 75 (pages 1-16), the end of episode 43. Checked on the episode page and the chapter pages. His question to Uvogin is chapter 75, pages 17-19, in episode 44, and is left out.',
+      note: 'Corrected after review: the four first speak to the Nostrade bodyguards, telling them to stay out of the fight (not that they will deal with the Troupe, which is episode 43 wording), then go to face Uvogin. The Shadow Beasts are explained in chapter 74 and episode 43; the four arrive in chapter 75 (pages 1-16), the end of episode 43. Checked on the episode page and the chapter pages. His question to Uvogin is chapter 75, pages 17-19, in episode 44, and is left out.',
     },
     44: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_44_(2011)',
@@ -894,13 +894,13 @@ export const HUNTER_X_HUNTER_SOURCES = {
   'nobunaga': {
     45: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_45_(2011)',
-      note: 'Corrected after review: the Shadow Beasts’ deaths no longer name Owl as the one who lives: chapter 78 reports them all dead and shows Owl held only in chapter 84, so the line said too early, for chapter readers, that he survives. The cloth is chapter 77 (pages 12-19), the Shadow Beasts’ deaths chapter 78, both in episode 45. Checked on the episode page and the chapter pages.',
+      note: 'Corrected after review: Owl is no longer said to survive, and no killers named: chapter 78 only reports the Shadow Beasts all dead, from a caller, and the Troupe is first named as the killer in chapter 79, page 1. The story stops when other Shadow Beasts arrive, all chapter 77 (pages 12-19) in episode 45, so it is now pinned at chapter 77.',
     },
   },
   'owl': {
     45: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_45_(2011)',
-      note: 'Corrected after review: the story stops when Nobunaga is trapped and the other Shadow Beasts arrive (chapter 77, pages 12-19, in episode 45), so it is now pinned at chapter 77. The Shadow Beasts’ deaths no longer name Owl as the one who lives: chapter 78 reports them all dead and shows Owl held only in chapter 84, so the line said too early, for chapter readers, that he survives. His status for chapter readers is now unknown from chapter 78 to 83. His torture is left out.',
+      note: 'Corrected after review: the story stops when Nobunaga is trapped and the other Shadow Beasts arrive (chapter 77, pages 12-19, in episode 45), so it is now pinned at chapter 77. The Shadow Beasts’ deaths no longer name Owl as the one who lives: chapter 78 reports them all dead and shows Owl held only in chapter 84, so the line said too early, for chapter readers, that he survives. For chapter readers his status is now presumed dead from chapter 78, like Worm’s on the same report, and captured from chapter 84. His torture is left out.',
     },
   },
   'phinks': {

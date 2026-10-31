@@ -875,13 +875,13 @@ export const yorknewCity: HunterSaga = {
       },
       // Episode 45 shows the Troupe holding and torturing him; the manga
       // first shows him held at the hideout in chapter 84 (episode 47). An
-      // anime reader meets him captured. A manga reader meets him free, and
+      // anime reader meets him captured. A manga reader meets him free and,
       // from chapter 78, where the Shadow Beasts are reported all dead,
-      // does not know his fate until chapter 84 (#902).
+      // holds him presumed dead like Worm until chapter 84 (#902).
       status: [
         { episode: 45, chapter: 77, value: 'alive', source: 'chapter' },
         { episode: 45, chapter: 77, value: 'captured', source: 'episode' },
-        { episode: 45, chapter: 78, value: 'unknown', source: 'chapter' },
+        { episode: 45, chapter: 78, value: 'presumed-dead', source: 'chapter' },
         { episode: 47, chapter: 84, value: 'captured', source: 'chapter' },
       ],
       affiliation: [{ episode: 45, chapter: 77, value: SHADOW_BEASTS }],
@@ -896,9 +896,13 @@ export const yorknewCity: HunterSaga = {
       status: [
         { episode: 43, chapter: 75, value: 'alive' },
         // Badly wounded by Uvogin's blast, he crawls out of the ground and
-        // calls for the other Shadow Beasts (chapter 76, episode 44). The
-        // death of the Shadow Beasts is told in chapter 78 and episode 45.
-        { episode: 45, chapter: 78, value: 'deceased' },
+        // calls for help (chapter 76, episode 44). Episode 45 shows the
+        // Shadow Beasts killed. Chapter 78 only reports them all dead, from a
+        // caller, so a chapter reader holds him presumed dead until Light
+        // counts nine bodies in chapter 89 (#902).
+        { episode: 45, chapter: 78, value: 'deceased', source: 'episode' },
+        { episode: 45, chapter: 78, value: 'presumed-dead', source: 'chapter' },
+        { episode: 49, chapter: 89, value: 'deceased', source: 'chapter' },
       ],
       affiliation: [{ episode: 43, chapter: 75, value: SHADOW_BEASTS }],
     },

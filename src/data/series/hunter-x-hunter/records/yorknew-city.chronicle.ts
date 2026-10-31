@@ -223,8 +223,8 @@ export const yorknewCityChronicles = {
       value: {
         title: { it: 'Un filo su Uborghin', en: 'A thread on Uvogin' },
         body: {
-          it: 'Quando una catena trascina via [[uvogin|Uborghin]], Machi gli attacca un ago con un filo di Nen, e i membri della Brigata lo seguono in auto. [[owl|Civetta]] atterra sulla loro auto e la avvolge nel suo telo: escono tutti tranne [[nobunaga|Nobunaga]], intrappolato per il posto in cui è seduto. Arrivano altre Bestie dell’Ombra, e la Brigata uccide quelle che la attaccano. Poi alcuni membri della Brigata, travestiti da mafiosi, raggiungono il posto dove è tenuto Uborghin, e [[phinks|Phinks]] uccide [[dalzollene|Dalzorne]] per liberarlo.',
-          en: 'When a chain snatches [[uvogin|Uvogin]] away, Machi attaches a needle and a thread of Nen to him, and the Troupe members follow him by car. [[owl|Owl]] lands on their car and wraps it in his cloth: everyone gets out but [[nobunaga|Nobunaga]], who is trapped by where he sits. Other Shadow Beasts arrive, and the Troupe kills the Shadow Beasts who come after them. Then members of the Troupe, disguised as Mafia men, reach the place where Uvogin is held, and [[phinks|Phinks]] kills [[dalzollene|Dalzollene]] to free him.',
+          it: 'Quando una catena trascina via [[uvogin|Uborghin]], Machi gli attacca un ago con un filo di Nen, e i membri della Brigata lo seguono in auto. [[owl|Civetta]] atterra sulla loro auto e la avvolge nel suo telo: escono tutti tranne [[nobunaga|Nobunaga]], intrappolato per il posto in cui è seduto. Arrivano altre Bestie dell’Ombra. Poi alcuni membri della Brigata, travestiti da mafiosi, raggiungono il posto dove è tenuto Uborghin, e [[phinks|Phinks]] uccide [[dalzollene|Dalzorne]] per liberarlo.',
+          en: 'When a chain snatches [[uvogin|Uvogin]] away, Machi attaches a needle and a thread of Nen to him, and the Troupe members follow him by car. [[owl|Owl]] lands on their car and wraps it in his cloth: everyone gets out but [[nobunaga|Nobunaga]], who is trapped by where he sits. Other Shadow Beasts arrive. Then members of the Troupe, disguised as Mafia men, reach the place where Uvogin is held, and [[phinks|Phinks]] kills [[dalzollene|Dalzollene]] to free him.',
         },
       },
     },
@@ -317,8 +317,8 @@ export const yorknewCityChronicles = {
       value: {
         title: { it: 'Da solo contro la mafia', en: 'Alone against the Mafia' },
         body: {
-          it: 'Uborghin fugge dall’asta in mongolfiera con altri membri della Brigata Fantasma. Al telefono dice al capo che il caveau era già vuoto e che tra loro potrebbe esserci un traditore, ma il capo lo convince che non c’è, perché un traditore non avrebbe niente da guadagnarci. A svuotare il caveau è stata una delle Bestie dell’Ombra, i migliori combattenti della mafia. Il capo vuole che le attirino allo scoperto. Quando la mafia abbatte la mongolfiera, Uborghin scende ad affrontarla da solo. Uccide i suoi uomini a mani nude, e un’arma anticarro lo ferisce appena. [[kurapika|Kurapika]] guarda da lontano con le altre guardie del corpo.',
-          en: 'Uvogin flees the auction in a hot-air balloon with other members of the Phantom Troupe. On the phone he tells their leader that the vault was already empty and that there may be a traitor among them, but the leader convinces him there is none, since a traitor would have nothing to gain. The vault was emptied by one of the Shadow Beasts, the Mafia’s best fighters. The leader wants them to draw the Shadow Beasts out. When the Mafia shoots the balloon down, Uvogin goes down to face it alone. He kills its men with his bare hands, and an anti-tank weapon barely hurts him. [[kurapika|Kurapika]] watches from afar with the other bodyguards.',
+          it: 'Uborghin fugge dall’asta in mongolfiera con altri membri della Brigata Fantasma. Al telefono dice al capo che il caveau era già vuoto e che tra loro potrebbe esserci un traditore, ma il capo lo convince che non c’è, perché un traditore non avrebbe niente da guadagnarci. A svuotare il caveau è stata una delle Bestie dell’Ombra, l’élite della mafia. Il capo vuole che le attirino allo scoperto. Quando la mafia abbatte la mongolfiera, Uborghin scende ad affrontarla da solo. Uccide i suoi uomini a mani nude, e un’arma anticarro lo ferisce appena. [[kurapika|Kurapika]] guarda da lontano con le altre guardie del corpo.',
+          en: 'Uvogin flees the auction in a hot-air balloon with other members of the Phantom Troupe. On the phone he tells their leader that the vault was already empty and that there may be a traitor among them, but the leader convinces him there is none, since a traitor would have nothing to gain. The vault was emptied by one of the Shadow Beasts, the Mafia’s elite. The leader wants them to draw the Shadow Beasts out. When the Mafia shoots the balloon down, Uvogin goes down to face it alone. He kills its men with his bare hands, and an anti-tank weapon barely hurts him. [[kurapika|Kurapika]] watches from afar with the other bodyguards.',
         },
       },
     },
@@ -365,8 +365,8 @@ export const yorknewCityChronicles = {
       value: {
         title: { it: 'La Catena del Giudizio', en: 'The Judgment Chain' },
         body: {
-          it: 'Uborghin segue [[kurapika|Kurapika]] in un luogo deserto per combattere. Kurapika gli chiede se ricorda il clan Kurta, sterminato cinque anni prima per i suoi occhi scarlatti: Uborghin non lo ricorda, anche se allora era già nella Brigata, e dice di non provare niente quando uccide. Il Colpo del Big Bang di Uborghin spezza il braccio sinistro di Kurapika, ma poi Kurapika lo cattura con una catena nascosta con l’In. Con gli occhi diventati scarlatti, Kurapika si guarisce il braccio e spiega che la catena costringe Uborghin nello Zetsu, così la sua sola forza non basta a spezzarla. Uborghin non dice dove sono gli altri. Kurapika gli stringe la Catena del Giudizio attorno al cuore con una regola: rispondere alle sue domande. Quando Uborghin si rifiuta ancora, la catena lo uccide.',
-          en: 'Uvogin follows [[kurapika|Kurapika]] to a deserted place to fight. Kurapika asks whether he remembers the Kurta Clan, killed five years ago for their Scarlet Eyes: Uvogin does not, though he was in the Troupe then, and says he feels nothing when he kills. Uvogin’s Big Bang Impact breaks Kurapika’s left arm, but Kurapika then catches him in a chain hidden with In. With his eyes turned scarlet, Kurapika heals the arm and explains that the chain forces Uvogin into Zetsu, so his strength alone cannot break it. Uvogin will not say where the others are. Kurapika winds his Judgment Chain around Uvogin’s heart with one rule, that he must answer the questions, and when Uvogin still refuses, the chain kills him.',
+          it: 'Uborghin segue [[kurapika|Kurapika]] in un luogo deserto per combattere. Kurapika gli chiede se ricorda il clan Kurta, sterminato cinque anni prima per i suoi occhi scarlatti: Uborghin non lo ricorda, anche se allora era già nella Brigata, e dice di non provare niente quando uccide. Il Colpo del Big Bang di Uborghin spezza il braccio sinistro di Kurapika, ma poi Kurapika lo cattura con una catena nascosta con l’In. Con gli occhi diventati scarlatti, Kurapika si guarisce il braccio e spiega che la catena costringe Uborghin nello Zetsu: senza aura gli resta solo la forza fisica, e non basta a spezzarla. Uborghin non dice dove sono gli altri. Kurapika gli stringe la Catena del Giudizio attorno al cuore con una regola: rispondere alle sue domande. Quando Uborghin si rifiuta ancora, la catena lo uccide.',
+          en: 'Uvogin follows [[kurapika|Kurapika]] to a deserted place to fight. Kurapika asks whether he remembers the Kurta Clan, killed five years ago for their Scarlet Eyes: Uvogin does not, though he was in the Troupe then, and says he feels nothing when he kills. Uvogin’s Big Bang Impact breaks Kurapika’s left arm, but Kurapika then catches him in a chain hidden with In. With his eyes turned scarlet, Kurapika heals the arm and explains that the chain forces Uvogin into Zetsu: without his aura he has only his bare strength, and it is not enough to break the chain. Uvogin will not say where the others are. Kurapika winds his Judgment Chain around Uvogin’s heart with one rule, that he must answer the questions, and when Uvogin still refuses, the chain kills him.',
         },
       },
     },
@@ -379,8 +379,8 @@ export const yorknewCityChronicles = {
       value: {
         title: { it: 'Da sotto terra', en: 'Out of the ground' },
         body: {
-          it: 'Lombrico è una delle Bestie dell’Ombra, i combattenti che i capi della mafia chiamano contro la Brigata Fantasma dopo l’attacco all’asta. Mentre [[uvogin|Uborghin]] uccide gli uomini della mafia, [[melody|Melody]] sente qualcuno avvicinarsi sotto terra alle guardie del corpo dei Nostrad. Lombrico sbuca accanto a loro e si presenta. Con [[rabid-dog|Cane selvatico]] e altre due Bestie dell’Ombra dice che penseranno loro alla Brigata, e vanno ad affrontare Uborghin.',
-          en: 'Worm is one of the Shadow Beasts, the fighters the Mafia’s bosses call in against the Phantom Troupe after the attack on the auction. While [[uvogin|Uvogin]] kills the Mafia’s men, [[melody|Melody]] hears someone coming toward the Nostrade bodyguards under the ground. Worm comes up next to them and introduces himself. With [[rabid-dog|Rabid Dog]] and two other Shadow Beasts, he says they will deal with the Troupe themselves, and they go to face Uvogin.',
+          it: 'Lombrico è una delle Bestie dell’Ombra, i combattenti che i capi della mafia chiamano contro la Brigata Fantasma dopo l’attacco all’asta. Mentre [[uvogin|Uborghin]] uccide gli uomini della mafia, [[melody|Melody]] sente qualcuno avvicinarsi sotto terra alle guardie del corpo dei Nostrad. Lombrico sbuca accanto a loro e si presenta. Con [[rabid-dog|Cane selvatico]] e altre due Bestie dell’Ombra dice alle guardie di restare fuori dallo scontro, e vanno ad affrontare Uborghin.',
+          en: 'Worm is one of the Shadow Beasts, the fighters the Mafia’s bosses call in against the Phantom Troupe after the attack on the auction. While [[uvogin|Uvogin]] kills the Mafia’s men, [[melody|Melody]] hears someone coming toward the Nostrade bodyguards under the ground. Worm comes up next to them and introduces himself. With [[rabid-dog|Rabid Dog]] and two other Shadow Beasts, he tells the bodyguards to stay out of the fight, and they go to face Uvogin.',
         },
       },
     },
@@ -391,8 +391,8 @@ export const yorknewCityChronicles = {
       value: {
         title: { it: 'Dopo l’esplosione', en: 'After the blast' },
         body: {
-          it: 'Lombrico colpisce [[uvogin|Uborghin]] al viso e riceve in cambio un pugno più forte. Gli afferra il braccio e glielo trascina sotto terra, ma Uborghin risponde con il Colpo del Big Bang, che apre un cratere e lascia Lombrico gravemente ferito. Lombrico chiama aiuto al telefono e dice di portare tutti contro la Brigata. Quando arrivano le altre Bestie dell’Ombra, la Brigata le uccide, e Lombrico muore con loro.',
-          en: 'Worm punches [[uvogin|Uvogin]] in the face and gets a harder punch back. He grabs Uvogin’s arm and pulls it under the ground, but Uvogin answers with his Big Bang Impact, which blasts a crater and leaves Worm badly hurt. Badly hurt, Worm phones for help and says to bring everyone against the Troupe. When the other Shadow Beasts come, the Troupe kills them, and Worm dies with the others.',
+          it: 'Lombrico colpisce [[uvogin|Uborghin]] al viso e riceve in cambio un pugno più forte. Gli afferra il braccio e glielo trascina sotto terra, ma Uborghin risponde con il Colpo del Big Bang, che apre un cratere e lascia Lombrico gravemente ferito. Lombrico chiama aiuto al telefono e dice di portare tutti contro la Brigata. Arrivano altre Bestie dell’Ombra, e Lombrico è tra quelle date per morte.',
+          en: 'Worm punches [[uvogin|Uvogin]] in the face and gets a harder punch back. He grabs Uvogin’s arm and pulls it under the ground, but Uvogin answers with his Big Bang Impact, which blasts a crater and leaves Worm badly hurt. From under the ground Worm phones for help and says to bring everyone against the Troupe. Other Shadow Beasts arrive, and Worm is among the Shadow Beasts reported dead.',
         },
       },
     },
@@ -405,8 +405,8 @@ export const yorknewCityChronicles = {
       value: {
         title: { it: 'La squadra dei Dieci Anziani', en: 'The Ten Dons’ team' },
         body: {
-          it: 'Cane selvatico è una delle Bestie dell’Ombra, la squadra scelta dei Dieci Anziani della mafia. Dopo l’attacco della Brigata Fantasma all’asta sotterranea, la mafia le chiama in campo; una di loro aveva già svuotato il caveau prima dell’attacco. Cane selvatico arriva con [[worm|Lombrico]] e altre due Bestie dell’Ombra mentre [[uvogin|Uborghin]] sta uccidendo da solo gli uomini della mafia. Dicono alle guardie del corpo dei Nostrad che penseranno loro alla Brigata e vanno ad affrontarlo.',
-          en: 'Rabid Dog is one of the Shadow Beasts, the elite team of the Mafia’s Ten Dons. After the Phantom Troupe raids the Underground Auction, the Mafia calls them in; one of them had already emptied the auction vault before the raid. Rabid Dog arrives with [[worm|Worm]] and two other Shadow Beasts while [[uvogin|Uvogin]] is killing the Mafia’s men alone. They tell the Nostrade bodyguards they will deal with the Troupe themselves and go to face him.',
+          it: 'Cane selvatico è una delle Bestie dell’Ombra, la squadra scelta dei Dieci Anziani della mafia. Dopo l’attacco della Brigata Fantasma all’asta sotterranea, la mafia le chiama in campo; una di loro aveva già svuotato il caveau prima dell’attacco. Cane selvatico arriva con [[worm|Lombrico]] e altre due Bestie dell’Ombra mentre [[uvogin|Uborghin]] sta uccidendo da solo gli uomini della mafia. Dicono alle guardie del corpo dei Nostrad di restare fuori dallo scontro e vanno ad affrontarlo.',
+          en: 'Rabid Dog is one of the Shadow Beasts, the elite team of the Mafia’s Ten Dons. After the Phantom Troupe raids the Underground Auction, the Mafia calls them in; one of them had already emptied the auction vault before the raid. Rabid Dog arrives with [[worm|Worm]] and two other Shadow Beasts while [[uvogin|Uvogin]] is killing the Mafia’s men alone. They tell the Nostrade bodyguards to stay out of the fight and go to face him.',
         },
       },
     },
@@ -466,15 +466,16 @@ export const yorknewCityChronicles = {
     },
   ],
   'nobunaga': [
-    // The cloth is chapter 77 (pages 12-19), the Shadow Beasts’ deaths chapter 78, both in episode 45.
+    // The cloth and the other Shadow Beasts’ arrival are chapter 77
+    // (pages 12-19), in episode 45.
     {
       episode: 45,
-      chapter: 78,
+      chapter: 77,
       value: {
         title: { it: 'Intrappolato nel telo', en: 'Trapped in the cloth' },
         body: {
-          it: 'Nobunaga e altri membri della Brigata inseguono l’auto che porta via [[uvogin|Uborghin]], seguendo il filo che [[machi|Machi]] gli ha attaccato. [[owl|Civetta]] atterra sulla loro auto e la avvolge nel suo telo. Gli altri riescono a uscire, ma Nobunaga, per il posto in cui è seduto, resta intrappolato. Poi arrivano altre Bestie dell’Ombra, e la Brigata uccide quelle che la attaccano.',
-          en: 'Nobunaga and other members of the Troupe chase the car taking [[uvogin|Uvogin]] away, following the thread [[machi|Machi]] attached to him. [[owl|Owl]] lands on their car and wraps it in his cloth. The others get out, but Nobunaga, because of where he sits, is trapped inside. Then more Shadow Beasts arrive, and the Troupe kills the Shadow Beasts who come after them.',
+          it: 'Nobunaga e altri membri della Brigata inseguono l’auto che porta via [[uvogin|Uborghin]], seguendo il filo che [[machi|Machi]] gli ha attaccato. [[owl|Civetta]] atterra sulla loro auto e la avvolge nel suo telo. Gli altri riescono a uscire, ma Nobunaga, per il posto in cui è seduto, resta intrappolato. Poi arrivano altre Bestie dell’Ombra.',
+          en: 'Nobunaga and other members of the Troupe chase the car taking [[uvogin|Uvogin]] away, following the thread [[machi|Machi]] attached to him. [[owl|Owl]] lands on their car and wraps it in his cloth. The others get out, but Nobunaga, because of where he sits, is trapped inside. Then more Shadow Beasts arrive.',
         },
       },
     },
