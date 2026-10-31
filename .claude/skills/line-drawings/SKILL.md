@@ -1,6 +1,6 @@
 ---
 name: line-drawings
-description: How Zero Spoiler's line drawings are made, checked and audited, so every icon on the site reads as one set. Load it before drawing, redrawing, reviewing or auditing any drawing in src/data/series/<series>/art (One Piece's characters, redrawings, devil fruits, places, arcs and ships; Hunter x Hunter's arcs, characters and places), and before writing an issue that asks for one.
+description: How Zero Spoiler's line drawings are made, checked and audited, so every icon on the site reads as one set. Load it before drawing, redrawing, reviewing or auditing any drawing in src/data/series/<series>/art (One Piece's characters, redrawings, devil fruits, places, arcs and ships; Hunter x Hunter's arcs, characters and places; Game of Thrones' characters and places), and before writing an issue that asks for one.
 ---
 
 # Zero Spoiler line drawings
@@ -298,6 +298,107 @@ arc|character|place`; `--saga` is One Piece's), on the series' own paper.
   `Chapter N` and `Episode N (2011)` pages its scene. `wiki:pairs` and
   `art:shots` read One Piece only.
 
+## Game of Thrones
+
+Everything above holds for Game of Thrones, with what is its own here. Its
+two media are the HBO show and the five books, and they diverge, so every
+rule below is checked in both. Its records are filed by show season in
+`src/data/series/game-of-thrones/records/season-N.ts` (no arcs), and its
+drawings are `DRAWINGS` in `src/data/series/game-of-thrones/art/index.ts`,
+the first season's from #854. Render them with `npm run art:sheet --
+--series game-of-thrones <id>` (or `--kind character|place`), on the
+series' own paper. The sheet draws filed records only, so it has nothing to
+render until a season files one.
+
+- **The palette.** The `GAME_OF_THRONES` theme in `src/styles/themes.ts`,
+  "Ember": papers and inks tinted a dark ember (hue 20), and the red
+  `oklch(70% 0.19 25)` as the page's `accent`. A record still takes one of
+  the shared tints. `red`, `vermilion` and `wine` sit next to the accent,
+  so they go only to a record whose accent mark is itself red at its
+  threshold in both media, settled by the frame check and the book's text;
+  the site's ember accent is never a reason (owner, #851). Every other
+  record takes another tint.
+- **Both media agree.** One drawing serves a show viewer and a book reader,
+  so it shows only what both media show by their own thresholds
+  (`revealedAtEpisode` and `revealedAtChapter`). Where the show and the
+  books describe the object differently (its colour, its shape, who carries
+  it), draw what they share, or pick another object they agree on. A detail
+  only one medium has is never drawn (owner, #851).
+- **Motifs.** A character is the object a viewer would name first at the
+  record's threshold. The accent is the role of a stroke on a real part both
+  media show, never a mark added to carry it. A house's sigil animal may be
+  the object when nothing of the character's own reads at 56 px: an animal
+  posed as an animal, in silhouette, with no face. Never the heraldic
+  emblem: no shield, banner, field, border or motto (owner, #851). These
+  leads were checked on both wikis for #854; they are not rulings, and the
+  frame check still decides:
+  - Ned's greatsword, Ice: shown at his threshold in both media, in episode
+    1 and in Bran I (chapter 2), where he beheads a deserter with it.
+  - Arya's sword, Needle, is the trap: Jon gives it to her in episode 2 and
+    in Jon II (chapter 11), after her threshold in both media, so it is a
+    stage, never her first drawing.
+  - Daenerys's dragon eggs: a split threshold (below). The show gives them
+    at the wedding in episode 1, her threshold; the book in Daenerys II
+    (chapter 12), after her first chapter, Daenerys I (chapter 4).
+- **Split thresholds.** When an object appears at the record's threshold in
+  one medium but later in the other, the first drawing leaves it out, and
+  the object is a stage at the later point: the first episode after the
+  threshold that still shows it, and the true chapter (owner, #851). It
+  opens late for the medium that had it first, which is safe.
+- **Places** are the place itself on land, as both media show it at its
+  threshold: the landmark (a keep, a gate, a wall of ice), a ground line at
+  y 150 and `shadow()` at y 150–160, as Hunter x Hunter's are. A place on
+  the coast may stand on `...SEA` with no shadow. Never a map, a banner or a
+  sigil (owner, #851). A landmark the show designed (a distinctive castle, a
+  throne) waits for the owner's ruling, as the Workflow below sets out.
+- **Later looks.** The stories kill, maim, crown and disguise their
+  characters often, and the two media do it at different points, so the
+  threshold check bites in both: no later wound, lost limb, title, costume
+  or weapon in a first drawing. The rulings in "Each kind of record" hold
+  as written (owner, #851):
+  - a death is a stage in both media, with a pin in each, or with `source`
+    when only one medium kills the character;
+  - a wound or a lost limb keeps the drawing as it is, unless the lost part
+    is the object itself: a sword hand that becomes a golden hand is a new
+    object, so it is a stage;
+  - a costume change counts only when it touches the object, as everywhere.
+- **Redrawings.** Every stage is a whole drawing, `{ episode, chapter, value
+  }`, with the true episode and the true chapter, strictly after
+  `revealedAtEpisode` and at or after `revealedAtChapter`. A change only one
+  medium has carries `source: 'chapter'` (the books alone) or `source:
+  'episode'` (the show alone), and its other number is the point where the
+  other medium reaches the same moment in the story: it only orders the
+  stage, as a record's other threshold does (`Entity.source`), and never
+  opens it (owner, #851). The series has no `lastAdaptedChapter` (the show
+  ran past the books), so nothing is filed at its last episode the way
+  Hunter x Hunter's manga-only stages are. `src/data/series/index.test.ts`
+  holds every stage to a `chapter:`, an episode after the threshold,
+  ascending episodes and non-decreasing chapters, one-medium stages
+  included; when the two media tell two changes in a different order and no
+  matching point keeps both in order, the stage waits for an owner ruling
+  under `status:needs-decision`. `REDRAWINGS` in `art/index.ts` is already
+  passed to `sagaArchive` in `game-of-thrones/archive.ts`, so a stage needs
+  only its entry there. The stage walk in `slices.test.ts` is One Piece's:
+  review checks each pair by hand against both wikis.
+- **Research** reads two APIs:
+  - **A Wiki of Ice and Fire** (`https://awoiaf.westeros.org/api.php`,
+    `wiki.en` in `src/data/series/index.ts`) for the books. `{{Ref|AGOT|N}}`
+    cites a book (`AGOT`, `ACOK`, `ASOS`, `AFFC`, `ADWD`) and its own
+    chapter N, the page `A_Game_of_Thrones-Chapter_N` (`-Prologue`,
+    `-Epilogue`). The absolute chapter the site files is the book's `first`
+    in `books` (`src/lib/progress/series.ts`) plus N: a prologue is the
+    book's first chapter, an epilogue its last. Ice's beheading,
+    `{{Ref|AGOT|1}}`, is chapter 2.
+  - **The Game of Thrones Wiki** (`https://gameofthrones.fandom.com/api.php`)
+    for the show. `|First =` gives a character's first episode by title, and
+    `{{Ref|GOT101}}` cites season 1, episode 1. The absolute episode is the
+    season's `first` in `seasons` in the same file, plus the episode, minus
+    one.
+
+  `wiki:pairs`, `archive:table` and `art:shots` read One Piece only. Check
+  every pair against the owner's own copies of the books and the show, or
+  mark it "not viewed" in the PR, as the Workflow sets out.
+
 ## Workflow
 
 1. **Research.** Read the record (threshold, summary, dossier) and the wiki
@@ -335,7 +436,7 @@ arc|character|place`; `--saga` is One Piece's), on the series' own paper.
 5. **Write it in the art module** as literal paths and helper calls, with the
    comment above it. Run `npm run art:sheet -- <id>` again.
 6. **Verify mappings and stage gates.** `archive:table` reads One Piece
-   only (it refuses `--series`): for Hunter x Hunter, check each pinned
+   only (it refuses `--series`): for Hunter x Hunter and Game of Thrones, check each pinned
    entry's episode and chapter pair by hand against the wiki and the
    series' chapter table, say so in the PR, and never report "no changes"
    from One Piece's dump. For One Piece, save
@@ -357,7 +458,7 @@ arc|character|place`; `--saga` is One Piece's), on the series' own paper.
 7. **Run `npm run check`.** The PR body states What (where the entry goes,
    what each stroke is), Why (a table of sources with supporting quotations),
    and How to verify (check, tests and the generated stage grid). Include the
-   actual chapter/episode mapping diff (One Piece; Hunter x Hunter's hand
+   actual chapter/episode mapping diff (One Piece; the other series' hand
    check of step 6 instead), including an explicit “no changes”
    when empty, and separate counts of added and removed dated entries.
 
