@@ -949,6 +949,7 @@ export const yorknewCity: HunterSaga = {
       affiliation: [{ episode: 44, chapter: 76, value: SHADOW_BEASTS }],
     },
     'zepile': {
+      chronicle: yorknewCityChronicles.zepile,
       role: { it: 'Offerente rivale', en: 'Rival bidder' },
       log: {
         it: 'A un mercato di York Shin City il suo nome è sulle offerte che superano quelle di Gon e Killua, quattro volte più alte. Si aggiudica il vaso che volevano.',
@@ -968,6 +969,7 @@ export const yorknewCity: HunterSaga = {
       ],
     },
     'pakunoda': {
+      chronicle: yorknewCityChronicles.pakunoda,
       role: TROUPE_MEMBER,
       log: {
         it: 'Con Phinks mette alle strette Gon e Killua, che stavano pedinando Machi e Nobunaga. Quando i ragazzi cercano di scappare, lei sbarra la strada a Gon.',
@@ -982,6 +984,7 @@ export const yorknewCity: HunterSaga = {
       affiliation: [{ episode: 49, chapter: 90, value: TROUPE }],
     },
     'zenji': {
+      chronicle: yorknewCityChronicles.zenji,
       role: { it: 'Rivale di Light Nostrad', en: 'Light Nostrade’s rival' },
       log: {
         it: 'Spiega agli assassini riuniti che il loro compito è uccidere la Brigata Fantasma. Deride Light Nostrad finché Kurapika non lo ferma.',
@@ -995,6 +998,7 @@ export const yorknewCity: HunterSaga = {
       ],
     },
     'kortopi': {
+      chronicle: yorknewCityChronicles.kortopi,
       role: TROUPE_MEMBER,
       log: {
         it: 'All’asta sotterranea, che la Brigata manda avanti di nascosto, copia gli oggetti e sono le copie a essere vendute.',

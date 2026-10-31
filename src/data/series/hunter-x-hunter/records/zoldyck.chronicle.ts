@@ -126,6 +126,30 @@ export const zoldyckChronicles = {
         },
       },
     },
+    // The warning is chapter 98, the fight chapters 98-99, both in episode 52. His dragon is chapter-only on the pages, so the story says only that he fights with his aura.
+    {
+      episode: 52,
+      chapter: 99,
+      value: {
+        title: { it: 'Due contro uno', en: 'Two against one' },
+        body: {
+          it: 'Zeno e suo figlio [[silva|Silva]] avvertono gli uomini della mafia, nel panico, che dentro il Cemetery Building c’è un membro della Brigata Fantasma e che è molto pericoloso. Trovano il capo della Brigata e lo affrontano insieme. Zeno capisce che il capo ruba le abilità con un libro, a condizioni che non può soddisfare mentre combatte contro entrambi. Lo tiene a distanza con la sua aura, poi lo cattura, lo blocca e dice a Silva di colpire. Silva lancia due grandi sfere di aura contro il capo e contro Zeno stesso.',
+          en: 'Zeno and his son [[silva|Silva]] warn the panicking Mafia men that a member of the Phantom Troupe is inside the Cemetery Building and that he is very dangerous. They find the Troupe’s leader and fight him together. Zeno works out that the leader steals abilities with a book, under conditions he cannot meet while fighting both of them. Zeno keeps him at a distance with his aura, then catches him, pins him down and tells Silva to strike. Silva fires two large balls of aura at the leader and at Zeno himself.',
+        },
+      },
+    },
+    // Chapter 100 and episode 53.
+    {
+      episode: 53,
+      chapter: 100,
+      value: {
+        title: { it: 'Chi avrebbe vinto', en: 'Who would have won' },
+        body: {
+          it: 'Zeno e il capo della Brigata escono dalle macerie dopo il colpo di [[silva|Silva]]. Una chiamata di [[illumi|Illumi]] fa sapere che i Dieci Anziani, i clienti degli Zoldick, sono morti, così Zeno chiude lo scontro: gli Zoldick non uccidono per piacere. Il capo chiede chi avrebbe vinto se avessero continuato. Zeno risponde che avrebbe vinto lui, a meno che il capo non avesse davvero cercato di ucciderlo, e se ne va con Silva. Rimasto solo, il capo crolla.',
+          en: 'Zeno and the Troupe’s leader come out of the rubble of [[silva|Silva]]’s blast. A call from [[illumi|Illumi]] tells them that the Ten Dons, the Zoldycks’ clients, are dead, so Zeno ends the fight: the Zoldycks do not kill for pleasure. The leader asks who would have won if they had kept fighting. Zeno answers that he would, unless the leader had really been trying to kill him, and leaves with Silva. Alone, the leader collapses.',
+        },
+      },
+    },
   ],
   // Unanchored: the manga names Silva only in chapter 95. Told as both
   // media tell it: the seat, the thumb and the exam question are chapter 42's.
@@ -138,6 +162,33 @@ export const zoldyckChronicles = {
         body: {
           it: 'Silva chiede a [[killua|Killua]] che persone siano i suoi amici. Gli dice che il giorno della sua fuga ha capito quanto siano diversi. Gli chiede se vuole rivedere i suoi amici, e Killua risponde di sì. Allora Silva lo lascia andare, dopo avergli fatto promettere che non li tradirà mai. Quando la madre di Killua gli rimprovera di averlo lasciato andare, risponde che il ragazzo tornerà, perché è suo figlio.',
           en: 'Silva asks [[killua|Killua]] what kind of people his friends are. He tells him that on the day Killua ran away, he understood how different they are. He asks whether Killua wants to see his friends again, and Killua says yes. Silva then lets him go, after making him promise never to betray them. When Killua’s mother blames him for letting the boy go, he answers that Killua will come back, because he is his son.',
+        },
+      },
+    },
+    // The hire is chapter 95 and episode 51; the fight is chapters 98-99 and episode 52. The leader is not named before episode 54.
+    {
+      episode: 52,
+      chapter: 99,
+      value: {
+        title: {
+          it: 'Contro il capo della Brigata',
+          en: 'Against the Troupe’s leader',
+        },
+        body: {
+          it: 'Silva e suo padre [[zeno|Zeno]] sono tra gli assassini ingaggiati dalla mafia per uccidere la Brigata Fantasma. Nel Cemetery Building trovano il capo della Brigata. Durante lo scontro il capo ferisce Silva a un braccio con un coltello di Ben avvelenato; Silva lo riconosce e ferma il veleno prima che si diffonda. Zeno capisce che il capo ruba le abilità con un libro e che non può farlo mentre li affronta entrambi. Quando Zeno lo blocca, Silva lancia due grandi sfere di aura contro il capo e contro suo padre.',
+          en: 'Silva and his father [[zeno|Zeno]] are among the assassins the Mafia hires to kill the Phantom Troupe. In the Cemetery Building they find the Troupe’s leader. In the fight the leader cuts Silva’s arm with a poisoned Ben’s knife; Silva recognizes it and stops the poison from spreading. Zeno works out that the leader steals abilities with a book and cannot do it while fighting both of them. When Zeno pins the leader down, Silva fires two large balls of aura at the leader and at his own father.',
+        },
+      },
+    },
+    // Chapter 100 and episode 53.
+    {
+      episode: 53,
+      chapter: 100,
+      value: {
+        title: { it: 'Fine del contratto', en: 'The contract ends' },
+        body: {
+          it: 'Dopo il colpo di Silva, [[illumi|Illumi]] lo chiama con il trasmettitore della famiglia: ha ucciso i Dieci Anziani, che avevano ingaggiato gli Zoldick, e il suo cliente, il capo della Brigata, deve pagarlo. Morti i clienti, [[zeno|Zeno]] dice al capo che il lavoro è finito, perché gli Zoldick non uccidono per piacere. Il capo chiede chi avrebbe vinto; Zeno risponde che avrebbe vinto lui, a meno che il capo non avesse davvero cercato di ucciderlo. Silva e Zeno se ne vanno.',
+          en: 'After Silva’s blast, [[illumi|Illumi]] calls him on the family’s transmitter: he has killed the Ten Dons, who hired the Zoldycks, and his own client, the Troupe’s leader, owes him payment. With their clients dead, [[zeno|Zeno]] tells the leader that the job is over, since the Zoldycks do not kill for pleasure. The leader asks who would have won; Zeno answers that he would, unless the leader had really been trying to kill him. Silva and Zeno leave.',
         },
       },
     },

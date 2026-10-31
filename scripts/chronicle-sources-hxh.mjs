@@ -50,6 +50,14 @@ export const HUNTER_X_HUNTER_SOURCES = {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_42_(2011)',
       note: 'Corrected after review: “use all his strength” became “try for real to win”, as chapter 72 says only that Gon is forced to actually try. The Hunter website (seven copies, 8.9 billion) and the failed reselling are episode 41 and chapter 70; the phone, Leorio, the diamond worth 3 million and Shizuku forcing him to try for real are episode 42 and chapters 71-72. Also read: Episode 41 (2011), Chapter 70, Chapter 71, Chapter 72.',
     },
+    48: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_48_(2011)',
+      note: 'The pawned license is chapter 84; the knife, the bids, the vault and the lunch are chapters 85-88, all by the end of episode 48. The second man who challenges Zepile at the dealer’s is anime-only. Checked on the episode page and the chapter pages.',
+    },
+    50: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_50_(2011)',
+      note: 'Chapters 91-94 and episode 50. Checked on the episode page and the chapter pages.',
+    },
   },
   'mito-freecss': {
     1: {
@@ -90,6 +98,14 @@ export const HUNTER_X_HUNTER_SOURCES = {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_42_(2011)',
       note: 'Corrected after review: “use all his strength” became “try for real to win”, as chapter 72 says only that Gon is forced to actually try. Episode 42 and chapters 71-72: meeting Gon and Killua at the phone stall, talk of Nen and the game, his idea, the arm-wrestling contest for a 3-million diamond and the one challenger who makes Gon try for real. The haggling and the entry fee are chapter-only. Also read: Chapter 71, Chapter 72.',
     },
+    49: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_49_(2011)',
+      note: 'The tip is chapter 88 and episode 48; the watch from a distance is chapter 89 and the split chapter 90, both in episode 49. Who pays the informants differs between the media and is left out. Checked on the episode page and the chapter pages.',
+    },
+    53: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_53_(2011)',
+      note: 'Chapter 101 and episode 53. Who drinks at what age differs between the media and is left out. Checked on the episode page and the chapter pages.',
+    },
   },
   'kurapika': {
     1: {
@@ -127,6 +143,10 @@ export const HUNTER_X_HUNTER_SOURCES = {
     47: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_47_(2011)',
       note: 'Corrected after review: “before the auction” dropped from the teacher’s lesson. “truthfully” dropped; episode 47 says only that the rule is to answer his questions. The teacher and Water Divination are chapter 83 and episodes 39 and 47; the fight is chapters 81-84 and episode 47. Italian: Materializzazione, Specializzazione, Test dell’Acqua (Italian Wikipedia). Checked on the episode page and the chapter pages.',
+    },
+    53: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_53_(2011)',
+      note: 'Chapters 100-101 and episode 53. Whether Kurapika sees the leader’s body himself differs between the pages and is left out. Checked on the episode page and the chapter pages.',
     },
   },
   'katzo': {
@@ -196,6 +216,10 @@ export const HUNTER_X_HUNTER_SOURCES = {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_46_(2011)',
       note: 'The leave to go is chapter 76 and episode 45; the meeting is chapter 78 and episode 45, the call and the Scarlet Eyes chapter 79 and episode 46. The leader is not named before episode 54. Checked on the episode page and the chapter pages.',
     },
+    50: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_50_(2011)',
+      note: 'Chapters 91-92 and episode 50. Gon’s surprise at seeing him is chapter-only. Checked on the episode page and the chapter pages.',
+    },
   },
   'hanzo': {
     3: {
@@ -263,6 +287,14 @@ export const HUNTER_X_HUNTER_SOURCES = {
     37: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_37_(2011)',
       note: 'Corrected after review: the episode and the chapter place the information-gathering differently, so Gon only goes to Yorknew City to start looking for his father. Episode 37 and chapter 64: the fire in the forest, Gon’s plan for Yorknew, Killua with no goal, the offer to travel together, and Gon’s answer about his mother. The family business and the mother like Mito are chapter-only. Also read: Chapter 64.',
+    },
+    49: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_49_(2011)',
+      note: 'His father’s words are chapter 80 (pages 17-18) and episode 49; the tail and the capture are chapters 89-91 and episode 49. Silva is linked only from chapter 95. Checked on the episode page and the chapter pages.',
+    },
+    50: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_50_(2011)',
+      note: 'Chapters 92-94 and episode 50. Checked on the episode page and the chapter pages.',
     },
   },
   'menchi': {
@@ -492,11 +524,27 @@ export const HUNTER_X_HUNTER_SOURCES = {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_24_(2011)',
       note: 'Zeno enters the cell, frees Killua, exchange with Milluki about talent.',
     },
+    52: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_52_(2011)',
+      note: 'The warning is chapter 98, the fight chapters 98-99, both in episode 52. His dragon is chapter-only on the pages, so the story says only that he fights with his aura. Checked on the episode page and the chapter pages.',
+    },
+    53: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_53_(2011)',
+      note: 'Chapter 100 and episode 53. Checked on the episode page and the chapter pages.',
+    },
   },
   'silva': {
     24: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_24_(2011)',
       note: 'Unanchored, chapter 95 pinned. Ep 24 and ch. 42 both have the question about his friends, the difference he saw when Killua ran away, the promise never to betray them, letting him go, and the mother told he will come back. Corrected after the verifier pass: the seat beside him, the Hunter Exam question, the bitten thumb and the father-and-son words are ch. 42 only and were cut.',
+    },
+    52: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_52_(2011)',
+      note: 'The hire is chapter 95 and episode 51; the fight is chapters 98-99 and episode 52. The leader is not named before episode 54. Checked on the episode page and the chapter pages.',
+    },
+    53: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_53_(2011)',
+      note: 'Chapter 100 and episode 53. Checked on the episode page and the chapter pages.',
     },
   },
   'kalluto': {
@@ -525,6 +573,10 @@ export const HUNTER_X_HUNTER_SOURCES = {
     21: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_21_(2011)',
       note: "Gon breaks his arm, demands Killua's whereabouts, Illumi gives in, Hisoka's warning.",
+    },
+    53: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_53_(2011)',
+      note: 'Chapter 100 and episode 53. Maha is manga-only; the leader is not named before episode 54. Checked on the episode page and the chapter pages.',
     },
   },
   'kite': {
@@ -738,6 +790,10 @@ export const HUNTER_X_HUNTER_SOURCES = {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_40_(2011)',
       note: 'Corrected after review: the Italian second haiku reworded. Episode 40 and chapter 68: the punch that tells him the figures are aura, the haiku that sets a chair alight at his touch, the second haiku against liars and Squala’s confession. Also read: Chapter 68.',
     },
+    51: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_51_(2011)',
+      note: 'Neon’s escape is chapter 94 and episode 51; the call and the chain are chapter 95 and episode 51. Checked on the episode page and the chapter pages.',
+    },
   },
   'baise': {
     40: {
@@ -788,6 +844,14 @@ export const HUNTER_X_HUNTER_SOURCES = {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_41_(2011)',
       note: 'Corrected after review: “the auction is too dangerous for her” is episode 41 only; both media show her father having her kept away from it. The escort and the fortunes for her father’s friends are episode 41 and chapter 71; Dalzollene’s call to her father and the order to keep her away are chapter 72, pages 4-6, in episode 41. Also read: Chapter 71, Chapter 72.',
     },
+    51: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_51_(2011)',
+      note: 'Chapters 94-96 and episode 51. The leader is not named before episode 54; the fortune’s lines differ between the media and are left out. Checked on the episode page and the chapter pages.',
+    },
+    53: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_53_(2011)',
+      note: 'Chapters 100-101 and episode 53. Checked on the episode page and the chapter pages.',
+    },
   },
   'machi': {
     41: {
@@ -797,6 +861,10 @@ export const HUNTER_X_HUNTER_SOURCES = {
     45: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_45_(2011)',
       note: 'Corrected after review: Owl is no longer said to survive, and no killers named: chapter 78 only reports the Shadow Beasts all dead, from a caller, and the Troupe is first named as the killer in chapter 79, page 1. The story says only that other Shadow Beasts arrive. The needle and the cloth are chapter 77 (pages 12-19), the rescue chapter 78, both in episode 45. Owl’s torture is left out.',
+    },
+    49: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_49_(2011)',
+      note: 'Chapters 89-91 and episode 49. Checked on the episode page and the chapter pages.',
     },
   },
   'ivlenkov': {
@@ -824,11 +892,19 @@ export const HUNTER_X_HUNTER_SOURCES = {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_43_(2011)',
       note: 'Chapter 73 (pages 10-19) and episode 43. Checked on the episode page and the chapter pages.',
     },
+    50: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_50_(2011)',
+      note: 'Killua pointing her out and the rule are chapters 91-92, Franklin’s words about Gon chapter 93, all in episode 50. That she does not remember the match is chapter-only. Checked on the episode page and the chapter pages.',
+    },
   },
   'feitan': {
     43: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_43_(2011)',
       note: 'The stage is chapter 73 and episode 43, the balloon chapter 74, the ledge above the canyon chapter 75 (pages 1-16), all in episode 43. Franklin is named only from chapter 76. His torture of the auctioneer is chapter-only, and of Owl left out. Checked on the episode page and the chapter pages.',
+    },
+    50: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_50_(2011)',
+      note: 'Chapters 91-92 and episode 50. His threat to Gon’s fingernails is chapter-only. Checked on the episode page and the chapter pages.',
     },
   },
   'uvogin': {
@@ -890,11 +966,23 @@ export const HUNTER_X_HUNTER_SOURCES = {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_44_(2011)',
       note: 'The auction is chapter 73 and episode 43; the cards, the fight and Shizuku’s answer are chapters 75-76 and episode 44. Checked on the episode page and the chapter pages.',
     },
+    50: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_50_(2011)',
+      note: 'The standoff and Pakunoda’s answer are chapter 92, his words about Uvogin chapter 93, both in episode 50. Checked on the episode page and the chapter pages.',
+    },
   },
   'nobunaga': {
     45: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_45_(2011)',
       note: 'Corrected after review: Owl is no longer said to survive, and no killers named: chapter 78 only reports the Shadow Beasts all dead, from a caller, and the Troupe is first named as the killer in chapter 79, page 1. The story stops when other Shadow Beasts arrive, all chapter 77 (pages 12-19) in episode 45, so it is now pinned at chapter 77.',
+    },
+    49: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_49_(2011)',
+      note: 'Chapters 89-91 and episode 49. Checked on the episode page and the chapter pages.',
+    },
+    50: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_50_(2011)',
+      note: 'Chapters 91-94 and episode 50. Checked on the episode page and the chapter pages.',
     },
   },
   'owl': {
@@ -908,17 +996,73 @@ export const HUNTER_X_HUNTER_SOURCES = {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_45_(2011)',
       note: 'Chapter 78 and episode 45. Checked on the episode page and the chapter pages.',
     },
+    49: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_49_(2011)',
+      note: 'Chapters 90-91 and episode 49. How Killua breaks free differs between the media; the story says only that he twists free. Checked on the episode page and the chapter pages.',
+    },
   },
   'light-nostrade': {
     46: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_46_(2011)',
       note: 'Corrected after review: the relay of his orders through Dalzollene is chapter 79 only and is dropped; episode 46 says only that he hired them. Chapter 79 and episode 46. Checked on the episode page and the chapter pages.',
     },
+    49: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_49_(2011)',
+      note: 'Chapter 89 and episode 49. Checked on the episode page and the chapter pages.',
+    },
+    53: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_53_(2011)',
+      note: 'Chapters 100-101 and episode 53. His thoughts on the price are chapter-only. Checked on the episode page and the chapter pages.',
+    },
   },
   'shalnark': {
     46: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_46_(2011)',
       note: 'Chapter 79 and episode 46. Franklin bringing the beer is anime-only. Checked on the episode page and the chapter pages.',
+    },
+    50: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_50_(2011)',
+      note: 'Chapter 92 and episode 50. Checked on the episode page and the chapter pages.',
+    },
+    53: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_53_(2011)',
+      note: 'Chapter 100 and episode 53. Italian: Voce Nera, il Cellulare del Destino (Italian Wikipedia, Brigata Fantasma). Checked on the episode page and the chapter pages.',
+    },
+  },
+  'zepile': {
+    48: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_48_(2011)',
+      note: 'Chapters 86-88 and episode 48. Checked on the episode page and the chapter pages.',
+    },
+    53: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_53_(2011)',
+      note: 'The sale left to him is chapter 89 and episode 48; the drinks and Gon’s thanks are chapter 101 and episode 53. Checked on the episode page and the chapter pages.',
+    },
+  },
+  'pakunoda': {
+    49: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_49_(2011)',
+      note: 'Chapters 90-91 and episode 49. Her arm around Killua waits for her 50/92 story, since the chapters show it in 92. Checked on the episode page and the chapter pages.',
+    },
+    50: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_50_(2011)',
+      note: 'Her arm around Killua is episode 49 and chapter 92 (his memory of the drive); the report and his deduction are chapter 92 and episode 50. Checked on the episode page and the chapter pages.',
+    },
+  },
+  'zenji': {
+    51: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_51_(2011)',
+      note: 'Chapter 95 and episode 51. Checked on the episode page and the chapter pages.',
+    },
+    53: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_53_(2011)',
+      note: 'Chapters 100-101 and episode 53. Checked on the episode page and the chapter pages.',
+    },
+  },
+  'kortopi': {
+    53: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_53_(2011)',
+      note: 'Chapter 100 and episode 53. The copies of the members’ bodies are told in episode 53 but explained in the chapters only later, so they are left out. Italian: La Mano Sinistra di Dio e la Mano Destra del Diavolo (Italian Wikipedia, Brigata Fantasma). Checked on the episode page and the chapter pages.',
     },
   },
 }
