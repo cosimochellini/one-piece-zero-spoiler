@@ -131,8 +131,8 @@ export const hunterExamChronicles = {
       value: {
         title: { it: 'Braccio di ferro', en: 'Arm wrestling' },
         body: {
-          it: 'Sul sito degli Hunter Gon e [[killua|Killua]] scoprono che sette copie del gioco della scheda di memoria di Ging andranno all’asta a York Shin City, con offerte a partire da 8,9 miliardi di Jenny. Provano a comprare e rivendere su internet, senza successo. A un mercato, mentre Gon compra un telefono, incontrano [[leorio-paradinight|Leorio]]. Leorio trova un modo per fare soldi: chi batte Gon a braccio di ferro vince un diamante da 3 milioni di Jenny. Gon batte uno sfidante dopo l’altro, finché [[shizuku|Shizuku]], un membro della Brigata Fantasma, non lo costringe a usare tutta la sua forza per vincere.',
-          en: 'On the Hunter website, Gon and [[killua|Killua]] learn that seven copies of the game on Ging’s memory card will be auctioned in Yorknew City, with bids starting at 8.9 billion Jenny. They try buying and reselling online, without success. At a market, while Gon buys a phone, they run into [[leorio-paradinight|Leorio]]. Leorio comes up with a way to make money: whoever beats Gon at arm wrestling wins a diamond worth 3 million Jenny. Gon beats one challenger after another, until [[shizuku|Shizuku]], a member of the Phantom Troupe, makes him use all his strength to win.',
+          it: 'Sul sito degli Hunter Gon e [[killua|Killua]] scoprono che sette copie del gioco della scheda di memoria di Ging andranno all’asta a York Shin City, con offerte a partire da 8,9 miliardi di Jenny. Provano a comprare e rivendere su internet, senza successo. A un mercato, mentre Gon compra un telefono, incontrano [[leorio-paradinight|Leorio]]. Leorio trova un modo per fare soldi: chi batte Gon a braccio di ferro vince un diamante da 3 milioni di Jenny. Gon batte uno sfidante dopo l’altro, finché [[shizuku|Shizuku]], un membro della Brigata Fantasma, non lo costringe a impegnarsi davvero per vincere.',
+          en: 'On the Hunter website, Gon and [[killua|Killua]] learn that seven copies of the game on Ging’s memory card will be auctioned in Yorknew City, with bids starting at 8.9 billion Jenny. They try buying and reselling online, without success. At a market, while Gon buys a phone, they run into [[leorio-paradinight|Leorio]]. Leorio comes up with a way to make money: whoever beats Gon at arm wrestling wins a diamond worth 3 million Jenny. Gon beats one challenger after another, until [[shizuku|Shizuku]], a member of the Phantom Troupe, makes him try for real to win.',
         },
       },
     },
@@ -243,8 +243,8 @@ export const hunterExamChronicles = {
           en: 'Back with Gon and Killua',
         },
         body: {
-          it: 'Leorio arriva a York Shin City e incontra [[gon-freecss|Gon]] e [[killua|Killua]] a un mercato, mentre Gon compra un telefono. Parlano del Nen, e i ragazzi gli raccontano del gioco della scheda di memoria di Ging e dei soldi che servono per comprarlo. Leorio trova un modo per raccoglierli. In strada invita i passanti a sfidare Gon a braccio di ferro: chi vince si prende un diamante da 3 milioni di Jenny. Gon vince sempre, e solo una sfidante, [[shizuku|Shizuku]], lo costringe a usare tutta la sua forza.',
-          en: 'Leorio arrives in Yorknew City and runs into [[gon-freecss|Gon]] and [[killua|Killua]] at a market, where Gon is buying a phone. They talk about Nen, and the boys tell him about the game on Ging’s memory card and the money they need to buy it. Leorio comes up with a way to raise it. In the street he invites passers-by to arm-wrestle Gon: whoever wins gets a diamond worth 3 million Jenny. Gon keeps winning, and only one challenger, [[shizuku|Shizuku]], makes him use all his strength.',
+          it: 'Leorio arriva a York Shin City e incontra [[gon-freecss|Gon]] e [[killua|Killua]] a un mercato, mentre Gon compra un telefono. Parlano del Nen, e i ragazzi gli raccontano del gioco della scheda di memoria di Ging e dei soldi che servono per comprarlo. Leorio trova un modo per raccoglierli. In strada invita i passanti a sfidare Gon a braccio di ferro: chi vince si prende un diamante da 3 milioni di Jenny. Gon vince sempre, e solo una sfidante, [[shizuku|Shizuku]], lo costringe a impegnarsi davvero per vincere.',
+          en: 'Leorio arrives in Yorknew City and runs into [[gon-freecss|Gon]] and [[killua|Killua]] at a market, where Gon is buying a phone. They talk about Nen, and the boys tell him about the game on Ging’s memory card and the money they need to buy it. Leorio comes up with a way to raise it. In the street he invites passers-by to arm-wrestle Gon: whoever wins gets a diamond worth 3 million Jenny. Gon keeps winning, and only one challenger, [[shizuku|Shizuku]], makes him try for real to win.',
         },
       },
     },
@@ -493,10 +493,10 @@ export const hunterExamChronicles = {
       episode: 41,
       chapter: 71,
       value: {
-        title: { it: 'Il nuovo membro', en: 'The new member' },
+        title: { it: 'Verso il raduno', en: 'On the way to the gathering' },
         body: {
-          it: 'Hisoka porta un falso tatuaggio della Brigata Fantasma e intende darle la caccia. [[machi|Machi]] gli ha detto di trovarsi a York Shin City entro mezzogiorno del 30 agosto, per il raduno di tutti i membri. Per strada, quattro membri diretti in città parlano di lui, uno dei nuovi membri della Brigata. Quando il capo dà l’ordine, Hisoka c’è: la Brigata ruberà tutto all’asta sotterranea, e i suoi membri possono uccidere chiunque si metta in mezzo.',
-          en: 'Hisoka wears a fake Phantom Troupe tattoo and means to hunt the Troupe down. [[machi|Machi]] has told him to be in Yorknew City by noon on August 30, when all the members are to gather. On the road, four members walking to the city talk about him, one of the Troupe’s new members. When the leader gives the order, Hisoka is there: the Troupe will steal everything at the Underground Auction, and its members may kill anyone who gets in the way.',
+          it: 'Hisoka porta un falso tatuaggio della Brigata Fantasma e intende darle la caccia. [[machi|Machi]] gli ha detto di trovarsi a York Shin City entro mezzogiorno del 30 agosto, per il raduno di tutti i membri. Per strada, quattro membri diretti in città, riuniti tutti per la prima volta in più di tre anni, parlano di lui e dei membri cambiati da allora. Quando il capo dà l’ordine, Hisoka c’è: la Brigata ruberà tutto all’asta sotterranea, e i suoi membri possono uccidere chiunque si metta in mezzo.',
+          en: 'Hisoka wears a fake Phantom Troupe tattoo and means to hunt the Troupe down. [[machi|Machi]] has told him to be in Yorknew City by noon on August 30, when all the members are to gather. On the road, four members walking to the city, all gathering for the first time in over three years, talk about him and the members who have changed since then. When the leader gives the order, Hisoka is there: the Troupe will steal everything at the Underground Auction, and its members may kill anyone who gets in the way.',
         },
       },
     },

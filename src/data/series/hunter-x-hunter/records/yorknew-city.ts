@@ -104,7 +104,7 @@ export const yorknewCity: HunterSaga = {
       nameSaidAt: 1,
       name: { it: 'Ging Freecss', en: 'Ging Freecss' },
       summary: {
-        it: 'Il padre di Gon, un Hunter che ha lasciato l’Isola Balena alla sua età ed è tornato dieci anni dopo con il figlio in braccio, che ha lasciato lì.',
+        it: 'Il padre di Gon, un Hunter che ha lasciato l’Isola Balena alla stessa età di Gon ed è tornato dieci anni dopo con il figlio in braccio, che ha lasciato lì.',
         en: 'Gon’s father, a Hunter who left Whale Island at Gon’s age and came back ten years later carrying his son, whom he left there.',
       },
       visual: { art: 'ging-freecss', tint: 'sand' },
@@ -684,7 +684,7 @@ export const yorknewCity: HunterSaga = {
         en: 'Head of the bodyguards',
       },
       log: {
-        it: 'Da uno schermo assegna la prova ai candidati: portare un oggetto da una lista. Poi la porta resta chiusa e figure vestite di nero li attaccano. Assume i quattro che tornano con l’oggetto. Andando dalla loro protetta passano davanti a un uomo trasformato in una figura appesa al muro.',
+        it: 'Da uno schermo assegna la prova ai candidati: portare un oggetto da una lista. Poi la porta resta chiusa e figure vestite di nero li attaccano. Assume i quattro che tornano con l’oggetto. Andando dal loro capo passano davanti a un uomo trasformato in una figura appesa al muro.',
         en: 'From a screen he sets the applicants their test: bring back one item from a list. Then the door stays locked and figures in black attack them. He hires the four who return with their items. On the way to the boss they pass a man turned into a figure hanging on the wall.',
       },
       status: [
@@ -1042,8 +1042,8 @@ export const yorknewCity: HunterSaga = {
       chronicle: yorknewCityChronicles.shizuku,
       role: TROUPE_MEMBER,
       log: {
-        it: 'Sfida Gon a braccio di ferro per il premio, un diamante, e perde dopo averlo costretto a usare tutta la sua forza.',
-        en: 'She challenges Gon at arm wrestling for the prize, a diamond, and loses after making him use all his strength.',
+        it: 'Sfida Gon a braccio di ferro per il premio, un diamante, e perde dopo averlo costretto a impegnarsi davvero per vincere.',
+        en: 'She challenges Gon at arm wrestling for the prize, a diamond, and loses after making him try for real to win.',
       },
       status: [{ episode: 42, chapter: 72, value: 'alive' }],
       affiliation: [{ episode: 42, chapter: 72, value: TROUPE }],

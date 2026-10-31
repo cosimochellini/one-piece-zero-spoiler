@@ -48,7 +48,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
     42: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_42_(2011)',
-      note: 'The Hunter website (seven copies, 8.9 billion) and the failed reselling are episode 41 and chapter 70; the phone, Leorio, the diamond worth 3 million and Shizuku forcing his full strength are episode 42 and chapters 71-72. Also read: Episode 41 (2011), Chapter 70, Chapter 71, Chapter 72.',
+      note: 'Corrected after review: “use all his strength” became “try for real to win”, as chapter 72 says only that Gon is forced to actually try. The Hunter website (seven copies, 8.9 billion) and the failed reselling are episode 41 and chapter 70; the phone, Leorio, the diamond worth 3 million and Shizuku forcing him to try for real are episode 42 and chapters 71-72. Also read: Episode 41 (2011), Chapter 70, Chapter 71, Chapter 72.',
     },
   },
   'mito-freecss': {
@@ -88,7 +88,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
     42: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_42_(2011)',
-      note: 'Episode 42 and chapters 71-72: meeting Gon and Killua at the phone stall, talk of Nen and the game, his idea, the arm-wrestling contest for a 3-million diamond and the one challenger who forces Gon’s full strength. The haggling and the entry fee are chapter-only. Also read: Chapter 71, Chapter 72.',
+      note: 'Corrected after review: “use all his strength” became “try for real to win”, as chapter 72 says only that Gon is forced to actually try. Episode 42 and chapters 71-72: meeting Gon and Killua at the phone stall, talk of Nen and the game, his idea, the arm-wrestling contest for a 3-million diamond and the one challenger who makes Gon try for real. The haggling and the entry fee are chapter-only. Also read: Chapter 71, Chapter 72.',
     },
   },
   'kurapika': {
@@ -178,7 +178,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
     41: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_41_(2011)',
-      note: 'Corrected after review: “the newest member” became “one of the Troupe’s new members”, since chapter 71 only says that members No. 4 and 8 have changed. The fake tattoo and Machi’s call for noon on August 30 are episode 32 and chapter 55; the four members talking about him on the road and the leader’s order are episode 41 and chapter 71. Also read: Episode 32 (2011), Chapter 55, Chapter 71.',
+      note: 'Corrected after review: “the newest member” and the title “The new member” are episode 41 only; chapter 71 says only that members No. 4 and 8 have changed, so the four talk about him and the members who have changed, as in Machi’s story. The fake tattoo and Machi’s call for noon on August 30 are episode 32 and chapter 55; the four members talking about him on the road and the leader’s order are episode 41 and chapter 71. Also read: Episode 32 (2011), Chapter 55, Chapter 71.',
     },
   },
   'hanzo': {
