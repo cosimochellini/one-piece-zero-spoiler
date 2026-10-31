@@ -28,6 +28,18 @@ const RECORDS = [
   { id: 'ivlenkov', episode: 42, chapter: 72, place: false },
   { id: 'linssen', episode: 42, chapter: 72, place: false },
   { id: 'shizuku', episode: 42, chapter: 72, place: false },
+  { id: 'uvogin', episode: 43, chapter: 74, place: false },
+  { id: 'feitan', episode: 43, chapter: 74, place: false },
+  { id: 'worm', episode: 43, chapter: 75, place: false },
+  { id: 'rabid-dog', episode: 43, chapter: 75, place: false },
+  { id: 'franklin', episode: 44, chapter: 76, place: false },
+  { id: 'porcupine', episode: 44, chapter: 76, place: false },
+  { id: 'leech', episode: 44, chapter: 76, place: false },
+  { id: 'nobunaga', episode: 45, chapter: 77, place: false },
+  { id: 'owl', episode: 45, chapter: 77, place: false },
+  { id: 'phinks', episode: 45, chapter: 78, place: false },
+  { id: 'shalnark', episode: 46, chapter: 79, place: false },
+  { id: 'light-nostrade', episode: 46, chapter: 79, place: false },
   { id: 'yorknew-city', episode: 41, chapter: 70, place: true },
   { id: 'lingon-airport', episode: 41, chapter: 71, place: true },
   { id: 'cemetery-building', episode: 42, chapter: 72, place: true },
@@ -207,6 +219,154 @@ describe('the shelves of the arc’s places', () => {
       ).toStrictEqual(ids)
     },
   )
+})
+
+/**
+ * Every status step of the second phase, one row per unit: the status a
+ * reader sees one before the step and at it. A row whose `before` is
+ * `undefined` is the record's own gate. Episode 45 holds Nobunaga's trap
+ * and release, and episode 47 Uvogin's second capture and his death, so
+ * only a chapter reader stands between them.
+ */
+const STATUS_STEPS = [
+  ...['baise', 'shachmono-tocino', 'ivlenkov'].flatMap((id) => [
+    { id, unit: 'episode', count: 43, before: 'alive', after: 'deceased' },
+    { id, unit: 'chapter', count: 73, before: 'alive', after: 'deceased' },
+  ]),
+  {
+    id: 'dalzollene',
+    unit: 'episode',
+    count: 45,
+    before: 'alive',
+    after: 'deceased',
+  },
+  {
+    id: 'dalzollene',
+    unit: 'chapter',
+    count: 78,
+    before: 'alive',
+    after: 'deceased',
+  },
+  ...['worm', 'rabid-dog'].flatMap((id) => [
+    { id, unit: 'episode', count: 44, before: 'alive', after: 'deceased' },
+    { id, unit: 'chapter', count: 76, before: 'alive', after: 'deceased' },
+  ]),
+  ...['porcupine', 'leech'].flatMap((id) => [
+    { id, unit: 'episode', count: 44, before: undefined, after: 'deceased' },
+    { id, unit: 'chapter', count: 76, before: undefined, after: 'deceased' },
+  ]),
+  {
+    id: 'uvogin',
+    unit: 'episode',
+    count: 44,
+    before: 'alive',
+    after: 'captured',
+  },
+  {
+    id: 'uvogin',
+    unit: 'chapter',
+    count: 77,
+    before: 'alive',
+    after: 'captured',
+  },
+  {
+    id: 'uvogin',
+    unit: 'episode',
+    count: 45,
+    before: 'captured',
+    after: 'alive',
+  },
+  {
+    id: 'uvogin',
+    unit: 'chapter',
+    count: 78,
+    before: 'captured',
+    after: 'alive',
+  },
+  {
+    id: 'uvogin',
+    unit: 'episode',
+    count: 47,
+    before: 'alive',
+    after: 'deceased',
+  },
+  {
+    id: 'uvogin',
+    unit: 'chapter',
+    count: 82,
+    before: 'alive',
+    after: 'captured',
+  },
+  {
+    id: 'uvogin',
+    unit: 'chapter',
+    count: 84,
+    before: 'captured',
+    after: 'deceased',
+  },
+  {
+    id: 'nobunaga',
+    unit: 'episode',
+    count: 45,
+    before: undefined,
+    after: 'alive',
+  },
+  {
+    id: 'nobunaga',
+    unit: 'chapter',
+    count: 77,
+    before: undefined,
+    after: 'captured',
+  },
+  {
+    id: 'nobunaga',
+    unit: 'chapter',
+    count: 78,
+    before: 'captured',
+    after: 'alive',
+  },
+  { id: 'owl', unit: 'episode', count: 47, before: 'alive', after: 'captured' },
+  { id: 'owl', unit: 'chapter', count: 84, before: 'alive', after: 'captured' },
+]
+
+describe('the deaths and captures of the auction nights', () => {
+  it.each(STATUS_STEPS)(
+    'pins $id’s status at $unit $count',
+    ({ id, unit, count, before, after }) => {
+      const status = (n: number): string | undefined =>
+        archive.latestOf(
+          readerFor(archive, at(unit, n), 'en'),
+          character(id),
+          'status',
+        )
+
+      expect(status(count - 1)).toBe(before)
+      expect(status(count)).toBe(after)
+    },
+  )
+})
+
+describe('Kurapika at the head of the bodyguards', () => {
+  it.each([
+    { unit: 'episode', count: 46 },
+    { unit: 'chapter', count: 79 },
+  ])('dates his role and affiliation in $unit units', ({ unit, count }) => {
+    const read = (n: number): Reader => readerFor(archive, at(unit, n), 'en')
+    const kurapika = character('kurapika')
+
+    expect(archive.roleOf(read(count - 1), kurapika)?.en).toBe(
+      'Hunter, bodyguard',
+    )
+    expect(archive.roleOf(read(count), kurapika)?.en).toBe(
+      'Hunter, head of the bodyguards',
+    )
+    expect(factsOf(kurapika, read(count - 1)).affiliation).toMatch(
+      /Nostrade family, Neon’s bodyguard/u,
+    )
+    expect(factsOf(kurapika, read(count)).affiliation).toMatch(
+      /Nostrade family, head of Neon’s bodyguards/u,
+    )
+  })
 })
 
 describe('the arc’s leads', () => {
