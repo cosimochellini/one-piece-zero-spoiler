@@ -744,7 +744,22 @@ export const fishManIsland: OnePieceSaga = {
     'wadatsumi': {
       relationships: fishManIslandRelationships.wadatsumi,
       chronicle: fishManIslandChronicles.wadatsumi,
-      role: { it: 'Il gigante di Van Der Decken', en: 'Vander Decken’s giant' },
+      role: [
+        {
+          episode: 526,
+          chapter: 615,
+          value: {
+            it: 'Il gigante di Van Der Decken',
+            en: 'Vander Decken’s giant',
+          },
+        },
+        // With the Sun Pirates in chapter 830, episode 790.
+        {
+          episode: 790,
+          chapter: 830,
+          value: { it: 'Membro dei Pirati del Sole', en: 'Sun Pirates member' },
+        },
+      ],
       log: {
         it: 'Emerge dalle rocce degli abissi, una sagoma d’uomo grande quanto un kraken, e la ciurma che sorprende lo prende per un mostro marino. Obbedisce al capitano Van Der Decken, a cui si rivolge con tutto il rispetto, e bada alla rana pescatrice Lucetto come a un animale di casa, ricordandole ogni volta che le navi non si mangiano, se no il capitano si arrabbia. Quando il capitano dice di abbattere una nave, carica il pugno; quando dice di tirare, si mette a trainare l’Olandese Volante lontano dal pericolo.',
         en: 'He rises out of the rocks of the deep, a man-shaped figure the size of a kraken, and the crew he surprises take him for a sea monster. He obeys Captain Vander Decken, whom he never names without a respectful “sir”, and minds the anglerfish Ankoro like a pet, forever reminding it that ships are not for eating, or the captain will be angry. When his captain says knock a ship down, he winds up his fist; when the captain says pull, he tows the Flying Dutchman out of harm’s way.',
@@ -1268,7 +1283,22 @@ export const fishManIsland: OnePieceSaga = {
     },
     'aladine': {
       relationships: fishManIslandRelationships.aladine,
-      role: { it: 'Medico di bordo', en: 'Ship’s doctor' },
+      role: [
+        {
+          episode: 543,
+          chapter: 628,
+          value: { it: 'Medico di bordo', en: 'Ship’s doctor' },
+        },
+        // Vice captain of the Sun Pirates in chapter 830 (p. 4), episode 790.
+        {
+          episode: 790,
+          chapter: 830,
+          value: {
+            it: 'Vicecapitano dei Pirati del Sole',
+            en: 'Vice captain of the Sun Pirates',
+          },
+        },
+      ],
       log: {
         it: 'Naviga con la ciurma di Fisher Tiger e ne è il medico. Quando Koala continua a pulire, dice a Octy di lasciarla in pace: ha bisogno di tempo, perché un trauma non guarisce così in fretta. Arlong osserva che Aladin, schiavo a sua volta, la capisce bene. Quando il capitano è ferito gravemente e rifiuta il sangue umano, Aladin cerca di convincerlo ad accettarlo.',
         en: 'He sails with Fisher Tiger’s crew as its doctor. When Koala keeps on cleaning, he tells Hatchan to leave her alone: she needs time, because trauma does not heal that easily. Arlong points out that Aladine, a former slave himself, understands her well. When the captain is badly wounded and refuses human blood, Aladine tries to make him accept it.',
