@@ -358,9 +358,6 @@ const FACTION_OF: Record<Locale, Map<string, string>> = {
   it: factionsByLabel('it'),
 }
 
-/** One Piece's payloads, each with its keys listed once. */
-const KEYED = PAYLOADS.map((payload) => ({ ...payload, all: payload.keys?.() }))
-
 /** The factions a payload labels whose group the album has not sent. */
 function earlyLabels(
   payload: unknown,
@@ -375,17 +372,20 @@ function earlyLabels(
     )
 }
 
-/** Every label sent early at one ask, with the page that sent it. */
-function labelLeaksAt(
-  at: number,
-  bookmark: Bookmark,
-  locale: Locale,
-): string[] {
-  const groups = new Set<null | string>(
+/** Every One Piece ask, with the faction groups its fruit album sends. */
+const GROUPED = asksOf(ONE_PIECE_LOADED).map(({ bookmark, locale }) => ({
+  bookmark,
+  groups: new Set<null | string>(
     fruitAlbum(bookmark, locale).factions.map(({ faction }) => faction),
-  )
+  ),
+  locale,
+}))
 
-  return KEYED.flatMap(({ all, name, run }) =>
+/** Every label a page sends early at the asks it is sampled at. */
+function earlyLabelsOf({ keys, name, run }: Payload): string[] {
+  const all = keys?.()
+
+  return GROUPED.flatMap(({ bookmark, groups, locale }, at) =>
     sampled(all, at).flatMap((key) =>
       earlyLabels(run(bookmark, locale, key), locale, groups).map(
         (faction) =>
@@ -402,13 +402,12 @@ function labelLeaksAt(
 // on Mihawk's page): it is the record's, under the record's gate, which the
 // sweep above holds, so it is not read here.
 describe('a faction label', () => {
-  it('is in no payload before the fruit album has its group', () => {
-    const leaks = asksOf(ONE_PIECE_LOADED).flatMap(({ bookmark, locale }, at) =>
-      labelLeaksAt(at, bookmark, locale),
-    )
-
-    expect(leaks).toStrictEqual([])
-  })
+  it.each(PAYLOADS)(
+    'is not in $name before the fruit album has its group',
+    (payload) => {
+      expect(earlyLabelsOf(payload)).toStrictEqual([])
+    },
+  )
 
   it('comes with its group once the bookmark reaches it', () => {
     const ceilings = asksOf({
