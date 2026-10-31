@@ -87,15 +87,15 @@ function demoDrawings(entity: Entity, r: Reader): Step<Drawing>[] {
 /**
  * A record's role on the dial: a single role as the string it always was, so
  * a series that files no dated role sends what it did, or the steps of a
- * dated one. A single role is the same at every bookmark, so asking for it
- * at the reader's is asking for it at none.
+ * dated one inside the demo.
  */
 function roleStepsOf(entity: Entity, r: Reader): Pick<DemoEntry, 'role'> {
-  const steps = r.archive.datedOf(entity, 'role')
-  if (steps.length > 0) {
-    return { role: stepsOf(steps, (v) => v[r.locale], r) }
+  const role = r.archive.dossierOf(entity)?.role
+  if (Array.isArray(role)) {
+    return {
+      role: stepsOf(r.archive.datedOf(entity, 'role'), (v) => v[r.locale], r),
+    }
   }
-  const role = r.archive.roleOf(r, entity)
 
   return role === undefined ? {} : { role: role[r.locale] }
 }

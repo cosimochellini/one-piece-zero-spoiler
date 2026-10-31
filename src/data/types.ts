@@ -225,8 +225,9 @@ export interface Relationship {
  * What the archive knows about a character beyond the name and the sentence.
  *
  * `log` is frozen at the threshold, like the summary: it says what a viewer
- * who has just met the character could say. So is `role`, unless it is filed
- * as dated steps (`role`). The timelines are not frozen. Each entry is a fact from the episode it is learned in, and the
+ * who has just met the character could say. A single `role` is frozen too;
+ * one the story changes is filed as dated steps. The timelines are not
+ * frozen. Each entry is a fact from the episode it is learned in, and the
  * page shows the latest one the reader has reached, so Robin's affiliation
  * changes when she changes it and a bounty rises when the poster is printed.
  * A fact with no entry yet is simply not on the page.

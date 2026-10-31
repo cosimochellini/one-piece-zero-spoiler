@@ -151,9 +151,10 @@ describe.each(SOURCES)('a record of the %s alone', (source) => {
       'en',
     )
 
-    expect(JSON.stringify(characterPage(planted.host.id, reader))).toContain(
-      JSON.stringify(planted.strokes),
-    )
+    const page = JSON.stringify(characterPage(planted.host.id, reader))
+
+    expect(page).toContain(JSON.stringify(planted.strokes))
+    expect(page).toContain(planted.role)
   })
 
   it('has no page and no handle for a reader of the other source', () => {
@@ -175,6 +176,7 @@ describe.each(SOURCES)('a record of the %s alone', (source) => {
 
     expect(shown).toStrictEqual([])
     expect(demo).not.toContain(planted.epithet)
+    expect(demo).not.toContain(planted.role)
   })
 
   it('names its arc only in the saga labels of its own unit', () => {
