@@ -14,8 +14,9 @@ const APPLICANT = {
 }
 
 /**
- * Neon's bodyguards, from the chapter and episode that name the family she
- * belongs to (chapter 71, episode 41).
+ * Neon's bodyguards, from the chapter and episode where Neon arrives in the
+ * city with them and is shown as the boss they guard (chapter 71, episode
+ * 41).
  */
 const NEON_GUARD = {
   episode: 41,
@@ -34,15 +35,18 @@ const TROUPE_MEMBER = {
 const TROUPE = { it: 'Brigata Fantasma', en: 'Phantom Troupe' }
 
 /**
- * The two employees who test the applicants at their gate, chapter 68 and
- * episode 40, then ride with Neon's bodyguards into the city: chapter 71
- * and episode 41 both list them in the escort.
+ * The two plants among the applicants at their gate, chapter 68 and episode
+ * 40, who then ride with Neon's bodyguards into the city: chapter 71 and
+ * episode 41 both list them in the escort.
  */
-const EMPLOYEE = [
+const PLANT = [
   {
     episode: 40,
     chapter: 68,
-    value: { it: 'Dipendente della famiglia', en: 'Employee of the family' },
+    value: {
+      it: 'Infiltrato tra i candidati',
+      en: 'Plant among the applicants',
+    },
   },
   { episode: 41, chapter: 71, value: BODYGUARD },
 ]
@@ -145,8 +149,8 @@ export const yorknewCity: HunterSaga = {
       revealedAtChapter: 68,
       name: { it: 'Squala', en: 'Squala' },
       summary: {
-        it: 'Un uomo che finge di candidarsi come guardia del corpo per mettere alla prova gli altri. Comanda dei cani.',
-        en: 'A man posing as an applicant for a bodyguard job to test the others. He commands dogs.',
+        it: 'Uno dei candidati come guardia del corpo, che si rivela un infiltrato.',
+        en: 'One of the applicants for a bodyguard job, who turns out to be a plant.',
       },
       visual: { art: 'squala', tint: 'violet' },
     },
@@ -157,8 +161,8 @@ export const yorknewCity: HunterSaga = {
       revealedAtChapter: 68,
       name: { it: 'Shachmono Tocino', en: 'Shachmono Tocino' },
       summary: {
-        it: 'Un uomo che lavora già per la famiglia e mette alla prova i candidati con figure vestite di nero fatte della sua aura.',
-        en: 'A man already working for the family who tests the applicants with figures in black made of his aura.',
+        it: 'Un uomo che lavora per il capo e mette alla prova i candidati con figure vestite di nero fatte della sua aura.',
+        en: 'A man working for the boss who tests the applicants with figures in black made of his aura.',
       },
       visual: { art: 'shachmono-tocino', tint: 'ice' },
     },
@@ -171,8 +175,8 @@ export const yorknewCity: HunterSaga = {
       revealedAtChapter: 70,
       name: { it: 'Dalzorne', en: 'Dalzollene' },
       summary: {
-        it: 'Il capo delle guardie del corpo della famiglia, che assume Kurapika e altri tre candidati.',
-        en: 'The head of the family’s bodyguards, who hires Kurapika and three other applicants.',
+        it: 'Il capo delle guardie del corpo, che assume Kurapika e altri tre candidati.',
+        en: 'The head bodyguard, who hires Kurapika and three other applicants.',
       },
       visual: { art: 'dalzollene', tint: 'cyan' },
     },
@@ -199,8 +203,8 @@ export const yorknewCity: HunterSaga = {
       revealedAtChapter: 72,
       name: { it: 'Ivlenkov', en: 'Ivlenkov' },
       summary: {
-        it: 'Una guardia del corpo della famiglia Nostrad, mandata a fare offerte all’asta sotterranea.',
-        en: 'A bodyguard of the Nostrade family, sent to bid at the Underground Auction.',
+        it: 'Una guardia del corpo della famiglia Nostrad, mandata all’asta sotterranea.',
+        en: 'A bodyguard of the Nostrade family, sent to attend the Underground Auction.',
       },
       visual: { art: 'ivlenkov', tint: 'lavender' },
     },
@@ -339,19 +343,19 @@ export const yorknewCity: HunterSaga = {
       affiliation: [NEON_GUARD],
     },
     'squala': {
-      role: EMPLOYEE,
+      role: PLANT,
       log: {
-        it: 'Lavora già per la famiglia e si mescola ai candidati per metterli alla prova. La catena di Kurapika oscilla davanti a lui; nega finché l’haiku di Basho non lo costringe a confessare. Comanda i cani che ha messo intorno alla villa.',
-        en: 'He already works for the family and mixes with the applicants to test them. Kurapika’s chain swings in front of him; he denies it until Basho’s haiku makes him confess. He commands the dogs he has placed around the mansion.',
+        it: 'La catena di Kurapika oscilla davanti a lui, e Melody sente il suo cuore accelerare. Nega di essere un infiltrato finché l’haiku di Basho non lo costringe a confessare. Dopo il bacio di Versé rivela il suo piano.',
+        en: 'Kurapika’s chain swings in front of him, and Melody hears his heart speed up. He denies being a plant until Basho’s haiku makes him confess. After Baise kisses him he reveals his plan.',
       },
       status: [{ episode: 40, chapter: 68, value: 'alive' }],
       affiliation: [NEON_GUARD],
     },
     'shachmono-tocino': {
-      role: EMPLOYEE,
+      role: PLANT,
       log: {
-        it: 'Lavora già per la famiglia e mette alla prova i candidati con figure vestite di nero fatte della sua aura. Kurapika lo scopre notando che è l’unico che le figure non attaccano.',
-        en: 'He already works for the family, and he tests the applicants with figures in black made of his aura. Kurapika finds him out by noticing that he is the only one the figures never attack.',
+        it: 'Lavora per il capo e mette alla prova i candidati con figure vestite di nero fatte della sua aura. Kurapika lo scopre notando che è l’unico che le figure non attaccano.',
+        en: 'He works for the boss, and he tests the applicants with figures in black made of his aura. Kurapika finds him out by noticing that he is the only one the figures never attack.',
       },
       status: [{ episode: 40, chapter: 68, value: 'alive' }],
       affiliation: [NEON_GUARD],
@@ -395,8 +399,8 @@ export const yorknewCity: HunterSaga = {
     'ivlenkov': {
       role: BODYGUARD,
       log: {
-        it: 'Guardia del corpo della famiglia, è uno dei tre che Dalzorne manda a fare offerte all’asta sotterranea.',
-        en: 'A bodyguard of the family, he is one of the three Dalzollene sends to bid at the Underground Auction.',
+        it: 'Guardia del corpo della famiglia, è uno dei tre che Dalzorne manda all’asta sotterranea.',
+        en: 'A bodyguard of the family, he is one of the three Dalzollene sends to attend the Underground Auction.',
       },
       status: [{ episode: 42, chapter: 72, value: 'alive' }],
       affiliation: [
@@ -466,7 +470,7 @@ export const YORKNEW_CITY_PLACES: Record<
       it: 'Gon e Killua arrivano in città e, in un internet café, cercano sul sito degli Hunter il gioco della scheda di memoria di Ging: alcune copie saranno all’asta di York Shin City, con un’offerta minima di 8,9 miliardi di Jenny. Per raccogliere i soldi provano a comprare e rivendere su internet.',
       en: 'Gon and Killua arrive in the city and, in an internet café, look up the game on Ging’s memory card on the Hunter website: copies of it will be at the Yorknew auction, with a minimum bid of 8.9 billion Jenny. To raise the money they try buying and reselling online.',
     },
-    filedHere: ['machi', 'ivlenkov', 'linssen', 'shizuku'],
+    filedHere: ['shizuku'],
   },
   'lingon-airport': {
     form: 'airport',
@@ -480,7 +484,7 @@ export const YORKNEW_CITY_PLACES: Record<
       it: 'Il dirigibile della famiglia Nostrad atterra qui. Le guardie del corpo accompagnano Neon in auto fino all’albergo in città.',
       en: 'The Nostrade family’s airship lands here. The bodyguards drive Neon to her hotel in the city.',
     },
-    filedHere: [],
+    filedHere: ['ivlenkov', 'linssen'],
   },
   'cemetery-building': {
     form: 'building',
@@ -491,8 +495,8 @@ export const YORKNEW_CITY_PLACES: Record<
       en: 'The large guarded entrance',
     },
     log: {
-      it: 'Qui si tiene l’asta sotterranea. Dalzorne manda tre guardie del corpo a fare offerte e ne mette due all’ingresso principale e due a quello posteriore.',
-      en: 'The Underground Auction is held here. Dalzollene sends three bodyguards in to bid and posts two at the front entrance and two at the back.',
+      it: 'Qui si tiene l’asta sotterranea. Dalzorne manda tre guardie del corpo all’asta e ne mette due all’ingresso principale e due a quello posteriore.',
+      en: 'The Underground Auction is held here. Dalzollene sends three bodyguards in to attend it and posts two at the front entrance and two at the back.',
     },
     filedHere: [],
   },

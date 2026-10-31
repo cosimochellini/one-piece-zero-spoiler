@@ -89,9 +89,9 @@ describe('the bodyguards’ dated steps', () => {
       expect(role(id, hired - 1), id).toBe('Bodyguard applicant')
       expect(role(id, hired), id).toBe('Bodyguard')
     }
-    // The two employees who test them, bodyguards once they ride with Neon.
+    // The two plants among them, bodyguards once they ride with Neon.
     for (const id of ['squala', 'shachmono-tocino']) {
-      expect(role(id, named - 1), id).toBe('Employee of the family')
+      expect(role(id, named - 1), id).toBe('Plant among the applicants')
       expect(role(id, named), id).toBe('Bodyguard')
     }
 

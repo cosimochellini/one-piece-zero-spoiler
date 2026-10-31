@@ -451,7 +451,8 @@ const earlyExam: HunterSaga = {
             it: 'Associazione Hunter, Hunter',
           },
         },
-        // Pinned where the family he guards is named, chapter 71.
+        // Pinned at chapter 71 / episode 41, where Neon arrives in the city
+        // with her bodyguards and is shown as the boss they guard.
         {
           episode: 41,
           chapter: 71,
