@@ -1,12 +1,15 @@
 ---
 name: tone-of-voice
-description: How Zero Spoiler's text is written, in English and Italian. Load it before writing or editing any user-facing words: the dictionaries in src/i18n/dictionaries, the README, record summaries and chronicle stories in src/data/series/one-piece/records, page titles and meta descriptions, aria labels. Also load it when reviewing copy for AI-sounding writing.
+description: How Zero Spoiler's text is written, in English and Italian. Load it before writing or editing any user-facing words: the dictionaries in src/i18n/dictionaries (the site's and each series' own), the README, record summaries and chronicle stories in src/data/series/<series>/records, page titles and meta descriptions, aria labels. Also load it when reviewing copy for AI-sounding writing.
 ---
 
 # Zero Spoiler tone of voice
 
-The site is a One Piece wiki that hides what the reader has not reached yet.
-The text exists to explain that and to get out of the way. It should read like
+The site is a set of wikis, one per series (One Piece, Hunter x Hunter,
+Game of Thrones), each hiding what the reader has not reached yet. The text
+exists to explain that and to get out of the way. Everything here holds for
+every series; each one's names and terms follow, under
+[Each series](#each-series). It should read like
 it was written by a careful person who knows the series, not by a model trying
 to sound evocative.
 
@@ -35,7 +38,8 @@ so the words and the pictures agree.
 
 Use no other nautical imagery in copy. There is no "signal book", no
 "specimen sheet", no "ship's log", no "ports of call", no "sailing nearby".
-The drawings can keep their sea chart; the words describe the content.
+One Piece's drawings can keep their sea chart; the words describe the
+content, in every series.
 
 ## Glossary
 
@@ -47,7 +51,7 @@ One term per concept, in both languages. Do not alternate synonyms for variety.
 | hidden | under fog | nella nebbia |
 | not hidden (counts, search status) | open | visibile |
 | reveal one entry | Show anyway / Show | Mostra comunque / Mostra |
-| story section | arc | saga (never "arco") |
+| story section (a series with arcs) | arc | saga (never "arco") |
 | a record's first appearance | first appears in episode N | compare per la prima volta nell'episodio N |
 | a fruit's first mention | first named in episode N | nominato per la prima volta nell'episodio N |
 | any item in the wiki | entry | voce |
@@ -58,12 +62,49 @@ One term per concept, in both languages. Do not alternate synonyms for variety.
 Never "filed" / "archiviato" for when something appears. It is internal
 jargon for the data model, not a word a reader uses.
 
+## Each series
+
+Each series' own copy lives in `src/i18n/dictionaries/<series>/`, and its
+records in `src/data/series/<series>/records`. In Italian, every series'
+names follow the Italian dub; Game of Thrones' book-only names are the
+exception below.
+
+### One Piece
+
 Italian uses the names from the Italian dub: Rufy, Bagy, Zoo Zoo, Rotta
 Maggiore, Gom Gom. The comment above `fruitForm.zoan` in `one-piece/it.ts` explains why.
 The dub wins over the Star Comics manga when they differ: "Grande Flotta di
 Cappello di Paglia" (the dub title of episode 745), not the manga's
 "Megaflotta". Where the dub's spelling has not been checked, the Star Comics
 one stands in until it is (the Italian One Piece Wiki's page title).
+
+### Hunter x Hunter
+
+Italian follows the dub of the 2011 anime, as Italian Wikipedia gives it:
+there is no Italian Hunter x Hunter wiki (owner, 2026-10-24).
+
+### Game of Thrones
+
+Its two media are the HBO show and the five books, and a reader counts in
+one of them (owner, #844). Its copy is `src/i18n/dictionaries/game-of-thrones/`
+and its records `src/data/series/game-of-thrones/records/season-N.ts`;
+`npx vitest run src/i18n/translate.test.ts` checks the dictionaries, and
+`npm run check` everything.
+
+- **Names.** "Game of Thrones" in English, "Il Trono di Spade" in Italian.
+  Italian names follow the Italian TV dub, as Italian Wikipedia gives them.
+  A name or fact only the books have takes the current Mondadori edition's
+  translation (owner, #851).
+- **Units.** "the show" / "la serie", "the books" / "i libri", "season" /
+  "stagione", "episode" / "episodio", "book" / "libro", "chapter" /
+  "capitolo". A season is "Season N" / "Stagione N". A book is "book N" /
+  "libro N", counting the five English books, never the volumes an Italian
+  edition splits them into. When prose names a book, it gives the English
+  title in italics (*A Game of Thrones*) in both languages (owner, #851).
+- **No arcs.** The series files no arcs, so its copy never says "arc",
+  "saga" or "arco". A stretch of the story is a season or a book.
+- **No nautical imagery.** The fog is still the one image, and nothing
+  else from the sea comes with it: no voyage, no course, no port.
 
 ## Two languages, both native
 
@@ -119,12 +160,12 @@ caption), it quotes the current copy.
 
 ## Records: summaries and chronicle stories
 
-These live in `src/data/series/one-piece/records` and are written in the same voice.
+These live in `src/data/series/<series>/records` and are written in the same voice.
 
 - Facts only. Say what happens; add no commentary about how moving, tragic or
   iconic it is.
 - Keep one tense per text. Stories use the present tense.
-- Use the glossary names (dub names in Italian).
+- Use the glossary names and each series' own (dub names in Italian).
 - The spoiler rules still apply, and the tests enforce them: a text may only
   name characters and facts the reader has reached at its threshold. This skill
   covers wording only.
