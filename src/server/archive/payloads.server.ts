@@ -5,6 +5,7 @@ import type { Bookmark } from '~/lib/progress/episode'
 import { copyOf } from '~/server/copy.server'
 import { legalOf } from '~/server/sources.server'
 
+import { chronicleRestOf } from './chronicle.server'
 import { creditsPage } from './credits.server'
 import { fillerPage, peekFiller } from './filler.server'
 import { fruitPage } from './fruitPage.server'
@@ -98,6 +99,11 @@ function recordPayloads(archive: SeriesArchive): Payload[] {
       run: (b, l, id) => relationshipsPage(id, readerFor(archive, b, l)),
     },
     {
+      name: 'loadChronicleRest',
+      keys: characterIds,
+      run: (b, l, id) => chronicleRestOf(id, readerFor(archive, b, l)),
+    },
+    {
       name: 'loadDrawings',
       keys: () => archive.entities.map(({ id }) => id),
       run: (b, l, id) => drawingsFor([id], readerFor(archive, b, l)),
@@ -186,6 +192,7 @@ export function payloadsFor(archive: SeriesArchive): Payload[] {
     'loadShelves',
     'loadCharacter',
     'loadRelationships',
+    'loadChronicleRest',
     'loadDrawings',
     'loadFruits',
     'loadFruitAlbum',

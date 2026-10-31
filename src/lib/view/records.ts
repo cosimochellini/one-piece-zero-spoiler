@@ -305,6 +305,11 @@ export interface ChronicleEntry {
 export interface CharacterChronicle {
   entries: ChronicleEntry[]
   mode: 'chronicle'
+  /**
+   * How many reached stories the page leaves for the reader's button. Only
+   * stories already reached are counted, so this is not a count of fog.
+   */
+  rest: number
 }
 
 /**

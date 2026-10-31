@@ -25,6 +25,7 @@ const PAYLOADS = payloadsFor(ONE_PIECE_LOADED.archive)
 
 /** The server functions that answer with `plain` rather than seroval. */
 const PLAIN = new Set([
+  'loadChronicleRest',
   'loadDemoDrawings',
   'loadDrawings',
   'loadFruitAlbum',

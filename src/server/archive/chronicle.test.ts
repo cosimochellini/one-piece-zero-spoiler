@@ -9,7 +9,13 @@ import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 import { opReaderFor as readerFor } from '~/test/archive'
 
-import { chronicleOf, type ResolveName, segmentsOf } from './chronicle.server'
+import {
+  CHRONICLE_OPEN,
+  chronicleOf,
+  chronicleRestOf,
+  type ResolveName,
+  segmentsOf,
+} from './chronicle.server'
 import type { Reader } from './reader.server'
 
 function ep(episode: number, locale: Locale = 'en'): Reader {
@@ -89,8 +95,35 @@ describe('the stories a bookmark reaches', () => {
       expect(chronicleOf(character, ep(1200)), character.id).toStrictEqual({
         mode: 'chronicle',
         entries: [],
+        rest: 0,
       })
     }
+  })
+})
+
+describe('the stories left for the button', () => {
+  const late = ep(1200)
+
+  it('opens with the latest few and counts what waits', () => {
+    expect(LUFFYS.length).toBeGreaterThan(CHRONICLE_OPEN)
+
+    const page = chronicleOf(LUFFY, late)
+
+    expect(page.entries).toHaveLength(CHRONICLE_OPEN)
+    expect(page.rest).toBe(LUFFYS.length - CHRONICLE_OPEN)
+  })
+
+  it('serves the rest in order, after the page, and only what is reached', () => {
+    const page = chronicleOf(LUFFY, late)
+    const rest = chronicleRestOf('monkey-d-luffy', late)
+    const marks = [...page.entries, ...rest].map(
+      (entry) => entry.revealedAtEpisode,
+    )
+
+    expect(rest).toHaveLength(page.rest)
+    expect(marks).toStrictEqual(marks.toSorted((a, b) => b - a))
+    expect(chronicleRestOf('monkey-d-luffy', ep(1))).toStrictEqual([])
+    expect(chronicleRestOf('not-a-character', late)).toStrictEqual([])
   })
 })
 

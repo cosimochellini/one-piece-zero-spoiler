@@ -11,7 +11,7 @@ import type { ReactElement } from 'react'
 
 import { CharacterChronicle } from '~/components/CharacterChronicle'
 import { useT } from '~/i18n/LocaleContext'
-import type { CharacterDetail } from '~/lib/view/records'
+import type { CharacterDetail, ChronicleEntry } from '~/lib/view/records'
 import { settleStyles } from '~/styles/settle'
 
 import { styles } from './-$id.styles'
@@ -27,10 +27,12 @@ import { styles } from './-$id.styles'
 export function ChronicleBand({
   band,
   detail,
+  loadRest,
 }: {
   /** Which band down the page this is, for the settle delay. */
   band: number
   detail: CharacterDetail
+  loadRest?: (() => Promise<ChronicleEntry[]>) | undefined
 }): null | ReactElement {
   const t = useT()
   const { chronicle } = detail
@@ -57,7 +59,10 @@ export function ChronicleBand({
         </h2>
         <p {...stylex.props(styles.lede)}>{t('character.chronicleLede')}</p>
       </div>
-      <CharacterChronicle chronicle={chronicle} />
+      <CharacterChronicle
+        chronicle={chronicle}
+        loadRest={loadRest}
+      />
     </section>
   )
 }

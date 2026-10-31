@@ -211,6 +211,7 @@ describe('the slice of the archive a page is given', () => {
     expect(page?.detail.chronicle).toStrictEqual({
       mode: 'chronicle',
       entries: [],
+      rest: 0,
     })
   })
 

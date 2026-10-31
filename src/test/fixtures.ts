@@ -254,8 +254,11 @@ export function story(over: Partial<ChronicleEntry> = {}): ChronicleEntry {
 }
 
 /** A chronicle with the stories it is given, in the order it is given them. */
-export function chronicle(entries: ChronicleEntry[] = []): CharacterChronicle {
-  return { mode: 'chronicle', entries }
+export function chronicle(
+  entries: ChronicleEntry[] = [],
+  rest = 0,
+): CharacterChronicle {
+  return { mode: 'chronicle', entries, rest }
 }
 
 export function openSlot<T>(value: T): Slot<T> {
