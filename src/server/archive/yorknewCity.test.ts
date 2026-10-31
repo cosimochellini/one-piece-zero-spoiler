@@ -393,7 +393,8 @@ const STATUS_STEPS = [
     before: 'captured',
     after: 'alive',
   },
-  // Episode 45 meets Owl already held; the manga shows him held at 84.
+  // Episode 45 meets Owl already held. The manga reports the Shadow
+  // Beasts all dead at 78 and shows him held only at 84.
   {
     id: 'owl',
     unit: 'episode',
@@ -402,7 +403,14 @@ const STATUS_STEPS = [
     after: 'captured',
   },
   { id: 'owl', unit: 'chapter', count: 77, before: undefined, after: 'alive' },
-  { id: 'owl', unit: 'chapter', count: 84, before: 'alive', after: 'captured' },
+  { id: 'owl', unit: 'chapter', count: 78, before: 'alive', after: 'unknown' },
+  {
+    id: 'owl',
+    unit: 'chapter',
+    count: 84,
+    before: 'unknown',
+    after: 'captured',
+  },
 ]
 
 /** A character's status for an English reader at a bookmark. */

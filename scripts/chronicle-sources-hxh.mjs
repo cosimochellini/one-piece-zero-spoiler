@@ -118,15 +118,15 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
     44: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_44_(2011)',
-      note: 'Chapter 77 (pages 1-11) and episode 44. Italian: Catena della Prigionia (Italian Wikipedia, Kurapika Kurata). Checked on the episode page and the chapter pages.',
+      note: 'Corrected after review: he moves only after the fight, as both media show. Chapter 77 (pages 1-11) and episode 44. Italian: Catena della Prigionia (Italian Wikipedia, Kurapika Kurata). Checked on the episode page and the chapter pages.',
     },
     46: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_46_(2011)',
-      note: 'Hisoka is chapters 78-79, the call to Light and the Hunter website chapter 79, Uvogin at the door chapter 80, all by the end of episode 46. Checked on the episode page and the chapter pages.',
+      note: 'Corrected after review: “the Nostrade family’s rooms” became where they are staying. Hisoka is chapters 78-79, the call to Light and the Hunter website chapter 79, Uvogin at the door chapter 80, all by the end of episode 46. Checked on the episode page and the chapter pages.',
     },
     47: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_47_(2011)',
-      note: 'The teacher and Water Divination are chapter 83 and episodes 39 and 47; the fight is chapters 81-84 and episode 47. Italian: Materializzazione, Specializzazione, Test dell’Acqua (Italian Wikipedia). Checked on the episode page and the chapter pages.',
+      note: 'Corrected after review: “truthfully” dropped; episode 47 says only that the rule is to answer his questions. The teacher and Water Divination are chapter 83 and episodes 39 and 47; the fight is chapters 81-84 and episode 47. Italian: Materializzazione, Specializzazione, Test dell’Acqua (Italian Wikipedia). Checked on the episode page and the chapter pages.',
     },
   },
   'katzo': {
@@ -796,7 +796,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
     45: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_45_(2011)',
-      note: 'The needle and the cloth are chapter 77 (pages 12-19), the Shadow Beasts’ deaths and the rescue chapter 78, all in episode 45. Owl’s torture is left out. Checked on the episode page and the chapter pages.',
+      note: 'Corrected after review: the Shadow Beasts’ deaths no longer name Owl as the one who lives: chapter 78 reports them all dead and shows Owl held only in chapter 84, so the line said too early, for chapter readers, that he survives. The needle and the cloth are chapter 77 (pages 12-19), the Shadow Beasts’ deaths and the rescue chapter 78, all in episode 45. Owl’s torture is left out. Checked on the episode page and the chapter pages.',
     },
   },
   'ivlenkov': {
@@ -834,11 +834,11 @@ export const HUNTER_X_HUNTER_SOURCES = {
   'uvogin': {
     43: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_43_(2011)',
-      note: 'The call is chapter 74, the fight with the Mafia chapter 75 (pages 1-16), both in episode 43. The leader is not named before episode 54. Checked on the episode page and the chapter pages.',
+      note: 'Corrected after review: the leader convinces him because a traitor would gain nothing; the Shadow Beast who emptied the vault is what Uvogin reports, not the leader’s reason (chapter 74, episode 43). The call is chapter 74, the fight with the Mafia chapter 75 (pages 1-16), both in episode 43. The leader is not named before episode 54. Checked on the episode page and the chapter pages.',
     },
     44: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_44_(2011)',
-      note: 'The fight is chapters 75-76, the chain and the car chapter 77 (pages 1-11), all in episode 44. Porcupine’s fate stays open. Italian: Colpo del Big Bang (Italian Wikipedia, Brigata Fantasma). Checked on the episode page and the chapter pages.',
+      note: 'Corrected after review: in Italian, the skull fragment is named as Leech’s. The fight is chapters 75-76, the chain and the car chapter 77 (pages 1-11), all in episode 44. Porcupine’s fate stays open. Italian: Colpo del Big Bang (Italian Wikipedia, Brigata Fantasma). Checked on the episode page and the chapter pages.',
     },
     45: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_45_(2011)',
@@ -850,7 +850,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
     47: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_47_(2011)',
-      note: 'Chapters 81-84 and episode 47. Italian: Catena del Giudizio (Italian Wikipedia, Kurapika Kurata). Checked on the episode page and the chapter pages.',
+      note: 'Corrected after review: “truthfully” dropped; episode 47 says only that the rule is to answer his questions. Chapters 81-84 and episode 47. Italian: Catena del Giudizio (Italian Wikipedia, Kurapika Kurata). Checked on the episode page and the chapter pages.',
     },
   },
   'worm': {
@@ -860,13 +860,13 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
     45: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_45_(2011)',
-      note: 'The punches and the blast are chapters 75-76 and episode 44; his call to the others closes chapter 76 (page 19) and opens episode 45; the deaths are chapter 78 and episode 45. Checked on the episode page and the chapter pages. His call to the other Shadow Beasts is chapter 76, page 19, which episode 45 adapts; the episode page summary does not describe it.',
+      note: 'Corrected after review: his call asks for everyone against the Troupe, without naming the Shadow Beasts as the ones called; the Italian arm is “glielo”; and the Shadow Beasts’ deaths no longer name Owl as the one who lives: chapter 78 reports them all dead and shows Owl held only in chapter 84, so the line said too early, for chapter readers, that he survives. Worm now dies with the others. The punches and the blast are chapters 75-76 and episode 44; his call to the others closes chapter 76 (page 19) and opens episode 45; the deaths are chapter 78 and episode 45. Checked on the episode page and the chapter pages. His call to the other Shadow Beasts is chapter 76, page 19, which episode 45 adapts; the episode page summary does not describe it.',
     },
   },
   'rabid-dog': {
     43: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_43_(2011)',
-      note: 'The Shadow Beasts are explained in chapter 74 and episode 43; the four arrive in chapter 75 (pages 1-16), the end of episode 43. Checked on the episode page and the chapter pages. His question to Uvogin is chapter 75, pages 17-19, in episode 44, and is left out.',
+      note: 'Corrected after review: the four first speak to the Nostrade bodyguards, then go to face Uvogin. The Shadow Beasts are explained in chapter 74 and episode 43; the four arrive in chapter 75 (pages 1-16), the end of episode 43. Checked on the episode page and the chapter pages. His question to Uvogin is chapter 75, pages 17-19, in episode 44, and is left out.',
     },
     44: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_44_(2011)',
@@ -894,13 +894,13 @@ export const HUNTER_X_HUNTER_SOURCES = {
   'nobunaga': {
     45: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_45_(2011)',
-      note: 'The cloth is chapter 77 (pages 12-19), the Shadow Beasts’ deaths chapter 78, both in episode 45. Checked on the episode page and the chapter pages.',
+      note: 'Corrected after review: the Shadow Beasts’ deaths no longer name Owl as the one who lives: chapter 78 reports them all dead and shows Owl held only in chapter 84, so the line said too early, for chapter readers, that he survives. The cloth is chapter 77 (pages 12-19), the Shadow Beasts’ deaths chapter 78, both in episode 45. Checked on the episode page and the chapter pages.',
     },
   },
   'owl': {
     45: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_45_(2011)',
-      note: 'The cloth is chapter 77 (pages 12-19), the Shadow Beasts’ deaths chapter 78, both in episode 45. His torture is left out. Checked on the episode page and the chapter pages.',
+      note: 'Corrected after review: the story stops when Nobunaga is trapped and the other Shadow Beasts arrive (chapter 77, pages 12-19, in episode 45), so it is now pinned at chapter 77. The Shadow Beasts’ deaths no longer name Owl as the one who lives: chapter 78 reports them all dead and shows Owl held only in chapter 84, so the line said too early, for chapter readers, that he survives. His status for chapter readers is now unknown from chapter 78 to 83. His torture is left out.',
     },
   },
   'phinks': {

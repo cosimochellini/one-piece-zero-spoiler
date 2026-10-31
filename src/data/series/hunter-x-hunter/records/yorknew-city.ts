@@ -875,10 +875,13 @@ export const yorknewCity: HunterSaga = {
       },
       // Episode 45 shows the Troupe holding and torturing him; the manga
       // first shows him held at the hideout in chapter 84 (episode 47). An
-      // anime reader meets him captured, a manga reader free until then.
+      // anime reader meets him captured. A manga reader meets him free, and
+      // from chapter 78, where the Shadow Beasts are reported all dead,
+      // does not know his fate until chapter 84 (#902).
       status: [
         { episode: 45, chapter: 77, value: 'alive', source: 'chapter' },
         { episode: 45, chapter: 77, value: 'captured', source: 'episode' },
+        { episode: 45, chapter: 78, value: 'unknown', source: 'chapter' },
         { episode: 47, chapter: 84, value: 'captured', source: 'chapter' },
       ],
       affiliation: [{ episode: 45, chapter: 77, value: SHADOW_BEASTS }],
@@ -894,8 +897,7 @@ export const yorknewCity: HunterSaga = {
         { episode: 43, chapter: 75, value: 'alive' },
         // Badly wounded by Uvogin's blast, he crawls out of the ground and
         // calls for the other Shadow Beasts (chapter 76, episode 44). The
-        // death of every Shadow Beast but Owl is told in chapter 78 and
-        // episode 45.
+        // death of the Shadow Beasts is told in chapter 78 and episode 45.
         { episode: 45, chapter: 78, value: 'deceased' },
       ],
       affiliation: [{ episode: 43, chapter: 75, value: SHADOW_BEASTS }],
