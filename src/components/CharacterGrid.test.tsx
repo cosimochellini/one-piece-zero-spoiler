@@ -1,6 +1,6 @@
 import { screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { describe, expect, it, vi } from 'vitest'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 
 import type { Locale } from '~/i18n/locales'
 import type {
@@ -132,7 +132,39 @@ function shelf(name: RegExp): HTMLElement {
   return screen.getByRole('region', { name })
 }
 
+function observeShelves(): (list: Element) => void {
+  const observed: {
+    callback: (entries: { isIntersecting: boolean }[]) => void
+    target: Element
+  }[] = []
+
+  class Observer {
+    private notify: (entries: { isIntersecting: boolean }[]) => void
+    disconnect = vi.fn<() => void>()
+    observe = vi.fn<(target: Element) => void>((target) => {
+      observed.push({ callback: this.notify, target })
+    })
+    takeRecords = (): IntersectionObserverEntry[] => []
+    unobserve = vi.fn<(target: Element) => void>()
+
+    constructor(notify: (entries: { isIntersecting: boolean }[]) => void) {
+      this.notify = notify
+    }
+  }
+
+  vi.stubGlobal('IntersectionObserver', Observer)
+  return (list) => {
+    const found = observed.find((entry) => entry.target === list)
+    if (found === undefined) {
+      throw new Error('the shelf is not being observed')
+    }
+    found.callback([{ isIntersecting: true }])
+  }
+}
+
 describe('CharacterGrid', () => {
+  afterEach(() => vi.unstubAllGlobals())
+
   it('lists the open characters as links to their pages and fogs the rest', () => {
     book()
 
@@ -175,6 +207,73 @@ describe('CharacterGrid', () => {
     expect(within(covered).queryByRole('link')).not.toBeInTheDocument()
     expect(covered.querySelectorAll('path')).toHaveLength(0)
     expect(within(covered).getByText('Episode 130')).toBeVisible()
+  })
+
+  it('mounts a shelf when it nears the viewport and leaves distant shelves light', async () => {
+    const enter = observeShelves()
+    book()
+
+    const open = shelf(/East Blue Saga/u)
+    const covered = shelf(/Arc under fog/u)
+    const openList = within(open).getByRole('list')
+    const coveredList = within(covered).getByRole('list')
+
+    expect(
+      openList.querySelectorAll(':scope > [aria-hidden="true"]'),
+    ).toHaveLength(2)
+    expect(within(open).queryByRole('link')).not.toBeInTheDocument()
+
+    enter(openList)
+
+    await expect(within(open).findAllByRole('link')).resolves.toHaveLength(2)
+    expect(
+      coveredList.querySelectorAll(':scope > [aria-hidden="true"]'),
+    ).toHaveLength(1)
+    expect(within(covered).queryByText('Episode 130')).not.toBeInTheDocument()
+  })
+
+  it('mounts the next shelf as scrolling brings it near', async () => {
+    const enter = observeShelves()
+    book()
+
+    const covered = shelf(/Arc under fog/u)
+    const list = within(covered).getByRole('list')
+
+    expect(within(covered).queryByText('Episode 130')).not.toBeInTheDocument()
+
+    enter(list)
+
+    const episode = await within(covered).findByText('Episode 130')
+
+    expect(episode).toBeVisible()
+    expect(within(covered).queryByRole('link')).not.toBeInTheDocument()
+  })
+
+  it('shows internal search results immediately in a distant shelf', async () => {
+    observeShelves()
+    const user = userEvent.setup()
+    book()
+
+    const open = shelf(/East Blue Saga/u)
+    await user.type(screen.getByRole('searchbox'), 'nami')
+
+    expect(within(open).getByRole('link', { name: /Nami/u })).toBeVisible()
+    expect(
+      within(open).queryByRole('link', { name: /Luffy/u }),
+    ).not.toBeInTheDocument()
+    expect(shelf(/Arc under fog/u)).toBeInTheDocument()
+  })
+
+  it('mounts all tiles immediately without IntersectionObserver', () => {
+    vi.stubGlobal('IntersectionObserver', undefined)
+    book()
+
+    expect(within(shelf(/East Blue Saga/u)).getAllByRole('link')).toHaveLength(
+      2,
+    )
+    expect(
+      within(shelf(/Arc under fog/u)).getByText('Episode 130'),
+    ).toBeVisible()
   })
 
   it('keeps the covered arc’s slug out of the shelf’s own id', () => {

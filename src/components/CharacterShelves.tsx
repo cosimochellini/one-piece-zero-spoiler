@@ -3,21 +3,10 @@ import { type ReactElement, Suspense, use } from 'react'
 
 import { CatalogueSection } from '~/components/CatalogueSection'
 import { styles } from '~/components/CharacterGrid.styles'
-import { CharacterTile } from '~/components/CharacterTile'
-import { type Match, matchesIn } from '~/components/recordMatches'
-import { SpoilerVeil } from '~/components/SpoilerVeil'
+import { CharacterShelf } from '~/components/CharacterShelf'
 import { Button } from '~/components/ui/Button'
 import { useT } from '~/i18n/LocaleContext'
-import { useThreshold } from '~/lib/progress/BookmarkContext'
-import type {
-  CharacterView,
-  CoveredRecord,
-  RecordView,
-  SearchableCharacter,
-  ShelfView,
-  Slot,
-} from '~/lib/view/records'
-import { stickyStyles } from '~/styles/sticky'
+import type { CharacterView, ShelfView } from '~/lib/view/records'
 
 /**
  * The shelves, the promise of them, or `null` before the browser has asked.
@@ -150,7 +139,7 @@ function Shelves({
         const headingId = `${fieldId}-shelf-${String(index)}`
 
         return (
-          <Shelf
+          <CharacterShelf
             key={
               section.arc.open ?
                 `open-${section.arc.record.id}`
@@ -202,167 +191,5 @@ function ShelvesPending({ count }: { count: number }): ReactElement {
         )
       })}
     </div>
-  )
-}
-
-/**
- * One shelf: the arc's head, then the open tiles that answer the search and
- * every covered tile, in that order. A shelf with nothing to show during a
- * search is left out; with no search every shelf is on the page.
- */
-function Shelf({
-  featured,
-  section,
-  headingId,
-  needle,
-  peek,
-}: {
-  featured: Set<string>
-  headingId: string
-  needle: string
-  peek: (handle: string) => Promise<CharacterView>
-  section: ShelfView
-}): null | ReactElement {
-  const shown = matchesIn(section.open, needle)
-
-  if (needle !== '' && shown.length === 0 && section.covered.length === 0) {
-    return null
-  }
-
-  return (
-    <section
-      aria-labelledby={headingId}
-      {...stylex.props(styles.shelf)}
-    >
-      <ShelfHead
-        arc={section.arc}
-        count={section.total}
-        headingId={headingId}
-        peek={peek}
-      />
-      <ShelfTiles
-        covered={section.covered}
-        featured={featured}
-        peek={peek}
-        shown={shown}
-      />
-    </section>
-  )
-}
-
-/**
- * The arc's name, the threshold it opens on, and how many characters it holds.
- * The name is veiled when the arc is covered, which for a reader counting in
- * episodes only happens when every tile on the shelf is covered too; the
- * threshold and the count stay legible either way, because they are the
- * promise and not the spoiler.
- */
-function ShelfHead({
-  arc,
-  count,
-  headingId,
-  peek,
-}: {
-  // An arc, not a character: it has a name and a drawing and no role. The
-  // peek is the page's one closure either way, and a character view is a
-  // record view with a role on it, so it satisfies this.
-  arc: Slot<RecordView>
-  count: number
-  headingId: string
-  peek: (handle: string) => Promise<RecordView>
-}): ReactElement {
-  const t = useT()
-  const threshold = useThreshold()
-
-  return (
-    <>
-      <div {...stylex.props(stickyStyles.bar, styles.shelfHead)}>
-        <div {...stylex.props(styles.shelfName)}>
-          <SpoilerVeil
-            density="inline"
-            peek={peek}
-            placeholder={
-              <h3
-                id={headingId}
-                {...stylex.props(styles.shelfTitle)}
-              >
-                {t('characters.sectionFogged')}
-              </h3>
-            }
-            slot={arc}
-          >
-            {(record) => {
-              return (
-                <h3
-                  id={headingId}
-                  {...stylex.props(styles.shelfTitle)}
-                >
-                  {record.name}
-                </h3>
-              )
-            }}
-          </SpoilerVeil>
-        </div>
-        <p {...stylex.props(styles.shelfMeta)}>
-          <span>
-            {count === 1 ?
-              t('characters.sectionCountOne')
-            : t('characters.sectionCount', { count })}
-          </span>
-        </p>
-      </div>
-      <p {...stylex.props(styles.shelfEpisode)}>
-        {threshold(
-          'characters.sectionOpensAt',
-          arc.open ? arc.record : arc.covered,
-        )}
-      </p>
-    </>
-  )
-}
-
-/**
- * The open tiles that answered the search, then every covered one. The two
- * runs are kept apart and in this order so a covered tile never changes place
- * as the reader types.
- */
-function ShelfTiles({
-  shown,
-  covered,
-  featured,
-  peek,
-}: {
-  covered: CoveredRecord[]
-  featured: Set<string>
-  peek: (handle: string) => Promise<CharacterView>
-  shown: Match<SearchableCharacter>[]
-}): ReactElement {
-  return (
-    <ul {...stylex.props(styles.tiles)}>
-      {shown.map(({ entry, match }) => {
-        return (
-          <CharacterTile
-            key={`open-${entry.id}`}
-            highlight={match.highlight}
-            morph={!featured.has(entry.id)}
-            peek={peek}
-            slot={{ open: true, record: entry }}
-          />
-        )
-      })}
-      {covered.map((entry) => {
-        return (
-          // ponytail: a covered tile's id is unknown until it is peeked, so it
-          // keeps its names. Peeking both a featured card and its tile puts one
-          // name on two elements, and the browser skips that one transition
-          // (the navigation still happens). Pass the peeked id up if it shows.
-          <CharacterTile
-            key={`fog-${entry.handle}`}
-            peek={peek}
-            slot={{ open: false, covered: entry }}
-          />
-        )
-      })}
-    </ul>
   )
 }

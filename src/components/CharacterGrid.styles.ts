@@ -115,4 +115,5 @@ export const styles = stylex.create({
     paddingInlineStart: 0,
     rowGap: space.md,
   },
+  tilePlaceholder: { height: '5.825rem' },
 })
