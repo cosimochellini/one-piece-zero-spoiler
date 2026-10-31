@@ -10,3 +10,8 @@ relabel an issue.
   label; an epic has no `size:`. The labels live in `.github/labels.json`; after
   editing that file, run `npm run labels:sync`.
 - A loop that picks up issues starts with `npm run issues:unblock`.
+
+## Pull requests
+
+Load the `landing-prs` skill (`.agents/skills/landing-prs/SKILL.md`) before you
+review, fix review findings on, or merge a pull request.

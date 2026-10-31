@@ -57,12 +57,13 @@ const run = (id, status, conclusion) => ({ id, status, conclusion })
 /**
  * The PR as `gh pr view --json` sees it.
  * @param {string} state - OPEN or MERGED.
+ * @param {string} [mergeable] - MERGEABLE or CONFLICTING.
  * @returns {object} The PR fields the script reads.
  */
-const pr = (state) => ({
+const pr = (state, mergeable = 'MERGEABLE') => ({
   state,
   baseRefName: 'main',
-  mergeable: 'MERGEABLE',
+  mergeable,
   headRefOid: head,
   mergeCommit: state === 'MERGED' ? { oid: 'b'.repeat(40) } : null,
   closingIssuesReferences: [],
@@ -73,8 +74,9 @@ const pr = (state) => ({
  * @param {string} bin - The directory put first on the PATH.
  * @param {object[][]} runs - The check runs each `gh api` call returns.
  * @param {string} [refusedThen] - When set, `gh pr merge` is refused and the PR state reads this after.
+ * @param {string} [mergeable] - What GitHub reports about merging the PR.
  */
-function prepare(bin, runs, refusedThen) {
+function prepare(bin, runs, refusedThen, mergeable) {
   /**
    * Writes an executable fake into the bin directory.
    * @param {string} name - The command it stands in for.
@@ -85,14 +87,29 @@ function prepare(bin, runs, refusedThen) {
     chmodSync(path.join(bin, name), 0o755)
   }
   fake('gh', fakeGh)
-  // Git only fetches and compares here: no output reads as up to date with main.
-  fake('git', '#!/bin/sh\nexit 0\n')
+  // Main has moved on by a commit that is not a release, and a merge with it
+  // conflicts on one file: the script must neither care about the first nor
+  // miss the second.
+  fake(
+    'git',
+    `#!/bin/sh
+case "$1" in
+  rev-list) echo ${'c'.repeat(40)} ;;
+  log) echo 'feat(records): another change' ;;
+  merge-tree) echo tree; echo src/a.ts ;;
+esac
+exit 0
+`,
+  )
   fake('sleep', '#!/bin/sh\nexit 0\n')
   writeFileSync(
     path.join(bin, 'runs.jsonl'),
     runs.map((list) => JSON.stringify({ check_runs: list })).join('\n'),
   )
-  writeFileSync(path.join(bin, 'pr.json'), JSON.stringify(pr('OPEN')))
+  writeFileSync(
+    path.join(bin, 'pr.json'),
+    JSON.stringify(pr('OPEN', mergeable)),
+  )
   if (refusedThen) {
     writeFileSync(
       path.join(bin, 'refused.json'),
@@ -106,12 +123,13 @@ function prepare(bin, runs, refusedThen) {
  * Runs land-pr.sh once in a fresh directory of fakes, removed afterwards.
  * @param {object[][]} runs - The check runs each `gh api` call returns.
  * @param {string} [refusedThen] - When set, `gh pr merge` is refused and the PR state reads this after.
+ * @param {string} [mergeable] - What GitHub reports about merging the PR.
  * @returns {{ status: number | null, stdout: string, calls: string }} The exit status, output and the `gh` calls made.
  */
-function land(runs, refusedThen) {
+function land(runs, refusedThen, mergeable) {
   const bin = mkdtempSync(path.join(tmpdir(), 'land-pr-'))
   try {
-    prepare(bin, runs, refusedThen)
+    prepare(bin, runs, refusedThen, mergeable)
     const child = spawnSync('bash', [script, '42', head], {
       encoding: 'utf8',
       env: {
@@ -155,6 +173,27 @@ describe('land-pr.sh', () => {
 
     expect(stdout).not.toContain('merged')
     expect(status).toBe(5)
+  })
+
+  it('merges a head behind main without syncing it', () => {
+    const { status, stdout, calls } = land([[run(1, 'completed', 'success')]])
+
+    expect(stdout).toContain(`merged ${head}`)
+    expect(calls).not.toContain('graphql')
+    expect(status).toBe(0)
+  })
+
+  it('exits 2 naming the files when the head conflicts with main', () => {
+    const { status, stdout, calls } = land(
+      [[run(1, 'completed', 'success')]],
+      undefined,
+      'CONFLICTING',
+    )
+
+    expect(stdout).toContain('merge main into the branch')
+    expect(stdout).toContain('src/a.ts')
+    expect(calls).not.toContain('pr merge')
+    expect(status).toBe(2)
   })
 
   it('still exits 3 on a failed run', () => {
