@@ -1262,11 +1262,11 @@ export const dressrosa: OnePieceSaga = {
             en: 'Doflamingo’s subordinate',
           },
         },
-        // She leaves Doflamingo’s side for Sai’s after Lao G falls, chapter
-        // 772, episode 711.
+        // Sai agrees to marry her and she stops fighting him in chapter 771,
+        // episode 710 ("The Battle of Love").
         {
-          episode: 711,
-          chapter: 772,
+          episode: 710,
+          chapter: 771,
           value: { it: 'Al fianco di Sai', en: 'At Sai’s side' },
         },
       ],

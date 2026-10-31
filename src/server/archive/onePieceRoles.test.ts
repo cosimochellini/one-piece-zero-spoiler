@@ -719,7 +719,8 @@ const ROLES: { changes: Change[]; id: string }[] = [
       },
     ],
   },
-  // #975 part 3: Dressrosa, Whole Cake, Wano, Egghead and Elbaph.
+  // #975 part 3: Dressrosa, Whole Cake, Wano and Egghead. Elbaph was audited
+  // too: none of its roles changes, so it has no rows.
   {
     id: 'koala',
     changes: [
@@ -786,8 +787,8 @@ const ROLES: { changes: Change[]; id: string }[] = [
     id: 'baby-5',
     changes: [
       {
-        episode: 711,
-        chapter: 772,
+        episode: 710,
+        chapter: 771,
         from: role('Sottoposta di Do Flamingo', 'Doflamingo’s subordinate'),
         to: role('Al fianco di Sai', 'At Sai’s side'),
       },
@@ -1047,8 +1048,8 @@ const ROLES: { changes: Change[]; id: string }[] = [
         chapter: 919,
         from: role('Cameriera della casa da tè', 'Tea house waitress'),
         to: role(
-          'Samurai al servizio dei Kozuki',
-          'Samurai retainer of the Kozuki family',
+          'Compagna di Kin’emon giunta da vent’anni prima',
+          'Kin’emon’s companion from twenty years ago',
         ),
       },
     ],
@@ -1070,7 +1071,10 @@ const ROLES: { changes: Change[]; id: string }[] = [
       {
         episode: 948,
         chapter: 948,
-        from: role('Prigioniero di Udon', 'Prisoner of Udon'),
+        from: role(
+          'Prigioniero di Udon, uno dei Nove Foderi Rossi',
+          'Prisoner of Udon, one of the Nine Red Scabbards',
+        ),
         to: role('Uno dei Nove Foderi Rossi', 'One of the Nine Red Scabbards'),
       },
     ],

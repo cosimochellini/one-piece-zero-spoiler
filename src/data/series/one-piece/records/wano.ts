@@ -804,14 +804,14 @@ export const wano: OnePieceSaga = {
           chapter: 914,
           value: { it: 'Cameriera della casa da tè', en: 'Tea house waitress' },
         },
-        // One of Kin’emon’s group from twenty years ago, chapter 919, episode
-        // 909.
+        // She came from twenty years ago with Kin’emon’s group, chapter 919,
+        // episode 909; the Scabbards are named later, in chapter 939.
         {
           episode: 909,
           chapter: 919,
           value: {
-            it: 'Samurai al servizio dei Kozuki',
-            en: 'Samurai retainer of the Kozuki family',
+            it: 'Compagna di Kin’emon giunta da vent’anni prima',
+            en: 'Kin’emon’s companion from twenty years ago',
           },
         },
       ],
@@ -1286,9 +1286,16 @@ export const wano: OnePieceSaga = {
         {
           episode: 936,
           chapter: 946,
-          value: { it: 'Prigioniero di Udon', en: 'Prisoner of Udon' },
+          // Hiyori names him a Scabbard in chapter 939, below his record's
+          // chapter, and episode 936 is his record's own episode: both facts
+          // hold from his threshold.
+          value: {
+            it: 'Prigioniero di Udon, uno dei Nove Foderi Rossi',
+            en: 'Prisoner of Udon, one of the Nine Red Scabbards',
+          },
         },
-        // Out of the Udon cell in chapter 948, the pair of his status.
+        // He breaks out of the cell in chapter 948, the pair of his status,
+        // so he is no longer a prisoner.
         {
           episode: 948,
           chapter: 948,
