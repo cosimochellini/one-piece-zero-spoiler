@@ -773,6 +773,7 @@ export const yorknewCity: HunterSaga = {
       affiliation: [{ episode: 41, chapter: 71, value: TROUPE }],
     },
     'uvogin': {
+      chronicle: yorknewCityChronicles.uvogin,
       role: TROUPE_MEMBER,
       log: {
         it: 'Fugge dall’asta in mongolfiera con altri membri della Brigata. Al telefono dice al capo che il caveau era già vuoto e che tra loro potrebbe esserci un traditore; il capo lo convince che non c’è. Il capo vuole che attirino le Bestie dell’Ombra.',
@@ -794,6 +795,7 @@ export const yorknewCity: HunterSaga = {
       affiliation: [{ episode: 43, chapter: 74, value: TROUPE }],
     },
     'feitan': {
+      chronicle: yorknewCityChronicles.feitan,
       role: TROUPE_MEMBER,
       log: {
         it: 'Sale sul palco dell’asta sotterranea con un altro membro della Brigata e dà il benvenuto agli ospiti; subito dopo vengono uccisi quasi tutti i presenti.',
@@ -803,6 +805,7 @@ export const yorknewCity: HunterSaga = {
       affiliation: [{ episode: 43, chapter: 74, value: TROUPE }],
     },
     'franklin': {
+      chronicle: yorknewCityChronicles.franklin,
       role: TROUPE_MEMBER,
       log: {
         it: 'All’asta sotterranea, sul palco con Feitan, uccide quasi tutti gli ospiti con proiettili fatti di aura. Poi gioca a carte con gli altri membri mentre Uborghin affronta da solo le Bestie dell’Ombra.',
@@ -812,6 +815,7 @@ export const yorknewCity: HunterSaga = {
       affiliation: [{ episode: 44, chapter: 76, value: TROUPE }],
     },
     'nobunaga': {
+      chronicle: yorknewCityChronicles.nobunaga,
       role: TROUPE_MEMBER,
       log: {
         it: 'Con altri membri della Brigata insegue l’auto che porta via Uborghin. Civetta atterra sulla loro auto e la avvolge in un telo: gli altri riescono a uscire, lui, per il posto in cui è seduto, resta intrappolato.',
@@ -827,6 +831,7 @@ export const yorknewCity: HunterSaga = {
       affiliation: [{ episode: 45, chapter: 77, value: TROUPE }],
     },
     'phinks': {
+      chronicle: yorknewCityChronicles.phinks,
       role: TROUPE_MEMBER,
       log: {
         it: 'Con altri membri della Brigata, travestiti da mafiosi, raggiunge il posto dove le guardie del corpo tengono Uborghin, uccide Dalzorne e libera il compagno.',
@@ -836,6 +841,7 @@ export const yorknewCity: HunterSaga = {
       affiliation: [{ episode: 45, chapter: 78, value: TROUPE }],
     },
     'shalnark': {
+      chronicle: yorknewCityChronicles.shalnark,
       role: TROUPE_MEMBER,
       log: {
         it: 'Mentre Uborghin beve birra, cerca la famiglia Nostrad sul sito degli Hunter, così che Uborghin possa scovare l’utilizzatore di catene.',
@@ -845,6 +851,7 @@ export const yorknewCity: HunterSaga = {
       affiliation: [{ episode: 46, chapter: 79, value: TROUPE }],
     },
     'light-nostrade': {
+      chronicle: yorknewCityChronicles['light-nostrade'],
       role: { it: 'Padre di Neon', en: 'Neon’s father' },
       log: {
         it: 'Le guardie del corpo scoprono da Squala che è lui ad averle assunte. Al telefono Kurapika gli dice che Dalzorne è probabilmente morto, e lui lo mette a capo delle guardie.',
@@ -860,6 +867,7 @@ export const yorknewCity: HunterSaga = {
       ],
     },
     'owl': {
+      chronicle: yorknewCityChronicles.owl,
       role: SHADOW_BEAST,
       log: {
         it: 'Atterra sull’auto dei membri della Brigata che inseguono Uborghin e la avvolge nel suo telo: tutti riescono a uscire tranne Nobunaga, che resta intrappolato. Poi arrivano le altre Bestie dell’Ombra.',
@@ -867,15 +875,19 @@ export const yorknewCity: HunterSaga = {
       },
       // Episode 45 shows the Troupe holding and torturing him; the manga
       // first shows him held at the hideout in chapter 84 (episode 47). An
-      // anime reader meets him captured, a manga reader free until then.
+      // anime reader meets him captured. A manga reader meets him free and,
+      // from chapter 78, where the Shadow Beasts are reported all dead,
+      // holds him presumed dead like Worm until chapter 84 (#902).
       status: [
         { episode: 45, chapter: 77, value: 'alive', source: 'chapter' },
         { episode: 45, chapter: 77, value: 'captured', source: 'episode' },
+        { episode: 45, chapter: 78, value: 'presumed-dead', source: 'chapter' },
         { episode: 47, chapter: 84, value: 'captured', source: 'chapter' },
       ],
       affiliation: [{ episode: 45, chapter: 77, value: SHADOW_BEASTS }],
     },
     'worm': {
+      chronicle: yorknewCityChronicles.worm,
       role: SHADOW_BEAST,
       log: {
         it: 'Sbuca da sotto terra vicino alle guardie del corpo dei Nostrad e si presenta. Con altre tre Bestie dell’Ombra va ad affrontare Uborghin.',
@@ -884,14 +896,18 @@ export const yorknewCity: HunterSaga = {
       status: [
         { episode: 43, chapter: 75, value: 'alive' },
         // Badly wounded by Uvogin's blast, he crawls out of the ground and
-        // calls for the other Shadow Beasts (chapter 76, episode 44). The
-        // death of every Shadow Beast but Owl is told in chapter 78 and
-        // episode 45.
-        { episode: 45, chapter: 78, value: 'deceased' },
+        // calls for help (chapter 76, episode 44). Episode 45 shows the
+        // Shadow Beasts killed. Chapter 78 only reports them all dead, from a
+        // caller, so a chapter reader holds him presumed dead until Light
+        // counts nine bodies in chapter 89 (#902).
+        { episode: 45, chapter: 78, value: 'deceased', source: 'episode' },
+        { episode: 45, chapter: 78, value: 'presumed-dead', source: 'chapter' },
+        { episode: 49, chapter: 89, value: 'deceased', source: 'chapter' },
       ],
       affiliation: [{ episode: 43, chapter: 75, value: SHADOW_BEASTS }],
     },
     'rabid-dog': {
+      chronicle: yorknewCityChronicles['rabid-dog'],
       role: SHADOW_BEAST,
       log: {
         it: 'Arriva con altre due Bestie dell’Ombra per affrontare Uborghin.',
@@ -906,6 +922,7 @@ export const yorknewCity: HunterSaga = {
       affiliation: [{ episode: 43, chapter: 75, value: SHADOW_BEASTS }],
     },
     'porcupine': {
+      chronicle: yorknewCityChronicles.porcupine,
       role: SHADOW_BEAST,
       log: {
         it: 'I suoi peli trattengono il pugno di Uborghin e non lo lasciano andare. Uborghin se ne libera con un urlo.',
@@ -922,6 +939,7 @@ export const yorknewCity: HunterSaga = {
       affiliation: [{ episode: 44, chapter: 76, value: SHADOW_BEASTS }],
     },
     'leech': {
+      chronicle: yorknewCityChronicles.leech,
       role: SHADOW_BEAST,
       log: {
         it: 'Riempie di sanguisughe il corpo di Uborghin, paralizzato dal veleno. Uborghin gli affonda i denti nella testa.',

@@ -271,8 +271,9 @@ const STATUS_STEPS = [
     before: 'alive',
     after: 'deceased',
   },
-  // Worm survives Uvogin's blast; the deaths of the Shadow Beasts are told
-  // in chapter 78 and episode 45.
+  // Worm survives Uvogin's blast. Episode 45 shows the Shadow Beasts
+  // killed; chapter 78 reports them all dead, and chapter 89 counts the
+  // bodies.
   {
     id: 'worm',
     unit: 'episode',
@@ -285,6 +286,13 @@ const STATUS_STEPS = [
     unit: 'chapter',
     count: 78,
     before: 'alive',
+    after: 'presumed-dead',
+  },
+  {
+    id: 'worm',
+    unit: 'chapter',
+    count: 89,
+    before: 'presumed-dead',
     after: 'deceased',
   },
   {
@@ -393,7 +401,8 @@ const STATUS_STEPS = [
     before: 'captured',
     after: 'alive',
   },
-  // Episode 45 meets Owl already held; the manga shows him held at 84.
+  // Episode 45 meets Owl already held. The manga reports the Shadow
+  // Beasts all dead at 78 and shows him held only at 84.
   {
     id: 'owl',
     unit: 'episode',
@@ -402,7 +411,20 @@ const STATUS_STEPS = [
     after: 'captured',
   },
   { id: 'owl', unit: 'chapter', count: 77, before: undefined, after: 'alive' },
-  { id: 'owl', unit: 'chapter', count: 84, before: 'alive', after: 'captured' },
+  {
+    id: 'owl',
+    unit: 'chapter',
+    count: 78,
+    before: 'alive',
+    after: 'presumed-dead',
+  },
+  {
+    id: 'owl',
+    unit: 'chapter',
+    count: 84,
+    before: 'presumed-dead',
+    after: 'captured',
+  },
 ]
 
 /** A character's status for an English reader at a bookmark. */

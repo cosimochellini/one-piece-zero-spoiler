@@ -116,6 +116,18 @@ export const HUNTER_X_HUNTER_SOURCES = {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_40_(2011)',
       note: 'Corrected after review: “reveals the plan” is episode 40 only; chapter 68 has him reveal how he used his Nen, so he only talks, as Squala’s record log says. Episode 40 and chapter 68: the chandelier, the dagger and the count to three, Tocino’s test and the four who can leave, the Dowsing Chain reacting at Squala, Melody, Basho’s haiku and Baise’s kiss. Italian: Catena della Pressione (Italian Wikipedia, Kurapika). Also read: Chapter 68.',
     },
+    44: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_44_(2011)',
+      note: 'Corrected after review: he moves only after the fight, as both media show. Chapter 77 (pages 1-11) and episode 44. Italian: Catena della Prigionia (Italian Wikipedia, Kurapika Kurata). Checked on the episode page and the chapter pages.',
+    },
+    46: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_46_(2011)',
+      note: 'Corrected after review: “the Nostrade family’s rooms” became where they are staying. Hisoka is chapters 78-79, the call to Light and the Hunter website chapter 79, Uvogin at the door chapter 80, all by the end of episode 46. Checked on the episode page and the chapter pages.',
+    },
+    47: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_47_(2011)',
+      note: 'Corrected after review: “before the auction” dropped from the teacher’s lesson. “truthfully” dropped; episode 47 says only that the rule is to answer his questions. The teacher and Water Divination are chapter 83 and episodes 39 and 47; the fight is chapters 81-84 and episode 47. Italian: Materializzazione, Specializzazione, Test dell’Acqua (Italian Wikipedia). Checked on the episode page and the chapter pages.',
+    },
   },
   'katzo': {
     1: {
@@ -179,6 +191,10 @@ export const HUNTER_X_HUNTER_SOURCES = {
     41: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_41_(2011)',
       note: 'Corrected after review: “the newest member” and the title “The new member” are episode 41 only; chapter 71 says only that members No. 4 and 8 have changed, so the four talk about him and the members who have changed, as in Machi’s story. The fake tattoo and Machi’s call for noon on August 30 are episode 32 and chapter 55; the four members talking about him on the road and the leader’s order are episode 41 and chapter 71. Also read: Episode 32 (2011), Chapter 55, Chapter 71.',
+    },
+    46: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_46_(2011)',
+      note: 'The leave to go is chapter 76 and episode 45; the meeting is chapter 78 and episode 45, the call and the Scarlet Eyes chapter 79 and episode 46. The leader is not named before episode 54. Checked on the episode page and the chapter pages.',
     },
   },
   'hanzo': {
@@ -712,6 +728,10 @@ export const HUNTER_X_HUNTER_SOURCES = {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_42_(2011)',
       note: 'Episode 42 adapts chapter 73, pages 1-9: the front entrance, the rage in Kurapika’s heart, his people’s eyes, the devil’s sonata, the arm, the friend who played it on the flute and died, her hearing, and her wish to destroy it. Also read: Chapter 73.',
     },
+    44: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_44_(2011)',
+      note: 'Chapter 77 (pages 1-11) and episode 44. Her finding Machi’s needle is chapter-only. Checked on the episode page and the chapter pages.',
+    },
   },
   'basho': {
     40: {
@@ -724,11 +744,19 @@ export const HUNTER_X_HUNTER_SOURCES = {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_40_(2011)',
       note: 'Corrected after review: “reveals the plan” is episode 40 only; chapter 68 has him reveal how he used his Nen, so he only talks, as Squala’s record log says. Episode 40 and chapter 68: Squala refusing to give his orders even under torture, and the kiss that makes him her servant. Also read: Chapter 68.',
     },
+    43: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_43_(2011)',
+      note: 'The attack on the auction is chapter 73 (pages 10-19) and episode 43. Feitan and Franklin are named only from chapters 74 and 76, so the two on the stage stay unnamed. Checked on the episode page and the chapter pages.',
+    },
   },
   'squala': {
     40: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_40_(2011)',
       note: 'Corrected after review: “reveals the plan” is episode 40 only; chapter 68 has him reveal how he used his Nen, so he only talks, as Squala’s record log says. Episode 40 and chapter 68: the chain, Melody hearing his heart, his denial and distrust, Basho’s haiku, his confession and introduction, the refusal under torture and Baise’s kiss. Also read: Chapter 68.',
+    },
+    46: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_46_(2011)',
+      note: 'Chapter 79 and episode 46. The hotel is not named before episode 57. Checked on the episode page and the chapter pages.',
     },
   },
   'shachmono-tocino': {
@@ -736,11 +764,23 @@ export const HUNTER_X_HUNTER_SOURCES = {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_40_(2011)',
       note: 'The locked door and the armed figures are episode 39 and chapter 67; Kurapika exposing him, the dagger and the count, his test and the four who can leave are episode 40 and chapter 68. Also read: Episode 39 (2011), Chapter 67, Chapter 68.',
     },
+    43: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_43_(2011)',
+      note: 'Chapter 73 (pages 10-19) and episode 43. Checked on the episode page and the chapter pages.',
+    },
   },
   'dalzollene': {
     41: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_41_(2011)',
       note: 'Corrected after review: in Italian “la loro protetta” became “il loro capo”, the boss of both media. The screen and the item from a list are episode 39 and chapter 67; the hiring, the escort to a hotel in Yorknew, the question about enemies, the figure in the frame and the girl on the bed are episode 41 and chapter 70. Also read: Episode 39 (2011), Chapter 67, Chapter 70.',
+    },
+    43: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_43_(2011)',
+      note: 'Kurapika’s report is chapter 74, the canyon and Worm chapter 75 (pages 1-16), both in episode 43. Checked on the episode page and the chapter pages.',
+    },
+    45: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_45_(2011)',
+      note: 'Chapter 78 and episode 45. Checked on the episode page and the chapter pages.',
     },
   },
   'neon-nostrade': {
@@ -754,11 +794,19 @@ export const HUNTER_X_HUNTER_SOURCES = {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_41_(2011)',
       note: 'Corrected after review: “a new member” became the members who have changed, as chapter 71 says. The Nen threads on Hisoka’s arms and the call for noon on August 30 are episode 32 and chapter 55; the four on the road, the first gathering in over three years, the talk of Hisoka and the order are episode 41 and chapter 71. Also read: Episode 32 (2011), Chapter 55, Chapter 71.',
     },
+    45: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_45_(2011)',
+      note: 'Corrected after review: Owl is no longer said to survive, and no killers named: chapter 78 only reports the Shadow Beasts all dead, from a caller, and the Troupe is first named as the killer in chapter 79, page 1. The story says only that other Shadow Beasts arrive. The needle and the cloth are chapter 77 (pages 12-19), the rescue chapter 78, both in episode 45. Owl’s torture is left out.',
+    },
   },
   'ivlenkov': {
     42: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_42_(2011)',
       note: 'Corrected after review: “the auction is too dangerous for her” is episode 41 only; both media show her father having her kept away from it. The escort is episode 41 and chapter 71; the posts (three inside, two at the back, Kurapika and Melody at the front) are episode 42 and chapter 72. Who goes where is named only in chapter 72; the episode 42 appearance list orders the bodyguards the same way, as the #900 records do. Also read: Episode 41 (2011), Chapter 71, Chapter 72.',
+    },
+    43: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_43_(2011)',
+      note: 'Chapter 73 (pages 10-19) and episode 43. Checked on the episode page and the chapter pages.',
     },
   },
   'linssen': {
@@ -771,6 +819,106 @@ export const HUNTER_X_HUNTER_SOURCES = {
     42: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_42_(2011)',
       note: 'Corrected after review: the members gather outside Yorknew City, the match is before the auction (not “that night”), and Gon has to try for real rather than use all his strength. The gathering and the order are episode 41 and chapter 71; the match with Gon and her return to the other members are episode 42 and chapter 72. The left arm is chapter-only. Also read: Episode 41 (2011), Chapter 71, Chapter 72.',
+    },
+    43: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_43_(2011)',
+      note: 'Chapter 73 (pages 10-19) and episode 43. Checked on the episode page and the chapter pages.',
+    },
+  },
+  'feitan': {
+    43: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_43_(2011)',
+      note: 'The stage is chapter 73 and episode 43, the balloon chapter 74, the ledge above the canyon chapter 75 (pages 1-16), all in episode 43. Franklin is named only from chapter 76. His torture of the auctioneer is chapter-only, and of Owl left out. Checked on the episode page and the chapter pages.',
+    },
+  },
+  'uvogin': {
+    43: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_43_(2011)',
+      note: 'Corrected after review: the leader convinces him because a traitor would gain nothing; the Shadow Beast who emptied the vault is what Uvogin reports, not the leader’s reason (chapter 74, episode 43). “The Mafia’s best fighters” became “the Mafia’s elite”, true in both. The call is chapter 74, the fight with the Mafia chapter 75 (pages 1-16), both in episode 43. The leader is not named before episode 54. Checked on the episode page and the chapter pages.',
+    },
+    44: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_44_(2011)',
+      note: 'Corrected after review: in Italian, the skull fragment is named as Leech’s. The fight is chapters 75-76, the chain and the car chapter 77 (pages 1-11), all in episode 44. Porcupine’s fate stays open. Italian: Colpo del Big Bang (Italian Wikipedia, Brigata Fantasma). Checked on the episode page and the chapter pages.',
+    },
+    45: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_45_(2011)',
+      note: 'The questioning and the rescue are chapter 78; his words for the leader open chapter 79 (page 1), all in episode 45. Checked on the episode page and the chapter pages.',
+    },
+    46: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_46_(2011)',
+      note: 'The beer and the website are chapter 79, the door chapter 80, both in episode 46. The chain user’s job, learned from a man he tortures, is chapter-only. Checked on the episode page and the chapter pages.',
+    },
+    47: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_47_(2011)',
+      note: 'Corrected after review: “truthfully” dropped; episode 47 says only that the rule is to answer his questions. Zetsu leaves him no aura, so only his bare strength is left, and it is not enough: the sentence now says so. Chapters 81-84 and episode 47. Italian: Catena del Giudizio (Italian Wikipedia, Kurapika Kurata). Checked on the episode page and the chapter pages.',
+    },
+  },
+  'worm': {
+    43: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_43_(2011)',
+      note: 'Corrected after review: “they will deal with the Troupe themselves” is episode 43 wording; both media have them tell the bodyguards to stay out of the fight. Chapter 75 (pages 1-16) and episode 43. Leech and Porcupine are named only from chapter 76. Checked on the episode page and the chapter pages.',
+    },
+    45: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_45_(2011)',
+      note: 'Corrected after review: his call asks for everyone against the Troupe; the Italian arm is “glielo”; Owl is no longer said to survive, and no killers named: chapter 78 only reports the Shadow Beasts all dead, from a caller, and the Troupe is first named as the killer in chapter 79, page 1. Worm is among the Shadow Beasts reported dead. Episode 45 shows them killed, so his status is deceased there; for chapter readers it is presumed dead at chapter 78 and deceased at chapter 89, where Light counts nine bodies. The punches and the blast are chapters 75-76 and episode 44; his call closes chapter 76 (page 19) and opens episode 45 (the episode 44 page’s image shows it too).',
+    },
+  },
+  'rabid-dog': {
+    43: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_43_(2011)',
+      note: 'Corrected after review: the four first speak to the Nostrade bodyguards, telling them to stay out of the fight (not that they will deal with the Troupe, which is episode 43 wording), then go to face Uvogin. The Shadow Beasts are explained in chapter 74 and episode 43; the four arrive in chapter 75 (pages 1-16), the end of episode 43. Checked on the episode page and the chapter pages. His question to Uvogin is chapter 75, pages 17-19, in episode 44, and is left out.',
+    },
+    44: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_44_(2011)',
+      note: 'Chapter 76 and episode 44. Checked on the episode page and the chapter pages.',
+    },
+  },
+  'porcupine': {
+    44: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_44_(2011)',
+      note: 'Chapter 76 and episode 44. Episode 44 leaves his fate open and chapter 76 does not, so the story says only that Uvogin is free of him. Checked on the episode page and the chapter pages.',
+    },
+  },
+  'leech': {
+    44: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_44_(2011)',
+      note: 'Chapter 76 and episode 44. Checked on the episode page and the chapter pages.',
+    },
+  },
+  'franklin': {
+    44: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_44_(2011)',
+      note: 'The auction is chapter 73 and episode 43; the cards, the fight and Shizuku’s answer are chapters 75-76 and episode 44. Checked on the episode page and the chapter pages.',
+    },
+  },
+  'nobunaga': {
+    45: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_45_(2011)',
+      note: 'Corrected after review: Owl is no longer said to survive, and no killers named: chapter 78 only reports the Shadow Beasts all dead, from a caller, and the Troupe is first named as the killer in chapter 79, page 1. The story stops when other Shadow Beasts arrive, all chapter 77 (pages 12-19) in episode 45, so it is now pinned at chapter 77.',
+    },
+  },
+  'owl': {
+    45: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_45_(2011)',
+      note: 'Corrected after review: the story stops when Nobunaga is trapped and the other Shadow Beasts arrive (chapter 77, pages 12-19, in episode 45), so it is now pinned at chapter 77. The Shadow Beasts’ deaths no longer name Owl as the one who lives: chapter 78 reports them all dead and shows Owl held only in chapter 84, so the line said too early, for chapter readers, that he survives. For chapter readers his status is now presumed dead from chapter 78, like Worm’s on the same report, and captured from chapter 84. His torture is left out.',
+    },
+  },
+  'phinks': {
+    45: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_45_(2011)',
+      note: 'Chapter 78 and episode 45. Checked on the episode page and the chapter pages.',
+    },
+  },
+  'light-nostrade': {
+    46: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_46_(2011)',
+      note: 'Corrected after review: the relay of his orders through Dalzollene is chapter 79 only and is dropped; episode 46 says only that he hired them. Chapter 79 and episode 46. Checked on the episode page and the chapter pages.',
+    },
+  },
+  'shalnark': {
+    46: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_46_(2011)',
+      note: 'Chapter 79 and episode 46. Franklin bringing the beer is anime-only. Checked on the episode page and the chapter pages.',
     },
   },
 }
