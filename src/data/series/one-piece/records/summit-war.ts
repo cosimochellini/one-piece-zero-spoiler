@@ -1194,10 +1194,32 @@ export const summitWar: OnePieceSaga = {
     'jinbe': {
       relationships: summitWarRelationships.jinbe,
       chronicle: summitWarChronicles.jinbe,
-      role: {
-        it: 'Uomo-pesce della Flotta dei Sette',
-        en: 'Fish-man of the Seven Warlords',
-      },
+      role: [
+        {
+          episode: 430,
+          chapter: 528,
+          value: {
+            it: 'Uomo-pesce della Flotta dei Sette',
+            en: 'Fish-man of the Seven Warlords',
+          },
+        },
+        // He tells Sengoku he resigns in chapter 557, which episode 466
+        // adapts. His affiliation's step at 486 is later; #980.
+        {
+          episode: 466,
+          chapter: 557,
+          value: {
+            it: 'Uomo-pesce, ex membro della Flotta dei Sette',
+            en: 'Fish-man, former Warlord',
+          },
+        },
+        // He joins the crew as its helmsman in chapter 976, episode 980.
+        {
+          episode: 980,
+          chapter: 976,
+          value: { it: 'Timoniere', en: 'Helmsman' },
+        },
+      ],
       log: {
         it: 'Il Governo gli ha chiesto di schierarsi contro Barbabianca, e lui ha preferito la cella. Nel livello più basso di Impel Down condivide la prigionia con Ace, e ha smesso di mangiare per protesta. Rufy lo libera perché gli serve un braccio in più; Jinbe lo segue perché quel braccio vuole salvare la stessa persona.',
         en: 'The Government asked him to take arms against Whitebeard, and he chose the cell instead. On the lowest level of Impel Down he shares his imprisonment with Ace, and has stopped eating in protest. Luffy frees him because he needs another pair of hands; Jinbe follows because those hands want to save the same man.',
@@ -1241,7 +1263,23 @@ export const summitWar: OnePieceSaga = {
     },
     'camie': {
       relationships: summitWarRelationships.camie,
-      role: { it: 'Sirena del Takoyaki 8', en: 'Mermaid of Takoyaki 8' },
+      role: [
+        {
+          episode: 385,
+          chapter: 493,
+          value: { it: 'Sirena del Takoyaki 8', en: 'Mermaid of Takoyaki 8' },
+        },
+        // A waitress at the Mermaid Café: chapter 608 says so; the anime first
+        // does in episode 529, at the café with her boss (as #983).
+        {
+          episode: 529,
+          chapter: 608,
+          value: {
+            it: 'Cameriera del Caffè delle Sirene',
+            en: 'Mermaid Café waitress',
+          },
+        },
+      ],
       log: {
         it: 'Viene inseguita per mare da una banda a cavallo di pesci volanti e se la cava perché un ragazzo di gomma decide che non se ne parla nemmeno. Serve al banco dei takoyaki di Octy, che la tratta come una figlia, e si scusa in continuazione per il disturbo che crede di dare. Nei guai ci finisce con facilità, e qualcuno deve sempre andare a riprenderla.',
         en: 'She is chased across the sea by a gang riding flying fish and gets away because a rubber boy decides the matter is not up for discussion. She works the takoyaki counter for Hatchan, who treats her like a daughter, and apologises constantly for trouble she thinks she is causing. Danger finds her easily, and somebody always has to fetch her back.',
@@ -1519,10 +1557,25 @@ export const summitWar: OnePieceSaga = {
     },
     'x-drake': {
       relationships: summitWarRelationships['x-drake'],
-      role: {
-        it: 'Capitano dei Pirati di Drake',
-        en: 'Captain of the Drake Pirates',
-      },
+      role: [
+        {
+          episode: 392,
+          chapter: 498,
+          value: {
+            it: 'Capitano dei Pirati di Drake',
+            en: 'Captain of the Drake Pirates',
+          },
+        },
+        // His call to Koby shows him a Marine in chapter 956, episode 957.
+        {
+          episode: 957,
+          chapter: 956,
+          value: {
+            it: 'Capitano dello SWORD della Marina',
+            en: 'Marine SWORD captain',
+          },
+        },
+      ],
       log: {
         it: 'Un tempo era un marine, oggi è il capitano di una ciurma pirata. A Sabaody ferma lo scontro fra Killer e Urouge parando i colpi di entrambi, e dice loro di tenerselo per il Nuovo Mondo. Law gli chiede quante persone abbia ucciso.',
         en: 'He was once a Marine and is now a pirate captain. At Sabaody he stops a fight between Killer and Urouge by blocking them both, and tells them to save it for the New World. Law asks him how many people he has killed.',
@@ -1917,7 +1970,24 @@ export const summitWar: OnePieceSaga = {
     },
     'emporio-ivankov': {
       relationships: summitWarRelationships['emporio-ivankov'],
-      role: { it: 'Sovrano del livello 5.5', en: 'Ruler of level 5.5' },
+      role: [
+        {
+          episode: 438,
+          chapter: 540,
+          value: { it: 'Sovrano del livello 5.5', en: 'Ruler of level 5.5' },
+        },
+        // A leader of the Revolutionary Army since chapter 539 (episode 441);
+        // ruler of level 5.5 until he leaves Impel Down at 451 (chapter 548),
+        // the pair of his status.
+        {
+          episode: 451,
+          chapter: 548,
+          value: {
+            it: 'Comandante dell’Armata Rivoluzionaria',
+            en: 'Revolutionary Army commander',
+          },
+        },
+      ],
       log: {
         it: 'Regna su un livello della prigione che sulle mappe non esiste, un giardino segreto dove i detenuti bevono, giocano e guardano lo spettacolo invece di scappare. Le guardie credono che i prigionieri scomparsi siano finiti all’inferno, e invece sono tutti lì. Bon Kure lo conosce di fama come uno capace di miracoli, e spera che uno basti a salvare Rufy avvelenato.',
         en: 'He reigns over a level of the prison that appears on no map, a secret garden where the inmates drink, play games and watch the show instead of running. The guards believe the vanished prisoners were dragged off to hell, and they are all there. Bon Clay knows him by reputation as a man who works miracles, and hopes one will be enough to save the poisoned Luffy.',
@@ -1995,7 +2065,15 @@ export const summitWar: OnePieceSaga = {
     },
     'shiryu': {
       relationships: summitWarRelationships.shiryu,
-      role: { it: 'Ex capo dei secondini', en: 'Former head jailer' },
+      role: [
+        {
+          episode: 445,
+          chapter: 543,
+          value: { it: 'Ex capo dei secondini', en: 'Former head jailer' },
+        },
+        // He joins Blackbeard in chapter 549, episode 452.
+        { episode: 452, chapter: 549, value: BLACKBEARD_ROLE },
+      ],
       log: {
         it: 'Era il capo dei secondini di Impel Down e la prigione lo ha rinchiuso nei propri livelli bassi, perché uccideva i detenuti per il gusto di farlo. Quando Barbanera entra nella prigione, il direttore lo fa uscire dalla cella per fermarlo e gli rende la spada, e lui la usa subito sui secondini venuti a liberarlo.',
         en: 'He was the head jailer of Impel Down, and the prison shut him away on its own lower levels because he killed inmates for the pleasure of it. When Blackbeard breaks into the prison, the chief warden lets him out of his cell to stop him and gives him back his sword, and he turns it at once on the jailers sent to free him.',
@@ -2250,7 +2328,21 @@ export const summitWar: OnePieceSaga = {
     'sakazuki': {
       relationships: summitWarRelationships.sakazuki,
       chronicle: summitWarChronicles.sakazuki,
-      role: { it: 'Ammiraglio della Marina', en: 'Marine admiral' },
+      role: [
+        {
+          episode: 463,
+          chapter: 556,
+          value: { it: 'Ammiraglio della Marina', en: 'Marine admiral' },
+        },
+        {
+          episode: 570,
+          chapter: 650,
+          value: {
+            it: 'Grand’ammiraglio della Marina',
+            en: 'Fleet admiral of the Marines',
+          },
+        },
+      ],
       log: {
         it: 'Siede con gli altri ammiragli, con il viso nascosto sotto la visiera del cappello. Quando Jozu scaglia contro i marine un enorme blocco di ghiaccio, si alza dalla sedia, trasforma il braccio in magma e distrugge il blocco.',
         en: 'He sits with the other admirals, his face hidden under the peak of his cap. When Jozu hurls a huge block of ice at the Marines, he gets up from his chair, turns his arm to magma and destroys the block.',

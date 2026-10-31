@@ -362,7 +362,23 @@ export const thrillerBark: OnePieceSaga = {
     },
     'lola': {
       relationships: thrillerBarkRelationships.lola,
-      role: { it: 'Sposa zombie', en: 'Zombie bride' },
+      role: [
+        {
+          episode: 345,
+          chapter: 455,
+          value: { it: 'Sposa zombie', en: 'Zombie bride' },
+        },
+        // The real Lola, captain of the Rolling Pirates, in chapter 476, the
+        // pair of her status.
+        {
+          episode: 370,
+          chapter: 476,
+          value: {
+            it: 'Capitano dei Pirati di Rolling',
+            en: 'Captain of the Rolling Pirates',
+          },
+        },
+      ],
       log: {
         it: 'Si aggira per i corridoi della villa con l’abito da sposa addosso e il velo fermato tra le zanne, e chiede la mano a chiunque incontri, uomo o scheletro che sia. Il rifiuto la rattrista per qualche secondo soltanto, poi ricomincia con il primo che passa. Sotto il velo ha la forza di un cinghiale, e una proposta respinta sa diventare una carica.',
         en: 'She wanders the mansion corridors in a wedding dress, her veil caught between two tusks, and asks for the hand of everyone she meets, man or skeleton alike. A refusal saddens her for a few seconds only, and then she starts over with whoever comes past next. Under the veil is a warthog’s strength, and a rejected proposal turns into a charge.',
