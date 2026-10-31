@@ -91,8 +91,10 @@ receive an end-of-anime bookmark; source filtering still applies. See
 
 One Piece and Hunter x Hunter are open to readers. HxH files the verified Hunter
 Exam coverage through episode 26 / chapter 43, including the manga's chapter-one
-characters introduced later by the anime, and the Heavens Arena characters and
-place up to episode 34 / chapter 59 (#896). Silva, Killua's father, is named in
+characters introduced later by the anime, the Heavens Arena characters and place
+up to episode 34 / chapter 59 (#896), and the first phase of Yorknew City
+through episode 42 / chapter 72 (#900): the Nostrade bodyguards, Neon, two
+Phantom Troupe members and three places. Silva, Killua's father, is named in
 episode 24 but in chapter 95 in the manga, so his record is unanchored at 24 /
 95 (#834); Kikyo is named only in credits and supplements, and Hishita only in
 chapter 329 (#912). Every Hunter Exam character has a chronicle (#762); the
@@ -181,11 +183,11 @@ checks this block.
 
 | Thing             | Count                                              |
 | ----------------- | -------------------------------------------------- |
-| Records           | 81                                                 |
-| Characters        | 63                                                 |
-| Arcs, places      | 7 · 11                                             |
+| Records           | 95                                                 |
+| Characters        | 74                                                 |
+| Arcs, places      | 7 · 14                                             |
 | Saga modules      | 7                                                  |
-| Line drawings     | 81, one per record, plus 9 redrawings of 9 records |
+| Line drawings     | 95, one per record, plus 9 redrawings of 9 records |
 | Chronicle stories | 133, for 63 characters                             |
 
 ### `game-of-thrones`

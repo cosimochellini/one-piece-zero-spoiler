@@ -87,7 +87,8 @@ const EXPECTED: Record<string, Expected> = {
   },
   // What it files on 2026-10-31: the arcs, the Hunter Exam’s road to the
   // exam through the visit to Killua's home, chapter-one characters (#760),
-  // the Heavens Arena characters and place (#896), and Silva (#834).
+  // the Heavens Arena characters and place (#896), Silva (#834), and the
+  // first phase of Yorknew City, episodes 37–42 / chapters 64–72 (#900).
   'hunter-x-hunter': {
     kinds: [
       'affiliation',
@@ -106,14 +107,14 @@ const EXPECTED: Record<string, Expected> = {
       'summary',
     ],
     least: {
-      affiliations: 90,
+      affiliations: 102,
       arcs: 7,
-      characters: 63,
+      characters: 74,
       chronicles: 133,
       linkedOrigins: 7,
-      places: 11,
-      statuses: 71,
-      timelines: 264,
+      places: 14,
+      statuses: 82,
+      timelines: 298,
       visits: 0,
     },
     namesSaidEarly: true,
