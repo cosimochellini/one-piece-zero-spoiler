@@ -750,8 +750,8 @@ export const yorknewCity: HunterSaga = {
     'rabid-dog': {
       role: SHADOW_BEAST,
       log: {
-        it: 'Arriva con altre tre Bestie dell’Ombra per affrontare Uborghin.',
-        en: 'He arrives with three other Shadow Beasts to take on Uvogin.',
+        it: 'Arriva con altre due Bestie dell’Ombra per affrontare Uborghin.',
+        en: 'He arrives with two other Shadow Beasts to take on Uvogin.',
       },
       status: [
         { episode: 43, chapter: 75, value: 'alive' },
