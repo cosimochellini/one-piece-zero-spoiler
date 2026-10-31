@@ -929,7 +929,23 @@ export const wholeCake: OnePieceSaga = {
     'carrot': {
       relationships: wholeCakeRelationships.carrot,
       // Not a musketeer role: the musketeers are first shown at 758.
-      role: { it: 'Mink di Zou', en: 'Mink of Zou' },
+      role: [
+        {
+          episode: 753,
+          chapter: 807,
+          value: { it: 'Mink di Zou', en: 'Mink of Zou' },
+        },
+        // Inuarashi and Nekomamushi hand her the dukedom in chapter 1056,
+        // episode 1083.
+        {
+          episode: 1083,
+          chapter: 1056,
+          value: {
+            it: 'Sovrana del Ducato di Mokomo',
+            en: 'Ruler of the Mokomo Dukedom',
+          },
+        },
+      ],
       log: {
         it: 'Ha orecchie lunghe, un sorriso che non sta mai fermo e una curiosità che la porta a infilarsi dappertutto, compresi i posti in cui le hanno detto di non andare. Come ogni mink sa usare l’elettro, la scarica che il suo popolo accumula nel pelo e libera con un colpo solo. Sotto l’allegria c’è una guerriera che ha visto bruciare la propria città.',
         en: 'She has long ears, a grin that will not sit still and a curiosity that gets her into every place she has been told to stay out of. Like every mink she can use electro, the charge her people store in their fur and let go in a single blow. Under the cheerfulness there is a warrior who watched her own city burn.',
@@ -958,10 +974,25 @@ export const wholeCake: OnePieceSaga = {
     },
     'inuarashi': {
       relationships: wholeCakeRelationships.inuarashi,
-      role: {
-        it: 'Sovrano del giorno di Mokomo',
-        en: 'Ruler of the day of Mokomo',
-      },
+      role: [
+        {
+          episode: 758,
+          chapter: 808,
+          value: {
+            it: 'Sovrano del giorno di Mokomo',
+            en: 'Ruler of the day of Mokomo',
+          },
+        },
+        // He hands the dukedom to Carrot in chapter 1056, episode 1083.
+        {
+          episode: 1083,
+          chapter: 1056,
+          value: {
+            it: 'Ex sovrano del giorno di Mokomo',
+            en: 'Former ruler of the day of Mokomo',
+          },
+        },
+      ],
       log: {
         it: 'È il sovrano del giorno del Ducato di Mokomo, e la notte spetta a un altro sovrano. Si è svegliato dal coma dopo l’assalto e riceve i Cappello di Paglia a letto, fasciato e avvolto in una veste, per ringraziarli di aver salvato il suo paese. Wanda lo chiama il guerriero più forte del paese, e quando Rufy gli dice che sembra fortissimo lui risponde che chi è stato sconfitto non merita quella parola.',
         en: 'He is the ruler of the day of the Mokomo Dukedom, and another ruler holds the night. He woke from a coma after the raid and receives the Straw Hats in his sickbed, bandaged and wrapped in a robe, to thank them for saving his country. Wanda calls him the strongest warrior in the country, and when Luffy says he looks very strong he answers that a man who was beaten has no right to the word.',
@@ -1165,7 +1196,22 @@ export const wholeCake: OnePieceSaga = {
     'charlotte-linlin': {
       relationships: wholeCakeRelationships['charlotte-linlin'],
       chronicle: wholeCakeChronicles['charlotte-linlin'],
-      role: { it: 'Imperatore di Totto Land', en: 'Emperor of Totto Land' },
+      role: [
+        {
+          episode: 786,
+          chapter: 831,
+          value: {
+            it: 'Imperatore di Totto Land',
+            en: 'Emperor of Totto Land',
+          },
+        },
+        // The new Emperors replace her in chapter 1053, episode 1080.
+        {
+          episode: 1080,
+          chapter: 1053,
+          value: { it: 'Ex Imperatore', en: 'Former Emperor' },
+        },
+      ],
       log: {
         it: 'Regna su un arcipelago di isole di zucchero e su una famiglia sterminata di figli, e i suoi capricci decidono il tempo che fa. Quando le viene voglia di un dolce che non ha, perde la testa e travolge tutto finché non glielo portano.',
         en: 'She rules an archipelago of sugar islands and an enormous family of children, and her whims decide the weather. When she wants a sweet she does not have, she loses her head and flattens whatever is in the way until it is brought to her.',
@@ -1288,7 +1334,28 @@ export const wholeCake: OnePieceSaga = {
     },
     'stussy': {
       relationships: wholeCakeRelationships.stussy,
-      role: { it: 'Pezzo grosso della malavita', en: 'Underworld boss' },
+      role: [
+        {
+          episode: 830,
+          chapter: 860,
+          value: { it: 'Pezzo grosso della malavita', en: 'Underworld boss' },
+        },
+        // An undercover CP0 agent in chapter 871 (p. 4-6), episode 841.
+        {
+          episode: 841,
+          chapter: 871,
+          value: { it: 'Agente del Cipher Pol 0', en: 'Cipher Pol 0 agent' },
+        },
+        // She turns on the government in chapter 1073, episode 1105.
+        {
+          episode: 1105,
+          chapter: 1073,
+          value: {
+            it: 'Ex agente del Cipher Pol 0',
+            en: 'Former Cipher Pol 0 agent',
+          },
+        },
+      ],
       log: {
         it: 'Nella malavita la chiamano la regina del quartiere dei piaceri, e il titolo le vale un invito al Tea Party insieme agli altri pezzi grossi della malavita. Arriva con un abito color salmone e un cappello da sole con un fiore, una borsetta rosa al braccio. Quando due degli altri ospiti cominciano a insultarsi davanti al castello, li zittisce dando loro dei meschini, e nel salotto accetta un bicchiere del succo che Smoothie spreme da una giraffa.',
         en: 'In the underworld they call her the queen of the pleasure district, and the title gets her an invitation to the Tea Party with the other bosses of the underworld. She arrives in a salmon dress and a sunhat with a flower on it, a pink handbag on her arm. When two of the other guests start trading insults outside the chateau she tells them to stop being so small-minded, and in the lounge she takes a cup of the juice Smoothie squeezes out of a giraffe.',
@@ -1892,10 +1959,25 @@ export const wholeCake: OnePieceSaga = {
     'sheepshead': {
       relationships: wholeCakeRelationships.sheepshead,
       chronicle: wholeCakeChronicles.sheepshead,
-      role: {
-        it: 'Pirata a capo di una squadra di ricerca',
-        en: 'Pirate leading a search party',
-      },
+      role: [
+        {
+          episode: 739,
+          chapter: 795,
+          value: {
+            it: 'Pirata a capo di una squadra di ricerca',
+            en: 'Pirate leading a search party',
+          },
+        },
+        // Shinuchi of the Gifters in chapter 808 (p. 5), episode 757.
+        {
+          episode: 757,
+          chapter: 808,
+          value: {
+            it: 'Headliner dei Pirati delle Cento Bestie',
+            en: 'Beasts Pirates headliner',
+          },
+        },
+      ],
       log: {
         it: 'Cavalca una bestia simile a un coccodrillo alla testa di una banda di pirati che, su un’isola strana, dà la caccia a una ragazza e a un samurai. I suoi uomini lo chiamano Sheepshead-sama, e con chiunque sembri sospetto la sua regola è semplice: ucciderlo. Quando combatte le sue mani diventano corna ricurve di montone, e carica con quelle come con la spada che porta sulla schiena.',
         en: 'He rides a crocodile-like mount at the head of a band of pirates hunting a girl and a samurai across a strange island. His men call him Sheepshead-sama, and his rule for anyone who looks suspicious is a simple one: kill them. When he fights, his hands turn into a ram’s curled horns, and he charges with them as readily as with the sword on his back.',
@@ -1921,10 +2003,25 @@ export const wholeCake: OnePieceSaga = {
     'edward-weevil': {
       relationships: wholeCakeRelationships['edward-weevil'],
       chronicle: wholeCakeChronicles['edward-weevil'],
-      role: {
-        it: 'Membro della Flotta dei Sette',
-        en: 'One of the Seven Warlords',
-      },
+      role: [
+        {
+          episode: 751,
+          chapter: 802,
+          value: {
+            it: 'Membro della Flotta dei Sette',
+            en: 'One of the Seven Warlords',
+          },
+        },
+        // The Warlord system is abolished in chapter 956, episode 957.
+        {
+          episode: 957,
+          chapter: 956,
+          value: {
+            it: 'Ex membro della Flotta dei Sette',
+            en: 'Former Warlord',
+          },
+        },
+      ],
       log: {
         it: 'Nei rapporti della Marina ha già annientato sedici ciurme di vecchi alleati di Barbabianca, e ogni volta una lite finisce con l’intera città spazzata via e centinaia di vittime. È un membro della Flotta dei Sette, e la Marina si chiede quanto a lungo potrà chiudere un occhio. Dice di essere il vero figlio di Barbabianca, un titolo a cui molti non credono; sulla sua forza invece nessuno ha dubbi, e un ammiraglio lo paragona a Barbabianca da giovane.',
         en: 'By the Marines’ reports he has already wiped out sixteen crews of Whitebeard’s old allies, and each time a quarrel ends with the whole town blown away and hundreds of casualties. He is one of the Seven Warlords, and the Marines wonder how long they can look away. He says he is Whitebeard’s own son, a title many people doubt; nobody doubts his strength, and an admiral compares him to the young Whitebeard.',
@@ -2226,10 +2323,50 @@ export const wholeCake: OnePieceSaga = {
     'zeus': {
       relationships: wholeCakeRelationships.zeus,
       chronicle: wholeCakeChronicles.zeus,
-      role: {
-        it: 'Homie nuvola del tuono di Big Mom',
-        en: 'Big Mom’s thundercloud homie',
-      },
+      role: [
+        {
+          episode: 806,
+          chapter: 843,
+          value: {
+            it: 'Homie nuvola del tuono di Big Mom',
+            en: 'Big Mom’s thundercloud homie',
+          },
+        },
+        // Nami captures him in chapter 890; episode 865 has him agree to serve
+        // her.
+        {
+          episode: 865,
+          chapter: 890,
+          value: {
+            it: 'Nuvola del tuono al servizio di Nami',
+            en: 'Thundercloud serving Nami',
+          },
+        },
+        // Back in Big Mom’s hand in chapter 985, the pair of his affiliation.
+        {
+          episode: 994,
+          chapter: 985,
+          value: {
+            it: 'Homie nuvola del tuono di Big Mom',
+            en: 'Big Mom’s thundercloud homie',
+          },
+        },
+        // She casts him off in chapter 1013, episode 1034.
+        {
+          episode: 1034,
+          chapter: 1013,
+          value: {
+            it: 'Nuvola del tuono scartata da Big Mom',
+            en: 'Thundercloud cast off by Big Mom',
+          },
+        },
+        // Nami makes him her partner in chapter 1018, episode 1040.
+        {
+          episode: 1040,
+          chapter: 1018,
+          value: { it: 'Compagno di Nami', en: 'Nami’s partner' },
+        },
+      ],
       log: {
         it: 'È una nuvola temporalesca viva che fluttua accanto a Big Mom, una delle cose a cui lei ha dato voce e volto, e quando lei si infuria la tempesta è lui. Quando uno dei suoi Sweet Commander fu sconfitto, si racconta, lei scatenò un cielo che affondò in pochi istanti le navi nemiche, con lui sulla mano sinistra e Prometheus, un sole vivo, sulla destra. Durante i suoi capricci sa che è inutile provare a calmarla: non sente nessuno.',
         en: 'He is a living thundercloud who floats at Big Mom’s side, one of the things she has given a voice and a face to, and when she is angry he is the storm. When a Sweet Commander of hers was beaten, the story goes, she called up a sky that sank the enemy’s ships in moments, with him on her left hand and Prometheus, a living sun, on her right. During her tantrums he knows better than to try to talk her down: she cannot hear anyone.',

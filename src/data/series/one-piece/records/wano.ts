@@ -798,7 +798,23 @@ export const wano: OnePieceSaga = {
     },
     'kiku': {
       relationships: wanoRelationships.kiku,
-      role: { it: 'Cameriera della casa da tè', en: 'Tea house waitress' },
+      role: [
+        {
+          episode: 899,
+          chapter: 914,
+          value: { it: 'Cameriera della casa da tè', en: 'Tea house waitress' },
+        },
+        // One of Kin’emon’s group from twenty years ago, chapter 919, episode
+        // 909.
+        {
+          episode: 909,
+          chapter: 919,
+          value: {
+            it: 'Samurai al servizio dei Kozuki',
+            en: 'Samurai retainer of the Kozuki family',
+          },
+        },
+      ],
       log: {
         it: 'Serve in una casa da tè di Okobore. Un famoso yokozuna della capitale entra e insiste perché diventi sua moglie, promettendole che non dovrà più lavorare. Lei risponde che le loro condizioni sociali sono troppo diverse e gli chiede di ordinare qualcosa o di andarsene.',
         en: 'She serves at a tea house in Okobore Town. A famous yokozuna from the capital comes in and presses her to become his wife, promising that she would never have to work again. She answers that their stations are too far apart, and asks him to order something or leave.',
@@ -828,10 +844,25 @@ export const wano: OnePieceSaga = {
     },
     'ashura-doji': {
       relationships: wanoRelationships['ashura-doji'],
-      role: {
-        it: 'Capo dei furfanti di Kuri',
-        en: 'Leader of the Kuri ruffians',
-      },
+      role: [
+        {
+          episode: 910,
+          chapter: 920,
+          value: {
+            it: 'Capo dei furfanti di Kuri',
+            en: 'Leader of the Kuri ruffians',
+          },
+        },
+        // Named among the Nine Red Scabbards in chapter 939, episode 936.
+        {
+          episode: 936,
+          chapter: 939,
+          value: {
+            it: 'Uno dei Nove Foderi Rossi',
+            en: 'One of the Nine Red Scabbards',
+          },
+        },
+      ],
       log: {
         it: 'Ai tempi in cui Kuri era una terra senza legge, dove criminali e ronin cacciati da casa si derubavano e si uccidevano a vicenda, era l’uomo più pericoloso della regione e ne guidava i furfanti. Poi il figlio dello shogun, bandito dalla Capitale dei Fiori per le sue risse, arrivò a Kuri, e i due si scontrarono quasi subito. Ebbe la peggio, e i furfanti che aveva guidato furono messi a lavorare per costruire la regione.',
         en: 'In the days when Kuri was a lawless land, where criminals and ronin driven from home robbed and killed one another, he was the most dangerous man in the region and led its ruffians. Then the shogun’s son, banished from the Flower Capital for his brawling, walked into Kuri, and the two clashed almost at once. He lost, and the ruffians he had led were put to work building the region instead.',
@@ -1251,7 +1282,22 @@ export const wano: OnePieceSaga = {
     },
     'kawamatsu': {
       relationships: wanoRelationships.kawamatsu,
-      role: { it: 'Prigioniero di Udon', en: 'Prisoner of Udon' },
+      role: [
+        {
+          episode: 936,
+          chapter: 946,
+          value: { it: 'Prigioniero di Udon', en: 'Prisoner of Udon' },
+        },
+        // Out of the Udon cell in chapter 948, the pair of his status.
+        {
+          episode: 948,
+          chapter: 948,
+          value: {
+            it: 'Uno dei Nove Foderi Rossi',
+            en: 'One of the Nine Red Scabbards',
+          },
+        },
+      ],
       log: {
         it: 'È rinchiuso da anni in fondo alla prigione di Udon, in una gabbia troppo piccola per lui, e i carcerieri lo tengono d’occhio più di chiunque altro. Divide il poco cibo con i detenuti più deboli e sopporta le percosse ridendo, con la testa piatta che gli è valsa il soprannome di kappa. I carcerieri sanno che è più pericoloso di quanto sembri, e nessuno gli passa vicino.',
         en: 'He has spent years at the bottom of the Udon jail, in a cage far too small for him, watched more closely than any other prisoner. He shares what little food he gets with the weakest convicts and takes his beatings laughing, the flat head that earned him the kappa name held high. The jailers know he is more dangerous than he looks, and none of them goes near him.',
@@ -1657,10 +1703,22 @@ export const wano: OnePieceSaga = {
     'speed': {
       relationships: wanoRelationships.speed,
       chronicle: wanoChronicles.speed,
-      role: {
-        it: 'Headliner dei Pirati delle Cento Bestie',
-        en: 'Beasts Pirates headliner',
-      },
+      role: [
+        {
+          episode: 904,
+          chapter: 917,
+          value: {
+            it: 'Headliner dei Pirati delle Cento Bestie',
+            en: 'Beasts Pirates headliner',
+          },
+        },
+        // Tamed by Tama in chapter 918, episode 906.
+        {
+          episode: 906,
+          chapter: 918,
+          value: { it: 'Al fianco di O-Tama', en: 'At Tama’s side' },
+        },
+      ],
       log: {
         it: 'Sorveglia il cibo della fattoria in fondo a Bakura, dove il raccolto finisce ai Pirati delle Cento Bestie e un contadino viene pagato cinque monete d’argento che non bastano a sfamare la sua famiglia per una settimana. Dalla vita in giù è un cavallo, e i suoi occhi vedono quasi tutto intorno a lei, così il cibo alle sue spalle non le sfugge mai. Quando suona la campana dell’incendio fa spegnere il fuoco e trova in rovina la casa di Holdem, un altro headliner della città.',
         en: 'She keeps watch over the food of the Paradise Farm at the far end of Bakura Town, where the harvest goes to the Beasts Pirates and a farmer is paid five silver coins that will not feed his family for a week. From the waist down she is a horse, and her eyes see nearly all the way round her, so the food behind her is never out of sight. When the fire bell rings she has the fire put out and finds the house of Holdem, another of the town’s headliners, in ruins.',
@@ -1829,10 +1887,26 @@ export const wano: OnePieceSaga = {
     'daikoku': {
       relationships: wanoRelationships.daikoku,
       chronicle: wanoChronicles.daikoku,
-      role: {
-        it: 'Ninja dell’Oniwabanshu di Orochi',
-        en: 'Orochi Oniwabanshu ninja',
-      },
+      role: [
+        {
+          episode: 928,
+          chapter: 933,
+          value: {
+            it: 'Ninja dell’Oniwabanshu di Orochi',
+            en: 'Orochi Oniwabanshu ninja',
+          },
+        },
+        // The Oniwabanshu join Kaido in chapter 986, the pair of the
+        // affiliation.
+        {
+          episode: 995,
+          chapter: 986,
+          value: {
+            it: 'Ninja dei Pirati delle Cento Bestie',
+            en: 'Beasts Pirates ninja',
+          },
+        },
+      ],
       log: {
         it: 'È uno dei ninja che sorvegliano il castello dello shogun, e quando la nuova geisha Orobi viene sorpresa dove non dovrebbe essere la cerca per tutto il banchetto. Mentre Orochi, diventato un serpente, stringe l’oiran tra le fauci, gli ospiti lo supplicano di fermare il suo padrone; lui risponde che lo shogun è libero di fare ciò che vuole e che conta di più l’intruso. Poi uno scheletro che attraversa i muri mette in fuga i suoi compagni, e una mano gigante fatta di braccia spazza via i ninja.',
         en: 'He is one of the ninja who guard the shogun’s castle, and once the new geisha Orobi is caught where she should not be he hunts her through the banquet. While Orochi, turned into a serpent, holds the oiran in his jaws, the guests beg him to stop his master; he answers that the shogun is free to do as he likes and that the invader matters more. Then a skeleton that floats through the walls sends his comrades running, and a giant hand made of arms sweeps the ninja aside.',
@@ -1860,10 +1934,26 @@ export const wano: OnePieceSaga = {
     'raijin': {
       relationships: wanoRelationships.raijin,
       chronicle: wanoChronicles.raijin,
-      role: {
-        it: 'Ninja dell’Oniwabanshu di Orochi',
-        en: 'Orochi Oniwabanshu ninja',
-      },
+      role: [
+        {
+          episode: 928,
+          chapter: 933,
+          value: {
+            it: 'Ninja dell’Oniwabanshu di Orochi',
+            en: 'Orochi Oniwabanshu ninja',
+          },
+        },
+        // The Oniwabanshu join Kaido in chapter 986, the pair of the
+        // affiliation.
+        {
+          episode: 995,
+          chapter: 986,
+          value: {
+            it: 'Ninja dei Pirati delle Cento Bestie',
+            en: 'Beasts Pirates ninja',
+          },
+        },
+      ],
       log: {
         it: 'È uno dei ninja che mettono alle strette la nuova geisha in una stanza del castello dello shogun, e uno di quelli che si sparpagliano per il banchetto a cercarla quando lei svanisce. Combatte con gli shuriken e si sposta in groppa a un pesce gatto gigante che cammina sulla terraferma. Quando uno scheletro fluttuante insegue lui e Fujin per i corridoi, scappa urlando che i gashadokuro esistono davvero.',
         en: 'He is one of the ninja who corner the new geisha in a back room of the shogun’s castle, and one of those who scatter through the banquet to find her when she vanishes. He fights with shuriken and gets about on a giant catfish that moves on land. When a floating skeleton comes after him and Fujin in the corridors, he runs, screaming that the gashadokuro are real.',
@@ -1891,10 +1981,26 @@ export const wano: OnePieceSaga = {
     'fujin': {
       relationships: wanoRelationships.fujin,
       chronicle: wanoChronicles.fujin,
-      role: {
-        it: 'Ninja dell’Oniwabanshu di Orochi',
-        en: 'Orochi Oniwabanshu ninja',
-      },
+      role: [
+        {
+          episode: 928,
+          chapter: 933,
+          value: {
+            it: 'Ninja dell’Oniwabanshu di Orochi',
+            en: 'Orochi Oniwabanshu ninja',
+          },
+        },
+        // The Oniwabanshu join Kaido in chapter 986, the pair of the
+        // affiliation.
+        {
+          episode: 995,
+          chapter: 986,
+          value: {
+            it: 'Ninja dei Pirati delle Cento Bestie',
+            en: 'Beasts Pirates ninja',
+          },
+        },
+      ],
       log: {
         it: 'È uno dei ninja che mettono alle strette la nuova geisha nel castello dello shogun e poi si sparpagliano per il banchetto a cercarla di nuovo. Lavora in coppia con Raijin e, come lui, va in groppa a un pesce gatto gigante che cammina sulla terraferma. Basta uno scheletro che fluttua nei corridoi perché i due tornino di corsa nella sala urlando che i gashadokuro esistono davvero.',
         en: 'He is one of the ninja who corner the new geisha in the shogun’s castle and then scatter through the banquet to find her again. He works in a pair with Raijin and, like him, rides a giant catfish that moves on land. A skeleton floating in the corridors is enough to send the two of them running back into the hall, shouting that the gashadokuro are real.',
