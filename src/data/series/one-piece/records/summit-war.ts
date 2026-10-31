@@ -1263,8 +1263,12 @@ export const summitWar: OnePieceSaga = {
             en: 'Takoyaki 8, staff; Hatchan’s friend',
           },
         },
+        // Her home is the dormitory of the café's waitresses, herself among
+        // them, in chapter 608. The anime moves that line to her boss at the
+        // café, in episode 529 (#983).
         {
-          episode: 523,
+          episode: 529,
+          chapter: 608,
           value: {
             it: 'Caffè delle Sirene, Isola degli Uomini-Pesce',
             en: 'Mermaid Café, Fish-Man Island',
