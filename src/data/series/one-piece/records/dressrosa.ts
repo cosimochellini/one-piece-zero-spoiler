@@ -921,10 +921,26 @@ export const dressrosa: OnePieceSaga = {
   dossiers: {
     'koala': {
       relationships: dressrosaRelationships.koala,
-      role: {
-        it: 'Bambina liberata dalla schiavitù',
-        en: 'Child freed from slavery',
-      },
+      role: [
+        {
+          episode: 541,
+          chapter: 626,
+          value: {
+            it: 'Bambina liberata dalla schiavitù',
+            en: 'Child freed from slavery',
+          },
+        },
+        // Grown up and a revolutionary in chapter 731, the pair of her
+        // affiliation.
+        {
+          episode: 663,
+          chapter: 731,
+          value: {
+            it: 'Membro dell’Armata Rivoluzionaria',
+            en: 'Revolutionary Army member',
+          },
+        },
+      ],
       log: {
         it: 'Tre anni dopo essere fuggita da Mary Geoise vive su un’isola lontana da casa, e gli abitanti chiedono ai Pirati del Sole di riportarla dai genitori. A bordo ringrazia Fisher Tiger, sorride sempre e pulisce il ponte senza fermarsi, perché ha paura che la uccidano se smette. Tiger copre il marchio da schiava sulla sua schiena con il simbolo del sole, le dice che può piangere e promette che la porteranno a casa.',
         en: 'Three years after escaping Mary Geoise she lives on an island far from home, and the islanders ask the Sun Pirates to take her back to her parents. Aboard she thanks Fisher Tiger, keeps smiling and scrubs the deck without a break, because she is afraid they will kill her if she stops. Tiger covers the slave mark on her back with the sun, tells her she may cry and promises they will take her home.',
@@ -1078,7 +1094,23 @@ export const dressrosa: OnePieceSaga = {
     },
     'monet': {
       relationships: dressrosaRelationships.monet,
-      role: { it: 'Assistente del laboratorio', en: 'Laboratory assistant' },
+      role: [
+        {
+          episode: 587,
+          chapter: 664,
+          value: {
+            it: 'Assistente del laboratorio',
+            en: 'Laboratory assistant',
+          },
+        },
+        // Doflamingo’s agent at Caesar’s side from chapter 673, the pair of her
+        // affiliation.
+        {
+          episode: 599,
+          chapter: 673,
+          value: { it: 'Agente di Do Flamingo', en: 'Doflamingo’s agent' },
+        },
+      ],
       log: {
         it: 'Torna in volo al laboratorio e fa rapporto al suo padrone: il drago che sorvegliava l’isola e i centauri sono stati battuti, e i pirati presi con la loro nave avevano dei compagni sul lato in fiamme, che arriveranno fra pochi minuti. Li ha riconosciuti: gli mostra il giornale con le foto dei Cappello di Paglia.',
         en: 'She flies back to the laboratory and reports to its master: the dragon that guarded the island and the centaurs are beaten, and the pirates taken with their ship had friends on the burning side, who will be there in minutes. She knows who they are: she shows him the newspaper with the Straw Hats’ pictures.',
@@ -1113,7 +1145,26 @@ export const dressrosa: OnePieceSaga = {
     },
     'vergo': {
       relationships: dressrosaRelationships.vergo,
-      role: { it: 'Vecchia conoscenza di Law', en: 'Law’s old acquaintance' },
+      role: [
+        {
+          episode: 598,
+          chapter: 672,
+          value: {
+            it: 'Vecchia conoscenza di Law',
+            en: 'Law’s old acquaintance',
+          },
+        },
+        // His rank and his master are told in chapter 673 (“Vergo and Joker”),
+        // episode 599.
+        {
+          episode: 599,
+          chapter: 673,
+          value: {
+            it: 'Viceammiraglio della G-5, uomo di Do Flamingo',
+            en: 'G-5 vice admiral, Doflamingo’s man',
+          },
+        },
+      ],
       log: {
         it: 'Arriva al laboratorio a bordo di una petroliera con un pezzo di cibo attaccato alla guancia, e Law lo riconosce subito. Lo mette a terra senza sforzo e pretende che lo chiami Vergo-san, non Vergo. Sa che Monet è stata mandata sull’isola per tenere d’occhio Caesar.',
         en: 'He arrives at the laboratory on a tanker with a scrap of food stuck to his cheek, and Law recognises him at once. He knocks Law down without effort and tells him to say Vergo-san, not Vergo. He knows that Monet was sent to the island to keep an eye on Caesar.',
@@ -1140,10 +1191,32 @@ export const dressrosa: OnePieceSaga = {
     },
     'momonosuke': {
       relationships: dressrosaRelationships.momonosuke,
-      role: {
-        it: 'Bambino trasformato in drago',
-        en: 'Child turned into a dragon',
-      },
+      role: [
+        {
+          episode: 609,
+          chapter: 685,
+          value: {
+            it: 'Bambino trasformato in drago',
+            en: 'Child turned into a dragon',
+          },
+        },
+        // Kin’emon reveals whose son he is in chapter 817 (p. 4-7), episode
+        // 768.
+        {
+          episode: 768,
+          chapter: 817,
+          value: {
+            it: 'Erede della famiglia Kozuki',
+            en: 'Heir of the Kozuki family',
+          },
+        },
+        // Shogun in chapter 1051, episode 1078.
+        {
+          episode: 1078,
+          chapter: 1051,
+          value: { it: 'Shogun di Wano', en: 'Shogun of Wano' },
+        },
+      ],
       log: {
         it: 'Una bambina arrivata sulla stessa nave lo ha visto infilarsi nella stanza segreta del laboratorio e trasformarsi in un piccolo drago, e non lo ha detto a nessuno. Kin’emon cerca per tutta l’isola un figlio con lo stesso nome.',
         en: 'A girl who came on the same ship saw him slip into the laboratory’s secret room and turn into a small dragon, and kept it to herself. Kin’emon is searching the island for a son with the same name.',
@@ -1184,7 +1257,23 @@ export const dressrosa: OnePieceSaga = {
     },
     'baby-5': {
       relationships: dressrosaRelationships['baby-5'],
-      role: { it: 'Sottoposta di Do Flamingo', en: 'Doflamingo’s subordinate' },
+      role: [
+        {
+          episode: 608,
+          chapter: 682,
+          value: {
+            it: 'Sottoposta di Do Flamingo',
+            en: 'Doflamingo’s subordinate',
+          },
+        },
+        // Sai agrees to marry her and she stops fighting him in chapter 771,
+        // episode 710 ("The Battle of Love").
+        {
+          episode: 710,
+          chapter: 771,
+          value: { it: 'Al fianco di Sai', en: 'At Sai’s side' },
+        },
+      ],
       log: {
         it: 'Piomba davanti a Do Flamingo con il braccio trasformato in un cannone e giura che questa volta non lo perdonerà. Le sparano, si rialza e lo attacca con un’ascia, e lui la schiva senza interrompere la telefonata. La chiama una testa calda e la manda sull’isola per i suoi affari.',
         en: 'She bursts in on Doflamingo with her arm turned into a cannon and swears she will not forgive him this time. She is shot down, gets up again and swings an axe at him, and he dodges without breaking off his phone call. He calls her hot-blooded and sends her to the island on his business.',
@@ -1334,7 +1423,19 @@ export const dressrosa: OnePieceSaga = {
     },
     'riku-doldo-iii': {
       relationships: dressrosaRelationships['riku-doldo-iii'],
-      role: { it: 'Ex re di Dressrosa', en: 'Former king of Dressrosa' },
+      role: [
+        {
+          episode: 659,
+          chapter: 727,
+          value: { it: 'Ex re di Dressrosa', en: 'Former king of Dressrosa' },
+        },
+        // Gatz announces his return to the throne in chapter 796, episode 741.
+        {
+          episode: 741,
+          chapter: 796,
+          value: { it: 'Re di Dressrosa', en: 'King of Dressrosa' },
+        },
+      ],
       log: {
         it: 'Regnava su un’isola tranquilla finché una notte il suo stesso esercito ha attaccato la sua gente e lui è stato costretto a lasciare il trono. Da allora in città nessuno pronuncia il suo nome senza sputare. Si iscrive al torneo del colosseo come un gladiatore qualunque, con la barba lunga e il nome di Ricky, e sugli spalti non lo riconosce nessuno.',
         en: 'He ruled a quiet island until the night his own army turned on his own people and he was made to give up the throne. Since then nobody in the city says his name without spitting. He enters the colosseum tournament like any other gladiator, long-bearded and calling himself Ricky, and nobody in the stands knows him.',
@@ -1445,10 +1546,26 @@ export const dressrosa: OnePieceSaga = {
     },
     'sai': {
       relationships: dressrosaRelationships.sai,
-      role: {
-        it: 'Giovane della famiglia Chinjao',
-        en: 'Young man of the Chinjao family',
-      },
+      role: [
+        {
+          episode: 633,
+          chapter: 708,
+          value: {
+            it: 'Giovane della famiglia Chinjao',
+            en: 'Young man of the Chinjao family',
+          },
+        },
+        // Gatz introduces him as the thirteenth leader in chapter 715, episode
+        // 645.
+        {
+          episode: 645,
+          chapter: 715,
+          value: {
+            it: 'Tredicesimo capo della Flotta Happo',
+            en: 'Thirteenth leader of the Happo Navy',
+          },
+        },
+      ],
       log: {
         it: 'Arriva al colosseo con il fratello Boo e con Don Chinjao, con un mantello scuro dal grande colletto bianco a gorgiera. Quando un addetto vuole squalificare Lucy, gli dice che la rissa l’ha cominciata Spartan e che è lui quello da cacciare. Poi Lucy lo ringrazia e lui si infuria, finché Boo non lo trascina via scusandosi: si scalda facilmente.',
         en: 'He comes to the colosseum with his brother Boo and Don Chinjao, in a dark cape with a great white ruff. When a member of the staff moves to disqualify Lucy, he says Spartan started the fight and is the one to throw out. Then Lucy thanks him and he flies into a rage, until Boo drags him off with an apology: he gets worked up easily.',
@@ -1643,7 +1760,23 @@ export const dressrosa: OnePieceSaga = {
     },
     'hajrudin': {
       relationships: dressrosaRelationships.hajrudin,
-      role: { it: 'Mercenario gigante', en: 'Giant mercenary' },
+      role: [
+        {
+          episode: 639,
+          chapter: 714,
+          value: { it: 'Mercenario gigante', en: 'Giant mercenary' },
+        },
+        // Captain of a ship of the Grand Fleet in chapter 800; the episode is
+        // his affiliation’s, 746.
+        {
+          episode: 746,
+          chapter: 800,
+          value: {
+            it: 'Capitano dei Nuovi Pirati Guerrieri Giganti',
+            en: 'Captain of the New Giant Warrior Pirates',
+          },
+        },
+      ],
       log: {
         it: 'Viene da Elbaf, il celebre paese dei giganti. Al Colosseo Corrida l’annunciatore lo presenta tra i combattenti del blocco C come il più temibile dei mercenari pirati.',
         en: 'He comes from Elbaph, the famous country of the giants. At the Corrida Colosseum the announcer presents him among the fighters of Block C as the most formidable pirate mercenary of all.',
@@ -1776,7 +1909,22 @@ export const dressrosa: OnePieceSaga = {
     },
     'viola': {
       relationships: dressrosaRelationships.viola,
-      role: { it: 'Ballerina e informatrice', en: 'Dancer and informant' },
+      role: [
+        {
+          episode: 640,
+          chapter: 712,
+          value: { it: 'Ballerina e informatrice', en: 'Dancer and informant' },
+        },
+        // Told as Princess Viola in chapter 728, episode 660.
+        {
+          episode: 660,
+          chapter: 728,
+          value: {
+            it: 'Principessa di Dressrosa',
+            en: 'Princess of Dressrosa',
+          },
+        },
+      ],
       log: {
         it: 'Balla per la famiglia che comanda l’isola e riferisce tutto quello che i suoi occhi trovano. Con lo sguardo entra anche nei pensieri di chi ha davanti e ne legge le intenzioni. Obbedisce senza discutere, ma c’è qualcosa nel modo in cui parla del re che non somiglia alla fedeltà.',
         en: 'She dances for the family that runs the island and reports whatever her eyes find. Her gaze goes into the thoughts of the person in front of her and reads what they mean to do. She obeys without argument, though something in the way she speaks of the king does not sound like loyalty.',
@@ -2141,10 +2289,25 @@ export const dressrosa: OnePieceSaga = {
     },
     'kyros': {
       relationships: dressrosaRelationships.kyros,
-      role: {
-        it: 'Soldatino di legno di Dressrosa',
-        en: 'Wooden soldier of Dressrosa',
-      },
+      role: [
+        {
+          episode: 675,
+          chapter: 742,
+          value: {
+            it: 'Soldatino di legno di Dressrosa',
+            en: 'Wooden soldier of Dressrosa',
+          },
+        },
+        // Human again when Sugar faints, chapter 743, episode 677.
+        {
+          episode: 677,
+          chapter: 743,
+          value: {
+            it: 'Ex comandante dell’esercito di Dressrosa',
+            en: 'Former commander of Dressrosa’s army',
+          },
+        },
+      ],
       log: {
         it: 'Per tutti è il Soldatino, un soldatino giocattolo con una gamba sola, un pattino a rotelle e un fucile giocattolo, che guida la lotta contro il re. Il suo vero nome è Kyros: ha vinto tremila incontri nel colosseo, poi lo ha lasciato su richiesta del re per diventare capitano della guardia. Nessuno se lo ricorda, e lui combatte lo stesso per una famiglia che non sa più chi sia.',
         en: 'To everyone he is the Thunder Soldier, a one-legged toy soldier on a roller skate with a toy rifle, who leads the fight against the king. His real name is Kyros: he won three thousand bouts in the colosseum, then left it at the king’s wish to become captain of the guard. Nobody remembers him, and he fights all the same for a family that no longer knows who he is.',
@@ -2253,7 +2416,19 @@ export const dressrosa: OnePieceSaga = {
     },
     'kanjuro': {
       relationships: dressrosaRelationships.kanjuro,
-      role: { it: 'Samurai di Wano', en: 'Samurai of Wano' },
+      role: [
+        {
+          episode: 691,
+          chapter: 755,
+          value: { it: 'Samurai di Wano', en: 'Samurai of Wano' },
+        },
+        // He reveals himself as the spy in chapter 974, episode 977.
+        {
+          episode: 977,
+          chapter: 974,
+          value: { it: 'Spia di Orochi', en: 'Orochi’s spy' },
+        },
+      ],
       log: {
         it: 'È il compagno che i soldati di Dressrosa hanno catturato mentre copriva la fuga di Kin’emon. Kin’emon lo ritrova nella discarica sotto la città, nascosto dentro un muro, dove si è sfamato con i cavoli che disegna e fa prendere vita. Porta sulle spalle un pennello grande quanto un remo. Per uscire disegna un uccello sul muro e lo fa prendere vita, ma è disegnato così male che sembra a malapena in grado di volare.',
         en: 'He is the comrade Dressrosa’s soldiers caught while he covered Kin’emon’s escape. Kin’emon finds him in the scrap heap under the town, hiding inside a wall, where he has fed himself on cabbages he draws and brings to life. He carries a brush as big as an oar on his back. To get out he draws a bird on the wall and brings it to life, but it is drawn so badly that it hardly looks able to fly.',
@@ -2340,10 +2515,22 @@ export const dressrosa: OnePieceSaga = {
     'kaido': {
       relationships: dressrosaRelationships.kaido,
       chronicle: dressrosaChronicles.kaido,
-      role: {
-        it: 'Imperatore del Nuovo Mondo',
-        en: 'Emperor of the New World',
-      },
+      role: [
+        {
+          episode: 739,
+          chapter: 795,
+          value: {
+            it: 'Imperatore del Nuovo Mondo',
+            en: 'Emperor of the New World',
+          },
+        },
+        // The new Emperors replace him in chapter 1053, episode 1080.
+        {
+          episode: 1080,
+          chapter: 1053,
+          value: { it: 'Ex Imperatore', en: 'Former Emperor' },
+        },
+      ],
       log: {
         it: 'Si butta da un’isola del cielo in cerca di un posto dove morire, cade sul rifugio dei Pirati di Kidd aprendo una buca nel terreno e ne risale imprecando perché è ancora vivo. È uno dei quattro Imperatori che si dividono il Nuovo Mondo, e ha una ciurma che prende il nome dalle bestie. È stato sconfitto, catturato e condannato a morte molte volte, ma ogni esecuzione è fallita, e nessuno è mai riuscito a ucciderlo, nemmeno lui stesso.',
         en: 'He jumps off a sky island looking for a place to die, lands on the Kid Pirates’ hideout, leaving a hole in the ground, and climbs out of it cursing that he is still alive. He is one of the four Emperors who divide the New World between them, and his crew takes its name from beasts. He has been defeated, captured and sentenced to death many times, but every execution failed, and nobody has managed to kill him, not even himself.',
