@@ -67,7 +67,8 @@ claims/deadlines to the owner through the legal page's contact process.
 
 Use Conventional Commit titles, at most 100 characters. Fill
 `.github/pull_request_template.md` with verification evidence. Issue PRs are
-**drafts** with `Closes #N`; leave merging to the owner.
+**drafts** with `Closes #N`; leave merging to the owner, or to the orchestrator
+the owner asked to land them (`.agents/skills/landing-prs/SKILL.md`).
 
 Codex: invoke `$issue-implementer` with the issue number. Claude: delegate to
 the `issue-implementer` subagent. Both use the

@@ -8,8 +8,8 @@
 #
 # exit 0 merged, also when GitHub had merged it first
 #      2 conflict with main (the files are printed): merge main into the
-#        branch by hand. Checked before waiting for CI too, as GitHub starts
-#        no run on a conflicting PR
+#        branch by hand. Checked before waiting for CI, as GitHub starts no
+#        run on a conflicting PR, and again after it, as main may have moved
 #      3 CI `check` did not pass. A cancelled run is waited out, as a newer
 #        run on the same head cancels it; one never followed times out
 #      4 the head is no longer the one expected
@@ -60,29 +60,28 @@ mergeable() {
   echo "$m"
 }
 
-# Exits 2 naming the files $H conflicts on with origin/main, or 5 with "$1"
-# when there are none.
-conflict() {
-  files=$(git merge-tree --write-tree --name-only --no-messages origin/main "$H" | tail -n +2)
-  [ -n "$files" ] || { echo "$1, and no file conflicts with main"; exit 5; }
-  echo "conflict with main, merge main into the branch by hand. Conflicting files:"
-  echo "$files"
-  exit 2
-}
-
 pr=$(gh pr view "$PR" --json state,baseRefName -q '"\(.state) \(.baseRefName)"') || exit 5
 [ "$pr" = "OPEN main" ] || { echo "PR $PR is not open against main: $pr"; exit 5; }
 
-# Exits 2 when GitHub reports a conflict with main, after checking the head.
-# GitHub starts no CI run on such a head, so waiting for `check` would only
-# run out the clock; main can also move into a conflict while CI runs.
+# Exits 2 naming the files $H conflicts on with origin/main. GitHub's answer
+# decides when to look: MERGEABLE goes on, CONFLICTING and an UNKNOWN that
+# outlasted mergeable() are settled by git. A conflict GitHub reports but git
+# does not find exits 5. GitHub starts no CI run on a conflicting head, so
+# waiting for `check` there would only run out the clock.
 stop_on_conflict() {
   m=$(mergeable) || exit 5
-  [ "$m" = CONFLICTING ] || return 0
+  [ "$m" = MERGEABLE ] && return 0
   cur=$(pr_head) || exit 5
   [ "$cur" = "$H" ] || { echo "head is no longer $H"; exit 4; }
   fetch
-  conflict "GitHub reports a conflict"
+  files=$(git merge-tree --write-tree --name-only --no-messages origin/main "$H" | tail -n +2)
+  if [ -n "$files" ]; then
+    echo "conflict with main, merge main into the branch by hand. Conflicting files:"
+    echo "$files"
+    exit 2
+  fi
+  [ "$m" = CONFLICTING ] && { echo "GitHub reports a conflict, and no file conflicts with main"; exit 5; }
+  return 0
 }
 
 stop_on_conflict

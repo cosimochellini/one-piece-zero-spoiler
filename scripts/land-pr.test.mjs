@@ -34,7 +34,14 @@ case "$1 $2" in
     line=$(sed -n "$n p" "$d/runs.jsonl")
     [ -n "$line" ] || line=$(tail -n 1 "$d/runs.jsonl")
     echo "$line" | jq -r "$q" ;;
-  "pr view") jq -r "$q" "$d/pr.json" ;;
+  "pr view")
+    # A second PR file, when there is one, answers every read after the first
+    # mergeable one: main moving into a conflict while CI runs.
+    if [ "$q" = .mergeable ] && [ -f "$d/later.json" ]; then
+      if [ -f "$d/read" ]; then jq -r "$q" "$d/later.json"; exit; fi
+      touch "$d/read"
+    fi
+    jq -r "$q" "$d/pr.json" ;;
   "pr ready") ;;
   "pr merge")
     [ -f "$d/refused.json" ] || exit 0
@@ -75,8 +82,9 @@ const pr = (state, mergeable = 'MERGEABLE') => ({
  * @param {object[][]} runs - The check runs each `gh api` call returns.
  * @param {string} [refusedThen] - When set, `gh pr merge` is refused and the PR state reads this after.
  * @param {string} [mergeable] - What GitHub reports about merging the PR.
+ * @param {string} [later] - What GitHub reports on every later read.
  */
-function prepare(bin, runs, refusedThen, mergeable) {
+function prepare(bin, runs, refusedThen, mergeable, later) {
   /**
    * Writes an executable fake into the bin directory.
    * @param {string} name - The command it stands in for.
@@ -87,17 +95,13 @@ function prepare(bin, runs, refusedThen, mergeable) {
     chmodSync(path.join(bin, name), 0o755)
   }
   fake('gh', fakeGh)
-  // Main has moved on by a commit that is not a release, and a merge with it
-  // conflicts on one file: the script must neither care about the first nor
-  // miss the second.
+  // Git logs its calls beside gh's. A merge with main conflicts on one file,
+  // which the script reads only when GitHub does not say MERGEABLE.
   fake(
     'git',
     `#!/bin/sh
-case "$1" in
-  rev-list) echo ${'c'.repeat(40)} ;;
-  log) echo 'feat(records): another change' ;;
-  merge-tree) echo tree; echo src/a.ts ;;
-esac
+echo "git $*" >>"$(dirname "$0")/calls.log"
+[ "$1" = merge-tree ] && { echo tree; echo src/a.ts; }
 exit 0
 `,
   )
@@ -110,6 +114,12 @@ exit 0
     path.join(bin, 'pr.json'),
     JSON.stringify(pr('OPEN', mergeable)),
   )
+  if (later) {
+    writeFileSync(
+      path.join(bin, 'later.json'),
+      JSON.stringify(pr('OPEN', later)),
+    )
+  }
   if (refusedThen) {
     writeFileSync(
       path.join(bin, 'refused.json'),
@@ -124,12 +134,13 @@ exit 0
  * @param {object[][]} runs - The check runs each `gh api` call returns.
  * @param {string} [refusedThen] - When set, `gh pr merge` is refused and the PR state reads this after.
  * @param {string} [mergeable] - What GitHub reports about merging the PR.
+ * @param {string} [later] - What GitHub reports on every later read.
  * @returns {{ status: number | null, stdout: string, calls: string }} The exit status, output and the `gh` calls made.
  */
-function land(runs, refusedThen, mergeable) {
+function land(runs, refusedThen, mergeable, later) {
   const bin = mkdtempSync(path.join(tmpdir(), 'land-pr-'))
   try {
-    prepare(bin, runs, refusedThen, mergeable)
+    prepare(bin, runs, refusedThen, mergeable, later)
     const child = spawnSync('bash', [script, '42', head], {
       encoding: 'utf8',
       env: {
@@ -179,7 +190,7 @@ describe('land-pr.sh', () => {
     const { status, stdout, calls } = land([[run(1, 'completed', 'success')]])
 
     expect(stdout).toContain(`merged ${head}`)
-    expect(calls).not.toContain('graphql')
+    expect(calls).not.toMatch(/graphql|git (?:rev-list|rebase|merge-tree)/u)
     expect(status).toBe(0)
   })
 
@@ -191,6 +202,20 @@ describe('land-pr.sh', () => {
     )
 
     expect(stdout).toContain('merge main into the branch')
+    expect(stdout).toContain('src/a.ts')
+    expect(calls).not.toContain('pr merge')
+    expect(status).toBe(2)
+  })
+
+  it('exits 2 when main moves into a conflict while CI runs', () => {
+    const { status, stdout, calls } = land(
+      [[run(1, 'completed', 'success')]],
+      undefined,
+      'MERGEABLE',
+      'CONFLICTING',
+    )
+
+    expect(calls).toContain('check-runs')
     expect(stdout).toContain('src/a.ts')
     expect(calls).not.toContain('pr merge')
     expect(status).toBe(2)
