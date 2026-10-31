@@ -1126,8 +1126,8 @@ export const YORKNEW_CITY_PLACES: Record<
       en: 'The auction house’s entrance',
     },
     log: {
-      it: 'Qui verrà messo all’asta il gioco della scheda di memoria di Ging. Per raccogliere i soldi, Gon impegna la sua licenza Hunter.',
-      en: 'The game on Ging’s memory card is to be auctioned here. To raise the money, Gon pawns his Hunter license.',
+      it: 'Qui verrà messo all’asta il gioco della scheda di memoria di Ging. Per raccogliere i soldi, Gon usa la sua licenza Hunter.',
+      en: 'The game on Ging’s memory card is to be auctioned here. To raise the money, Gon uses his Hunter license.',
     },
     filedHere: [],
   },

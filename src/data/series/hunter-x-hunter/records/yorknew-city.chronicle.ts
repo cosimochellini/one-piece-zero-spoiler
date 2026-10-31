@@ -224,8 +224,8 @@ export const yorknewCityChronicles = {
           en: 'A fortune for a stranger',
         },
         body: {
-          it: 'Neon sfugge alle sue guardie del corpo per andare all’asta, e il capo della Brigata Fantasma le fa superare i posti di blocco. Mentre aspettano in un ristorante, lui loda il suo dono e le chiede la sua profezia. Lei la scrive, e lui piange leggendola e dice che è tutto vero. Neon gli racconta di essere diventata indovina dopo aver visto un’indovina che poi si è rivelata un’imbrogliona. Poi lui, parlando di un compagno morto, la stordisce con un colpo rapido.',
-          en: 'Neon slips away from her bodyguards to go to the auction, and the leader of the Phantom Troupe gets her past the checkpoints. While they wait in a restaurant, he praises her gift and asks for his own fortune. She writes it, and he cries as he reads it, saying it is all true. Neon tells him that she became a fortune-teller after seeing one who turned out to be a fraud. Then, speaking of a dead comrade, he knocks her out with a quick blow.',
+          it: 'Neon sfugge alle sue guardie del corpo per andare all’asta, e il capo della Brigata Fantasma le fa superare i posti di blocco. Mentre aspettano in un ristorante, lui loda il suo dono e le chiede la sua profezia. Lei la scrive, e lui piange leggendola e dice che è tutto vero. Neon gli parla di una famosa indovina che aveva visto da bambina e che si è poi rivelata un’imbrogliona; lei è diventata indovina lo stesso. Poi lui, parlando di un compagno morto, la stordisce con un colpo rapido.',
+          en: 'Neon slips away from her bodyguards to go to the auction, and the leader of the Phantom Troupe gets her past the checkpoints. While they wait in a restaurant, he praises her gift and asks for his own fortune. She writes it, and he cries as he reads it, saying it is all true. Neon tells him about a famous fortune-teller she saw as a child, one who turned out to be a fraud; she still became a fortune-teller herself. Then, speaking of a dead comrade, he knocks her out with a quick blow.',
         },
       },
     },
@@ -355,8 +355,8 @@ export const yorknewCityChronicles = {
       value: {
         title: { it: 'La regola', en: 'The rule' },
         body: {
-          it: 'Al covo [[killua|Killua]] riconosce in Shizuku la donna che ha sfidato [[gon-freecss|Gon]] a braccio di ferro. Quando [[nobunaga|Nobunaga]] e [[feitan|Feitan]] si fronteggiano per Gon, lei ricorda una regola: i membri della Brigata non possono combattere tra loro. I due decidono invece con una moneta. Quando i membri si dividono per cercare l’utilizzatore di catene, [[franklin|Franklin]] dice che Gon gli ricorda [[uvogin|Uborghin]].',
-          en: 'At the hideout [[killua|Killua]] recognizes Shizuku as the woman who arm-wrestled [[gon-freecss|Gon]]. When [[nobunaga|Nobunaga]] and [[feitan|Feitan]] face off over Gon, she reminds them of a rule: members of the Troupe may not fight each other. The two settle it with a coin instead. When the members split up to search for the chain user, [[franklin|Franklin]] says that Gon reminds him of [[uvogin|Uvogin]].',
+          it: 'Al covo [[killua|Killua]] riconosce in Shizuku la donna che ha sfidato [[gon-freecss|Gon]] a braccio di ferro. Quando [[nobunaga|Nobunaga]] e [[feitan|Feitan]] si fronteggiano per Gon, lei ricorda una regola: i membri della Brigata non possono combattere tra loro. I due decidono invece con una moneta. [[franklin|Franklin]] dice anche che Gon gli ricorda [[uvogin|Uborghin]].',
+          en: 'At the hideout [[killua|Killua]] recognizes Shizuku as the woman who arm-wrestled [[gon-freecss|Gon]]. When [[nobunaga|Nobunaga]] and [[feitan|Feitan]] face off over Gon, she reminds them of a rule: members of the Troupe may not fight each other. The two settle it with a coin instead. [[franklin|Franklin]] also says that Gon reminds him of [[uvogin|Uvogin]].',
         },
       },
     },
@@ -549,8 +549,8 @@ export const yorknewCityChronicles = {
       value: {
         title: { it: 'Come Uborghin', en: 'Like Uvogin' },
         body: {
-          it: 'Quando al covo [[nobunaga|Nobunaga]] e [[feitan|Feitan]] si fronteggiano per [[gon-freecss|Gon]], Franklin calma Nobunaga. Chiede a [[pakunoda|Pakunoda]] cosa ha trovato nei ricordi dei ragazzi: niente sull’utilizzatore di catene. Quando [[shalnark|Shalnark]] distribuisce le foto delle guardie del corpo dei Nostrad e i membri si dividono per cercare l’utilizzatore di catene, Franklin dice che Gon gli ricorda [[uvogin|Uborghin]], che dava il meglio quando combatteva per qualcun altro.',
-          en: 'When [[nobunaga|Nobunaga]] and [[feitan|Feitan]] face off over [[gon-freecss|Gon]] at the hideout, Franklin calms Nobunaga down. He asks [[pakunoda|Pakunoda]] what she found in the boys’ memories: nothing about the chain user. Once [[shalnark|Shalnark]] hands out pictures of the Nostrade bodyguards and the members split up to search for the chain user, Franklin says that Gon reminds him of [[uvogin|Uvogin]], who fought at his strongest when it was for someone else.',
+          it: 'Quando al covo [[nobunaga|Nobunaga]] e [[feitan|Feitan]] si fronteggiano per [[gon-freecss|Gon]], Franklin calma Nobunaga. Chiede a [[pakunoda|Pakunoda]] cosa ha trovato nei ricordi dei ragazzi: niente sull’utilizzatore di catene. Franklin dice anche che Gon gli ricorda [[uvogin|Uborghin]], che dava il meglio quando combatteva per qualcun altro.',
+          en: 'When [[nobunaga|Nobunaga]] and [[feitan|Feitan]] face off over [[gon-freecss|Gon]] at the hideout, Franklin calms Nobunaga down. He asks [[pakunoda|Pakunoda]] what she found in the boys’ memories: nothing about the chain user. Franklin also says that Gon reminds him of [[uvogin|Uvogin]], who fought at his strongest when it was for someone else.',
         },
       },
     },
@@ -701,7 +701,7 @@ export const yorknewCityChronicles = {
       value: {
         title: { it: 'Le foto delle guardie', en: 'The bodyguards’ pictures' },
         body: {
-          it: 'Al covo, dopo che [[pakunoda|Pakunoda]] non trova niente sull’utilizzatore di catene nei ricordi dei ragazzi, Shalnark propone di puntare sulla famiglia Nostrad, visto che lui lavora per loro. Distribuisce le foto delle guardie del corpo che proteggono la figlia del capo e dice ai membri di cercare a coppie. Con [[nobunaga|Nobunaga]] rimasto a sorvegliare [[gon-freecss|Gon]] e [[killua|Killua]], [[machi|Machi]] finisce in coppia con [[hisoka|Hisoka]].',
+          it: 'Al covo, dopo che [[pakunoda|Pakunoda]] non trova niente sull’utilizzatore di catene nei ricordi dei ragazzi, Shalnark propone di puntare sulla famiglia Nostrad, visto che l’utilizzatore di catene lavora per loro. Distribuisce le foto delle guardie del corpo che proteggono la figlia del capo e dice ai membri di cercare a coppie. Con [[nobunaga|Nobunaga]] rimasto a sorvegliare [[gon-freecss|Gon]] e [[killua|Killua]], [[machi|Machi]] finisce in coppia con [[hisoka|Hisoka]].',
           en: 'At the hideout, after [[pakunoda|Pakunoda]] finds nothing about the chain user in the boys’ memories, Shalnark proposes going after the Nostrade family, since the chain user works for them. He hands out pictures of the bodyguards who guard the boss’s daughter and tells the members to search in pairs. With [[nobunaga|Nobunaga]] left to watch [[gon-freecss|Gon]] and [[killua|Killua]], [[machi|Machi]] ends up paired with [[hisoka|Hisoka]].',
         },
       },
@@ -713,7 +713,7 @@ export const yorknewCityChronicles = {
       value: {
         title: { it: 'La voce del banditore', en: 'The auctioneer’s voice' },
         body: {
-          it: 'Mentre la mafia crede morto il capo della Brigata, i membri della Brigata Fantasma mandano avanti di nascosto l’asta riaperta. Shalnark controlla il banditore con la sua abilità Nen, Voce Nera, il Cellulare del Destino. [[pakunoda|Pakunoda]] porta gli oggetti sul palco, e [[kortopi|Kortopi]] ne fa copie esatte, così sono le copie a essere vendute. In sala nessuno sospetta niente.',
+          it: 'Mentre la mafia crede morto il capo della Brigata, i membri della Brigata Fantasma mandano avanti di nascosto l’asta riaperta. Shalnark controlla il banditore con Voce Nera, il Cellulare del Destino, la sua abilità Nen. [[pakunoda|Pakunoda]] porta gli oggetti sul palco, e [[kortopi|Kortopi]] ne fa copie esatte, così sono le copie a essere vendute. In sala nessuno sospetta niente.',
           en: 'While the Mafia believes the Troupe’s leader dead, the members of the Phantom Troupe run the reopened auction from backstage. Shalnark controls the auctioneer with his Nen ability, Black Voice. [[pakunoda|Pakunoda]] brings the items onto the stage, and [[kortopi|Kortopi]] makes exact copies of them, so the copies are what gets sold. No one in the hall suspects anything.',
         },
       },
@@ -765,7 +765,7 @@ export const yorknewCityChronicles = {
       value: {
         title: { it: 'Ricordi al tocco', en: 'Memories by touch' },
         body: {
-          it: 'Mentre vanno al covo, Pakunoda mette un braccio sulle spalle di [[killua|Killua]]. Lì, dopo che [[nobunaga|Nobunaga]] e [[feitan|Feitan]] stanno quasi per scontrarsi per [[gon-freecss|Gon]], [[franklin|Franklin]] le chiede cosa ha scoperto. Lei dice che i ragazzi non ricordano niente dell’utilizzatore di catene. Killua capisce che legge i ricordi toccando le persone, e teme quello che troverebbe ora che sospetta che l’utilizzatore di catene sia [[kurapika|Kurapika]].',
+          it: 'Mentre vanno al covo, Pakunoda mette un braccio sulle spalle di [[killua|Killua]]. Lì, dopo che [[nobunaga|Nobunaga]] e [[feitan|Feitan]] sono quasi venuti alle mani per [[gon-freecss|Gon]], [[franklin|Franklin]] le chiede cosa ha scoperto. Lei dice che i ragazzi non ricordano niente dell’utilizzatore di catene. Killua capisce che legge i ricordi toccando le persone, e teme quello che troverebbe ora che sospetta che l’utilizzatore di catene sia [[kurapika|Kurapika]].',
           en: 'On the way to the hideout Pakunoda puts her arm around [[killua|Killua]]’s shoulders. There, after [[nobunaga|Nobunaga]] and [[feitan|Feitan]] nearly come to blows over [[gon-freecss|Gon]], [[franklin|Franklin]] asks her what she found. She says the boys have no memory of the chain user. Killua works out that she reads memories by touching people, and fears what she would find now that he suspects [[kurapika|Kurapika]] is the chain user.',
         },
       },
@@ -782,8 +782,8 @@ export const yorknewCityChronicles = {
           en: 'The assassins’ meeting',
         },
         body: {
-          it: 'Zenji riunisce gli assassini ingaggiati dalla mafia, tra cui [[silva|Silva]] e [[zeno|Zeno]], e spiega che il loro compito è uccidere la Brigata Fantasma. Quando arriva [[light-nostrade|Light Nostrad]] con [[kurapika|Kurapika]], Zenji lo deride, finché Kurapika non lo minaccia. Light dice a Kurapika di fermarsi, e Zenji se ne va con i suoi uomini.',
-          en: 'Zenji gathers the assassins the Mafia has hired, [[silva|Silva]] and [[zeno|Zeno]] among them, and tells them their job is to kill the Phantom Troupe. When [[light-nostrade|Light Nostrade]] arrives with [[kurapika|Kurapika]], Zenji mocks him, until Kurapika threatens him. Light tells Kurapika to stop, and Zenji leaves with his men.',
+          it: 'Zenji incontra gli assassini ingaggiati dalla mafia, tra cui [[silva|Silva]] e [[zeno|Zeno]]. Quando arriva [[light-nostrade|Light Nostrad]] con [[kurapika|Kurapika]], spiega che il loro compito è uccidere la Brigata Fantasma, poi deride Light finché Kurapika non lo minaccia. Light dice a Kurapika di fermarsi, e Zenji se ne va con i suoi uomini.',
+          en: 'Zenji meets the assassins the Mafia has hired, [[silva|Silva]] and [[zeno|Zeno]] among them. Once [[light-nostrade|Light Nostrade]] arrives with [[kurapika|Kurapika]], he tells them their job is to kill the Phantom Troupe, then mocks Light until Kurapika threatens him. Light tells Kurapika to stop, and Zenji leaves with his men.',
         },
       },
     },
@@ -794,8 +794,8 @@ export const yorknewCityChronicles = {
       value: {
         title: { it: 'Paralizzato', en: 'Frozen' },
         body: {
-          it: 'Zenji dice a [[kurapika|Kurapika]] che il capo della Brigata è morto e lo deride, e Kurapika gli dà un pugno. Quando all’asta compaiono gli occhi scarlatti, Zenji rilancia contro Kurapika fino a 1 miliardo di Jenny; Kurapika se li aggiudica a 2,9 miliardi. Più tardi Zenji lo incontra per strada e lo minaccia con una pistola. Gli occhi di Kurapika diventano scarlatti mentre gli dice di farsi da parte, e Zenji, paralizzato dalla paura, lo lascia passare.',
-          en: 'Zenji tells [[kurapika|Kurapika]] that the Troupe’s leader is dead and mocks him, and Kurapika punches him. When the Scarlet Eyes come up at the auction, Zenji bids against Kurapika up to 1 billion Jenny; Kurapika wins them at 2.9 billion. Later Zenji meets him on the road and threatens him with a gun. Kurapika’s eyes turn scarlet as he tells him to step aside, and Zenji, frozen with fear, lets him pass.',
+          it: 'Quando [[kurapika|Kurapika]] viene a sapere che il capo della Brigata è morto, Zenji lo deride, e Kurapika gli dà un pugno. Quando all’asta compaiono gli occhi scarlatti, Zenji rilancia a 1 miliardo di Jenny e fa salire il prezzo; Kurapika se li aggiudica a 2,9 miliardi. Più tardi Zenji lo incontra per strada e lo minaccia con una pistola. Gli occhi di Kurapika diventano scarlatti mentre gli dice di farsi da parte, e Zenji, paralizzato dalla paura, lo lascia passare.',
+          en: 'After [[kurapika|Kurapika]] hears that the Troupe’s leader is dead, Zenji mocks him, and Kurapika punches him. When the Scarlet Eyes come up at the auction, Zenji raises the bid to 1 billion Jenny and drives the price up; Kurapika wins them at 2.9 billion. Later Zenji meets him on the road and threatens him with a gun. Kurapika’s eyes turn scarlet as he tells him to step aside, and Zenji, frozen with fear, lets him pass.',
         },
       },
     },

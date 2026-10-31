@@ -52,7 +52,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
     48: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_48_(2011)',
-      note: 'The pawned license is chapter 84; the knife, the bids, the vault and the lunch are chapters 85-88, all by the end of episode 48. The second man who challenges Zepile at the dealer’s is anime-only. Checked on the episode page and the chapter pages.',
+      note: 'Corrected after review: “pawns his Hunter license” became “uses his Hunter license to raise money”: episode 48 does not adapt the pawn shop of chapter 84. The Southernpiece place log now says the same. The pawned license is chapter 84; the knife, the bids, the vault and the lunch are chapters 85-88, all by the end of episode 48. The second man who challenges Zepile at the dealer’s is anime-only. Checked on the episode page and the chapter pages.',
     },
     50: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_50_(2011)',
@@ -100,7 +100,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
     49: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_49_(2011)',
-      note: 'The tip is chapter 88 and episode 48; the watch from a distance is chapter 89 and the split chapter 90, both in episode 49. Who pays the informants differs between the media and is left out. Checked on the episode page and the chapter pages.',
+      note: 'Corrected after review: the “so” is dropped: not being able to use Zetsu is not given as the reason for the split. The tip is chapter 88 and episode 48; the watch from a distance is chapter 89 and the split chapter 90, both in episode 49. Who pays the informants differs between the media and is left out. Checked on the episode page and the chapter pages.',
     },
     53: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_53_(2011)',
@@ -146,7 +146,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
     53: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_53_(2011)',
-      note: 'Chapters 100-101 and episode 53. Whether Kurapika sees the leader’s body himself differs between the pages and is left out. Checked on the episode page and the chapter pages.',
+      note: 'Corrected after review: “he no longer needs their help” is chapter-only; he calls Gon to tell him the members are dead. Chapters 100-101 and episode 53. Whether Kurapika sees the leader’s body himself differs between the pages and is left out. Checked on the episode page and the chapter pages.',
     },
   },
   'katzo': {
@@ -218,7 +218,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
     50: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_50_(2011)',
-      note: 'Chapters 91-92 and episode 50. Gon’s surprise at seeing him is chapter-only. Checked on the episode page and the chapter pages.',
+      note: 'Corrected after review: Feitan grabs only Gon; Killua steps forward on his own. Chapters 91-92 and episode 50. Gon’s surprise at seeing him is chapter-only. Checked on the episode page and the chapter pages.',
     },
   },
   'hanzo': {
@@ -290,11 +290,11 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
     49: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_49_(2011)',
-      note: 'His father’s words are chapter 80 (pages 17-18) and episode 49; the tail and the capture are chapters 89-91 and episode 49. Silva is linked only from chapter 95. Checked on the episode page and the chapter pages.',
+      note: 'Corrected after review: in Italian, “per un lavoro” added, as in the English. His father’s words are chapter 80 (pages 17-18) and episode 49; the tail and the capture are chapters 89-91 and episode 49. Silva is linked only from chapter 95. Checked on the episode page and the chapter pages.',
     },
     50: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_50_(2011)',
-      note: 'Chapters 92-94 and episode 50. Checked on the episode page and the chapter pages.',
+      note: 'Corrected after review: Illumi’s voice now says he cannot win, as both media have it (“do not fight anyone stronger” is episode-only), and the two escape “both” rather than together. Chapters 92-94 and episode 50. Checked on the episode page and the chapter pages.',
     },
   },
   'menchi': {
@@ -526,7 +526,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
     52: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_52_(2011)',
-      note: 'The warning is chapter 98, the fight chapters 98-99, both in episode 52. His dragon is chapter-only on the pages, so the story says only that he fights with his aura. Checked on the episode page and the chapter pages.',
+      note: 'Corrected after review: as in Silva’s story, Silva warns that the leader can steal abilities, and Zeno works out the book and its conditions. The warning is chapter 98, the fight chapters 98-99, both in episode 52. His dragon is chapter-only on the pages, so the story says only that he fights with his aura. Checked on the episode page and the chapter pages.',
     },
     53: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_53_(2011)',
@@ -540,7 +540,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
     52: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_52_(2011)',
-      note: 'The hire is chapter 95 and episode 51; the fight is chapters 98-99 and episode 52. The leader is not named before episode 54. Checked on the episode page and the chapter pages.',
+      note: 'Corrected after review: Silva is the one who warns that the leader can steal abilities; Zeno works out the book and its conditions. The hire is chapter 95 and episode 51; the fight is chapters 98-99 and episode 52. The leader is not named before episode 54. Checked on the episode page and the chapter pages.',
     },
     53: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_53_(2011)',
@@ -846,7 +846,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
     51: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_51_(2011)',
-      note: 'Chapters 94-96 and episode 51. The leader is not named before episode 54; the fortune’s lines differ between the media and are left out. Checked on the episode page and the chapter pages.',
+      note: 'Corrected after review: the famous fortune-teller she saw as a child, later a fraud, is what both media give; she became a fortune-teller anyway. Chapters 94-96 and episode 51. The leader is not named before episode 54; the fortune’s lines differ between the media and are left out. Checked on the episode page and the chapter pages.',
     },
     53: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_53_(2011)',
@@ -894,7 +894,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
     50: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_50_(2011)',
-      note: 'Killua pointing her out and the rule are chapters 91-92, Franklin’s words about Gon chapter 93, all in episode 50. That she does not remember the match is chapter-only. Checked on the episode page and the chapter pages.',
+      note: 'Corrected after review: the time clause is dropped: Franklin also says that Gon reminds him of Uvogin. Killua pointing her out and the rule are chapters 91-92, Franklin’s words about Gon chapter 93, all in episode 50. That she does not remember the match is chapter-only. Checked on the episode page and the chapter pages.',
     },
   },
   'feitan': {
@@ -968,7 +968,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
     50: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_50_(2011)',
-      note: 'The standoff and Pakunoda’s answer are chapter 92, his words about Uvogin chapter 93, both in episode 50. Checked on the episode page and the chapter pages.',
+      note: 'Corrected after review: the time clause is dropped: he says that Gon reminds him of Uvogin, without tying it to the pictures or the pairing. The standoff and Pakunoda’s answer are chapter 92, his words about Uvogin chapter 93, both in episode 50. Checked on the episode page and the chapter pages.',
     },
   },
   'nobunaga': {
@@ -1022,11 +1022,11 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
     50: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_50_(2011)',
-      note: 'Chapter 92 and episode 50. Checked on the episode page and the chapter pages.',
+      note: 'Corrected after review: in Italian, it is the chain user who works for the Nostrade family. Chapter 92 and episode 50. Checked on the episode page and the chapter pages.',
     },
     53: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_53_(2011)',
-      note: 'Chapter 100 and episode 53. Italian: Voce Nera, il Cellulare del Destino (Italian Wikipedia, Brigata Fantasma). Checked on the episode page and the chapter pages.',
+      note: 'Corrected after review: in Italian, the ability’s name comes before “la sua abilità Nen”. Chapter 100 and episode 53. Italian: Voce Nera, il Cellulare del Destino (Italian Wikipedia, Brigata Fantasma). Checked on the episode page and the chapter pages.',
     },
   },
   'zepile': {
@@ -1046,17 +1046,17 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
     50: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_50_(2011)',
-      note: 'Her arm around Killua is episode 49 and chapter 92 (his memory of the drive); the report and his deduction are chapter 92 and episode 50. Checked on the episode page and the chapter pages.',
+      note: 'Corrected after review: in Italian, “sono quasi venuti alle mani”. Her arm around Killua is episode 49 and chapter 92 (his memory of the drive); the report and his deduction are chapter 92 and episode 50. Checked on the episode page and the chapter pages.',
     },
   },
   'zenji': {
     51: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_51_(2011)',
-      note: 'Chapter 95 and episode 51. Checked on the episode page and the chapter pages.',
+      note: 'Corrected after review: the order follows chapter 95 and episode 51: he meets the assassins, gives them the job once Light and Kurapika arrive, then mocks Light. Chapter 95 and episode 51. Checked on the episode page and the chapter pages.',
     },
     53: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_53_(2011)',
-      note: 'Chapters 100-101 and episode 53. Checked on the episode page and the chapter pages.',
+      note: 'Corrected after review: he raises the bid to 1 billion and drives the price up (Kurapika wins at 2.9 billion); and Kurapika hears of the leader’s death before Zenji mocks him. Chapters 100-101 and episode 53. Checked on the episode page and the chapter pages.',
     },
   },
   'kortopi': {
