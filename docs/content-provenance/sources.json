@@ -23471,6 +23471,36 @@
       "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2110050",
       "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2110050",
       "contentSha256": "994a98511992b72416669780be9cf28304864fce585d360e634cbe32ff011989"
+    },
+    "en-Chapter_816.json": {
+      "locale": "en",
+      "title": "Chapter 816",
+      "revision": 2052916,
+      "revisionDate": "2025-02-28T02:56:23Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_816",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2052916",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2052916",
+      "contentSha256": "ed5303abc9f1dd31ca4affcc1ba52cc9d061e66bc4068af2a90b40a4a51a6604"
+    },
+    "en-Episode_767.json": {
+      "locale": "en",
+      "title": "Episode 767",
+      "revision": 2052917,
+      "revisionDate": "2025-02-28T02:56:25Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_767",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2052917",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2052917",
+      "contentSha256": "bb56d2e98ab08a3a8688cb6fcc47b756a6a427de9fb7fe391f40e29c2e87dd05"
+    },
+    "en-Episode_726.json": {
+      "locale": "en",
+      "title": "Episode 726",
+      "revision": 2098034,
+      "revisionDate": "2026-01-19T19:03:37Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_726",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2098034",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2098034",
+      "contentSha256": "026599b450a04ecdd6292749f358e284348cecdef439e1874e7c56d7775b1de4"
     }
   }
 }
