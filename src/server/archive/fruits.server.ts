@@ -1,5 +1,6 @@
 import type { Eater } from '~/data/features'
 import type { Entity } from '~/data/types'
+import { FACTION_LABELS } from '~/i18n/dictionaries/one-piece/factions'
 import type { Locale } from '~/i18n/locales'
 import {
   absoluteEpisodeOf,
@@ -24,7 +25,6 @@ import type {
   FruitView,
   Slot,
 } from '~/lib/view/records'
-import { translatorOf } from '~/server/copy.server'
 
 import { handleOf } from './handle.server'
 import { printedFaction } from './printed.server'
@@ -211,8 +211,9 @@ function sagasOf(
  * is one ref there, naming both. An open eater with no entry reached yet goes
  * to the `null` group, which comes last; the rest by size, then by name in
  * the reader's language. Covered fruits and covered eaters are not here at
- * all, so a faction only a covered eater stands in is never named. Refs
- * only, like the saga view's; empty with no bookmark.
+ * all, so a faction only a covered eater stands in is never named: its label
+ * comes with its group and nowhere else. Refs only, like the saga view's;
+ * empty with no bookmark.
  */
 function factionGroupsOf(r: Reader): FruitFactionView[] {
   const groups = new Map<Faction | null, FruitFactionRef[]>()
@@ -228,8 +229,12 @@ function factionGroupsOf(r: Reader): FruitFactionView[] {
   }
 
   return [...groups]
-    .map(([faction, refs]) => ({ faction, open: refs }))
-    .toSorted(byGroup(r))
+    .map(([faction, refs]) => ({
+      faction,
+      label: faction === null ? null : FACTION_LABELS[r.locale][faction],
+      open: refs,
+    }))
+    .toSorted(byGroup(r.locale))
 }
 
 /** The groups an open eater stands in: their factions, or `null` for none yet. */
@@ -262,13 +267,8 @@ function fileUnder(
 
 /** No faction last; the rest most fruits first, then by name in this locale. */
 function byGroup(
-  r: Reader,
+  locale: Locale,
 ): (a: FruitFactionView, b: FruitFactionView) => number {
-  const { locale } = r
-  const t = translatorOf(r.archive.series, locale)
-  const label = ({ faction }: FruitFactionView): string =>
-    faction === null ? '' : t(`faction.${faction}`)
-
   return (a, b) => {
     const none = Number(a.faction === null) - Number(b.faction === null)
     if (none !== 0) {
@@ -276,7 +276,9 @@ function byGroup(
     }
     const size = b.open.length - a.open.length
 
-    return size === 0 ? label(a).localeCompare(label(b), locale) : size
+    return size === 0 ?
+        (a.label ?? '').localeCompare(b.label ?? '', locale)
+      : size
   }
 }
 

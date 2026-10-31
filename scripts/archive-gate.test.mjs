@@ -29,6 +29,7 @@ import {
   placeWordCanaries,
   placeWordCanariesOf,
   proseCanaries,
+  serverCopies,
   slugCanaries,
   slugsFrom,
   sourceCanaries,
@@ -348,10 +349,12 @@ describe('the verdict the gate reaches', () => {
 
 describe('series copy canaries', () => {
   it('looks for every series’ own words, and never for a shared one', async () => {
-    const { COPIES } = await importArchive('server/copy.server.ts')
     const { enDictionary } = await importArchive('i18n/dictionaries/en.ts')
     const { itDictionary } = await importArchive('i18n/dictionaries/it.ts')
-    const canaries = copyCanaries(COPIES, [enDictionary, itDictionary])
+    const canaries = copyCanaries(await serverCopies(), [
+      enDictionary,
+      itDictionary,
+    ])
     const phrases = canaries.map(({ phrase }) => phrase)
 
     // One Piece's factions and Hunter x Hunter's demo, in both languages.
@@ -367,7 +370,7 @@ describe('series copy canaries', () => {
 
     const leaked = [chunk('index.js', 'const f = "Kozuki alliance"')]
     expect(judge(leaked, canaries).found.map(({ file }) => file)).toStrictEqual(
-      ['src/i18n/dictionaries/one-piece'],
+      ['src/i18n/dictionaries/one-piece/factions'],
     )
     expect(judge([chunk('index.js', 'export {}')], canaries).ok).toBe(true)
   })

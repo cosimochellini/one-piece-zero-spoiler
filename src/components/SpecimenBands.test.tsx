@@ -588,13 +588,18 @@ describe('the faction view', () => {
   const FACTIONS: AlbumView['factions'] = [
     {
       faction: 'whitebeard-pirates',
+      label: 'Whitebeard Pirates',
       open: [
         { id: CHOP.id, eaters: [0] },
         { id: FLAME.id, eaters: [0] },
       ],
     },
-    { faction: 'revolutionary-army', open: [{ id: FLAME.id, eaters: [1] }] },
-    { faction: null, open: [{ id: GUM.id, eaters: [0] }] },
+    {
+      faction: 'revolutionary-army',
+      label: 'Revolutionary Army',
+      open: [{ id: FLAME.id, eaters: [1] }],
+    },
+    { faction: null, label: null, open: [{ id: GUM.id, eaters: [0] }] },
   ]
 
   /** The faction view at episode 650, with these picks. */

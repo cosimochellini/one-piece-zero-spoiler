@@ -15,6 +15,7 @@ import type {
   PlaceWords,
   Story,
 } from '~/data/types'
+import { FACTION_LABELS } from '~/i18n/dictionaries/one-piece/factions'
 import { type Locale, LOCALES } from '~/i18n/locales'
 import { FIRST_CHAPTER, FIRST_EPISODE } from '~/lib/progress/episode'
 import type { Source } from '~/lib/progress/spoiler'
@@ -130,11 +131,10 @@ function dated(archive: ReaderArchive, owner: Entity, field: Field): Text[] {
   })
 }
 
-const DICTIONARIES: Record<Locale, Record<string, string>> = COPIES['one-piece']
-
 /** The label a page prints for a group, or the test is wrong. */
 function groupLabel(locale: Locale, id: string): string {
-  const label = DICTIONARIES[locale][`faction.${id}`]
+  const labels: Partial<Record<string, string>> = FACTION_LABELS[locale]
+  const label = labels[id]
   if (label === undefined) {
     throw new Error(`no ${locale} label for the group ${id}`)
   }
@@ -308,11 +308,9 @@ function headerTexts(words: PlaceWords): Text[] {
 /**
  * Every line of a series' own copy (`~/server/copy.server`). The server
  * sends it with every page of the series at every bookmark, so each is read
- * at the first episode and chapter (#791). The faction labels are skipped:
- * One Piece sends them with every page of it, as every page's bundle did
- * before #791, and some name a record ("Thriller Bark Pirates"). Sending
- * them with the fruit album alone is a follow-up; `factionTexts` still reads
- * each at the affiliation that tags it.
+ * at the first episode and chapter (#791). The faction labels are not in
+ * it: the fruit album sends each with its group (#988), and `factionTexts`
+ * reads each at the affiliation that tags it.
  */
 function copyTexts(slug: string): Text[] {
   const copies: Partial<
@@ -323,16 +321,13 @@ function copyTexts(slug: string): Text[] {
     return []
   }
 
-  const lines = Object.keys(copy.en).filter(
-    (key) => !key.startsWith('faction.'),
-  )
-  return lines.map((key) => ({
+  return Object.entries(copy.en).map(([key, en]) => ({
     chapter: FIRST_CHAPTER,
     episode: FIRST_EPISODE,
     label: 'copy.copy',
     owner: { id: `copy:${key}` },
     source: undefined,
-    text: { en: copy.en[key] ?? '', it: copy.it[key] ?? '' },
+    text: { en, it: copy.it[key] ?? '' },
   }))
 }
 

@@ -78,7 +78,7 @@ function CommonKeyWithoutSeries(): string {
 function SeriesKeyAsShared(): string {
   const t = useT()
   // @ts-expect-error -- One Piece's key with the shared translate
-  return t('faction.marines')
+  return t('fruits.noFaction')
 }
 
 describe('useSeriesT', () => {
