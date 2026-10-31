@@ -331,7 +331,8 @@ render until a season files one.
   posed as an animal, in silhouette, with no face. Never the heraldic
   emblem: no shield, banner, field, border or motto (owner, #851). These
   leads were checked on both wikis for #854; they are not rulings, and the
-  frame check still decides:
+  frame check still decides (chapters are the site's absolute ones; see
+  Research):
   - Ned's greatsword, Ice: shown at his threshold in both media, in episode
     1 and in Bran I (chapter 2), where he beheads a deserter with it.
   - Arya's sword, Needle, is the trap: Jon gives it to her in episode 2 and
