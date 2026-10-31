@@ -721,11 +721,13 @@ export const yorknewCity: HunterSaga = {
         it: 'Atterra sull’auto dei membri della Brigata che inseguono Uborghin e la avvolge nel suo telo: tutti riescono a uscire tranne Nobunaga, che resta intrappolato. Poi arrivano le altre Bestie dell’Ombra.',
         en: 'He lands on the car of the Troupe members chasing Uvogin and wraps it in his cloth: all get out but Nobunaga, who is trapped inside. Then the other Shadow Beasts arrive.',
       },
+      // Episode 45 shows the Troupe holding and torturing him; the manga
+      // first shows him held at the hideout in chapter 84 (episode 47). An
+      // anime reader meets him captured, a manga reader free until then.
       status: [
-        { episode: 45, chapter: 77, value: 'alive' },
-        // Held at the Troupe's hideout: shown in episode 45, in the manga
-        // only in chapter 84, so pinned where both have shown it.
-        { episode: 47, chapter: 84, value: 'captured' },
+        { episode: 45, chapter: 77, value: 'alive', source: 'chapter' },
+        { episode: 45, chapter: 77, value: 'captured', source: 'episode' },
+        { episode: 47, chapter: 84, value: 'captured', source: 'chapter' },
       ],
       affiliation: [{ episode: 45, chapter: 77, value: SHADOW_BEASTS }],
     },
@@ -735,10 +737,14 @@ export const yorknewCity: HunterSaga = {
         it: 'Sbuca da sotto terra vicino alle guardie del corpo dei Nostrad e si presenta. Con altre tre Bestie dell’Ombra va ad affrontare Uborghin.',
         en: 'He comes up out of the ground near the Nostrade bodyguards and introduces himself. With three other Shadow Beasts he goes to take on Uvogin.',
       },
-      // Badly wounded by Uvogin's blast, he crawls out of the ground and calls
-      // for the other Shadow Beasts (chapter 76, episode 44). His death is
-      // told only with the others', later in the arc.
-      status: [{ episode: 43, chapter: 75, value: 'alive' }],
+      status: [
+        { episode: 43, chapter: 75, value: 'alive' },
+        // Badly wounded by Uvogin's blast, he crawls out of the ground and
+        // calls for the other Shadow Beasts (chapter 76, episode 44). The
+        // death of every Shadow Beast but Owl is told in chapter 78 and
+        // episode 45.
+        { episode: 45, chapter: 78, value: 'deceased' },
+      ],
       affiliation: [{ episode: 43, chapter: 75, value: SHADOW_BEASTS }],
     },
     'rabid-dog': {
@@ -762,19 +768,20 @@ export const yorknewCity: HunterSaga = {
         en: 'His hairs catch Uvogin’s fist and hold it. Uvogin frees himself with a scream.',
       },
       // Chapter 76 kills him with Uvogin's scream; episode 44 only knocks him
-      // out, "perhaps killing him". Until the episodes say he is dead, an
-      // anime reader sees his fate as unknown.
+      // out, "perhaps killing him", and episode 45 kills every Shadow Beast
+      // but Owl. An anime reader sees his fate as unknown until then.
       status: [
         { episode: 44, chapter: 76, value: 'unknown', source: 'episode' },
         { episode: 44, chapter: 76, value: 'deceased', source: 'chapter' },
+        { episode: 45, chapter: 78, value: 'deceased', source: 'episode' },
       ],
       affiliation: [{ episode: 44, chapter: 76, value: SHADOW_BEASTS }],
     },
     'leech': {
       role: SHADOW_BEAST,
       log: {
-        it: 'Riempie di sanguisughe il corpo di Uborghin, paralizzato dal veleno. Uborghin gli stacca mezza testa con un morso.',
-        en: 'He fills Uvogin’s body with leeches while Uvogin is paralyzed by poison. Uvogin bites off half his head.',
+        it: 'Riempie di sanguisughe il corpo di Uborghin, paralizzato dal veleno. Uborghin gli affonda i denti nella testa.',
+        en: 'He fills Uvogin’s body with leeches while Uvogin is paralyzed by poison. Uvogin bites into his head.',
       },
       status: [{ episode: 44, chapter: 76, value: 'deceased' }],
       affiliation: [{ episode: 44, chapter: 76, value: SHADOW_BEASTS }],

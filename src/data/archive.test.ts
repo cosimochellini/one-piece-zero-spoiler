@@ -383,11 +383,19 @@ describe.each(LOADED_SERIES)(
     })
 
     it('files a status only where it changes', () => {
+      // Read as each reader reads it: an entry one medium alone tells sits
+      // between entries of the other without a change of its own.
       for (const { label, timeline } of STATUSES) {
-        const values = timeline.map((entry) => entry.value)
-        const restated = values.filter((value, at) => value === values[at - 1])
+        for (const source of ['episode', 'chapter'] as const) {
+          const values = timeline
+            .filter((entry) => toldIn(entry, source))
+            .map((entry) => entry.value)
+          const restated = values.filter(
+            (value, at) => value === values[at - 1],
+          )
 
-        expect(restated, label).toStrictEqual([])
+          expect(restated, label).toStrictEqual([])
+        }
       }
     })
 
@@ -408,10 +416,15 @@ describe.each(LOADED_SERIES)(
     it('brings nobody back from a confirmed death', () => {
       // What `presumed-dead` is for: a character the story drops and picks up
       // again is filed under the doubt, never under the certainty.
+      // Read as each reader reads it: a record the two media kill at
+      // different points dies once in each.
       for (const { label, timeline } of STATUSES) {
-        const died = timeline.findIndex((entry) => entry.value === 'deceased')
+        for (const source of ['episode', 'chapter'] as const) {
+          const read = timeline.filter((entry) => toldIn(entry, source))
+          const died = read.findIndex((entry) => entry.value === 'deceased')
 
-        expect(died === -1 || died === timeline.length - 1, label).toBe(true)
+          expect(died === -1 || died === read.length - 1, label).toBe(true)
+        }
       }
     })
 

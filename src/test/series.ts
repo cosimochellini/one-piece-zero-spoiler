@@ -114,7 +114,7 @@ const EXPECTED: Record<string, Expected> = {
       chronicles: 133,
       linkedOrigins: 7,
       places: 14,
-      statuses: 106,
+      statuses: 109,
       timelines: 322,
       visits: 0,
     },

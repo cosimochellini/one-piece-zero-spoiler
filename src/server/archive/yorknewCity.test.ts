@@ -261,9 +261,22 @@ const STATUS_STEPS = [
     before: 'alive',
     after: 'deceased',
   },
-  // Worm survives Uvogin's blast and calls for help: alive through phase 2.
-  { id: 'worm', unit: 'episode', count: 47, before: 'alive', after: 'alive' },
-  { id: 'worm', unit: 'chapter', count: 84, before: 'alive', after: 'alive' },
+  // Worm survives Uvogin's blast; the deaths of the Shadow Beasts are told
+  // in chapter 78 and episode 45.
+  {
+    id: 'worm',
+    unit: 'episode',
+    count: 45,
+    before: 'alive',
+    after: 'deceased',
+  },
+  {
+    id: 'worm',
+    unit: 'chapter',
+    count: 78,
+    before: 'alive',
+    after: 'deceased',
+  },
   {
     id: 'leech',
     unit: 'episode',
@@ -278,13 +291,20 @@ const STATUS_STEPS = [
     before: undefined,
     after: 'deceased',
   },
-  // The manga kills Porcupine; episode 44 leaves his fate open.
+  // The manga kills Porcupine; episode 44 leaves his fate open until 45.
   {
     id: 'porcupine',
     unit: 'episode',
     count: 44,
     before: undefined,
     after: 'unknown',
+  },
+  {
+    id: 'porcupine',
+    unit: 'episode',
+    count: 45,
+    before: 'unknown',
+    after: 'deceased',
   },
   {
     id: 'porcupine',
@@ -363,7 +383,15 @@ const STATUS_STEPS = [
     before: 'captured',
     after: 'alive',
   },
-  { id: 'owl', unit: 'episode', count: 47, before: 'alive', after: 'captured' },
+  // Episode 45 meets Owl already held; the manga shows him held at 84.
+  {
+    id: 'owl',
+    unit: 'episode',
+    count: 45,
+    before: undefined,
+    after: 'captured',
+  },
+  { id: 'owl', unit: 'chapter', count: 77, before: undefined, after: 'alive' },
   { id: 'owl', unit: 'chapter', count: 84, before: 'alive', after: 'captured' },
 ]
 
