@@ -426,7 +426,16 @@ const earlyExam: HunterSaga = {
     'kurapika': {
       relationships: hunterExamRelationships.kurapika,
       chronicle: hunterExamChronicles.kurapika,
-      role: passedExam(1, 2),
+      role: [
+        ...passedExam(1, 2),
+        // Dalzollene hires him with three other applicants, chapter 70 and
+        // episode 41.
+        {
+          episode: 41,
+          chapter: 70,
+          value: { it: 'Hunter, guardia del corpo', en: 'Hunter, bodyguard' },
+        },
+      ],
       log: {
         it: 'Tiene per sé i suoi motivi finché il capitano non minaccia di farlo scendere: la Brigata Fantasma ha ucciso tutto il suo clan, e un Hunter può arrivare in posti e a informazioni che agli altri sono chiusi. Combatte con due spade di legno. Uno scontro con Leorio per una questione di rispetto finisce quasi in duello sul ponte, finché insieme non riprendono Gon e Katzo, sbalzati in mare; dopo i due fanno pace.',
         en: 'He keeps his reasons to himself until the captain threatens to put him off the ship: the Phantom Troupe killed the rest of his clan, and a Hunter can reach places and information closed to everyone else. He fights with two wooden swords. A quarrel with Leorio over manners nearly ends in a duel on deck, until together they pull back Gon and Katzo from the sea; afterwards the two make up.',
@@ -440,6 +449,15 @@ const earlyExam: HunterSaga = {
           value: {
             en: 'Hunter Association, Hunter',
             it: 'Associazione Hunter, Hunter',
+          },
+        },
+        // Pinned where the family he guards is named, chapter 71.
+        {
+          episode: 41,
+          chapter: 71,
+          value: {
+            en: 'Hunter Association, Hunter; Nostrade family, Neon’s bodyguard',
+            it: 'Associazione Hunter, Hunter; famiglia Nostrad, guardia del corpo di Neon',
           },
         },
       ],

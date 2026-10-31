@@ -656,6 +656,10 @@ describe('the place word canaries', () => {
       'Wetlands',
       'Port town',
       'Città portuale',
+      'Aeroporto',
+      'building',
+      'Building',
+      'Edificio',
     ])
   })
 

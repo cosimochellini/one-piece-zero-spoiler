@@ -112,6 +112,18 @@ describe('the place words of a series that labels its own', () => {
     ['its country label', { forms: { x: 'Country' } }, ['republic-of-padokea']],
     ['its tower label', { forms: { x: 'Tower' } }, ['heavens-arena']],
     ['its Italian tower label', { forms: { x: 'Torre' } }, ['heavens-arena']],
+    ['its airport label', { forms: { x: 'Airport' } }, ['lingon-airport']],
+    [
+      'its Italian airport label',
+      { forms: { x: 'Aeroporto' } },
+      ['lingon-airport'],
+    ],
+    ['its building label', { forms: { x: 'Building' } }, ['cemetery-building']],
+    [
+      'its Italian building label',
+      { forms: { x: 'Edificio' } },
+      ['cemetery-building'],
+    ],
     [
       'its Italian country label',
       { forms: { x: 'Paese' } },
@@ -130,6 +142,9 @@ describe('the place words of a series that labels its own', () => {
         'republic-of-padokea',
         'kukuroo-mountain',
         'heavens-arena',
+        'yorknew-city',
+        'lingon-airport',
+        'cemetery-building',
       ],
     ],
   ])(

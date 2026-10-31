@@ -9,7 +9,8 @@ import { sagas } from './sagas'
 
 /**
  * Hunter x Hunter's archive: its arcs, and the characters and places of the
- * Hunter Exam (#760) and Heavens Arena (#896) filed so far. The engine derives their lists, shelves
+ * Hunter Exam (#760), Heavens Arena (#896) and Yorknew City (#900) filed so
+ * far. The engine derives their lists, shelves
  * and dated facts from the records and dossiers the sagas file, as it does
  * One Piece's.
  */
@@ -47,13 +48,14 @@ const RELATIONSHIP_GATES = entities.flatMap((owner) =>
 const NAMED_SCENES = {
   episode: [
     2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
-    23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 75, 76,
+    23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 39, 40, 41, 42, 75,
+    76,
   ],
   chapter: [
     2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23,
     24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42,
     43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61,
-    62, 63, 65, 66,
+    62, 63, 65, 66, 67, 68, 69, 70, 71, 72,
   ],
 }
 
@@ -81,5 +83,12 @@ export const HUNTER_X_HUNTER_ARCHIVE: SeriesArchive = {
       'hisoka',
     ],
     'heavens-arena-arc': ['gon-freecss', 'killua', 'wing', 'zushi', 'hisoka'],
+    'yorknew-city-arc': [
+      'kurapika',
+      'gon-freecss',
+      'killua',
+      'leorio-paradinight',
+      'melody',
+    ],
   },
 }
