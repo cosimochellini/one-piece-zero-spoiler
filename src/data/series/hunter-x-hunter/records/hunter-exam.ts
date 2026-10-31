@@ -23,7 +23,8 @@ import { zevil } from './zevil'
  * (Mamen is 1999 credits and a databook). The shared logs omit the
  * manga-only sushi test and the anime-only updraft method.
  *
- * Open work: #834 (Kikyo, Silva, Hishita).
+ * Silva is filed unanchored in zoldyck.ts (#834); Kikyo is never named in
+ * the story, and Hishita waits for #912.
  */
 
 const APPLICANT = {
