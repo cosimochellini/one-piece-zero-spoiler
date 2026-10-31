@@ -944,7 +944,31 @@ export const egghead: OnePieceSaga = {
     // caption at 1131 makes her a captain, not a commander.
     'ginny': {
       relationships: eggheadRelationships.ginny,
-      role: { it: 'Schiava a God Valley', en: 'Slave at God Valley' },
+      role: [
+        {
+          episode: 1129,
+          chapter: 1095,
+          value: { it: 'Schiava a God Valley', en: 'Slave at God Valley' },
+        },
+        // Out of God Valley in chapter 1096, episode 1130.
+        {
+          episode: 1130,
+          chapter: 1096,
+          value: {
+            it: 'Ex schiava dei Draghi Celesti',
+            en: 'Former slave of the Celestial Dragons',
+          },
+        },
+        // East Army captain in chapter 1097 (p. 13), the pair of her status.
+        {
+          episode: 1131,
+          chapter: 1097,
+          value: {
+            it: 'Capitano dell’armata dell’Est dei rivoluzionari',
+            en: 'East Army captain of the Revolutionary Army',
+          },
+        },
+      ],
       log: {
         it: 'È una degli schiavi portati a God Valley per la gara di caccia dei Draghi Celesti. Quando gli altri schiavi trascinano indietro il bambino bucaniere che ha cercato di scappare, lei e un giovane Ivankov, che chiama fratellone, li fermano. Dicono agli schiavi che hanno tutti l’aria infelice e chiedono se vogliono morire o vivere. Se gli altri li seguono, dicono, hanno un piano magnifico.',
         en: 'She is one of the slaves brought to God Valley for the Celestial Dragons’ hunting competition. When the other slaves drag back the Buccaneer boy who tried to run, she and a young Ivankov, whom she calls her big bro, stop them. They tell the slaves they all look miserable and ask whether they want to die or to live. If the others follow them, they say, they have a great plan.',
@@ -1242,10 +1266,25 @@ export const egghead: OnePieceSaga = {
     'figarland-garling': {
       relationships: eggheadRelationships['figarland-garling'],
       chronicle: eggheadChronicles['figarland-garling'],
-      role: {
-        it: 'Comandante supremo dei Cavalieri di Dio',
-        en: 'Supreme Commander of the Knights of God',
-      },
+      role: [
+        {
+          episode: 1120,
+          chapter: 1086,
+          value: {
+            it: 'Comandante supremo dei Cavalieri di Dio',
+            en: 'Supreme Commander of the Knights of God',
+          },
+        },
+        // He joins the Elders in chapter 1125 (p. 9-10), episode 1155.
+        {
+          episode: 1155,
+          chapter: 1125,
+          value: {
+            it: 'Uno dei Cinque Astri di Saggezza',
+            en: 'One of the Five Elders',
+          },
+        },
+      ],
       log: {
         it: 'A Mary Geoise viene giustiziato un Drago Celeste, e la notizia non arriverà mai al resto del mondo. Il giudice è San Figarland Garling, un tempo campione su un’isola chiamata God Valley e oggi comandante supremo dei Cavalieri di Dio: capelli tirati in punte rigide, occhiali rotondi rossi. Il giustiziato è Donquijote Myosgard, che aveva difeso gli uomini-pesce. Intorno, gli altri nobili si lamentano perché il cibo sta finendo. Chi difende la feccia, dice Garling, vale meno della feccia che protegge.',
         en: 'A Celestial Dragon is executed at Mary Geoise, and the news will never reach the rest of the world. The judge is Saint Figarland Garling, once a champion on an island called God Valley and now the Supreme Commander of the Knights of God, his hair set in stiff spikes behind round red glasses. The man executed is Donquixote Mjosgard, who defended the fish-men, while the other nobles complain that their food is running out. Anyone who defends scum, Garling says, is lower than the scum he protects.',
@@ -1354,7 +1393,25 @@ export const egghead: OnePieceSaga = {
     'bekori': {
       relationships: eggheadRelationships.bekori,
       chronicle: eggheadChronicles.bekori,
-      role: { it: 'Re del Regno di Sorbet', en: 'King of the Sorbet Kingdom' },
+      role: [
+        {
+          episode: 1131,
+          chapter: 1097,
+          value: {
+            it: 'Re del Regno di Sorbet',
+            en: 'King of the Sorbet Kingdom',
+          },
+        },
+        // Kuma drives him out in chapter 1099, the pair of his status.
+        {
+          episode: 1133,
+          chapter: 1099,
+          value: {
+            it: 'Re deposto del Regno di Sorbet',
+            en: 'Deposed king of the Sorbet Kingdom',
+          },
+        },
+      ],
       log: {
         it: 'I sudditi del sud dicono che non ha cuore: chi si ammala e non può pagare il tributo celeste finisce in prigione, e un vecchio rinchiuso lì è appena morto di fame. Poi ridisegna il regno. Da oggi il Regno di Sorbet è soltanto il nord dell’isola, perché il tributo si calcola sul numero dei cittadini e il sud, pieno di vecchi che pagano poco, trascina giù tutti. Chi abita al sud è lasciato ai suoi soldati, che possono farne ciò che vogliono. Kuma lo chiama il burattino dei Draghi Celesti.',
         en: 'His subjects in the South call him cold and heartless: whoever falls ill and cannot pay the Heavenly Tribute goes to prison, and an old man jailed there has just starved to death. Then he redraws the kingdom. From today only the north of the island is the Sorbet Kingdom, since the tribute is set by the number of citizens and the South, full of old people who pay little, drags the rest down. Its people are left to his soldiers to use as they like. Kuma calls him the Celestial Dragons’ puppet.',
@@ -1445,7 +1502,23 @@ export const egghead: OnePieceSaga = {
     'alpha': {
       relationships: eggheadRelationships.alpha,
       chronicle: eggheadChronicles.alpha,
-      role: { it: 'Infermiera di Bonney', en: 'Bonney’s nurse' },
+      role: [
+        {
+          episode: 1134,
+          chapter: 1100,
+          value: { it: 'Infermiera di Bonney', en: 'Bonney’s nurse' },
+        },
+        // Conney learns she is a government agent in chapter 1101, episode
+        // 1135.
+        {
+          episode: 1135,
+          chapter: 1101,
+          value: {
+            it: 'Agente del Governo Mondiale',
+            en: 'World Government agent',
+          },
+        },
+      ],
       log: {
         it: 'Arriva alla chiesa di Sorbet il giorno in cui Kuma riporta a casa Bonney dal laboratorio di Vegapunk. Per ordine del medico, dice, resterà con la bambina finché non sarà guarita del tutto: ogni giorno le misurerà la febbre, le darà la medicina e controllerà ogni minimo cambiamento. I suoi si costruiscono un alloggio davanti alla chiesa e chiedono a tutti di portare con sé un documento. Mentre Kuma se ne va, lei pensa che il collo di un bambino non è niente da spezzare, e lui pensa che lo sa, e che non tornerà.',
         en: 'She arrives at the church in Sorbet on the day Kuma brings Bonney home from Vegapunk’s laboratory. By the doctor’s orders, she says, she will stay with the girl until she is fully cured, taking her temperature, giving her medicine and watching for the slightest change every day. Her people build their lodgings in front of the church and tell everyone to carry ID. As Kuma leaves, she thinks that a child’s neck is nothing to snap, and he thinks that he knows, and will not come back.',

@@ -52,7 +52,7 @@ const FORMER_LIEUTENANT = role(
 )
 
 // #975: every role a later arc contradicts, with the pair each change is
-// pinned at. East Blue, Alabasta and Skypiea first, then part 2.
+// pinned at. East Blue, Alabasta and Skypiea first, then parts 2 and 3.
 const ROLES: { changes: Change[]; id: string }[] = [
   {
     id: 'koby',
@@ -716,6 +716,487 @@ const ROLES: { changes: Change[]; id: string }[] = [
           'Vicecapitano dei Pirati del Sole',
           'Vice captain of the Sun Pirates',
         ),
+      },
+    ],
+  },
+  // #975 part 3: Dressrosa, Whole Cake, Wano and Egghead. Elbaph was audited
+  // too: none of its roles changes, so it has no rows.
+  {
+    id: 'koala',
+    changes: [
+      {
+        episode: 663,
+        chapter: 731,
+        from: role(
+          'Bambina liberata dalla schiavitù',
+          'Child freed from slavery',
+        ),
+        to: role(
+          'Membro dell’Armata Rivoluzionaria',
+          'Revolutionary Army member',
+        ),
+      },
+    ],
+  },
+  {
+    id: 'monet',
+    changes: [
+      {
+        episode: 599,
+        chapter: 673,
+        from: role('Assistente del laboratorio', 'Laboratory assistant'),
+        to: role('Agente di Do Flamingo', 'Doflamingo’s agent'),
+      },
+    ],
+  },
+  {
+    id: 'vergo',
+    changes: [
+      {
+        episode: 599,
+        chapter: 673,
+        from: role('Vecchia conoscenza di Law', 'Law’s old acquaintance'),
+        to: role(
+          'Viceammiraglio della G-5, uomo di Do Flamingo',
+          'G-5 vice admiral, Doflamingo’s man',
+        ),
+      },
+    ],
+  },
+  {
+    id: 'momonosuke',
+    changes: [
+      {
+        episode: 768,
+        chapter: 817,
+        from: role(
+          'Bambino trasformato in drago',
+          'Child turned into a dragon',
+        ),
+        to: role('Erede della famiglia Kozuki', 'Heir of the Kozuki family'),
+      },
+      {
+        episode: 1078,
+        chapter: 1051,
+        from: role('Erede della famiglia Kozuki', 'Heir of the Kozuki family'),
+        to: role('Shogun di Wano', 'Shogun of Wano'),
+      },
+    ],
+  },
+  {
+    id: 'baby-5',
+    changes: [
+      {
+        episode: 710,
+        chapter: 771,
+        from: role('Sottoposta di Do Flamingo', 'Doflamingo’s subordinate'),
+        to: role('Al fianco di Sai', 'At Sai’s side'),
+      },
+    ],
+  },
+  {
+    id: 'riku-doldo-iii',
+    changes: [
+      {
+        episode: 741,
+        chapter: 796,
+        from: role('Ex re di Dressrosa', 'Former king of Dressrosa'),
+        to: role('Re di Dressrosa', 'King of Dressrosa'),
+      },
+    ],
+  },
+  {
+    id: 'sai',
+    changes: [
+      {
+        episode: 645,
+        chapter: 715,
+        from: role(
+          'Giovane della famiglia Chinjao',
+          'Young man of the Chinjao family',
+        ),
+        to: role(
+          'Tredicesimo capo della Flotta Happo',
+          'Thirteenth leader of the Happo Navy',
+        ),
+      },
+    ],
+  },
+  {
+    id: 'hajrudin',
+    changes: [
+      {
+        episode: 746,
+        chapter: 800,
+        from: role('Mercenario gigante', 'Giant mercenary'),
+        to: role(
+          'Capitano dei Nuovi Pirati Guerrieri Giganti',
+          'Captain of the New Giant Warrior Pirates',
+        ),
+      },
+    ],
+  },
+  {
+    id: 'viola',
+    changes: [
+      {
+        episode: 660,
+        chapter: 728,
+        from: role('Ballerina e informatrice', 'Dancer and informant'),
+        to: role('Principessa di Dressrosa', 'Princess of Dressrosa'),
+      },
+    ],
+  },
+  {
+    id: 'kyros',
+    changes: [
+      {
+        episode: 677,
+        chapter: 743,
+        from: role(
+          'Soldatino di legno di Dressrosa',
+          'Wooden soldier of Dressrosa',
+        ),
+        to: role(
+          'Ex comandante dell’esercito di Dressrosa',
+          'Former commander of Dressrosa’s army',
+        ),
+      },
+    ],
+  },
+  {
+    id: 'kanjuro',
+    changes: [
+      {
+        episode: 977,
+        chapter: 974,
+        from: role('Samurai di Wano', 'Samurai of Wano'),
+        to: role('Spia di Orochi', 'Orochi’s spy'),
+      },
+    ],
+  },
+  {
+    id: 'kaido',
+    changes: [
+      {
+        episode: 1080,
+        chapter: 1053,
+        from: role('Imperatore del Nuovo Mondo', 'Emperor of the New World'),
+        to: role('Ex Imperatore', 'Former Emperor'),
+      },
+    ],
+  },
+  {
+    id: 'carrot',
+    changes: [
+      {
+        episode: 1083,
+        chapter: 1056,
+        from: role('Mink di Zou', 'Mink of Zou'),
+        to: role('Sovrana del Ducato di Mokomo', 'Ruler of the Mokomo Dukedom'),
+      },
+    ],
+  },
+  {
+    id: 'inuarashi',
+    changes: [
+      {
+        episode: 1083,
+        chapter: 1056,
+        from: role(
+          'Sovrano del giorno di Mokomo',
+          'Ruler of the day of Mokomo',
+        ),
+        to: role(
+          'Ex sovrano del giorno di Mokomo',
+          'Former ruler of the day of Mokomo',
+        ),
+      },
+    ],
+  },
+  {
+    id: 'nekomamushi',
+    changes: [
+      {
+        episode: 1083,
+        chapter: 1056,
+        from: role(
+          'Sovrano della notte di Mokomo',
+          'Ruler of the night of Mokomo',
+        ),
+        to: role(
+          'Ex sovrano della notte di Mokomo',
+          'Former ruler of the night of Mokomo',
+        ),
+      },
+    ],
+  },
+  {
+    id: 'charlotte-linlin',
+    changes: [
+      {
+        episode: 1080,
+        chapter: 1053,
+        from: role('Imperatore di Totto Land', 'Emperor of Totto Land'),
+        to: role('Ex Imperatore', 'Former Emperor'),
+      },
+    ],
+  },
+  {
+    id: 'stussy',
+    changes: [
+      {
+        episode: 841,
+        chapter: 871,
+        from: role('Pezzo grosso della malavita', 'Underworld boss'),
+        to: role('Agente del Cipher Pol 0', 'Cipher Pol 0 agent'),
+      },
+      {
+        episode: 1105,
+        chapter: 1073,
+        from: role('Agente del Cipher Pol 0', 'Cipher Pol 0 agent'),
+        to: role('Ex agente del Cipher Pol 0', 'Former Cipher Pol 0 agent'),
+      },
+    ],
+  },
+  {
+    id: 'sheepshead',
+    changes: [
+      {
+        episode: 757,
+        chapter: 808,
+        from: role(
+          'Pirata a capo di una squadra di ricerca',
+          'Pirate leading a search party',
+        ),
+        to: role(
+          'Headliner dei Pirati delle Cento Bestie',
+          'Beasts Pirates headliner',
+        ),
+      },
+    ],
+  },
+  {
+    id: 'edward-weevil',
+    changes: [
+      {
+        episode: 957,
+        chapter: 956,
+        from: role(
+          'Membro della Flotta dei Sette',
+          'One of the Seven Warlords',
+        ),
+        to: role('Ex membro della Flotta dei Sette', 'Former Warlord'),
+      },
+    ],
+  },
+  {
+    id: 'zeus',
+    changes: [
+      {
+        episode: 865,
+        chapter: 890,
+        from: role(
+          'Homie nuvola del tuono di Big Mom',
+          'Big Mom’s thundercloud homie',
+        ),
+        to: role(
+          'Nuvola del tuono al servizio di Nami',
+          'Thundercloud serving Nami',
+        ),
+      },
+      {
+        episode: 994,
+        chapter: 985,
+        from: role(
+          'Nuvola del tuono al servizio di Nami',
+          'Thundercloud serving Nami',
+        ),
+        to: role(
+          'Homie nuvola del tuono di Big Mom',
+          'Big Mom’s thundercloud homie',
+        ),
+      },
+      {
+        episode: 1034,
+        chapter: 1013,
+        from: role(
+          'Homie nuvola del tuono di Big Mom',
+          'Big Mom’s thundercloud homie',
+        ),
+        to: role(
+          'Nuvola del tuono scartata da Big Mom',
+          'Thundercloud cast off by Big Mom',
+        ),
+      },
+      {
+        episode: 1040,
+        chapter: 1018,
+        from: role(
+          'Nuvola del tuono scartata da Big Mom',
+          'Thundercloud cast off by Big Mom',
+        ),
+        to: role('Compagno di Nami', 'Nami’s partner'),
+      },
+    ],
+  },
+  {
+    id: 'kiku',
+    changes: [
+      {
+        episode: 909,
+        chapter: 919,
+        from: role('Cameriera della casa da tè', 'Tea house waitress'),
+        to: role(
+          'Compagna di Kin’emon giunta da vent’anni prima',
+          'Kin’emon’s companion from twenty years ago',
+        ),
+      },
+    ],
+  },
+  {
+    id: 'ashura-doji',
+    changes: [
+      {
+        episode: 936,
+        chapter: 939,
+        from: role('Capo dei furfanti di Kuri', 'Leader of the Kuri ruffians'),
+        to: role('Uno dei Nove Foderi Rossi', 'One of the Nine Red Scabbards'),
+      },
+    ],
+  },
+  {
+    id: 'kawamatsu',
+    changes: [
+      {
+        episode: 948,
+        chapter: 948,
+        from: role(
+          'Prigioniero di Udon, uno dei Nove Foderi Rossi',
+          'Prisoner of Udon, one of the Nine Red Scabbards',
+        ),
+        to: role('Uno dei Nove Foderi Rossi', 'One of the Nine Red Scabbards'),
+      },
+    ],
+  },
+  {
+    id: 'speed',
+    changes: [
+      {
+        episode: 906,
+        chapter: 918,
+        from: role(
+          'Headliner dei Pirati delle Cento Bestie',
+          'Beasts Pirates headliner',
+        ),
+        to: role('Al fianco di O-Tama', 'At Tama’s side'),
+      },
+    ],
+  },
+  {
+    id: 'daikoku',
+    changes: [
+      {
+        episode: 995,
+        chapter: 986,
+        from: role(
+          'Ninja dell’Oniwabanshu di Orochi',
+          'Orochi Oniwabanshu ninja',
+        ),
+        to: role('Ninja dei Pirati delle Cento Bestie', 'Beasts Pirates ninja'),
+      },
+    ],
+  },
+  {
+    id: 'raijin',
+    changes: [
+      {
+        episode: 995,
+        chapter: 986,
+        from: role(
+          'Ninja dell’Oniwabanshu di Orochi',
+          'Orochi Oniwabanshu ninja',
+        ),
+        to: role('Ninja dei Pirati delle Cento Bestie', 'Beasts Pirates ninja'),
+      },
+    ],
+  },
+  {
+    id: 'fujin',
+    changes: [
+      {
+        episode: 995,
+        chapter: 986,
+        from: role(
+          'Ninja dell’Oniwabanshu di Orochi',
+          'Orochi Oniwabanshu ninja',
+        ),
+        to: role('Ninja dei Pirati delle Cento Bestie', 'Beasts Pirates ninja'),
+      },
+    ],
+  },
+  {
+    id: 'ginny',
+    changes: [
+      {
+        episode: 1130,
+        chapter: 1096,
+        from: role('Schiava a God Valley', 'Slave at God Valley'),
+        to: role(
+          'Ex schiava dei Draghi Celesti',
+          'Former slave of the Celestial Dragons',
+        ),
+      },
+      {
+        episode: 1131,
+        chapter: 1097,
+        from: role(
+          'Ex schiava dei Draghi Celesti',
+          'Former slave of the Celestial Dragons',
+        ),
+        to: role(
+          'Capitano dell’armata dell’Est dei rivoluzionari',
+          'East Army captain of the Revolutionary Army',
+        ),
+      },
+    ],
+  },
+  {
+    id: 'figarland-garling',
+    changes: [
+      {
+        episode: 1155,
+        chapter: 1125,
+        from: role(
+          'Comandante supremo dei Cavalieri di Dio',
+          'Supreme Commander of the Knights of God',
+        ),
+        to: role('Uno dei Cinque Astri di Saggezza', 'One of the Five Elders'),
+      },
+    ],
+  },
+  {
+    id: 'bekori',
+    changes: [
+      {
+        episode: 1133,
+        chapter: 1099,
+        from: role('Re del Regno di Sorbet', 'King of the Sorbet Kingdom'),
+        to: role(
+          'Re deposto del Regno di Sorbet',
+          'Deposed king of the Sorbet Kingdom',
+        ),
+      },
+    ],
+  },
+  {
+    id: 'alpha',
+    changes: [
+      {
+        episode: 1135,
+        chapter: 1101,
+        from: role('Infermiera di Bonney', 'Bonney’s nurse'),
+        to: role('Agente del Governo Mondiale', 'World Government agent'),
       },
     ],
   },
