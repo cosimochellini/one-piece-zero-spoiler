@@ -15,6 +15,7 @@ import { CHAPTER_ONE_DRAWINGS } from './chapter-one'
 import { FINAL_PHASE_DRAWINGS } from './final-phase'
 import { HEAVENS_ARENA_DRAWINGS, heavensArenaRedrawn } from './heavens-arena'
 import { TRICK_TOWER_DRAWINGS } from './trick-tower'
+import { YORKNEW_CITY_DRAWINGS } from './yorknew-city'
 import { zevilArt, zevilRedrawn } from './zevil'
 import { ZOLDYCK_DRAWINGS } from './zoldyck'
 
@@ -104,6 +105,7 @@ export const DRAWINGS = {
   ...zevilArt,
   ...FINAL_PHASE_DRAWINGS,
   ...HEAVENS_ARENA_DRAWINGS,
+  ...YORKNEW_CITY_DRAWINGS,
   // A small sailing ship side on in a storm, the bolt of lightning over her
   // in yellow: the ship that takes Gon away from his island to the exam,
   // through a storm, in episode 1 and chapter 1.

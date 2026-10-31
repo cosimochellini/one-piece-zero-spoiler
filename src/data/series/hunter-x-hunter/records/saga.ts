@@ -24,6 +24,8 @@ export interface HunterEntity extends Entity {
  */
 export interface HunterVocabulary extends Vocabulary {
   form:
+    | 'airport'
+    | 'building'
     | 'city'
     | 'country'
     | 'forest'

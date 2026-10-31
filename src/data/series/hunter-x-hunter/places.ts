@@ -3,16 +3,18 @@ import type { PlaceDossier } from '~/data/types'
 import { HEAVENS_ARENA_PLACES } from './records/heavens-arena'
 import type { HunterVocabulary } from './records/saga'
 import { TRICK_TOWER_PLACES } from './records/trick-tower'
+import { YORKNEW_CITY_PLACES } from './records/yorknew-city'
 import { ZOLDYCK_PLACES } from './zoldyckPlaces'
 
 /**
  * The log entry of every Hunter x Hunter place, by the place's id, in its own
- * words (`../placeWords`). The Hunter Exam (#760) and Heavens Arena (#896).
+ * words (`../placeWords`). The Hunter Exam (#760), Heavens Arena (#896) and Yorknew City (#900).
  */
 export const PLACE_DOSSIERS: Record<string, PlaceDossier<HunterVocabulary>> = {
   ...TRICK_TOWER_PLACES,
   ...ZOLDYCK_PLACES,
   ...HEAVENS_ARENA_PLACES,
+  ...YORKNEW_CITY_PLACES,
   'zevil-island': {
     form: 'island',
     region: 'islands',

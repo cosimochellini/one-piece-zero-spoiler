@@ -44,7 +44,7 @@ Done when `./node_modules/.bin/vitest run src/test scripts/archive-gate.test.mjs
 
 Both scripts read the wikis over the network and are not part of `npm run check`.
 
-- `scripts/verify-names.mjs`: add each new character to `ITALIAN_TITLES`, as `Page#Section` for a section of an Italian Wikipedia list page. A name kept after a hand check found no page goes in `NAMES_KEPT`.
+- `scripts/verify-names.mjs` (its tables in `scripts/verify-names.tables.mjs`): add each new character to `ITALIAN_TITLES`, as `Page#Section` for a section of an Italian Wikipedia list page. A name kept after a hand check found no page goes in `NAMES_KEPT`.
 - `scripts/verify-chapters.mjs`: add to `TITLES` only a record whose English name is not its wiki page title.
 
 Done when `npm run verify:chapters -- --series hunter-x-hunter` reports nothing too low and nothing unresolved, and `npm run verify:names -- --series hunter-x-hunter` passes every new name. Failures already on main are named as such in the PR.

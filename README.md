@@ -83,10 +83,10 @@ design is in [docs/architecture.md](docs/architecture.md).
 
 One Piece has 500+ characters, 120+ devil fruits and about 40 places, from the
 first episode to the latest arc. Hunter x Hunter currently covers the Hunter
-Exam and the Heavens Arena, with 60+ characters and about ten places. Both
-series are available in Italian and English. Every entry has its own line
-drawing made for this project, and some are redrawn from the episode the story
-changes them. There is no official artwork.
+Exam, the Heavens Arena and the start of Yorknew City, with 70+ characters and
+about fifteen places. Both series are available in Italian and English. Every
+entry has its own line drawing made for this project, and some are redrawn from
+the episode the story changes them. There is no official artwork.
 
 |                                                                                                                                                                                              |                                                                                                                                                                                                        |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
