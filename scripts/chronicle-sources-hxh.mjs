@@ -40,7 +40,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
     37: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_37_(2011)',
-      note: 'Episode 37 and chapters 64-65: the talk by the fire, Mito showing the box and telling what she knows, the grandmother on whose parents died, Gon calling his father Ging, the Nen and license boxes, the ring, memory card and cassette, and the tape’s question. Also read: Chapter 64, Chapter 65.',
+      note: 'Corrected after review: in Italian, “alla sua età” became “alla stessa età di Gon”. Episode 37 and chapters 64-65: the talk by the fire, Mito showing the box and telling what she knows, the grandmother on whose parents died, Gon calling his father Ging, the Nen and license boxes, the ring, memory card and cassette, and the tape’s question. Also read: Chapter 64, Chapter 65.',
     },
     38: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_38_(2011)',
@@ -178,7 +178,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
     41: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_41_(2011)',
-      note: 'The fake tattoo and Machi’s call for noon on August 30 are episode 32 and chapter 55; the four members talking about the new member on the road and the leader’s order are episode 41 and chapter 71. Also read: Episode 32 (2011), Chapter 55, Chapter 71.',
+      note: 'Corrected after review: “the newest member” became “one of the Troupe’s new members”, since chapter 71 only says that members No. 4 and 8 have changed. The fake tattoo and Machi’s call for noon on August 30 are episode 32 and chapter 55; the four members talking about him on the road and the leader’s order are episode 41 and chapter 71. Also read: Episode 32 (2011), Chapter 55, Chapter 71.',
     },
   },
   'hanzo': {
@@ -246,7 +246,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
     37: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_37_(2011)',
-      note: 'Episode 37 and chapter 64: the fire in the forest, Gon’s plan for Yorknew, Killua with no goal, the offer to travel together, and Gon’s answer about his mother. The family business and the mother like Mito are chapter-only. Also read: Chapter 64.',
+      note: 'Corrected after review: the episode and the chapter place the information-gathering differently, so Gon only goes to Yorknew City to start looking for his father. Episode 37 and chapter 64: the fire in the forest, Gon’s plan for Yorknew, Killua with no goal, the offer to travel together, and Gon’s answer about his mother. The family business and the mother like Mito are chapter-only. Also read: Chapter 64.',
     },
   },
   'menchi': {
@@ -716,7 +716,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
   'basho': {
     40: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_40_(2011)',
-      note: 'Episode 40 and chapter 68: the punch that tells him the figures are aura, the haiku that sets a chair alight at his touch, the second haiku against liars and Squala’s confession. Also read: Chapter 68.',
+      note: 'Corrected after review: the Italian second haiku reworded. Episode 40 and chapter 68: the punch that tells him the figures are aura, the haiku that sets a chair alight at his touch, the second haiku against liars and Squala’s confession. Also read: Chapter 68.',
     },
   },
   'baise': {
@@ -740,7 +740,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
   'dalzollene': {
     41: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_41_(2011)',
-      note: 'The screen and the item from a list are episode 39 and chapter 67; the hiring, the escort to a hotel in Yorknew, the question about enemies, the figure in the frame and the girl on the bed are episode 41 and chapter 70. Also read: Episode 39 (2011), Chapter 67, Chapter 70.',
+      note: 'Corrected after review: in Italian “la loro protetta” became “il loro capo”, the boss of both media. The screen and the item from a list are episode 39 and chapter 67; the hiring, the escort to a hotel in Yorknew, the question about enemies, the figure in the frame and the girl on the bed are episode 41 and chapter 70. Also read: Episode 39 (2011), Chapter 67, Chapter 70.',
     },
   },
   'neon-nostrade': {
@@ -752,7 +752,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
   'machi': {
     41: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_41_(2011)',
-      note: 'The Nen threads on Hisoka’s arms and the call for noon on August 30 are episode 32 and chapter 55; the four on the road, the first gathering in over three years, the talk of Hisoka and the order are episode 41 and chapter 71. Also read: Episode 32 (2011), Chapter 55, Chapter 71.',
+      note: 'Corrected after review: “a new member” became the members who have changed, as chapter 71 says. The Nen threads on Hisoka’s arms and the call for noon on August 30 are episode 32 and chapter 55; the four on the road, the first gathering in over three years, the talk of Hisoka and the order are episode 41 and chapter 71. Also read: Episode 32 (2011), Chapter 55, Chapter 71.',
     },
   },
   'ivlenkov': {
@@ -770,7 +770,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
   'shizuku': {
     42: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_42_(2011)',
-      note: 'The gathering and the order are episode 41 and chapter 71; the match with Gon and her return to the other members are episode 42 and chapter 72. The left arm is chapter-only. Also read: Episode 41 (2011), Chapter 71, Chapter 72.',
+      note: 'Corrected after review: the members gather outside Yorknew City, the match is before the auction (not “that night”), and Gon has to try for real rather than use all his strength. The gathering and the order are episode 41 and chapter 71; the match with Gon and her return to the other members are episode 42 and chapter 72. The left arm is chapter-only. Also read: Episode 41 (2011), Chapter 71, Chapter 72.',
     },
   },
 }

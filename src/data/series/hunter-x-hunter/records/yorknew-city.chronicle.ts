@@ -52,7 +52,7 @@ export const yorknewCityChronicles = {
       value: {
         title: { it: 'L’haiku', en: 'The haiku' },
         body: {
-          it: 'Quando le figure vestite di nero attaccano i candidati, Basho ne colpisce una con un pugno e capisce che è fatta di aura. Scoperto l’infiltrato [[shachmono-tocino|Shachmono Tocino]], [[squala|Squala]] nega di essere il secondo. Basho scrive un haiku e mostra cosa fanno le sue poesie: appena la sua mano tocca una sedia, la sedia prende fuoco. Ne scrive un secondo, secondo cui chi mente alla sua domanda brucerà, e chiede a ogni candidato se è un infiltrato. Squala cede e confessa.',
+          it: 'Quando le figure vestite di nero attaccano i candidati, Basho ne colpisce una con un pugno e capisce che è fatta di aura. Scoperto l’infiltrato [[shachmono-tocino|Shachmono Tocino]], [[squala|Squala]] nega di essere il secondo. Basho scrive un haiku e mostra cosa fanno le sue poesie: appena la sua mano tocca una sedia, la sedia prende fuoco. Ne scrive un altro, che dice che chi mente alla sua domanda brucerà, e chiede a ogni candidato se è un infiltrato. Squala cede e confessa.',
           en: 'When figures in black attack the applicants, Basho punches one of them and can tell it is made of aura. Once the plant [[shachmono-tocino|Shachmono Tocino]] is caught, [[squala|Squala]] denies being the second one. Basho writes a haiku and shows what his poems do: when his hand touches a chair, the chair catches fire. He writes a second one, saying that whoever lies to his question will burn, and asks each applicant whether they are a plant. Squala gives in and confesses.',
         },
       },
@@ -108,7 +108,7 @@ export const yorknewCityChronicles = {
       value: {
         title: { it: 'L’uomo nella cornice', en: 'The man in the frame' },
         body: {
-          it: 'Da uno schermo Dalzorne assegna la prova ai candidati: portare un oggetto da una lista. Assume all’istante i quattro che tornano con il loro, tra cui [[kurapika|Kurapika]], e dice che il primo incarico è scortare la loro protetta fino a un albergo di York Shin City. Quando Kurapika chiede chi ce l’abbia con lei, Dalzorne liquida la domanda. Andando nella sua stanza passano davanti a una figura umana in una cornice appesa al muro: Dalzorne dice che era una guardia del corpo, e che loro la sostituiscono. La protetta è una ragazza.',
+          it: 'Da uno schermo Dalzorne assegna la prova ai candidati: portare un oggetto da una lista. Assume all’istante i quattro che tornano con il loro, tra cui [[kurapika|Kurapika]], e dice che il primo incarico è scortare il loro capo fino a un albergo di York Shin City. Quando Kurapika chiede chi ce l’abbia con il capo, Dalzorne liquida la domanda. Andando nella sua stanza passano davanti a una figura umana in una cornice appesa al muro: Dalzorne dice che era una guardia del corpo, e che loro la sostituiscono. Il capo è una ragazza.',
           en: 'From a screen, Dalzollene sets the applicants their test: bring back an item from a list. He hires on the spot the four who return with theirs, [[kurapika|Kurapika]] among them, and tells them their first job is to escort the boss to a hotel in Yorknew City. When Kurapika asks who is after the boss, Dalzollene brushes the question aside. On the way to her room they pass a human figure in a frame on the wall: he says it was a bodyguard, and that they are replacing him. The boss is a young girl.',
         },
       },
@@ -139,8 +139,8 @@ export const yorknewCityChronicles = {
       value: {
         title: { it: 'In quattro sulla strada', en: 'Four on the road' },
         body: {
-          it: 'Machi è la donna che, dopo l’incontro con [[kastro|Kastro]], ha ricucito le braccia di [[hisoka|Hisoka]] con fili di Nen e gli ha detto di trovarsi a York Shin City entro mezzogiorno del 30 agosto. Ora cammina verso la città con altri tre membri della Brigata Fantasma: è la prima volta in più di tre anni che i membri si riuniscono tutti. Parlano di Hisoka, un nuovo membro. Quando sono tutti riuniti, il loro capo dà l’ordine: ruberanno tutto all’asta sotterranea, e possono uccidere chiunque si metta in mezzo.',
-          en: 'Machi is the woman who sewed [[hisoka|Hisoka]]’s arms back on with threads of Nen after his match with [[kastro|Kastro]], and who told him to be in Yorknew City by noon on August 30. Now she walks toward the city with three other members of the Phantom Troupe: it is the first time in over three years that all its members are gathering. They talk about Hisoka, a new member. Once they have all gathered, their leader gives the order: they will steal everything at the Underground Auction, and they may kill anyone who gets in the way.',
+          it: 'Machi è la donna che, dopo l’incontro con [[kastro|Kastro]], ha ricucito le braccia di [[hisoka|Hisoka]] con fili di Nen e gli ha detto di trovarsi a York Shin City entro mezzogiorno del 30 agosto. Ora cammina verso la città con altri tre membri della Brigata Fantasma: è la prima volta in più di tre anni che i membri si riuniscono tutti. Parlano di Hisoka e dei membri cambiati da allora. Quando sono tutti riuniti, il loro capo dà l’ordine: ruberanno tutto all’asta sotterranea, e possono uccidere chiunque si metta in mezzo.',
+          en: 'Machi is the woman who sewed [[hisoka|Hisoka]]’s arms back on with threads of Nen after his match with [[kastro|Kastro]], and who told him to be in Yorknew City by noon on August 30. Now she walks toward the city with three other members of the Phantom Troupe: it is the first time in over three years that all its members are gathering. They talk about Hisoka and the members who have changed since then. Once they have all gathered, their leader gives the order: they will steal everything at the Underground Auction, and they may kill anyone who gets in the way.',
         },
       },
     },
@@ -181,8 +181,8 @@ export const yorknewCityChronicles = {
       value: {
         title: { it: 'Braccio di ferro con Gon', en: 'Arm wrestling with Gon' },
         body: {
-          it: 'Shizuku è uno dei membri della Brigata Fantasma che si riuniscono a York Shin City, dove il loro capo ordina di rubare tutto all’asta sotterranea. Quella sera si ferma a una sfida per strada: chi batte [[gon-freecss|Gon]] a braccio di ferro vince un diamante. Gon ha battuto uno sfidante dopo l’altro, ma contro di lei deve usare tutta la sua forza per vincere. Poi lei raggiunge altri membri della Brigata.',
-          en: 'Shizuku is one of the Phantom Troupe members who gather in Yorknew City, where their leader orders them to steal everything at the Underground Auction. That night she stops at a street contest: whoever beats [[gon-freecss|Gon]] at arm wrestling wins a diamond. Gon has beaten one challenger after another, but against her he has to use all his strength to win. Then she joins other members of the Troupe.',
+          it: 'Shizuku è uno dei membri della Brigata Fantasma che si riuniscono fuori da York Shin City, dove il loro capo ordina di rubare tutto all’asta sotterranea. Prima dell’asta si ferma a una sfida per strada: chi batte [[gon-freecss|Gon]] a braccio di ferro vince un diamante. Gon ha battuto uno sfidante dopo l’altro, ma contro di lei deve impegnarsi davvero per vincere. Poi lei raggiunge altri membri della Brigata.',
+          en: 'Shizuku is one of the Phantom Troupe members who gather outside Yorknew City, where their leader orders them to steal everything at the Underground Auction. Before the auction she stops at a street contest: whoever beats [[gon-freecss|Gon]] at arm wrestling wins a diamond. Gon has beaten one challenger after another, but against her he has to try for real to win. Then she joins other members of the Troupe.',
         },
       },
     },
