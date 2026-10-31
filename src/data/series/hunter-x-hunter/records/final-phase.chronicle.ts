@@ -40,5 +40,17 @@ export const finalPhaseChronicles = {
         },
       },
     },
+    // Chapter 100 and episode 53. Maha is manga-only; the leader is not named before episode 54.
+    {
+      episode: 53,
+      chapter: 100,
+      value: {
+        title: { it: 'I Dieci Anziani', en: 'The Ten Dons' },
+        body: {
+          it: 'Illumi e [[kalluto|Carte]] raggiungono i Dieci Anziani, i capi della mafia, e Illumi li uccide. Poi chiama suo padre [[silva|Silva]] con il trasmettitore della famiglia e gli chiede se il suo cliente, il capo della Brigata Fantasma, è ancora vivo. Lo è, e Illumi chiede a Silva di dirgli di versare il pagamento sul suo conto. Morti i loro clienti, Silva e [[zeno|Zeno]] smettono di combattere il capo della Brigata e se ne vanno.',
+          en: 'Illumi and [[kalluto|Kalluto]] go to the Ten Dons, the leaders of the Mafia, and Illumi kills them. Then he calls his father [[silva|Silva]] on the family’s transmitter and asks whether his client, the leader of the Phantom Troupe, is still alive. He is, and Illumi asks Silva to tell him to wire the payment to his account. With their clients dead, Silva and [[zeno|Zeno]] stop fighting the Troupe’s leader and leave.',
+        },
+      },
+    },
   ],
 } satisfies Record<string, Timeline<Story>>

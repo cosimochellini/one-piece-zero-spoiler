@@ -69,6 +69,18 @@ export const yorknewCityChronicles = {
         },
       },
     },
+    // Neon’s escape is chapter 94 and episode 51; the call and the chain are chapter 95 and episode 51.
+    {
+      episode: 51,
+      chapter: 95,
+      value: {
+        title: { it: 'Neon sparisce', en: 'Neon slips away' },
+        body: {
+          it: '[[light-nostrade|Light]] manda Basho e [[melody|Melody]] a riportare [[neon-nostrade|Neon]] a casa. Mentre lei fa acquisti, i due le portano le borse, finché Neon non sfugge loro. Basho e Melody avvertono [[kurapika|Kurapika]], che con la sua catena scopre che lei è andata all’asta, contro gli ordini del padre.',
+          en: '[[light-nostrade|Light]] sends Basho and [[melody|Melody]] to take [[neon-nostrade|Neon]] home. While she shops, the two carry her bags, until Neon slips away from them. Basho and Melody let [[kurapika|Kurapika]] know, and with his chain Kurapika finds that she has gone to the auction, against her father’s orders.',
+        },
+      },
+    },
   ],
   'baise': [
     // Chapter 68 and episode 40. Her scene with her old employer in episode 39 is anime-only.
@@ -202,6 +214,33 @@ export const yorknewCityChronicles = {
         },
       },
     },
+    // Chapters 94-96 and episode 51. The leader is not named before episode 54; the fortune’s lines differ between the media and are left out.
+    {
+      episode: 51,
+      chapter: 96,
+      value: {
+        title: {
+          it: 'Una profezia per uno sconosciuto',
+          en: 'A fortune for a stranger',
+        },
+        body: {
+          it: 'Neon sfugge alle sue guardie del corpo per andare all’asta, e il capo della Brigata Fantasma le fa superare i posti di blocco. Mentre aspettano in un ristorante, lui loda il suo dono e le chiede la sua profezia. Lei la scrive, e lui piange leggendola e dice che è tutto vero. Neon gli parla di una famosa indovina che aveva visto da bambina e che si è poi rivelata un’imbrogliona; lei è diventata indovina lo stesso. Poi lui, parlando di un compagno morto, la stordisce con un colpo rapido.',
+          en: 'Neon slips away from her bodyguards to go to the auction, and the leader of the Phantom Troupe gets her past the checkpoints. While they wait in a restaurant, he praises her gift and asks for his own fortune. She writes it, and he cries as he reads it, saying it is all true. Neon tells him about a famous fortune-teller she saw as a child, one who turned out to be a fraud; she still became a fortune-teller herself. Then, speaking of a dead comrade, he knocks her out with a quick blow.',
+        },
+      },
+    },
+    // Chapters 100-101 and episode 53.
+    {
+      episode: 53,
+      chapter: 101,
+      value: {
+        title: { it: 'Gli occhi scarlatti', en: 'The Scarlet Eyes' },
+        body: {
+          it: 'Dopo che il capo della Brigata l’ha stordita all’asta, Neon viene portata in ospedale, e un medico dice che dovrebbe stare bene. Intanto suo padre fa comprare a [[kurapika|Kurapika]] gli occhi scarlatti, superando [[zenji|Zenji]] a 2,9 miliardi di Jenny. Quando Neon si sveglia, è contenta degli occhi e ringrazia il padre.',
+          en: 'After the Troupe’s leader knocks her out at the auction, Neon is taken to hospital, and a doctor says she should be fine. Meanwhile her father has [[kurapika|Kurapika]] buy her the Scarlet Eyes, outbidding [[zenji|Zenji]] at 2.9 billion Jenny. When Neon wakes, she is happy with them and thanks her father.',
+        },
+      },
+    },
   ],
   'machi': [
     // The stitches and the call to Yorknew City are chapter 55 and episode 32; the walk and the order are chapter 71 and episode 41.
@@ -228,6 +267,18 @@ export const yorknewCityChronicles = {
         body: {
           it: 'Quando una catena trascina via [[uvogin|Uborghin]], Machi gli attacca un ago con un filo di Nen, e i membri della Brigata lo seguono in auto. [[owl|Civetta]] atterra sulla loro auto e la avvolge nel suo telo: escono tutti tranne [[nobunaga|Nobunaga]], intrappolato per il posto in cui è seduto. Arrivano altre Bestie dell’Ombra. Poi alcuni membri della Brigata, travestiti da mafiosi, raggiungono il posto dove è tenuto Uborghin, e [[phinks|Phinks]] uccide [[dalzollene|Dalzorne]] per liberarlo.',
           en: 'When a chain snatches [[uvogin|Uvogin]] away, Machi attaches a needle and a thread of Nen to him, and the Troupe members follow him by car. [[owl|Owl]] lands on their car and wraps it in his cloth: everyone gets out but [[nobunaga|Nobunaga]], who is trapped by where he sits. Other Shadow Beasts arrive. Then members of the Troupe, disguised as Mafia men, reach the place where Uvogin is held, and [[phinks|Phinks]] kills [[dalzollene|Dalzollene]] to free him.',
+        },
+      },
+    },
+    // Chapters 89-91 and episode 49.
+    {
+      episode: 49,
+      chapter: 91,
+      value: {
+        title: { it: 'Testa o croce', en: 'Heads or tails' },
+        body: {
+          it: 'Machi e [[nobunaga|Nobunaga]] aspettano in un luogo pubblico, chiedendosi se [[uvogin|Uborghin]] sia morto. Si accorgono di essere osservati, discutono se riportare l’utilizzatore di catene vivo o morto e decidono con una moneta. Poi portano chi li segue in una zona deserta della città. Nobunaga pensa che gli inseguitori non abbiano niente a che fare con l’utilizzatore di catene; Machi è convinta del contrario. [[phinks|Phinks]] e [[pakunoda|Pakunoda]] fanno scattare la trappola, e quando [[gon-freecss|Gon]] prova a scappare Machi gli è già alle spalle. I ragazzi vengono portati al covo.',
+          en: 'Machi and [[nobunaga|Nobunaga]] wait in a public place, wondering whether [[uvogin|Uvogin]] is dead. They notice they are being watched, argue over whether to bring the chain user back dead or alive, and settle it with a coin. Then they lead their followers to an empty part of the city. Nobunaga thinks the followers have nothing to do with the chain user; Machi is sure they do. [[phinks|Phinks]] and [[pakunoda|Pakunoda]] spring the trap, and when [[gon-freecss|Gon]] tries to slip away, Machi is already behind him. The boys are taken to the hideout.',
         },
       },
     },
@@ -297,6 +348,18 @@ export const yorknewCityChronicles = {
         },
       },
     },
+    // Killua pointing her out and the rule are chapters 91-92, Franklin’s words about Gon chapter 93, all in episode 50. That she does not remember the match is chapter-only.
+    {
+      episode: 50,
+      chapter: 93,
+      value: {
+        title: { it: 'La regola', en: 'The rule' },
+        body: {
+          it: 'Al covo [[killua|Killua]] riconosce in Shizuku la donna che ha sfidato [[gon-freecss|Gon]] a braccio di ferro. Quando [[nobunaga|Nobunaga]] e [[feitan|Feitan]] si fronteggiano per Gon, lei ricorda una regola: i membri della Brigata non possono combattere tra loro. I due decidono invece con una moneta. [[franklin|Franklin]] dice anche che Gon gli ricorda [[uvogin|Uborghin]].',
+          en: 'At the hideout [[killua|Killua]] recognizes Shizuku as the woman who arm-wrestled [[gon-freecss|Gon]]. When [[nobunaga|Nobunaga]] and [[feitan|Feitan]] face off over Gon, she reminds them of a rule: members of the Troupe may not fight each other. The two settle it with a coin instead. [[franklin|Franklin]] also says that Gon reminds him of [[uvogin|Uvogin]].',
+        },
+      },
+    },
   ],
   'feitan': [
     // The stage is chapter 73 and episode 43, the balloon chapter 74, the ledge above the canyon chapter 75 (pages 1-16), all in episode 43. Franklin is named only from chapter 76. His torture of the auctioneer is chapter-only, and of Owl left out.
@@ -308,6 +371,18 @@ export const yorknewCityChronicles = {
         body: {
           it: 'Feitan sale sul palco dell’asta sotterranea con un altro membro della Brigata Fantasma e dà il benvenuto agli ospiti. Poi l’altro spara proiettili di aura che uccidono quasi tutti i presenti. Feitan è tra i membri che fuggono in mongolfiera con [[uvogin|Uborghin]], che ha trovato il caveau già vuoto. Quando la mafia abbatte la mongolfiera, Feitan guarda dall’alto di una parete di roccia con gli altri, mentre Uborghin affronta la mafia da solo.',
           en: 'Feitan walks onto the stage of the Underground Auction with another member of the Phantom Troupe and welcomes the guests. Then the other member fires bullets of aura that kill nearly everyone in the hall. Feitan is among the members who flee in a hot-air balloon with [[uvogin|Uvogin]], who found the vault already empty. When the Mafia shoots the balloon down, Feitan watches from a ledge with the others while Uvogin takes on the Mafia alone.',
+        },
+      },
+    },
+    // Chapters 91-92 and episode 50. His threat to Gon’s fingernails is chapter-only.
+    {
+      episode: 50,
+      chapter: 92,
+      value: {
+        title: { it: 'Gon bloccato', en: 'Holding Gon' },
+        body: {
+          it: 'Al covo Feitan riconosce in [[gon-freecss|Gon]] il ragazzo che ha battuto [[shizuku|Shizuku]] a braccio di ferro. Quando Gon sbatte giù la mano di [[nobunaga|Nobunaga]], Feitan lo afferra da dietro. Nobunaga gli dice di lasciarlo, i due si fronteggiano, e [[franklin|Franklin]] calma Nobunaga. [[machi|Machi]] e Shizuku ricordano che i membri non possono combattere tra loro. Decidono con una moneta, vince Nobunaga, e Feitan lascia andare Gon.',
+          en: 'At the hideout Feitan recognizes [[gon-freecss|Gon]] as the boy who beat [[shizuku|Shizuku]] at arm wrestling. When Gon slams [[nobunaga|Nobunaga]]’s hand down, Feitan grabs him from behind. Nobunaga tells him to let go, the two face off, and [[franklin|Franklin]] calms Nobunaga down. [[machi|Machi]] and Shizuku remind them that members may not fight each other. They settle it with a coin, Nobunaga wins, and Feitan lets Gon go.',
         },
       },
     },
@@ -467,6 +542,18 @@ export const yorknewCityChronicles = {
         },
       },
     },
+    // The standoff and Pakunoda’s answer are chapter 92, his words about Uvogin chapter 93, both in episode 50.
+    {
+      episode: 50,
+      chapter: 93,
+      value: {
+        title: { it: 'Come Uborghin', en: 'Like Uvogin' },
+        body: {
+          it: 'Quando al covo [[nobunaga|Nobunaga]] e [[feitan|Feitan]] si fronteggiano per [[gon-freecss|Gon]], Franklin calma Nobunaga. Chiede a [[pakunoda|Pakunoda]] cosa ha trovato nei ricordi dei ragazzi: niente sull’utilizzatore di catene. Franklin dice anche che Gon gli ricorda [[uvogin|Uborghin]], che dava il meglio quando combatteva per qualcun altro.',
+          en: 'When [[nobunaga|Nobunaga]] and [[feitan|Feitan]] face off over [[gon-freecss|Gon]] at the hideout, Franklin calms Nobunaga down. He asks [[pakunoda|Pakunoda]] what she found in the boys’ memories: nothing about the chain user. Franklin also says that Gon reminds him of [[uvogin|Uvogin]], who fought at his strongest when it was for someone else.',
+        },
+      },
+    },
   ],
   'nobunaga': [
     // The cloth and the other Shadow Beasts’ arrival are chapter 77
@@ -479,6 +566,30 @@ export const yorknewCityChronicles = {
         body: {
           it: 'Nobunaga e altri membri della Brigata inseguono l’auto che porta via [[uvogin|Uborghin]], seguendo il filo che [[machi|Machi]] gli ha attaccato. [[owl|Civetta]] atterra sulla loro auto e la avvolge nel suo telo. Gli altri riescono a uscire, ma Nobunaga, per il posto in cui è seduto, resta intrappolato. Poi arrivano altre Bestie dell’Ombra.',
           en: 'Nobunaga and other members of the Troupe chase the car taking [[uvogin|Uvogin]] away, following the thread [[machi|Machi]] attached to him. [[owl|Owl]] lands on their car and wraps it in his cloth. The others get out, but Nobunaga, because of where he sits, is trapped inside. Then more Shadow Beasts arrive.',
+        },
+      },
+    },
+    // Chapters 89-91 and episode 49.
+    {
+      episode: 49,
+      chapter: 91,
+      value: {
+        title: { it: 'Il pedinamento', en: 'The tail' },
+        body: {
+          it: 'Nobunaga e [[machi|Machi]] sanno di essere seguiti. Lui ragiona che chi li segue non è l’utilizzatore di catene, che lavora da solo per la famiglia Nostrad e probabilmente ha ucciso [[uvogin|Uborghin]] per vendetta personale. Dopo una telefonata di [[phinks|Phinks]] guarda dritto verso il punto dove sono nascosti [[gon-freecss|Gon]] e [[killua|Killua]]. Quando Phinks blocca Killua, Nobunaga lo aspetta alle spalle. Gli chiede perché li seguivano, chi gli ha insegnato il Nen e se conosce un utilizzatore di Nen con le catene, poi gli dà tre secondi per scegliere se morire subito o più tardi.',
+          en: 'Nobunaga and [[machi|Machi]] know they are being followed. He reasons that the followers are not the chain user, who works alone for the Nostrade family and probably killed [[uvogin|Uvogin]] out of a grudge of his own. After a call from [[phinks|Phinks]], he looks straight at where [[gon-freecss|Gon]] and [[killua|Killua]] are hiding. When Phinks catches Killua, Nobunaga is waiting behind him. He asks Killua why they were following, who taught him Nen and whether he knows a Nen user with chains, then gives him three seconds to choose whether to die now or later.',
+        },
+      },
+    },
+    // Chapters 91-94 and episode 50.
+    {
+      episode: 50,
+      chapter: 94,
+      value: {
+        title: { it: 'Di guardia', en: 'On guard' },
+        body: {
+          it: 'Al covo Nobunaga sfida [[gon-freecss|Gon]] a braccio di ferro e gli sbatte la mano sul tavolo più volte mentre parla di [[uvogin|Uborghin]]: lo conosceva meglio di chiunque altro, e piange mentre giura di trovare l’utilizzatore di catene. Quando Gon, arrabbiato, gli sbatte giù la mano a sua volta, Nobunaga gli chiede di entrare nella Brigata; Gon preferirebbe morire. Nobunaga intuisce che appartiene al Potenziamento e resta con la sua spada a sorvegliare i ragazzi finché non torna il capo: se il capo non li vuole, potranno andarsene. Invece Gon e [[killua|Killua]] sfondano con un calcio le pareti laterali e scappano. Nobunaga insegue Gon e usa l’En, ma i ragazzi sono già lontani.',
+          en: 'At the hideout Nobunaga arm-wrestles [[gon-freecss|Gon]] and slams his hand down again and again while he talks about [[uvogin|Uvogin]]: he knew Uvogin better than anyone, and he cries as he swears to find the chain user. When Gon, angry, slams Nobunaga’s hand down in turn, Nobunaga asks him to join the Troupe; Gon would rather die. Nobunaga guesses he is an Enhancer and stays behind with his sword to guard the boys until the leader returns: if the leader does not want them, they can go. Instead Gon and [[killua|Killua]] each kick through a side wall and run. Nobunaga chases Gon and uses En, but the boys are already gone.',
         },
       },
     },
@@ -513,6 +624,18 @@ export const yorknewCityChronicles = {
         },
       },
     },
+    // Chapters 90-91 and episode 49. How Killua breaks free differs between the media; the story says only that he twists free.
+    {
+      episode: 49,
+      chapter: 91,
+      value: {
+        title: { it: 'La gamba di Killua', en: 'Killua’s leg' },
+        body: {
+          it: 'Mentre [[machi|Machi]] e [[nobunaga|Nobunaga]] si fanno seguire da [[gon-freecss|Gon]] e [[killua|Killua]], Phinks e [[pakunoda|Pakunoda]] seguono a loro volta i ragazzi. Quando i ragazzi provano a scappare, Phinks blocca Killua. Lo afferra per una gamba, non si lascia distrarre dai sassi che Killua gli lancia e ferma il suo calcio. Killua si libera con una torsione, ma alle spalle c’è Nobunaga, e Killua si arrende. I ragazzi vengono portati al covo.',
+          en: 'While [[machi|Machi]] and [[nobunaga|Nobunaga]] draw [[gon-freecss|Gon]] and [[killua|Killua]] after them, Phinks and [[pakunoda|Pakunoda]] follow the boys in turn. When the boys try to run, Phinks blocks Killua. He catches Killua by the leg, is not fooled by the stones Killua throws to distract him, and stops his kick. Killua twists free, but Nobunaga is behind him, and Killua gives himself up. The boys are taken to the hideout.',
+        },
+      },
+    },
   ],
   'light-nostrade': [
     // Chapter 79 and episode 46.
@@ -530,6 +653,33 @@ export const yorknewCityChronicles = {
         },
       },
     },
+    // Chapter 89 and episode 49.
+    {
+      episode: 49,
+      chapter: 89,
+      value: {
+        title: {
+          it: 'Il contratto degli assassini',
+          en: 'The assassins’ contract',
+        },
+        body: {
+          it: 'In albergo Light rimanda a casa [[neon-nostrade|Neon]] con [[basho|Basho]] e [[melody|Melody]], promettendole un’altra asta. Quando lei se n’è andata, dice alle guardie del corpo che l’asta sotterranea riprenderà quella sera. Le Bestie dell’Ombra sono morte tranne [[owl|Civetta]], che probabilmente è stato preso dalla Brigata Fantasma, e i Dieci Anziani hanno ingaggiato assassini professionisti per uccidere la Brigata. Light manda [[kurapika|Kurapika]] a unirsi a loro.',
+          en: 'At the hotel Light sends [[neon-nostrade|Neon]] home with [[basho|Basho]] and [[melody|Melody]], promising her another auction. Once she has left, he tells the bodyguards that the Underground Auction will start again that night. The Shadow Beasts are dead except [[owl|Owl]], who was most likely taken by the Phantom Troupe, and the Ten Dons have hired professional assassins to kill the Troupe. Light sends [[kurapika|Kurapika]] to join them.',
+        },
+      },
+    },
+    // Chapters 100-101 and episode 53. His thoughts on the price are chapter-only.
+    {
+      episode: 53,
+      chapter: 101,
+      value: {
+        title: { it: 'Vinci gli occhi', en: 'Win the eyes' },
+        body: {
+          it: 'Con [[neon-nostrade|Neon]] priva di sensi, Light le resta accanto finché un medico non consiglia di portarla in ospedale. Quando all’asta compaiono gli occhi scarlatti, [[kurapika|Kurapika]] lo chiama, e Light gli ordina di aggiudicarseli. [[zenji|Zenji]] rilancia contro Kurapika, e gli occhi costano 2,9 miliardi di Jenny. Quando Neon si sveglia in ospedale, è contenta degli occhi e ringrazia il padre.',
+          en: 'With [[neon-nostrade|Neon]] unconscious, Light stays at her side until a doctor advises taking her to hospital. When the Scarlet Eyes come up at the auction, [[kurapika|Kurapika]] calls him, and Light orders him to win them. [[zenji|Zenji]] bids against Kurapika, and the eyes cost 2.9 billion Jenny. When Neon wakes in hospital, she is happy with them and thanks her father.',
+        },
+      },
+    },
   ],
   'shalnark': [
     // Chapter 79 and episode 46. Franklin bringing the beer is anime-only.
@@ -541,6 +691,125 @@ export const yorknewCityChronicles = {
         body: {
           it: 'Shalnark resta con [[uvogin|Uborghin]] nell’appartamento di un uomo ucciso, mentre Uborghin beve birra per liberarsi delle sanguisughe. Uborghin vuole trovare l’utilizzatore di catene che lo ha catturato, così Shalnark cerca sul sito degli Hunter e scopre che l’edificio dove era tenuto prigioniero appartiene alla famiglia Nostrad. Uborghin parte alla ricerca dell’utilizzatore di catene, uccidendo chi trova sulla sua strada.',
           en: 'Shalnark stays with [[uvogin|Uvogin]] in a dead man’s apartment while Uvogin drinks beer to get rid of the leeches in his body. Uvogin wants to find the chain user who captured him, so Shalnark searches the Hunter website and finds that the building where he was held belongs to the Nostrade family. Uvogin sets off after the chain user, killing the people he finds on the way.',
+        },
+      },
+    },
+    // Chapter 92 and episode 50.
+    {
+      episode: 50,
+      chapter: 92,
+      value: {
+        title: { it: 'Le foto delle guardie', en: 'The bodyguards’ pictures' },
+        body: {
+          it: 'Al covo, dopo che [[pakunoda|Pakunoda]] non trova niente sull’utilizzatore di catene nei ricordi dei ragazzi, Shalnark propone di puntare sulla famiglia Nostrad, visto che l’utilizzatore di catene lavora per loro. Distribuisce le foto delle guardie del corpo che proteggono la figlia del capo e dice ai membri di cercare a coppie. Con [[nobunaga|Nobunaga]] rimasto a sorvegliare [[gon-freecss|Gon]] e [[killua|Killua]], [[machi|Machi]] finisce in coppia con [[hisoka|Hisoka]].',
+          en: 'At the hideout, after [[pakunoda|Pakunoda]] finds nothing about the chain user in the boys’ memories, Shalnark proposes going after the Nostrade family, since the chain user works for them. He hands out pictures of the bodyguards who guard the boss’s daughter and tells the members to search in pairs. With [[nobunaga|Nobunaga]] left to watch [[gon-freecss|Gon]] and [[killua|Killua]], [[machi|Machi]] ends up paired with [[hisoka|Hisoka]].',
+        },
+      },
+    },
+    // Chapter 100 and episode 53. Italian: Voce Nera, il Cellulare del Destino (Italian Wikipedia, Brigata Fantasma).
+    {
+      episode: 53,
+      chapter: 100,
+      value: {
+        title: { it: 'La voce del banditore', en: 'The auctioneer’s voice' },
+        body: {
+          it: 'Mentre la mafia crede morto il capo della Brigata, i membri della Brigata Fantasma mandano avanti di nascosto l’asta riaperta. Shalnark controlla il banditore con Voce Nera, il Cellulare del Destino, la sua abilità Nen. [[pakunoda|Pakunoda]] porta gli oggetti sul palco, e [[kortopi|Kortopi]] ne fa copie esatte, così sono le copie a essere vendute. In sala nessuno sospetta niente.',
+          en: 'While the Mafia believes the Troupe’s leader dead, the members of the Phantom Troupe run the reopened auction from backstage. Shalnark controls the auctioneer with his Nen ability, Black Voice. [[pakunoda|Pakunoda]] brings the items onto the stage, and [[kortopi|Kortopi]] makes exact copies of them, so the copies are what gets sold. No one in the hall suspects anything.',
+        },
+      },
+    },
+  ],
+  'zepile': [
+    // Chapters 86-88 and episode 48.
+    {
+      episode: 48,
+      chapter: 88,
+      value: {
+        title: { it: 'Il forziere di legno', en: 'The wooden vault' },
+        body: {
+          it: 'Sepail ha superato a un mercato le offerte di [[gon-freecss|Gon]] e [[killua|Killua]], quadruplicandole, e si è aggiudicato il vaso che volevano. Quando un commerciante dice ai ragazzi che la loro statuetta di legno vale poco, Sepail interviene: è un forziere nascosto di trecento anni fa, e il commerciante vuole quello che c’è dentro. Invece di dargli una parte, i ragazzi gli offrono il pranzo. Lui ammette di aver fatto il vaso, un falso di quando gli servivano soldi, e Gon gli dice che contiene aura. Sepail si offre di aiutarli e mostra loro come i falsari sostituiscono il contenuto di un forziere.',
+          en: 'Zepile has outbid [[gon-freecss|Gon]] and [[killua|Killua]] at a market, quadrupling their offers, and won the vase they wanted. When a dealer tells the boys that their wooden statue is worth little, Zepile steps in: it is a hidden vault from three hundred years ago, and the dealer wants what is inside. The boys treat him to lunch instead of giving him a share. He admits he made the vase himself, a forgery from when he needed money, and Gon tells him it holds aura. Zepile offers to help them, and shows them how forgers swap a vault’s contents.',
+        },
+      },
+    },
+    // The sale left to him is chapter 89 and episode 48; the drinks and Gon’s thanks are chapter 101 and episode 53.
+    {
+      episode: 53,
+      chapter: 101,
+      value: {
+        title: { it: 'A bere con Leorio', en: 'Drinks with Leorio' },
+        body: {
+          it: 'Quando sono partiti dietro alla Brigata, i ragazzi hanno lasciato a Sepail la vendita del loro forziere. [[leorio-paradinight|Leorio]] lo aiuta all’asta mentre [[gon-freecss|Gon]] e [[killua|Killua]] pedinano la Brigata. Quando i ragazzi tornano, trovano i due che bevono insieme. Gon dice a Sepail che quello che ha insegnato loro sui trucchi dei falsari li ha aiutati a scappare dalla Brigata.',
+          en: 'When the boys went after the Troupe, they left the sale of their vault to Zepile. [[leorio-paradinight|Leorio]] helps him at the auction while [[gon-freecss|Gon]] and [[killua|Killua]] tail the Troupe. When the boys get back, they find the two drinking together. Gon tells Zepile that what he taught them about forgers’ tricks helped them escape from the Troupe.',
+        },
+      },
+    },
+  ],
+  'pakunoda': [
+    // Chapters 90-91 and episode 49. Her arm around Killua waits for her 50/92 story, since the chapters show it in 92.
+    {
+      episode: 49,
+      chapter: 91,
+      value: {
+        title: { it: 'La trappola si chiude', en: 'Closing the trap' },
+        body: {
+          it: 'Pakunoda segue [[gon-freecss|Gon]] e [[killua|Killua]] mentre pedinano [[machi|Machi]] e [[nobunaga|Nobunaga]]. Quando i ragazzi scappano, sbarra la strada a Gon e con Machi gli chiede se conosce l’utilizzatore di catene. Gon risponde di no. Quando prova a scappare Machi lo ferma, e una telefonata avverte Pakunoda che Killua si è arreso. I membri della Brigata portano i due ragazzi al loro covo.',
+          en: 'Pakunoda follows [[gon-freecss|Gon]] and [[killua|Killua]] while they tail [[machi|Machi]] and [[nobunaga|Nobunaga]]. When the boys run, she blocks Gon’s way out, and with Machi she asks him whether he knows the chain user. Gon says he does not. When he tries to slip away, Machi stops him, and a call tells Pakunoda that Killua has given himself up. The Troupe members take both boys to their hideout.',
+        },
+      },
+    },
+    // Her arm around Killua is episode 49 and chapter 92 (his memory of the drive); the report and his deduction are chapter 92 and episode 50.
+    {
+      episode: 50,
+      chapter: 92,
+      value: {
+        title: { it: 'Ricordi al tocco', en: 'Memories by touch' },
+        body: {
+          it: 'Mentre vanno al covo, Pakunoda mette un braccio sulle spalle di [[killua|Killua]]. Lì, dopo che [[nobunaga|Nobunaga]] e [[feitan|Feitan]] sono quasi venuti alle mani per [[gon-freecss|Gon]], [[franklin|Franklin]] le chiede cosa ha scoperto. Lei dice che i ragazzi non ricordano niente dell’utilizzatore di catene. Killua capisce che legge i ricordi toccando le persone, e teme quello che troverebbe ora che sospetta che l’utilizzatore di catene sia [[kurapika|Kurapika]].',
+          en: 'On the way to the hideout Pakunoda puts her arm around [[killua|Killua]]’s shoulders. There, after [[nobunaga|Nobunaga]] and [[feitan|Feitan]] nearly come to blows over [[gon-freecss|Gon]], [[franklin|Franklin]] asks her what she found. She says the boys have no memory of the chain user. Killua works out that she reads memories by touching people, and fears what she would find now that he suspects [[kurapika|Kurapika]] is the chain user.',
+        },
+      },
+    },
+  ],
+  'zenji': [
+    // Chapter 95 and episode 51.
+    {
+      episode: 51,
+      chapter: 95,
+      value: {
+        title: {
+          it: 'La riunione degli assassini',
+          en: 'The assassins’ meeting',
+        },
+        body: {
+          it: 'Zenji incontra gli assassini ingaggiati dalla mafia, tra cui [[silva|Silva]] e [[zeno|Zeno]]. Quando arriva [[light-nostrade|Light Nostrad]] con [[kurapika|Kurapika]], spiega che il loro compito è uccidere la Brigata Fantasma, poi deride Light finché Kurapika non lo minaccia. Light dice a Kurapika di fermarsi, e Zenji se ne va con i suoi uomini.',
+          en: 'Zenji meets the assassins the Mafia has hired, [[silva|Silva]] and [[zeno|Zeno]] among them. Once [[light-nostrade|Light Nostrade]] arrives with [[kurapika|Kurapika]], he tells them their job is to kill the Phantom Troupe, then mocks Light until Kurapika threatens him. Light tells Kurapika to stop, and Zenji leaves with his men.',
+        },
+      },
+    },
+    // Chapters 100-101 and episode 53.
+    {
+      episode: 53,
+      chapter: 101,
+      value: {
+        title: { it: 'Paralizzato', en: 'Frozen' },
+        body: {
+          it: 'Quando [[kurapika|Kurapika]] viene a sapere che il capo della Brigata è morto, Zenji lo deride, e Kurapika gli dà un pugno. Quando all’asta compaiono gli occhi scarlatti, Zenji rilancia a 1 miliardo di Jenny e fa salire il prezzo; Kurapika se li aggiudica a 2,9 miliardi. Più tardi Zenji lo incontra per strada e lo minaccia con una pistola. Gli occhi di Kurapika diventano scarlatti mentre gli dice di farsi da parte, e Zenji, paralizzato dalla paura, lo lascia passare.',
+          en: 'After [[kurapika|Kurapika]] hears that the Troupe’s leader is dead, Zenji mocks him, and Kurapika punches him. When the Scarlet Eyes come up at the auction, Zenji raises the bid to 1 billion Jenny and drives the price up; Kurapika wins them at 2.9 billion. Later Zenji meets him on the road and threatens him with a gun. Kurapika’s eyes turn scarlet as he tells him to step aside, and Zenji, frozen with fear, lets him pass.',
+        },
+      },
+    },
+  ],
+  'kortopi': [
+    // Chapter 100 and episode 53. The copies of the members’ bodies are told in episode 53 but explained in the chapters only later, so they are left out. Italian: La Mano Sinistra di Dio e la Mano Destra del Diavolo (Italian Wikipedia, Brigata Fantasma).
+    {
+      episode: 53,
+      chapter: 100,
+      value: {
+        title: { it: 'Copie', en: 'Copies' },
+        body: {
+          it: 'Kortopi è uno dei membri della Brigata Fantasma. Quando la Brigata manda avanti di nascosto l’asta riaperta, lui crea copie esatte degli oggetti rubati con la sua abilità, La Mano Sinistra di Dio e la Mano Destra del Diavolo. [[pakunoda|Pakunoda]] porta le copie sul palco, e le offerte vanno avanti senza che nessuno se ne accorga. Intanto [[shalnark|Shalnark]] controlla il banditore con il suo Nen.',
+          en: 'Kortopi is one of the members of the Phantom Troupe. When the Troupe runs the reopened auction from backstage, he makes exact copies of the stolen items with his ability, Gallery Fake. [[pakunoda|Pakunoda]] brings the copies onto the stage, and the bidding goes on without anyone noticing. Meanwhile [[shalnark|Shalnark]] controls the auctioneer with his Nen.',
         },
       },
     },

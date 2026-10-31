@@ -136,6 +136,30 @@ export const hunterExamChronicles = {
         },
       },
     },
+    // The license used to raise money is chapter 84; the knife, the bids, the vault and the lunch are chapters 85-88, all by the end of episode 48. The second man who challenges Zepile at the dealer’s is anime-only.
+    {
+      episode: 48,
+      chapter: 88,
+      value: {
+        title: { it: 'L’occhio di Sepail', en: 'Zepile’s eye' },
+        body: {
+          it: 'Gon usa la sua licenza da Hunter per raccogliere soldi. A un mercato, con il Gyo, nota un coltello avvolto dall’aura, e [[killua|Killua]] ricorda le parole di [[wing|Wing]]: chi ha talento usa il Nen senza saperlo. Così i due cercano oggetti con l’aura. Un certo [[zepile|Sepail]] continua a superare le loro offerte, e loro vincono tre oggetti ma perdono un vaso. Quando un commerciante prova a imbrogliarli su una statuetta di legno, Sepail interviene: è un forziere nascosto con dentro dei tesori. A pranzo Sepail ammette di aver fatto lui il vaso, e Gon gli dice che non è robaccia, perché contiene aura. Poi [[leorio-paradinight|Leorio]] chiama: sono stati avvistati due membri della Brigata Fantasma.',
+          en: 'Gon uses his Hunter license to raise money. At a market he uses Gyo and spots a knife surrounded by aura, and [[killua|Killua]] remembers [[wing|Wing]]’s words: talented people use Nen without knowing it. So the two hunt for items with aura. Someone named [[zepile|Zepile]] keeps outbidding them, and they win three items but lose a vase. When a dealer tries to cheat them over a wooden statue, Zepile steps in: it is a hidden vault with treasure inside. Over lunch Zepile admits he made the vase himself, and Gon tells him it is no junk, because it holds aura. Then [[leorio-paradinight|Leorio]] calls: two members of the Phantom Troupe have been spotted.',
+        },
+      },
+    },
+    // Chapters 91-94 and episode 50.
+    {
+      episode: 50,
+      chapter: 94,
+      value: {
+        title: { it: 'La rabbia di Gon', en: 'Gon’s anger' },
+        body: {
+          it: 'Al covo della Brigata [[nobunaga|Nobunaga]] batte Gon a braccio di ferro più volte, mentre piange per [[uvogin|Uborghin]] e giura di trovare l’utilizzatore di catene. Gon dice di non sapere niente e, arrabbiato, chiede come possano piangere un amico e uccidere tante altre persone; poi sbatte giù la mano di Nobunaga. Preferirebbe morire piuttosto che entrare nella Brigata. Mentre Nobunaga li sorveglia, a Gon e [[killua|Killua]] viene un’idea da quello che ha insegnato loro [[zepile|Sepail]]. Sfondano i muri e scappano, e Killua dice a Gon che l’utilizzatore di catene è [[kurapika|Kurapika]].',
+          en: 'At the Troupe’s hideout [[nobunaga|Nobunaga]] beats Gon at arm wrestling again and again while he cries over [[uvogin|Uvogin]] and swears to find the chain user. Gon says he knows nothing and, in anger, asks how people who grieve for a friend can kill so many others; then he slams Nobunaga’s hand down. He would rather die than join the Troupe. While Nobunaga guards them, Gon and [[killua|Killua]] get an idea from what [[zepile|Zepile]] taught them. They kick through the walls and escape, and Killua tells Gon that the chain user is [[kurapika|Kurapika]].',
+        },
+      },
+    },
   ],
   'mito-freecss': [
     {
@@ -248,6 +272,30 @@ export const hunterExamChronicles = {
         },
       },
     },
+    // The tip is chapter 88 and episode 48; the watch from a distance is chapter 89 and the split chapter 90, both in episode 49. Who pays the informants differs between the media and is left out.
+    {
+      episode: 49,
+      chapter: 90,
+      value: {
+        title: { it: 'Senza Zetsu', en: 'No Zetsu' },
+        body: {
+          it: 'Leorio cerca informazioni mentre [[gon-freecss|Gon]] e [[killua|Killua]] cercano oggetti, e arriva una soffiata: sono stati avvistati due membri della Brigata Fantasma. Chiama i ragazzi, e i tre osservano da lontano [[machi|Machi]] e [[nobunaga|Nobunaga]]. Killua avverte che non hanno nessuna possibilità di catturarli. Leorio non sa usare lo Zetsu come i ragazzi. Quando i due si muovono, Gon e Killua li seguono, e Leorio va ad aiutare [[zepile|Sepail]] all’asta.',
+          en: 'Leorio looks for information while [[gon-freecss|Gon]] and [[killua|Killua]] hunt for items, and a tip comes in: two members of the Phantom Troupe have been spotted. He calls the boys, and the three watch [[machi|Machi]] and [[nobunaga|Nobunaga]] from a distance. Killua warns that they have no chance of catching them. Leorio cannot use Zetsu like the boys. When the two move, Gon and Killua follow them, and Leorio goes to help [[zepile|Zepile]] at the auction.',
+        },
+      },
+    },
+    // Chapter 101 and episode 53. Who drinks at what age differs between the media and is left out.
+    {
+      episode: 53,
+      chapter: 101,
+      value: {
+        title: { it: 'Un brindisi con Sepail', en: 'Drinks with Zepile' },
+        body: {
+          it: 'Mentre [[gon-freecss|Gon]] e [[killua|Killua]] sono prigionieri della Brigata, Leorio va ad aiutare [[zepile|Sepail]] all’asta. Quando i ragazzi tornano, trovano i due che bevono insieme nella loro stanza. I ragazzi raccontano di essere stati catturati e di essere scappati. Leorio chiede se il giorno dopo verranno all’asta, ma Gon dice che impareranno il Nen da [[kurapika|Kurapika]]. Leorio fa notare che hanno imparato il Nen più o meno insieme, e Gon risponde che Kurapika ha già sconfitto da solo un membro della Brigata.',
+          en: 'While [[gon-freecss|Gon]] and [[killua|Killua]] are held by the Troupe, Leorio goes to help [[zepile|Zepile]] at the auction. When the boys get back, they find the two drinking together in their room. The boys tell them about their capture and escape. Leorio asks whether they will come to the auction the next day, but Gon says they will learn Nen from [[kurapika|Kurapika]]. Leorio points out that they all learned Nen at about the same time, and Gon answers that Kurapika has already taken down a member of the Troupe on his own.',
+        },
+      },
+    },
   ],
   'kurapika': [
     {
@@ -354,6 +402,18 @@ export const hunterExamChronicles = {
         body: {
           it: 'Un maestro di Nen gli aveva fatto fare il Test dell’Acqua: Kurapika appartiene alla Materializzazione. Ha scelto le catene, ha posto loro una condizione legata alla Brigata Fantasma e ci ha scommesso la vita. Quando i suoi occhi diventano scarlatti, passa alla Specializzazione e può usare appieno ogni tipo di Nen. Ora affronta da solo [[uvogin|Uborghin]] in un luogo deserto. Uborghin gli spezza il braccio sinistro, ma Kurapika lo cattura con una catena nascosta con l’In, si guarisce il braccio e, visto che la catena costringe Uborghin nello Zetsu, lo colpisce a pugni. Uborghin non gli dice dove sono gli altri membri. Kurapika gli stringe la Catena del Giudizio attorno al cuore con una regola: rispondere alle sue domande. Uborghin si rifiuta e muore. Kurapika lo seppellisce.',
           en: 'A Nen teacher had Kurapika take Water Divination: he is a Conjurer. He chose chains, set them a condition tied to the Phantom Troupe and staked his life on it. When his eyes turn scarlet, he becomes a Specialist and can use every type of Nen fully. Now he faces [[uvogin|Uvogin]] alone in a deserted place. Uvogin breaks his left arm, but Kurapika catches him in a chain hidden with In, heals the arm and, since the chain forces Uvogin into Zetsu, beats him with his fists. Uvogin will not tell him where the other members are. Kurapika winds his Judgment Chain around Uvogin’s heart with one rule, that he must answer the questions; Uvogin refuses and dies. Kurapika buries him.',
+        },
+      },
+    },
+    // Chapters 100-101 and episode 53. Whether Kurapika sees the leader’s body himself differs between the pages and is left out.
+    {
+      episode: 53,
+      chapter: 101,
+      value: {
+        title: { it: 'Gli occhi scarlatti', en: 'The Scarlet Eyes' },
+        body: {
+          it: 'Kurapika viene a sapere che il capo della Brigata è stato ucciso. Quando [[zenji|Zenji]] lo deride, Kurapika gli dà un pugno, dicendosi che non ci crederà finché non vedrà il corpo. Vengono trovati i corpi del capo e di altri cinque membri. Poi all’asta compaiono gli occhi scarlatti, e su ordine di [[light-nostrade|Light]] Kurapika fa le sue offerte; Zenji fa salire il prezzo, e gli occhi costano 2,9 miliardi di Jenny. Quando più tardi Zenji gli punta contro una pistola, gli occhi di Kurapika diventano scarlatti e Zenji resta immobile. Kurapika chiama [[gon-freecss|Gon]] per dirgli che i membri della Brigata sono morti.',
+          en: 'Kurapika learns that the Troupe’s leader has been killed. When [[zenji|Zenji]] mocks him, Kurapika punches him, telling himself he will not believe it until he sees the body. The bodies of the leader and five members are found. Then the Scarlet Eyes come up for auction, and on [[light-nostrade|Light]]’s orders Kurapika bids for them; Zenji drives the price up, and they cost 2.9 billion Jenny. When Zenji later points a gun at him, Kurapika’s eyes turn scarlet and Zenji freezes. Kurapika calls [[gon-freecss|Gon]] to tell him that the members of the Troupe are dead.',
         },
       },
     },
@@ -548,6 +608,21 @@ export const hunterExamChronicles = {
         },
       },
     },
+    // Chapters 91-92 and episode 50. Gon’s surprise at seeing him is chapter-only.
+    {
+      episode: 50,
+      chapter: 92,
+      value: {
+        title: {
+          it: 'Fingere di non conoscerli',
+          en: 'Pretending not to know them',
+        },
+        body: {
+          it: 'Quando [[gon-freecss|Gon]] e [[killua|Killua]] vengono portati al covo della Brigata, c’è anche Hisoka, e lui e Killua fanno finta di non essersi mai visti. Quando [[feitan|Feitan]] afferra Gon, Killua fa un passo per aiutarlo, e Hisoka gli punta una carta al collo per fermarlo. Più tardi i membri si dividono in coppie per cercare l’utilizzatore di catene, e [[machi|Machi]], rimasta senza compagno, deve andare con Hisoka.',
+          en: 'When [[gon-freecss|Gon]] and [[killua|Killua]] are brought to the Troupe’s hideout, Hisoka is there, and he and Killua act as if they have never met. When [[feitan|Feitan]] grabs Gon, and Killua steps forward to help him, Hisoka holds a playing card to Killua’s neck to stop him. Later the members split into pairs to search for the chain user, and [[machi|Machi]], left without a partner, has to go with Hisoka.',
+        },
+      },
+    },
   ],
   'hanzo': [
     {
@@ -738,6 +813,30 @@ export const hunterExamChronicles = {
         body: {
           it: 'Killua va con [[gon-freecss|Gon]] sull’Isola Balena e conosce [[mito-freecss|Myto]]. Di notte, accanto a un fuoco nel bosco, chiede a Gon cosa farà adesso. Gon resterà a casa per un po’, poi andrà a York Shin City a cercare suo padre. Killua lo ammira perché ha un obiettivo: lui non ne ha nessuno. Gon gli propone di girare il mondo insieme, così lui potrà cercare suo padre e Killua potrà trovare qualcosa che vuole fare. Quando Killua gli chiede di sua madre, Gon risponde che sua madre è Myto.',
           en: 'Killua goes with [[gon-freecss|Gon]] to Whale Island and meets [[mito-freecss|Mito]]. At night, by a fire in the forest, he asks Gon what he will do next. Gon will stay home for a while, then go to Yorknew City and start looking for his father. Killua admires him for having a goal, since he has none of his own. Gon suggests they travel the world together, so that Gon can look for his father and Killua can find something he wants to do. When Killua asks about Gon’s mother, Gon answers that his mother is Mito.',
+        },
+      },
+    },
+    // His father’s words are chapter 80 (pages 17-18) and episode 49; the tail and the capture are chapters 89-91 and episode 49. Silva is linked only from chapter 95.
+    {
+      episode: 49,
+      chapter: 91,
+      value: {
+        title: { it: 'Presi durante il pedinamento', en: 'Caught on the tail' },
+        body: {
+          it: 'Killua racconta a [[gon-freecss|Gon]] e [[leorio-paradinight|Leorio]] che suo padre una volta ha affrontato un membro della Brigata Fantasma per un lavoro, lamentandosi che la paga non ne valeva la pena, e ha detto ai figli di starne lontani. Lui e Gon pedinano comunque [[machi|Machi]] e [[nobunaga|Nobunaga]], pronti a rinunciare se vengono scoperti. I due li portano in una zona deserta della città, e [[phinks|Phinks]] blocca Killua mentre prova a scappare. Nobunaga gli chiede perché li seguivano, e Killua risponde: la mafia ha messo una taglia sulla Brigata. Poi si arrende.',
+          en: 'Killua tells [[gon-freecss|Gon]] and [[leorio-paradinight|Leorio]] that his father once fought a member of the Phantom Troupe for a job and complained that the pay was not worth it, and that he told his children to stay away from them. Still, he and Gon tail [[machi|Machi]] and [[nobunaga|Nobunaga]], ready to give up if they are spotted. The two lead them to an empty part of the city, and [[phinks|Phinks]] catches Killua as he tries to run. Nobunaga asks why they were following, and Killua answers: the Mafia has put a bounty on the Troupe. Then he gives himself up.',
+        },
+      },
+    },
+    // Chapters 92-94 and episode 50.
+    {
+      episode: 50,
+      chapter: 94,
+      value: {
+        title: { it: 'Illumi nella testa', en: 'Illumi in his head' },
+        body: {
+          it: 'Prigioniero al covo della Brigata sotto la sorveglianza di [[nobunaga|Nobunaga]], Killua sente nella testa la voce del fratello [[illumi|Illumi]] che gli dice che non può vincere. Si alza per affrontare Nobunaga, poi si blocca e prende invece a pugni il muro. Si offre di trattenere Nobunaga perché [[gon-freecss|Gon]] possa scappare, e Gon per questo gli dà un pugno in testa. Alla fine scappano entrambi attraverso i muri. Fuori, Killua dice a Gon che l’utilizzatore di catene è [[kurapika|Kurapika]] e che devono diventare molto più forti prima di affrontare la Brigata.',
+          en: 'Held at the Troupe’s hideout under [[nobunaga|Nobunaga]]’s guard, Killua hears his brother [[illumi|Illumi]]’s voice in his head, telling him he cannot win. He stands up to face Nobunaga, then freezes and punches the wall instead. He offers to hold Nobunaga off so that [[gon-freecss|Gon]] can escape, and Gon hits him on the head for it. In the end they both escape through the walls. Outside, Killua tells Gon that the chain user is [[kurapika|Kurapika]], and that they need to get much stronger before they face the Troupe.',
         },
       },
     },
