@@ -115,6 +115,21 @@ export const zoldyckChronicles = {
       },
     },
   ],
+  // Unanchored: the manga names Silva only in chapter 95. Told as both
+  // media tell it: the seat, the thumb and the exam question are chapter 42's.
+  'silva': [
+    {
+      episode: 24,
+      chapter: 95,
+      value: {
+        title: { it: 'La promessa', en: 'The promise' },
+        body: {
+          it: 'Silva chiede a [[killua|Killua]] che persone siano i suoi amici. Gli dice che il giorno della sua fuga ha capito quanto siano diversi. Gli chiede se vuole rivedere i suoi amici, e Killua risponde di sì. Allora Silva lo lascia andare, dopo avergli fatto promettere che non li tradirà mai. Quando la madre di Killua gli rimprovera di averlo lasciato andare, risponde che il ragazzo tornerà, perché è suo figlio.',
+          en: 'Silva asks [[killua|Killua]] what kind of people his friends are. He tells him that on the day Killua ran away, he understood how different they are. He asks whether Killua wants to see his friends again, and Killua says yes. Silva then lets him go, after making him promise never to betray them. When Killua’s mother blames him for letting the boy go, he answers that Killua will come back, because he is his son.',
+        },
+      },
+    },
+  ],
   'kalluto': [
     {
       episode: 24,

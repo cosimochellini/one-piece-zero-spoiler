@@ -437,6 +437,12 @@ export const HUNTER_X_HUNTER_SOURCES = {
       note: 'Zeno enters the cell, frees Killua, exchange with Milluki about talent.',
     },
   },
+  'silva': {
+    24: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_24_(2011)',
+      note: 'Unanchored, chapter 95 pinned. Ep 24 and ch. 42 both have the question about his friends, the difference he saw when Killua ran away, the promise never to betray them, letting him go, and the mother told he will come back. Corrected after the verifier pass: the seat beside him, the Hunter Exam question, the bitten thumb and the father-and-son words are ch. 42 only and were cut.',
+    },
+  },
   'kalluto': {
     24: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_24_(2011)',

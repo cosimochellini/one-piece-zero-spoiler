@@ -252,6 +252,15 @@ const links = {
       it: 'Zeno chiede a Milki cosa pensi del talento di Killua e lo definisce intelligente ma sciocco.',
     },
   },
+  // Silva
+  silvaKillua: {
+    character: 'killua',
+    type: { en: 'Son he lets go', it: 'Figlio che lascia andare' },
+    summary: {
+      en: 'Silva asks Killua about his friends and lets him leave to join them, after Killua promises never to betray them.',
+      it: 'Silva chiede a Killua dei suoi amici e lo lascia partire per raggiungerli, dopo che Killua promette di non tradirli mai.',
+    },
+  },
   // Kalluto
   kallutoKillua: {
     character: 'killua',
@@ -394,6 +403,10 @@ export const zoldyckRelationships = {
   'zeno': [
     { episode: 24, chapter: 42, value: [links.zenoKillua, links.zenoMilluki] },
   ],
+  // Unanchored: 24 / 95 vouches for nothing in the chapter table. Killua's
+  // and Zeno's cards for Silva wait for #974, since the two media name him
+  // 70 chapters apart.
+  'silva': [{ episode: 24, chapter: 95, value: [links.silvaKillua] }],
   'kalluto': [
     {
       episode: 24,

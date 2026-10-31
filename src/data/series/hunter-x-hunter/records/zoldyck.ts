@@ -5,9 +5,11 @@ import { zoldyckRelationships } from './zoldyck.relationships'
 /**
  * The visit to Killua's home, within episodes 22–26 / chapters 39–43 (#760).
  * Each gate is the personal-name scene, not an earlier appearance floor.
- * Kikyo, Silva and Hishita are #834. Maha, Alluka, the grandmother, the
- * shopkeeper, the intruders, other butlers and the flashback attackers stay
- * unnamed. Killua's disqualification is pinned at 20 / 36, the family home
+ * Silva is unanchored (#834): Zeno names him in episode 24, the manga only
+ * in chapter 95. Kikyo is named only in credits and supplements, never in
+ * the story, and Hishita only in chapter 329 / episode 143 (#912). Maha,
+ * Alluka, the grandmother, the shopkeeper, the intruders, other butlers and
+ * the flashback attackers stay unnamed. Killua's disqualification is pinned at 20 / 36, the family home
  * links at 22 / 39 and his departure with Gon at 25 / 43; nothing later is
  * inferred. Affiliations stay prose.
  */
@@ -115,6 +117,21 @@ export const zoldyck: Pick<HunterSaga, 'dossiers' | 'entries'> = {
         en: 'Killua’s grandfather, who interrupts his grandson’s punishment and sends him to his father.',
       },
       visual: { art: 'zeno', tint: 'ivory' },
+    },
+    // Zeno says his name in episode 24, while chapter 42 says only "your
+    // father"; the manga names him at the assassins' meeting, chapter 95.
+    {
+      id: 'silva',
+      kind: 'character',
+      unanchored: true,
+      revealedAtEpisode: 24,
+      revealedAtChapter: 95,
+      name: { it: 'Silva', en: 'Silva' },
+      summary: {
+        it: 'Il padre di Killua, che lo lascia partire per raggiungere i suoi amici.',
+        en: 'Killua’s father, who lets him leave to join his friends.',
+      },
+      visual: { art: 'silva', tint: 'ice' },
     },
     // Gated when his mother introduces him, after his unnamed 23 / 41 look.
     {
@@ -306,6 +323,23 @@ export const zoldyck: Pick<HunterSaga, 'dossiers' | 'entries'> = {
         {
           episode: 24,
           chapter: 42,
+          value: { it: 'Famiglia Zoldick', en: 'Zoldyck family' },
+        },
+      ],
+    },
+    'silva': {
+      relationships: zoldyckRelationships.silva,
+      chronicle: zoldyckChronicles.silva,
+      role: { it: 'Padre di Killua', en: 'Killua’s father' },
+      log: {
+        it: 'Chiede a Killua dei suoi amici e gli dice di aver capito, il giorno della sua fuga, quanto siano diversi. Lo lascia andare dopo avergli fatto promettere che non tradirà mai i suoi amici. Alla madre di Killua, che protesta, risponde che il ragazzo tornerà.',
+        en: 'He asks Killua about his friends and tells him that he understood how different they are on the day Killua ran away. He lets him go after making him promise never to betray his friends. When Killua’s mother protests, he answers that the boy will come back.',
+      },
+      status: [{ episode: 24, chapter: 95, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 24,
+          chapter: 95,
           value: { it: 'Famiglia Zoldick', en: 'Zoldyck family' },
         },
       ],

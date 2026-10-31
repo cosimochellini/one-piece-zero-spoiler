@@ -91,7 +91,13 @@
       "hxh-en-Goz-424763.json",
       "hxh-en-Siper-424030.json"
     ],
-    "illumi": ["hxh-en-Illumi_Zoldyck-424681.json"]
+    "illumi": ["hxh-en-Illumi_Zoldyck-424681.json"],
+    "silva": [
+      "hxh-en-Silva_Zoldyck-424032.json",
+      "hxh-en-Chapter_95-411638.json",
+      "hxh-en-Episode_24_(2011)-416398.json",
+      "hxh-en-Chapter_42-416149.json"
+    ]
   },
   "omitted": {
     "khara": "Through episode 26 / chapter 43 she addresses the twenty-four applicants as a group on the boat to Zevil Island, sends them ashore in order and announces the end of the Fourth Phase; she has no individual exchange with an archived character. The anime's frightened look at Gittarackur (episode 14) comes before his 19/33 gate. Judged from hxh-en-Khara-424601.json."

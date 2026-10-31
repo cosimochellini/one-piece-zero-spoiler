@@ -91,6 +91,7 @@ const ITALIAN_TITLES = {
   'gotoh': 'Famiglia Zoldick#Goto',
   'milluki': 'Famiglia Zoldick#Milki',
   'zeno': 'Famiglia Zoldick#Zeno',
+  'silva': 'Famiglia Zoldick#Silva',
   'kalluto': 'Famiglia Zoldick#Carte',
   'kite': 'Associazione Hunter#Kaito',
   'hisoka': 'Hisoka Morou',

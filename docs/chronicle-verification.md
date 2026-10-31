@@ -2114,6 +2114,12 @@ held to: every story below has a row, and every row below has a story.
 | ------------------------- | ------: | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | The watcher in the bushes |      24 | https://hunterxhunter.fandom.com/wiki/Episode_24_(2011) | Ep 23 shows him entering the cell room and watching from the bushes; ep 24 has his mother introduce him and him asking Gon who he is before leaving. Filed at the later episode. |
 
+## Silva (`silva`, threshold ep 24)
+
+| Entry (en title) | Episode | Fandom page that settles it                             | Note                                                                                                                                                                                                                                                                                                                                                                                         |
+| ---------------- | ------: | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| The promise      |      24 | https://hunterxhunter.fandom.com/wiki/Episode_24_(2011) | Unanchored, chapter 95 pinned. Ep 24 and ch. 42 both have the question about his friends, the difference he saw when Killua ran away, the promise never to betray them, letting him go, and the mother told he will come back. Corrected after the verifier pass: the seat beside him, the Hunter Exam question, the bitten thumb and the father-and-son words are ch. 42 only and were cut. |
+
 ## Gotoh (`gotoh`, threshold ep 25)
 
 | Entry (en title) | Episode | Fandom page that settles it                             | Note                                                                                      |

@@ -176,6 +176,29 @@ export const ZOLDYCK_DRAWINGS = {
     },
     shadow(80, 184, 40),
   ],
+  // Silva's sleeveless top with its crossed collar, and the pair of
+  // wristbands he wears with it: Killua's father talks with his son in
+  // episode 24 / chapter 42, named there in the anime and in chapter 95 in
+  // the manga. No face.
+  'silva': [
+    {
+      d: 'M60 34 L40 44 Q34 66 44 80 L46 146 Q80 152 114 146 L116 80 Q126 66 120 44 L100 34',
+    },
+    { d: 'M60 34 Q80 40 100 34', role: 'soft' },
+    { d: 'M60 34 C64 60 78 90 104 120' },
+    { d: 'M68 35 C72 58 84 84 106 110', role: 'soft' },
+    { d: 'M100 34 C96 48 90 58 82 68', role: 'soft' },
+    { d: 'M60 100 Q62 122 58 142 M74 112 Q76 128 74 146', role: 'soft' },
+    {
+      d: 'M108 58 L112 55 M109 92 L113 89 M109 110 L113 107 M109 128 L113 125',
+      role: 'ambient',
+    },
+    { d: ellipse(56, 164, 15, 5), role: 'accent' },
+    { d: 'M41 164 V172 A15 5 0 0 0 71 172 V164', role: 'accent' },
+    { d: ellipse(104, 166, 15, 5), role: 'accent' },
+    { d: 'M89 166 V174 A15 5 0 0 0 119 174 V166', role: 'accent' },
+    shadow(80, 188, 50),
+  ],
   // Kalluto's furisode, the long sleeves hanging and the broad obi across
   // it: he follows his mother to the gate in episode 24 / chapter 42.
   // No fan, no paper.
