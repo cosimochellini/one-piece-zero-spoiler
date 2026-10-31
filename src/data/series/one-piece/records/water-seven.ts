@@ -22,6 +22,7 @@ const CIPHER_POL_9 = { it: 'Cipher Pol 9', en: 'Cipher Pol 9' }
 const CIPHER_POL_0 = { it: 'Cipher Pol 0', en: 'Cipher Pol 0' }
 
 const CP9_AGENT = { it: 'Agente del Cipher Pol 9', en: 'Cipher Pol 9 agent' }
+const CP0_AGENT = { it: 'Agente del Cipher Pol 0', en: 'Cipher Pol 0 agent' }
 
 const DOCK_ONE = { it: 'Caposquadra del Dock 1', en: 'Foreman of Dock One' }
 
@@ -837,7 +838,26 @@ export const waterSeven: OnePieceSaga = {
     'kuzan': {
       relationships: waterSevenRelationships.kuzan,
       chronicle: waterSevenChronicles.kuzan,
-      role: { it: 'Ammiraglio della Marina', en: 'Marine admiral' },
+      role: [
+        {
+          episode: 227,
+          chapter: 321,
+          value: { it: 'Ammiraglio della Marina', en: 'Marine admiral' },
+        },
+        {
+          episode: 570,
+          chapter: 650,
+          value: {
+            it: 'Ex ammiraglio della Marina',
+            en: 'Former Marine admiral',
+          },
+        },
+        {
+          episode: 736,
+          chapter: 793,
+          value: { it: 'Pirata di Barbanera', en: 'Blackbeard pirate' },
+        },
+      ],
       log: {
         it: 'Compare su Long Ring Long Land senza scorta, in bicicletta, e passa più tempo a dormire in piedi che a parlare. Congela il mare e ci cammina sopra, e per lui una ciurma di pirati è una pratica da sbrigare subito o da rimandare, a seconda dell’umore. Chiama pigra la sua idea di giustizia, e nessuno capisce se sia un avvertimento.',
         en: 'He turns up on Long Ring Long Land with no escort, on a bicycle, and spends more time asleep on his feet than talking. He freezes the sea and walks on it, and a crew of pirates is a piece of paperwork he will either settle now or put off, depending on his mood. He calls his own justice lazy, and nobody can tell whether that is a warning.',
@@ -908,9 +928,25 @@ export const waterSeven: OnePieceSaga = {
     },
     'iceburg': {
       relationships: waterSevenRelationships.iceburg,
-      role: { it: 'Cittadino di Water Seven', en: 'Citizen of Water Seven' },
-      // Frozen at episode 230, which adapts chapters 323 (p. 13-19), 324
-      // (p. 9-18) and 325 (p. 6-9): who he is comes in 231.
+      role: [
+        {
+          episode: 230,
+          chapter: 327,
+          value: {
+            it: 'Cittadino di Water Seven',
+            en: 'Citizen of Water Seven',
+          },
+        },
+        // Kaku says it in chapter 325, below his record’s chapter: the pair of
+        // his affiliation.
+        {
+          episode: 231,
+          chapter: 327,
+          value: { it: 'Sindaco di Water Seven', en: 'Mayor of Water Seven' },
+        },
+      ],
+      // The first role is what episode 230 tells. It adapts chapters 323
+      // (p. 13-19), 324 (p. 9-18) and 325 (p. 6-9): who he is comes in 231.
       log: {
         it: 'Kokoro dà ai Cappello di Paglia una lettera da portare a lui, perché faccia riparare la loro nave. Califa gli riferisce che i pirati del Dock 1 si rifiutano di pagare le riparazioni. Lei lo definisce una molestia sessuale, e lui è d’accordo. Un topolino gli viaggia nella tasca della giacca.',
         en: 'Kokoro gives the Straw Hats a letter to take to him, so he will get their ship repaired. Kalifa tells him that the pirates at Dock One refuse to pay for their repairs. She calls it sexual harassment, and he agrees. A small mouse rides in his coat pocket.',
@@ -1012,7 +1048,12 @@ export const waterSeven: OnePieceSaga = {
     },
     'kaku': {
       relationships: waterSevenRelationships.kaku,
-      role: DOCK_ONE,
+      role: [
+        { episode: 231, chapter: 326, value: DOCK_ONE },
+        // The masks come off in chapter 345; episode 244 has Lucci explain CP9.
+        { episode: 244, chapter: 345, value: CP9_AGENT },
+        { episode: 886, chapter: 907, value: CP0_AGENT },
+      ],
       log: {
         it: 'Lavora al Dock 1 con gli altri caposquadra e si arrampica ovunque, con una calma che non lo abbandona nemmeno a venti metri d’altezza. Parla poco e con una cadenza tutta sua, e quando gli chiedono di valutare una nave dice quello che pensa senza girarci intorno. A Water Seven nessuno trova strano che un maestro d’ascia passi la giornata sui tetti.',
         en: 'He works Dock One alongside the other foremen and climbs anything, with a calm that does not leave him twenty metres up either. He speaks little, in a drawl of his own, and when he is asked to price a ship he says what he thinks without dressing it up. Nobody in Water Seven finds it odd that a shipwright spends his day on the rooftops.',
@@ -1028,11 +1069,23 @@ export const waterSeven: OnePieceSaga = {
     'rob-lucci': {
       relationships: waterSevenRelationships['rob-lucci'],
       chronicle: waterSevenChronicles['rob-lucci'],
-      role: { it: 'Carpentiere della Galley-La', en: 'Galley-La shipwright' },
-      // Frozen at episode 230 and chapter 326. Episode 230 adapts chapters
-      // 323 (p. 14-19), 324 (p. 9-18) and 325 (p. 6-9): the crowd cheers him
-      // at Dock One. Iceburg calls him a foreman in chapter 327, which
-      // episode 232 adapts.
+      role: [
+        {
+          episode: 230,
+          chapter: 326,
+          value: {
+            it: 'Carpentiere della Galley-La',
+            en: 'Galley-La shipwright',
+          },
+        },
+        // The masks come off in chapter 345; episode 244 has him explain CP9.
+        { episode: 244, chapter: 345, value: CP9_AGENT },
+        { episode: 746, chapter: 801, value: CP0_AGENT },
+      ],
+      // The first role is what episode 230 and chapter 326 tell. Episode 230
+      // adapts chapters 323 (p. 14-19), 324 (p. 9-18) and 325 (p. 6-9): the
+      // crowd cheers him at Dock One. Iceburg calls him a foreman in chapter
+      // 327, which episode 232 adapts.
       log: {
         it: 'Ai cantieri della Galley-La, poco dopo che i carpentieri hanno messo al tappeto una ciurma pirata che non voleva pagare le riparazioni, la folla dei curiosi lo acclama per nome. Un piccione bianco gli sta sulla spalla. Un abitante spiega che i carpentieri della Galley-La sono l’orgoglio di Water Seven.',
         en: 'At the Galley-La docks, not long after the shipwrights knocked flat a pirate crew that would not pay for its repairs, the crowd of onlookers cheers him by name. A white pigeon perches on his shoulder. A local explains that the Galley-La shipwrights are the pride of Water Seven.',
@@ -1066,9 +1119,25 @@ export const waterSeven: OnePieceSaga = {
     },
     'kalifa': {
       relationships: waterSevenRelationships.kalifa,
-      role: { it: 'Cittadina di Water Seven', en: 'Citizen of Water Seven' },
-      // Frozen at episode 230, which adapts chapters 323 (p. 13-19), 324
-      // (p. 9-18) and 325 (p. 6-9): her job comes in 231.
+      role: [
+        {
+          episode: 230,
+          chapter: 327,
+          value: {
+            it: 'Cittadina di Water Seven',
+            en: 'Citizen of Water Seven',
+          },
+        },
+        {
+          episode: 231,
+          chapter: 327,
+          value: { it: 'Segretaria di Iceburg', en: 'Iceburg’s secretary' },
+        },
+        // The masks come off in chapter 345; episode 244 has Lucci explain CP9.
+        { episode: 244, chapter: 345, value: CP9_AGENT },
+      ],
+      // The first role is what episode 230 tells. It adapts chapters 323
+      // (p. 13-19), 324 (p. 9-18) and 325 (p. 6-9): her job comes in 231.
       log: {
         it: 'Quando al Dock 1 si raduna la folla, è al fianco di Iceburg e gli spiega cosa succede: i pirati a cui il cantiere ha appena riparato la nave dicono che non pagheranno. Lei lo definisce una molestia sessuale, e Iceburg è d’accordo. Porta gli occhiali e i capelli raccolti in uno chignon.',
         en: 'When a crowd gathers at Dock One, she is at Iceburg’s side and tells him what is going on: the pirates whose ship the yard has just repaired say they won’t pay. She calls it sexual harassment, and Iceburg agrees. She wears glasses and her hair up in a bun.',
@@ -1092,7 +1161,15 @@ export const waterSeven: OnePieceSaga = {
     },
     'blueno': {
       relationships: waterSevenRelationships.blueno,
-      role: { it: 'Barista', en: 'Barkeeper' },
+      role: [
+        {
+          episode: 240,
+          chapter: 339,
+          value: { it: 'Barista', en: 'Barkeeper' },
+        },
+        // The masks come off in chapter 345; episode 244 has Lucci explain CP9.
+        { episode: 244, chapter: 345, value: CP9_AGENT },
+      ],
       log: {
         it: 'Gestisce un bar nel centro di Water Seven e lucida i bicchieri dietro un lungo bancone, con le bottiglie sugli scaffali alle spalle e gli sgabelli davanti. Franky è un cliente fisso: entra chiedendo di riempirgli di cola le bottiglie, e Blueno gli domanda prima se ha i soldi. Kiwi e Mozu hanno ancora un milione di berry, così Franky offre da bere a tutto il locale. Anche Kokoro è nel locale e attacca discorso con Franky, e molte delle voci che girano in città partono dal suo bancone.',
         en: 'He runs a bar in downtown Water Seven and polishes the glasses behind a long counter, with bottles on the shelves at his back and stools along the front. Franky is a regular: he walks in asking for his cola bottles to be filled, and Blueno asks whether he has any money first. Kiwi and Mozu still have a million berries left, so Franky buys a round for the whole bar. Kokoro is in the bar too and strikes up a talk with Franky, and a good deal of the town’s gossip starts at his counter.',
@@ -1269,7 +1346,19 @@ export const waterSeven: OnePieceSaga = {
     'franky': {
       relationships: waterSevenRelationships.franky,
       chronicle: waterSevenChronicles.franky,
-      role: { it: 'Smantellatore di navi', en: 'Ship dismantler' },
+      role: [
+        {
+          episode: 235,
+          chapter: 329,
+          value: { it: 'Smantellatore di navi', en: 'Ship dismantler' },
+        },
+        // He agrees to join the crew in chapter 437, episode 322.
+        {
+          episode: 322,
+          chapter: 437,
+          value: { it: 'Carpentiere', en: 'Shipwright' },
+        },
+      ],
       log: {
         it: 'Nasconde la faccia dietro una maschera e comanda la Franky Family, una banda di smantellatori di navi che spoglia i pirati di passaggio di quello che hanno con sé. Quando i suoi uomini gli portano i duecento milioni presi a Usop, dice che finalmente potranno comprare la cosa che hanno sempre voluto, e ne dà loro cinque milioni da spendere come preferiscono. Quando Usop torna a riprendersi i soldi, Franky gli dice che nessuno aiuterà un pirata, poi se ne va con le valigette e lascia che la sua famiglia lo picchi.',
         en: 'He hides his face behind a mask and runs the Franky Family, a gang of ship dismantlers who strip passing pirates of whatever they carry. When his men bring him the two hundred million they took from Usopp, he says that at last they can buy the thing they have always wanted, and gives them five million to spend as they like. When Usopp comes back for the money, Franky tells him that nobody will help a pirate, then walks off with the cases and leaves his family to beat him.',
@@ -1354,7 +1443,24 @@ export const waterSeven: OnePieceSaga = {
     },
     'spandam': {
       relationships: waterSevenRelationships.spandam,
-      role: { it: 'Agente del Cipher Pol N. 5', en: 'Cipher Pol No. 5 agent' },
+      role: [
+        {
+          episode: 249,
+          chapter: 360,
+          value: {
+            it: 'Agente del Cipher Pol N. 5',
+            en: 'Cipher Pol No. 5 agent',
+          },
+        },
+        // Chief of CP9 on the call in chapter 358 (episode 250), below his
+        // record’s chapter, so at 360.
+        {
+          episode: 250,
+          chapter: 360,
+          value: { it: 'Capo del Cipher Pol 9', en: 'Chief of Cipher Pol 9' },
+        },
+        { episode: 746, chapter: 801, value: CP0_AGENT },
+      ],
       log: {
         it: 'Arriva dal Cipher Pol N. 5 a cercare Tom, e il saluto di cannone di Franky lo colpisce prima che finisca di dire il suo nome. Vuole i progetti di un’arma antica perché il Governo possa respingere la grande era dei pirati, e quando Tom gli dice di non averli fa venire altri cinque agenti. Poi usa le navi da guerra di Franky per attaccare la nave giudiziaria, e la colpa ricade su Tom’s Workers.',
         en: 'He comes from Cipher Pol No. 5 looking for Tom, and Franky’s cannon salute hits him before he can finish saying his name. He wants the blueprints of an ancient weapon so the Government can push back the Great Pirate Era, and when Tom says he has none he calls in five more agents. Then he uses Franky’s battleships to raid the Judicial Ship, and the blame falls on Tom’s Workers.',
@@ -1418,7 +1524,18 @@ export const waterSeven: OnePieceSaga = {
     'nero': {
       relationships: waterSevenRelationships.nero,
       chronicle: waterSevenChronicles.nero,
-      role: CP9_AGENT,
+      role: [
+        { episode: 259, chapter: 370, value: CP9_AGENT },
+        // Lucci throws him out of CP9 in chapter 373, the pair of his status.
+        {
+          episode: 262,
+          chapter: 373,
+          value: {
+            it: 'Ex agente del Cipher Pol 9',
+            en: 'Former Cipher Pol 9 agent',
+          },
+        },
+      ],
       log: {
         it: 'Si presenta come Nero la Donnola di mare, e si becca un pugno a tradimento appena Franky gli dice di guardare dall’altra parte. Si muove con le stesse tecniche degli altri agenti: sparisce in uno scatto, si piega attorno ai colpi e scalcia lame d’aria. Salta perfino giù dal treno, sopra il mare aperto, e ci risale camminando sull’aria.',
         en: 'He introduces himself as Nero the Sea Weasel, and takes a sucker punch the moment Franky tells him to look the other way. He moves with the same techniques as the other agents: he vanishes in a burst of speed, bends around blows and kicks out blades of air. He even jumps off the train over the open sea and climbs back up walking on the air.',
@@ -1447,7 +1564,23 @@ export const waterSeven: OnePieceSaga = {
     't-bone': {
       relationships: waterSevenRelationships['t-bone'],
       chronicle: waterSevenChronicles['t-bone'],
-      role: { it: 'Capitano della Marina', en: 'Marine captain' },
+      role: [
+        {
+          episode: 261,
+          chapter: 371,
+          value: { it: 'Capitano della Marina', en: 'Marine captain' },
+        },
+        // The papers report the death of Vice Admiral T Bone in chapter 1082,
+        // the pair of his status.
+        {
+          episode: 1116,
+          chapter: 1082,
+          value: {
+            it: 'Viceammiraglio della Marina',
+            en: 'Marine vice admiral',
+          },
+        },
+      ],
       log: {
         it: 'Scorta il treno del mare con i suoi uomini e si preoccupa di ogni loro ferita, promettendo pace e gentilezza mentre loro cercano di non guardarlo in faccia. La sua spada taglia solo in linea retta e ad angolo retto, che si tratti di una porta o di un mostro marino. Quando gli intrusi lo ingannano e lo lasciano indietro, corre da solo lungo i binari battuti dalla tempesta per sbarrare loro la strada.',
         en: 'He escorts the sea train with his men and fusses over every wound they get, promising peace and kindness while they try not to look at his face. His sword cuts only in straight lines and right angles, whether through a door or a sea monster. When the intruders trick him and leave him behind, he runs down the storm-lashed tracks alone to stand in their way.',
@@ -1536,7 +1669,23 @@ export const waterSeven: OnePieceSaga = {
     },
     'oimo-and-kashi': {
       relationships: waterSevenRelationships['oimo-and-kashi'],
-      role: { it: 'Guardiani del cancello', en: 'Gatekeepers' },
+      role: [
+        {
+          episode: 265,
+          chapter: 385,
+          value: { it: 'Guardiani del cancello', en: 'Gatekeepers' },
+        },
+        // They learn the truth and turn on the government in chapter 384
+        // (episode 271), below their record’s chapter, so at 385.
+        {
+          episode: 271,
+          chapter: 385,
+          value: {
+            it: 'Ex guardiani del cancello di Enies Lobby',
+            en: 'Former gatekeepers of Enies Lobby',
+          },
+        },
+      ],
       log: {
         it: 'Stanno davanti al cancello di Enies Lobby e fermano chiunque provi a entrare, uno con una clava e l’altro con una grande ascia. Lavorano per il Governo Mondiale da anni e non hanno mai discusso un ordine. Vengono da un’isola di guerrieri e si comportano ancora come tali.',
         en: 'They stand in front of the gate of Enies Lobby and stop anyone who tries to pass, one with a club and one with a broad axe. They have worked for the World Government for years and have never questioned an order. They come from an island of warriors and still carry themselves like it.',
@@ -1610,7 +1759,26 @@ export const waterSeven: OnePieceSaga = {
     },
     'jaguar-d-saul': {
       relationships: waterSevenRelationships['jaguar-d-saul'],
-      role: { it: 'Gigante naufragato a Ohara', en: 'Giant castaway on Ohara' },
+      role: [
+        {
+          episode: 275,
+          chapter: 392,
+          value: {
+            it: 'Gigante naufragato a Ohara',
+            en: 'Giant castaway on Ohara',
+          },
+        },
+        // Elbaph’s history professor in chapter 1133; the episode is his
+        // affiliation’s, 1164, which shows the school.
+        {
+          episode: 1164,
+          chapter: 1133,
+          value: {
+            it: 'Insegnante di storia a Elbaph',
+            en: 'History teacher on Elbaph',
+          },
+        },
+      ],
       log: {
         it: 'Vent’anni prima la marea lo lascia sulla spiaggia di Ohara, dove una bambina di otto anni, respinta dagli studiosi e evitata da tutti, si ferma a guardarlo. Lui le chiede come si chiama e le insegna a ridere a modo suo, «dereshishi», finché lei non ride davvero. In un’isola che la chiama mostro, è il primo a trattarla come una bambina qualunque.',
         en: 'Twenty years earlier the tide leaves him on the beach of Ohara, where an eight-year-old girl, turned away by the scholars and shunned by everyone, stops to look at him. He asks her name and teaches her to laugh his way, “dereshishi”, until she really laughs. On an island that calls her a monster, he is the first to treat her like any other little girl.',
