@@ -61,6 +61,45 @@ export const hunterExamChronicles = {
         },
       },
     },
+    // Spans episodes 27–29 and chapters 44–48: Hisoka's condition (win one
+    // match on the floor) is said in chapter 48 and episode 29.
+    {
+      episode: 29,
+      chapter: 48,
+      value: {
+        title: { it: 'Fino al 200º piano', en: 'Up to the 200th floor' },
+        body: {
+          it: 'Con [[killua|Killua]] arriva in dirigibile all’Arena Celeste per guadagnare soldi e allenarsi. Nel primo incontro segue il consiglio di Killua: gli basta una spinta per scaraventare lontano il suo enorme avversario. In pochi giorni i due arrivano al 100º piano, dove ognuno riceve una stanza. Al 200º piano un’aura ostile li blocca nel corridoio: è [[hisoka|Hisoka]], che dice loro che non sono pronti. [[wing|Wing]] li porta nella sua stanza, spiega il Nen e apre a forza i loro nodi dell’aura. Gon impara subito a trattenere l’aura con il Ten e così attraversa la barriera di Hisoka. Gli dice che trovarlo lì gli fa risparmiare tempo. Hisoka risponde che lo affronterà solo se Gon vincerà almeno un incontro a quel piano.',
+          en: 'With [[killua|Killua]] he flies to Heavens Arena to earn money and to train. In his first match he follows Killua’s advice: one push sends his huge opponent flying. Within a few days the two reach the 100th floor, where each gets a room. On the 200th floor a hostile aura stops them in the hallway: it is [[hisoka|Hisoka]], who tells them they are not ready. [[wing|Wing]] takes them to his room, explains Nen and forces open their aura nodes. Gon learns to hold his aura in with Ten at once, and with it he walks through Hisoka’s barrier. He tells Hisoka that finding him here saves him time. Hisoka answers that he will fight him only once Gon wins a match on this floor.',
+        },
+      },
+    },
+    // The ban and the thread on his finger are in chapter 51; episode 30 has
+    // the whole match and the ban.
+    {
+      episode: 30,
+      chapter: 51,
+      value: {
+        title: { it: 'Il filo al dito', en: 'The thread on his finger' },
+        body: {
+          it: 'Il primo incontro di Gon al 200º piano è già il giorno dopo, contro [[gido|Ghido]], anche se [[wing|Wing]] aveva detto loro di aspettare. Le trottole di Ghido rimbalzano per il ring e lo colpiscono più volte. Gon capisce che colpiscono qualunque cosa incontrino, non lui in particolare, ma quando attacca Ghido si mette a girare su sé stesso e lo respinge. Senza saperlo passa allo Zetsu e comincia a schivare tutte le trottole. Alla fine una lo coglie senza via di scampo e gli rompe il braccio, e Gon perde. Wing gli proibisce di allenarsi nel Nen e di studiarlo finché non sarà guarito, e gli lega un filo al dito perché si ricordi la promessa.',
+          en: 'Gon’s first match on the 200th floor is the very next day, against [[gido|Gido]], even though [[wing|Wing]] has told them to wait. Gido’s spinning tops bounce around the ring and strike him again and again. Gon works out that they hit anything in their path, not him in particular, but when he attacks, Gido spins his whole body and throws him back. Without knowing it he switches to Zetsu and starts dodging every top. In the end a top catches him with nowhere to go and breaks his arm, and he loses. Wing forbids him to train in or study Nen until he heals, and ties a thread around his finger to remind him of the promise.',
+        },
+      },
+    },
+    // Water Divination and the July 10 date are in chapter 60 and episode 35;
+    // the match ends in chapter 63 and episode 36.
+    {
+      episode: 36,
+      chapter: 63,
+      value: {
+        title: { it: 'L’incontro con Hisoka', en: 'The match with Hisoka' },
+        body: {
+          it: 'Con il test dell’acqua di [[wing|Wing]], Gon fa traboccare il bicchiere e scopre di essere del Potenziamento, poi fissa l’incontro con [[hisoka|Hisoka]] per il 10 luglio. Hisoka schiva ogni pugno senza muoversi dal suo posto, finché Gon strappa una lastra del pavimento, la fa a pezzi davanti a lui e, nascosto dai frammenti, lo colpisce in faccia. Poi gli restituisce la targhetta dell’esame. Con il Gyo vede l’Ipergomma che Hisoka gli ha attaccato alla guancia, ma non riesce a liberarsene e viene tirato contro un pugno dopo l’altro. Continua ad attaccare, finché un sasso tirato dall’aura di Hisoka lo colpisce alla testa e chiude l’incontro. Hisoka gli dice che il loro prossimo scontro sarà fuori dall’arena, all’ultimo sangue. Gon decide di diventare abbastanza forte da batterlo.',
+          en: 'In [[wing|Wing]]’s Water Divination, Gon makes the water overflow and learns he is an Enhancer, then books his match with [[hisoka|Hisoka]] for July 10. Hisoka dodges every punch without leaving his spot, until Gon rips up a floor tile, shatters it in front of him and, hidden by the rubble, lands a punch on his face. Then Gon hands back Hisoka’s badge from the exam. With Gyo he sees the Bungee Gum that Hisoka has stuck to his cheek, but he cannot get free of it and is pulled into one punch after another. He keeps attacking until a rock pulled by Hisoka’s aura hits him in the head and ends the match. Hisoka tells him that their next fight will be outside the arena, to the death. Gon resolves to grow strong enough to beat him.',
+        },
+      },
+    },
   ],
   'mito-freecss': [
     {
@@ -317,6 +356,48 @@ export const hunterExamChronicles = {
         },
       },
     },
+    // The barrier is in chapter 47 and episode 28; his welcome and his
+    // condition for a match with Gon are in chapter 48 and episode 29.
+    {
+      episode: 29,
+      chapter: 48,
+      value: {
+        title: {
+          it: 'L’attesa al 200º piano',
+          en: 'Waiting on the 200th floor',
+        },
+        body: {
+          it: 'Quando [[gon-freecss|Gon]] e [[killua|Killua]] arrivano al 200º piano dell’Arena Celeste, l’aura di Hisoka li blocca nel corridoio prima che possano registrarsi. Hisoka dice loro che non sono pronti, e con il suo Nen impedisce loro di fare un altro passo. [[wing|Wing]] li porta via. Tornano usando il Ten e attraversano la sua aura senza fermarsi. Hisoka dà loro il benvenuto e intuisce che Gon è venuto ad allenarsi per affrontarlo. Lo avverte di non montarsi la testa solo perché conosce il Ten, e tra le dita dà forma alla sua aura per mostrargli quanto altro c’è nel Nen. Lo affronterà solo quando Gon avrà vinto un incontro a quel piano.',
+          en: 'When [[gon-freecss|Gon]] and [[killua|Killua]] reach the 200th floor of Heavens Arena, Hisoka’s aura stops them in the hallway before they can register. He tells them they are not ready, and his Nen keeps them from taking another step. [[wing|Wing]] takes them away. They come back using Ten and walk straight through his aura. Hisoka welcomes them to the floor and guesses that Gon has come to train before facing him. He warns him not to get overconfident just because he knows Ten, and shapes his aura into figures between his fingers to show how much more there is to Nen. He will fight Gon only once Gon has won a match on this floor.',
+        },
+      },
+    },
+    // The match is in chapters 52–54 and episodes 31–32; the woman, the two
+    // abilities, the meeting and the tattoo are in chapter 55 and episode 32.
+    {
+      episode: 32,
+      chapter: 55,
+      value: {
+        title: { it: 'L’incontro con Kastro', en: 'The match with Kastro' },
+        body: {
+          it: 'Nella rivincita con [[kastro|Kastro]], che due anni prima ha perso contro di lui, Hisoka perde entrambe le braccia contro Kastro e il suo Doppelgänger, una copia di sé fatta di Nen. Poi riconosce subito il vero Kastro e lo uccide con una raffica di carte. Più tardi una donna gli ricuce le braccia a pagamento. Hisoka copre le cuciture con l’Ipergomma, che rende la sua aura elastica e adesiva come una gomma da masticare, e con la Tela Fantasma, che riproduce l’aspetto della pelle. Sotto la doccia Hisoka si stacca dalla schiena il tatuaggio del ragno con il numero, che è finto: ora che ha trovato in [[gon-freecss|Gon]] e [[killua|Killua]] dei nuovi giocattoli, è il momento di dare la caccia ai Ragni della Brigata Fantasma.',
+          en: 'In the rematch with [[kastro|Kastro]], who lost to him two years ago, Hisoka loses both arms to Kastro and his Double, a copy of himself made of Nen. Then he picks out the real Kastro at once and kills him with a volley of cards. Later a woman sews his arms back on for a fee. Hisoka hides the seams with Bungee Gum, which makes his aura stretch and stick like gum, and Texture Surprise, which copies the look of skin. In the shower Hisoka peels the numbered spider tattoo off his back, a fake: now that he has found new toys in [[gon-freecss|Gon]] and [[killua|Killua]], it is time to hunt the Spiders of the Phantom Troupe.',
+        },
+      },
+    },
+    // The personality talk is in chapter 62; the quiz, the rock and the
+    // promise of a fight to the death are in chapter 63, all in episode 36.
+    {
+      episode: 36,
+      chapter: 63,
+      value: {
+        title: { it: 'L’incontro con Gon', en: 'The match with Gon' },
+        body: {
+          it: 'Nell’incontro con [[gon-freecss|Gon]], Hisoka schiva ogni attacco senza muoversi dal suo posto, finché Gon si nasconde dietro i frammenti di una lastra del pavimento e lo colpisce in faccia. Intuisce che Gon è del Potenziamento e spiega il suo modo di leggere le categorie dell’aura attraverso il carattere: chi è del Potenziamento è semplice, mentre lui, della Trasformazione, è volubile e bugiardo. Intanto attacca l’Ipergomma alla guancia di Gon, e poi la usa per tirarlo contro i suoi pugni. Quando Gon continua a colpirlo, Hisoka si eccita al pensiero di quanto diventerà forte. Vince facendolo guardare dalla parte sbagliata e scagliandogli contro la testa un sasso legato alla sua aura. Andandosene, gli dice che il loro prossimo scontro non sarà nell’arena, ma uno in cui rischieranno la vita.',
+          en: 'In his match with [[gon-freecss|Gon]], Hisoka dodges every attack without leaving his spot, until Gon hides behind the rubble of a floor tile and punches him in the face. He guesses that Gon is an Enhancer and explains his own way of reading aura types by personality: Enhancers are simple, while he, a Transmuter, is fickle and deceitful. While he talks he attaches Bungee Gum to Gon’s cheek, and then uses it to pull him into his punches. As Gon keeps hitting him, Hisoka is thrilled at the thought of how strong Gon will become. He wins by making Gon look the wrong way and sending a rock stuck to his aura into Gon’s head. As he leaves, he tells Gon that their next fight will not be in the arena, but one where their lives are at stake.',
+        },
+      },
+    },
   ],
   'hanzo': [
     {
@@ -455,6 +536,46 @@ export const hunterExamChronicles = {
         body: {
           it: 'Dopo la finale Killua è rinchiuso a Monte Kukruu, incatenato e frustato dal fratello [[milluki|Milki]]. [[zeno|Zeno]] lo libera e gli dice che suo padre vuole vederlo. Il padre gli chiede se vuole rivedere i suoi amici e, quando Killua dice di sì, gli fa promettere di non tradirli mai. Killua raggiunge [[gon-freecss|Gon]], [[kurapika|Kurapika]] e [[leorio-paradinight|Leorio]] e lascia la tenuta con loro.',
           en: 'After the final Killua is locked up on Kukuroo Mountain, chained and whipped by his brother [[milluki|Milluki]]. [[zeno|Zeno]] frees him and tells him his father wants to see him. His father asks whether he wants to see his friends again and, when Killua says yes, has him promise never to betray them. Killua joins [[gon-freecss|Gon]], [[kurapika|Kurapika]] and [[leorio-paradinight|Leorio]] and leaves the estate with them.',
+        },
+      },
+    },
+    {
+      episode: 27,
+      chapter: 45,
+      value: {
+        title: {
+          it: 'Di nuovo all’Arena Celeste',
+          en: 'Back at Heavens Arena',
+        },
+        body: {
+          it: 'Killua porta [[gon-freecss|Gon]] all’Arena Celeste per allenarsi e guadagnare, perché il viaggio li ha lasciati senza soldi. Ci è già stato: suo padre ce lo ha lasciato a sei anni senza un soldo, e gli ci sono voluti due anni per arrivare al 200º piano. Gli propongono di ripartire dal 180º piano, ma lui comincia dal 50º insieme a Gon. Il suo avversario successivo è [[zushi|Zooci]]. Killua lo colpisce due volte alla nuca, e due volte Zooci si rialza. Quando Zooci assume una nuova posizione, Killua balza indietro spaventato. Vince senza riuscire a metterlo KO, poi racconta a Gon che quella posizione gli ha dato la stessa sensazione di suo fratello e che [[wing|Wing]] la chiama Ren. Decide che andranno fino in cima alla torre.',
+          en: 'Killua takes [[gon-freecss|Gon]] to Heavens Arena to train and to earn money, because the trip has left them broke. He has been here before: his father left him here at six with no money, and it took him two years to reach the 200th floor. He is offered a start on the 180th floor, but he begins on the 50th with Gon. His next opponent is [[zushi|Zushi]]. Killua hits him twice on the back of the neck, and twice Zushi gets up. When Zushi takes a new stance, Killua leaps back in fright. He wins without knocking him out, then tells Gon that the stance gave him the same feeling as his brother and that [[wing|Wing]] calls it Ren. He decides they will go all the way to the top of the tower.',
+        },
+      },
+    },
+    // Spans episodes 28–29 and chapters 46–48: the nodes and the walk through
+    // Hisoka's aura are in chapter 48 and episode 29.
+    {
+      episode: 29,
+      chapter: 48,
+      value: {
+        title: { it: 'Entro mezzanotte', en: 'Before midnight' },
+        body: {
+          it: '[[wing|Wing]] spiega i quattro princìpi e mostra il Ren su Killua, che balza in un angolo vicino al soffitto. Tornando indietro, Killua dice a [[gon-freecss|Gon]] che Wing ha mentito: la sola forza di volontà non spiega come [[zushi|Zooci]] abbia retto ai suoi colpi. Al 200º piano un’aura li blocca nel corridoio, e [[hisoka|Hisoka]] dice che non sono pronti. L’addetta avverte Killua che, se non si registra entro mezzanotte, non potrà farlo mai più, perché la prima volta non si è registrato. Wing si offre di insegnare loro il vero Nen e apre a forza i loro nodi dell’aura. A Killua la sensazione ricorda il Nen di [[illumi|Illumi]], ma molto più debole. Impara subito il Ten e con Gon attraversa la barriera di Hisoka prima di mezzanotte.',
+          en: '[[wing|Wing]] explains the four principles and shows Ren on Killua, who leaps up into a corner by the ceiling. On the way back Killua tells [[gon-freecss|Gon]] that Wing lied: willpower alone cannot explain how [[zushi|Zushi]] withstood his blows. On the 200th floor an aura stops them in the hallway, and [[hisoka|Hisoka]] says they are not ready. The clerk warns Killua that if he does not register by midnight he can never register again, because the first time he did not. Wing offers to teach them the real Nen and forces open their aura nodes. The feeling reminds Killua of [[illumi|Illumi]]’s Nen, only much weaker. He learns Ten at once, and with Gon he walks through Hisoka’s barrier before midnight.',
+        },
+      },
+    },
+    // Spans episodes 33–34 and chapters 57–59: the match with Riehlvelt is in
+    // chapter 59 and episode 34, his threshold.
+    {
+      episode: 34,
+      chapter: 59,
+      value: {
+        title: { it: 'Niente più vittorie regalate', en: 'No more free wins' },
+        body: {
+          it: 'Per costringerli a combattere, [[sadaso|Sadaso]] fa svenire [[zushi|Zooci]] con una mano gigante fatta d’aura. Killua interviene e offre a lui, a [[gido|Ghido]] e a [[riehlvelt|Liroubert]] una vittoria a tavolino ciascuno al posto di [[gon-freecss|Gon]]. Loro ricattano Gon lo stesso, lasciandogli davanti alla porta una scarpa di Zooci. Prima del suo incontro Killua compare alle spalle di Sadaso e lo avverte di non farsi vedere mai più. Sadaso non si presenta e Killua vince a tavolino. Poi avverte anche Ghido e Liroubert. Nell’incontro principale contro Liroubert afferra entrambe le fruste e incassa la scossa elettrica, perché è stato addestrato a sopportarla. Lo strappa dalla sedia a rotelle, lo prende al volo con le fruste ancora cariche in mano, e Liroubert sviene.',
+          en: 'To force a match, [[sadaso|Sadaso]] knocks out [[zushi|Zushi]] with a giant hand made of aura. Killua steps in and offers him, [[gido|Gido]] and [[riehlvelt|Riehlvelt]] a free win each in place of [[gon-freecss|Gon]]. They blackmail Gon anyway, leaving one of Zushi’s shoes at his door. Before his match Killua appears behind Sadaso and warns him never to show his face again. Sadaso does not turn up, and Killua wins by default. Then he warns Gido and Riehlvelt too. In the main event against Riehlvelt he catches both whips and takes the electric shock, because he has been trained to bear it. He yanks Riehlvelt out of his wheelchair, catches him as he falls with the live whips still in his hands, and Riehlvelt passes out.',
         },
       },
     },

@@ -5,6 +5,7 @@ import { LOCALES } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
 import { LOADED_SERIES } from '~/test/series'
 
+import { homePage } from './home.server'
 import { characterPage, drawingsFor } from './pages.server'
 import { placePage } from './placePage.server'
 import { factsOf } from './project.server'
@@ -121,6 +122,23 @@ describe('the returning characters at Heavens Arena', () => {
       )
       expect(factsOf(hisoka, read(tattoo)).affiliation).toMatch(
         /fake member of the Phantom Troupe/u,
+      )
+    },
+  )
+})
+
+describe('the home inside the arc', () => {
+  it.each(['episode', 'chapter'])(
+    'lists the arc’s own stories from its first one, by %s',
+    (unit) => {
+      // Zushi's and Killua's first stories of the arc: episode 27, chapter 45.
+      const first = unit === 'chapter' ? 45 : 27
+      const inside = homePage(readerFor(archive, at(unit, first), 'en'))
+
+      expect(inside.saga.id).toBe('heavens-arena-arc')
+      expect(inside.before).toBe(false)
+      expect(inside.stories.map(({ subject }) => subject.id)).toStrictEqual(
+        expect.arrayContaining(['zushi', 'killua']),
       )
     },
   )
