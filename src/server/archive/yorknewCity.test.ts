@@ -247,14 +247,52 @@ const STATUS_STEPS = [
     before: 'alive',
     after: 'deceased',
   },
-  ...['worm', 'rabid-dog'].flatMap((id) => [
-    { id, unit: 'episode', count: 44, before: 'alive', after: 'deceased' },
-    { id, unit: 'chapter', count: 76, before: 'alive', after: 'deceased' },
-  ]),
-  ...['porcupine', 'leech'].flatMap((id) => [
-    { id, unit: 'episode', count: 44, before: undefined, after: 'deceased' },
-    { id, unit: 'chapter', count: 76, before: undefined, after: 'deceased' },
-  ]),
+  {
+    id: 'rabid-dog',
+    unit: 'episode',
+    count: 44,
+    before: 'alive',
+    after: 'deceased',
+  },
+  {
+    id: 'rabid-dog',
+    unit: 'chapter',
+    count: 76,
+    before: 'alive',
+    after: 'deceased',
+  },
+  // Worm survives Uvogin's blast and calls for help: alive through phase 2.
+  { id: 'worm', unit: 'episode', count: 47, before: 'alive', after: 'alive' },
+  { id: 'worm', unit: 'chapter', count: 84, before: 'alive', after: 'alive' },
+  {
+    id: 'leech',
+    unit: 'episode',
+    count: 44,
+    before: undefined,
+    after: 'deceased',
+  },
+  {
+    id: 'leech',
+    unit: 'chapter',
+    count: 76,
+    before: undefined,
+    after: 'deceased',
+  },
+  // The manga kills Porcupine; episode 44 leaves his fate open.
+  {
+    id: 'porcupine',
+    unit: 'episode',
+    count: 44,
+    before: undefined,
+    after: 'unknown',
+  },
+  {
+    id: 'porcupine',
+    unit: 'chapter',
+    count: 76,
+    before: undefined,
+    after: 'deceased',
+  },
   {
     id: 'uvogin',
     unit: 'episode',

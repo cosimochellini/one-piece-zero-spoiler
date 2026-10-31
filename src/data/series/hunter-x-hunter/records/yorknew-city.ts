@@ -333,8 +333,8 @@ export const yorknewCity: HunterSaga = {
       revealedAtChapter: 79,
       name: { it: 'Shalnark', en: 'Shalnark' },
       summary: {
-        it: 'Un membro della Brigata Fantasma che cerca sul sito degli Hunter dove si trovano le guardie della famiglia Nostrad.',
-        en: 'A member of the Phantom Troupe who searches the Hunter website for where the Nostrade bodyguards are.',
+        it: 'Un membro della Brigata Fantasma che cerca la famiglia Nostrad sul sito degli Hunter.',
+        en: 'A member of the Phantom Troupe who searches the Hunter website for the Nostrade family.',
       },
       visual: { art: 'shalnark', tint: 'lavender' },
     },
@@ -391,8 +391,9 @@ export const yorknewCity: HunterSaga = {
       },
       visual: { art: 'rabid-dog', tint: 'wine' },
     },
-    // Named in chapter 76, where Uvogin kills him; open already dead
-    // (owner, #900).
+    // Named in chapter 76, where Uvogin's scream kills him; the record opens
+    // with his death in the manga (owner, #900) and with his fate unknown in
+    // the episodes.
     {
       id: 'porcupine',
       kind: 'character',
@@ -651,8 +652,8 @@ export const yorknewCity: HunterSaga = {
     'feitan': {
       role: TROUPE_MEMBER,
       log: {
-        it: 'Travestito da presentatore, sale sul palco dell’asta sotterranea con un altro membro della Brigata e dà il benvenuto agli ospiti; subito dopo vengono uccisi quasi tutti i presenti.',
-        en: 'Disguised as a host, he walks onto the stage of the Underground Auction with another Troupe member and welcomes the guests; straight after, nearly everyone in the hall is killed.',
+        it: 'Sale sul palco dell’asta sotterranea con un altro membro della Brigata e dà il benvenuto agli ospiti; subito dopo vengono uccisi quasi tutti i presenti.',
+        en: 'He walks onto the stage of the Underground Auction with another Troupe member and welcomes the guests; straight after, nearly everyone in the hall is killed.',
       },
       status: [{ episode: 43, chapter: 74, value: 'alive' }],
       affiliation: [{ episode: 43, chapter: 74, value: TROUPE }],
@@ -660,8 +661,8 @@ export const yorknewCity: HunterSaga = {
     'franklin': {
       role: TROUPE_MEMBER,
       log: {
-        it: 'All’asta sotterranea, travestito da presentatore con Feitan, uccide quasi tutti gli ospiti con proiettili fatti di aura. Poi gioca a carte con gli altri membri mentre Uborghin affronta da solo le Bestie dell’Ombra.',
-        en: 'At the Underground Auction, disguised as a host with Feitan, he kills nearly all the guests with bullets made of aura. Later he and the other members play cards while Uvogin takes on the Shadow Beasts alone.',
+        it: 'All’asta sotterranea, sul palco con Feitan, uccide quasi tutti gli ospiti con proiettili fatti di aura. Poi gioca a carte con gli altri membri mentre Uborghin affronta da solo le Bestie dell’Ombra.',
+        en: 'At the Underground Auction, on the stage with Feitan, he kills nearly all the guests with bullets made of aura. Later he and the other members play cards while Uvogin takes on the Shadow Beasts alone.',
       },
       status: [{ episode: 44, chapter: 76, value: 'alive' }],
       affiliation: [{ episode: 44, chapter: 76, value: TROUPE }],
@@ -693,8 +694,8 @@ export const yorknewCity: HunterSaga = {
     'shalnark': {
       role: TROUPE_MEMBER,
       log: {
-        it: 'Mentre Uborghin beve birra, cerca sul sito degli Hunter dove lo tenevano prigioniero e scopre dove alloggia la famiglia Nostrad, così che Uborghin possa scovare l’utilizzatore di catene.',
-        en: 'While Uvogin drinks beer, he searches the Hunter website for where Uvogin was held and finds where the Nostrade family is staying, so that Uvogin can track down the chain user.',
+        it: 'Mentre Uborghin beve birra, cerca la famiglia Nostrad sul sito degli Hunter, così che Uborghin possa scovare l’utilizzatore di catene.',
+        en: 'While Uvogin drinks beer, he searches the Hunter website for the Nostrade family, so that Uvogin can track down the chain user.',
       },
       status: [{ episode: 46, chapter: 79, value: 'alive' }],
       affiliation: [{ episode: 46, chapter: 79, value: TROUPE }],
@@ -734,11 +735,10 @@ export const yorknewCity: HunterSaga = {
         it: 'Sbuca da sotto terra vicino alle guardie del corpo dei Nostrad e si presenta. Con altre tre Bestie dell’Ombra va ad affrontare Uborghin.',
         en: 'He comes up out of the ground near the Nostrade bodyguards and introduces himself. With three other Shadow Beasts he goes to take on Uvogin.',
       },
-      status: [
-        { episode: 43, chapter: 75, value: 'alive' },
-        // Uvogin's blast leaves only his arm, chapter 76 and episode 44.
-        { episode: 44, chapter: 76, value: 'deceased' },
-      ],
+      // Badly wounded by Uvogin's blast, he crawls out of the ground and calls
+      // for the other Shadow Beasts (chapter 76, episode 44). His death is
+      // told only with the others', later in the arc.
+      status: [{ episode: 43, chapter: 75, value: 'alive' }],
       affiliation: [{ episode: 43, chapter: 75, value: SHADOW_BEASTS }],
     },
     'rabid-dog': {
@@ -761,7 +761,13 @@ export const yorknewCity: HunterSaga = {
         it: 'I suoi peli trattengono il pugno di Uborghin e non lo lasciano andare. Uborghin se ne libera con un urlo.',
         en: 'His hairs catch Uvogin’s fist and hold it. Uvogin frees himself with a scream.',
       },
-      status: [{ episode: 44, chapter: 76, value: 'deceased' }],
+      // Chapter 76 kills him with Uvogin's scream; episode 44 only knocks him
+      // out, "perhaps killing him". Until the episodes say he is dead, an
+      // anime reader sees his fate as unknown.
+      status: [
+        { episode: 44, chapter: 76, value: 'unknown', source: 'episode' },
+        { episode: 44, chapter: 76, value: 'deceased', source: 'chapter' },
+      ],
       affiliation: [{ episode: 44, chapter: 76, value: SHADOW_BEASTS }],
     },
     'leech': {
