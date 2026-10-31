@@ -24711,6 +24711,16 @@
       "revisionUrl": "https://hunterxhunter.fandom.com/index.php?oldid=424813",
       "apiUrl": "https://hunterxhunter.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=424813",
       "contentSha256": "7a4867b7f9a2b7651cf4a0620b257f470e8ef3bae3df874c259dec9112c691c0"
+    },
+    "hxh-it-Kurapika_Kurata-152911797.json": {
+      "locale": "it",
+      "title": "Kurapika Kurata",
+      "revision": 152911797,
+      "revisionDate": "2026-10-15T02:39:31Z",
+      "url": "https://it.wikipedia.org/wiki/Kurapika_Kurata",
+      "revisionUrl": "https://it.wikipedia.org/w/index.php?oldid=152911797",
+      "apiUrl": "https://it.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=152911797",
+      "contentSha256": "35451e609bc8e6ba9b6d7bf8d6a9b8ce982ce7314d60eae26247118bbaa75cfe"
     }
   }
 }

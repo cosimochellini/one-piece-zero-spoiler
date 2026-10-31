@@ -99,6 +99,18 @@ export const zoldyckChronicles = {
         },
       },
     },
+    // The call is chapter 69 (pages 1-16) and episode 38; the address arrives by bird at the end of episode 40 and at the start of chapter 70.
+    {
+      episode: 40,
+      chapter: 70,
+      value: {
+        title: { it: 'La scheda di memoria', en: 'The memory card' },
+        body: {
+          it: 'Quando [[killua|Killua]] lo chiama, Milki ha due piste sul gioco della scheda di memoria di [[gon-freecss|Gon]], e Killua gli promette in cambio una copia della scheda. Una pista è un sito riservato agli Hunter, l’altra è la voce che alcune copie del gioco andranno all’asta a York Shin City. Quando ha la scheda, Milki manda a Killua l’indirizzo del sito con un uccello.',
+          en: 'When [[killua|Killua]] calls, Milluki has two leads on the game on [[gon-freecss|Gon]]’s memory card, and Killua promises him a copy of the card in exchange. One lead is a website for Hunters only, the other a rumor that copies of the game will be auctioned in Yorknew City. Once he has the card, Milluki sends Killua the website’s address by bird.',
+        },
+      },
+    },
   ],
   'zeno': [
     {

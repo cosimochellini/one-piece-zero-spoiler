@@ -6,6 +6,7 @@ import type { Bookmark } from '~/lib/progress/episode'
 import type { RecordView, Slot } from '~/lib/view/records'
 import { LOADED_SERIES } from '~/test/series'
 
+import { homePage } from './home.server'
 import { characterPage, drawingsFor } from './pages.server'
 import { placePage } from './placePage.server'
 import { factsOf } from './project.server'
@@ -603,6 +604,23 @@ describe('Kurapika at the head of the bodyguards', () => {
       /Nostrade family, head of Neon’s bodyguards/u,
     )
   })
+})
+
+describe('the home inside the arc', () => {
+  it.each(['episode', 'chapter'])(
+    'lists the arc’s own stories from its first one, by %s',
+    (unit) => {
+      // Killua's first story of the arc: episode 37, chapter 64.
+      const first = unit === 'chapter' ? 64 : 37
+      const inside = homePage(readerFor(archive, at(unit, first), 'en'))
+
+      expect(inside.saga.id).toBe('yorknew-city-arc')
+      expect(inside.before).toBe(false)
+      expect(inside.stories.map(({ subject }) => subject.id)).toContain(
+        'killua',
+      )
+    },
+  )
 })
 
 describe('the arc’s leads', () => {

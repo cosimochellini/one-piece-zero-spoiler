@@ -38,6 +38,18 @@ export const HUNTER_X_HUNTER_SOURCES = {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_36_(2011)',
       note: 'Corrected after review: the rock tied to Hisoka’s aura and the blow to the head are Chapter 63 only, reworded. Water Divination and the July 10 booking are in episode 35 and chapter 60; the unmoving dodges and the punch behind the shattered tile in chapter 61; the returned badge, Gyo and Bungee Gum in chapter 62; the rock, the loss and the promise of a fight to the death in chapter 63, all through episode 36.',
     },
+    37: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_37_(2011)',
+      note: 'Corrected after review: in Italian, “alla sua età” became “alla stessa età di Gon”. Episode 37 and chapters 64-65: the talk by the fire, Mito showing the box and telling what she knows, the grandmother on whose parents died, Gon calling his father Ging, the Nen and license boxes, the ring, memory card and cassette, and the tape’s question. Also read: Chapter 64, Chapter 65.',
+    },
+    38: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_38_(2011)',
+      note: 'Episode 38 adapts chapter 66 and chapter 69, pages 1-16: the tape, the stop at his mother, the Nen that records over it, the console, the game’s price in billions, and Killua trading a copy of the card to Milluki for leads, among them copies at a Yorknew auction. Leaving the island is not in chapter 69 and is left out. Also read: Chapter 66, Chapter 69.',
+    },
+    42: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_42_(2011)',
+      note: 'Corrected after review: “use all his strength” became “try for real to win”, as chapter 72 says only that Gon is forced to actually try. The Hunter website (seven copies, 8.9 billion) and the failed reselling are episode 41 and chapter 70; the phone, Leorio, the diamond worth 3 million and Shizuku forcing him to try for real are episode 42 and chapters 71-72. Also read: Episode 41 (2011), Chapter 70, Chapter 71, Chapter 72.',
+    },
   },
   'mito-freecss': {
     1: {
@@ -47,6 +59,10 @@ export const HUNTER_X_HUNTER_SOURCES = {
     26: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_26_(2011)',
       note: 'Corrected after review: linked Gon. The recap letter (passed, unhappy about the final match, Kukuroo Mountain trip, one more piece of business, the framed photo) is all in this episode; kept at chapter 43 as an anime-only recap.',
+    },
+    37: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_37_(2011)',
+      note: 'Episode 37 and chapters 64-65: the bath, the meal with her grandmother, Mito behind the boys with food while Gon calls her his mother, the month at home, the box, Ging leaving at Gon’s age and the accident that killed her parents. Her crying is anime-only; the condition on the box is not on the episode page. Also read: Chapter 64, Chapter 65.',
     },
   },
   'leorio-paradinight': {
@@ -70,6 +86,10 @@ export const HUNTER_X_HUNTER_SOURCES = {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_20_(2011)',
       note: "Satotz's account on the page covers Illumi's lecture, Leorio's shout at Killua, Leorio, Kurapika and Hanzo blocking the door, Killua's surrender and the killing of Bodoro.",
     },
+    42: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_42_(2011)',
+      note: 'Corrected after review: “use all his strength” became “try for real to win”, as chapter 72 says only that Gon is forced to actually try. Episode 42 and chapters 71-72: meeting Gon and Killua at the phone stall, talk of Nen and the game, his idea, the arm-wrestling contest for a 3-million diamond and the one challenger who makes Gon try for real. The haggling and the entry fee are chapter-only. Also read: Chapter 71, Chapter 72.',
+    },
   },
   'kurapika': {
     1: {
@@ -87,6 +107,14 @@ export const HUNTER_X_HUNTER_SOURCES = {
     21: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_21_(2011)',
       note: "Corrected after review: he no longer 'asks the committee to review', the page only has him defending Killua as manipulated by Illumi. Pokkle's doubt about the Hisoka win, his refusal to answer and the departure for Kukuroo Mountain are here; the Hisoka forfeit and door block are recounted in episode 20.",
+    },
+    39: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_39_(2011)',
+      note: 'Only the beats chapter 67 shares with episode 39: back at the agency after learning Nen, three employers tied to the auction, the collector of human body parts, the butler, the man on the screen, the month and the item, the locked door and the armed figures in black. The teacher and Water Divination are chapter 83 and wait for episode 47; Melody at the agency is anime-only. Also read: Chapter 67.',
+    },
+    40: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_40_(2011)',
+      note: 'Corrected after review: “reveals the plan” is episode 40 only; chapter 68 has him reveal how he used his Nen, so he only talks, as Squala’s record log says. Episode 40 and chapter 68: the chandelier, the dagger and the count to three, Tocino’s test and the four who can leave, the Dowsing Chain reacting at Squala, Melody, Basho’s haiku and Baise’s kiss. Italian: Catena della Pressione (Italian Wikipedia, Kurapika). Also read: Chapter 68.',
     },
   },
   'katzo': {
@@ -147,6 +175,10 @@ export const HUNTER_X_HUNTER_SOURCES = {
     36: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_36_(2011)',
       note: 'Corrected after review: the rock tied to his aura and the blow to the head are Chapter 63 only, reworded. The punch from behind the tile is in episode 35 and chapter 61; the badge, the Enhancer guess and the personality talk in episode 36 and chapter 62; the Bungee Gum quiz, his thrill, the rock and the farewell about a fight to the death in episode 36 and chapter 63.',
+    },
+    41: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_41_(2011)',
+      note: 'Corrected after review: “the newest member” and the title “The new member” are episode 41 only; chapter 71 says only that members No. 4 and 8 have changed, so the four talk about him and the members who have changed, as in Machi’s story. The fake tattoo and Machi’s call for noon on August 30 are episode 32 and chapter 55; the four members talking about him on the road and the leader’s order are episode 41 and chapter 71. Also read: Episode 32 (2011), Chapter 55, Chapter 71.',
     },
   },
   'hanzo': {
@@ -211,6 +243,10 @@ export const HUNTER_X_HUNTER_SOURCES = {
     34: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_34_(2011)',
       note: 'Corrected after review: Zushi knocked out, Killua behind Sadaso in the locker room and Riehlvelt fainting are chapter-only, reworded. The aura hand on Zushi, the free wins, the shoe at Gon’s door, the warning to Sadaso and the default win are in episode 33 and chapter 57; the warning to Gido and Riehlvelt and the main event (whips caught, the shock he is trained for, Riehlvelt thrown from the chair and caught) are in episode 34 and chapters 58 and 59.',
+    },
+    37: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_37_(2011)',
+      note: 'Corrected after review: the episode and the chapter place the information-gathering differently, so Gon only goes to Yorknew City to start looking for his father. Episode 37 and chapter 64: the fire in the forest, Gon’s plan for Yorknew, Killua with no goal, the offer to travel together, and Gon’s answer about his mother. The family business and the mother like Mito are chapter-only. Also read: Chapter 64.',
     },
   },
   'menchi': {
@@ -429,6 +465,10 @@ export const HUNTER_X_HUNTER_SOURCES = {
     24: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_24_(2011)',
       note: "Whipping, apology for the stabbing, mother's phone call, Zeno freeing Killua, Milluki's talent remarks and the mosquito bomb. Corrected after review: made clear he accuses Zeno of spoiling Killua.",
+    },
+    40: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_40_(2011)',
+      note: 'The call and the deal are episode 38 and chapter 69, pages 1-16; the address sent by bird (an eagle in the episode, a hawk in chapter 70) closes episode 40. Also read: Episode 38 (2011), Chapter 69, Chapter 70.',
     },
   },
   'zeno': {
@@ -661,6 +701,76 @@ export const HUNTER_X_HUNTER_SOURCES = {
     34: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_34_(2011)',
       note: "Corrected after review: linked Killua. Episode 34 covers chapters 58–59: Sadaso's call, Killua's warning in the room, the match with Killua (Aura Burst, whips caught, electricity endured, the catch) and the match with Gon (flagstone, Aura Burst, whips around the neck, fainting from fear). Both matches end in chapter 59.",
+    },
+  },
+  'melody': {
+    40: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_40_(2011)',
+      note: 'Episode 40 and chapter 68: the chain at Squala, his heart speeding up, the rhythm of a liar, his distrust of Kurapika and Melody, Basho’s haiku and the confession. Also read: Chapter 68.',
+    },
+    42: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_42_(2011)',
+      note: 'Episode 42 adapts chapter 73, pages 1-9: the front entrance, the rage in Kurapika’s heart, his people’s eyes, the devil’s sonata, the arm, the friend who played it on the flute and died, her hearing, and her wish to destroy it. Also read: Chapter 73.',
+    },
+  },
+  'basho': {
+    40: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_40_(2011)',
+      note: 'Corrected after review: the Italian second haiku reworded. Episode 40 and chapter 68: the punch that tells him the figures are aura, the haiku that sets a chair alight at his touch, the second haiku against liars and Squala’s confession. Also read: Chapter 68.',
+    },
+  },
+  'baise': {
+    40: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_40_(2011)',
+      note: 'Corrected after review: “reveals the plan” is episode 40 only; chapter 68 has him reveal how he used his Nen, so he only talks, as Squala’s record log says. Episode 40 and chapter 68: Squala refusing to give his orders even under torture, and the kiss that makes him her servant. Also read: Chapter 68.',
+    },
+  },
+  'squala': {
+    40: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_40_(2011)',
+      note: 'Corrected after review: “reveals the plan” is episode 40 only; chapter 68 has him reveal how he used his Nen, so he only talks, as Squala’s record log says. Episode 40 and chapter 68: the chain, Melody hearing his heart, his denial and distrust, Basho’s haiku, his confession and introduction, the refusal under torture and Baise’s kiss. Also read: Chapter 68.',
+    },
+  },
+  'shachmono-tocino': {
+    40: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_40_(2011)',
+      note: 'The locked door and the armed figures are episode 39 and chapter 67; Kurapika exposing him, the dagger and the count, his test and the four who can leave are episode 40 and chapter 68. Also read: Episode 39 (2011), Chapter 67, Chapter 68.',
+    },
+  },
+  'dalzollene': {
+    41: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_41_(2011)',
+      note: 'Corrected after review: in Italian “la loro protetta” became “il loro capo”, the boss of both media. The screen and the item from a list are episode 39 and chapter 67; the hiring, the escort to a hotel in Yorknew, the question about enemies, the figure in the frame and the girl on the bed are episode 41 and chapter 70. Also read: Episode 39 (2011), Chapter 67, Chapter 70.',
+    },
+  },
+  'neon-nostrade': {
+    41: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_41_(2011)',
+      note: 'Corrected after review: “the auction is too dangerous for her” is episode 41 only; both media show her father having her kept away from it. The escort and the fortunes for her father’s friends are episode 41 and chapter 71; Dalzollene’s call to her father and the order to keep her away are chapter 72, pages 4-6, in episode 41. Also read: Chapter 71, Chapter 72.',
+    },
+  },
+  'machi': {
+    41: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_41_(2011)',
+      note: 'Corrected after review: “a new member” became the members who have changed, as chapter 71 says. The Nen threads on Hisoka’s arms and the call for noon on August 30 are episode 32 and chapter 55; the four on the road, the first gathering in over three years, the talk of Hisoka and the order are episode 41 and chapter 71. Also read: Episode 32 (2011), Chapter 55, Chapter 71.',
+    },
+  },
+  'ivlenkov': {
+    42: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_42_(2011)',
+      note: 'Corrected after review: “the auction is too dangerous for her” is episode 41 only; both media show her father having her kept away from it. The escort is episode 41 and chapter 71; the posts (three inside, two at the back, Kurapika and Melody at the front) are episode 42 and chapter 72. Who goes where is named only in chapter 72; the episode 42 appearance list orders the bodyguards the same way, as the #900 records do. Also read: Episode 41 (2011), Chapter 71, Chapter 72.',
+    },
+  },
+  'linssen': {
+    42: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_42_(2011)',
+      note: 'Corrected after review: “the auction is too dangerous for her” is episode 41 only; both media show her father having her kept away from it. The escort is episode 41 and chapter 71; the posts are episode 42 and chapter 72. Who goes where is named only in chapter 72; the episode 42 appearance list orders the bodyguards the same way, as the #900 records do. The other bodyguard at the back (Basho) is named only in the chapter and is left out. Also read: Episode 41 (2011), Chapter 71, Chapter 72.',
+    },
+  },
+  'shizuku': {
+    42: {
+      source: 'https://hunterxhunter.fandom.com/wiki/Episode_42_(2011)',
+      note: 'Corrected after review: the members gather outside Yorknew City, the match is before the auction (not “that night”), and Gon has to try for real rather than use all his strength. The gathering and the order are episode 41 and chapter 71; the match with Gon and her return to the other members are episode 42 and chapter 72. The left arm is chapter-only. Also read: Episode 41 (2011), Chapter 71, Chapter 72.',
     },
   },
 }

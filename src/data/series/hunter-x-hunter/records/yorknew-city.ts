@@ -104,7 +104,7 @@ export const yorknewCity: HunterSaga = {
       nameSaidAt: 1,
       name: { it: 'Ging Freecss', en: 'Ging Freecss' },
       summary: {
-        it: 'Il padre di Gon, un Hunter che ha lasciato l’Isola Balena alla sua età ed è tornato dieci anni dopo con il figlio in braccio, che ha lasciato lì.',
+        it: 'Il padre di Gon, un Hunter che ha lasciato l’Isola Balena alla stessa età di Gon ed è tornato dieci anni dopo con il figlio in braccio, che ha lasciato lì.',
         en: 'Gon’s father, a Hunter who left Whale Island at Gon’s age and came back ten years later carrying his son, whom he left there.',
       },
       visual: { art: 'ging-freecss', tint: 'sand' },
@@ -613,6 +613,7 @@ export const yorknewCity: HunterSaga = {
       ],
     },
     'melody': {
+      chronicle: yorknewCityChronicles.melody,
       role: HIRED,
       log: {
         it: 'Si candida con Kurapika come guardia del corpo per un collezionista. Quando uno dei candidati viene accusato di essere un infiltrato, dice di aver sentito il suo cuore accelerare: ha il ritmo tipico di chi mente.',
@@ -622,6 +623,7 @@ export const yorknewCity: HunterSaga = {
       affiliation: [NEON_GUARD],
     },
     'basho': {
+      chronicle: yorknewCityChronicles.basho,
       role: HIRED,
       log: {
         it: 'Si candida come guardia del corpo con Kurapika. Abbatte a mani nude una delle figure vestite di nero e capisce che sono fatte di aura. Scrive haiku che si avverano: il primo dà fuoco a una sedia, il secondo dice che chi mente alla sua domanda brucerà.',
@@ -631,10 +633,11 @@ export const yorknewCity: HunterSaga = {
       affiliation: [NEON_GUARD],
     },
     'baise': {
+      chronicle: yorknewCityChronicles.baise,
       role: HIRED,
       log: {
-        it: 'Si candida come guardia del corpo con Kurapika. Quando l’infiltrato scoperto si rifiuta di dire quali ordini ha dato, lo bacia: lui diventa il suo servitore e le dice tutto.',
-        en: 'She applies for a bodyguard job with Kurapika. When the plant who has been caught refuses to say what orders he has given, she kisses him: he becomes her servant and tells her everything.',
+        it: 'Si candida come guardia del corpo con Kurapika. Quando l’infiltrato scoperto si rifiuta di dire quali ordini ha dato, lo bacia: lui diventa il suo servitore e parla.',
+        en: 'She applies for a bodyguard job with Kurapika. When the plant who has been caught refuses to say what orders he has given, she kisses him: he becomes her servant and talks.',
       },
       status: [
         { episode: 40, chapter: 68, value: 'alive' },
@@ -645,6 +648,7 @@ export const yorknewCity: HunterSaga = {
       affiliation: [NEON_GUARD],
     },
     'squala': {
+      chronicle: yorknewCityChronicles.squala,
       role: PLANT,
       log: {
         it: 'La catena di Kurapika oscilla davanti a lui, e Melody sente il suo cuore accelerare. Nega di essere un infiltrato finché l’haiku di Basho non lo costringe a confessare. Dopo il bacio di Versé parla.',
@@ -659,6 +663,7 @@ export const yorknewCity: HunterSaga = {
       affiliation: [NEON_GUARD],
     },
     'shachmono-tocino': {
+      chronicle: yorknewCityChronicles['shachmono-tocino'],
       role: PLANT,
       log: {
         it: 'Mette alla prova i candidati con figure vestite di nero fatte della sua aura. Kurapika lo scopre notando che è l’unico che le figure non attaccano.',
@@ -673,12 +678,13 @@ export const yorknewCity: HunterSaga = {
       affiliation: [NEON_GUARD],
     },
     'dalzollene': {
+      chronicle: yorknewCityChronicles.dalzollene,
       role: {
         it: 'Capo delle guardie del corpo',
         en: 'Head of the bodyguards',
       },
       log: {
-        it: 'Da uno schermo assegna la prova ai candidati: portare un oggetto da una lista. Poi la porta resta chiusa e figure vestite di nero li attaccano. Assume i quattro che tornano con l’oggetto. Andando dalla loro protetta passano davanti a un uomo trasformato in una figura appesa al muro.',
+        it: 'Da uno schermo assegna la prova ai candidati: portare un oggetto da una lista. Poi la porta resta chiusa e figure vestite di nero li attaccano. Assume i quattro che tornano con l’oggetto. Andando dal loro capo passano davanti a un uomo trasformato in una figura appesa al muro.',
         en: 'From a screen he sets the applicants their test: bring back one item from a list. Then the door stays locked and figures in black attack them. He hires the four who return with their items. On the way to the boss they pass a man turned into a figure hanging on the wall.',
       },
       status: [
@@ -698,6 +704,7 @@ export const yorknewCity: HunterSaga = {
       ],
     },
     'neon-nostrade': {
+      chronicle: yorknewCityChronicles['neon-nostrade'],
       role: { it: 'Indovina', en: 'Fortune-teller' },
       log: {
         it: 'Arriva a York Shin City con le sue guardie del corpo. Con il suo potere scrive le profezie per gli amici di suo padre.',
@@ -713,6 +720,7 @@ export const yorknewCity: HunterSaga = {
       ],
     },
     'ivlenkov': {
+      chronicle: yorknewCityChronicles.ivlenkov,
       role: BODYGUARD,
       log: {
         it: 'Guardia del corpo della famiglia, è uno dei tre che Dalzorne manda all’asta sotterranea.',
@@ -736,6 +744,7 @@ export const yorknewCity: HunterSaga = {
       ],
     },
     'linssen': {
+      chronicle: yorknewCityChronicles.linssen,
       role: BODYGUARD,
       log: {
         it: 'Guardia del corpo della famiglia, Dalzorne lo mette con un altro a sorvegliare l’ingresso posteriore dell’edificio dove si tiene l’asta sotterranea.',
@@ -754,6 +763,7 @@ export const yorknewCity: HunterSaga = {
       ],
     },
     'machi': {
+      chronicle: yorknewCityChronicles.machi,
       role: TROUPE_MEMBER,
       log: {
         it: 'I membri della Brigata si riuniscono tutti a York Shin City per la prima volta da più di tre anni, e lei ci va a piedi con altri tre.',
@@ -1029,10 +1039,11 @@ export const yorknewCity: HunterSaga = {
       ],
     },
     'shizuku': {
+      chronicle: yorknewCityChronicles.shizuku,
       role: TROUPE_MEMBER,
       log: {
-        it: 'Sfida Gon a braccio di ferro per il premio, un diamante, e perde dopo averlo costretto a usare tutta la sua forza.',
-        en: 'She challenges Gon at arm wrestling for the prize, a diamond, and loses after making him use all his strength.',
+        it: 'Sfida Gon a braccio di ferro per il premio, un diamante, e perde dopo averlo costretto a impegnarsi davvero per vincere.',
+        en: 'She challenges Gon at arm wrestling for the prize, a diamond, and loses after making him try for real to win.',
       },
       status: [{ episode: 42, chapter: 72, value: 'alive' }],
       affiliation: [{ episode: 42, chapter: 72, value: TROUPE }],
