@@ -57,6 +57,9 @@ export const Route = createRootRoute({
         // eslint-disable-next-line no-secrets/no-secrets -- the token is a public ownership proof Google hands out to be served in the HTML of every page; it grants nothing and is meant to be read by anyone.
         content: 'h5qpGoxTYVlSKZU1U4-E74deg8MRRDnKdRa3Wb-kkPI',
       },
+      // Proves ownership of the property to Bing Webmaster Tools. Same rule as
+      // the Google tag above: it has to stay on every document.
+      { name: 'msvalidate.01', content: '9711E0529A53A545FFEC16864511D537' },
     ],
     links: [
       // The .ico comes first so Safari, which ignores SVG icons, still finds
