@@ -23452,6 +23452,26 @@
       "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2092526",
       "contentSha256": "ce2d3f08426766976b56e313c20e2ed2c328ce4deae0403940660ee9e0ad73e0"
     },
+    "en-Episode_528.json": {
+      "locale": "en",
+      "title": "Episode 528",
+      "revision": 2043168,
+      "revisionDate": "2024-12-22T02:45:57Z",
+      "url": "https://onepiece.fandom.com/wiki/Episode_528",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2043168",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2043168",
+      "contentSha256": "95edf7932549bcf1345debc5ab10fb30531dd516454086965c79f7a79122a0c5"
+    },
+    "en-Chapter_607.json": {
+      "locale": "en",
+      "title": "Chapter 607",
+      "revision": 2110050,
+      "revisionDate": "2026-04-01T08:46:10Z",
+      "url": "https://onepiece.fandom.com/wiki/Chapter_607",
+      "revisionUrl": "https://onepiece.fandom.com/index.php?oldid=2110050",
+      "apiUrl": "https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=ids%7Ctimestamp%7Ccontent&rvslots=main&format=json&formatversion=2&revids=2110050",
+      "contentSha256": "994a98511992b72416669780be9cf28304864fce585d360e634cbe32ff011989"
+    },
     "en-Episode_711.json": {
       "locale": "en",
       "title": "Episode 711",
