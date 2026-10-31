@@ -100,6 +100,42 @@ export const hunterExamChronicles = {
         },
       },
     },
+    // Episode 37 adapts chapters 64-65; the box and the tape’s question close chapter 65. Ging is linked only from chapter 66.
+    {
+      episode: 37,
+      chapter: 65,
+      value: {
+        title: { it: 'La scatola del padre', en: 'His father’s box' },
+        body: {
+          it: 'Tornato sull’Isola Balena con [[killua|Killua]], accanto al fuoco Gon gli dice che sua madre è [[mito-freecss|Myto]]. Quando annuncia che andrà a cercare suo padre, Myto gli mostra una scatola lasciata dal padre e gli racconta quello che sa. Gon scopre che suo padre ha lasciato l’isola alla sua età per diventare Hunter, e che i genitori morti in un incidente erano quelli di Myto. Da allora chiama suo padre per nome, Ging. Il giorno dopo Killua suggerisce il Nen: l’involucro esterno si stacca e la licenza da Hunter di Gon apre la scatola interna. Dentro ci sono un anello, una scheda di memoria e una cassetta. Sul nastro Ging chiede a Gon se vuole vederlo.',
+          en: 'Back on Whale Island with [[killua|Killua]], Gon tells him by the fire that his mother is [[mito-freecss|Mito]]. When he says he will look for his father, Mito shows him a box his father left and tells him what she knows. Gon learns that his father left the island at Gon’s age to become a Hunter, and that the parents who died in an accident were Mito’s. From then on he calls his father by his name, Ging. The next day Killua suggests Nen: the outer casing comes off, and Gon’s Hunter license opens the box inside. In it are a ring, a memory card and a cassette. On the tape, Ging asks Gon whether he wants to see him.',
+        },
+      },
+    },
+    // The tape is chapter 66, the console and the call to Milluki chapter 69 (pages 1-16), all in episode 38. The game is not named before its arc (episode 59).
+    {
+      episode: 38,
+      chapter: 69,
+      value: {
+        title: { it: 'Il nastro di Ging', en: 'Ging’s tape' },
+        body: {
+          it: 'Gon lascia andare il nastro quando Ging gli chiede se vuole davvero vederlo. Ging dice che lui invece non vuole vedere Gon, perché ha smesso di fare il padre per egoismo, e che gli renderà difficile trovarlo. Quando Ging si offre di parlargli di sua madre, Gon ferma il nastro. Poi il Nen fa riavvolgere il nastro e gli fa registrare sopra il messaggio, e nessuno dei due ragazzi riesce a fermarlo. Sulla scheda di memoria c’è un gioco che costa miliardi e che non riescono a trovare in vendita. [[killua|Killua]] chiama il fratello [[milluki|Milki]] e gli promette una copia della scheda in cambio di quello che sa: si dice che alcune copie del gioco andranno all’asta a York Shin City.',
+          en: 'Gon keeps the tape running when Ging asks whether he really wants to see him. Ging says that he himself does not want to see Gon, because he gave up being a parent for his own sake, and that he will make it hard for Gon to find him. When Ging offers to talk about Gon’s mother, Gon stops the tape. Then Nen makes the tape rewind and record over the message, and neither boy can stop it. The memory card holds a game that costs billions, and they cannot find a copy for sale. [[killua|Killua]] calls his brother [[milluki|Milluki]] and promises him a copy of the card for what he knows: copies of the game are said to be going up for auction in Yorknew City.',
+        },
+      },
+    },
+    // The Hunter website is chapter 70 and episode 41; the market, Leorio and the arm-wrestling contest are chapters 71-72 and episode 42.
+    {
+      episode: 42,
+      chapter: 72,
+      value: {
+        title: { it: 'Braccio di ferro', en: 'Arm wrestling' },
+        body: {
+          it: 'Sul sito degli Hunter Gon e [[killua|Killua]] scoprono che sette copie del gioco della scheda di memoria di Ging andranno all’asta a York Shin City, con offerte a partire da 8,9 miliardi di Jenny. Provano a comprare e rivendere su internet, senza successo. A un mercato, mentre Gon compra un telefono, incontrano [[leorio-paradinight|Leorio]]. Leorio trova un modo per fare soldi: chi batte Gon a braccio di ferro vince un diamante da 3 milioni di Jenny. Gon batte uno sfidante dopo l’altro, finché [[shizuku|Shizuku]], un membro della Brigata Fantasma, non lo costringe a usare tutta la sua forza per vincere.',
+          en: 'On the Hunter website, Gon and [[killua|Killua]] learn that seven copies of the game on Ging’s memory card will be auctioned in Yorknew City, with bids starting at 8.9 billion Jenny. They try buying and reselling online, without success. At a market, while Gon buys a phone, they run into [[leorio-paradinight|Leorio]]. Leorio comes up with a way to make money: whoever beats Gon at arm wrestling wins a diamond worth 3 million Jenny. Gon beats one challenger after another, until [[shizuku|Shizuku]], a member of the Phantom Troupe, makes him use all his strength to win.',
+        },
+      },
+    },
   ],
   'mito-freecss': [
     {
@@ -125,6 +161,18 @@ export const hunterExamChronicles = {
         body: {
           it: 'Myto riceve una lettera di [[gon-freecss|Gon]] mentre la nonna guarda. Lui scrive di aver superato l’esame, ma di non essere contento di come ha vinto il combattimento finale. Racconta di essere stato a Monte Kukruu con [[leorio-paradinight|Leorio]] e [[kurapika|Kurapika]] per riprendere [[killua|Killua]], e che prima di tornare a casa deve restituire un debito a [[hisoka|Hisoka]]. Aggiunge che non tornerà presto. Myto incornicia una foto dei quattro amici e la appende al muro.',
           en: 'Mito receives a letter from [[gon-freecss|Gon]] while her grandmother looks on. He writes that he has passed the exam but is unhappy about how he won the final match. He tells her he went to Kukuroo Mountain with [[leorio-paradinight|Leorio]] and [[kurapika|Kurapika]] to bring back [[killua|Killua]], and that before he comes home he has a debt to settle with [[hisoka|Hisoka]]. He adds that he will not be back soon. Mito frames a photo of the four friends and hangs it on the wall.',
+        },
+      },
+    },
+    // Episode 37 adapts chapters 64-65. Her tears behind the bush and the condition on the box are not in both media and stay out.
+    {
+      episode: 37,
+      chapter: 65,
+      value: {
+        title: { it: 'Gon torna a casa', en: 'Gon comes home' },
+        body: {
+          it: '[[gon-freecss|Gon]] torna sull’Isola Balena con [[killua|Killua]], e Myto li manda a fare il bagno prima di mangiare con sua nonna. Quella sera, nel bosco, Gon dice a Killua che sua madre è Myto, mentre lei è poco dietro di loro con il cibo che ha portato. Gon dice che resterà circa un mese e poi andrà a cercare suo padre. Myto tira fuori una scatola che Ging ha lasciato per lui e gli racconta quello che sa: Ging è partito dall’isola per diventare Hunter alla stessa età di Gon. La nonna aggiunge che i genitori morti in un incidente erano quelli di Myto, non quelli di Gon.',
+          en: '[[gon-freecss|Gon]] comes back to Whale Island with [[killua|Killua]], and Mito sends the two of them to take a bath before the meal with her grandmother. That night, in the forest, Gon tells Killua that Mito is his mother, while she stands behind them with the food she has brought. Gon says he will stay about a month and then go to look for his father. Mito brings out a box that Ging left for him and tells him what she knows: Ging left the island to become a Hunter at Gon’s age. Her grandmother adds that the parents who died in an accident were Mito’s, not Gon’s.',
         },
       },
     },
@@ -185,6 +233,21 @@ export const hunterExamChronicles = {
         },
       },
     },
+    // The market is chapter 71, the conditional auctions and the contest chapter 72; episode 42 tells both.
+    {
+      episode: 42,
+      chapter: 72,
+      value: {
+        title: {
+          it: 'Di nuovo con Gon e Killua',
+          en: 'Back with Gon and Killua',
+        },
+        body: {
+          it: 'Leorio arriva a York Shin City e incontra [[gon-freecss|Gon]] e [[killua|Killua]] a un mercato, mentre Gon compra un telefono. Parlano del Nen, e i ragazzi gli raccontano del gioco della scheda di memoria di Ging e dei soldi che servono per comprarlo. Leorio trova un modo per raccoglierli. In strada invita i passanti a sfidare Gon a braccio di ferro: chi vince si prende un diamante da 3 milioni di Jenny. Gon vince sempre, e solo una sfidante, [[shizuku|Shizuku]], lo costringe a usare tutta la sua forza.',
+          en: 'Leorio arrives in Yorknew City and runs into [[gon-freecss|Gon]] and [[killua|Killua]] at a market, where Gon is buying a phone. They talk about Nen, and the boys tell him about the game on Ging’s memory card and the money they need to buy it. Leorio comes up with a way to raise it. In the street he invites passers-by to arm-wrestle Gon: whoever wins gets a diamond worth 3 million Jenny. Gon keeps winning, and only one challenger, [[shizuku|Shizuku]], makes him use all his strength.',
+        },
+      },
+    },
   ],
   'kurapika': [
     {
@@ -228,6 +291,33 @@ export const hunterExamChronicles = {
         body: {
           it: 'Nella finale Kurapika vince contro [[hisoka|Hisoka]], che gli sussurra qualcosa e si ritira. Quando [[illumi|Illumi]] vuole andare a uccidere [[gon-freecss|Gon]], Kurapika, [[leorio-paradinight|Leorio]] e [[hanzo|Hanzo]] lo bloccano alla porta. Poi difende [[killua|Killua]] davanti al comitato: pensa che Illumi lo abbia manipolato durante il combattimento. [[pokkle|Pockul]] gli contesta la vittoria su Hisoka, e Kurapika si rifiuta di rivelare cosa gli abbia detto. Dopo l’esame parte con Gon e Leorio per riprendere Killua.',
           en: 'In the final Kurapika wins against [[hisoka|Hisoka]], who whispers something to him and withdraws. When [[illumi|Illumi]] wants to go and kill [[gon-freecss|Gon]], Kurapika, [[leorio-paradinight|Leorio]] and [[hanzo|Hanzo]] block him at the door. Then he defends [[killua|Killua]] before the committee: he thinks Illumi manipulated him during his match. [[pokkle|Pokkle]] questions his win over Hisoka, and Kurapika refuses to say what Hisoka told him. After the exam he sets out with Gon and Leorio to bring Killua back.',
+        },
+      },
+    },
+    // Only chapter 67’s beats, which episode 39 also tells. The teacher and Water Divination (chapter 83) wait for episode 47; Melody at the agency is anime-only.
+    {
+      episode: 39,
+      chapter: 67,
+      value: {
+        title: {
+          it: 'Un lavoro per un collezionista',
+          en: 'A job with a collector',
+        },
+        body: {
+          it: 'Ora che ha imparato il Nen, Kurapika torna in un’agenzia di collocamento. L’impiegata gli propone tre datori di lavoro legati all’asta di York Shin City, e lui sceglie quello che colleziona parti di corpi umani. Nella villa del collezionista un maggiordomo lo accompagna in una stanza con altri candidati. Un uomo su uno schermo dice che all’asta manca un mese e che ognuno deve portare un oggetto. Quando provano a uscire la porta non si apre, e figure vestite di nero armate di spade li attaccano. Kurapika si prepara a combattere.',
+          en: 'Now that he has learned Nen, Kurapika goes back to a job agency. The agent offers him three employers with ties to the Yorknew City auction, and he picks the one who collects human body parts. At the collector’s mansion a butler shows him into a room with other applicants. A man on a screen tells them the auction is a month away and that each of them must bring back an item. When they try to leave, the door will not open, and figures in black armed with swords attack them. Kurapika gets ready to fight.',
+        },
+      },
+    },
+    // Chapter 68 and episode 40 both tell the test from the chandelier to Baise’s kiss.
+    {
+      episode: 40,
+      chapter: 68,
+      value: {
+        title: { it: 'La Catena della Pressione', en: 'The Dowsing Chain' },
+        body: {
+          it: 'Quando le figure vestite di nero attaccano, Kurapika osserva dal lampadario e nota che c’è un candidato, [[shachmono-tocino|Shachmono Tocino]], che non viene mai preso di mira. Salta giù, gli punta contro un pugnale e gli dà tempo fino a tre per richiamarle, e Tocino obbedisce. Tocino ammette di avere il compito di metterli alla prova e dice che possono uscire in quattro, così Kurapika cerca un secondo infiltrato. Passa la sua Catena della Pressione davanti a ogni candidato, e la catena reagisce davanti a [[squala|Squala]]. [[melody|Melody]] sente cambiare il battito di Squala, l’haiku di [[basho|Basho]] lo costringe a confessare e il bacio di [[baise|Versé]] gli fa rivelare il piano.',
+          en: 'When the figures in black attack, Kurapika watches from the chandelier and notices that one applicant, [[shachmono-tocino|Shachmono Tocino]], is the only one they never go after. He jumps down, points a dagger at him and gives him until three to call them off, and Tocino does. Tocino admits he was told to test them and says four of them can leave, so Kurapika looks for a second plant. He holds his Dowsing Chain in front of each applicant, and it reacts in front of [[squala|Squala]]. [[melody|Melody]] hears Squala’s heartbeat change, [[basho|Basho]]’s haiku makes him confess, and [[baise|Baise]]’s kiss makes him reveal the plan.',
         },
       },
     },
@@ -395,6 +485,18 @@ export const hunterExamChronicles = {
         body: {
           it: 'Nell’incontro con [[gon-freecss|Gon]], Hisoka schiva ogni attacco senza muoversi dal suo posto, finché Gon si nasconde dietro i frammenti di una lastra del pavimento e lo colpisce in faccia. Intuisce che Gon è del Potenziamento e spiega il suo modo di leggere le categorie dell’aura attraverso il carattere: chi è del Potenziamento è semplice, mentre lui, della Trasformazione, è volubile e bugiardo. Intanto attacca l’Ipergomma alla guancia di Gon, e poi la usa per tirarlo contro i suoi pugni. Quando Gon continua a colpirlo, Hisoka si eccita al pensiero di quanto diventerà forte. Vince facendolo guardare dalla parte sbagliata proprio mentre un sasso lo colpisce. Andandosene, gli dice che il loro prossimo scontro non sarà nell’arena, ma uno in cui rischieranno la vita.',
           en: 'In his match with [[gon-freecss|Gon]], Hisoka dodges every attack without leaving his spot, until Gon hides behind the rubble of a floor tile and punches him in the face. He guesses that Gon is an Enhancer and explains his own way of reading aura types by personality: Enhancers are simple, while he, a Transmuter, is fickle and deceitful. While he talks he attaches Bungee Gum to Gon’s cheek, and then uses it to pull him into his punches. As Gon keeps hitting him, Hisoka is thrilled at the thought of how strong Gon will become. He wins by making Gon look the wrong way just as a rock hits him. As he leaves, he tells Gon that their next fight will not be in the arena, but one where their lives are at stake.',
+        },
+      },
+    },
+    // The fake tattoo and the call to Yorknew City are chapter 55 and episode 32; the four members on the road and the leader’s order are chapter 71 and episode 41.
+    {
+      episode: 41,
+      chapter: 71,
+      value: {
+        title: { it: 'Il nuovo membro', en: 'The new member' },
+        body: {
+          it: 'Hisoka porta un falso tatuaggio della Brigata Fantasma e intende darle la caccia. [[machi|Machi]] gli ha detto di trovarsi a York Shin City entro mezzogiorno del 30 agosto, per il raduno di tutti i membri. Per strada, quattro membri diretti in città parlano di lui, il più recente della Brigata. Quando il capo dà l’ordine, Hisoka c’è: la Brigata ruberà tutto all’asta sotterranea, e i suoi membri possono uccidere chiunque si metta in mezzo.',
+          en: 'Hisoka wears a fake Phantom Troupe tattoo and means to hunt the Troupe down. [[machi|Machi]] has told him to be in Yorknew City by noon on August 30, when all the members are to gather. On the road, four members walking to the city talk about him, the newest member of the Troupe. When the leader gives the order, Hisoka is there: the Troupe will steal everything at the Underground Auction, and its members may kill anyone who gets in the way.',
         },
       },
     },
@@ -576,6 +678,18 @@ export const hunterExamChronicles = {
         body: {
           it: 'Per costringerli a combattere, [[sadaso|Sadaso]] tende un agguato a [[zushi|Zooci]] con una mano gigante fatta d’aura. Killua interviene e offre a lui, a [[gido|Ghido]] e a [[riehlvelt|Liroubert]] una vittoria a tavolino ciascuno al posto di [[gon-freecss|Gon]]. Loro ricattano Gon lo stesso, lasciandogli davanti alla porta una scarpa di Zooci. Prima del suo incontro Killua mette alle strette Sadaso e lo avverte di non farsi vedere mai più. Sadaso non si presenta e Killua vince a tavolino. Poi avverte anche Ghido e Liroubert. Nell’incontro principale contro Liroubert afferra entrambe le fruste e incassa la scossa elettrica, perché è stato addestrato a sopportarla. Lo strappa dalla sedia a rotelle, lo prende al volo con le fruste ancora cariche in mano, e vince.',
           en: 'To force a match, [[sadaso|Sadaso]] ambushes [[zushi|Zushi]] with a giant hand made of aura. Killua steps in and offers him, [[gido|Gido]] and [[riehlvelt|Riehlvelt]] a free win each in place of [[gon-freecss|Gon]]. They blackmail Gon anyway, leaving one of Zushi’s shoes at his door. Before his match Killua corners Sadaso and warns him never to show his face again. Sadaso does not turn up, and Killua wins by default. Then he warns Gido and Riehlvelt too. In the main event against Riehlvelt he catches both whips and takes the electric shock, because he has been trained to bear it. He yanks Riehlvelt out of his wheelchair, catches him as he falls with the live whips still in his hands, and wins.',
+        },
+      },
+    },
+    // The talk by the fire is chapter 64 and episode 37. Killua’s wish for a mother like Mito and the family business are chapter-only.
+    {
+      episode: 37,
+      chapter: 64,
+      value: {
+        title: { it: 'Nessun obiettivo', en: 'No goal of his own' },
+        body: {
+          it: 'Killua va con [[gon-freecss|Gon]] sull’Isola Balena e conosce [[mito-freecss|Myto]]. Di notte, accanto a un fuoco nel bosco, chiede a Gon cosa farà adesso. Gon resterà a casa per un po’, poi andrà a York Shin City a cercare informazioni su suo padre. Killua lo ammira perché ha un obiettivo: lui non ne ha nessuno. Gon gli propone di girare il mondo insieme, così lui potrà cercare suo padre e Killua potrà trovare qualcosa che vuole fare. Quando Killua gli chiede di sua madre, Gon risponde che sua madre è Myto.',
+          en: 'Killua goes with [[gon-freecss|Gon]] to Whale Island and meets [[mito-freecss|Mito]]. At night, by a fire in the forest, he asks Gon what he will do next. Gon will stay home for a while, then go to Yorknew City to look for information about his father. Killua admires him for having a goal, since he has none of his own. Gon suggests they travel the world together, so that Gon can look for his father and Killua can find something he wants to do. When Killua asks about Gon’s mother, Gon answers that his mother is Mito.',
         },
       },
     },
