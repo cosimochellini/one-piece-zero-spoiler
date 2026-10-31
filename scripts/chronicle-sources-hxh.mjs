@@ -32,11 +32,11 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
     30: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_30_(2011)',
-      note: 'Episode 30 and chapters 49 to 51 have the next-day match against Wing’s advice, the tops hitting anything in their path, Tornado Top throwing him back, Zetsu without knowing it, the broken arm, and the ban on Nen with the thread on his finger (chapter 51). The episode page says until he heals; the chapter gives two months as the healing time, so the story says until he heals.',
+      note: 'Corrected after review: the ban is not until he heals: it outlasts his healing in Chapter 52 and Episode 31. The next-day booking and Wing’s advice to wait are in episode 29 and chapter 49; the tops hitting anything in their path, Tornado Top, Zetsu without knowing it, the broken arm, and the ban on Nen with the thread on his finger are in episode 30 and chapters 50 and 51. Chapter 51 sets the ban at two months and it outlasts his healing (chapter 52, episode 31), so the story does not tie it to healing.',
     },
     36: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_36_(2011)',
-      note: 'Water Divination and the July 10 booking are in episode 35 and chapter 60; the unmoving dodges and the punch behind the shattered tile in chapter 61; the returned badge, Gyo and Bungee Gum in chapter 62; the rock, the loss and the promise of a fight to the death in chapter 63, all through episode 36.',
+      note: 'Corrected after review: the rock tied to Hisoka’s aura and the blow to the head are Chapter 63 only, reworded. Water Divination and the July 10 booking are in episode 35 and chapter 60; the unmoving dodges and the punch behind the shattered tile in chapter 61; the returned badge, Gyo and Bungee Gum in chapter 62; the rock, the loss and the promise of a fight to the death in chapter 63, all through episode 36.',
     },
   },
   'mito-freecss': {
@@ -142,11 +142,11 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
     32: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_32_(2011)',
-      note: 'Kastro’s hits, the severed right arm and the double are in episode 31 and chapters 52 and 53; the card trick, the regrown arm, the flying arm and Kastro’s death in episode 32 and chapter 54; the woman’s stitches, Bungee Gum, Texture Surprise, the August 30 meeting and the fake spider tattoo in episode 32 and chapter 55.',
+      note: 'Corrected after review: he peels the tattoo off while drying himself after the shower; the meeting reminder was cut for length. Kastro’s hits, the severed right arm and the double are in episode 31 and chapters 52 and 53; the card trick, the reattached right arm, the flying arm and Kastro’s death in episode 32 and chapter 54; the woman’s stitches, Bungee Gum, Texture Surprise, the August 30 meeting and the fake spider tattoo in episode 32 and chapter 55.',
     },
     36: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_36_(2011)',
-      note: 'The punch from behind the tile is in episode 35 and chapter 61; the badge, the Enhancer guess and the personality talk in episode 36 and chapter 62; the Bungee Gum quiz, his thrill, the rock and the farewell about a fight to the death in episode 36 and chapter 63.',
+      note: 'Corrected after review: the rock tied to his aura and the blow to the head are Chapter 63 only, reworded. The punch from behind the tile is in episode 35 and chapter 61; the badge, the Enhancer guess and the personality talk in episode 36 and chapter 62; the Bungee Gum quiz, his thrill, the rock and the farewell about a fight to the death in episode 36 and chapter 63.',
     },
   },
   'hanzo': {
@@ -210,7 +210,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
     34: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_34_(2011)',
-      note: 'The aura hand on Zushi, the free wins, the shoe at Gon’s door, the warning to Sadaso and the default win are in episode 33 and chapter 57; the warning to Gido and Riehlvelt and the main event (whips caught, the shock he is trained for, Riehlvelt thrown from the chair and caught) are in episode 34 and chapters 58 and 59.',
+      note: 'Corrected after review: Zushi knocked out, Killua behind Sadaso in the locker room and Riehlvelt fainting are chapter-only, reworded. The aura hand on Zushi, the free wins, the shoe at Gon’s door, the warning to Sadaso and the default win are in episode 33 and chapter 57; the warning to Gido and Riehlvelt and the main event (whips caught, the shock he is trained for, Riehlvelt thrown from the chair and caught) are in episode 34 and chapters 58 and 59.',
     },
   },
   'menchi': {
@@ -610,7 +610,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
   'wing': {
     27: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_27_(2011)',
-      note: 'Episode 27 and Chapter 45 both have Wing praising Zushi, introducing himself surprised to see other boys, the advice to be careful and the shout from the stands; the four principles, Killua linking Ren to his brother and the invitation close Episode 27 and open Chapter 46.',
+      note: 'Corrected after review: the reason for the praise differs between the pages, so it is left out. Episode 27 and Chapter 45 both have Wing praising Zushi, introducing himself surprised to see other boys, the advice to be careful and the shout from the stands; the four principles, Killua linking Ren to his brother and the invitation close Episode 27 and open Chapter 46.',
     },
     29: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_29_(2011)',
@@ -628,7 +628,7 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
     30: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_30_(2011)',
-      note: 'Battle Waltz opens the match in Episode 29 and Chapter 49; the hits, the top outside the ring, Tornado Top, Gon’s Zetsu, Killua’s warning and the broken arm are Episode 30 and Chapters 50–51. The hour of dodging and the fifty tops are only in Chapter 51 and are left out.',
+      note: 'Corrected after review: Tornado Top throwing Gon out of the ring is Chapter 50 only, reworded; Gon falls into Zetsu without knowing it. Battle Waltz opens the match in Episode 29 and Chapter 49; the hits, the top outside the ring, Tornado Top, Gon’s Zetsu, Killua’s warning and the broken arm are Episode 30 and Chapters 50–51. The hour of dodging and the fifty tops are only in Chapter 51 and are left out.',
     },
   },
   'kastro': {
@@ -648,13 +648,13 @@ export const HUNTER_X_HUNTER_SOURCES = {
     },
     34: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_34_(2011)',
-      note: "The ticket seller and Killua's threat are in episode 33 and chapter 57; the call warning his companions, his withdrawal and Gon's default win are in episode 34 and chapter 58. The knife and the mirror are chapter-only and left out.",
+      note: "The ticket seller and Killua's threat are in episode 33 and chapter 57; the call warning his companions closes episode 33 and opens chapter 58; his withdrawal and Gon's default win are in episode 34 and chapter 58. The knife and the mirror are chapter-only and left out.",
     },
   },
   'riehlvelt': {
     34: {
       source: 'https://hunterxhunter.fandom.com/wiki/Episode_34_(2011)',
-      note: "Episode 34 covers chapters 58–59: Sadaso's call, Killua's warning in the room, the match with Killua (Aura Burst, whips caught, electricity endured, the catch) and the match with Gon (flagstone, Aura Burst, whips around the neck, fainting from fear). Both matches end in chapter 59.",
+      note: "Corrected after review: linked Killua. Episode 34 covers chapters 58–59: Sadaso's call, Killua's warning in the room, the match with Killua (Aura Burst, whips caught, electricity endured, the catch) and the match with Gon (flagstone, Aura Burst, whips around the neck, fainting from fear). Both matches end in chapter 59.",
     },
   },
 }
